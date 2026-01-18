@@ -1,0 +1,22 @@
+{
+    "Service Categories": "فئات الخدمات",
+    "Add New Service Category": "إضافة فئة خدمة جديدة",
+    "Name": "الاسم",
+    "Url": "الرابط",
+    "Image": "صورة",
+    "Color Code": "لون",
+    "Description": "الوصف",
+    "Services": "الخدمات",
+    "Created At": "تاريخ الإنشاء",
+    "Search In Service Categories": "البحث في فئات الخدمات",
+    "Add New Service": "إضافة خدمة جديدة",
+    "Search In Services": "البحث في الخدمات",
+    "Edit Service" : "تعديل الخدمة",
+    "Service Category": "فئة الخدمة",
+    "Select": "اختر",
+    "Category": "الفئة",
+    "View All Services" : "عرض جميع الخدمات",
+    "Related Services": "الخدمات ذات الصلة",
+    "PREV SERVICE": "الخدمة السابقة",
+    "NEXT SERVICE": "الخدمة التالية"
+}

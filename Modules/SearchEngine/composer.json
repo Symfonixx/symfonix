@@ -1,0 +1,30 @@
+{
+    "name": "hadi/searchengine",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\SearchEngine\\": "app/",
+            "Modules\\SearchEngine\\Database\\Factories\\": "database/factories/",
+            "Modules\\SearchEngine\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\SearchEngine\\Tests\\": "tests/"
+        }
+    }
+}

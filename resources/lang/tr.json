@@ -1,0 +1,28 @@
+{
+    "Hi There" : "Merhaba",
+    "Click to start a conversation with the nearest of our branches": "En yakın şubemizle konuşmaya başlamak için tıklayın",
+
+    "How can we help you today?" : "Bugün size nasıl yardımcı olabiliriz?",
+    "Get a price quote" : "Fiyat teklifi alın",
+    "Submit a complaint on branch" : "Şubeye şikayet gönderin",
+    "Contact Nearest Branch" : "En Yakın Şube ile İletişime Geçin",
+
+    "Please enter your name." : "Lütfen adınızı girin.",
+    "Please enter your email address." : "Lütfen e-posta adresinizi girin.",
+    "Please enter your phone number (digits only)." : "Lütfen telefon numaranızı girin (sadece rakamlar).",
+    "The phone number seems invalid. Please enter digits only with at least 8 numbers." : "Telefon numarası geçersiz görünüyor. Lütfen en az 8 rakamdan oluşan sadece rakamlar girin.",
+    "Please describe your request." : "Lütfen isteğinizi açıklayın.",
+    "Your request has been submitted successfully. Our team will contact you soon." : "İsteğiniz başarıyla gönderildi. Ekibimiz yakında sizinle iletişime geçecek.",
+
+    "There are no branches configured at the moment." : "Şu anda yapılandırılmış şube bulunmuyor.",
+    "Please select the branch you want to complain about:" : "Lütfen şikayet etmek istediğiniz şubeyi seçin:",
+    "Please enter your mobile number (digits only)." : "Lütfen cep telefonu numaranızı girin (sadece rakamlar).",
+    "The mobile number seems invalid. Please enter digits only with at least 8 numbers." : "Cep telefonu numarası geçersiz görünüyor. Lütfen en az 8 rakamdan oluşan sadece rakamlar girin.",
+    "Please describe your complaint." : "Lütfen şikayetinizi açıklayın.",
+    "Your complaint has been submitted to the branch." : "Şikayetiniz şubeye başarıyla gönderildi.",
+
+    "Please choose a branch to contact on WhatsApp:" : "WhatsApp üzerinden iletişime geçmek için lütfen bir şube seçin:",
+    "You can click any button above to open WhatsApp with the selected branch." : "Seçilen şubeyle WhatsApp'ı açmak için yukarıdaki herhangi bir düğmeye tıklayabilirsiniz."
+}
+
+

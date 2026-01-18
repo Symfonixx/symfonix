@@ -1,0 +1,26 @@
+{
+    "Hi There" : "مرحبا",
+    "Click to start a conversation with the nearest of our branches": "انقر هنا لبدء محادثة مع أقرب فرع من فروعنا",
+
+    "How can we help you today?" : "كيف يمكننا مساعدتك اليوم؟",
+    "Get a price quote" : "الحصول على عرض سعر",
+    "Submit a complaint on branch" : "تقديم شكوى على فرع",
+    "Contact Nearest Branch" : "التواصل مع أقرب فرع",
+
+    "Please enter your name." : "من فضلك أدخل اسمك.",
+    "Please enter your email address." : "من فضلك أدخل بريدك الإلكتروني.",
+    "Please enter your phone number (digits only)." : "من فضلك أدخل رقم هاتفك (أرقام فقط).",
+    "The phone number seems invalid. Please enter digits only with at least 8 numbers." : "يبدو أن رقم الهاتف غير صحيح، من فضلك أدخل أرقاماً فقط وبحد أدنى 8 أرقام.",
+    "Please describe your request." : "من فضلك اكتب تفاصيل طلبك.",
+    "Your request has been submitted successfully. Our team will contact you soon." : "تم إرسال طلبك بنجاح، سيتواصل معك فريقنا قريباً.",
+
+    "There are no branches configured at the moment." : "لا توجد فروع متاحة حالياً.",
+    "Please select the branch you want to complain about:" : "من فضلك اختر الفرع الذي تريد تقديم الشكوى عليه:",
+    "Please enter your mobile number (digits only)." : "من فضلك أدخل رقم جوالك (أرقام فقط).",
+    "The mobile number seems invalid. Please enter digits only with at least 8 numbers." : "يبدو أن رقم الجوال غير صحيح، من فضلك أدخل أرقاماً فقط وبحد أدنى 8 أرقام.",
+    "Please describe your complaint." : "من فضلك اكتب تفاصيل الشكوى.",
+    "Your complaint has been submitted to the branch." : "تم إرسال شكواك إلى الفرع بنجاح.",
+
+    "Please choose a branch to contact on WhatsApp:" : "من فضلك اختر الفرع للتواصل عبر الواتساب:",
+    "You can click any button above to open WhatsApp with the selected branch." : "يمكنك الضغط على أي زر بالأعلى لفتح الواتساب مع الفرع المختار."
+}

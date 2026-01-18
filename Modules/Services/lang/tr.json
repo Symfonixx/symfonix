@@ -1,0 +1,23 @@
+{
+    "Service Categories": "Hizmet Kategorileri",
+    "Add New Service Category": "Yeni Hizmet Kategorisi Ekle",
+    "Name": "İsim",
+    "Url": "Bağlantı",
+    "Image": "Görsel",
+    "Color Code": "Renk",
+    "Description": "Açıklama",
+    "Services": "Hizmetler",
+    "Created At": "Oluşturulma Tarihi",
+    "Search In Service Categories": "Hizmet Kategorilerinde Ara",
+    "Add New Service": "Yeni Hizmet Ekle",
+    "Search In Services": "Hizmetlerde Ara",
+    "Edit Service" : "Hizmeti Düzenle",
+    "Service Category": "Hizmet Kategorisi",
+    "Select": "Seç",
+    "Category": "Kategori",
+    "View All Services" : "Tüm Hizmetleri Görüntüle",
+    "Related Services": "İlgili Hizmetler",
+    "PREV SERVICE": "ÖNCEKİ HİZMET",
+    "NEXT SERVICE": "SONRAKİ HİZMET"
+}
+

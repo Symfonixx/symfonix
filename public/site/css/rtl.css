@@ -1,0 +1,239 @@
+:root {
+    --techguru-font: "Cairo", sans-serif;
+    --techguru-font-two: "Cairo", serif;
+}
+
+.main-menu-two__contact-list li .text {
+    margin-right: 10px;
+    margin-left: unset;
+}
+
+.main-menu-two__contact-list li .icon i {
+    margin-left: 5px;
+}
+
+.main-menu .main-menu__list > li + li, .stricky-header .main-menu__list > li + li {
+    margin-right: 35px;
+    margin-left: unset;
+}
+
+.main-menu-two__nav-sidebar-icon .navSidebar-button {
+    padding-right: 0;
+    padding-left: 13px;
+}
+
+.main-menu-two__contact-list li + li {
+    margin-right: 30px;
+    margin-left: unset;
+}
+
+.main-menu-two__contact-list li:before {
+    left: unset;
+    right: -15px;
+}
+
+.site-footer-two__contact-list li:before {
+    right: 0;
+    left: 169px;
+
+}
+
+/* Carousel RTL Support */
+.owl-carousel.owl-rtl {
+    direction: rtl;
+}
+
+.owl-carousel.owl-rtl .owl-item {
+    float: right;
+}
+
+/* Carousel Navigation Buttons RTL */
+.owl-nav {
+    direction: ltr;
+}
+
+[dir="rtl"] .owl-nav .owl-prev {
+    left: auto;
+    right: -50px;
+}
+
+[dir="rtl"] .owl-nav .owl-next {
+    right: auto;
+    left: -50px;
+}
+
+/* Swiper RTL Support */
+.swiper-rtl {
+    direction: rtl;
+}
+
+.swiper-rtl .swiper-button-next {
+    left: 10px;
+    right: auto;
+}
+
+.swiper-rtl .swiper-button-prev {
+    right: 10px;
+    left: auto;
+}
+
+/* Title Animation RTL Support */
+[dir="rtl"] .title-animation {
+    text-transform: none !important;
+    font-variant: normal !important;
+    font-feature-settings: normal !important;
+    /* Ensure Arabic letters connect properly */
+    unicode-bidi: embed;
+    direction: rtl;
+    /* Preserve Arabic letter connections - critical */
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    /* Force proper Arabic rendering */
+    font-variant-ligatures: normal !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+[dir="rtl"] .sec-title-animation .title-animation {
+    direction: rtl;
+    text-align: right;
+    /* Preserve Arabic letter connections */
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    /* Ensure proper font size - override any inline styles */
+    font-size: 40px !important;
+    line-height: 50px !important;
+    display: block !important;
+    font-weight: 700 !important;
+}
+
+/* Ensure section title maintains proper size in RTL - match original size */
+[dir="rtl"] .section-title__title {
+    font-size: 40px !important;
+    line-height: 50px !important;
+    display: block !important;
+    font-weight: 700 !important;
+    /* Override any inline styles */
+    min-height: auto !important;
+    height: auto !important;
+}
+
+[dir="rtl"] .section-title__title.title-animation {
+    font-size: 40px !important;
+    line-height: 50px !important;
+    display: block !important;
+    font-weight: 700 !important;
+    /* Override any inline styles that might reduce size */
+    min-height: auto !important;
+    height: auto !important;
+}
+
+/* Ensure title-animation elements maintain proper size */
+[dir="rtl"] .sec-title-animation .title-animation {
+    font-size: 40px !important;
+    line-height: 50px !important;
+    display: block !important;
+    font-weight: 700 !important;
+}
+
+/* Ensure Arabic text displays properly and letters connect */
+[dir="rtl"] .title-animation,
+[dir="rtl"] .title-animation *,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+    font-feature-settings: normal !important;
+    text-transform: none !important;
+    /* Ensure proper Arabic rendering */
+    font-variant-ligatures: normal !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+/* Prevent SplitText from breaking Arabic connections - but maintain block display for titles */
+[dir="rtl"] .section-title__title .split-line,
+[dir="rtl"] .section-title__title .split-word,
+[dir="rtl"] .section-title__title .split-char {
+    display: inline !important;
+    unicode-bidi: embed !important;
+    direction: rtl !important;
+    /* Preserve Arabic letter connections */
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    font-variant-ligatures: normal !important;
+    text-rendering: optimizeLegibility !important;
+    /* Prevent any spacing that breaks connections */
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Maintain font size */
+    font-size: inherit !important;
+    line-height: inherit !important;
+}
+
+/* Ensure Arabic text in split elements maintains proper connection and size */
+[dir="rtl"] .title-animation .split-line,
+[dir="rtl"] .title-animation .split-word,
+[dir="rtl"] .title-animation .split-char {
+    font-feature-settings: normal !important;
+    text-transform: none !important;
+    display: inline !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+}
+
+/* Marquee RTL */
+[dir="rtl"] .marquee_mode,
+[dir="rtl"] .marquee_mode-2 {
+    direction: rtl;
+}
+
+.team-two__right {
+    margin-right: unset;
+    margin-left: -315px;
+}
+
+.team-two__left .section-title__title {
+    margin-right: unset;
+}
+
+.testimonial-two__quote {
+    right: unset;
+    left: 30px;
+}
+
+.blog-one__meta li + li {
+    margin-left: unset;
+    margin-right: 26px;
+}
+
+.blog-one__meta li a span {
+    margin-right: unset;
+    margin-left: 6px;
+}
+
+.blog-one__meta li::before {
+    left: unset;
+    right: -13px;
+
+}
+
+.blog-two__user-two  ,  .blog-two__user{
+    padding-right: unset;
+    padding-left: 15px;
+
+}
+.blog-two__content-two {
+       padding-right: 75px;
+    padding-left: unset;
+}
+.blog-two__tags {
+    left: unset;
+    right: 14px;
+
+}
+.blog-two__meta li a span , .blog-details__meta li a span {
+    margin-left: 6px;
+    margin-right: unset;
+
+}

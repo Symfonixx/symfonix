@@ -1,0 +1,15 @@
+{
+    "Testimonials": "شهادات العملاء",
+    "Testimonial": "شهادة",
+    "Name": "الاسم",
+    "Position": "المنصب",
+    "Url": "الرابط",
+    "Avatar": "الصورة الشخصية",
+    "Quote": "الاقتباس",
+    "Published": "منشور",
+    "Add New Testimonial": "إضافة شهادة جديدة",
+    "Edit Testimonial": "تعديل الشهادة",
+    "Search In Testimonials": "البحث في شهادات العملاء",
+    "Delete Selected": "حذف المحدد",
+    "Are you sure you want to delete selected testimonials?": "هل أنت متأكد أنك تريد حذف الشهادات المحددة؟"
+}
