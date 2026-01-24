@@ -947,7 +947,7 @@ const _sfc_main$h = {
       } else {
         _push(`<span>${ssrInterpolate(trans("Subscribe Now"))}</span>`);
       }
-      _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"></span></button><div class="checked-box"><input type="checkbox" name="skipper1" id="skipper" checked=""><label for="skipper"><span></span> `);
+      _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"></span></button><div class="checked-box"><input type="checkbox" name="skipper1" id="skipper" checked=""><label for="skipper"><span></span>`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("privacy-policy")
       }, {
@@ -1196,13 +1196,18 @@ const _sfc_main$h = {
         _: 1
       }, _parent));
       _push(`</p></div><div class="site-footer-two__social-box"><h4 class="site-footer-two__social-title">${ssrInterpolate(trans("Follow Us"))}:</h4><div class="site-footer-two__social-box-inner">`);
+      if (settings.value.whatsapp) {
+        _push(`<a${ssrRenderAttr("href", settings.value.whatsapp)} target="_blank" rel="noopener" aria-label="Whatsapp"><span class="icon-whatsapp"></span></a>`);
+      } else {
+        _push(`<!---->`);
+      }
       if (settings.value.facebook) {
         _push(`<a${ssrRenderAttr("href", settings.value.facebook)} target="_blank" rel="noopener" aria-label="Facebook"><span class="icon-facebook"></span></a>`);
       } else {
         _push(`<!---->`);
       }
       if (settings.value.instagram) {
-        _push(`<a${ssrRenderAttr("href", settings.value.instagram)} target="_blank" rel="noopener" aria-label="Instagram"><span class="icon-dribble"></span></a>`);
+        _push(`<a${ssrRenderAttr("href", settings.value.instagram)} target="_blank" rel="noopener" aria-label="Instagram"><span class="fab fa-instagram"></span></a>`);
       } else {
         _push(`<!---->`);
       }
@@ -1234,18 +1239,27 @@ const _sfc_main$h = {
       _push(ssrRenderComponent(_sfc_main$j, null, null, _parent));
       _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
       if (settings.value.twitter) {
-        _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
+        _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (settings.value.whatsapp) {
+        _push(`<a${ssrRenderAttr("href", settings.value.whatsapp)} class="fab fa-whatsapp me-2" target="_blank" rel="noopener" aria-label="Whatsapp"></a>`);
       } else {
         _push(`<!---->`);
       }
       if (settings.value.facebook) {
-        _push(`<a${ssrRenderAttr("href", settings.value.facebook)} class="fab fa-facebook-square" target="_blank" rel="noopener" aria-label="Facebook"></a>`);
+        _push(`<a${ssrRenderAttr("href", settings.value.facebook)} class="fab fa-facebook me-2" target="_blank" rel="noopener" aria-label="Facebook"></a>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<a href="#" class="fab fa-pinterest-p" aria-label="Pinterest"></a>`);
       if (settings.value.instagram) {
-        _push(`<a${ssrRenderAttr("href", settings.value.instagram)} class="fab fa-instagram" target="_blank" rel="noopener" aria-label="Instagram"></a>`);
+        _push(`<a${ssrRenderAttr("href", settings.value.instagram)} class="fab fa-instagram me-2" target="_blank" rel="noopener" aria-label="Instagram"></a>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (settings.value.linkedin) {
+        _push(`<a${ssrRenderAttr("href", settings.value.linkedin)} class="fab fa-linkedin me-2" target="_blank" rel="noopener" aria-label="Linkedin"></a>`);
       } else {
         _push(`<!---->`);
       }
@@ -4050,7 +4064,7 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li${_scopeId}><span class="icon-right-arrow-1"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(trans("Blog Details"))}</li></ul></div></div></div></section><section class="blog-details"${_scopeId}><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-8 col-lg-7"${_scopeId}><div class="blog-details__left"${_scopeId}><div class="blog-details__img"${_scopeId}><img${ssrRenderAttr("src", blog.value.image_link)}${ssrRenderAttr("alt", blog.value.title)}${_scopeId}></div><div class="blog-details__single-content"${_scopeId}><ul class="blog-details__meta list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(trans("Blog Details"))}</li></ul></div></div></div></section><section class="blog-details"${_scopeId}><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-8 col-lg-7"${_scopeId}><div class="blog-details__left"${_scopeId}><div class="blog-details__img"${_scopeId}><img${ssrRenderAttr("src", blog.value.image_link)}${ssrRenderAttr("alt", blog.value.title)}${_scopeId}></div><div class="blog-details__single-content"${_scopeId}><ul class="blog-details__meta list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("blogs.show", blog.value.slug)
             }, {
@@ -4249,7 +4263,9 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
                           }, 8, ["href"])
                         ]),
                         createVNode("li", null, [
-                          createVNode("span", { class: "icon-right-arrow-1" })
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
                         ]),
                         createVNode("li", null, toDisplayString(trans("Blog Details")), 1)
                       ])
@@ -6322,21 +6338,6 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
     const getServiceDescription = (serviceItem) => {
       return translateField(serviceItem == null ? void 0 : serviceItem.description);
     };
-    const stripHtml = (html) => {
-      if (!html) return "";
-      return String(html).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
-    };
-    const getServicePlainContent = (serviceItem) => {
-      const raw = translateField(serviceItem == null ? void 0 : serviceItem.content) || translateField(serviceItem == null ? void 0 : serviceItem.description);
-      return stripHtml(raw);
-    };
-    const getServiceExcerpt = (serviceItem, limit = 220, offset = 0) => {
-      const text = getServicePlainContent(serviceItem);
-      if (!text || offset >= text.length) return "";
-      const slice = text.slice(offset, offset + limit).trim();
-      if (!slice) return "";
-      return text.length > offset + limit ? `${slice}...` : slice;
-    };
     const normalizeKeywords = (rawKeywords) => {
       if (!rawKeywords) {
         return [];
@@ -6530,7 +6531,6 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<p class="services-details__text-1"${_scopeId}>${ssrInterpolate(getServiceDescription(service.value) || getServiceExcerpt(service.value, 220, 0))}</p>`);
             if (service.value.image_link) {
               _push2(`<div class="services-details__img-1 my-3"${_scopeId}><img${ssrRenderAttr("src", service.value.image_link)}${ssrRenderAttr("alt", getServiceTitle(service.value))}${_scopeId}></div>`);
             } else {
@@ -6682,7 +6682,6 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
                             })
                           ])
                         ])) : createCommentVNode("", true),
-                        createVNode("p", { class: "services-details__text-1" }, toDisplayString(getServiceDescription(service.value) || getServiceExcerpt(service.value, 220, 0)), 1),
                         service.value.image_link ? (openBlock(), createBlock("div", {
                           key: 1,
                           class: "services-details__img-1 my-3"
