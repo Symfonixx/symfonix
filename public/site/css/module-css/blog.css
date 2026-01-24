@@ -1990,17 +1990,7 @@
     background-color: rgba(var(--techguru-white-rgb), .10);
     border-radius: 40px;
     padding: 24px 24px 22px;
-    padding-left: 95px;
-}
-
-.blog-details__single-content::before {
-    content: "";
-    position: absolute;
-    top: 24px;
-    left: 68px;
-    bottom: 24px;
-    width: 1px;
-    background-color: rgba(var(--techguru-white-rgb), .10);
+    padding-left: 50px;
 }
 
 .blog-details__user {
@@ -2343,8 +2333,8 @@
 .blog-details__tag-and-share {
     position: relative;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    gap: 35px;
+    flex-flow: column;
     border-bottom: 1px solid rgba(92, 176, 233, .20);
     padding-bottom: 23px;
     margin: 64px 0 65px;

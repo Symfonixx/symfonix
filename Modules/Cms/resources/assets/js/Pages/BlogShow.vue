@@ -15,7 +15,7 @@
                             <li>
                                 <Link :href="route('home')"><i class="fas fa-home"></i>{{ trans("Home") }}</Link>
                             </li>
-                            <li><span class="icon-right-arrow-1"></span></li>
+                            <li><span  :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans("Blog Details") }}</li>
                         </ul>
                     </div>

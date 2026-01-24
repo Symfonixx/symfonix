@@ -170,10 +170,12 @@
         <!-- Newsletter Two Start -->
         <section class="newsletter-two">
             <div class="newsletter-two__shape-1">
-                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-1.png'" :alt="trans('Newsletter decoration')">
+                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-1.png'"
+                     :alt="trans('Newsletter decoration')">
             </div>
             <div class="newsletter-two__shape-2 float-bob-x">
-                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-2.png'" :alt="trans('Newsletter decoration')">
+                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-2.png'"
+                     :alt="trans('Newsletter decoration')">
             </div>
             <div class="container">
                 <div class="newsletter-two__inner">
@@ -215,7 +217,10 @@
                             <div class="checked-box">
                                 <input type="checkbox" name="skipper1" id="skipper" checked="">
                                 <label for="skipper">
-                                    <span></span> <Link :href="route('privacy-policy')"> {{ trans('By subscribing, you accept our privacy policy') }}</Link>
+                                    <span></span>
+                                    <Link :href="route('privacy-policy')">
+                                        {{ trans('By subscribing, you accept our privacy policy') }}
+                                    </Link>
                                 </label>
                             </div>
                             <div
@@ -292,7 +297,7 @@
                                         </Link>
                                     </li>
 
-                                           <li>
+                                    <li>
                                         <Link :href="route('testimonials')">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
@@ -404,6 +409,16 @@
                                     <h4 class="site-footer-two__social-title">{{ trans('Follow Us') }}:</h4>
                                     <div class="site-footer-two__social-box-inner">
                                         <a
+                                            v-if="settings.whatsapp"
+                                            :href="settings.whatsapp"
+                                            target="_blank"
+                                            rel="noopener"
+                                            aria-label="Whatsapp"
+                                        >
+                                            <span class="icon-whatsapp"></span>
+                                        </a>
+
+                                        <a
                                             v-if="settings.facebook"
                                             :href="settings.facebook"
                                             target="_blank"
@@ -419,7 +434,7 @@
                                             rel="noopener"
                                             aria-label="Instagram"
                                         >
-                                            <span class="icon-dribble"></span>
+                                            <span class="fab fa-instagram"></span>
                                         </a>
                                         <a
                                             v-if="settings.linkedin"
@@ -476,28 +491,46 @@
                     <a
                         v-if="settings.twitter"
                         :href="settings.twitter"
-                        class="fab fa-twitter"
+                        class="fab fa-twitter me-2"
                         target="_blank"
                         rel="noopener"
                         aria-label="Twitter"
                     ></a>
+
+                    <a
+                        v-if="settings.whatsapp"
+                        :href="settings.whatsapp"
+                        class="fab fa-whatsapp me-2"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Whatsapp"
+                    ></a>
+
                     <a
                         v-if="settings.facebook"
                         :href="settings.facebook"
-                        class="fab fa-facebook-square"
+                        class="fab fa-facebook me-2"
                         target="_blank"
                         rel="noopener"
                         aria-label="Facebook"
                     ></a>
-                    <a href="#" class="fab fa-pinterest-p" aria-label="Pinterest"></a>
                     <a
                         v-if="settings.instagram"
                         :href="settings.instagram"
-                        class="fab fa-instagram"
+                        class="fab fa-instagram me-2"
                         target="_blank"
                         rel="noopener"
                         aria-label="Instagram"
                     ></a>
+                    <a
+                        v-if="settings.linkedin"
+                        :href="settings.linkedin"
+                        class="fab fa-linkedin me-2"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Linkedin"
+                    ></a>
+
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
 

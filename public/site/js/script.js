@@ -445,7 +445,7 @@
 
 
 
-  //Blog Carousel Page 
+  //Blog Carousel Page
   if ($(".blog-carousel-style").length) {
     const isRTL = $('html').attr('dir') === 'rtl' || $('body').attr('dir') === 'rtl';
     $(".blog-carousel-style").owlCarousel({
@@ -485,7 +485,7 @@
 
 
 
-  //Team Carousel Page 
+  //Team Carousel Page
   if ($(".team-carousel-style").length) {
     const isRTL = $('html').attr('dir') === 'rtl' || $('body').attr('dir') === 'rtl';
     $(".team-carousel-style").owlCarousel({
@@ -523,7 +523,7 @@
 
 
 
-  //Services Carousel Page 
+  //Services Carousel Page
   if ($(".services-carousel-style").length) {
     const isRTL = $('html').attr('dir') === 'rtl' || $('body').attr('dir') === 'rtl';
     $(".services-carousel-style").owlCarousel({
@@ -561,7 +561,7 @@
 
 
 
-  //Services Carousel Page 
+  //Services Carousel Page
   if ($(".testimonials-carousel-style").length) {
     const isRTL = $('html').attr('dir') === 'rtl' || $('body').attr('dir') === 'rtl';
     $(".testimonials-carousel-style").owlCarousel({
@@ -671,12 +671,14 @@
     var a = document.querySelectorAll('a');
 
     document.addEventListener('mousemove', function (e) {
+      if (window.innerWidth <= 991) return;
       var x = e.clientX;
       var y = e.clientY;
       cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
     });
 
     document.addEventListener('mousemove', function (e) {
+      if (window.innerWidth <= 991) return;
       var x = e.clientX;
       var y = e.clientY;
       cursorinner.style.left = x + 'px';
@@ -684,20 +686,24 @@
     });
 
     document.addEventListener('mousedown', function () {
+      if (window.innerWidth <= 991) return;
       cursor.classList.add('click');
       cursorinner.classList.add('custom-cursor__innerhover')
     });
 
     document.addEventListener('mouseup', function () {
+      if (window.innerWidth <= 991) return;
       cursor.classList.remove('click')
       cursorinner.classList.remove('custom-cursor__innerhover')
     });
 
     a.forEach(item => {
       item.addEventListener('mouseover', () => {
+        if (window.innerWidth <= 991) return;
         cursor.classList.add('custom-cursor__hover');
       });
       item.addEventListener('mouseleave', () => {
+        if (window.innerWidth <= 991) return;
         cursor.classList.remove('custom-cursor__hover');
       });
     })
@@ -987,7 +993,7 @@
 
 
 
-  // Animation gsap 
+  // Animation gsap
   function title_animation() {
     var tg_var = jQuery('.sec-title-animation');
     if (!tg_var.length) {
@@ -1025,7 +1031,7 @@
       // Check if text contains Arabic characters
       const text = quote.textContent;
       const hasArabic = /[\u0600-\u06FF]/.test(text);
-      
+
       // For Arabic text, don't split at all - animate the whole element to preserve connections
       // For non-Arabic, use chars for character-by-character animation
       if (hasArabic) {
@@ -1035,7 +1041,7 @@
           opacity: 0,
           y: isRTL ? -50 : 50
         });
-        
+
         quote.animation = gsap.to(quote, {
           scrollTrigger: {
             trigger: quote,
@@ -1096,7 +1102,7 @@
           immediateRender: false
         });
       }
-      
+
       // If element is already in viewport, trigger animation immediately
       const rect = quote.getBoundingClientRect();
       const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
@@ -1224,7 +1230,7 @@
 
   $(window).on("scroll", function () {
     if ($(".stricked-menu").length) {
-      var headerScrollPos = 300;
+      var headerScrollPos = 130;
       var stricky = $(".stricked-menu");
       if ($(window).scrollTop() > headerScrollPos) {
         stricky.addClass("stricky-fixed");
@@ -1232,7 +1238,6 @@
         stricky.removeClass("stricky-fixed");
       }
     }
-
   });
 
   $(window).on("scroll", function () {

@@ -210,6 +210,12 @@ ul {
   z-index: 999991;
 }
 
+@media (max-width: 991px) {
+  .custom-cursor__cursor {
+    display: none;
+  }
+}
+
 .custom-cursor__cursor-two {
   width: 10px;
   height: 10px;
@@ -223,6 +229,12 @@ ul {
   -webkit-transition: width .3s, height .3s, opacity .3s;
   transition: width .3s, height .3s, opacity .3s;
   z-index: 999991;
+}
+
+@media (max-width: 991px) {
+  .custom-cursor__cursor-two {
+    display: none;
+  }
 }
 
 .custom-cursor__hover {
@@ -1297,7 +1309,7 @@ ul {
 
 @media (max-width: 1199px) {
   .stricky-header {
-    display: none !important;
+    display: block;
   }
 }
 

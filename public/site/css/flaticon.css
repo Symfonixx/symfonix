@@ -44,6 +44,11 @@
   content: "\e902";
 }
 
+.icon-whatsapp:before {
+  content: "\f232";
+  font-family: "Font Awesome 5 Brands";
+}
+
 .icon-dribble:before {
   content: "\e903";
 }

@@ -81,10 +81,6 @@
                                         </Link>
                                     </li>
                                 </ul>
-                            <p class="services-details__text-1">
-                                {{ getServiceDescription(service) || getServiceExcerpt(service, 220, 0) }}
-                            </p>
-
                             <div class="services-details__img-1 my-3" v-if="service.image_link">
                                 <img :src="service.image_link" :alt="getServiceTitle(service)">
                             </div>
