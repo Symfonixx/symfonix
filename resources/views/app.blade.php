@@ -98,7 +98,316 @@ Developed By: Hadi Hilal
 
 
     <style>
+      
+        #symfonixbot-launcher-wrap {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 98;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            direction: ltr;
+        }
 
+        #symfonixbot-launcher {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #7fc457;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+            animation: symfonixbot-launcher-pop 650ms cubic-bezier(.2, .9, .2, 1) 200ms both;
+            order: 1;
+        }
+
+        #symfonixbot-launcher img {
+            width: 32px;
+            height: 32px;
+        }
+
+        #symfonixbot-launcher-hint {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: #e9f7dd;
+            color: #7fc457;
+            border: 1px solid rgba(127, 196, 87, 0.28);
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 1;
+            text-transform: uppercase;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+            user-select: none;
+            white-space: nowrap;
+            transition: transform 320ms ease, box-shadow 320ms ease, opacity 320ms ease;
+            opacity: 0;
+            transform: translateX(6px) scale(0.98);
+            pointer-events: none;
+            order: 0;
+        }
+
+        html[dir="rtl"] #symfonixbot-launcher-hint {
+            direction: rtl;
+        }
+
+        #symfonixbot-launcher-hint::after {
+            content: "";
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid #e9f7dd;
+        }
+
+        #symfonixbot-launcher-hint.symfonixbot-hidden {
+            opacity: 0;
+            transform: translateX(6px) scale(0.98);
+            pointer-events: none;
+        }
+
+        #symfonixbot-launcher:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+        }
+
+        #symfonixbot-launcher:hover + #symfonixbot-launcher-hint:not(.symfonixbot-hidden) {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+            animation: symfonixbot-hint-pop 1000ms cubic-bezier(.2, .9, .2, 1) both,
+            symfonixbot-hint-float 3.2s ease-in-out 1200ms infinite;
+        }
+
+        @keyframes symfonixbot-hint-pop {
+            0% {
+                opacity: 0;
+                transform: translateX(10px) scale(0.92);
+            }
+            60% {
+                opacity: 1;
+                transform: translateX(0) scale(1.04);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes symfonixbot-launcher-pop {
+            0% {
+                transform: scale(0.92);
+                filter: saturate(0.9);
+            }
+            60% {
+                transform: scale(1.06);
+                filter: saturate(1.05);
+            }
+            100% {
+                transform: scale(1);
+                filter: saturate(1);
+            }
+        }
+
+        @keyframes symfonixbot-hint-float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-2px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #symfonixbot-launcher,
+            #symfonixbot-launcher-hint {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            #symfonixbot-launcher-wrap {
+                bottom: 14px;
+                right: 14px;
+                gap: 8px;
+            }
+
+            #symfonixbot-launcher {
+                width: 52px;
+                height: 52px;
+            }
+
+            #symfonixbot-launcher img {
+                width: 30px;
+                height: 30px;
+            }
+
+            #symfonixbot-launcher-hint {
+                padding: 7px 10px;
+                font-size: 11px;
+            }
+        }
+
+        #symfonixbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 360px;
+            max-width: 90vw;
+            height: 450px;
+            max-height: 80vh;
+            background: #f9f9f9;
+            border-radius: 20px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;
+            font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 14px;
+            transition: all .25s ease;
+        }
+
+        /* Make it breathe better on small screens */
+        @media (max-width: 600px) {
+            #symfonixbot-container {
+                bottom: 20px;
+                right: 10px;
+                width: 95%;
+                height: 70vh;
+                max-width: none;
+                border-radius: 14px;
+            }
+        }
+
+        #symfonixbot-container.symfonixbot-hidden {
+            display: none;
+        }
+
+        .symfonixbot-header {
+            background: #7fc457;
+            color: #ffffff;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .symfonixbot-header-title {
+            font-weight: 600;
+        }
+
+        .symfonixbot-header-close {
+            cursor: pointer;
+              font-size: 24px;
+        }
+
+        .symfonixbot-bubble-bot a {
+            color: #7fc457;
+        }
+
+        .symfonixbot-messages {
+            padding: 10px 12px;
+            overflow-y: auto;
+            flex: 1;
+            background: #f5f7fa;
+        }
+
+        .symfonixbot-message {
+            margin-bottom: 8px;
+            display: flex;
+        }
+
+        .symfonixbot-message-user {
+            justify-content: flex-end;
+        }
+
+        .symfonixbot-bubble {
+            max-width: 80%;
+            padding: 8px 10px;
+            border-radius: 12px;
+            line-height: 1.4;
+        }
+
+        .symfonixbot-bubble-user {
+            background: #7fc457;
+            color: #ffffff;
+            border-bottom-right-radius: 2px;
+            margin: 10px 2px;
+        }
+
+        .symfonixbot-bubble-bot {
+            background: #ffffff;
+            color: #111827;
+            border-bottom-left-radius: 2px;
+        }
+
+        .symfonixbot-actions {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .symfonixbot-action-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            border-radius: 999px;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            background: #7fc457;
+            color: #ffffff;
+        }
+
+        .symfonixbot-input-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        #symfonixbot-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 6px 8px;
+            background: transparent;
+        }
+
+        #symfonixbot-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #7fc457;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .content > *, .blog-details__text > *, .services-details__text-1 > * {
+            line-height: 2.5rem !important;
+        }
     </style>
 
 
@@ -108,6 +417,11 @@ Developed By: Hadi Hilal
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('site/css/rtl.css')}}">
+        <style>
+            #symfonixbot-container {
+                font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+            }
+        </style>
     @endif
     <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
     {!! $settings->get('header_scripts') !!}
