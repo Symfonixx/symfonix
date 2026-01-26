@@ -3,12 +3,9 @@
 namespace Modules\Base\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\URL;
 use Modules\Cms\Models\Page;
 use Modules\Cms\Models\Blog;
 use Modules\Services\Models\Service;
-use Modules\Shop\Models\Product;
 
 class SitemapController extends Controller
 {
@@ -19,13 +16,11 @@ class SitemapController extends Controller
      */
     public function index()
     {
-        $locale = App::getLocale();
-
         $urls = [];
 
         // Home page
         $urls[] = [
-            'loc' => URL::to('/'),
+            'loc' => $this->buildUrl('/'),
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'daily',
             'priority' => '1.0',
@@ -33,7 +28,7 @@ class SitemapController extends Controller
 
         // Static "About Us" page
         $urls[] = [
-            'loc' => URL::to('/about-us'),
+            'loc' => $this->buildUrl('/about-us'),
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'monthly',
             'priority' => '0.8',
@@ -41,7 +36,7 @@ class SitemapController extends Controller
 
         // Static "Contact Us" page
         $urls[] = [
-            'loc' => URL::to('/contact-us'),
+            'loc' => $this->buildUrl('/contact-us'),
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'monthly',
             'priority' => '0.8',
@@ -49,19 +44,19 @@ class SitemapController extends Controller
 
         // Static informational pages
         $urls[] = [
-            'loc' => URL::to('/privacy-policy'),
+            'loc' => $this->buildUrl('/privacy-policy'),
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'yearly',
             'priority' => '0.5',
         ];
         $urls[] = [
-            'loc' => URL::to('/team'),
+            'loc' => $this->buildUrl('/team'),
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'monthly',
             'priority' => '0.6',
         ];
         $urls[] = [
-            'loc' => URL::to('/testimonials'),
+            'loc' => $this->buildUrl('/testimonials'),
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'monthly',
             'priority' => '0.6',
@@ -73,7 +68,7 @@ class SitemapController extends Controller
                 Page::published()->select(['slug', 'updated_at'])->chunk(200, function ($pages) use (&$urls) {
                     foreach ($pages as $page) {
                         $urls[] = [
-                            'loc' => URL::to('/p/' . $page->slug),
+                            'loc' => $this->buildUrl('/p/' . $page->slug),
                             'lastmod' => optional($page->updated_at)->toAtomString(),
                             'changefreq' => 'weekly',
                             'priority' => '0.7',
@@ -89,7 +84,7 @@ class SitemapController extends Controller
         try {
             if (class_exists(Blog::class)) {
                 $urls[] = [
-                    'loc' => URL::to('/blogs'),
+                    'loc' => $this->buildUrl('/blogs'),
                     'lastmod' => now()->toAtomString(),
                     'changefreq' => 'daily',
                     'priority' => '0.9',
@@ -98,7 +93,7 @@ class SitemapController extends Controller
                 Blog::published()->select(['slug', 'updated_at'])->chunk(200, function ($posts) use (&$urls) {
                     foreach ($posts as $post) {
                         $urls[] = [
-                            'loc' => URL::to('/blog/' . $post->slug),
+                            'loc' => $this->buildUrl('/blog/' . $post->slug),
                             'lastmod' => optional($post->updated_at)->toAtomString(),
                             'changefreq' => 'weekly',
                             'priority' => '0.8',
@@ -114,7 +109,7 @@ class SitemapController extends Controller
         try {
             if (class_exists(Service::class)) {
                 $urls[] = [
-                    'loc' => URL::to('/services'),
+                    'loc' => $this->buildUrl('/services'),
                     'lastmod' => now()->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.8',
@@ -123,7 +118,7 @@ class SitemapController extends Controller
                 Service::published()->select(['slug', 'updated_at'])->chunk(200, function ($services) use (&$urls) {
                     foreach ($services as $service) {
                         $urls[] = [
-                            'loc' => URL::to('/service/' . $service->slug),
+                            'loc' => $this->buildUrl('/service/' . $service->slug),
                             'lastmod' => optional($service->updated_at)->toAtomString(),
                             'changefreq' => 'weekly',
                             'priority' => '0.7',
@@ -157,6 +152,18 @@ class SitemapController extends Controller
 
         return response($content, 200)
             ->header('Content-Type', 'application/xml; charset=UTF-8');
+    }
+
+    private function buildUrl(string $path): string
+    {
+        $baseUrl = rtrim(config('app.url'), '/');
+        $normalizedPath = '/' . ltrim($path, '/');
+
+        if ($normalizedPath === '/') {
+            return $baseUrl . '/';
+        }
+
+        return $baseUrl . $normalizedPath;
     }
 }
 

@@ -35,10 +35,10 @@
 
             <div class="container">
                 <div class="banner-one__inner">
-                        <h2 class="banner-one__title px-3">
+                        <h1 class="banner-one__title px-3">
                             {{ trans('Crafting Intelligent Technologies for the Future') }} <br/>
                             <span>{{ trans('Balanced, modern, includes web, mobile, AI, and cloud') }}</span>
-                        </h2>
+                        </h1>
 
                     <div class="banner-one__btn-box mb-5">
                         <Link :href="route('contact-us')" class="thm-btn">

@@ -38,7 +38,7 @@
                 <div class="image-input image-input-outline " data-kt-image-input="true"
                      style="background-image: url('{{asset('images/default.jpg')}}')">
                     <!--begin::Preview existing avatar-->
-                    <div class="image-input-wrapper w-500px h-250px bgi-position-center"
+                    <div class="image-input-wrapper w-250px h-250px bgi-position-center"
                          style="background-size: 75%; background-image: url({{$page->image_link}})"></div>
                     <!--end::Preview existing avatar-->
                     <!--begin::Label-->

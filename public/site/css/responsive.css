@@ -3169,6 +3169,19 @@
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {}
 
+@media (max-width: 991px) {
+    .custom-cursor__cursor,
+    .custom-cursor__cursor-two {
+        display: none !important;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    body.custom-cursor {
+        cursor: auto;
+    }
+}
+
 
 
 

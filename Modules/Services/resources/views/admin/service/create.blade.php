@@ -32,7 +32,7 @@
             <div class="col-xl-9 fv-row">
                 <div class="image-input image-input-outline " data-kt-image-input="true"
                      style="background-image: url('{{asset('images/default.jpg')}}')">
-                    <div class="image-input-wrapper w-500px h-250px bgi-position-center"
+                    <div class="image-input-wrapper w-250px h-250px bgi-position-center"
                          style="background-size: 75%; background-image: url({{asset('images/default.jpg')}})"></div>
                     <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
                            data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">

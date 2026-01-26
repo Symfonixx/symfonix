@@ -685,16 +685,28 @@
     var cursor = document.querySelector('.custom-cursor__cursor');
     var cursorinner = document.querySelector('.custom-cursor__cursor-two');
     var a = document.querySelectorAll('a');
+    var customCursorMaxWidth = 991;
+
+    function toggleCustomCursorVisibility() {
+      if (!cursor || !cursorinner) return;
+      var isMobile = window.innerWidth <= customCursorMaxWidth;
+      var displayValue = isMobile ? 'none' : '';
+      cursor.style.display = displayValue;
+      cursorinner.style.display = displayValue;
+    }
+
+    toggleCustomCursorVisibility();
+    window.addEventListener('resize', toggleCustomCursorVisibility);
 
     document.addEventListener('mousemove', function (e) {
-      if (window.innerWidth <= 991) return;
+      if (window.innerWidth <= customCursorMaxWidth) return;
       var x = e.clientX;
       var y = e.clientY;
       cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
     });
 
     document.addEventListener('mousemove', function (e) {
-      if (window.innerWidth <= 991) return;
+      if (window.innerWidth <= customCursorMaxWidth) return;
       var x = e.clientX;
       var y = e.clientY;
       cursorinner.style.left = x + 'px';
@@ -702,24 +714,24 @@
     });
 
     document.addEventListener('mousedown', function () {
-      if (window.innerWidth <= 991) return;
+      if (window.innerWidth <= customCursorMaxWidth) return;
       cursor.classList.add('click');
       cursorinner.classList.add('custom-cursor__innerhover')
     });
 
     document.addEventListener('mouseup', function () {
-      if (window.innerWidth <= 991) return;
+      if (window.innerWidth <= customCursorMaxWidth) return;
       cursor.classList.remove('click')
       cursorinner.classList.remove('custom-cursor__innerhover')
     });
 
     a.forEach(item => {
       item.addEventListener('mouseover', () => {
-        if (window.innerWidth <= 991) return;
+        if (window.innerWidth <= customCursorMaxWidth) return;
         cursor.classList.add('custom-cursor__hover');
       });
       item.addEventListener('mouseleave', () => {
-        if (window.innerWidth <= 991) return;
+        if (window.innerWidth <= customCursorMaxWidth) return;
         cursor.classList.remove('custom-cursor__hover');
       });
     })

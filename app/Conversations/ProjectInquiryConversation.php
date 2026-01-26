@@ -413,7 +413,7 @@ class ProjectInquiryConversation extends Conversation
             return $category->services()->published()->first();
         }
 
-        return $services->first();
+        return null;
     }
 
     protected function buildIntentPrompt(string $message): string

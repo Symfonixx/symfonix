@@ -66,7 +66,7 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="<?php echo e(asset('site/css/animate.min.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/custom-animate.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/font-awesome-all.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/odometer.min.css')); ?>"/>
+
     <link rel="stylesheet" href="<?php echo e(asset('site/css/flaticon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('site/css/owl.carousel.min.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/owl.theme.default.min.css')); ?>"/>
@@ -78,7 +78,7 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/services.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/sliding-text.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/about.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/counter.css')); ?>"/>
+
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/portfolio.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/process.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/contact.css')); ?>"/>
@@ -86,12 +86,12 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/brand.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/newsletter.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/team.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/pricing.css')); ?>"/>
+
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/event.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/blog.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/why-choose.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/feature.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/faq.css')); ?>"/>
+
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/cta.css')); ?>"/>
 
 
@@ -105,7 +105,7 @@ Developed By: Hadi Hilal
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 9998;
+            z-index: 98;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -588,7 +588,7 @@ Developed By: Hadi Hilal
       "@type": "Organization",
       "name": "<?php echo e(env('APP_NAME')); ?>",
       "url": "<?php echo e(env('APP_URL')); ?>",
-      "logo": "<?php echo e($appLogoUrl); ?>"
+      "logo": "<?php echo e(storage_path('storage' . $settings->get('site_logo'))); ?>"
     }
 </script>
 <script>

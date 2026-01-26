@@ -55,6 +55,7 @@ class HomeController extends Controller {
         $teams = Team::where('status', 'Published')
             ->latest()
             ->take(10)
+             ->inRandomOrder()
             ->get();
 
         $siteName = Seo::get('website_name', config('app.name'));

@@ -2,23 +2,23 @@
 <!--
 Author: Hadi Hilal
 -->
-<html dir="{{ app()->getLocale() === "ar" ? 'rtl' : 'ltr' }}" lang="{{ app()->getLocale() }}"
-      style="{{app()->getLocale() === "ar" ? 'direction: rtl' : 'direction: ltr'}}">
+<html dir="<?php echo e(app()->getLocale() === "ar" ? 'rtl' : 'ltr'); ?>" lang="<?php echo e(app()->getLocale()); ?>"
+      style="<?php echo e(app()->getLocale() === "ar" ? 'direction: rtl' : 'direction: ltr'); ?>">
 <!--begin::Head-->
 <head>
     <base href="">
-    <title>@yield('title') - {{__('Admin Panel')}}</title>
+    <title><?php echo $__env->yieldContent('title'); ?> - <?php echo e(__('Admin Panel')); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta charset="utf-8"/>
-    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>"/>
     <meta name="robots" content="noindex">
 <meta name="referrer" content="same-origin">
 
-    <link rel="icon" type="image/png" href="{{asset('images/favicon/favicon-96x96.png')}}" sizes="96x96"/>
-    <link rel="icon" type="image/svg+xml" href="{{asset('images/favicon/favicon.svg')}}"/>
-    <link rel="shortcut icon" href="{{asset('images/favicon/favicon.ico')}}"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('images/favicon/apple-touch-icon.png')}}"/>
-    <link rel="manifest" href="{{asset('images/favicon/site.webmanifest')}}"/>
+    <link rel="icon" type="image/png" href="<?php echo e(asset('images/favicon/favicon-96x96.png')); ?>" sizes="96x96"/>
+    <link rel="icon" type="image/svg+xml" href="<?php echo e(asset('images/favicon/favicon.svg')); ?>"/>
+    <link rel="shortcut icon" href="<?php echo e(asset('images/favicon/favicon.ico')); ?>"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo e(asset('images/favicon/apple-touch-icon.png')); ?>"/>
+    <link rel="manifest" href="<?php echo e(asset('images/favicon/site.webmanifest')); ?>"/>
 
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>
@@ -32,9 +32,9 @@ Author: Hadi Hilal
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!--end::Global Stylesheets Bundle-->
-    @if(app()->getLocale() === "ar")
-        <link href="{{asset('admin/plugins/global/plugins.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{asset('admin/css/style.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
+    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(app()->getLocale() === "ar"): ?>
+        <link href="<?php echo e(asset('admin/plugins/global/plugins.bundle.rtl.css')); ?>" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo e(asset('admin/css/style.bundle.rtl.css')); ?>" rel="stylesheet" type="text/css"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
@@ -47,13 +47,13 @@ Author: Hadi Hilal
                 line-height: 1.8;
             }
         </style>
-    @else
-        <link href="{{asset('admin/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{asset('admin/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
-    @endif
+    <?php else: ?>
+        <link href="<?php echo e(asset('admin/plugins/global/plugins.bundle.css')); ?>" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo e(asset('admin/css/style.bundle.css')); ?>" rel="stylesheet" type="text/css"/>
+    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
 
-    @yield('css')
+    <?php echo $__env->yieldContent('css'); ?>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -104,7 +104,7 @@ Author: Hadi Hilal
                 <!--begin::Mobile logo-->
                 <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
                     <a href="" class="d-lg-none">
-                        <img alt="Logo" src="{{asset('images/admin_logo.png')}}" class="h-30px"/>
+                        <img alt="Logo" src="<?php echo e(asset('images/admin_logo.png')); ?>" class="h-30px"/>
                     </a>
                 </div>
                 <!--end::Mobile logo-->
@@ -124,7 +124,8 @@ Author: Hadi Hilal
                             id="kt_app_header_menu" data-kt-menu="true">
                             <!--begin:Menu item-->
                             <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                 {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-end"' : 'data-kt-menu-placement="bottom-start"' }}
+                                 <?php echo e(app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-end"' : 'data-kt-menu-placement="bottom-start"'); ?>
+
                                  class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                                 <!--begin:Menu link-->
                                 <span class="menu-link">
@@ -149,9 +150,10 @@ Author: Hadi Hilal
                             <!--begin::Menu wrapper-->
                             <div class="cursor-pointer symbol symbol-35px"
                                  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
-                                {{ app()->getLocale() === "ar" ?'data-kt-menu-placement="bottom-end"' : 'data-kt-menu-placement="bottom-start"'   }}
+                                <?php echo e(app()->getLocale() === "ar" ?'data-kt-menu-placement="bottom-end"' : 'data-kt-menu-placement="bottom-start"'); ?>
+
                             >
-                                <img src="{{$user->avatar}}" alt="user avatar"/>
+                                <img src="<?php echo e($user->avatar); ?>" alt="user avatar"/>
                             </div>
                             <!--begin::User account menu-->
                             <div
@@ -162,17 +164,19 @@ Author: Hadi Hilal
                                     <div class="menu-content d-flex align-items-center px-3">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-50px me-5">
-                                            <img src="{{$user->avatar}}" alt="user avatar"/>
+                                            <img src="<?php echo e($user->avatar); ?>" alt="user avatar"/>
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Username-->
                                         <div class="d-flex flex-column">
-                                            <div class="fw-bold d-flex align-items-center fs-5">{{$user->name}}
-                                                <span class="badge badge-light-success fw-bolder fs-9 px-2 py-1 ms-2">{{__($user->type)}}
+                                            <div class="fw-bold d-flex align-items-center fs-5"><?php echo e($user->name); ?>
+
+                                                <span class="badge badge-light-success fw-bolder fs-9 px-2 py-1 ms-2"><?php echo e(__($user->type)); ?>
+
                                                 </span>
                                             </div>
                                             <a href="#"
-                                               class="fw-semibold text-muted text-hover-primary fs-7">{{$user->email}}</a>
+                                               class="fw-semibold text-muted text-hover-primary fs-7"><?php echo e($user->email); ?></a>
                                         </div>
                                         <!--end::Username-->
                                     </div>
@@ -183,18 +187,21 @@ Author: Hadi Hilal
                                 <!--end::Menu separator-->
 
                                 <div class="menu-item px-5">
-                                    <a href="{{ route('admin.profile.index') }}" class="menu-link px-5">
-                                        {{__('My Profile')}}
+                                    <a href="<?php echo e(route('admin.profile.index')); ?>" class="menu-link px-5">
+                                        <?php echo e(__('My Profile')); ?>
+
                                     </a>
                                 </div>
 
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
 
-                                     {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="left-start"' : 'data-kt-menu-placement="right-start"' }}
+                                     <?php echo e(app()->getLocale() === "ar" ? 'data-kt-menu-placement="left-start"' : 'data-kt-menu-placement="right-start"'); ?>
+
                                      data-kt-menu-offset="-15px, 0">
                                     <a href="#" class="menu-link px-5">
-												<span class="menu-title position-relative">{{__('Mode')}}
+												<span class="menu-title position-relative"><?php echo e(__('Mode')); ?>
+
 												<span class="ms-5 position-absolute translate-middle-y top-50 end-0">
 													<i class="ki-duotone ki-night-day theme-light-show fs-2">
 														<span class="path1"></span>
@@ -236,7 +243,7 @@ Author: Hadi Hilal
 																<span class="path10"></span>
 															</i>
 														</span>
-                                                <span class="menu-title">{{__('Light Mode')}}</span>
+                                                <span class="menu-title"><?php echo e(__('Light Mode')); ?></span>
                                             </a>
                                         </div>
                                         <!--end::Menu item-->
@@ -250,7 +257,7 @@ Author: Hadi Hilal
 																<span class="path2"></span>
 															</i>
 														</span>
-                                                <span class="menu-title">{{__('Dark Mode')}}</span>
+                                                <span class="menu-title"><?php echo e(__('Dark Mode')); ?></span>
                                             </a>
                                         </div>
                                         <!--end::Menu item-->
@@ -261,53 +268,55 @@ Author: Hadi Hilal
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
 
-                                     {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="left-start" ' : 'data-kt-menu-placement="right-start"'  }}
+                                     <?php echo e(app()->getLocale() === "ar" ? 'data-kt-menu-placement="left-start" ' : 'data-kt-menu-placement="right-start"'); ?>
+
                                      data-kt-menu-offset="-15px, 0">
                                     <a href="#" class="menu-link px-5">
-												<span class="menu-title position-relative">{{__('Language')}}
+												<span class="menu-title position-relative"><?php echo e(__('Language')); ?>
+
 												<span
                                                     class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">
 												<img class="w-15px h-15px rounded-1 ms-2"
-                                                     src="/images/langs/{{ app()->getLocale()}}.png"
+                                                     src="/images/langs/<?php echo e(app()->getLocale()); ?>.png"
                                                      alt=""/></span></span>
                                     </a>
                                     <!--begin::Menu sub-->
                                     <div class="menu-sub menu-sub-dropdown w-175px py-4">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a class="menu-link d-flex px-5 {{ app()->getLocale()  === 'ar' ? 'active' : ''}}"
+                                            <a class="menu-link d-flex px-5 <?php echo e(app()->getLocale()  === 'ar' ? 'active' : ''); ?>"
                                                rel="alternate" hreflang="ar"
-                                               href="{{ LaravelLocalization::getLocalizedURL('ar') }}">
+                                               href="<?php echo e(LaravelLocalization::getLocalizedURL('ar')); ?>">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1"
-                                                             src="{{asset('images/langs/ar.png')}}"
+                                                             src="<?php echo e(asset('images/langs/ar.png')); ?>"
                                                              alt="saudi-arabia"/>
 													</span>AR</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a class="menu-link d-flex px-5 {{ app()->getLocale()  === 'en' ? 'active' : ''}}"
+                                            <a class="menu-link d-flex px-5 <?php echo e(app()->getLocale()  === 'en' ? 'active' : ''); ?>"
                                                rel="alternate" hreflang="en"
-                                               href="{{ LaravelLocalization::getLocalizedURL('en') }}">
+                                               href="<?php echo e(LaravelLocalization::getLocalizedURL('en')); ?>">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1"
-                                                             src="{{asset('images/langs/en.png')}}"
+                                                             src="<?php echo e(asset('images/langs/en.png')); ?>"
                                                              alt="united-states"/>
 													</span>EN</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
-                                        {{--                                        <div class="menu-item px-3">--}}
-                                        {{--                                            <a class="menu-link d-flex px-5 {{ app()->getLocale()  === 'tr' ? 'active' : ''}}"--}}
-                                        {{--                                               rel="alternate" hreflang="en"--}}
-                                        {{--                                               href="{{url('/locale/tr') }}">--}}
-                                        {{--													<span class="symbol symbol-20px me-4">--}}
-                                        {{--														<img class="rounded-1"--}}
-                                        {{--                                                             src="{{asset('images/langs/tr.png')}}"--}}
-                                        {{--                                                             alt="united-states"/>--}}
-                                        {{--													</span>TR</a>--}}
-                                        {{--                                        </div>--}}
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                         <!--end::Menu item-->
 
                                     </div>
@@ -317,13 +326,13 @@ Author: Hadi Hilal
 
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
                                           style="display: none;">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
                                     </form>
                                     <a href="#"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                       class="menu-link px-5">{{__('Sign Out')}}</a>
+                                       class="menu-link px-5"><?php echo e(__('Sign Out')); ?></a>
                                 </div>
                                 <!--end::Menu item-->
                             </div>
@@ -366,9 +375,9 @@ Author: Hadi Hilal
 
                     <!--begin::Logo image-->
                     <a href="#">
-                        <img alt="Logo" src="{{asset('images/admin_logo.png')}}"
+                        <img alt="Logo" src="<?php echo e(asset('images/admin_logo.png')); ?>"
                              class="h-40px app-sidebar-logo-default"/>
-                        <img alt="Logo" src="{{asset('images/min_admin_logo.png')}}"
+                        <img alt="Logo" src="<?php echo e(asset('images/min_admin_logo.png')); ?>"
                              class="h-30px app-sidebar-logo-minimize"/>
                     </a>
                     <!--end::Logo image-->
@@ -398,7 +407,25 @@ Author: Hadi Hilal
                             <!--begin::Menu-->
                             <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6"
                                  id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
-                                <x-admin.side-nav></x-admin.side-nav>
+                                <?php if (isset($component)) { $__componentOriginalb5b05025d39e40c2576c5945bfabb278 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalb5b05025d39e40c2576c5945bfabb278 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.side-nav','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.side-nav'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalb5b05025d39e40c2576c5945bfabb278)): ?>
+<?php $attributes = $__attributesOriginalb5b05025d39e40c2576c5945bfabb278; ?>
+<?php unset($__attributesOriginalb5b05025d39e40c2576c5945bfabb278); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalb5b05025d39e40c2576c5945bfabb278)): ?>
+<?php $component = $__componentOriginalb5b05025d39e40c2576c5945bfabb278; ?>
+<?php unset($__componentOriginalb5b05025d39e40c2576c5945bfabb278); ?>
+<?php endif; ?>
                             </div>
                             <!--end::Menu-->
                         </div>
@@ -417,7 +444,7 @@ Author: Hadi Hilal
                     <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
                         <!--begin::Toolbar container-->
                         <div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
-                            @yield('toolbar')
+                            <?php echo $__env->yieldContent('toolbar'); ?>
                         </div>
                         <!--end::Toolbar container-->
                     </div>
@@ -426,7 +453,8 @@ Author: Hadi Hilal
                     <div id="kt_app_content" class="app-content flex-column-fluid">
                         <!--begin::Content container-->
                         <div id="kt_app_content_container" class="app-container container-fluid">
-                            {{$slot}}
+                            <?php echo e($slot); ?>
+
                         </div>
                         <!--end::Content container-->
                     </div>
@@ -440,16 +468,16 @@ Author: Hadi Hilal
                         class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted fw-bold me-1">{{__('All rights are reserved')}} 2026 ©</span>
+                            <span class="text-muted fw-bold me-1"><?php echo e(__('All rights are reserved')); ?> 2026 ©</span>
                             <a href="https://www.linkedin.com/in/hadi-hilal" target="_blank"
-                               class="text-gray-700 text-hover-primary">{{__('Developed By Hadi Hilal')}} </a>
+                               class="text-gray-700 text-hover-primary"><?php echo e(__('Developed By Hadi Hilal')); ?> </a>
                         </div>
                         <!--end::Copyright-->
                         <!--begin::Menu-->
                         <ul class="menu menu-gray-700 menu-hover-primary fw-bold order-1">
                             <li class="menu-item">
-                                <a href="{{route('home')}}" target="_blank">
-                                    {{__("Go To Website")}} <i class="bi bi-arrow-up-{{app()->getLocale() == 'ar' ? 'left':'right'}} mx-1 fa-2x"></i>
+                                <a href="<?php echo e(route('home')); ?>" target="_blank">
+                                    <?php echo e(__("Go To Website")); ?> <i class="bi bi-arrow-up-<?php echo e(app()->getLocale() == 'ar' ? 'left':'right'); ?> mx-1 fa-2x"></i>
                                 </a>
                             </li>
                         </ul>
@@ -465,32 +493,32 @@ Author: Hadi Hilal
     </div>
 
     <!--end::Page-->
-    @yield('modal')
+    <?php echo $__env->yieldContent('modal'); ?>
 </div>
 <!--end::Root-->
 
 <!--end::Main-->
 <!--begin::Javascript-->
 <!--begin::Global JavaScript Bundle(used by all pages)-->
-<script src="{{asset('admin/plugins/global/plugins.bundle.js')}}"></script>
-<script src="{{asset('admin/js/scripts.bundle.js')}}"></script>
-<script src="{{ asset('admin/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+<script src="<?php echo e(asset('admin/plugins/global/plugins.bundle.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/js/scripts.bundle.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/plugins/custom/datatables/datatables.bundle.js')); ?>"></script>
 <!--end::Global JavaScript Bundle(used by all pages)-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
         integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-    @if (session('success'))
-    toastr.success('{{ session('success') }}');
-    @elseif (session('error'))
-    toastr.error('{{ session('error') }}');
-    @endif
-    @if ($errors->any())
-    @foreach ($errors->all() as $error)
-    toastr.error('{{ $error }}');
-    @endforeach
-    @endif
+    <?php if(session('success')): ?>
+    toastr.success('<?php echo e(session('success')); ?>');
+    <?php elseif(session('error')): ?>
+    toastr.error('<?php echo e(session('error')); ?>');
+    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+    <?php if($errors->any()): ?>
+    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    toastr.error('<?php echo e($error); ?>');
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
     // Reusable function for making AJAX requests
     function makeAjaxRequest(url, method, data, dataType = "json", onSuccess) {
@@ -506,7 +534,7 @@ Author: Hadi Hilal
             data: data,
             success: onSuccess,
             error: function () {
-                toastr.error('{{ __('An Error Occurred!') }}');
+                toastr.error('<?php echo e(__('An Error Occurred!')); ?>');
             }
         });
     }
@@ -530,16 +558,17 @@ Author: Hadi Hilal
             $('#link').removeClass('text-danger').addClass('text-primary').css('text-decoration', 'underline').text(viewSlug);
             $('#slug').val(slug);
         } else {
-            $('#link').addClass('text-danger').css('text-decoration', '').text("{{__('The Slug Should Be English')}}");
+            $('#link').addClass('text-danger').css('text-decoration', '').text("<?php echo e(__('The Slug Should Be English')); ?>");
         }
 
     });
 
 
 </script>
-@yield('js')
-@stack('scripts')
+<?php echo $__env->yieldContent('js'); ?>
+<?php echo $__env->yieldPushContent('scripts'); ?>
 <!--end::Javascript-->
 </body>
 <!--end::Body-->
 </html>
+<?php /**PATH D:\websites\symfonix\resources\views/components/admin-layout.blade.php ENDPATH**/ ?>

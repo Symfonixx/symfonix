@@ -5,6 +5,7 @@ namespace Modules\Base\Providers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Modules\Base\Http\Controllers\SitemapController;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -43,6 +44,10 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes(): void
     {
         $name = $this->name;
+        Route::middleware(['web', 'firewall.all'])
+            ->get('/sitemap.xml', [SitemapController::class, 'index'])
+            ->name('sitemap');
+
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
             'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' , 'visitor_tracking'],

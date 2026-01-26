@@ -38,6 +38,7 @@ class PageController extends Controller {
         $teams = Team::where('status', 'Published')
             ->latest()
             ->take(10)
+             ->inRandomOrder()
             ->get();
 
         $testimonials = Testimonial::where('status', 'Published')
@@ -82,6 +83,7 @@ class PageController extends Controller {
             ->toArray();
         $teams = Team::where('status', 'Published')
             ->latest()
+            ->inRandomOrder()
             ->get();
 
         return $this->inertia('Cms::Team', [
