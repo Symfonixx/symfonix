@@ -18,7 +18,7 @@ Developed By: Hadi Hilal
         $appLogoUrl = asset('images/logo.png');
     @endphp
     <meta name="author" content="{{ $seo->get('website_name') }}">
-    <meta name="theme-color" content="#cc3333"/>
+    <meta name="theme-color" content="#2189ca"/>
 
     <title inertia>{{ $page['props']['meta']['title'] ?? $seo->get('website_name') }}</title>
     <meta name="description" content="{{ $page['props']['meta']['description'] ?? $seo->get('website_desc') }}">
@@ -66,7 +66,7 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/font-awesome-all.css') }}"/>
-{{--    <link rel="stylesheet" href="{{ asset('site/css/odometer.min.css') }}"/>--}}
+    {{--    <link rel="stylesheet" href="{{ asset('site/css/odometer.min.css') }}"/>--}}
     <link rel="stylesheet" href="{{ asset('site/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}"/>
@@ -78,7 +78,7 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}"/>
-{{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/counter.css') }}"/>--}}
+    {{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/counter.css') }}"/>--}}
     <link rel="stylesheet" href="{{ asset('site/css/module-css/portfolio.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}"/>
@@ -86,12 +86,12 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/module-css/brand.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}"/>
-{{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/pricing.css') }}"/>--}}
+    {{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/pricing.css') }}"/>--}}
     <link rel="stylesheet" href="{{ asset('site/css/module-css/event.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
-{{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/faq.css') }}"/>--}}
+    {{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/faq.css') }}"/>--}}
     <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
 
 
@@ -124,7 +124,7 @@ Developed By: Hadi Hilal
             cursor: pointer;
             position: relative;
             transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
-            animation: symfonixbot-launcher-pop 650ms cubic-bezier(.2,.9,.2,1) 200ms both;
+            animation: symfonixbot-launcher-pop 650ms cubic-bezier(.2, .9, .2, 1) 200ms both;
         }
 
         #symfonixbot-launcher img {
@@ -150,8 +150,8 @@ Developed By: Hadi Hilal
             user-select: none;
             white-space: nowrap;
             transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
-            animation: symfonixbot-hint-pop 650ms cubic-bezier(.2,.9,.2,1) both,
-                       symfonixbot-hint-float 2.8s ease-in-out 900ms infinite;
+            animation: symfonixbot-hint-pop 650ms cubic-bezier(.2, .9, .2, 1) both,
+            symfonixbot-hint-float 2.8s ease-in-out 900ms infinite;
         }
 
         html[dir="rtl"] #symfonixbot-launcher-hint {
@@ -188,20 +188,42 @@ Developed By: Hadi Hilal
         }
 
         @keyframes symfonixbot-hint-pop {
-            0% { opacity: 0; transform: translateX(10px) scale(0.92); }
-            60% { opacity: 1; transform: translateX(0) scale(1.04); }
-            100% { opacity: 1; transform: translateX(0) scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateX(10px) scale(0.92);
+            }
+            60% {
+                opacity: 1;
+                transform: translateX(0) scale(1.04);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
         }
 
         @keyframes symfonixbot-launcher-pop {
-            0% { transform: scale(0.92); filter: saturate(0.9); }
-            60% { transform: scale(1.06); filter: saturate(1.05); }
-            100% { transform: scale(1); filter: saturate(1); }
+            0% {
+                transform: scale(0.92);
+                filter: saturate(0.9);
+            }
+            60% {
+                transform: scale(1.06);
+                filter: saturate(1.05);
+            }
+            100% {
+                transform: scale(1);
+                filter: saturate(1);
+            }
         }
 
         @keyframes symfonixbot-hint-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-2px); }
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-2px);
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -240,11 +262,11 @@ Developed By: Hadi Hilal
             bottom: 90px;
             right: 20px;
             width: 360px;
-            max-width: 95vw;
-            max-height: 480px;
-            min-height: 400px;
+            max-width: 90vw;
+            height: 450px;
+            max-height: 80vh;
             background: #f9f9f9;
-            border-radius: 16px;
+            border-radius: 20px;
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: column;
@@ -252,6 +274,19 @@ Developed By: Hadi Hilal
             z-index: 9999;
             font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             font-size: 14px;
+            transition: all .25s ease;
+        }
+
+        /* Make it breathe better on small screens */
+        @media (max-width: 600px) {
+            #symfonixbot-container {
+                bottom: 20px;
+                right: 10px;
+                width: 95%;
+                height: 70vh;
+                max-width: none;
+                border-radius: 14px;
+            }
         }
 
         #symfonixbot-container.symfonixbot-hidden {
@@ -265,6 +300,7 @@ Developed By: Hadi Hilal
             display: flex;
             align-items: center;
             justify-content: space-between;
+
         }
 
         .symfonixbot-header-title {
@@ -273,6 +309,7 @@ Developed By: Hadi Hilal
 
         .symfonixbot-header-close {
             cursor: pointer;
+              font-size: 24px;
         }
 
         .symfonixbot-bubble-bot a {
@@ -363,8 +400,9 @@ Developed By: Hadi Hilal
             cursor: pointer;
             font-size: 1rem;
         }
-        .content > *  , .blog-details__text > *  , .services-details__text-1 > *{
-            line-height: 2.5rem!important;
+
+        .content > *, .blog-details__text > *, .services-details__text-1 > * {
+            line-height: 2.5rem !important;
         }
     </style>
 
@@ -375,8 +413,13 @@ Developed By: Hadi Hilal
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('site/css/rtl.css')}}">
+        <style>
+            #symfonixbot-container {
+                font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+            }
+        </style>
     @endif
-   <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
     {!! $settings->get('header_scripts') !!}
 </head>
 <body class="custom-cursor">
@@ -476,7 +519,7 @@ Developed By: Hadi Hilal
                 btn.className = 'symfonixbot-action-btn';
                 btn.textContent = action.text || action.name || '';
                 btn.addEventListener('click', function () {
-                    sendMessage(action.text || '', { interactive: true, value: action.value });
+                    sendMessage(action.text || '', {interactive: true, value: action.value});
                 });
                 row.appendChild(btn);
             });
