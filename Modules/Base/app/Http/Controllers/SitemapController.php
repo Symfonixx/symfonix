@@ -161,8 +161,6 @@ class SitemapController extends Controller
 
         if ($normalizedPath === '/') {
             return $baseUrl.'/';
-        }
-
-        return $baseUrl.$normalizedPath;
+        }        return $baseUrl.$normalizedPath;
     }
 }

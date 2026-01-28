@@ -61,9 +61,7 @@ return [
     'lead.value.general' => 'نجمع بين الاستراتيجية والتنفيذ لتحقيق نتائج رقمية ملموسة.',
 
     'lead.widget_about' => 'تحدث مع فريقنا حول مشروعك القادم.',
-    'lead.widget_intro' => 'مرحبًا! أخبرنا عن مشروعك وسنرشدك.',
-
-    'launcher.ask_me' => 'لنبدأ سيمفونيتك التقنية',
+    'lead.widget_intro' => 'مرحبًا! أخبرنا عن مشروعك وسنرشدك.',    'launcher.ask_me' => 'لنبدأ سيمفونيتك التقنية',
     'launcher.open' => 'افتح المحادثة',
     'launcher.title' => 'سمفونكس بوت',
     'launcher.placeholder' => 'أرسل رسالة...',

@@ -25,6 +25,7 @@ Developed By: Hadi Hilal
     <meta name="keywords" content="{{ $page['props']['meta']['keywords'] ?? $seo->get('website_keywords') }}">
 
     <link rel="canonical" href="{{ $page['props']['meta']['canonical'] ?? url()->current() }}">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ url('/rss.xml') }}">
 
     <meta property="og:title" content="{{ $page['props']['meta']['og']['title'] ?? $seo->get('website_name') }}">
     <meta property="og:description"

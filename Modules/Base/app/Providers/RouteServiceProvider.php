@@ -5,6 +5,7 @@ namespace Modules\Base\Providers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Modules\Base\Http\Controllers\RssController;
 use Modules\Base\Http\Controllers\SitemapController;
 
 class RouteServiceProvider extends ServiceProvider
@@ -47,6 +48,9 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware(['web', 'firewall.all'])
             ->get('/sitemap.xml', [SitemapController::class, 'index'])
             ->name('sitemap');
+        Route::middleware(['web', 'firewall.all'])
+            ->get('/rss.xml', [RssController::class, 'index'])
+            ->name('rss');
 
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
