@@ -259,7 +259,7 @@
         <!--Why Choose Two End -->
 
         <!-- Team Two Start -->
-        <section class="team-two" v-if="teams && teams.length > 0">
+        <section class="team-two d-none" v-if="teams && teams.length > 0">
             <div class="team-two__bg-shape float-bob-y"
                  :style="{ backgroundImage: `url(${asset_path}images/shapes/team-two-bg-shape.png)` }">
             </div>

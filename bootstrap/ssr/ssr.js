@@ -959,24 +959,6 @@ const _sfc_main$h = {
       }, _parent));
       _push(`</div><ul class="list-unstyled site-footer-two__contact-list"><li><div class="site-footer-two__contact-icon"><span class="icon-contact"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info"><a${ssrRenderAttr("href", `mailto:${settings2.value.email}`)} class="site-footer-two__contact-mail">${ssrInterpolate(settings2.value.email)}</a><a${ssrRenderAttr("href", `tel:${settings2.value.phone}`)} class="site-footer-two__contact-phone"><span dir="ltr">${ssrInterpolate(settings2.value.phone)}</span></a></p></div></li><li><div class="site-footer-two__contact-icon"><span class="icon-pin"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info">${ssrInterpolate(settings2.value.address)}</p></div></li></ul></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms"><div class="footer-widget-two__quick-links"><h4 class="footer-widget-two__title">${ssrInterpolate(trans("Pages"))}</h4><ul class="footer-widget-two__quick-links-list list-unstyled"><li>`);
       _push(ssrRenderComponent(unref(Link), {
-        href: _ctx.route("team")
-      }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Our Members"))}`);
-          } else {
-            return [
-              createVNode("span", {
-                class: locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2"
-              }, null, 2),
-              createTextVNode(toDisplayString(trans("Our Members")), 1)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`</li><li>`);
-      _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("testimonials")
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
@@ -1729,7 +1711,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
             }
             _push2(`</h2></div><p class="why-choose-one__text"${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-quality"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-team"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-customer-centricity"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
             if (teams.value && teams.value.length > 0) {
-              _push2(`<section class="team-two"${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-5"${_scopeId}><div class="team-two__left"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text"${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7"${_scopeId}><div class="team-two__right"${_scopeId}><div class="team-two__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
+              _push2(`<section class="team-two d-none"${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-5"${_scopeId}><div class="team-two__left"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text"${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7"${_scopeId}><div class="team-two__right"${_scopeId}><div class="team-two__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
               ssrRenderList(teams.value, (team) => {
                 _push2(`<div class="item"${_scopeId}><div class="team-two__single"${_scopeId}><div class="team-two__img-box"${_scopeId}><div class="team-two__img"${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))}${_scopeId}></div><div class="team-two__social"${_scopeId}>`);
                 if (team.facebook) {
@@ -2128,7 +2110,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               ]),
               teams.value && teams.value.length > 0 ? (openBlock(), createBlock("section", {
                 key: 1,
-                class: "team-two"
+                class: "team-two d-none"
               }, [
                 createVNode("div", {
                   class: "team-two__bg-shape float-bob-y",
