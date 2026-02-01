@@ -142,7 +142,7 @@
                                 <i class="icon-search-mail"></i>
                             </div>
                             <div class="text">
-                                <p><a dir="ltr" href="mailto:{{settings.email}}">{{ settings.email }}</a>
+                                <p><a dir="ltr" :href="`mailto::${settings.email}`">{{ settings.email }}</a>
                                 </p>
                             </div>
                         </li>
@@ -151,7 +151,7 @@
                                 <i class="icon-phone-call"></i>
                             </div>
                             <div class="text">
-                                <p><a dir="ltr" href="tel:{{settings.phone}}">{{ settings.phone }}</a></p>
+                                <p><a dir="ltr" :href="`tel::${settings.phone}`">{{ settings.phone }}</a></p>
                             </div>
                         </li>
                     </ul>

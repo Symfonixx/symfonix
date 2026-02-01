@@ -102,7 +102,7 @@ Developed By: Hadi Hilal
 
         #symfonixbot-launcher-wrap {
             position: fixed;
-            bottom: 20px;
+            bottom: 80px;
             right: 20px;
             z-index: 98;
             display: flex;
