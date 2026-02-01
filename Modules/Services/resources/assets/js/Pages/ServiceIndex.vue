@@ -85,9 +85,9 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="services-two__hover-img" v-if="serviceItem.image_link">
-                                        <img :src="serviceItem.image_link" :alt="getServiceTitle(serviceItem)">
-                                    </div>
+<!--                                    <div class="services-two__hover-img" v-if="serviceItem.image_link">-->
+<!--                                        <img :src="serviceItem.image_link" :alt="getServiceTitle(serviceItem)">-->
+<!--                                    </div>-->
                                 </div>
                                 <div v-if="!services.data.length" class="text-center py-5">
                                     <h3 class="text-muted">{{ trans("No services found") }}</h3>

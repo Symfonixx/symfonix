@@ -25,6 +25,7 @@ Developed By: Hadi Hilal
     <meta name="keywords" content="<?php echo e($page['props']['meta']['keywords'] ?? $seo->get('website_keywords')); ?>">
 
     <link rel="canonical" href="<?php echo e($page['props']['meta']['canonical'] ?? url()->current()); ?>">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo e(url('/rss.xml')); ?>">
 
     <meta property="og:title" content="<?php echo e($page['props']['meta']['og']['title'] ?? $seo->get('website_name')); ?>">
     <meta property="og:description"
@@ -98,7 +99,7 @@ Developed By: Hadi Hilal
 
 
     <style>
-      
+
         #symfonixbot-launcher-wrap {
             position: fixed;
             bottom: 20px;

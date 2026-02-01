@@ -27,7 +27,7 @@
                     <h2>{{ trans("Contact Us") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><Link :href="route('home')"><i class="fas fa-home"></i>{{ trans("Home") }}</Link></li>
+                            <li><Link :href="route('home')" ><i class="fas fa-home"></i>{{ trans("Home") }}</Link></li>
                             <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans("Contact Us") }}</li>
                         </ul>
@@ -231,7 +231,7 @@
 
 <script setup>
 import {computed, ref} from 'vue'
-import {usePage, useForm, Head} from '@inertiajs/vue3'
+import {usePage, useForm, Link ,Head} from '@inertiajs/vue3'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;

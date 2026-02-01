@@ -579,12 +579,11 @@
 
 .testimonial-two__star span:nth-child(4) {
      color: var(--techguru-base);
-    opacity: .40;
+
 }
 
 .testimonial-two__star span:nth-child(5) {
      color: var(--techguru-base);
-    opacity: .40;
 }
 
 .testimonial-two__text {

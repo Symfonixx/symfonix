@@ -794,8 +794,8 @@
     left: 0;
     right: 169px;
     height: 1px;
-    background: rgb(143, 136, 255);
-    background: linear-gradient(90deg, rgba(143, 136, 255, 1) 14%, rgba(143, 136, 255, 0) 100%);
+    background: var(--techguru-accent);
+    background: linear-gradient(90deg, var(--techguru-accent) 14%, rgba(143, 136, 255, 0) 100%);
 }
 
 .site-footer-two__contact-icon {

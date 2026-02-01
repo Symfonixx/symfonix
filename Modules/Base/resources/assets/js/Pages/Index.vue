@@ -527,7 +527,7 @@
                             </div>
 
                             <!-- Featured blog (left) -->
-                            <div class="blog-two__left-content-box" v-if="featuredPost">
+                            <div class="blog-two__left-content-box d-none d-md-block" v-if="featuredPost">
                                 <HomeBlogCard
                                     :post="featuredPost"
                                     variant="featured"
@@ -578,11 +578,7 @@
                     </h2>
                 </div>
             </div>
-            <div
-                class="contact-two__bg"
-                :style="{ backgroundImage: `url(${asset_path}site/images/backgrounds/contact-two-bg.jpg)` }"
-            >
-            </div>
+
             <div class="contact-two__shape-1 float-bob-y">
                 <img :src="asset_path + 'site/images/shapes/contact-two-shape-1.png'" :alt="trans('Decorative shape')">
             </div>
