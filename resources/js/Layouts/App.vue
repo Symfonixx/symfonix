@@ -447,6 +447,16 @@
                                         >
                                             <span class="icon-linkedin"></span>
                                         </a>
+
+                                        <a
+                                            v-if="settings.github"
+                                            :href="settings.github"
+                                            target="_blank"
+                                            rel="noopener"
+                                            aria-label="GitHub"
+                                        >
+                                            <span class="fab fa-github"></span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -531,6 +541,14 @@
                         target="_blank"
                         rel="noopener"
                         aria-label="Linkedin"
+                    ></a>
+                              <a
+                        v-if="settings.github"
+                        :href="settings.github"
+                        class="fab fa-github me-2"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="Github"
                     ></a>
 
                 </div><!-- /.mobile-nav__social -->

@@ -324,10 +324,7 @@
     padding-left: 15px;
 }
 
-.blog-two__content-two {
-    padding-right: 75px;
-    padding-left: unset;
-}
+
 
 .blog-two__tags {
     left: unset;
@@ -933,10 +930,7 @@
         padding-left: 15px;
     }
 
-    .blog-two__content-two {
-        padding-right: 75px;
-        padding-left: unset;
-    }
+
 
     .blog-two__tags {
         left: unset;
