@@ -24,7 +24,7 @@
             </li>
         </ul>
         <Link :href="link" class="services-three__btn">
-            {{ buttonLabel }}
+            {{ buttonText }}
             <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow-1`"></span>
         </Link>
     </div>
@@ -100,6 +100,17 @@ const normalizeHighlights = (items) => {
 const safeHighlights = computed(() => {
     const normalized = normalizeHighlights(props.highlights)
     return normalized.slice(0, 3)
+})
+
+const buttonText = computed(() => {
+    if (props.buttonLabel && props.buttonLabel !== 'Read More') {
+        return props.buttonLabel
+    }
+    const labelTitle = String(props.title || '').trim()
+    if (!labelTitle) {
+        return 'Read More'
+    }
+    return `Read More about ${labelTitle}`
 })
 
 const shortDescription = computed(() => {

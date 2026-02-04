@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget/build/assets/css/chat.min.css">
 </head>
 <body>
+<main id="main-content">
+    <noscript>Chat widget requires JavaScript.</noscript>
+</main>
 <script id="botmanWidget" src='https://cdn.jsdelivr.net/npm/botman-web-widget/build/js/chat.js'></script>
 </body>
 </html>

@@ -40,12 +40,12 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <main class="container">
         <h1>404</h1>
         <p>The page you are looking for could not be found.</p>
         <p>Please check the URL or return to the homepage.</p>
         <a href="{{ url('/') }}">Go Home</a>
-    </div>
+    </main>
 </body>
 </html>
 

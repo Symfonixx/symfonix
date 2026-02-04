@@ -221,8 +221,6 @@ class SitemapController extends Controller
 
         if ($normalizedPath === '/') {
             return $baseUrl.$localePrefix.'/';
-        }
-
-        return $baseUrl.$localePrefix.$normalizedPath;
+        }        return $baseUrl.$localePrefix.$normalizedPath;
     }
 }

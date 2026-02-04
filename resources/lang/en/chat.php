@@ -58,9 +58,7 @@ return [
     'lead.value.mobile' => 'We deliver reliable mobile apps with smooth UX, secure integrations, and scalable architecture.',
     'lead.value.cloud' => 'We help you modernize infrastructure, optimize costs, and deploy resilient cloud platforms.',
     'lead.value.ai' => 'We design AI solutions that automate workflows, unlock insights, and accelerate decision-making.',
-    'lead.value.general' => 'Our team blends strategy and execution to deliver measurable digital outcomes.',
-
-    'lead.widget_about' => 'Chat with our team about your next project.',
+    'lead.value.general' => 'Our team blends strategy and execution to deliver measurable digital outcomes.',    'lead.widget_about' => 'Chat with our team about your next project.',
     'lead.widget_intro' => 'Hi! Tell us about your project and we will guide you.',    'launcher.ask_me' => 'Start your tech symphony',
     'launcher.open' => 'Open chat',
     'launcher.title' => 'Symfonix Bot',

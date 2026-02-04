@@ -127,62 +127,66 @@
         </section>
 
 
-        <!-- Testimonial Two Start -->
-        <section class="testimonial-two" v-if="testimonials && testimonials.length">
+        <!-- Testimonial One Start -->
+        <section class="testimonial-one" v-if="testimonials && testimonials.length">
 
+            <div class="testimonial-one__shape-2 float-bob-y">
+                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'" :alt="trans('Decorative shape')">
+            </div>
             <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans("Testimonials") }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
-                    </div>
-                    <h2 class="section-title__title title-animation">
-                        {{ trans("Customer Experiences") }} <br> {{ trans("That") }}
-                        <span>{{ trans("Speak Volumes") }}</span>
-                    </h2>
-                </div>
-                <div class="testimonial-two__carousel owl-theme owl-carousel">
-                    <div
-                        class="item"
-                        v-for="testimonial in testimonials"
-                        :key="testimonial.id"
-                    >
-                        <div class="testimonial-two__single">
-                            <div class="testimonial-two__single-inner">
-                                <div class="testimonial-two__star">
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
+                <div class="row">
+                    <div class="col-xl-3"></div>
+                    <div class="col-xl-9">
+                        <div class="testimonial-one__content-box">
+                            <div class="section-title text-left sec-title-animation animation-style2">
+                                <div class="section-title__tagline-box">
+                                    <div class="section-title__tagline-shape-1"></div>
+                                    <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
+                                    <div class="section-title__tagline-shape-2"></div>
                                 </div>
-                                <p class="testimonial-two__text">
-                                    {{ translateField(testimonial.quote) }}
-                                </p>
+                                <h2 class="section-title__title title-animation">
+                                    {{ trans('What Our Clients Say') }}
+                                </h2>
                             </div>
-                            <div class="testimonial-two__client-info">
-                                <div class="testimonial-two__client-img">
-                                    <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
+                            <div class="testimonial-one__carousel owl-theme owl-carousel">
+                                <div class="item" v-for="testimonial in testimonials" :key="testimonial.id">
+                                    <div class="testimonial-one__single">
+                                        <div class="testimonial-one__img-box">
+                                            <div class="testimonial-one__img">
+                                                <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-one__content">
+
+                                            <p class="testimonial-one__text">
+                                                “{{ translateField(testimonial.quote) }}”
+                                            </p>
+                                            <div class="testimonial-one__bottom">
+                                                <div class="testimonial-one__quote-and-client-info">
+                                                    <div class="testimonial-one__quote">
+                                                        <span class="icon-left"></span>
+                                                    </div>
+                                                    <div class="testimonial-one__client-info">
+                                                        <p class="testimonial-one__client-sub-title">
+                                                            {{ translateField(testimonial.position) }}
+                                                        </p>
+                                                        <h3 class="testimonial-one__client-name">
+                                                            <a href="#">{{ translateField(testimonial.name) }}</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="testimonial-two__client-content">
-                                    <h4 class="testimonial-two__client-name">
-                                        {{ translateField(testimonial.name) }}
-                                    </h4>
-                                    <p class="testimonial-two__sub-title">
-                                        {{ translateField(testimonial.position) }}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="testimonial-two__quote">
-                                <span class="icon-right-quote"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Testimonial Two End -->
+        <!-- Testimonial One End -->
     </app-layout>
 </template>
 
@@ -319,8 +323,8 @@ const getServiceHighlights = (serviceItem) => {
 onMounted(() => {
     nextTick(() => {
         // Initialize Testimonials Owl Carousel
-        if (typeof $ !== 'undefined' && $('.testimonial-two__carousel').length && testimonials.value.length) {
-            $('.testimonial-two__carousel').owlCarousel({
+        if (typeof $ !== 'undefined' && $('.testimonial-one__carousel').length && testimonials.value.length) {
+            $('.testimonial-one__carousel').owlCarousel({
                 loop: testimonials.value.length > 1,
                 margin: 30,
                 nav: false,

@@ -410,7 +410,7 @@ Author: Hadi Hilal
             </div>
             <!--end::Sidebar-->
             <!--begin::Main-->
-            <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+            <main class="app-main flex-column flex-row-fluid" id="kt_app_main">
                 <!--begin::Content wrapper-->
                 <div class="d-flex flex-column flex-column-fluid">
                     <!--begin::Toolbar-->
@@ -458,7 +458,7 @@ Author: Hadi Hilal
                     <!--end::Footer container-->
                 </div>
                 <!--end::Footer-->
-            </div>
+            </main>
             <!--end:::Main-->
         </div>
         <!--end::Wrapper-->

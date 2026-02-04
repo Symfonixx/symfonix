@@ -1,5 +1,5 @@
 <!---
-Site: Sham Vision
+Site: Symfonix
 Created At: 01-01-2026
 Developed By: Hadi Hilal
 --->
@@ -55,10 +55,6 @@ Developed By: Hadi Hilal
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
 
-    <!-- Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-          rel="stylesheet">
-
     @routes
     @inertiaHead
 
@@ -66,7 +62,7 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/font-awesome-all.css') }}"/>
-    {{--    <link rel="stylesheet" href="{{ asset('site/css/odometer.min.css') }}"/>--}}
+
     <link rel="stylesheet" href="{{ asset('site/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}"/>
@@ -77,16 +73,13 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}"/>
-    {{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/counter.css') }}"/>--}}
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/portfolio.css') }}"/>
+
     <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/testimonial.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/brand.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}"/>
-    {{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/pricing.css') }}"/>--}}
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/event.css') }}"/>
+
     <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
@@ -102,8 +95,8 @@ Developed By: Hadi Hilal
 
         #symfonixbot-launcher-wrap {
             position: fixed;
-            bottom: 80px;
-            right: 20px;
+            bottom: 75px;
+            right: 25px;
             z-index: 98;
             display: flex;
             align-items: center;
@@ -441,7 +434,9 @@ Developed By: Hadi Hilal
 <!--End Preloader-->
 
 
+<main id="main-content">
 @inertia
+</main>
 <div id="symfonixbot-launcher-wrap" aria-label="Symfonix Bot launcher">
     <div id="symfonixbot-launcher" aria-label="{{ __('chat.launcher.open') }}">
         <img src="{{ asset('images/robot.png') }}" alt="{{ __('chat.launcher.title') }}">

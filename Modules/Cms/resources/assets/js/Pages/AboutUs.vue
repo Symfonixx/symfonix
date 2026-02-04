@@ -91,44 +91,55 @@
                             </div>
                             <p class="about-four__text">
                                 {{
-                                    trans('Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today\'s digital landscape.')
+                                    trans('Symfonix is a technology company that designs, builds, and scales digital systems where web, mobile, AI, and cloud work together instead of fighting each other. The name says it all: a symphony of technologies, orchestrated with intention.')
                                 }}
                             </p>
-                            <div class="about-four__points-box">
-                                <ul class="about-four__points-list list-unstyled">
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-tick-inside-circle"></span>
-                                        </div>
-                                        <p>{{ trans('Innovative IT Solutions Expert') }}<br>
-                                            {{ trans('Support & Consulting') }}</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-tick-inside-circle"></span>
-                                        </div>
-                                        <p>{{ trans('Cloud Solutions for Modern') }}<br> {{ trans('Enterprises') }}</p>
-                                    </li>
-                                </ul>
-                                <ul class="about-four__points-list about-four__points-list-2 list-unstyled">
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-tick-inside-circle"></span>
-                                        </div>
-                                        <p>{{ trans('Seamless Digital') }}<br> {{ trans('Transformation AI-Driven') }}
-                                            <br>{{ trans('Business Automation') }}</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <ul class="about-four__points-2 list-unstyled">
+
+                            <h4 class="about-four__text mt-4">
+                                {{ trans('Core Values (This is non-negotiable stuff)') }}
+                            </h4>
+                            <ul class="about-four__points-2 list-unstyled about-four__points-box">
                                 <li>
                                     <div class="icon">
                                         <span class="icon-technical-support"></span>
                                     </div>
                                     <div class="content">
-                                        <h5>{{ trans('Innovative IT Solutions') }}</h5>
+                                        <h5>{{ trans('Harmony over chaos') }}</h5>
                                         <p>{{
-                                                trans('Stay ahead with cutting-edge technology tailored to your business needs.')
+                                                trans('Every solution must be coherent. No messy stacks, no duct-tape architectures.')
+                                            }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-quality"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h5>{{ trans('Engineering first') }}</h5>
+                                        <p>{{
+                                                trans('Pretty UI is great, but solid architecture, performance, and maintainability come first.')
+                                            }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-customer-centricity"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h5>{{ trans('Truth & clarity') }}</h5>
+                                        <p>{{
+                                                trans("We say what's possible, what's risky, and what's unnecessary. No tech theater.")
+                                            }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span class="icon-support"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h5>{{ trans('Continuous learning') }}</h5>
+                                        <p>{{
+                                                trans('AI, cloud, and software evolve fast. We evolve faster.')
                                             }}</p>
                                     </div>
                                 </li>
@@ -137,9 +148,9 @@
                                         <span class="icon-real-estate-agency"></span>
                                     </div>
                                     <div class="content">
-                                        <h5>{{ trans('Cloud Solutions') }}</h5>
+                                        <h5>{{ trans('Global mindset, local roots') }}</h5>
                                         <p>{{
-                                                trans('Secure, scalable, and efficient cloud services to power your growth.')
+                                                trans('Built in Syria. Designed for the world.')
                                             }}</p>
                                     </div>
                                 </li>
@@ -391,61 +402,91 @@
             </div>
         </section>
         <!-- Process One End -->
-
-        <!-- Testimonial Two Start -->
-        <section class="testimonial-two" v-if="testimonials && testimonials.length > 0">
+     <!--CTA One Start -->
+        <section class="cta-one">
+            <div class="cta-one__shape-bg float-bob-y"
+                 :style="{ backgroundImage: `url(${asset_path}site/images/shapes/cta-one-shape-bg.png)` }">
+            </div>
             <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
-                    </div>
-                    <h2 class="section-title__title title-animation">
-                        {{ trans('Customer Experiences') }} <br> {{ trans('That') }} <span>{{
-                            trans('Speak Volumes')
-                        }}</span>
-                    </h2>
-                </div>
-                <div class="testimonial-two__carousel owl-theme owl-carousel">
-                    <!-- Testimonial Two Single Start -->
-                    <div class="item" v-for="testimonial in testimonials" :key="testimonial.id">
-                        <div class="testimonial-two__single">
-                            <div class="testimonial-two__single-inner">
-                                <div class="testimonial-two__star">
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-two__text">
-                                    {{ translateField(testimonial.quote) }}
-                                </p>
-                            </div>
-                            <div class="testimonial-two__client-info">
-                                <div class="testimonial-two__client-img">
-                                    <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
-                                </div>
-                                <div class="testimonial-two__client-content">
-                                    <h3 class="h4 testimonial-two__client-name">
-                                        <a href="#">{{ translateField(testimonial.name) }}</a>
-                                    </h3>
-                                    <p class="testimonial-two__sub-title">
-                                        {{ translateField(testimonial.position) }}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="testimonial-two__quote">
-                                <span class="icon-right-quote"></span>
-                            </div>
+                <div class="cta-one__inner">
+                    <h3 class="cta-one__title">
+                        {{ trans('To make requests for further information, contact us') }}
+                    </h3>
+                    <div class="cta-one__contact-info">
+                        <div class="cta-one__contact-icon">
+                            <span class="icon-customer-service-headset"></span>
+                        </div>
+                        <div class="cta-one__contact-details">
+                            <p>{{ trans('Call Us For Any inquiry') }}</p>
+                            <h4><a dir="ltr" href="tel:{{settings.phone}}">{{settings.phone}}</a></h4>
                         </div>
                     </div>
-                    <!-- Testimonial Two Single End -->
                 </div>
             </div>
         </section>
-        <!-- Testimonial Two End -->
+        <!--CTA One End -->
+        <!-- Testimonial One Start -->
+        <section class="testimonial-one pb-3" v-if="testimonials && testimonials.length > 0">
+
+            <div class="testimonial-one__shape-2 float-bob-y">
+                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'" :alt="trans('Decorative shape')">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3"></div>
+                    <div class="col-xl-9">
+                        <div class="testimonial-one__content-box">
+                            <div class="section-title text-left sec-title-animation animation-style2">
+                                <div class="section-title__tagline-box">
+                                    <div class="section-title__tagline-shape-1"></div>
+                                    <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
+                                    <div class="section-title__tagline-shape-2"></div>
+                                </div>
+                                <h2 class="section-title__title title-animation">
+                                    {{ trans('What Our Clients Say') }}
+                                </h2>
+                            </div>
+                            <div class="testimonial-one__carousel owl-theme owl-carousel">
+                                <!-- Testimonial One Single Start -->
+                                <div class="item" v-for="testimonial in testimonials" :key="testimonial.id">
+                                    <div class="testimonial-one__single">
+                                        <div class="testimonial-one__img-box">
+                                            <div class="testimonial-one__img">
+                                                <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-one__content">
+
+                                            <p class="testimonial-one__text">
+                                                “{{ translateField(testimonial.quote) }}”
+                                            </p>
+                                            <div class="testimonial-one__bottom">
+                                                <div class="testimonial-one__quote-and-client-info">
+                                                    <div class="testimonial-one__quote">
+                                                        <span class="icon-left"></span>
+                                                    </div>
+                                                    <div class="testimonial-one__client-info">
+                                                        <p class="testimonial-one__client-sub-title">
+                                                            {{ translateField(testimonial.position) }}
+                                                        </p>
+                                                        <h3 class="testimonial-one__client-name">
+                                                            <a href="#">{{ translateField(testimonial.name) }}</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Testimonial One Single End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonial One End -->
     </app-layout>
 </template>
 
@@ -456,6 +497,7 @@ import {Link, usePage, Head} from '@inertiajs/vue3'
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
+const settings = computed(() => page.props.settings)
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale)
 const teams = computed(() => page.props.teams || [])
@@ -501,9 +543,20 @@ const translateField = (value) => {
 
 onMounted(() => {
     nextTick(() => {
+        const applyOwlDotAriaLabels = ($carousel) => {
+            if (!$carousel || !$carousel.length) {
+                return;
+            }
+
+            $carousel.find('.owl-dot').each(function(index) {
+                $(this).attr('aria-label', `${trans('Go to slide')} ${index + 1}`);
+            });
+        };
+
         // Initialize Team Owl Carousel
         if (typeof $ !== 'undefined' && $('.team-two__carousel').length && teams.value.length > 0) {
-            $('.team-two__carousel').owlCarousel({
+            const $teamCarousel = $('.team-two__carousel');
+            $teamCarousel.owlCarousel({
                 loop: teams.value.length > 3,
                 margin: 30,
                 nav: false,
@@ -519,15 +572,15 @@ onMounted(() => {
                     1200: {items: 3}
                 }
             }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
-                $(this).find('.owl-dot').each(function(index) {
-                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
-                });
+                applyOwlDotAriaLabels($(this));
             });
+            applyOwlDotAriaLabels($teamCarousel);
         }
 
         // Initialize Testimonials Owl Carousel
-        if (typeof $ !== 'undefined' && $('.testimonial-two__carousel').length && testimonials.value.length > 0) {
-            $('.testimonial-two__carousel').owlCarousel({
+        if (typeof $ !== 'undefined' && $('.testimonial-one__carousel').length && testimonials.value.length > 0) {
+            const $testimonialCarousel = $('.testimonial-one__carousel');
+            $testimonialCarousel.owlCarousel({
                 loop: testimonials.value.length > 1,
                 margin: 30,
                 nav: false,
@@ -543,10 +596,9 @@ onMounted(() => {
                     1200: {items: 1}
                 }
             }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
-                $(this).find('.owl-dot').each(function(index) {
-                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
-                });
+                applyOwlDotAriaLabels($(this));
             });
+            applyOwlDotAriaLabels($testimonialCarousel);
         }
 
         // Initialize WOW animations

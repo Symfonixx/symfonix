@@ -8,6 +8,9 @@
           href="https://cdn.jsdelivr.net/npm/botman-web-widget/build/assets/css/chat.min.css">
 </head>
 <body>
+<main id="main-content">
+    <noscript>{{ __('chat.lead.widget_intro') }}</noscript>
+</main>
 <script>
     window.botmanWidget = {
         title: '{{ config('app.name') }}',

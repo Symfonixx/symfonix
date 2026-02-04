@@ -35,7 +35,7 @@
 
             <div class="container">
                 <div class="banner-one__inner">
-                        <h1 class="banner-one__title px-3">
+                        <h1 class="banner-one__title px-4">
                             {{ trans('Crafting Intelligent Technologies for the Future') }} <br/>
                             <span>{{ trans('Balanced, modern, includes web, mobile, AI, and cloud') }}</span>
                         </h1>
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="content">
                                         <h2 class="h3">{{ trans('Innovative IT Solutions Expert') }}</h2>
-                                        <p>{{ trans('Support & Consulting') }}</p>
+<!--                                        <p>{{ trans('Support & Consulting') }}</p>-->
                                     </div>
                                 </li>
                                 <li>
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="content">
                                         <h2 class="h3">{{ trans('Cloud Solutions for Modern') }}</h2>
-                                        <p>{{ trans('Enterprises') }}</p>
+<!--                                        <p>{{ trans('Enterprises') }}</p>-->
                                     </div>
                                 </li>
                                 <li>
@@ -99,8 +99,8 @@
                                         <span class="icon-tick-inside-circle"></span>
                                     </div>
                                     <div class="content">
-                                        <h2 class="h3">{{ trans('Seamless Digital Transformation') }}</h2>
-                                        <p>{{ trans('AI-Driven Business Automation') }}</p>
+                                        <h2 class="h3">{{ trans('AI-Driven Business Automation') }}</h2>
+<!--                                        <p>{{ trans('AI-Driven Business Automation') }}</p>-->
                                     </div>
                                 </li>
                             </ul>
@@ -439,64 +439,68 @@
         </section>
         <!--CTA One End -->
 
-        <!-- Testimonial Two Start -->
+        <!-- Testimonial One Start -->
         <section class="testimonial-one pb-5" v-if="testimonials && testimonials.length">
+
+            <div class="testimonial-one__shape-2 float-bob-y">
+                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'" :alt="trans('Decorative shape')">
+            </div>
             <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
-                        <div class="section-title__tagline-shape-2"></div>
-                    </div>
-                    <h2 class="section-title__title title-animation">
-                        {{ trans('Customer Experiences') }} <br> {{ trans('That') }} <span>{{
-                            trans('Speak Volumes')
-                        }}</span>
-                    </h2>
-                </div>
-                <div class="testimonial-two__carousel owl-theme owl-carousel">
-                    <!-- Testimonial Two Single Start -->
-                    <div
-                        class="item"
-                        v-for="testimonial in testimonials"
-                        :key="testimonial.id"
-                    >
-                        <div class="testimonial-two__single">
-                            <div class="testimonial-two__single-inner">
-                                <div class="testimonial-two__star">
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-pointed-star"></span>
-                                    <span class="icon-pointed-star"></span>
-                                   <span class="icon-pointed-star"></span>
+                <div class="row">
+                    <div class="col-xl-3"></div>
+                    <div class="col-xl-9">
+                        <div class="testimonial-one__content-box">
+                            <div class="section-title text-left sec-title-animation animation-style2">
+                                <div class="section-title__tagline-box">
+                                    <div class="section-title__tagline-shape-1"></div>
+                                    <span class="section-title__tagline">{{ trans('Testimonials') }}</span>
+                                    <div class="section-title__tagline-shape-2"></div>
                                 </div>
-                                <p class="testimonial-two__text">
-                                    {{ translateField(testimonial.quote) }}
-                                </p>
+                                <h2 class="section-title__title title-animation">
+                                    {{ trans('What Our Clients Say') }}
+                                </h2>
                             </div>
-                            <div class="testimonial-two__client-info">
-                                <div class="testimonial-two__client-img">
-                                    <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
+                            <div class="testimonial-one__carousel owl-theme owl-carousel">
+                                <!-- Testimonial One Single Start -->
+                                <div class="item" v-for="testimonial in testimonials" :key="testimonial.id">
+                                    <div class="testimonial-one__single">
+                                        <div class="testimonial-one__img-box">
+                                            <div class="testimonial-one__img">
+                                                <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-one__content">
+
+                                            <p class="testimonial-one__text">
+                                                “{{ translateField(testimonial.quote) }}”
+                                            </p>
+                                            <div class="testimonial-one__bottom">
+                                                <div class="testimonial-one__quote-and-client-info">
+                                                    <div class="testimonial-one__quote">
+                                                        <span class="icon-left"></span>
+                                                    </div>
+                                                    <div class="testimonial-one__client-info">
+                                                        <p class="testimonial-one__client-sub-title">
+                                                            {{ translateField(testimonial.position) }}
+                                                        </p>
+                                                        <h3 class="testimonial-one__client-name">
+                                                            <a href="#">{{ translateField(testimonial.name) }}</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="testimonial-two__client-content">
-                                    <h3 class="h4 testimonial-two__client-name">
-                                        <a href="#">{{ translateField(testimonial.name) }}</a>
-                                    </h3>
-                                    <p class="testimonial-two__sub-title">
-                                        {{ translateField(testimonial.position) }}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="testimonial-two__quote">
-                                <span class="icon-right-quote"></span>
+                                <!-- Testimonial One Single End -->
                             </div>
                         </div>
                     </div>
-                    <!-- Testimonial Two Single End -->
                 </div>
             </div>
         </section>
-        <!-- Testimonial Two End -->
+        <!-- Testimonial One End -->
 
         <!-- Blog Two Start -->
         <section class="blog-two blog-three" v-if="posts && posts.length">
@@ -903,10 +907,20 @@ const handleContactSubmit = () => {
 onMounted(() => {
     nextTick(() => {
         const isRTL = page.props.locale === 'ar';
+        const applyOwlDotAriaLabels = ($carousel) => {
+            if (!$carousel || !$carousel.length) {
+                return;
+            }
+
+            $carousel.find('.owl-dot').each(function(index) {
+                $(this).attr('aria-label', `${trans('Go to slide')} ${index + 1}`);
+            });
+        };
 
         // Initialize Services Owl Carousel
         if (typeof $ !== 'undefined' && $('.services-three__carousel').length) {
-            $('.services-three__carousel').owlCarousel({
+            const $servicesCarousel = $('.services-three__carousel');
+            $servicesCarousel.owlCarousel({
                 loop: servicesCategories.value.length > 3,
                 margin: 30,
                 nav: false,
@@ -922,15 +936,15 @@ onMounted(() => {
                     1200: {items: 3}
                 }
             }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
-                $(this).find('.owl-dot').each(function(index) {
-                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
-                });
+                applyOwlDotAriaLabels($(this));
             });
+            applyOwlDotAriaLabels($servicesCarousel);
         }
 
         // Initialize Team Owl Carousel
         if (typeof $ !== 'undefined' && $('.team-two__carousel').length && teams.value.length > 0) {
-            $('.team-two__carousel').owlCarousel({
+            const $teamCarousel = $('.team-two__carousel');
+            $teamCarousel.owlCarousel({
                 loop: teams.value.length > 3,
                 margin: 30,
                 nav: false,
@@ -946,15 +960,15 @@ onMounted(() => {
                     1200: {items: 3}
                 }
             }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
-                $(this).find('.owl-dot').each(function(index) {
-                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
-                });
+                applyOwlDotAriaLabels($(this));
             });
+            applyOwlDotAriaLabels($teamCarousel);
         }
 
         // Initialize Testimonials Owl Carousel
-        if (typeof $ !== 'undefined' && $('.testimonial-two__carousel').length) {
-            $('.testimonial-two__carousel').owlCarousel({
+        if (typeof $ !== 'undefined' && $('.testimonial-one__carousel').length) {
+            const $testimonialCarousel = $('.testimonial-one__carousel');
+            $testimonialCarousel.owlCarousel({
                 loop: testimonials.value.length > 1,
                 margin: 30,
                 nav: false,
@@ -970,10 +984,9 @@ onMounted(() => {
                     1200: {items: 1}
                 }
             }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
-                $(this).find('.owl-dot').each(function(index) {
-                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
-                });
+                applyOwlDotAriaLabels($(this));
             });
+            applyOwlDotAriaLabels($testimonialCarousel);
         }
 
         // Initialize WOW animations

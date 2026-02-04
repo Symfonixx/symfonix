@@ -379,6 +379,16 @@ const _sfc_main$k = {
       const normalized = normalizeHighlights(props.highlights);
       return normalized.slice(0, 3);
     });
+    const buttonText = computed(() => {
+      if (props.buttonLabel && props.buttonLabel !== "Read More") {
+        return props.buttonLabel;
+      }
+      const labelTitle = String(props.title || "").trim();
+      if (!labelTitle) {
+        return "Read More";
+      }
+      return `Read More about ${labelTitle}`;
+    });
     const shortDescription = computed(() => {
       if (!props.description) {
         return "";
@@ -390,13 +400,13 @@ const _sfc_main$k = {
       return `${text.slice(0, 140)}...`;
     });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-three__single" }, _attrs))} data-v-c6652724><div class="services-three__media" data-v-c6652724>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-three__single" }, _attrs))} data-v-a7d8b240><div class="services-three__media" data-v-a7d8b240>`);
       if (__props.image) {
-        _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="services-three__image" data-v-c6652724>`);
+        _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="services-three__image" data-v-a7d8b240>`);
       } else {
-        _push(`<div class="services-three__image-placeholder" data-v-c6652724><span class="icon-technical-support" data-v-c6652724></span></div>`);
+        _push(`<div class="services-three__image-placeholder" data-v-a7d8b240><span class="icon-technical-support" data-v-a7d8b240></span></div>`);
       }
-      _push(`</div><h3 class="services-three__title" data-v-c6652724>`);
+      _push(`</div><h3 class="services-three__title" data-v-a7d8b240>`);
       _push(ssrRenderComponent(unref(Link), { href: __props.link }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -411,19 +421,19 @@ const _sfc_main$k = {
       }, _parent));
       _push(`</h3>`);
       if (shortDescription.value) {
-        _push(`<p class="services-three__text" data-v-c6652724>${ssrInterpolate(shortDescription.value)}</p>`);
+        _push(`<p class="services-three__text" data-v-a7d8b240>${ssrInterpolate(shortDescription.value)}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (__props.readingTime) {
-        _push(`<p class="services-three__meta" data-v-c6652724><span class="far fa-clock mx-1" data-v-c6652724></span>${ssrInterpolate(__props.readingTime)} ${ssrInterpolate(__props.readingTimeLabel)}</p>`);
+        _push(`<p class="services-three__meta" data-v-a7d8b240><span class="far fa-clock mx-1" data-v-a7d8b240></span>${ssrInterpolate(__props.readingTime)} ${ssrInterpolate(__props.readingTimeLabel)}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (safeHighlights.value.length) {
-        _push(`<ul class="list-unstyled services-three__list" data-v-c6652724><!--[-->`);
+        _push(`<ul class="list-unstyled services-three__list" data-v-a7d8b240><!--[-->`);
         ssrRenderList(safeHighlights.value, (item, index) => {
-          _push(`<li data-v-c6652724><div class="icon" data-v-c6652724><span class="icon-tick-inside-circle" data-v-c6652724></span></div><div class="text" data-v-c6652724><p data-v-c6652724>${ssrInterpolate(item)}</p></div></li>`);
+          _push(`<li data-v-a7d8b240><div class="icon" data-v-a7d8b240><span class="icon-tick-inside-circle" data-v-a7d8b240></span></div><div class="text" data-v-a7d8b240><p data-v-a7d8b240>${ssrInterpolate(item)}</p></div></li>`);
         });
         _push(`<!--]--></ul>`);
       } else {
@@ -435,10 +445,10 @@ const _sfc_main$k = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`${ssrInterpolate(__props.buttonLabel)} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-c6652724${_scopeId}></span>`);
+            _push2(`${ssrInterpolate(buttonText.value)} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-a7d8b240${_scopeId}></span>`);
           } else {
             return [
-              createTextVNode(toDisplayString(__props.buttonLabel) + " ", 1),
+              createTextVNode(toDisplayString(buttonText.value) + " ", 1),
               createVNode("span", {
                 class: `icon-${__props.isRtl ? "left" : "right"}-arrow-1`
               }, null, 2)
@@ -457,7 +467,7 @@ _sfc_main$k.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
   return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-c6652724"]]);
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-a7d8b240"]]);
 const _sfc_main$j = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
@@ -658,7 +668,7 @@ const _sfc_main$i = {
   __ssrInlineRender: true,
   setup(__props) {
     const page = usePage();
-    const settings2 = computed(() => page.props.settings);
+    const settings = computed(() => page.props.settings);
     const storage_path = computed(() => page.props.storage_path);
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<nav${ssrRenderAttrs(mergeProps({ class: "main-menu main-menu-two" }, _attrs))}><div class="main-menu-two__wrapper"><div class="main-menu-two__wrapper-inner"><div class="main-menu-two__left"><div class="main-menu-two__logo">`);
@@ -667,11 +677,11 @@ const _sfc_main$i = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings2.value.site_logo)} alt="logo"${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
-                src: storage_path.value + settings2.value.site_logo,
+                src: storage_path.value + settings.value.site_logo,
                 alt: "logo"
               }, null, 8, ["src"])
             ];
@@ -697,7 +707,7 @@ const _sfc_main$h = {
   setup(__props) {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
-    const settings2 = computed(() => page.props.settings);
+    const settings = computed(() => page.props.settings);
     const storage_path = computed(() => page.props.storage_path);
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
@@ -846,11 +856,11 @@ const _sfc_main$h = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings2.value.site_logo)} alt="logo"${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
-                src: storage_path.value + settings2.value.site_logo,
+                src: storage_path.value + settings.value.site_logo,
                 alt: "logo"
               }, null, 8, ["src"])
             ];
@@ -900,7 +910,7 @@ const _sfc_main$h = {
       } else {
         _push(`<!---->`);
       }
-      _push(`</form></div></div></div></div></div></div></div><div class="page-wrapper"><header class="main-header-two"><div class="main-menu-two__top"><div class="main-menu-two__top-inner"><p class="main-menu-two__top-text">${ssrInterpolate(trans("We Build Technology In Perfect Harmony"))}</p><ul class="list-unstyled main-menu-two__contact-list"><li><div class="icon"><i class="icon-pin"></i></div><div class="text"><p>${ssrInterpolate(settings2.value.address)}</p></div></li><li><div class="icon"><i class="icon-search-mail"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `mailto::${settings2.value.email}`)}>${ssrInterpolate(settings2.value.email)}</a></p></div></li><li><div class="icon"><i class="icon-phone-call"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `tel::${settings2.value.phone}`)}>${ssrInterpolate(settings2.value.phone)}</a></p></div></li></ul></div></div>`);
+      _push(`</form></div></div></div></div></div></div></div><div class="page-wrapper"><header class="main-header-two"><div class="main-menu-two__top"><div class="main-menu-two__top-inner"><p class="main-menu-two__top-text">${ssrInterpolate(trans("We Build Technology In Perfect Harmony"))}</p><ul class="list-unstyled main-menu-two__contact-list"><li><div class="icon"><i class="icon-pin"></i></div><div class="text"><p>${ssrInterpolate(settings.value.address)}</p></div></li><li><div class="icon"><i class="icon-search-mail"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `mailto::${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li><div class="icon"><i class="icon-phone-call"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `tel::${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div>`);
       _push(ssrRenderComponent(_sfc_main$i, null, null, _parent));
       _push(`</header><div class="stricky-header stricked-menu main-menu main-menu-two"><div class="sticky-header__content">`);
       _push(ssrRenderComponent(_sfc_main$i, null, null, _parent));
@@ -945,11 +955,11 @@ const _sfc_main$h = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings2.value.site_logo)} alt="logo"${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
-                src: storage_path.value + settings2.value.site_logo,
+                src: storage_path.value + settings.value.site_logo,
                 alt: "logo"
               }, null, 8, ["src"])
             ];
@@ -957,7 +967,7 @@ const _sfc_main$h = {
         }),
         _: 1
       }, _parent));
-      _push(`</div><ul class="list-unstyled site-footer-two__contact-list"><li><div class="site-footer-two__contact-icon"><span class="icon-contact"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info"><a${ssrRenderAttr("href", `mailto:${settings2.value.email}`)} class="site-footer-two__contact-mail">${ssrInterpolate(settings2.value.email)}</a><a${ssrRenderAttr("href", `tel:${settings2.value.phone}`)} class="site-footer-two__contact-phone"><span dir="ltr">${ssrInterpolate(settings2.value.phone)}</span></a></p></div></li><li><div class="site-footer-two__contact-icon"><span class="icon-pin"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info">${ssrInterpolate(settings2.value.address)}</p></div></li></ul></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms"><div class="footer-widget-two__quick-links"><h4 class="footer-widget-two__title">${ssrInterpolate(trans("Pages"))}</h4><ul class="footer-widget-two__quick-links-list list-unstyled"><li>`);
+      _push(`</div><ul class="list-unstyled site-footer-two__contact-list"><li><div class="site-footer-two__contact-icon"><span class="icon-contact"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info"><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)} class="site-footer-two__contact-mail">${ssrInterpolate(settings.value.email)}</a><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)} class="site-footer-two__contact-phone"><span dir="ltr">${ssrInterpolate(settings.value.phone)}</span></a></p></div></li><li><div class="site-footer-two__contact-icon"><span class="icon-pin"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info">${ssrInterpolate(settings.value.address)}</p></div></li></ul></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms"><div class="footer-widget-two__quick-links"><h4 class="footer-widget-two__title">${ssrInterpolate(trans("Pages"))}</h4><ul class="footer-widget-two__quick-links-list list-unstyled"><li>`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("testimonials")
       }, {
@@ -1149,28 +1159,28 @@ const _sfc_main$h = {
         _: 1
       }, _parent));
       _push(`</p></div><div class="site-footer-two__social-box"><h3 class="h4 site-footer-two__social-title">${ssrInterpolate(trans("Follow Us"))}:</h3><div class="site-footer-two__social-box-inner">`);
-      if (settings2.value.whatsapp) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.whatsapp)} target="_blank" rel="noopener" aria-label="Whatsapp"><span class="icon-whatsapp"></span></a>`);
+      if (settings.value.whatsapp) {
+        _push(`<a${ssrRenderAttr("href", settings.value.whatsapp)} target="_blank" rel="noopener" aria-label="Whatsapp"><span class="icon-whatsapp"></span></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.facebook) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.facebook)} target="_blank" rel="noopener" aria-label="Facebook"><span class="icon-facebook"></span></a>`);
+      if (settings.value.facebook) {
+        _push(`<a${ssrRenderAttr("href", settings.value.facebook)} target="_blank" rel="noopener" aria-label="Facebook"><span class="icon-facebook"></span></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.instagram) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.instagram)} target="_blank" rel="noopener" aria-label="Instagram"><span class="fab fa-instagram"></span></a>`);
+      if (settings.value.instagram) {
+        _push(`<a${ssrRenderAttr("href", settings.value.instagram)} target="_blank" rel="noopener" aria-label="Instagram"><span class="fab fa-instagram"></span></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.linkedin) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.linkedin)} target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon-linkedin"></span></a>`);
+      if (settings.value.linkedin) {
+        _push(`<a${ssrRenderAttr("href", settings.value.linkedin)} target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon-linkedin"></span></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.github) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.github)} target="_blank" rel="noopener" aria-label="GitHub"><span class="fab fa-github"></span></a>`);
+      if (settings.value.github) {
+        _push(`<a${ssrRenderAttr("href", settings.value.github)} target="_blank" rel="noopener" aria-label="GitHub"><span class="fab fa-github"></span></a>`);
       } else {
         _push(`<!---->`);
       }
@@ -1181,11 +1191,11 @@ const _sfc_main$h = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings2.value.site_logo)} alt="logo"${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
-                src: storage_path.value + settings2.value.site_logo,
+                src: storage_path.value + settings.value.site_logo,
                 alt: "logo"
               }, null, 8, ["src"])
             ];
@@ -1195,34 +1205,34 @@ const _sfc_main$h = {
       }, _parent));
       _push(`</div><div class="mobile-nav__container">`);
       _push(ssrRenderComponent(_sfc_main$j, null, null, _parent));
-      _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings2.value.email}`)}>${ssrInterpolate(settings2.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings2.value.phone}`)}>${ssrInterpolate(settings2.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
-      if (settings2.value.twitter) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
+      _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
+      if (settings.value.twitter) {
+        _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.whatsapp) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.whatsapp)} class="fab fa-whatsapp me-2" target="_blank" rel="noopener" aria-label="Whatsapp"></a>`);
+      if (settings.value.whatsapp) {
+        _push(`<a${ssrRenderAttr("href", settings.value.whatsapp)} class="fab fa-whatsapp me-2" target="_blank" rel="noopener" aria-label="Whatsapp"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.facebook) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.facebook)} class="fab fa-facebook me-2" target="_blank" rel="noopener" aria-label="Facebook"></a>`);
+      if (settings.value.facebook) {
+        _push(`<a${ssrRenderAttr("href", settings.value.facebook)} class="fab fa-facebook me-2" target="_blank" rel="noopener" aria-label="Facebook"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.instagram) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.instagram)} class="fab fa-instagram me-2" target="_blank" rel="noopener" aria-label="Instagram"></a>`);
+      if (settings.value.instagram) {
+        _push(`<a${ssrRenderAttr("href", settings.value.instagram)} class="fab fa-instagram me-2" target="_blank" rel="noopener" aria-label="Instagram"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.linkedin) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.linkedin)} class="fab fa-linkedin me-2" target="_blank" rel="noopener" aria-label="Linkedin"></a>`);
+      if (settings.value.linkedin) {
+        _push(`<a${ssrRenderAttr("href", settings.value.linkedin)} class="fab fa-linkedin me-2" target="_blank" rel="noopener" aria-label="Linkedin"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings2.value.github) {
-        _push(`<a${ssrRenderAttr("href", settings2.value.github)} class="fab fa-github me-2" target="_blank" rel="noopener" aria-label="Github"></a>`);
+      if (settings.value.github) {
+        _push(`<a${ssrRenderAttr("href", settings.value.github)} class="fab fa-github me-2" target="_blank" rel="noopener" aria-label="Github"></a>`);
       } else {
         _push(`<!---->`);
       }
@@ -1248,7 +1258,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
     const posts = computed(() => page.props.posts || []);
@@ -1267,7 +1277,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -1338,8 +1348,17 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
     onMounted(() => {
       nextTick(() => {
         const isRTL = page.props.locale === "ar";
+        const applyOwlDotAriaLabels = ($carousel) => {
+          if (!$carousel || !$carousel.length) {
+            return;
+          }
+          $carousel.find(".owl-dot").each(function(index) {
+            $(this).attr("aria-label", `${trans("Go to slide")} ${index + 1}`);
+          });
+        };
         if (typeof $ !== "undefined" && $(".services-three__carousel").length) {
-          $(".services-three__carousel").owlCarousel({
+          const $servicesCarousel = $(".services-three__carousel");
+          $servicesCarousel.owlCarousel({
             loop: servicesCategories.value.length > 3,
             margin: 30,
             nav: false,
@@ -1355,13 +1374,13 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               1200: { items: 3 }
             }
           }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
-            $(this).find(".owl-dot").each(function(index) {
-              $(this).attr("aria-label", `Go to slide ${index + 1}`);
-            });
+            applyOwlDotAriaLabels($(this));
           });
+          applyOwlDotAriaLabels($servicesCarousel);
         }
         if (typeof $ !== "undefined" && $(".team-two__carousel").length && teams.value.length > 0) {
-          $(".team-two__carousel").owlCarousel({
+          const $teamCarousel = $(".team-two__carousel");
+          $teamCarousel.owlCarousel({
             loop: teams.value.length > 3,
             margin: 30,
             nav: false,
@@ -1377,13 +1396,13 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               1200: { items: 3 }
             }
           }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
-            $(this).find(".owl-dot").each(function(index) {
-              $(this).attr("aria-label", `Go to slide ${index + 1}`);
-            });
+            applyOwlDotAriaLabels($(this));
           });
+          applyOwlDotAriaLabels($teamCarousel);
         }
-        if (typeof $ !== "undefined" && $(".testimonial-two__carousel").length) {
-          $(".testimonial-two__carousel").owlCarousel({
+        if (typeof $ !== "undefined" && $(".testimonial-one__carousel").length) {
+          const $testimonialCarousel = $(".testimonial-one__carousel");
+          $testimonialCarousel.owlCarousel({
             loop: testimonials.value.length > 1,
             margin: 30,
             nav: false,
@@ -1399,10 +1418,9 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               1200: { items: 1 }
             }
           }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
-            $(this).find(".owl-dot").each(function(index) {
-              $(this).attr("aria-label", `Go to slide ${index + 1}`);
-            });
+            applyOwlDotAriaLabels($(this));
           });
+          applyOwlDotAriaLabels($testimonialCarousel);
         }
         if (typeof WOW !== "undefined") {
           new WOW().init();
@@ -1649,7 +1667,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               backgroundImage: `url(${asset_path.value}images/home/banner-bg.jpg)`
             })}"${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/shapes/banner-one-shape-bg.png)`
-            })}"${_scopeId}></div><div class="container"${_scopeId}><div class="banner-one__inner"${_scopeId}><h1 class="banner-one__title px-3"${_scopeId}>${ssrInterpolate(trans("Crafting Intelligent Technologies for the Future"))} <br${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Balanced, modern, includes web, mobile, AI, and cloud"))}</span></h1><div class="banner-one__btn-box mb-5"${_scopeId}>`);
+            })}"${_scopeId}></div><div class="container"${_scopeId}><div class="banner-one__inner"${_scopeId}><h1 class="banner-one__title px-4"${_scopeId}>${ssrInterpolate(trans("Crafting Intelligent Technologies for the Future"))} <br${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Balanced, modern, includes web, mobile, AI, and cloud"))}</span></h1><div class="banner-one__btn-box mb-5"${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "thm-btn"
@@ -1668,7 +1686,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</div></div></div></section><section class="about-three"${_scopeId}><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6"${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms"${_scopeId}><div class="about-three__img-box"${_scopeId}><div class="about-three__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))}${_scopeId}></div></div></div></div><div class="col-xl-6"${_scopeId}><div class="about-three__right"${_scopeId}><p class="about-three__text"${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2><p${_scopeId}>${ssrInterpolate(trans("Support & Consulting"))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2><p${_scopeId}>${ssrInterpolate(trans("Enterprises"))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Seamless Digital Transformation"))}</h2><p${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</p></div></li></ul><div class="about-three__btn-and-call-box"${_scopeId}><div class="about-three__btn-box"${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn"${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span></a></div><div class="about-three__call-box"${_scopeId}><div class="icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="content"${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings2.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
+            _push2(`</div></div></div></section><section class="about-three"${_scopeId}><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6"${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms"${_scopeId}><div class="about-three__img-box"${_scopeId}><div class="about-three__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))}${_scopeId}></div></div></div></div><div class="col-xl-6"${_scopeId}><div class="about-three__right"${_scopeId}><p class="about-three__text"${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box"${_scopeId}><div class="about-three__btn-box"${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn"${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span></a></div><div class="about-three__call-box"${_scopeId}><div class="icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="content"${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
             if (servicesCategories.value && servicesCategories.value.length) {
               _push2(`<section class="services-three"${_scopeId}><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title"${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
               ssrRenderList(servicesCategories.value, (servicesCategory) => {
@@ -1750,13 +1768,13 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="feature-one"${_scopeId}><div class="feature-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one"${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="cta-one__inner"${_scopeId}><h3 class="cta-one__title"${_scopeId}>${ssrInterpolate(trans("To make requests for further information, contact us"))}</h3><div class="cta-one__contact-info"${_scopeId}><div class="cta-one__contact-icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="cta-one__contact-details"${_scopeId}><p${_scopeId}>${ssrInterpolate(trans("Call Us For Any inquiry"))}</p><h4${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings2.value.phone)}</a></h4></div></div></div></div></section>`);
+            _push2(`<section class="feature-one"${_scopeId}><div class="feature-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one"${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="cta-one__inner"${_scopeId}><h3 class="cta-one__title"${_scopeId}>${ssrInterpolate(trans("To make requests for further information, contact us"))}</h3><div class="cta-one__contact-info"${_scopeId}><div class="cta-one__contact-icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="cta-one__contact-details"${_scopeId}><p${_scopeId}>${ssrInterpolate(trans("Call Us For Any inquiry"))}</p><h4${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
             if (testimonials.value && testimonials.value.length) {
-              _push2(`<section class="testimonial-one pb-5"${_scopeId}><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Customer Experiences"))} <br${_scopeId}> ${ssrInterpolate(trans("That"))} <span${_scopeId}>${ssrInterpolate(trans("Speak Volumes"))}</span></h2></div><div class="testimonial-two__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
+              _push2(`<section class="testimonial-one pb-5"${_scopeId}><div class="testimonial-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3"${_scopeId}></div><div class="col-xl-9"${_scopeId}><div class="testimonial-one__content-box"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="item"${_scopeId}><div class="testimonial-two__single"${_scopeId}><div class="testimonial-two__single-inner"${_scopeId}><div class="testimonial-two__star"${_scopeId}><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span></div><p class="testimonial-two__text"${_scopeId}>${ssrInterpolate(translateField(testimonial.quote))}</p></div><div class="testimonial-two__client-info"${_scopeId}><div class="testimonial-two__client-img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div><div class="testimonial-two__client-content"${_scopeId}><h3 class="h4 testimonial-two__client-name"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3><p class="testimonial-two__sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p></div></div><div class="testimonial-two__quote"${_scopeId}><span class="icon-right-quote"${_scopeId}></span></div></div></div>`);
+                _push2(`<div class="item"${_scopeId}><div class="testimonial-one__single"${_scopeId}><div class="testimonial-one__img-box"${_scopeId}><div class="testimonial-one__img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div></div><div class="testimonial-one__content"${_scopeId}><p class="testimonial-one__text"${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom"${_scopeId}><div class="testimonial-one__quote-and-client-info"${_scopeId}><div class="testimonial-one__quote"${_scopeId}><span class="icon-left"${_scopeId}></span></div><div class="testimonial-one__client-info"${_scopeId}><p class="testimonial-one__client-sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
               });
-              _push2(`<!--]--></div></div></section>`);
+              _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
@@ -1812,18 +1830,18 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<!---->`);
             }
             _push2(`<section class="contact-two"${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2"${_scopeId}><div class="contact-two__sliding-text-item"${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title"${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item"${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title"${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item"${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title"${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6"${_scopeId}><div class="contact-two__left"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text"${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled"${_scopeId}>`);
-            if (settings2.value.email) {
-              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings2.value.email}`)}${_scopeId}>${ssrInterpolate(settings2.value.email)}</a></p></div></li>`);
+            if (settings.value.email) {
+              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)}${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
-            if (settings2.value.phone) {
-              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings2.value.phone}`)}${_scopeId}>${ssrInterpolate(settings2.value.phone)}</a></p></div></li>`);
+            if (settings.value.phone) {
+              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)}${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
-            if (settings2.value.address) {
-              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p${_scopeId}>${ssrInterpolate(settings2.value.address)}</p></div></li>`);
+            if (settings.value.address) {
+              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
@@ -1887,7 +1905,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "banner-one__inner" }, [
-                    createVNode("h1", { class: "banner-one__title px-3" }, [
+                    createVNode("h1", { class: "banner-one__title px-4" }, [
                       createTextVNode(toDisplayString(trans("Crafting Intelligent Technologies for the Future")) + " ", 1),
                       createVNode("br"),
                       createVNode("span", null, toDisplayString(trans("Balanced, modern, includes web, mobile, AI, and cloud")), 1)
@@ -1937,8 +1955,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                               createVNode("span", { class: "icon-tick-inside-circle" })
                             ]),
                             createVNode("div", { class: "content" }, [
-                              createVNode("h2", { class: "h3" }, toDisplayString(trans("Innovative IT Solutions Expert")), 1),
-                              createVNode("p", null, toDisplayString(trans("Support & Consulting")), 1)
+                              createVNode("h2", { class: "h3" }, toDisplayString(trans("Innovative IT Solutions Expert")), 1)
                             ])
                           ]),
                           createVNode("li", null, [
@@ -1946,8 +1963,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                               createVNode("span", { class: "icon-tick-inside-circle" })
                             ]),
                             createVNode("div", { class: "content" }, [
-                              createVNode("h2", { class: "h3" }, toDisplayString(trans("Cloud Solutions for Modern")), 1),
-                              createVNode("p", null, toDisplayString(trans("Enterprises")), 1)
+                              createVNode("h2", { class: "h3" }, toDisplayString(trans("Cloud Solutions for Modern")), 1)
                             ])
                           ]),
                           createVNode("li", null, [
@@ -1955,8 +1971,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                               createVNode("span", { class: "icon-tick-inside-circle" })
                             ]),
                             createVNode("div", { class: "content" }, [
-                              createVNode("h2", { class: "h3" }, toDisplayString(trans("Seamless Digital Transformation")), 1),
-                              createVNode("p", null, toDisplayString(trans("AI-Driven Business Automation")), 1)
+                              createVNode("h2", { class: "h3" }, toDisplayString(trans("AI-Driven Business Automation")), 1)
                             ])
                           ])
                         ]),
@@ -1982,7 +1997,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                                 createVNode("a", {
                                   dir: "ltr",
                                   href: "tel:{{settings.phone}}"
-                                }, toDisplayString(settings2.value.phone), 1)
+                                }, toDisplayString(settings.value.phone), 1)
                               ])
                             ])
                           ])
@@ -2307,7 +2322,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                           createVNode("a", {
                             dir: "ltr",
                             href: "tel:{{settings.phone}}"
-                          }, toDisplayString(settings2.value.phone), 1)
+                          }, toDisplayString(settings.value.phone), 1)
                         ])
                       ])
                     ])
@@ -2318,57 +2333,62 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                 key: 2,
                 class: "testimonial-one pb-5"
               }, [
+                createVNode("div", { class: "testimonial-one__shape-2 float-bob-y" }, [
+                  createVNode("img", {
+                    src: asset_path.value + "images/shapes/testimonial-one-shape-2.png",
+                    alt: trans("Decorative shape")
+                  }, null, 8, ["src", "alt"])
+                ]),
                 createVNode("div", { class: "container" }, [
-                  createVNode("div", { class: "section-title text-center sec-title-animation animation-style1" }, [
-                    createVNode("div", { class: "section-title__tagline-box" }, [
-                      createVNode("div", { class: "section-title__tagline-shape-1" }),
-                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Testimonials")), 1),
-                      createVNode("div", { class: "section-title__tagline-shape-2" })
-                    ]),
-                    createVNode("h2", { class: "section-title__title title-animation" }, [
-                      createTextVNode(toDisplayString(trans("Customer Experiences")) + " ", 1),
-                      createVNode("br"),
-                      createTextVNode(" " + toDisplayString(trans("That")) + " ", 1),
-                      createVNode("span", null, toDisplayString(trans("Speak Volumes")), 1)
-                    ])
-                  ]),
-                  createVNode("div", { class: "testimonial-two__carousel owl-theme owl-carousel" }, [
-                    (openBlock(true), createBlock(Fragment, null, renderList(testimonials.value, (testimonial) => {
-                      return openBlock(), createBlock("div", {
-                        class: "item",
-                        key: testimonial.id
-                      }, [
-                        createVNode("div", { class: "testimonial-two__single" }, [
-                          createVNode("div", { class: "testimonial-two__single-inner" }, [
-                            createVNode("div", { class: "testimonial-two__star" }, [
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-pointed-star" })
-                            ]),
-                            createVNode("p", { class: "testimonial-two__text" }, toDisplayString(translateField(testimonial.quote)), 1)
+                  createVNode("div", { class: "row" }, [
+                    createVNode("div", { class: "col-xl-3" }),
+                    createVNode("div", { class: "col-xl-9" }, [
+                      createVNode("div", { class: "testimonial-one__content-box" }, [
+                        createVNode("div", { class: "section-title text-left sec-title-animation animation-style2" }, [
+                          createVNode("div", { class: "section-title__tagline-box" }, [
+                            createVNode("div", { class: "section-title__tagline-shape-1" }),
+                            createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Testimonials")), 1),
+                            createVNode("div", { class: "section-title__tagline-shape-2" })
                           ]),
-                          createVNode("div", { class: "testimonial-two__client-info" }, [
-                            createVNode("div", { class: "testimonial-two__client-img" }, [
-                              createVNode("img", {
-                                src: testimonial.avatar_link,
-                                alt: translateField(testimonial.name)
-                              }, null, 8, ["src", "alt"])
-                            ]),
-                            createVNode("div", { class: "testimonial-two__client-content" }, [
-                              createVNode("h3", { class: "h4 testimonial-two__client-name" }, [
-                                createVNode("a", { href: "#" }, toDisplayString(translateField(testimonial.name)), 1)
-                              ]),
-                              createVNode("p", { class: "testimonial-two__sub-title" }, toDisplayString(translateField(testimonial.position)), 1)
-                            ])
-                          ]),
-                          createVNode("div", { class: "testimonial-two__quote" }, [
-                            createVNode("span", { class: "icon-right-quote" })
-                          ])
+                          createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("What Our Clients Say")), 1)
+                        ]),
+                        createVNode("div", { class: "testimonial-one__carousel owl-theme owl-carousel" }, [
+                          (openBlock(true), createBlock(Fragment, null, renderList(testimonials.value, (testimonial) => {
+                            return openBlock(), createBlock("div", {
+                              class: "item",
+                              key: testimonial.id
+                            }, [
+                              createVNode("div", { class: "testimonial-one__single" }, [
+                                createVNode("div", { class: "testimonial-one__img-box" }, [
+                                  createVNode("div", { class: "testimonial-one__img" }, [
+                                    createVNode("img", {
+                                      src: testimonial.avatar_link,
+                                      alt: translateField(testimonial.name)
+                                    }, null, 8, ["src", "alt"])
+                                  ])
+                                ]),
+                                createVNode("div", { class: "testimonial-one__content" }, [
+                                  createVNode("p", { class: "testimonial-one__text" }, " “" + toDisplayString(translateField(testimonial.quote)) + "” ", 1),
+                                  createVNode("div", { class: "testimonial-one__bottom" }, [
+                                    createVNode("div", { class: "testimonial-one__quote-and-client-info" }, [
+                                      createVNode("div", { class: "testimonial-one__quote" }, [
+                                        createVNode("span", { class: "icon-left" })
+                                      ]),
+                                      createVNode("div", { class: "testimonial-one__client-info" }, [
+                                        createVNode("p", { class: "testimonial-one__client-sub-title" }, toDisplayString(translateField(testimonial.position)), 1),
+                                        createVNode("h3", { class: "testimonial-one__client-name" }, [
+                                          createVNode("a", { href: "#" }, toDisplayString(translateField(testimonial.name)), 1)
+                                        ])
+                                      ])
+                                    ])
+                                  ])
+                                ])
+                              ])
+                            ]);
+                          }), 128))
                         ])
-                      ]);
-                    }), 128))
+                      ])
+                    ])
                   ])
                 ])
               ])) : createCommentVNode("", true),
@@ -2480,7 +2500,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                         ]),
                         createVNode("p", { class: "contact-two__text" }, toDisplayString(trans("Fill out the form below and we'll get back to you as soon as possible")), 1),
                         createVNode("ul", { class: "contact-two__contact-list list-unstyled" }, [
-                          settings2.value.email ? (openBlock(), createBlock("li", { key: 0 }, [
+                          settings.value.email ? (openBlock(), createBlock("li", { key: 0 }, [
                             createVNode("div", { class: "icon" }, [
                               createVNode("span", { class: "icon-mail" })
                             ]),
@@ -2489,12 +2509,12 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                               createVNode("p", null, [
                                 createVNode("a", {
                                   dir: "ltr",
-                                  href: `mailto:${settings2.value.email}`
-                                }, toDisplayString(settings2.value.email), 9, ["href"])
+                                  href: `mailto:${settings.value.email}`
+                                }, toDisplayString(settings.value.email), 9, ["href"])
                               ])
                             ])
                           ])) : createCommentVNode("", true),
-                          settings2.value.phone ? (openBlock(), createBlock("li", { key: 1 }, [
+                          settings.value.phone ? (openBlock(), createBlock("li", { key: 1 }, [
                             createVNode("div", { class: "icon" }, [
                               createVNode("span", { class: "icon-phone-call" })
                             ]),
@@ -2503,18 +2523,18 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                               createVNode("p", null, [
                                 createVNode("a", {
                                   dir: "ltr",
-                                  href: `tel:${settings2.value.phone}`
-                                }, toDisplayString(settings2.value.phone), 9, ["href"])
+                                  href: `tel:${settings.value.phone}`
+                                }, toDisplayString(settings.value.phone), 9, ["href"])
                               ])
                             ])
                           ])) : createCommentVNode("", true),
-                          settings2.value.address ? (openBlock(), createBlock("li", { key: 2 }, [
+                          settings.value.address ? (openBlock(), createBlock("li", { key: 2 }, [
                             createVNode("div", { class: "icon" }, [
                               createVNode("span", { class: "icon-pin" })
                             ]),
                             createVNode("div", { class: "content" }, [
                               createVNode("h3", { class: "h4" }, toDisplayString(trans("Our Location")), 1),
-                              createVNode("p", null, toDisplayString(settings2.value.address), 1)
+                              createVNode("p", null, toDisplayString(settings.value.address), 1)
                             ])
                           ])) : createCommentVNode("", true)
                         ])
@@ -2708,6 +2728,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
+    const settings = computed(() => page.props.settings);
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
     const teams = computed(() => page.props.teams || []);
@@ -2745,8 +2766,17 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
     };
     onMounted(() => {
       nextTick(() => {
+        const applyOwlDotAriaLabels = ($carousel) => {
+          if (!$carousel || !$carousel.length) {
+            return;
+          }
+          $carousel.find(".owl-dot").each(function(index) {
+            $(this).attr("aria-label", `${trans("Go to slide")} ${index + 1}`);
+          });
+        };
         if (typeof $ !== "undefined" && $(".team-two__carousel").length && teams.value.length > 0) {
-          $(".team-two__carousel").owlCarousel({
+          const $teamCarousel = $(".team-two__carousel");
+          $teamCarousel.owlCarousel({
             loop: teams.value.length > 3,
             margin: 30,
             nav: false,
@@ -2762,13 +2792,13 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
               1200: { items: 3 }
             }
           }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
-            $(this).find(".owl-dot").each(function(index) {
-              $(this).attr("aria-label", `Go to slide ${index + 1}`);
-            });
+            applyOwlDotAriaLabels($(this));
           });
+          applyOwlDotAriaLabels($teamCarousel);
         }
-        if (typeof $ !== "undefined" && $(".testimonial-two__carousel").length && testimonials.value.length > 0) {
-          $(".testimonial-two__carousel").owlCarousel({
+        if (typeof $ !== "undefined" && $(".testimonial-one__carousel").length && testimonials.value.length > 0) {
+          const $testimonialCarousel = $(".testimonial-one__carousel");
+          $testimonialCarousel.owlCarousel({
             loop: testimonials.value.length > 1,
             margin: 30,
             nav: false,
@@ -2784,10 +2814,9 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
               1200: { items: 1 }
             }
           }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
-            $(this).find(".owl-dot").each(function(index) {
-              $(this).attr("aria-label", `Go to slide ${index + 1}`);
-            });
+            applyOwlDotAriaLabels($(this));
           });
+          applyOwlDotAriaLabels($testimonialCarousel);
         }
         if (typeof WOW !== "undefined") {
           new WOW().init();
@@ -2988,7 +3017,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><p class="about-four__text"${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><div class="about-four__points-box"${_scopeId}><ul class="about-four__points-list list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><p${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}<br${_scopeId}> ${ssrInterpolate(trans("Support & Consulting"))}</p></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><p${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}<br${_scopeId}> ${ssrInterpolate(trans("Enterprises"))}</p></li></ul><ul class="about-four__points-list about-four__points-list-2 list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><p${_scopeId}>${ssrInterpolate(trans("Seamless Digital"))}<br${_scopeId}> ${ssrInterpolate(trans("Transformation AI-Driven"))} <br${_scopeId}>${ssrInterpolate(trans("Business Automation"))}</p></li></ul></div><ul class="about-four__points-2 list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-technical-support"${_scopeId}></span></div><div class="content"${_scopeId}><h5${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions"))}</h5><p${_scopeId}>${ssrInterpolate(trans("Stay ahead with cutting-edge technology tailored to your business needs."))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-real-estate-agency"${_scopeId}></span></div><div class="content"${_scopeId}><h5${_scopeId}>${ssrInterpolate(trans("Cloud Solutions"))}</h5><p${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth."))}</p></div></li></ul></div></div></div></div></section><section class="why-choose-three"${_scopeId}><div class="why-choose-three__bg-shape float-bob-x" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/why-choose-three-bg-shape.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div>`);
+            _push2(`</div><p class="about-four__text"${_scopeId}>${ssrInterpolate(trans("Symfonix is a technology company that designs, builds, and scales digital systems where web, mobile, AI, and cloud work together instead of fighting each other. The name says it all: a symphony of technologies, orchestrated with intention."))}</p><h4 class="about-four__text mt-4"${_scopeId}>${ssrInterpolate(trans("Core Values (This is non-negotiable stuff)"))}</h4><ul class="about-four__points-2 list-unstyled about-four__points-box"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-technical-support"${_scopeId}></span></div><div class="content"${_scopeId}><h5${_scopeId}>${ssrInterpolate(trans("Harmony over chaos"))}</h5><p${_scopeId}>${ssrInterpolate(trans("Every solution must be coherent. No messy stacks, no duct-tape architectures."))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-quality"${_scopeId}></span></div><div class="content"${_scopeId}><h5${_scopeId}>${ssrInterpolate(trans("Engineering first"))}</h5><p${_scopeId}>${ssrInterpolate(trans("Pretty UI is great, but solid architecture, performance, and maintainability come first."))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-customer-centricity"${_scopeId}></span></div><div class="content"${_scopeId}><h5${_scopeId}>${ssrInterpolate(trans("Truth & clarity"))}</h5><p${_scopeId}>${ssrInterpolate(trans("We say what's possible, what's risky, and what's unnecessary. No tech theater."))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-support"${_scopeId}></span></div><div class="content"${_scopeId}><h5${_scopeId}>${ssrInterpolate(trans("Continuous learning"))}</h5><p${_scopeId}>${ssrInterpolate(trans("AI, cloud, and software evolve fast. We evolve faster."))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-real-estate-agency"${_scopeId}></span></div><div class="content"${_scopeId}><h5${_scopeId}>${ssrInterpolate(trans("Global mindset, local roots"))}</h5><p${_scopeId}>${ssrInterpolate(trans("Built in Syria. Designed for the world."))}</p></div></li></ul></div></div></div></div></section><section class="why-choose-three"${_scopeId}><div class="why-choose-three__bg-shape float-bob-x" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/why-choose-three-bg-shape.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div>`);
             if (locale.value !== "ar") {
               _push2(`<h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Your Business with"))} <span${_scopeId}>${ssrInterpolate(trans("Reliable &"))}</span><br${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Future-Ready"))}</span> ${ssrInterpolate(trans("IT Solutions"))}</h2>`);
             } else {
@@ -3048,13 +3077,13 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
             } else {
               _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}/contact-us`)} class="thm-btn"${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId}></span></a>`);
             }
-            _push2(`</div></div></div><div class="col-xl-7"${_scopeId}><div class="process-one__right"${_scopeId}><ul class="process-one__process-list list-unstyled"${_scopeId}><li${_scopeId}><div class="process-one__process-count"${_scopeId}></div><div class="process-one__process-content"${_scopeId}><h3 class="process-one__process-title"${_scopeId}>${ssrInterpolate(trans("Discovery & Strategy"))}</h3><p class="process-one__process-text"${_scopeId}>${ssrInterpolate(trans("We analyze your business needs, identify challenges, and craft a strategic roadmap for the best IT solutions."))}</p></div></li><li${_scopeId}><div class="process-one__process-content"${_scopeId}><h3 class="process-one__process-title"${_scopeId}>${ssrInterpolate(trans("Development"))}</h3><p class="process-one__process-text"${_scopeId}>${ssrInterpolate(trans("Our expert team designs, develops, and integrates cutting-edge technology tailored to your goals."))}</p></div><div class="process-one__process-count"${_scopeId}></div></li><li${_scopeId}><div class="process-one__process-count"${_scopeId}></div><div class="process-one__process-content"${_scopeId}><h3 class="process-one__process-title"${_scopeId}>${ssrInterpolate(trans("Optimization & Support"))}</h3><p class="process-one__process-text"${_scopeId}>${ssrInterpolate(trans("We ensure seamless performance with continuous improvements, maintenance, and dedicated support."))}</p></div></li></ul></div></div></div></div></section>`);
+            _push2(`</div></div></div><div class="col-xl-7"${_scopeId}><div class="process-one__right"${_scopeId}><ul class="process-one__process-list list-unstyled"${_scopeId}><li${_scopeId}><div class="process-one__process-count"${_scopeId}></div><div class="process-one__process-content"${_scopeId}><h3 class="process-one__process-title"${_scopeId}>${ssrInterpolate(trans("Discovery & Strategy"))}</h3><p class="process-one__process-text"${_scopeId}>${ssrInterpolate(trans("We analyze your business needs, identify challenges, and craft a strategic roadmap for the best IT solutions."))}</p></div></li><li${_scopeId}><div class="process-one__process-content"${_scopeId}><h3 class="process-one__process-title"${_scopeId}>${ssrInterpolate(trans("Development"))}</h3><p class="process-one__process-text"${_scopeId}>${ssrInterpolate(trans("Our expert team designs, develops, and integrates cutting-edge technology tailored to your goals."))}</p></div><div class="process-one__process-count"${_scopeId}></div></li><li${_scopeId}><div class="process-one__process-count"${_scopeId}></div><div class="process-one__process-content"${_scopeId}><h3 class="process-one__process-title"${_scopeId}>${ssrInterpolate(trans("Optimization & Support"))}</h3><p class="process-one__process-text"${_scopeId}>${ssrInterpolate(trans("We ensure seamless performance with continuous improvements, maintenance, and dedicated support."))}</p></div></li></ul></div></div></div></div></section><section class="cta-one"${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="cta-one__inner"${_scopeId}><h3 class="cta-one__title"${_scopeId}>${ssrInterpolate(trans("To make requests for further information, contact us"))}</h3><div class="cta-one__contact-info"${_scopeId}><div class="cta-one__contact-icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="cta-one__contact-details"${_scopeId}><p${_scopeId}>${ssrInterpolate(trans("Call Us For Any inquiry"))}</p><h4${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
             if (testimonials.value && testimonials.value.length > 0) {
-              _push2(`<section class="testimonial-two"${_scopeId}><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Customer Experiences"))} <br${_scopeId}> ${ssrInterpolate(trans("That"))} <span${_scopeId}>${ssrInterpolate(trans("Speak Volumes"))}</span></h2></div><div class="testimonial-two__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
+              _push2(`<section class="testimonial-one pb-3"${_scopeId}><div class="testimonial-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3"${_scopeId}></div><div class="col-xl-9"${_scopeId}><div class="testimonial-one__content-box"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="item"${_scopeId}><div class="testimonial-two__single"${_scopeId}><div class="testimonial-two__single-inner"${_scopeId}><div class="testimonial-two__star"${_scopeId}><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-star"${_scopeId}></span><span class="icon-star"${_scopeId}></span></div><p class="testimonial-two__text"${_scopeId}>${ssrInterpolate(translateField(testimonial.quote))}</p></div><div class="testimonial-two__client-info"${_scopeId}><div class="testimonial-two__client-img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div><div class="testimonial-two__client-content"${_scopeId}><h3 class="h4 testimonial-two__client-name"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3><p class="testimonial-two__sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p></div></div><div class="testimonial-two__quote"${_scopeId}><span class="icon-right-quote"${_scopeId}></span></div></div></div>`);
+                _push2(`<div class="item"${_scopeId}><div class="testimonial-one__single"${_scopeId}><div class="testimonial-one__img-box"${_scopeId}><div class="testimonial-one__img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div></div><div class="testimonial-one__content"${_scopeId}><p class="testimonial-one__text"${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom"${_scopeId}><div class="testimonial-one__quote-and-client-info"${_scopeId}><div class="testimonial-one__quote"${_scopeId}><span class="icon-left"${_scopeId}></span></div><div class="testimonial-one__client-info"${_scopeId}><p class="testimonial-one__client-sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
               });
-              _push2(`<!--]--></div></div></section>`);
+              _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
@@ -3152,53 +3181,43 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
                             createTextVNode(" " + toDisplayString(trans("Solutions")), 1)
                           ])) : createCommentVNode("", true)
                         ]),
-                        createVNode("p", { class: "about-four__text" }, toDisplayString(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape.")), 1),
-                        createVNode("div", { class: "about-four__points-box" }, [
-                          createVNode("ul", { class: "about-four__points-list list-unstyled" }, [
-                            createVNode("li", null, [
-                              createVNode("div", { class: "icon" }, [
-                                createVNode("span", { class: "icon-tick-inside-circle" })
-                              ]),
-                              createVNode("p", null, [
-                                createTextVNode(toDisplayString(trans("Innovative IT Solutions Expert")), 1),
-                                createVNode("br"),
-                                createTextVNode(" " + toDisplayString(trans("Support & Consulting")), 1)
-                              ])
-                            ]),
-                            createVNode("li", null, [
-                              createVNode("div", { class: "icon" }, [
-                                createVNode("span", { class: "icon-tick-inside-circle" })
-                              ]),
-                              createVNode("p", null, [
-                                createTextVNode(toDisplayString(trans("Cloud Solutions for Modern")), 1),
-                                createVNode("br"),
-                                createTextVNode(" " + toDisplayString(trans("Enterprises")), 1)
-                              ])
-                            ])
-                          ]),
-                          createVNode("ul", { class: "about-four__points-list about-four__points-list-2 list-unstyled" }, [
-                            createVNode("li", null, [
-                              createVNode("div", { class: "icon" }, [
-                                createVNode("span", { class: "icon-tick-inside-circle" })
-                              ]),
-                              createVNode("p", null, [
-                                createTextVNode(toDisplayString(trans("Seamless Digital")), 1),
-                                createVNode("br"),
-                                createTextVNode(" " + toDisplayString(trans("Transformation AI-Driven")) + " ", 1),
-                                createVNode("br"),
-                                createTextVNode(toDisplayString(trans("Business Automation")), 1)
-                              ])
-                            ])
-                          ])
-                        ]),
-                        createVNode("ul", { class: "about-four__points-2 list-unstyled" }, [
+                        createVNode("p", { class: "about-four__text" }, toDisplayString(trans("Symfonix is a technology company that designs, builds, and scales digital systems where web, mobile, AI, and cloud work together instead of fighting each other. The name says it all: a symphony of technologies, orchestrated with intention.")), 1),
+                        createVNode("h4", { class: "about-four__text mt-4" }, toDisplayString(trans("Core Values (This is non-negotiable stuff)")), 1),
+                        createVNode("ul", { class: "about-four__points-2 list-unstyled about-four__points-box" }, [
                           createVNode("li", null, [
                             createVNode("div", { class: "icon" }, [
                               createVNode("span", { class: "icon-technical-support" })
                             ]),
                             createVNode("div", { class: "content" }, [
-                              createVNode("h5", null, toDisplayString(trans("Innovative IT Solutions")), 1),
-                              createVNode("p", null, toDisplayString(trans("Stay ahead with cutting-edge technology tailored to your business needs.")), 1)
+                              createVNode("h5", null, toDisplayString(trans("Harmony over chaos")), 1),
+                              createVNode("p", null, toDisplayString(trans("Every solution must be coherent. No messy stacks, no duct-tape architectures.")), 1)
+                            ])
+                          ]),
+                          createVNode("li", null, [
+                            createVNode("div", { class: "icon" }, [
+                              createVNode("span", { class: "icon-quality" })
+                            ]),
+                            createVNode("div", { class: "content" }, [
+                              createVNode("h5", null, toDisplayString(trans("Engineering first")), 1),
+                              createVNode("p", null, toDisplayString(trans("Pretty UI is great, but solid architecture, performance, and maintainability come first.")), 1)
+                            ])
+                          ]),
+                          createVNode("li", null, [
+                            createVNode("div", { class: "icon" }, [
+                              createVNode("span", { class: "icon-customer-centricity" })
+                            ]),
+                            createVNode("div", { class: "content" }, [
+                              createVNode("h5", null, toDisplayString(trans("Truth & clarity")), 1),
+                              createVNode("p", null, toDisplayString(trans("We say what's possible, what's risky, and what's unnecessary. No tech theater.")), 1)
+                            ])
+                          ]),
+                          createVNode("li", null, [
+                            createVNode("div", { class: "icon" }, [
+                              createVNode("span", { class: "icon-support" })
+                            ]),
+                            createVNode("div", { class: "content" }, [
+                              createVNode("h5", null, toDisplayString(trans("Continuous learning")), 1),
+                              createVNode("p", null, toDisplayString(trans("AI, cloud, and software evolve fast. We evolve faster.")), 1)
                             ])
                           ]),
                           createVNode("li", null, [
@@ -3206,8 +3225,8 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
                               createVNode("span", { class: "icon-real-estate-agency" })
                             ]),
                             createVNode("div", { class: "content" }, [
-                              createVNode("h5", null, toDisplayString(trans("Cloud Solutions")), 1),
-                              createVNode("p", null, toDisplayString(trans("Secure, scalable, and efficient cloud services to power your growth.")), 1)
+                              createVNode("h5", null, toDisplayString(trans("Global mindset, local roots")), 1),
+                              createVNode("p", null, toDisplayString(trans("Built in Syria. Designed for the world.")), 1)
                             ])
                           ])
                         ])
@@ -3478,61 +3497,91 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
                   ])
                 ])
               ]),
+              createVNode("section", { class: "cta-one" }, [
+                createVNode("div", {
+                  class: "cta-one__shape-bg float-bob-y",
+                  style: { backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "cta-one__inner" }, [
+                    createVNode("h3", { class: "cta-one__title" }, toDisplayString(trans("To make requests for further information, contact us")), 1),
+                    createVNode("div", { class: "cta-one__contact-info" }, [
+                      createVNode("div", { class: "cta-one__contact-icon" }, [
+                        createVNode("span", { class: "icon-customer-service-headset" })
+                      ]),
+                      createVNode("div", { class: "cta-one__contact-details" }, [
+                        createVNode("p", null, toDisplayString(trans("Call Us For Any inquiry")), 1),
+                        createVNode("h4", null, [
+                          createVNode("a", {
+                            dir: "ltr",
+                            href: "tel:{{settings.phone}}"
+                          }, toDisplayString(settings.value.phone), 1)
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
               testimonials.value && testimonials.value.length > 0 ? (openBlock(), createBlock("section", {
                 key: 1,
-                class: "testimonial-two"
+                class: "testimonial-one pb-3"
               }, [
+                createVNode("div", { class: "testimonial-one__shape-2 float-bob-y" }, [
+                  createVNode("img", {
+                    src: asset_path.value + "images/shapes/testimonial-one-shape-2.png",
+                    alt: trans("Decorative shape")
+                  }, null, 8, ["src", "alt"])
+                ]),
                 createVNode("div", { class: "container" }, [
-                  createVNode("div", { class: "section-title text-center sec-title-animation animation-style1" }, [
-                    createVNode("div", { class: "section-title__tagline-box" }, [
-                      createVNode("div", { class: "section-title__tagline-shape-1" }),
-                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Testimonials")), 1),
-                      createVNode("div", { class: "section-title__tagline-shape-2" })
-                    ]),
-                    createVNode("h2", { class: "section-title__title title-animation" }, [
-                      createTextVNode(toDisplayString(trans("Customer Experiences")) + " ", 1),
-                      createVNode("br"),
-                      createTextVNode(" " + toDisplayString(trans("That")) + " ", 1),
-                      createVNode("span", null, toDisplayString(trans("Speak Volumes")), 1)
-                    ])
-                  ]),
-                  createVNode("div", { class: "testimonial-two__carousel owl-theme owl-carousel" }, [
-                    (openBlock(true), createBlock(Fragment, null, renderList(testimonials.value, (testimonial) => {
-                      return openBlock(), createBlock("div", {
-                        class: "item",
-                        key: testimonial.id
-                      }, [
-                        createVNode("div", { class: "testimonial-two__single" }, [
-                          createVNode("div", { class: "testimonial-two__single-inner" }, [
-                            createVNode("div", { class: "testimonial-two__star" }, [
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-star" }),
-                              createVNode("span", { class: "icon-star" })
-                            ]),
-                            createVNode("p", { class: "testimonial-two__text" }, toDisplayString(translateField(testimonial.quote)), 1)
+                  createVNode("div", { class: "row" }, [
+                    createVNode("div", { class: "col-xl-3" }),
+                    createVNode("div", { class: "col-xl-9" }, [
+                      createVNode("div", { class: "testimonial-one__content-box" }, [
+                        createVNode("div", { class: "section-title text-left sec-title-animation animation-style2" }, [
+                          createVNode("div", { class: "section-title__tagline-box" }, [
+                            createVNode("div", { class: "section-title__tagline-shape-1" }),
+                            createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Testimonials")), 1),
+                            createVNode("div", { class: "section-title__tagline-shape-2" })
                           ]),
-                          createVNode("div", { class: "testimonial-two__client-info" }, [
-                            createVNode("div", { class: "testimonial-two__client-img" }, [
-                              createVNode("img", {
-                                src: testimonial.avatar_link,
-                                alt: translateField(testimonial.name)
-                              }, null, 8, ["src", "alt"])
-                            ]),
-                            createVNode("div", { class: "testimonial-two__client-content" }, [
-                              createVNode("h3", { class: "h4 testimonial-two__client-name" }, [
-                                createVNode("a", { href: "#" }, toDisplayString(translateField(testimonial.name)), 1)
-                              ]),
-                              createVNode("p", { class: "testimonial-two__sub-title" }, toDisplayString(translateField(testimonial.position)), 1)
-                            ])
-                          ]),
-                          createVNode("div", { class: "testimonial-two__quote" }, [
-                            createVNode("span", { class: "icon-right-quote" })
-                          ])
+                          createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("What Our Clients Say")), 1)
+                        ]),
+                        createVNode("div", { class: "testimonial-one__carousel owl-theme owl-carousel" }, [
+                          (openBlock(true), createBlock(Fragment, null, renderList(testimonials.value, (testimonial) => {
+                            return openBlock(), createBlock("div", {
+                              class: "item",
+                              key: testimonial.id
+                            }, [
+                              createVNode("div", { class: "testimonial-one__single" }, [
+                                createVNode("div", { class: "testimonial-one__img-box" }, [
+                                  createVNode("div", { class: "testimonial-one__img" }, [
+                                    createVNode("img", {
+                                      src: testimonial.avatar_link,
+                                      alt: translateField(testimonial.name)
+                                    }, null, 8, ["src", "alt"])
+                                  ])
+                                ]),
+                                createVNode("div", { class: "testimonial-one__content" }, [
+                                  createVNode("p", { class: "testimonial-one__text" }, " “" + toDisplayString(translateField(testimonial.quote)) + "” ", 1),
+                                  createVNode("div", { class: "testimonial-one__bottom" }, [
+                                    createVNode("div", { class: "testimonial-one__quote-and-client-info" }, [
+                                      createVNode("div", { class: "testimonial-one__quote" }, [
+                                        createVNode("span", { class: "icon-left" })
+                                      ]),
+                                      createVNode("div", { class: "testimonial-one__client-info" }, [
+                                        createVNode("p", { class: "testimonial-one__client-sub-title" }, toDisplayString(translateField(testimonial.position)), 1),
+                                        createVNode("h3", { class: "testimonial-one__client-name" }, [
+                                          createVNode("a", { href: "#" }, toDisplayString(translateField(testimonial.name)), 1)
+                                        ])
+                                      ])
+                                    ])
+                                  ])
+                                ])
+                              ])
+                            ]);
+                          }), 128))
                         ])
-                      ]);
-                    }), 128))
+                      ])
+                    ])
                   ])
                 ])
               ])) : createCommentVNode("", true)
@@ -3568,7 +3617,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const blogs = computed(() => page.props.blogs);
@@ -3584,7 +3633,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -4672,7 +4721,7 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
     const asset_path = computed(() => page.props.asset_path || "");
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const locale = computed(() => page.props.locale);
     const meta = computed(() => page.props.meta || {});
     const metaTitle = computed(() => {
@@ -4686,7 +4735,7 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -4810,7 +4859,7 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
             } else {
               _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}`)} data-v-b99b5a4e${_scopeId}><i class="fas fa-home" data-v-b99b5a4e${_scopeId}></i>${ssrInterpolate(trans("Home"))}</a>`);
             }
-            _push2(`</li><li data-v-b99b5a4e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-b99b5a4e${_scopeId}></span></li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</li></ul></div></div></div></section><section class="privacy-policy my-5" data-v-b99b5a4e${_scopeId}><div class="container" data-v-b99b5a4e${_scopeId}><div class="row" data-v-b99b5a4e${_scopeId}><div class="col-xl-12" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__content" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__text" data-v-b99b5a4e${_scopeId}><p class="privacy-policy__last-updated" data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Last Updated:"))}</strong> ${ssrInterpolate((/* @__PURE__ */ new Date()).toLocaleDateString())}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("1. Introduction"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Welcome to our Privacy Policy. This document explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("2. Information We Collect"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may collect information about you in a variety of ways. The information we may collect on the site includes:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Personal Data"))}</strong>: ${ssrInterpolate(trans("Personally identifiable information, such as your name, email address, phone number, and demographic information that you voluntarily give to us when you register with the site or when you choose to participate in various activities related to the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Derivative Data"))}</strong>: ${ssrInterpolate(trans("Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Financial Data"))}</strong>: ${ssrInterpolate(trans("Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Mobile Device Data"))}</strong>: ${ssrInterpolate(trans("Device information, such as your mobile device ID, model, and manufacturer, and information about the location of your device, if you access the site from a mobile device."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("3. How We Use Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the site to:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Create and manage your account"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Process your transactions and send you related information"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email you regarding your account or order"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Fulfill and manage purchases, orders, payments, and other transactions related to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Generate a personal profile about you to make future visits more personalized"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Increase the efficiency and operation of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Monitor and analyze usage and trends to improve your experience with the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Notify you of updates to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Perform other business activities as needed"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Request feedback and contact you about your use of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Resolve disputes and troubleshoot problems"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Respond to product and customer service requests"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Send you a newsletter"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Solicit support for the site"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("4. Disclosure of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may share information we have collected about you in certain situations. Your information may be disclosed as follows:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("By Law or to Protect Rights"))}</strong>: ${ssrInterpolate(trans("If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Third-Party Service Providers"))}</strong>: ${ssrInterpolate(trans("We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Transfers"))}</strong>: ${ssrInterpolate(trans("We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Affiliates"))}</strong>: ${ssrInterpolate(trans("We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any subsidiaries, joint venture partners, or other companies that we control or that are under common control with us."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Partners"))}</strong>: ${ssrInterpolate(trans("We may share your information with our business partners to offer you certain products, services, or promotions."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("5. Security of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse. Any information disclosed online is vulnerable to interception and misuse by unauthorized parties. Therefore, we cannot guarantee complete security if you provide personal information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("6. Policy for Children"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible. If you become aware of any data we have collected from children under age 13, please contact us."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("7. Your Rights"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Depending on your location, you may have the following rights regarding your personal information:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to access – You have the right to request copies of your personal data"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to rectification – You have the right to request that we correct any information you believe is inaccurate"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to erasure – You have the right to request that we erase your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("8. Cookies and Tracking Technologies"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may use cookies, web beacons, tracking pixels, and other tracking technologies on the site to help customize the site and improve your experience. When you access the site, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("9. Third-Party Websites"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The site may contain links to third-party websites and applications of interest, including advertisements and external services, that are not affiliated with us. Once you have used these links to leave the site, any information you provide to these third parties is not covered by this Privacy Policy, and we cannot guarantee the safety and privacy of your information. Before visiting and providing any information to any third-party websites, you should inform yourself of the privacy policies and practices (if any) of the third party responsible for that website, and should take those steps necessary to, in your discretion, protect the privacy of your information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("10. Changes to This Privacy Policy"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans('We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.'))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("11. Contact Us"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("If you have questions or comments about this Privacy Policy, please contact us at:"))}</p><p data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email:"))}</strong> ${ssrInterpolate((_a = settings2.value) == null ? void 0 : _a.email)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Phone:"))}</strong> ${ssrInterpolate((_b = settings2.value) == null ? void 0 : _b.phone)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Address:"))}</strong> ${ssrInterpolate((_c = settings2.value) == null ? void 0 : _c.address)}</p></div></div></div></div></div></section>`);
+            _push2(`</li><li data-v-b99b5a4e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-b99b5a4e${_scopeId}></span></li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</li></ul></div></div></div></section><section class="privacy-policy my-5" data-v-b99b5a4e${_scopeId}><div class="container" data-v-b99b5a4e${_scopeId}><div class="row" data-v-b99b5a4e${_scopeId}><div class="col-xl-12" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__content" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__text" data-v-b99b5a4e${_scopeId}><p class="privacy-policy__last-updated" data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Last Updated:"))}</strong> ${ssrInterpolate((/* @__PURE__ */ new Date()).toLocaleDateString())}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("1. Introduction"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Welcome to our Privacy Policy. This document explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("2. Information We Collect"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may collect information about you in a variety of ways. The information we may collect on the site includes:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Personal Data"))}</strong>: ${ssrInterpolate(trans("Personally identifiable information, such as your name, email address, phone number, and demographic information that you voluntarily give to us when you register with the site or when you choose to participate in various activities related to the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Derivative Data"))}</strong>: ${ssrInterpolate(trans("Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Financial Data"))}</strong>: ${ssrInterpolate(trans("Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Mobile Device Data"))}</strong>: ${ssrInterpolate(trans("Device information, such as your mobile device ID, model, and manufacturer, and information about the location of your device, if you access the site from a mobile device."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("3. How We Use Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the site to:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Create and manage your account"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Process your transactions and send you related information"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email you regarding your account or order"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Fulfill and manage purchases, orders, payments, and other transactions related to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Generate a personal profile about you to make future visits more personalized"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Increase the efficiency and operation of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Monitor and analyze usage and trends to improve your experience with the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Notify you of updates to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Perform other business activities as needed"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Request feedback and contact you about your use of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Resolve disputes and troubleshoot problems"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Respond to product and customer service requests"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Send you a newsletter"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Solicit support for the site"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("4. Disclosure of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may share information we have collected about you in certain situations. Your information may be disclosed as follows:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("By Law or to Protect Rights"))}</strong>: ${ssrInterpolate(trans("If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Third-Party Service Providers"))}</strong>: ${ssrInterpolate(trans("We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Transfers"))}</strong>: ${ssrInterpolate(trans("We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Affiliates"))}</strong>: ${ssrInterpolate(trans("We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any subsidiaries, joint venture partners, or other companies that we control or that are under common control with us."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Partners"))}</strong>: ${ssrInterpolate(trans("We may share your information with our business partners to offer you certain products, services, or promotions."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("5. Security of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse. Any information disclosed online is vulnerable to interception and misuse by unauthorized parties. Therefore, we cannot guarantee complete security if you provide personal information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("6. Policy for Children"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible. If you become aware of any data we have collected from children under age 13, please contact us."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("7. Your Rights"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Depending on your location, you may have the following rights regarding your personal information:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to access – You have the right to request copies of your personal data"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to rectification – You have the right to request that we correct any information you believe is inaccurate"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to erasure – You have the right to request that we erase your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("8. Cookies and Tracking Technologies"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may use cookies, web beacons, tracking pixels, and other tracking technologies on the site to help customize the site and improve your experience. When you access the site, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("9. Third-Party Websites"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The site may contain links to third-party websites and applications of interest, including advertisements and external services, that are not affiliated with us. Once you have used these links to leave the site, any information you provide to these third parties is not covered by this Privacy Policy, and we cannot guarantee the safety and privacy of your information. Before visiting and providing any information to any third-party websites, you should inform yourself of the privacy policies and practices (if any) of the third party responsible for that website, and should take those steps necessary to, in your discretion, protect the privacy of your information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("10. Changes to This Privacy Policy"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans('We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.'))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("11. Contact Us"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("If you have questions or comments about this Privacy Policy, please contact us at:"))}</p><p data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email:"))}</strong> ${ssrInterpolate((_a = settings.value) == null ? void 0 : _a.email)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Phone:"))}</strong> ${ssrInterpolate((_b = settings.value) == null ? void 0 : _b.phone)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Address:"))}</strong> ${ssrInterpolate((_c = settings.value) == null ? void 0 : _c.address)}</p></div></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -4950,13 +4999,13 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
                           createVNode("p", null, toDisplayString(trans("If you have questions or comments about this Privacy Policy, please contact us at:")), 1),
                           createVNode("p", null, [
                             createVNode("strong", null, toDisplayString(trans("Email:")), 1),
-                            createTextVNode(" " + toDisplayString((_d = settings2.value) == null ? void 0 : _d.email), 1),
+                            createTextVNode(" " + toDisplayString((_d = settings.value) == null ? void 0 : _d.email), 1),
                             createVNode("br"),
                             createVNode("strong", null, toDisplayString(trans("Phone:")), 1),
-                            createTextVNode(" " + toDisplayString((_e = settings2.value) == null ? void 0 : _e.phone), 1),
+                            createTextVNode(" " + toDisplayString((_e = settings.value) == null ? void 0 : _e.phone), 1),
                             createVNode("br"),
                             createVNode("strong", null, toDisplayString(trans("Address:")), 1),
-                            createTextVNode(" " + toDisplayString((_f = settings2.value) == null ? void 0 : _f.address), 1)
+                            createTextVNode(" " + toDisplayString((_f = settings.value) == null ? void 0 : _f.address), 1)
                           ])
                         ])
                       ])
@@ -4996,7 +5045,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
     const teams = computed(() => page.props.teams || []);
@@ -5012,7 +5061,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -5340,7 +5389,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
     const testimonials = computed(() => page.props.testimonials || []);
@@ -5356,7 +5405,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -5631,7 +5680,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const categories = computed(() => page.props.categories || []);
@@ -5648,7 +5697,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -6224,7 +6273,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const service = computed(() => page.props.service);
@@ -6244,7 +6293,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
     });
     computed(() => {
       var _a, _b, _c, _d, _e, _f;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = service.value) == null ? void 0 : _e.image_link) || ((_f = settings2.value) == null ? void 0 : _f.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = service.value) == null ? void 0 : _e.image_link) || ((_f = settings.value) == null ? void 0 : _f.meta_img) || "";
     });
     computed(() => meta.value.canonical || "");
     computed(() => meta.value.robots || "index, follow");
@@ -6327,8 +6376,8 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
     };
     onMounted(() => {
       nextTick(() => {
-        if (typeof $ !== "undefined" && $(".testimonial-two__carousel").length && testimonials.value.length) {
-          $(".testimonial-two__carousel").owlCarousel({
+        if (typeof $ !== "undefined" && $(".testimonial-one__carousel").length && testimonials.value.length) {
+          $(".testimonial-one__carousel").owlCarousel({
             loop: testimonials.value.length > 1,
             margin: 30,
             nav: false,
@@ -6445,7 +6494,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               }, _parent2, _scopeId));
               _push2(`</li>`);
             });
-            _push2(`<!--]--></ul></div><div class="services-details__need-help"${_scopeId}><div class="services-details__need-help-img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/need_help.jpg")}${ssrRenderAttr("alt", trans("Need help"))}${_scopeId}><div class="services-details__need-help-content"${_scopeId}><div class="services-details__need-help-bdr"${_scopeId}></div><h3 class="services-details__need-help-title"${_scopeId}>${ssrInterpolate(trans("Need Help?"))}</h3><p class="services-details__need-help-number"${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings2.value.website_phone || settings2.value.phone}`)}${_scopeId}>${ssrInterpolate(settings2.value.website_phone || settings2.value.phone || "+12 (00) 345 789034")}</a></p></div></div></div></div></div><div class="col-xl-8 col-lg-7"${_scopeId}><div class="services-details__right"${_scopeId}><h3 class="services-details__title-1"${_scopeId}>${ssrInterpolate(getServiceTitle(service.value))}</h3><div class="services-details__bdr"${_scopeId}></div>`);
+            _push2(`<!--]--></ul></div><div class="services-details__need-help"${_scopeId}><div class="services-details__need-help-img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/need_help.jpg")}${ssrRenderAttr("alt", trans("Need help"))}${_scopeId}><div class="services-details__need-help-content"${_scopeId}><div class="services-details__need-help-bdr"${_scopeId}></div><h3 class="services-details__need-help-title"${_scopeId}>${ssrInterpolate(trans("Need Help?"))}</h3><p class="services-details__need-help-number"${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.website_phone || settings.value.phone}`)}${_scopeId}>${ssrInterpolate(settings.value.website_phone || settings.value.phone || "+12 (00) 345 789034")}</a></p></div></div></div></div></div><div class="col-xl-8 col-lg-7"${_scopeId}><div class="services-details__right"${_scopeId}><h3 class="services-details__title-1"${_scopeId}>${ssrInterpolate(getServiceTitle(service.value))}</h3><div class="services-details__bdr"${_scopeId}></div>`);
             if (service.value.reading_time) {
               _push2(`<ul class="blog-details__meta list-unstyled"${_scopeId}><li${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), null, {
@@ -6493,11 +6542,11 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               _push2(`<!---->`);
             }
             if (testimonials.value && testimonials.value.length) {
-              _push2(`<section class="testimonial-two"${_scopeId}><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Customer Experiences"))} <br${_scopeId}> ${ssrInterpolate(trans("That"))} <span${_scopeId}>${ssrInterpolate(trans("Speak Volumes"))}</span></h2></div><div class="testimonial-two__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
+              _push2(`<section class="testimonial-one"${_scopeId}><div class="testimonial-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3"${_scopeId}></div><div class="col-xl-9"${_scopeId}><div class="testimonial-one__content-box"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="item"${_scopeId}><div class="testimonial-two__single"${_scopeId}><div class="testimonial-two__single-inner"${_scopeId}><div class="testimonial-two__star"${_scopeId}><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-star"${_scopeId}></span><span class="icon-star"${_scopeId}></span></div><p class="testimonial-two__text"${_scopeId}>${ssrInterpolate(translateField(testimonial.quote))}</p></div><div class="testimonial-two__client-info"${_scopeId}><div class="testimonial-two__client-img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div><div class="testimonial-two__client-content"${_scopeId}><h4 class="testimonial-two__client-name"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</h4><p class="testimonial-two__sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p></div></div><div class="testimonial-two__quote"${_scopeId}><span class="icon-right-quote"${_scopeId}></span></div></div></div>`);
+                _push2(`<div class="item"${_scopeId}><div class="testimonial-one__single"${_scopeId}><div class="testimonial-one__img-box"${_scopeId}><div class="testimonial-one__img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div></div><div class="testimonial-one__content"${_scopeId}><p class="testimonial-one__text"${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom"${_scopeId}><div class="testimonial-one__quote-and-client-info"${_scopeId}><div class="testimonial-one__quote"${_scopeId}><span class="icon-left"${_scopeId}></span></div><div class="testimonial-one__client-info"${_scopeId}><p class="testimonial-one__client-sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
               });
-              _push2(`<!--]--></div></div></section>`);
+              _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
@@ -6590,8 +6639,8 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
                               createVNode("p", { class: "services-details__need-help-number" }, [
                                 createVNode("a", {
                                   dir: "ltr",
-                                  href: `tel:${settings2.value.website_phone || settings2.value.phone}`
-                                }, toDisplayString(settings2.value.website_phone || settings2.value.phone || "+12 (00) 345 789034"), 9, ["href"])
+                                  href: `tel:${settings.value.website_phone || settings.value.phone}`
+                                }, toDisplayString(settings.value.website_phone || settings.value.phone || "+12 (00) 345 789034"), 9, ["href"])
                               ])
                             ])
                           ])
@@ -6679,57 +6728,64 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               ])) : createCommentVNode("", true),
               testimonials.value && testimonials.value.length ? (openBlock(), createBlock("section", {
                 key: 1,
-                class: "testimonial-two"
+                class: "testimonial-one"
               }, [
+                createVNode("div", { class: "testimonial-one__shape-2 float-bob-y" }, [
+                  createVNode("img", {
+                    src: asset_path.value + "images/shapes/testimonial-one-shape-2.png",
+                    alt: trans("Decorative shape")
+                  }, null, 8, ["src", "alt"])
+                ]),
                 createVNode("div", { class: "container" }, [
-                  createVNode("div", { class: "section-title text-center sec-title-animation animation-style1" }, [
-                    createVNode("div", { class: "section-title__tagline-box" }, [
-                      createVNode("div", { class: "section-title__tagline-shape-1" }),
-                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Testimonials")), 1),
-                      createVNode("div", { class: "section-title__tagline-shape-2" })
-                    ]),
-                    createVNode("h2", { class: "section-title__title title-animation" }, [
-                      createTextVNode(toDisplayString(trans("Customer Experiences")) + " ", 1),
-                      createVNode("br"),
-                      createTextVNode(" " + toDisplayString(trans("That")) + " ", 1),
-                      createVNode("span", null, toDisplayString(trans("Speak Volumes")), 1)
-                    ])
-                  ]),
-                  createVNode("div", { class: "testimonial-two__carousel owl-theme owl-carousel" }, [
-                    (openBlock(true), createBlock(Fragment, null, renderList(testimonials.value, (testimonial) => {
-                      return openBlock(), createBlock("div", {
-                        class: "item",
-                        key: testimonial.id
-                      }, [
-                        createVNode("div", { class: "testimonial-two__single" }, [
-                          createVNode("div", { class: "testimonial-two__single-inner" }, [
-                            createVNode("div", { class: "testimonial-two__star" }, [
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-pointed-star" }),
-                              createVNode("span", { class: "icon-star" }),
-                              createVNode("span", { class: "icon-star" })
-                            ]),
-                            createVNode("p", { class: "testimonial-two__text" }, toDisplayString(translateField(testimonial.quote)), 1)
+                  createVNode("div", { class: "row" }, [
+                    createVNode("div", { class: "col-xl-3" }),
+                    createVNode("div", { class: "col-xl-9" }, [
+                      createVNode("div", { class: "testimonial-one__content-box" }, [
+                        createVNode("div", { class: "section-title text-left sec-title-animation animation-style2" }, [
+                          createVNode("div", { class: "section-title__tagline-box" }, [
+                            createVNode("div", { class: "section-title__tagline-shape-1" }),
+                            createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Testimonials")), 1),
+                            createVNode("div", { class: "section-title__tagline-shape-2" })
                           ]),
-                          createVNode("div", { class: "testimonial-two__client-info" }, [
-                            createVNode("div", { class: "testimonial-two__client-img" }, [
-                              createVNode("img", {
-                                src: testimonial.avatar_link,
-                                alt: translateField(testimonial.name)
-                              }, null, 8, ["src", "alt"])
-                            ]),
-                            createVNode("div", { class: "testimonial-two__client-content" }, [
-                              createVNode("h4", { class: "testimonial-two__client-name" }, toDisplayString(translateField(testimonial.name)), 1),
-                              createVNode("p", { class: "testimonial-two__sub-title" }, toDisplayString(translateField(testimonial.position)), 1)
-                            ])
-                          ]),
-                          createVNode("div", { class: "testimonial-two__quote" }, [
-                            createVNode("span", { class: "icon-right-quote" })
-                          ])
+                          createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("What Our Clients Say")), 1)
+                        ]),
+                        createVNode("div", { class: "testimonial-one__carousel owl-theme owl-carousel" }, [
+                          (openBlock(true), createBlock(Fragment, null, renderList(testimonials.value, (testimonial) => {
+                            return openBlock(), createBlock("div", {
+                              class: "item",
+                              key: testimonial.id
+                            }, [
+                              createVNode("div", { class: "testimonial-one__single" }, [
+                                createVNode("div", { class: "testimonial-one__img-box" }, [
+                                  createVNode("div", { class: "testimonial-one__img" }, [
+                                    createVNode("img", {
+                                      src: testimonial.avatar_link,
+                                      alt: translateField(testimonial.name)
+                                    }, null, 8, ["src", "alt"])
+                                  ])
+                                ]),
+                                createVNode("div", { class: "testimonial-one__content" }, [
+                                  createVNode("p", { class: "testimonial-one__text" }, " “" + toDisplayString(translateField(testimonial.quote)) + "” ", 1),
+                                  createVNode("div", { class: "testimonial-one__bottom" }, [
+                                    createVNode("div", { class: "testimonial-one__quote-and-client-info" }, [
+                                      createVNode("div", { class: "testimonial-one__quote" }, [
+                                        createVNode("span", { class: "icon-left" })
+                                      ]),
+                                      createVNode("div", { class: "testimonial-one__client-info" }, [
+                                        createVNode("p", { class: "testimonial-one__client-sub-title" }, toDisplayString(translateField(testimonial.position)), 1),
+                                        createVNode("h3", { class: "testimonial-one__client-name" }, [
+                                          createVNode("a", { href: "#" }, toDisplayString(translateField(testimonial.name)), 1)
+                                        ])
+                                      ])
+                                    ])
+                                  ])
+                                ])
+                              ])
+                            ]);
+                          }), 128))
                         ])
-                      ]);
-                    }), 128))
+                      ])
+                    ])
                   ])
                 ])
               ])) : createCommentVNode("", true)
@@ -6764,7 +6820,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const meta = computed(() => page.props.meta || {});
@@ -6779,7 +6835,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -6988,7 +7044,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</form></div></div><div class="col-xl-6 col-lg-6"${_scopeId}><div class="contact-one__right"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${trans("Start the Conversation") + "<span>–</span><br><span>" + trans("Reach Out Anytime") + "</span>"}</h2></div><p class="contact-one__text"${_scopeId}>${ssrInterpolate(trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out"))}</p><ul class="contact-one__list list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h4><p${_scopeId}>${ssrInterpolate(settings2.value.address)}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Email"))}</h4><p${_scopeId}><a dir="ltr" href="mailto:{{settings.email}}"${_scopeId}>${ssrInterpolate(settings2.value.email)}</a></p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Phone"))}</h4><p${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings2.value.phone)}</a></p></div></li></ul></div></div></div></div></section>`);
+            _push2(`</form></div></div><div class="col-xl-6 col-lg-6"${_scopeId}><div class="contact-one__right"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${trans("Start the Conversation") + "<span>–</span><br><span>" + trans("Reach Out Anytime") + "</span>"}</h2></div><p class="contact-one__text"${_scopeId}>${ssrInterpolate(trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out"))}</p><ul class="contact-one__list list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h4><p${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Email"))}</h4><p${_scopeId}><a dir="ltr" href="mailto:{{settings.email}}"${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Phone"))}</h4><p${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -7207,7 +7263,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                             ]),
                             createVNode("div", { class: "content" }, [
                               createVNode("h4", null, toDisplayString(trans("Our Location")), 1),
-                              createVNode("p", null, toDisplayString(settings2.value.address), 1)
+                              createVNode("p", null, toDisplayString(settings.value.address), 1)
                             ])
                           ]),
                           createVNode("li", null, [
@@ -7220,7 +7276,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                                 createVNode("a", {
                                   dir: "ltr",
                                   href: "mailto:{{settings.email}}"
-                                }, toDisplayString(settings2.value.email), 1)
+                                }, toDisplayString(settings.value.email), 1)
                               ])
                             ])
                           ]),
@@ -7234,7 +7290,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                                 createVNode("a", {
                                   dir: "ltr",
                                   href: "tel:{{settings.phone}}"
-                                }, toDisplayString(settings2.value.phone), 1)
+                                }, toDisplayString(settings.value.phone), 1)
                               ])
                             ])
                           ])
@@ -7276,7 +7332,7 @@ const _sfc_main$5 = {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path);
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
@@ -7296,7 +7352,7 @@ const _sfc_main$5 = {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
@@ -7582,7 +7638,7 @@ const _sfc_main$4 = {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
@@ -7602,7 +7658,7 @@ const _sfc_main$4 = {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
@@ -7962,7 +8018,7 @@ const _sfc_main$3 = {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path);
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
@@ -7982,7 +8038,7 @@ const _sfc_main$3 = {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
@@ -8383,7 +8439,7 @@ const _sfc_main$2 = {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
-    const settings2 = computed(() => page.props.settings || {});
+    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
@@ -8403,7 +8459,7 @@ const _sfc_main$2 = {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
