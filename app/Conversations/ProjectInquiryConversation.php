@@ -326,17 +326,27 @@ class ProjectInquiryConversation extends Conversation
 
     protected function notifyAdmin(Lead $lead): void
     {
-        $adminEmail = config('services.leads.admin_email', config('mail.from.address'));
-
-        if ($adminEmail) {
-            Notification::route('mail', $adminEmail)->notify(new NewLeadNotification($lead));
+        $emails = $this->getAdminEmails();
+        foreach ($emails as $email) {
+            Notification::route('mail', $email)->notify(new NewLeadNotification($lead));
         }
 
-        if (class_exists(\Illuminate\Notifications\Messages\SlackMessage::class)
-            && config('services.slack.notifications.webhook_url')) {
-            Notification::route('slack', config('services.slack.notifications.webhook_url'))
-                ->notify(new NewLeadNotification($lead));
+    }
+    protected function getAdminEmails(): array
+    {
+        $emailSetting = config('services.admin_email')
+            ?: config('services.leads.admin_email')
+            ?: config('mail.from.address');
+        if (! $emailSetting) {
+            return [];
         }
+
+        $emails = preg_split('/[,\s;]+/', $emailSetting);
+        $emails = array_filter($emails, function ($email) {
+            return filter_var($email, FILTER_VALIDATE_EMAIL);
+        });
+
+        return array_values(array_unique($emails));
     }
 
     protected function analyzeIntent(string $message): array

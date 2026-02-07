@@ -218,8 +218,8 @@
     "Customer Experiences": "تجارب العملاء",
     "That": "التي",
     "Speak Volumes": "تتحدث عن الكثير",
-    "Crafting Intelligent Technologies for the Future" : "نبتكر تقنيات ذكية للمستقبل",
-    "Balanced, modern, includes web, mobile, AI, and cloud": "متوازنة، عصرية، تشمل أنظمة الويب، وتطبيقات الموبايل، والذكاء الاصطناعي، والحوسبة السحابية.",
+    "Transform complex technical ideas into intelligent systems" : " نحول الأفكار التقنية المعقدة إلى أنظمة ذكية",
+    "Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability": "نساعد الشركات على بناء حلول تقنية عملية في مجالات الويب والذكاء الاصطناعي والأتمتة والحوسبة السحابية، مصممة لتحقيق النمو والاستدامة",
     "AI-Driven Business Automation": "أتمتة الأعمال مدعومة بالذكاء الاصطناعي",
     "IT Solutions": "حلول تقنية",
     "We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success.": "نقدم منتجات وخدمات استثنائية تتجاوز التوقعات باستمرار. وبفضل سنوات من الخبرة وسجل حافل بالإنجازات، نحن شريكك الموثوق لتحقيق النجاح.",
@@ -230,5 +230,10 @@
     "The page you are looking for could not be found.": "الصفحة التي تبحث عنها غير موجودة.",
     "404 error, page not found, missing page": "خطأ 404، الصفحة غير موجودة، صفحة مفقودة",
     "An internal server error occurred. Please try again later.": "حدث خطأ داخلي في الخادم. يرجى المحاولة لاحقًا.",
-    "500 error, server error, internal error": "خطأ 500، خطأ في الخادم، خطأ داخلي"
+    "500 error, server error, internal error": "خطأ 500، خطأ في الخادم، خطأ داخلي",
+    "Book your free consultation": "احجز استشارتك المجانية",
+    "Let the Symfonix experts review your technical idea": "دع خبراء Symfonix يراجعون فكرتك التقنية",
+    "Our Tech Solutions" : "حلولنا التقنية",
+    "Developing Secure & Scalable Systems" : "تطوير أنظمة آمنة وقابلة للتطوير",
+    "Explore Our Services": "استكشف خدماتنا"
 }

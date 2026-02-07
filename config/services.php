@@ -28,6 +28,8 @@ return [
         'key' => env('RESEND_KEY'),
     ],
 
+    'admin_email' => env('ADMIN_EMAIL'),
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
@@ -37,7 +39,7 @@ return [
     ],
 
     'leads' => [
-        'admin_email' => env('LEADS_ADMIN_EMAIL'),
+        'admin_email' => env('LEADS_ADMIN_EMAIL', env('ADMIN_EMAIL')),
     ],
 
 ];

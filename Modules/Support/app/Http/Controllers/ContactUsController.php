@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Modules\Base\Models\Branch;
 use Modules\Base\Models\Seo;
-use Modules\Base\Models\Settings;
 use Modules\Base\Support\Meta;
 use Modules\Support\Models\ContactForm;
 use Modules\Support\Models\Subscriber;
@@ -130,7 +129,9 @@ class ContactUsController extends Controller
 
     private function getAdminEmails(): array
     {
-        $emailSetting = Settings::get('email') ?: config('mail.from.address');
+        $emailSetting = config('services.admin_email')
+            ?: config('services.leads.admin_email')
+            ?: config('mail.from.address');
         if (! $emailSetting) {
             return [];
         }

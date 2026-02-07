@@ -24,7 +24,7 @@
             </li>
         </ul>
         <Link :href="link" class="services-three__btn">
-            {{ buttonText }}
+            {{ trans('Read More') }}
             <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow-1`"></span>
         </Link>
     </div>
@@ -32,10 +32,14 @@
 
 <script setup>
 import { computed } from 'vue'
-import { Link } from '@inertiajs/vue3'
+import {Link, usePage} from '@inertiajs/vue3'
+
+const page = usePage()
+const trans = (key) => page.props.translations?.[key] || key
 
 const props = defineProps({
     title: { type: String, required: true },
+    shortDesc: { type: String, default: '' },
     description: { type: String, default: '' },
     highlights: { type: Array, default: () => [] },
     link: { type: String, required: true },
@@ -114,14 +118,15 @@ const buttonText = computed(() => {
 })
 
 const shortDescription = computed(() => {
-    if (!props.description) {
+    const source =  props.description
+    if (!source) {
         return ''
     }
-    const text = String(props.description).replace(/\s+/g, ' ').trim()
-    if (text.length <= 140) {
+    const text = String(source).replace(/\s+/g, ' ').trim()
+    if (text.length <= 75) {
         return text
     }
-    return `${text.slice(0, 140)}...`
+    return `${text.slice(0, 75)}...`
 })
 </script>
 

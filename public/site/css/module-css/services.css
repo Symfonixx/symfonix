@@ -766,7 +766,7 @@
     position: relative;
     display: inline-block;
     font-size: 16px;
-    color: var(--techguru-white);
+    color: var(--techguru-accent);
 }
 
 .services-three__list li .text {

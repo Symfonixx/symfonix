@@ -1,7 +1,6 @@
 <template>
     <Head>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/testimonial.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">

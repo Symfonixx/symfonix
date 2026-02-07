@@ -15,7 +15,6 @@ Developed By: Hadi Hilal
     @php
         $seo = \Modules\Base\Models\Seo::pluck('value', 'key');
         $settings = \Modules\Base\Models\Settings::pluck('value', 'key');
-        $appLogoUrl = asset('images/logo.png');
     @endphp
     <meta name="author" content="{{ $seo->get('website_name') }}">
     <meta name="theme-color" content="#2189ca"/>
@@ -90,12 +89,12 @@ Developed By: Hadi Hilal
     <!-- template styles -->
     <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
 
-
+    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
     <style>
 
         #symfonixbot-launcher-wrap {
             position: fixed;
-            bottom: 75px;
+            bottom: 60px;
             right: 25px;
             z-index: 98;
             display: flex;
@@ -417,7 +416,7 @@ Developed By: Hadi Hilal
             }
         </style>
     @endif
-    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
+
     {!! $settings->get('header_scripts') !!}
 </head>
 <body class="custom-cursor">

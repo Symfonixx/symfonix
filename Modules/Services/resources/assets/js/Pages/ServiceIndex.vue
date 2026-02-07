@@ -62,32 +62,25 @@
                     <div class="row">
                         <div class="col-xl-8">
                             <div class="services-two__services-list">
-                                <div
-                                    v-for="(serviceItem, index) in services.data"
-                                    :key="serviceItem.id"
-                                    class="services-two__services-list-single"
-                                >
-                                    <div class="services-two__count-and-title">
-                                        <div class="services-two__count"></div>
-                                        <h3 class="services-two__title">
-                                            <Link :href="getServiceUrl(serviceItem)">
-                                                {{ getServiceTitle(serviceItem) }}
-                                            </Link>
-                                        </h3>
+                                <div class="row">
+                                    <div
+                                        v-for="serviceItem in services.data"
+                                        :key="serviceItem.id"
+                                        class="col-xl-6 col-lg-6 col-md-6 mb-4"
+                                    >
+                                        <ServiceCardThree
+                                            :title="getServiceTitle(serviceItem)"
+                                            :short-desc="serviceItem.short_desc"
+                                            :description="getServiceDescription(serviceItem)"
+                                            :highlights="getServiceHighlights(serviceItem)"
+                                            :link="getServiceUrl(serviceItem)"
+                                            :image="serviceItem.image_link"
+                                            :button-label="trans('Read More')"
+                                            :is-rtl="locale === 'ar'"
+                                            :reading-time="serviceItem.reading_time"
+                                            :reading-time-label="trans('min read')"
+                                        />
                                     </div>
-                                    <div class="services-two__service-list-box">
-                                        <ul class="services-two__services-list-inner list-unstyled">
-                                            <li v-for="(chunk, chunkIndex) in chunkHighlights(getServiceHighlights(serviceItem))"
-                                                :key="`${serviceItem.id}-chunk-${chunkIndex}`">
-                                                <p v-for="(item, itemIndex) in chunk" :key="`${serviceItem.id}-${chunkIndex}-${itemIndex}`">
-                                                    <span class="icon-plus"></span>{{ item }}
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
-<!--                                    <div class="services-two__hover-img" v-if="serviceItem.image_link">-->
-<!--                                        <img :src="serviceItem.image_link" :alt="getServiceTitle(serviceItem)">-->
-<!--                                    </div>-->
                                 </div>
                                 <div v-if="!services.data.length" class="text-center py-5">
                                     <h3 class="text-muted">{{ trans("No services found") }}</h3>
@@ -118,15 +111,20 @@
                         <div class="col-xl-4">
                             <div class="services-index__sidebar">
                                 <div class="services-details__services-list-box">
-                                    <h3 class="services-details__services-list-title">{{ trans("Service Categories") }}</h3>
+                                    <h3 class="services-details__services-list-title">{{
+                                            trans("Service Categories")
+                                        }}</h3>
                                     <ul class="services-details__services-list list-unstyled">
                                         <li>
                                             <Link
                                                 :href="route('services.index')"
                                                 :class="{ 'active': !filters.category }"
                                             >
-                                                {{ trans("All Services") }}
-                                                <span class="icon-right-arrow-2"></span>
+                                                ({{ totalServicesCount }}) {{ trans("All Services") }}
+
+
+                                                <span
+                                                    :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>
                                             </Link>
                                         </li>
                                         <li v-for="category in categories" :key="category.id">
@@ -134,8 +132,11 @@
                                                 :href="route('services.index', { category: category.slug })"
                                                 :class="{ 'active': filters.category === category.slug }"
                                             >
-                                                {{ getCategoryName(category) }}
-                                                <span class="icon-right-arrow-2"></span>
+                                                ({{ category.services_count || 0 }}) {{ getCategoryName(category) }}
+
+
+                                                <span
+                                                    :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>
                                             </Link>
                                         </li>
                                     </ul>
@@ -153,8 +154,9 @@
 
 <script setup>
 import {computed} from 'vue'
-import { usePage, Link, Head } from '@inertiajs/vue3'
+import {usePage, Link, Head} from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
+import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
 
 
 const page = usePage()
@@ -166,6 +168,7 @@ const locale = computed(() => page.props.locale || 'en')
 const categories = computed(() => page.props.categories || [])
 const filters = computed(() => page.props.filters || {})
 const meta = computed(() => page.props.meta || {})
+const totalServicesCount = computed(() => page.props.totalServicesCount || 0)
 
 const metaTitle = computed(() => {
     return `${trans("Our Services")} | ${seo.value.website_name || ''}`.trim()
@@ -190,7 +193,7 @@ const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 // Do NOT mutate page.props.services; return a derived, immutable copy instead
 const services = computed(() => {
-    const source = page.props.services || { data: [], links: [], last_page: 1 }
+    const source = page.props.services || {data: [], links: [], last_page: 1}
     const data = Array.isArray(source.data)
         ? source.data.filter(service => service && service.id)
         : []
@@ -225,6 +228,10 @@ const getServiceUrl = (service) => {
 // Helper function to get service title (handles translatable)
 const getServiceTitle = (service) => {
     return translateField(service?.title)
+}
+
+const getServiceDescription = (service) => {
+    return translateField(service?.description)
 }
 
 // Helper function to get category name (handles translatable)
@@ -286,15 +293,6 @@ const getServiceHighlights = (service) => {
         trans("App Development"),
         trans("Graphics Design"),
     ]
-}
-
-const chunkHighlights = (items, size = 2, maxItems = 6) => {
-    const safeItems = Array.isArray(items) ? items.slice(0, maxItems) : []
-    const chunks = []
-    for (let i = 0; i < safeItems.length; i += size) {
-        chunks.push(safeItems.slice(i, i + size))
-    }
-    return chunks
 }
 
 </script>

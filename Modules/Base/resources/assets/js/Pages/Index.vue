@@ -1,21 +1,20 @@
-
 <template>
-     <Head>
-         <title>{{metaTitle}}</title>
-         <meta name="description" :content="metaDescription">
-         <meta name="keywords" :content="metaKeywords">
-         <meta name="robots" :content="metaRobots">
-         <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
-         <meta property="og:title" :content="metaTitle">
-         <meta property="og:description" :content="metaDescription">
-         <meta v-if="metaImage" property="og:image" :content="metaImage">
-         <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
-         <meta property="og:type" content="website">
-         <meta name="twitter:card" content="summary_large_image">
-         <meta name="twitter:title" :content="metaTitle">
-         <meta name="twitter:description" :content="metaDescription">
-         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
-     </Head>
+    <Head>
+        <title>{{metaTitle}}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
+    </Head>
     <app-layout>
         <!--Banner One Start -->
         <section class="banner-one">
@@ -35,15 +34,21 @@
 
             <div class="container">
                 <div class="banner-one__inner">
-                        <h1 class="banner-one__title px-4">
-                            {{ trans('Crafting Intelligent Technologies for the Future') }} <br/>
-                            <span>{{ trans('Balanced, modern, includes web, mobile, AI, and cloud') }}</span>
-                        </h1>
+                    <h1 class="banner-one__title px-4">
+                        {{ trans('Transform complex technical ideas into intelligent systems') }} <br/>
+                        <span>{{
+                                trans('Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability')
+                            }}</span>
+                    </h1>
 
                     <div class="banner-one__btn-box mb-5">
-                        <Link :href="route('contact-us')" class="thm-btn">
-                            {{ trans('Get Started') }} <span
-                            :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
+                        <Link :href="route('contact-us')" class="thm-btn contact-btn mx-2">
+                            <span :class="locale === 'ar' ? 'icon-message ms-2' : 'icon-message me-2'"></span>
+                            {{ trans('Book your free consultation') }}
+                        </Link>
+                        <Link :href="route('services.index')" class="thm-btn  ">
+                            <span :class="locale === 'ar' ? 'icon-search ms-2' : 'icon-search me-2'"></span>
+                            {{ trans('Explore Our Services') }}
                         </Link>
                     </div>
                 </div>
@@ -68,6 +73,14 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="about-three__right">
+                            <div class="section-title  sec-title-animation animation-style1">
+                                <div class="section-title__tagline-box">
+                                    <div class="section-title__tagline-shape-1"></div>
+                                    <span class="section-title__tagline">{{ trans('Our Tech Solutions') }}</span>
+                                    <div class="section-title__tagline-shape-2"></div>
+                                </div>
+
+                            </div>
 
                             <p class="about-three__text">
                                 {{
@@ -76,13 +89,22 @@
                             </p>
 
                             <ul class="about-three__points list-unstyled">
+                                            <li>
+                                    <div class="icon">
+                                        <span class="icon-tick-inside-circle"></span>
+                                    </div>
+                                    <div class="content">
+                                        <h2 class="h3">{{ trans('Developing Secure & Scalable Systems') }}</h2>
+                                        <!--                                        <p>{{ trans('Support & Consulting') }}</p>-->
+                                    </div>
+                                </li>
                                 <li>
                                     <div class="icon">
                                         <span class="icon-tick-inside-circle"></span>
                                     </div>
                                     <div class="content">
                                         <h2 class="h3">{{ trans('Innovative IT Solutions Expert') }}</h2>
-<!--                                        <p>{{ trans('Support & Consulting') }}</p>-->
+                                        <!--                                        <p>{{ trans('Support & Consulting') }}</p>-->
                                     </div>
                                 </li>
                                 <li>
@@ -91,7 +113,7 @@
                                     </div>
                                     <div class="content">
                                         <h2 class="h3">{{ trans('Cloud Solutions for Modern') }}</h2>
-<!--                                        <p>{{ trans('Enterprises') }}</p>-->
+                                        <!--                                        <p>{{ trans('Enterprises') }}</p>-->
                                     </div>
                                 </li>
                                 <li>
@@ -100,7 +122,7 @@
                                     </div>
                                     <div class="content">
                                         <h2 class="h3">{{ trans('AI-Driven Business Automation') }}</h2>
-<!--                                        <p>{{ trans('AI-Driven Business Automation') }}</p>-->
+                                        <!--                                        <p>{{ trans('AI-Driven Business Automation') }}</p>-->
                                     </div>
                                 </li>
                             </ul>
@@ -150,6 +172,7 @@
                     >
                         <ServiceCardThree
                             :title="translateField(servicesCategory.title)"
+                            :short-desc="translateField(servicesCategory.description)"
                             :description="translateField(servicesCategory.description)"
                             :highlights="getCategoryHighlights(servicesCategory)"
                             :link="route('services.index', { category: servicesCategory.slug })"
@@ -172,13 +195,15 @@
         <!--Why Choose Two Start -->
         <section class="why-choose-two">
             <div class="why-choose-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/why-choose-two-shape-1.png'" :alt="trans('Decorative shape')">
+                <img :src="asset_path + 'site/images/shapes/why-choose-two-shape-1.png'"
+                     :alt="trans('Decorative shape')">
             </div>
 
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div :class="`why-choose-two__left wow ${locale !== 'ar' ? 'Left' : 'Right'}`" data-wow-delay="100ms"
+                        <div :class="`why-choose-two__left wow ${locale !== 'ar' ? 'Left' : 'Right'}`"
+                             data-wow-delay="100ms"
                              data-wow-duration="2500ms">
                             <div class="why-choose-two__img">
                                 <img :src="asset_path + 'images/home/why_choose_us.jpg'" alt="why_choose_us">
@@ -358,7 +383,8 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/app-development.png'" :alt="trans('Mobile Development')">
+                                <img :src="asset_path + 'images/home/app-development.png'"
+                                     :alt="trans('Mobile Development')">
                             </div>
                             <h3 class="feature-one__title">
                                 <a href="#">
@@ -377,7 +403,8 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/microchip.png'" :alt="trans('AI Agents & Automation')">
+                                <img :src="asset_path + 'images/home/microchip.png'"
+                                     :alt="trans('AI Agents & Automation')">
                             </div>
                             <h3 class="feature-one__title">
                                 <a href="#">
@@ -423,15 +450,15 @@
             <div class="container">
                 <div class="cta-one__inner">
                     <h3 class="cta-one__title">
-                        {{ trans('To make requests for further information, contact us') }}
+                        {{ trans('Let the Symfonix experts review your technical idea') }}
                     </h3>
                     <div class="cta-one__contact-info">
                         <div class="cta-one__contact-icon">
                             <span class="icon-customer-service-headset"></span>
                         </div>
                         <div class="cta-one__contact-details">
-                            <p>{{ trans('Call Us For Any inquiry') }}</p>
-                            <h4><a dir="ltr" href="tel:{{settings.phone}}">{{settings.phone}}</a></h4>
+                            <p>{{ trans('Book your free consultation') }}</p>
+                            <h4><a dir="ltr" href="tel:{{settings.phone}}">{{ settings.phone }}</a></h4>
                         </div>
                     </div>
                 </div>
@@ -466,7 +493,8 @@
                                     <div class="testimonial-one__single">
                                         <div class="testimonial-one__img-box">
                                             <div class="testimonial-one__img">
-                                                <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
+                                                <img :src="testimonial.avatar_link"
+                                                     :alt="translateField(testimonial.name)">
                                             </div>
                                         </div>
                                         <div class="testimonial-one__content">
@@ -507,7 +535,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div :class="`blog-two__left wow fadeIn${locale !== 'ar' ? 'Left' : 'Right'}`" data-wow-delay="100ms">
+                        <div :class="`blog-two__left wow fadeIn${locale !== 'ar' ? 'Left' : 'Right'}`"
+                             data-wow-delay="100ms">
                             <div class="section-title text-left sec-title-animation animation-style1">
                                 <div class="section-title__tagline-box">
                                     <div class="section-title__tagline-shape-1"></div>
@@ -646,7 +675,8 @@
                         </div>
                     </div>
                     <div class="col-xl-6">
-                        <div :class="`contact-two__right wow slideIn${locale === 'ar' ? 'Left' : 'Right'}`" data-wow-delay="100ms"
+                        <div :class="`contact-two__right wow slideIn${locale === 'ar' ? 'Left' : 'Right'}`"
+                             data-wow-delay="100ms"
                              data-wow-duration="2500ms">
                             <form class="contact-form-validated contact-one__form"
                                   @submit.prevent="handleContactSubmit">
@@ -912,7 +942,7 @@ onMounted(() => {
                 return;
             }
 
-            $carousel.find('.owl-dot').each(function(index) {
+            $carousel.find('.owl-dot').each(function (index) {
                 $(this).attr('aria-label', `${trans('Go to slide')} ${index + 1}`);
             });
         };
@@ -935,7 +965,7 @@ onMounted(() => {
                     992: {items: 3},
                     1200: {items: 3}
                 }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+            }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
                 applyOwlDotAriaLabels($(this));
             });
             applyOwlDotAriaLabels($servicesCarousel);
@@ -959,7 +989,7 @@ onMounted(() => {
                     992: {items: 2},
                     1200: {items: 3}
                 }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+            }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
                 applyOwlDotAriaLabels($(this));
             });
             applyOwlDotAriaLabels($teamCarousel);
@@ -983,7 +1013,7 @@ onMounted(() => {
                     992: {items: 1},
                     1200: {items: 1}
                 }
-            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+            }).on('initialized.owl.carousel refreshed.owl.carousel', function () {
                 applyOwlDotAriaLabels($(this));
             });
             applyOwlDotAriaLabels($testimonialCarousel);

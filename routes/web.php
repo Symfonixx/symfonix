@@ -18,7 +18,7 @@ Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle'])->n
 Route::get('/chatbot', [BotManController::class, 'widget'])->name('chatbot.widget');
 
 Route::get('/robots.txt', function () {
-    $sitemapUrl = rtrim(config('app.url'), '/') . '/sitemap.xml';
+    $sitemapUrl = rtrim(config('app.url'), '/').'/sitemap.xml';
 
     return response(
         "User-agent: *\nDisallow:\nSitemap: {$sitemapUrl}\n",

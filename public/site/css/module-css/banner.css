@@ -40,16 +40,25 @@
     text-align: center;
 }
 
+@media (min-width:767px) {
+    .banner-one__inner {
+        width: 85%;
+        margin: auto;
+    }
+
+}
+
 .banner-one__title {
-    font-size: 60px;
+    font-size: 56px;
     color: var(--techguru-white);
-    line-height: 1.2em;
-    font-weight: 500;
+    line-height: 1em;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 
 .banner-one__title span {
     color: var(--techguru-base);
+    font-size: 25px;
 }
 
 .banner-one__btn-box {
@@ -58,7 +67,7 @@
 }
 
 .banner-one__btn-box .thm-btn {
-       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
+    background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
 }
 
 .banner-one__img-box {
@@ -124,7 +133,7 @@
     right: 0px;
     bottom: 0px;
     border-radius: 50%;
-       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
+    background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     z-index: -1;
 }
 
@@ -139,7 +148,7 @@
     border: 10px solid transparent;
     background: linear-gradient(90deg, #8F88FF, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -191,19 +200,9 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.banner-one__btn-box .thm-btn.contact-btn {
+    background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-accent) 100%);
+}
 
 
 /*--------------------------------------------------------------

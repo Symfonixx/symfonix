@@ -223,8 +223,8 @@
        "Arabic" : "Arapça",
      "English" : "İngilizce",
      "Turkish" : "Türkçe",
-    "Crafting Intelligent Technologies for the Future" :"Geleceğin Akıllı Teknolojilerini Geliştiriyoruz",
-    "Balanced, modern, includes web, mobile, AI, and cloud" : "Dengeli, modern; web, mobil, yapay zeka ve bulut teknolojilerini içerir.",
+    "Transform complex technical ideas into intelligent systems" :"Karmaşık teknik fikirleri akıllı sistemlere dönüştürüyoruz.",
+    "Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability" : "Şirketlerin büyüme ve sürdürülebilirlik için tasarlanmış, web, yapay zeka, otomasyon ve bulut bilişim alanlarında pratik teknoloji çözümleri geliştirmelerine yardımcı oluyoruz",
     "AI-Driven Business Automation": "Yapay Zeka Destekli İş Otomasyonu",
     "IT Solutions": "BT Çözümleri",
     "We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success.": "Beklentileri sürekli olarak aşan olağanüstü ürünler ve hizmetler sunuyoruz. Yılların deneyimi ve kanıtlanmış başarı geçmişimizle, başarınız için güvenilir ortağınızız.",
@@ -235,6 +235,11 @@
     "The page you are looking for could not be found.": "Aradığınız sayfa bulunamadı.",
     "404 error, page not found, missing page": "404 hatası, sayfa bulunamadı, eksik sayfa",
     "An internal server error occurred. Please try again later.": "Bir iç sunucu hatası oluştu. Lütfen daha sonra tekrar deneyin.",
-    "500 error, server error, internal error": "500 hatası, sunucu hatası, iç hata"
+    "500 error, server error, internal error": "500 hatası, sunucu hatası, iç hata",
+    "Book your free consultation": "Ücretsiz danışmanlık randevunuzu alın.",
+    "Let the Symfonix experts review your technical idea": "Teknik fikrinizi Symfonix uzmanlarına incelettirin",
+    "Our Tech Solutions" : "Teknoloji Çözümlerimiz",
+    "Developing Secure & Scalable Systems" : "Güvenli ve Ölçeklenebilir Sistemler Geliştirme",
+    "Explore Our Services": "Hizmetlerimizi Keşfedin"
 }
 

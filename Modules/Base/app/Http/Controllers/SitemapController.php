@@ -193,7 +193,7 @@ class SitemapController extends Controller
         if (class_exists(LaravelLocalization::class)) {
             try {
                 $supported = LaravelLocalization::getSupportedLocales();
-                if (is_array($supported) && !empty($supported)) {
+                if (is_array($supported) && ! empty($supported)) {
                     return array_keys($supported);
                 }
             } catch (\Throwable $e) {
@@ -218,9 +218,10 @@ class SitemapController extends Controller
 
         $baseUrl = rtrim(config('app.url'), '/');
         $localePrefix = '/'.trim($locale, '/');
-
         if ($normalizedPath === '/') {
             return $baseUrl.$localePrefix.'/';
-        }        return $baseUrl.$localePrefix.$normalizedPath;
+        }
+
+return $baseUrl.$localePrefix.$normalizedPath;
     }
 }

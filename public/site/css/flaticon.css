@@ -81,6 +81,10 @@
   content: "\e90a";
 }
 
+.icon-search:before {
+  content: "\e90a";
+}
+
 .icon-pointed-star:before {
   content: "\e90b";
 }
@@ -98,6 +102,10 @@
 }
 
 .icon-chat:before {
+  content: "\e90f";
+}
+
+.icon-message:before {
   content: "\e90f";
 }
 
@@ -207,6 +215,12 @@
 
 .icon-right-arrow-2:before {
   content: "\e92a";
+}
+
+.icon-left-arrow-2:before {
+  content: "\e92a";
+  display: inline-block;
+  transform: scaleX(-1);
 }
 
 .icon-right-quote:before {

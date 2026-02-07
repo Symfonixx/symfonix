@@ -1,9 +1,7 @@
 <template>
     <Head>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/counter.css'"/>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/about.css'"/>
-        <link v-if="locale === 'ar'" rel="stylesheet" :href="asset_path + 'site/css/rtl.css'"/>
+
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -39,7 +37,7 @@
                                     <i class="fas fa-home"></i>{{ trans('Home') }}
                                 </a>
                             </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
+                            <li><span :class="`icon-${isRtl ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans('About Us') }}</li>
                         </ul>
                     </div>
@@ -56,7 +54,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div :class="`about-four__left wow slideIn${locale !== 'ar' ? 'Left' : 'Right'}`"
+                        <div :class="`about-four__left wow slideIn${isRtl ? 'Right' : 'Left'}`"
                              data-wow-delay="100ms" data-wow-duration="2500ms">
                             <div class="about-four__img-box">
                                 <div class="about-four__img">
@@ -64,6 +62,9 @@
                                          :alt="trans('About our company')">
                                 </div>
 
+                                <div class="about-four__img-2">
+                                    <img :src="asset_path +  'images/about/about-four-img-12.jpg'"   :alt="trans('About our company')">
+                                </div>
                                 <div class="about-four__experience">
                                     <div class="about-four__experience-inner">
 
@@ -83,7 +84,7 @@
                                     <span class="section-title__tagline">{{ trans('About Us') }}</span>
                                     <div class="section-title__tagline-shape-2"></div>
                                 </div>
-                                <h2 class="section-title__title title-animation" v-if="locale !== 'ar'">
+                                <h2 class="section-title__title title-animation" v-if="!isRtl">
                                     {{ trans('Supercharge') }} <span>{{ trans('Your Business') }}</span><br>
                                     <span>{{ trans('Growth with Our') }}</span>
                                     {{ trans('Cutting-Edge IT') }}<br> {{ trans('Solutions') }}
@@ -173,7 +174,7 @@
                         <span class="section-title__tagline">{{ trans('Why Choose Us') }}</span>
                         <div class="section-title__tagline-shape-2"></div>
                     </div>
-                    <h2 class="section-title__title title-animation" v-if="locale !== 'ar'">
+                    <h2 class="section-title__title title-animation" v-if="!isRtl">
                         {{ trans('Your Business with') }} <span>{{ trans('Reliable &') }}</span><br>
                         <span>{{ trans('Future-Ready') }}</span>
                         {{ trans('IT Solutions') }}
@@ -348,11 +349,11 @@
                             <div class="process-one__btn-box">
                                 <Link :href="route('contact-us')" class="thm-btn" v-if="typeof route !== 'undefined'">
                                     {{ trans('Get in Touch') }}
-                                    <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                                    <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow`"></span>
                                 </Link>
                                 <a :href="`/${locale === 'ar' ? 'ar' : ''}/contact-us`" class="thm-btn" v-else>
                                     {{ trans('Get in Touch') }}
-                                    <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                                    <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow`"></span>
                                 </a>
                             </div>
                         </div>
@@ -497,9 +498,10 @@ import {Link, usePage, Head} from '@inertiajs/vue3'
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
-const settings = computed(() => page.props.settings)
+const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
-const locale = computed(() => page.props.locale)
+const locale = computed(() => page.props.locale || 'en')
+const isRtl = computed(() => locale.value === 'ar')
 const teams = computed(() => page.props.teams || [])
 const testimonials = computed(() => page.props.testimonials || [])
 const meta = computed(() => page.props.meta || {})
@@ -527,19 +529,16 @@ const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 const translateField = (value) => {
     if (!value) {
-        return '';
+        return ''
     }
     if (typeof value === 'string') {
-        return value;
+        return value
     }
-    const loc = locale.value;
     if (typeof value === 'object' && value !== null) {
-        if (value[loc]) {
-            return value[loc];
-        }
+        return value[locale.value] || value.en || value[Object.keys(value)[0]] || ''
     }
-    return '';
-};
+    return ''
+}
 
 onMounted(() => {
     nextTick(() => {
@@ -564,7 +563,7 @@ onMounted(() => {
                 smartSpeed: 500,
                 autoplay: true,
                 autoplayTimeout: 7000,
-                rtl: locale.value === 'ar',
+                rtl: isRtl.value,
                 responsive: {
                     0: {items: 1},
                     768: {items: 2},
@@ -588,7 +587,7 @@ onMounted(() => {
                 smartSpeed: 500,
                 autoplay: true,
                 autoplayTimeout: 7000,
-                rtl: locale.value === 'ar',
+                rtl: isRtl.value,
                 responsive: {
                     0: {items: 1},
                     768: {items: 1},
@@ -611,7 +610,6 @@ onMounted(() => {
             const titleAnimations = document.querySelectorAll(".sec-title-animation .title-animation");
             if (titleAnimations.length) {
                 titleAnimations.forEach(quote => {
-                    let splitParent = new SplitText(quote, {type: "lines"});
                     let split = new SplitText(quote, {type: "lines"});
                     gsap.from(split.lines, {
                         duration: 1,
@@ -628,38 +626,6 @@ onMounted(() => {
             }
         }
 
-        // Initialize Odometer counters using jQuery approach
-        if (typeof $ !== 'undefined' && $.fn.odometer) {
-            $('.odometer').each(function () {
-                const $this = $(this);
-                if (!$this.data('initialized')) {
-                    $this.odometer({
-                        value: parseInt($this.attr('data-count')) || 0,
-                        format: '(,ddd)',
-                        theme: 'minimal'
-                    });
-                    $this.data('initialized', true);
-                }
-            });
-        } else if (typeof Odometer !== 'undefined') {
-            // Fallback to vanilla JS Odometer
-            const odometerElements = document.querySelectorAll('.odometer');
-            odometerElements.forEach((el) => {
-                if (!el.dataset.initialized) {
-                    const count = parseFloat(el.getAttribute('data-count')) || 0;
-                    el.dataset.initialized = '1';
-                    const od = new Odometer({
-                        el: el,
-                        value: 0,
-                        format: '(,ddd)',
-                        theme: 'minimal'
-                    });
-                    setTimeout(() => {
-                        od.update(count);
-                    }, 100);
-                }
-            });
-        }
     });
 });
 

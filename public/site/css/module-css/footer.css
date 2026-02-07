@@ -769,7 +769,7 @@
 .site-footer-two__logo {
     position: relative;
     display: block;
-    margin-bottom: 78px;
+    margin-bottom: 60px;
 }
 
 .site-footer-two__contact-list {
@@ -874,7 +874,7 @@
 .footer-widget-two__quick-links {
     position: relative;
     display: block;
-    margin-top: 77px;
+    margin-top: 25px;
     margin-left: 50px;
 }
 
@@ -938,7 +938,7 @@
 .footer-widget-two__support {
     position: relative;
     display: block;
-    margin-top: 77px;
+    margin-top: 25px;
     padding-left: 100px;
 }
 
@@ -956,7 +956,7 @@
 .footer-widget-two__services {
     position: relative;
     display: block;
-    margin-top: 77px;
+    margin-top: 25px;
     padding-left: 108px;
 }
 

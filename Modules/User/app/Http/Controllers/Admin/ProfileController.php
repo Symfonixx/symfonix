@@ -25,6 +25,7 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -36,6 +37,7 @@ class ProfileController extends Controller
             'avatar' => ['nullable', 'image', 'max:2048'],
         ]);
 
+        $user->name = $validated['name'];
         $user->email = $validated['email'];
         $user->mobile = $validated['mobile'] ?? $user->mobile;
 

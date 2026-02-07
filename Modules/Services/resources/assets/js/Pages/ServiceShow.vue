@@ -40,12 +40,27 @@
                             <div class="services-details__services-list-box">
                                 <h3 class="services-details__services-list-title">{{ trans("Service Categories") }}</h3>
                                 <ul class="services-details__services-list list-unstyled">
-                                    <li v-for="recentService in recentServices.slice(0, 6)" :key="recentService.id">
+                                    <li>
                                         <Link
-                                            :href="getServiceUrl(recentService)"
-                                            :class="{ 'active': recentService.id === service.id }"
+                                            :href="route('services.index')"
+                                            :class="{ 'active': !service?.category?.slug }"
                                         >
-                                            {{ getServiceTitle(recentService) }}
+                                      ({{ totalServicesCount }})   {{ trans("All Services") }}
+
+
+
+                                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-2`"></span>
+                                        </Link>
+                                    </li>
+                                    <li v-for="category in categories" :key="category.id">
+                                        <Link
+                                            :href="route('services.index', { category: category.slug })"
+                                            :class="{ 'active': service?.category?.slug === category.slug }"
+                                        >
+                                       ({{ category.services_count || 0 }})  {{ getCategoryName(category) }}
+
+
+
                                             <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-2`"></span>
                                         </Link>
                                     </li>
@@ -112,6 +127,7 @@
                          class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                         <ServiceCardThree
                             :title="getServiceTitle(relatedService)"
+                            :short-desc="relatedService.short_desc"
                             :description="getServiceDescription(relatedService)"
                             :highlights="getServiceHighlights(relatedService)"
                             :link="getServiceUrl(relatedService)"
@@ -204,8 +220,9 @@ const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
 const service = computed(() => page.props.service)
 const relatedServices = computed(() => page.props.relatedServices || [])
-const recentServices = computed(() => page.props.recentServices || [])
+const categories = computed(() => page.props.categories || [])
 const testimonials = computed(() => page.props.testimonials || [])
+const totalServicesCount = computed(() => page.props.totalServicesCount || 0)
 const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => {
@@ -251,6 +268,10 @@ const getServiceTitle = (serviceItem) => {
 
 const getServiceDescription = (serviceItem) => {
     return translateField(serviceItem?.description)
+}
+
+const getCategoryName = (category) => {
+    return translateField(category?.title)
 }
 
 const normalizeKeywords = (rawKeywords) => {
@@ -352,7 +373,6 @@ onMounted(() => {
             const titleAnimations = document.querySelectorAll(".sec-title-animation .title-animation")
             if (titleAnimations.length) {
                 titleAnimations.forEach(quote => {
-                    let splitParent = new SplitText(quote, {type: "lines"})
                     let split = new SplitText(quote, {type: "lines"})
                     gsap.from(split.lines, {
                         duration: 1,

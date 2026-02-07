@@ -167,7 +167,7 @@
         </div><!-- /.stricky-header -->
 
 
-            <slot/>
+        <slot/>
 
         <!-- Newsletter Two Start -->
         <section class="newsletter-two">
@@ -244,12 +244,14 @@
             <div class="site-footer-two__top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <div class="site-footer-two__about">
                                 <div class="site-footer-two__logo">
                                     <Link :href="route('home')"><img :src="storage_path + settings.site_logo"
                                                                      alt="logo"></Link>
+                                        <p class="mt-2">{{ seo.main_title }}</p>
                                 </div>
+
                                 <ul class="list-unstyled site-footer-two__contact-list">
                                     <li>
                                         <div class="site-footer-two__contact-icon">
@@ -285,43 +287,12 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                            <div class="footer-widget-two__quick-links">
-                                <h4 class="footer-widget-two__title">{{ trans('Pages') }}</h4>
-                                <ul class="footer-widget-two__quick-links-list list-unstyled">
+<!--                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">-->
+<!--                            <div class="footer-widget-two__services">-->
 
-<!--                                    <li>-->
-<!--                                        <Link :href="route('team')">-->
-<!--                                            <span-->
-<!--                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{-->
-<!--                                                trans('Our Members')-->
-<!--                                            }}-->
-<!--                                        </Link>-->
-<!--                                    </li>-->
-
-                                    <li>
-                                        <Link :href="route('testimonials')">
-                                            <span
-                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
-                                                trans('Testimonials')
-                                            }}
-                                        </Link>
-                                    </li>
-
-                                    <li v-for="pageItem in footerPages" :key="pageItem.id">
-                                        <Link :href="getPageUrl(pageItem)">
-                                            <span
-                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
-                                                getTranslatableTitle(pageItem)
-                                            }}
-                                        </Link>
-                                    </li>
-
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                             <div class="footer-widget-two__support">
                                 <h4 class="footer-widget-two__title">{{ trans('Quick Links') }}</h4>
                                 <ul class="footer-widget-two__quick-links-list list-unstyled">
@@ -368,29 +339,44 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                            <div class="footer-widget-two__services">
-                                <h4 class="footer-widget-two__title">{{ trans('Our Services') }}</h4>
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="footer-widget-two__quick-links">
+                                <h4 class="footer-widget-two__title">{{ trans('Pages') }}</h4>
                                 <ul class="footer-widget-two__quick-links-list list-unstyled">
-                                    <li v-for="service in (servicesList || []).slice(0, 3)" :key="service.id">
-                                        <Link :href="route('services.index' , { category: service.slug })">
+
+                                    <!--                                    <li>-->
+                                    <!--                                        <Link :href="route('team')">-->
+                                    <!--                                            <span-->
+                                    <!--                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{-->
+                                    <!--                                                trans('Our Members')-->
+                                    <!--                                            }}-->
+                                    <!--                                        </Link>-->
+                                    <!--                                    </li>-->
+
+                                    <li>
+                                        <Link :href="route('testimonials')">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
-                                                getTranslatableTitle(service)
+                                                trans('Testimonials')
                                             }}
                                         </Link>
                                     </li>
-                                    <li v-if="!servicesList || servicesList.length === 0">
-                                        <Link :href="route('services.index' )">
+
+                                    <li v-for="pageItem in footerPages" :key="pageItem.id">
+                                        <Link :href="getPageUrl(pageItem)">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
-                                                trans('View All Services')
+                                                getTranslatableTitle(pageItem)
                                             }}
                                         </Link>
                                     </li>
+
+
                                 </ul>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -542,7 +528,7 @@
                         rel="noopener"
                         aria-label="Linkedin"
                     ></a>
-                              <a
+                    <a
                         v-if="settings.github"
                         :href="settings.github"
                         class="fab fa-github me-2"
@@ -563,7 +549,9 @@
     <!-- Search Popup -->
     <div class="search-popup">
         <div class="color-layer"></div>
-        <button class="close-search"><span class="far fa-times fa-fw"></span></button>
+        <button class="close-search" type="button" :aria-label="trans('Close search')">
+            <span class="far fa-times fa-fw"></span>
+        </button>
         <form @submit.prevent="handleSearchSubmit">
             <div class="form-group">
                 <input
@@ -573,7 +561,9 @@
                     :placeholder="trans('Search Here')"
                     required=""
                 >
-                <button type="submit"><i class="fas fa-search"></i></button>
+                <button type="submit" :aria-label="trans('Submit search')">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </form>
     </div>

@@ -423,10 +423,6 @@ h6 {
     border-right: 5px solid var(--techguru-base);
 }
 
-.banner-one__title {
-    line-height: 1.4em;
-}
-
 .about-four__left {
     margin-right: unset;
     margin-left: 145px;
@@ -635,4 +631,22 @@ h6 {
 .blog-two__content-two {
     padding-left: unset;
     padding-right: 75px;
+}
+.mobile-nav__close {
+    right: unset;
+    top: 20px;
+
+}
+.list-unstyled {
+    padding-left: unset;
+    padding-right: 0;
+}
+.about-four__img-2 {
+    right: unset;
+    left: -100px;
+
+}
+.why-choose-two__left {
+    margin-right: unset;
+    margin-left: 60px;
 }

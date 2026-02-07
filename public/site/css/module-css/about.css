@@ -855,7 +855,7 @@
     position: relative;
     display: inline-block;
     font-size: 20px;
-    color: var(--techguru-white);
+    color: var(--techguru-accent);
 }
 
 .about-three__points li .content {
@@ -954,7 +954,7 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 34px;
-    margin-top: 2px;
+    margin-top: -2px;
 }
 
 .about-three__call-box .content p a {

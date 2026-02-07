@@ -17,7 +17,7 @@ class ServiceController extends Controller
     public function index(Request $request)
     {
         $locale = app()->getLocale();
-        $query = Service::published()->with('category')->latest();
+        $query = Service::published()->with('category');
 
         // Search functionality
         if ($request->has('search') && $request->search) {
@@ -54,6 +54,7 @@ class ServiceController extends Controller
             });
         }
 
+        $totalServicesCount = Service::published()->count();
         $services = $query->paginate(12)->through(function ($service) use ($locale) {
             return [
                 'id' => $service->id,
@@ -112,6 +113,7 @@ class ServiceController extends Controller
             'services' => $services,
             'categories' => $categories,
             'recentServices' => $recentServices,
+            'totalServicesCount' => $totalServicesCount,
             'filters' => [
                 'search' => $request->search,
                 'category' => $request->category,
@@ -133,6 +135,7 @@ class ServiceController extends Controller
             session()->put('service_'.$service->id, true);
         }
 
+        $totalServicesCount = Service::published()->count();
         // Related services (same category, excluding current)
         $relatedServices = Service::published()
             ->where('service_category_id', $service->service_category_id)
@@ -245,6 +248,7 @@ class ServiceController extends Controller
             }),
             'categories' => $categories,
             'recentServices' => $recentServices,
+            'totalServicesCount' => $totalServicesCount,
             'previousService' => $previousService ? [
                 'id' => $previousService->id,
                 'title' => $previousService->title,

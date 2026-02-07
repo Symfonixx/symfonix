@@ -86,6 +86,13 @@
                     </div>
 
                     <div class="row mb-6">
+                        <label class="col-lg-4 col-form-label required fw-semibold">{{ __('Name') }}</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-6">
                         <label class="col-lg-4 col-form-label required fw-semibold">{{ __('Email') }}</label>
                         <div class="col-lg-8">
                             <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>

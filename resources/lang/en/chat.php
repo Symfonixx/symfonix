@@ -52,9 +52,7 @@ return [
     'lead.services.web' => 'Web Development',
     'lead.services.mobile' => 'Mobile Development',
     'lead.services.cloud' => 'Cloud Solutions',
-    'lead.services.ai' => 'AI & Automation',
-
-    'lead.value.web' => 'We build fast, scalable web experiences that improve performance, conversions, and user experience.',
+    'lead.services.ai' => 'AI & Automation',    'lead.value.web' => 'We build fast, scalable web experiences that improve performance, conversions, and user experience.',
     'lead.value.mobile' => 'We deliver reliable mobile apps with smooth UX, secure integrations, and scalable architecture.',
     'lead.value.cloud' => 'We help you modernize infrastructure, optimize costs, and deploy resilient cloud platforms.',
     'lead.value.ai' => 'We design AI solutions that automate workflows, unlock insights, and accelerate decision-making.',
