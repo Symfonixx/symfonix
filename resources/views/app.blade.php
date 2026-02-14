@@ -38,9 +38,16 @@ Developed By: Hadi Hilal
     <meta name="twitter:image"
           content="{{ asset('storage/' . ($page['props']['meta']['twitter']['image'] ?? $settings->get('meta_img'))) }}">
 
-    <link rel="alternate" hreflang="en" href="{{ url('en') }}"/>
-    <link rel="alternate" hreflang="ar" href="{{ url('ar') }}"/>
-    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}"/>
+    @php
+        use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+        $currentUrl = url()->current();
+        $enUrl = LaravelLocalization::getLocalizedURL('en', $currentUrl);
+        $arUrl = LaravelLocalization::getLocalizedURL('ar', $currentUrl);
+        $defaultUrl = LaravelLocalization::getLocalizedURL(LaravelLocalization::getDefaultLocale(), $currentUrl);
+    @endphp
+    <link rel="alternate" hreflang="en" href="{{ $enUrl }}"/>
+    <link rel="alternate" hreflang="ar" href="{{ $arUrl }}"/>
+    <link rel="alternate" hreflang="x-default" href="{{ $defaultUrl }}"/>
 
     <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-96x96.png') }}" sizes="96x96"/>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon/favicon.svg') }}"/>
@@ -56,6 +63,13 @@ Developed By: Hadi Hilal
 
     @routes
     @inertiaHead
+
+    {{-- FAQ Schema (server-side for SEO) --}}
+    @if(isset($page['props']['faqSchema']) && !empty($page['props']['faqSchema']))
+        <script type="application/ld+json">
+            {!! json_encode($page['props']['faqSchema'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    @endif
 
     <link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
@@ -82,7 +96,6 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
-    {{--    <link rel="stylesheet" href="{{ asset('site/css/module-css/faq.css') }}"/>--}}
     <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
 
 
@@ -629,7 +642,7 @@ Developed By: Hadi Hilal
       "@type": "Organization",
       "name": "{{env('APP_NAME')}}",
       "url": "{{env('APP_URL')}}",
-      "logo": "{{ storage_path('storage' . $settings->get('site_logo')) }}"
+      "logo": "{{ storage_path( $settings->get('site_logo')) }}"
     }
 </script>
 <script>

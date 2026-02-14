@@ -186,8 +186,26 @@ const isPageActive = (pageItem) => {
 
 const switchLocale = (newLocale) => {
     const currentPath = window.location.pathname
-    const oldLocaleSegment = `/${locale.value}`
-    const newLocaleSegment = `/${newLocale}`
-    window.location.href = currentPath.replace(oldLocaleSegment, newLocaleSegment)
+    const currentLocale = locale.value
+    
+    // Remove current locale from path if it exists
+    let pathWithoutLocale = currentPath
+    if (currentLocale && currentPath.startsWith(`/${currentLocale}`)) {
+        pathWithoutLocale = currentPath.substring(`/${currentLocale}`.length) || '/'
+    }
+    
+    // Ensure path starts with /
+    if (!pathWithoutLocale.startsWith('/')) {
+        pathWithoutLocale = '/' + pathWithoutLocale
+    }
+    
+    // Build new URL with new locale
+    const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
+    
+    // Preserve query string and hash if present
+    const queryString = window.location.search
+    const hash = window.location.hash
+    
+    window.location.href = newPath + queryString + hash
 }
 </script>

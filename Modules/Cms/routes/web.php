@@ -19,7 +19,7 @@ Route::get('privacy-policy', [PageController::class, 'privacy_policy'])->name('p
 Route::get('team', [PageController::class, 'team'])->name('team');
 Route::get('testimonials', [PageController::class, 'testimonials'])->name('testimonials');
 // Route::get('pricing', [PageController::class, 'pricing'])->name('pricing');
-// Route::get('faq', [PageController::class, 'faq'])->name('faq');
+Route::get('faq', [PageController::class, 'faq'])->name('faq');
 
 Route::get('/p/{slug}', [PageController::class, 'view'])->name('page.view');
 

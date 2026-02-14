@@ -214,7 +214,7 @@
                                     </div>
                                     <div class="content">
                                         <h4>{{ trans('Phone') }}</h4>
-                                        <p><a dir="ltr" href="tel:{{settings.phone}}">{{ settings.phone }}</a></p>
+                                        <p><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></p>
                                     </div>
                                 </li>
                             </ul>

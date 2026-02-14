@@ -2,7 +2,7 @@
     <div class="blog-one__single">
         <div class="blog-one__img">
             <Link :href="postUrl">
-                <img :src="blog.image_link" :alt="blog.title">
+                <img :src="blog.image_link" :alt="blog.title" @error="handleImageError">
             </Link>
             <div v-if="showCategory && blog.category" class="blog-one__tags">
                 <span>{{ blog.category.name }}</span>
@@ -104,4 +104,13 @@ const commentsCount = computed(() => {
 
     return 0
 })
+
+const handleImageError = (event) => {
+    // If image fails to load, use fallback
+    const assetPath = page.props.asset_path || ''
+    const fallbackSrc = `${assetPath}site/images/blog/blog-2-1.jpg`
+    if (event.target.src !== fallbackSrc && !event.target.src.includes('blog-2-')) {
+        event.target.src = fallbackSrc
+    }
+}
 </script>

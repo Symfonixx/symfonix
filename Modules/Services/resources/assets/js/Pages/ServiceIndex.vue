@@ -149,6 +149,8 @@
         </section>
         <!-- Services Two End -->
 
+        <CtaTwo />
+
     </app-layout>
 </template>
 
@@ -157,6 +159,7 @@ import {computed} from 'vue'
 import {usePage, Link, Head} from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
 import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
+import CtaTwo from '@/Components/CtaTwo.vue'
 
 
 const page = usePage()
@@ -300,7 +303,8 @@ const getServiceHighlights = (service) => {
 <script>
 export default {
     components: {
-        AppLayout
+        AppLayout,
+        CtaTwo
     }
 };
 </script>

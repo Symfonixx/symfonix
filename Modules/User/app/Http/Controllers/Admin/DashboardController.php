@@ -3,6 +3,7 @@
 namespace Modules\User\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lead;
 use App\Models\User;
 use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\Page;
@@ -27,7 +28,7 @@ class DashboardController extends Controller
         $topVisitedPages = Visitor::topVisitedPages();
         $stats = [
             'blogs' => Blog::count(),
-            'users' => User::where('type', 'user')->count(),
+            'leads' => Lead::count(),
             'admins' => User::where('type', 'admin')->count(),
             'subscribers' => Subscriber::count(),
             'contacts' => ContactForm::count(),

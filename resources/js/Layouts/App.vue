@@ -151,7 +151,7 @@
                                 <i class="icon-phone-call"></i>
                             </div>
                             <div class="text">
-                                <p><a dir="ltr" :href="`tel::${settings.phone}`">{{ settings.phone }}</a></p>
+                                <p><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></p>
                             </div>
                         </li>
                     </ul>
@@ -353,6 +353,14 @@
                                     <!--                                        </Link>-->
                                     <!--                                    </li>-->
 
+                                      <li>
+                                        <Link :href="route('faq')">
+                                            <span
+                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
+                                                trans('FAQs')
+                                            }}
+                                        </Link>
+                                    </li>
                                     <li>
                                         <Link :href="route('testimonials')">
                                             <span
@@ -361,6 +369,7 @@
                                             }}
                                         </Link>
                                     </li>
+
 
                                     <li v-for="pageItem in footerPages" :key="pageItem.id">
                                         <Link :href="getPageUrl(pageItem)">

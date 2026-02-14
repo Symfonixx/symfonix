@@ -64,7 +64,14 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['slides']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['faqs']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['slides']) ? 'show' : '' }}">
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['faqs']) ? 'active' : '' }}"
+                   href="{{ route('admin.faqs.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('FAQs') }}</span>
+                </a>
+            </div>
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['pages']) ? 'active' : '' }}"
                    href="{{ route('admin.pages.index') }}">
@@ -187,7 +194,7 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['contact_forms']) || isset($active['subscribers']) || isset($active['blocked_ips']) || isset($active['firewall_logs']) || isset($active['search_keywords']) || isset($active['complaints']) || isset($active['leads']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['contact_forms']) || isset($active['subscribers']) || isset($active['blocked_ips']) || isset($active['firewall_logs']) || isset($active['search_keywords']) || isset($active['complaints']) || isset($active['leads']) || isset($active['visitors']) ? 'show' : '' }}">
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['contact_forms']) ? 'active' : '' }}"
                    href="{{ route('admin.contact_forms.index') }}">
@@ -221,6 +228,13 @@
                    href="{{ route('admin.firewall_logs.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">{{ __('Firewall Logs') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['visitors']) ? 'active' : '' }}"
+                   href="{{ route('admin.visitors.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('Visitors') }}</span>
                 </a>
             </div>
             <div class="menu-item">

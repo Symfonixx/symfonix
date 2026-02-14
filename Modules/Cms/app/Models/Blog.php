@@ -3,6 +3,7 @@
 namespace Modules\Cms\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
 class Blog extends Model
@@ -28,7 +29,14 @@ class Blog extends Model
     public function getImageLinkAttribute()
     {
         if ($this->attributes['image']) {
-            $path = asset('storage/'.$this->attributes['image']);
+            $imagePath = $this->attributes['image'];
+            // Check if file exists in storage
+            if (Storage::disk('public')->exists($imagePath)) {
+                $path = asset('storage/'.$imagePath);
+            } else {
+                // File doesn't exist, use fallback
+                $path = asset('images/blank.png');
+            }
         } else {
             $path = asset('images/blank.png');
         }

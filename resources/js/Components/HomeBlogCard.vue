@@ -2,7 +2,7 @@
     <div v-if="variant === 'featured'" class="blog-two__single">
         <div class="blog-two__img">
             <Link :href="postUrl">
-                <img :src="imageSrc" :alt="translateField(post.title)">
+                <img :src="imageSrc" :alt="translateField(post.title)" @error="handleImageError">
             </Link>
             <div class="blog-two__tags"  >
                 <span >{{ translateField(post.category.name) }}</span>
@@ -52,7 +52,7 @@
     >
         <div class="blog-two__img-two">
             <Link :href="postUrl">
-                <img :src="imageSrc" :alt="translateField(post.title)">
+                <img :src="imageSrc" :alt="translateField(post.title)" @error="handleImageError">
             </Link>
         </div>
         <div class="blog-two__content-two">
@@ -149,12 +149,20 @@ const postUrl = computed(() => {
 
 const imageSrc = computed(() => {
     const link = props.post?.image_link || ''
-    if (!link || link.includes('/images/blank.png')) {
+    // Use fallback if no image or if it's a blank placeholder
+    if (!link || link.includes('/images/blank.png') || link.includes('blank.png')) {
         return `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.jpg`
     }
-
     return link
 })
+
+const handleImageError = (event) => {
+    // If image fails to load, use fallback
+    const fallbackSrc = `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.jpg`
+    if (event.target.src !== fallbackSrc && !event.target.src.includes('blog-2-')) {
+        event.target.src = fallbackSrc
+    }
+}
 
 const translateField = (value) => {
     if (!value) {

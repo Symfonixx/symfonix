@@ -139,7 +139,7 @@
                                     </div>
                                     <div class="content">
                                         <span>{{ trans('Call Any Time') }}</span>
-                                        <p><a dir="ltr" href="tel:{{settings.phone}}">{{ settings.phone }}</a></p>
+                                        <p><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -458,7 +458,7 @@
                         </div>
                         <div class="cta-one__contact-details">
                             <p>{{ trans('Book your free consultation') }}</p>
-                            <h4><a dir="ltr" href="tel:{{settings.phone}}">{{ settings.phone }}</a></h4>
+                            <h4><a dir="ltr" :href="`tel:${settings.phone}`">{{ settings.phone }}</a></h4>
                         </div>
                     </div>
                 </div>

@@ -203,6 +203,9 @@
             </div>
         </section>
         <!-- Testimonial One End -->
+
+        <CtaTwo />
+
     </app-layout>
 </template>
 
@@ -211,6 +214,7 @@ import {computed, onMounted, nextTick} from 'vue'
 import {usePage, Link, Head} from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
 import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
+import CtaTwo from '@/Components/CtaTwo.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
@@ -395,7 +399,8 @@ onMounted(() => {
 <script>
 export default {
     components: {
-        AppLayout
+        AppLayout,
+        CtaTwo
     }
 };
 </script>

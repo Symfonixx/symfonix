@@ -189,9 +189,9 @@
                             <!--begin::Col-->
                             <div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
                                 <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                                <div class="fs-2hx fw-bolder">  {{$stats['users'] ?? 0}} </div>
+                                <div class="fs-2hx fw-bolder">  {{$stats['leads'] ?? 0}} </div>
                                 <!--end::Svg Icon-->
-                                <a href="{{route('admin.users.index')}}" target="_blank" class="text-primary fw-bold fs-6">{{__('Users')}}</a>
+                                <a href="{{route('admin.users.index')}}" target="_blank" class="text-primary fw-bold fs-6">{{__('Leads')}}</a>
                             </div>
                             <!--end::Col-->
                         </div>

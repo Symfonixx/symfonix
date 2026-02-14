@@ -61,6 +61,18 @@ class SitemapController extends Controller
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'monthly',
             'priority' => '0.6',
+                ];
+        $entries[] = [
+            'path' => '/faq',
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6',
+                ];
+        $entries[] = [
+            'path' => '/faq',
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6',
         ];
 
         // Static pages (about-us, etc.) via Page model
@@ -220,8 +232,8 @@ class SitemapController extends Controller
         $localePrefix = '/'.trim($locale, '/');
         if ($normalizedPath === '/') {
             return $baseUrl.$localePrefix.'/';
-        }
-
-return $baseUrl.$localePrefix.$normalizedPath;
+        }return $baseUrl.$localePrefix.$normalizedPath;
     }
 }
+
+

@@ -8,6 +8,7 @@ use Modules\Support\app\Http\Controllers\Admin\FirewallController;
 use Modules\Support\app\Http\Controllers\Admin\FirewallLogController;
 use Modules\Support\app\Http\Controllers\Admin\LeadController;
 use Modules\Support\app\Http\Controllers\Admin\SubscriberController;
+use Modules\Support\app\Http\Controllers\Admin\VisitorController;
 
 Route::middleware('can:Support Management')->group(function () {
     // Subscriber routes
@@ -45,4 +46,7 @@ Route::middleware('can:Support Management')->group(function () {
     Route::delete('leads/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
     Route::post('leads/{lead}/block', [LeadController::class, 'block'])->name('leads.block');
     Route::post('leads/{lead}/unblock', [LeadController::class, 'unblock'])->name('leads.unblock');
+
+    // Visitors routes
+    Route::get('visitors', [VisitorController::class, 'index'])->name('visitors.index');
 });

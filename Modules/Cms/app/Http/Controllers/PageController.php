@@ -5,6 +5,7 @@ namespace Modules\Cms\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Cms\Models\Faq;
 use Modules\Cms\Models\Page;
 use Modules\Team\Models\Team;
 use Modules\Testimonial\Models\Testimonial;
@@ -133,13 +134,65 @@ class PageController extends Controller
     {
         $siteName = Seo::get('website_name', config('app.name'));
         $meta = (new Meta)
-            ->title(__('FAQ').' | '.$siteName)
+            ->title(__('FAQs').' | '.$siteName)
             ->description(__('Find answers to common questions about our services and policies.'))
             ->keywords(__('FAQ, help center, support, common questions'))
             ->ogImage()
             ->twitterImage()
             ->toArray();
 
-        return $this->inertia('Cms::Faq', [], $meta);
+        $faqs = Faq::published()->ordered()->get();
+
+        // Generate FAQ Schema for SEO (server-side)
+        $faqSchema = null;
+        if ($faqs->isNotEmpty()) {
+            $locale = app()->getLocale();
+            $mainEntity = $faqs->map(function ($faq) use ($locale) {
+                // Get translation with fallback to English, then any available language
+                $question = $faq->getTranslation('question', $locale)
+                    ?: $faq->getTranslation('question', 'en')
+                    ?: (is_array($faq->question) ? ($faq->question[$locale] ?? $faq->question['en'] ?? reset($faq->question)) : $faq->question);
+                
+                $answer = $faq->getTranslation('answer', $locale)
+                    ?: $faq->getTranslation('answer', 'en')
+                    ?: (is_array($faq->answer) ? ($faq->answer[$locale] ?? $faq->answer['en'] ?? reset($faq->answer)) : $faq->answer);
+
+                if (empty($question) || empty($answer)) {
+                    return null;
+                }
+
+                // Strip HTML tags and clean up entities
+                $answerText = strip_tags($answer);
+                $answerText = html_entity_decode($answerText, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $answerText = preg_replace('/\s+/', ' ', $answerText);
+                $answerText = trim($answerText);
+
+                if (empty($answerText)) {
+                    return null;
+                }
+
+                return [
+                    '@type' => 'Question',
+                    'name' => trim($question),
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $answerText
+                    ]
+                ];
+            })->filter()->values();
+
+            if ($mainEntity->isNotEmpty()) {
+                $faqSchema = [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'FAQPage',
+                    'mainEntity' => $mainEntity->toArray()
+                ];
+            }
+        }
+
+        return $this->inertia('Cms::Faq', [
+            'faqs' => $faqs,
+            'faqSchema' => $faqSchema, // Pass schema to Blade template
+        ], $meta);
     }
 }

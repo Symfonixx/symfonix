@@ -419,7 +419,7 @@
                         </div>
                         <div class="cta-one__contact-details">
                             <p>{{ trans('Call Us For Any inquiry') }}</p>
-                            <h4><a dir="ltr" href="tel:{{settings.phone}}">{{settings.phone}}</a></h4>
+                            <h4><a dir="ltr" :href="`tel:${settings.phone}`">{{settings.phone}}</a></h4>
                         </div>
                     </div>
                 </div>

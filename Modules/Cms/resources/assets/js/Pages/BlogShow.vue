@@ -196,6 +196,8 @@
             </div>
         </section>
 
+        <CtaTwo />
+
     </app-layout>
 </template>
 
@@ -204,6 +206,7 @@ import {computed, ref} from 'vue'
 import {usePage, Link, router, Head} from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
 import HomeBlogCard from '@/Components/HomeBlogCard.vue'
+import CtaTwo from '@/Components/CtaTwo.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
@@ -254,7 +257,7 @@ const handleSearch = () => {
 <script>
 export default {
     components: {
-        AppLayout, HomeBlogCard
+        AppLayout, HomeBlogCard, CtaTwo
     }
 };
 </script>
