@@ -3110,7 +3110,9 @@ Product Description
 }
 
 .sign-up-one__form form input[type="text"],
-.sign-up-one__form form input[type="email"] {
+.sign-up-one__form form input[type="email"],
+.sign-up-one__form form input[type="password"]
+{
     position: relative;
     display: block;
     border-radius: 10px;
@@ -3289,7 +3291,9 @@ Product Description
 }
 
 .login-one__form form input[type="text"],
-.login-one__form form input[type="email"] {
+.login-one__form form input[type="email"],
+.login-one__form form input[type="password"]
+{
     position: relative;
     display: block;
     border-radius: 10px;
@@ -3309,7 +3313,8 @@ Product Description
 }
 
 .login-one__form form input[type="text"]:focus,
-.login-one__form form input[type="email"]:focus {
+.login-one__form form input[type="email"]:focus,
+.login-one__form form input[type="password"]:focus{
     border-color: var(--techguru-black);
     background-color: var(--techguru-black);
 }

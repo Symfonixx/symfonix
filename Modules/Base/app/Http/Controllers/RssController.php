@@ -75,7 +75,7 @@ class RssController extends Controller
 
     private function buildUrl(string $path): string
     {
-        $baseUrl = rtrim(config('app.url'), '/');
+        $baseUrl = rtrim(request()->getSchemeAndHttpHost(), '/');
         $normalizedPath = '/'.ltrim($path, '/');
 
         if ($normalizedPath === '/') {

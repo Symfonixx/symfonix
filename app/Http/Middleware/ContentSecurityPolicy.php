@@ -39,13 +39,13 @@ class ContentSecurityPolicy
 
         // Script sources - REQUIRED for XSS protection
         $scriptSrc = ["'self'"];
-        
+
         // Allow Vite dev server in development
         if (config('app.debug') && config('app.env') !== 'production') {
             $scriptSrc[] = "'unsafe-eval'"; // Required for Vite HMR
-            $scriptSrc[] = config('app.url') . ':5173'; // Vite dev server
+            $scriptSrc[] = $request->getSchemeAndHttpHost() . ':5173'; // Vite dev server
         }
-        
+
         // Allow CDN sources for admin/vendor views if needed
         // Note: For better security, consider moving to self-hosted assets
         if ($request->is('admin/*') || $request->is('vendor/*')) {
@@ -53,14 +53,14 @@ class ContentSecurityPolicy
             $scriptSrc[] = 'https://cdn.jsdelivr.net';
             $scriptSrc[] = 'https://code.jquery.com';
         }
-        
+
         // Allow inline scripts (consider using nonces in the future for better security)
         // Using 'unsafe-inline' is a security trade-off but necessary for current inline scripts
         $scriptSrc[] = "'unsafe-inline'";
-        
+
         // Allow data URIs for inline scripts if needed
         $scriptSrc[] = 'data:';
-        
+
         $directives['script-src'] = implode(' ', $scriptSrc);
 
         // Object sources - REQUIRED: Set to 'none' to prevent plugin injection
@@ -69,14 +69,14 @@ class ContentSecurityPolicy
         // Style sources
         $styleSrc = ["'self'", "'unsafe-inline'"];
         $styleSrc[] = 'https://fonts.googleapis.com';
-        
+
         // Allow CDN sources for admin/vendor views if needed
         if ($request->is('admin/*') || $request->is('vendor/*')) {
             $styleSrc[] = 'https://cdnjs.cloudflare.com';
             $styleSrc[] = 'https://cdn.jsdelivr.net';
             $styleSrc[] = 'https://maxcdn.bootstrapcdn.com';
         }
-        
+
         $directives['style-src'] = implode(' ', $styleSrc);
 
         // Font sources
@@ -91,7 +91,7 @@ class ContentSecurityPolicy
         // Connect sources (for AJAX, WebSocket, etc.)
         $connectSrc = ["'self'"];
         if (config('app.debug') && config('app.env') !== 'production') {
-            $connectSrc[] = config('app.url') . ':5173'; // Vite dev server
+            $connectSrc[] = $request->getSchemeAndHttpHost() . ':5173'; // Vite dev server
         }
         $directives['connect-src'] = implode(' ', $connectSrc);
 

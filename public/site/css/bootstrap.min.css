@@ -274,7 +274,7 @@ pre code {
 
 code {
     font-size: .875em;
-    color: #d63384;
+    color: #7fc457;
     word-wrap: break-word
 }
 
@@ -286,7 +286,7 @@ kbd {
     padding: .2rem .4rem;
     font-size: .875em;
     color: #fff;
-    background-color: #212529;
+    background-color: #7fc457;
     border-radius: .2rem
 }
 
@@ -313,7 +313,7 @@ table {
 caption {
     padding-top: .5rem;
     padding-bottom: .5rem;
-    color: #6c757d;
+    color: #7fc457;
     text-align: left
 }
 
