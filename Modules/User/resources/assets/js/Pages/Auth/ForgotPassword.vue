@@ -43,6 +43,13 @@
                         <h2>{{ trans("Reset Your Password") }}</h2>
                     </div>
 
+                    <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
+                        {{ flash.success }}
+                    </div>
+                    <div v-if="flash.error" class="flash-message flash-message--error" role="alert">
+                        {{ flash.error }}
+                    </div>
+
                     <form id="forgot-password__form" @submit.prevent="form.post(route('password.email'))">
                         <div class="row">
                             <div class="col-xl-12">
@@ -116,6 +123,7 @@ export default {
         const seo = computed(() => page.props.seo)
         const settings = computed(() => page.props.settings || {})
         const asset_path = computed(() => page.props.asset_path)
+        const flash = computed(() => page.props.flash || {})
         const meta = computed(() => page.props.meta || {})
         const trans = (key) => {
             try {
@@ -148,6 +156,7 @@ export default {
             locale,
             trans,
             asset_path,
+            flash,
             metaTitle,
             metaDescription,
             metaKeywords,
@@ -171,5 +180,23 @@ input.error {
 
 .text-danger {
     color: #dc3545;
+}
+
+.flash-message {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+}
+
+.flash-message--success {
+    background-color: #d1e7dd;
+    border: 1px solid #badbcc;
+    color: #0f5132;
+}
+
+.flash-message--error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #842029;
 }
 </style>

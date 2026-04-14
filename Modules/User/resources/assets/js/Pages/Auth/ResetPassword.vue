@@ -1,5 +1,7 @@
 <template>
     <Head>
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/shop.css'" />
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -24,7 +26,7 @@
                     <h2>{{ trans("Reset Password") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="/"><i class="fas fa-home"></i> {{ trans("Home") }}</a></li>
+                            <li><a href="/"><i class="fas fa-home"></i>{{ trans("Home") }}</a></li>
                             <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans("Reset Password") }}</li>
                         </ul>
@@ -33,11 +35,18 @@
             </div>
         </section>
 
-        <section class="sign-up-one">
+        <section class="login-one">
             <div class="container">
-                <div class="sign-up-one__form">
+                <div class="login-one__form">
                     <div class="inner-title text-center">
                         <h2>{{ trans("Set New Password") }}</h2>
+                    </div>
+
+                    <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
+                        {{ flash.success }}
+                    </div>
+                    <div v-if="flash.error" class="flash-message flash-message--error" role="alert">
+                        {{ flash.error }}
                     </div>
 
                     <form id="reset-password__form" @submit.prevent="form.post(route('password.update'))">
@@ -151,6 +160,7 @@ export default {
         const seo = computed(() => page.props.seo)
         const settings = computed(() => page.props.settings || {})
         const asset_path = computed(() => page.props.asset_path || '')
+        const flash = computed(() => page.props.flash || {})
         const meta = computed(() => page.props.meta || {})
         const trans = (key) => {
             try {
@@ -175,7 +185,7 @@ export default {
         const form = useForm({
             email: '',
             password: '',
-            remember: false,
+            password_confirmation: '',
             token: params.get('token') || ''
         });
 
@@ -185,6 +195,7 @@ export default {
             locale,
             trans,
             asset_path,
+            flash,
             metaTitle,
             metaDescription,
             metaKeywords,
@@ -208,5 +219,23 @@ input.error {
 
 .text-danger {
     color: #dc3545;
+}
+
+.flash-message {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+}
+
+.flash-message--success {
+    background-color: #d1e7dd;
+    border: 1px solid #badbcc;
+    color: #0f5132;
+}
+
+.flash-message--error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #842029;
 }
 </style>

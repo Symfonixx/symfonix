@@ -4752,26 +4752,26 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-0d4d2ded${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/faq.css")} data-v-0d4d2ded${_scopeId}><title data-v-0d4d2ded${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-0d4d2ded${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-0d4d2ded${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-0d4d2ded${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-7a46cae7${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/faq.css")} data-v-7a46cae7${_scopeId}><title data-v-7a46cae7${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-7a46cae7${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-7a46cae7${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-7a46cae7${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-0d4d2ded${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-7a46cae7${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-0d4d2ded${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-0d4d2ded${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-7a46cae7${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-7a46cae7${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-0d4d2ded${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-7a46cae7${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-0d4d2ded${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-7a46cae7${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-0d4d2ded${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-0d4d2ded${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-0d4d2ded${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-0d4d2ded${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-7a46cae7${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-7a46cae7${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-7a46cae7${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-7a46cae7${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-0d4d2ded${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-7a46cae7${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -4850,14 +4850,14 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
       _push(ssrRenderComponent(_sfc_main$j, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-0d4d2ded${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-0d4d2ded${_scopeId}></div><div class="container" data-v-0d4d2ded${_scopeId}><div class="page-header__inner" data-v-0d4d2ded${_scopeId}><h2 data-v-0d4d2ded${_scopeId}>${trans("FAQs") ?? ""}</h2><div class="thm-breadcrumb__box" data-v-0d4d2ded${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-0d4d2ded${_scopeId}><li data-v-0d4d2ded${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-7a46cae7${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-7a46cae7${_scopeId}></div><div class="container" data-v-7a46cae7${_scopeId}><div class="page-header__inner" data-v-7a46cae7${_scopeId}><h2 data-v-7a46cae7${_scopeId}>${trans("FAQs") ?? ""}</h2><div class="thm-breadcrumb__box" data-v-7a46cae7${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-7a46cae7${_scopeId}><li data-v-7a46cae7${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`<i class="fas fa-home" data-v-0d4d2ded${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                    _push3(`<i class="fas fa-home" data-v-7a46cae7${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
                     return [
                       createVNode("i", { class: "fas fa-home" }),
@@ -4868,17 +4868,17 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
                 _: 1
               }, _parent2, _scopeId));
             } else {
-              _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}`)} data-v-0d4d2ded${_scopeId}><i class="fas fa-home" data-v-0d4d2ded${_scopeId}></i>${ssrInterpolate(trans("Home"))}</a>`);
+              _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}`)} data-v-7a46cae7${_scopeId}><i class="fas fa-home" data-v-7a46cae7${_scopeId}></i>${ssrInterpolate(trans("Home"))}</a>`);
             }
-            _push2(`</li><li data-v-0d4d2ded${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-0d4d2ded${_scopeId}></span></li><li data-v-0d4d2ded${_scopeId}>${trans("FAQs") ?? ""}</li></ul></div></div></div></section><section class="faq-two faq-page" data-v-0d4d2ded${_scopeId}><div class="container" data-v-0d4d2ded${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-0d4d2ded${_scopeId}><div class="section-title__tagline-box" data-v-0d4d2ded${_scopeId}><div class="section-title__tagline-shape-1" data-v-0d4d2ded${_scopeId}></div><span class="section-title__tagline" data-v-0d4d2ded${_scopeId}>${ssrInterpolate(trans("FAQs"))}</span><div class="section-title__tagline-shape-2" data-v-0d4d2ded${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-0d4d2ded${_scopeId}>${ssrInterpolate(trans("Get answers to the most common questions about our products, services, and policies."))}</h2></div><div class="faq-two__right" data-v-0d4d2ded${_scopeId}>`);
+            _push2(`</li><li data-v-7a46cae7${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-7a46cae7${_scopeId}></span></li><li data-v-7a46cae7${_scopeId}>${trans("FAQs") ?? ""}</li></ul></div></div></div></section><section class="faq-two faq-page" data-v-7a46cae7${_scopeId}><div class="container" data-v-7a46cae7${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-7a46cae7${_scopeId}><div class="section-title__tagline-box" data-v-7a46cae7${_scopeId}><div class="section-title__tagline-shape-1" data-v-7a46cae7${_scopeId}></div><span class="section-title__tagline" data-v-7a46cae7${_scopeId}>${ssrInterpolate(trans("FAQs"))}</span><div class="section-title__tagline-shape-2" data-v-7a46cae7${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-7a46cae7${_scopeId}>${ssrInterpolate(trans("Get answers to the most common questions about our products, services, and policies."))}</h2></div><div class="faq-two__right" data-v-7a46cae7${_scopeId}>`);
             if (faqs.value && faqs.value.length > 0) {
-              _push2(`<div class="accrodion-grp" data-grp-name="faq-one-accrodion" data-v-0d4d2ded${_scopeId}><!--[-->`);
+              _push2(`<div class="accrodion-grp" data-grp-name="faq-one-accrodion" data-v-7a46cae7${_scopeId}><!--[-->`);
               ssrRenderList(faqs.value, (faq, index) => {
-                _push2(`<div class="${ssrRenderClass([{ "active": activeIndex.value === index }, "accrodion"])}" data-v-0d4d2ded${_scopeId}><div class="accrodion-title" data-v-0d4d2ded${_scopeId}><h4 data-v-0d4d2ded${_scopeId}>${ssrInterpolate(translateField(faq.question))}</h4></div><div class="accrodion-content" style="${ssrRenderStyle(activeIndex.value === index ? null : { display: "none" })}" data-v-0d4d2ded${_scopeId}><div class="inner" data-v-0d4d2ded${_scopeId}><p class="accrodion-content__text-1" data-v-0d4d2ded${_scopeId}>${translateField(faq.answer) ?? ""}</p></div></div></div>`);
+                _push2(`<div class="${ssrRenderClass([{ "active": activeIndex.value === index }, "accrodion"])}" data-v-7a46cae7${_scopeId}><div class="accrodion-title" data-v-7a46cae7${_scopeId}><h4 data-v-7a46cae7${_scopeId}>${ssrInterpolate(translateField(faq.question))}</h4></div><div class="accrodion-content" style="${ssrRenderStyle(activeIndex.value === index ? null : { display: "none" })}" data-v-7a46cae7${_scopeId}><div class="inner" data-v-7a46cae7${_scopeId}><p class="accrodion-content__text-1" data-v-7a46cae7${_scopeId}>${translateField(faq.answer) ?? ""}</p></div></div></div>`);
               });
               _push2(`<!--]--></div>`);
             } else {
-              _push2(`<div class="text-center py-5" data-v-0d4d2ded${_scopeId}><p data-v-0d4d2ded${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
+              _push2(`<div class="text-center py-5" data-v-7a46cae7${_scopeId}><p data-v-7a46cae7${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
             }
             _push2(`</div></div></section>`);
             _push2(ssrRenderComponent(_sfc_main$g, null, null, _parent2, _scopeId));
@@ -4991,7 +4991,7 @@ _sfc_main$d.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Faq.vue");
   return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-0d4d2ded"]]);
+const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-7a46cae7"]]);
 const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Faq
@@ -7774,6 +7774,7 @@ const _sfc_main$5 = {
     const seo = computed(() => page.props.seo);
     const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path);
+    const flash = computed(() => page.props.flash || {});
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
       var _a;
@@ -7805,6 +7806,7 @@ const _sfc_main$5 = {
       locale,
       trans,
       asset_path,
+      flash,
       metaTitle,
       metaDescription,
       metaKeywords,
@@ -7822,26 +7824,26 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-2bc3780d${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-2bc3780d${_scopeId}><title data-v-2bc3780d${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-2bc3780d${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-2bc3780d${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-2bc3780d${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-5b68d6b8${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-5b68d6b8${_scopeId}><title data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-5b68d6b8${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-5b68d6b8${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-5b68d6b8${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-2bc3780d${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-5b68d6b8${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-2bc3780d${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-2bc3780d${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-5b68d6b8${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-5b68d6b8${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-2bc3780d${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-5b68d6b8${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-2bc3780d${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-5b68d6b8${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website" data-v-2bc3780d${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-2bc3780d${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-2bc3780d${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-2bc3780d${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-5b68d6b8${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-5b68d6b8${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-5b68d6b8${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-5b68d6b8${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-2bc3780d${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-5b68d6b8${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
@@ -7920,19 +7922,30 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header" data-v-2bc3780d${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-2bc3780d${_scopeId}></div><div class="container" data-v-2bc3780d${_scopeId}><div class="page-header__inner" data-v-2bc3780d${_scopeId}><h2 data-v-2bc3780d${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</h2><div class="thm-breadcrumb__box" data-v-2bc3780d${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-2bc3780d${_scopeId}><li data-v-2bc3780d${_scopeId}><a href="/" data-v-2bc3780d${_scopeId}><i class="fas fa-home" data-v-2bc3780d${_scopeId}></i> ${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-2bc3780d${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-2bc3780d${_scopeId}></span></li><li data-v-2bc3780d${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-2bc3780d${_scopeId}><div class="container" data-v-2bc3780d${_scopeId}><div class="login-one__form" data-v-2bc3780d${_scopeId}><div class="inner-title text-center" data-v-2bc3780d${_scopeId}><h2 data-v-2bc3780d${_scopeId}>${ssrInterpolate($setup.trans("Reset Your Password"))}</h2></div><form id="forgot-password__form" data-v-2bc3780d${_scopeId}><div class="row" data-v-2bc3780d${_scopeId}><div class="col-xl-12" data-v-2bc3780d${_scopeId}><div class="form-group" data-v-2bc3780d${_scopeId}><div class="input-box" data-v-2bc3780d${_scopeId}><input id="email"${ssrRenderAttr("value", $setup.form.email)} type="email" name="email" autocomplete="email"${ssrRenderAttr("placeholder", $setup.trans("Email"))} class="${ssrRenderClass({ "error": $props.errors.email })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-2bc3780d${_scopeId}></div>`);
-        if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small" data-v-2bc3780d${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+        _push2(`<section class="page-header" data-v-5b68d6b8${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-5b68d6b8${_scopeId}></div><div class="container" data-v-5b68d6b8${_scopeId}><div class="page-header__inner" data-v-5b68d6b8${_scopeId}><h2 data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</h2><div class="thm-breadcrumb__box" data-v-5b68d6b8${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-5b68d6b8${_scopeId}><li data-v-5b68d6b8${_scopeId}><a href="/" data-v-5b68d6b8${_scopeId}><i class="fas fa-home" data-v-5b68d6b8${_scopeId}></i> ${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-5b68d6b8${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-5b68d6b8${_scopeId}></span></li><li data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-5b68d6b8${_scopeId}><div class="container" data-v-5b68d6b8${_scopeId}><div class="login-one__form" data-v-5b68d6b8${_scopeId}><div class="inner-title text-center" data-v-5b68d6b8${_scopeId}><h2 data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Reset Your Password"))}</h2></div>`);
+        if ($setup.flash.success) {
+          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-2bc3780d${_scopeId}><div class="form-group" data-v-2bc3780d${_scopeId}><button type="submit"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-2bc3780d${_scopeId}>`);
-        if ($setup.form.processing) {
-          _push2(`<span data-v-2bc3780d${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-2bc3780d${_scopeId}></i>${ssrInterpolate($setup.trans("Sending..."))}</span>`);
+        if ($setup.flash.error) {
+          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
         } else {
-          _push2(`<span data-v-2bc3780d${_scopeId}>${ssrInterpolate($setup.trans("Send Email Verification"))}<span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-2bc3780d${_scopeId}></span></span>`);
+          _push2(`<!---->`);
         }
-        _push2(`</button></div></div><div class="create-account text-center" data-v-2bc3780d${_scopeId}><p data-v-2bc3780d${_scopeId}>`);
+        _push2(`<form id="forgot-password__form" data-v-5b68d6b8${_scopeId}><div class="row" data-v-5b68d6b8${_scopeId}><div class="col-xl-12" data-v-5b68d6b8${_scopeId}><div class="form-group" data-v-5b68d6b8${_scopeId}><div class="input-box" data-v-5b68d6b8${_scopeId}><input id="email"${ssrRenderAttr("value", $setup.form.email)} type="email" name="email" autocomplete="email"${ssrRenderAttr("placeholder", $setup.trans("Email"))} class="${ssrRenderClass({ "error": $props.errors.email })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-5b68d6b8${_scopeId}></div>`);
+        if ($props.errors.email) {
+          _push2(`<div class="text-danger mt-1 small" data-v-5b68d6b8${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+        _push2(`</div></div><div class="col-xl-12" data-v-5b68d6b8${_scopeId}><div class="form-group" data-v-5b68d6b8${_scopeId}><button type="submit"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-5b68d6b8${_scopeId}>`);
+        if ($setup.form.processing) {
+          _push2(`<span data-v-5b68d6b8${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-5b68d6b8${_scopeId}></i>${ssrInterpolate($setup.trans("Sending..."))}</span>`);
+        } else {
+          _push2(`<span data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Send Email Verification"))}<span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-5b68d6b8${_scopeId}></span></span>`);
+        }
+        _push2(`</button></div></div><div class="create-account text-center" data-v-5b68d6b8${_scopeId}><p data-v-5b68d6b8${_scopeId}>`);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
@@ -7983,6 +7996,16 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                 createVNode("div", { class: "inner-title text-center" }, [
                   createVNode("h2", null, toDisplayString($setup.trans("Reset Your Password")), 1)
                 ]),
+                $setup.flash.success ? (openBlock(), createBlock("div", {
+                  key: 0,
+                  class: "flash-message flash-message--success",
+                  role: "alert"
+                }, toDisplayString($setup.flash.success), 1)) : createCommentVNode("", true),
+                $setup.flash.error ? (openBlock(), createBlock("div", {
+                  key: 1,
+                  class: "flash-message flash-message--error",
+                  role: "alert"
+                }, toDisplayString($setup.flash.error), 1)) : createCommentVNode("", true),
                 createVNode("form", {
                   id: "forgot-password__form",
                   onSubmit: withModifiers(($event) => $setup.form.post(_ctx.route("password.email")), ["prevent"])
@@ -8060,7 +8083,7 @@ _sfc_main$5.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue");
   return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-2bc3780d"]]);
+const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-5b68d6b8"]]);
 const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ForgotPassword
@@ -8881,6 +8904,7 @@ const _sfc_main$2 = {
     const seo = computed(() => page.props.seo);
     const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
+    const flash = computed(() => page.props.flash || {});
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
       var _a;
@@ -8907,7 +8931,7 @@ const _sfc_main$2 = {
     const form = useForm({
       email: "",
       password: "",
-      remember: false,
+      password_confirmation: "",
       token: params.get("token") || ""
     });
     return {
@@ -8916,6 +8940,7 @@ const _sfc_main$2 = {
       locale,
       trans,
       asset_path,
+      flash,
       metaTitle,
       metaDescription,
       metaKeywords,
@@ -8933,31 +8958,39 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<title data-v-18c67617${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-18c67617${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-18c67617${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-18c67617${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-f5323f04${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-f5323f04${_scopeId}><title data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-f5323f04${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-f5323f04${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-f5323f04${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-18c67617${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-f5323f04${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-18c67617${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-18c67617${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-f5323f04${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-f5323f04${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-18c67617${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-f5323f04${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-18c67617${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-f5323f04${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website" data-v-18c67617${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-18c67617${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-18c67617${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-18c67617${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-f5323f04${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f5323f04${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-f5323f04${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-f5323f04${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-18c67617${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-f5323f04${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
       } else {
         return [
+          createVNode("link", {
+            rel: "stylesheet",
+            href: $setup.asset_path + "site/css/module-css/page-header.css"
+          }, null, 8, ["href"]),
+          createVNode("link", {
+            rel: "stylesheet",
+            href: $setup.asset_path + "site/css/module-css/shop.css"
+          }, null, 8, ["href"]),
           createVNode("title", null, toDisplayString($setup.metaTitle), 1),
           createVNode("meta", {
             name: "description",
@@ -9023,31 +9056,42 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header" data-v-18c67617${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-18c67617${_scopeId}></div><div class="container" data-v-18c67617${_scopeId}><div class="page-header__inner" data-v-18c67617${_scopeId}><h2 data-v-18c67617${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</h2><div class="thm-breadcrumb__box" data-v-18c67617${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-18c67617${_scopeId}><li data-v-18c67617${_scopeId}><a href="/" data-v-18c67617${_scopeId}><i class="fas fa-home" data-v-18c67617${_scopeId}></i> ${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-18c67617${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-18c67617${_scopeId}></span></li><li data-v-18c67617${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</li></ul></div></div></div></section><section class="sign-up-one" data-v-18c67617${_scopeId}><div class="container" data-v-18c67617${_scopeId}><div class="sign-up-one__form" data-v-18c67617${_scopeId}><div class="inner-title text-center" data-v-18c67617${_scopeId}><h2 data-v-18c67617${_scopeId}>${ssrInterpolate($setup.trans("Set New Password"))}</h2></div><form id="reset-password__form" data-v-18c67617${_scopeId}><input${ssrRenderAttr("value", $setup.form.token)} name="token" type="hidden" data-v-18c67617${_scopeId}><div class="row" data-v-18c67617${_scopeId}><div class="col-xl-12" data-v-18c67617${_scopeId}><div class="form-group" data-v-18c67617${_scopeId}><div class="input-box" data-v-18c67617${_scopeId}><input id="email"${ssrRenderAttr("value", $setup.form.email)} type="email" name="email" autocomplete="email"${ssrRenderAttr("placeholder", $setup.trans("Email"))} class="${ssrRenderClass({ "error": $props.errors.email })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-18c67617${_scopeId}></div>`);
+        _push2(`<section class="page-header" data-v-f5323f04${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-f5323f04${_scopeId}></div><div class="container" data-v-f5323f04${_scopeId}><div class="page-header__inner" data-v-f5323f04${_scopeId}><h2 data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</h2><div class="thm-breadcrumb__box" data-v-f5323f04${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f5323f04${_scopeId}><li data-v-f5323f04${_scopeId}><a href="/" data-v-f5323f04${_scopeId}><i class="fas fa-home" data-v-f5323f04${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-f5323f04${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f5323f04${_scopeId}></span></li><li data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-f5323f04${_scopeId}><div class="container" data-v-f5323f04${_scopeId}><div class="login-one__form" data-v-f5323f04${_scopeId}><div class="inner-title text-center" data-v-f5323f04${_scopeId}><h2 data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Set New Password"))}</h2></div>`);
+        if ($setup.flash.success) {
+          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+        if ($setup.flash.error) {
+          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+        _push2(`<form id="reset-password__form" data-v-f5323f04${_scopeId}><input${ssrRenderAttr("value", $setup.form.token)} name="token" type="hidden" data-v-f5323f04${_scopeId}><div class="row" data-v-f5323f04${_scopeId}><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="form-group" data-v-f5323f04${_scopeId}><div class="input-box" data-v-f5323f04${_scopeId}><input id="email"${ssrRenderAttr("value", $setup.form.email)} type="email" name="email" autocomplete="email"${ssrRenderAttr("placeholder", $setup.trans("Email"))} class="${ssrRenderClass({ "error": $props.errors.email })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-f5323f04${_scopeId}></div>`);
         if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small" data-v-18c67617${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-f5323f04${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-18c67617${_scopeId}><div class="form-group" data-v-18c67617${_scopeId}><div class="input-box" data-v-18c67617${_scopeId}><input id="password"${ssrRenderAttr("value", $setup.form.password)} type="password" name="password" autocomplete="new-password"${ssrRenderAttr("placeholder", $setup.trans("Password"))} class="${ssrRenderClass({ "error": $props.errors.password })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-18c67617${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="form-group" data-v-f5323f04${_scopeId}><div class="input-box" data-v-f5323f04${_scopeId}><input id="password"${ssrRenderAttr("value", $setup.form.password)} type="password" name="password" autocomplete="new-password"${ssrRenderAttr("placeholder", $setup.trans("Password"))} class="${ssrRenderClass({ "error": $props.errors.password })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-f5323f04${_scopeId}></div>`);
         if ($props.errors.password) {
-          _push2(`<div class="text-danger mt-1 small" data-v-18c67617${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-f5323f04${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-18c67617${_scopeId}><div class="form-group" data-v-18c67617${_scopeId}><div class="input-box" data-v-18c67617${_scopeId}><input id="password_confirmation"${ssrRenderAttr("value", $setup.form.password_confirmation)} type="password" name="password_confirmation" autocomplete="new-password"${ssrRenderAttr("placeholder", $setup.trans("Confirm Password"))} class="${ssrRenderClass({ "error": $props.errors.password_confirmation })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-18c67617${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="form-group" data-v-f5323f04${_scopeId}><div class="input-box" data-v-f5323f04${_scopeId}><input id="password_confirmation"${ssrRenderAttr("value", $setup.form.password_confirmation)} type="password" name="password_confirmation" autocomplete="new-password"${ssrRenderAttr("placeholder", $setup.trans("Confirm Password"))} class="${ssrRenderClass({ "error": $props.errors.password_confirmation })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-f5323f04${_scopeId}></div>`);
         if ($props.errors.password_confirmation) {
-          _push2(`<div class="text-danger mt-1 small" data-v-18c67617${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-f5323f04${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-18c67617${_scopeId}><div class="form-group" data-v-18c67617${_scopeId}><button type="submit"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-18c67617${_scopeId}>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="form-group" data-v-f5323f04${_scopeId}><button type="submit"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-f5323f04${_scopeId}>`);
         if ($setup.form.processing) {
-          _push2(`<span data-v-18c67617${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-18c67617${_scopeId}></i>${ssrInterpolate($setup.trans("Resetting..."))}</span>`);
+          _push2(`<span data-v-f5323f04${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-f5323f04${_scopeId}></i>${ssrInterpolate($setup.trans("Resetting..."))}</span>`);
         } else {
-          _push2(`<span data-v-18c67617${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}<span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-18c67617${_scopeId}></span></span>`);
+          _push2(`<span data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}<span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-f5323f04${_scopeId}></span></span>`);
         }
-        _push2(`</button></div></div><div class="col-xl-12" data-v-18c67617${_scopeId}><div class="create-account text-center" data-v-18c67617${_scopeId}><p data-v-18c67617${_scopeId}>`);
+        _push2(`</button></div></div><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="create-account text-center" data-v-f5323f04${_scopeId}><p data-v-f5323f04${_scopeId}>`);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
@@ -9078,7 +9122,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
                     createVNode("li", null, [
                       createVNode("a", { href: "/" }, [
                         createVNode("i", { class: "fas fa-home" }),
-                        createTextVNode(" " + toDisplayString($setup.trans("Home")), 1)
+                        createTextVNode(toDisplayString($setup.trans("Home")), 1)
                       ])
                     ]),
                     createVNode("li", null, [
@@ -9092,12 +9136,22 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
               ])
             ])
           ]),
-          createVNode("section", { class: "sign-up-one" }, [
+          createVNode("section", { class: "login-one" }, [
             createVNode("div", { class: "container" }, [
-              createVNode("div", { class: "sign-up-one__form" }, [
+              createVNode("div", { class: "login-one__form" }, [
                 createVNode("div", { class: "inner-title text-center" }, [
                   createVNode("h2", null, toDisplayString($setup.trans("Set New Password")), 1)
                 ]),
+                $setup.flash.success ? (openBlock(), createBlock("div", {
+                  key: 0,
+                  class: "flash-message flash-message--success",
+                  role: "alert"
+                }, toDisplayString($setup.flash.success), 1)) : createCommentVNode("", true),
+                $setup.flash.error ? (openBlock(), createBlock("div", {
+                  key: 1,
+                  class: "flash-message flash-message--error",
+                  role: "alert"
+                }, toDisplayString($setup.flash.error), 1)) : createCommentVNode("", true),
                 createVNode("form", {
                   id: "reset-password__form",
                   onSubmit: withModifiers(($event) => $setup.form.post(_ctx.route("password.update")), ["prevent"])
@@ -9228,7 +9282,7 @@ _sfc_main$2.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue");
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
-const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-18c67617"]]);
+const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-f5323f04"]]);
 const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ResetPassword
