@@ -1146,8 +1146,8 @@ const _sfc_main$j = {
         _: 1
       }, _parent));
       _push(`</p></div><div class="site-footer-two__social-box"><h3 class="h4 site-footer-two__social-title">${ssrInterpolate(trans("Follow Us"))}:</h3><div class="site-footer-two__social-box-inner">`);
-      if (settings.value.whatsapp) {
-        _push(`<a${ssrRenderAttr("href", settings.value.whatsapp)} target="_blank" rel="noopener" aria-label="Whatsapp"><span class="icon-whatsapp"></span></a>`);
+      if (settings.value.twitter) {
+        _push(`<a${ssrRenderAttr("href", settings.value.twitter)} target="_blank" rel="noopener" aria-label="twitter"><span class="fab fa-twitter"></span></a>`);
       } else {
         _push(`<!---->`);
       }
@@ -1195,11 +1195,6 @@ const _sfc_main$j = {
       _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
       if (settings.value.twitter) {
         _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
-      } else {
-        _push(`<!---->`);
-      }
-      if (settings.value.whatsapp) {
-        _push(`<a${ssrRenderAttr("href", settings.value.whatsapp)} class="fab fa-whatsapp me-2" target="_blank" rel="noopener" aria-label="Whatsapp"></a>`);
       } else {
         _push(`<!---->`);
       }

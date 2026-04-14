@@ -249,7 +249,7 @@
                                 <div class="site-footer-two__logo">
                                     <Link :href="route('home')"><img :src="storage_path + settings.site_logo"
                                                                      alt="logo"></Link>
-                                        <p class="mt-2">{{ seo.main_title }}</p>
+                                    <p class="mt-2">{{ seo.main_title }}</p>
                                 </div>
 
                                 <ul class="list-unstyled site-footer-two__contact-list">
@@ -287,11 +287,11 @@
                                 </ul>
                             </div>
                         </div>
-<!--                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">-->
-<!--                            <div class="footer-widget-two__services">-->
+                        <!--                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">-->
+                        <!--                            <div class="footer-widget-two__services">-->
 
-<!--                            </div>-->
-<!--                        </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                         <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                             <div class="footer-widget-two__support">
                                 <h4 class="footer-widget-two__title">{{ trans('Quick Links') }}</h4>
@@ -353,7 +353,7 @@
                                     <!--                                        </Link>-->
                                     <!--                                    </li>-->
 
-                                      <li>
+                                    <li>
                                         <Link :href="route('faq')">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
@@ -406,13 +406,13 @@
                                     <h3 class="h4 site-footer-two__social-title">{{ trans('Follow Us') }}:</h3>
                                     <div class="site-footer-two__social-box-inner">
                                         <a
-                                            v-if="settings.whatsapp"
-                                            :href="settings.whatsapp"
+                                            v-if="settings.twitter"
+                                            :href="settings.twitter"
                                             target="_blank"
                                             rel="noopener"
-                                            aria-label="Whatsapp"
+                                            aria-label="twitter"
                                         >
-                                            <span class="icon-whatsapp"></span>
+                                            <span class="fab fa-twitter"></span>
                                         </a>
 
                                         <a
@@ -502,15 +502,6 @@
                         target="_blank"
                         rel="noopener"
                         aria-label="Twitter"
-                    ></a>
-
-                    <a
-                        v-if="settings.whatsapp"
-                        :href="settings.whatsapp"
-                        class="fab fa-whatsapp me-2"
-                        target="_blank"
-                        rel="noopener"
-                        aria-label="Whatsapp"
                     ></a>
 
                     <a
