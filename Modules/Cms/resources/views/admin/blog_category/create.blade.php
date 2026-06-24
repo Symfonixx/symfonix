@@ -1,36 +1,36 @@
 @if(isset($modal) && $modal)
 
-    <!-- Create Category Modal -->
     <div class="modal fade" id="createCategoryModal" tabindex="-1" aria-labelledby="createCategoryModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <form action="{{ route('admin.blogs_categories.store') }}" method="POST">
                     @csrf
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="createCategoryModalLabel">{{ __('Add New Blog Category') }}</h5>
+                    <div class="modal-header border-0 pb-0">
+                        <h3 class="modal-title fw-bold" id="createCategoryModalLabel">{{ __('Add New Blog Category') }}</h3>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-
-                        <div class="mb-3">
-                            <label for="name" class="form-label">{{ __('Name') }} <span
-                                    class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="name" required>
+                    <div class="modal-body pt-5">
+                        <div class="mb-6">
+                            <label for="name" class="form-label fw-semibold required">{{ __('Name') }}</label>
+                            <input type="text" class="form-control form-control-solid" name="name" required
+                                   placeholder="{{ __('Category name') }}">
                         </div>
 
-                        <div class="mb-3">
-                            <label for="slug" class="form-label">{{ __('Url') }} <span
-                                    class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="gslug" name="gslug" required>
-                            <input type="hidden" name="slug" value="{{old('slug')}}" id="slug">
-                            <div class="my-3" id="link">{{old('slug')}}</div>
+                        <div class="mb-0">
+                            <label for="gslug" class="form-label fw-semibold required">{{ __('Url') }}</label>
+                            <input type="text" class="form-control form-control-solid" id="gslug" name="gslug" required
+                                   placeholder="category-slug">
+                            <input type="hidden" name="slug" value="{{ old('slug') }}" id="slug">
+                            <div class="my-2 fs-7" id="link">{{ old('slug') }}</div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
-                                data-bs-dismiss="modal">{{ __('Close') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-light btn-active-light-primary"
+                                data-bs-dismiss="modal">{{ __('Discard') }}</button>
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Save Changes') }} <i class="bi bi-check2-circle ms-1"></i>
+                        </button>
                     </div>
                 </form>
             </div>

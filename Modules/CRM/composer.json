@@ -1,0 +1,30 @@
+{
+    "name": "hadi/crm",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\CRM\\": "app/",
+            "Modules\\CRM\\Database\\Factories\\": "database/factories/",
+            "Modules\\CRM\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\CRM\\Tests\\": "tests/"
+        }
+    }
+}

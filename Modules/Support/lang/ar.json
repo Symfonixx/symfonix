@@ -110,5 +110,8 @@
     "User Agent": "وكيل المستخدم",
     "Device": "الجهاز",
     "Browser": "المتصفح",
-    "Platform": "المنصة"
+    "Platform": "المنصة",
+    "Company": "الشركة",
+    "Select Company": "اختر الشركة",
+    "Link this website contact to a CRM company (optional).": "اربط جهة الاتصال من الموقع بشركة في نظام CRM (اختياري)."
 }

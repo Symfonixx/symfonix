@@ -47,8 +47,8 @@
                 init: function () {
                     (e = document.querySelector("#kt_roles_view_table")) && (e.querySelectorAll("tbody tr").forEach((t => {
                         const e = t.querySelectorAll("td"),
-                            o = moment(e[3].innerHTML, "DD MMM YYYY, LT").format();
-                        e[3].setAttribute("data-order", o)
+                            o = moment(e[4].innerHTML, "DD MMM YYYY, LT").format();
+                        e[4].setAttribute("data-order", o)
                     })), t = $(e).DataTable({
                         info: !1,
                         order: [],
@@ -59,7 +59,7 @@
                             targets: 0
                         }, {
                             orderable: !1,
-                            targets: 4
+                            targets: 5
                         }]
                     }), document.querySelector('[data-kt-roles-table-filter="search"]').addEventListener("keyup", (function (e) {
                         t.search(e.target.value).draw()
@@ -493,7 +493,7 @@
                 <div class="card-header pt-5">
                     <!--begin::Card title-->
                     <div class="card-title">
-                        <h2 class="d-flex align-items-center">{{__('Users Assigned')}}
+                        <h2 class="d-flex align-items-center">{{__('Employees & Admins Assigned')}}
                             <span class="text-gray-600 fs-6 ms-1">({{$role->users()->count()}})</span></h2>
                     </div>
                     <!--end::Card title-->
@@ -516,7 +516,7 @@
                             <!--end::Svg Icon-->
                             <input type="text" data-kt-roles-table-filter="search"
                                    class="form-control form-control-solid w-250px ps-15"
-                                   placeholder="{{__('Search In Users')}}"/>
+                                   placeholder="{{__('Search In Employees & Admins')}}"/>
                         </div>
                         <!--end::Search-->
                         <!--begin::Group actions-->
@@ -554,7 +554,8 @@
                                     </div>
                                 </th>
                                 <th class="min-w-50px">#</th>
-                                <th class="min-w-100px">{{__('User')}}</th>
+                                <th class="min-w-100px">{{__('Employee')}}</th>
+                                <th class="min-w-100px">{{__('Account Type')}}</th>
                                 <th class="min-w-125px">{{__('Created At')}}</th>
                                 <th class="text-end min-w-100px"></th>
                             </tr>
@@ -590,6 +591,9 @@
                                         <!--begin::User details-->
                                     </td>
                                     <!--end::user=-->
+                                    <td>
+                                        <span class="badge badge-light-primary">{{ ucfirst($user->type) }}</span>
+                                    </td>
                                     <!--begin::Joined date=-->
                                     <td>{{$user->created_at}}</td>
                                     <!--end::Joined date=-->
@@ -627,7 +631,7 @@
                 <div class="card-header pt-5">
                     <!--begin::Card title-->
                     <div class="card-title">
-                        <h3 class="d-flex align-items-center">{{__('Assign New User')}}</h3>
+                        <h3 class="d-flex align-items-center">{{__('Assign Employee/Admin')}}</h3>
                     </div>
                     <!--end::Card title-->
 

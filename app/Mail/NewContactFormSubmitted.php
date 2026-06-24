@@ -5,7 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Modules\Support\Models\ContactForm;
+use Modules\CRM\Models\ContactForm;
 
 class NewContactFormSubmitted extends Mailable
 {

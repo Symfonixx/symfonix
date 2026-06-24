@@ -109,6 +109,9 @@
     "User Agent": "Kullanıcı Aracısı",
     "Device": "Cihaz",
     "Browser": "Tarayıcı",
-    "Platform": "Platform"
+    "Platform": "Platform",
+    "Company": "Şirket",
+    "Select Company": "Şirket Seçin",
+    "Link this website contact to a CRM company (optional).": "Bu web sitesi iletişimini bir CRM şirketine bağlayın (isteğe bağlı)."
 }
 

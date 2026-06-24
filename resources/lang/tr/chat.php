@@ -3,8 +3,6 @@
 return [
     'menu.title' => 'Bugün size nasıl yardımcı olabiliriz?',
     'menu.price_quote' => 'Fiyat teklifi alın',
-    'menu.branch_complaint' => 'Şubeye şikayet gönderin',
-    'menu.contact_branch' => 'En Yakın Şube ile İletişime Geçin',
 
     'quote.ask_name' => 'Harika! Adınız ve soyadınız nedir?',
     'quote.ask_email' => 'Sizi en iyi hangi e-posta adresinden ulaşabiliriz?',
@@ -13,20 +11,6 @@ return [
     'quote.phone_invalid' => 'Telefon numarası doğru görünmüyor. En az 8 rakam girin.',
     'quote.ask_message' => 'Teklif istediğiniz konuyu kısaca anlatır mısınız?',
     'quote.success' => 'Talebiniz başarıyla gönderildi. Ekibimiz yakında sizinle iletişime geçecek.',
-
-    'branches.none' => 'Şu anda yapılandırılmış şube bulunmuyor.',
-
-    'complaint.ask_branch' => 'Lütfen şikayet edeceğiniz şubeyi seçin:',
-    'complaint.ask_name' => 'Takip edebilmemiz için adınızı paylaşır mısınız?',
-    'complaint.ask_email' => 'Şubenin size ulaşması için e-posta adresiniz nedir?',
-    'complaint.ask_mobile' => 'Cep telefonu numaranız nedir? (sadece rakam)',
-    'complaint.mobile_invalid' => 'Telefon numarası doğru görünmüyor. En az 8 rakam girin.',
-    'complaint.email_invalid' => 'Bu e-posta doğru görünmüyor. Lütfen geçerli bir e-posta girin.',
-    'complaint.ask_text' => 'Şikayetinizi kısaca açıklayın.',
-    'complaint.success' => 'Şikayetiniz şubeye iletildi.',
-
-    'contact.ask_branch' => 'WhatsApp üzerinden iletişim için bir şube seçin:',
-    'contact.hint' => 'Seçilen şube ile WhatsApp açmak için yukarıdaki düğmelere tıklayın.',
 
     'lead.greeting' => 'Merhaba! Projenizi hızlıca anlayıp ekibimize iletebilirim.',
     'lead.ask_problem' => 'Hangi problemi çözmek istiyorsunuz?',

@@ -1,263 +1,203 @@
-@section('title' , __('Website Configurations'))
+@section('title', __('Website Configurations'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
             ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
+            ['label' => 'Settings', 'url' => route('admin.settings.index')],
             ['label' => 'Website Configurations'],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('Website Configurations')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3"></div>
+    <x-admin.breadcrumb
+        :pageTitle="__('Website Configurations')"
+        :breadcrumbItems="$breadcrumbItems"
+        :pageDescription="__('Manage your site branding, contact details, scripts, and social links.')"
+    />
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card title="Website Configurations" :formUrl="route('admin.settings.store')">
-        <div class="row mb-10">
-            <!--begin::Col-->
-            <div class="col-xl-3 mb-5">
-                <div class="fs-6 fw-bold mt-2 mb-5">{{__('Site Logo')}}</div>
-                <!--begin::Image input-->
-                <div class="image-input image-input-outline" data-kt-image-input="true">
-                    <!--begin::Preview existing avatar-->
-                    <div class="image-input-wrapper w-125px h-125px bgi-position-center"
-                         style="background-size: 75%; background-image: url('{{asset('storage/' .$settings->get('site_logo' ,'default.jpg'))}}')"></div>
-                    <!--end::Preview existing avatar-->
-                    <!--begin::Label-->
-                    <label
-                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                        title="{{__('Change avatar')}}">
-                        <i class="bi bi-pencil-fill fs-7"></i>
-                        <!--begin::Inputs-->
-                        <input type="file" name="imgs[site_logo]" accept=".png, .jpg, .jpeg, .webp"/>
-                        <input type="hidden" name="avatar_remove"/>
-                        <!--end::Inputs-->
-                    </label>
-                    <!--end::Label-->
-                    <!--begin::Cancel-->
-                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                          data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-                          title="{{__('Cancel avatar')}}">
-                                <i class="bi bi-x fs-2"></i>
-                            </span>
-                    <!--end::Cancel-->
-                    <!--begin::Remove-->
-                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                          data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                          title="{{__('Remove avatar')}}">
-                                <i class="bi bi-x fs-2"></i>
-                            </span>
-                    <!--end::Remove-->
-                </div>
-                <!--end::Image input-->
-                <!--begin::Hint-->
-                <div class="form-text"> 185px * 35px</div>
-                <!--end::Hint-->
-            </div>
-            <!--end::Col-->
+    <x-admin.create-card
+        title="Website Configurations"
+        :formUrl="route('admin.settings.store')"
+        :description="__('Configure global website settings used across the frontend.')"
+        id="settings-form"
+    >
+        {{-- Tab navigation --}}
+        <ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x settings-tabs mb-8 fs-6 fw-semibold" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#tab-branding">
+                    <i class="bi bi-image me-2"></i>{{ __('Branding') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-contact">
+                    <i class="bi bi-telephone me-2"></i>{{ __('Contact') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-scripts">
+                    <i class="bi bi-code-slash me-2"></i>{{ __('Scripts') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-social">
+                    <i class="bi bi-share me-2"></i>{{ __('Social Media') }}
+                </a>
+            </li>
+        </ul>
 
+        <div class="tab-content">
+            {{-- Branding --}}
+            <div class="tab-pane fade show active" id="tab-branding">
+                <x-admin.settings-section
+                    icon="bi-palette"
+                    :title="__('Brand Assets')"
+                    :description="__('Upload your site logo and default social sharing image.')"
+                >
+                    <div class="row g-5">
+                        <div class="col-md-6">
+                            <x-admin.settings-image
+                                :label="__('Site Logo')"
+                                name="site_logo"
+                                :current="$settings->get('site_logo', 'default.jpg')"
+                                dimensions="185 × 35 px"
+                                :hint="__('Displayed in the site header and admin panel.')"
+                            />
+                        </div>
+                        <div class="col-md-6">
+                            <x-admin.settings-image
+                                :label="__('Meta Image')"
+                                name="meta_img"
+                                :current="$settings->get('meta_img', 'default.jpg')"
+                                dimensions="600 × 600 px"
+                                :hint="__('Default Open Graph image when pages do not specify one.')"
+                            />
+                        </div>
+                    </div>
+                </x-admin.settings-section>
+            </div>
 
-            <!--begin::Col-->
-            <div class="col-xl-3 mb-5">
-                <div class="fs-6 fw-bold mt-2 mb-5">{{__('Meta Image')}}</div>
-                <!--begin::Image input-->
-                <div class="image-input image-input-outline" data-kt-image-input="true">
-                    <!--begin::Preview existing avatar-->
-                    <div class="image-input-wrapper w-125px h-125px bgi-position-center"
-                         style="background-size: 75%; background-image: url('{{asset('storage/' .$settings->get('meta_img' ,'default.jpg') )}}')"></div>
-                    <!--end::Preview existing avatar-->
-                    <!--begin::Label-->
-                    <label
-                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                        title="{{__('Change avatar')}}">
-                        <i class="bi bi-pencil-fill fs-7"></i>
-                        <!--begin::Inputs-->
-                        <input type="file" name="imgs[meta_img]" accept=".png, .jpg, .jpeg, .webp"/>
-                        <input type="hidden" name="avatar_remove"/>
-                        <!--end::Inputs-->
-                    </label>
-                    <!--end::Label-->
-                    <!--begin::Cancel-->
-                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                          data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-                          title="{{__('Cancel avatar')}}">
-                                <i class="bi bi-x fs-2"></i>
-                            </span>
-                    <!--end::Cancel-->
-                    <!--begin::Remove-->
-                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                          data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                          title="{{__('Remove avatar')}}">
-                                <i class="bi bi-x fs-2"></i>
-                            </span>
-                    <!--end::Remove-->
-                </div>
-                <!--end::Image input-->
-                <!--begin::Hint-->
-                <div class="form-text"> 600px * 600px</div>
-                <!--end::Hint-->
+            {{-- Contact --}}
+            <div class="tab-pane fade" id="tab-contact">
+                <x-admin.settings-section
+                    icon="bi-building"
+                    :title="__('Contact Information')"
+                    :description="__('Public contact details shown on the website footer and contact page.')"
+                >
+                    <x-admin.settings-field
+                        :label="__('Website Phone')"
+                        name="data[phone]"
+                        :value="$settings->get('phone')"
+                        placeholder="00905234***"
+                        icon="bi-phone"
+                        :hint="__('Include country code without + or spaces.')"
+                    />
+                    <x-admin.settings-field
+                        :label="__('Website Email')"
+                        name="data[email]"
+                        type="email"
+                        :value="$settings->get('email')"
+                        placeholder="support@example.com"
+                        icon="bi-envelope"
+                    />
+                    <x-admin.settings-field
+                        :label="__('Website Address')"
+                        name="data[address]"
+                        :value="$settings->get('address')"
+                        placeholder="California, TX 70240"
+                        icon="bi-geo-alt"
+                    />
+                </x-admin.settings-section>
             </div>
-            <!--end::Col-->
 
-        </div>
+            {{-- Scripts --}}
+            <div class="tab-pane fade" id="tab-scripts">
+                <x-admin.settings-section
+                    icon="bi-braces"
+                    :title="__('Custom Scripts')"
+                    :description="__('Inject analytics, chat widgets, or tracking codes. Use with caution.')"
+                >
+                    <div class="alert alert-warning d-flex align-items-center mb-6">
+                        <i class="bi bi-exclamation-triangle fs-3 me-3"></i>
+                        <span class="fs-7">{{ __('Only paste code from trusted sources. Invalid scripts can break your site.') }}</span>
+                    </div>
+                    <x-admin.settings-field
+                        :label="__('Header Scripts')"
+                        name="data[header_scripts]"
+                        type="textarea"
+                        :rows="8"
+                        :value="$settings->get('header_scripts')"
+                        icon="bi-code-slash"
+                        :hint="__('Inserted inside the <head> tag on every page.')"
+                    />
+                    <x-admin.settings-field
+                        :label="__('Body Scripts')"
+                        name="data[body_scripts]"
+                        type="textarea"
+                        :rows="8"
+                        :value="$settings->get('body_scripts')"
+                        icon="bi-code-slash"
+                        :hint="__('Inserted before the closing </body> tag.')"
+                    />
+                </x-admin.settings-section>
+            </div>
 
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-phone mx-1 text-primary"></i> {{__('Website Phone')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[phone]"
-                       value="{{$settings->get('phone')}}" placeholder="00905234***"/>
-            </div>
-        </div>
-
-
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-envelope mx-1 text-primary"></i> {{__('Website Email')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[email]"
-                       value="{{$settings->get('email')}}" placeholder="support@example.com"/>
-            </div>
-        </div>
-
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-geo-fill mx-1 text-primary"></i> {{__('Website Address')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[address]"
-                       value="{{$settings->get('address')}}" placeholder="California, TX 70240"/>
-            </div>
-        </div>
-
-
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-code-slash mx-1 text-primary"></i> {{__('Header Scripts')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                        <textarea name="data[header_scripts]"
-                                  class="form-control form-control-solid h-250px">{{$settings->get('header_scripts')}}</textarea>
-            </div>
-            <!--begin::Col-->
-        </div>
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-code-slash mx-1 text-primary"></i> {{__('Body Scripts')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                        <textarea name="data[body_scripts]"
-                                  class="form-control form-control-solid h-250px">{{$settings->get('body_scripts')}}</textarea>
-            </div>
-            <!--begin::Col-->
-        </div>
-
-        <h5 class="my-3 fw-bold text-primary">{{__('Social Media')}}</h5>
-        <hr/>
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-whatsapp mx-1 text-success"></i> {{__('Whatsapp')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[whatsapp]"
-                       value="{{$settings->get('whatsapp')}}" placeholder="90564xxxxxxx"/>
+            {{-- Social --}}
+            <div class="tab-pane fade" id="tab-social">
+                <x-admin.settings-section
+                    icon="bi-share"
+                    :title="__('Social Media Links')"
+                    :description="__('Links to your social profiles. Leave blank to hide from the website.')"
+                >
+                    <div class="row g-4">
+                        @php
+                            $socialFields = [
+                                ['key' => 'whatsapp', 'label' => 'Whatsapp', 'icon' => 'bi-whatsapp', 'class' => 'text-success', 'placeholder' => '90564xxxxxxx', 'type' => 'text'],
+                                ['key' => 'facebook', 'label' => 'Facebook', 'icon' => 'bi-facebook', 'class' => 'text-primary', 'placeholder' => 'https://www.facebook.com/xxxx'],
+                                ['key' => 'instagram', 'label' => 'Instagram', 'icon' => 'bi-instagram', 'class' => 'text-danger', 'placeholder' => 'https://www.instagram.com/xxxx'],
+                                ['key' => 'twitter', 'label' => 'Twitter', 'icon' => 'bi-twitter-x', 'class' => 'text-dark', 'placeholder' => 'https://www.twitter.com/xxxx'],
+                                ['key' => 'linkedin', 'label' => 'LinkedIn', 'icon' => 'bi-linkedin', 'class' => 'text-primary', 'placeholder' => 'https://www.linkedin.com/xxxx'],
+                                ['key' => 'github', 'label' => 'Github', 'icon' => 'bi-github', 'class' => 'text-dark', 'placeholder' => 'https://www.github.com/xxxx'],
+                            ];
+                        @endphp
+                        @foreach($socialFields as $social)
+                            <div class="col-md-6">
+                                <div class="settings-social-field">
+                                    <label class="settings-social-label" for="social-{{ $social['key'] }}">
+                                        <span class="settings-social-icon {{ $social['class'] }}">
+                                            <i class="bi {{ $social['icon'] }}"></i>
+                                        </span>
+                                        {{ __($social['label']) }}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="social-{{ $social['key'] }}"
+                                        name="data[{{ $social['key'] }}]"
+                                        class="form-control form-control-solid"
+                                        value="{{ $settings->get($social['key']) }}"
+                                        placeholder="{{ $social['placeholder'] }}"
+                                    />
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </x-admin.settings-section>
             </div>
         </div>
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-facebook mx-1 text-primary"></i> {{__('Facebook')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[facebook]"
-                       value="{{$settings->get('facebook')}}" placeholder="https://www.facebook.com/xxxx"/>
-            </div>
-        </div>
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-instagram mx-1 text-danger"></i> {{__('Instagram')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[instagram]"
-                       value="{{$settings->get('instagram')}}" placeholder="https://www.instagram.com/xxxx"/>
-            </div>
-        </div>
-
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-twitter mx-1 text-primary"></i> {{__('Twitter')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[twitter]"
-                       value="{{$settings->get('twitter')}}" placeholder="https://www.twitter.com/xxxx"/>
-            </div>
-        </div>
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-linkedin mx-1 text-primary"></i> {{__('LinkedIn')}}
-                </div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[linkedin]"
-                       value="{{$settings->get('linkedin')}}" placeholder="https://www.linkedin.com/xxxx"/>
-            </div>
-        </div>
-
-         <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-github mx-1 text-dark"></i> {{__('Github')}}
-                </div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[github]"
-                       value="{{$settings->get('github')}}" placeholder="https://www.github.com/xxxx"/>
-            </div>
-        </div>
-
     </x-admin.create-card>
+
+    @push('scripts')
+    <script>
+        document.querySelectorAll('#settings-form [data-bs-toggle="tab"]').forEach(function (tab) {
+            tab.addEventListener('shown.bs.tab', function (e) {
+                localStorage.setItem('settings_active_tab', e.target.getAttribute('href'));
+            });
+        });
+        const savedTab = localStorage.getItem('settings_active_tab');
+        if (savedTab) {
+            const tabEl = document.querySelector('#settings-form [href="' + savedTab + '"]');
+            if (tabEl) bootstrap.Tab.getOrCreateInstance(tabEl).show();
+        }
+    </script>
+    @endpush
 </x-admin-layout>

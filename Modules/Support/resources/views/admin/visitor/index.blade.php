@@ -68,11 +68,6 @@
                         <button type="button" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#visitorModal{{ $visitor->id }}">
                             <i class="bi bi-eye"></i> {{ __('View Details') }}
                         </button>
-                        @if(!empty($visitor->ip))
-                            <button type="button" class="btn btn-sm btn-danger" onclick="blockIp('{{ $visitor->ip }}')">
-                                <i class="bi bi-lock"></i> {{ __('Block IP') }}
-                            </button>
-                        @endif
                     </div>
                 </td>
             </tr>
@@ -141,11 +136,6 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
-                            @if(!empty($visitor->ip))
-                                <button type="button" class="btn btn-danger" onclick="blockIp('{{ $visitor->ip }}')">
-                                    <i class="bi bi-lock"></i> {{ __('Block IP') }}
-                                </button>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -156,27 +146,3 @@
     </x-admin.table>
 </x-admin-layout>
 
-@section('js')
-<script>
-	function blockIp(ip) {
-		if (!confirm('{{ __("Are you sure you want to block this IP address?") }}')) {
-			return;
-		}
-		var form = document.createElement('form');
-		form.method = 'POST';
-		form.action = '{{ route('admin.firewall.block') }}';
-		var token = document.createElement('input');
-		token.type = 'hidden';
-		token.name = '_token';
-		token.value = '{{ csrf_token() }}';
-		var ipInput = document.createElement('input');
-		ipInput.type = 'hidden';
-		ipInput.name = 'ip';
-		ipInput.value = ip;
-		form.appendChild(token);
-		form.appendChild(ipInput);
-		document.body.appendChild(form);
-		form.submit();
-	}
-</script>
-@endsection

@@ -250,12 +250,9 @@ VALUES (1, 'AF', 'AFG', 'Afghanistan', 93),
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
                         (1, 'Settings Management', 'web', NULL, NULL),
                         (2, 'CMS Management', 'web', NULL, NULL),
-                        (3, 'Services Management', 'web', NULL, NULL),
-                        (4, 'Team Management', 'web', NULL, NULL),
-                        (5, 'Testimonials Management', 'web', NULL, NULL),
-                        (6, 'Support Management', 'web', NULL, NULL),
-                        (7, 'Hr Management', 'web', NULL, NULL),
-                        (8, 'App Monitoring', 'web', NULL, NULL),
-                        (9, 'Projects Management', 'web', NULL, NULL),
-                        (10, 'Media Management', 'web', NULL, NULL),
-                        (11, 'Logs Management', 'web', NULL, NULL);
+                        (3, 'Support Management', 'web', NULL, NULL),
+                        (4, 'Hr Management', 'web', NULL, NULL),
+                        (5, 'App Monitoring', 'web', NULL, NULL),
+                        (6, 'Projects Management', 'web', NULL, NULL),
+                        (7, 'CRM Management', 'web', NULL, NULL),
+                        (8, 'Logs Management', 'web', NULL, NULL);

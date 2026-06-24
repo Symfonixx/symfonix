@@ -52,6 +52,7 @@ Author: Hadi Hilal
         <link href="{{asset('admin/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
     @endif
 
+    <link href="{{ asset('admin/css/custom-admin.css') }}" rel="stylesheet" type="text/css"/>
 
     @yield('css')
 </head>
@@ -103,7 +104,7 @@ Author: Hadi Hilal
                 <!--end::Sidebar mobile toggle-->
                 <!--begin::Mobile logo-->
                 <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-                    <a href="" class="d-lg-none">
+                    <a href="{{ route('admin.dashboard.index') }}" class="d-lg-none">
                         <img alt="Logo" src="{{asset('images/admin_logo.png')}}" class="h-30px"/>
                     </a>
                 </div>
@@ -144,6 +145,124 @@ Author: Hadi Hilal
                     <!--end::Menu wrapper-->
                     <!--begin::Navbar-->
                     <div class="app-navbar flex-shrink-0">
+                        <!--begin::Notifications-->
+                        <div class="app-navbar-item ms-1 ms-md-3">
+                            <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px position-relative"
+                                 data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                                 data-kt-menu-attach="parent"
+                                 {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}>
+                                <i class="ki-duotone ki-notification-status fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+                            </div>
+                            <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px"
+                                 data-kt-menu="true">
+                                <div class="d-flex flex-column bgi-no-repeat rounded-top bg-primary">
+                                    <h3 class="text-white fw-semibold px-9 py-6 mb-0">
+                                        {{ __('Notifications') }}
+                                        <span class="fs-8 opacity-75 ps-3">0 {{ __('new') }}</span>
+                                    </h3>
+                                </div>
+                                <div class="px-5 py-8 text-center text-muted">
+                                    <i class="ki-duotone ki-notification-bing fs-3x text-gray-400 mb-4">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i>
+                                    <div class="fw-semibold fs-6">{{ __('No notifications yet') }}</div>
+                                    <div class="fs-7">{{ __('You will see updates here when they arrive.') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Notifications-->
+
+                        <!--begin::Messages-->
+                        @can('CRM Management')
+                            <div class="app-navbar-item ms-1 ms-md-3">
+                                <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px position-relative"
+                                     data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                                     data-kt-menu-attach="parent"
+                                     {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}>
+                                    <i class="ki-duotone ki-message-text-2 fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i>
+                                    @if($unreadMessageCount > 0)
+                                        <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
+                                    @endif
+                                </div>
+                                <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px"
+                                     data-kt-menu="true">
+                                    <div class="d-flex flex-column bgi-no-repeat rounded-top bg-primary">
+                                        <h3 class="text-white fw-semibold px-9 py-6 mb-0">
+                                            {{ __('Messages') }}
+                                            @if($unreadMessageCount > 0)
+                                                <span class="fs-8 opacity-75 ps-3">{{ $unreadMessageCount }} {{ __('new') }}</span>
+                                            @endif
+                                        </h3>
+                                    </div>
+                                    @if($recentMessages->isNotEmpty())
+                                        <div class="scroll-y mh-325px my-5 px-8">
+                                            @foreach($recentMessages as $message)
+                                                <div class="d-flex flex-stack py-4">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="symbol symbol-35px me-4">
+                                                            <span class="symbol-label bg-light-primary text-primary fw-semibold">
+                                                                {{ strtoupper(substr($message->name, 0, 1)) }}
+                                                            </span>
+                                                        </div>
+                                                        <div class="mb-0 me-2">
+                                                            <a href="{{ route('admin.contact_forms.index') }}"
+                                                               class="fs-6 text-gray-800 text-hover-primary fw-bold">{{ $message->name }}</a>
+                                                            <div class="text-gray-500 fs-7">{{ Str::limit($message->subject, 40) }}</div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="badge badge-light fs-8">{{ $message->created_at->diffForHumans() }}</span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <div class="px-5 py-8 text-center text-muted">
+                                            <i class="ki-duotone ki-sms fs-3x text-gray-400 mb-4">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i>
+                                            <div class="fw-semibold fs-6">{{ __('No messages yet') }}</div>
+                                        </div>
+                                    @endif
+                                    <div class="py-3 text-center border-top">
+                                        <a href="{{ route('admin.contact_forms.index') }}"
+                                           class="btn btn-color-gray-600 btn-active-color-primary">
+                                            {{ __('View All Messages') }}
+                                            <i class="ki-duotone ki-arrow-right fs-5">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endcan
+                        <!--end::Messages-->
+
+                        <!--begin::Profile-->
+                        <div class="app-navbar-item ms-1 ms-md-3">
+                            <a href="{{ route('admin.profile.index') }}"
+                               class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px"
+                               title="{{ __('My Profile') }}">
+                                <i class="ki-duotone ki-profile-circle fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                </i>
+                            </a>
+                        </div>
+                        <!--end::Profile-->
+
                         <!--begin::User menu-->
                         <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
                             <!--begin::Menu wrapper-->
@@ -366,7 +485,7 @@ Author: Hadi Hilal
                 <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
 
                     <!--begin::Logo image-->
-                    <a href="#">
+                    <a href="{{ route('admin.dashboard.index') }}" title="{{ __('Dashboard') }}">
                         <img alt="Logo" src="{{asset('images/admin_logo.png')}}"
                              class="h-40px app-sidebar-logo-default"/>
                         <img alt="Logo" src="{{asset('images/min_admin_logo.png')}}"
@@ -396,9 +515,11 @@ Author: Hadi Hilal
                              data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer"
                              data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px"
                              data-kt-scroll-save-state="true">
+                            <input type="text" id="admin-sidebar-search" class="form-control form-control-sm"
+                                   placeholder="{{ __('Search menu...') }}" autocomplete="off"/>
                             <!--begin::Menu-->
                             <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6"
-                                 id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
+                                 id="kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
                                 <x-admin.side-nav></x-admin.side-nav>
                             </div>
                             <!--end::Menu-->
@@ -482,16 +603,95 @@ Author: Hadi Hilal
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
+    toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        positionClass: '{{ app()->getLocale() === "ar" ? "toast-top-left" : "toast-top-right" }}',
+        timeOut: 4000,
+        extendedTimeOut: 2000,
+    };
+
     @if (session('success'))
-    toastr.success('{{ session('success') }}');
+    toastr.success(@json(session('success')));
     @elseif (session('error'))
-    toastr.error('{{ session('error') }}');
+    toastr.error(@json(session('error')));
     @endif
     @if ($errors->any())
     @foreach ($errors->all() as $error)
-    toastr.error('{{ $error }}');
+    toastr.error(@json($error));
     @endforeach
     @endif
+
+    // Sidebar menu search
+    (function () {
+        const input = document.getElementById('admin-sidebar-search');
+        if (!input) return;
+
+        input.addEventListener('input', function () {
+            const query = this.value.trim().toLowerCase();
+            const items = document.querySelectorAll('#kt_app_sidebar_menu > .menu-item, #kt_app_sidebar_menu > .menu-section-label');
+
+            items.forEach(function (el) {
+                if (el.classList.contains('menu-section-label')) return;
+
+                const title = el.querySelector('.menu-title');
+                const text = title ? title.textContent.trim().toLowerCase() : '';
+                const subLinks = el.querySelectorAll('.menu-sub .menu-link');
+                let subMatch = false;
+
+                subLinks.forEach(function (link) {
+                    const subTitle = link.querySelector('.menu-title');
+                    const subText = subTitle ? subTitle.textContent.trim().toLowerCase() : '';
+                    const match = !query || subText.includes(query);
+                    link.closest('.menu-item').classList.toggle('menu-search-hidden', !match && query);
+                    if (match) subMatch = true;
+                });
+
+                const parentMatch = !query || text.includes(query) || subMatch;
+                el.classList.toggle('menu-search-hidden', !parentMatch);
+
+                if (query && subMatch && el.classList.contains('menu-accordion')) {
+                    el.classList.add('here', 'show');
+                    const sub = el.querySelector('.menu-sub-accordion');
+                    if (sub) sub.classList.add('show');
+                }
+            });
+        });
+
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                this.value = '';
+                this.dispatchEvent(new Event('input'));
+                this.blur();
+            }
+        });
+    })();
+
+    // Confirm before inline delete forms
+    document.addEventListener('submit', function (e) {
+        const form = e.target;
+        if (!form.matches('form[method="POST"]') || !form.querySelector('input[name="_method"][value="DELETE"]')) return;
+        if (form.dataset.confirmed === 'true') return;
+
+        e.preventDefault();
+        Swal.fire({
+            text: @json(__('Are you sure you want to delete it?')),
+            icon: 'warning',
+            showCancelButton: true,
+            buttonsStyling: false,
+            confirmButtonText: @json(__('Yes, Delete!')),
+            cancelButtonText: @json(__('No, Cancel')),
+            customClass: {
+                confirmButton: 'btn fw-bold btn-danger',
+                cancelButton: 'btn fw-bold btn-active-light-primary',
+            },
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                form.dataset.confirmed = 'true';
+                form.submit();
+            }
+        });
+    });
 
     // Reusable function for making AJAX requests
     function makeAjaxRequest(url, method, data, dataType = "json", onSuccess) {

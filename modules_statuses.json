@@ -7,6 +7,6 @@
     "Testimonial": true,
     "Services": true,
     "Team": true,
-    "SearchEngine": true
-
+    "SearchEngine": true,
+    "CRM": true
 }

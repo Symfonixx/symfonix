@@ -2,7 +2,7 @@
 
 namespace App\Conversations;
 
-use App\Models\Lead;
+use Modules\CRM\Models\Lead;
 use App\Notifications\NewLeadNotification;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
@@ -307,6 +307,7 @@ class ProjectInquiryConversation extends Conversation
             'name' => $this->name,
             'email' => $this->email,
             'company_name' => $this->companyName,
+            'source' => Lead::SOURCE_WEBSITE,
             'project_budget' => $this->budget,
             'service_interest' => $this->selectedServiceTitle ?? $this->primaryService,
             'service_id' => $this->selectedServiceId,

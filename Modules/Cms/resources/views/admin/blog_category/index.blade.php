@@ -1,13 +1,17 @@
-@section('title' , __('Blog Categories'))
+@section('title', __('Blog Categories'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
-            ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
-            ['label' => 'Blog Categories'],
+            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
+            ['label' => __('Blog Categories')],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('Blog Categories')" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb
+        :pageTitle="__('Blog Categories')"
+        :breadcrumbItems="$breadcrumbItems"
+        :pageDescription="__('Organize blog posts into categories for easier browsing.')"
+    />
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <button class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
             {{__('Add New Blog Category')}} <i class="bi bi-plus-lg mx-1"></i>

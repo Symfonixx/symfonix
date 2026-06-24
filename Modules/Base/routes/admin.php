@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Base\Http\Controllers\Admin\BranchController;
 use Modules\Base\Http\Controllers\Admin\FileManager;
 use Modules\Base\Http\Controllers\Admin\LogController;
 use Modules\Base\Http\Controllers\Admin\SeoController;
@@ -12,8 +11,6 @@ use UniSharp\LaravelFilemanager\Lfm;
 Route::middleware('can:Settings Management')->group(function () {
     Route::resource('settings', SettingsController::class)->only(['index', 'store']);
     Route::resource('seo', SeoController::class)->only(['index', 'store']);
-    Route::delete('branches', [BranchController::class, 'deleteMulti'])->name('branches.deleteMulti');
-    Route::resource('branches', BranchController::class)->except(['show', 'destroy']);
 });
 
 // Group for Logs Management

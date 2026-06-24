@@ -4,7 +4,7 @@ namespace App\Conversations;
 
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
-use Modules\Support\Models\ContactForm;
+use Modules\CRM\Models\ContactForm;
 
 class PriceQuoteConversation extends Conversation
 {

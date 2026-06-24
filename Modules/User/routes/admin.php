@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\User\Http\Controllers\Admin\AdminController;
 use Modules\User\Http\Controllers\Admin\DashboardController;
 use Modules\User\Http\Controllers\Admin\ProfileController;
 use Modules\User\Http\Controllers\Admin\RoleController;
@@ -16,7 +17,7 @@ Route::prefix('profile')->name('profile.')
         Route::post('/', [ProfileController::class, 'update'])->name('update');
     });
 
-Route::middleware('can:Hr Management')
+Route::middleware([ 'can:Hr Management'])
     ->group(function () {
         Route::prefix('roles')->name('roles.')
             ->group(function () {
@@ -27,7 +28,9 @@ Route::middleware('can:Hr Management')
             });
         Route::resource('roles', RoleController::class)->except('destroy');
 
-        Route::resource('staffs', StaffController::class)->except('create', 'edit', 'show');
+        Route::resource('admins', AdminController::class)->except('create', 'edit', 'show');
 
-        Route::resource('users', UserController::class)->except('create', 'edit', 'show');
+        Route::resource('employees', StaffController::class)->except('create', 'edit', 'show');
+
+        Route::resource('customers', UserController::class)->except('create', 'edit', 'show');
     });

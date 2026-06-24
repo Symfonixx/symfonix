@@ -13,12 +13,12 @@ class UserController extends Controller
     public function __construct(protected UserRepository $userRepository)
     {
         $this->setActive('hr');
-        $this->setActive('users');
+        $this->setActive('customers');
     }
 
     public function index()
     {
-        $model = $this->userRepository->all('user');
+        $model = $this->userRepository->all('customer');
 
         return view('user::.admin.user.index', compact('model'));
     }
@@ -28,7 +28,7 @@ class UserController extends Controller
         $userData = UserData::validateAndCreate($request->all());
         $this->userRepository->store($userData);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.customers.index');
     }
 
     public function update(Request $request, $id)
@@ -37,7 +37,7 @@ class UserController extends Controller
         $userData = UserData::validateAndCreate($request->all());
         $this->userRepository->update($userData, $user);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.customers.index');
     }
 
     public function destroy($id)

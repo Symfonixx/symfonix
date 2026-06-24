@@ -36,9 +36,10 @@ class RoleController extends Controller
     {
         $permissions = $this->roleRepository->permissions();
         $role = $this->roleRepository->findById($id);
-        $users = user::type('admin')->whereDoesntHave('roles', function ($query) use ($id) {
-            $query->where('id', $id);
-        })->get();
+        $users = User::whereIn('type', [User::TYPE_EMPLOYEE, User::TYPE_ADMIN])
+            ->whereDoesntHave('roles', function ($query) use ($id) {
+                $query->where('id', $id);
+            })->get();
 
         return view('user::admin.role.show', compact('role', 'users', 'permissions'));
     }

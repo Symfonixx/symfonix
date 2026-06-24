@@ -1,7 +1,7 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h3 class="modal-title">{{__('Edit User')}}</h3>
+            <h3 class="modal-title">{{__('Edit Customer')}}</h3>
 
             <!--begin::Close-->
             <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
@@ -14,10 +14,10 @@
             <!--end::Close-->
         </div>
 
-        <form method="POST" action="{{route('admin.users.update' , $user->id)}}">
+        <form method="POST" action="{{route('admin.customers.update' , $user->id)}}">
             @csrf
             @method('PUT')
-            <input type="hidden" name="type" value="user">
+            <input type="hidden" name="type" value="customer">
             <div class="modal-body">
                 <div class="mb-5">
                     <div class="row">

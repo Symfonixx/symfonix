@@ -1,13 +1,17 @@
-@section('title' , __('Blogs'))
+@section('title', __('Blogs'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
-            ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
-            ['label' => 'Blogs'],
+            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
+            ['label' => __('Blogs')],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('Blogs')" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb
+        :pageTitle="__('Blogs')"
+        :breadcrumbItems="$breadcrumbItems"
+        :pageDescription="__('Manage blog posts, categories, and publishing status.')"
+    />
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a class="btn btn-sm fw-bold  btn-primary" href="{{route('admin.blogs.create')}}">
             {{__('Add New Blog')}} <i class="bi bi-plus-lg mx-1"></i>

@@ -48,7 +48,7 @@ class ContentSecurityPolicy
 
         // Allow CDN sources for admin/vendor views if needed
         // Note: For better security, consider moving to self-hosted assets
-        if ($request->is('admin/*') || $request->is('vendor/*')) {
+        if ($this->requiresCdnSources($request)) {
             $scriptSrc[] = 'https://cdnjs.cloudflare.com';
             $scriptSrc[] = 'https://cdn.jsdelivr.net';
             $scriptSrc[] = 'https://code.jquery.com';
@@ -71,7 +71,7 @@ class ContentSecurityPolicy
         $styleSrc[] = 'https://fonts.googleapis.com';
 
         // Allow CDN sources for admin/vendor views if needed
-        if ($request->is('admin/*') || $request->is('vendor/*')) {
+        if ($this->requiresCdnSources($request)) {
             $styleSrc[] = 'https://cdnjs.cloudflare.com';
             $styleSrc[] = 'https://cdn.jsdelivr.net';
             $styleSrc[] = 'https://maxcdn.bootstrapcdn.com';
@@ -82,6 +82,13 @@ class ContentSecurityPolicy
         // Font sources
         $fontSrc = ["'self'", 'data:'];
         $fontSrc[] = 'https://fonts.gstatic.com';
+
+        if ($this->requiresCdnSources($request)) {
+            $fontSrc[] = 'https://cdnjs.cloudflare.com';
+            $fontSrc[] = 'https://cdn.jsdelivr.net';
+            $fontSrc[] = 'https://maxcdn.bootstrapcdn.com';
+        }
+
         $directives['font-src'] = implode(' ', $fontSrc);
 
         // Image sources
@@ -120,5 +127,17 @@ class ContentSecurityPolicy
         }
 
         return implode('; ', $cspString);
+    }
+
+    /**
+     * Admin routes are prefixed with a locale segment (e.g. /en/admin/logs).
+     */
+    private function requiresCdnSources(Request $request): bool
+    {
+        if ($request->routeIs('admin.*')) {
+            return true;
+        }
+
+        return $request->is('admin/*', '*/admin/*', 'vendor/*', '*/vendor/*');
     }
 }

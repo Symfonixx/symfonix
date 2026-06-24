@@ -14,13 +14,13 @@ class StaffController extends Controller
     public function __construct(protected UserRepository $userRepository, protected RoleRepository $roleRepository)
     {
         $this->setActive('hr');
-        $this->setActive('staffs');
+        $this->setActive('employees');
     }
 
     public function index()
     {
         $roles = $this->roleRepository->all();
-        $model = $this->userRepository->all('admin');
+        $model = $this->userRepository->all('employee');
 
         return view('user::.admin.staff.index', compact('model', 'roles'));
     }
@@ -31,7 +31,7 @@ class StaffController extends Controller
         $user = $this->userRepository->store($userData);
         $this->roleRepository->assignUsersToRole($request->input('role_id'), [$user->id]);
 
-        return redirect()->route('admin.staffs.index');
+        return redirect()->route('admin.employees.index');
     }
 
     public function update(Request $request, $id)
@@ -40,7 +40,7 @@ class StaffController extends Controller
         $user = $this->userRepository->find($id);
         $this->userRepository->update($userData, $user);
 
-        return redirect()->route('admin.staffs.index');
+        return redirect()->route('admin.employees.index');
     }
 
     public function destroy($id)

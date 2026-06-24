@@ -1,265 +1,348 @@
-@section('title' , __('Dashboard'))
+@section('title', __('Dashboard'))
 @section('toolbar')
-    <x-admin.breadcrumb :pageTitle="__('Dashboard')" :breadcrumbItems="[]"/>
+    <x-admin.breadcrumb :pageTitle="__('Dashboard')" :breadcrumbItems="[]"
+                        :pageDescription="__('Welcome back! Here is an overview of your platform.')"/>
 @endsection
 <x-admin-layout>
-    <div class="row gy-5 g-xl-8">
-        <div class="col-xxl-4">
-            <div class="card card-xl-stretch mb-xl-8">
-                <!--begin::Beader-->
-                <div class="card-header border-0 py-5">
-                    <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bolder fs-3 mb-1">{{__('Visitors Overview')}}</span>
-                    </h3>
+    {{-- Welcome banner --}}
+    <div class="admin-welcome-banner p-6 p-lg-8 mb-8">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-4 position-relative">
+            <div class="d-flex align-items-center gap-4">
+                <img src="{{ auth()->user()->avatar }}" alt="" class="welcome-avatar">
+                <div>
+                    <h2 class="text-white fw-bold fs-2 mb-1">
+                        {{ __('Welcome back, :name!', ['name' => auth()->user()->name]) }}
+                    </h2>
+                    <p class="text-white opacity-75 mb-0 fs-6">
+                        {{ now()->translatedFormat('l, F j, Y') }}
+                    </p>
                 </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body p-0 d-flex flex-column">
-                    <!--begin::Stats-->
-                    <div class="card-p pt-5 bg-body flex-grow-1">
-                        <!--begin::Row-->
-                        <div class="row g-0">
-                            <!--begin::Col-->
-                            <div class="col mr-8">
-                                <!--begin::Label-->
-                                <div class="fs-7 text-muted fw-bold">{{__('Total Visitors')}}</div>
-                                <!--end::Label-->
-                                <!--begin::Stat-->
-                                <div class="d-flex align-items-center">
-                                    <div class="fs-4 fw-bolder">{{$visitorsStats['totalVisitorsCount']}}</div>
-                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{{ route('home') }}" target="_blank" class="btn btn-sm btn-light fw-semibold">
+                    <i class="bi bi-box-arrow-up-right me-1"></i>{{ __('View Website') }}
+                </a>
+                @can('CRM Management')
+                    <a href="{{ route('admin.crm.dashboard') }}" class="btn btn-sm btn-light fw-semibold text-info">
+                        <i class="bi bi-graph-up me-1"></i>{{ __('crm::dashboard.menu') }}
+                    </a>
+                    <a href="{{ route('admin.contact_forms.index') }}" class="btn btn-sm btn-light fw-semibold text-primary">
+                        <i class="bi bi-envelope me-1"></i>{{ __('Messages') }}
+                        @if(($stats['contacts'] ?? 0) > 0)
+                            <span class="badge badge-circle badge-danger ms-1">{{ $stats['contacts'] }}</span>
+                        @endif
+                    </a>
+                @endcan
+            </div>
+        </div>
+    </div>
 
-                                    <!--end::Svg Icon-->
-                                </div>
-                                <!--end::Stat-->
-                            </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col">
-                                <!--begin::Label-->
-                                <div class="fs-7 text-muted fw-bold">{{__('Today Visitors')}}</div>
-                                <!--end::Label-->
-                                <!--begin::Stat-->
-                                <div class="fs-4 fw-bolder">{{$visitorsStats['todayVisitorsCount']}}</div>
-                                <!--end::Stat-->
-                            </div>
-                            <!--end::Col-->
+    {{-- Key metrics --}}
+    <div class="row g-5 g-xl-8 mb-8">
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
+                <div class="stat-icon bg-light-primary text-primary">
+                    <i class="bi bi-eye"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <div class="stat-value text-gray-900">{{ number_format($visitorsStats['totalVisitorsCount']) }}</div>
+                    <div class="stat-label">{{ __('Total Visitors') }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
+                <div class="stat-icon bg-light-success text-success">
+                    <i class="bi bi-person-check"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <div class="stat-value text-gray-900">{{ number_format($visitorsStats['todayVisitorsCount']) }}</div>
+                    <div class="stat-label">{{ __('Today Visitors') }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
+                <div class="stat-icon bg-light-warning text-warning">
+                    <i class="bi bi-people"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <div class="stat-value text-gray-900">{{ number_format($stats['customers'] ?? 0) }}</div>
+                    <div class="stat-label">{{ __('Customers') }}</div>
+                    <a href="{{ route('admin.customers.index') }}" class="stat-link text-warning">{{ __('View all') }} →</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
+                <div class="stat-icon bg-light-danger text-danger">
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <div class="stat-value text-gray-900">{{ number_format($stats['contacts'] ?? 0) }}</div>
+                    <div class="stat-label">{{ __('Contacts') }}</div>
+                    <a href="{{ route('admin.contact_forms.index') }}" class="stat-link text-danger">{{ __('View all') }} →</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row g-5 g-xl-8 mb-8">
+        {{-- Top visited pages --}}
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-0 pt-6">
+                    <h3 class="card-title fw-bold fs-4">{{ __('Top Visited Pages') }}</h3>
+                    @can('Support Management')
+                        <div class="card-toolbar">
+                            <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
+                                {{ __('View All') }}
+                            </a>
                         </div>
-                        <!--end::Row-->
-                        <!--begin::Row-->
-
-                        <!--end::Row-->
-                    </div>
-                    <!--end::Stats-->
-                    <!--begin::Chart-->
-                    <div class="card">
-
-                        <div class="card-body p-0 d-flex flex-column">
-                            <div class="table-responsive">
-                                <!--begin::Table-->
-                                <table class="table table-bordered">
-                                    <!--begin::Table head-->
-                                    <thead>
+                    @endcan
+                </div>
+                <div class="card-body pt-0">
+                    @if($topVisitedPages->isEmpty())
+                        <div class="table-empty-state py-8">
+                            <div class="empty-icon"><i class="bi bi-bar-chart"></i></div>
+                            <div class="text-muted">{{ __('No visitor data yet') }}</div>
+                        </div>
+                    @else
+                        <div class="table-responsive">
+                            <table class="table table-row-dashed align-middle fs-6 gy-4 top-pages-table mb-0">
+                                <thead>
+                                <tr class="text-muted fw-bold fs-7 text-uppercase">
+                                    <th>{{ __('Page') }}</th>
+                                    <th class="text-end w-100px">{{ __('Visits') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($topVisitedPages as $topVisitedPage)
                                     <tr>
-                                        <th class="w-50px">{{__('Page')}}</th>
-                                        <th class="w-50px">{{__('Visiting Count')}}</th>
+                                        <td>
+                                            <a href="{{ $topVisitedPage->url }}" target="_blank" title="{{ $topVisitedPage->url }}">
+                                                {{ $topVisitedPage->url }}
+                                            </a>
+                                        </td>
+                                        <td class="text-end">
+                                            <span class="badge badge-light-primary visit-count">{{ number_format($topVisitedPage->total) }}</span>
+                                        </td>
                                     </tr>
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody>
-                                    @foreach($topVisitedPages as $topVisitedPage)
-                                        <tr>
-                                            <td>
-{{--                                                <b>{{$topVisitedPage->page_title}} </b>--}}
-{{--                                                <br/>--}}
-                                                <a href="{{$topVisitedPage->url}}" target="_blank">
-                                                    {{$topVisitedPage->url}}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                {{$topVisitedPage->total}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
-
-                    </div>
-                    <!--end::Chart-->
+                    @endif
                 </div>
-                <!--end::Body-->
             </div>
         </div>
 
-        <div class="col-xxl-4">
-            <div class="card card-xxl-stretch">
-                <!--begin::Header-->
-                <div class="card-header border-0 bg-primary py-5">
-                    <h3 class="card-title fw-bolder text-white">{{__('Overall CMS Statistics')}}</h3>
+        {{-- Quick actions --}}
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-0 pt-6">
+                    <h3 class="card-title fw-bold fs-4">{{ __('Quick Actions') }}</h3>
                 </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body p-0">
-                    <!--begin::Chart-->
-                    <div class="mixed-widget-2-chart card-rounded-bottom bg-primary" data-kt-color="danger"
-                         style="height: 100px"></div>
-                    <!--end::Chart-->
-                    <!--begin::Stats-->
-                    <div class="card-p mt-n20 position-relative">
-                        <!--begin::Row-->
-                        <div class="row g-0">
-                            <!--begin::Col-->
-                            <div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
-                                <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-
-                                <div class="fs-2hx fw-bolder">{{$stats['pages'] ?? 0}}</div>
-
-                                <!--end::Svg Icon-->
-                                <a href="{{route('admin.pages.index')}}" target="_blank" class="text-warning fw-bold fs-6"> {{__('Pages')}} </a>
+                <div class="card-body pt-0">
+                    <div class="row g-3">
+                        @can('CMS Management')
+                            <div class="col-sm-6">
+                                <a href="{{ route('admin.blogs.create') }}" class="quick-action-btn">
+                                    <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-pencil-square"></i></span>
+                                    {{ __('New Blog Post') }}
+                                </a>
                             </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
-                                <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                                <div class="fs-2hx fw-bolder">  {{$stats['blogs'] ?? 0}} </div>
-                                <!--end::Svg Icon-->
-                                <a href="{{route('admin.blogs.index')}}" target="_blank" class="text-primary fw-bold fs-6">{{__('Blogs')}}</a>
+                            <div class="col-sm-6">
+                                <a href="{{ route('admin.pages.create') }}" class="quick-action-btn">
+                                    <span class="qa-icon bg-light-info text-info"><i class="bi bi-file-earmark-plus"></i></span>
+                                    {{ __('New Page') }}
+                                </a>
                             </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Row-->
-                        <!--begin::Row-->
-                        <div class="row g-0">
-                            <!--begin::Col-->
-                            <div class="col bg-light-danger px-6 py-8 rounded-2 me-7">
-                                <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
-                                <div class="fs-2hx fw-bolder">  0 </div>
-                                <!--end::Svg Icon-->
-                                <a href="" target="_blank" class="text-danger fw-bold fs-6 mt-2">{{__('Products')}}</a>
+                        @endcan
+                        @can('CRM Management')
+                            <div class="col-sm-6">
+                                <a href="{{ route('admin.crm.dashboard') }}" class="quick-action-btn">
+                                    <span class="qa-icon bg-light-info text-info"><i class="bi bi-graph-up-arrow"></i></span>
+                                    {{ __('crm::dashboard.menu') }}
+                                </a>
                             </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col bg-light-success px-6 py-8 rounded-2">
-                                <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
-                                <div class="fs-2hx fw-bolder">  {{$stats['services'] ?? 0}} </div>
-                                <!--end::Svg Icon-->
-                                <a href="{{route('admin.services.index')}}" target="_blank" class="text-success fw-bold fs-6 mt-2">{{__('Services')}}</a>
+                            <div class="col-sm-6">
+                                <a href="{{ route('admin.deals.create') }}" class="quick-action-btn">
+                                    <span class="qa-icon bg-light-success text-success"><i class="bi bi-briefcase"></i></span>
+                                    {{ __('crm::deal.actions.add') }}
+                                </a>
                             </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Row-->
+                            <div class="col-sm-6">
+                                <a href="{{ route('admin.companies.create') }}" class="quick-action-btn">
+                                    <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-building"></i></span>
+                                    {{ __('crm::company.actions.add') }}
+                                </a>
+                            </div>
+                        @endcan
+                        @can('Hr Management')
+                            <div class="col-sm-6">
+                                <a href="{{ route('admin.employees.index') }}" class="quick-action-btn">
+                                    <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-person-plus"></i></span>
+                                    {{ __('Manage Employees') }}
+                                </a>
+                            </div>
+                        @endcan
+                        @can('Settings Management')
+                            <div class="col-sm-6">
+                                <a href="{{ route('admin.settings.index') }}" class="quick-action-btn">
+                                    <span class="qa-icon bg-light-dark text-dark"><i class="bi bi-gear"></i></span>
+                                    {{ __('Settings') }}
+                                </a>
+                            </div>
+                        @endcan
                     </div>
-                    <!--end::Stats-->
                 </div>
-                <!--end::Body-->
+            </div>
+        </div>
+    </div>
+
+    @can('CRM Management')
+        @if(!empty($crmStats))
+            <div class="row g-5 g-xl-8 mb-8">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header border-0 pt-6">
+                            <h3 class="card-title fw-bold fs-4">{{ __('crm::dashboard.title') }}</h3>
+                            <div class="card-toolbar gap-2">
+                                <a href="{{ route('admin.crm.sales-targets.index') }}" class="btn btn-sm btn-light fw-semibold">
+                                    {{ __('crm::sales_target.menu') }}
+                                </a>
+                                <a href="{{ route('admin.crm.dashboard') }}" class="btn btn-sm btn-light-primary fw-semibold">
+                                    {{ __('View All') }} →
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="row g-4">
+                                <div class="col-sm-6 col-xl-3">
+                                    <a href="{{ route('admin.companies.index') }}" class="d-block p-5 rounded bg-light-primary text-decoration-none h-100">
+                                        <div class="fs-2hx fw-bold text-primary">{{ number_format($crmStats['companies']) }}</div>
+                                        <div class="fw-semibold text-gray-700">{{ __('crm::company.menu.companies') }}</div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-6 col-xl-3">
+                                    <a href="{{ route('admin.deals.index') }}" class="d-block p-5 rounded bg-light-success text-decoration-none h-100">
+                                        <div class="fs-2hx fw-bold text-success">{{ number_format($crmStats['open_deals']) }}</div>
+                                        <div class="fw-semibold text-gray-700">{{ __('crm::deal.menu.deals') }}</div>
+                                        <div class="text-muted fs-8 mt-1">{{ number_format($crmStats['deals']) }} {{ __('total') }}</div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-6 col-xl-3">
+                                    <a href="{{ route('admin.crm.dashboard') }}" class="d-block p-5 rounded bg-light-warning text-decoration-none h-100">
+                                        <div class="fs-2hx fw-bold text-warning">{{ number_format($crmStats['pipeline_value'], 0) }} {{ $crmStats['currency'] }}</div>
+                                        <div class="fw-semibold text-gray-700">{{ __('crm::dashboard.metrics.pipeline_value') }}</div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-6 col-xl-3">
+                                    <a href="{{ route('admin.crm.dashboard') }}" class="d-block p-5 rounded bg-light-info text-decoration-none h-100">
+                                        <div class="fs-2hx fw-bold text-info">{{ number_format($crmStats['won_this_month']) }}</div>
+                                        <div class="fw-semibold text-gray-700">{{ __('crm::dashboard.metrics.won_deals') }}</div>
+                                        <div class="text-muted fs-8 mt-1">{{ __('This Month') }}</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    @endcan
+
+    {{-- Content & Users stats --}}
+    <div class="row g-5 g-xl-8">
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-0 pt-6">
+                    <h3 class="card-title fw-bold fs-4">{{ __('CMS Overview') }}</h3>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <a href="{{ route('admin.pages.index') }}" class="d-block p-5 rounded bg-light-warning text-decoration-none h-100">
+                                <div class="fs-2hx fw-bold text-warning">{{ $stats['pages'] ?? 0 }}</div>
+                                <div class="fw-semibold text-gray-700">{{ __('Pages') }}</div>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a href="{{ route('admin.blogs.index') }}" class="d-block p-5 rounded bg-light-primary text-decoration-none h-100">
+                                <div class="fs-2hx fw-bold text-primary">{{ $stats['blogs'] ?? 0 }}</div>
+                                <div class="fw-semibold text-gray-700">{{ __('Blogs') }}</div>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a href="{{ route('admin.services.index') }}" class="d-block p-5 rounded bg-light-success text-decoration-none h-100">
+                                <div class="fs-2hx fw-bold text-success">{{ $stats['services'] ?? 0 }}</div>
+                                <div class="fw-semibold text-gray-700">{{ __('Services') }}</div>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a href="{{ route('admin.leads.index') }}" class="d-block p-5 rounded bg-light-danger text-decoration-none h-100">
+                                <div class="fs-2hx fw-bold text-danger">{{ $stats['leads'] ?? 0 }}</div>
+                                <div class="fw-semibold text-gray-700">{{ __('Leads') }}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="col-xxl-4">
-            <div class="card card-xxl-stretch">
-                <!--begin::Header-->
-                <div class="card-header border-0 bg-warning py-5">
-                    <h3 class="card-title fw-bolder text-white">{{__('Overall Users Statistics')}}</h3>
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-0 pt-6">
+                    <h3 class="card-title fw-bold fs-4">{{ __('Users Overview') }}</h3>
                 </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body p-0">
-                    <!--begin::Chart-->
-                    <div class="mixed-widget-2-chart card-rounded-bottom bg-warning" data-kt-color="warning"
-                         style="height: 100px"></div>
-                    <!--end::Chart-->
-                    <!--begin::Stats-->
-                    <div class="card-p mt-n20 position-relative">
-                        <!--begin::Row-->
-                        <div class="row g-0">
-                            <!--begin::Col-->
-                            <div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
-                                <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
-
-                                <div class="fs-2hx fw-bolder">{{$stats['admins'] ?? 0}}</div>
-
-                                <!--end::Svg Icon-->
-                                <a href="{{route('admin.staffs.index')}}" target="_blank" class="text-warning fw-bold fs-6"> {{__('Staffs')}} </a>
-                            </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
-                                <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                                <div class="fs-2hx fw-bolder">  {{$stats['leads'] ?? 0}} </div>
-                                <!--end::Svg Icon-->
-                                <a href="{{route('admin.users.index')}}" target="_blank" class="text-primary fw-bold fs-6">{{__('Leads')}}</a>
-                            </div>
-                            <!--end::Col-->
+                <div class="card-body pt-0">
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <a href="{{ route('admin.employees.index') }}" class="d-block p-5 rounded bg-light-warning text-decoration-none h-100">
+                                <div class="fs-2hx fw-bold text-warning">{{ $stats['employees'] ?? 0 }}</div>
+                                <div class="fw-semibold text-gray-700">{{ __('Employees') }}</div>
+                            </a>
                         </div>
-                        <!--end::Row-->
-                        <!--begin::Row-->
-                        <div class="row g-0">
-                            <!--begin::Col-->
-                            <div class="col bg-light-danger px-6 py-8 rounded-2 me-7">
-                                <!--begin::Svg Icon | path: icons/duotune/abstract/abs027.svg-->
-                                <div class="fs-2hx fw-bolder">  {{$stats['subscribers'] ?? 0}} </div>
-                                <!--end::Svg Icon-->
-                                <a href="{{route('admin.subscribers.index')}}" target="_blank"  class="text-danger fw-bold fs-6 mt-2">{{__('Newsletter Subscribers')}}</a>
-                            </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col bg-light-success px-6 py-8 rounded-2">
-                                <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
-                                <div class="fs-2hx fw-bolder">  {{$stats['contacts'] ?? 0}} </div>
-                                <!--end::Svg Icon-->
-                                <a href="{{route('admin.contact_forms.index')}}" target="_blank" class="text-success fw-bold fs-6 mt-2">{{__('Contacts')}}</a>
-                            </div>
-                            <!--end::Col-->
+                        <div class="col-6">
+                            <a href="{{ route('admin.customers.index') }}" class="d-block p-5 rounded bg-light-primary text-decoration-none h-100">
+                                <div class="fs-2hx fw-bold text-primary">{{ $stats['customers'] ?? 0 }}</div>
+                                <div class="fw-semibold text-gray-700">{{ __('Customers') }}</div>
+                            </a>
                         </div>
-                        <!--end::Row-->
+                        <div class="col-6">
+                            <a href="{{ route('admin.subscribers.index') }}" class="d-block p-5 rounded bg-light-danger text-decoration-none h-100">
+                                <div class="fs-2hx fw-bold text-danger">{{ $stats['subscribers'] ?? 0 }}</div>
+                                <div class="fw-semibold text-gray-700">{{ __('Newsletter Subscribers') }}</div>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a href="{{ route('admin.contact_forms.index') }}" class="d-block p-5 rounded bg-light-success text-decoration-none h-100">
+                                <div class="fs-2hx fw-bold text-success">{{ $stats['contacts'] ?? 0 }}</div>
+                                <div class="fw-semibold text-gray-700">{{ __('Contacts') }}</div>
+                            </a>
+                        </div>
                     </div>
-                    <!--end::Stats-->
                 </div>
-                <!--end::Body-->
             </div>
         </div>
     </div>
 
     @can('App Monitoring')
-        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-5 g-xl-9 mb-10">
-            <div class="col">
-                <!--begin::Card-->
-                <div class="card h-md-100">
-                    <!--begin::Card body-->
-                    <div class="card-body d-flex flex-center">
-                        <!--begin::Button-->
-                        <a target="_blank" href="/{{config('telescope.path')}}">
-                            <!--begin::Label-->
-                            <span class="fw-bolder fs-3 text-gray-600 text-hover-primary">Telescope</span>
-                            <!--end::Label-->
-                        </a>
-                        <!--begin::Button-->
-                    </div>
-                    <!--begin::Card body-->
-                </div>
-                <!--begin::Card-->
+        <div class="row g-5 g-xl-8 mt-2">
+            <div class="col-sm-6 col-xl-3">
+                <a href="/{{ config('telescope.path') }}" target="_blank"
+                   class="quick-action-btn h-100">
+                    <span class="qa-icon bg-light-info text-info"><i class="bi bi-bug"></i></span>
+                    Telescope
+                </a>
             </div>
-            <div class="col">
-                <!--begin::Card-->
-                <div class="card h-md-100">
-                    <!--begin::Card body-->
-                    <div class="card-body d-flex flex-center">
-                        <!--begin::Button-->
-                        <a target="_blank" href="/{{config('pulse.path')}}">
-
-                            <!--begin::Label-->
-                            <span class="fw-bolder fs-3 text-gray-600 text-hover-primary">Pulse</span>
-                            <!--end::Label-->
-                        </a>
-                        <!--begin::Button-->
-                    </div>
-                    <!--begin::Card body-->
-                </div>
-                <!--begin::Card-->
+            <div class="col-sm-6 col-xl-3">
+                <a href="/{{ config('pulse.path') }}" target="_blank"
+                   class="quick-action-btn h-100">
+                    <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-activity"></i></span>
+                    Pulse
+                </a>
             </div>
         </div>
     @endcan

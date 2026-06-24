@@ -1,13 +1,17 @@
-@section('title' , __('Pages'))
+@section('title', __('Pages'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
-            ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
-            ['label' => 'Pages'],
+            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
+            ['label' => __('Pages')],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('Pages')" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb
+        :pageTitle="__('Pages')"
+        :breadcrumbItems="$breadcrumbItems"
+        :pageDescription="__('Manage static pages, navigation placement, and SEO.')"
+    />
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a class="btn btn-sm fw-bold  btn-primary" href="{{route('admin.pages.create')}}">
             {{__('Add New Page')}} <i class="bi bi-plus-lg mx-1"></i>

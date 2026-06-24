@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        abort_if(! auth()->check() || auth()->user()->type !== 'admin', 403);
+        abort_if(! auth()->check() || auth()->user()->type !== User::TYPE_ADMIN, 403);
 
         return $next($request);
     }

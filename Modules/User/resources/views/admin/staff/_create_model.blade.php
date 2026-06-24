@@ -1,7 +1,7 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h3 class="modal-title">{{__('Add New Staff')}}</h3>
+            <h3 class="modal-title">{{__('Add New Employee')}}</h3>
 
             <!--begin::Close-->
             <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
@@ -14,10 +14,10 @@
             <!--end::Close-->
         </div>
 
-        <form method="POST" action="{{route('admin.staffs.store')}}">
+        <form method="POST" action="{{route('admin.employees.store')}}">
             @csrf
 
-            <input type="hidden" name="type" value="admin">
+            <input type="hidden" name="type" value="employee">
 
             <div class="modal-body">
                 <div class="mb-5">

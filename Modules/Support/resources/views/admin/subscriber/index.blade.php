@@ -17,27 +17,6 @@
         </button>
     </div>
 @endsection
-@section('js')
-<script>
-	function blockIp(ip) {
-		var form = document.createElement('form');
-		form.method = 'POST';
-		form.action = '{{ route('admin.firewall.block') }}';
-		var token = document.createElement('input');
-		token.type = 'hidden';
-		token.name = '_token';
-		token.value = '{{ csrf_token() }}';
-		var ipInput = document.createElement('input');
-		ipInput.type = 'hidden';
-		ipInput.name = 'ip';
-		ipInput.value = ip;
-		form.appendChild(token);
-		form.appendChild(ipInput);
-		document.body.appendChild(form);
-		form.submit();
-	}
-</script>
-@endsection
 <x-admin-layout>
     <x-admin.table :model="$model" search="Search In Contacts"
                    :formUrl="route('admin.subscribers.deleteMulti')">
@@ -89,14 +68,8 @@
                     {{$subscriber->created_at}}
                 </td>
                 <td>
-                    @if(!empty($subscriber->ip_address))
-                        @if(!empty($subscriber->blocked))
-                            <span class="badge badge-light-danger fs-7 fw-bold">{{ __('Blocked') }}</span>
-                        @else
-                            <button type="button" class="btn btn-sm btn-danger" onclick="blockIp('{{ $subscriber->ip_address }}')">
-                            <i class="bi bi-lock"></i>    {{ __('Block IP') }}
-                            </button>
-                        @endif
+                    @if(!empty($subscriber->blocked))
+                        <span class="badge badge-light-danger fs-7 fw-bold">{{ __('Blocked') }}</span>
                     @endif
                 </td>
             </tr>

@@ -5,6 +5,7 @@ namespace Modules\Base\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Base\Models\Seo;
+use Modules\Base\Models\Settings;
 
 class SeoController extends Controller
 {
@@ -17,19 +18,19 @@ class SeoController extends Controller
     {
         $this->setActive('seo');
         $seo = Seo::pluck('value', 'key');
+        $metaImage = Settings::get('meta_img')
+            ?: Settings::get('site_logo')
+            ?: 'default.jpg';
 
-        return view('base::admin.seo.index', compact('seo'));
+        return view('base::admin.seo.index', compact('seo', 'metaImage'));
     }
 
     public function store(Request $request)
     {
-
-        if ($request->filled('data')) {
-            foreach ($request->input('data') as $key => $value) {
-                if ($value) {
-                    Seo::set($key, $value);
-                }
-
+        $data = $request->input('data', []);
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                Seo::set($key, $value === null ? '' : $value);
             }
         }
         session()->flushMessage(true);

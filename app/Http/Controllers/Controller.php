@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Cache;
 use Inertia\Inertia;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 use Modules\Base\Models\Country;
 use Modules\Base\Support\Meta;
 
-abstract class Controller
+abstract class Controller extends BaseController
 {
+    use AuthorizesRequests;
+    use ValidatesRequests;
+
     final protected function setActive(string $key)
     {
         $active[$key] = true;

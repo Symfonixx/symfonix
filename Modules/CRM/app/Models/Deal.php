@@ -1,0 +1,94 @@
+<?php
+
+namespace Modules\CRM\Models;
+
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\CRM\Concerns\HasCrmTimeline;
+use Modules\CRM\Filters\Deal\DealFilter;
+use Modules\CRM\Support\CrmAccess;
+
+class Deal extends Model
+{
+    use HasCrmTimeline, SoftDeletes;
+
+    public const STATUS_OPEN = 'open';
+
+    public const STATUS_WON = 'won';
+
+    public const STATUS_LOST = 'lost';
+
+    protected $fillable = [
+        'title',
+        'company_id',
+        'lead_id',
+        'pipeline_stage_id',
+        'assigned_to',
+        'value',
+        'currency',
+        'probability',
+        'expected_close_date',
+        'source',
+        'description',
+        'lost_reason',
+        'status',
+        'won_at',
+        'lost_at',
+        'closed_at',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'value' => 'decimal:2',
+            'expected_close_date' => 'date',
+            'won_at' => 'datetime',
+            'lost_at' => 'datetime',
+            'closed_at' => 'datetime',
+        ];
+    }
+
+    public function scopeFilter(Builder $query, array $filters = []): Builder
+    {
+        return (new DealFilter)->apply($query, $filters);
+    }
+
+    public function scopeOpen(Builder $query): Builder
+    {
+        return $query->where('status', self::STATUS_OPEN);
+    }
+
+    public function scopeVisibleTo(Builder $query, ?User $user = null): Builder
+    {
+        return CrmAccess::scopeDealsForUser($query, $user);
+    }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function pipelineStage(): BelongsTo
+    {
+        return $this->belongsTo(PipelineStage::class);
+    }
+
+    public function assignee(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'assigned_to');
+    }
+
+    public function lead(): BelongsTo
+    {
+        return $this->belongsTo(Lead::class);
+    }
+
+    public function stageHistories(): HasMany
+    {
+        return $this->hasMany(DealStageHistory::class)->latest();
+    }
+}

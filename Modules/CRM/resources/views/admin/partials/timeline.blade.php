@@ -1,0 +1,141 @@
+@php
+    $subjectType = $subjectType ?? \Modules\CRM\Support\CrmSubjectResolver::typeFromModel($subject);
+    $timeline = $subject->crmTimeline();
+@endphp
+
+<div class="card mt-6">
+    <div class="card-header align-items-center">
+        <h3 class="card-title">{{ __('crm::timeline.title') }}</h3>
+    </div>
+    <div class="card-body">
+        @can('CRM Management')
+            <form method="POST" action="{{ route('admin.activities.store') }}" class="mb-8 border border-dashed rounded p-5">
+                @csrf
+                <input type="hidden" name="subject_type" value="{{ $subjectType }}"/>
+                <input type="hidden" name="subject_id" value="{{ $subject->getKey() }}"/>
+                <h5 class="fw-bold mb-4">{{ __('crm::timeline.add_activity') }}</h5>
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <label class="form-label required">{{ __('crm::timeline.fields.type') }}</label>
+                        <select name="type" class="form-select form-select-solid" required>
+                            @foreach(\Modules\CRM\Models\CrmActivity::TYPES as $type)
+                                <option value="{{ $type }}">{{ __('crm::timeline.activity_types.'.$type) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">{{ __('crm::timeline.fields.scheduled_at') }}</label>
+                        <input type="datetime-local" name="scheduled_at" class="form-control form-control-solid"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{{ __('crm::timeline.fields.title') }}</label>
+                        <input type="text" name="title" class="form-control form-control-solid"
+                               placeholder="{{ __('crm::timeline.placeholders.title') }}" maxlength="255"/>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">{{ __('crm::timeline.fields.body') }}</label>
+                        <textarea name="body" class="form-control form-control-solid" rows="3"
+                                  placeholder="{{ __('crm::timeline.placeholders.body') }}"></textarea>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="bi bi-plus-lg me-1"></i>{{ __('crm::timeline.add_activity') }}
+                    </button>
+                </div>
+            </form>
+        @endcan
+
+        @forelse($timeline as $entry)
+            @php
+                $item = $entry['item'];
+                $isActivity = $entry['kind'] === 'activity';
+                $icon = $isActivity ? match($item->type) {
+                    'call' => 'telephone',
+                    'meeting' => 'people',
+                    'task' => 'check2-square',
+                    'email' => 'envelope',
+                    default => 'journal-text',
+                } : match($item->event) {
+                    'created' => 'plus-circle',
+                    'deleted' => 'trash',
+                    'stage_changed' => 'arrow-right-circle',
+                    'converted' => 'arrow-repeat',
+                    default => 'clock-history',
+                };
+                $badgeColor = $isActivity ? 'primary' : match($item->event) {
+                    'created', 'converted' => 'success',
+                    'deleted', 'activity_removed' => 'danger',
+                    'stage_changed' => 'info',
+                    default => 'secondary',
+                };
+            @endphp
+            <div class="d-flex align-items-start mb-6 pb-6 border-bottom border-gray-200">
+                <div class="symbol symbol-40px me-4">
+                    <span class="symbol-label bg-light-{{ $badgeColor }}">
+                        <i class="bi bi-{{ $icon }} text-{{ $badgeColor }}"></i>
+                    </span>
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-start gap-3">
+                        <div>
+                            @if($isActivity)
+                                <span class="badge badge-light-{{ $badgeColor }} me-2">
+                                    {{ __('crm::timeline.activity_types.'.$item->type) }}
+                                </span>
+                                @if($item->title)
+                                    <span class="fw-bold text-gray-900">{{ $item->title }}</span>
+                                @endif
+                            @else
+                                <span class="badge badge-light-{{ $badgeColor }} me-2">
+                                    {{ __('crm::timeline.events.'.$item->event) }}
+                                </span>
+                                <span class="fw-semibold text-gray-800">{{ $item->description }}</span>
+                            @endif
+                        </div>
+                        @if($isActivity)
+                            @can('CRM Management')
+                                <form method="POST" action="{{ route('admin.activities.destroy', $item) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-icon btn-sm btn-light-danger"
+                                            title="{{ __('crm::timeline.delete_activity') }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            @endcan
+                        @endif
+                    </div>
+
+                    @if($isActivity && $item->body)
+                        <div class="text-gray-700 mt-2">{{ $item->body }}</div>
+                    @endif
+
+                    @if(! $isActivity && ($item->old_values || $item->new_values))
+                        <div class="mt-3 p-3 bg-light rounded fs-7">
+                            <div class="fw-semibold mb-2">{{ __('crm::timeline.fields_changed') }}</div>
+                            @foreach(($item->new_values ?? []) as $field => $newValue)
+                                <div class="mb-1">
+                                    <code>{{ $field }}</code>:
+                                    <span class="text-muted">{{ $item->old_values[$field] ?? '—' }}</span>
+                                    →
+                                    <span class="fw-semibold">{{ is_array($newValue) ? json_encode($newValue) : $newValue }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    <div class="text-muted fs-7 mt-2">
+                        {{ $entry['occurred_at']->diffForHumans() }}
+                        · {{ $item->user?->name ?? __('crm::timeline.system') }}
+                        @if($isActivity && $item->scheduled_at)
+                            · {{ __('crm::timeline.fields.scheduled_at') }}: {{ $item->scheduled_at->format('Y-m-d H:i') }}
+                        @endif
+                    </div>
+                </div>
+            </div>
+        @empty
+            <p class="text-muted mb-0">{{ __('crm::timeline.no_entries') }}</p>
+        @endforelse
+    </div>
+</div>

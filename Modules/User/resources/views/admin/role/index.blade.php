@@ -136,7 +136,7 @@
                     <div class="card-body pt-1">
                         <!--begin::Users-->
                         <div
-                            class="fw-bolder text-gray-600 mb-5">{{__('Total Users With This Role')}} {{ $role->users()->count() }}</div>
+                            class="fw-bolder text-gray-600 mb-5">{{__('Total Employees With This Role')}} {{ $role->users()->count() }}</div>
                         <!--end::Users-->
                         <!--begin::Users-->
                         <div
