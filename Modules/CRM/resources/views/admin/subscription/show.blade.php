@@ -46,6 +46,18 @@
                 </div>
             </div>
             <div class="row mb-6">
+                <div class="col-md-3 fw-bold">{{ __('crm::subscription.fields.product') }}</div>
+                <div class="col-md-9">
+                    @if($subscription->product)
+                        <a href="{{ route('admin.products.edit', $subscription->product_id) }}" class="text-hover-primary">
+                            {{ $subscription->product->name }}
+                        </a>
+                    @else
+                        {{ __('N/A') }}
+                    @endif
+                </div>
+            </div>
+            <div class="row mb-6">
                 <div class="col-md-3 fw-bold">{{ __('crm::subscription.fields.amount') }}</div>
                 <div class="col-md-9">{{ number_format($subscription->amount, 2) }} {{ $subscription->currency }}</div>
             </div>

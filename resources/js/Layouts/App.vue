@@ -321,6 +321,14 @@
                                         </Link>
                                     </li>
                                     <li>
+                                        <Link :href="route('portfolio.index')">
+                                            <span
+                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
+                                                trans('Portfolio')
+                                            }}
+                                        </Link>
+                                    </li>
+                                    <li>
                                         <Link :href="route('blogs.index')">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{

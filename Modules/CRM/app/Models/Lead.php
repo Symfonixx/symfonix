@@ -2,11 +2,11 @@
 
 namespace Modules\CRM\Models;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\CRM\Concerns\HasCrmTimeline;
 use Modules\Services\Models\Service;
+use Modules\User\Models\Employee;
 
 class Lead extends Model
 {
@@ -87,7 +87,7 @@ class Lead extends Model
 
     public function assignee(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'assigned_to');
+        return $this->belongsTo(Employee::class, 'assigned_to');
     }
 
     public function deal(): BelongsTo

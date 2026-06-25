@@ -1,0 +1,65 @@
+<?php
+
+return [
+    'menu' => [
+        'finance' => 'المالية',
+        'dashboard' => 'لوحة التحكم',
+        'daily_log' => 'السجل اليومي',
+        'expense_categories' => 'فئات المصروفات',
+        'salaries' => 'الرواتب',
+        'commissions' => 'العمولات',
+        'product_sales' => 'مبيعات المنتجات',
+    ],
+    'pages' => [
+        'dashboard_title' => 'لوحة التحكم المالية',
+        'dashboard_subtitle' => 'الأداء الإجمالي، الاتجاهات الشهرية، وتحليل الأرباح.',
+    ],
+    'metrics' => [
+        'total_credit' => 'إجمالي الإيرادات',
+        'total_debit' => 'إجمالي المصروفات',
+        'net_profit' => 'صافي الربح',
+        'lifetime_profit' => 'الربح الإجمالي',
+        'total_revenue' => 'إجمالي الإيرادات',
+        'total_expenses' => 'إجمالي المصروفات',
+        'total_losses' => 'إجمالي الخسائر',
+        'lifetime_scope' => 'كل الفترات',
+        'filtered_scope' => 'الفترة المحددة',
+        'lifetime_hint' => 'مجموع كل المعاملات المسجلة.',
+        'filtered_hint' => 'مجموع :count شهر/أشهر محددة.',
+        'today_transactions' => 'معاملات اليوم',
+        'no_transactions_today' => 'لا توجد معاملات مسجلة اليوم.',
+    ],
+    'filters' => [
+        'months' => 'الأشهر',
+        'months_placeholder' => 'اختر شهر/أشهر',
+        'months_hint' => 'اختر شهراً أو أكثر، أو استخدم عرض الإجمالي لكل الفترات.',
+        'all_months' => 'عرض الإجمالي',
+    ],
+    'charts' => [
+        'performance_title' => 'الأرباح مقابل المصروفات مقابل الخسائر',
+        'performance_hint' => 'مقارنة شهرية مع إبراز أعلى القيم.',
+        'profit' => 'الربح',
+        'expenses' => 'المصروفات',
+        'losses' => 'الخسائر',
+        'empty' => 'لا توجد بيانات معاملات للفترة المحددة.',
+    ],
+    'fields' => [
+        'type' => 'النوع',
+        'amount' => 'المبلغ',
+        'description' => 'الوصف',
+        'category' => 'الفئة',
+        'date' => 'التاريخ',
+        'project' => 'المشروع (اختياري)',
+        'income' => 'إيراد',
+        'expense' => 'مصروف',
+    ],
+    'actions' => [
+        'log_transaction' => 'تسجيل معاملة',
+        'daily_action_center' => 'مركز الإجراءات اليومية',
+    ],
+    'messages' => [
+        'transaction_logged' => 'تم تسجيل المعاملة بنجاح.',
+        'sale_income' => 'إيراد البيع: :title',
+        'project_income' => 'دفعة المشروع: :title',
+    ],
+];

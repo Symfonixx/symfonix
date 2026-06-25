@@ -1,0 +1,108 @@
+<?php
+
+namespace Modules\CRM\Services\Lead;
+
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Log;
+use Modules\CRM\DTOs\Lead\LeadData;
+use Modules\CRM\Models\Lead;
+use Modules\CRM\Repositories\Lead\LeadRepository;
+use Modules\CRM\Support\AuditLogger;
+
+class LeadService
+{
+    public function __construct(private readonly LeadRepository $repository) {}
+
+    public function list(): LengthAwarePaginator
+    {
+        return $this->repository->paginate((int) config('core.page_size', 15));
+    }
+
+    public function create(LeadData $data): ?Lead
+    {
+        $lead = $this->repository->create($data);
+
+        if ($lead) {
+            AuditLogger::logCreated($lead);
+
+            Log::info('CRM lead created', [
+                'lead_id' => $lead->id,
+                'source' => $lead->source,
+                'actor_id' => auth()->id(),
+            ]);
+        }
+
+        return $lead;
+    }
+
+    public function update(Lead $lead, LeadData $data): ?Lead
+    {
+        $before = AuditLogger::auditableSnapshot($lead);
+        $updated = $this->repository->update($lead, $data);
+
+        if ($updated) {
+            AuditLogger::logUpdated($lead, $before, AuditLogger::auditableSnapshot($lead->fresh()));
+
+            Log::info('CRM lead updated', [
+                'lead_id' => $lead->id,
+                'actor_id' => auth()->id(),
+            ]);
+        }
+
+        return $updated;
+    }
+
+    public function delete(Lead $lead): ?bool
+    {
+        AuditLogger::logDeleted($lead);
+        $deleted = $this->repository->delete($lead);
+
+        if ($deleted) {
+            Log::warning('CRM lead deleted', [
+                'lead_id' => $lead->id,
+                'actor_id' => auth()->id(),
+            ]);
+        }
+
+        return $deleted;
+    }
+
+    public function bulkDelete(array $ids): ?bool
+    {
+        $deleted = $this->repository->bulkDelete($ids);
+
+        if ($deleted) {
+            Log::warning('CRM leads bulk deleted', [
+                'lead_ids' => $ids,
+                'actor_id' => auth()->id(),
+            ]);
+        }
+
+        return $deleted;
+    }
+
+    public function block(Lead $lead): ?Lead
+    {
+        return $this->setBlocked($lead, true);
+    }
+
+    public function unblock(Lead $lead): ?Lead
+    {
+        return $this->setBlocked($lead, false);
+    }
+
+    private function setBlocked(Lead $lead, bool $blocked): ?Lead
+    {
+        $updated = $this->repository->setBlocked($lead, $blocked);
+
+        if ($updated) {
+            Log::info('CRM lead block status changed', [
+                'lead_id' => $lead->id,
+                'blocked' => $blocked,
+                'actor_id' => auth()->id(),
+            ]);
+        }
+
+        return $updated;
+    }
+}

@@ -1,0 +1,185 @@
+@php($projectData = $project ?? null)
+
+@if ($errors->any())
+    <div class="alert alert-danger d-flex align-items-start p-5 mb-10">
+        <i class="bi bi-exclamation-triangle-fill fs-2hx text-danger me-4 mt-1"></i>
+        <div>
+            <h5 class="mb-2">{{ __('Please fix the following errors') }}</h5>
+            <ul class="mb-0 ps-4">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+@endif
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="title" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('project::project.fields.title') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="title" type="text" class="form-control form-control-solid @error('title') is-invalid @enderror"
+               name="title" value="{{ old('title', $projectData?->title) }}"
+               placeholder="{{ __('project::project.placeholders.title') }}" maxlength="255" required autofocus/>
+        @error('title')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="description" class="fs-6 fw-bold mt-2 mb-3">{{ __('project::project.fields.description') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <textarea id="description" class="form-control form-control-solid @error('description') is-invalid @enderror"
+                  name="description" rows="4"
+                  placeholder="{{ __('project::project.placeholders.description') }}">{{ old('description', $projectData?->description) }}</textarea>
+        @error('description')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="company_id" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('project::project.fields.company') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <select id="company_id" class="form-select form-select-solid @error('company_id') is-invalid @enderror"
+                data-control="select2" data-placeholder="{{ __('project::project.fields.select_company') }}"
+                name="company_id" required>
+            <option value="">{{ __('project::project.fields.select_company') }}</option>
+            @foreach($companies as $company)
+                <option value="{{ $company->id }}" @selected((int) old('company_id', $projectData?->company_id) === $company->id)>
+                    {{ $company->name }}
+                </option>
+            @endforeach
+        </select>
+        @error('company_id')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="project_status_id" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('project::project.fields.status') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <select id="project_status_id" class="form-select form-select-solid @error('project_status_id') is-invalid @enderror"
+                data-control="select2" data-placeholder="{{ __('project::project.fields.select_status') }}"
+                name="project_status_id" required>
+            <option value="">{{ __('project::project.fields.select_status') }}</option>
+            @foreach($statuses as $status)
+                <option value="{{ $status->id }}"
+                        @selected((int) old('project_status_id', $projectData?->project_status_id ?? $defaultStatusId ?? null) === $status->id)>
+                    {{ $status->name }}
+                </option>
+            @endforeach
+        </select>
+        @error('project_status_id')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="deal_id" class="fs-6 fw-bold mt-2 mb-3">{{ __('project::project.fields.deal') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <select id="deal_id" class="form-select form-select-solid @error('deal_id') is-invalid @enderror"
+                data-control="select2" data-placeholder="{{ __('project::project.fields.select_deal') }}"
+                name="deal_id">
+            <option value="">{{ __('project::project.fields.select_deal') }}</option>
+            @foreach($deals as $deal)
+                <option value="{{ $deal->id }}" data-company-id="{{ $deal->company_id }}"
+                        @selected((int) old('deal_id', $projectData?->deal_id) === $deal->id)>
+                    {{ $deal->title }}
+                    @if($deal->company)
+                        — {{ $deal->company->name }}
+                    @endif
+                </option>
+            @endforeach
+        </select>
+        <div class="form-text">{{ __('project::project.hints.deal') }}</div>
+        @error('deal_id')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <div class="fs-6 fw-bold mt-2 mb-3">{{ __('project::project.fields.budget') }}</div>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="budget" type="number" step="0.01" min="0"
+               class="form-control form-control-solid @error('budget') is-invalid @enderror"
+               name="budget" value="{{ old('budget', $projectData?->budget) }}"
+               placeholder="{{ __('project::project.placeholders.budget') }}"/>
+        @error('budget')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <div class="fs-6 fw-bold mt-2 mb-3">{{ __('project::project.fields.start_date') }} / {{ __('project::project.fields.due_date') }}</div>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <div class="row g-6">
+            <div class="col-md-6">
+                <label for="start_date" class="form-label">{{ __('project::project.fields.start_date') }}</label>
+                <input id="start_date" type="date"
+                       class="form-control form-control-solid @error('start_date') is-invalid @enderror"
+                       name="start_date"
+                       value="{{ old('start_date', $projectData?->start_date?->format('Y-m-d')) }}"/>
+                @error('start_date')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label for="due_date" class="form-label">{{ __('project::project.fields.due_date') }}</label>
+                <input id="due_date" type="date"
+                       class="form-control form-control-solid @error('due_date') is-invalid @enderror"
+                       name="due_date"
+                       value="{{ old('due_date', $projectData?->due_date?->format('Y-m-d')) }}"/>
+                @error('due_date')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const companySelect = document.getElementById('company_id');
+            const dealSelect = document.getElementById('deal_id');
+
+            if (!companySelect || !dealSelect) {
+                return;
+            }
+
+            const filterDealsByCompany = () => {
+                const companyId = companySelect.value;
+                Array.from(dealSelect.options).forEach((option) => {
+                    if (!option.value) {
+                        option.hidden = false;
+                        return;
+                    }
+                    const dealCompanyId = option.getAttribute('data-company-id');
+                    option.hidden = companyId && dealCompanyId !== companyId;
+                });
+            };
+
+            companySelect.addEventListener('change', filterDealsByCompany);
+            filterDealsByCompany();
+        });
+    </script>
+@endpush

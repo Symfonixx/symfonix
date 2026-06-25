@@ -16,6 +16,7 @@ class ServiceCategoryController extends Controller
     public function __construct(ServiceCategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
+        $this->authorizeResource(ServiceCategory::class, 'service_category');
         $this->setActive('services');
         $this->setActive('service_categories');
     }

@@ -5,7 +5,6 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -17,8 +16,6 @@ class User extends Authenticatable
     use HasFactory, HasRoles, Notifiable, TwoFactorAuthenticatable;
 
     public const TYPE_CUSTOMER = 'customer';
-
-    public const TYPE_EMPLOYEE = 'employee';
 
     public const TYPE_ADMIN = 'admin';
 
@@ -75,11 +72,6 @@ class User extends Authenticatable
         $builder->where('type', self::TYPE_CUSTOMER);
     }
 
-    public function scopeEmployees(Builder $builder): void
-    {
-        $builder->where('type', self::TYPE_EMPLOYEE);
-    }
-
     public function scopeAdmins(Builder $builder): void
     {
         $builder->where('type', self::TYPE_ADMIN);
@@ -103,10 +95,5 @@ class User extends Authenticatable
         }
 
         return $path;
-    }
-
-    public function crmSalesTarget(): HasOne
-    {
-        return $this->hasOne(\Modules\CRM\Models\CrmSalesTarget::class);
     }
 }

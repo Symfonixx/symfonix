@@ -3,7 +3,12 @@
 namespace Modules\Services\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Modules\Services\Models\Service;
+use Modules\Services\Models\ServiceCategory;
+use Modules\Services\Policies\ServiceCategoryPolicy;
+use Modules\Services\Policies\ServicePolicy;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class ServicesServiceProvider extends ServiceProvider
@@ -24,6 +29,8 @@ class ServicesServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        Gate::policy(Service::class, ServicePolicy::class);
+        Gate::policy(ServiceCategory::class, ServiceCategoryPolicy::class);
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
     }
 

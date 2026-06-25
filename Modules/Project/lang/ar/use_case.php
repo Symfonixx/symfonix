@@ -1,0 +1,62 @@
+<?php
+
+return [
+    'menu' => [
+        'use_cases' => 'حالات الاستخدام',
+    ],
+    'pages' => [
+        'index_title' => 'حالات الاستخدام',
+        'create_title' => 'إضافة حالة استخدام',
+        'edit_title' => 'تعديل حالة الاستخدام',
+        'website_title' => 'معرض الأعمال',
+        'website_details' => 'دراسة حالة',
+    ],
+    'meta' => [
+        'index_description' => 'استكشف حالات استخدام مشاريعنا وكيف نساعد الشركات بحلول تقنية مبتكرة.',
+        'index_keywords' => 'معرض أعمال، دراسات حالة، حالات استخدام، حلول تقنية، تطوير ويب',
+    ],
+    'fields' => [
+        'title' => 'العنوان',
+        'slug' => 'رابط URL',
+        'client_name' => 'اسم العميل',
+        'summary' => 'ملخص',
+        'challenge' => 'التحدي',
+        'solution' => 'الحل',
+        'results' => 'النتائج',
+        'content' => 'المحتوى الكامل',
+        'image' => 'صورة الغلاف',
+        'technologies' => 'التقنيات',
+        'category_tag' => 'تصنيف البطاقة',
+        'project_url' => 'رابط المشروع المباشر',
+        'completed_year' => 'سنة الإنجاز',
+        'linked_project' => 'المشروع الداخلي المرتبط',
+        'select_project' => 'اختر المشروع (اختياري)',
+        'sort_order' => 'ترتيب العرض',
+        'featured' => 'مميز',
+        'published' => 'منشور',
+        'status' => 'الحالة',
+        'visits' => 'الزيارات',
+    ],
+    'actions' => [
+        'add' => 'إضافة حالة استخدام',
+        'back_to_list' => 'العودة إلى حالات الاستخدام',
+        'view_on_site' => 'عرض على الموقع',
+    ],
+    'hints' => [
+        'slug' => 'يُستخدم في الرابط العام، مثل /portfolio/your-slug',
+        'technologies' => 'قائمة مفصولة بفواصل أو وسوم، مثل Laravel, Vue, AWS',
+        'category_tag' => 'يظهر كشارة على بطاقة المعرض، مثل تطوير الويب',
+        'linked_project' => 'اربط اختيارياً بسجل مشروع داخلي في CRM.',
+    ],
+    'website' => [
+        'tagline' => 'معرض الأعمال',
+        'heading' => 'كيف مكّنا الشركات بحلول تقنية مبتكرة',
+        'challenge_title' => 'التحدي',
+        'solution_title' => 'حلّنا',
+        'results_title' => 'النتائج',
+        'technologies_title' => 'التقنيات المستخدمة',
+        'related_title' => 'المزيد من دراسات الحالة',
+        'visit_project' => 'زيارة المشروع المباشر',
+        'client' => 'العميل',
+    ],
+];

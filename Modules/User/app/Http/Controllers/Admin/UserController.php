@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function __construct(protected UserRepository $userRepository)
     {
-        $this->setActive('hr');
+        $this->setActive('crm');
         $this->setActive('customers');
     }
 

@@ -12,12 +12,13 @@ use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\Lead;
 use Modules\Services\Models\Service;
 use Modules\Support\Models\Subscriber;
+use Modules\User\app\Repositories\Employee\EmployeeRepository;
 use Monishroy\VisitorTracking\Helpers\Visitor;
 use MonishRoy\VisitorTracking\Models\VisitorTable;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(EmployeeRepository $employeeRepository)
     {
         $this->setActive('dashboard');
 
@@ -31,8 +32,8 @@ class DashboardController extends Controller
         $stats = [
             'blogs' => Blog::count(),
             'leads' => Lead::count(),
-            'customers' => User::where('type', 'customer')->count(),
-            'employees' => User::where('type', 'employee')->count(),
+            'customers' => User::customers()->count(),
+            'employees' => $employeeRepository->count(),
             'subscribers' => Subscriber::count(),
             'contacts' => ContactForm::count(),
             'services' => Service::count(),

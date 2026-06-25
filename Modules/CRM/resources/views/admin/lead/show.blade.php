@@ -226,8 +226,8 @@
                                 <label class="form-label">{{ __('crm::lead.fields.assignee') }}</label>
                                 <select name="assigned_to" class="form-select form-select-solid">
                                     <option value="">{{ __('crm::lead.fields.select_assignee') }}</option>
-                                    @foreach(\App\Models\User::query()->whereIn('type', [\App\Models\User::TYPE_EMPLOYEE, \App\Models\User::TYPE_ADMIN])->orderBy('name')->get() as $assignee)
-                                        <option value="{{ $assignee->id }}" @selected($lead->assigned_to === $assignee->id || (!$lead->assigned_to && $assignee->id === auth()->id()))>
+                                    @foreach(\Modules\User\Support\EmployeeAccess::assignableQuery()->get() as $assignee)
+                                        <option value="{{ $assignee->id }}" @selected($lead->assigned_to === $assignee->id)>
                                             {{ $assignee->name }}
                                         </option>
                                     @endforeach

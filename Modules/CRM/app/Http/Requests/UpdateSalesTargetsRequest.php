@@ -15,7 +15,7 @@ class UpdateSalesTargetsRequest extends FormRequest
     {
         return [
             'targets' => ['required', 'array'],
-            'targets.*.user_id' => ['required', 'integer', 'exists:users,id'],
+            'targets.*.employee_id' => ['required', 'integer', 'exists:employees,id'],
             'targets.*.deals_target' => ['required', 'integer', 'min:1', 'max:9999'],
             'targets.*.value_target' => ['nullable', 'numeric', 'min:0'],
         ];

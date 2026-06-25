@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\CRM\Concerns\HasCrmTimeline;
 use Modules\CRM\Filters\Deal\DealFilter;
 use Modules\CRM\Support\CrmAccess;
+use Modules\User\Models\Employee;
 
 class Deal extends Model
 {
@@ -79,7 +81,7 @@ class Deal extends Model
 
     public function assignee(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'assigned_to');
+        return $this->belongsTo(Employee::class, 'assigned_to');
     }
 
     public function lead(): BelongsTo
@@ -90,5 +92,17 @@ class Deal extends Model
     public function stageHistories(): HasMany
     {
         return $this->hasMany(DealStageHistory::class)->latest();
+    }
+
+    public function project(): HasOne
+    {
+        return $this->hasOne(\Modules\Project\Models\Project::class);
+    }
+
+    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(\Modules\Product\Models\Product::class, 'deal_product')
+            ->withPivot(['quantity', 'unit_price'])
+            ->withTimestamps();
     }
 }

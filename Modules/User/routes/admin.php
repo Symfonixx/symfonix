@@ -17,7 +17,7 @@ Route::prefix('profile')->name('profile.')
         Route::post('/', [ProfileController::class, 'update'])->name('update');
     });
 
-Route::middleware([ 'can:Hr Management'])
+Route::middleware(['can:Hr Management'])
     ->group(function () {
         Route::prefix('roles')->name('roles.')
             ->group(function () {
@@ -31,6 +31,9 @@ Route::middleware([ 'can:Hr Management'])
         Route::resource('admins', AdminController::class)->except('create', 'edit', 'show');
 
         Route::resource('employees', StaffController::class)->except('create', 'edit', 'show');
+    });
 
+Route::middleware(['can:Sales Management'])
+    ->group(function () {
         Route::resource('customers', UserController::class)->except('create', 'edit', 'show');
     });

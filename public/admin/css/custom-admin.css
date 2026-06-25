@@ -1,6 +1,10 @@
 /* Symfonix Admin — custom UI enhancements */
 
 /* ── Sidebar ─────────────────────────────────────────────── */
+[data-bs-theme="light"] .app-sidebar {
+    background-color: #2b2b40;
+}
+
 .app-sidebar .menu-section-label {
     padding: 0.65rem 1rem 0.35rem;
     font-size: 0.7rem;

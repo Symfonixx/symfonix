@@ -94,20 +94,24 @@ class HandleInertiaRequests extends Middleware
                 return ServiceCategory::all();
             }, []),
             'headerPages' => $safe(function () {
-                return Cache::rememberForever('header_pages', function () {
+                return Page::hydrate(Cache::rememberForever('header_pages', function () {
                     return Page::published()
                         ->where('add_to_nav', true)
                         ->orderBy('created_at', 'desc')
-                        ->get();
-                });
+                        ->get()
+                        ->map->getAttributes()
+                        ->all();
+                }));
             }, []),
             'footerPages' => $safe(function () {
-                return Cache::rememberForever('footer_pages', function () {
+                return Page::hydrate(Cache::rememberForever('footer_pages', function () {
                     return Page::published()
                         ->where('add_to_footer', true)
                         ->orderBy('created_at', 'desc')
-                        ->get();
-                });
+                        ->get()
+                        ->map->getAttributes()
+                        ->all();
+                }));
             }, []),
             'auth' => fn () => $request->user()
                 ? $request->user()->only('id', 'name', 'email', 'type')

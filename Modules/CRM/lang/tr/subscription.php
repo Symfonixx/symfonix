@@ -14,6 +14,8 @@ return [
         'name' => 'Plan Adı',
         'company' => 'Şirket',
         'select_company' => 'Şirket seçin',
+        'product' => 'Ürün',
+        'select_product' => 'Ürün seçin (isteğe bağlı)',
         'status' => 'Durum',
         'billing_cycle' => 'Faturalama Döngüsü',
         'amount' => 'Tutar',
@@ -65,6 +67,7 @@ return [
         'renewal_at' => 'Başlangıç tarihi ve faturalama döngüsünden otomatik hesaplamak için boş bırakın.',
         'auto_renew' => 'Yenileme tarihi geldiğinde otomatik yenile.',
         'ends_at' => 'Abonelik için isteğe bağlı kesin bitiş tarihi.',
+        'product' => 'Bu aboneliği isteğe bağlı olarak katalog ürününe bağlayın.',
     ],
     'empty' => [
         'company' => 'Bu şirket için henüz abonelik yok.',

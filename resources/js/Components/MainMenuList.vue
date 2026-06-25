@@ -15,6 +15,11 @@
                 {{ trans('Our Services') }}
             </Link>
         </li>
+        <li :class="{ current: isActive(['portfolio.index', 'portfolio.show'], { prefixes: ['/portfolio'] }) }">
+            <Link :href="route('portfolio.index')">
+                {{ trans('Portfolio') }}
+            </Link>
+        </li>
         <li :class="{ current: isActive(['blogs.index', 'blogs.show'], { prefixes: ['/blogs', '/blog'] }) }">
             <Link :href="route('blogs.index')">
                 {{ trans('Blogs') }}

@@ -3,7 +3,6 @@
 namespace Modules\CRM\Services\Analytics;
 
 use Modules\CRM\Models\Lead;
-use App\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -13,6 +12,7 @@ use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\PipelineStage;
 use Modules\CRM\Support\CrmAccess;
 use Modules\CRM\Support\DateRangeResolver;
+use Modules\User\Models\Employee;
 
 class CrmAnalyticsService
 {
@@ -207,21 +207,21 @@ class CrmAnalyticsService
             ->limit(10)
             ->get();
 
-        $userIds = $rows->pluck('assigned_to')->map(fn ($id) => (int) $id)->all();
-        $targets = app(\Modules\CRM\Services\SalesTarget\SalesTargetService::class)->targetsForUsers($userIds);
+        $employeeIds = $rows->pluck('assigned_to')->map(fn ($id) => (int) $id)->all();
+        $targets = app(\Modules\CRM\Services\SalesTarget\SalesTargetService::class)->targetsForEmployees($employeeIds);
 
-        $users = User::query()
-            ->whereIn('id', $userIds)
+        $employees = Employee::query()
+            ->whereIn('id', $employeeIds)
             ->pluck('name', 'id');
 
-        return $rows->map(function ($row) use ($users, $targets) {
+        return $rows->map(function ($row) use ($employees, $targets) {
             $count = (int) $row->deals_count;
             $target = $targets[(int) $row->assigned_to] ?? (int) config('crm.sales_target_per_period', 10);
             $achievement = $target > 0 ? min(100, round(($count / $target) * 100)) : 0;
 
             return [
-                'user_id' => (int) $row->assigned_to,
-                'name' => $users[$row->assigned_to] ?? __('crm::dashboard.unknown_rep'),
+                'employee_id' => (int) $row->assigned_to,
+                'name' => $employees[$row->assigned_to] ?? __('crm::dashboard.unknown_rep'),
                 'closed_deals' => $count,
                 'closed_value' => (float) $row->total_value,
                 'target' => $target,
@@ -241,21 +241,19 @@ class CrmAnalyticsService
             ->latest('created_at')
             ->limit(20);
 
-        if ($assigneeId && $dealIds) {
-            $auditQuery->where(function ($q) use ($dealIds, $assigneeId) {
-                $q->where(function ($inner) use ($dealIds) {
-                    $inner->where('subject_type', Deal::class)->whereIn('subject_id', $dealIds);
-                })->orWhere('user_id', $assigneeId);
-            });
-        }
-
         $activityQuery = CrmActivity::query()
             ->with('user:id,name')
             ->latest()
             ->limit(20);
 
-        if ($assigneeId) {
-            $activityQuery->where('user_id', $assigneeId);
+        if ($assigneeId && $dealIds && $dealIds->isNotEmpty()) {
+            $auditQuery->where(function ($q) use ($dealIds) {
+                $q->where('subject_type', Deal::class)->whereIn('subject_id', $dealIds);
+            });
+
+            $activityQuery->where(function ($q) use ($dealIds) {
+                $q->where('subject_type', Deal::class)->whereIn('subject_id', $dealIds);
+            });
         }
 
         $audits = $auditQuery->get()->map(fn (CrmAuditLog $log) => [
@@ -290,10 +288,9 @@ class CrmAnalyticsService
 
     private function assignees(): Collection
     {
-        return User::query()
-            ->whereIn('type', [User::TYPE_EMPLOYEE, User::TYPE_ADMIN])
+        return Employee::query()
+            ->assignable()
             ->select(['id', 'name'])
-            ->orderBy('name')
             ->get();
     }
 

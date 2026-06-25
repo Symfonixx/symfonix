@@ -8,26 +8,38 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('leads', function (Blueprint $table) {
-            $table->foreignId('company_id')
-                ->nullable()
-                ->after('company_name')
-                ->constrained('companies')
-                ->nullOnDelete();
+        if (! Schema::hasColumn('leads', 'company_id')) {
+            Schema::table('leads', function (Blueprint $table) {
+                $table->foreignId('company_id')
+                    ->nullable()
+                    ->after('company_name')
+                    ->constrained('companies')
+                    ->nullOnDelete();
+            });
+        }
 
-            $table->string('source', 50)
-                ->nullable()
-                ->default('website')
-                ->after('company_id')
-                ->index();
-        });
+        if (! Schema::hasColumn('leads', 'source')) {
+            Schema::table('leads', function (Blueprint $table) {
+                $table->string('source', 50)
+                    ->nullable()
+                    ->default('website')
+                    ->after('company_id')
+                    ->index();
+            });
+        }
     }
 
     public function down(): void
     {
         Schema::table('leads', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
-            $table->dropColumn(['company_id', 'source']);
+            if (Schema::hasColumn('leads', 'company_id')) {
+                $table->dropForeign(['company_id']);
+                $table->dropColumn('company_id');
+            }
+
+            if (Schema::hasColumn('leads', 'source')) {
+                $table->dropColumn('source');
+            }
         });
     }
 };

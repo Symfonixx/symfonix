@@ -10,6 +10,7 @@ use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
 use Modules\CRM\Services\Deal\DealService;
 use Modules\CRM\Support\AuditLogger;
 use Modules\CRM\Models\CrmAuditLog;
+use Modules\User\Support\EmployeeAccess;
 
 class LeadConversionService
 {
@@ -29,7 +30,7 @@ class LeadConversionService
 
             $title = $options['title'] ?? $this->buildTitle($lead);
             $stageId = (int) ($options['pipeline_stage_id'] ?? $this->stageRepository->findDefault()?->id);
-            $assignedTo = $options['assigned_to'] ?? $lead->assigned_to ?? auth()->id();
+            $assignedTo = $options['assigned_to'] ?? $lead->assigned_to ?? EmployeeAccess::idForUser(auth()->user());
 
             $description = $this->buildDescription($lead);
 

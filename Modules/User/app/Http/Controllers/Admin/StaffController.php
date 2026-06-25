@@ -3,15 +3,15 @@
 namespace Modules\User\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Modules\User\app\Data\UserData;
-use Modules\User\app\Repositories\User\UserRepository;
-use Modules\User\Http\Requests\StoreUserRequest;
-use Modules\User\Repositories\Role\RoleRepository;
+use Modules\User\app\Data\EmployeeData;
+use Modules\User\app\Repositories\Employee\EmployeeRepository;
+use Modules\User\Http\Requests\StoreEmployeeRequest;
+use Modules\User\Http\Requests\UpdateEmployeeRequest;
+use Modules\User\Models\Employee;
 
 class StaffController extends Controller
 {
-    public function __construct(protected UserRepository $userRepository, protected RoleRepository $roleRepository)
+    public function __construct(protected EmployeeRepository $employeeRepository)
     {
         $this->setActive('hr');
         $this->setActive('employees');
@@ -19,34 +19,30 @@ class StaffController extends Controller
 
     public function index()
     {
-        $roles = $this->roleRepository->all();
-        $model = $this->userRepository->all('employee');
+        $model = $this->employeeRepository->all();
 
-        return view('user::.admin.staff.index', compact('model', 'roles'));
+        return view('user::.admin.staff.index', compact('model'));
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreEmployeeRequest $request)
     {
-        $userData = UserData::validateAndCreate($request->all());
-        $user = $this->userRepository->store($userData);
-        $this->roleRepository->assignUsersToRole($request->input('role_id'), [$user->id]);
+        $employeeData = EmployeeData::validateAndCreate($request->validated());
+        $this->employeeRepository->store($employeeData);
 
         return redirect()->route('admin.employees.index');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        $userData = UserData::validateAndCreate($request->all());
-        $user = $this->userRepository->find($id);
-        $this->userRepository->update($userData, $user);
+        $employeeData = EmployeeData::validateAndCreate($request->validated());
+        $this->employeeRepository->update($employeeData, $employee);
 
         return redirect()->route('admin.employees.index');
     }
 
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        $user = $this->userRepository->find($id);
-        $this->userRepository->delete($user);
+        $this->employeeRepository->delete($employee);
 
         return response()->json([
             'success' => true,

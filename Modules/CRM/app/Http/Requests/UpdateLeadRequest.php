@@ -15,7 +15,7 @@ class UpdateLeadRequest extends FormRequest
             'name' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
             'company_id' => ['nullable', 'integer', 'exists:companies,id'],
-            'assigned_to' => ['nullable', Rule::exists('users', 'id')->where(fn ($q) => $q->whereIn('type', [User::TYPE_EMPLOYEE, User::TYPE_ADMIN]))],
+            'assigned_to' => ['nullable', 'integer', 'exists:employees,id'],
             'company_name' => ['nullable', 'string', 'max:255'],
             'source' => ['required', Rule::in(Lead::SOURCES)],
             'project_budget' => ['nullable', 'string', 'max:255'],

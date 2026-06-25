@@ -3,7 +3,6 @@
 namespace Modules\CRM\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
@@ -22,6 +21,7 @@ use Modules\CRM\Http\Requests\UpdateDealRequest;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
+use Modules\User\Support\EmployeeAccess;
 
 class DealController extends Controller
 {
@@ -142,10 +142,8 @@ class DealController extends Controller
 
     private function assignees(): Collection
     {
-        return User::query()
-            ->whereIn('type', [User::TYPE_EMPLOYEE, User::TYPE_ADMIN])
+        return EmployeeAccess::assignableQuery()
             ->select(['id', 'name', 'email'])
-            ->orderBy('name')
             ->get();
     }
 }

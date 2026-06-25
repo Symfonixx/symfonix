@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('mobile')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('type', ['customer','employee' , 'admin'])->default('customer');
+            $table->enum('type', ['customer', 'admin'])->default('customer');
             $table->string('img')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->rememberToken();

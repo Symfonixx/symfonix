@@ -1,0 +1,72 @@
+<?php
+
+namespace Modules\Project\Repositories\Project;
+
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Modules\Core\Traits\ExceptionHandlerTrait;
+use Modules\Project\DTOs\Project\ProjectData;
+use Modules\Project\Models\Project;
+
+class ProjectModelRepository implements ProjectRepository
+{
+    use ExceptionHandlerTrait;
+
+    public function paginate(array $filters = [], int $perPage = 15): LengthAwarePaginator
+    {
+        return Project::query()
+            ->with([
+                'company:id,name',
+                'status:id,name,color_code',
+                'deal:id,title',
+            ])
+            ->filter($filters)
+            ->latest()
+            ->paginate($perPage)
+            ->withQueryString();
+    }
+
+    public function findOrFail(int $id): Project
+    {
+        return Project::query()->findOrFail($id);
+    }
+
+    public function create(ProjectData $data): ?Project
+    {
+        return $this->execute(function () use ($data) {
+            $project = Project::create($data->toArray());
+            session()->flushMessage(true);
+
+            return $project;
+        });
+    }
+
+    public function update(Project $project, ProjectData $data): ?Project
+    {
+        return $this->execute(function () use ($project, $data) {
+            $project->update($data->toArray());
+            session()->flushMessage(true);
+
+            return $project;
+        });
+    }
+
+    public function delete(Project $project): ?bool
+    {
+        return $this->execute(function () use ($project) {
+            $deleted = $project->delete();
+            session()->flushMessage(true);
+
+            return $deleted;
+        });
+    }
+
+    public function bulkDelete(array $ids): ?bool
+    {
+        return $this->execute(function () use ($ids) {
+            Project::destroy($ids);
+            session()->flushMessage(true);
+
+            return true;
+        });
+    }
+}

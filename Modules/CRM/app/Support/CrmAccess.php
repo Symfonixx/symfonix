@@ -4,6 +4,7 @@ namespace Modules\CRM\Support;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Modules\User\Support\EmployeeAccess;
 
 class CrmAccess
 {
@@ -12,7 +13,7 @@ class CrmAccess
         return $user->type === User::TYPE_ADMIN || $user->can('CRM View All');
     }
 
-    public static function canAccessDeal(User $user, ?int $assignedTo): bool
+    public static function canAccessDeal(User $user, ?int $assignedToEmployeeId): bool
     {
         if (! $user->can('CRM Management')) {
             return false;
@@ -22,7 +23,10 @@ class CrmAccess
             return true;
         }
 
-        return $assignedTo === null || $assignedTo === $user->id;
+        $employeeId = EmployeeAccess::idForUser($user);
+
+        return $assignedToEmployeeId === null
+            || ($employeeId !== null && $assignedToEmployeeId === $employeeId);
     }
 
     public static function scopeDealsForUser(Builder $query, ?User $user = null): Builder
@@ -33,9 +37,15 @@ class CrmAccess
             return $query;
         }
 
-        return $query->where(function (Builder $builder) use ($user) {
+        $employeeId = EmployeeAccess::idForUser($user);
+
+        if ($employeeId === null) {
+            return $query->whereNull('assigned_to');
+        }
+
+        return $query->where(function (Builder $builder) use ($employeeId) {
             $builder
-                ->where('assigned_to', $user->id)
+                ->where('assigned_to', $employeeId)
                 ->orWhereNull('assigned_to');
         });
     }

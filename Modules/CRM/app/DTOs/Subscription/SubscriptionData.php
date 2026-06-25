@@ -5,6 +5,7 @@ namespace Modules\CRM\DTOs\Subscription;
 use Modules\CRM\Models\Subscription;
 use Spatie\LaravelData\Attributes\Validation\BooleanType;
 use Spatie\LaravelData\Attributes\Validation\Date;
+use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Attributes\Validation\In;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Min;
@@ -19,6 +20,9 @@ class SubscriptionData extends Data
     public function __construct(
         #[Required]
         public int $company_id,
+
+        #[Nullable, Exists('products', 'id')]
+        public ?int $product_id = null,
 
         #[Required, StringType, Max(255)]
         public string $name,
@@ -58,6 +62,9 @@ class SubscriptionData extends Data
     {
         return new self(
             company_id: (int) $payload['company_id'],
+            product_id: isset($payload['product_id']) && $payload['product_id'] !== ''
+                ? (int) $payload['product_id']
+                : null,
             name: $payload['name'],
             status: $payload['status'] ?? Subscription::STATUS_ACTIVE,
             billing_cycle: $payload['billing_cycle'] ?? Subscription::BILLING_MONTHLY,

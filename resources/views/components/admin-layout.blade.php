@@ -55,6 +55,7 @@ Author: Hadi Hilal
     <link href="{{ asset('admin/css/custom-admin.css') }}" rel="stylesheet" type="text/css"/>
 
     @yield('css')
+    @livewireStyles
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -738,6 +739,7 @@ Author: Hadi Hilal
 
 
 </script>
+@livewireScripts
 @yield('js')
 @stack('scripts')
 <!--end::Javascript-->

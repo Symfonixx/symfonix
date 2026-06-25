@@ -17,6 +17,7 @@ use Modules\CRM\Http\Requests\SubscriptionIndexRequest;
 use Modules\CRM\Http\Requests\UpdateSubscriptionRequest;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Subscription;
+use Modules\Product\Models\Product;
 
 class SubscriptionController extends Controller
 {
@@ -62,6 +63,7 @@ class SubscriptionController extends Controller
     {
         $subscription->loadMissing([
             'company:id,name,email,phone,status',
+            'product:id,name,sku',
             'crmActivities.user:id,name',
             'crmAuditLogs.user:id,name',
         ]);
@@ -103,6 +105,7 @@ class SubscriptionController extends Controller
     {
         return [
             'companies' => Company::query()->select(['id', 'name'])->orderBy('name')->get(),
+            'products' => Product::query()->active()->select(['id', 'name', 'sku'])->orderBy('name')->get(),
             'selectedCompanyId' => $request->integer('company_id') ?: null,
         ];
     }

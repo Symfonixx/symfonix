@@ -17,6 +17,8 @@ use Modules\CRM\Repositories\Company\CompanyModelRepository;
 use Modules\CRM\Repositories\Company\CompanyRepository;
 use Modules\CRM\Repositories\Deal\DealModelRepository;
 use Modules\CRM\Repositories\Deal\DealRepository;
+use Modules\CRM\Repositories\Lead\LeadModelRepository;
+use Modules\CRM\Repositories\Lead\LeadRepository;
 use Modules\CRM\Repositories\PipelineStage\PipelineStageModelRepository;
 use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
 use Modules\CRM\Repositories\Subscription\SubscriptionModelRepository;
@@ -57,6 +59,7 @@ class CRMServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
         $this->app->bind(CompanyRepository::class, CompanyModelRepository::class);
         $this->app->bind(DealRepository::class, DealModelRepository::class);
+        $this->app->bind(LeadRepository::class, LeadModelRepository::class);
         $this->app->bind(PipelineStageRepository::class, PipelineStageModelRepository::class);
         $this->app->bind(SubscriptionRepository::class, SubscriptionModelRepository::class);
     }

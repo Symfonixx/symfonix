@@ -61,6 +61,7 @@
                 </div>
             </div>
         </div>
+        @can('Sales Management')
         <div class="col-sm-6 col-xl-3">
             <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
                 <div class="stat-icon bg-light-warning text-warning">
@@ -73,6 +74,7 @@
                 </div>
             </div>
         </div>
+        @endcan
         <div class="col-sm-6 col-xl-3">
             <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
                 <div class="stat-icon bg-light-danger text-danger">
@@ -179,6 +181,14 @@
                                 </a>
                             </div>
                         @endcan
+                        @can('Services Management')
+                            <div class="col-sm-6">
+                                <a href="{{ route('admin.services.create') }}" class="quick-action-btn">
+                                    <span class="qa-icon bg-light-success text-success"><i class="bi bi-grid"></i></span>
+                                    {{ __('New Service') }}
+                                </a>
+                            </div>
+                        @endcan
                         @can('Hr Management')
                             <div class="col-sm-6">
                                 <a href="{{ route('admin.employees.index') }}" class="quick-action-btn">
@@ -274,12 +284,14 @@
                                 <div class="fw-semibold text-gray-700">{{ __('Blogs') }}</div>
                             </a>
                         </div>
+                        @can('Services Management')
                         <div class="col-6">
                             <a href="{{ route('admin.services.index') }}" class="d-block p-5 rounded bg-light-success text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-success">{{ $stats['services'] ?? 0 }}</div>
                                 <div class="fw-semibold text-gray-700">{{ __('Services') }}</div>
                             </a>
                         </div>
+                        @endcan
                         <div class="col-6">
                             <a href="{{ route('admin.leads.index') }}" class="d-block p-5 rounded bg-light-danger text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-danger">{{ $stats['leads'] ?? 0 }}</div>
@@ -304,12 +316,14 @@
                                 <div class="fw-semibold text-gray-700">{{ __('Employees') }}</div>
                             </a>
                         </div>
+                        @can('Sales Management')
                         <div class="col-6">
                             <a href="{{ route('admin.customers.index') }}" class="d-block p-5 rounded bg-light-primary text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-primary">{{ $stats['customers'] ?? 0 }}</div>
                                 <div class="fw-semibold text-gray-700">{{ __('Customers') }}</div>
                             </a>
                         </div>
+                        @endcan
                         <div class="col-6">
                             <a href="{{ route('admin.subscribers.index') }}" class="d-block p-5 rounded bg-light-danger text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-danger">{{ $stats['subscribers'] ?? 0 }}</div>

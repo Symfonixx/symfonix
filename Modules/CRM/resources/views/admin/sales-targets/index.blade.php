@@ -47,7 +47,7 @@
                         @foreach($reps as $index => $rep)
                             <tr>
                                 <td>
-                                    <input type="hidden" name="targets[{{ $index }}][user_id]" value="{{ $rep['user_id'] }}">
+                                    <input type="hidden" name="targets[{{ $index }}][employee_id]" value="{{ $rep['employee_id'] }}">
                                     <div class="d-flex align-items-center gap-3">
                                         <span class="symbol symbol-35px symbol-circle bg-light-primary text-primary fw-bold">
                                             {{ strtoupper(substr($rep['name'], 0, 1)) }}

@@ -2,9 +2,9 @@
 
 namespace Modules\CRM\Services\SalesTarget;
 
-use App\Models\User;
 use Illuminate\Support\Collection;
 use Modules\CRM\Models\CrmSalesTarget;
+use Modules\User\Models\Employee;
 
 class SalesTargetService
 {
@@ -12,44 +12,42 @@ class SalesTargetService
     {
         $defaultDeals = (int) config('crm.sales_target_per_period', 10);
 
-        return User::query()
-            ->whereIn('type', [User::TYPE_EMPLOYEE, User::TYPE_ADMIN])
-            ->select(['id', 'name', 'email', 'type'])
-            ->orderBy('name')
+        return Employee::query()
+            ->assignable()
+            ->select(['id', 'name', 'email'])
             ->get()
-            ->map(function (User $user) use ($defaultDeals) {
-                $target = $user->crmSalesTarget;
+            ->map(function (Employee $employee) use ($defaultDeals) {
+                $target = $employee->crmSalesTarget;
 
                 return [
-                    'user_id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'type' => $user->type,
+                    'employee_id' => $employee->id,
+                    'name' => $employee->name,
+                    'email' => $employee->email,
                     'deals_target' => $target?->deals_target ?? $defaultDeals,
                     'value_target' => $target?->value_target,
                 ];
             });
     }
 
-    public function dealsTargetForUser(int $userId): int
+    public function dealsTargetForEmployee(int $employeeId): int
     {
-        $target = CrmSalesTarget::query()->where('user_id', $userId)->value('deals_target');
+        $target = CrmSalesTarget::query()->where('employee_id', $employeeId)->value('deals_target');
 
         return $target ?? (int) config('crm.sales_target_per_period', 10);
     }
 
-    public function targetsForUsers(array $userIds): array
+    public function targetsForEmployees(array $employeeIds): array
     {
-        if ($userIds === []) {
+        if ($employeeIds === []) {
             return [];
         }
 
         $default = (int) config('crm.sales_target_per_period', 10);
         $rows = CrmSalesTarget::query()
-            ->whereIn('user_id', $userIds)
-            ->pluck('deals_target', 'user_id');
+            ->whereIn('employee_id', $employeeIds)
+            ->pluck('deals_target', 'employee_id');
 
-        return collect($userIds)->mapWithKeys(fn (int $id) => [
+        return collect($employeeIds)->mapWithKeys(fn (int $id) => [
             $id => (int) ($rows[$id] ?? $default),
         ])->all();
     }
@@ -57,18 +55,18 @@ class SalesTargetService
     public function sync(array $targets): void
     {
         foreach ($targets as $row) {
-            $userId = (int) ($row['user_id'] ?? 0);
+            $employeeId = (int) ($row['employee_id'] ?? 0);
             $dealsTarget = max(1, (int) ($row['deals_target'] ?? config('crm.sales_target_per_period', 10)));
             $valueTarget = isset($row['value_target']) && $row['value_target'] !== ''
                 ? (float) $row['value_target']
                 : null;
 
-            if ($userId <= 0) {
+            if ($employeeId <= 0) {
                 continue;
             }
 
             CrmSalesTarget::query()->updateOrCreate(
-                ['user_id' => $userId],
+                ['employee_id' => $employeeId],
                 [
                     'deals_target' => $dealsTarget,
                     'value_target' => $valueTarget,

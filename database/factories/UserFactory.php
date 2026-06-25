@@ -44,13 +44,6 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function employee(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'type' => User::TYPE_EMPLOYEE,
-        ]);
-    }
-
     public function admin(): static
     {
         return $this->state(fn (array $attributes) => [

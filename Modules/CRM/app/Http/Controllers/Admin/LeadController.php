@@ -3,11 +3,18 @@
 namespace Modules\CRM\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
+use Modules\CRM\Actions\Lead\BlockLeadAction;
+use Modules\CRM\Actions\Lead\BulkDeleteLeadsAction;
 use Modules\CRM\Actions\Lead\ConvertLeadToDealAction;
+use Modules\CRM\Actions\Lead\CreateLeadAction;
+use Modules\CRM\Actions\Lead\DeleteLeadAction;
+use Modules\CRM\Actions\Lead\ListLeadsAction;
+use Modules\CRM\Actions\Lead\UnblockLeadAction;
+use Modules\CRM\Actions\Lead\UpdateLeadAction;
+use Modules\CRM\DTOs\Lead\LeadData;
 use Modules\CRM\Http\Requests\ConvertLeadToDealRequest;
 use Modules\CRM\Http\Requests\StoreLeadRequest;
 use Modules\CRM\Http\Requests\UpdateLeadRequest;
@@ -15,21 +22,27 @@ use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Lead;
 use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
 use Modules\Services\Models\Service;
+use Modules\User\Support\EmployeeAccess;
 
 class LeadController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(
+        private readonly ListLeadsAction $listLeadsAction,
+        private readonly CreateLeadAction $createLeadAction,
+        private readonly UpdateLeadAction $updateLeadAction,
+        private readonly DeleteLeadAction $deleteLeadAction,
+        private readonly BulkDeleteLeadsAction $bulkDeleteLeadsAction,
+        private readonly BlockLeadAction $blockLeadAction,
+        private readonly UnblockLeadAction $unblockLeadAction,
+        private readonly PipelineStageRepository $stageRepository,
+    ) {
         $this->setActive('crm');
         $this->setActive('leads');
     }
 
     public function index(): View
     {
-        $model = Lead::query()
-            ->with(['company:id,name', 'service:id,title'])
-            ->latest()
-            ->paginate(config('core.page_size'));
+        $model = $this->listLeadsAction->execute();
 
         return view('crm::admin.lead.index', compact('model'));
     }
@@ -41,8 +54,8 @@ class LeadController extends Controller
 
     public function store(StoreLeadRequest $request): RedirectResponse
     {
-        Lead::create($request->validated());
-        session()->flushMessage(true);
+        $data = LeadData::fromRequest($request->validated());
+        $this->createLeadAction->execute($data);
 
         return redirect()->route('admin.leads.index');
     }
@@ -59,7 +72,7 @@ class LeadController extends Controller
             'crmAuditLogs.user:id,name',
         ]);
 
-        $stages = app(PipelineStageRepository::class)->allActive();
+        $stages = $this->stageRepository->allActive();
 
         return view('crm::admin.lead.show', compact('lead', 'stages'));
     }
@@ -71,40 +84,36 @@ class LeadController extends Controller
 
     public function update(UpdateLeadRequest $request, Lead $lead): RedirectResponse
     {
-        $lead->update($request->validated());
-        session()->flushMessage(true);
+        $data = LeadData::fromRequest($request->validated());
+        $this->updateLeadAction->execute($lead, $data);
 
         return redirect()->route('admin.leads.index');
     }
 
     public function deleteMulti(DeleteMultiRequest $request): RedirectResponse
     {
-        Lead::destroy($request->ids);
-        session()->flushMessage(true);
+        $this->bulkDeleteLeadsAction->execute($request->ids);
 
         return redirect()->back();
     }
 
     public function destroy(Lead $lead): RedirectResponse
     {
-        $lead->delete();
-        session()->flushMessage(true);
+        $this->deleteLeadAction->execute($lead);
 
         return redirect()->route('admin.leads.index');
     }
 
     public function block(Lead $lead): RedirectResponse
     {
-        $lead->update(['blocked' => true]);
-        session()->flushMessage(true);
+        $this->blockLeadAction->execute($lead);
 
         return redirect()->back();
     }
 
     public function unblock(Lead $lead): RedirectResponse
     {
-        $lead->update(['blocked' => false]);
-        session()->flushMessage(true);
+        $this->unblockLeadAction->execute($lead);
 
         return redirect()->back();
     }
@@ -121,10 +130,8 @@ class LeadController extends Controller
         return [
             'companies' => Company::query()->select(['id', 'name'])->orderBy('name')->get(),
             'services' => Service::query()->select(['id', 'title'])->orderBy('title')->get(),
-            'assignees' => User::query()
-                ->whereIn('type', [User::TYPE_EMPLOYEE, User::TYPE_ADMIN])
+            'assignees' => EmployeeAccess::assignableQuery()
                 ->select(['id', 'name', 'email'])
-                ->orderBy('name')
                 ->get(),
         ];
     }

@@ -1,0 +1,119 @@
+<?php
+
+namespace Modules\Project\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Modules\CRM\Models\Company;
+use Modules\CRM\Models\Deal;
+
+class Project extends Model
+{
+    public const PAYMENT_UNPAID = 'unpaid';
+
+    public const PAYMENT_PARTIALLY_PAID = 'partially_paid';
+
+    public const PAYMENT_FULLY_PAID = 'fully_paid';
+
+    protected $fillable = [
+        'title',
+        'description',
+        'company_id',
+        'project_status_id',
+        'deal_id',
+        'budget',
+        'payment_status',
+        'start_date',
+        'due_date',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'budget' => 'decimal:2',
+            'start_date' => 'date',
+            'due_date' => 'date',
+        ];
+    }
+
+    public function scopeFilter(Builder $query, array $filters = []): Builder
+    {
+        if (! empty($filters['company_id'])) {
+            $query->where('company_id', (int) $filters['company_id']);
+        }
+
+        if (! empty($filters['project_status_id'])) {
+            $query->where('project_status_id', (int) $filters['project_status_id']);
+        }
+
+        if (! empty($filters['search'])) {
+            $search = $filters['search'];
+            $query->where(function (Builder $q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        return $query;
+    }
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(ProjectStatus::class, 'project_status_id');
+    }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function deal(): BelongsTo
+    {
+        return $this->belongsTo(Deal::class);
+    }
+
+    public function useCases(): HasMany
+    {
+        return $this->hasMany(ProjectUseCase::class);
+    }
+
+    public function transactions(): MorphMany
+    {
+        return $this->morphMany(\Modules\Finance\Models\Transaction::class, 'transactionable', 'reference_type', 'reference_id');
+    }
+
+    /**
+     * Create a project automatically when a CRM deal is won.
+     * Pulls company and budget from the deal; assigns the default status.
+     */
+    public static function createFromDeal(Deal $deal): ?self
+    {
+        if ($deal->company_id === null) {
+            return null;
+        }
+
+        if (static::query()->where('deal_id', $deal->id)->exists()) {
+            return static::query()->where('deal_id', $deal->id)->first();
+        }
+
+        $defaultStatus = ProjectStatus::defaultStatus();
+
+        if ($defaultStatus === null) {
+            return null;
+        }
+
+        return static::create([
+            'title' => $deal->title,
+            'description' => $deal->description,
+            'company_id' => $deal->company_id,
+            'project_status_id' => $defaultStatus->id,
+            'deal_id' => $deal->id,
+            'budget' => $deal->value,
+            'start_date' => now()->toDateString(),
+            'due_date' => $deal->expected_close_date,
+        ]);
+    }
+}

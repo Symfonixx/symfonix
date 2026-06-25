@@ -36,7 +36,11 @@ class RoleController extends Controller
     {
         $permissions = $this->roleRepository->permissions();
         $role = $this->roleRepository->findById($id);
-        $users = User::whereIn('type', [User::TYPE_EMPLOYEE, User::TYPE_ADMIN])
+        $role->load([
+            'permissions',
+            'users' => fn ($query) => $query->where('type', User::TYPE_ADMIN),
+        ]);
+        $users = User::admins()
             ->whereDoesntHave('roles', function ($query) use ($id) {
                 $query->where('id', $id);
             })->get();

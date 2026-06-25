@@ -48,69 +48,55 @@
 @endsection
 <x-admin-layout>
     <x-admin.table :model="$model" search="Search In Employees">
-        <!--begin::Table head-->
         <thead>
         <tr class="text-start text-muted fw-bold fs-7 gs-0">
             <th class="min-w-125px">{{__('Name')}}</th>
             <th class="min-w-125px">{{__('Mobile')}}</th>
-            <th class="min-w-125px">{{__('Roles')}}</th>
-            <th class="min-w-125px">{{__('Last Login')}}</th>
+            <th class="min-w-125px">{{__('Status')}}</th>
             <th class="min-w-125px">{{__('Created At')}}</th>
             <th class="text-end min-w-100px"></th>
         </tr>
         </thead>
-        <!--end::Table head-->
-        <!--begin::Table body-->
         <tbody class="text-gray-600 fw-semibold">
-        @foreach($model as $staff)
-            <tr id="tr{{$staff->id}}">
+        @foreach($model as $employee)
+            <tr id="tr{{$employee->id}}">
 
                 <td class="d-flex align-items-center">
-                    <!--begin:: Avatar -->
                     <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                        <img src="{{$staff->avatar}}" alt="client"/>
+                        <img src="{{$employee->avatar}}" alt="employee"/>
                     </div>
-                    <!--end::Avatar-->
-                    <!--begin::User details-->
                     <div class="d-flex flex-column">
                         <a href="#"
-                           class="text-gray-800 mb-1">{{$staff->name}}
+                           class="text-gray-800 mb-1">{{$employee->name}}
                         </a>
                         <a class="text-hover-primary text-gray-500" target="_blank"
-                           href="mailto:{{$staff->email}}">{{$staff->email}}</a>
+                           href="mailto:{{$employee->email}}">{{$employee->email}}</a>
                     </div>
-                    <!--begin::User details-->
                 </td>
 
                 <td>
-                    <a href="tel:{{$staff->mobile}}" target="_blank">
-                        {{$staff->mobile}}
+                    <a href="tel:{{$employee->mobile}}" target="_blank">
+                        {{$employee->mobile}}
                     </a>
                 </td>
 
                 <td>
-                    @foreach($staff->roles as $role)
-                        <span class="mx-1"> {{$role->name}}</span>
-                    @endforeach
+                    <span class="badge badge-light-{{ $employee->status === 'active' ? 'success' : 'secondary' }}">
+                        {{ ucfirst($employee->status) }}
+                    </span>
                 </td>
 
-                <td>
-                    <div class="badge badge-light fw-bolder">
-                        {{$staff->last_login_human}}
-                    </div>
-                </td>
-
-                <td>{{$staff->created_at}}</td>
+                <td>{{$employee->created_at}}</td>
 
                 <td>
-                    <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{$staff->id}}">
+                    <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{$employee->id}}">
                         <i class="bi bi-pencil"></i>
                     </a>
-                    <div class="modal fade" tabindex="-1" id="edit_modal{{$staff->id}}">
-                        @include('user::admin.staff._edit_model' , $staff)
+                    <div class="modal fade" tabindex="-1" id="edit_modal{{$employee->id}}">
+                        @include('user::admin.staff._edit_model' , ['employee' => $employee])
                     </div>
 
-                    <a class="btn btn-sm btn-danger delete" data-id="{{ $staff->id }}">
+                    <a class="btn btn-sm btn-danger delete" data-id="{{ $employee->id }}">
                         <i class="bi bi-trash"></i>
                     </a>
 
@@ -119,8 +105,5 @@
             </tr>
         @endforeach
         </tbody>
-        <!--end::Table body-->
     </x-admin.table>
 </x-admin-layout>
-
-

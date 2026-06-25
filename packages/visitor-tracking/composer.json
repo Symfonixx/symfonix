@@ -1,0 +1,46 @@
+{
+  "name": "monishroy/visitor-tracking",
+  "description": "A Laravel package for tracking website visitors",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Monish Roy",
+      "email": "monishroy87@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "MonishRoy\\VisitorTracking\\": "src/"
+    },
+    "files": [
+      "src/Helpers/Visitor.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "MonishRoy\\VisitorTracking\\VisitorTrackingServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.3",
+    "illuminate/support": "^11.0|^12.0|^13.0",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "keywords": [
+    "laravel",
+    "visitor tracking",
+    "tracking",
+    "visitor counter",
+    "laravel visitor tracking",
+    "user visitor tracking"
+  ],
+  "homepage": "https://github.com/monishroy/visitor-tracking",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monishroy/visitor-tracking.git"
+  }
+}

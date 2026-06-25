@@ -18,6 +18,7 @@ class ServiceController extends Controller
     public function __construct(ServiceRepository $serviceRepository)
     {
         $this->serviceRepository = $serviceRepository;
+        $this->authorizeResource(Service::class, 'service');
         $this->setActive('services');
     }
 

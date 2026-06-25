@@ -1,0 +1,65 @@
+<?php
+
+return [
+    'menu' => [
+        'finance' => 'Finans',
+        'dashboard' => 'Kontrol Paneli',
+        'daily_log' => 'Günlük Kayıt',
+        'expense_categories' => 'Gider Kategorileri',
+        'salaries' => 'Maaşlar',
+        'commissions' => 'Komisyonlar',
+        'product_sales' => 'Ürün Satışları',
+    ],
+    'pages' => [
+        'dashboard_title' => 'Finans Kontrol Paneli',
+        'dashboard_subtitle' => 'Toplam performans, aylık trendler ve kâr analizi.',
+    ],
+    'metrics' => [
+        'total_credit' => 'Toplam Gelir',
+        'total_debit' => 'Toplam Gider',
+        'net_profit' => 'Net Kâr',
+        'lifetime_profit' => 'Toplam Kâr',
+        'total_revenue' => 'Toplam Gelir',
+        'total_expenses' => 'Toplam Gider',
+        'total_losses' => 'Toplam Zarar',
+        'lifetime_scope' => 'Tüm zamanlar',
+        'filtered_scope' => 'Seçili dönem',
+        'lifetime_hint' => 'Kayıtlı tüm işlemlerin toplamı.',
+        'filtered_hint' => 'Seçili :count ay için toplam.',
+        'today_transactions' => 'Bugünün İşlemleri',
+        'no_transactions_today' => 'Bugün kayıtlı işlem yok.',
+    ],
+    'filters' => [
+        'months' => 'Aylar',
+        'months_placeholder' => 'Ay seçin',
+        'months_hint' => 'Bir veya daha fazla ay seçin veya tüm zamanlar için Toplam Görünümü kullanın.',
+        'all_months' => 'Toplam Görünüm',
+    ],
+    'charts' => [
+        'performance_title' => 'Kâr vs. Gider vs. Zarar',
+        'performance_hint' => 'En yüksek değerler vurgulanmış aylık karşılaştırma.',
+        'profit' => 'Kâr',
+        'expenses' => 'Gider',
+        'losses' => 'Zarar',
+        'empty' => 'Seçili dönem için işlem verisi yok.',
+    ],
+    'fields' => [
+        'type' => 'Tür',
+        'amount' => 'Tutar',
+        'description' => 'Açıklama',
+        'category' => 'Kategori',
+        'date' => 'Tarih',
+        'project' => 'Proje (isteğe bağlı)',
+        'income' => 'Gelir',
+        'expense' => 'Gider',
+    ],
+    'actions' => [
+        'log_transaction' => 'İşlem Kaydet',
+        'daily_action_center' => 'Günlük İşlem Merkezi',
+    ],
+    'messages' => [
+        'transaction_logged' => 'İşlem başarıyla kaydedildi.',
+        'sale_income' => 'Satış geliri: :title',
+        'project_income' => 'Proje ödemesi: :title',
+    ],
+];

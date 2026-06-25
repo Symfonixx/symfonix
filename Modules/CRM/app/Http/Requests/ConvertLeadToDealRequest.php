@@ -13,7 +13,7 @@ class ConvertLeadToDealRequest extends FormRequest
         return [
             'title' => ['nullable', 'string', 'min:2', 'max:255'],
             'pipeline_stage_id' => ['nullable', 'integer', Rule::exists('pipeline_stages', 'id')->where(fn ($q) => $q->where('is_active', true))],
-            'assigned_to' => ['nullable', Rule::exists('users', 'id')->where(fn ($q) => $q->whereIn('type', [User::TYPE_EMPLOYEE, User::TYPE_ADMIN]))],
+            'assigned_to' => ['nullable', 'integer', 'exists:employees,id'],
             'expected_close_date' => ['nullable', 'date'],
             'currency' => ['nullable', 'string', 'size:3'],
         ];

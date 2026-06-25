@@ -2,14 +2,14 @@
 
 namespace Modules\CRM\Models;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\User\Models\Employee;
 
 class CrmSalesTarget extends Model
 {
     protected $fillable = [
-        'user_id',
+        'employee_id',
         'deals_target',
         'value_target',
     ];
@@ -22,8 +22,8 @@ class CrmSalesTarget extends Model
         ];
     }
 
-    public function user(): BelongsTo
+    public function employee(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Employee::class);
     }
 }

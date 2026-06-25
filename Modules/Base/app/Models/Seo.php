@@ -39,7 +39,11 @@ class Seo extends Model
      */
     protected static function getAllSeoEntries(): Collection
     {
-        return Cache::remember('seo_entries', now()->addMinutes(10), fn () => self::all());
+        $entries = Cache::remember('seo_entries', now()->addMinutes(10), function () {
+            return self::query()->get()->map->getAttributes()->all();
+        });
+
+        return self::hydrate($entries);
     }
 
     /**
@@ -84,6 +88,10 @@ class Seo extends Model
      */
     protected static function cacheSeoEntries(Collection $seo): void
     {
-        Cache::put('seo_entries', $seo, now()->addMinutes(10));
+        Cache::put(
+            'seo_entries',
+            $seo->map->getAttributes()->all(),
+            now()->addMinutes(10),
+        );
     }
 }

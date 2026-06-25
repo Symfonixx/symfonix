@@ -14,6 +14,8 @@ return [
         'name' => 'Plan Name',
         'company' => 'Company',
         'select_company' => 'Select company',
+        'product' => 'Product',
+        'select_product' => 'Select product (optional)',
         'status' => 'Status',
         'billing_cycle' => 'Billing Cycle',
         'amount' => 'Amount',
@@ -65,6 +67,7 @@ return [
         'renewal_at' => 'Leave empty to auto-calculate from start date and billing cycle.',
         'auto_renew' => 'Automatically renew when the renewal date is reached.',
         'ends_at' => 'Optional hard end date for the subscription.',
+        'product' => 'Optionally link this subscription to a catalog product.',
     ],
     'empty' => [
         'company' => 'No subscriptions for this company yet.',

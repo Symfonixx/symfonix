@@ -25,9 +25,9 @@ abstract class Controller extends BaseController
 
     final protected function withCountries()
     {
-        $countries = Cache::rememberForever('countries', static function () {
-            return Country::all();
-        });
+        $countries = Country::hydrate(Cache::rememberForever('countries', static function () {
+            return Country::query()->get()->map->getAttributes()->all();
+        }));
         view()->share('countries', $countries);
 
         return $this;

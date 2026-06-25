@@ -61,7 +61,10 @@ class RoleModelRepository implements RoleRepository
     {
         return $this->execute(function () use ($id, $userIds) {
             $role = $this->findById($id);
-            $users = User::whereIn('id', $userIds)->get();
+            $users = User::query()
+                ->admins()
+                ->whereIn('id', $userIds)
+                ->get();
             $role->users()->syncWithoutDetaching($users);
             session()->flushMessage(true);
 

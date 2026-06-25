@@ -8,5 +8,8 @@
     "Services": true,
     "Team": true,
     "SearchEngine": true,
-    "CRM": true
+    "CRM": true,
+    "Project": true,
+    "Finance": true,
+    "Product": true
 }

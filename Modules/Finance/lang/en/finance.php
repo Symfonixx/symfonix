@@ -1,0 +1,65 @@
+<?php
+
+return [
+    'menu' => [
+        'finance' => 'Finance',
+        'dashboard' => 'Dashboard',
+        'daily_log' => 'Daily Log',
+        'expense_categories' => 'Expense Categories',
+        'salaries' => 'Salaries',
+        'commissions' => 'Commissions',
+        'product_sales' => 'Product Sales',
+    ],
+    'pages' => [
+        'dashboard_title' => 'Financial Dashboard',
+        'dashboard_subtitle' => 'Lifetime performance, monthly trends, and profit analysis.',
+    ],
+    'metrics' => [
+        'total_credit' => 'Total Credit (Revenue)',
+        'total_debit' => 'Total Debit (Expenses)',
+        'net_profit' => 'Net Profit',
+        'lifetime_profit' => 'Lifetime Profit',
+        'total_revenue' => 'Total Revenue',
+        'total_expenses' => 'Total Expenses',
+        'total_losses' => 'Total Losses',
+        'lifetime_scope' => 'All time',
+        'filtered_scope' => 'Selected period',
+        'lifetime_hint' => 'Aggregated across every recorded transaction.',
+        'filtered_hint' => 'Aggregated across :count selected month(s).',
+        'today_transactions' => "Today's Transactions",
+        'no_transactions_today' => 'No transactions logged today.',
+    ],
+    'filters' => [
+        'months' => 'Months',
+        'months_placeholder' => 'Select month(s)',
+        'months_hint' => 'Select one or more months, or use Lifetime View for all-time totals.',
+        'all_months' => 'Lifetime View',
+    ],
+    'charts' => [
+        'performance_title' => 'Profit vs. Expenses vs. Losses',
+        'performance_hint' => 'Monthly comparison with peak values highlighted.',
+        'profit' => 'Profit',
+        'expenses' => 'Expenses',
+        'losses' => 'Losses',
+        'empty' => 'No transaction data available for the selected period.',
+    ],
+    'fields' => [
+        'type' => 'Type',
+        'amount' => 'Amount',
+        'description' => 'Description',
+        'category' => 'Category',
+        'date' => 'Date',
+        'project' => 'Project (optional)',
+        'income' => 'Income',
+        'expense' => 'Expense',
+    ],
+    'actions' => [
+        'log_transaction' => 'Log Transaction',
+        'daily_action_center' => 'Daily Action Center',
+    ],
+    'messages' => [
+        'transaction_logged' => 'Transaction logged successfully.',
+        'sale_income' => 'Sale income: :title',
+        'project_income' => 'Project payment: :title',
+    ],
+];
