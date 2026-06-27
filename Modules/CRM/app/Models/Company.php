@@ -46,6 +46,11 @@ class Company extends Model
         return $this->hasMany(ContactForm::class);
     }
 
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
+
     public function deals(): HasMany
     {
         return $this->hasMany(Deal::class);

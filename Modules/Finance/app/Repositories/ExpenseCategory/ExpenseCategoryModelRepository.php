@@ -39,7 +39,7 @@ class ExpenseCategoryModelRepository implements ExpenseCategoryRepository
     public function delete(ExpenseCategory $category): ?bool
     {
         return $this->execute(function () use ($category) {
-            if ($category->transactions()->exists()) {
+            if ($category->journalLines()->exists()) {
                 session()->flushMessage(false, __('finance::expense_category.errors.in_use'));
 
                 return false;

@@ -3,12 +3,16 @@
 namespace Modules\Finance\Services;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Modules\CRM\Models\Deal;
+use Modules\CRM\Models\Subscription;
 use Modules\Finance\Models\Commission;
 use Modules\Finance\Models\ExpenseCategory;
+use Modules\Finance\Models\Invoice;
+use Modules\Finance\Models\JournalEntry;
+use Modules\Finance\Models\JournalLine;
 use Modules\Finance\Models\Salary;
-use Modules\Finance\Models\Transaction;
 use Modules\Product\Models\Product;
 use Modules\Product\Models\ProductSale;
 use Modules\Project\Models\Project;
@@ -16,36 +20,30 @@ use Modules\Project\Models\Project;
 class FinanceService
 {
     /**
-     * Sum all income (credit) transactions.
+     * Sum all revenue (credit to revenue account).
      */
     public function getTotalIncome(?array $dateRange = null, ?array $monthKeys = null): float
     {
-        $query = $this->baseTransactionQuery($dateRange, $monthKeys)->income();
-
-        return (float) $query->sum('amount');
+        return (float) $this->baseJournalEntryQuery($dateRange, $monthKeys)
+            ->revenue()
+            ->sum('amount');
     }
 
     /**
-     * Sum all expense (debit) transactions.
+     * Sum all expenses (debit to expense account).
      */
     public function getTotalExpenses(?array $dateRange = null, ?array $monthKeys = null): float
     {
-        $query = $this->baseTransactionQuery($dateRange, $monthKeys)->expense();
-
-        return (float) $query->sum('amount');
+        return (float) $this->baseJournalEntryQuery($dateRange, $monthKeys)
+            ->expense()
+            ->sum('amount');
     }
 
-    /**
-     * Net profit = total income minus total expenses.
-     */
     public function getNetProfit(?array $dateRange = null, ?array $monthKeys = null): float
     {
         return $this->getTotalIncome($dateRange, $monthKeys) - $this->getTotalExpenses($dateRange, $monthKeys);
     }
 
-    /**
-     * Aggregate loss amount when expenses exceed revenue.
-     */
     public function getTotalLosses(?array $dateRange = null, ?array $monthKeys = null): float
     {
         $income = $this->getTotalIncome($dateRange, $monthKeys);
@@ -55,8 +53,6 @@ class FinanceService
     }
 
     /**
-     * Revenue, expenses, net profit, and losses for dashboard KPI cards.
-     *
      * @return array{revenue: float, expenses: float, profit: float, losses: float}
      */
     public function getMetricsSummary(?array $monthKeys = null): array
@@ -74,13 +70,11 @@ class FinanceService
     }
 
     /**
-     * Distinct months that have ledger activity, newest first.
-     *
      * @return array<int, array{key: string, label: string}>
      */
     public function getAvailableMonths(): array
     {
-        return Transaction::query()
+        return JournalEntry::query()
             ->selectRaw('YEAR(transaction_date) as year, MONTH(transaction_date) as month')
             ->groupBy('year', 'month')
             ->orderByDesc('year')
@@ -99,16 +93,14 @@ class FinanceService
     }
 
     /**
-     * Monthly profit, expense, and loss series for dashboard charts.
-     *
      * @return array<int, array{label: string, profit: float, expenses: float, losses: float, revenue: float}>
      */
     public function getMonthlyChartData(?array $monthKeys = null): array
     {
-        $query = Transaction::query()
+        $query = JournalEntry::query()
             ->selectRaw('YEAR(transaction_date) as year, MONTH(transaction_date) as month')
-            ->selectRaw("SUM(CASE WHEN type = '".Transaction::TYPE_INCOME."' THEN amount ELSE 0 END) as revenue")
-            ->selectRaw("SUM(CASE WHEN type = '".Transaction::TYPE_EXPENSE."' THEN amount ELSE 0 END) as expenses")
+            ->selectRaw("SUM(CASE WHEN flow = '".JournalEntry::FLOW_REVENUE."' THEN amount ELSE 0 END) as revenue")
+            ->selectRaw("SUM(CASE WHEN flow = '".JournalEntry::FLOW_EXPENSE."' THEN amount ELSE 0 END) as expenses")
             ->groupBy('year', 'month')
             ->orderBy('year')
             ->orderBy('month');
@@ -134,19 +126,11 @@ class FinanceService
             ->all();
     }
 
-    /**
-     * Recalculate and persist a project's payment status from linked income transactions.
-     */
     public function updateProjectPaymentStatus(int $projectId): void
     {
         $project = Project::query()->findOrFail($projectId);
         $budget = (float) ($project->budget ?? 0);
-
-        $totalPaid = (float) Transaction::query()
-            ->income()
-            ->where('reference_type', Project::class)
-            ->where('reference_id', $projectId)
-            ->sum('amount');
+        $totalPaid = $this->sumProjectRelatedIncome($project);
 
         if ($budget <= 0 || $totalPaid <= 0) {
             $status = Project::PAYMENT_UNPAID;
@@ -160,105 +144,241 @@ class FinanceService
     }
 
     /**
-     * Log deal income and generate a pending commission for the assigned sales rep.
+     * @return array{collected: float, budget: float, currency: string, payment_status: string, collection_rate: float}
      */
-    public function recordSaleAndCommission(Deal $deal): void
+    public function getProjectCollectionSummary(Project $project): array
     {
-        if ($deal->value === null || (float) $deal->value <= 0) {
+        $project->loadMissing('deal');
+
+        $collected = $this->sumProjectRelatedIncome($project);
+        $budget = (float) ($project->budget ?? 0);
+        $currency = $project->deal?->currency ?? $this->defaultCurrency();
+
+        return [
+            'collected' => $collected,
+            'budget' => $budget,
+            'currency' => $currency,
+            'payment_status' => $project->payment_status,
+            'collection_rate' => $budget > 0 ? min(100, round(($collected / $budget) * 100, 1)) : 0.0,
+        ];
+    }
+
+    public function resolveDealRecognizedRevenue(Deal $deal): float
+    {
+        $serviceTotal = $this->sumDealServiceLineItems($deal);
+
+        if ($serviceTotal > 0) {
+            return $serviceTotal;
+        }
+
+        return (float) ($deal->value ?? 0);
+    }
+
+    public function recordDealWonFinance(Deal $deal): void
+    {
+        $deal->loadMissing(['project', 'assignee', 'services']);
+
+        $recognizedRevenue = $this->resolveDealRecognizedRevenue($deal);
+
+        if ($recognizedRevenue <= 0) {
             return;
         }
 
-        DB::transaction(function () use ($deal) {
-            $existingIncome = Transaction::query()
-                ->income()
-                ->where('reference_type', Deal::class)
-                ->where('reference_id', $deal->id)
-                ->exists();
+        DB::transaction(function () use ($deal, $recognizedRevenue) {
+            $this->recordDealIncome($deal, $recognizedRevenue);
+            $this->ensureDealCommission($deal, $recognizedRevenue);
 
-            if (! $existingIncome) {
-                Transaction::query()->create([
-                    'type' => Transaction::TYPE_INCOME,
-                    'amount' => $deal->value,
-                    'reference_type' => Deal::class,
-                    'reference_id' => $deal->id,
-                    'description' => __('finance::finance.messages.sale_income', ['title' => $deal->title]),
-                    'transaction_date' => now()->toDateString(),
-                ]);
-            }
-
-            if ($deal->assigned_to) {
-                $percentage = (float) config('finance.default_commission_percentage', 10);
-
-                Commission::query()->firstOrCreate(
-                    ['deal_id' => $deal->id],
-                    [
-                        'employee_id' => $deal->assigned_to,
-                        'commission_percentage' => $percentage,
-                        'commission_amount' => round((float) $deal->value * ($percentage / 100), 2),
-                        'status' => Commission::STATUS_PENDING,
-                    ]
-                );
-            }
-
-            $project = $deal->relationLoaded('project') ? $deal->project : $deal->project()->first();
-
-            if ($project) {
-                $existingProjectIncome = Transaction::query()
-                    ->income()
-                    ->where('reference_type', Project::class)
-                    ->where('reference_id', $project->id)
-                    ->exists();
-
-                if (! $existingProjectIncome) {
-                    Transaction::query()->create([
-                        'type' => Transaction::TYPE_INCOME,
-                        'amount' => $deal->value,
-                        'reference_type' => Project::class,
-                        'reference_id' => $project->id,
-                        'description' => __('finance::finance.messages.project_income', ['title' => $project->title]),
-                        'transaction_date' => now()->toDateString(),
-                    ]);
-                }
-
-                $this->updateProjectPaymentStatus($project->id);
+            if ($deal->project) {
+                $this->updateProjectPaymentStatus($deal->project->id);
             }
         });
     }
 
     /**
-     * Record a salary payout as an expense ledger entry.
+     * @return array{
+     *     expected_revenue: float,
+     *     ledger_total: float,
+     *     currency: string,
+     *     variance: float,
+     *     is_reconciled: bool,
+     *     transactions: Collection<int, JournalEntry>
+     * }
      */
-    public function recordSalaryPayout(Salary $salary): void
+    public function getDealLedgerSummary(Deal $deal): array
+    {
+        $expectedRevenue = $this->resolveDealRecognizedRevenue($deal);
+        $ledgerTotal = $this->sumDealLedgerIncome($deal);
+        $currency = $deal->currency ?? $this->defaultCurrency();
+        $variance = round($expectedRevenue - $ledgerTotal, 2);
+
+        return [
+            'expected_revenue' => $expectedRevenue,
+            'ledger_total' => $ledgerTotal,
+            'currency' => $currency,
+            'variance' => $variance,
+            'is_reconciled' => abs($variance) < 0.01,
+            'transactions' => $this->getDealIncomeJournalEntries($deal),
+        ];
+    }
+
+    public function sumDealLedgerIncome(Deal $deal): float
+    {
+        $total = (float) JournalEntry::query()
+            ->revenue()
+            ->where('reference_type', Deal::class)
+            ->where('reference_id', $deal->id)
+            ->sum('amount');
+
+        $productSaleIds = ProductSale::query()
+            ->where('deal_id', $deal->id)
+            ->pluck('id');
+
+        if ($productSaleIds->isNotEmpty()) {
+            $total += (float) JournalEntry::query()
+                ->revenue()
+                ->where('reference_type', ProductSale::class)
+                ->whereIn('reference_id', $productSaleIds)
+                ->sum('amount');
+        }
+
+        return round($total, 2);
+    }
+
+    public function recordInvoicePayment(Invoice $invoice, ?string $paidAt = null): void
+    {
+        $paidAt = $paidAt ?? now()->toDateString();
+
+        if ($this->journalEntryExists(Invoice::class, $invoice->id)) {
+            return;
+        }
+
+        $invoice->loadMissing('company');
+
+        $this->postRevenueEntry([
+            'amount' => (float) $invoice->total,
+            'currency' => $invoice->currency ?? $this->defaultCurrency(),
+            'reference_type' => Invoice::class,
+            'reference_id' => $invoice->id,
+            'description' => __('finance::invoice.messages.payment_description', [
+                'number' => $invoice->invoice_number,
+                'company' => $invoice->company?->name ?? '#'.$invoice->company_id,
+            ]),
+            'transaction_date' => $paidAt,
+        ]);
+    }
+
+    public function getSubscriptionMetrics(): array
+    {
+        $subscriptions = Subscription::query()
+            ->whereIn('status', [Subscription::STATUS_ACTIVE, Subscription::STATUS_TRIAL])
+            ->where('billing_cycle', '!=', Subscription::BILLING_ONE_TIME)
+            ->get(['amount', 'currency', 'billing_cycle']);
+
+        $totals = [];
+
+        foreach ($subscriptions as $subscription) {
+            $currency = $subscription->currency ?? $this->defaultCurrency();
+            $mrr = $this->subscriptionAmountToMrr($subscription);
+
+            if (! isset($totals[$currency])) {
+                $totals[$currency] = ['mrr' => 0.0, 'arr' => 0.0, 'active_count' => 0];
+            }
+
+            $totals[$currency]['mrr'] += $mrr;
+            $totals[$currency]['active_count']++;
+        }
+
+        foreach ($totals as $currency => $data) {
+            $totals[$currency]['mrr'] = round($data['mrr'], 2);
+            $totals[$currency]['arr'] = round($data['mrr'] * 12, 2);
+        }
+
+        $primaryCurrency = $this->defaultCurrency();
+        $primary = $totals[$primaryCurrency] ?? ['mrr' => 0.0, 'arr' => 0.0, 'active_count' => 0];
+
+        return [
+            'totals' => $totals,
+            'primary_currency' => $primaryCurrency,
+            'mrr' => $primary['mrr'],
+            'arr' => $primary['arr'],
+            'active_count' => $primary['active_count'],
+        ];
+    }
+
+    public function getAccountsReceivableAging(?string $currency = null): array
+    {
+        $currency = $currency ?? $this->defaultCurrency();
+
+        $invoices = Invoice::query()
+            ->open()
+            ->where('currency', $currency)
+            ->with('company:id,name')
+            ->orderBy('due_at')
+            ->get();
+
+        $buckets = [
+            'current' => 0.0,
+            'days_1_30' => 0.0,
+            'days_31_60' => 0.0,
+            'days_61_90' => 0.0,
+            'over_90' => 0.0,
+        ];
+
+        foreach ($invoices as $invoice) {
+            $bucket = $this->resolveAgingBucket($invoice);
+            $buckets[$bucket] += (float) $invoice->total;
+        }
+
+        foreach ($buckets as $key => $amount) {
+            $buckets[$key] = round($amount, 2);
+        }
+
+        return [
+            'buckets' => $buckets,
+            'total_outstanding' => round(array_sum($buckets), 2),
+            'currency' => $currency,
+            'invoices' => $invoices,
+        ];
+    }
+
+    public function recordSalaryPayout(Salary $salary, ?string $paidAt = null): void
     {
         if ($salary->status === Salary::STATUS_PAID) {
             return;
         }
 
-        DB::transaction(function () use ($salary) {
+        $paidAt = $paidAt ?? now()->toDateString();
+
+        DB::transaction(function () use ($salary, $paidAt) {
             $category = $this->resolveExpenseCategory('salaries');
 
-            Transaction::query()->create([
-                'type' => Transaction::TYPE_EXPENSE,
-                'expense_category_id' => $category?->id,
-                'amount' => $salary->base_salary,
+            $this->postExpenseEntry([
+                'amount' => (float) $salary->base_salary,
+                'currency' => $this->defaultCurrency(),
                 'reference_type' => Salary::class,
                 'reference_id' => $salary->id,
                 'description' => __('finance::salary.messages.payout_description', [
                     'name' => $salary->employee?->name ?? '#'.$salary->employee_id,
                 ]),
-                'transaction_date' => now()->toDateString(),
+                'transaction_date' => $paidAt,
+                'expense_category_id' => $category?->id,
             ]);
 
             $salary->update([
                 'status' => Salary::STATUS_PAID,
-                'paid_at' => now()->toDateString(),
+                'paid_at' => $paidAt,
             ]);
         });
     }
 
-    /**
-     * Record a commission payout as an expense ledger entry.
-     */
+    public function deleteSalary(Salary $salary): void
+    {
+        DB::transaction(function () use ($salary) {
+            $this->deleteJournalEntriesFor(Salary::class, $salary->id);
+            $salary->delete();
+        });
+    }
+
     public function recordCommissionPayout(Commission $commission): void
     {
         if ($commission->status === Commission::STATUS_PAID) {
@@ -267,11 +387,11 @@ class FinanceService
 
         DB::transaction(function () use ($commission) {
             $category = $this->resolveExpenseCategory('commissions');
+            $commission->loadMissing('deal');
 
-            Transaction::query()->create([
-                'type' => Transaction::TYPE_EXPENSE,
-                'expense_category_id' => $category?->id,
-                'amount' => $commission->commission_amount,
+            $this->postExpenseEntry([
+                'amount' => (float) $commission->commission_amount,
+                'currency' => $commission->deal?->currency ?? $this->defaultCurrency(),
                 'reference_type' => Commission::class,
                 'reference_id' => $commission->id,
                 'description' => __('finance::commission.messages.payout_description', [
@@ -279,15 +399,13 @@ class FinanceService
                     'deal' => $commission->deal?->title ?? '#'.$commission->deal_id,
                 ]),
                 'transaction_date' => now()->toDateString(),
+                'expense_category_id' => $category?->id,
             ]);
 
             $commission->update(['status' => Commission::STATUS_PAID]);
         });
     }
 
-    /**
-     * Record a product sale and log matching income in the central ledger.
-     */
     public function recordProductSale(array $data, bool $skipIfExists = false): ?ProductSale
     {
         $product = Product::query()->findOrFail($data['product_id']);
@@ -312,30 +430,26 @@ class FinanceService
             }
         }
 
-        return DB::transaction(function () use ($data, $product, $quantity, $unitPrice, $totalAmount) {
+        return DB::transaction(function () use ($data, $product, $quantity, $totalAmount) {
             $sale = ProductSale::query()->create([
                 'product_id' => $product->id,
                 'company_id' => $data['company_id'] ?? null,
                 'deal_id' => $data['deal_id'] ?? null,
                 'user_id' => $data['user_id'] ?? null,
                 'quantity' => $quantity,
-                'unit_price' => $unitPrice,
+                'unit_price' => array_key_exists('unit_price', $data) && $data['unit_price'] !== null
+                    ? (float) $data['unit_price']
+                    : (float) $product->price,
                 'total_amount' => $totalAmount,
                 'currency' => $data['currency'] ?? $product->currency,
                 'notes' => $data['notes'] ?? null,
                 'sold_at' => $data['sold_at'] ?? now()->toDateString(),
             ]);
 
-            $existingIncome = Transaction::query()
-                ->income()
-                ->where('reference_type', ProductSale::class)
-                ->where('reference_id', $sale->id)
-                ->exists();
-
-            if (! $existingIncome) {
-                Transaction::query()->create([
-                    'type' => Transaction::TYPE_INCOME,
+            if (! $this->journalEntryExists(ProductSale::class, $sale->id)) {
+                $this->postRevenueEntry([
                     'amount' => $totalAmount,
+                    'currency' => $data['currency'] ?? $product->currency ?? $this->defaultCurrency(),
                     'reference_type' => ProductSale::class,
                     'reference_id' => $sale->id,
                     'description' => __('finance::product_sale.messages.income', [
@@ -350,73 +464,152 @@ class FinanceService
         });
     }
 
-    /**
-     * Log product sales from deal line items when a deal is won.
-     */
-    public function recordDealProductSales(Deal $deal): void
+    public function deleteProductSale(ProductSale $sale): void
     {
-        $deal->loadMissing('products');
+        $dealId = $sale->deal_id;
 
-        foreach ($deal->products as $product) {
-            $this->recordProductSale([
-                'product_id' => $product->id,
-                'company_id' => $deal->company_id,
-                'deal_id' => $deal->id,
-                'user_id' => $deal->assigned_to,
-                'quantity' => (int) $product->pivot->quantity,
-                'unit_price' => (float) $product->pivot->unit_price,
-                'currency' => $deal->currency,
-                'sold_at' => now()->toDateString(),
-            ], skipIfExists: true);
+        DB::transaction(function () use ($sale) {
+            $this->deleteJournalEntriesFor(ProductSale::class, $sale->id);
+            $sale->delete();
+        });
+
+        if ($dealId) {
+            $project = Project::query()->where('deal_id', $dealId)->first();
+
+            if ($project) {
+                $this->updateProjectPaymentStatus($project->id);
+            }
         }
     }
 
     /**
-     * Remove a product sale and its linked income ledger entries.
+     * Log a manual journal entry from the daily log.
+     *
+     * @param  array{flow: string, amount: float|string, currency?: string, expense_category_id?: int, reference_type?: string, reference_id?: int, description?: string, transaction_date?: string}  $data
      */
-    public function deleteProductSale(ProductSale $sale): void
+    public function logTransaction(array $data): JournalEntry
     {
-        DB::transaction(function () use ($sale) {
-            Transaction::query()
-                ->where('reference_type', ProductSale::class)
-                ->where('reference_id', $sale->id)
-                ->delete();
-
-            $sale->delete();
-        });
-    }
-
-    /**
-     * Log a manual income or expense transaction from the dashboard.
-     */
-    public function logTransaction(array $data): Transaction
-    {
-        $transaction = Transaction::query()->create([
-            'type' => $data['type'],
-            'expense_category_id' => $data['type'] === Transaction::TYPE_EXPENSE
-                ? ($data['expense_category_id'] ?? null)
-                : null,
-            'amount' => $data['amount'],
+        $flow = $this->normalizeFlow($data['flow'] ?? $data['type'] ?? JournalEntry::FLOW_EXPENSE);
+        $entryData = [
+            'amount' => (float) $data['amount'],
+            'currency' => $data['currency'] ?? $this->defaultCurrency(),
             'reference_type' => $data['reference_type'] ?? null,
             'reference_id' => $data['reference_id'] ?? null,
             'description' => $data['description'] ?? null,
             'transaction_date' => $data['transaction_date'] ?? now()->toDateString(),
-        ]);
+            'expense_category_id' => $data['expense_category_id'] ?? null,
+        ];
+
+        $entry = $flow === JournalEntry::FLOW_REVENUE
+            ? $this->postRevenueEntry($entryData)
+            : $this->postExpenseEntry($entryData);
 
         if (
-            $transaction->type === Transaction::TYPE_INCOME
-            && $transaction->reference_type === Project::class
-            && $transaction->reference_id
+            $flow === JournalEntry::FLOW_REVENUE
+            && ($data['reference_type'] ?? null) === Project::class
+            && ! empty($data['reference_id'])
         ) {
-            $this->updateProjectPaymentStatus((int) $transaction->reference_id);
+            $this->updateProjectPaymentStatus((int) $data['reference_id']);
         }
 
-        return $transaction;
+        return $entry;
     }
 
-    private function baseTransactionQuery(?array $dateRange = null, ?array $monthKeys = null)
+    /**
+     * Post a balanced revenue entry: Debit Cash, Credit Revenue.
+     */
+    public function postRevenueEntry(array $data): JournalEntry
     {
-        $query = Transaction::query();
+        return $this->postBalancedEntry($data, JournalEntry::FLOW_REVENUE);
+    }
+
+    /**
+     * Post a balanced expense entry: Debit Expense, Credit Cash.
+     */
+    public function postExpenseEntry(array $data): JournalEntry
+    {
+        return $this->postBalancedEntry($data, JournalEntry::FLOW_EXPENSE);
+    }
+
+    private function postBalancedEntry(array $data, string $flow): JournalEntry
+    {
+        $amount = round((float) $data['amount'], 2);
+
+        if ($amount <= 0) {
+            throw new \InvalidArgumentException('Journal entry amount must be greater than zero.');
+        }
+
+        return DB::transaction(function () use ($data, $flow, $amount) {
+            $entry = JournalEntry::query()->create([
+                'flow' => $flow,
+                'amount' => $amount,
+                'currency' => $data['currency'] ?? $this->defaultCurrency(),
+                'reference_type' => $data['reference_type'] ?? null,
+                'reference_id' => $data['reference_id'] ?? null,
+                'description' => $data['description'] ?? null,
+                'transaction_date' => $data['transaction_date'] ?? now()->toDateString(),
+            ]);
+
+            if ($flow === JournalEntry::FLOW_REVENUE) {
+                $this->createLine($entry, JournalLine::SIDE_DEBIT, JournalLine::ACCOUNT_CASH, $amount);
+                $this->createLine($entry, JournalLine::SIDE_CREDIT, JournalLine::ACCOUNT_REVENUE, $amount);
+            } else {
+                $this->createLine(
+                    $entry,
+                    JournalLine::SIDE_DEBIT,
+                    JournalLine::ACCOUNT_EXPENSE,
+                    $amount,
+                    $data['expense_category_id'] ?? null
+                );
+                $this->createLine($entry, JournalLine::SIDE_CREDIT, JournalLine::ACCOUNT_CASH, $amount);
+            }
+
+            return $entry->load('lines');
+        });
+    }
+
+    private function createLine(
+        JournalEntry $entry,
+        string $side,
+        string $account,
+        float $amount,
+        ?int $expenseCategoryId = null
+    ): JournalLine {
+        return JournalLine::query()->create([
+            'journal_entry_id' => $entry->id,
+            'side' => $side,
+            'account' => $account,
+            'expense_category_id' => $expenseCategoryId,
+            'amount' => $amount,
+        ]);
+    }
+
+    private function normalizeFlow(string $flow): string
+    {
+        return in_array($flow, ['credit', 'revenue', JournalEntry::FLOW_REVENUE], true)
+            ? JournalEntry::FLOW_REVENUE
+            : JournalEntry::FLOW_EXPENSE;
+    }
+
+    private function journalEntryExists(string $referenceType, int $referenceId): bool
+    {
+        return JournalEntry::query()
+            ->where('reference_type', $referenceType)
+            ->where('reference_id', $referenceId)
+            ->exists();
+    }
+
+    private function deleteJournalEntriesFor(string $referenceType, int $referenceId): void
+    {
+        JournalEntry::query()
+            ->where('reference_type', $referenceType)
+            ->where('reference_id', $referenceId)
+            ->each(fn (JournalEntry $entry) => $entry->delete());
+    }
+
+    private function baseJournalEntryQuery(?array $dateRange = null, ?array $monthKeys = null)
+    {
+        $query = JournalEntry::query();
 
         if ($dateRange) {
             if (! empty($dateRange['from'])) {
@@ -453,5 +646,144 @@ class FinanceService
     private function resolveExpenseCategory(string $slug): ?ExpenseCategory
     {
         return ExpenseCategory::query()->where('slug', $slug)->first();
+    }
+
+    private function defaultCurrency(): string
+    {
+        return (string) config('finance.default_currency', config('crm.default_currency', 'USD'));
+    }
+
+    private function sumDealServiceLineItems(Deal $deal): float
+    {
+        $deal->loadMissing('services');
+
+        if ($deal->services->isEmpty()) {
+            return 0.0;
+        }
+
+        return round($deal->services->sum(
+            fn ($service) => (int) $service->pivot->quantity * (float) $service->pivot->unit_price
+        ), 2);
+    }
+
+    private function recordDealIncome(Deal $deal, float $amount): void
+    {
+        if ($this->journalEntryExists(Deal::class, $deal->id)) {
+            return;
+        }
+
+        $this->postRevenueEntry([
+            'amount' => $amount,
+            'currency' => $deal->currency ?? $this->defaultCurrency(),
+            'reference_type' => Deal::class,
+            'reference_id' => $deal->id,
+            'description' => __('finance::finance.messages.sale_income', ['title' => $deal->title]),
+            'transaction_date' => now()->toDateString(),
+        ]);
+    }
+
+    private function ensureDealCommission(Deal $deal, float $baseAmount): void
+    {
+        if (! $deal->assigned_to) {
+            return;
+        }
+
+        $percentage = (float) config('finance.default_commission_percentage', 10);
+
+        Commission::query()->firstOrCreate(
+            ['deal_id' => $deal->id],
+            [
+                'employee_id' => $deal->assigned_to,
+                'commission_percentage' => $percentage,
+                'commission_amount' => round($baseAmount * ($percentage / 100), 2),
+                'status' => Commission::STATUS_PENDING,
+            ]
+        );
+    }
+
+    private function sumProjectRelatedIncome(Project $project): float
+    {
+        $total = (float) JournalEntry::query()
+            ->revenue()
+            ->where('reference_type', Project::class)
+            ->where('reference_id', $project->id)
+            ->sum('amount');
+
+        if ($project->deal_id) {
+            $total += (float) JournalEntry::query()
+                ->revenue()
+                ->where('reference_type', Deal::class)
+                ->where('reference_id', $project->deal_id)
+                ->sum('amount');
+
+            $productSaleIds = ProductSale::query()
+                ->where('deal_id', $project->deal_id)
+                ->pluck('id');
+
+            if ($productSaleIds->isNotEmpty()) {
+                $total += (float) JournalEntry::query()
+                    ->revenue()
+                    ->where('reference_type', ProductSale::class)
+                    ->whereIn('reference_id', $productSaleIds)
+                    ->sum('amount');
+            }
+        }
+
+        return round($total, 2);
+    }
+
+    private function getDealIncomeJournalEntries(Deal $deal): Collection
+    {
+        $productSaleIds = ProductSale::query()
+            ->where('deal_id', $deal->id)
+            ->pluck('id');
+
+        return JournalEntry::query()
+            ->revenue()
+            ->with('lines')
+            ->where(function ($query) use ($deal, $productSaleIds) {
+                $query->where(function ($dealQuery) use ($deal) {
+                    $dealQuery->where('reference_type', Deal::class)
+                        ->where('reference_id', $deal->id);
+                });
+
+                if ($productSaleIds->isNotEmpty()) {
+                    $query->orWhere(function ($saleQuery) use ($productSaleIds) {
+                        $saleQuery->where('reference_type', ProductSale::class)
+                            ->whereIn('reference_id', $productSaleIds);
+                    });
+                }
+            })
+            ->orderByDesc('transaction_date')
+            ->orderByDesc('id')
+            ->get();
+    }
+
+    private function subscriptionAmountToMrr(Subscription $subscription): float
+    {
+        $amount = (float) $subscription->amount;
+
+        return match ($subscription->billing_cycle) {
+            Subscription::BILLING_MONTHLY => $amount,
+            Subscription::BILLING_QUARTERLY => round($amount / 3, 2),
+            Subscription::BILLING_YEARLY => round($amount / 12, 2),
+            default => 0.0,
+        };
+    }
+
+    private function resolveAgingBucket(Invoice $invoice): string
+    {
+        if (! $invoice->due_at->isPast()) {
+            return 'current';
+        }
+
+        $daysPastDue = $invoice->due_at->diffInDays(now());
+
+        return match (true) {
+            $daysPastDue <= 30 => 'days_1_30',
+            $daysPastDue <= 60 => 'days_31_60',
+            $daysPastDue <= 90 => 'days_61_90',
+            default => 'over_90',
+        };
     }
 }

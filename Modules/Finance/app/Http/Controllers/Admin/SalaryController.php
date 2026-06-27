@@ -5,6 +5,7 @@ namespace Modules\Finance\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Modules\Finance\Http\Requests\RecordSalaryPayoutRequest;
 use Modules\Finance\Http\Requests\StoreSalaryRequest;
 use Modules\Finance\Models\Salary;
 use Modules\Finance\Services\FinanceService;
@@ -41,13 +42,23 @@ class SalaryController extends Controller
         return redirect()->route('admin.finance.salaries.index');
     }
 
-    public function recordPayout(Salary $salary): RedirectResponse
+    public function recordPayout(RecordSalaryPayoutRequest $request, Salary $salary): RedirectResponse
     {
-        $this->authorize('update', $salary);
-
-        $this->financeService->recordSalaryPayout($salary->load('employee'));
+        $this->financeService->recordSalaryPayout(
+            $salary->load('employee'),
+            $request->validated('paid_at'),
+        );
 
         session()->flushMessage(true, __('finance::salary.messages.paid'));
+
+        return back();
+    }
+
+    public function destroy(Salary $salary): RedirectResponse
+    {
+        $this->financeService->deleteSalary($salary);
+
+        session()->flushMessage(true, __('finance::salary.messages.deleted'));
 
         return back();
     }

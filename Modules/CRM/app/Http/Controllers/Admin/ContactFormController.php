@@ -7,16 +7,21 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
+use Modules\CRM\Actions\Contact\ConvertContactFormToContactAction;
+use Modules\CRM\Actions\Contact\ConvertContactFormToLeadAction;
 use Modules\CRM\Exports\ContactFormExport;
 use Modules\CRM\Http\Requests\StoreContactFormRequest;
 use Modules\CRM\Http\Requests\UpdateContactFormRequest;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\ContactForm;
+use Modules\Services\Models\Service;
 
 class ContactFormController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(
+        private readonly ConvertContactFormToLeadAction $convertToLeadAction,
+        private readonly ConvertContactFormToContactAction $convertToContactAction,
+    ) {
         $this->setActive('crm');
         $this->setActive('contact_forms');
     }
@@ -24,7 +29,7 @@ class ContactFormController extends Controller
     public function index(): View
     {
         $model = ContactForm::query()
-            ->with('company:id,name')
+            ->with(['company:id,name', 'service:id,title', 'lead:id,name', 'crmContact:id,name'])
             ->latest()
             ->paginate(config('core.page_size'));
 
@@ -79,12 +84,31 @@ class ContactFormController extends Controller
         return redirect()->back();
     }
 
+    public function convertToLead(ContactForm $contactForm): RedirectResponse
+    {
+        $lead = $this->convertToLeadAction->execute($contactForm);
+
+        return redirect()->route('admin.leads.show', $lead);
+    }
+
+    public function convertToContact(ContactForm $contactForm): RedirectResponse
+    {
+        $contact = $this->convertToContactAction->execute($contactForm);
+
+        return redirect()->route('admin.contacts.show', $contact);
+    }
+
     private function formData(): array
     {
         return [
             'companies' => Company::query()
                 ->select(['id', 'name'])
                 ->orderBy('name')
+                ->get(),
+            'services' => Service::query()
+                ->published()
+                ->select(['id', 'title'])
+                ->orderBy('title')
                 ->get(),
         ];
     }

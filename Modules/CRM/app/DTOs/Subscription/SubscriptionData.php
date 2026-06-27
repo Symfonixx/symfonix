@@ -21,8 +21,8 @@ class SubscriptionData extends Data
         #[Required]
         public int $company_id,
 
-        #[Nullable, Exists('products', 'id')]
-        public ?int $product_id = null,
+        #[Nullable, Exists('services', 'id')]
+        public ?int $service_id = null,
 
         #[Required, StringType, Max(255)]
         public string $name,
@@ -62,8 +62,8 @@ class SubscriptionData extends Data
     {
         return new self(
             company_id: (int) $payload['company_id'],
-            product_id: isset($payload['product_id']) && $payload['product_id'] !== ''
-                ? (int) $payload['product_id']
+            service_id: isset($payload['service_id']) && $payload['service_id'] !== ''
+                ? (int) $payload['service_id']
                 : null,
             name: $payload['name'],
             status: $payload['status'] ?? Subscription::STATUS_ACTIVE,

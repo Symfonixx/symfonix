@@ -4,13 +4,12 @@ namespace Modules\Finance\Livewire;
 
 use Livewire\Component;
 use Modules\Finance\Models\ExpenseCategory;
-use Modules\Finance\Models\Transaction;
 use Modules\Finance\Services\FinanceService;
 use Modules\Project\Models\Project;
 
 class DailyTransactionLogger extends Component
 {
-    public string $type = Transaction::TYPE_EXPENSE;
+    public string $type = 'debit';
 
     public ?int $expense_category_id = null;
 
@@ -22,14 +21,17 @@ class DailyTransactionLogger extends Component
 
     public string $transaction_date = '';
 
+    public string $currency = '';
+
     public function mount(): void
     {
         $this->transaction_date = now()->toDateString();
+        $this->currency = (string) config('finance.default_currency', config('crm.default_currency', 'USD'));
     }
 
     public function updatedType(): void
     {
-        if ($this->type === Transaction::TYPE_INCOME) {
+        if ($this->type === 'credit') {
             $this->expense_category_id = null;
         }
     }
@@ -37,14 +39,15 @@ class DailyTransactionLogger extends Component
     public function logTransaction(FinanceService $financeService): void
     {
         $rules = [
-            'type' => ['required', 'in:income,expense'],
+            'type' => ['required', 'in:debit,credit'],
             'amount' => ['required', 'numeric', 'min:0.01'],
+            'currency' => ['required', 'string', 'size:3'],
             'description' => ['nullable', 'string', 'max:1000'],
             'transaction_date' => ['required', 'date'],
             'project_id' => ['nullable', 'exists:projects,id'],
         ];
 
-        if ($this->type === Transaction::TYPE_EXPENSE) {
+        if ($this->type === 'debit') {
             $rules['expense_category_id'] = ['required', 'exists:expense_categories,id'];
         }
 
@@ -53,7 +56,7 @@ class DailyTransactionLogger extends Component
         $referenceType = null;
         $referenceId = null;
 
-        if ($this->type === Transaction::TYPE_INCOME && $this->project_id) {
+        if ($this->type === 'credit' && $this->project_id) {
             $referenceType = Project::class;
             $referenceId = $this->project_id;
         }
@@ -62,6 +65,7 @@ class DailyTransactionLogger extends Component
             'type' => $this->type,
             'expense_category_id' => $this->expense_category_id,
             'amount' => $this->amount,
+            'currency' => strtoupper($this->currency),
             'description' => $this->description ?: null,
             'transaction_date' => $this->transaction_date,
             'reference_type' => $referenceType,

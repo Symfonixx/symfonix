@@ -5,6 +5,7 @@
         <meta name="keywords" :content="metaKeywords">
         <meta name="robots" :content="metaRobots">
         <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <link v-if="useCases.length" rel="stylesheet" :href="asset_path + 'site/css/module-css/portfolio.css'"/>
         <meta property="og:title" :content="metaTitle">
         <meta property="og:description" :content="metaDescription">
         <meta v-if="metaImage" property="og:image" :content="metaImage">
@@ -191,6 +192,73 @@
             </div>
         </section>
         <!--Services Three End -->
+
+        <!-- Use Cases Start -->
+        <section class="portfolio-one portfolio-page" v-if="useCases && useCases.length">
+            <h2 class="portfolio-one__big-text">use cases</h2>
+            <div class="container">
+                <div class="section-title text-center sec-title-animation animation-style1">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-1"></div>
+                        <span class="section-title__tagline">{{ trans('Use Cases') }}</span>
+                        <div class="section-title__tagline-shape-2"></div>
+                    </div>
+                    <h2 class="section-title__title title-animation">
+                        {{ trans('How We\'ve Empowered Businesses with Innovative Tech Solutions') }}
+                    </h2>
+                    <p class="mt-3">
+                        {{ trans('Explore our success stories and real-world solutions we\'ve delivered for businesses.') }}
+                    </p>
+                </div>
+
+                <div class="portfolio-one__bottom">
+                    <div class="row">
+                        <div
+                            v-for="item in useCases"
+                            :key="item.id"
+                            class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
+                            data-wow-delay="100ms"
+                        >
+                            <div class="portfolio-one__single">
+                                <div class="portfolio-one__img-box">
+                                    <div class="portfolio-one__img">
+                                        <img :src="item.image_link" :alt="item.title">
+                                        <div v-if="item.category_tag || (item.technologies && item.technologies.length)" class="portfolio-one__tag">
+                                            <span v-if="item.category_tag">{{ item.category_tag }}</span>
+                                            <span v-for="tech in (item.technologies || []).slice(0, 2)" :key="tech">{{ tech }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="portfolio-one__content">
+                                    <div class="portfolio-one__title-box">
+                                        <h3 class="portfolio-one__title">
+                                            <Link :href="route('use-cases.show', item.slug)">{{ item.title }}</Link>
+                                        </h3>
+                                        <p class="portfolio-one__text">{{ item.summary }}</p>
+                                    </div>
+                                    <div class="portfolio-one__arrow">
+                                        <Link :href="route('use-cases.show', item.slug)">
+                                            <span class="icon-right-arrow"></span>
+                                        </Link>
+                                    </div>
+                                    <div v-if="item.completed_year" class="portfolio-one__year">
+                                        <span>{{ item.completed_year }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <Link :href="route('use-cases.index')" class="thm-btn">
+                        {{ trans('View All Use Cases') }}
+                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
+                    </Link>
+                </div>
+            </div>
+        </section>
+        <!-- Use Cases End -->
 
         <!--Why Choose Two Start -->
         <section class="why-choose-two">
@@ -831,6 +899,7 @@ const posts = computed(() => page.props.posts || [])
 const servicesCategories = computed(() => page.props.servicesCategories || [])
 const testimonials = computed(() => page.props.testimonials || [])
 const teams = computed(() => page.props.teams || [])
+const useCases = computed(() => page.props.useCases || [])
 const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => {

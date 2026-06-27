@@ -34,4 +34,12 @@ class StoreProjectUseCaseRequest extends FormRequest
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];
     }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'featured' => $this->boolean('featured'),
+            'publish' => $this->boolean('publish'),
+        ]);
+    }
 }

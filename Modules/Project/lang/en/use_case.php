@@ -8,12 +8,12 @@ return [
         'index_title' => 'Use Cases',
         'create_title' => 'Add Use Case',
         'edit_title' => 'Edit Use Case',
-        'website_title' => 'Portfolio',
+        'website_title' => 'Use Cases',
         'website_details' => 'Case Study',
     ],
     'meta' => [
         'index_description' => 'Explore our project use cases and see how we help businesses with innovative technology solutions.',
-        'index_keywords' => 'portfolio, case studies, project use cases, IT solutions, web development',
+        'index_keywords' => 'use cases, case studies, project solutions, IT solutions, web development',
     ],
     'fields' => [
         'title' => 'Title',
@@ -43,13 +43,13 @@ return [
         'view_on_site' => 'View on Website',
     ],
     'hints' => [
-        'slug' => 'Used in the public URL, e.g. /portfolio/your-slug',
+        'slug' => 'Used in the public URL, e.g. /use-cases/your-slug',
         'technologies' => 'Comma-separated or tag list, e.g. Laravel, Vue, AWS',
-        'category_tag' => 'Shown as a badge on the portfolio card, e.g. Web Development',
+        'category_tag' => 'Shown as a badge on the use case card, e.g. Web Development',
         'linked_project' => 'Optionally connect this showcase item to an internal CRM project record.',
     ],
     'website' => [
-        'tagline' => 'Portfolio',
+        'tagline' => 'Use Cases',
         'heading' => 'How We\'ve Empowered Businesses with Innovative Tech Solutions',
         'challenge_title' => 'The Challenge',
         'solution_title' => 'Our Solution',

@@ -28,8 +28,14 @@ class ExpenseCategory extends Model
         });
     }
 
+    public function journalLines(): HasMany
+    {
+        return $this->hasMany(JournalLine::class)->where('account', JournalLine::ACCOUNT_EXPENSE);
+    }
+
+    /** @deprecated Use journalLines() */
     public function transactions(): HasMany
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(JournalLine::class)->where('account', JournalLine::ACCOUNT_EXPENSE);
     }
 }

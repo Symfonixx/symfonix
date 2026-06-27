@@ -11,13 +11,13 @@ return new class extends Migration
         Schema::create('commissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('deal_id')->constrained('deals')->restrictOnDelete();
-            $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
+            $table->foreignId('employee_id')->constrained('employees')->restrictOnDelete();
             $table->decimal('commission_percentage', 5, 2);
             $table->decimal('commission_amount', 15, 2);
             $table->enum('status', ['pending', 'paid'])->default('pending');
             $table->timestamps();
 
-            $table->index(['status', 'user_id']);
+            $table->index(['status', 'employee_id']);
         });
     }
 

@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'menu' => 'Accounts Receivable',
+    'pages' => [
+        'index_title' => 'Accounts Receivable Aging',
+    ],
+    'metrics' => [
+        'total_outstanding' => 'Total Outstanding',
+        'open_invoices' => 'Open Invoices',
+    ],
+    'buckets' => [
+        'current' => 'Current',
+        'days_1_30' => '1–30 Days',
+        'days_31_60' => '31–60 Days',
+        'days_61_90' => '61–90 Days',
+        'over_90' => '90+ Days',
+    ],
+    'fields' => [
+        'invoice_number' => 'Invoice #',
+        'company' => 'Company',
+        'due_at' => 'Due Date',
+        'days_overdue' => 'Days Overdue',
+        'amount' => 'Amount',
+        'status' => 'Status',
+    ],
+    'empty' => 'No open invoices. All receivables are collected.',
+];

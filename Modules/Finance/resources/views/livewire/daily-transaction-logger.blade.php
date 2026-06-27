@@ -20,22 +20,24 @@
             @endif
 
             <form wire:submit="logTransaction">
+                <p class="text-muted fs-7 mb-4">{{ __('finance::finance.messages.double_entry_hint') }}</p>
                 <div class="mb-4">
                     <label class="form-label fw-semibold">{{ __('finance::finance.fields.type') }}</label>
                     <div class="d-flex gap-4">
                         <label class="form-check form-check-custom form-check-solid">
-                            <input class="form-check-input" type="radio" wire:model.live="type" value="expense">
-                            <span class="form-check-label">{{ __('finance::finance.fields.expense') }}</span>
+                            <input class="form-check-input" type="radio" wire:model.live="type" value="debit">
+                            <span class="form-check-label">{{ __('finance::finance.fields.debit') }}</span>
                         </label>
                         <label class="form-check form-check-custom form-check-solid">
-                            <input class="form-check-input" type="radio" wire:model.live="type" value="income">
-                            <span class="form-check-label">{{ __('finance::finance.fields.income') }}</span>
+                            <input class="form-check-input" type="radio" wire:model.live="type" value="credit">
+                            <span class="form-check-label">{{ __('finance::finance.fields.credit') }}</span>
                         </label>
                     </div>
                     @error('type') <div class="text-danger fs-7 mt-1">{{ $message }}</div> @enderror
+                    <div class="form-text">{{ __('finance::finance.messages.double_entry_hint') }}</div>
                 </div>
 
-                @if($type === 'expense')
+                @if($type === 'debit')
                     <div class="mb-4">
                         <label class="form-label fw-semibold" for="expense_category_id">{{ __('finance::finance.fields.category') }}</label>
                         <select id="expense_category_id" wire:model="expense_category_id" class="form-select form-select-solid">
@@ -48,7 +50,7 @@
                     </div>
                 @endif
 
-                @if($type === 'income')
+                @if($type === 'credit')
                     <div class="mb-4">
                         <label class="form-label fw-semibold" for="project_id">{{ __('finance::finance.fields.project') }}</label>
                         <select id="project_id" wire:model="project_id" class="form-select form-select-solid">
@@ -63,9 +65,15 @@
 
                 <div class="mb-4">
                     <label class="form-label fw-semibold" for="amount">{{ __('finance::finance.fields.amount') }}</label>
-                    <input type="number" step="0.01" min="0" id="amount" wire:model="amount"
-                           class="form-control form-control-solid" placeholder="0.00">
+                    <div class="input-group">
+                        <input type="number" step="0.01" min="0" id="amount" wire:model="amount"
+                               class="form-control form-control-solid" placeholder="0.00">
+                        <input type="text" id="currency" wire:model="currency" maxlength="3"
+                               class="form-control form-control-solid w-75px text-uppercase"
+                               placeholder="USD" style="max-width: 5rem;">
+                    </div>
                     @error('amount') <div class="text-danger fs-7 mt-1">{{ $message }}</div> @enderror
+                    @error('currency') <div class="text-danger fs-7 mt-1">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="mb-4">

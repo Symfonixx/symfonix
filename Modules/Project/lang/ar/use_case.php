@@ -8,7 +8,7 @@ return [
         'index_title' => 'حالات الاستخدام',
         'create_title' => 'إضافة حالة استخدام',
         'edit_title' => 'تعديل حالة الاستخدام',
-        'website_title' => 'معرض الأعمال',
+        'website_title' => 'حالات الاستخدام',
         'website_details' => 'دراسة حالة',
     ],
     'meta' => [
@@ -43,13 +43,13 @@ return [
         'view_on_site' => 'عرض على الموقع',
     ],
     'hints' => [
-        'slug' => 'يُستخدم في الرابط العام، مثل /portfolio/your-slug',
+        'slug' => 'يُستخدم في الرابط العام، مثل /use-cases/your-slug',
         'technologies' => 'قائمة مفصولة بفواصل أو وسوم، مثل Laravel, Vue, AWS',
         'category_tag' => 'يظهر كشارة على بطاقة المعرض، مثل تطوير الويب',
         'linked_project' => 'اربط اختيارياً بسجل مشروع داخلي في CRM.',
     ],
     'website' => [
-        'tagline' => 'معرض الأعمال',
+        'tagline' => 'حالات الاستخدام',
         'heading' => 'كيف مكّنا الشركات بحلول تقنية مبتكرة',
         'challenge_title' => 'التحدي',
         'solution_title' => 'حلّنا',

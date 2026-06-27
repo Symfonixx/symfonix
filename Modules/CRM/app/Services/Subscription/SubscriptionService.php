@@ -114,6 +114,24 @@ class SubscriptionService
         return SubscriptionData::from($array);
     }
 
+    public function advanceRenewalDate(Subscription $subscription): void
+    {
+        if (! $subscription->renewal_at || $subscription->billing_cycle === Subscription::BILLING_ONE_TIME) {
+            return;
+        }
+
+        $next = match ($subscription->billing_cycle) {
+            Subscription::BILLING_MONTHLY => $subscription->renewal_at->copy()->addMonth(),
+            Subscription::BILLING_QUARTERLY => $subscription->renewal_at->copy()->addMonths(3),
+            Subscription::BILLING_YEARLY => $subscription->renewal_at->copy()->addYear(),
+            default => null,
+        };
+
+        if ($next) {
+            $subscription->update(['renewal_at' => $next->toDateString()]);
+        }
+    }
+
     private function calculateNextRenewal(string $startDate, string $billingCycle): ?string
     {
         $date = \Carbon\Carbon::parse($startDate);

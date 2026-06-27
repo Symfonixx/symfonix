@@ -42,21 +42,21 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
-        <label for="product_id" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::subscription.fields.product') }}</label>
+        <label for="service_id" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::subscription.fields.service') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <select id="product_id" class="form-select form-select-solid @error('product_id') is-invalid @enderror"
-                data-control="select2" data-placeholder="{{ __('crm::subscription.fields.select_product') }}"
-                name="product_id">
-            <option value="">{{ __('crm::subscription.fields.select_product') }}</option>
-            @foreach(($products ?? collect()) as $product)
-                <option value="{{ $product->id }}" @selected((int) old('product_id', $subscriptionData?->product_id) === $product->id)>
-                    {{ $product->name }}@if($product->sku) ({{ $product->sku }})@endif
+        <select id="service_id" class="form-select form-select-solid @error('service_id') is-invalid @enderror"
+                data-control="select2" data-placeholder="{{ __('crm::subscription.fields.select_service') }}"
+                name="service_id">
+            <option value="">{{ __('crm::subscription.fields.select_service') }}</option>
+            @foreach(($services ?? collect()) as $service)
+                <option value="{{ $service->id }}" @selected((int) old('service_id', $subscriptionData?->service_id) === $service->id)>
+                    {{ $service->getTranslation('title', app()->getLocale()) }}
                 </option>
             @endforeach
         </select>
-        <div class="form-text">{{ __('crm::subscription.hints.product') }}</div>
-        @error('product_id')
+        <div class="form-text">{{ __('crm::subscription.hints.service') }}</div>
+        @error('service_id')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>

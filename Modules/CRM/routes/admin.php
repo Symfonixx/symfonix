@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Modules\CRM\Http\Controllers\Admin\ActivityController;
 use Modules\CRM\Http\Controllers\Admin\CompanyController;
+use Modules\CRM\Http\Controllers\Admin\ContactController;
 use Modules\CRM\Http\Controllers\Admin\ContactFormController;
 use Modules\CRM\Http\Controllers\Admin\CrmDashboardController;
 use Modules\CRM\Http\Controllers\Admin\DealController;
 use Modules\CRM\Http\Controllers\Admin\LeadController;
+use Modules\CRM\Http\Controllers\Admin\MarketingController;
 use Modules\CRM\Http\Controllers\Admin\SalesTargetController;
 use Modules\CRM\Http\Controllers\Admin\SubscriptionController;
 
@@ -15,8 +17,16 @@ Route::middleware(['can:CRM Management'])->group(function () {
     Route::get('crm/sales-targets', [SalesTargetController::class, 'index'])->name('crm.sales-targets.index');
     Route::put('crm/sales-targets', [SalesTargetController::class, 'update'])->name('crm.sales-targets.update');
 
+    Route::get('crm/marketing', [MarketingController::class, 'index'])->name('crm.marketing.index');
+    Route::get('crm/marketing/create', [MarketingController::class, 'create'])->name('crm.marketing.create');
+    Route::post('crm/marketing', [MarketingController::class, 'store'])->name('crm.marketing.store');
+    Route::get('crm/marketing/{marketing}', [MarketingController::class, 'show'])->name('crm.marketing.show');
+
     Route::delete('companies/deleteMulti', [CompanyController::class, 'deleteMulti'])->name('companies.deleteMulti');
     Route::resource('companies', CompanyController::class);
+
+    Route::delete('contacts/deleteMulti', [ContactController::class, 'deleteMulti'])->name('contacts.deleteMulti');
+    Route::resource('contacts', ContactController::class);
 
     Route::delete('deals/deleteMulti', [DealController::class, 'deleteMulti'])->name('deals.deleteMulti');
     Route::patch('deals/{deal}/stage', [DealController::class, 'moveStage'])->name('deals.moveStage');
@@ -34,6 +44,8 @@ Route::middleware(['can:CRM Management'])->group(function () {
     Route::post('contact_forms', [ContactFormController::class, 'store'])->name('contact_forms.store');
     Route::get('contact_forms/{contact_form}/edit', [ContactFormController::class, 'edit'])->name('contact_forms.edit');
     Route::patch('contact_forms/{contact_form}', [ContactFormController::class, 'update'])->name('contact_forms.update');
+    Route::post('contact_forms/{contact_form}/convert-lead', [ContactFormController::class, 'convertToLead'])->name('contact_forms.convertLead');
+    Route::post('contact_forms/{contact_form}/convert-contact', [ContactFormController::class, 'convertToContact'])->name('contact_forms.convertContact');
     Route::get('contact_forms', [ContactFormController::class, 'index'])->name('contact_forms.index');
 
     Route::delete('leads', [LeadController::class, 'deleteMulti'])->name('leads.deleteMulti');

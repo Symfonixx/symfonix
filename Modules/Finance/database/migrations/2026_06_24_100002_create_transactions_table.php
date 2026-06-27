@@ -8,25 +8,38 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('journal_entries', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['income', 'expense']);
-            $table->foreignId('expense_category_id')
-                ->nullable()
-                ->constrained('expense_categories')
-                ->nullOnDelete();
+            $table->enum('flow', ['revenue', 'expense']);
             $table->decimal('amount', 15, 2);
+            $table->string('currency', 3)->default('USD');
             $table->nullableMorphs('reference');
             $table->text('description')->nullable();
             $table->date('transaction_date');
             $table->timestamps();
 
-            $table->index(['type', 'transaction_date']);
+            $table->index(['flow', 'transaction_date']);
+        });
+
+        Schema::create('journal_lines', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('journal_entry_id')->constrained('journal_entries')->cascadeOnDelete();
+            $table->enum('side', ['debit', 'credit']);
+            $table->enum('account', ['cash', 'revenue', 'expense']);
+            $table->foreignId('expense_category_id')
+                ->nullable()
+                ->constrained('expense_categories')
+                ->nullOnDelete();
+            $table->decimal('amount', 15, 2);
+            $table->timestamps();
+
+            $table->index(['account', 'side']);
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('journal_lines');
+        Schema::dropIfExists('journal_entries');
     }
 };

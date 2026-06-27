@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\CRM\Concerns\HasCrmTimeline;
 use Modules\CRM\Filters\Subscription\SubscriptionFilter;
-use Modules\Product\Models\Product;
+use Modules\Services\Models\Service;
 
 class Subscription extends Model
 {
@@ -49,7 +49,7 @@ class Subscription extends Model
 
     protected $fillable = [
         'company_id',
-        'product_id',
+        'service_id',
         'name',
         'status',
         'billing_cycle',
@@ -93,8 +93,8 @@ class Subscription extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function product(): BelongsTo
+    public function service(): BelongsTo
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Service::class);
     }
 }

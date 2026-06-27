@@ -10,7 +10,7 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('project::use_case.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('portfolio.index') }}" target="_blank">
+        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('use-cases.index') }}" target="_blank">
             <i class="bi bi-box-arrow-up-right me-1"></i>{{ __('project::use_case.actions.view_on_site') }}
         </a>
         <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.project-use-cases.create') }}">
@@ -66,7 +66,7 @@
                 <td>{{ number_format($useCase->visits) }}</td>
                 <td>{{ $useCase->created_at->diffForHumans() }}</td>
                 <td class="text-end">
-                    <a href="{{ route('portfolio.show', $useCase->slug) }}" target="_blank"
+                    <a href="{{ route('use-cases.show', $useCase->slug) }}" target="_blank"
                        class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1">
                         <i class="bi bi-box-arrow-up-right fs-5"></i>
                     </a>

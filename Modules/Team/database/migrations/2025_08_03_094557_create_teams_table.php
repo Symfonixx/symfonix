@@ -18,6 +18,10 @@ return new class extends Migration
             $table->json('position');
             $table->string('linked_in')->nullable();
             $table->string('facebook')->nullable();
+            $table->string('github')->nullable();
+            $table->string('behance')->nullable();
+            $table->string('resume')->nullable();
+            $table->text('key_skills')->nullable();
             $table->enum('status', ['Published', 'Archived'])->default('Published');
             $table->timestamps();
         });

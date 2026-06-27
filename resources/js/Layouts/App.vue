@@ -321,10 +321,10 @@
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link :href="route('portfolio.index')">
+                                        <Link :href="route('use-cases.index')">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
-                                                trans('Portfolio')
+                                                trans('Use Cases')
                                             }}
                                         </Link>
                                     </li>

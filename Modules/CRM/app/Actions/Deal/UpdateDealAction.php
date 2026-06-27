@@ -10,8 +10,8 @@ class UpdateDealAction
 {
     public function __construct(private readonly DealService $service) {}
 
-    public function execute(Deal $deal, DealData $data): ?Deal
+    public function execute(Deal $deal, DealData $data, array $services = []): ?Deal
     {
-        return $this->service->update($deal, $data);
+        return $this->service->update($deal, $data, $services);
     }
 }

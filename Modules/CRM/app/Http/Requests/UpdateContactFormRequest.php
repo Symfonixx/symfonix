@@ -17,6 +17,7 @@ class UpdateContactFormRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'mobile' => ['nullable', 'string', 'max:255'],
+            'service_id' => ['nullable', 'integer', 'exists:services,id'],
             'subject' => ['nullable', 'string', 'max:255'],
             'message' => ['required', 'string'],
             'company_id' => ['nullable', 'integer', 'exists:companies,id'],

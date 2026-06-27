@@ -1,18 +1,22 @@
 @component('mail::message')
-# New contact form
+# {{ __('New contact form submission') }}
 
-**Name:** {{ $contact->name }}  
-**Email:** {{ $contact->email }}  
-**Mobile:** {{ $contact->mobile }}  
-**Subject:** {{ $contact->subject }}
+@component('mail::panel')
+**{{ __('Name') }}:** {{ $contact->name }}
 
-**Message:**  
+**{{ __('Email') }}:** {{ $contact->email }}
+
+**{{ __('Mobile') }}:** {{ $contact->mobile }}
+
+**{{ __('Subject') }}:** {{ $contact->subject }}
+
+**{{ __('Message') }}:**
+
 {{ $contact->message }}
-
-@component('mail::button', ['url' => $adminUrl])
-View in admin
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+@component('mail::button', ['url' => $adminUrl])
+{{ __('View in admin') }}
+@endcomponent
+
 @endcomponent

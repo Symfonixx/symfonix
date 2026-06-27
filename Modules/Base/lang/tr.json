@@ -245,6 +245,7 @@
     "Overview": "Genel Bakış",
     "Content": "İçerik",
     "People": "Kişiler",
+    "Operations": "Operasyonlar",
     "Finance": "Finans",
     "System": "Sistem",
     "Welcome back! Here is an overview of your platform.": "Tekrar hoş geldiniz! İşte platformunuzun genel görünümü.",
@@ -324,6 +325,19 @@
     "May be truncated in search results": "Arama sonuçlarında kesilebilir",
     "Good length for search results": "Arama sonuçları için uygun uzunluk",
     "Good length": "Uygun uzunluk",
-    "Consider adding more detail": "Daha fazla ayrıntı eklemeyi düşünün"
+    "Consider adding more detail": "Daha fazla ayrıntı eklemeyi düşünün",
+    "Actions": "İşlemler",
+    "All": "Tümü",
+    "Are you sure?": "Emin misiniz?",
+    "Cancel": "İptal",
+    "Details": "Detaylar",
+    "N/A": "Yok",
+    "None": "Yok",
+    "Optional": "İsteğe bağlı",
+    "Please fix the following errors": "Lütfen aşağıdaki hataları düzeltin",
+    "Processing": "İşleniyor...",
+    "Save": "Kaydet",
+    "Search": "Ara",
+    "Select": "Seç"
 }
 

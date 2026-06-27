@@ -7,6 +7,7 @@ use Cache;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
 use Modules\Cms\Models\Blog;
+use Modules\Project\Models\ProjectUseCase;
 use Modules\Services\Models\ServiceCategory;
 use Modules\Team\Models\Team;
 use Modules\Testimonial\Models\Testimonial;
@@ -56,6 +57,34 @@ class HomeController extends Controller
             ->inRandomOrder()
             ->get();
 
+        $featuredUseCases = ProjectUseCase::query()
+            ->published()
+            ->featured()
+            ->ordered()
+            ->limit(6)
+            ->get();
+
+        if ($featuredUseCases->isEmpty()) {
+            $featuredUseCases = ProjectUseCase::query()
+                ->published()
+                ->ordered()
+                ->limit(6)
+                ->get();
+        }
+
+        $useCases = $featuredUseCases->map(function (ProjectUseCase $useCase) use ($locale) {
+            return [
+                'id' => $useCase->id,
+                'slug' => $useCase->slug,
+                'title' => $useCase->getTranslation('title', $locale),
+                'summary' => $useCase->getTranslation('summary', $locale),
+                'image_link' => $useCase->image_link,
+                'technologies' => $useCase->technologies ?? [],
+                'category_tag' => $useCase->category_tag,
+                'completed_year' => $useCase->completed_year,
+            ];
+        });
+
         $siteName = Seo::get('website_name', config('app.name'));
         $meta = (new Meta)
             ->title(__('Home').' | '.$siteName)
@@ -70,6 +99,7 @@ class HomeController extends Controller
             'servicesCategories' => $servicesCategories,
             'testimonials' => $testimonials,
             'teams' => $teams,
+            'useCases' => $useCases,
         ], $meta);
     }
 

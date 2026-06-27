@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Notification;
 use Modules\CRM\Events\DealStageChanged;
 use Modules\CRM\Notifications\DealStageChangedNotification;
+use Modules\User\Support\EmployeeAccess;
 
 class SendDealStageChangedNotification
 {
@@ -15,8 +16,14 @@ class SendDealStageChangedNotification
 
         $recipients = collect();
 
-        if ($event->deal->assignee && $event->deal->assignee->id !== $event->changedBy?->id) {
-            $recipients->push($event->deal->assignee);
+        if ($event->deal->assignee && $event->deal->assignee->id !== EmployeeAccess::idForUser($event->changedBy)) {
+            $assigneeUser = User::query()
+                ->where('email', $event->deal->assignee->email)
+                ->first();
+
+            if ($assigneeUser) {
+                $recipients->push($assigneeUser);
+            }
         }
 
         $managers = User::permission('CRM View All')

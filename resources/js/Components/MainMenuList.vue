@@ -15,9 +15,9 @@
                 {{ trans('Our Services') }}
             </Link>
         </li>
-        <li :class="{ current: isActive(['portfolio.index', 'portfolio.show'], { prefixes: ['/portfolio'] }) }">
-            <Link :href="route('portfolio.index')">
-                {{ trans('Portfolio') }}
+        <li :class="{ current: isActive(['use-cases.index', 'use-cases.show'], { prefixes: ['/use-cases', '/portfolio'] }) }">
+            <Link :href="route('use-cases.index')">
+                {{ trans('Use Cases') }}
             </Link>
         </li>
         <li :class="{ current: isActive(['blogs.index', 'blogs.show'], { prefixes: ['/blogs', '/blog'] }) }">

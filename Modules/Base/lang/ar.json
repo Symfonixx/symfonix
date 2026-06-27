@@ -240,6 +240,7 @@
     "Overview": "نظرة عامة",
     "Content": "المحتوى",
     "People": "الأشخاص",
+    "Operations": "العمليات",
     "Finance": "المالية",
     "System": "النظام",
     "Welcome back! Here is an overview of your platform.": "مرحبًا بعودتك! إليك نظرة عامة على منصتك.",
@@ -319,5 +320,18 @@
     "May be truncated in search results": "قد يُقتطع في نتائج البحث",
     "Good length for search results": "طول مناسب لنتائج البحث",
     "Good length": "طول مناسب",
-    "Consider adding more detail": "فكّر في إضافة المزيد من التفاصيل"
+    "Consider adding more detail": "فكّر في إضافة المزيد من التفاصيل",
+    "Actions": "الإجراءات",
+    "All": "الكل",
+    "Are you sure?": "هل أنت متأكد؟",
+    "Cancel": "إلغاء",
+    "Details": "التفاصيل",
+    "N/A": "غير متوفر",
+    "None": "لا شيء",
+    "Optional": "اختياري",
+    "Please fix the following errors": "يرجى تصحيح الأخطاء التالية",
+    "Processing": "جاري المعالجة...",
+    "Save": "حفظ",
+    "Search": "بحث",
+    "Select": "اختر"
 }

@@ -57,12 +57,12 @@
         </div>
     </div>
 
-    @if($company->contactForms->isNotEmpty())
+    @if($company->contacts->isNotEmpty())
         <div class="card mt-6">
             <div class="card-header align-items-center">
-                <h3 class="card-title">{{ __('Contacts') }}</h3>
+                <h3 class="card-title">{{ __('crm::contact.menu.contacts') }}</h3>
                 <div class="card-toolbar">
-                    <a href="{{ route('admin.contact_forms.create', ['company_id' => $company->id]) }}"
+                    <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}"
                        class="btn btn-sm btn-primary">
                         <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
                     </a>
@@ -73,24 +73,24 @@
                     <table class="table table-row-bordered align-middle gy-4 mb-0">
                         <thead>
                         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                            <th>{{ __('Name') }}</th>
-                            <th>{{ __('Email') }}</th>
-                            <th>{{ __('Subject') }}</th>
-                            <th>{{ __('Created At') }}</th>
+                            <th>{{ __('crm::contact.fields.name') }}</th>
+                            <th>{{ __('crm::contact.fields.email') }}</th>
+                            <th>{{ __('crm::contact.fields.phone') }}</th>
+                            <th>{{ __('crm::contact.fields.job_title') }}</th>
                             <th class="text-end"></th>
                         </tr>
                         </thead>
                         <tbody class="text-gray-600 fw-semibold">
-                        @foreach($company->contactForms as $contact)
+                        @foreach($company->contacts as $contact)
                             <tr>
                                 <td>{{ $contact->name }}</td>
-                                <td><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></td>
-                                <td>{{ $contact->subject ?: __('N/A') }}</td>
-                                <td>{{ $contact->created_at?->format('Y-m-d H:i') }}</td>
+                                <td>{{ $contact->email ?: __('N/A') }}</td>
+                                <td>{{ $contact->phone ?: __('N/A') }}</td>
+                                <td>{{ $contact->job_title ?: __('N/A') }}</td>
                                 <td class="text-end">
-                                    <a href="{{ route('admin.contact_forms.edit', $contact) }}"
+                                    <a href="{{ route('admin.contacts.show', $contact) }}"
                                        class="btn btn-icon btn-bg-light btn-active-color-info btn-sm">
-                                        <i class="bi bi-pencil fs-5"></i>
+                                        <i class="bi bi-eye fs-5"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -103,16 +103,106 @@
     @else
         <div class="card mt-6">
             <div class="card-header align-items-center">
-                <h3 class="card-title">{{ __('Contacts') }}</h3>
+                <h3 class="card-title">{{ __('crm::contact.menu.contacts') }}</h3>
                 <div class="card-toolbar">
-                    <a href="{{ route('admin.contact_forms.create', ['company_id' => $company->id]) }}"
+                    <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}"
                        class="btn btn-sm btn-primary">
                         <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
                     </a>
                 </div>
             </div>
-            <div class="card-body text-center text-muted py-10">
-                {{ __('N/A') }}
+            <div class="card-body text-center text-muted py-10">{{ __('N/A') }}</div>
+        </div>
+    @endif
+
+    <div class="card mt-6">
+        <div class="card-header align-items-center">
+            <h3 class="card-title">{{ __('crm::deal.menu.deals') }}</h3>
+            <div class="card-toolbar">
+                <a href="{{ route('admin.deals.create', ['company_id' => $company->id]) }}"
+                   class="btn btn-sm btn-primary">
+                    <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
+                </a>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            @if($company->deals->isNotEmpty())
+                <div class="table-responsive">
+                    <table class="table table-row-bordered align-middle gy-4 mb-0">
+                        <thead>
+                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                            <th>{{ __('crm::deal.fields.title') }}</th>
+                            <th>{{ __('crm::deal.fields.stage') }}</th>
+                            <th>{{ __('crm::deal.fields.value') }}</th>
+                            <th>{{ __('crm::deal.fields.status') }}</th>
+                            <th class="text-end"></th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-gray-600 fw-semibold">
+                        @foreach($company->deals as $deal)
+                            <tr>
+                                <td>{{ $deal->title }}</td>
+                                <td>
+                                    @if($deal->pipelineStage)
+                                        <span class="badge" style="background-color: {{ $deal->pipelineStage->color }}20; color: {{ $deal->pipelineStage->color }};">
+                                            {{ $deal->pipelineStage->name }}
+                                        </span>
+                                    @else
+                                        {{ __('N/A') }}
+                                    @endif
+                                </td>
+                                <td>{{ $deal->value ? number_format($deal->value, 2).' '.$deal->currency : __('N/A') }}</td>
+                                <td>{{ __('crm::deal.status.'.$deal->status) }}</td>
+                                <td class="text-end">
+                                    <a href="{{ route('admin.deals.show', $deal) }}"
+                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm">
+                                        <i class="bi bi-eye fs-5"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @else
+                <div class="text-center text-muted py-10">{{ __('N/A') }}</div>
+            @endif
+        </div>
+    </div>
+
+    @if($company->contactForms->isNotEmpty())
+        <div class="card mt-6">
+            <div class="card-header align-items-center">
+                <h3 class="card-title">{{ __('crm::contact_form.menu.inquiries') }}</h3>
+                <div class="card-toolbar">
+                    <a href="{{ route('admin.contact_forms.index') }}" class="btn btn-sm btn-light-primary">
+                        {{ __('crm::contact_form.actions.back_to_list') }}
+                    </a>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-row-bordered align-middle gy-4 mb-0">
+                        <thead>
+                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                            <th>{{ __('crm::contact_form.fields.name') }}</th>
+                            <th>{{ __('crm::contact_form.fields.email') }}</th>
+                            <th>{{ __('crm::contact_form.fields.subject') }}</th>
+                            <th>{{ __('Created At') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-gray-600 fw-semibold">
+                        @foreach($company->contactForms as $inquiry)
+                            <tr>
+                                <td>{{ $inquiry->name }}</td>
+                                <td>{{ $inquiry->email }}</td>
+                                <td>{{ $inquiry->subject ?: __('N/A') }}</td>
+                                <td>{{ $inquiry->created_at?->format('Y-m-d H:i') }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     @endif

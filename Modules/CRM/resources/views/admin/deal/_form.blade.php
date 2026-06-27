@@ -42,7 +42,7 @@
                 data-control="select2" data-placeholder="{{ __('crm::deal.fields.select_company') }}" name="company_id">
             <option value="">{{ __('crm::deal.fields.select_company') }}</option>
             @foreach(($companies ?? collect()) as $company)
-                <option value="{{ $company->id }}" @selected((int) old('company_id', $dealData?->company_id) === $company->id)>
+                <option value="{{ $company->id }}" @selected((int) old('company_id', $dealData?->company_id ?? request('company_id')) === $company->id)>
                     {{ $company->name }}
                 </option>
             @endforeach
@@ -156,6 +156,48 @@
 <div class="separator my-10"></div>
 
 <div class="mb-10">
+    <h4 class="fw-bold mb-2">{{ __('crm::deal.sections.services') }}</h4>
+    <p class="text-muted mb-0">{{ __('crm::deal.sections.services_hint') }}</p>
+</div>
+
+<div id="deal-services-wrapper" class="mb-8">
+    @foreach(($dealServices ?? [['service_id' => '', 'quantity' => 1, 'unit_price' => '']]) as $index => $line)
+        <div class="row g-4 mb-4 deal-service-row">
+            <div class="col-md-5">
+                <select name="services[{{ $index }}][service_id]" class="form-select form-select-solid deal-service-select" data-control="select2">
+                    <option value="">{{ __('crm::deal.placeholders.select_service') }}</option>
+                    @foreach(($services ?? collect()) as $service)
+                        <option value="{{ $service->id }}"
+                                @selected((int) ($line['service_id'] ?? 0) === $service->id)>
+                            {{ $service->getTranslation('title', app()->getLocale()) }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="number" min="1" name="services[{{ $index }}][quantity]"
+                       class="form-control form-control-solid" value="{{ $line['quantity'] ?? 1 }}"
+                       placeholder="{{ __('crm::deal.fields.quantity') }}"/>
+            </div>
+            <div class="col-md-3">
+                <input type="number" step="0.01" min="0" name="services[{{ $index }}][unit_price]"
+                       class="form-control form-control-solid deal-service-price" value="{{ $line['unit_price'] ?? '' }}"
+                       placeholder="{{ __('crm::deal.fields.unit_price') }}"/>
+            </div>
+            <div class="col-md-2 d-flex align-items-center">
+                <button type="button" class="btn btn-sm btn-light-danger remove-deal-service">{{ __('crm::deal.actions.remove_service') }}</button>
+            </div>
+        </div>
+    @endforeach
+</div>
+
+<button type="button" id="add-deal-service" class="btn btn-sm btn-light-primary mb-8">
+    <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add_service') }}
+</button>
+
+<div class="separator my-10"></div>
+
+<div class="mb-10">
     <h4 class="fw-bold mb-2">{{ __('crm::deal.sections.additional_details') }}</h4>
 </div>
 
@@ -221,6 +263,43 @@
             statusInput.value = 'open';
             lostRow.style.display = 'none';
         }
+    });
+
+    const servicesWrapper = document.getElementById('deal-services-wrapper');
+    const addServiceBtn = document.getElementById('add-deal-service');
+
+    function bindServiceRow(row) {
+        const select = row.querySelector('.deal-service-select');
+        const priceInput = row.querySelector('.deal-service-price');
+
+        row.querySelector('.remove-deal-service')?.addEventListener('click', function () {
+            if (servicesWrapper.querySelectorAll('.deal-service-row').length > 1) {
+                row.remove();
+            } else {
+                select.value = '';
+                priceInput.value = '';
+                row.querySelector('[name*="[quantity]"]').value = 1;
+            }
+        });
+    }
+
+    servicesWrapper?.querySelectorAll('.deal-service-row').forEach(bindServiceRow);
+
+    addServiceBtn?.addEventListener('click', function () {
+        const index = servicesWrapper.querySelectorAll('.deal-service-row').length;
+        const template = servicesWrapper.querySelector('.deal-service-row').cloneNode(true);
+        template.querySelectorAll('[name]').forEach((input) => {
+            input.name = input.name.replace(/\services\[\d+\]/, `services[${index}]`);
+            if (input.tagName === 'SELECT') {
+                input.value = '';
+            } else if (input.name.includes('[quantity]')) {
+                input.value = 1;
+            } else {
+                input.value = '';
+            }
+        });
+        servicesWrapper.appendChild(template);
+        bindServiceRow(template);
     });
 </script>
 @endpush

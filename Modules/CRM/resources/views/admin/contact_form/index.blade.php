@@ -1,16 +1,16 @@
-@section('title', __('crm::contact.pages.index_title'))
+@section('title', __('crm::contact_form.pages.index_title'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
             ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
-            ['label' => __('crm::contact.pages.index_title')],
+            ['label' => __('crm::contact_form.pages.index_title')],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('crm::contact.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb :pageTitle="__('crm::contact_form.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a href="{{ route('admin.contact_forms.create') }}" class="btn btn-sm fw-bold btn-primary">
-            {{ __('crm::contact.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            {{ __('crm::contact_form.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
         </a>
         <a href="{{ route('admin.contact_forms.export') }}" class="btn btn-sm btn-light-primary">
             <i class="bi bi-file-earmark-excel"></i> {{ __('Export to Excel') }}
@@ -18,7 +18,7 @@
     </div>
 @endsection
 <x-admin-layout>
-    <x-admin.table :model="$model" :search="__('crm::contact.search.placeholder')"
+    <x-admin.table :model="$model" :search="__('crm::contact_form.search.placeholder')"
                    :formUrl="route('admin.contact_forms.deleteMulti')">
         <!--begin::Table head-->
         <thead>
@@ -31,9 +31,10 @@
             </th>
 
             <th>{{ __('Details') }}</th>
-            <th>{{ __('crm::contact.fields.company') }}</th>
-            <th>{{ __('crm::contact.fields.ip_address') }}</th>
-            <th>{{ __('crm::contact.fields.subject') }}</th>
+            <th>{{ __('crm::contact_form.fields.company') }}</th>
+            <th>{{ __('crm::contact_form.fields.ip_address') }}</th>
+            <th>{{ __('crm::contact_form.fields.subject') }}</th>
+            <th>{{ __('Status') }}</th>
             <th>{{ __('Created At') }}</th>
             <th class="text-end"></th>
         </tr>
@@ -84,7 +85,20 @@
                 </td>
 
                 <td>
-                    {{$contact->subject ?: __('N/A')}}
+                    @if($contact->service)
+                        {{ $contact->service->getTranslation('title', app()->getLocale()) }}
+                    @else
+                        {{ $contact->subject ?: __('N/A') }}
+                    @endif
+                </td>
+                <td>
+                    @if($contact->lead_id)
+                        <span class="badge badge-light-success">{{ __('crm::contact_form.status.converted') }}</span>
+                    @elseif($contact->contact_id)
+                        <span class="badge badge-light-primary">{{ __('crm::contact.menu.contacts') }}</span>
+                    @else
+                        <span class="badge badge-light-secondary">{{ __('crm::contact_form.status.active') }}</span>
+                    @endif
                 </td>
                 <td>
                     {{$contact->created_at}}
@@ -94,7 +108,23 @@
                         <button type="button" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#contactModal{{ $contact->id }}">
                             <i class="bi bi-eye"></i>
                         </button>
-                        <a href="{{ route('admin.contact_forms.edit', $contact) }}" class="btn btn-sm btn-light-info" title="{{ __('crm::contact.actions.edit') }}">
+                        @if(! $contact->lead_id)
+                            <form method="POST" action="{{ route('admin.contact_forms.convertLead', $contact) }}" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-light-success" title="{{ __('crm::contact_form.actions.convert_to_lead') }}">
+                                    <i class="bi bi-funnel"></i>
+                                </button>
+                            </form>
+                        @endif
+                        @if(! $contact->contact_id)
+                            <form method="POST" action="{{ route('admin.contact_forms.convertContact', $contact) }}" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-light-warning" title="{{ __('crm::contact_form.actions.convert_to_contact') }}">
+                                    <i class="bi bi-person-plus"></i>
+                                </button>
+                            </form>
+                        @endif
+                        <a href="{{ route('admin.contact_forms.edit', $contact) }}" class="btn btn-sm btn-light-info" title="{{ __('crm::contact_form.actions.edit') }}">
                             <i class="bi bi-pencil"></i>
                         </a>
                     </div>
@@ -106,23 +136,23 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="contactModalLabel{{ $contact->id }}">{{ __('crm::contact.actions.view_details') }}</h5>
+                            <h5 class="modal-title" id="contactModalLabel{{ $contact->id }}">{{ __('crm::contact_form.actions.view_details') }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <strong>{{ __('crm::contact.fields.name') }}:</strong>
+                                    <strong>{{ __('crm::contact_form.fields.name') }}:</strong>
                                     <p>{{ $contact->name }}</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <strong>{{ __('crm::contact.fields.email') }}:</strong>
+                                    <strong>{{ __('crm::contact_form.fields.email') }}:</strong>
                                     <p><a href="mailto:{{ $contact->email }}" target="_blank">{{ $contact->email }}</a></p>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <strong>{{ __('crm::contact.fields.mobile') }}:</strong>
+                                    <strong>{{ __('crm::contact_form.fields.mobile') }}:</strong>
                                     <p>
                                         @if($contact->mobile)
                                             <a href="tel:{{ $contact->mobile }}" target="_blank">{{ $contact->mobile }}</a>
@@ -132,7 +162,7 @@
                                     </p>
                                 </div>
                                 <div class="col-md-6">
-                                    <strong>{{ __('crm::contact.fields.company') }}:</strong>
+                                    <strong>{{ __('crm::contact_form.fields.company') }}:</strong>
                                     <p>
                                         @if($contact->company)
                                             <a href="{{ route('admin.companies.show', $contact->company) }}">{{ $contact->company->name }}</a>
@@ -144,7 +174,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <strong>{{ __('crm::contact.fields.ip_address') }}:</strong>
+                                    <strong>{{ __('crm::contact_form.fields.ip_address') }}:</strong>
                                     <p>
                                         @if($contact->ip_address)
                                             <a href="https://whatismyipaddress.com/ip/{{ $contact->ip_address }}" target="_blank">{{ $contact->ip_address }}</a>
@@ -154,16 +184,28 @@
                                     </p>
                                 </div>
                                 <div class="col-md-6">
-                                    <strong>{{ __('crm::contact.fields.blocked') }}:</strong>
-                                    <p><span class="badge badge-light-{{ $contact->blocked ? 'danger' : 'success' }}">{{ $contact->blocked ? __('crm::contact.status.blocked') : __('crm::contact.status.active') }}</span></p>
+                                    <strong>{{ __('crm::contact_form.fields.blocked') }}:</strong>
+                                    <p><span class="badge badge-light-{{ $contact->blocked ? 'danger' : 'success' }}">{{ $contact->blocked ? __('crm::contact_form.status.blocked') : __('crm::contact_form.status.active') }}</span></p>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <strong>{{ __('crm::contact.fields.subject') }}:</strong>
-                                <p>{{ $contact->subject ?: __('N/A') }}</p>
+                                <strong>{{ __('crm::contact_form.fields.service') }}:</strong>
+                                <p>
+                                    @if($contact->service)
+                                        {{ $contact->service->getTranslation('title', app()->getLocale()) }}
+                                    @else
+                                        {{ __('N/A') }}
+                                    @endif
+                                </p>
                             </div>
+                            @if($contact->subject)
                             <div class="mb-3">
-                                <strong>{{ __('crm::contact.fields.message') }}:</strong>
+                                <strong>{{ __('crm::contact_form.fields.subject') }}:</strong>
+                                <p>{{ $contact->subject }}</p>
+                            </div>
+                            @endif
+                            <div class="mb-3">
+                                <strong>{{ __('crm::contact_form.fields.message') }}:</strong>
                                 <div class="bg-light p-3 rounded" style="max-height: 300px; overflow-y: auto;">
                                     {{ $contact->message }}
                                 </div>
@@ -175,8 +217,24 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                            @if(! $contact->lead_id)
+                                <form method="POST" action="{{ route('admin.contact_forms.convertLead', $contact) }}" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="bi bi-funnel me-1"></i>{{ __('crm::contact_form.actions.convert_to_lead') }}
+                                    </button>
+                                </form>
+                            @endif
+                            @if(! $contact->contact_id)
+                                <form method="POST" action="{{ route('admin.contact_forms.convertContact', $contact) }}" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-warning">
+                                        <i class="bi bi-person-plus me-1"></i>{{ __('crm::contact_form.actions.convert_to_contact') }}
+                                    </button>
+                                </form>
+                            @endif
                             <a href="{{ route('admin.contact_forms.edit', $contact) }}" class="btn btn-primary">
-                                <i class="bi bi-pencil me-1"></i>{{ __('crm::contact.actions.edit') }}
+                                <i class="bi bi-pencil me-1"></i>{{ __('crm::contact_form.actions.edit') }}
                             </a>
                         </div>
                     </div>
@@ -187,4 +245,6 @@
         <!--end::Table body-->
     </x-admin.table>
     <!--end::Card-->
+</x-admin-layout>
+
 </x-admin-layout>

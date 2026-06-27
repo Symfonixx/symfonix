@@ -21,9 +21,8 @@ class RecordSaleOnDealWon
             return;
         }
 
-        $deal = $event->deal->refresh()->load(['project', 'assignee', 'products']);
+        $deal = $event->deal->refresh()->load(['project', 'assignee', 'services']);
 
-        $this->financeService->recordSaleAndCommission($deal);
-        $this->financeService->recordDealProductSales($deal);
+        $this->financeService->recordDealWonFinance($deal);
     }
 }

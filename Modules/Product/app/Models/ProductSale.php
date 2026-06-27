@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
-use Modules\Finance\Models\Transaction;
+use Modules\Finance\Models\JournalEntry;
 
 class ProductSale extends Model
 {
@@ -57,6 +57,6 @@ class ProductSale extends Model
 
     public function transactions(): MorphMany
     {
-        return $this->morphMany(Transaction::class, 'transactionable', 'reference_type', 'reference_id');
+        return $this->morphMany(JournalEntry::class, 'reference');
     }
 }

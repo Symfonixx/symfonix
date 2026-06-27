@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Modules\CRM\DTOs\Deal\DealData;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
+use Modules\CRM\Services\Company\CompanyProvisionerService;
+use Modules\CRM\Services\Contact\ContactService;
 use Modules\CRM\Services\Deal\DealService;
 use Modules\CRM\Support\AuditLogger;
 use Modules\CRM\Models\CrmAuditLog;
@@ -17,6 +19,8 @@ class LeadConversionService
     public function __construct(
         private readonly DealService $dealService,
         private readonly PipelineStageRepository $stageRepository,
+        private readonly CompanyProvisionerService $companyProvisioner,
+        private readonly ContactService $contactService,
     ) {}
 
     public function convert(Lead $lead, array $options = []): Deal
@@ -27,6 +31,10 @@ class LeadConversionService
 
         return DB::transaction(function () use ($lead, $options) {
             $lead->loadMissing(['company', 'service']);
+
+            $this->companyProvisioner->provisionFromLead($lead);
+            $this->contactService->findOrCreateFromLead($lead->fresh());
+            $lead->refresh();
 
             $title = $options['title'] ?? $this->buildTitle($lead);
             $stageId = (int) ($options['pipeline_stage_id'] ?? $this->stageRepository->findDefault()?->id);

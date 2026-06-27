@@ -21,4 +21,9 @@ class SalaryPolicy
     {
         return $user->can('Finance Management');
     }
+
+    public function delete(User $user, Salary $salary): bool
+    {
+        return $user->can('Finance Management');
+    }
 }

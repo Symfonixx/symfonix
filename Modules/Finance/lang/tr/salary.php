@@ -22,7 +22,10 @@ return [
     'messages' => [
         'created' => 'Maaş kaydı oluşturuldu.',
         'paid' => 'Maaş ödemesi deftere kaydedildi.',
+        'deleted' => 'Maaş kaydı silindi.',
+        'confirm_delete' => 'Bu maaş kaydı silinsin mi? Ödenmişse, bağlı defter kaydı da kaldırılacaktır.',
         'payout_description' => 'Maaş ödemesi: :name',
         'no_pending' => 'Bekleyen maaş ödemesi yok.',
+        'no_records' => 'Henüz maaş kaydı yok.',
     ],
 ];

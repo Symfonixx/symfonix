@@ -8,7 +8,7 @@ return [
         'index_title' => 'Kullanım Senaryoları',
         'create_title' => 'Kullanım Senaryosu Ekle',
         'edit_title' => 'Kullanım Senaryosunu Düzenle',
-        'website_title' => 'Portföy',
+        'website_title' => 'Kullanım Senaryoları',
         'website_details' => 'Vaka Çalışması',
     ],
     'meta' => [
@@ -43,13 +43,13 @@ return [
         'view_on_site' => 'Sitede Görüntüle',
     ],
     'hints' => [
-        'slug' => 'Genel URL\'de kullanılır, örn. /portfolio/your-slug',
+        'slug' => 'Genel URL\'de kullanılır, örn. /use-cases/your-slug',
         'technologies' => 'Virgülle ayrılmış veya etiket listesi, örn. Laravel, Vue, AWS',
         'category_tag' => 'Portföy kartında rozet olarak gösterilir, örn. Web Geliştirme',
         'linked_project' => 'İsteğe bağlı olarak dahili CRM proje kaydına bağlayın.',
     ],
     'website' => [
-        'tagline' => 'Portföy',
+        'tagline' => 'Kullanım Senaryoları',
         'heading' => 'İşletmeleri Yenilikçi Teknoloji Çözümleriyle Nasıl Güçlendirdik',
         'challenge_title' => 'Zorluk',
         'solution_title' => 'Çözümümüz',

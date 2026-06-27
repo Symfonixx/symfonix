@@ -99,9 +99,9 @@ class Deal extends Model
         return $this->hasOne(\Modules\Project\Models\Project::class);
     }
 
-    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(\Modules\Product\Models\Product::class, 'deal_product')
+        return $this->belongsToMany(\Modules\Services\Models\Service::class, 'deal_service')
             ->withPivot(['quantity', 'unit_price'])
             ->withTimestamps();
     }

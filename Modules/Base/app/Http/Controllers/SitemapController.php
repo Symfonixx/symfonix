@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\Page;
+use Modules\Project\Models\ProjectUseCase;
 use Modules\Services\Models\Service;
 
 class SitemapController extends Controller
@@ -133,6 +134,31 @@ class SitemapController extends Controller
                         $entries[] = [
                             'path' => '/service/'.$service->slug,
                             'lastmod' => optional($service->updated_at)->toAtomString(),
+                            'changefreq' => 'weekly',
+                            'priority' => '0.7',
+                        ];
+                    }
+                });
+            }
+        } catch (\Throwable $e) {
+            // ignore
+        }
+
+        // Use cases index + detail
+        try {
+            if (class_exists(ProjectUseCase::class)) {
+                $entries[] = [
+                    'path' => '/use-cases',
+                    'lastmod' => now()->toAtomString(),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.8',
+                ];
+
+                ProjectUseCase::published()->select(['slug', 'updated_at'])->chunk(200, function ($useCases) use (&$entries) {
+                    foreach ($useCases as $useCase) {
+                        $entries[] = [
+                            'path' => '/use-cases/'.$useCase->slug,
+                            'lastmod' => optional($useCase->updated_at)->toAtomString(),
                             'changefreq' => 'weekly',
                             'priority' => '0.7',
                         ];

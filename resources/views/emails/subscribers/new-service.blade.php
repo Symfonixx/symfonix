@@ -1,12 +1,14 @@
 @component('mail::message')
-# New service: {{ $title }}
+# {{ __('New service available') }}
+
+**{{ $title }}**
 
 {{ \Illuminate\Support\Str::limit(strip_tags($service->description ?? ''), 180) }}
 
-@component('mail::button', ['url' => $url])
-View service
+@component('mail::button', ['url' => $url, 'color' => 'success'])
+{{ __('View service') }}
 @endcomponent
 
-Thanks,<br>
+{{ __('Thanks') }},<br>
 {{ config('app.name') }}
 @endcomponent

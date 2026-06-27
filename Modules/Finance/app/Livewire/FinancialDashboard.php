@@ -19,6 +19,14 @@ class FinancialDashboard extends Component
 
     public float $totalLosses = 0;
 
+    public float $mrr = 0;
+
+    public float $arr = 0;
+
+    public int $activeSubscriptions = 0;
+
+    public string $saasCurrency = 'USD';
+
     public function mount(FinanceService $financeService): void
     {
         $this->refreshMetrics($financeService);
@@ -46,6 +54,12 @@ class FinancialDashboard extends Component
         $this->totalExpenses = $summary['expenses'];
         $this->lifetimeProfit = $summary['profit'];
         $this->totalLosses = $summary['losses'];
+
+        $saas = $financeService->getSubscriptionMetrics();
+        $this->mrr = $saas['mrr'];
+        $this->arr = $saas['arr'];
+        $this->activeSubscriptions = $saas['active_count'];
+        $this->saasCurrency = $saas['primary_currency'];
     }
 
     public function render(FinanceService $financeService)

@@ -3,7 +3,7 @@ import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrInterpolate, ssrR
 import { usePage, Link, useForm, router, Head, createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
-const _sfc_main$n = {
+const _sfc_main$p = {
   __name: "HomeBlogCard",
   __ssrInlineRender: true,
   props: {
@@ -310,11 +310,11 @@ const _sfc_main$n = {
     };
   }
 };
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/HomeBlogCard.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -323,7 +323,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$m = {
+const _sfc_main$o = {
   __name: "ServiceCardThree",
   __ssrInlineRender: true,
   props: {
@@ -476,14 +476,14 @@ const _sfc_main$m = {
     };
   }
 };
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-0bfa2789"]]);
-const _sfc_main$l = {
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-0bfa2789"]]);
+const _sfc_main$n = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
   setup(__props) {
@@ -595,6 +595,21 @@ const _sfc_main$l = {
         }),
         _: 1
       }, _parent));
+      _push(`</li><li class="${ssrRenderClass({ current: isActive(["use-cases.index", "use-cases.show"], { prefixes: ["/use-cases", "/portfolio"] }) })}">`);
+      _push(ssrRenderComponent(unref(Link), {
+        href: _ctx.route("use-cases.index")
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${ssrInterpolate(trans("Use Cases"))}`);
+          } else {
+            return [
+              createTextVNode(toDisplayString(trans("Use Cases")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
       _push(`</li><li class="${ssrRenderClass({ current: isActive(["blogs.index", "blogs.show"], { prefixes: ["/blogs", "/blog"] }) })}">`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("blogs.index")
@@ -672,13 +687,13 @@ const _sfc_main$l = {
     };
   }
 };
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuList.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const _sfc_main$k = {
+const _sfc_main$m = {
   __name: "MainMenuNav",
   __ssrInlineRender: true,
   setup(__props) {
@@ -705,18 +720,18 @@ const _sfc_main$k = {
         _: 1
       }, _parent));
       _push(`</div></div><div class="main-menu-two__main-menu-box"><a href="#" class="mobile-nav__toggler" aria-label="Open mobile menu"><i class="fa fa-bars"></i></a>`);
-      _push(ssrRenderComponent(_sfc_main$l, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$n, null, null, _parent));
       _push(`</div><div class="main-menu-two__right d-none d-md-flex align-items-center"><div class="main-menu-two__search-box me-3"><a href="#" class="main-menu-two__search searcher-toggler-box icon-search-interface-symbol" aria-label="Open search"></a></div><div class="main-menu-two__nav-sidebar-icon"><a class="navSidebar-button" href="#" aria-label="Open sidebar"><span class="icon-dots-menu-one"></span><span class="icon-dots-menu-two"></span><span class="icon-dots-menu-three"></span></a></div></div></div></div></nav>`);
     };
   }
 };
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuNav.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
-const _sfc_main$j = {
+const _sfc_main$l = {
   __name: "App",
   __ssrInlineRender: true,
   setup(__props) {
@@ -926,9 +941,9 @@ const _sfc_main$j = {
         _push(`<!---->`);
       }
       _push(`</form></div></div></div></div></div></div></div><div class="page-wrapper"><header class="main-header-two"><div class="main-menu-two__top"><div class="main-menu-two__top-inner"><p class="main-menu-two__top-text">${ssrInterpolate(trans("We Build Technology In Perfect Harmony"))}</p><ul class="list-unstyled main-menu-two__contact-list"><li><div class="icon"><i class="icon-pin"></i></div><div class="text"><p>${ssrInterpolate(settings.value.address)}</p></div></li><li><div class="icon"><i class="icon-search-mail"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `mailto::${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li><div class="icon"><i class="icon-phone-call"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div>`);
-      _push(ssrRenderComponent(_sfc_main$k, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$m, null, null, _parent));
       _push(`</header><div class="stricky-header stricked-menu main-menu main-menu-two"><div class="sticky-header__content">`);
-      _push(ssrRenderComponent(_sfc_main$k, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$m, null, null, _parent));
       _push(`</div></div>`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       _push(`<section class="newsletter-two"><div class="newsletter-two__shape-1"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-1.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="newsletter-two__shape-2 float-bob-x"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-2.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="container"><div class="newsletter-two__inner"><div class="newsletter-two__left"><h2 class="newsletter-two__title">${ssrInterpolate(trans("Subscribe to Our Newsletter"))}</h2><p class="newsletter-two__text">${ssrInterpolate(trans("Engineering insights, product updates, and practical tech lessons—delivered occasionally, not daily"))}</p></div><div class="newsletter-two__right"><form class="newsletter-two__form"><div class="newsletter-two__input"><input type="email" name="email"${ssrRenderAttr("value", unref(subscribeForm).email)}${ssrRenderAttr("placeholder", trans("Enter your email address"))}${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""} required="">`);
@@ -1031,6 +1046,24 @@ const _sfc_main$j = {
                 class: locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2"
               }, null, 2),
               createTextVNode(toDisplayString(trans("Our Services")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</li><li>`);
+      _push(ssrRenderComponent(unref(Link), {
+        href: _ctx.route("use-cases.index")
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Use Cases"))}`);
+          } else {
+            return [
+              createVNode("span", {
+                class: locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2"
+              }, null, 2),
+              createTextVNode(toDisplayString(trans("Use Cases")), 1)
             ];
           }
         }),
@@ -1191,7 +1224,7 @@ const _sfc_main$j = {
         _: 1
       }, _parent));
       _push(`</div><div class="mobile-nav__container">`);
-      _push(ssrRenderComponent(_sfc_main$l, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$n, null, null, _parent));
       _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
       if (settings.value.twitter) {
         _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
@@ -1222,18 +1255,18 @@ const _sfc_main$j = {
     };
   }
 };
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/App.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
 const __default__$d = {
   components: {
-    AppLayout: _sfc_main$j
+    AppLayout: _sfc_main$l
   }
 };
-const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
+const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$d, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1247,6 +1280,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
     const servicesCategories = computed(() => page.props.servicesCategories || []);
     const testimonials = computed(() => page.props.testimonials || []);
     const teams = computed(() => page.props.teams || []);
+    const useCases = computed(() => page.props.useCases || []);
     const meta = computed(() => page.props.meta || {});
     const metaTitle = computed(() => {
       return meta.value.title || `${trans("Home")} | ${seo.value.website_name || ""}`.trim();
@@ -1561,6 +1595,11 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
             } else {
               _push2(`<!---->`);
             }
+            if (useCases.value.length) {
+              _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/portfolio.css")}${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
             _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)}${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}>`);
             if (metaImage.value) {
               _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)}${_scopeId}>`);
@@ -1598,6 +1637,11 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                 rel: "canonical",
                 href: metaCanonical.value
               }, null, 8, ["href"])) : createCommentVNode("", true),
+              useCases.value.length ? (openBlock(), createBlock("link", {
+                key: 1,
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/portfolio.css"
+              }, null, 8, ["href"])) : createCommentVNode("", true),
               createVNode("meta", {
                 property: "og:title",
                 content: metaTitle.value
@@ -1607,12 +1651,12 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                 content: metaDescription.value
               }, null, 8, ["content"]),
               metaImage.value ? (openBlock(), createBlock("meta", {
-                key: 1,
+                key: 2,
                 property: "og:image",
                 content: metaImage.value
               }, null, 8, ["content"])) : createCommentVNode("", true),
               metaCanonical.value ? (openBlock(), createBlock("meta", {
-                key: 2,
+                key: 3,
                 property: "og:url",
                 content: metaCanonical.value
               }, null, 8, ["content"])) : createCommentVNode("", true),
@@ -1633,7 +1677,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                 content: metaDescription.value
               }, null, 8, ["content"]),
               metaImage.value ? (openBlock(), createBlock("meta", {
-                key: 3,
+                key: 4,
                 name: "twitter:image",
                 content: metaImage.value
               }, null, 8, ["content"])) : createCommentVNode("", true)
@@ -1642,7 +1686,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="banner-one"${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
@@ -1714,6 +1758,86 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Services")) + " ", 1),
+                      createVNode("span", {
+                        class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow `
+                      }, null, 2)
+                    ];
+                  }
+                }),
+                _: 1
+              }, _parent2, _scopeId));
+              _push2(`</div></div></section>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCases.value && useCases.value.length) {
+              _push2(`<section class="portfolio-one portfolio-page"${_scopeId}><h2 class="portfolio-one__big-text"${_scopeId}>use cases</h2><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="mt-3"${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="portfolio-one__bottom"${_scopeId}><div class="row"${_scopeId}><!--[-->`);
+              ssrRenderList(useCases.value, (item) => {
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}><div class="portfolio-one__single"${_scopeId}><div class="portfolio-one__img-box"${_scopeId}><div class="portfolio-one__img"${_scopeId}><img${ssrRenderAttr("src", item.image_link)}${ssrRenderAttr("alt", item.title)}${_scopeId}>`);
+                if (item.category_tag || item.technologies && item.technologies.length) {
+                  _push2(`<div class="portfolio-one__tag"${_scopeId}>`);
+                  if (item.category_tag) {
+                    _push2(`<span${_scopeId}>${ssrInterpolate(item.category_tag)}</span>`);
+                  } else {
+                    _push2(`<!---->`);
+                  }
+                  _push2(`<!--[-->`);
+                  ssrRenderList((item.technologies || []).slice(0, 2), (tech) => {
+                    _push2(`<span${_scopeId}>${ssrInterpolate(tech)}</span>`);
+                  });
+                  _push2(`<!--]--></div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`</div></div><div class="portfolio-one__content"${_scopeId}><div class="portfolio-one__title-box"${_scopeId}><h3 class="portfolio-one__title"${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: _ctx.route("use-cases.show", item.slug)
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`${ssrInterpolate(item.title)}`);
+                    } else {
+                      return [
+                        createTextVNode(toDisplayString(item.title), 1)
+                      ];
+                    }
+                  }),
+                  _: 2
+                }, _parent2, _scopeId));
+                _push2(`</h3><p class="portfolio-one__text"${_scopeId}>${ssrInterpolate(item.summary)}</p></div><div class="portfolio-one__arrow"${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: _ctx.route("use-cases.show", item.slug)
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`<span class="icon-right-arrow"${_scopeId2}></span>`);
+                    } else {
+                      return [
+                        createVNode("span", { class: "icon-right-arrow" })
+                      ];
+                    }
+                  }),
+                  _: 2
+                }, _parent2, _scopeId));
+                _push2(`</div>`);
+                if (item.completed_year) {
+                  _push2(`<div class="portfolio-one__year"${_scopeId}><span${_scopeId}>${ssrInterpolate(item.completed_year)}</span></div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`</div></div></div>`);
+              });
+              _push2(`<!--]--></div></div><div class="text-center mt-4"${_scopeId}>`);
+              _push2(ssrRenderComponent(unref(Link), {
+                href: _ctx.route("use-cases.index"),
+                class: "thm-btn"
+              }, {
+                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  if (_push3) {
+                    _push3(`${ssrInterpolate(trans("View All Use Cases"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"${_scopeId2}></span>`);
+                  } else {
+                    return [
+                      createTextVNode(toDisplayString(trans("View All Use Cases")) + " ", 1),
                       createVNode("span", {
                         class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow `
                       }, null, 2)
@@ -1802,7 +1926,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(`</div>`);
               if (featuredPost.value) {
                 _push2(`<div class="blog-two__left-content-box d-none d-md-block"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$n, {
+                _push2(ssrRenderComponent(_sfc_main$p, {
                   post: featuredPost.value,
                   variant: "featured",
                   locale: locale.value,
@@ -1815,7 +1939,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
               }
               _push2(`</div></div><div class="col-xl-6"${_scopeId}><div class="blog-two__right"${_scopeId}><!--[-->`);
               ssrRenderList(sidePosts.value, (post, idx) => {
-                _push2(ssrRenderComponent(_sfc_main$n, {
+                _push2(ssrRenderComponent(_sfc_main$p, {
                   key: post.id || idx,
                   post,
                   variant: "compact",
@@ -2086,6 +2210,99 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
+              useCases.value && useCases.value.length ? (openBlock(), createBlock("section", {
+                key: 1,
+                class: "portfolio-one portfolio-page"
+              }, [
+                createVNode("h2", { class: "portfolio-one__big-text" }, "use cases"),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "section-title text-center sec-title-animation animation-style1" }, [
+                    createVNode("div", { class: "section-title__tagline-box" }, [
+                      createVNode("div", { class: "section-title__tagline-shape-1" }),
+                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Use Cases")), 1),
+                      createVNode("div", { class: "section-title__tagline-shape-2" })
+                    ]),
+                    createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("How We've Empowered Businesses with Innovative Tech Solutions")), 1),
+                    createVNode("p", { class: "mt-3" }, toDisplayString(trans("Explore our success stories and real-world solutions we've delivered for businesses.")), 1)
+                  ]),
+                  createVNode("div", { class: "portfolio-one__bottom" }, [
+                    createVNode("div", { class: "row" }, [
+                      (openBlock(true), createBlock(Fragment, null, renderList(useCases.value, (item) => {
+                        return openBlock(), createBlock("div", {
+                          key: item.id,
+                          class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
+                          "data-wow-delay": "100ms"
+                        }, [
+                          createVNode("div", { class: "portfolio-one__single" }, [
+                            createVNode("div", { class: "portfolio-one__img-box" }, [
+                              createVNode("div", { class: "portfolio-one__img" }, [
+                                createVNode("img", {
+                                  src: item.image_link,
+                                  alt: item.title
+                                }, null, 8, ["src", "alt"]),
+                                item.category_tag || item.technologies && item.technologies.length ? (openBlock(), createBlock("div", {
+                                  key: 0,
+                                  class: "portfolio-one__tag"
+                                }, [
+                                  item.category_tag ? (openBlock(), createBlock("span", { key: 0 }, toDisplayString(item.category_tag), 1)) : createCommentVNode("", true),
+                                  (openBlock(true), createBlock(Fragment, null, renderList((item.technologies || []).slice(0, 2), (tech) => {
+                                    return openBlock(), createBlock("span", { key: tech }, toDisplayString(tech), 1);
+                                  }), 128))
+                                ])) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createVNode("div", { class: "portfolio-one__content" }, [
+                              createVNode("div", { class: "portfolio-one__title-box" }, [
+                                createVNode("h3", { class: "portfolio-one__title" }, [
+                                  createVNode(unref(Link), {
+                                    href: _ctx.route("use-cases.show", item.slug)
+                                  }, {
+                                    default: withCtx(() => [
+                                      createTextVNode(toDisplayString(item.title), 1)
+                                    ]),
+                                    _: 2
+                                  }, 1032, ["href"])
+                                ]),
+                                createVNode("p", { class: "portfolio-one__text" }, toDisplayString(item.summary), 1)
+                              ]),
+                              createVNode("div", { class: "portfolio-one__arrow" }, [
+                                createVNode(unref(Link), {
+                                  href: _ctx.route("use-cases.show", item.slug)
+                                }, {
+                                  default: withCtx(() => [
+                                    createVNode("span", { class: "icon-right-arrow" })
+                                  ]),
+                                  _: 1
+                                }, 8, ["href"])
+                              ]),
+                              item.completed_year ? (openBlock(), createBlock("div", {
+                                key: 0,
+                                class: "portfolio-one__year"
+                              }, [
+                                createVNode("span", null, toDisplayString(item.completed_year), 1)
+                              ])) : createCommentVNode("", true)
+                            ])
+                          ])
+                        ]);
+                      }), 128))
+                    ])
+                  ]),
+                  createVNode("div", { class: "text-center mt-4" }, [
+                    createVNode(unref(Link), {
+                      href: _ctx.route("use-cases.index"),
+                      class: "thm-btn"
+                    }, {
+                      default: withCtx(() => [
+                        createTextVNode(toDisplayString(trans("View All Use Cases")) + " ", 1),
+                        createVNode("span", {
+                          class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow `
+                        }, null, 2)
+                      ]),
+                      _: 1
+                    }, 8, ["href"])
+                  ])
+                ])
+              ])) : createCommentVNode("", true),
               createVNode("section", { class: "why-choose-two" }, [
                 createVNode("div", { class: "why-choose-two__shape-1 float-bob-y" }, [
                   createVNode("img", {
@@ -2163,7 +2380,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                 ])
               ]),
               teams.value && teams.value.length > 0 ? (openBlock(), createBlock("section", {
-                key: 1,
+                key: 2,
                 class: "team-two d-none"
               }, [
                 createVNode("div", {
@@ -2359,7 +2576,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                 ])
               ]),
               testimonials.value && testimonials.value.length ? (openBlock(), createBlock("section", {
-                key: 2,
+                key: 3,
                 class: "testimonial-one pb-5"
               }, [
                 createVNode("div", { class: "testimonial-one__shape-2 float-bob-y" }, [
@@ -2422,7 +2639,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                 ])
               ])) : createCommentVNode("", true),
               posts.value && posts.value.length ? (openBlock(), createBlock("section", {
-                key: 3,
+                key: 4,
                 class: "blog-two blog-three"
               }, [
                 createVNode("div", { class: "container" }, [
@@ -2459,7 +2676,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                           key: 0,
                           class: "blog-two__left-content-box d-none d-md-block"
                         }, [
-                          createVNode(_sfc_main$n, {
+                          createVNode(_sfc_main$p, {
                             post: featuredPost.value,
                             variant: "featured",
                             locale: locale.value,
@@ -2472,7 +2689,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
                     createVNode("div", { class: "col-xl-6" }, [
                       createVNode("div", { class: "blog-two__right" }, [
                         (openBlock(true), createBlock(Fragment, null, renderList(sidePosts.value, (post, idx) => {
-                          return openBlock(), createBlock(_sfc_main$n, {
+                          return openBlock(), createBlock(_sfc_main$p, {
                             key: post.id || idx,
                             post,
                             variant: "compact",
@@ -2735,22 +2952,533 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
     };
   }
 });
-const _sfc_setup$i = _sfc_main$i.setup;
-_sfc_main$i.setup = (props, ctx) => {
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Base/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$i
+  default: _sfc_main$k
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$c = {
   components: {
-    AppLayout: _sfc_main$j
+    AppLayout: _sfc_main$l
   }
 };
-const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$c, {
+const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$c, {
+  __name: "Index",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const page = usePage();
+    const trans = (key) => page.props.translations[key] || key;
+    const seo = computed(() => page.props.seo);
+    const settings = computed(() => page.props.settings || {});
+    const asset_path = computed(() => page.props.asset_path || "");
+    const locale = computed(() => page.props.locale || "en");
+    const meta = computed(() => page.props.meta || {});
+    const metaTitle = computed(() => {
+      return `${trans("Contact Us")} | ${seo.value.website_name || ""}`.trim();
+    });
+    const metaDescription = computed(() => {
+      return meta.value.description || trans("Contact our team for support, inquiries, or project discussions.") || seo.value.website_desc || "";
+    });
+    const metaKeywords = computed(() => {
+      return meta.value.keywords || trans("contact, support, get in touch, customer service") || seo.value.website_keywords || "";
+    });
+    const metaImage = computed(() => {
+      var _a, _b, _c, _d, _e;
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+    });
+    const metaCanonical = computed(() => meta.value.canonical || "");
+    const metaRobots = computed(() => meta.value.robots || "index, follow");
+    const submitSuccess = ref(false);
+    const contactForm = useForm({
+      name: "",
+      email: "",
+      mobile: "",
+      subject: "",
+      message: ""
+    });
+    const handleSubmit = () => {
+      if (contactForm.processing) {
+        return false;
+      }
+      if (!contactForm.name || !contactForm.name.trim()) {
+        return false;
+      }
+      if (!contactForm.email || !contactForm.email.trim()) {
+        return false;
+      }
+      if (!contactForm.mobile || !contactForm.mobile.trim()) {
+        return false;
+      }
+      if (!contactForm.subject || !contactForm.subject.trim()) {
+        return false;
+      }
+      if (!contactForm.message || !contactForm.message.trim()) {
+        return false;
+      }
+      let contactUrl = route("contact-us.store");
+      contactForm.post(contactUrl, {
+        preserveScroll: true,
+        preserveState: true,
+        onBefore: () => {
+          submitSuccess.value = false;
+        },
+        onSuccess: () => {
+          submitSuccess.value = true;
+          contactForm.reset();
+          contactForm.clearErrors();
+          setTimeout(() => {
+            submitSuccess.value = false;
+          }, 5e3);
+        },
+        onError: () => {
+          submitSuccess.value = false;
+        }
+      });
+      return false;
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
+            if (metaCanonical.value) {
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)}${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)}${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}>`);
+            if (metaImage.value) {
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)}${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (metaCanonical.value) {
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)}${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<meta property="og:type" content="website"${_scopeId}><meta name="twitter:card" content="summary_large_image"${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)}${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}>`);
+            if (metaImage.value) {
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)}${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+          } else {
+            return [
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/page-header.css"
+              }, null, 8, ["href"]),
+              createVNode("title", null, toDisplayString(metaTitle.value), 1),
+              createVNode("meta", {
+                name: "description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "keywords",
+                content: metaKeywords.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "robots",
+                content: metaRobots.value
+              }, null, 8, ["content"]),
+              metaCanonical.value ? (openBlock(), createBlock("link", {
+                key: 0,
+                rel: "canonical",
+                href: metaCanonical.value
+              }, null, 8, ["href"])) : createCommentVNode("", true),
+              createVNode("meta", {
+                property: "og:title",
+                content: metaTitle.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                property: "og:description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              metaImage.value ? (openBlock(), createBlock("meta", {
+                key: 1,
+                property: "og:image",
+                content: metaImage.value
+              }, null, 8, ["content"])) : createCommentVNode("", true),
+              metaCanonical.value ? (openBlock(), createBlock("meta", {
+                key: 2,
+                property: "og:url",
+                content: metaCanonical.value
+              }, null, 8, ["content"])) : createCommentVNode("", true),
+              createVNode("meta", {
+                property: "og:type",
+                content: "website"
+              }),
+              createVNode("meta", {
+                name: "twitter:card",
+                content: "summary_large_image"
+              }),
+              createVNode("meta", {
+                name: "twitter:title",
+                content: metaTitle.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "twitter:description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              metaImage.value ? (openBlock(), createBlock("meta", {
+                key: 3,
+                name: "twitter:image",
+                content: metaImage.value
+              }, null, 8, ["content"])) : createCommentVNode("", true)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(_sfc_main$l, null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("home")
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                } else {
+                  return [
+                    createVNode("i", { class: "fas fa-home" }),
+                    createTextVNode(toDisplayString(trans("Home")), 1)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</li></ul></div></div></div></section><section class="contact-one"${_scopeId}><div class="contact-one__bg-shape" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/contact-one-bg-shape.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6 col-lg-6"${_scopeId}><div class="${ssrRenderClass(`contact-one__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms"${_scopeId}><div class="contact-one__left-shape-1"${_scopeId}></div><div class="contact-one__left-shape-2"${_scopeId}></div><h3 class="contact-one__from-title"${_scopeId}>${ssrInterpolate(trans("How Can We Help You?"))}</h3><form class="contact-one__form"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6 col-lg-6"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h4><div class="contact-one__input-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-user-1"${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}></div>`);
+            if (unref(contactForm).errors.name) {
+              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div><div class="col-xl-6 col-lg-6"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Email"))}</h4><div class="contact-one__input-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-email"${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).email)} type="email" name="email"${ssrRenderAttr("placeholder", trans("Email"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}></div>`);
+            if (unref(contactForm).errors.email) {
+              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div><div class="col-xl-6 col-lg-6"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h4><div class="contact-one__input-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}></div>`);
+            if (unref(contactForm).errors.mobile) {
+              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div><div class="col-xl-6 col-lg-6"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Subject"))}</h4><div class="contact-one__input-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-edit"${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).subject)} type="text" name="subject"${ssrRenderAttr("placeholder", trans("Subject"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}></div>`);
+            if (unref(contactForm).errors.subject) {
+              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div><div class="col-xl-12"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Message"))}</h4><div class="contact-one__input-box text-message-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-edit"${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
+            if (unref(contactForm).errors.message) {
+              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<div class="contact-one__btn-box"${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}"${_scopeId}>`);
+            if (unref(contactForm).processing) {
+              _push2(`<span${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2"${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
+            } else {
+              _push2(`<span${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}"${_scopeId}></i></span>`);
+            }
+            _push2(`</button></div></div>`);
+            if (submitSuccess.value) {
+              _push2(`<div class="col-12 mt-3"${_scopeId}><div class="alert alert-success"${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</form></div></div><div class="col-xl-6 col-lg-6"${_scopeId}><div class="contact-one__right"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${trans("Start the Conversation") + "<span>–</span><br><span>" + trans("Reach Out Anytime") + "</span>"}</h2></div><p class="contact-one__text"${_scopeId}>${ssrInterpolate(trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out"))}</p><ul class="contact-one__list list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h4><p${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Email"))}</h4><p${_scopeId}><a dir="ltr" href="mailto:{{settings.email}}"${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Phone"))}</h4><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)}${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div></div></div></section>`);
+          } else {
+            return [
+              createVNode("section", { class: "page-header" }, [
+                createVNode("div", {
+                  class: "page-header__bg",
+                  style: { backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "page-header__inner" }, [
+                    createVNode("h2", null, toDisplayString(trans("Contact Us")), 1),
+                    createVNode("div", { class: "thm-breadcrumb__box" }, [
+                      createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
+                        createVNode("li", null, [
+                          createVNode(unref(Link), {
+                            href: _ctx.route("home")
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("i", { class: "fas fa-home" }),
+                              createTextVNode(toDisplayString(trans("Home")), 1)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ]),
+                        createVNode("li", null, [
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
+                        ]),
+                        createVNode("li", null, toDisplayString(trans("Contact Us")), 1)
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              createVNode("section", { class: "contact-one" }, [
+                createVNode("div", {
+                  class: "contact-one__bg-shape",
+                  style: { backgroundImage: `url(${asset_path.value}site/images/shapes/contact-one-bg-shape.png)` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "row" }, [
+                    createVNode("div", { class: "col-xl-6 col-lg-6" }, [
+                      createVNode("div", {
+                        class: `contact-one__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`,
+                        "data-wow-delay": "100ms",
+                        "data-wow-duration": "2500ms"
+                      }, [
+                        createVNode("div", { class: "contact-one__left-shape-1" }),
+                        createVNode("div", { class: "contact-one__left-shape-2" }),
+                        createVNode("h3", { class: "contact-one__from-title" }, toDisplayString(trans("How Can We Help You?")), 1),
+                        createVNode("form", {
+                          onSubmit: withModifiers(handleSubmit, ["prevent"]),
+                          class: "contact-one__form"
+                        }, [
+                          createVNode("div", { class: "row" }, [
+                            createVNode("div", { class: "col-xl-6 col-lg-6" }, [
+                              createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Full Name")), 1),
+                              createVNode("div", { class: "contact-one__input-box" }, [
+                                createVNode("div", { class: "contact-one__input-icon" }, [
+                                  createVNode("span", { class: "icon-user-1" })
+                                ]),
+                                withDirectives(createVNode("input", {
+                                  "onUpdate:modelValue": ($event) => unref(contactForm).name = $event,
+                                  type: "text",
+                                  name: "name",
+                                  placeholder: trans("Full Name"),
+                                  class: { "error": unref(contactForm).errors.name },
+                                  disabled: unref(contactForm).processing,
+                                  required: ""
+                                }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
+                                  [vModelText, unref(contactForm).name]
+                                ])
+                              ]),
+                              unref(contactForm).errors.name ? (openBlock(), createBlock("div", {
+                                key: 0,
+                                class: "text-danger mt-1 small"
+                              }, toDisplayString(unref(contactForm).errors.name), 1)) : createCommentVNode("", true)
+                            ]),
+                            createVNode("div", { class: "col-xl-6 col-lg-6" }, [
+                              createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Email")), 1),
+                              createVNode("div", { class: "contact-one__input-box" }, [
+                                createVNode("div", { class: "contact-one__input-icon" }, [
+                                  createVNode("span", { class: "icon-email" })
+                                ]),
+                                withDirectives(createVNode("input", {
+                                  "onUpdate:modelValue": ($event) => unref(contactForm).email = $event,
+                                  type: "email",
+                                  name: "email",
+                                  placeholder: trans("Email"),
+                                  class: { "error": unref(contactForm).errors.email },
+                                  disabled: unref(contactForm).processing,
+                                  required: ""
+                                }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
+                                  [vModelText, unref(contactForm).email]
+                                ])
+                              ]),
+                              unref(contactForm).errors.email ? (openBlock(), createBlock("div", {
+                                key: 0,
+                                class: "text-danger mt-1 small"
+                              }, toDisplayString(unref(contactForm).errors.email), 1)) : createCommentVNode("", true)
+                            ]),
+                            createVNode("div", { class: "col-xl-6 col-lg-6" }, [
+                              createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Phone Number")), 1),
+                              createVNode("div", { class: "contact-one__input-box" }, [
+                                createVNode("div", { class: "contact-one__input-icon" }, [
+                                  createVNode("span", { class: "icon-phone-call" })
+                                ]),
+                                withDirectives(createVNode("input", {
+                                  "onUpdate:modelValue": ($event) => unref(contactForm).mobile = $event,
+                                  type: "text",
+                                  name: "mobile",
+                                  placeholder: trans("Phone Number"),
+                                  class: { "error": unref(contactForm).errors.mobile },
+                                  disabled: unref(contactForm).processing,
+                                  required: ""
+                                }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
+                                  [vModelText, unref(contactForm).mobile]
+                                ])
+                              ]),
+                              unref(contactForm).errors.mobile ? (openBlock(), createBlock("div", {
+                                key: 0,
+                                class: "text-danger mt-1 small"
+                              }, toDisplayString(unref(contactForm).errors.mobile), 1)) : createCommentVNode("", true)
+                            ]),
+                            createVNode("div", { class: "col-xl-6 col-lg-6" }, [
+                              createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Subject")), 1),
+                              createVNode("div", { class: "contact-one__input-box" }, [
+                                createVNode("div", { class: "contact-one__input-icon" }, [
+                                  createVNode("span", { class: "icon-edit" })
+                                ]),
+                                withDirectives(createVNode("input", {
+                                  "onUpdate:modelValue": ($event) => unref(contactForm).subject = $event,
+                                  type: "text",
+                                  name: "subject",
+                                  placeholder: trans("Subject"),
+                                  class: { "error": unref(contactForm).errors.subject },
+                                  disabled: unref(contactForm).processing,
+                                  required: ""
+                                }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
+                                  [vModelText, unref(contactForm).subject]
+                                ])
+                              ]),
+                              unref(contactForm).errors.subject ? (openBlock(), createBlock("div", {
+                                key: 0,
+                                class: "text-danger mt-1 small"
+                              }, toDisplayString(unref(contactForm).errors.subject), 1)) : createCommentVNode("", true)
+                            ])
+                          ]),
+                          createVNode("div", { class: "col-xl-12" }, [
+                            createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Message")), 1),
+                            createVNode("div", { class: "contact-one__input-box text-message-box" }, [
+                              createVNode("div", { class: "contact-one__input-icon" }, [
+                                createVNode("span", { class: "icon-edit" })
+                              ]),
+                              withDirectives(createVNode("textarea", {
+                                "onUpdate:modelValue": ($event) => unref(contactForm).message = $event,
+                                name: "message",
+                                placeholder: trans("Write your message"),
+                                class: { "error": unref(contactForm).errors.message },
+                                disabled: unref(contactForm).processing,
+                                required: ""
+                              }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
+                                [vModelText, unref(contactForm).message]
+                              ])
+                            ]),
+                            unref(contactForm).errors.message ? (openBlock(), createBlock("div", {
+                              key: 0,
+                              class: "text-danger mt-1 small"
+                            }, toDisplayString(unref(contactForm).errors.message), 1)) : createCommentVNode("", true),
+                            createVNode("div", { class: "contact-one__btn-box" }, [
+                              createVNode("button", {
+                                type: "submit",
+                                class: ["thm-btn", { "opacity-50": unref(contactForm).processing }],
+                                disabled: unref(contactForm).processing
+                              }, [
+                                unref(contactForm).processing ? (openBlock(), createBlock("span", { key: 0 }, [
+                                  createVNode("i", { class: "fa-solid fa-spinner fa-spin me-2" }),
+                                  createTextVNode(toDisplayString(trans("Sending...")), 1)
+                                ])) : (openBlock(), createBlock("span", { key: 1 }, [
+                                  createVNode("span", null, toDisplayString(trans("Submit")), 1),
+                                  createTextVNode(),
+                                  createVNode("i", {
+                                    class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`
+                                  }, null, 2)
+                                ]))
+                              ], 10, ["disabled"])
+                            ])
+                          ]),
+                          submitSuccess.value ? (openBlock(), createBlock("div", {
+                            key: 0,
+                            class: "col-12 mt-3"
+                          }, [
+                            createVNode("div", { class: "alert alert-success" }, toDisplayString(trans("Thank you for contacting us! We will get back to you soon.")), 1)
+                          ])) : createCommentVNode("", true)
+                        ], 32)
+                      ], 2)
+                    ]),
+                    createVNode("div", { class: "col-xl-6 col-lg-6" }, [
+                      createVNode("div", { class: "contact-one__right" }, [
+                        createVNode("div", { class: "section-title text-left sec-title-animation animation-style2" }, [
+                          createVNode("div", { class: "section-title__tagline-box" }, [
+                            createVNode("div", { class: "section-title__tagline-shape-1" }),
+                            createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Get In Touch")), 1),
+                            createVNode("div", { class: "section-title__tagline-shape-2" })
+                          ]),
+                          createVNode("h2", {
+                            class: "section-title__title title-animation",
+                            innerHTML: trans("Start the Conversation") + "<span>–</span><br><span>" + trans("Reach Out Anytime") + "</span>"
+                          }, null, 8, ["innerHTML"])
+                        ]),
+                        createVNode("p", { class: "contact-one__text" }, toDisplayString(trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out")), 1),
+                        createVNode("ul", { class: "contact-one__list list-unstyled" }, [
+                          createVNode("li", null, [
+                            createVNode("div", { class: "icon" }, [
+                              createVNode("span", { class: "icon-pin" })
+                            ]),
+                            createVNode("div", { class: "content" }, [
+                              createVNode("h4", null, toDisplayString(trans("Our Location")), 1),
+                              createVNode("p", null, toDisplayString(settings.value.address), 1)
+                            ])
+                          ]),
+                          createVNode("li", null, [
+                            createVNode("div", { class: "icon" }, [
+                              createVNode("span", { class: "icon-mail" })
+                            ]),
+                            createVNode("div", { class: "content" }, [
+                              createVNode("h4", null, toDisplayString(trans("Email")), 1),
+                              createVNode("p", null, [
+                                createVNode("a", {
+                                  dir: "ltr",
+                                  href: "mailto:{{settings.email}}"
+                                }, toDisplayString(settings.value.email), 1)
+                              ])
+                            ])
+                          ]),
+                          createVNode("li", null, [
+                            createVNode("div", { class: "icon" }, [
+                              createVNode("span", { class: "icon-phone-call" })
+                            ]),
+                            createVNode("div", { class: "content" }, [
+                              createVNode("h4", null, toDisplayString(trans("Phone")), 1),
+                              createVNode("p", null, [
+                                createVNode("a", {
+                                  dir: "ltr",
+                                  href: `tel:${settings.value.phone}`
+                                }, toDisplayString(settings.value.phone), 9, ["href"])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<!--]-->`);
+    };
+  }
+});
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/CRM/resources/assets/js/Pages/Index.vue");
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+};
+const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$j
+}, Symbol.toStringTag, { value: "Module" }));
+const __default__$b = {
+  components: {
+    AppLayout: _sfc_main$l
+  }
+};
+const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$b, {
   __name: "AboutUs",
   __ssrInlineRender: true,
   setup(__props) {
@@ -2965,7 +3693,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$c, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("About Us"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -3577,17 +4305,17 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$c, {
     };
   }
 });
-const _sfc_setup$h = _sfc_main$h.setup;
-_sfc_main$h.setup = (props, ctx) => {
+const _sfc_setup$i = _sfc_main$i.setup;
+_sfc_main$i.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/AboutUs.vue");
-  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
+  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
-const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$h
+  default: _sfc_main$i
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$g = {
+const _sfc_main$h = {
   __name: "CtaTwo",
   __ssrInlineRender: true,
   setup(__props) {
@@ -3620,20 +4348,20 @@ const _sfc_main$g = {
     };
   }
 };
-const _sfc_setup$g = _sfc_main$g.setup;
-_sfc_main$g.setup = (props, ctx) => {
+const _sfc_setup$h = _sfc_main$h.setup;
+_sfc_main$h.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/CtaTwo.vue");
-  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
+  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
-const __default__$b = {
+const __default__$a = {
   components: {
-    AppLayout: _sfc_main$j,
-    HomeBlogCard: _sfc_main$n,
-    CtaTwo: _sfc_main$g
+    AppLayout: _sfc_main$l,
+    HomeBlogCard: _sfc_main$p,
+    CtaTwo: _sfc_main$h
   }
 };
-const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
+const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
   __name: "BlogIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -3756,7 +4484,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -3780,7 +4508,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
               _push2(`<!--[-->`);
               ssrRenderList(blogs.value.data, (blog) => {
                 _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$n, {
+                _push2(ssrRenderComponent(_sfc_main$p, {
                   post: blog,
                   variant: "featured",
                   locale: locale.value,
@@ -3870,7 +4598,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$g, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -3925,7 +4653,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
                         class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
                         "data-wow-delay": "100ms"
                       }, [
-                        createVNode(_sfc_main$n, {
+                        createVNode(_sfc_main$p, {
                           post: blog,
                           variant: "featured",
                           locale: locale.value,
@@ -4001,7 +4729,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$g)
+              createVNode(_sfc_main$h)
             ];
           }
         }),
@@ -4011,24 +4739,24 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
     };
   }
 });
-const _sfc_setup$f = _sfc_main$f.setup;
-_sfc_main$f.setup = (props, ctx) => {
+const _sfc_setup$g = _sfc_main$g.setup;
+_sfc_main$g.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogIndex.vue");
-  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
+  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$f
+  default: _sfc_main$g
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$a = {
+const __default__$9 = {
   components: {
-    AppLayout: _sfc_main$j,
-    HomeBlogCard: _sfc_main$n,
-    CtaTwo: _sfc_main$g
+    AppLayout: _sfc_main$l,
+    HomeBlogCard: _sfc_main$p,
+    CtaTwo: _sfc_main$h
   }
 };
-const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
+const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$9, {
   __name: "BlogShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4089,7 +4817,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Blog Details"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4268,7 +4996,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
               _push2(`<div class="container"${_scopeId}><div class="related-blogs mt-20 mt-xs-10"${_scopeId}><h4 class="mb-5"${_scopeId}>${ssrInterpolate(trans("Related Blogs"))}:</h4><div class="row"${_scopeId}><!--[-->`);
               ssrRenderList(relatedBlogs.value, (relatedBlog) => {
                 _push2(`<div class="col-md-4 mb-30"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$n, {
+                _push2(ssrRenderComponent(_sfc_main$p, {
                   post: relatedBlog,
                   variant: "featured",
                   locale: locale.value,
@@ -4282,7 +5010,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
               _push2(`<!---->`);
             }
             _push2(`</section>`);
-            _push2(ssrRenderComponent(_sfc_main$g, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -4571,7 +5299,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
                           key: relatedBlog.id,
                           class: "col-md-4 mb-30"
                         }, [
-                          createVNode(_sfc_main$n, {
+                          createVNode(_sfc_main$p, {
                             post: relatedBlog,
                             variant: "featured",
                             locale: locale.value,
@@ -4584,7 +5312,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
                   ])
                 ])) : createCommentVNode("", true)
               ]),
-              createVNode(_sfc_main$g)
+              createVNode(_sfc_main$h)
             ];
           }
         }),
@@ -4594,23 +5322,23 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
     };
   }
 });
-const _sfc_setup$e = _sfc_main$e.setup;
-_sfc_main$e.setup = (props, ctx) => {
+const _sfc_setup$f = _sfc_main$f.setup;
+_sfc_main$f.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogShow.vue");
-  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
+  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
-const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$e
+  default: _sfc_main$f
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$9 = {
+const __default__$8 = {
   components: {
-    AppLayout: _sfc_main$j,
-    CtaTwo: _sfc_main$g
+    AppLayout: _sfc_main$l,
+    CtaTwo: _sfc_main$h
   }
 };
-const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
+const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$8, {
   __name: "Faq",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4847,7 +5575,7 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-7a46cae7${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-7a46cae7${_scopeId}></div><div class="container" data-v-7a46cae7${_scopeId}><div class="page-header__inner" data-v-7a46cae7${_scopeId}><h2 data-v-7a46cae7${_scopeId}>${trans("FAQs") ?? ""}</h2><div class="thm-breadcrumb__box" data-v-7a46cae7${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-7a46cae7${_scopeId}><li data-v-7a46cae7${_scopeId}>`);
@@ -4881,7 +5609,7 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
               _push2(`<div class="text-center py-5" data-v-7a46cae7${_scopeId}><p data-v-7a46cae7${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$g, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -4975,7 +5703,7 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$g)
+              createVNode(_sfc_main$h)
             ];
           }
         }),
@@ -4985,23 +5713,23 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
     };
   }
 });
-const _sfc_setup$d = _sfc_main$d.setup;
-_sfc_main$d.setup = (props, ctx) => {
+const _sfc_setup$e = _sfc_main$e.setup;
+_sfc_main$e.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Faq.vue");
-  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
+  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
-const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-7a46cae7"]]);
-const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-7a46cae7"]]);
+const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Faq
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$8 = {
+const __default__$7 = {
   components: {
-    AppLayout: _sfc_main$j
+    AppLayout: _sfc_main$l
   }
 };
-const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$8, {
+const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$7, {
   __name: "PageShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5035,7 +5763,7 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$8, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5118,22 +5846,22 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$8, {
     };
   }
 });
-const _sfc_setup$c = _sfc_main$c.setup;
-_sfc_main$c.setup = (props, ctx) => {
+const _sfc_setup$d = _sfc_main$d.setup;
+_sfc_main$d.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PageShow.vue");
-  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$c
+  default: _sfc_main$d
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$7 = {
+const __default__$6 = {
   components: {
-    AppLayout: _sfc_main$j
+    AppLayout: _sfc_main$l
   }
 };
-const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
+const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$6, {
   __name: "PrivacyPolicy",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5255,7 +5983,7 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f;
           if (_push2) {
@@ -5442,23 +6170,23 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
     };
   }
 });
-const _sfc_setup$b = _sfc_main$b.setup;
-_sfc_main$b.setup = (props, ctx) => {
+const _sfc_setup$c = _sfc_main$c.setup;
+_sfc_main$c.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue");
-  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-b99b5a4e"]]);
-const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-b99b5a4e"]]);
+const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: PrivacyPolicy
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$6 = {
+const __default__$5 = {
   components: {
-    AppLayout: _sfc_main$j
+    AppLayout: _sfc_main$l
   }
 };
-const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
+const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$5, {
   __name: "Team",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5603,7 +6331,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5787,22 +6515,22 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
     };
   }
 });
-const _sfc_setup$a = _sfc_main$a.setup;
-_sfc_main$a.setup = (props, ctx) => {
+const _sfc_setup$b = _sfc_main$b.setup;
+_sfc_main$b.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Team.vue");
-  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
+  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$a
+  default: _sfc_main$b
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$5 = {
+const __default__$4 = {
   components: {
-    AppLayout: _sfc_main$j
+    AppLayout: _sfc_main$l
   }
 };
-const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
+const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$4, {
   __name: "Testimonials",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5940,7 +6668,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6074,23 +6802,758 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
     };
   }
 });
+const _sfc_setup$a = _sfc_main$a.setup;
+_sfc_main$a.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Testimonials.vue");
+  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
+};
+const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$a
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$9 = {
+  __name: "UseCaseIndex",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const page = usePage();
+    const trans = (key) => page.props.translations[key] || key;
+    const asset_path = computed(() => page.props.asset_path || "");
+    const locale = computed(() => page.props.locale);
+    const useCases = computed(() => page.props.useCases || { data: [] });
+    const meta = computed(() => page.props.meta || {});
+    const metaTitle = computed(() => meta.value.title || trans("Use Cases"));
+    const metaDescription = computed(() => meta.value.description || "");
+    const metaKeywords = computed(() => meta.value.keywords || "");
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_app_layout = resolveComponent("app-layout");
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/portfolio.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}>`);
+          } else {
+            return [
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/page-header.css"
+              }, null, 8, ["href"]),
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/portfolio.css"
+              }, null, 8, ["href"]),
+              createVNode("title", null, toDisplayString(metaTitle.value), 1),
+              createVNode("meta", {
+                name: "description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "keywords",
+                content: metaKeywords.value
+              }, null, 8, ["content"])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(_component_app_layout, null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/page-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("home")
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                } else {
+                  return [
+                    createVNode("i", { class: "fas fa-home" }),
+                    createTextVNode(toDisplayString(trans("Home")), 1)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</li></ul></div></div></div></div><section class="portfolio-page"${_scopeId}><h2 class="portfolio-one__big-text"${_scopeId}>use cases</h2><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2></div><div class="portfolio-one__bottom"${_scopeId}><div class="row"${_scopeId}><!--[-->`);
+            ssrRenderList(useCases.value.data, (item) => {
+              _push2(`<div class="col-xl-4 col-lg-6 col-md-6"${_scopeId}><div class="portfolio-one__single"${_scopeId}><div class="portfolio-one__img-box"${_scopeId}><div class="portfolio-one__img"${_scopeId}><img${ssrRenderAttr("src", item.image_link)}${ssrRenderAttr("alt", item.title)}${_scopeId}>`);
+              if (item.category_tag || item.technologies && item.technologies.length) {
+                _push2(`<div class="portfolio-one__tag"${_scopeId}>`);
+                if (item.category_tag) {
+                  _push2(`<span${_scopeId}>${ssrInterpolate(item.category_tag)}</span>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`<!--[-->`);
+                ssrRenderList((item.technologies || []).slice(0, 2), (tech) => {
+                  _push2(`<span${_scopeId}>${ssrInterpolate(tech)}</span>`);
+                });
+                _push2(`<!--]--></div>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</div></div><div class="portfolio-one__content"${_scopeId}><div class="portfolio-one__title-box"${_scopeId}><h3 class="portfolio-one__title"${_scopeId}>`);
+              _push2(ssrRenderComponent(unref(Link), {
+                href: _ctx.route("use-cases.show", item.slug)
+              }, {
+                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  if (_push3) {
+                    _push3(`${ssrInterpolate(item.title)}`);
+                  } else {
+                    return [
+                      createTextVNode(toDisplayString(item.title), 1)
+                    ];
+                  }
+                }),
+                _: 2
+              }, _parent2, _scopeId));
+              _push2(`</h3><p class="portfolio-one__text"${_scopeId}>${ssrInterpolate(item.summary)}</p></div><div class="portfolio-one__arrow"${_scopeId}>`);
+              _push2(ssrRenderComponent(unref(Link), {
+                href: _ctx.route("use-cases.show", item.slug)
+              }, {
+                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  if (_push3) {
+                    _push3(`<span class="icon-right-arrow"${_scopeId2}></span>`);
+                  } else {
+                    return [
+                      createVNode("span", { class: "icon-right-arrow" })
+                    ];
+                  }
+                }),
+                _: 2
+              }, _parent2, _scopeId));
+              _push2(`</div>`);
+              if (item.completed_year) {
+                _push2(`<div class="portfolio-one__year"${_scopeId}><span${_scopeId}>${ssrInterpolate(item.completed_year)}</span></div>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</div></div></div>`);
+            });
+            _push2(`<!--]--></div>`);
+            if (!useCases.value.data.length) {
+              _push2(`<div class="text-center py-5"${_scopeId}><h3 class="text-muted"${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCases.value.last_page > 1) {
+              _push2(`<div class="blog-page__pagination mt-5"${_scopeId}><ul class="pg-pagination list-unstyled"${_scopeId}>`);
+              if (useCases.value.prev_page_url) {
+                _push2(`<li class="prev"${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: useCases.value.prev_page_url
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`<span class="icon-left-arrow-1"${_scopeId2}></span>`);
+                    } else {
+                      return [
+                        createVNode("span", { class: "icon-left-arrow-1" })
+                      ];
+                    }
+                  }),
+                  _: 1
+                }, _parent2, _scopeId));
+                _push2(`</li>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`<!--[-->`);
+              ssrRenderList(useCases.value.links, (link, index) => {
+                _push2(`<!--[-->`);
+                if (link.url && index > 0 && index < useCases.value.links.length - 1) {
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}"${_scopeId}>`);
+                  _push2(ssrRenderComponent(unref(Link), {
+                    href: link.url
+                  }, {
+                    default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                      if (_push3) {
+                        _push3(`${ssrInterpolate(link.label)}`);
+                      } else {
+                        return [
+                          createTextVNode(toDisplayString(link.label), 1)
+                        ];
+                      }
+                    }),
+                    _: 2
+                  }, _parent2, _scopeId));
+                  _push2(`</li>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`<!--]-->`);
+              });
+              _push2(`<!--]-->`);
+              if (useCases.value.next_page_url) {
+                _push2(`<li class="next"${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: useCases.value.next_page_url
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId2}></span>`);
+                    } else {
+                      return [
+                        createVNode("span", {
+                          class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                        }, null, 2)
+                      ];
+                    }
+                  }),
+                  _: 1
+                }, _parent2, _scopeId));
+                _push2(`</li>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</ul></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div></section>`);
+          } else {
+            return [
+              createVNode("div", { class: "page-header" }, [
+                createVNode("div", {
+                  class: "page-header__bg",
+                  style: { backgroundImage: `url(${asset_path.value}images/backgrounds/page-header-bg.jpg)` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "page-header__inner" }, [
+                    createVNode("h2", null, toDisplayString(trans("Use Cases")), 1),
+                    createVNode("div", { class: "thm-breadcrumb__box" }, [
+                      createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
+                        createVNode("li", null, [
+                          createVNode(unref(Link), {
+                            href: _ctx.route("home")
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("i", { class: "fas fa-home" }),
+                              createTextVNode(toDisplayString(trans("Home")), 1)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ]),
+                        createVNode("li", null, [
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
+                        ]),
+                        createVNode("li", null, toDisplayString(trans("Use Cases")), 1)
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              createVNode("section", { class: "portfolio-page" }, [
+                createVNode("h2", { class: "portfolio-one__big-text" }, "use cases"),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "section-title text-center sec-title-animation animation-style1" }, [
+                    createVNode("div", { class: "section-title__tagline-box" }, [
+                      createVNode("div", { class: "section-title__tagline-shape-1" }),
+                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Use Cases")), 1),
+                      createVNode("div", { class: "section-title__tagline-shape-2" })
+                    ]),
+                    createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("How We've Empowered Businesses with Innovative Tech Solutions")), 1)
+                  ]),
+                  createVNode("div", { class: "portfolio-one__bottom" }, [
+                    createVNode("div", { class: "row" }, [
+                      (openBlock(true), createBlock(Fragment, null, renderList(useCases.value.data, (item) => {
+                        return openBlock(), createBlock("div", {
+                          key: item.id,
+                          class: "col-xl-4 col-lg-6 col-md-6"
+                        }, [
+                          createVNode("div", { class: "portfolio-one__single" }, [
+                            createVNode("div", { class: "portfolio-one__img-box" }, [
+                              createVNode("div", { class: "portfolio-one__img" }, [
+                                createVNode("img", {
+                                  src: item.image_link,
+                                  alt: item.title
+                                }, null, 8, ["src", "alt"]),
+                                item.category_tag || item.technologies && item.technologies.length ? (openBlock(), createBlock("div", {
+                                  key: 0,
+                                  class: "portfolio-one__tag"
+                                }, [
+                                  item.category_tag ? (openBlock(), createBlock("span", { key: 0 }, toDisplayString(item.category_tag), 1)) : createCommentVNode("", true),
+                                  (openBlock(true), createBlock(Fragment, null, renderList((item.technologies || []).slice(0, 2), (tech) => {
+                                    return openBlock(), createBlock("span", { key: tech }, toDisplayString(tech), 1);
+                                  }), 128))
+                                ])) : createCommentVNode("", true)
+                              ])
+                            ]),
+                            createVNode("div", { class: "portfolio-one__content" }, [
+                              createVNode("div", { class: "portfolio-one__title-box" }, [
+                                createVNode("h3", { class: "portfolio-one__title" }, [
+                                  createVNode(unref(Link), {
+                                    href: _ctx.route("use-cases.show", item.slug)
+                                  }, {
+                                    default: withCtx(() => [
+                                      createTextVNode(toDisplayString(item.title), 1)
+                                    ]),
+                                    _: 2
+                                  }, 1032, ["href"])
+                                ]),
+                                createVNode("p", { class: "portfolio-one__text" }, toDisplayString(item.summary), 1)
+                              ]),
+                              createVNode("div", { class: "portfolio-one__arrow" }, [
+                                createVNode(unref(Link), {
+                                  href: _ctx.route("use-cases.show", item.slug)
+                                }, {
+                                  default: withCtx(() => [
+                                    createVNode("span", { class: "icon-right-arrow" })
+                                  ]),
+                                  _: 1
+                                }, 8, ["href"])
+                              ]),
+                              item.completed_year ? (openBlock(), createBlock("div", {
+                                key: 0,
+                                class: "portfolio-one__year"
+                              }, [
+                                createVNode("span", null, toDisplayString(item.completed_year), 1)
+                              ])) : createCommentVNode("", true)
+                            ])
+                          ])
+                        ]);
+                      }), 128))
+                    ]),
+                    !useCases.value.data.length ? (openBlock(), createBlock("div", {
+                      key: 0,
+                      class: "text-center py-5"
+                    }, [
+                      createVNode("h3", { class: "text-muted" }, toDisplayString(trans("No records found")), 1)
+                    ])) : createCommentVNode("", true),
+                    useCases.value.last_page > 1 ? (openBlock(), createBlock("div", {
+                      key: 1,
+                      class: "blog-page__pagination mt-5"
+                    }, [
+                      createVNode("ul", { class: "pg-pagination list-unstyled" }, [
+                        useCases.value.prev_page_url ? (openBlock(), createBlock("li", {
+                          key: 0,
+                          class: "prev"
+                        }, [
+                          createVNode(unref(Link), {
+                            href: useCases.value.prev_page_url
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("span", { class: "icon-left-arrow-1" })
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ])) : createCommentVNode("", true),
+                        (openBlock(true), createBlock(Fragment, null, renderList(useCases.value.links, (link, index) => {
+                          return openBlock(), createBlock(Fragment, { key: index }, [
+                            link.url && index > 0 && index < useCases.value.links.length - 1 ? (openBlock(), createBlock("li", {
+                              key: 0,
+                              class: ["count", link.active ? "active" : ""]
+                            }, [
+                              createVNode(unref(Link), {
+                                href: link.url
+                              }, {
+                                default: withCtx(() => [
+                                  createTextVNode(toDisplayString(link.label), 1)
+                                ]),
+                                _: 2
+                              }, 1032, ["href"])
+                            ], 2)) : createCommentVNode("", true)
+                          ], 64);
+                        }), 128)),
+                        useCases.value.next_page_url ? (openBlock(), createBlock("li", {
+                          key: 1,
+                          class: "next"
+                        }, [
+                          createVNode(unref(Link), {
+                            href: useCases.value.next_page_url
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("span", {
+                                class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                              }, null, 2)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ])) : createCommentVNode("", true)
+                      ])
+                    ])) : createCommentVNode("", true)
+                  ])
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<!--]-->`);
+    };
+  }
+};
 const _sfc_setup$9 = _sfc_main$9.setup;
 _sfc_main$9.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Testimonials.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue");
   return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$9
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$4 = {
-  components: {
-    AppLayout: _sfc_main$j,
-    CtaTwo: _sfc_main$g
+const _sfc_main$8 = {
+  __name: "UseCaseShow",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const page = usePage();
+    const trans = (key) => page.props.translations[key] || key;
+    const asset_path = computed(() => page.props.asset_path || "");
+    const locale = computed(() => page.props.locale);
+    const useCase = computed(() => page.props.useCase || {});
+    const relatedUseCases = computed(() => page.props.relatedUseCases || []);
+    const meta = computed(() => page.props.meta || {});
+    const metaTitle = computed(() => meta.value.title || useCase.value.title || "");
+    const metaDescription = computed(() => meta.value.description || useCase.value.summary || "");
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_app_layout = resolveComponent("app-layout");
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/portfolio.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}>`);
+          } else {
+            return [
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/page-header.css"
+              }, null, 8, ["href"]),
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/portfolio.css"
+              }, null, 8, ["href"]),
+              createVNode("title", null, toDisplayString(metaTitle.value), 1),
+              createVNode("meta", {
+                name: "description",
+                content: metaDescription.value
+              }, null, 8, ["content"])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(_component_app_layout, null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${useCase.value.image_link})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("home")
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                } else {
+                  return [
+                    createVNode("i", { class: "fas fa-home" }),
+                    createTextVNode(toDisplayString(trans("Home")), 1)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("use-cases.index")
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`${ssrInterpolate(trans("Use Cases"))}`);
+                } else {
+                  return [
+                    createTextVNode(toDisplayString(trans("Use Cases")), 1)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(useCase.value.title)}</li></ul></div></div></div></div><section class="portfolio-details"${_scopeId}><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-12"${_scopeId}><div class="portfolio-details__top"${_scopeId}><div class="portfolio-details__title-and-social"${_scopeId}><h3 class="portfolio-details__top-title"${_scopeId}>${useCase.value.title ?? ""}</h3></div></div><ul class="portfolio-details__portfolio-list list-unstyled mb-5"${_scopeId}>`);
+            if (useCase.value.client_name) {
+              _push2(`<li${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Client"))}</span><p${_scopeId}>${ssrInterpolate(useCase.value.client_name)}</p></li>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCase.value.completed_year) {
+              _push2(`<li${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Year"))}</span><p${_scopeId}>${ssrInterpolate(useCase.value.completed_year)}</p></li>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCase.value.category_tag) {
+              _push2(`<li${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Category"))}</span><p${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</p></li>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</ul><div class="portfolio-details__img-1 mb-5"${_scopeId}><img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)}${_scopeId}></div>`);
+            if (useCase.value.summary) {
+              _push2(`<p class="portfolio-details__text-1"${_scopeId}>${ssrInterpolate(useCase.value.summary)}</p>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCase.value.challenge) {
+              _push2(`<div class="mb-5"${_scopeId}><h4 class="portfolio-details__title-1"${_scopeId}>${ssrInterpolate(trans("The Challenge"))}</h4><p class="portfolio-details__text-1"${_scopeId}>${ssrInterpolate(useCase.value.challenge)}</p></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCase.value.solution) {
+              _push2(`<div class="mb-5"${_scopeId}><h4 class="portfolio-details__title-2"${_scopeId}>${ssrInterpolate(trans("Our Solution"))}</h4><p class="portfolio-details__text-2"${_scopeId}>${ssrInterpolate(useCase.value.solution)}</p></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCase.value.results) {
+              _push2(`<div class="mb-5"${_scopeId}><h4 class="portfolio-details__title-2"${_scopeId}>${ssrInterpolate(trans("The Results"))}</h4><p class="portfolio-details__text-3"${_scopeId}>${ssrInterpolate(useCase.value.results)}</p></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCase.value.content) {
+              _push2(`<div class="content mb-5"${_scopeId}>${useCase.value.content ?? ""}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCase.value.technologies && useCase.value.technologies.length) {
+              _push2(`<div class="mb-5"${_scopeId}><h4 class="portfolio-details__title-3"${_scopeId}>${ssrInterpolate(trans("Technologies Used"))}</h4><div class="d-flex flex-wrap gap-2"${_scopeId}><!--[-->`);
+              ssrRenderList(useCase.value.technologies, (tech) => {
+                _push2(`<span class="badge bg-primary"${_scopeId}>${ssrInterpolate(tech)}</span>`);
+              });
+              _push2(`<!--]--></div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (useCase.value.project_url) {
+              _push2(`<a${ssrRenderAttr("href", useCase.value.project_url)} target="_blank" rel="noopener" class="thm-btn mb-5"${_scopeId}>${ssrInterpolate(trans("Visit Live Project"))} <span class="icon-right-arrow"${_scopeId}></span></a>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (relatedUseCases.value.length) {
+              _push2(`<div class="mt-5"${_scopeId}><h4 class="portfolio-details__title-3 mb-4"${_scopeId}>${ssrInterpolate(trans("More Case Studies"))}</h4><div class="row"${_scopeId}><!--[-->`);
+              ssrRenderList(relatedUseCases.value, (item) => {
+                _push2(`<div class="col-md-4 mb-4"${_scopeId}><div class="portfolio-one__single"${_scopeId}><div class="portfolio-one__img-box"${_scopeId}><div class="portfolio-one__img"${_scopeId}><img${ssrRenderAttr("src", item.image_link)}${ssrRenderAttr("alt", item.title)}${_scopeId}></div></div><div class="portfolio-one__content"${_scopeId}><h3 class="portfolio-one__title"${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: _ctx.route("use-cases.show", item.slug)
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`${ssrInterpolate(item.title)}`);
+                    } else {
+                      return [
+                        createTextVNode(toDisplayString(item.title), 1)
+                      ];
+                    }
+                  }),
+                  _: 2
+                }, _parent2, _scopeId));
+                _push2(`</h3></div></div></div>`);
+              });
+              _push2(`<!--]--></div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div></div></section>`);
+          } else {
+            return [
+              createVNode("div", { class: "page-header" }, [
+                createVNode("div", {
+                  class: "page-header__bg",
+                  style: { backgroundImage: `url(${useCase.value.image_link})` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "page-header__inner" }, [
+                    createVNode("h2", null, toDisplayString(useCase.value.title), 1),
+                    createVNode("div", { class: "thm-breadcrumb__box" }, [
+                      createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
+                        createVNode("li", null, [
+                          createVNode(unref(Link), {
+                            href: _ctx.route("home")
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("i", { class: "fas fa-home" }),
+                              createTextVNode(toDisplayString(trans("Home")), 1)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ]),
+                        createVNode("li", null, [
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
+                        ]),
+                        createVNode("li", null, [
+                          createVNode(unref(Link), {
+                            href: _ctx.route("use-cases.index")
+                          }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(trans("Use Cases")), 1)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ]),
+                        createVNode("li", null, [
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
+                        ]),
+                        createVNode("li", null, toDisplayString(useCase.value.title), 1)
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              createVNode("section", { class: "portfolio-details" }, [
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "row" }, [
+                    createVNode("div", { class: "col-xl-12" }, [
+                      createVNode("div", { class: "portfolio-details__top" }, [
+                        createVNode("div", { class: "portfolio-details__title-and-social" }, [
+                          createVNode("h3", {
+                            class: "portfolio-details__top-title",
+                            innerHTML: useCase.value.title
+                          }, null, 8, ["innerHTML"])
+                        ])
+                      ]),
+                      createVNode("ul", { class: "portfolio-details__portfolio-list list-unstyled mb-5" }, [
+                        useCase.value.client_name ? (openBlock(), createBlock("li", { key: 0 }, [
+                          createVNode("span", null, toDisplayString(trans("Client")), 1),
+                          createVNode("p", null, toDisplayString(useCase.value.client_name), 1)
+                        ])) : createCommentVNode("", true),
+                        useCase.value.completed_year ? (openBlock(), createBlock("li", { key: 1 }, [
+                          createVNode("span", null, toDisplayString(trans("Year")), 1),
+                          createVNode("p", null, toDisplayString(useCase.value.completed_year), 1)
+                        ])) : createCommentVNode("", true),
+                        useCase.value.category_tag ? (openBlock(), createBlock("li", { key: 2 }, [
+                          createVNode("span", null, toDisplayString(trans("Category")), 1),
+                          createVNode("p", null, toDisplayString(useCase.value.category_tag), 1)
+                        ])) : createCommentVNode("", true)
+                      ]),
+                      createVNode("div", { class: "portfolio-details__img-1 mb-5" }, [
+                        createVNode("img", {
+                          src: useCase.value.image_link,
+                          alt: useCase.value.title
+                        }, null, 8, ["src", "alt"])
+                      ]),
+                      useCase.value.summary ? (openBlock(), createBlock("p", {
+                        key: 0,
+                        class: "portfolio-details__text-1"
+                      }, toDisplayString(useCase.value.summary), 1)) : createCommentVNode("", true),
+                      useCase.value.challenge ? (openBlock(), createBlock("div", {
+                        key: 1,
+                        class: "mb-5"
+                      }, [
+                        createVNode("h4", { class: "portfolio-details__title-1" }, toDisplayString(trans("The Challenge")), 1),
+                        createVNode("p", { class: "portfolio-details__text-1" }, toDisplayString(useCase.value.challenge), 1)
+                      ])) : createCommentVNode("", true),
+                      useCase.value.solution ? (openBlock(), createBlock("div", {
+                        key: 2,
+                        class: "mb-5"
+                      }, [
+                        createVNode("h4", { class: "portfolio-details__title-2" }, toDisplayString(trans("Our Solution")), 1),
+                        createVNode("p", { class: "portfolio-details__text-2" }, toDisplayString(useCase.value.solution), 1)
+                      ])) : createCommentVNode("", true),
+                      useCase.value.results ? (openBlock(), createBlock("div", {
+                        key: 3,
+                        class: "mb-5"
+                      }, [
+                        createVNode("h4", { class: "portfolio-details__title-2" }, toDisplayString(trans("The Results")), 1),
+                        createVNode("p", { class: "portfolio-details__text-3" }, toDisplayString(useCase.value.results), 1)
+                      ])) : createCommentVNode("", true),
+                      useCase.value.content ? (openBlock(), createBlock("div", {
+                        key: 4,
+                        class: "content mb-5",
+                        innerHTML: useCase.value.content
+                      }, null, 8, ["innerHTML"])) : createCommentVNode("", true),
+                      useCase.value.technologies && useCase.value.technologies.length ? (openBlock(), createBlock("div", {
+                        key: 5,
+                        class: "mb-5"
+                      }, [
+                        createVNode("h4", { class: "portfolio-details__title-3" }, toDisplayString(trans("Technologies Used")), 1),
+                        createVNode("div", { class: "d-flex flex-wrap gap-2" }, [
+                          (openBlock(true), createBlock(Fragment, null, renderList(useCase.value.technologies, (tech) => {
+                            return openBlock(), createBlock("span", {
+                              key: tech,
+                              class: "badge bg-primary"
+                            }, toDisplayString(tech), 1);
+                          }), 128))
+                        ])
+                      ])) : createCommentVNode("", true),
+                      useCase.value.project_url ? (openBlock(), createBlock("a", {
+                        key: 6,
+                        href: useCase.value.project_url,
+                        target: "_blank",
+                        rel: "noopener",
+                        class: "thm-btn mb-5"
+                      }, [
+                        createTextVNode(toDisplayString(trans("Visit Live Project")) + " ", 1),
+                        createVNode("span", { class: "icon-right-arrow" })
+                      ], 8, ["href"])) : createCommentVNode("", true),
+                      relatedUseCases.value.length ? (openBlock(), createBlock("div", {
+                        key: 7,
+                        class: "mt-5"
+                      }, [
+                        createVNode("h4", { class: "portfolio-details__title-3 mb-4" }, toDisplayString(trans("More Case Studies")), 1),
+                        createVNode("div", { class: "row" }, [
+                          (openBlock(true), createBlock(Fragment, null, renderList(relatedUseCases.value, (item) => {
+                            return openBlock(), createBlock("div", {
+                              key: item.id,
+                              class: "col-md-4 mb-4"
+                            }, [
+                              createVNode("div", { class: "portfolio-one__single" }, [
+                                createVNode("div", { class: "portfolio-one__img-box" }, [
+                                  createVNode("div", { class: "portfolio-one__img" }, [
+                                    createVNode("img", {
+                                      src: item.image_link,
+                                      alt: item.title
+                                    }, null, 8, ["src", "alt"])
+                                  ])
+                                ]),
+                                createVNode("div", { class: "portfolio-one__content" }, [
+                                  createVNode("h3", { class: "portfolio-one__title" }, [
+                                    createVNode(unref(Link), {
+                                      href: _ctx.route("use-cases.show", item.slug)
+                                    }, {
+                                      default: withCtx(() => [
+                                        createTextVNode(toDisplayString(item.title), 1)
+                                      ]),
+                                      _: 2
+                                    }, 1032, ["href"])
+                                  ])
+                                ])
+                              ])
+                            ]);
+                          }), 128))
+                        ])
+                      ])) : createCommentVNode("", true)
+                    ])
+                  ])
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<!--]-->`);
+    };
   }
 };
-const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseShow.vue");
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+};
+const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$8
+}, Symbol.toStringTag, { value: "Module" }));
+const __default__$3 = {
+  components: {
+    AppLayout: _sfc_main$l,
+    CtaTwo: _sfc_main$h
+  }
+};
+const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
   __name: "ServiceIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6293,7 +7756,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-3ab06575${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-3ab06575${_scopeId}></div><div class="container" data-v-3ab06575${_scopeId}><div class="page-header__inner" data-v-3ab06575${_scopeId}><h2 data-v-3ab06575${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h2><div class="thm-breadcrumb__box" data-v-3ab06575${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-3ab06575${_scopeId}><li data-v-3ab06575${_scopeId}>`);
@@ -6455,7 +7918,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               _push2(`</li>`);
             });
             _push2(`<!--]--></ul></div></div></div></div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$g, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -6636,7 +8099,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$g)
+              createVNode(_sfc_main$h)
             ];
           }
         }),
@@ -6646,24 +8109,24 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
     };
   }
 });
-const _sfc_setup$8 = _sfc_main$8.setup;
-_sfc_main$8.setup = (props, ctx) => {
+const _sfc_setup$7 = _sfc_main$7.setup;
+_sfc_main$7.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceIndex.vue");
-  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-3ab06575"]]);
-const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-3ab06575"]]);
+const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$3 = {
+const __default__$2 = {
   components: {
-    AppLayout: _sfc_main$j,
-    CtaTwo: _sfc_main$g
+    AppLayout: _sfc_main$l,
+    CtaTwo: _sfc_main$h
   }
 };
-const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
+const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
   __name: "ServiceShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6837,7 +8300,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
@@ -6972,7 +8435,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(ssrRenderComponent(_sfc_main$g, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -7228,518 +8691,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              createVNode(_sfc_main$g)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`<!--]-->`);
-    };
-  }
-});
-const _sfc_setup$7 = _sfc_main$7.setup;
-_sfc_main$7.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceShow.vue");
-  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
-};
-const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: _sfc_main$7
-}, Symbol.toStringTag, { value: "Module" }));
-const __default__$2 = {
-  components: {
-    AppLayout: _sfc_main$j
-  }
-};
-const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
-  __name: "Index",
-  __ssrInlineRender: true,
-  setup(__props) {
-    const page = usePage();
-    const trans = (key) => page.props.translations[key] || key;
-    const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
-    const asset_path = computed(() => page.props.asset_path || "");
-    const locale = computed(() => page.props.locale || "en");
-    const meta = computed(() => page.props.meta || {});
-    const metaTitle = computed(() => {
-      return `${trans("Contact Us")} | ${seo.value.website_name || ""}`.trim();
-    });
-    const metaDescription = computed(() => {
-      return meta.value.description || trans("Contact our team for support, inquiries, or project discussions.") || seo.value.website_desc || "";
-    });
-    const metaKeywords = computed(() => {
-      return meta.value.keywords || trans("contact, support, get in touch, customer service") || seo.value.website_keywords || "";
-    });
-    const metaImage = computed(() => {
-      var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
-    });
-    const metaCanonical = computed(() => meta.value.canonical || "");
-    const metaRobots = computed(() => meta.value.robots || "index, follow");
-    const submitSuccess = ref(false);
-    const contactForm = useForm({
-      name: "",
-      email: "",
-      mobile: "",
-      subject: "",
-      message: ""
-    });
-    const handleSubmit = () => {
-      if (contactForm.processing) {
-        return false;
-      }
-      if (!contactForm.name || !contactForm.name.trim()) {
-        return false;
-      }
-      if (!contactForm.email || !contactForm.email.trim()) {
-        return false;
-      }
-      if (!contactForm.mobile || !contactForm.mobile.trim()) {
-        return false;
-      }
-      if (!contactForm.subject || !contactForm.subject.trim()) {
-        return false;
-      }
-      if (!contactForm.message || !contactForm.message.trim()) {
-        return false;
-      }
-      let contactUrl = route("contact-us.store");
-      contactForm.post(contactUrl, {
-        preserveScroll: true,
-        preserveState: true,
-        onBefore: () => {
-          submitSuccess.value = false;
-        },
-        onSuccess: () => {
-          submitSuccess.value = true;
-          contactForm.reset();
-          contactForm.clearErrors();
-          setTimeout(() => {
-            submitSuccess.value = false;
-          }, 5e3);
-        },
-        onError: () => {
-          submitSuccess.value = false;
-        }
-      });
-      return false;
-    };
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<!--[-->`);
-      _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
-            if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)}${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)}${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}>`);
-            if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)}${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)}${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<meta property="og:type" content="website"${_scopeId}><meta name="twitter:card" content="summary_large_image"${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)}${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}>`);
-            if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)}${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-          } else {
-            return [
-              createVNode("link", {
-                rel: "stylesheet",
-                href: asset_path.value + "site/css/module-css/page-header.css"
-              }, null, 8, ["href"]),
-              createVNode("title", null, toDisplayString(metaTitle.value), 1),
-              createVNode("meta", {
-                name: "description",
-                content: metaDescription.value
-              }, null, 8, ["content"]),
-              createVNode("meta", {
-                name: "keywords",
-                content: metaKeywords.value
-              }, null, 8, ["content"]),
-              createVNode("meta", {
-                name: "robots",
-                content: metaRobots.value
-              }, null, 8, ["content"]),
-              metaCanonical.value ? (openBlock(), createBlock("link", {
-                key: 0,
-                rel: "canonical",
-                href: metaCanonical.value
-              }, null, 8, ["href"])) : createCommentVNode("", true),
-              createVNode("meta", {
-                property: "og:title",
-                content: metaTitle.value
-              }, null, 8, ["content"]),
-              createVNode("meta", {
-                property: "og:description",
-                content: metaDescription.value
-              }, null, 8, ["content"]),
-              metaImage.value ? (openBlock(), createBlock("meta", {
-                key: 1,
-                property: "og:image",
-                content: metaImage.value
-              }, null, 8, ["content"])) : createCommentVNode("", true),
-              metaCanonical.value ? (openBlock(), createBlock("meta", {
-                key: 2,
-                property: "og:url",
-                content: metaCanonical.value
-              }, null, 8, ["content"])) : createCommentVNode("", true),
-              createVNode("meta", {
-                property: "og:type",
-                content: "website"
-              }),
-              createVNode("meta", {
-                name: "twitter:card",
-                content: "summary_large_image"
-              }),
-              createVNode("meta", {
-                name: "twitter:title",
-                content: metaTitle.value
-              }, null, 8, ["content"]),
-              createVNode("meta", {
-                name: "twitter:description",
-                content: metaDescription.value
-              }, null, 8, ["content"]),
-              metaImage.value ? (openBlock(), createBlock("meta", {
-                key: 3,
-                name: "twitter:image",
-                content: metaImage.value
-              }, null, 8, ["content"])) : createCommentVNode("", true)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
-            _push2(ssrRenderComponent(unref(Link), {
-              href: _ctx.route("home")
-            }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
-                if (_push3) {
-                  _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
-                } else {
-                  return [
-                    createVNode("i", { class: "fas fa-home" }),
-                    createTextVNode(toDisplayString(trans("Home")), 1)
-                  ];
-                }
-              }),
-              _: 1
-            }, _parent2, _scopeId));
-            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</li></ul></div></div></div></section><section class="contact-one"${_scopeId}><div class="contact-one__bg-shape" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/contact-one-bg-shape.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6 col-lg-6"${_scopeId}><div class="${ssrRenderClass(`contact-one__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms"${_scopeId}><div class="contact-one__left-shape-1"${_scopeId}></div><div class="contact-one__left-shape-2"${_scopeId}></div><h3 class="contact-one__from-title"${_scopeId}>${ssrInterpolate(trans("How Can We Help You?"))}</h3><form class="contact-one__form"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6 col-lg-6"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h4><div class="contact-one__input-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-user-1"${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}></div>`);
-            if (unref(contactForm).errors.name) {
-              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`</div><div class="col-xl-6 col-lg-6"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Email"))}</h4><div class="contact-one__input-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-email"${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).email)} type="email" name="email"${ssrRenderAttr("placeholder", trans("Email"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}></div>`);
-            if (unref(contactForm).errors.email) {
-              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`</div><div class="col-xl-6 col-lg-6"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h4><div class="contact-one__input-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}></div>`);
-            if (unref(contactForm).errors.mobile) {
-              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`</div><div class="col-xl-6 col-lg-6"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Subject"))}</h4><div class="contact-one__input-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-edit"${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).subject)} type="text" name="subject"${ssrRenderAttr("placeholder", trans("Subject"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}></div>`);
-            if (unref(contactForm).errors.subject) {
-              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`</div></div><div class="col-xl-12"${_scopeId}><h4 class="contact-one__input-title"${_scopeId}>${ssrInterpolate(trans("Message"))}</h4><div class="contact-one__input-box text-message-box"${_scopeId}><div class="contact-one__input-icon"${_scopeId}><span class="icon-edit"${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
-            if (unref(contactForm).errors.message) {
-              _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<div class="contact-one__btn-box"${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}"${_scopeId}>`);
-            if (unref(contactForm).processing) {
-              _push2(`<span${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2"${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
-            } else {
-              _push2(`<span${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}"${_scopeId}></i></span>`);
-            }
-            _push2(`</button></div></div>`);
-            if (submitSuccess.value) {
-              _push2(`<div class="col-12 mt-3"${_scopeId}><div class="alert alert-success"${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`</form></div></div><div class="col-xl-6 col-lg-6"${_scopeId}><div class="contact-one__right"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${trans("Start the Conversation") + "<span>–</span><br><span>" + trans("Reach Out Anytime") + "</span>"}</h2></div><p class="contact-one__text"${_scopeId}>${ssrInterpolate(trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out"))}</p><ul class="contact-one__list list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h4><p${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Email"))}</h4><p${_scopeId}><a dir="ltr" href="mailto:{{settings.email}}"${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Phone"))}</h4><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)}${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div></div></div></section>`);
-          } else {
-            return [
-              createVNode("section", { class: "page-header" }, [
-                createVNode("div", {
-                  class: "page-header__bg",
-                  style: { backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` }
-                }, null, 4),
-                createVNode("div", { class: "container" }, [
-                  createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Contact Us")), 1),
-                    createVNode("div", { class: "thm-breadcrumb__box" }, [
-                      createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
-                        createVNode("li", null, [
-                          createVNode(unref(Link), {
-                            href: _ctx.route("home")
-                          }, {
-                            default: withCtx(() => [
-                              createVNode("i", { class: "fas fa-home" }),
-                              createTextVNode(toDisplayString(trans("Home")), 1)
-                            ]),
-                            _: 1
-                          }, 8, ["href"])
-                        ]),
-                        createVNode("li", null, [
-                          createVNode("span", {
-                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
-                          }, null, 2)
-                        ]),
-                        createVNode("li", null, toDisplayString(trans("Contact Us")), 1)
-                      ])
-                    ])
-                  ])
-                ])
-              ]),
-              createVNode("section", { class: "contact-one" }, [
-                createVNode("div", {
-                  class: "contact-one__bg-shape",
-                  style: { backgroundImage: `url(${asset_path.value}site/images/shapes/contact-one-bg-shape.png)` }
-                }, null, 4),
-                createVNode("div", { class: "container" }, [
-                  createVNode("div", { class: "row" }, [
-                    createVNode("div", { class: "col-xl-6 col-lg-6" }, [
-                      createVNode("div", {
-                        class: `contact-one__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`,
-                        "data-wow-delay": "100ms",
-                        "data-wow-duration": "2500ms"
-                      }, [
-                        createVNode("div", { class: "contact-one__left-shape-1" }),
-                        createVNode("div", { class: "contact-one__left-shape-2" }),
-                        createVNode("h3", { class: "contact-one__from-title" }, toDisplayString(trans("How Can We Help You?")), 1),
-                        createVNode("form", {
-                          onSubmit: withModifiers(handleSubmit, ["prevent"]),
-                          class: "contact-one__form"
-                        }, [
-                          createVNode("div", { class: "row" }, [
-                            createVNode("div", { class: "col-xl-6 col-lg-6" }, [
-                              createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Full Name")), 1),
-                              createVNode("div", { class: "contact-one__input-box" }, [
-                                createVNode("div", { class: "contact-one__input-icon" }, [
-                                  createVNode("span", { class: "icon-user-1" })
-                                ]),
-                                withDirectives(createVNode("input", {
-                                  "onUpdate:modelValue": ($event) => unref(contactForm).name = $event,
-                                  type: "text",
-                                  name: "name",
-                                  placeholder: trans("Full Name"),
-                                  class: { "error": unref(contactForm).errors.name },
-                                  disabled: unref(contactForm).processing,
-                                  required: ""
-                                }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                                  [vModelText, unref(contactForm).name]
-                                ])
-                              ]),
-                              unref(contactForm).errors.name ? (openBlock(), createBlock("div", {
-                                key: 0,
-                                class: "text-danger mt-1 small"
-                              }, toDisplayString(unref(contactForm).errors.name), 1)) : createCommentVNode("", true)
-                            ]),
-                            createVNode("div", { class: "col-xl-6 col-lg-6" }, [
-                              createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Email")), 1),
-                              createVNode("div", { class: "contact-one__input-box" }, [
-                                createVNode("div", { class: "contact-one__input-icon" }, [
-                                  createVNode("span", { class: "icon-email" })
-                                ]),
-                                withDirectives(createVNode("input", {
-                                  "onUpdate:modelValue": ($event) => unref(contactForm).email = $event,
-                                  type: "email",
-                                  name: "email",
-                                  placeholder: trans("Email"),
-                                  class: { "error": unref(contactForm).errors.email },
-                                  disabled: unref(contactForm).processing,
-                                  required: ""
-                                }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                                  [vModelText, unref(contactForm).email]
-                                ])
-                              ]),
-                              unref(contactForm).errors.email ? (openBlock(), createBlock("div", {
-                                key: 0,
-                                class: "text-danger mt-1 small"
-                              }, toDisplayString(unref(contactForm).errors.email), 1)) : createCommentVNode("", true)
-                            ]),
-                            createVNode("div", { class: "col-xl-6 col-lg-6" }, [
-                              createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Phone Number")), 1),
-                              createVNode("div", { class: "contact-one__input-box" }, [
-                                createVNode("div", { class: "contact-one__input-icon" }, [
-                                  createVNode("span", { class: "icon-phone-call" })
-                                ]),
-                                withDirectives(createVNode("input", {
-                                  "onUpdate:modelValue": ($event) => unref(contactForm).mobile = $event,
-                                  type: "text",
-                                  name: "mobile",
-                                  placeholder: trans("Phone Number"),
-                                  class: { "error": unref(contactForm).errors.mobile },
-                                  disabled: unref(contactForm).processing,
-                                  required: ""
-                                }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                                  [vModelText, unref(contactForm).mobile]
-                                ])
-                              ]),
-                              unref(contactForm).errors.mobile ? (openBlock(), createBlock("div", {
-                                key: 0,
-                                class: "text-danger mt-1 small"
-                              }, toDisplayString(unref(contactForm).errors.mobile), 1)) : createCommentVNode("", true)
-                            ]),
-                            createVNode("div", { class: "col-xl-6 col-lg-6" }, [
-                              createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Subject")), 1),
-                              createVNode("div", { class: "contact-one__input-box" }, [
-                                createVNode("div", { class: "contact-one__input-icon" }, [
-                                  createVNode("span", { class: "icon-edit" })
-                                ]),
-                                withDirectives(createVNode("input", {
-                                  "onUpdate:modelValue": ($event) => unref(contactForm).subject = $event,
-                                  type: "text",
-                                  name: "subject",
-                                  placeholder: trans("Subject"),
-                                  class: { "error": unref(contactForm).errors.subject },
-                                  disabled: unref(contactForm).processing,
-                                  required: ""
-                                }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                                  [vModelText, unref(contactForm).subject]
-                                ])
-                              ]),
-                              unref(contactForm).errors.subject ? (openBlock(), createBlock("div", {
-                                key: 0,
-                                class: "text-danger mt-1 small"
-                              }, toDisplayString(unref(contactForm).errors.subject), 1)) : createCommentVNode("", true)
-                            ])
-                          ]),
-                          createVNode("div", { class: "col-xl-12" }, [
-                            createVNode("h4", { class: "contact-one__input-title" }, toDisplayString(trans("Message")), 1),
-                            createVNode("div", { class: "contact-one__input-box text-message-box" }, [
-                              createVNode("div", { class: "contact-one__input-icon" }, [
-                                createVNode("span", { class: "icon-edit" })
-                              ]),
-                              withDirectives(createVNode("textarea", {
-                                "onUpdate:modelValue": ($event) => unref(contactForm).message = $event,
-                                name: "message",
-                                placeholder: trans("Write your message"),
-                                class: { "error": unref(contactForm).errors.message },
-                                disabled: unref(contactForm).processing,
-                                required: ""
-                              }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                                [vModelText, unref(contactForm).message]
-                              ])
-                            ]),
-                            unref(contactForm).errors.message ? (openBlock(), createBlock("div", {
-                              key: 0,
-                              class: "text-danger mt-1 small"
-                            }, toDisplayString(unref(contactForm).errors.message), 1)) : createCommentVNode("", true),
-                            createVNode("div", { class: "contact-one__btn-box" }, [
-                              createVNode("button", {
-                                type: "submit",
-                                class: ["thm-btn", { "opacity-50": unref(contactForm).processing }],
-                                disabled: unref(contactForm).processing
-                              }, [
-                                unref(contactForm).processing ? (openBlock(), createBlock("span", { key: 0 }, [
-                                  createVNode("i", { class: "fa-solid fa-spinner fa-spin me-2" }),
-                                  createTextVNode(toDisplayString(trans("Sending...")), 1)
-                                ])) : (openBlock(), createBlock("span", { key: 1 }, [
-                                  createVNode("span", null, toDisplayString(trans("Submit")), 1),
-                                  createTextVNode(),
-                                  createVNode("i", {
-                                    class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`
-                                  }, null, 2)
-                                ]))
-                              ], 10, ["disabled"])
-                            ])
-                          ]),
-                          submitSuccess.value ? (openBlock(), createBlock("div", {
-                            key: 0,
-                            class: "col-12 mt-3"
-                          }, [
-                            createVNode("div", { class: "alert alert-success" }, toDisplayString(trans("Thank you for contacting us! We will get back to you soon.")), 1)
-                          ])) : createCommentVNode("", true)
-                        ], 32)
-                      ], 2)
-                    ]),
-                    createVNode("div", { class: "col-xl-6 col-lg-6" }, [
-                      createVNode("div", { class: "contact-one__right" }, [
-                        createVNode("div", { class: "section-title text-left sec-title-animation animation-style2" }, [
-                          createVNode("div", { class: "section-title__tagline-box" }, [
-                            createVNode("div", { class: "section-title__tagline-shape-1" }),
-                            createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Get In Touch")), 1),
-                            createVNode("div", { class: "section-title__tagline-shape-2" })
-                          ]),
-                          createVNode("h2", {
-                            class: "section-title__title title-animation",
-                            innerHTML: trans("Start the Conversation") + "<span>–</span><br><span>" + trans("Reach Out Anytime") + "</span>"
-                          }, null, 8, ["innerHTML"])
-                        ]),
-                        createVNode("p", { class: "contact-one__text" }, toDisplayString(trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out")), 1),
-                        createVNode("ul", { class: "contact-one__list list-unstyled" }, [
-                          createVNode("li", null, [
-                            createVNode("div", { class: "icon" }, [
-                              createVNode("span", { class: "icon-pin" })
-                            ]),
-                            createVNode("div", { class: "content" }, [
-                              createVNode("h4", null, toDisplayString(trans("Our Location")), 1),
-                              createVNode("p", null, toDisplayString(settings.value.address), 1)
-                            ])
-                          ]),
-                          createVNode("li", null, [
-                            createVNode("div", { class: "icon" }, [
-                              createVNode("span", { class: "icon-mail" })
-                            ]),
-                            createVNode("div", { class: "content" }, [
-                              createVNode("h4", null, toDisplayString(trans("Email")), 1),
-                              createVNode("p", null, [
-                                createVNode("a", {
-                                  dir: "ltr",
-                                  href: "mailto:{{settings.email}}"
-                                }, toDisplayString(settings.value.email), 1)
-                              ])
-                            ])
-                          ]),
-                          createVNode("li", null, [
-                            createVNode("div", { class: "icon" }, [
-                              createVNode("span", { class: "icon-phone-call" })
-                            ]),
-                            createVNode("div", { class: "content" }, [
-                              createVNode("h4", null, toDisplayString(trans("Phone")), 1),
-                              createVNode("p", null, [
-                                createVNode("a", {
-                                  dir: "ltr",
-                                  href: `tel:${settings.value.phone}`
-                                }, toDisplayString(settings.value.phone), 9, ["href"])
-                              ])
-                            ])
-                          ])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ])
+              createVNode(_sfc_main$h)
             ];
           }
         }),
@@ -7752,16 +8704,16 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
 const _sfc_setup$6 = _sfc_main$6.setup;
 _sfc_main$6.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Index.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceShow.vue");
   return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
 };
-const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$6
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$5 = {
   components: {
-    AppLayout: _sfc_main$j,
+    AppLayout: _sfc_main$l,
     Link,
     Head
   },
@@ -8084,13 +9036,13 @@ _sfc_main$5.setup = (props, ctx) => {
   return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
 const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-5b68d6b8"]]);
-const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ForgotPassword
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$4 = {
   components: {
-    AppLayout: _sfc_main$j,
+    AppLayout: _sfc_main$l,
     Link,
     Head
   },
@@ -8464,13 +9416,13 @@ _sfc_main$4.setup = (props, ctx) => {
   return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
 const Login = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender$2]]);
-const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Login
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$3 = {
   components: {
-    AppLayout: _sfc_main$j,
+    AppLayout: _sfc_main$l,
     Link,
     Head
   },
@@ -8885,13 +9837,13 @@ _sfc_main$3.setup = (props, ctx) => {
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
 const Register = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-daff4a9e"]]);
-const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Register
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$2 = {
   components: {
-    AppLayout: _sfc_main$j,
+    AppLayout: _sfc_main$l,
     Link,
     Head
   },
@@ -9283,13 +10235,13 @@ _sfc_main$2.setup = (props, ctx) => {
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
 const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-f5323f04"]]);
-const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ResetPassword
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$1 = {
   components: {
-    AppLayout: _sfc_main$j
+    AppLayout: _sfc_main$l
   }
 };
 const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
@@ -9419,7 +10371,7 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-417e1791${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ "background-image": "url(assets/images/backgrounds/page-header-bg.jpg)" })}" data-v-417e1791${_scopeId}></div><div class="container" data-v-417e1791${_scopeId}><div class="page-header__inner" data-v-417e1791${_scopeId}><h2 data-v-417e1791${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h2><div class="thm-breadcrumb__box" data-v-417e1791${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-417e1791${_scopeId}><li data-v-417e1791${_scopeId}>`);
@@ -9537,7 +10489,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__ = {
   components: {
-    AppLayout: _sfc_main$j
+    AppLayout: _sfc_main$l
   }
 };
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
@@ -9669,7 +10621,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$j, null, {
+      _push(ssrRenderComponent(_sfc_main$l, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
           if (_push2) {
@@ -9801,21 +10753,23 @@ createServer(
           `../../Modules/${modules[0]}/resources/assets/js/Pages/${modules[1]}.vue`,
           /* @__PURE__ */ Object.assign({
             "../../Modules/Base/resources/assets/js/Pages/Index.vue": __vite_glob_0_0,
-            "../../Modules/Cms/resources/assets/js/Pages/AboutUs.vue": __vite_glob_0_1,
-            "../../Modules/Cms/resources/assets/js/Pages/BlogIndex.vue": __vite_glob_0_2,
-            "../../Modules/Cms/resources/assets/js/Pages/BlogShow.vue": __vite_glob_0_3,
-            "../../Modules/Cms/resources/assets/js/Pages/Faq.vue": __vite_glob_0_4,
-            "../../Modules/Cms/resources/assets/js/Pages/PageShow.vue": __vite_glob_0_5,
-            "../../Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue": __vite_glob_0_6,
-            "../../Modules/Cms/resources/assets/js/Pages/Team.vue": __vite_glob_0_7,
-            "../../Modules/Cms/resources/assets/js/Pages/Testimonials.vue": __vite_glob_0_8,
-            "../../Modules/Services/resources/assets/js/Pages/ServiceIndex.vue": __vite_glob_0_9,
-            "../../Modules/Services/resources/assets/js/Pages/ServiceShow.vue": __vite_glob_0_10,
-            "../../Modules/Support/resources/assets/js/Pages/Index.vue": __vite_glob_0_11,
-            "../../Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": __vite_glob_0_12,
-            "../../Modules/User/resources/assets/js/Pages/Auth/Login.vue": __vite_glob_0_13,
-            "../../Modules/User/resources/assets/js/Pages/Auth/Register.vue": __vite_glob_0_14,
-            "../../Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": __vite_glob_0_15
+            "../../Modules/CRM/resources/assets/js/Pages/Index.vue": __vite_glob_0_1,
+            "../../Modules/Cms/resources/assets/js/Pages/AboutUs.vue": __vite_glob_0_2,
+            "../../Modules/Cms/resources/assets/js/Pages/BlogIndex.vue": __vite_glob_0_3,
+            "../../Modules/Cms/resources/assets/js/Pages/BlogShow.vue": __vite_glob_0_4,
+            "../../Modules/Cms/resources/assets/js/Pages/Faq.vue": __vite_glob_0_5,
+            "../../Modules/Cms/resources/assets/js/Pages/PageShow.vue": __vite_glob_0_6,
+            "../../Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue": __vite_glob_0_7,
+            "../../Modules/Cms/resources/assets/js/Pages/Team.vue": __vite_glob_0_8,
+            "../../Modules/Cms/resources/assets/js/Pages/Testimonials.vue": __vite_glob_0_9,
+            "../../Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue": __vite_glob_0_10,
+            "../../Modules/Project/resources/assets/js/Pages/UseCaseShow.vue": __vite_glob_0_11,
+            "../../Modules/Services/resources/assets/js/Pages/ServiceIndex.vue": __vite_glob_0_12,
+            "../../Modules/Services/resources/assets/js/Pages/ServiceShow.vue": __vite_glob_0_13,
+            "../../Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": __vite_glob_0_14,
+            "../../Modules/User/resources/assets/js/Pages/Auth/Login.vue": __vite_glob_0_15,
+            "../../Modules/User/resources/assets/js/Pages/Auth/Register.vue": __vite_glob_0_16,
+            "../../Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": __vite_glob_0_17
           })
         );
       }

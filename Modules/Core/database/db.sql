@@ -246,13 +246,3 @@ VALUES (1, 'AF', 'AFG', 'Afghanistan', 93),
        (246, 'AX', 'ALA', 'Aland Islands', 358),
        (247, 'CS', 'SCG', 'Serbia and Montenegro', 381),
        (249, 'XK', 'XKX', 'Kosovo', 383);
-
-INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-                        (1, 'Settings Management', 'web', NULL, NULL),
-                        (2, 'CMS Management', 'web', NULL, NULL),
-                        (3, 'Support Management', 'web', NULL, NULL),
-                        (4, 'Hr Management', 'web', NULL, NULL),
-                        (5, 'App Monitoring', 'web', NULL, NULL),
-                        (6, 'Projects Management', 'web', NULL, NULL),
-                        (7, 'CRM Management', 'web', NULL, NULL),
-                        (8, 'Logs Management', 'web', NULL, NULL);

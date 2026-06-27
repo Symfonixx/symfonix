@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('project_status_id')->constrained('project_statuses')->restrictOnDelete();
             $table->foreignId('deal_id')->nullable()->unique()->constrained('deals')->nullOnDelete();
             $table->decimal('budget', 15, 2)->nullable();
+            $table->enum('payment_status', ['unpaid', 'partially_paid', 'fully_paid'])->default('unpaid');
             $table->date('start_date')->nullable();
             $table->date('due_date')->nullable();
             $table->timestamps();

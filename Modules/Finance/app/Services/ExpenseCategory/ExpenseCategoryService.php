@@ -15,7 +15,7 @@ class ExpenseCategoryService
     public function list(): Collection
     {
         return ExpenseCategory::query()
-            ->withCount('transactions')
+            ->withCount('journalLines')
             ->orderBy('name')
             ->get();
     }

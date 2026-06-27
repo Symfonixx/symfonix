@@ -24,6 +24,10 @@ class UpdateDealRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'lost_reason' => ['nullable', 'string'],
             'status' => ['required', Rule::in([Deal::STATUS_OPEN, Deal::STATUS_WON, Deal::STATUS_LOST])],
+            'services' => ['nullable', 'array'],
+            'services.*.service_id' => ['nullable', 'integer', 'exists:services,id'],
+            'services.*.quantity' => ['nullable', 'integer', 'min:1'],
+            'services.*.unit_price' => ['nullable', 'numeric', 'min:0'],
         ];
     }
 

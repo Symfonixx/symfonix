@@ -22,7 +22,10 @@ return [
     'messages' => [
         'created' => 'Salary record created.',
         'paid' => 'Salary payout recorded in the ledger.',
+        'deleted' => 'Salary record deleted.',
+        'confirm_delete' => 'Delete this salary record? If already paid, the linked ledger entry will also be removed.',
         'payout_description' => 'Salary payout: :name',
         'no_pending' => 'No pending salary payouts.',
+        'no_records' => 'No salary records yet.',
     ],
 ];

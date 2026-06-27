@@ -20,6 +20,9 @@ return [
         'deal' => 'Linked Deal',
         'select_deal' => 'Select deal (optional)',
         'budget' => 'Budget',
+        'payment_status' => 'Payment Status',
+        'collected' => 'Collected',
+        'collection_rate' => 'Collection Rate',
         'start_date' => 'Start Date',
         'due_date' => 'Due Date',
     ],
@@ -37,6 +40,14 @@ return [
         'title' => 'Filters',
         'all_companies' => 'All Companies',
         'all_statuses' => 'All Statuses',
+    ],
+    'sections' => [
+        'collection' => 'Collection Progress',
+    ],
+    'payment_status' => [
+        'unpaid' => 'Unpaid',
+        'partially_paid' => 'Partially Paid',
+        'fully_paid' => 'Fully Paid',
     ],
     'hints' => [
         'deal' => 'Link an open or won CRM deal. Deals already linked to another project are hidden.',

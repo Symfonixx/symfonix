@@ -73,22 +73,33 @@
                             </td>
                             <td>{{ $salary->paid_at?->format('Y-m-d') ?? '—' }}</td>
                             <td class="text-end">
-                                @if($salary->status === 'pending')
-                                    <form method="POST" action="{{ route('admin.finance.salaries.payout', $salary) }}" class="d-inline">
+                                <div class="d-flex justify-content-end align-items-center gap-2 flex-wrap">
+                                    @if($salary->status === 'pending')
+                                        <form method="POST" action="{{ route('admin.finance.salaries.payout', $salary) }}" class="d-inline-flex align-items-center gap-2">
+                                            @csrf
+                                            <input type="date" name="paid_at" value="{{ now()->toDateString() }}"
+                                                   class="form-control form-control-solid form-control-sm w-auto"
+                                                   title="{{ __('finance::salary.fields.paid_at') }}" required>
+                                            <button type="submit" class="btn btn-sm btn-light-primary"
+                                                    onclick="return confirm(@json(__('Are you sure?')))">
+                                                <i class="bi bi-cash-coin me-1"></i>{{ __('finance::salary.actions.record_payout') }}
+                                            </button>
+                                        </form>
+                                    @endif
+                                    <form class="d-inline" method="POST" action="{{ route('admin.finance.salaries.destroy', $salary) }}">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-light-primary"
-                                                onclick="return confirm(@json(__('Are you sure?')))">
-                                            <i class="bi bi-cash-coin me-1"></i>{{ __('finance::salary.actions.record_payout') }}
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
+                                                onclick="return confirm(@json(__('finance::salary.messages.confirm_delete')))">
+                                            <i class="bi bi-trash fs-5"></i>
                                         </button>
                                     </form>
-                                @else
-                                    <span class="text-muted fs-7">—</span>
-                                @endif
+                                </div>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center text-muted py-6">{{ __('finance::salary.messages.no_pending') }}</td>
+                            <td colspan="5" class="text-center text-muted py-6">{{ __('finance::salary.messages.no_records') }}</td>
                         </tr>
                     @endforelse
                     </tbody>

@@ -10,8 +10,8 @@ class CreateDealAction
 {
     public function __construct(private readonly DealService $service) {}
 
-    public function execute(DealData $data): ?Deal
+    public function execute(DealData $data, array $services = []): ?Deal
     {
-        return $this->service->create($data);
+        return $this->service->create($data, $services);
     }
 }

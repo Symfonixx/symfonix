@@ -1,0 +1,77 @@
+<?php
+
+return [
+    'menu' => [
+        'marketing' => 'Pazarlama',
+    ],
+    'pages' => [
+        'index_title' => 'Pazarlama',
+        'create_title' => 'E-posta Gönder',
+        'show_title' => 'Kampanya Detayları',
+    ],
+    'actions' => [
+        'compose' => 'E-posta Oluştur',
+        'send' => 'E-postayı Gönder',
+        'back_to_list' => 'Pazarlamaya Dön',
+        'view' => 'Görüntüle',
+    ],
+    'fields' => [
+        'subject' => 'Konu',
+        'body' => 'Mesaj',
+        'recipients' => 'Alıcılar',
+        'subscribers' => 'Aboneler',
+        'contacts' => 'Kişiler',
+        'contact_forms' => 'Talepler',
+        'custom_emails' => 'Özel E-postalar',
+        'all_subscribers' => 'Tüm aktif aboneler',
+        'all_contacts' => 'E-postası olan tüm kişiler',
+        'all_contact_forms' => 'E-postası olan tüm talepler',
+        'select_subscribers' => 'Aboneleri seç',
+        'select_contacts' => 'Kişileri seç',
+        'select_contact_forms' => 'Talepleri seç',
+        'sent_by' => 'Gönderen',
+        'sent_at' => 'Gönderim Tarihi',
+        'recipients_count' => 'Alıcılar',
+    ],
+    'sections' => [
+        'compose' => 'E-posta Oluştur',
+        'compose_hint' => 'Mesajınızı yazın ve kimin alacağını seçin.',
+        'recipients' => 'Alıcıları Seç',
+        'recipients_hint' => 'Bir veya daha fazla grup seçin. E-postalar otomatik olarak tekilleştirilir.',
+        'history' => 'Gönderilen Kampanyalar',
+    ],
+    'placeholders' => [
+        'subject' => 'E-posta konusu',
+        'body' => 'Pazarlama mesajınızı buraya yazın...',
+        'custom_emails' => 'E-posta yazın ve eklemek için Enter\'a basın',
+        'select_subscribers' => 'Aboneleri seçin',
+        'select_contacts' => 'Kişileri seçin',
+        'select_contact_forms' => 'Talepleri seçin',
+    ],
+    'hints' => [
+        'all_subscribers' => 'Engellenmemiş tüm bülten abonelerine gönderir.',
+        'all_contacts' => 'E-posta adresi olan tüm CRM kişilerine gönderir.',
+        'all_contact_forms' => 'Engellenmemiş ve e-postası olan tüm taleplere gönderir.',
+        'custom_emails' => 'Yukarıda listelenmeyen ek e-posta adresleri ekleyin. E-posta yazıp Enter\'a basın.',
+        'send_warning' => 'E-postalar sunucunuzdan hemen gönderilir. Bu işlem geri alınamaz.',
+    ],
+    'messages' => [
+        'sent' => 'E-posta :count alıcıya başarıyla gönderildi.',
+        'send_failed' => 'E-posta gönderilemedi. Lütfen posta yapılandırmanızı kontrol edin ve tekrar deneyin.',
+        'empty' => 'Henüz kampanya gönderilmedi.',
+    ],
+    'validation' => [
+        'fix_errors' => 'Lütfen aşağıdaki hataları düzeltin ve tekrar deneyin.',
+        'select_recipients' => 'En az bir alıcı grubu seçin veya özel e-posta ekleyin.',
+        'no_recipients' => 'Seçilen alıcılar için geçerli e-posta adresi bulunamadı.',
+    ],
+    'sources' => [
+        'all_subscribers' => 'Tüm aboneler',
+        'subscribers' => ':count abone',
+        'all_contacts' => 'Tüm kişiler',
+        'contacts' => ':count kişi',
+        'all_contact_forms' => 'Tüm talepler',
+        'contact_forms' => ':count talep',
+        'custom_emails' => 'Özel e-postalar',
+    ],
+];

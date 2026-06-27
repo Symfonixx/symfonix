@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('crm_sales_targets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained()->cascadeOnDelete();
+            $table->foreignId('employee_id')->unique()->constrained('employees')->cascadeOnDelete();
             $table->unsignedSmallInteger('deals_target')->default(10);
             $table->decimal('value_target', 15, 2)->nullable();
             $table->timestamps();

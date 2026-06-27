@@ -7,13 +7,16 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Modules\Finance\Models\Commission;
 use Modules\Finance\Models\ExpenseCategory;
+use Modules\Finance\Models\Invoice;
 use Modules\Finance\Models\Salary;
 use Modules\Finance\Policies\CommissionPolicy;
 use Modules\Finance\Policies\ExpenseCategoryPolicy;
+use Modules\Finance\Policies\InvoicePolicy;
 use Modules\Finance\Policies\SalaryPolicy;
 use Modules\Finance\Repositories\ExpenseCategory\ExpenseCategoryModelRepository;
 use Modules\Finance\Repositories\ExpenseCategory\ExpenseCategoryRepository;
 use Modules\Finance\Services\FinanceService;
+use Modules\Finance\Services\InvoiceService;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class FinanceServiceProvider extends ServiceProvider
@@ -37,6 +40,7 @@ class FinanceServiceProvider extends ServiceProvider
         Gate::policy(Salary::class, SalaryPolicy::class);
         Gate::policy(Commission::class, CommissionPolicy::class);
         Gate::policy(ExpenseCategory::class, ExpenseCategoryPolicy::class);
+        Gate::policy(Invoice::class, InvoicePolicy::class);
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
     }
 
@@ -46,6 +50,7 @@ class FinanceServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(FinanceService::class);
+        $this->app->singleton(InvoiceService::class);
         $this->app->bind(ExpenseCategoryRepository::class, ExpenseCategoryModelRepository::class);
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
@@ -56,7 +61,9 @@ class FinanceServiceProvider extends ServiceProvider
      */
     protected function registerCommands(): void
     {
-        // $this->commands([]);
+        $this->commands([
+            \Modules\Finance\Console\ProcessSubscriptionRenewalsCommand::class,
+        ]);
     }
 
     /**
@@ -64,10 +71,10 @@ class FinanceServiceProvider extends ServiceProvider
      */
     protected function registerCommandSchedules(): void
     {
-        // $this->app->booted(function () {
-        //     $schedule = $this->app->make(Schedule::class);
-        //     $schedule->command('inspire')->hourly();
-        // });
+        $this->app->booted(function () {
+            $schedule = $this->app->make(\Illuminate\Console\Scheduling\Schedule::class);
+            $schedule->command('finance:process-subscription-renewals')->daily();
+        });
     }
 
     /**

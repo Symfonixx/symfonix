@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
+use Modules\Finance\Models\JournalEntry;
 
 class Project extends Model
 {
@@ -80,9 +81,15 @@ class Project extends Model
         return $this->hasMany(ProjectUseCase::class);
     }
 
-    public function transactions(): MorphMany
+    public function journalEntries(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
-        return $this->morphMany(\Modules\Finance\Models\Transaction::class, 'transactionable', 'reference_type', 'reference_id');
+        return $this->morphMany(JournalEntry::class, 'reference');
+    }
+
+    /** @deprecated Use journalEntries() */
+    public function transactions(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->journalEntries();
     }
 
     /**

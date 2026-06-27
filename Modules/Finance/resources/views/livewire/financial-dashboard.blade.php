@@ -116,6 +116,31 @@
         </div>
     </div>
 
+    <div class="card border-0 shadow-sm mb-8">
+        <div class="card-header border-0 pt-6">
+            <div>
+                <h3 class="card-title fw-bold mb-1">{{ __('finance::finance.metrics.saas_metrics') }}</h3>
+                <span class="text-muted fs-7">{{ __('finance::finance.metrics.saas_hint') }}</span>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <div class="text-muted fs-7">{{ __('finance::finance.metrics.mrr') }}</div>
+                    <div class="fs-2hx fw-bold text-primary">{{ number_format($mrr, 2) }} {{ $saasCurrency }}</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-muted fs-7">{{ __('finance::finance.metrics.arr') }}</div>
+                    <div class="fs-2hx fw-bold text-success">{{ number_format($arr, 2) }} {{ $saasCurrency }}</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-muted fs-7">{{ __('finance::finance.metrics.active_subscriptions') }}</div>
+                    <div class="fs-2hx fw-bold">{{ $activeSubscriptions }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @php
         $metricCards = [
             [

@@ -75,6 +75,7 @@
             <th>{{ __('project::project.fields.status') }}</th>
             <th>{{ __('project::project.fields.deal') }}</th>
             <th>{{ __('project::project.fields.budget') }}</th>
+            <th>{{ __('project::project.fields.payment_status') }}</th>
             <th>{{ __('project::project.fields.start_date') }}</th>
             <th>{{ __('project::project.fields.due_date') }}</th>
             <th>{{ __('Created At') }}</th>
@@ -118,6 +119,18 @@
                     @endif
                 </td>
                 <td>{{ $project->budget !== null ? number_format($project->budget, 2) : __('N/A') }}</td>
+                <td>
+                    @php
+                        $paymentColor = match($project->payment_status) {
+                            'fully_paid' => 'success',
+                            'partially_paid' => 'warning',
+                            default => 'danger',
+                        };
+                    @endphp
+                    <span class="badge badge-light-{{ $paymentColor }}">
+                        {{ __('project::project.payment_status.'.$project->payment_status) }}
+                    </span>
+                </td>
                 <td>{{ $project->start_date?->format('Y-m-d') ?: __('N/A') }}</td>
                 <td>{{ $project->due_date?->format('Y-m-d') ?: __('N/A') }}</td>
                 <td>{{ $project->created_at->diffForHumans() }}</td>

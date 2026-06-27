@@ -1,0 +1,72 @@
+<?php
+
+return [
+    'menu' => [
+        'inquiries' => 'Inquiries',
+    ],
+    'pages' => [
+        'index_title' => 'Inquiries',
+        'create_title' => 'Add Inquiry',
+        'edit_title' => 'Edit Inquiry',
+    ],
+    'fields' => [
+        'name' => 'Name',
+        'email' => 'Email',
+        'mobile' => 'Mobile',
+        'service' => 'Service',
+        'select_service' => 'Select a service',
+        'subject' => 'Subject',
+        'message' => 'Message',
+        'company' => 'Linked Company',
+        'select_company' => 'Select a company',
+        'ip_address' => 'IP Address',
+        'blocked' => 'Blocked',
+    ],
+    'status' => [
+        'active' => 'Active',
+        'blocked' => 'Blocked',
+        'converted' => 'Converted',
+    ],
+    'actions' => [
+        'add' => 'Add Inquiry',
+        'edit' => 'Edit Inquiry',
+        'view_details' => 'View Details',
+        'back_to_list' => 'Back to Inquiries',
+        'convert_to_lead' => 'Convert to Lead',
+        'convert_to_contact' => 'Add to CRM Contacts',
+    ],
+    'search' => [
+        'placeholder' => 'Search in Inquiries',
+    ],
+    'sections' => [
+        'contact_information' => 'Contact Information',
+        'contact_information_hint' => 'Details from the inbound inquiry.',
+        'company' => 'Company',
+        'company_hint' => 'Optional. Link this inquiry to an existing company if known.',
+        'message' => 'Message',
+        'status' => 'Status',
+    ],
+    'placeholders' => [
+        'name' => 'Example: John Smith',
+        'email' => 'name@example.com',
+        'mobile' => '+1 555 000 0000',
+        'subject' => 'Example: Project inquiry',
+        'message' => 'Enter the inquiry message...',
+    ],
+    'hints' => [
+        'company' => 'Optional. Inquiries can be processed without linking a company.',
+        'blocked' => 'Blocked inquiries are flagged in the system.',
+        'service' => 'Link to a catalog service when the inquiry matches a known offering.',
+        'subject' => 'Free-text subject when no catalog service is selected.',
+    ],
+    'validation' => [
+        'fix_errors' => 'Please fix the following errors and try again.',
+    ],
+    'conversion' => [
+        'already_converted' => 'This inquiry has already been converted to a lead.',
+        'already_has_contact' => 'This inquiry is already linked to a CRM contact.',
+        'contact_failed' => 'Could not create a CRM contact from this inquiry.',
+        'converted_to_lead' => 'Inquiry converted to lead.',
+        'converted_to_contact' => 'Inquiry added to CRM contacts.',
+    ],
+];

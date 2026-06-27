@@ -20,6 +20,9 @@ return [
         'deal' => 'Bağlı Anlaşma',
         'select_deal' => 'Anlaşma seçin (isteğe bağlı)',
         'budget' => 'Bütçe',
+        'payment_status' => 'Ödeme Durumu',
+        'collected' => 'Tahsil Edilen',
+        'collection_rate' => 'Tahsilat Oranı',
         'start_date' => 'Başlangıç Tarihi',
         'due_date' => 'Bitiş Tarihi',
     ],
@@ -37,6 +40,14 @@ return [
         'title' => 'Filtreler',
         'all_companies' => 'Tüm Şirketler',
         'all_statuses' => 'Tüm Durumlar',
+    ],
+    'sections' => [
+        'collection' => 'Tahsilat Durumu',
+    ],
+    'payment_status' => [
+        'unpaid' => 'Ödenmedi',
+        'partially_paid' => 'Kısmen Ödendi',
+        'fully_paid' => 'Tamamen Ödendi',
     ],
     'hints' => [
         'deal' => 'Açık veya kazanılmış bir CRM anlaşması bağlayın. Başka bir projeye bağlı anlaşmalar gizlenir.',

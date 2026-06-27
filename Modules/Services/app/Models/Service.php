@@ -20,6 +20,18 @@ class Service extends Model
         return $this->belongsTo(ServiceCategory::class, 'service_category_id');
     }
 
+    public function deals(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(\Modules\CRM\Models\Deal::class, 'deal_service')
+            ->withPivot(['quantity', 'unit_price'])
+            ->withTimestamps();
+    }
+
+    public function subscriptions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\Modules\CRM\Models\Subscription::class);
+    }
+
     public function scopeFeatured($q)
     {
         $q->where('status', 'Published')->where('featured', 1);

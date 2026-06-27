@@ -104,6 +104,51 @@
                 </div>
             </div>
 
+            @if($deal->services->isNotEmpty())
+                <div class="card mb-5">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ __('crm::deal.sections.services') }}</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-row-bordered align-middle gy-4 mb-0">
+                                <thead>
+                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                    <th>{{ __('crm::deal.fields.service') }}</th>
+                                    <th>{{ __('crm::deal.fields.quantity') }}</th>
+                                    <th>{{ __('crm::deal.fields.unit_price') }}</th>
+                                    <th>{{ __('crm::deal.fields.line_total') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-gray-600 fw-semibold">
+                                @foreach($deal->services as $service)
+                                    <tr>
+                                        <td>{{ $service->getTranslation('title', app()->getLocale()) }}</td>
+                                        <td>{{ $service->pivot->quantity }}</td>
+                                        <td>{{ number_format($service->pivot->unit_price, 2) }} {{ $deal->currency }}</td>
+                                        <td>{{ number_format($service->pivot->quantity * $service->pivot->unit_price, 2) }} {{ $deal->currency }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @if($deal->project)
+                <div class="card mb-5">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ __('crm::deal.sections.linked_project') }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ route('admin.projects.edit', $deal->project) }}" class="text-hover-primary fw-bold">
+                            {{ $deal->project->title }}
+                        </a>
+                    </div>
+                </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">{{ __('crm::deal.sections.stage_history') }}</h3>
@@ -147,6 +192,70 @@
         </div>
 
         <div class="col-xl-4">
+            @if($ledgerSummary)
+                <div class="card mb-5">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ __('crm::deal.sections.ledger_reconciliation') }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="text-muted">{{ __('crm::deal.ledger.expected_revenue') }}</span>
+                            <span class="fw-bold">
+                                {{ number_format($ledgerSummary['expected_revenue'], 2) }} {{ $ledgerSummary['currency'] }}
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="text-muted">{{ __('crm::deal.ledger.recorded_in_ledger') }}</span>
+                            <span class="fw-bold">
+                                {{ number_format($ledgerSummary['ledger_total'], 2) }} {{ $ledgerSummary['currency'] }}
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="text-muted">{{ __('crm::deal.ledger.variance') }}</span>
+                            <span class="fw-bold {{ $ledgerSummary['is_reconciled'] ? 'text-success' : 'text-danger' }}">
+                                {{ number_format($ledgerSummary['variance'], 2) }} {{ $ledgerSummary['currency'] }}
+                            </span>
+                        </div>
+                        <div class="mb-5">
+                            @if($ledgerSummary['is_reconciled'])
+                                <span class="badge badge-light-success">{{ __('crm::deal.ledger.reconciled') }}</span>
+                            @else
+                                <span class="badge badge-light-danger">{{ __('crm::deal.ledger.not_reconciled') }}</span>
+                            @endif
+                        </div>
+
+                        @can('Finance Management')
+                            @if($deal->status === 'won' && $deal->company_id)
+                                <form method="POST" action="{{ route('admin.finance.invoices.from-deal', $deal) }}" class="mb-5">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-light-primary w-100">
+                                        <i class="bi bi-receipt me-1"></i>{{ __('finance::invoice.actions.from_deal') }}
+                                    </button>
+                                </form>
+                            @endif
+                        @endcan
+
+                        @if($ledgerSummary['transactions']->isNotEmpty())
+                            <div class="separator my-5"></div>
+                            <h5 class="fw-bold mb-4">{{ __('crm::deal.ledger.transactions') }}</h5>
+                            @foreach($ledgerSummary['transactions'] as $transaction)
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div class="pe-3">
+                                        <div class="fw-semibold fs-7">{{ $transaction->description ?: __('crm::deal.ledger.income_entry') }}</div>
+                                        <div class="text-muted fs-8">{{ $transaction->transaction_date?->format('Y-m-d') }}</div>
+                                    </div>
+                                    <span class="fw-bold text-success text-nowrap">
+                                        {{ number_format($transaction->amount, 2) }} {{ $transaction->currency }}
+                                    </span>
+                                </div>
+                            @endforeach
+                        @else
+                            <p class="text-muted mb-0 fs-7">{{ __('crm::deal.ledger.no_transactions') }}</p>
+                        @endif
+                    </div>
+                </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">{{ __('crm::deal.sections.move_stage') }}</h3>

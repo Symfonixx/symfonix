@@ -5,10 +5,7 @@ namespace Modules\Product\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Modules\CRM\Models\Deal;
-use Modules\CRM\Models\Subscription;
 
 class Product extends Model
 {
@@ -80,17 +77,5 @@ class Product extends Model
     public function sales(): HasMany
     {
         return $this->hasMany(ProductSale::class);
-    }
-
-    public function deals(): BelongsToMany
-    {
-        return $this->belongsToMany(Deal::class, 'deal_product')
-            ->withPivot(['quantity', 'unit_price'])
-            ->withTimestamps();
-    }
-
-    public function subscriptions(): HasMany
-    {
-        return $this->hasMany(Subscription::class);
     }
 }

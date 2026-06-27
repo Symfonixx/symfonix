@@ -1,12 +1,14 @@
 @component('mail::message')
-# New blog: {{ $title }}
+# {{ __('New blog published') }}
+
+**{{ $title }}**
 
 {{ \Illuminate\Support\Str::limit(strip_tags($blog->description ?? ''), 180) }}
 
-@component('mail::button', ['url' => $url])
-Read blog
+@component('mail::button', ['url' => $url, 'color' => 'success'])
+{{ __('Read blog') }}
 @endcomponent
 
-Thanks,<br>
+{{ __('Thanks') }},<br>
 {{ config('app.name') }}
 @endcomponent

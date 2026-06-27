@@ -40,7 +40,7 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td><code>{{ $category->slug }}</code></td>
-                            <td>{{ $category->transactions_count }}</td>
+                            <td>{{ $category->journal_lines_count }}</td>
                             <td class="text-end">
                                 <a href="{{ route('admin.finance.expense-categories.edit', $category->id) }}"
                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">

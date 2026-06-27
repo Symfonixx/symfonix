@@ -46,11 +46,11 @@
                 </div>
             </div>
             <div class="row mb-6">
-                <div class="col-md-3 fw-bold">{{ __('crm::subscription.fields.product') }}</div>
+                <div class="col-md-3 fw-bold">{{ __('crm::subscription.fields.service') }}</div>
                 <div class="col-md-9">
-                    @if($subscription->product)
-                        <a href="{{ route('admin.products.edit', $subscription->product_id) }}" class="text-hover-primary">
-                            {{ $subscription->product->name }}
+                    @if($subscription->service)
+                        <a href="{{ route('admin.services.edit', $subscription->service_id) }}" class="text-hover-primary">
+                            {{ $subscription->service->getTranslation('title', app()->getLocale()) }}
                         </a>
                     @else
                         {{ __('N/A') }}

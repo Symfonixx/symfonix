@@ -12,8 +12,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('company_id')->nullable()->constrained('companies')->nullOnDelete();
+            $table->foreignId('lead_id')->nullable()->constrained('leads')->nullOnDelete();
             $table->foreignId('pipeline_stage_id')->constrained('pipeline_stages')->restrictOnDelete();
-            $table->foreignId('assigned_to')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('assigned_to')->nullable()->constrained('employees')->nullOnDelete();
             $table->decimal('value', 15, 2)->nullable();
             $table->string('currency', 3)->default('USD');
             $table->unsignedTinyInteger('probability')->nullable();
@@ -28,10 +29,18 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        Schema::table('leads', function (Blueprint $table) {
+            $table->foreign('deal_id')->references('id')->on('deals')->nullOnDelete();
+        });
     }
 
     public function down(): void
     {
+        Schema::table('leads', function (Blueprint $table) {
+            $table->dropForeign(['deal_id']);
+        });
+
         Schema::dropIfExists('deals');
     }
 };

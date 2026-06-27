@@ -9,92 +9,116 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 
 class InstallAppCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     */
-    protected $signature = 'app:install';
+    protected $signature = 'app:install
+                            {--email=admin@symfonix.com : Admin user email}
+                            {--password=password : Admin user password}
+                            {--name=Admin : Admin user display name}
+                            {--mobile=0000000000 : Admin user mobile number}';
+
+    protected $description = 'Install Symfonix: migrate database, seed reference data, permissions, and create the admin user.';
 
     /**
-     * The console command description.
+     * @var list<string>
      */
-    protected $description = 'This Command Will Install App.';
+    private const PERMISSIONS = [
+        'Settings Management',
+        'CMS Management',
+        'Support Management',
+        'Hr Management',
+        'App Monitoring',
+        'Logs Management',
+        'CRM Management',
+        'CRM View All',
+        'Sales Management',
+        'Project Management',
+        'Finance Management',
+        'Services Management',
+        'Product Management',
+        'Testimonials Management',
+    ];
 
-    /**
-     * Create a new command instance.
-     */
-    public function __construct()
+    public function handle(): int
     {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     */
-    public function handle()
-    {
+        if (! $this->option('no-interaction') && ! $this->confirm('This will run migrations and seed the database. Continue?', true)) {
+            return self::SUCCESS;
+        }
 
         Artisan::call('key:generate');
+        $this->components->info('Application key generated.');
 
-        $this->alert('App Key Generated successfully!');
+        Artisan::call('migrate', ['--force' => true]);
+        $this->components->info('Database migrated.');
 
-        Artisan::call('migrate');
-
-        $this->alert('DB Migrated successfully!');
-
-        $sqlFilePath = module_path('Core', 'database/db.sql');
-
-        if (file_exists($sqlFilePath)) {
-            DB::unprepared(file_get_contents($sqlFilePath));
-        } else {
-            $this->error('SQL file not found at path: '.$sqlFilePath);
-            Artisan::call('migrate:rollback');
-
-            return;
+        if (! $this->seedCountries()) {
+            return self::FAILURE;
         }
+
+        $this->seedPermissions();
+        $this->components->info('Permissions seeded.');
+
+        $this->seedPipelineStages();
+        $this->components->info('CRM pipeline stages seeded.');
 
         $role = Role::create([
             'name' => 'Admin',
             'guard_name' => 'web',
         ]);
         $role->syncPermissions(Permission::all());
-        $user = User::create([
-            'name' => 'Admin',
-            'email' => 'hadi-hilal@hotmail.com',
-            'password' => Hash::make('12345678'),
-            'mobile' => '00963947423271',
-            'type' => 'admin',
 
+        $user = User::create([
+            'name' => $this->option('name'),
+            'email' => $this->option('email'),
+            'password' => Hash::make($this->option('password')),
+            'mobile' => $this->option('mobile'),
+            'type' => 'admin',
         ]);
 
         $role->users()->attach($user);
-        $this->alert('✅ Application installed successfully!');
-        $this->alert("🔐 Login credentials:\nEmail: hadi-hilal@hotmail.com\nPassword: 12345678");
-        $this->alert('✨ Developed with care by Hadi Hilal');
 
+        $this->newLine();
+        $this->components->info('Symfonix installed successfully.');
+        $this->line("  Email:    {$user->email}");
+        $this->line("  Password: {$this->option('password')}");
+        $this->newLine();
+
+        return self::SUCCESS;
     }
 
-    /**
-     * Get the console command arguments.
-     */
-    protected function getArguments(): array
+    private function seedCountries(): bool
     {
-        return [
-            ['example', InputArgument::REQUIRED, 'An example argument.'],
-        ];
+        $sqlFilePath = module_path('Core', 'database/db.sql');
+
+        if (! file_exists($sqlFilePath)) {
+            $this->components->error("SQL file not found: {$sqlFilePath}");
+            Artisan::call('migrate:rollback', ['--force' => true]);
+
+            return false;
+        }
+
+        DB::unprepared(file_get_contents($sqlFilePath));
+        $this->components->info('Countries seeded.');
+
+        return true;
     }
 
-    /**
-     * Get the console command options.
-     */
-    protected function getOptions(): array
+    private function seedPermissions(): void
     {
-        return [
-            ['example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null],
-        ];
+        foreach (self::PERMISSIONS as $permission) {
+            Permission::query()->firstOrCreate([
+                'name' => $permission,
+                'guard_name' => 'web',
+            ]);
+        }
+    }
+
+    private function seedPipelineStages(): void
+    {
+        Artisan::call('db:seed', [
+            '--class' => 'Modules\\CRM\\Database\\Seeders\\PipelineStageSeeder',
+            '--force' => true,
+        ]);
     }
 }

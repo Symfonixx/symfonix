@@ -163,14 +163,14 @@
 
 @canany(['CRM Management', 'Sales Management'])
     <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['crm']) || isset($active['crm_dashboard']) || isset($active['crm_sales_targets']) || isset($active['customers']) || isset($active['companies']) || isset($active['deals']) || isset($active['subscriptions']) || isset($active['leads']) || isset($active['contact_forms']) ? 'here show' : '' }}">
+         class="menu-item menu-accordion {{ isset($active['crm']) || isset($active['crm_dashboard']) || isset($active['crm_sales_targets']) || isset($active['marketing']) || isset($active['customers']) || isset($active['companies']) || isset($active['contacts']) || isset($active['deals']) || isset($active['subscriptions']) || isset($active['leads']) || isset($active['contact_forms']) ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-people"></i></span>
             <span class="menu-title">{{ __('CRM') }}</span>
             <span class="menu-arrow"></span>
         </span>
 
-        <div class="menu-sub menu-sub-accordion {{ isset($active['crm_dashboard']) || isset($active['crm_sales_targets']) || isset($active['customers']) || isset($active['companies']) || isset($active['deals']) || isset($active['subscriptions']) || isset($active['leads']) || isset($active['contact_forms']) ? 'show' : '' }}">
+        <div class="menu-sub menu-sub-accordion {{ isset($active['crm_dashboard']) || isset($active['crm_sales_targets']) || isset($active['marketing']) || isset($active['customers']) || isset($active['companies']) || isset($active['contacts']) || isset($active['deals']) || isset($active['subscriptions']) || isset($active['leads']) || isset($active['contact_forms']) ? 'show' : '' }}">
             @can('CRM Management')
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['crm_dashboard']) ? 'active' : '' }}"
@@ -226,10 +226,24 @@
                 </a>
             </div>
             <div class="menu-item">
+                <a class="menu-link {{ isset($active['contacts']) ? 'active' : '' }}"
+                   href="{{ route('admin.contacts.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('crm::contact.menu.contacts') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
                 <a class="menu-link {{ isset($active['contact_forms']) ? 'active' : '' }}"
                    href="{{ route('admin.contact_forms.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                    <span class="menu-title">{{ __('crm::contact.menu.contacts') }}</span>
+                    <span class="menu-title">{{ __('crm::contact_form.menu.inquiries') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['marketing']) ? 'active' : '' }}"
+                   href="{{ route('admin.crm.marketing.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('crm::marketing.menu.marketing') }}</span>
                 </a>
             </div>
             @endcan
@@ -305,14 +319,14 @@
 @can('Finance Management')
     <div class="menu-section-label">{{ __('Finance') }}</div>
     <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['finance_dashboard']) || isset($active['finance_daily_log']) || isset($active['finance_expense_categories']) || isset($active['finance_salaries']) || isset($active['finance_commissions']) || isset($active['finance_product_sales']) ? 'here show' : '' }}">
+         class="menu-item menu-accordion {{ isset($active['finance_dashboard']) || isset($active['finance_daily_log']) || isset($active['finance_expense_categories']) || isset($active['finance_salaries']) || isset($active['finance_commissions']) || isset($active['finance_product_sales']) || isset($active['finance_invoices']) || isset($active['finance_accounts_receivable']) ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-currency-dollar"></i></span>
             <span class="menu-title">{{ __('finance::finance.menu.finance') }}</span>
             <span class="menu-arrow"></span>
         </span>
 
-        <div class="menu-sub menu-sub-accordion {{ isset($active['finance_dashboard']) || isset($active['finance_daily_log']) || isset($active['finance_expense_categories']) || isset($active['finance_salaries']) || isset($active['finance_commissions']) || isset($active['finance_product_sales']) ? 'show' : '' }}">
+        <div class="menu-sub menu-sub-accordion {{ isset($active['finance_dashboard']) || isset($active['finance_daily_log']) || isset($active['finance_expense_categories']) || isset($active['finance_salaries']) || isset($active['finance_commissions']) || isset($active['finance_product_sales']) || isset($active['finance_invoices']) || isset($active['finance_accounts_receivable']) ? 'show' : '' }}">
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['finance_dashboard']) ? 'active' : '' }}"
                    href="{{ route('admin.finance.dashboard') }}">
@@ -353,6 +367,20 @@
                    href="{{ route('admin.finance.product-sales.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">{{ __('finance::finance.menu.product_sales') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['finance_invoices']) ? 'active' : '' }}"
+                   href="{{ route('admin.finance.invoices.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('finance::finance.menu.invoices') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['finance_accounts_receivable']) ? 'active' : '' }}"
+                   href="{{ route('admin.finance.accounts-receivable') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('finance::finance.menu.accounts_receivable') }}</span>
                 </a>
             </div>
         </div>

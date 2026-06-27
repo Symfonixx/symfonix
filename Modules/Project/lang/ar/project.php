@@ -20,6 +20,9 @@ return [
         'deal' => 'الصفقة المرتبطة',
         'select_deal' => 'اختر الصفقة (اختياري)',
         'budget' => 'الميزانية',
+        'payment_status' => 'حالة الدفع',
+        'collected' => 'المحصّل',
+        'collection_rate' => 'نسبة التحصيل',
         'start_date' => 'تاريخ البدء',
         'due_date' => 'تاريخ الاستحقاق',
     ],
@@ -37,6 +40,14 @@ return [
         'title' => 'الفلاتر',
         'all_companies' => 'جميع الشركات',
         'all_statuses' => 'جميع الحالات',
+    ],
+    'sections' => [
+        'collection' => 'تقدم التحصيل',
+    ],
+    'payment_status' => [
+        'unpaid' => 'غير مدفوع',
+        'partially_paid' => 'مدفوع جزئياً',
+        'fully_paid' => 'مدفوع بالكامل',
     ],
     'hints' => [
         'deal' => 'اربط صفقة مفتوحة أو مكسوبة. الصفقات المرتبطة بمشروع آخر لا تظهر هنا.',

@@ -37,11 +37,12 @@ class DealService
         return $this->repository->findOrFail($id, $withTrashed);
     }
 
-    public function create(DealData $data): ?Deal
+    public function create(DealData $data, array $services = []): ?Deal
     {
         $deal = $this->repository->create($data);
 
         if ($deal) {
+            $this->syncServices($deal, $services);
             $stage = $this->stageRepository->findOrFail($deal->pipeline_stage_id);
             $this->applyStageOutcome($deal, $stage);
 
@@ -62,11 +63,15 @@ class DealService
         return $deal;
     }
 
-    public function update(Deal $deal, DealData $data): ?Deal
+    public function update(Deal $deal, DealData $data, array $services = []): ?Deal
     {
         $before = AuditLogger::auditableSnapshot($deal);
         $previousStageId = $deal->pipeline_stage_id;
         $updated = $this->repository->update($deal, $data);
+
+        if ($updated) {
+            $this->syncServices($deal, $services);
+        }
 
         if ($updated && $previousStageId !== $deal->pipeline_stage_id) {
             $fromStage = $this->stageRepository->findOrFail($previousStageId);
@@ -204,5 +209,23 @@ class DealService
     private function dispatchStageChanged(Deal $deal, ?PipelineStage $fromStage, PipelineStage $toStage): void
     {
         DealStageChanged::dispatch($deal, $fromStage, $toStage, auth()->user());
+    }
+
+    public function syncServices(Deal $deal, array $services): void
+    {
+        $sync = [];
+
+        foreach ($services as $row) {
+            if (empty($row['service_id'])) {
+                continue;
+            }
+
+            $sync[(int) $row['service_id']] = [
+                'quantity' => max(1, (int) ($row['quantity'] ?? 1)),
+                'unit_price' => (float) ($row['unit_price'] ?? 0),
+            ];
+        }
+
+        $deal->services()->sync($sync);
     }
 }
