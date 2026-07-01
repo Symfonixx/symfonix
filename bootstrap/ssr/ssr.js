@@ -1305,7 +1305,7 @@ const _sfc_main$l = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<article${ssrRenderAttrs(mergeProps({
         class: ["use-case-card", [`use-case-card--${__props.variant}`, { "use-case-card--featured": __props.item.featured }]]
-      }, _attrs))} data-v-fab0a1fa><div class="use-case-card__glow" aria-hidden="true" data-v-fab0a1fa></div><header class="use-case-card__header" data-v-fab0a1fa>`);
+      }, _attrs))} data-v-9f66d710><div class="use-case-card__glow" aria-hidden="true" data-v-9f66d710></div><header class="use-case-card__header" data-v-9f66d710>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "use-case-card__avatar",
@@ -1313,7 +1313,7 @@ const _sfc_main$l = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", __props.item.image_link)}${ssrRenderAttr("alt", __props.item.title)} loading="lazy" data-v-fab0a1fa${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", __props.item.image_link)}${ssrRenderAttr("alt", __props.item.title)} loading="lazy" data-v-9f66d710${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
@@ -1326,7 +1326,7 @@ const _sfc_main$l = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="use-case-card__identity" data-v-fab0a1fa><h3 class="use-case-card__title" data-v-fab0a1fa>`);
+      _push(`<div class="use-case-card__identity" data-v-9f66d710><h3 class="use-case-card__title" data-v-9f66d710>`);
       _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -1341,36 +1341,36 @@ const _sfc_main$l = {
       }, _parent));
       _push(`</h3>`);
       if (__props.item.client_name) {
-        _push(`<p class="use-case-card__subtitle" data-v-fab0a1fa>${ssrInterpolate(__props.item.client_name)}</p>`);
+        _push(`<p class="use-case-card__subtitle" data-v-9f66d710>${ssrInterpolate(__props.item.client_name)}</p>`);
       } else if (__props.item.category_tag) {
-        _push(`<p class="use-case-card__subtitle" data-v-fab0a1fa>${ssrInterpolate(__props.item.category_tag)}</p>`);
+        _push(`<p class="use-case-card__subtitle" data-v-9f66d710>${ssrInterpolate(__props.item.category_tag)}</p>`);
       } else {
         _push(`<!---->`);
       }
       _push(`</div></header>`);
       if (__props.item.summary && __props.variant !== "compact") {
-        _push(`<div class="use-case-card__section" data-v-fab0a1fa><div class="use-case-card__section-head" data-v-fab0a1fa><span class="use-case-card__section-icon" data-v-fab0a1fa><i class="fas fa-lightbulb" data-v-fab0a1fa></i></span><span class="use-case-card__section-label" data-v-fab0a1fa>${ssrInterpolate(trans("Overview"))}</span></div><p class="use-case-card__summary" data-v-fab0a1fa>${ssrInterpolate(truncate(__props.item.summary, __props.variant === "compact" ? 90 : 140))}</p></div>`);
+        _push(`<div class="use-case-card__section" data-v-9f66d710><div class="use-case-card__section-head" data-v-9f66d710><span class="use-case-card__section-icon" data-v-9f66d710><i class="fas fa-lightbulb" data-v-9f66d710></i></span><span class="use-case-card__section-label" data-v-9f66d710>${ssrInterpolate(trans("Overview"))}</span></div><p class="use-case-card__summary" data-v-9f66d710>${ssrInterpolate(truncate(__props.item.summary, __props.variant === "compact" ? 90 : 140))}</p></div>`);
       } else {
         _push(`<!---->`);
       }
       if (__props.item.category_tag || __props.item.technologies && __props.item.technologies.length) {
-        _push(`<div class="use-case-card__section use-case-card__section--tags" data-v-fab0a1fa><div class="use-case-card__section-head" data-v-fab0a1fa><span class="use-case-card__section-icon" data-v-fab0a1fa><i class="fas fa-code" data-v-fab0a1fa></i></span><span class="use-case-card__section-label" data-v-fab0a1fa>${ssrInterpolate(trans("Technologies"))}</span></div><div class="use-case-card__tags" data-v-fab0a1fa>`);
+        _push(`<div class="use-case-card__section use-case-card__section--tags" data-v-9f66d710><div class="use-case-card__section-head" data-v-9f66d710><span class="use-case-card__section-icon" data-v-9f66d710><i class="fas fa-code" data-v-9f66d710></i></span><span class="use-case-card__section-label" data-v-9f66d710>${ssrInterpolate(trans("Technologies"))}</span></div><div class="use-case-card__tags" data-v-9f66d710>`);
         if (__props.item.category_tag) {
-          _push(`<span class="use-case-card__tag use-case-card__tag--category" data-v-fab0a1fa>${ssrInterpolate(__props.item.category_tag)}</span>`);
+          _push(`<span class="use-case-card__tag use-case-card__tag--category" data-v-9f66d710>${ssrInterpolate(__props.item.category_tag)}</span>`);
         } else {
           _push(`<!---->`);
         }
         _push(`<!--[-->`);
         ssrRenderList((__props.item.technologies || []).slice(0, __props.variant === "compact" ? 2 : 4), (tech) => {
-          _push(`<span class="use-case-card__tag" data-v-fab0a1fa>${ssrInterpolate(tech)}</span>`);
+          _push(`<span class="use-case-card__tag" data-v-9f66d710>${ssrInterpolate(tech)}</span>`);
         });
         _push(`<!--]--></div></div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<footer class="use-case-card__footer" data-v-fab0a1fa>`);
+      _push(`<footer class="use-case-card__footer" data-v-9f66d710>`);
       if (__props.item.completed_year) {
-        _push(`<div class="use-case-card__pill" data-v-fab0a1fa><i class="far fa-calendar-alt" data-v-fab0a1fa></i><span data-v-fab0a1fa>${ssrInterpolate(__props.item.completed_year)}</span></div>`);
+        _push(`<div class="use-case-card__pill" data-v-9f66d710><i class="far fa-calendar-alt" data-v-9f66d710></i><span data-v-9f66d710>${ssrInterpolate(__props.item.completed_year)}</span></div>`);
       } else {
         _push(`<!---->`);
       }
@@ -1380,7 +1380,7 @@ const _sfc_main$l = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-fab0a1fa${_scopeId}>${ssrInterpolate(trans("View Case Study"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-fab0a1fa${_scopeId}></span>`);
+            _push2(`<span data-v-9f66d710${_scopeId}>${ssrInterpolate(trans("View Case Study"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-9f66d710${_scopeId}></span>`);
           } else {
             return [
               createVNode("span", null, toDisplayString(trans("View Case Study")), 1),
@@ -1402,7 +1402,7 @@ _sfc_main$l.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UseCaseCard.vue");
   return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-fab0a1fa"]]);
+const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-9f66d710"]]);
 const __default__$f = {
   components: {
     AppLayout: _sfc_main$m,
@@ -6909,26 +6909,26 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-e6b1e80a${_scopeId}><title data-v-e6b1e80a${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-e6b1e80a${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-e6b1e80a${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-e6b1e80a${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-f6418263${_scopeId}><title data-v-f6418263${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f6418263${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f6418263${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f6418263${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-e6b1e80a${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-f6418263${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-e6b1e80a${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-e6b1e80a${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f6418263${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f6418263${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-e6b1e80a${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-f6418263${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-e6b1e80a${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-f6418263${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-e6b1e80a${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-e6b1e80a${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-e6b1e80a${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-e6b1e80a${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-f6418263${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f6418263${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f6418263${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f6418263${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-e6b1e80a${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-f6418263${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -7003,13 +7003,13 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
       _push(ssrRenderComponent(_sfc_main$m, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="page-header" data-v-e6b1e80a${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-e6b1e80a${_scopeId}></div><div class="container" data-v-e6b1e80a${_scopeId}><div class="page-header__inner" data-v-e6b1e80a${_scopeId}><h2 data-v-e6b1e80a${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</h2><div class="thm-breadcrumb__box" data-v-e6b1e80a${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-e6b1e80a${_scopeId}><li data-v-e6b1e80a${_scopeId}>`);
+            _push2(`<div class="page-header" data-v-f6418263${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-f6418263${_scopeId}></div><div class="container" data-v-f6418263${_scopeId}><div class="page-header__inner" data-v-f6418263${_scopeId}><h2 data-v-f6418263${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</h2><div class="thm-breadcrumb__box" data-v-f6418263${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f6418263${_scopeId}><li data-v-f6418263${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-e6b1e80a${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-f6418263${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -7019,9 +7019,9 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-e6b1e80a${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-e6b1e80a${_scopeId}></span></li><li data-v-e6b1e80a${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</li></ul></div></div></div></div><section class="blog-page use-cases-page" data-v-e6b1e80a${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-e6b1e80a${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-e6b1e80a${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-e6b1e80a${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-e6b1e80a${_scopeId}></div></div><div class="container position-relative" data-v-e6b1e80a${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-e6b1e80a${_scopeId}><div class="section-title__tagline-box" data-v-e6b1e80a${_scopeId}><div class="section-title__tagline-shape-1" data-v-e6b1e80a${_scopeId}></div><span class="section-title__tagline" data-v-e6b1e80a${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</span><div class="section-title__tagline-shape-2" data-v-e6b1e80a${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-e6b1e80a${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2></div><div class="row" data-v-e6b1e80a${_scopeId}><!--[-->`);
+            _push2(`</li><li data-v-f6418263${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f6418263${_scopeId}></span></li><li data-v-f6418263${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</li></ul></div></div></div></div><section class="blog-page use-cases-page" data-v-f6418263${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-f6418263${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-f6418263${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-f6418263${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-f6418263${_scopeId}></div></div><div class="container position-relative" data-v-f6418263${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-f6418263${_scopeId}><div class="section-title__tagline-box" data-v-f6418263${_scopeId}><div class="section-title__tagline-shape-1" data-v-f6418263${_scopeId}></div><span class="section-title__tagline" data-v-f6418263${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</span><div class="section-title__tagline-shape-2" data-v-f6418263${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-f6418263${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2></div><div class="row" data-v-f6418263${_scopeId}><!--[-->`);
             ssrRenderList(useCases.value.data, (item, index) => {
-              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-e6b1e80a${_scopeId}>`);
+              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-f6418263${_scopeId}>`);
               _push2(ssrRenderComponent(UseCaseCard, {
                 item,
                 locale: locale.value
@@ -7030,21 +7030,21 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
             });
             _push2(`<!--]-->`);
             if (!useCases.value.data.length) {
-              _push2(`<div class="col-12" data-v-e6b1e80a${_scopeId}><div class="text-center py-5" data-v-e6b1e80a${_scopeId}><h3 class="use-cases-page__empty" data-v-e6b1e80a${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3></div></div>`);
+              _push2(`<div class="col-12" data-v-f6418263${_scopeId}><div class="text-center py-5" data-v-f6418263${_scopeId}><h3 class="use-cases-page__empty" data-v-f6418263${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3></div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCases.value.last_page > 1) {
-              _push2(`<div class="blog-page__pagination" data-v-e6b1e80a${_scopeId}><ul class="pg-pagination list-unstyled" data-v-e6b1e80a${_scopeId}>`);
+              _push2(`<div class="blog-page__pagination" data-v-f6418263${_scopeId}><ul class="pg-pagination list-unstyled" data-v-f6418263${_scopeId}>`);
               if (useCases.value.prev_page_url) {
-                _push2(`<li class="prev" data-v-e6b1e80a${_scopeId}>`);
+                _push2(`<li class="prev" data-v-f6418263${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: useCases.value.prev_page_url,
                   "aria-label": "Previous"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="icon-left-arrow-1" data-v-e6b1e80a${_scopeId2}></span>`);
+                      _push3(`<span class="icon-left-arrow-1" data-v-f6418263${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", { class: "icon-left-arrow-1" })
@@ -7061,7 +7061,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               ssrRenderList(useCases.value.links, (link, index) => {
                 _push2(`<!--[-->`);
                 if (link.url && index > 0 && index < useCases.value.links.length - 1) {
-                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-e6b1e80a${_scopeId}>`);
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-f6418263${_scopeId}>`);
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
@@ -7084,14 +7084,14 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               });
               _push2(`<!--]-->`);
               if (useCases.value.next_page_url) {
-                _push2(`<li class="next" data-v-e6b1e80a${_scopeId}>`);
+                _push2(`<li class="next" data-v-f6418263${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: useCases.value.next_page_url,
                   "aria-label": "Next"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-e6b1e80a${_scopeId2}></span>`);
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f6418263${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", {
@@ -7258,7 +7258,7 @@ _sfc_main$9.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue");
   return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-e6b1e80a"]]);
+const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-f6418263"]]);
 const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseIndex
@@ -7314,26 +7314,26 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-3a1b56cb${_scopeId}><title data-v-3a1b56cb${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-3a1b56cb${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-3a1b56cb${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-3a1b56cb${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-c7550339${_scopeId}><title data-v-c7550339${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-c7550339${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-c7550339${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-c7550339${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-3a1b56cb${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-c7550339${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-3a1b56cb${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-3a1b56cb${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-c7550339${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-c7550339${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-3a1b56cb${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-c7550339${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-3a1b56cb${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-c7550339${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="article" data-v-3a1b56cb${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-3a1b56cb${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-3a1b56cb${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-3a1b56cb${_scopeId}>`);
+            _push2(`<meta property="og:type" content="article" data-v-c7550339${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-c7550339${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-c7550339${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-c7550339${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-3a1b56cb${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-c7550339${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -7408,13 +7408,13 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
       _push(ssrRenderComponent(_sfc_main$m, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-3a1b56cb${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-3a1b56cb${_scopeId}></div><div class="container" data-v-3a1b56cb${_scopeId}><div class="page-header__inner" data-v-3a1b56cb${_scopeId}><h2 data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-3a1b56cb${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-3a1b56cb${_scopeId}><li data-v-3a1b56cb${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-c7550339${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-c7550339${_scopeId}></div><div class="container" data-v-c7550339${_scopeId}><div class="page-header__inner" data-v-c7550339${_scopeId}><h2 data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-c7550339${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-c7550339${_scopeId}><li data-v-c7550339${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-3a1b56cb${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-c7550339${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -7424,7 +7424,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-3a1b56cb${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-3a1b56cb${_scopeId}></span></li><li data-v-3a1b56cb${_scopeId}>`);
+            _push2(`</li><li data-v-c7550339${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-c7550339${_scopeId}></span></li><li data-v-c7550339${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("use-cases.index")
             }, {
@@ -7439,14 +7439,14 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-3a1b56cb${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-3a1b56cb${_scopeId}></span></li><li data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.title)}</li></ul></div></div></div></section><section class="blog-details use-cases-page" data-v-3a1b56cb${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-3a1b56cb${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-3a1b56cb${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-3a1b56cb${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-3a1b56cb${_scopeId}></div></div><div class="container position-relative" data-v-3a1b56cb${_scopeId}><div class="row" data-v-3a1b56cb${_scopeId}><div class="col-xl-12" data-v-3a1b56cb${_scopeId}><article class="use-case-detail" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__glow" aria-hidden="true" data-v-3a1b56cb${_scopeId}></div><header class="use-case-detail__header" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__identity" data-v-3a1b56cb${_scopeId}>`);
+            _push2(`</li><li data-v-c7550339${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-c7550339${_scopeId}></span></li><li data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.title)}</li></ul></div></div></div></section><section class="blog-details use-cases-page" data-v-c7550339${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-c7550339${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-c7550339${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-c7550339${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-c7550339${_scopeId}></div></div><div class="container position-relative" data-v-c7550339${_scopeId}><div class="row" data-v-c7550339${_scopeId}><div class="col-xl-12" data-v-c7550339${_scopeId}><article class="use-case-detail" data-v-c7550339${_scopeId}><div class="use-case-detail__glow" aria-hidden="true" data-v-c7550339${_scopeId}></div><header class="use-case-detail__header" data-v-c7550339${_scopeId}><div class="use-case-detail__identity" data-v-c7550339${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("use-cases.index"),
               class: "use-case-detail__avatar"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-3a1b56cb${_scopeId2}>`);
+                  _push3(`<img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-c7550339${_scopeId2}>`);
                 } else {
                   return [
                     createVNode("img", {
@@ -7458,22 +7458,22 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`<div class="use-case-detail__intro" data-v-3a1b56cb${_scopeId}><h1 class="use-case-detail__title" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.title)}</h1>`);
+            _push2(`<div class="use-case-detail__intro" data-v-c7550339${_scopeId}><h1 class="use-case-detail__title" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.title)}</h1>`);
             if (useCase.value.client_name) {
-              _push2(`<p class="use-case-detail__subtitle" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.client_name)}</p>`);
+              _push2(`<p class="use-case-detail__subtitle" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.client_name)}</p>`);
             } else if (useCase.value.category_tag) {
-              _push2(`<p class="use-case-detail__subtitle" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</p>`);
+              _push2(`<p class="use-case-detail__subtitle" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="use-case-detail__actions" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__share" data-v-3a1b56cb${_scopeId}><span class="use-case-detail__share-label" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="use-case-detail__share-links" data-v-3a1b56cb${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="Facebook" data-v-3a1b56cb${_scopeId}><span class="icon-facebook" data-v-3a1b56cb${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="Twitter" data-v-3a1b56cb${_scopeId}><span class="fab fa-twitter" data-v-3a1b56cb${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="LinkedIn" data-v-3a1b56cb${_scopeId}><span class="icon-linkedin" data-v-3a1b56cb${_scopeId}></span></a></div></div>`);
+            _push2(`</div></div><div class="use-case-detail__actions" data-v-c7550339${_scopeId}><div class="use-case-detail__share" data-v-c7550339${_scopeId}><span class="use-case-detail__share-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="use-case-detail__share-links" data-v-c7550339${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="Facebook" data-v-c7550339${_scopeId}><span class="icon-facebook" data-v-c7550339${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="Twitter" data-v-c7550339${_scopeId}><span class="fab fa-twitter" data-v-c7550339${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="LinkedIn" data-v-c7550339${_scopeId}><span class="icon-linkedin" data-v-c7550339${_scopeId}></span></a></div></div>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "use-case-detail__pill use-case-detail__pill--cta"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-3a1b56cb${_scopeId2}></span>`);
+                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-c7550339${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(toDisplayString(trans("Get in Touch")) + " ", 1),
@@ -7485,19 +7485,19 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
             }, _parent2, _scopeId));
             _push2(`</div></header>`);
             if (useCase.value.client_name || useCase.value.completed_year || useCase.value.category_tag) {
-              _push2(`<div class="use-case-detail__meta" data-v-3a1b56cb${_scopeId}>`);
+              _push2(`<div class="use-case-detail__meta" data-v-c7550339${_scopeId}>`);
               if (useCase.value.client_name) {
-                _push2(`<div class="use-case-detail__pill" data-v-3a1b56cb${_scopeId}><i class="fas fa-user" data-v-3a1b56cb${_scopeId}></i><span data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("Client"))}: ${ssrInterpolate(useCase.value.client_name)}</span></div>`);
+                _push2(`<div class="use-case-detail__pill" data-v-c7550339${_scopeId}><i class="fas fa-user" data-v-c7550339${_scopeId}></i><span data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Client"))}: ${ssrInterpolate(useCase.value.client_name)}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
               if (useCase.value.completed_year) {
-                _push2(`<div class="use-case-detail__pill" data-v-3a1b56cb${_scopeId}><i class="far fa-calendar-alt" data-v-3a1b56cb${_scopeId}></i><span data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.completed_year)}</span></div>`);
+                _push2(`<div class="use-case-detail__pill" data-v-c7550339${_scopeId}><i class="far fa-calendar-alt" data-v-c7550339${_scopeId}></i><span data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.completed_year)}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
               if (useCase.value.category_tag) {
-                _push2(`<div class="use-case-detail__pill" data-v-3a1b56cb${_scopeId}><i class="fas fa-tag" data-v-3a1b56cb${_scopeId}></i><span data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</span></div>`);
+                _push2(`<div class="use-case-detail__pill" data-v-c7550339${_scopeId}><i class="fas fa-tag" data-v-c7550339${_scopeId}></i><span data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -7505,51 +7505,51 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="use-case-detail__hero" data-v-3a1b56cb${_scopeId}><img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-3a1b56cb${_scopeId}></div>`);
+            _push2(`<div class="use-case-detail__hero" data-v-c7550339${_scopeId}><img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-c7550339${_scopeId}></div>`);
             if (useCase.value.summary) {
-              _push2(`<div class="use-case-detail__section" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__section-head" data-v-3a1b56cb${_scopeId}><span class="use-case-detail__section-icon" data-v-3a1b56cb${_scopeId}><i class="fas fa-lightbulb" data-v-3a1b56cb${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("Project Overview"))}</span></div><p class="use-case-detail__text" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.summary)}</p></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-lightbulb" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Project Overview"))}</span></div><p class="use-case-detail__text" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.summary)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.challenge) {
-              _push2(`<div class="use-case-detail__section" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__section-head" data-v-3a1b56cb${_scopeId}><span class="use-case-detail__section-icon" data-v-3a1b56cb${_scopeId}><i class="fas fa-exclamation-triangle" data-v-3a1b56cb${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("The Challenge"))}</span></div><p class="use-case-detail__text" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.challenge)}</p></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-exclamation-triangle" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("The Challenge"))}</span></div><p class="use-case-detail__text" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.challenge)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.solution) {
-              _push2(`<div class="use-case-detail__section" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__section-head" data-v-3a1b56cb${_scopeId}><span class="use-case-detail__section-icon" data-v-3a1b56cb${_scopeId}><i class="fas fa-cogs" data-v-3a1b56cb${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("Our Solution"))}</span></div><p class="use-case-detail__text" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.solution)}</p></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-cogs" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Our Solution"))}</span></div><p class="use-case-detail__text" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.solution)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.results) {
-              _push2(`<div class="use-case-detail__section" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__section-head" data-v-3a1b56cb${_scopeId}><span class="use-case-detail__section-icon" data-v-3a1b56cb${_scopeId}><i class="fas fa-chart-line" data-v-3a1b56cb${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("The Results"))}</span></div><p class="use-case-detail__text" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(useCase.value.results)}</p></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-chart-line" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("The Results"))}</span></div><p class="use-case-detail__text" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.results)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.content) {
-              _push2(`<div class="use-case-detail__section" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__section-head" data-v-3a1b56cb${_scopeId}><span class="use-case-detail__section-icon" data-v-3a1b56cb${_scopeId}><i class="fas fa-align-left" data-v-3a1b56cb${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("Details"))}</span></div><div class="use-case-detail__content" data-v-3a1b56cb${_scopeId}>${useCase.value.content ?? ""}</div></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-align-left" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Details"))}</span></div><div class="use-case-detail__content" data-v-c7550339${_scopeId}>${useCase.value.content ?? ""}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.technologies && useCase.value.technologies.length) {
-              _push2(`<div class="use-case-detail__section" data-v-3a1b56cb${_scopeId}><div class="use-case-detail__section-head" data-v-3a1b56cb${_scopeId}><span class="use-case-detail__section-icon" data-v-3a1b56cb${_scopeId}><i class="fas fa-code" data-v-3a1b56cb${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("Technologies Used"))}</span></div><div class="use-case-detail__tags" data-v-3a1b56cb${_scopeId}><!--[-->`);
+              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-code" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Technologies Used"))}</span></div><div class="use-case-detail__tags" data-v-c7550339${_scopeId}><!--[-->`);
               ssrRenderList(useCase.value.technologies, (tech) => {
-                _push2(`<span class="use-case-detail__tag" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(tech)}</span>`);
+                _push2(`<span class="use-case-detail__tag" data-v-c7550339${_scopeId}>${ssrInterpolate(tech)}</span>`);
               });
               _push2(`<!--]--></div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.project_url) {
-              _push2(`<footer class="use-case-detail__footer" data-v-3a1b56cb${_scopeId}><a${ssrRenderAttr("href", useCase.value.project_url)} target="_blank" rel="noopener" class="use-case-detail__pill use-case-detail__pill--cta" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("Visit Live Project"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-3a1b56cb${_scopeId}></span></a></footer>`);
+              _push2(`<footer class="use-case-detail__footer" data-v-c7550339${_scopeId}><a${ssrRenderAttr("href", useCase.value.project_url)} target="_blank" rel="noopener" class="use-case-detail__pill use-case-detail__pill--cta" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Visit Live Project"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-c7550339${_scopeId}></span></a></footer>`);
             } else {
               _push2(`<!---->`);
             }
             _push2(`</article>`);
             if (relatedUseCases.value.length) {
-              _push2(`<div class="use-cases-related" data-v-3a1b56cb${_scopeId}><div class="use-cases-related__head" data-v-3a1b56cb${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-3a1b56cb${_scopeId}><div class="section-title__tagline-shape-1" data-v-3a1b56cb${_scopeId}></div><span class="section-title__tagline" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("More Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-3a1b56cb${_scopeId}></div></div><h3 class="use-cases-related__title" data-v-3a1b56cb${_scopeId}>${ssrInterpolate(trans("Explore More Success Stories"))}</h3></div><div class="row" data-v-3a1b56cb${_scopeId}><!--[-->`);
+              _push2(`<div class="use-cases-related" data-v-c7550339${_scopeId}><div class="use-cases-related__head" data-v-c7550339${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-c7550339${_scopeId}><div class="section-title__tagline-shape-1" data-v-c7550339${_scopeId}></div><span class="section-title__tagline" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("More Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-c7550339${_scopeId}></div></div><h3 class="use-cases-related__title" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Explore More Success Stories"))}</h3></div><div class="row" data-v-c7550339${_scopeId}><!--[-->`);
               ssrRenderList(relatedUseCases.value, (item) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-3a1b56cb${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-c7550339${_scopeId}>`);
                 _push2(ssrRenderComponent(UseCaseCard, {
                   item,
                   locale: locale.value,
@@ -7877,7 +7877,7 @@ _sfc_main$8.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseShow.vue");
   return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
-const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-3a1b56cb"]]);
+const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-c7550339"]]);
 const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseShow
