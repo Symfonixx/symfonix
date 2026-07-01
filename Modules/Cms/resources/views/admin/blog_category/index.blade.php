@@ -3,14 +3,14 @@
 @section('toolbar')
     @php
         $breadcrumbItems = [
-            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
-            ['label' => __('Blog Categories')],
+            ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
+            ['label' => 'Blog Categories'],
         ];
     @endphp
     <x-admin.breadcrumb
-        :pageTitle="__('Blog Categories')"
+        pageTitle='Blog Categories'
         :breadcrumbItems="$breadcrumbItems"
-        :pageDescription="__('Organize blog posts into categories for easier browsing.')"
+        pageDescription='Organize blog posts into categories for easier browsing.'
     />
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <button class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#createCategoryModal">

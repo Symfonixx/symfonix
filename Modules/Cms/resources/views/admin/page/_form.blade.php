@@ -18,8 +18,8 @@
     <div class="col-xl-7">
         <x-admin.settings-section
             icon="bi-file-earmark-richtext"
-            :title="__('Page Content')"
-            :description="__('Main page content and SEO fields.')"
+            title='Page Content'
+            description='Main page content and SEO fields.'
         >
             <div class="row mb-6">
                 <div class="col-lg-4">

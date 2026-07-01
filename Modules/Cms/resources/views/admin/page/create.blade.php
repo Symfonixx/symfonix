@@ -3,15 +3,15 @@
 @section('toolbar')
     @php
         $breadcrumbItems = [
-            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
-            ['label' => __('Pages'), 'url' => route('admin.pages.index')],
-            ['label' => __('Add New Page')],
+            ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
+            ['label' => 'Pages', 'url' => route('admin.pages.index')],
+            ['label' => 'Add New Page'],
         ];
     @endphp
     <x-admin.breadcrumb
-        :pageTitle="__('Add New Page')"
+        pageTitle='Add New Page'
         :breadcrumbItems="$breadcrumbItems"
-        :pageDescription="__('Create a new static page with navigation and SEO options.')"
+        pageDescription='Create a new static page with navigation and SEO options.'
     />
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.pages.index') }}">
@@ -24,7 +24,7 @@
     <x-admin.create-card
         title="Add New Page"
         :formUrl="route('admin.pages.store')"
-        :description="__('Configure page content, placement in menus, and SEO preview.')"
+        description='Configure page content, placement in menus, and SEO preview.'
         :cancelUrl="route('admin.pages.index')"
         id="page-form"
     >

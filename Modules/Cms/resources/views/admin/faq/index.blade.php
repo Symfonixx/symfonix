@@ -3,14 +3,14 @@
 @section('toolbar')
     @php
         $breadcrumbItems = [
-            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
-            ['label' => __('FAQs')],
+            ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
+            ['label' => 'FAQs'],
         ];
     @endphp
     <x-admin.breadcrumb
-        :pageTitle="__('FAQs')"
+        pageTitle='FAQs'
         :breadcrumbItems="$breadcrumbItems"
-        :pageDescription="__('Manage frequently asked questions and their display order.')"
+        pageDescription='Manage frequently asked questions and their display order.'
     />
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a class="btn btn-sm fw-bold  btn-primary" href="{{route('admin.faqs.create')}}">

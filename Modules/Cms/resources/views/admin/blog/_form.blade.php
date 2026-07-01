@@ -18,8 +18,8 @@
     <div class="col-xl-7">
         <x-admin.settings-section
             icon="bi-file-earmark-text"
-            :title="__('Content')"
-            :description="__('Main blog content and SEO fields.')"
+            title='Content'
+            description='Main blog content and SEO fields.'
         >
             <div class="row mb-6">
                 <div class="col-lg-4">

@@ -194,9 +194,12 @@
         <!--Services Three End -->
 
         <!-- Use Cases Start -->
-        <section class="portfolio-one portfolio-page" v-if="useCases && useCases.length">
-            <h2 class="portfolio-one__big-text">use cases</h2>
-            <div class="container">
+        <section class="use-cases-page portfolio-page" v-if="useCases && useCases.length">
+            <div class="use-cases-page__bg" aria-hidden="true">
+                <div class="use-cases-page__orb use-cases-page__orb--one"></div>
+                <div class="use-cases-page__orb use-cases-page__orb--two"></div>
+            </div>
+            <div class="container position-relative">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
                         <div class="section-title__tagline-shape-1"></div>
@@ -211,41 +214,15 @@
                     </p>
                 </div>
 
-                <div class="portfolio-one__bottom">
-                    <div class="row">
+                <div class="use-cases-page__grid">
+                    <div class="row g-4">
                         <div
                             v-for="item in useCases"
                             :key="item.id"
                             class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
                             data-wow-delay="100ms"
                         >
-                            <div class="portfolio-one__single">
-                                <div class="portfolio-one__img-box">
-                                    <div class="portfolio-one__img">
-                                        <img :src="item.image_link" :alt="item.title">
-                                        <div v-if="item.category_tag || (item.technologies && item.technologies.length)" class="portfolio-one__tag">
-                                            <span v-if="item.category_tag">{{ item.category_tag }}</span>
-                                            <span v-for="tech in (item.technologies || []).slice(0, 2)" :key="tech">{{ tech }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="portfolio-one__content">
-                                    <div class="portfolio-one__title-box">
-                                        <h3 class="portfolio-one__title">
-                                            <Link :href="route('use-cases.show', item.slug)">{{ item.title }}</Link>
-                                        </h3>
-                                        <p class="portfolio-one__text">{{ item.summary }}</p>
-                                    </div>
-                                    <div class="portfolio-one__arrow">
-                                        <Link :href="route('use-cases.show', item.slug)">
-                                            <span class="icon-right-arrow"></span>
-                                        </Link>
-                                    </div>
-                                    <div v-if="item.completed_year" class="portfolio-one__year">
-                                        <span>{{ item.completed_year }}</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <UseCaseCard :item="item" :locale="locale" />
                         </div>
                     </div>
                 </div>
@@ -1281,12 +1258,63 @@ onMounted(() => {
 
 
 import AppLayout from '@/Layouts/App.vue';
+import UseCaseCard from '@/Components/UseCaseCard.vue';
 
 export default {
     components: {
-        AppLayout
+        AppLayout,
+        UseCaseCard,
     }
 
 };
 </script>
+
+<style scoped>
+.use-cases-page {
+    position: relative;
+    overflow: hidden;
+}
+
+.use-cases-page__bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        145deg,
+        #0b192c 0%,
+        #0f2844 35%,
+        #155a8a 65%,
+        rgba(33, 137, 202, 0.55) 85%,
+        rgba(127, 196, 87, 0.2) 100%
+    );
+    pointer-events: none;
+}
+
+.use-cases-page__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.45;
+}
+
+.use-cases-page__orb--one {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -80px;
+    background: #2189ca;
+}
+
+.use-cases-page__orb--two {
+    width: 360px;
+    height: 360px;
+    top: 40%;
+    right: -100px;
+    background: #7fc457;
+}
+
+.use-cases-page__grid {
+    position: relative;
+    z-index: 1;
+}
+</style>
 

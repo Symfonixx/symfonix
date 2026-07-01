@@ -18,8 +18,8 @@
     <div class="col-xl-7">
         <x-admin.settings-section
             icon="bi-question-circle"
-            :title="__('FAQ Content')"
-            :description="__('Question and answer shown on the FAQ page.')"
+            title="FAQ Content"
+            description="Question and answer shown on the FAQ page."
         >
             <div class="row mb-6">
                 <div class="col-lg-4">

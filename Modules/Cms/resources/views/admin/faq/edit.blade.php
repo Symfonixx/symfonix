@@ -3,15 +3,15 @@
 @section('toolbar')
     @php
         $breadcrumbItems = [
-            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
-            ['label' => __('FAQs'), 'url' => route('admin.faqs.index')],
-            ['label' => __('Edit FAQ')],
+            ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
+            ['label' => 'FAQs', 'url' => route('admin.faqs.index')],
+            ['label' => 'Edit FAQ'],
         ];
     @endphp
     <x-admin.breadcrumb
-        :pageTitle="__('Edit FAQ')"
+        pageTitle='Edit FAQ'
         :breadcrumbItems="$breadcrumbItems"
-        :pageDescription="__('Update the question, answer, display order, and publish status.')"
+        pageDescription='Update the question, answer, display order, and publish status.'
     />
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.faqs.index') }}">
@@ -24,7 +24,7 @@
     <x-admin.create-card
         title="Edit FAQ"
         :formUrl="route('admin.faqs.update', $faq->id)"
-        :description="__('Update content and publishing options in the sidebar.')"
+        description='Update content and publishing options in the sidebar.'
         :cancelUrl="route('admin.faqs.index')"
         id="faq-form"
     >
