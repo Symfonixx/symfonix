@@ -25,12 +25,12 @@
         </div>
         <div class="card-body pt-0">
             <form method="GET" action="{{ route('admin.products.index') }}" class="row g-4 align-items-end">
-                <div class="col-md-4">
+                <div class="col-lg-3 col-md-6">
                     <label for="search" class="form-label">{{ __('Search') }}</label>
                     <input id="search" type="text" name="search" class="form-control form-control-solid"
                            value="{{ $filters['search'] ?? '' }}" placeholder="{{ __('product::product.search.placeholder') }}"/>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-2 col-md-6">
                     <label for="product_category_id" class="form-label">{{ __('product::product.fields.category') }}</label>
                     <select id="product_category_id" name="product_category_id" class="form-select form-select-solid"
                             data-control="select2" data-placeholder="{{ __('product::product.filters.all_categories') }}">
@@ -42,7 +42,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-2 col-md-4">
                     <label for="status" class="form-label">{{ __('product::product.fields.status') }}</label>
                     <select id="status" name="status" class="form-select form-select-solid">
                         <option value="active" @selected(($filters['status'] ?? 'active') === 'active')>{{ __('product::product.status.active') }}</option>
@@ -50,7 +50,15 @@
                         <option value="" @selected(($filters['status'] ?? 'active') === '')>{{ __('product::product.filters.all_statuses') }}</option>
                     </select>
                 </div>
-                <div class="col-md-2 d-flex gap-2">
+                <div class="col-lg-2 col-md-4">
+                    <label for="is_published" class="form-label">{{ __('product::product.fields.website_visibility') }}</label>
+                    <select id="is_published" name="is_published" class="form-select form-select-solid">
+                        <option value="">{{ __('product::product.filters.all_visibility') }}</option>
+                        <option value="1" @selected(($filters['is_published'] ?? '') === '1')>{{ __('product::product.visibility.published') }}</option>
+                        <option value="0" @selected(($filters['is_published'] ?? '') === '0')>{{ __('product::product.visibility.draft') }}</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-md-4 d-flex gap-2">
                     <button type="submit" class="btn btn-primary">{{ __('product::product.actions.apply_filters') }}</button>
                     <a href="{{ route('admin.products.index') }}" class="btn btn-light">{{ __('product::product.actions.clear_filters') }}</a>
                 </div>
@@ -73,6 +81,7 @@
                         <th>{{ __('product::product.fields.price') }}</th>
                         <th>{{ __('product::product.fields.billing') }}</th>
                         <th>{{ __('product::product.fields.status') }}</th>
+                        <th>{{ __('product::product.fields.website_visibility') }}</th>
                         <th class="text-end">{{ __('Actions') }}</th>
                     </tr>
                     </thead>
@@ -94,6 +103,18 @@
                                     {{ __('product::product.status.'.$product->status) }}
                                 </span>
                             </td>
+                            <td>
+                                <form method="POST" action="{{ route('admin.products.toggle-published', $product) }}" class="d-inline">
+                                    @csrf
+                                    @method('PATCH')
+                                    <div class="form-check form-switch form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="checkbox"
+                                               onchange="this.form.submit()"
+                                               @checked($product->is_published)
+                                               title="{{ $product->is_published ? __('product::product.visibility.published') : __('product::product.visibility.draft') }}"/>
+                                    </div>
+                                </form>
+                            </td>
                             <td class="text-end">
                                 <a href="{{ route('admin.products.edit', $product) }}"
                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
@@ -111,7 +132,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center text-muted py-10">{{ __('No records found') }}</td>
+                            <td colspan="8" class="text-center text-muted py-10">{{ __('No records found') }}</td>
                         </tr>
                     @endforelse
                     </tbody>

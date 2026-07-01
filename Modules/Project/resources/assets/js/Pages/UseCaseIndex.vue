@@ -24,7 +24,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2>{{ trans('Use Cases') }}</h2>
+                    <h2>{{ trans('Case Studies') }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -35,7 +35,7 @@
                             <li>
                                 <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span>
                             </li>
-                            <li>{{ trans('Use Cases') }}</li>
+                            <li>{{ trans('Case Studies') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
                         <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Use Cases') }}</span>
+                        <span class="section-title__tagline">{{ trans('Case Studies') }}</span>
                         <div class="section-title__tagline-shape-2"></div>
                     </div>
                     <h2 class="section-title__title title-animation">
@@ -120,9 +120,9 @@ const locale = computed(() => page.props.locale || 'en')
 const useCases = computed(() => page.props.useCases || { data: [] })
 const meta = computed(() => page.props.meta || {})
 
-const metaTitle = computed(() => meta.value.title || `${trans('Use Cases')} | ${seo.value.website_name || ''}`.trim())
-const metaDescription = computed(() => meta.value.description || trans('Explore our project use cases and see how we help businesses with innovative technology solutions.') || seo.value.website_desc || '')
-const metaKeywords = computed(() => meta.value.keywords || trans('use cases, case studies, IT solutions, web development') || seo.value.website_keywords || '')
+const metaTitle = computed(() => meta.value.title || `${trans('Case Studies')} | ${seo.value.website_name || ''}`.trim())
+const metaDescription = computed(() => meta.value.description || trans('Explore our case studies and see how we help businesses with innovative technology solutions.') || seo.value.website_desc || '')
+const metaKeywords = computed(() => meta.value.keywords || trans('case studies, project solutions, IT solutions, web development') || seo.value.website_keywords || '')
 const metaImage = computed(() => meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || '')
 const metaCanonical = computed(() => meta.value.canonical || '')
 const metaRobots = computed(() => meta.value.robots || 'index, follow')

@@ -2,21 +2,37 @@
 
 namespace Modules\Product\Repositories;
 
+use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Modules\Core\Traits\ExceptionHandlerTrait;
+use Modules\Core\Traits\FileTrait;
 use Modules\Product\Models\Product;
 
 class ProductRepository
 {
-    use ExceptionHandlerTrait;
+    use ExceptionHandlerTrait, FileTrait;
+
+    private string $uploadPath = 'products';
 
     public function paginate(array $filters = [], int $perPage = 15): LengthAwarePaginator
     {
         return Product::query()
             ->with('category')
             ->filter($filters)
+            ->latest()
+            ->paginate($perPage);
+    }
+
+    public function publishedPaginate(int $perPage = 12): LengthAwarePaginator
+    {
+        return Product::query()
+            ->published()
+            ->active()
+            ->with('category:id,name,slug')
             ->latest()
             ->paginate($perPage);
     }
@@ -33,8 +49,9 @@ class ProductRepository
     public function store(array $data): ?Product
     {
         return $this->execute(function () use ($data) {
-            $data['slug'] = $data['slug'] ?? Str::slug($data['name']);
             $data['sku'] = $data['sku'] ?? strtoupper(Str::random(8));
+            $data = $this->handleUploads($data);
+            $data = $this->prepareProductData($data);
 
             $product = Product::query()->create($data);
             session()->flushMessage(true);
@@ -46,14 +63,23 @@ class ProductRepository
     public function update(Product $product, array $data): ?Product
     {
         return $this->execute(function () use ($product, $data) {
-            if (empty($data['slug']) && ! empty($data['name'])) {
-                $data['slug'] = Str::slug($data['name']);
-            }
+            $data = $this->handleUploads($data, $product);
+            $data = $this->prepareProductUpdateData($data, $product);
 
             $product->update($data);
             session()->flushMessage(true);
 
             return $product;
+        });
+    }
+
+    public function togglePublished(Product $product): ?Product
+    {
+        return $this->execute(function () use ($product) {
+            $product->update(['is_published' => ! $product->is_published]);
+            session()->flushMessage(true);
+
+            return $product->fresh();
         });
     }
 
@@ -67,10 +93,103 @@ class ProductRepository
                 return true;
             }
 
+            if ($product->main_image) {
+                $this->deleteFile($product->main_image);
+            }
+
+            if ($product->seo_meta_img) {
+                $this->deleteFile($product->seo_meta_img);
+            }
+
             $deleted = $product->delete();
             session()->flushMessage(true);
 
             return $deleted;
         });
+    }
+
+    private function prepareProductData(array $data): array
+    {
+        $locale = app()->getLocale();
+        $translatable = $this->buildTranslations([
+            'name' => $data['name'] ?? '',
+            'short_description' => $data['short_description'] ?? '',
+            'description' => $data['description'] ?? '',
+            'seo_title' => $data['seo_title'] ?? '',
+            'seo_description' => $data['seo_description'] ?? '',
+            'seo_keywords' => $data['seo_keywords'] ?? '',
+        ], $locale);
+
+        return array_merge($data, $translatable);
+    }
+
+    private function prepareProductUpdateData(array $data, Product $product): array
+    {
+        $locale = app()->getLocale();
+        $fields = [
+            'name' => $data['name'] ?? $product->getTranslation('name', $locale, false),
+            'short_description' => $data['short_description'] ?? $product->getTranslation('short_description', $locale, false),
+            'description' => $data['description'] ?? $product->getTranslation('description', $locale, false),
+            'seo_title' => $data['seo_title'] ?? $product->getTranslation('seo_title', $locale, false),
+            'seo_description' => $data['seo_description'] ?? $product->getTranslation('seo_description', $locale, false),
+            'seo_keywords' => $data['seo_keywords'] ?? $product->getTranslation('seo_keywords', $locale, false),
+        ];
+
+        $translatable = [];
+        foreach ($fields as $field => $value) {
+            $translations = $product->getTranslations($field);
+            $translations[$locale] = $value;
+            $translatable[$field] = $translations;
+        }
+
+        return array_merge($data, $translatable);
+    }
+
+    private function buildTranslations(array $fields, string $locale): array
+    {
+        $translations = [];
+
+        foreach ($fields as $field => $value) {
+            $translations[$field] = [$locale => $value];
+
+            foreach (otherLangs() as $lang) {
+                if ($value === '' || $value === null) {
+                    $translations[$field][$lang] = '';
+
+                    continue;
+                }
+
+                try {
+                    $translations[$field][$lang] = autoGoogleTranslator($lang, (string) $value);
+                } catch (Exception $e) {
+                    Log::error($e->getMessage());
+                    $translations[$field][$lang] = $value;
+                }
+            }
+        }
+
+        return $translations;
+    }
+
+    private function handleUploads(array $data, ?Product $product = null): array
+    {
+        if (array_key_exists('main_image', $data)) {
+            $data['main_image'] = $this->resolveImageUpload($data['main_image'] ?? null, $product?->main_image);
+        }
+
+        if (array_key_exists('seo_meta_img', $data)) {
+            $data['seo_meta_img'] = $this->resolveImageUpload($data['seo_meta_img'] ?? null, $product?->seo_meta_img);
+        }
+
+        return $data;
+    }
+
+    private function resolveImageUpload(mixed $file, ?string $existing = null): ?string
+    {
+        if ($file instanceof UploadedFile) {
+            return $this->upload($file, $this->uploadPath, null, $existing, 1200);
+        }
+
+        return $existing;
     }
 }

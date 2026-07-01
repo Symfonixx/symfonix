@@ -62,19 +62,6 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
-        <label for="description" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.description') }}</label>
-    </div>
-    <div class="col-xl-9 fv-row">
-        <textarea id="description" class="form-control form-control-solid @error('description') is-invalid @enderror"
-                  name="description" rows="4">{{ old('description', $productData?->description) }}</textarea>
-        @error('description')
-        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
-        @enderror
-    </div>
-</div>
-
-<div class="row mb-8">
-    <div class="col-xl-3">
         <label for="price" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('product::product.fields.price') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
@@ -134,3 +121,203 @@
         </div>
     </div>
 </div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.is_published') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <div class="form-check form-switch form-check-custom form-check-solid">
+            <input class="form-check-input" type="checkbox" name="is_published" value="1"
+                   id="is_published" @checked(old('is_published', $productData?->is_published))/>
+            <label class="form-check-label" for="is_published">{{ __('product::product.fields.is_published_help') }}</label>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-8">
+    <div class="card-header border-0 pt-6">
+        <h3 class="card-title fw-bold fs-5">
+            <i class="bi bi-image text-primary me-2"></i>{{ __('product::product.sections.media') }}
+        </h3>
+    </div>
+    <div class="card-body pt-0">
+        <div class="row mb-0">
+            <div class="col-xl-3">
+                <label class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.main_image') }}</label>
+                <div class="text-muted fs-7">{{ __('product::product.fields.main_image_help') }}</div>
+            </div>
+            <div class="col-xl-9 fv-row">
+                <div class="image-input image-input-outline" data-kt-image-input="true"
+                     style="background-image: url('{{ $productData?->main_image_link ?? asset('images/default.jpg') }}')">
+                    <div class="image-input-wrapper w-250px h-250px bgi-position-center"
+                         style="background-size: cover; background-image: url({{ $productData?->main_image_link ?? asset('images/default.jpg') }})"></div>
+                    <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                           data-kt-image-input-action="change" data-bs-toggle="tooltip" title="{{ __('Change image') }}">
+                        <i class="bi bi-pencil-fill fs-7"></i>
+                        <input type="file" name="main_image" accept=".png,.jpg,.jpeg,.webp"/>
+                    </label>
+                </div>
+                @error('main_image')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-8">
+    <div class="card-header border-0 pt-6">
+        <h3 class="card-title fw-bold fs-5">
+            <i class="bi bi-file-earmark-richtext text-primary me-2"></i>{{ __('product::product.sections.content') }}
+        </h3>
+    </div>
+    <div class="card-body pt-0">
+        <div class="row mb-8">
+            <div class="col-xl-3">
+                <label for="short_description" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.short_description') }}</label>
+                <div class="text-muted fs-7">{{ __('product::product.fields.short_description_help') }}</div>
+            </div>
+            <div class="col-xl-9 fv-row">
+                <textarea id="short_description" class="form-control form-control-solid seo-counter-input @error('short_description') is-invalid @enderror"
+                          name="short_description" rows="3" maxlength="500" data-counter-target="product-short-desc">{{ old('short_description', $productData?->short_description) }}</textarea>
+                <div class="d-flex justify-content-end mt-2">
+                    <span class="seo-char-counter fs-8" id="product-short-desc-counter" data-max="500">0 / 500</span>
+                </div>
+                @error('short_description')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="row mb-0">
+            <div class="col-xl-3">
+                <label for="product-description-editor" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.description') }}</label>
+                <div class="text-muted fs-7">{{ __('product::product.fields.description_help') }}</div>
+            </div>
+            <div class="col-xl-9 fv-row">
+                <textarea
+                    id="product-description-editor"
+                    name="description"
+                    class="form-control form-control-solid cms-tinymce-editor @error('description') is-invalid @enderror"
+                    rows="16"
+                >{!! old('description', $productData?->getTranslation('description', app()->getLocale(), false)) !!}</textarea>
+                @error('description')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-0">
+    <div class="card-header border-0 pt-6 cursor-pointer" data-bs-toggle="collapse" data-bs-target="#product-seo-collapse" aria-expanded="false">
+        <h3 class="card-title fw-bold fs-5 mb-0">
+            <i class="bi bi-search text-primary me-2"></i>{{ __('product::product.sections.seo') }}
+            <i class="bi bi-chevron-down ms-2 fs-7"></i>
+        </h3>
+    </div>
+    <div id="product-seo-collapse" class="collapse">
+        <div class="card-body pt-0">
+            <div class="row mb-8">
+                <div class="col-xl-3">
+                    <label for="seo_title" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.seo_title') }}</label>
+                    <div class="text-muted fs-7">{{ __('product::product.fields.seo_title_help') }}</div>
+                </div>
+                <div class="col-xl-9 fv-row">
+                    <input id="seo_title" type="text" class="form-control form-control-solid seo-counter-input @error('seo_title') is-invalid @enderror"
+                           name="seo_title" maxlength="70" data-counter-target="product-seo-title"
+                           value="{{ old('seo_title', $productData?->seo_title) }}" placeholder="{{ $productData?->name }}"/>
+                    <div class="d-flex justify-content-end mt-2">
+                        <span class="seo-char-counter fs-8" id="product-seo-title-counter" data-max="70">0 / 70</span>
+                    </div>
+                    @error('seo_title')
+                    <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-8">
+                <div class="col-xl-3">
+                    <label for="seo_description" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.seo_description') }}</label>
+                    <div class="text-muted fs-7">{{ __('product::product.fields.seo_description_help') }}</div>
+                </div>
+                <div class="col-xl-9 fv-row">
+                    <textarea id="seo_description" class="form-control form-control-solid seo-counter-input @error('seo_description') is-invalid @enderror"
+                              name="seo_description" rows="3" maxlength="320" data-counter-target="product-seo-desc">{{ old('seo_description', $productData?->seo_description) }}</textarea>
+                    <div class="d-flex justify-content-end mt-2">
+                        <span class="seo-char-counter fs-8" id="product-seo-desc-counter" data-max="160">0 / 160</span>
+                    </div>
+                    @error('seo_description')
+                    <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-8">
+                <div class="col-xl-3">
+                    <label for="seo_keywords" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.seo_keywords') }}</label>
+                </div>
+                <div class="col-xl-9 fv-row">
+                    <input id="seo_keywords" type="text" class="form-control form-control-solid @error('seo_keywords') is-invalid @enderror"
+                           name="seo_keywords" value="{{ old('seo_keywords', $productData?->seo_keywords) }}"
+                           placeholder="{{ __('product::product.fields.seo_keywords_placeholder') }}"/>
+                    @error('seo_keywords')
+                    <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-0">
+                <div class="col-xl-3">
+                    <label class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.seo_meta_img') }}</label>
+                    <div class="text-muted fs-7">{{ __('product::product.fields.seo_meta_img_help') }}</div>
+                </div>
+                <div class="col-xl-9 fv-row">
+                    <div class="image-input image-input-outline" data-kt-image-input="true"
+                         style="background-image: url('{{ $productData?->seo_meta_img ? asset('storage/'.$productData->seo_meta_img) : asset('images/default.jpg') }}')">
+                        <div class="image-input-wrapper w-200px h-120px bgi-position-center"
+                             style="background-size: cover; background-image: url({{ $productData?->seo_meta_img ? asset('storage/'.$productData->seo_meta_img) : asset('images/default.jpg') }})"></div>
+                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                               data-kt-image-input-action="change" data-bs-toggle="tooltip" title="{{ __('Change image') }}">
+                            <i class="bi bi-pencil-fill fs-7"></i>
+                            <input type="file" name="seo_meta_img" accept=".png,.jpg,.jpeg,.webp"/>
+                        </label>
+                    </div>
+                    @error('seo_meta_img')
+                    <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+    (function () {
+        function bindCounter(inputId, counterId, idealMax) {
+            const input = document.getElementById(inputId);
+            const counter = document.getElementById(counterId);
+            if (!input || !counter) return;
+
+            const max = parseInt(counter.dataset.max || idealMax, 10);
+
+            function update() {
+                const len = input.value.length;
+                counter.textContent = len + ' / ' + max;
+                counter.classList.toggle('text-danger', len > idealMax);
+                counter.classList.toggle('text-warning', len > idealMax * 0.75 && len <= idealMax);
+                counter.classList.toggle('text-success', len <= idealMax * 0.75);
+            }
+
+            input.addEventListener('input', update);
+            update();
+        }
+
+        bindCounter('short_description', 'product-short-desc-counter', 500);
+        bindCounter('seo_title', 'product-seo-title-counter', 60);
+        bindCounter('seo_description', 'product-seo-desc-counter', 160);
+    })();
+</script>
+@endpush

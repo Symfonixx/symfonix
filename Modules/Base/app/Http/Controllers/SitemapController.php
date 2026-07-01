@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\Page;
+use Modules\Product\Models\Product;
 use Modules\Project\Models\ProjectUseCase;
 use Modules\Services\Models\Service;
 
@@ -144,7 +145,7 @@ class SitemapController extends Controller
             // ignore
         }
 
-        // Use cases index + detail
+        // Case studies (use cases) index + detail
         try {
             if (class_exists(ProjectUseCase::class)) {
                 $entries[] = [
@@ -169,23 +170,30 @@ class SitemapController extends Controller
             // ignore
         }
 
-        // Products (shop) if enabled
-        // try {
-        //     if (class_exists(Product::class)) {
-        //         Product::select(['slug', 'updated_at'])->where('status', 'Published')->chunk(200, function ($products) use (&$entries) {
-        //             foreach ($products as $product) {
-        //                 $entries[] = [
-        //                     'path' => '/shop/' . $product->slug,
-        //                     'lastmod' => optional($product->updated_at)->toAtomString(),
-        //                     'changefreq' => 'weekly',
-        //                     'priority' => '0.6',
-        //                 ];
-        //             }
-        //         });
-        //     }
-        // } catch (\Throwable $e) {
-        //     // ignore
-        // }
+        // Products index + detail
+        try {
+            if (class_exists(Product::class)) {
+                $entries[] = [
+                    'path' => '/product',
+                    'lastmod' => now()->toAtomString(),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.8',
+                ];
+
+                Product::published()->active()->select(['slug', 'updated_at'])->chunk(200, function ($products) use (&$entries) {
+                    foreach ($products as $product) {
+                        $entries[] = [
+                            'path' => '/product/'.$product->slug,
+                            'lastmod' => optional($product->updated_at)->toAtomString(),
+                            'changefreq' => 'weekly',
+                            'priority' => '0.7',
+                        ];
+                    }
+                });
+            }
+        } catch (\Throwable $e) {
+            // ignore
+        }
 
         $urls = $this->expandLocalizedUrls($entries);
 

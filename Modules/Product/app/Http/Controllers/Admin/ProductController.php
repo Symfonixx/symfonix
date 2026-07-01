@@ -66,6 +66,14 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
+    public function togglePublished(Product $product): RedirectResponse
+    {
+        $this->authorize('update', $product);
+        $this->productRepository->togglePublished($product);
+
+        return back();
+    }
+
     private function formData(): array
     {
         return [

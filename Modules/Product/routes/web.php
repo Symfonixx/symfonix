@@ -14,5 +14,6 @@ use Modules\Product\Http\Controllers\ProductController;
 |
 */
 
-    Route::resource('product', ProductController::class)->names('product');
+    Route::get('product', [ProductController::class, 'index'])->name('product.index');
+    Route::get('product/{slug}', [ProductController::class, 'show'])->name('product.show');
 

@@ -34,7 +34,7 @@
                             </li>
                             <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>
-                                <Link :href="route('use-cases.index')">{{ trans('Use Cases') }}</Link>
+                                <Link :href="route('use-cases.index')">{{ trans('Case Studies') }}</Link>
                             </li>
                             <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ useCase.title }}</li>
@@ -222,7 +222,7 @@ const useCase = computed(() => page.props.useCase || {})
 const relatedUseCases = computed(() => page.props.relatedUseCases || [])
 const meta = computed(() => page.props.meta || {})
 
-const metaTitle = computed(() => meta.value.title || `${useCase.value.title || trans('Use Cases')} | ${seo.value.website_name || ''}`.trim())
+const metaTitle = computed(() => meta.value.title || `${useCase.value.title || trans('Case Studies')} | ${seo.value.website_name || ''}`.trim())
 const metaDescription = computed(() => meta.value.description || useCase.value.summary || seo.value.website_desc || '')
 const metaKeywords = computed(() => meta.value.keywords || (useCase.value.technologies || []).join(', ') || seo.value.website_keywords || '')
 const metaImage = computed(() => meta.value?.og?.image || meta.value?.twitter?.image || useCase.value.image_link || settings.value?.meta_img || '')

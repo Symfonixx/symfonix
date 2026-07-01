@@ -5,7 +5,6 @@
         <meta name="keywords" :content="metaKeywords">
         <meta name="robots" :content="metaRobots">
         <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
-        <link v-if="useCases.length" rel="stylesheet" :href="asset_path + 'site/css/module-css/portfolio.css'"/>
         <meta property="og:title" :content="metaTitle">
         <meta property="og:description" :content="metaDescription">
         <meta v-if="metaImage" property="og:image" :content="metaImage">
@@ -193,8 +192,8 @@
         </section>
         <!--Services Three End -->
 
-        <!-- Use Cases Start -->
-        <section class="use-cases-page portfolio-page" v-if="useCases && useCases.length">
+        <!-- Case Studies Start -->
+        <section class="home-case-studies use-cases-page" v-if="useCases && useCases.length">
             <div class="use-cases-page__bg" aria-hidden="true">
                 <div class="use-cases-page__orb use-cases-page__orb--one"></div>
                 <div class="use-cases-page__orb use-cases-page__orb--two"></div>
@@ -203,13 +202,13 @@
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
                         <div class="section-title__tagline-shape-1"></div>
-                        <span class="section-title__tagline">{{ trans('Use Cases') }}</span>
+                        <span class="section-title__tagline">{{ trans('Case Studies') }}</span>
                         <div class="section-title__tagline-shape-2"></div>
                     </div>
                     <h2 class="section-title__title title-animation">
                         {{ trans('How We\'ve Empowered Businesses with Innovative Tech Solutions') }}
                     </h2>
-                    <p class="mt-3">
+                    <p class="home-case-studies__intro">
                         {{ trans('Explore our success stories and real-world solutions we\'ve delivered for businesses.') }}
                     </p>
                 </div>
@@ -227,15 +226,15 @@
                     </div>
                 </div>
 
-                <div class="text-center mt-4">
+                <div class="text-center home-case-studies__cta">
                     <Link :href="route('use-cases.index')" class="thm-btn">
-                        {{ trans('View All Use Cases') }}
+                        {{ trans('View All Case Studies') }}
                         <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
                     </Link>
                 </div>
             </div>
         </section>
-        <!-- Use Cases End -->
+        <!-- Case Studies End -->
 
         <!--Why Choose Two Start -->
         <section class="why-choose-two">
@@ -1270,6 +1269,25 @@ export default {
 </script>
 
 <style scoped>
+.home-case-studies {
+    position: relative;
+    display: block;
+    padding: 140px 0 140px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.home-case-studies .section-title {
+    margin-bottom: 58px;
+}
+
+.home-case-studies__intro {
+    max-width: 720px;
+    margin: 18px auto 0;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.7;
+}
+
 .use-cases-page {
     position: relative;
     overflow: hidden;
@@ -1315,6 +1333,16 @@ export default {
 .use-cases-page__grid {
     position: relative;
     z-index: 1;
+}
+
+.home-case-studies :deep(.use-case-card) {
+    margin-bottom: 30px;
+}
+
+.home-case-studies__cta {
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
 }
 </style>
 

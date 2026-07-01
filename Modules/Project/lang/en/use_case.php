@@ -8,12 +8,12 @@ return [
         'index_title' => 'Use Cases',
         'create_title' => 'Add Use Case',
         'edit_title' => 'Edit Use Case',
-        'website_title' => 'Use Cases',
+        'website_title' => 'Case Studies',
         'website_details' => 'Case Study',
     ],
     'meta' => [
-        'index_description' => 'Explore our project use cases and see how we help businesses with innovative technology solutions.',
-        'index_keywords' => 'use cases, case studies, project solutions, IT solutions, web development',
+        'index_description' => 'Explore our case studies and see how we help businesses with innovative technology solutions.',
+        'index_keywords' => 'case studies, project solutions, IT solutions, web development',
     ],
     'fields' => [
         'title' => 'Title',
@@ -49,7 +49,7 @@ return [
         'linked_project' => 'Optionally connect this showcase item to an internal CRM project record.',
     ],
     'website' => [
-        'tagline' => 'Use Cases',
+        'tagline' => 'Case Studies',
         'heading' => 'How We\'ve Empowered Businesses with Innovative Tech Solutions',
         'challenge_title' => 'The Challenge',
         'solution_title' => 'Our Solution',

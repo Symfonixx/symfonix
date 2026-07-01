@@ -22,7 +22,7 @@ class ProjectUseCaseController extends Controller
 
         $siteName = Seo::get('website_name', config('app.name'));
         $meta = (new Meta)
-            ->title(__('project::use_case.pages.index_title').' | '.$siteName)
+            ->title(__('project::use_case.pages.website_title').' | '.$siteName)
             ->description(__('project::use_case.meta.index_description'))
             ->keywords(__('project::use_case.meta.index_keywords'))
             ->ogImage()

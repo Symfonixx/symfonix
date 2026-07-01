@@ -8,12 +8,12 @@ return [
         'index_title' => 'Kullanım Senaryoları',
         'create_title' => 'Kullanım Senaryosu Ekle',
         'edit_title' => 'Kullanım Senaryosunu Düzenle',
-        'website_title' => 'Kullanım Senaryoları',
+        'website_title' => 'Vaka Çalışmaları',
         'website_details' => 'Vaka Çalışması',
     ],
     'meta' => [
-        'index_description' => 'Proje kullanım senaryolarımızı keşfedin ve işletmelere yenilikçi teknoloji çözümleri sunma yaklaşımımızı görün.',
-        'index_keywords' => 'portföy, vaka çalışmaları, kullanım senaryoları, BT çözümleri, web geliştirme',
+        'index_description' => 'Vaka çalışmalarımızı keşfedin ve işletmelere yenilikçi teknoloji çözümleri sunma yaklaşımımızı görün.',
+        'index_keywords' => 'vaka çalışmaları, BT çözümleri, web geliştirme',
     ],
     'fields' => [
         'title' => 'Başlık',
@@ -49,7 +49,7 @@ return [
         'linked_project' => 'İsteğe bağlı olarak dahili CRM proje kaydına bağlayın.',
     ],
     'website' => [
-        'tagline' => 'Kullanım Senaryoları',
+        'tagline' => 'Vaka Çalışmaları',
         'heading' => 'İşletmeleri Yenilikçi Teknoloji Çözümleriyle Nasıl Güçlendirdik',
         'challenge_title' => 'Zorluk',
         'solution_title' => 'Çözümümüz',

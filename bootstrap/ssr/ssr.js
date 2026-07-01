@@ -3,7 +3,7 @@ import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrInterpolate, ssrR
 import { usePage, Link, useForm, router, Head, createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
-const _sfc_main$q = {
+const _sfc_main$u = {
   __name: "HomeBlogCard",
   __ssrInlineRender: true,
   props: {
@@ -310,11 +310,11 @@ const _sfc_main$q = {
     };
   }
 };
-const _sfc_setup$q = _sfc_main$q.setup;
-_sfc_main$q.setup = (props, ctx) => {
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/HomeBlogCard.vue");
-  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -323,7 +323,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$p = {
+const _sfc_main$t = {
   __name: "ServiceCardThree",
   __ssrInlineRender: true,
   props: {
@@ -476,14 +476,14 @@ const _sfc_main$p = {
     };
   }
 };
-const _sfc_setup$p = _sfc_main$p.setup;
-_sfc_main$p.setup = (props, ctx) => {
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
-  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-0bfa2789"]]);
-const _sfc_main$o = {
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-0bfa2789"]]);
+const _sfc_main$s = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
   setup(__props) {
@@ -601,10 +601,25 @@ const _sfc_main$o = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`${ssrInterpolate(trans("Use Cases"))}`);
+            _push2(`${ssrInterpolate(trans("Case Studies"))}`);
           } else {
             return [
-              createTextVNode(toDisplayString(trans("Use Cases")), 1)
+              createTextVNode(toDisplayString(trans("Case Studies")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</li><li class="${ssrRenderClass({ current: isActive(["product.index", "product.show"], { prefixes: ["/product"] }) })}">`);
+      _push(ssrRenderComponent(unref(Link), {
+        href: _ctx.route("product.index")
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${ssrInterpolate(trans("Products"))}`);
+          } else {
+            return [
+              createTextVNode(toDisplayString(trans("Products")), 1)
             ];
           }
         }),
@@ -687,13 +702,13 @@ const _sfc_main$o = {
     };
   }
 };
-const _sfc_setup$o = _sfc_main$o.setup;
-_sfc_main$o.setup = (props, ctx) => {
+const _sfc_setup$s = _sfc_main$s.setup;
+_sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuList.vue");
-  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
+  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
-const _sfc_main$n = {
+const _sfc_main$r = {
   __name: "MainMenuNav",
   __ssrInlineRender: true,
   setup(__props) {
@@ -720,18 +735,18 @@ const _sfc_main$n = {
         _: 1
       }, _parent));
       _push(`</div></div><div class="main-menu-two__main-menu-box"><a href="#" class="mobile-nav__toggler" aria-label="Open mobile menu"><i class="fa fa-bars"></i></a>`);
-      _push(ssrRenderComponent(_sfc_main$o, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$s, null, null, _parent));
       _push(`</div><div class="main-menu-two__right d-none d-md-flex align-items-center"><div class="main-menu-two__search-box me-3"><a href="#" class="main-menu-two__search searcher-toggler-box icon-search-interface-symbol" aria-label="Open search"></a></div><div class="main-menu-two__nav-sidebar-icon"><a class="navSidebar-button" href="#" aria-label="Open sidebar"><span class="icon-dots-menu-one"></span><span class="icon-dots-menu-two"></span><span class="icon-dots-menu-three"></span></a></div></div></div></div></nav>`);
     };
   }
 };
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$r = _sfc_main$r.setup;
+_sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuNav.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const _sfc_main$m = {
+const _sfc_main$q = {
   __name: "App",
   __ssrInlineRender: true,
   setup(__props) {
@@ -941,9 +956,9 @@ const _sfc_main$m = {
         _push(`<!---->`);
       }
       _push(`</form></div></div></div></div></div></div></div><div class="page-wrapper"><header class="main-header-two"><div class="main-menu-two__top"><div class="main-menu-two__top-inner"><p class="main-menu-two__top-text">${ssrInterpolate(trans("We Build Technology In Perfect Harmony"))}</p><ul class="list-unstyled main-menu-two__contact-list"><li><div class="icon"><i class="icon-pin"></i></div><div class="text"><p>${ssrInterpolate(settings.value.address)}</p></div></li><li><div class="icon"><i class="icon-search-mail"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `mailto::${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li><div class="icon"><i class="icon-phone-call"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div>`);
-      _push(ssrRenderComponent(_sfc_main$n, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$r, null, null, _parent));
       _push(`</header><div class="stricky-header stricked-menu main-menu main-menu-two"><div class="sticky-header__content">`);
-      _push(ssrRenderComponent(_sfc_main$n, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$r, null, null, _parent));
       _push(`</div></div>`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       _push(`<section class="newsletter-two"><div class="newsletter-two__shape-1"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-1.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="newsletter-two__shape-2 float-bob-x"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-2.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="container"><div class="newsletter-two__inner"><div class="newsletter-two__left"><h2 class="newsletter-two__title">${ssrInterpolate(trans("Subscribe to Our Newsletter"))}</h2><p class="newsletter-two__text">${ssrInterpolate(trans("Engineering insights, product updates, and practical tech lessons—delivered occasionally, not daily"))}</p></div><div class="newsletter-two__right"><form class="newsletter-two__form"><div class="newsletter-two__input"><input type="email" name="email"${ssrRenderAttr("value", unref(subscribeForm).email)}${ssrRenderAttr("placeholder", trans("Enter your email address"))}${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""} required="">`);
@@ -1057,13 +1072,13 @@ const _sfc_main$m = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Use Cases"))}`);
+            _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Case Studies"))}`);
           } else {
             return [
               createVNode("span", {
                 class: locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2"
               }, null, 2),
-              createTextVNode(toDisplayString(trans("Use Cases")), 1)
+              createTextVNode(toDisplayString(trans("Case Studies")), 1)
             ];
           }
         }),
@@ -1224,7 +1239,7 @@ const _sfc_main$m = {
         _: 1
       }, _parent));
       _push(`</div><div class="mobile-nav__container">`);
-      _push(ssrRenderComponent(_sfc_main$o, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$s, null, null, _parent));
       _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
       if (settings.value.twitter) {
         _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
@@ -1255,13 +1270,13 @@ const _sfc_main$m = {
     };
   }
 };
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$q = _sfc_main$q.setup;
+_sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/App.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-const _sfc_main$l = {
+const _sfc_main$p = {
   __name: "UseCaseCard",
   __ssrInlineRender: true,
   props: {
@@ -1396,20 +1411,20 @@ const _sfc_main$l = {
     };
   }
 };
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UseCaseCard.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-9f66d710"]]);
-const __default__$f = {
+const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-9f66d710"]]);
+const __default__$h = {
   components: {
-    AppLayout: _sfc_main$m,
+    AppLayout: _sfc_main$q,
     UseCaseCard
   }
 };
-const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
+const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1732,31 +1747,26 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<title data-v-c30d54d8${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-c30d54d8${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-c30d54d8${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-c30d54d8${_scopeId}>`);
+            _push2(`<title data-v-6eb5750c${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-6eb5750c${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-6eb5750c${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-6eb5750c${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-c30d54d8${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-6eb5750c${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            if (useCases.value.length) {
-              _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/portfolio.css")} data-v-c30d54d8${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-c30d54d8${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-c30d54d8${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-6eb5750c${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-6eb5750c${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-c30d54d8${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-6eb5750c${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-c30d54d8${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-6eb5750c${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-c30d54d8${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-c30d54d8${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-c30d54d8${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-c30d54d8${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-6eb5750c${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-6eb5750c${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-6eb5750c${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-6eb5750c${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-c30d54d8${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-6eb5750c${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -1780,11 +1790,6 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
                 rel: "canonical",
                 href: metaCanonical.value
               }, null, 8, ["href"])) : createCommentVNode("", true),
-              useCases.value.length ? (openBlock(), createBlock("link", {
-                key: 1,
-                rel: "stylesheet",
-                href: asset_path.value + "site/css/module-css/portfolio.css"
-              }, null, 8, ["href"])) : createCommentVNode("", true),
               createVNode("meta", {
                 property: "og:title",
                 content: metaTitle.value
@@ -1794,12 +1799,12 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
                 content: metaDescription.value
               }, null, 8, ["content"]),
               metaImage.value ? (openBlock(), createBlock("meta", {
-                key: 2,
+                key: 1,
                 property: "og:image",
                 content: metaImage.value
               }, null, 8, ["content"])) : createCommentVNode("", true),
               metaCanonical.value ? (openBlock(), createBlock("meta", {
-                key: 3,
+                key: 2,
                 property: "og:url",
                 content: metaCanonical.value
               }, null, 8, ["content"])) : createCommentVNode("", true),
@@ -1820,7 +1825,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
                 content: metaDescription.value
               }, null, 8, ["content"]),
               metaImage.value ? (openBlock(), createBlock("meta", {
-                key: 4,
+                key: 3,
                 name: "twitter:image",
                 content: metaImage.value
               }, null, 8, ["content"])) : createCommentVNode("", true)
@@ -1829,21 +1834,21 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="banner-one" data-v-c30d54d8${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
+            _push2(`<section class="banner-one" data-v-6eb5750c${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/home/banner-bg.jpg)`
-            })}" data-v-c30d54d8${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
+            })}" data-v-6eb5750c${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/shapes/banner-one-shape-bg.png)`
-            })}" data-v-c30d54d8${_scopeId}></div><div class="container" data-v-c30d54d8${_scopeId}><div class="banner-one__inner" data-v-c30d54d8${_scopeId}><h1 class="banner-one__title px-4" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Transform complex technical ideas into intelligent systems"))} <br data-v-c30d54d8${_scopeId}><span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability"))}</span></h1><div class="banner-one__btn-box mb-5" data-v-c30d54d8${_scopeId}>`);
+            })}" data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="banner-one__inner" data-v-6eb5750c${_scopeId}><h1 class="banner-one__title px-4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Transform complex technical ideas into intelligent systems"))} <br data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability"))}</span></h1><div class="banner-one__btn-box mb-5" data-v-6eb5750c${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "thm-btn contact-btn mx-2"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-c30d54d8${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
+                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-6eb5750c${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
                 } else {
                   return [
                     createVNode("span", {
@@ -1861,7 +1866,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-c30d54d8${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
+                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-6eb5750c${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
                 } else {
                   return [
                     createVNode("span", {
@@ -1873,11 +1878,11 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</div></div></div></section><section class="about-three" data-v-c30d54d8${_scopeId}><div class="container" data-v-c30d54d8${_scopeId}><div class="row" data-v-c30d54d8${_scopeId}><div class="col-xl-6" data-v-c30d54d8${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-c30d54d8${_scopeId}><div class="about-three__img-box" data-v-c30d54d8${_scopeId}><div class="about-three__img" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))} data-v-c30d54d8${_scopeId}></div></div></div></div><div class="col-xl-6" data-v-c30d54d8${_scopeId}><div class="about-three__right" data-v-c30d54d8${_scopeId}><div class="section-title sec-title-animation animation-style1" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-box" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-shape-1" data-v-c30d54d8${_scopeId}></div><span class="section-title__tagline" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Our Tech Solutions"))}</span><div class="section-title__tagline-shape-2" data-v-c30d54d8${_scopeId}></div></div></div><p class="about-three__text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled" data-v-c30d54d8${_scopeId}><li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-tick-inside-circle" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h2 class="h3" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Developing Secure & Scalable Systems"))}</h2></div></li><li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-tick-inside-circle" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h2 class="h3" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-tick-inside-circle" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h2 class="h3" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-tick-inside-circle" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h2 class="h3" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box" data-v-c30d54d8${_scopeId}><div class="about-three__btn-box" data-v-c30d54d8${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-c30d54d8${_scopeId}></span></a></div><div class="about-three__call-box" data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-customer-service-headset" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p data-v-c30d54d8${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-c30d54d8${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
+            _push2(`</div></div></div></section><section class="about-three" data-v-6eb5750c${_scopeId}><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-6eb5750c${_scopeId}><div class="about-three__img-box" data-v-6eb5750c${_scopeId}><div class="about-three__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))} data-v-6eb5750c${_scopeId}></div></div></div></div><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="about-three__right" data-v-6eb5750c${_scopeId}><div class="section-title sec-title-animation animation-style1" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Tech Solutions"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div></div><p class="about-three__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled" data-v-6eb5750c${_scopeId}><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-tick-inside-circle" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h2 class="h3" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Developing Secure & Scalable Systems"))}</h2></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-tick-inside-circle" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h2 class="h3" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-tick-inside-circle" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h2 class="h3" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-tick-inside-circle" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h2 class="h3" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box" data-v-6eb5750c${_scopeId}><div class="about-three__btn-box" data-v-6eb5750c${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-6eb5750c${_scopeId}></span></a></div><div class="about-three__call-box" data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-customer-service-headset" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p data-v-6eb5750c${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
             if (servicesCategories.value && servicesCategories.value.length) {
-              _push2(`<section class="services-three" data-v-c30d54d8${_scopeId}><div class="container" data-v-c30d54d8${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-box" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-shape-1" data-v-c30d54d8${_scopeId}></div><span class="section-title__tagline" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2" data-v-c30d54d8${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel" data-v-c30d54d8${_scopeId}><!--[-->`);
+              _push2(`<section class="services-three" data-v-6eb5750c${_scopeId}><div class="container" data-v-6eb5750c${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel" data-v-6eb5750c${_scopeId}><!--[-->`);
               ssrRenderList(servicesCategories.value, (servicesCategory) => {
-                _push2(`<div class="item" data-v-c30d54d8${_scopeId}>`);
+                _push2(`<div class="item" data-v-6eb5750c${_scopeId}>`);
                 _push2(ssrRenderComponent(ServiceCardThree, {
                   title: translateField(servicesCategory.title),
                   "short-desc": translateField(servicesCategory.description),
@@ -1890,14 +1895,14 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div><div class="text-center mt-4" data-v-c30d54d8${_scopeId}>`);
+              _push2(`<!--]--></div><div class="text-center mt-4" data-v-6eb5750c${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("services.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-c30d54d8${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-6eb5750c${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Services")) + " ", 1),
@@ -1914,26 +1919,26 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
               _push2(`<!---->`);
             }
             if (useCases.value && useCases.value.length) {
-              _push2(`<section class="use-cases-page portfolio-page" data-v-c30d54d8${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-c30d54d8${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-c30d54d8${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-c30d54d8${_scopeId}></div></div><div class="container position-relative" data-v-c30d54d8${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-box" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-shape-1" data-v-c30d54d8${_scopeId}></div><span class="section-title__tagline" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</span><div class="section-title__tagline-shape-2" data-v-c30d54d8${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="mt-3" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="use-cases-page__grid" data-v-c30d54d8${_scopeId}><div class="row g-4" data-v-c30d54d8${_scopeId}><!--[-->`);
+              _push2(`<section class="home-case-studies use-cases-page" data-v-6eb5750c${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-6eb5750c${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-6eb5750c${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-6eb5750c${_scopeId}></div></div><div class="container position-relative" data-v-6eb5750c${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="home-case-studies__intro" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="use-cases-page__grid" data-v-6eb5750c${_scopeId}><div class="row g-4" data-v-6eb5750c${_scopeId}><!--[-->`);
               ssrRenderList(useCases.value, (item) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-c30d54d8${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-6eb5750c${_scopeId}>`);
                 _push2(ssrRenderComponent(UseCaseCard, {
                   item,
                   locale: locale.value
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div></div><div class="text-center mt-4" data-v-c30d54d8${_scopeId}>`);
+              _push2(`<!--]--></div></div><div class="text-center home-case-studies__cta" data-v-6eb5750c${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("use-cases.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Use Cases"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-c30d54d8${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Case Studies"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-6eb5750c${_scopeId2}></span>`);
                   } else {
                     return [
-                      createTextVNode(toDisplayString(trans("View All Use Cases")) + " ", 1),
+                      createTextVNode(toDisplayString(trans("View All Case Studies")) + " ", 1),
                       createVNode("span", {
                         class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow `
                       }, null, 2)
@@ -1946,68 +1951,68 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="why-choose-two" data-v-c30d54d8${_scopeId}><div class="why-choose-two__shape-1 float-bob-y" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/why-choose-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-c30d54d8${_scopeId}></div><div class="container" data-v-c30d54d8${_scopeId}><div class="row" data-v-c30d54d8${_scopeId}><div class="col-xl-6" data-v-c30d54d8${_scopeId}><div class="${ssrRenderClass(`why-choose-two__left wow ${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-c30d54d8${_scopeId}><div class="why-choose-two__img" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/why_choose_us.jpg")} alt="why_choose_us" data-v-c30d54d8${_scopeId}></div></div></div><div class="col-xl-6" data-v-c30d54d8${_scopeId}><div class="why-choose-two__right" data-v-c30d54d8${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-box" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-shape-1" data-v-c30d54d8${_scopeId}></div><span class="section-title__tagline" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2" data-v-c30d54d8${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Your Business with"))} `);
+            _push2(`<section class="why-choose-two" data-v-6eb5750c${_scopeId}><div class="why-choose-two__shape-1 float-bob-y" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/why-choose-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="${ssrRenderClass(`why-choose-two__left wow ${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-6eb5750c${_scopeId}><div class="why-choose-two__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/why_choose_us.jpg")} alt="why_choose_us" data-v-6eb5750c${_scopeId}></div></div></div><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="why-choose-two__right" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Your Business with"))} `);
             if (locale.value === "ar") {
-              _push2(`<span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
+              _push2(`<span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Reliable &"))}</span><br data-v-c30d54d8${_scopeId}><span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Future-Ready"))}</span><br data-v-c30d54d8${_scopeId}>`);
+            _push2(`<span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Reliable &"))}</span><br data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Future-Ready"))}</span><br data-v-6eb5750c${_scopeId}>`);
             if (locale.value !== "ar") {
-              _push2(`<span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
+              _push2(`<span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</h2></div><p class="why-choose-one__text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points" data-v-c30d54d8${_scopeId}><li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-quality" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h3 class="h4" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-team" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h3 class="h4" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-customer-centricity" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h3 class="h4" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
+            _push2(`</h2></div><p class="why-choose-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points" data-v-6eb5750c${_scopeId}><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-quality" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-team" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-customer-centricity" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
             if (teams.value && teams.value.length > 0) {
-              _push2(`<section class="team-two d-none" data-v-c30d54d8${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}" data-v-c30d54d8${_scopeId}></div><div class="container" data-v-c30d54d8${_scopeId}><div class="row" data-v-c30d54d8${_scopeId}><div class="col-xl-5" data-v-c30d54d8${_scopeId}><div class="team-two__left" data-v-c30d54d8${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-box" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-shape-1" data-v-c30d54d8${_scopeId}></div><span class="section-title__tagline" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2" data-v-c30d54d8${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br data-v-c30d54d8${_scopeId}><span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7" data-v-c30d54d8${_scopeId}><div class="team-two__right" data-v-c30d54d8${_scopeId}><div class="team-two__carousel owl-theme owl-carousel" data-v-c30d54d8${_scopeId}><!--[-->`);
+              _push2(`<section class="team-two d-none" data-v-6eb5750c${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}" data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-5" data-v-6eb5750c${_scopeId}><div class="team-two__left" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7" data-v-6eb5750c${_scopeId}><div class="team-two__right" data-v-6eb5750c${_scopeId}><div class="team-two__carousel owl-theme owl-carousel" data-v-6eb5750c${_scopeId}><!--[-->`);
               ssrRenderList(teams.value, (team) => {
-                _push2(`<div class="item" data-v-c30d54d8${_scopeId}><div class="team-two__single" data-v-c30d54d8${_scopeId}><div class="team-two__img-box" data-v-c30d54d8${_scopeId}><div class="team-two__img" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))} data-v-c30d54d8${_scopeId}></div><div class="team-two__social" data-v-c30d54d8${_scopeId}>`);
+                _push2(`<div class="item" data-v-6eb5750c${_scopeId}><div class="team-two__single" data-v-6eb5750c${_scopeId}><div class="team-two__img-box" data-v-6eb5750c${_scopeId}><div class="team-two__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))} data-v-6eb5750c${_scopeId}></div><div class="team-two__social" data-v-6eb5750c${_scopeId}>`);
                 if (team.facebook) {
-                  _push2(`<a${ssrRenderAttr("href", team.facebook)} target="_blank" data-v-c30d54d8${_scopeId}><span class="icon-facebook" data-v-c30d54d8${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.facebook)} target="_blank" data-v-6eb5750c${_scopeId}><span class="icon-facebook" data-v-6eb5750c${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.behance) {
-                  _push2(`<a${ssrRenderAttr("href", team.behance)} target="_blank" data-v-c30d54d8${_scopeId}><span class="icon-dribble" data-v-c30d54d8${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.behance)} target="_blank" data-v-6eb5750c${_scopeId}><span class="icon-dribble" data-v-6eb5750c${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.linked_in) {
-                  _push2(`<a${ssrRenderAttr("href", team.linked_in)} target="_blank" data-v-c30d54d8${_scopeId}><span class="icon-linkedin" data-v-c30d54d8${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.linked_in)} target="_blank" data-v-6eb5750c${_scopeId}><span class="icon-linkedin" data-v-6eb5750c${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.github) {
-                  _push2(`<a${ssrRenderAttr("href", team.github)} target="_blank" data-v-c30d54d8${_scopeId}><span class="icon-github" data-v-c30d54d8${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.github)} target="_blank" data-v-6eb5750c${_scopeId}><span class="icon-github" data-v-6eb5750c${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
-                _push2(`</div><div class="team-two__title-box" data-v-c30d54d8${_scopeId}><h3 data-v-c30d54d8${_scopeId}><a href="#" data-v-c30d54d8${_scopeId}>${ssrInterpolate(translateField(team.name))}</a></h3><p data-v-c30d54d8${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
+                _push2(`</div><div class="team-two__title-box" data-v-6eb5750c${_scopeId}><h3 data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(translateField(team.name))}</a></h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="feature-one" data-v-c30d54d8${_scopeId}><div class="feature-one__shape-2 float-bob-y" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-c30d54d8${_scopeId}></div><div class="container" data-v-c30d54d8${_scopeId}><div class="row" data-v-c30d54d8${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-c30d54d8${_scopeId}><div class="feature-one__single" data-v-c30d54d8${_scopeId}><div class="feature-one__img" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))} data-v-c30d54d8${_scopeId}></div><h3 class="feature-one__title" data-v-c30d54d8${_scopeId}><a href="#" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms" data-v-c30d54d8${_scopeId}><div class="feature-one__single" data-v-c30d54d8${_scopeId}><div class="feature-one__img" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))} data-v-c30d54d8${_scopeId}></div><h3 class="feature-one__title" data-v-c30d54d8${_scopeId}><a href="#" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms" data-v-c30d54d8${_scopeId}><div class="feature-one__single" data-v-c30d54d8${_scopeId}><div class="feature-one__img" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))} data-v-c30d54d8${_scopeId}></div><h3 class="feature-one__title" data-v-c30d54d8${_scopeId}><a href="#" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms" data-v-c30d54d8${_scopeId}><div class="feature-one__single" data-v-c30d54d8${_scopeId}><div class="feature-one__img" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))} data-v-c30d54d8${_scopeId}></div><h3 class="feature-one__title" data-v-c30d54d8${_scopeId}><a href="#" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one" data-v-c30d54d8${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}" data-v-c30d54d8${_scopeId}></div><div class="container" data-v-c30d54d8${_scopeId}><div class="cta-one__inner" data-v-c30d54d8${_scopeId}><h3 class="cta-one__title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Let the Symfonix experts review your technical idea"))}</h3><div class="cta-one__contact-info" data-v-c30d54d8${_scopeId}><div class="cta-one__contact-icon" data-v-c30d54d8${_scopeId}><span class="icon-customer-service-headset" data-v-c30d54d8${_scopeId}></span></div><div class="cta-one__contact-details" data-v-c30d54d8${_scopeId}><p data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Book your free consultation"))}</p><h4 data-v-c30d54d8${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-c30d54d8${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
+            _push2(`<section class="feature-one" data-v-6eb5750c${_scopeId}><div class="feature-one__shape-2 float-bob-y" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-6eb5750c${_scopeId}><div class="feature-one__single" data-v-6eb5750c${_scopeId}><div class="feature-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))} data-v-6eb5750c${_scopeId}></div><h3 class="feature-one__title" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms" data-v-6eb5750c${_scopeId}><div class="feature-one__single" data-v-6eb5750c${_scopeId}><div class="feature-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))} data-v-6eb5750c${_scopeId}></div><h3 class="feature-one__title" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms" data-v-6eb5750c${_scopeId}><div class="feature-one__single" data-v-6eb5750c${_scopeId}><div class="feature-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))} data-v-6eb5750c${_scopeId}></div><h3 class="feature-one__title" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms" data-v-6eb5750c${_scopeId}><div class="feature-one__single" data-v-6eb5750c${_scopeId}><div class="feature-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))} data-v-6eb5750c${_scopeId}></div><h3 class="feature-one__title" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one" data-v-6eb5750c${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}" data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="cta-one__inner" data-v-6eb5750c${_scopeId}><h3 class="cta-one__title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Let the Symfonix experts review your technical idea"))}</h3><div class="cta-one__contact-info" data-v-6eb5750c${_scopeId}><div class="cta-one__contact-icon" data-v-6eb5750c${_scopeId}><span class="icon-customer-service-headset" data-v-6eb5750c${_scopeId}></span></div><div class="cta-one__contact-details" data-v-6eb5750c${_scopeId}><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Book your free consultation"))}</p><h4 data-v-6eb5750c${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
             if (testimonials.value && testimonials.value.length) {
-              _push2(`<section class="testimonial-one pb-5" data-v-c30d54d8${_scopeId}><div class="testimonial-one__shape-2 float-bob-y" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-c30d54d8${_scopeId}></div><div class="container" data-v-c30d54d8${_scopeId}><div class="row" data-v-c30d54d8${_scopeId}><div class="col-xl-3" data-v-c30d54d8${_scopeId}></div><div class="col-xl-9" data-v-c30d54d8${_scopeId}><div class="testimonial-one__content-box" data-v-c30d54d8${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-box" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-shape-1" data-v-c30d54d8${_scopeId}></div><span class="section-title__tagline" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2" data-v-c30d54d8${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel" data-v-c30d54d8${_scopeId}><!--[-->`);
+              _push2(`<section class="testimonial-one pb-5" data-v-6eb5750c${_scopeId}><div class="testimonial-one__shape-2 float-bob-y" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-3" data-v-6eb5750c${_scopeId}></div><div class="col-xl-9" data-v-6eb5750c${_scopeId}><div class="testimonial-one__content-box" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel" data-v-6eb5750c${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="item" data-v-c30d54d8${_scopeId}><div class="testimonial-one__single" data-v-c30d54d8${_scopeId}><div class="testimonial-one__img-box" data-v-c30d54d8${_scopeId}><div class="testimonial-one__img" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))} data-v-c30d54d8${_scopeId}></div></div><div class="testimonial-one__content" data-v-c30d54d8${_scopeId}><p class="testimonial-one__text" data-v-c30d54d8${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom" data-v-c30d54d8${_scopeId}><div class="testimonial-one__quote-and-client-info" data-v-c30d54d8${_scopeId}><div class="testimonial-one__quote" data-v-c30d54d8${_scopeId}><span class="icon-left" data-v-c30d54d8${_scopeId}></span></div><div class="testimonial-one__client-info" data-v-c30d54d8${_scopeId}><p class="testimonial-one__client-sub-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name" data-v-c30d54d8${_scopeId}><a href="#" data-v-c30d54d8${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
+                _push2(`<div class="item" data-v-6eb5750c${_scopeId}><div class="testimonial-one__single" data-v-6eb5750c${_scopeId}><div class="testimonial-one__img-box" data-v-6eb5750c${_scopeId}><div class="testimonial-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))} data-v-6eb5750c${_scopeId}></div></div><div class="testimonial-one__content" data-v-6eb5750c${_scopeId}><p class="testimonial-one__text" data-v-6eb5750c${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom" data-v-6eb5750c${_scopeId}><div class="testimonial-one__quote-and-client-info" data-v-6eb5750c${_scopeId}><div class="testimonial-one__quote" data-v-6eb5750c${_scopeId}><span class="icon-left" data-v-6eb5750c${_scopeId}></span></div><div class="testimonial-one__client-info" data-v-6eb5750c${_scopeId}><p class="testimonial-one__client-sub-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
             if (posts.value && posts.value.length) {
-              _push2(`<section class="blog-two blog-three" data-v-c30d54d8${_scopeId}><div class="container" data-v-c30d54d8${_scopeId}><div class="row" data-v-c30d54d8${_scopeId}><div class="col-xl-6" data-v-c30d54d8${_scopeId}><div class="${ssrRenderClass(`blog-two__left wow fadeIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-v-c30d54d8${_scopeId}><div class="section-title text-left sec-title-animation animation-style1" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-box" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-shape-1" data-v-c30d54d8${_scopeId}></div><span class="section-title__tagline" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</span><div class="section-title__tagline-shape-2" data-v-c30d54d8${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Explore Our Latest Blogs for Expert Insights"))}</h2></div><p class="blog-two-text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry"))}</p><div class="blog-two__top-btn-box" data-v-c30d54d8${_scopeId}>`);
+              _push2(`<section class="blog-two blog-three" data-v-6eb5750c${_scopeId}><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="${ssrRenderClass(`blog-two__left wow fadeIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style1" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Explore Our Latest Blogs for Expert Insights"))}</h2></div><p class="blog-two-text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry"))}</p><div class="blog-two__top-btn-box" data-v-6eb5750c${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("blogs.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-c30d54d8${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-6eb5750c${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Blogs")) + " ", 1),
@@ -2021,8 +2026,8 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
               }, _parent2, _scopeId));
               _push2(`</div>`);
               if (featuredPost.value) {
-                _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-c30d54d8${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$q, {
+                _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-6eb5750c${_scopeId}>`);
+                _push2(ssrRenderComponent(_sfc_main$u, {
                   post: featuredPost.value,
                   variant: "featured",
                   locale: locale.value,
@@ -2033,9 +2038,9 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
               } else {
                 _push2(`<!---->`);
               }
-              _push2(`</div></div><div class="col-xl-6" data-v-c30d54d8${_scopeId}><div class="blog-two__right" data-v-c30d54d8${_scopeId}><!--[-->`);
+              _push2(`</div></div><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="blog-two__right" data-v-6eb5750c${_scopeId}><!--[-->`);
               ssrRenderList(sidePosts.value, (post, idx) => {
-                _push2(ssrRenderComponent(_sfc_main$q, {
+                _push2(ssrRenderComponent(_sfc_main$u, {
                   key: post.id || idx,
                   post,
                   variant: "compact",
@@ -2050,65 +2055,65 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="contact-two" data-v-c30d54d8${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2" data-v-c30d54d8${_scopeId}><div class="contact-two__sliding-text-item" data-v-c30d54d8${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-c30d54d8${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-c30d54d8${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y" data-v-c30d54d8${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-c30d54d8${_scopeId}></div><div class="container" data-v-c30d54d8${_scopeId}><div class="row" data-v-c30d54d8${_scopeId}><div class="col-xl-6" data-v-c30d54d8${_scopeId}><div class="contact-two__left" data-v-c30d54d8${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-box" data-v-c30d54d8${_scopeId}><div class="section-title__tagline-shape-1" data-v-c30d54d8${_scopeId}></div><span class="section-title__tagline" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2" data-v-c30d54d8${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled" data-v-c30d54d8${_scopeId}>`);
+            _push2(`<section class="contact-two" data-v-6eb5750c${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2" data-v-6eb5750c${_scopeId}><div class="contact-two__sliding-text-item" data-v-6eb5750c${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-6eb5750c${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-6eb5750c${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="contact-two__left" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled" data-v-6eb5750c${_scopeId}>`);
             if (settings.value.email) {
-              _push2(`<li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-mail" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h3 class="h4" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p data-v-c30d54d8${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)} data-v-c30d54d8${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
+              _push2(`<li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-mail" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p data-v-6eb5750c${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)} data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
             if (settings.value.phone) {
-              _push2(`<li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-phone-call" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h3 class="h4" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p data-v-c30d54d8${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-c30d54d8${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
+              _push2(`<li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-phone-call" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p data-v-6eb5750c${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
             if (settings.value.address) {
-              _push2(`<li data-v-c30d54d8${_scopeId}><div class="icon" data-v-c30d54d8${_scopeId}><span class="icon-pin" data-v-c30d54d8${_scopeId}></span></div><div class="content" data-v-c30d54d8${_scopeId}><h3 class="h4" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p data-v-c30d54d8${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
+              _push2(`<li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-pin" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</ul></div></div><div class="col-xl-6" data-v-c30d54d8${_scopeId}><div class="${ssrRenderClass(`contact-two__right wow slideIn${locale.value === "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-c30d54d8${_scopeId}><form class="contact-form-validated contact-one__form" data-v-c30d54d8${_scopeId}><div class="row" data-v-c30d54d8${_scopeId}><div class="col-xl-6 col-lg-6" data-v-c30d54d8${_scopeId}><h3 class="h4 contact-one__input-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h3><div class="contact-one__input-box" data-v-c30d54d8${_scopeId}><div class="contact-one__input-icon" data-v-c30d54d8${_scopeId}><span class="icon-user-1" data-v-c30d54d8${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c30d54d8${_scopeId}></div>`);
+            _push2(`</ul></div></div><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="${ssrRenderClass(`contact-two__right wow slideIn${locale.value === "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-6eb5750c${_scopeId}><form class="contact-form-validated contact-one__form" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6 col-lg-6" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h3><div class="contact-one__input-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-user-1" data-v-6eb5750c${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-6eb5750c${_scopeId}></div>`);
             if (unref(contactForm).errors.name) {
-              _push2(`<div class="text-danger mt-1 small" data-v-c30d54d8${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-c30d54d8${_scopeId}><h3 class="h4 contact-one__input-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><div class="contact-one__input-box" data-v-c30d54d8${_scopeId}><div class="contact-one__input-icon" data-v-c30d54d8${_scopeId}><span class="icon-email" data-v-c30d54d8${_scopeId}></span></div><input type="email" name="email"${ssrRenderAttr("value", unref(contactForm).email)}${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}" required data-v-c30d54d8${_scopeId}>`);
+            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><div class="contact-one__input-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-email" data-v-6eb5750c${_scopeId}></span></div><input type="email" name="email"${ssrRenderAttr("value", unref(contactForm).email)}${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}" required data-v-6eb5750c${_scopeId}>`);
             if (unref(contactForm).errors.email) {
-              _push2(`<div class="text-danger mt-1 small" data-v-c30d54d8${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="col-xl-6 col-lg-6" data-v-c30d54d8${_scopeId}><h3 class="h4 contact-one__input-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h3><div class="contact-one__input-box" data-v-c30d54d8${_scopeId}><div class="contact-one__input-icon" data-v-c30d54d8${_scopeId}><span class="icon-phone-call" data-v-c30d54d8${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c30d54d8${_scopeId}></div>`);
+            _push2(`</div></div><div class="col-xl-6 col-lg-6" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h3><div class="contact-one__input-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-phone-call" data-v-6eb5750c${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-6eb5750c${_scopeId}></div>`);
             if (unref(contactForm).errors.mobile) {
-              _push2(`<div class="text-danger mt-1 small" data-v-c30d54d8${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-c30d54d8${_scopeId}><h3 class="h4 contact-one__input-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Subject"))}</h3><div class="contact-one__input-box" data-v-c30d54d8${_scopeId}><div class="contact-one__input-icon" data-v-c30d54d8${_scopeId}><span class="icon-edit" data-v-c30d54d8${_scopeId}></span></div><input type="text" name="subject"${ssrRenderAttr("value", unref(contactForm).subject)}${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}" required data-v-c30d54d8${_scopeId}>`);
+            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Subject"))}</h3><div class="contact-one__input-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-edit" data-v-6eb5750c${_scopeId}></span></div><input type="text" name="subject"${ssrRenderAttr("value", unref(contactForm).subject)}${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}" required data-v-6eb5750c${_scopeId}>`);
             if (unref(contactForm).errors.subject) {
-              _push2(`<div class="text-danger mt-1 small" data-v-c30d54d8${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div></div><div class="col-xl-12" data-v-c30d54d8${_scopeId}><h3 class="h4 contact-one__input-title" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Message"))}</h3><div class="contact-one__input-box text-message-box" data-v-c30d54d8${_scopeId}><div class="contact-one__input-icon" data-v-c30d54d8${_scopeId}><span class="icon-edit" data-v-c30d54d8${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c30d54d8${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
+            _push2(`</div></div></div><div class="col-xl-12" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Message"))}</h3><div class="contact-one__input-box text-message-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-edit" data-v-6eb5750c${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
             if (unref(contactForm).errors.message) {
-              _push2(`<div class="text-danger mt-1 small" data-v-c30d54d8${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="contact-one__btn-box" data-v-c30d54d8${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}" data-v-c30d54d8${_scopeId}>`);
+            _push2(`<div class="contact-one__btn-box" data-v-6eb5750c${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}" data-v-6eb5750c${_scopeId}>`);
             if (unref(contactForm).processing) {
-              _push2(`<span data-v-c30d54d8${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-c30d54d8${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
+              _push2(`<span data-v-6eb5750c${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-6eb5750c${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
             } else {
-              _push2(`<span data-v-c30d54d8${_scopeId}><span data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}" data-v-c30d54d8${_scopeId}></i></span>`);
+              _push2(`<span data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}" data-v-6eb5750c${_scopeId}></i></span>`);
             }
             _push2(`</button></div></div>`);
             if (contactSubmitSuccess.value) {
-              _push2(`<div class="col-12 mt-3" data-v-c30d54d8${_scopeId}><div class="alert alert-success" data-v-c30d54d8${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
+              _push2(`<div class="col-12 mt-3" data-v-6eb5750c${_scopeId}><div class="alert alert-success" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</form><div class="result" data-v-c30d54d8${_scopeId}></div></div></div></div></div></section>`);
+            _push2(`</form><div class="result" data-v-6eb5750c${_scopeId}></div></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "banner-one" }, [
@@ -2308,7 +2313,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
               ])) : createCommentVNode("", true),
               useCases.value && useCases.value.length ? (openBlock(), createBlock("section", {
                 key: 1,
-                class: "use-cases-page portfolio-page"
+                class: "home-case-studies use-cases-page"
               }, [
                 createVNode("div", {
                   class: "use-cases-page__bg",
@@ -2321,11 +2326,11 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
                   createVNode("div", { class: "section-title text-center sec-title-animation animation-style1" }, [
                     createVNode("div", { class: "section-title__tagline-box" }, [
                       createVNode("div", { class: "section-title__tagline-shape-1" }),
-                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Use Cases")), 1),
+                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Case Studies")), 1),
                       createVNode("div", { class: "section-title__tagline-shape-2" })
                     ]),
                     createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("How We've Empowered Businesses with Innovative Tech Solutions")), 1),
-                    createVNode("p", { class: "mt-3" }, toDisplayString(trans("Explore our success stories and real-world solutions we've delivered for businesses.")), 1)
+                    createVNode("p", { class: "home-case-studies__intro" }, toDisplayString(trans("Explore our success stories and real-world solutions we've delivered for businesses.")), 1)
                   ]),
                   createVNode("div", { class: "use-cases-page__grid" }, [
                     createVNode("div", { class: "row g-4" }, [
@@ -2343,13 +2348,13 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
                       }), 128))
                     ])
                   ]),
-                  createVNode("div", { class: "text-center mt-4" }, [
+                  createVNode("div", { class: "text-center home-case-studies__cta" }, [
                     createVNode(unref(Link), {
                       href: _ctx.route("use-cases.index"),
                       class: "thm-btn"
                     }, {
                       default: withCtx(() => [
-                        createTextVNode(toDisplayString(trans("View All Use Cases")) + " ", 1),
+                        createTextVNode(toDisplayString(trans("View All Case Studies")) + " ", 1),
                         createVNode("span", {
                           class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow `
                         }, null, 2)
@@ -2732,7 +2737,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
                           key: 0,
                           class: "blog-two__left-content-box d-none d-md-block"
                         }, [
-                          createVNode(_sfc_main$q, {
+                          createVNode(_sfc_main$u, {
                             post: featuredPost.value,
                             variant: "featured",
                             locale: locale.value,
@@ -2745,7 +2750,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
                     createVNode("div", { class: "col-xl-6" }, [
                       createVNode("div", { class: "blog-two__right" }, [
                         (openBlock(true), createBlock(Fragment, null, renderList(sidePosts.value, (post, idx) => {
-                          return openBlock(), createBlock(_sfc_main$q, {
+                          return openBlock(), createBlock(_sfc_main$u, {
                             key: post.id || idx,
                             post,
                             variant: "compact",
@@ -3008,23 +3013,23 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$f, {
     };
   }
 });
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Base/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
-const Index = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-c30d54d8"]]);
+const Index = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-6eb5750c"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$e = {
+const __default__$g = {
   components: {
-    AppLayout: _sfc_main$m
+    AppLayout: _sfc_main$q
   }
 };
-const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$e, {
+const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$g, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -3194,7 +3199,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$e, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -3520,22 +3525,22 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$e, {
     };
   }
 });
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/CRM/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$j
+  default: _sfc_main$n
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$d = {
+const __default__$f = {
   components: {
-    AppLayout: _sfc_main$m
+    AppLayout: _sfc_main$q
   }
 };
-const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
+const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$f, {
   __name: "AboutUs",
   __ssrInlineRender: true,
   setup(__props) {
@@ -3750,7 +3755,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("About Us"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4362,17 +4367,17 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$d, {
     };
   }
 });
-const _sfc_setup$i = _sfc_main$i.setup;
-_sfc_main$i.setup = (props, ctx) => {
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/AboutUs.vue");
-  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
 const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$i
+  default: _sfc_main$m
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$h = {
+const _sfc_main$l = {
   __name: "CtaTwo",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4405,20 +4410,20 @@ const _sfc_main$h = {
     };
   }
 };
-const _sfc_setup$h = _sfc_main$h.setup;
-_sfc_main$h.setup = (props, ctx) => {
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/CtaTwo.vue");
-  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const __default__$c = {
+const __default__$e = {
   components: {
-    AppLayout: _sfc_main$m,
-    HomeBlogCard: _sfc_main$q,
-    CtaTwo: _sfc_main$h
+    AppLayout: _sfc_main$q,
+    HomeBlogCard: _sfc_main$u,
+    CtaTwo: _sfc_main$l
   }
 };
-const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
+const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
   __name: "BlogIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4541,7 +4546,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4565,7 +4570,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<!--[-->`);
               ssrRenderList(blogs.value.data, (blog) => {
                 _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$q, {
+                _push2(ssrRenderComponent(_sfc_main$u, {
                   post: blog,
                   variant: "featured",
                   locale: locale.value,
@@ -4655,7 +4660,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -4710,7 +4715,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                         class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
                         "data-wow-delay": "100ms"
                       }, [
-                        createVNode(_sfc_main$q, {
+                        createVNode(_sfc_main$u, {
                           post: blog,
                           variant: "featured",
                           locale: locale.value,
@@ -4786,7 +4791,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$h)
+              createVNode(_sfc_main$l)
             ];
           }
         }),
@@ -4796,24 +4801,24 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
     };
   }
 });
-const _sfc_setup$g = _sfc_main$g.setup;
-_sfc_main$g.setup = (props, ctx) => {
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogIndex.vue");
-  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
 const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$g
+  default: _sfc_main$k
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$b = {
+const __default__$d = {
   components: {
-    AppLayout: _sfc_main$m,
-    HomeBlogCard: _sfc_main$q,
-    CtaTwo: _sfc_main$h
+    AppLayout: _sfc_main$q,
+    HomeBlogCard: _sfc_main$u,
+    CtaTwo: _sfc_main$l
   }
 };
-const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
+const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
   __name: "BlogShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4874,7 +4879,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Blog Details"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5053,7 +5058,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
               _push2(`<div class="container"${_scopeId}><div class="related-blogs mt-20 mt-xs-10"${_scopeId}><h4 class="mb-5"${_scopeId}>${ssrInterpolate(trans("Related Blogs"))}:</h4><div class="row"${_scopeId}><!--[-->`);
               ssrRenderList(relatedBlogs.value, (relatedBlog) => {
                 _push2(`<div class="col-md-4 mb-30"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$q, {
+                _push2(ssrRenderComponent(_sfc_main$u, {
                   post: relatedBlog,
                   variant: "featured",
                   locale: locale.value,
@@ -5067,7 +5072,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
               _push2(`<!---->`);
             }
             _push2(`</section>`);
-            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -5356,7 +5361,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
                           key: relatedBlog.id,
                           class: "col-md-4 mb-30"
                         }, [
-                          createVNode(_sfc_main$q, {
+                          createVNode(_sfc_main$u, {
                             post: relatedBlog,
                             variant: "featured",
                             locale: locale.value,
@@ -5369,7 +5374,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
                   ])
                 ])) : createCommentVNode("", true)
               ]),
-              createVNode(_sfc_main$h)
+              createVNode(_sfc_main$l)
             ];
           }
         }),
@@ -5379,23 +5384,23 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
     };
   }
 });
-const _sfc_setup$f = _sfc_main$f.setup;
-_sfc_main$f.setup = (props, ctx) => {
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogShow.vue");
-  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
 const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$f
+  default: _sfc_main$j
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$a = {
+const __default__$c = {
   components: {
-    AppLayout: _sfc_main$m,
-    CtaTwo: _sfc_main$h
+    AppLayout: _sfc_main$q,
+    CtaTwo: _sfc_main$l
   }
 };
-const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
+const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
   __name: "Faq",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5632,7 +5637,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-7a46cae7${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-7a46cae7${_scopeId}></div><div class="container" data-v-7a46cae7${_scopeId}><div class="page-header__inner" data-v-7a46cae7${_scopeId}><h2 data-v-7a46cae7${_scopeId}>${trans("FAQs") ?? ""}</h2><div class="thm-breadcrumb__box" data-v-7a46cae7${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-7a46cae7${_scopeId}><li data-v-7a46cae7${_scopeId}>`);
@@ -5666,7 +5671,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
               _push2(`<div class="text-center py-5" data-v-7a46cae7${_scopeId}><p data-v-7a46cae7${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -5760,7 +5765,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$h)
+              createVNode(_sfc_main$l)
             ];
           }
         }),
@@ -5770,23 +5775,23 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
     };
   }
 });
-const _sfc_setup$e = _sfc_main$e.setup;
-_sfc_main$e.setup = (props, ctx) => {
+const _sfc_setup$i = _sfc_main$i.setup;
+_sfc_main$i.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Faq.vue");
-  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
+  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
-const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-7a46cae7"]]);
+const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-7a46cae7"]]);
 const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Faq
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$9 = {
+const __default__$b = {
   components: {
-    AppLayout: _sfc_main$m
+    AppLayout: _sfc_main$q
   }
 };
-const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
+const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$b, {
   __name: "PageShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5820,7 +5825,7 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5903,22 +5908,22 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
     };
   }
 });
-const _sfc_setup$d = _sfc_main$d.setup;
-_sfc_main$d.setup = (props, ctx) => {
+const _sfc_setup$h = _sfc_main$h.setup;
+_sfc_main$h.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PageShow.vue");
-  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
+  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
 const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$d
+  default: _sfc_main$h
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$8 = {
+const __default__$a = {
   components: {
-    AppLayout: _sfc_main$m
+    AppLayout: _sfc_main$q
   }
 };
-const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$8, {
+const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
   __name: "PrivacyPolicy",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6040,7 +6045,7 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$8, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f;
           if (_push2) {
@@ -6227,23 +6232,23 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$8, {
     };
   }
 });
-const _sfc_setup$c = _sfc_main$c.setup;
-_sfc_main$c.setup = (props, ctx) => {
+const _sfc_setup$g = _sfc_main$g.setup;
+_sfc_main$g.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue");
-  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-b99b5a4e"]]);
+const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-b99b5a4e"]]);
 const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: PrivacyPolicy
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$7 = {
+const __default__$9 = {
   components: {
-    AppLayout: _sfc_main$m
+    AppLayout: _sfc_main$q
   }
 };
-const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
+const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$9, {
   __name: "Team",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6388,7 +6393,7 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6572,22 +6577,22 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
     };
   }
 });
-const _sfc_setup$b = _sfc_main$b.setup;
-_sfc_main$b.setup = (props, ctx) => {
+const _sfc_setup$f = _sfc_main$f.setup;
+_sfc_main$f.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Team.vue");
-  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
 const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$b
+  default: _sfc_main$f
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$6 = {
+const __default__$8 = {
   components: {
-    AppLayout: _sfc_main$m
+    AppLayout: _sfc_main$q
   }
 };
-const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
+const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$8, {
   __name: "Testimonials",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6725,7 +6730,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6859,25 +6864,161 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
     };
   }
 });
-const _sfc_setup$a = _sfc_main$a.setup;
-_sfc_main$a.setup = (props, ctx) => {
+const _sfc_setup$e = _sfc_main$e.setup;
+_sfc_main$e.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Testimonials.vue");
-  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
+  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
 const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$a
+  default: _sfc_main$e
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$5 = {
-  components: {
-    AppLayout: _sfc_main$m,
-    CtaTwo: _sfc_main$h,
-    UseCaseCard
+const _sfc_main$d = {
+  __name: "ProductCard",
+  __ssrInlineRender: true,
+  props: {
+    item: {
+      type: Object,
+      required: true
+    },
+    locale: {
+      type: String,
+      default: "en"
+    },
+    variant: {
+      type: String,
+      default: "default"
+    }
+  },
+  setup(__props) {
+    const props = __props;
+    const page = usePage();
+    const trans = (key) => {
+      var _a;
+      return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
+    };
+    const cardUrl = computed(() => {
+      var _a;
+      if (!((_a = props.item) == null ? void 0 : _a.slug)) {
+        return "#";
+      }
+      try {
+        return route("product.show", props.item.slug);
+      } catch {
+        return "#";
+      }
+    });
+    const truncate = (text, length) => {
+      if (!text) {
+        return "";
+      }
+      return text.length > length ? `${text.substring(0, length)}…` : text;
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<article${ssrRenderAttrs(mergeProps({
+        class: ["product-card", [`product-card--${__props.variant}`, { "product-card--featured": __props.item.is_featured }]]
+      }, _attrs))} data-v-d20191fd><div class="product-card__glow" aria-hidden="true" data-v-d20191fd></div>`);
+      _push(ssrRenderComponent(unref(Link), {
+        href: cardUrl.value,
+        class: "product-card__media",
+        "aria-label": __props.item.name
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} loading="lazy" data-v-d20191fd${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-d20191fd${_scopeId}></div>`);
+            if (__props.item.is_featured) {
+              _push2(`<span class="product-card__badge" data-v-d20191fd${_scopeId}><i class="fas fa-star" data-v-d20191fd${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
+            } else {
+              _push2(`<!---->`);
+            }
+          } else {
+            return [
+              createVNode("img", {
+                src: __props.item.main_image_link,
+                alt: __props.item.name,
+                loading: "lazy"
+              }, null, 8, ["src", "alt"]),
+              createVNode("div", {
+                class: "product-card__media-overlay",
+                "aria-hidden": "true"
+              }),
+              __props.item.is_featured ? (openBlock(), createBlock("span", {
+                key: 0,
+                class: "product-card__badge"
+              }, [
+                createVNode("i", { class: "fas fa-star" }),
+                createTextVNode(" " + toDisplayString(trans("Featured")), 1)
+              ])) : createCommentVNode("", true)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<div class="product-card__body" data-v-d20191fd>`);
+      if (__props.item.category) {
+        _push(`<p class="product-card__category" data-v-d20191fd>${ssrInterpolate(__props.item.category.name)}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<h3 class="product-card__title" data-v-d20191fd>`);
+      _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${ssrInterpolate(__props.item.name)}`);
+          } else {
+            return [
+              createTextVNode(toDisplayString(__props.item.name), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</h3>`);
+      if (__props.item.short_description && __props.variant !== "compact") {
+        _push(`<p class="product-card__summary" data-v-d20191fd>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div><footer class="product-card__footer" data-v-d20191fd>`);
+      _push(ssrRenderComponent(unref(Link), {
+        href: cardUrl.value,
+        class: "product-card__pill product-card__pill--cta"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<span data-v-d20191fd${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-d20191fd${_scopeId}></span>`);
+          } else {
+            return [
+              createVNode("span", null, toDisplayString(trans("View Details")), 1),
+              createVNode("span", {
+                class: `icon-${__props.locale === "ar" ? "left" : "right"}-arrow`
+              }, null, 2)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</footer></article>`);
+    };
   }
 };
-const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
-  __name: "UseCaseIndex",
+const _sfc_setup$d = _sfc_main$d.setup;
+_sfc_main$d.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
+  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
+};
+const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-d20191fd"]]);
+const __default__$7 = {
+  components: {
+    AppLayout: _sfc_main$q,
+    CtaTwo: _sfc_main$l,
+    ProductCard
+  }
+};
+const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
+  __name: "ProductIndex",
   __ssrInlineRender: true,
   setup(__props) {
     const page = usePage();
@@ -6886,11 +7027,15 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
     const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
-    const useCases = computed(() => page.props.useCases || { data: [] });
+    const products = computed(() => page.props.products || { data: [] });
     const meta = computed(() => page.props.meta || {});
-    const metaTitle = computed(() => meta.value.title || `${trans("Use Cases")} | ${seo.value.website_name || ""}`.trim());
-    const metaDescription = computed(() => meta.value.description || trans("Explore our project use cases and see how we help businesses with innovative technology solutions.") || seo.value.website_desc || "");
-    const metaKeywords = computed(() => meta.value.keywords || trans("use cases, case studies, IT solutions, web development") || seo.value.website_keywords || "");
+    const featuredCount = computed(() => {
+      var _a;
+      return ((_a = products.value.data) == null ? void 0 : _a.filter((p) => p.is_featured).length) || 0;
+    });
+    const metaTitle = computed(() => meta.value.title || `${trans("Products")} | ${seo.value.website_name || ""}`.trim());
+    const metaDescription = computed(() => meta.value.description || trans("Browse our B2B product catalog.") || seo.value.website_desc || "");
+    const metaKeywords = computed(() => meta.value.keywords || trans("products, B2B catalog, SaaS") || seo.value.website_keywords || "");
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
       return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
@@ -6909,26 +7054,26 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-f6418263${_scopeId}><title data-v-f6418263${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f6418263${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f6418263${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f6418263${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-ae8d2230${_scopeId}><title data-v-ae8d2230${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-ae8d2230${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-ae8d2230${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-ae8d2230${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-f6418263${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-ae8d2230${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f6418263${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f6418263${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-ae8d2230${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-ae8d2230${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-f6418263${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-ae8d2230${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-f6418263${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-ae8d2230${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-f6418263${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f6418263${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f6418263${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f6418263${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-ae8d2230${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-ae8d2230${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-ae8d2230${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-ae8d2230${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-f6418263${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-ae8d2230${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -7000,16 +7145,16 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="page-header" data-v-f6418263${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-f6418263${_scopeId}></div><div class="container" data-v-f6418263${_scopeId}><div class="page-header__inner" data-v-f6418263${_scopeId}><h2 data-v-f6418263${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</h2><div class="thm-breadcrumb__box" data-v-f6418263${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f6418263${_scopeId}><li data-v-f6418263${_scopeId}>`);
+            _push2(`<div class="page-header" data-v-ae8d2230${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-ae8d2230${_scopeId}></div><div class="container" data-v-ae8d2230${_scopeId}><div class="page-header__inner" data-v-ae8d2230${_scopeId}><h2 data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Products"))}</h2><div class="thm-breadcrumb__box" data-v-ae8d2230${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-ae8d2230${_scopeId}><li data-v-ae8d2230${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-f6418263${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-ae8d2230${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -7019,9 +7164,1122 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-f6418263${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f6418263${_scopeId}></span></li><li data-v-f6418263${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</li></ul></div></div></div></div><section class="blog-page use-cases-page" data-v-f6418263${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-f6418263${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-f6418263${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-f6418263${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-f6418263${_scopeId}></div></div><div class="container position-relative" data-v-f6418263${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-f6418263${_scopeId}><div class="section-title__tagline-box" data-v-f6418263${_scopeId}><div class="section-title__tagline-shape-1" data-v-f6418263${_scopeId}></div><span class="section-title__tagline" data-v-f6418263${_scopeId}>${ssrInterpolate(trans("Use Cases"))}</span><div class="section-title__tagline-shape-2" data-v-f6418263${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-f6418263${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2></div><div class="row" data-v-f6418263${_scopeId}><!--[-->`);
+            _push2(`</li><li data-v-ae8d2230${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-ae8d2230${_scopeId}></span></li><li data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Products"))}</li></ul></div></div></div></div><section class="blog-page products-page" data-v-ae8d2230${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-ae8d2230${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-ae8d2230${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-ae8d2230${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-ae8d2230${_scopeId}></div></div><div class="container position-relative" data-v-ae8d2230${_scopeId}><div class="section-title text-center sec-title-animation animation-style1 products-page__head" data-v-ae8d2230${_scopeId}><div class="section-title__tagline-box" data-v-ae8d2230${_scopeId}><div class="section-title__tagline-shape-1" data-v-ae8d2230${_scopeId}></div><span class="section-title__tagline" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Our Catalog"))}</span><div class="section-title__tagline-shape-2" data-v-ae8d2230${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("B2B Solutions Built for Scale"))}</h2><p class="products-page__subtitle" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Discover enterprise-ready platforms and services designed to grow with your business."))}</p></div>`);
+            if (products.value.data.length) {
+              _push2(`<div class="products-page__stats" data-v-ae8d2230${_scopeId}><div class="products-page__stat" data-v-ae8d2230${_scopeId}><span class="products-page__stat-value" data-v-ae8d2230${_scopeId}>${ssrInterpolate(products.value.total)}</span><span class="products-page__stat-label" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Solutions Available"))}</span></div>`);
+              if (featuredCount.value) {
+                _push2(`<div class="products-page__stat" data-v-ae8d2230${_scopeId}><span class="products-page__stat-value" data-v-ae8d2230${_scopeId}>${ssrInterpolate(featuredCount.value)}</span><span class="products-page__stat-label" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Featured"))}</span></div>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<div class="row" data-v-ae8d2230${_scopeId}><!--[-->`);
+            ssrRenderList(products.value.data, (product, index) => {
+              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-ae8d2230${_scopeId}>`);
+              _push2(ssrRenderComponent(ProductCard, {
+                item: product,
+                locale: locale.value
+              }, null, _parent2, _scopeId));
+              _push2(`</div>`);
+            });
+            _push2(`<!--]-->`);
+            if (!products.value.data.length) {
+              _push2(`<div class="col-12" data-v-ae8d2230${_scopeId}><div class="products-page__empty" data-v-ae8d2230${_scopeId}><div class="products-page__empty-icon" aria-hidden="true" data-v-ae8d2230${_scopeId}><i class="fas fa-box-open" data-v-ae8d2230${_scopeId}></i></div><h3 data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3><p data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Check back soon — we are adding new solutions to our catalog."))}</p></div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (products.value.last_page > 1) {
+              _push2(`<div class="blog-page__pagination products-page__pagination" data-v-ae8d2230${_scopeId}><ul class="pg-pagination list-unstyled" data-v-ae8d2230${_scopeId}>`);
+              if (products.value.prev_page_url) {
+                _push2(`<li class="prev" data-v-ae8d2230${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: products.value.prev_page_url,
+                  "aria-label": "Previous"
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`<span class="icon-left-arrow-1" data-v-ae8d2230${_scopeId2}></span>`);
+                    } else {
+                      return [
+                        createVNode("span", { class: "icon-left-arrow-1" })
+                      ];
+                    }
+                  }),
+                  _: 1
+                }, _parent2, _scopeId));
+                _push2(`</li>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`<!--[-->`);
+              ssrRenderList(products.value.links, (link, linkIndex) => {
+                _push2(`<!--[-->`);
+                if (link.url && linkIndex > 0 && linkIndex < products.value.links.length - 1) {
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-ae8d2230${_scopeId}>`);
+                  _push2(ssrRenderComponent(unref(Link), {
+                    href: link.url
+                  }, {
+                    default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                      if (_push3) {
+                        _push3(`${ssrInterpolate(link.label)}`);
+                      } else {
+                        return [
+                          createTextVNode(toDisplayString(link.label), 1)
+                        ];
+                      }
+                    }),
+                    _: 2
+                  }, _parent2, _scopeId));
+                  _push2(`</li>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`<!--]-->`);
+              });
+              _push2(`<!--]-->`);
+              if (products.value.next_page_url) {
+                _push2(`<li class="next" data-v-ae8d2230${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: products.value.next_page_url,
+                  "aria-label": "Next"
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-ae8d2230${_scopeId2}></span>`);
+                    } else {
+                      return [
+                        createVNode("span", {
+                          class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                        }, null, 2)
+                      ];
+                    }
+                  }),
+                  _: 1
+                }, _parent2, _scopeId));
+                _push2(`</li>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</ul></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div></section>`);
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+          } else {
+            return [
+              createVNode("div", { class: "page-header" }, [
+                createVNode("div", {
+                  class: "page-header__bg",
+                  style: { backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "page-header__inner" }, [
+                    createVNode("h2", null, toDisplayString(trans("Products")), 1),
+                    createVNode("div", { class: "thm-breadcrumb__box" }, [
+                      createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
+                        createVNode("li", null, [
+                          createVNode(unref(Link), {
+                            href: _ctx.route("home")
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("i", { class: "fas fa-home" }),
+                              createTextVNode(toDisplayString(trans("Home")), 1)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ]),
+                        createVNode("li", null, [
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
+                        ]),
+                        createVNode("li", null, toDisplayString(trans("Products")), 1)
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              createVNode("section", { class: "blog-page products-page" }, [
+                createVNode("div", {
+                  class: "products-page__bg",
+                  "aria-hidden": "true"
+                }, [
+                  createVNode("div", { class: "products-page__orb products-page__orb--one" }),
+                  createVNode("div", { class: "products-page__orb products-page__orb--two" }),
+                  createVNode("div", { class: "products-page__orb products-page__orb--three" })
+                ]),
+                createVNode("div", { class: "container position-relative" }, [
+                  createVNode("div", { class: "section-title text-center sec-title-animation animation-style1 products-page__head" }, [
+                    createVNode("div", { class: "section-title__tagline-box" }, [
+                      createVNode("div", { class: "section-title__tagline-shape-1" }),
+                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Our Catalog")), 1),
+                      createVNode("div", { class: "section-title__tagline-shape-2" })
+                    ]),
+                    createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("B2B Solutions Built for Scale")), 1),
+                    createVNode("p", { class: "products-page__subtitle" }, toDisplayString(trans("Discover enterprise-ready platforms and services designed to grow with your business.")), 1)
+                  ]),
+                  products.value.data.length ? (openBlock(), createBlock("div", {
+                    key: 0,
+                    class: "products-page__stats"
+                  }, [
+                    createVNode("div", { class: "products-page__stat" }, [
+                      createVNode("span", { class: "products-page__stat-value" }, toDisplayString(products.value.total), 1),
+                      createVNode("span", { class: "products-page__stat-label" }, toDisplayString(trans("Solutions Available")), 1)
+                    ]),
+                    featuredCount.value ? (openBlock(), createBlock("div", {
+                      key: 0,
+                      class: "products-page__stat"
+                    }, [
+                      createVNode("span", { class: "products-page__stat-value" }, toDisplayString(featuredCount.value), 1),
+                      createVNode("span", { class: "products-page__stat-label" }, toDisplayString(trans("Featured")), 1)
+                    ])) : createCommentVNode("", true)
+                  ])) : createCommentVNode("", true),
+                  createVNode("div", { class: "row" }, [
+                    (openBlock(true), createBlock(Fragment, null, renderList(products.value.data, (product, index) => {
+                      return openBlock(), createBlock("div", {
+                        key: product.id,
+                        class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
+                        "data-wow-delay": `${(index % 3 + 1) * 100}ms`
+                      }, [
+                        createVNode(ProductCard, {
+                          item: product,
+                          locale: locale.value
+                        }, null, 8, ["item", "locale"])
+                      ], 8, ["data-wow-delay"]);
+                    }), 128)),
+                    !products.value.data.length ? (openBlock(), createBlock("div", {
+                      key: 0,
+                      class: "col-12"
+                    }, [
+                      createVNode("div", { class: "products-page__empty" }, [
+                        createVNode("div", {
+                          class: "products-page__empty-icon",
+                          "aria-hidden": "true"
+                        }, [
+                          createVNode("i", { class: "fas fa-box-open" })
+                        ]),
+                        createVNode("h3", null, toDisplayString(trans("No records found")), 1),
+                        createVNode("p", null, toDisplayString(trans("Check back soon — we are adding new solutions to our catalog.")), 1)
+                      ])
+                    ])) : createCommentVNode("", true),
+                    products.value.last_page > 1 ? (openBlock(), createBlock("div", {
+                      key: 1,
+                      class: "blog-page__pagination products-page__pagination"
+                    }, [
+                      createVNode("ul", { class: "pg-pagination list-unstyled" }, [
+                        products.value.prev_page_url ? (openBlock(), createBlock("li", {
+                          key: 0,
+                          class: "prev"
+                        }, [
+                          createVNode(unref(Link), {
+                            href: products.value.prev_page_url,
+                            "aria-label": "Previous"
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("span", { class: "icon-left-arrow-1" })
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ])) : createCommentVNode("", true),
+                        (openBlock(true), createBlock(Fragment, null, renderList(products.value.links, (link, linkIndex) => {
+                          return openBlock(), createBlock(Fragment, { key: linkIndex }, [
+                            link.url && linkIndex > 0 && linkIndex < products.value.links.length - 1 ? (openBlock(), createBlock("li", {
+                              key: 0,
+                              class: ["count", link.active ? "active" : ""]
+                            }, [
+                              createVNode(unref(Link), {
+                                href: link.url
+                              }, {
+                                default: withCtx(() => [
+                                  createTextVNode(toDisplayString(link.label), 1)
+                                ]),
+                                _: 2
+                              }, 1032, ["href"])
+                            ], 2)) : createCommentVNode("", true)
+                          ], 64);
+                        }), 128)),
+                        products.value.next_page_url ? (openBlock(), createBlock("li", {
+                          key: 1,
+                          class: "next"
+                        }, [
+                          createVNode(unref(Link), {
+                            href: products.value.next_page_url,
+                            "aria-label": "Next"
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("span", {
+                                class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                              }, null, 2)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ])) : createCommentVNode("", true)
+                      ])
+                    ])) : createCommentVNode("", true)
+                  ])
+                ])
+              ]),
+              createVNode(_sfc_main$l)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<!--]-->`);
+    };
+  }
+});
+const _sfc_setup$c = _sfc_main$c.setup;
+_sfc_main$c.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductIndex.vue");
+  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+};
+const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-ae8d2230"]]);
+const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: ProductIndex
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$b = {
+  __name: "ContactRequestModal",
+  __ssrInlineRender: true,
+  props: {
+    modalId: {
+      type: String,
+      default: "productContactModal"
+    },
+    title: {
+      type: String,
+      default: "Contact Us"
+    },
+    description: {
+      type: String,
+      default: ""
+    },
+    defaultSubject: {
+      type: String,
+      default: ""
+    },
+    defaultMessage: {
+      type: String,
+      default: ""
+    },
+    submitLabel: {
+      type: String,
+      default: "Submit"
+    }
+  },
+  setup(__props, { expose: __expose }) {
+    const props = __props;
+    const page = usePage();
+    const trans = (key) => page.props.translations[key] || key;
+    const locale = computed(() => page.props.locale || "en");
+    const modalElement = ref(null);
+    const submitSuccess = ref(false);
+    let modalInstance = null;
+    const contactForm = useForm({
+      name: "",
+      email: "",
+      mobile: "",
+      subject: props.defaultSubject,
+      message: props.defaultMessage
+    });
+    watch(() => props.defaultSubject, (value) => {
+      contactForm.subject = value;
+    });
+    watch(() => props.defaultMessage, (value) => {
+      contactForm.message = value;
+    });
+    const show = () => {
+      contactForm.subject = props.defaultSubject;
+      contactForm.message = props.defaultMessage;
+      if (modalInstance) {
+        modalInstance.show();
+      }
+    };
+    const hide = () => {
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+    };
+    onMounted(() => {
+      var _a;
+      if (modalElement.value && ((_a = window.bootstrap) == null ? void 0 : _a.Modal)) {
+        modalInstance = new window.bootstrap.Modal(modalElement.value);
+      }
+    });
+    __expose({
+      show,
+      hide
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<div${ssrRenderAttrs(mergeProps({
+        class: "modal fade product-contact-modal",
+        id: __props.modalId,
+        tabindex: "-1",
+        "aria-labelledby": `${__props.modalId}Label`,
+        "aria-hidden": "true",
+        ref_key: "modalElement",
+        ref: modalElement
+      }, _attrs))} data-v-c3837d91><div class="modal-dialog modal-dialog-centered modal-lg" data-v-c3837d91><div class="modal-content" data-v-c3837d91><div class="modal-header border-0 pb-0" data-v-c3837d91><h5 class="modal-title"${ssrRenderAttr("id", `${__props.modalId}Label`)} data-v-c3837d91>${ssrInterpolate(__props.title)}</h5><button type="button" class="btn-close" data-bs-dismiss="modal"${ssrRenderAttr("aria-label", trans("Close"))} data-v-c3837d91></button></div><div class="modal-body pt-2" data-v-c3837d91>`);
+      if (__props.description) {
+        _push(`<p class="product-contact-modal__description mb-4" data-v-c3837d91>${ssrInterpolate(__props.description)}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<form class="contact-one__form" data-v-c3837d91><div class="row" data-v-c3837d91><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Full Name"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-user-1" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      if (unref(contactForm).errors.name) {
+        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Email"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-email" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).email)} type="email" name="email"${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      if (unref(contactForm).errors.email) {
+        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Phone Number"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-phone-call" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      if (unref(contactForm).errors.mobile) {
+        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Subject"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-edit" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).subject)} type="text" name="subject"${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      if (unref(contactForm).errors.subject) {
+        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div><div class="col-12 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Message"))}</h4><div class="contact-one__input-box text-message-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-edit" data-v-c3837d91></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Message"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
+      if (unref(contactForm).errors.message) {
+        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div></div>`);
+      if (submitSuccess.value) {
+        _push(`<div class="alert alert-success" data-v-c3837d91>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<div class="contact-one__btn-box" data-v-c3837d91><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} data-v-c3837d91>`);
+      if (unref(contactForm).processing) {
+        _push(`<span data-v-c3837d91>${ssrInterpolate(trans("Sending..."))}</span>`);
+      } else {
+        _push(`<span data-v-c3837d91>${ssrInterpolate(__props.submitLabel)}</span>`);
+      }
+      _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-c3837d91></span></button></div></form></div></div></div></div>`);
+    };
+  }
+};
+const _sfc_setup$b = _sfc_main$b.setup;
+_sfc_main$b.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ContactRequestModal.vue");
+  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+};
+const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-c3837d91"]]);
+const __default__$6 = {
+  components: {
+    AppLayout: _sfc_main$q,
+    CtaTwo: _sfc_main$l,
+    ContactRequestModal,
+    ProductCard
+  }
+};
+const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
+  __name: "ProductShow",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const page = usePage();
+    const trans = (key) => page.props.translations[key] || key;
+    const asset_path = computed(() => page.props.asset_path || "");
+    const locale = computed(() => page.props.locale || "en");
+    const product = computed(() => page.props.product || {});
+    const relatedProducts = computed(() => page.props.relatedProducts || []);
+    const meta = computed(() => page.props.meta || {});
+    const contactModal = ref(null);
+    const metaTitle = computed(() => meta.value.title || product.value.seo_title || product.value.name || "");
+    const metaDescription = computed(() => meta.value.description || product.value.seo_description || product.value.short_description || "");
+    const metaKeywords = computed(() => meta.value.keywords || "");
+    const metaImage = computed(() => {
+      var _a, _b;
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || product.value.main_image_link || "";
+    });
+    const metaRobots = computed(() => meta.value.robots || "index, follow");
+    const demoSubject = computed(() => `${trans("Live Demo Request")}: ${product.value.name || ""}`.trim());
+    const demoMessage = computed(() => {
+      const intro = trans("I would like to request a live demo for this product.");
+      const name = product.value.name ? `${trans("Product")}: ${product.value.name}` : "";
+      return [intro, name].filter(Boolean).join("\n\n");
+    });
+    const demoModalDescription = computed(() => trans("Fill out the form below and our team will schedule your live demo."));
+    const openDemoModal = () => {
+      var _a;
+      (_a = contactModal.value) == null ? void 0 : _a.show();
+    };
+    const getShareUrl = (platform) => {
+      if (typeof window === "undefined") {
+        return "#";
+      }
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(product.value.name || "");
+      switch (platform) {
+        case "twitter":
+          return `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+        case "facebook":
+          return `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        case "linkedin":
+          return `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+        default:
+          return "#";
+      }
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-f3b655c3${_scopeId}><title data-v-f3b655c3${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f3b655c3${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f3b655c3${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f3b655c3${_scopeId}><meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f3b655c3${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f3b655c3${_scopeId}>`);
+            if (metaImage.value) {
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-f3b655c3${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<meta property="og:type" content="product" data-v-f3b655c3${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f3b655c3${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f3b655c3${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f3b655c3${_scopeId}>`);
+            if (metaImage.value) {
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-f3b655c3${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+          } else {
+            return [
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/page-header.css"
+              }, null, 8, ["href"]),
+              createVNode("title", null, toDisplayString(metaTitle.value), 1),
+              createVNode("meta", {
+                name: "description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "keywords",
+                content: metaKeywords.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "robots",
+                content: metaRobots.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                property: "og:title",
+                content: metaTitle.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                property: "og:description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              metaImage.value ? (openBlock(), createBlock("meta", {
+                key: 0,
+                property: "og:image",
+                content: metaImage.value
+              }, null, 8, ["content"])) : createCommentVNode("", true),
+              createVNode("meta", {
+                property: "og:type",
+                content: "product"
+              }),
+              createVNode("meta", {
+                name: "twitter:card",
+                content: "summary_large_image"
+              }),
+              createVNode("meta", {
+                name: "twitter:title",
+                content: metaTitle.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "twitter:description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              metaImage.value ? (openBlock(), createBlock("meta", {
+                key: 1,
+                name: "twitter:image",
+                content: metaImage.value
+              }, null, 8, ["content"])) : createCommentVNode("", true)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(_sfc_main$q, null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<section class="page-header" data-v-f3b655c3${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-f3b655c3${_scopeId}></div><div class="container" data-v-f3b655c3${_scopeId}><div class="page-header__inner" data-v-f3b655c3${_scopeId}><h2 data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-f3b655c3${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f3b655c3${_scopeId}><li data-v-f3b655c3${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("home")
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`<i class="fas fa-home" data-v-f3b655c3${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                } else {
+                  return [
+                    createVNode("i", { class: "fas fa-home" }),
+                    createTextVNode(toDisplayString(trans("Home")), 1)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</li><li data-v-f3b655c3${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f3b655c3${_scopeId}></span></li><li data-v-f3b655c3${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("product.index")
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`${ssrInterpolate(trans("Products"))}`);
+                } else {
+                  return [
+                    createTextVNode(toDisplayString(trans("Products")), 1)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</li><li data-v-f3b655c3${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f3b655c3${_scopeId}></span></li><li data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.name)}</li></ul></div></div></div></section><section class="blog-details products-page" data-v-f3b655c3${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-f3b655c3${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-f3b655c3${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-f3b655c3${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-f3b655c3${_scopeId}></div></div><div class="container position-relative" data-v-f3b655c3${_scopeId}><div class="row" data-v-f3b655c3${_scopeId}><div class="col-xl-12" data-v-f3b655c3${_scopeId}><article class="product-detail" data-v-f3b655c3${_scopeId}><div class="product-detail__glow" aria-hidden="true" data-v-f3b655c3${_scopeId}></div><header class="product-detail__header" data-v-f3b655c3${_scopeId}><div class="product-detail__identity" data-v-f3b655c3${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("product.index"),
+              class: "product-detail__thumb"
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`<img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} data-v-f3b655c3${_scopeId2}>`);
+                } else {
+                  return [
+                    createVNode("img", {
+                      src: product.value.main_image_link,
+                      alt: product.value.name
+                    }, null, 8, ["src", "alt"])
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`<div class="product-detail__intro" data-v-f3b655c3${_scopeId}>`);
+            if (product.value.category) {
+              _push2(`<p class="product-detail__category" data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.category.name)}</p>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<h1 class="product-detail__title" data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.name)}</h1>`);
+            if (product.value.short_description) {
+              _push2(`<p class="product-detail__subtitle" data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.short_description)}</p>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div><div class="product-detail__actions" data-v-f3b655c3${_scopeId}><div class="product-detail__share" data-v-f3b655c3${_scopeId}><span class="product-detail__share-label" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="product-detail__share-links" data-v-f3b655c3${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Facebook" data-v-f3b655c3${_scopeId}><span class="icon-facebook" data-v-f3b655c3${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Twitter" data-v-f3b655c3${_scopeId}><span class="fab fa-twitter" data-v-f3b655c3${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="LinkedIn" data-v-f3b655c3${_scopeId}><span class="icon-linkedin" data-v-f3b655c3${_scopeId}></span></a></div></div><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-f3b655c3${_scopeId}></span></button></div></header>`);
+            if (product.value.category || product.value.is_featured) {
+              _push2(`<div class="product-detail__meta" data-v-f3b655c3${_scopeId}>`);
+              if (product.value.category) {
+                _push2(`<div class="product-detail__pill" data-v-f3b655c3${_scopeId}><i class="fas fa-tag" data-v-f3b655c3${_scopeId}></i><span data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.category.name)}</span></div>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              if (product.value.is_featured) {
+                _push2(`<div class="product-detail__pill product-detail__pill--featured" data-v-f3b655c3${_scopeId}><i class="fas fa-star" data-v-f3b655c3${_scopeId}></i><span data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Featured"))}</span></div>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<div class="product-detail__hero" data-v-f3b655c3${_scopeId}><img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} data-v-f3b655c3${_scopeId}></div>`);
+            if (product.value.short_description) {
+              _push2(`<div class="product-detail__section" data-v-f3b655c3${_scopeId}><div class="product-detail__section-head" data-v-f3b655c3${_scopeId}><span class="product-detail__section-icon" data-v-f3b655c3${_scopeId}><i class="fas fa-lightbulb" data-v-f3b655c3${_scopeId}></i></span><span class="product-detail__section-label" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Overview"))}</span></div><p class="product-detail__text" data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.short_description)}</p></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (product.value.description) {
+              _push2(`<div class="product-detail__section" data-v-f3b655c3${_scopeId}><div class="product-detail__section-head" data-v-f3b655c3${_scopeId}><span class="product-detail__section-icon" data-v-f3b655c3${_scopeId}><i class="fas fa-align-left" data-v-f3b655c3${_scopeId}></i></span><span class="product-detail__section-label" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Product Details"))}</span></div><div class="product-detail__content" data-v-f3b655c3${_scopeId}>${product.value.description ?? ""}</div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<footer class="product-detail__footer" data-v-f3b655c3${_scopeId}><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-f3b655c3${_scopeId}></span></button>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("contact-us"),
+              class: "product-detail__pill"
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-f3b655c3${_scopeId2}></span>`);
+                } else {
+                  return [
+                    createTextVNode(toDisplayString(trans("Get in Touch")) + " ", 1),
+                    createVNode("span", { class: "icon-right-up" })
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</footer></article>`);
+            if (relatedProducts.value.length) {
+              _push2(`<div class="products-related" data-v-f3b655c3${_scopeId}><div class="products-related__head" data-v-f3b655c3${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-f3b655c3${_scopeId}><div class="section-title__tagline-shape-1" data-v-f3b655c3${_scopeId}></div><span class="section-title__tagline" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("More Products"))}</span><div class="section-title__tagline-shape-2" data-v-f3b655c3${_scopeId}></div></div><h3 class="products-related__title" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Explore More Solutions"))}</h3></div><div class="row" data-v-f3b655c3${_scopeId}><!--[-->`);
+              ssrRenderList(relatedProducts.value, (item) => {
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-f3b655c3${_scopeId}>`);
+                _push2(ssrRenderComponent(ProductCard, {
+                  item,
+                  locale: locale.value,
+                  variant: "compact"
+                }, null, _parent2, _scopeId));
+                _push2(`</div>`);
+              });
+              _push2(`<!--]--></div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div></div></section>`);
+            _push2(ssrRenderComponent(ContactRequestModal, {
+              ref_key: "contactModal",
+              ref: contactModal,
+              "modal-id": "productDemoModal",
+              title: trans("Request Live Demo"),
+              description: demoModalDescription.value,
+              "default-subject": demoSubject.value,
+              "default-message": demoMessage.value,
+              "submit-label": trans("Send Request")
+            }, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+          } else {
+            return [
+              createVNode("section", { class: "page-header" }, [
+                createVNode("div", {
+                  class: "page-header__bg",
+                  style: { backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "page-header__inner" }, [
+                    createVNode("h2", null, toDisplayString(product.value.name), 1),
+                    createVNode("div", { class: "thm-breadcrumb__box" }, [
+                      createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
+                        createVNode("li", null, [
+                          createVNode(unref(Link), {
+                            href: _ctx.route("home")
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("i", { class: "fas fa-home" }),
+                              createTextVNode(toDisplayString(trans("Home")), 1)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ]),
+                        createVNode("li", null, [
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
+                        ]),
+                        createVNode("li", null, [
+                          createVNode(unref(Link), {
+                            href: _ctx.route("product.index")
+                          }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(trans("Products")), 1)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ]),
+                        createVNode("li", null, [
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
+                        ]),
+                        createVNode("li", null, toDisplayString(product.value.name), 1)
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              createVNode("section", { class: "blog-details products-page" }, [
+                createVNode("div", {
+                  class: "products-page__bg",
+                  "aria-hidden": "true"
+                }, [
+                  createVNode("div", { class: "products-page__orb products-page__orb--one" }),
+                  createVNode("div", { class: "products-page__orb products-page__orb--two" }),
+                  createVNode("div", { class: "products-page__orb products-page__orb--three" })
+                ]),
+                createVNode("div", { class: "container position-relative" }, [
+                  createVNode("div", { class: "row" }, [
+                    createVNode("div", { class: "col-xl-12" }, [
+                      createVNode("article", { class: "product-detail" }, [
+                        createVNode("div", {
+                          class: "product-detail__glow",
+                          "aria-hidden": "true"
+                        }),
+                        createVNode("header", { class: "product-detail__header" }, [
+                          createVNode("div", { class: "product-detail__identity" }, [
+                            createVNode(unref(Link), {
+                              href: _ctx.route("product.index"),
+                              class: "product-detail__thumb"
+                            }, {
+                              default: withCtx(() => [
+                                createVNode("img", {
+                                  src: product.value.main_image_link,
+                                  alt: product.value.name
+                                }, null, 8, ["src", "alt"])
+                              ]),
+                              _: 1
+                            }, 8, ["href"]),
+                            createVNode("div", { class: "product-detail__intro" }, [
+                              product.value.category ? (openBlock(), createBlock("p", {
+                                key: 0,
+                                class: "product-detail__category"
+                              }, toDisplayString(product.value.category.name), 1)) : createCommentVNode("", true),
+                              createVNode("h1", { class: "product-detail__title" }, toDisplayString(product.value.name), 1),
+                              product.value.short_description ? (openBlock(), createBlock("p", {
+                                key: 1,
+                                class: "product-detail__subtitle"
+                              }, toDisplayString(product.value.short_description), 1)) : createCommentVNode("", true)
+                            ])
+                          ]),
+                          createVNode("div", { class: "product-detail__actions" }, [
+                            createVNode("div", { class: "product-detail__share" }, [
+                              createVNode("span", { class: "product-detail__share-label" }, toDisplayString(trans("Share now")), 1),
+                              createVNode("div", { class: "product-detail__share-links" }, [
+                                createVNode("a", {
+                                  href: getShareUrl("facebook"),
+                                  target: "_blank",
+                                  rel: "noopener",
+                                  class: "product-detail__share-btn",
+                                  "aria-label": "Facebook"
+                                }, [
+                                  createVNode("span", { class: "icon-facebook" })
+                                ], 8, ["href"]),
+                                createVNode("a", {
+                                  href: getShareUrl("twitter"),
+                                  target: "_blank",
+                                  rel: "noopener",
+                                  class: "product-detail__share-btn",
+                                  "aria-label": "Twitter"
+                                }, [
+                                  createVNode("span", { class: "fab fa-twitter" })
+                                ], 8, ["href"]),
+                                createVNode("a", {
+                                  href: getShareUrl("linkedin"),
+                                  target: "_blank",
+                                  rel: "noopener",
+                                  class: "product-detail__share-btn",
+                                  "aria-label": "LinkedIn"
+                                }, [
+                                  createVNode("span", { class: "icon-linkedin" })
+                                ], 8, ["href"])
+                              ])
+                            ]),
+                            createVNode("button", {
+                              type: "button",
+                              class: "product-detail__pill product-detail__pill--cta",
+                              onClick: openDemoModal
+                            }, [
+                              createTextVNode(toDisplayString(trans("Request Live Demo")) + " ", 1),
+                              createVNode("span", {
+                                class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
+                              }, null, 2)
+                            ])
+                          ])
+                        ]),
+                        product.value.category || product.value.is_featured ? (openBlock(), createBlock("div", {
+                          key: 0,
+                          class: "product-detail__meta"
+                        }, [
+                          product.value.category ? (openBlock(), createBlock("div", {
+                            key: 0,
+                            class: "product-detail__pill"
+                          }, [
+                            createVNode("i", { class: "fas fa-tag" }),
+                            createVNode("span", null, toDisplayString(product.value.category.name), 1)
+                          ])) : createCommentVNode("", true),
+                          product.value.is_featured ? (openBlock(), createBlock("div", {
+                            key: 1,
+                            class: "product-detail__pill product-detail__pill--featured"
+                          }, [
+                            createVNode("i", { class: "fas fa-star" }),
+                            createVNode("span", null, toDisplayString(trans("Featured")), 1)
+                          ])) : createCommentVNode("", true)
+                        ])) : createCommentVNode("", true),
+                        createVNode("div", { class: "product-detail__hero" }, [
+                          createVNode("img", {
+                            src: product.value.main_image_link,
+                            alt: product.value.name
+                          }, null, 8, ["src", "alt"])
+                        ]),
+                        product.value.short_description ? (openBlock(), createBlock("div", {
+                          key: 1,
+                          class: "product-detail__section"
+                        }, [
+                          createVNode("div", { class: "product-detail__section-head" }, [
+                            createVNode("span", { class: "product-detail__section-icon" }, [
+                              createVNode("i", { class: "fas fa-lightbulb" })
+                            ]),
+                            createVNode("span", { class: "product-detail__section-label" }, toDisplayString(trans("Overview")), 1)
+                          ]),
+                          createVNode("p", { class: "product-detail__text" }, toDisplayString(product.value.short_description), 1)
+                        ])) : createCommentVNode("", true),
+                        product.value.description ? (openBlock(), createBlock("div", {
+                          key: 2,
+                          class: "product-detail__section"
+                        }, [
+                          createVNode("div", { class: "product-detail__section-head" }, [
+                            createVNode("span", { class: "product-detail__section-icon" }, [
+                              createVNode("i", { class: "fas fa-align-left" })
+                            ]),
+                            createVNode("span", { class: "product-detail__section-label" }, toDisplayString(trans("Product Details")), 1)
+                          ]),
+                          createVNode("div", {
+                            class: "product-detail__content",
+                            innerHTML: product.value.description
+                          }, null, 8, ["innerHTML"])
+                        ])) : createCommentVNode("", true),
+                        createVNode("footer", { class: "product-detail__footer" }, [
+                          createVNode("button", {
+                            type: "button",
+                            class: "product-detail__pill product-detail__pill--cta",
+                            onClick: openDemoModal
+                          }, [
+                            createTextVNode(toDisplayString(trans("Request Live Demo")) + " ", 1),
+                            createVNode("span", {
+                              class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
+                            }, null, 2)
+                          ]),
+                          createVNode(unref(Link), {
+                            href: _ctx.route("contact-us"),
+                            class: "product-detail__pill"
+                          }, {
+                            default: withCtx(() => [
+                              createTextVNode(toDisplayString(trans("Get in Touch")) + " ", 1),
+                              createVNode("span", { class: "icon-right-up" })
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ])
+                      ]),
+                      relatedProducts.value.length ? (openBlock(), createBlock("div", {
+                        key: 0,
+                        class: "products-related"
+                      }, [
+                        createVNode("div", { class: "products-related__head" }, [
+                          createVNode("div", { class: "section-title__tagline-box justify-content-center" }, [
+                            createVNode("div", { class: "section-title__tagline-shape-1" }),
+                            createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("More Products")), 1),
+                            createVNode("div", { class: "section-title__tagline-shape-2" })
+                          ]),
+                          createVNode("h3", { class: "products-related__title" }, toDisplayString(trans("Explore More Solutions")), 1)
+                        ]),
+                        createVNode("div", { class: "row" }, [
+                          (openBlock(true), createBlock(Fragment, null, renderList(relatedProducts.value, (item) => {
+                            return openBlock(), createBlock("div", {
+                              key: item.id,
+                              class: "col-xl-4 col-lg-6 col-md-6"
+                            }, [
+                              createVNode(ProductCard, {
+                                item,
+                                locale: locale.value,
+                                variant: "compact"
+                              }, null, 8, ["item", "locale"])
+                            ]);
+                          }), 128))
+                        ])
+                      ])) : createCommentVNode("", true)
+                    ])
+                  ])
+                ])
+              ]),
+              createVNode(ContactRequestModal, {
+                ref_key: "contactModal",
+                ref: contactModal,
+                "modal-id": "productDemoModal",
+                title: trans("Request Live Demo"),
+                description: demoModalDescription.value,
+                "default-subject": demoSubject.value,
+                "default-message": demoMessage.value,
+                "submit-label": trans("Send Request")
+              }, null, 8, ["title", "description", "default-subject", "default-message", "submit-label"]),
+              createVNode(_sfc_main$l)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<!--]-->`);
+    };
+  }
+});
+const _sfc_setup$a = _sfc_main$a.setup;
+_sfc_main$a.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductShow.vue");
+  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
+};
+const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-f3b655c3"]]);
+const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: ProductShow
+}, Symbol.toStringTag, { value: "Module" }));
+const __default__$5 = {
+  components: {
+    AppLayout: _sfc_main$q,
+    CtaTwo: _sfc_main$l,
+    UseCaseCard
+  }
+};
+const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
+  __name: "UseCaseIndex",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const page = usePage();
+    const trans = (key) => page.props.translations[key] || key;
+    const seo = computed(() => page.props.seo);
+    const settings = computed(() => page.props.settings || {});
+    const asset_path = computed(() => page.props.asset_path || "");
+    const locale = computed(() => page.props.locale || "en");
+    const useCases = computed(() => page.props.useCases || { data: [] });
+    const meta = computed(() => page.props.meta || {});
+    const metaTitle = computed(() => meta.value.title || `${trans("Case Studies")} | ${seo.value.website_name || ""}`.trim());
+    const metaDescription = computed(() => meta.value.description || trans("Explore our case studies and see how we help businesses with innovative technology solutions.") || seo.value.website_desc || "");
+    const metaKeywords = computed(() => meta.value.keywords || trans("case studies, project solutions, IT solutions, web development") || seo.value.website_keywords || "");
+    const metaImage = computed(() => {
+      var _a, _b, _c, _d, _e;
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+    });
+    const metaCanonical = computed(() => meta.value.canonical || "");
+    const metaRobots = computed(() => meta.value.robots || "index, follow");
+    onMounted(() => {
+      nextTick(() => {
+        if (typeof WOW !== "undefined") {
+          new WOW().init();
+        }
+      });
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-71d4a05e${_scopeId}><title data-v-71d4a05e${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-71d4a05e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-71d4a05e${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-71d4a05e${_scopeId}>`);
+            if (metaCanonical.value) {
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-71d4a05e${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-71d4a05e${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-71d4a05e${_scopeId}>`);
+            if (metaImage.value) {
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-71d4a05e${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (metaCanonical.value) {
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-71d4a05e${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<meta property="og:type" content="website" data-v-71d4a05e${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-71d4a05e${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-71d4a05e${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-71d4a05e${_scopeId}>`);
+            if (metaImage.value) {
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-71d4a05e${_scopeId}>`);
+            } else {
+              _push2(`<!---->`);
+            }
+          } else {
+            return [
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/page-header.css"
+              }, null, 8, ["href"]),
+              createVNode("title", null, toDisplayString(metaTitle.value), 1),
+              createVNode("meta", {
+                name: "description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "keywords",
+                content: metaKeywords.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "robots",
+                content: metaRobots.value
+              }, null, 8, ["content"]),
+              metaCanonical.value ? (openBlock(), createBlock("link", {
+                key: 0,
+                rel: "canonical",
+                href: metaCanonical.value
+              }, null, 8, ["href"])) : createCommentVNode("", true),
+              createVNode("meta", {
+                property: "og:title",
+                content: metaTitle.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                property: "og:description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              metaImage.value ? (openBlock(), createBlock("meta", {
+                key: 1,
+                property: "og:image",
+                content: metaImage.value
+              }, null, 8, ["content"])) : createCommentVNode("", true),
+              metaCanonical.value ? (openBlock(), createBlock("meta", {
+                key: 2,
+                property: "og:url",
+                content: metaCanonical.value
+              }, null, 8, ["content"])) : createCommentVNode("", true),
+              createVNode("meta", {
+                property: "og:type",
+                content: "website"
+              }),
+              createVNode("meta", {
+                name: "twitter:card",
+                content: "summary_large_image"
+              }),
+              createVNode("meta", {
+                name: "twitter:title",
+                content: metaTitle.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "twitter:description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              metaImage.value ? (openBlock(), createBlock("meta", {
+                key: 3,
+                name: "twitter:image",
+                content: metaImage.value
+              }, null, 8, ["content"])) : createCommentVNode("", true)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(_sfc_main$q, null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="page-header" data-v-71d4a05e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-71d4a05e${_scopeId}></div><div class="container" data-v-71d4a05e${_scopeId}><div class="page-header__inner" data-v-71d4a05e${_scopeId}><h2 data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</h2><div class="thm-breadcrumb__box" data-v-71d4a05e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-71d4a05e${_scopeId}><li data-v-71d4a05e${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("home")
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`<i class="fas fa-home" data-v-71d4a05e${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                } else {
+                  return [
+                    createVNode("i", { class: "fas fa-home" }),
+                    createTextVNode(toDisplayString(trans("Home")), 1)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</li><li data-v-71d4a05e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-71d4a05e${_scopeId}></span></li><li data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</li></ul></div></div></div></div><section class="blog-page use-cases-page" data-v-71d4a05e${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-71d4a05e${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-71d4a05e${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-71d4a05e${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-71d4a05e${_scopeId}></div></div><div class="container position-relative" data-v-71d4a05e${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-71d4a05e${_scopeId}><div class="section-title__tagline-box" data-v-71d4a05e${_scopeId}><div class="section-title__tagline-shape-1" data-v-71d4a05e${_scopeId}></div><span class="section-title__tagline" data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-71d4a05e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2></div><div class="row" data-v-71d4a05e${_scopeId}><!--[-->`);
             ssrRenderList(useCases.value.data, (item, index) => {
-              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-f6418263${_scopeId}>`);
+              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-71d4a05e${_scopeId}>`);
               _push2(ssrRenderComponent(UseCaseCard, {
                 item,
                 locale: locale.value
@@ -7030,21 +8288,21 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
             });
             _push2(`<!--]-->`);
             if (!useCases.value.data.length) {
-              _push2(`<div class="col-12" data-v-f6418263${_scopeId}><div class="text-center py-5" data-v-f6418263${_scopeId}><h3 class="use-cases-page__empty" data-v-f6418263${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3></div></div>`);
+              _push2(`<div class="col-12" data-v-71d4a05e${_scopeId}><div class="text-center py-5" data-v-71d4a05e${_scopeId}><h3 class="use-cases-page__empty" data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3></div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCases.value.last_page > 1) {
-              _push2(`<div class="blog-page__pagination" data-v-f6418263${_scopeId}><ul class="pg-pagination list-unstyled" data-v-f6418263${_scopeId}>`);
+              _push2(`<div class="blog-page__pagination" data-v-71d4a05e${_scopeId}><ul class="pg-pagination list-unstyled" data-v-71d4a05e${_scopeId}>`);
               if (useCases.value.prev_page_url) {
-                _push2(`<li class="prev" data-v-f6418263${_scopeId}>`);
+                _push2(`<li class="prev" data-v-71d4a05e${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: useCases.value.prev_page_url,
                   "aria-label": "Previous"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="icon-left-arrow-1" data-v-f6418263${_scopeId2}></span>`);
+                      _push3(`<span class="icon-left-arrow-1" data-v-71d4a05e${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", { class: "icon-left-arrow-1" })
@@ -7061,7 +8319,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               ssrRenderList(useCases.value.links, (link, index) => {
                 _push2(`<!--[-->`);
                 if (link.url && index > 0 && index < useCases.value.links.length - 1) {
-                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-f6418263${_scopeId}>`);
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-71d4a05e${_scopeId}>`);
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
@@ -7084,14 +8342,14 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               });
               _push2(`<!--]-->`);
               if (useCases.value.next_page_url) {
-                _push2(`<li class="next" data-v-f6418263${_scopeId}>`);
+                _push2(`<li class="next" data-v-71d4a05e${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: useCases.value.next_page_url,
                   "aria-label": "Next"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f6418263${_scopeId2}></span>`);
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-71d4a05e${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", {
@@ -7111,7 +8369,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -7121,7 +8379,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Use Cases")), 1),
+                    createVNode("h2", null, toDisplayString(trans("Case Studies")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -7140,7 +8398,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
                             class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
                           }, null, 2)
                         ]),
-                        createVNode("li", null, toDisplayString(trans("Use Cases")), 1)
+                        createVNode("li", null, toDisplayString(trans("Case Studies")), 1)
                       ])
                     ])
                   ])
@@ -7159,7 +8417,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
                   createVNode("div", { class: "section-title text-center sec-title-animation animation-style1" }, [
                     createVNode("div", { class: "section-title__tagline-box" }, [
                       createVNode("div", { class: "section-title__tagline-shape-1" }),
-                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Use Cases")), 1),
+                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Case Studies")), 1),
                       createVNode("div", { class: "section-title__tagline-shape-2" })
                     ]),
                     createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("How We've Empowered Businesses with Innovative Tech Solutions")), 1)
@@ -7242,7 +8500,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$h)
+              createVNode(_sfc_main$l)
             ];
           }
         }),
@@ -7258,15 +8516,15 @@ _sfc_main$9.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue");
   return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-f6418263"]]);
-const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-71d4a05e"]]);
+const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseIndex
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$4 = {
   components: {
-    AppLayout: _sfc_main$m,
-    CtaTwo: _sfc_main$h,
+    AppLayout: _sfc_main$q,
+    CtaTwo: _sfc_main$l,
     UseCaseCard
   }
 };
@@ -7283,7 +8541,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
     const useCase = computed(() => page.props.useCase || {});
     const relatedUseCases = computed(() => page.props.relatedUseCases || []);
     const meta = computed(() => page.props.meta || {});
-    const metaTitle = computed(() => meta.value.title || `${useCase.value.title || trans("Use Cases")} | ${seo.value.website_name || ""}`.trim());
+    const metaTitle = computed(() => meta.value.title || `${useCase.value.title || trans("Case Studies")} | ${seo.value.website_name || ""}`.trim());
     const metaDescription = computed(() => meta.value.description || useCase.value.summary || seo.value.website_desc || "");
     const metaKeywords = computed(() => meta.value.keywords || (useCase.value.technologies || []).join(", ") || seo.value.website_keywords || "");
     const metaImage = computed(() => {
@@ -7314,26 +8572,26 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-c7550339${_scopeId}><title data-v-c7550339${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-c7550339${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-c7550339${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-c7550339${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-95493371${_scopeId}><title data-v-95493371${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-95493371${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-95493371${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-95493371${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-c7550339${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-95493371${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-c7550339${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-c7550339${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-95493371${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-95493371${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-c7550339${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-95493371${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-c7550339${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-95493371${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="article" data-v-c7550339${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-c7550339${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-c7550339${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-c7550339${_scopeId}>`);
+            _push2(`<meta property="og:type" content="article" data-v-95493371${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-95493371${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-95493371${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-95493371${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-c7550339${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-95493371${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -7405,16 +8663,16 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-c7550339${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-c7550339${_scopeId}></div><div class="container" data-v-c7550339${_scopeId}><div class="page-header__inner" data-v-c7550339${_scopeId}><h2 data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-c7550339${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-c7550339${_scopeId}><li data-v-c7550339${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-95493371${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-95493371${_scopeId}></div><div class="container" data-v-95493371${_scopeId}><div class="page-header__inner" data-v-95493371${_scopeId}><h2 data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-95493371${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-95493371${_scopeId}><li data-v-95493371${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-c7550339${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-95493371${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -7424,29 +8682,29 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-c7550339${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-c7550339${_scopeId}></span></li><li data-v-c7550339${_scopeId}>`);
+            _push2(`</li><li data-v-95493371${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-95493371${_scopeId}></span></li><li data-v-95493371${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("use-cases.index")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Use Cases"))}`);
+                  _push3(`${ssrInterpolate(trans("Case Studies"))}`);
                 } else {
                   return [
-                    createTextVNode(toDisplayString(trans("Use Cases")), 1)
+                    createTextVNode(toDisplayString(trans("Case Studies")), 1)
                   ];
                 }
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-c7550339${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-c7550339${_scopeId}></span></li><li data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.title)}</li></ul></div></div></div></section><section class="blog-details use-cases-page" data-v-c7550339${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-c7550339${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-c7550339${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-c7550339${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-c7550339${_scopeId}></div></div><div class="container position-relative" data-v-c7550339${_scopeId}><div class="row" data-v-c7550339${_scopeId}><div class="col-xl-12" data-v-c7550339${_scopeId}><article class="use-case-detail" data-v-c7550339${_scopeId}><div class="use-case-detail__glow" aria-hidden="true" data-v-c7550339${_scopeId}></div><header class="use-case-detail__header" data-v-c7550339${_scopeId}><div class="use-case-detail__identity" data-v-c7550339${_scopeId}>`);
+            _push2(`</li><li data-v-95493371${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-95493371${_scopeId}></span></li><li data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.title)}</li></ul></div></div></div></section><section class="blog-details use-cases-page" data-v-95493371${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-95493371${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-95493371${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-95493371${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-95493371${_scopeId}></div></div><div class="container position-relative" data-v-95493371${_scopeId}><div class="row" data-v-95493371${_scopeId}><div class="col-xl-12" data-v-95493371${_scopeId}><article class="use-case-detail" data-v-95493371${_scopeId}><div class="use-case-detail__glow" aria-hidden="true" data-v-95493371${_scopeId}></div><header class="use-case-detail__header" data-v-95493371${_scopeId}><div class="use-case-detail__identity" data-v-95493371${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("use-cases.index"),
               class: "use-case-detail__avatar"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-c7550339${_scopeId2}>`);
+                  _push3(`<img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-95493371${_scopeId2}>`);
                 } else {
                   return [
                     createVNode("img", {
@@ -7458,22 +8716,22 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`<div class="use-case-detail__intro" data-v-c7550339${_scopeId}><h1 class="use-case-detail__title" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.title)}</h1>`);
+            _push2(`<div class="use-case-detail__intro" data-v-95493371${_scopeId}><h1 class="use-case-detail__title" data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.title)}</h1>`);
             if (useCase.value.client_name) {
-              _push2(`<p class="use-case-detail__subtitle" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.client_name)}</p>`);
+              _push2(`<p class="use-case-detail__subtitle" data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.client_name)}</p>`);
             } else if (useCase.value.category_tag) {
-              _push2(`<p class="use-case-detail__subtitle" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</p>`);
+              _push2(`<p class="use-case-detail__subtitle" data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="use-case-detail__actions" data-v-c7550339${_scopeId}><div class="use-case-detail__share" data-v-c7550339${_scopeId}><span class="use-case-detail__share-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="use-case-detail__share-links" data-v-c7550339${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="Facebook" data-v-c7550339${_scopeId}><span class="icon-facebook" data-v-c7550339${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="Twitter" data-v-c7550339${_scopeId}><span class="fab fa-twitter" data-v-c7550339${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="LinkedIn" data-v-c7550339${_scopeId}><span class="icon-linkedin" data-v-c7550339${_scopeId}></span></a></div></div>`);
+            _push2(`</div></div><div class="use-case-detail__actions" data-v-95493371${_scopeId}><div class="use-case-detail__share" data-v-95493371${_scopeId}><span class="use-case-detail__share-label" data-v-95493371${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="use-case-detail__share-links" data-v-95493371${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="Facebook" data-v-95493371${_scopeId}><span class="icon-facebook" data-v-95493371${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="Twitter" data-v-95493371${_scopeId}><span class="fab fa-twitter" data-v-95493371${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="use-case-detail__share-btn" aria-label="LinkedIn" data-v-95493371${_scopeId}><span class="icon-linkedin" data-v-95493371${_scopeId}></span></a></div></div>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "use-case-detail__pill use-case-detail__pill--cta"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-c7550339${_scopeId2}></span>`);
+                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-95493371${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(toDisplayString(trans("Get in Touch")) + " ", 1),
@@ -7485,19 +8743,19 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
             }, _parent2, _scopeId));
             _push2(`</div></header>`);
             if (useCase.value.client_name || useCase.value.completed_year || useCase.value.category_tag) {
-              _push2(`<div class="use-case-detail__meta" data-v-c7550339${_scopeId}>`);
+              _push2(`<div class="use-case-detail__meta" data-v-95493371${_scopeId}>`);
               if (useCase.value.client_name) {
-                _push2(`<div class="use-case-detail__pill" data-v-c7550339${_scopeId}><i class="fas fa-user" data-v-c7550339${_scopeId}></i><span data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Client"))}: ${ssrInterpolate(useCase.value.client_name)}</span></div>`);
+                _push2(`<div class="use-case-detail__pill" data-v-95493371${_scopeId}><i class="fas fa-user" data-v-95493371${_scopeId}></i><span data-v-95493371${_scopeId}>${ssrInterpolate(trans("Client"))}: ${ssrInterpolate(useCase.value.client_name)}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
               if (useCase.value.completed_year) {
-                _push2(`<div class="use-case-detail__pill" data-v-c7550339${_scopeId}><i class="far fa-calendar-alt" data-v-c7550339${_scopeId}></i><span data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.completed_year)}</span></div>`);
+                _push2(`<div class="use-case-detail__pill" data-v-95493371${_scopeId}><i class="far fa-calendar-alt" data-v-95493371${_scopeId}></i><span data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.completed_year)}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
               if (useCase.value.category_tag) {
-                _push2(`<div class="use-case-detail__pill" data-v-c7550339${_scopeId}><i class="fas fa-tag" data-v-c7550339${_scopeId}></i><span data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</span></div>`);
+                _push2(`<div class="use-case-detail__pill" data-v-95493371${_scopeId}><i class="fas fa-tag" data-v-95493371${_scopeId}></i><span data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.category_tag)}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -7505,51 +8763,51 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="use-case-detail__hero" data-v-c7550339${_scopeId}><img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-c7550339${_scopeId}></div>`);
+            _push2(`<div class="use-case-detail__hero" data-v-95493371${_scopeId}><img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-95493371${_scopeId}></div>`);
             if (useCase.value.summary) {
-              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-lightbulb" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Project Overview"))}</span></div><p class="use-case-detail__text" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.summary)}</p></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-95493371${_scopeId}><div class="use-case-detail__section-head" data-v-95493371${_scopeId}><span class="use-case-detail__section-icon" data-v-95493371${_scopeId}><i class="fas fa-lightbulb" data-v-95493371${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-95493371${_scopeId}>${ssrInterpolate(trans("Project Overview"))}</span></div><p class="use-case-detail__text" data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.summary)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.challenge) {
-              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-exclamation-triangle" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("The Challenge"))}</span></div><p class="use-case-detail__text" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.challenge)}</p></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-95493371${_scopeId}><div class="use-case-detail__section-head" data-v-95493371${_scopeId}><span class="use-case-detail__section-icon" data-v-95493371${_scopeId}><i class="fas fa-exclamation-triangle" data-v-95493371${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-95493371${_scopeId}>${ssrInterpolate(trans("The Challenge"))}</span></div><p class="use-case-detail__text" data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.challenge)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.solution) {
-              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-cogs" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Our Solution"))}</span></div><p class="use-case-detail__text" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.solution)}</p></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-95493371${_scopeId}><div class="use-case-detail__section-head" data-v-95493371${_scopeId}><span class="use-case-detail__section-icon" data-v-95493371${_scopeId}><i class="fas fa-cogs" data-v-95493371${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-95493371${_scopeId}>${ssrInterpolate(trans("Our Solution"))}</span></div><p class="use-case-detail__text" data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.solution)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.results) {
-              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-chart-line" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("The Results"))}</span></div><p class="use-case-detail__text" data-v-c7550339${_scopeId}>${ssrInterpolate(useCase.value.results)}</p></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-95493371${_scopeId}><div class="use-case-detail__section-head" data-v-95493371${_scopeId}><span class="use-case-detail__section-icon" data-v-95493371${_scopeId}><i class="fas fa-chart-line" data-v-95493371${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-95493371${_scopeId}>${ssrInterpolate(trans("The Results"))}</span></div><p class="use-case-detail__text" data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.results)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.content) {
-              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-align-left" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Details"))}</span></div><div class="use-case-detail__content" data-v-c7550339${_scopeId}>${useCase.value.content ?? ""}</div></div>`);
+              _push2(`<div class="use-case-detail__section" data-v-95493371${_scopeId}><div class="use-case-detail__section-head" data-v-95493371${_scopeId}><span class="use-case-detail__section-icon" data-v-95493371${_scopeId}><i class="fas fa-align-left" data-v-95493371${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-95493371${_scopeId}>${ssrInterpolate(trans("Details"))}</span></div><div class="use-case-detail__content" data-v-95493371${_scopeId}>${useCase.value.content ?? ""}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.technologies && useCase.value.technologies.length) {
-              _push2(`<div class="use-case-detail__section" data-v-c7550339${_scopeId}><div class="use-case-detail__section-head" data-v-c7550339${_scopeId}><span class="use-case-detail__section-icon" data-v-c7550339${_scopeId}><i class="fas fa-code" data-v-c7550339${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Technologies Used"))}</span></div><div class="use-case-detail__tags" data-v-c7550339${_scopeId}><!--[-->`);
+              _push2(`<div class="use-case-detail__section" data-v-95493371${_scopeId}><div class="use-case-detail__section-head" data-v-95493371${_scopeId}><span class="use-case-detail__section-icon" data-v-95493371${_scopeId}><i class="fas fa-code" data-v-95493371${_scopeId}></i></span><span class="use-case-detail__section-label" data-v-95493371${_scopeId}>${ssrInterpolate(trans("Technologies Used"))}</span></div><div class="use-case-detail__tags" data-v-95493371${_scopeId}><!--[-->`);
               ssrRenderList(useCase.value.technologies, (tech) => {
-                _push2(`<span class="use-case-detail__tag" data-v-c7550339${_scopeId}>${ssrInterpolate(tech)}</span>`);
+                _push2(`<span class="use-case-detail__tag" data-v-95493371${_scopeId}>${ssrInterpolate(tech)}</span>`);
               });
               _push2(`<!--]--></div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCase.value.project_url) {
-              _push2(`<footer class="use-case-detail__footer" data-v-c7550339${_scopeId}><a${ssrRenderAttr("href", useCase.value.project_url)} target="_blank" rel="noopener" class="use-case-detail__pill use-case-detail__pill--cta" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Visit Live Project"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-c7550339${_scopeId}></span></a></footer>`);
+              _push2(`<footer class="use-case-detail__footer" data-v-95493371${_scopeId}><a${ssrRenderAttr("href", useCase.value.project_url)} target="_blank" rel="noopener" class="use-case-detail__pill use-case-detail__pill--cta" data-v-95493371${_scopeId}>${ssrInterpolate(trans("Visit Live Project"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-95493371${_scopeId}></span></a></footer>`);
             } else {
               _push2(`<!---->`);
             }
             _push2(`</article>`);
             if (relatedUseCases.value.length) {
-              _push2(`<div class="use-cases-related" data-v-c7550339${_scopeId}><div class="use-cases-related__head" data-v-c7550339${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-c7550339${_scopeId}><div class="section-title__tagline-shape-1" data-v-c7550339${_scopeId}></div><span class="section-title__tagline" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("More Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-c7550339${_scopeId}></div></div><h3 class="use-cases-related__title" data-v-c7550339${_scopeId}>${ssrInterpolate(trans("Explore More Success Stories"))}</h3></div><div class="row" data-v-c7550339${_scopeId}><!--[-->`);
+              _push2(`<div class="use-cases-related" data-v-95493371${_scopeId}><div class="use-cases-related__head" data-v-95493371${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-95493371${_scopeId}><div class="section-title__tagline-shape-1" data-v-95493371${_scopeId}></div><span class="section-title__tagline" data-v-95493371${_scopeId}>${ssrInterpolate(trans("More Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-95493371${_scopeId}></div></div><h3 class="use-cases-related__title" data-v-95493371${_scopeId}>${ssrInterpolate(trans("Explore More Success Stories"))}</h3></div><div class="row" data-v-95493371${_scopeId}><!--[-->`);
               ssrRenderList(relatedUseCases.value, (item) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-c7550339${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-95493371${_scopeId}>`);
                 _push2(ssrRenderComponent(UseCaseCard, {
                   item,
                   locale: locale.value,
@@ -7562,7 +8820,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -7596,7 +8854,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
                             href: _ctx.route("use-cases.index")
                           }, {
                             default: withCtx(() => [
-                              createTextVNode(toDisplayString(trans("Use Cases")), 1)
+                              createTextVNode(toDisplayString(trans("Case Studies")), 1)
                             ]),
                             _: 1
                           }, 8, ["href"])
@@ -7861,7 +9119,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$h)
+              createVNode(_sfc_main$l)
             ];
           }
         }),
@@ -7877,15 +9135,15 @@ _sfc_main$8.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseShow.vue");
   return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
-const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-c7550339"]]);
-const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-95493371"]]);
+const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseShow
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$3 = {
   components: {
-    AppLayout: _sfc_main$m,
-    CtaTwo: _sfc_main$h
+    AppLayout: _sfc_main$q,
+    CtaTwo: _sfc_main$l
   }
 };
 const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
@@ -8091,7 +9349,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-3ab06575${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-3ab06575${_scopeId}></div><div class="container" data-v-3ab06575${_scopeId}><div class="page-header__inner" data-v-3ab06575${_scopeId}><h2 data-v-3ab06575${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h2><div class="thm-breadcrumb__box" data-v-3ab06575${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-3ab06575${_scopeId}><li data-v-3ab06575${_scopeId}>`);
@@ -8253,7 +9511,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               _push2(`</li>`);
             });
             _push2(`<!--]--></ul></div></div></div></div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -8434,7 +9692,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$h)
+              createVNode(_sfc_main$l)
             ];
           }
         }),
@@ -8451,14 +9709,14 @@ _sfc_main$7.setup = (props, ctx) => {
   return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
 const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-3ab06575"]]);
-const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$2 = {
   components: {
-    AppLayout: _sfc_main$m,
-    CtaTwo: _sfc_main$h
+    AppLayout: _sfc_main$q,
+    CtaTwo: _sfc_main$l
   }
 };
 const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
@@ -8635,7 +9893,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
@@ -8770,7 +10028,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(ssrRenderComponent(_sfc_main$h, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -9026,7 +10284,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              createVNode(_sfc_main$h)
+              createVNode(_sfc_main$l)
             ];
           }
         }),
@@ -9042,13 +10300,13 @@ _sfc_main$6.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceShow.vue");
   return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
 };
-const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$6
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$5 = {
   components: {
-    AppLayout: _sfc_main$m,
+    AppLayout: _sfc_main$q,
     Link,
     Head
   },
@@ -9371,13 +10629,13 @@ _sfc_main$5.setup = (props, ctx) => {
   return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
 const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-5b68d6b8"]]);
-const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ForgotPassword
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$4 = {
   components: {
-    AppLayout: _sfc_main$m,
+    AppLayout: _sfc_main$q,
     Link,
     Head
   },
@@ -9751,13 +11009,13 @@ _sfc_main$4.setup = (props, ctx) => {
   return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
 const Login = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender$2]]);
-const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Login
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$3 = {
   components: {
-    AppLayout: _sfc_main$m,
+    AppLayout: _sfc_main$q,
     Link,
     Head
   },
@@ -10172,13 +11430,13 @@ _sfc_main$3.setup = (props, ctx) => {
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
 const Register = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-daff4a9e"]]);
-const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Register
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$2 = {
   components: {
-    AppLayout: _sfc_main$m,
+    AppLayout: _sfc_main$q,
     Link,
     Head
   },
@@ -10570,13 +11828,13 @@ _sfc_main$2.setup = (props, ctx) => {
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
 const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-f5323f04"]]);
-const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ResetPassword
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$1 = {
   components: {
-    AppLayout: _sfc_main$m
+    AppLayout: _sfc_main$q
   }
 };
 const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
@@ -10706,7 +11964,7 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-417e1791${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ "background-image": "url(assets/images/backgrounds/page-header-bg.jpg)" })}" data-v-417e1791${_scopeId}></div><div class="container" data-v-417e1791${_scopeId}><div class="page-header__inner" data-v-417e1791${_scopeId}><h2 data-v-417e1791${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h2><div class="thm-breadcrumb__box" data-v-417e1791${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-417e1791${_scopeId}><li data-v-417e1791${_scopeId}>`);
@@ -10824,7 +12082,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__ = {
   components: {
-    AppLayout: _sfc_main$m
+    AppLayout: _sfc_main$q
   }
 };
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
@@ -10956,7 +12214,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$m, null, {
+      _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
           if (_push2) {
@@ -11097,14 +12355,16 @@ createServer(
             "../../Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue": __vite_glob_0_7,
             "../../Modules/Cms/resources/assets/js/Pages/Team.vue": __vite_glob_0_8,
             "../../Modules/Cms/resources/assets/js/Pages/Testimonials.vue": __vite_glob_0_9,
-            "../../Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue": __vite_glob_0_10,
-            "../../Modules/Project/resources/assets/js/Pages/UseCaseShow.vue": __vite_glob_0_11,
-            "../../Modules/Services/resources/assets/js/Pages/ServiceIndex.vue": __vite_glob_0_12,
-            "../../Modules/Services/resources/assets/js/Pages/ServiceShow.vue": __vite_glob_0_13,
-            "../../Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": __vite_glob_0_14,
-            "../../Modules/User/resources/assets/js/Pages/Auth/Login.vue": __vite_glob_0_15,
-            "../../Modules/User/resources/assets/js/Pages/Auth/Register.vue": __vite_glob_0_16,
-            "../../Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": __vite_glob_0_17
+            "../../Modules/Product/resources/assets/js/Pages/ProductIndex.vue": __vite_glob_0_10,
+            "../../Modules/Product/resources/assets/js/Pages/ProductShow.vue": __vite_glob_0_11,
+            "../../Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue": __vite_glob_0_12,
+            "../../Modules/Project/resources/assets/js/Pages/UseCaseShow.vue": __vite_glob_0_13,
+            "../../Modules/Services/resources/assets/js/Pages/ServiceIndex.vue": __vite_glob_0_14,
+            "../../Modules/Services/resources/assets/js/Pages/ServiceShow.vue": __vite_glob_0_15,
+            "../../Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": __vite_glob_0_16,
+            "../../Modules/User/resources/assets/js/Pages/Auth/Login.vue": __vite_glob_0_17,
+            "../../Modules/User/resources/assets/js/Pages/Auth/Register.vue": __vite_glob_0_18,
+            "../../Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": __vite_glob_0_19
           })
         );
       }

@@ -19,6 +19,7 @@ class ProductIndexRequest extends FormRequest
             'search' => ['nullable', 'string', 'max:255'],
             'product_category_id' => ['nullable', 'integer', 'exists:product_categories,id'],
             'status' => ['nullable', Rule::in([Product::STATUS_ACTIVE, Product::STATUS_ARCHIVED])],
+            'is_published' => ['nullable', Rule::in(['0', '1', ''])],
         ];
     }
 }
