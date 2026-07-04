@@ -96,7 +96,7 @@ class ContactService
             'company_id' => $lead->company_id,
             'name' => $lead->name ?: ($lead->company_name ?: __('crm::contact.fallback_name')),
             'email' => $lead->email,
-            'phone' => null,
+            'phone' => $lead->phone,
             'job_title' => null,
             'notes' => $lead->problem_statement,
             'is_primary' => true,

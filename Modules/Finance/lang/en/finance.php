@@ -41,6 +41,10 @@ return [
         'months_placeholder' => 'Select month(s)',
         'months_hint' => 'Select one or more months, or use Lifetime View for all-time totals.',
         'all_months' => 'Lifetime View',
+        'from_date' => 'From',
+        'to_date' => 'To',
+        'reset' => 'Reset',
+        'no_transactions_in_range' => 'No transactions found for the selected date range.',
     ],
     'charts' => [
         'performance_title' => 'Profit vs. Expenses vs. Losses',

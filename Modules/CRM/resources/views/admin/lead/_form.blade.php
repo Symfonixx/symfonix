@@ -47,6 +47,20 @@
     </div>
 </div>
 
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="phone" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.phone') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="phone" type="text" class="form-control form-control-solid @error('phone') is-invalid @enderror"
+               name="phone" value="{{ old('phone', $leadData?->phone) }}"
+               placeholder="{{ __('crm::lead.placeholders.phone') }}" maxlength="50"/>
+        @error('phone')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
 <div class="separator my-10"></div>
 
 <div class="mb-10">

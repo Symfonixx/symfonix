@@ -9,10 +9,25 @@
     <div class="card card-flush border-0 shadow-sm h-100">
         <div class="card-header border-0 pt-6">
             <h3 class="card-title fw-bold">{{ __('finance::finance.metrics.today_transactions') }}</h3>
+            <div class="card-toolbar">
+                <div class="d-flex flex-wrap align-items-end gap-3">
+                    <div>
+                        <label class="form-label fs-8 text-muted mb-1">{{ __('finance::finance.filters.from_date') }}</label>
+                        <input type="date" wire:model.live="fromDate" class="form-control form-control-sm form-control-solid" max="{{ $toDate ?: null }}"/>
+                    </div>
+                    <div>
+                        <label class="form-label fs-8 text-muted mb-1">{{ __('finance::finance.filters.to_date') }}</label>
+                        <input type="date" wire:model.live="toDate" class="form-control form-control-sm form-control-solid" min="{{ $fromDate ?: null }}"/>
+                    </div>
+                    <button type="button" wire:click="resetFilters" class="btn btn-sm btn-light-primary">
+                        <i class="bi bi-arrow-counterclockwise me-1"></i>{{ __('finance::finance.filters.reset') }}
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="card-body pt-0">
             @if($entries->isEmpty())
-                <p class="text-muted mb-0">{{ __('finance::finance.metrics.no_transactions_today') }}</p>
+                <p class="text-muted mb-0">{{ __('finance::finance.filters.no_transactions_in_range') }}</p>
             @else
                 <div class="table-responsive">
                     <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-3">

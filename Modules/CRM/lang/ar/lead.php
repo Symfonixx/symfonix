@@ -14,6 +14,7 @@ return [
         'details' => 'التفاصيل',
         'name' => 'الاسم',
         'email' => 'البريد الإلكتروني',
+        'phone' => 'رقم الهاتف',
         'company' => 'الشركة المرتبطة',
         'company_name' => 'اسم الشركة (نص حر)',
         'select_company' => 'اختر شركة',
@@ -71,6 +72,7 @@ return [
     'placeholders' => [
         'name' => 'مثال: أحمد محمد',
         'email' => 'name@example.com',
+        'phone' => 'مثال: 4567 123 555 1+',
         'company_name' => 'مثال: شركة أكمي للتقنية',
         'service_interest' => 'مثال: تطبيق ويب مخصص',
         'project_budget' => 'مثال: 10,000 - 25,000 دولار',

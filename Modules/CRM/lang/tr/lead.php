@@ -14,6 +14,7 @@ return [
         'details' => 'Detaylar',
         'name' => 'Ad',
         'email' => 'E-posta',
+        'phone' => 'Telefon',
         'company' => 'Bağlı Şirket',
         'company_name' => 'Şirket Adı (serbest metin)',
         'select_company' => 'Şirket seçin',
@@ -71,6 +72,7 @@ return [
     'placeholders' => [
         'name' => 'Örnek: Ahmet Yılmaz',
         'email' => 'name@example.com',
+        'phone' => 'Örnek: +90 555 123 45 67',
         'company_name' => 'Örnek: Acme Teknoloji',
         'service_interest' => 'Örnek: Özel web uygulaması',
         'project_budget' => 'Örnek: $10.000 - $25.000',

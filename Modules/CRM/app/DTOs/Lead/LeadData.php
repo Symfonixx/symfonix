@@ -20,6 +20,9 @@ class LeadData extends Data
         #[Nullable, Email, Max(255)]
         public ?string $email,
 
+        #[Nullable, StringType, Max(50)]
+        public ?string $phone,
+
         #[Nullable]
         public ?int $company_id,
 
@@ -52,6 +55,7 @@ class LeadData extends Data
         return new self(
             name: $payload['name'] ?? null,
             email: $payload['email'] ?? null,
+            phone: $payload['phone'] ?? null,
             company_id: isset($payload['company_id']) ? (int) $payload['company_id'] : null,
             assigned_to: isset($payload['assigned_to']) ? (int) $payload['assigned_to'] : null,
             company_name: $payload['company_name'] ?? null,

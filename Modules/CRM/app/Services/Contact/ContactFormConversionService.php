@@ -28,6 +28,7 @@ class ContactFormConversionService
             $lead = Lead::create([
                 'name' => $form->name,
                 'email' => $form->email,
+                'phone' => $form->mobile,
                 'company_id' => $form->company_id,
                 'company_name' => $form->company?->name,
                 'source' => Lead::SOURCE_WEBSITE,

@@ -14,6 +14,7 @@ return [
         'details' => 'Details',
         'name' => 'Name',
         'email' => 'Email',
+        'phone' => 'Phone',
         'company' => 'Linked Company',
         'company_name' => 'Company Name (free text)',
         'select_company' => 'Select a company',
@@ -71,6 +72,7 @@ return [
     'placeholders' => [
         'name' => 'Example: John Smith',
         'email' => 'name@example.com',
+        'phone' => 'Example: +1 555 123 4567',
         'company_name' => 'Example: Acme Technologies',
         'service_interest' => 'Example: Custom web application',
         'project_budget' => 'Example: $10,000 - $25,000',

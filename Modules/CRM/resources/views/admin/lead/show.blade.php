@@ -61,6 +61,16 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="border border-dashed border-gray-300 rounded p-5 h-100">
+                            <div class="text-muted fs-7 mb-1">{{ __('crm::lead.fields.phone') }}</div>
+                            @if($lead->phone)
+                                <a href="tel:{{ $lead->phone }}" class="fw-semibold text-hover-primary">{{ $lead->phone }}</a>
+                            @else
+                                <div class="fw-semibold text-gray-800">{{ __('N/A') }}</div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
 

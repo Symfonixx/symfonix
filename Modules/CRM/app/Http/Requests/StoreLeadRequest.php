@@ -14,6 +14,7 @@ class StoreLeadRequest extends FormRequest
         return [
             'name' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:50'],
             'company_id' => ['nullable', 'integer', 'exists:companies,id'],
             'assigned_to' => ['nullable', 'integer', 'exists:employees,id'],
             'company_name' => ['nullable', 'string', 'max:255'],

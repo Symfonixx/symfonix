@@ -41,6 +41,10 @@ return [
         'months_placeholder' => 'Ay seçin',
         'months_hint' => 'Bir veya daha fazla ay seçin veya tüm zamanlar için Toplam Görünümü kullanın.',
         'all_months' => 'Toplam Görünüm',
+        'from_date' => 'Başlangıç',
+        'to_date' => 'Bitiş',
+        'reset' => 'Sıfırla',
+        'no_transactions_in_range' => 'Seçilen tarih aralığında işlem bulunamadı.',
     ],
     'charts' => [
         'performance_title' => 'Kâr vs. Gider vs. Zarar',
