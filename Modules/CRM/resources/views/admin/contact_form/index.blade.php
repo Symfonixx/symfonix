@@ -246,5 +246,3 @@
     </x-admin.table>
     <!--end::Card-->
 </x-admin-layout>
-
-</x-admin-layout>

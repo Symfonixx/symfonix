@@ -14,6 +14,12 @@ class BotManController extends Controller
 {
     public function handle(Request $request)
     {
+        // BotMan's WebDriver sends its own JSON response via ->send(); Debugbar would
+        // otherwise inject its widget markup after that JSON and corrupt the payload.
+        if (app()->bound('debugbar')) {
+            app('debugbar')->disable();
+        }
+
         // Ensure the bot uses the same locale as the site / widget
         if ($request->has('locale')) {
             app()->setLocale($request->get('locale'));

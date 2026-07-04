@@ -565,6 +565,13 @@ Developed By: Hadi Hilal
                 });
 
                 const raw = await res.text();
+
+                if (!res.ok) {
+                    console.error('Symfonix Bot request failed', res.status, raw);
+                    appendMessage('bot', '{{ __('chat.lead.error') }}');
+                    return;
+                }
+
                 let data;
                 try {
                     data = JSON.parse(raw);

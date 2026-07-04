@@ -32,6 +32,7 @@ return [
     'lead.ask_company' => 'What is your company name?',
     'lead.ask_budget' => 'What is your estimated project budget?',
     'lead.thank_you' => 'Thanks! Your details are captured. We will reach out shortly.',
+    'lead.error' => 'Sorry, something went wrong. Please refresh the page and try again.',
 
     'lead.services.web' => 'Web Development',
     'lead.services.mobile' => 'Mobile Development',

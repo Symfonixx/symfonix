@@ -32,6 +32,7 @@ return [
     'lead.ask_company' => 'Şirket adınız nedir?',
     'lead.ask_budget' => 'Tahmini proje bütçeniz nedir?',
     'lead.thank_you' => 'Teşekkürler! Bilgileriniz alındı, en kısa sürede iletişime geçeceğiz.',
+    'lead.error' => 'Üzgünüz, bir şeyler ters gitti. Lütfen sayfayı yenileyip tekrar deneyin.',
 
     'lead.services.web' => 'Web Geliştirme',
     'lead.services.mobile' => 'Mobil Geliştirme',
