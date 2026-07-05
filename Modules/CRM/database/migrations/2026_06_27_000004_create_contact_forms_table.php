@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('contact_forms', function (Blueprint $table) {
@@ -22,13 +19,13 @@ return new class extends Migration
             $table->string('subject')->nullable();
             $table->text('message');
             $table->boolean('blocked')->default(false);
+            $table->foreignId('lead_id')->nullable()->constrained('leads')->nullOnDelete();
+            $table->foreignId('contact_id')->nullable()->constrained('contacts')->nullOnDelete();
+            $table->timestamp('converted_at')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('contact_forms');

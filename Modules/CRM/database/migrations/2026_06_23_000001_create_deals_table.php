@@ -33,10 +33,23 @@ return new class extends Migration
         Schema::table('leads', function (Blueprint $table) {
             $table->foreign('deal_id')->references('id')->on('deals')->nullOnDelete();
         });
+
+        Schema::create('deal_service', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('deal_id')->constrained('deals')->cascadeOnDelete();
+            $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
+            $table->unsignedInteger('quantity')->default(1);
+            $table->decimal('unit_price', 15, 2)->default(0);
+            $table->timestamps();
+
+            $table->unique(['deal_id', 'service_id']);
+        });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('deal_service');
+
         Schema::table('leads', function (Blueprint $table) {
             $table->dropForeign(['deal_id']);
         });

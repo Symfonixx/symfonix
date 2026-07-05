@@ -11,9 +11,12 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->nullable()->constrained('companies')->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('name');
             $table->string('email')->nullable()->index();
             $table->string('phone')->nullable();
+            $table->string('phone2', 50)->nullable();
+            $table->string('source', 50)->nullable();
             $table->string('job_title')->nullable();
             $table->text('notes')->nullable();
             $table->boolean('is_primary')->default(false);

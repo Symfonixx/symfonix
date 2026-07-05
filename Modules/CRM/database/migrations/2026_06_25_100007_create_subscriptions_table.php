@@ -26,10 +26,20 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        Schema::create('subscription_service', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('subscription_id')->constrained('subscriptions')->cascadeOnDelete();
+            $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
+            $table->timestamps();
+
+            $table->unique(['subscription_id', 'service_id']);
+        });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('subscription_service');
         Schema::dropIfExists('subscriptions');
     }
 };

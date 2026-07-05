@@ -11,15 +11,22 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_category_id')->constrained('product_categories')->cascadeOnDelete();
-            $table->string('name');
+            $table->json('name');
             $table->string('slug')->unique();
+            $table->json('short_description')->nullable();
             $table->string('sku')->unique();
-            $table->text('description')->nullable();
+            $table->json('description')->nullable();
+            $table->string('main_image')->nullable();
+            $table->string('seo_meta_img')->nullable();
+            $table->json('seo_title')->nullable();
+            $table->json('seo_description')->nullable();
+            $table->json('seo_keywords')->nullable();
             $table->decimal('price', 15, 2);
             $table->string('currency', 3)->default('USD');
             $table->enum('billing_type', ['one_time', 'monthly', 'quarterly', 'yearly'])->default('one_time');
             $table->enum('status', ['active', 'archived'])->default('active')->index();
             $table->boolean('is_featured')->default(false);
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }

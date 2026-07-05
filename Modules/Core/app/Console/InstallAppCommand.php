@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -16,7 +17,8 @@ class InstallAppCommand extends Command
                             {--email=admin@symfonix.com : Admin user email}
                             {--password=password : Admin user password}
                             {--name=Admin : Admin user display name}
-                            {--mobile=0000000000 : Admin user mobile number}';
+                            {--mobile=0000000000 : Admin user mobile number}
+                            {--fresh : Drop all tables and reinstall}';
 
     protected $description = 'Install Symfonix: migrate database, seed reference data, permissions, and create the admin user.';
 
@@ -46,11 +48,18 @@ class InstallAppCommand extends Command
             return self::SUCCESS;
         }
 
-        Artisan::call('key:generate');
-        $this->components->info('Application key generated.');
+        if ($this->option('fresh')) {
+            Artisan::call('migrate:fresh', ['--force' => true]);
+            $this->components->info('Database refreshed.');
+        } else {
+            Artisan::call('migrate', ['--force' => true]);
+            $this->components->info('Database migrated.');
+        }
 
-        Artisan::call('migrate', ['--force' => true]);
-        $this->components->info('Database migrated.');
+        if (empty(config('app.key'))) {
+            Artisan::call('key:generate', ['--force' => true]);
+            $this->components->info('Application key generated.');
+        }
 
         if (! $this->seedCountries()) {
             return self::FAILURE;
@@ -62,21 +71,23 @@ class InstallAppCommand extends Command
         $this->seedPipelineStages();
         $this->components->info('CRM pipeline stages seeded.');
 
-        $role = Role::create([
+        $role = Role::query()->firstOrCreate([
             'name' => 'Admin',
             'guard_name' => 'web',
         ]);
         $role->syncPermissions(Permission::all());
 
-        $user = User::create([
-            'name' => $this->option('name'),
-            'email' => $this->option('email'),
-            'password' => Hash::make($this->option('password')),
-            'mobile' => $this->option('mobile'),
-            'type' => 'admin',
-        ]);
+        $user = User::query()->updateOrCreate(
+            ['email' => $this->option('email')],
+            [
+                'name' => $this->option('name'),
+                'password' => Hash::make($this->option('password')),
+                'mobile' => $this->option('mobile'),
+                'type' => 'admin',
+            ]
+        );
 
-        $role->users()->attach($user);
+        $role->users()->syncWithoutDetaching([$user->id]);
 
         $this->newLine();
         $this->components->info('Symfonix installed successfully.');
@@ -89,11 +100,16 @@ class InstallAppCommand extends Command
 
     private function seedCountries(): bool
     {
+        if (Schema::hasTable('countries') && DB::table('countries')->exists()) {
+            $this->components->info('Countries already seeded.');
+
+            return true;
+        }
+
         $sqlFilePath = module_path('Core', 'database/db.sql');
 
         if (! file_exists($sqlFilePath)) {
             $this->components->error("SQL file not found: {$sqlFilePath}");
-            Artisan::call('migrate:rollback', ['--force' => true]);
 
             return false;
         }

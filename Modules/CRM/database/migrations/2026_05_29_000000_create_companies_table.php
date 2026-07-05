@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('name');
+            $table->string('activity_type', 100)->nullable()->index();
             $table->string('email')->nullable()->index();
             $table->string('phone')->nullable()->index();
             $table->string('country')->nullable()->index();

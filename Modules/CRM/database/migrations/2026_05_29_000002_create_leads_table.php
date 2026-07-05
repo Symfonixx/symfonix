@@ -12,9 +12,16 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->nullable()->index();
+            $table->string('phone')->nullable();
+            $table->string('job_title')->nullable();
             $table->string('company_name')->nullable();
+            $table->string('city', 100)->nullable();
+            $table->string('country', 100)->nullable();
+            $table->string('website')->nullable();
+            $table->string('industry', 150)->nullable();
             $table->foreignId('company_id')->nullable()->constrained('companies')->nullOnDelete();
             $table->string('source', 50)->nullable()->default('website')->index();
+            $table->string('status', 50)->nullable()->default('new')->index();
             $table->foreignId('assigned_to')->nullable()->constrained('employees')->nullOnDelete();
             $table->unsignedBigInteger('deal_id')->nullable()->index();
             $table->timestamp('converted_at')->nullable();
@@ -25,6 +32,7 @@ return new class extends Migration
             $table->text('problem_statement')->nullable();
             $table->json('chat_transcript')->nullable();
             $table->json('meta')->nullable();
+            $table->json('attachments')->nullable();
             $table->boolean('blocked')->default(false);
             $table->string('botman_user_id')->nullable();
             $table->string('botman_driver')->nullable();
