@@ -11,10 +11,11 @@ class LeadModelRepository implements LeadRepository
 {
     use ExceptionHandlerTrait;
 
-    public function paginate(int $perPage = 15): LengthAwarePaginator
+    public function paginate(array $filters = [], int $perPage = 15): LengthAwarePaginator
     {
         return Lead::query()
-            ->with(['company:id,name', 'service:id,title'])
+            ->with(['company:id,name', 'service:id,title', 'assignee:id,name'])
+            ->filter($filters)
             ->latest()
             ->paginate($perPage);
     }

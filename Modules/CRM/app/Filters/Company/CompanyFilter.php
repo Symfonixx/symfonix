@@ -33,6 +33,10 @@ class CompanyFilter
             $query->where('city', 'like', '%'.$filters['city'].'%');
         }
 
+        if (! empty($filters['activity_type'])) {
+            $query->where('activity_type', $filters['activity_type']);
+        }
+
         if (filter_var($filters['with_trashed'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
             $query->withTrashed();
         }

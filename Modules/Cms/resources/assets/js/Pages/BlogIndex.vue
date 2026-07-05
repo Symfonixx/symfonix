@@ -23,7 +23,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2>{{ trans("Our Blogs") }}</h2>
+                    <h1>{{ trans("Our Blogs") }}</h1>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>

@@ -49,9 +49,9 @@
                                     </li>
 
                                 </ul>
-                                <h3 class="blog-details__title">
+                                <h1 class="blog-details__title">
                                     <Link :href="route('blogs.show', blog.slug)">{{ blog.title }}</Link>
-                                </h3>
+                                </h1>
                                 <div class="blog-details__text" v-html="blog.content"></div>
                             </div>
 

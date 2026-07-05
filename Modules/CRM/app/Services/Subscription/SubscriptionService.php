@@ -23,12 +23,13 @@ class SubscriptionService
         return $this->repository->findOrFail($id, $withTrashed);
     }
 
-    public function create(SubscriptionData $data): ?Subscription
+    public function create(SubscriptionData $data, array $serviceIds = []): ?Subscription
     {
         $payload = $this->normalizePayload($data);
         $subscription = $this->repository->create($payload);
 
         if ($subscription) {
+            $this->syncServices($subscription, $serviceIds);
             AuditLogger::logCreated($subscription);
 
             Log::info('CRM subscription created', [
@@ -41,13 +42,14 @@ class SubscriptionService
         return $subscription;
     }
 
-    public function update(Subscription $subscription, SubscriptionData $data): ?Subscription
+    public function update(Subscription $subscription, SubscriptionData $data, array $serviceIds = []): ?Subscription
     {
         $before = AuditLogger::auditableSnapshot($subscription);
         $payload = $this->normalizePayload($data);
         $updated = $this->repository->update($subscription, $payload);
 
         if ($updated) {
+            $this->syncServices($subscription, $serviceIds);
             AuditLogger::logUpdated($subscription, $before, AuditLogger::auditableSnapshot($subscription->fresh()));
 
             Log::info('CRM subscription updated', [
@@ -112,6 +114,22 @@ class SubscriptionService
         }
 
         return SubscriptionData::from($array);
+    }
+
+    public function syncServices(Subscription $subscription, array $serviceIds): void
+    {
+        $ids = collect($serviceIds)
+            ->filter(fn ($id) => $id !== '' && $id !== null)
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->values()
+            ->all();
+
+        $subscription->services()->sync($ids);
+
+        if ($ids !== []) {
+            $subscription->update(['service_id' => $ids[0]]);
+        }
     }
 
     public function advanceRenewalDate(Subscription $subscription): void

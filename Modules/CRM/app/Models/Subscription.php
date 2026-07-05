@@ -97,4 +97,10 @@ class Subscription extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, 'subscription_service')
+            ->withTimestamps();
+    }
 }

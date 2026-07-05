@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
 use Modules\CRM\Actions\Lead\BlockLeadAction;
 use Modules\CRM\Actions\Lead\BulkDeleteLeadsAction;
+use Modules\CRM\Actions\Lead\ConvertLeadToCustomerAction;
 use Modules\CRM\Actions\Lead\ConvertLeadToDealAction;
 use Modules\CRM\Actions\Lead\CreateLeadAction;
 use Modules\CRM\Actions\Lead\DeleteLeadAction;
@@ -16,11 +17,13 @@ use Modules\CRM\Actions\Lead\UnblockLeadAction;
 use Modules\CRM\Actions\Lead\UpdateLeadAction;
 use Modules\CRM\DTOs\Lead\LeadData;
 use Modules\CRM\Http\Requests\ConvertLeadToDealRequest;
+use Modules\CRM\Http\Requests\LeadIndexRequest;
 use Modules\CRM\Http\Requests\StoreLeadRequest;
 use Modules\CRM\Http\Requests\UpdateLeadRequest;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Lead;
 use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
+use Modules\CRM\Services\Lead\LeadService;
 use Modules\Services\Models\Service;
 use Modules\User\Support\EmployeeAccess;
 
@@ -35,16 +38,18 @@ class LeadController extends Controller
         private readonly BlockLeadAction $blockLeadAction,
         private readonly UnblockLeadAction $unblockLeadAction,
         private readonly PipelineStageRepository $stageRepository,
+        private readonly LeadService $leadService,
     ) {
         $this->setActive('crm');
         $this->setActive('leads');
     }
 
-    public function index(): View
+    public function index(LeadIndexRequest $request): View
     {
-        $model = $this->listLeadsAction->execute();
+        $filters = $request->validated();
+        $model = $this->listLeadsAction->execute($filters);
 
-        return view('crm::admin.lead.index', compact('model'));
+        return view('crm::admin.lead.index', array_merge(compact('model', 'filters'), $this->filterData()));
     }
 
     public function create(): View
@@ -55,7 +60,11 @@ class LeadController extends Controller
     public function store(StoreLeadRequest $request): RedirectResponse
     {
         $data = LeadData::fromRequest($request->validated());
-        $this->createLeadAction->execute($data);
+        $lead = $this->createLeadAction->execute($data);
+
+        if ($lead) {
+            $this->leadService->storeAttachments($lead, $request->file('attachments', []));
+        }
 
         return redirect()->route('admin.leads.index');
     }
@@ -85,7 +94,11 @@ class LeadController extends Controller
     public function update(UpdateLeadRequest $request, Lead $lead): RedirectResponse
     {
         $data = LeadData::fromRequest($request->validated());
-        $this->updateLeadAction->execute($lead, $data);
+        $updated = $this->updateLeadAction->execute($lead, $data);
+
+        if ($updated) {
+            $this->leadService->storeAttachments($updated, $request->file('attachments', []));
+        }
 
         return redirect()->route('admin.leads.index');
     }
@@ -125,6 +138,13 @@ class LeadController extends Controller
         return redirect()->route('admin.deals.show', $deal->id);
     }
 
+    public function convertToCustomer(Lead $lead, ConvertLeadToCustomerAction $action): RedirectResponse
+    {
+        $company = $action->execute($lead);
+
+        return redirect()->route('admin.companies.show', $company);
+    }
+
     private function formData(): array
     {
         return [
@@ -132,6 +152,16 @@ class LeadController extends Controller
             'services' => Service::query()->select(['id', 'title'])->orderBy('title')->get(),
             'assignees' => EmployeeAccess::assignableQuery()
                 ->select(['id', 'name', 'email'])
+                ->get(),
+        ];
+    }
+
+    private function filterData(): array
+    {
+        return [
+            'companies' => Company::query()->select(['id', 'name'])->orderBy('name')->get(),
+            'assignees' => EmployeeAccess::assignableQuery()
+                ->select(['id', 'name'])
                 ->get(),
         ];
     }

@@ -24,7 +24,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2>{{ trans('Privacy Policy') }}</h2>
+                    <h1>{{ trans('Privacy Policy') }}</h1>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>

@@ -10,8 +10,8 @@ class CreateSubscriptionAction
 {
     public function __construct(private readonly SubscriptionService $service) {}
 
-    public function execute(SubscriptionData $data): ?Subscription
+    public function execute(SubscriptionData $data, array $serviceIds = []): ?Subscription
     {
-        return $this->service->create($data);
+        return $this->service->create($data, $serviceIds);
     }
 }

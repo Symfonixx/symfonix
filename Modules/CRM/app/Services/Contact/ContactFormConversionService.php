@@ -88,7 +88,6 @@ class ContactFormConversionService
 
         if ($form->email) {
             $existing = Contact::query()
-                ->when($form->company_id, fn ($q) => $q->where('company_id', $form->company_id))
                 ->where('email', $form->email)
                 ->first();
 

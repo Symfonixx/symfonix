@@ -168,6 +168,14 @@
                         <i class="bi bi-briefcase me-1"></i>{{ __('crm::lead.conversion.view_deal') }}
                     </a>
                 @elseif(auth()->user()?->can('CRM Management'))
+                    @if($lead->company_name || $lead->company_id)
+                        <form method="POST" action="{{ route('admin.leads.convertCustomer', $lead) }}" class="d-inline">
+                            @csrf
+                            <button type="submit" class="btn btn-warning">
+                                <i class="bi bi-person-check me-1"></i>{{ __('crm::lead.conversion.convert_customer') }}
+                            </button>
+                        </form>
+                    @endif
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#convertLeadModal">
                         <i class="bi bi-arrow-right-circle me-1"></i>{{ __('crm::lead.conversion.convert') }}
                     </button>
@@ -227,7 +235,7 @@
                                 <select name="pipeline_stage_id" class="form-select form-select-solid">
                                     @foreach($stages as $stage)
                                         <option value="{{ $stage->id }}" @selected($stage->is_default)>
-                                            {{ $stage->name }}
+                                            {{ $stage->display_name }}
                                         </option>
                                     @endforeach
                                 </select>

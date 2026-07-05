@@ -5,6 +5,8 @@ namespace Modules\CRM\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\CRM\Concerns\HasCrmTimeline;
+use Modules\CRM\Filters\Lead\LeadFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Services\Models\Service;
 use Modules\User\Models\Employee;
 
@@ -39,6 +41,39 @@ class Lead extends Model
         self::SOURCE_MANUAL,
     ];
 
+    public const STATUS_NEW = 'new';
+
+    public const STATUS_CONTACTED = 'contacted';
+
+    public const STATUS_QUALIFIED = 'qualified';
+
+    public const STATUS_UNQUALIFIED = 'unqualified';
+
+    public const STATUS_CONVERTED = 'converted';
+
+    public const STATUS_LOST = 'lost';
+
+    public const STATUSES = [
+        self::STATUS_NEW,
+        self::STATUS_CONTACTED,
+        self::STATUS_QUALIFIED,
+        self::STATUS_UNQUALIFIED,
+        self::STATUS_CONVERTED,
+        self::STATUS_LOST,
+    ];
+
+    public static function statusBadgeColor(?string $status): string
+    {
+        return match ($status) {
+            self::STATUS_NEW => 'primary',
+            self::STATUS_CONTACTED => 'info',
+            self::STATUS_QUALIFIED => 'success',
+            self::STATUS_CONVERTED => 'dark',
+            self::STATUS_UNQUALIFIED, self::STATUS_LOST => 'danger',
+            default => 'secondary',
+        };
+    }
+
     public static function sourceBadgeColor(?string $source): string
     {
         return match ($source) {
@@ -56,12 +91,18 @@ class Lead extends Model
         'name',
         'email',
         'phone',
+        'job_title',
         'company_name',
         'company_id',
+        'city',
+        'country',
+        'website',
+        'industry',
         'assigned_to',
         'deal_id',
         'converted_at',
         'source',
+        'status',
         'project_budget',
         'service_interest',
         'service_id',
@@ -69,6 +110,7 @@ class Lead extends Model
         'problem_statement',
         'chat_transcript',
         'meta',
+        'attachments',
         'botman_user_id',
         'botman_driver',
         'locale',
@@ -96,10 +138,16 @@ class Lead extends Model
         return $this->belongsTo(Deal::class);
     }
 
+    public function scopeFilter(Builder $query, array $filters = []): Builder
+    {
+        return (new LeadFilter)->apply($query, $filters);
+    }
+
     protected $casts = [
         'service_matches' => 'array',
         'chat_transcript' => 'array',
         'meta' => 'array',
+        'attachments' => 'array',
         'blocked' => 'boolean',
         'converted_at' => 'datetime',
     ];

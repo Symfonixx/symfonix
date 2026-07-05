@@ -3202,7 +3202,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$g, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
@@ -3270,7 +3270,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$g, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Contact Us")), 1),
+                    createVNode("h1", null, toDisplayString(trans("Contact Us")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -3758,7 +3758,7 @@ const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$f, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("About Us"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("About Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
@@ -3863,7 +3863,7 @@ const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$f, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("About Us")), 1),
+                    createVNode("h1", null, toDisplayString(trans("About Us")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -4549,7 +4549,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
@@ -4670,7 +4670,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Our Blogs")), 1),
+                    createVNode("h1", null, toDisplayString(trans("Our Blogs")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -4928,7 +4928,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li></ul><h3 class="blog-details__title"${_scopeId}>`);
+            _push2(`</li></ul><h1 class="blog-details__title"${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("blogs.show", blog.value.slug)
             }, {
@@ -4943,7 +4943,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</h3><div class="blog-details__text"${_scopeId}>${blog.value.content ?? ""}</div></div>`);
+            _push2(`</h1><div class="blog-details__text"${_scopeId}>${blog.value.content ?? ""}</div></div>`);
             if (blog.value.keywords) {
               _push2(`<div class="blog-details__tag-and-share"${_scopeId}><div class="blog-details__tag"${_scopeId}><h3 class="blog-details__tag-title"${_scopeId}>${ssrInterpolate(trans("Keywords"))}:</h3><ul class="blog-details__tag-list list-unstyled"${_scopeId}><!--[-->`);
               ssrRenderList(getKeywords(blog.value.keywords), (keyword, index) => {
@@ -5141,7 +5141,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
                               })
                             ])
                           ]),
-                          createVNode("h3", { class: "blog-details__title" }, [
+                          createVNode("h1", { class: "blog-details__title" }, [
                             createVNode(unref(Link), {
                               href: _ctx.route("blogs.show", blog.value.slug)
                             }, {
@@ -5542,26 +5542,26 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-7a46cae7${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/faq.css")} data-v-7a46cae7${_scopeId}><title data-v-7a46cae7${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-7a46cae7${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-7a46cae7${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-7a46cae7${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-f57d8941${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/faq.css")} data-v-f57d8941${_scopeId}><title data-v-f57d8941${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f57d8941${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f57d8941${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f57d8941${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-7a46cae7${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-f57d8941${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-7a46cae7${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-7a46cae7${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f57d8941${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f57d8941${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-7a46cae7${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-f57d8941${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-7a46cae7${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-f57d8941${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-7a46cae7${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-7a46cae7${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-7a46cae7${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-7a46cae7${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-f57d8941${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f57d8941${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f57d8941${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f57d8941${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-7a46cae7${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-f57d8941${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -5640,14 +5640,14 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-7a46cae7${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-7a46cae7${_scopeId}></div><div class="container" data-v-7a46cae7${_scopeId}><div class="page-header__inner" data-v-7a46cae7${_scopeId}><h2 data-v-7a46cae7${_scopeId}>${trans("FAQs") ?? ""}</h2><div class="thm-breadcrumb__box" data-v-7a46cae7${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-7a46cae7${_scopeId}><li data-v-7a46cae7${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-f57d8941${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-f57d8941${_scopeId}></div><div class="container" data-v-f57d8941${_scopeId}><div class="page-header__inner" data-v-f57d8941${_scopeId}><h1 data-v-f57d8941${_scopeId}>${trans("FAQs") ?? ""}</h1><div class="thm-breadcrumb__box" data-v-f57d8941${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f57d8941${_scopeId}><li data-v-f57d8941${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`<i class="fas fa-home" data-v-7a46cae7${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                    _push3(`<i class="fas fa-home" data-v-f57d8941${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
                     return [
                       createVNode("i", { class: "fas fa-home" }),
@@ -5658,17 +5658,17 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
                 _: 1
               }, _parent2, _scopeId));
             } else {
-              _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}`)} data-v-7a46cae7${_scopeId}><i class="fas fa-home" data-v-7a46cae7${_scopeId}></i>${ssrInterpolate(trans("Home"))}</a>`);
+              _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}`)} data-v-f57d8941${_scopeId}><i class="fas fa-home" data-v-f57d8941${_scopeId}></i>${ssrInterpolate(trans("Home"))}</a>`);
             }
-            _push2(`</li><li data-v-7a46cae7${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-7a46cae7${_scopeId}></span></li><li data-v-7a46cae7${_scopeId}>${trans("FAQs") ?? ""}</li></ul></div></div></div></section><section class="faq-two faq-page" data-v-7a46cae7${_scopeId}><div class="container" data-v-7a46cae7${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-7a46cae7${_scopeId}><div class="section-title__tagline-box" data-v-7a46cae7${_scopeId}><div class="section-title__tagline-shape-1" data-v-7a46cae7${_scopeId}></div><span class="section-title__tagline" data-v-7a46cae7${_scopeId}>${ssrInterpolate(trans("FAQs"))}</span><div class="section-title__tagline-shape-2" data-v-7a46cae7${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-7a46cae7${_scopeId}>${ssrInterpolate(trans("Get answers to the most common questions about our products, services, and policies."))}</h2></div><div class="faq-two__right" data-v-7a46cae7${_scopeId}>`);
+            _push2(`</li><li data-v-f57d8941${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f57d8941${_scopeId}></span></li><li data-v-f57d8941${_scopeId}>${trans("FAQs") ?? ""}</li></ul></div></div></div></section><section class="faq-two faq-page" data-v-f57d8941${_scopeId}><div class="container" data-v-f57d8941${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-f57d8941${_scopeId}><div class="section-title__tagline-box" data-v-f57d8941${_scopeId}><div class="section-title__tagline-shape-1" data-v-f57d8941${_scopeId}></div><span class="section-title__tagline" data-v-f57d8941${_scopeId}>${ssrInterpolate(trans("FAQs"))}</span><div class="section-title__tagline-shape-2" data-v-f57d8941${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-f57d8941${_scopeId}>${ssrInterpolate(trans("Get answers to the most common questions about our products, services, and policies."))}</h2></div><div class="faq-two__right" data-v-f57d8941${_scopeId}>`);
             if (faqs.value && faqs.value.length > 0) {
-              _push2(`<div class="accrodion-grp" data-grp-name="faq-one-accrodion" data-v-7a46cae7${_scopeId}><!--[-->`);
+              _push2(`<div class="accrodion-grp" data-grp-name="faq-one-accrodion" data-v-f57d8941${_scopeId}><!--[-->`);
               ssrRenderList(faqs.value, (faq, index) => {
-                _push2(`<div class="${ssrRenderClass([{ "active": activeIndex.value === index }, "accrodion"])}" data-v-7a46cae7${_scopeId}><div class="accrodion-title" data-v-7a46cae7${_scopeId}><h4 data-v-7a46cae7${_scopeId}>${ssrInterpolate(translateField(faq.question))}</h4></div><div class="accrodion-content" style="${ssrRenderStyle(activeIndex.value === index ? null : { display: "none" })}" data-v-7a46cae7${_scopeId}><div class="inner" data-v-7a46cae7${_scopeId}><p class="accrodion-content__text-1" data-v-7a46cae7${_scopeId}>${translateField(faq.answer) ?? ""}</p></div></div></div>`);
+                _push2(`<div class="${ssrRenderClass([{ "active": activeIndex.value === index }, "accrodion"])}" data-v-f57d8941${_scopeId}><div class="accrodion-title" data-v-f57d8941${_scopeId}><h4 data-v-f57d8941${_scopeId}>${ssrInterpolate(translateField(faq.question))}</h4></div><div class="accrodion-content" style="${ssrRenderStyle(activeIndex.value === index ? null : { display: "none" })}" data-v-f57d8941${_scopeId}><div class="inner" data-v-f57d8941${_scopeId}><p class="accrodion-content__text-1" data-v-f57d8941${_scopeId}>${translateField(faq.answer) ?? ""}</p></div></div></div>`);
               });
               _push2(`<!--]--></div>`);
             } else {
-              _push2(`<div class="text-center py-5" data-v-7a46cae7${_scopeId}><p data-v-7a46cae7${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
+              _push2(`<div class="text-center py-5" data-v-f57d8941${_scopeId}><p data-v-f57d8941${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
             }
             _push2(`</div></div></section>`);
             _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
@@ -5681,7 +5681,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", {
+                    createVNode("h1", {
                       innerHTML: trans("FAQs")
                     }, null, 8, ["innerHTML"]),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
@@ -5781,7 +5781,7 @@ _sfc_main$i.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Faq.vue");
   return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
-const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-7a46cae7"]]);
+const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-f57d8941"]]);
 const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Faq
@@ -5828,7 +5828,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$b, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
@@ -5858,7 +5858,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$b, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(custom_page.value.title[locale.value]), 1),
+                    createVNode("h1", null, toDisplayString(custom_page.value.title[locale.value]), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -5954,26 +5954,26 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-b99b5a4e${_scopeId}><title data-v-b99b5a4e${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-b99b5a4e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-b99b5a4e${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-b99b5a4e${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-e574eeb2${_scopeId}><title data-v-e574eeb2${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-e574eeb2${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-e574eeb2${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-e574eeb2${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-b99b5a4e${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-e574eeb2${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-b99b5a4e${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-b99b5a4e${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-e574eeb2${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-e574eeb2${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-b99b5a4e${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-e574eeb2${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-b99b5a4e${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-e574eeb2${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-b99b5a4e${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-b99b5a4e${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-b99b5a4e${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-b99b5a4e${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-e574eeb2${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-e574eeb2${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-e574eeb2${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-e574eeb2${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-b99b5a4e${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-e574eeb2${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -6049,14 +6049,14 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f;
           if (_push2) {
-            _push2(`<section class="page-header" data-v-b99b5a4e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-b99b5a4e${_scopeId}></div><div class="container" data-v-b99b5a4e${_scopeId}><div class="page-header__inner" data-v-b99b5a4e${_scopeId}><h2 data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</h2><div class="thm-breadcrumb__box" data-v-b99b5a4e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-e574eeb2${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-e574eeb2${_scopeId}></div><div class="container" data-v-e574eeb2${_scopeId}><div class="page-header__inner" data-v-e574eeb2${_scopeId}><h1 data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</h1><div class="thm-breadcrumb__box" data-v-e574eeb2${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-e574eeb2${_scopeId}><li data-v-e574eeb2${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`<i class="fas fa-home" data-v-b99b5a4e${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                    _push3(`<i class="fas fa-home" data-v-e574eeb2${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
                     return [
                       createVNode("i", { class: "fas fa-home" }),
@@ -6067,9 +6067,9 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
                 _: 1
               }, _parent2, _scopeId));
             } else {
-              _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}`)} data-v-b99b5a4e${_scopeId}><i class="fas fa-home" data-v-b99b5a4e${_scopeId}></i>${ssrInterpolate(trans("Home"))}</a>`);
+              _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}`)} data-v-e574eeb2${_scopeId}><i class="fas fa-home" data-v-e574eeb2${_scopeId}></i>${ssrInterpolate(trans("Home"))}</a>`);
             }
-            _push2(`</li><li data-v-b99b5a4e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-b99b5a4e${_scopeId}></span></li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</li></ul></div></div></div></section><section class="privacy-policy my-5" data-v-b99b5a4e${_scopeId}><div class="container" data-v-b99b5a4e${_scopeId}><div class="row" data-v-b99b5a4e${_scopeId}><div class="col-xl-12" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__content" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__text" data-v-b99b5a4e${_scopeId}><p class="privacy-policy__last-updated" data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Last Updated:"))}</strong> ${ssrInterpolate((/* @__PURE__ */ new Date()).toLocaleDateString())}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("1. Introduction"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Welcome to our Privacy Policy. This document explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("2. Information We Collect"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may collect information about you in a variety of ways. The information we may collect on the site includes:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Personal Data"))}</strong>: ${ssrInterpolate(trans("Personally identifiable information, such as your name, email address, phone number, and demographic information that you voluntarily give to us when you register with the site or when you choose to participate in various activities related to the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Derivative Data"))}</strong>: ${ssrInterpolate(trans("Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Financial Data"))}</strong>: ${ssrInterpolate(trans("Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Mobile Device Data"))}</strong>: ${ssrInterpolate(trans("Device information, such as your mobile device ID, model, and manufacturer, and information about the location of your device, if you access the site from a mobile device."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("3. How We Use Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the site to:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Create and manage your account"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Process your transactions and send you related information"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email you regarding your account or order"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Fulfill and manage purchases, orders, payments, and other transactions related to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Generate a personal profile about you to make future visits more personalized"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Increase the efficiency and operation of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Monitor and analyze usage and trends to improve your experience with the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Notify you of updates to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Perform other business activities as needed"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Request feedback and contact you about your use of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Resolve disputes and troubleshoot problems"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Respond to product and customer service requests"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Send you a newsletter"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Solicit support for the site"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("4. Disclosure of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may share information we have collected about you in certain situations. Your information may be disclosed as follows:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("By Law or to Protect Rights"))}</strong>: ${ssrInterpolate(trans("If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Third-Party Service Providers"))}</strong>: ${ssrInterpolate(trans("We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Transfers"))}</strong>: ${ssrInterpolate(trans("We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Affiliates"))}</strong>: ${ssrInterpolate(trans("We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any subsidiaries, joint venture partners, or other companies that we control or that are under common control with us."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Partners"))}</strong>: ${ssrInterpolate(trans("We may share your information with our business partners to offer you certain products, services, or promotions."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("5. Security of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse. Any information disclosed online is vulnerable to interception and misuse by unauthorized parties. Therefore, we cannot guarantee complete security if you provide personal information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("6. Policy for Children"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible. If you become aware of any data we have collected from children under age 13, please contact us."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("7. Your Rights"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Depending on your location, you may have the following rights regarding your personal information:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to access – You have the right to request copies of your personal data"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to rectification – You have the right to request that we correct any information you believe is inaccurate"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to erasure – You have the right to request that we erase your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("8. Cookies and Tracking Technologies"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may use cookies, web beacons, tracking pixels, and other tracking technologies on the site to help customize the site and improve your experience. When you access the site, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("9. Third-Party Websites"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The site may contain links to third-party websites and applications of interest, including advertisements and external services, that are not affiliated with us. Once you have used these links to leave the site, any information you provide to these third parties is not covered by this Privacy Policy, and we cannot guarantee the safety and privacy of your information. Before visiting and providing any information to any third-party websites, you should inform yourself of the privacy policies and practices (if any) of the third party responsible for that website, and should take those steps necessary to, in your discretion, protect the privacy of your information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("10. Changes to This Privacy Policy"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans('We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.'))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("11. Contact Us"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("If you have questions or comments about this Privacy Policy, please contact us at:"))}</p><p data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email:"))}</strong> ${ssrInterpolate((_a = settings.value) == null ? void 0 : _a.email)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Phone:"))}</strong> ${ssrInterpolate((_b = settings.value) == null ? void 0 : _b.phone)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Address:"))}</strong> ${ssrInterpolate((_c = settings.value) == null ? void 0 : _c.address)}</p></div></div></div></div></div></section>`);
+            _push2(`</li><li data-v-e574eeb2${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-e574eeb2${_scopeId}></span></li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</li></ul></div></div></div></section><section class="privacy-policy my-5" data-v-e574eeb2${_scopeId}><div class="container" data-v-e574eeb2${_scopeId}><div class="row" data-v-e574eeb2${_scopeId}><div class="col-xl-12" data-v-e574eeb2${_scopeId}><div class="privacy-policy__content" data-v-e574eeb2${_scopeId}><div class="privacy-policy__text" data-v-e574eeb2${_scopeId}><p class="privacy-policy__last-updated" data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Last Updated:"))}</strong> ${ssrInterpolate((/* @__PURE__ */ new Date()).toLocaleDateString())}</p><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("1. Introduction"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Welcome to our Privacy Policy. This document explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site."))}</p><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("2. Information We Collect"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("We may collect information about you in a variety of ways. The information we may collect on the site includes:"))}</p><ul data-v-e574eeb2${_scopeId}><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Personal Data"))}</strong>: ${ssrInterpolate(trans("Personally identifiable information, such as your name, email address, phone number, and demographic information that you voluntarily give to us when you register with the site or when you choose to participate in various activities related to the site."))}</li><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Derivative Data"))}</strong>: ${ssrInterpolate(trans("Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the site."))}</li><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Financial Data"))}</strong>: ${ssrInterpolate(trans("Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the site."))}</li><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Mobile Device Data"))}</strong>: ${ssrInterpolate(trans("Device information, such as your mobile device ID, model, and manufacturer, and information about the location of your device, if you access the site from a mobile device."))}</li></ul><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("3. How We Use Your Information"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the site to:"))}</p><ul data-v-e574eeb2${_scopeId}><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Create and manage your account"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Process your transactions and send you related information"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Email you regarding your account or order"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Fulfill and manage purchases, orders, payments, and other transactions related to the site"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Generate a personal profile about you to make future visits more personalized"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Increase the efficiency and operation of the site"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Monitor and analyze usage and trends to improve your experience with the site"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Notify you of updates to the site"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Perform other business activities as needed"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Request feedback and contact you about your use of the site"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Resolve disputes and troubleshoot problems"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Respond to product and customer service requests"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Send you a newsletter"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Solicit support for the site"))}</li></ul><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("4. Disclosure of Your Information"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("We may share information we have collected about you in certain situations. Your information may be disclosed as follows:"))}</p><ul data-v-e574eeb2${_scopeId}><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("By Law or to Protect Rights"))}</strong>: ${ssrInterpolate(trans("If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation."))}</li><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Third-Party Service Providers"))}</strong>: ${ssrInterpolate(trans("We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance."))}</li><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Business Transfers"))}</strong>: ${ssrInterpolate(trans("We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company."))}</li><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Affiliates"))}</strong>: ${ssrInterpolate(trans("We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any subsidiaries, joint venture partners, or other companies that we control or that are under common control with us."))}</li><li data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Business Partners"))}</strong>: ${ssrInterpolate(trans("We may share your information with our business partners to offer you certain products, services, or promotions."))}</li></ul><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("5. Security of Your Information"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse. Any information disclosed online is vulnerable to interception and misuse by unauthorized parties. Therefore, we cannot guarantee complete security if you provide personal information."))}</p><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("6. Policy for Children"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible. If you become aware of any data we have collected from children under age 13, please contact us."))}</p><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("7. Your Rights"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Depending on your location, you may have the following rights regarding your personal information:"))}</p><ul data-v-e574eeb2${_scopeId}><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("The right to access – You have the right to request copies of your personal data"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("The right to rectification – You have the right to request that we correct any information you believe is inaccurate"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("The right to erasure – You have the right to request that we erase your personal data, under certain conditions"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions"))}</li><li data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions"))}</li></ul><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("8. Cookies and Tracking Technologies"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("We may use cookies, web beacons, tracking pixels, and other tracking technologies on the site to help customize the site and improve your experience. When you access the site, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of the site."))}</p><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("9. Third-Party Websites"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("The site may contain links to third-party websites and applications of interest, including advertisements and external services, that are not affiliated with us. Once you have used these links to leave the site, any information you provide to these third parties is not covered by this Privacy Policy, and we cannot guarantee the safety and privacy of your information. Before visiting and providing any information to any third-party websites, you should inform yourself of the privacy policies and practices (if any) of the third party responsible for that website, and should take those steps necessary to, in your discretion, protect the privacy of your information."))}</p><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("10. Changes to This Privacy Policy"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans('We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.'))}</p><h3 class="privacy-policy__heading" data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("11. Contact Us"))}</h3><p data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("If you have questions or comments about this Privacy Policy, please contact us at:"))}</p><p data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Email:"))}</strong> ${ssrInterpolate((_a = settings.value) == null ? void 0 : _a.email)}<br data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Phone:"))}</strong> ${ssrInterpolate((_b = settings.value) == null ? void 0 : _b.phone)}<br data-v-e574eeb2${_scopeId}><strong data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Address:"))}</strong> ${ssrInterpolate((_c = settings.value) == null ? void 0 : _c.address)}</p></div></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -6079,7 +6079,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Privacy Policy")), 1),
+                    createVNode("h1", null, toDisplayString(trans("Privacy Policy")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -6238,7 +6238,7 @@ _sfc_main$g.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue");
   return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-b99b5a4e"]]);
+const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-e574eeb2"]]);
 const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: PrivacyPolicy
@@ -6396,7 +6396,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$9, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
@@ -6458,7 +6458,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$9, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Our Members")), 1),
+                    createVNode("h1", null, toDisplayString(trans("Our Members")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -6733,7 +6733,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$8, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
@@ -6773,7 +6773,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$8, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Testimonials")), 1),
+                    createVNode("h1", null, toDisplayString(trans("Testimonials")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -6918,7 +6918,7 @@ const _sfc_main$d = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<article${ssrRenderAttrs(mergeProps({
         class: ["product-card", [`product-card--${__props.variant}`, { "product-card--featured": __props.item.is_featured }]]
-      }, _attrs))} data-v-d20191fd><div class="product-card__glow" aria-hidden="true" data-v-d20191fd></div>`);
+      }, _attrs))} data-v-17fca12f><div class="product-card__glow" aria-hidden="true" data-v-17fca12f></div>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "product-card__media",
@@ -6926,9 +6926,9 @@ const _sfc_main$d = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} loading="lazy" data-v-d20191fd${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-d20191fd${_scopeId}></div>`);
+            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} loading="lazy" data-v-17fca12f${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-17fca12f${_scopeId}></div>`);
             if (__props.item.is_featured) {
-              _push2(`<span class="product-card__badge" data-v-d20191fd${_scopeId}><i class="fas fa-star" data-v-d20191fd${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
+              _push2(`<span class="product-card__badge" data-v-17fca12f${_scopeId}><i class="fas fa-star" data-v-17fca12f${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
             } else {
               _push2(`<!---->`);
             }
@@ -6955,13 +6955,13 @@ const _sfc_main$d = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="product-card__body" data-v-d20191fd>`);
+      _push(`<div class="product-card__body" data-v-17fca12f>`);
       if (__props.item.category) {
-        _push(`<p class="product-card__category" data-v-d20191fd>${ssrInterpolate(__props.item.category.name)}</p>`);
+        _push(`<p class="product-card__category" data-v-17fca12f>${ssrInterpolate(__props.item.category.name)}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<h3 class="product-card__title" data-v-d20191fd>`);
+      _push(`<h3 class="product-card__title" data-v-17fca12f>`);
       _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -6976,18 +6976,18 @@ const _sfc_main$d = {
       }, _parent));
       _push(`</h3>`);
       if (__props.item.short_description && __props.variant !== "compact") {
-        _push(`<p class="product-card__summary" data-v-d20191fd>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
+        _push(`<p class="product-card__summary" data-v-17fca12f>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><footer class="product-card__footer" data-v-d20191fd>`);
+      _push(`</div><footer class="product-card__footer" data-v-17fca12f>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "product-card__pill product-card__pill--cta"
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-d20191fd${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-d20191fd${_scopeId}></span>`);
+            _push2(`<span data-v-17fca12f${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-17fca12f${_scopeId}></span>`);
           } else {
             return [
               createVNode("span", null, toDisplayString(trans("View Details")), 1),
@@ -7009,7 +7009,7 @@ _sfc_main$d.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
   return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-d20191fd"]]);
+const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-17fca12f"]]);
 const __default__$7 = {
   components: {
     AppLayout: _sfc_main$q,
@@ -7054,26 +7054,26 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-ae8d2230${_scopeId}><title data-v-ae8d2230${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-ae8d2230${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-ae8d2230${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-ae8d2230${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-ad6cf210${_scopeId}><title data-v-ad6cf210${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-ad6cf210${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-ad6cf210${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-ad6cf210${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-ae8d2230${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-ad6cf210${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-ae8d2230${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-ae8d2230${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-ad6cf210${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-ad6cf210${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-ae8d2230${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-ad6cf210${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-ae8d2230${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-ad6cf210${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-ae8d2230${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-ae8d2230${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-ae8d2230${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-ae8d2230${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-ad6cf210${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-ad6cf210${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-ad6cf210${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-ad6cf210${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-ae8d2230${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-ad6cf210${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -7148,13 +7148,13 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="page-header" data-v-ae8d2230${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-ae8d2230${_scopeId}></div><div class="container" data-v-ae8d2230${_scopeId}><div class="page-header__inner" data-v-ae8d2230${_scopeId}><h2 data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Products"))}</h2><div class="thm-breadcrumb__box" data-v-ae8d2230${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-ae8d2230${_scopeId}><li data-v-ae8d2230${_scopeId}>`);
+            _push2(`<div class="page-header" data-v-ad6cf210${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-ad6cf210${_scopeId}></div><div class="container" data-v-ad6cf210${_scopeId}><div class="page-header__inner" data-v-ad6cf210${_scopeId}><h1 data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Products"))}</h1><div class="thm-breadcrumb__box" data-v-ad6cf210${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-ad6cf210${_scopeId}><li data-v-ad6cf210${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-ae8d2230${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-ad6cf210${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -7164,11 +7164,11 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-ae8d2230${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-ae8d2230${_scopeId}></span></li><li data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Products"))}</li></ul></div></div></div></div><section class="blog-page products-page" data-v-ae8d2230${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-ae8d2230${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-ae8d2230${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-ae8d2230${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-ae8d2230${_scopeId}></div></div><div class="container position-relative" data-v-ae8d2230${_scopeId}><div class="section-title text-center sec-title-animation animation-style1 products-page__head" data-v-ae8d2230${_scopeId}><div class="section-title__tagline-box" data-v-ae8d2230${_scopeId}><div class="section-title__tagline-shape-1" data-v-ae8d2230${_scopeId}></div><span class="section-title__tagline" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Our Catalog"))}</span><div class="section-title__tagline-shape-2" data-v-ae8d2230${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("B2B Solutions Built for Scale"))}</h2><p class="products-page__subtitle" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Discover enterprise-ready platforms and services designed to grow with your business."))}</p></div>`);
+            _push2(`</li><li data-v-ad6cf210${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-ad6cf210${_scopeId}></span></li><li data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Products"))}</li></ul></div></div></div></div><section class="blog-page products-page" data-v-ad6cf210${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-ad6cf210${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-ad6cf210${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-ad6cf210${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-ad6cf210${_scopeId}></div></div><div class="container position-relative" data-v-ad6cf210${_scopeId}><div class="section-title text-center sec-title-animation animation-style1 products-page__head" data-v-ad6cf210${_scopeId}><div class="section-title__tagline-box" data-v-ad6cf210${_scopeId}><div class="section-title__tagline-shape-1" data-v-ad6cf210${_scopeId}></div><span class="section-title__tagline" data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Our Catalog"))}</span><div class="section-title__tagline-shape-2" data-v-ad6cf210${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("B2B Solutions Built for Scale"))}</h2><p class="products-page__subtitle" data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Discover enterprise-ready platforms and services designed to grow with your business."))}</p></div>`);
             if (products.value.data.length) {
-              _push2(`<div class="products-page__stats" data-v-ae8d2230${_scopeId}><div class="products-page__stat" data-v-ae8d2230${_scopeId}><span class="products-page__stat-value" data-v-ae8d2230${_scopeId}>${ssrInterpolate(products.value.total)}</span><span class="products-page__stat-label" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Solutions Available"))}</span></div>`);
+              _push2(`<div class="products-page__stats" data-v-ad6cf210${_scopeId}><div class="products-page__stat" data-v-ad6cf210${_scopeId}><span class="products-page__stat-value" data-v-ad6cf210${_scopeId}>${ssrInterpolate(products.value.total)}</span><span class="products-page__stat-label" data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Solutions Available"))}</span></div>`);
               if (featuredCount.value) {
-                _push2(`<div class="products-page__stat" data-v-ae8d2230${_scopeId}><span class="products-page__stat-value" data-v-ae8d2230${_scopeId}>${ssrInterpolate(featuredCount.value)}</span><span class="products-page__stat-label" data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Featured"))}</span></div>`);
+                _push2(`<div class="products-page__stat" data-v-ad6cf210${_scopeId}><span class="products-page__stat-value" data-v-ad6cf210${_scopeId}>${ssrInterpolate(featuredCount.value)}</span><span class="products-page__stat-label" data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Featured"))}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -7176,9 +7176,9 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="row" data-v-ae8d2230${_scopeId}><!--[-->`);
+            _push2(`<div class="row" data-v-ad6cf210${_scopeId}><!--[-->`);
             ssrRenderList(products.value.data, (product, index) => {
-              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-ae8d2230${_scopeId}>`);
+              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-ad6cf210${_scopeId}>`);
               _push2(ssrRenderComponent(ProductCard, {
                 item: product,
                 locale: locale.value
@@ -7187,21 +7187,21 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
             });
             _push2(`<!--]-->`);
             if (!products.value.data.length) {
-              _push2(`<div class="col-12" data-v-ae8d2230${_scopeId}><div class="products-page__empty" data-v-ae8d2230${_scopeId}><div class="products-page__empty-icon" aria-hidden="true" data-v-ae8d2230${_scopeId}><i class="fas fa-box-open" data-v-ae8d2230${_scopeId}></i></div><h3 data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3><p data-v-ae8d2230${_scopeId}>${ssrInterpolate(trans("Check back soon — we are adding new solutions to our catalog."))}</p></div></div>`);
+              _push2(`<div class="col-12" data-v-ad6cf210${_scopeId}><div class="products-page__empty" data-v-ad6cf210${_scopeId}><div class="products-page__empty-icon" aria-hidden="true" data-v-ad6cf210${_scopeId}><i class="fas fa-box-open" data-v-ad6cf210${_scopeId}></i></div><h3 data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3><p data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Check back soon — we are adding new solutions to our catalog."))}</p></div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (products.value.last_page > 1) {
-              _push2(`<div class="blog-page__pagination products-page__pagination" data-v-ae8d2230${_scopeId}><ul class="pg-pagination list-unstyled" data-v-ae8d2230${_scopeId}>`);
+              _push2(`<div class="blog-page__pagination products-page__pagination" data-v-ad6cf210${_scopeId}><ul class="pg-pagination list-unstyled" data-v-ad6cf210${_scopeId}>`);
               if (products.value.prev_page_url) {
-                _push2(`<li class="prev" data-v-ae8d2230${_scopeId}>`);
+                _push2(`<li class="prev" data-v-ad6cf210${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: products.value.prev_page_url,
                   "aria-label": "Previous"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="icon-left-arrow-1" data-v-ae8d2230${_scopeId2}></span>`);
+                      _push3(`<span class="icon-left-arrow-1" data-v-ad6cf210${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", { class: "icon-left-arrow-1" })
@@ -7218,7 +7218,7 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
               ssrRenderList(products.value.links, (link, linkIndex) => {
                 _push2(`<!--[-->`);
                 if (link.url && linkIndex > 0 && linkIndex < products.value.links.length - 1) {
-                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-ae8d2230${_scopeId}>`);
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-ad6cf210${_scopeId}>`);
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
@@ -7241,14 +7241,14 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
               });
               _push2(`<!--]-->`);
               if (products.value.next_page_url) {
-                _push2(`<li class="next" data-v-ae8d2230${_scopeId}>`);
+                _push2(`<li class="next" data-v-ad6cf210${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: products.value.next_page_url,
                   "aria-label": "Next"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-ae8d2230${_scopeId2}></span>`);
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-ad6cf210${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", {
@@ -7278,7 +7278,7 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Products")), 1),
+                    createVNode("h1", null, toDisplayString(trans("Products")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -7439,7 +7439,7 @@ _sfc_main$c.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductIndex.vue");
   return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-ae8d2230"]]);
+const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-ad6cf210"]]);
 const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductIndex
@@ -7525,55 +7525,55 @@ const _sfc_main$b = {
         "aria-hidden": "true",
         ref_key: "modalElement",
         ref: modalElement
-      }, _attrs))} data-v-c3837d91><div class="modal-dialog modal-dialog-centered modal-lg" data-v-c3837d91><div class="modal-content" data-v-c3837d91><div class="modal-header border-0 pb-0" data-v-c3837d91><h5 class="modal-title"${ssrRenderAttr("id", `${__props.modalId}Label`)} data-v-c3837d91>${ssrInterpolate(__props.title)}</h5><button type="button" class="btn-close" data-bs-dismiss="modal"${ssrRenderAttr("aria-label", trans("Close"))} data-v-c3837d91></button></div><div class="modal-body pt-2" data-v-c3837d91>`);
+      }, _attrs))} data-v-b7a5a2ac><div class="modal-dialog modal-dialog-centered modal-lg" data-v-b7a5a2ac><div class="modal-content" data-v-b7a5a2ac><div class="modal-header border-0 pb-0" data-v-b7a5a2ac><h5 class="modal-title"${ssrRenderAttr("id", `${__props.modalId}Label`)} data-v-b7a5a2ac>${ssrInterpolate(__props.title)}</h5><button type="button" class="btn-close" data-bs-dismiss="modal"${ssrRenderAttr("aria-label", trans("Close"))} data-v-b7a5a2ac></button></div><div class="modal-body pt-2" data-v-b7a5a2ac>`);
       if (__props.description) {
-        _push(`<p class="product-contact-modal__description mb-4" data-v-c3837d91>${ssrInterpolate(__props.description)}</p>`);
+        _push(`<p class="product-contact-modal__description mb-4" data-v-b7a5a2ac>${ssrInterpolate(__props.description)}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<form class="contact-one__form" data-v-c3837d91><div class="row" data-v-c3837d91><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Full Name"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-user-1" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      _push(`<form class="contact-one__form" data-v-b7a5a2ac><div class="row" data-v-b7a5a2ac><div class="col-md-6 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Full Name"))}</h4><div class="contact-one__input-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-user-1" data-v-b7a5a2ac></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac></div>`);
       if (unref(contactForm).errors.name) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Email"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-email" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).email)} type="email" name="email"${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      _push(`</div><div class="col-md-6 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Email"))}</h4><div class="contact-one__input-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-email" data-v-b7a5a2ac></span></div><input${ssrRenderAttr("value", unref(contactForm).email)} type="email" name="email"${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac></div>`);
       if (unref(contactForm).errors.email) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Phone Number"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-phone-call" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      _push(`</div><div class="col-md-6 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Phone Number"))}</h4><div class="contact-one__input-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-phone-call" data-v-b7a5a2ac></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac></div>`);
       if (unref(contactForm).errors.mobile) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="col-md-6 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Subject"))}</h4><div class="contact-one__input-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-edit" data-v-c3837d91></span></div><input${ssrRenderAttr("value", unref(contactForm).subject)} type="text" name="subject"${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91></div>`);
+      _push(`</div><div class="col-md-6 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Subject"))}</h4><div class="contact-one__input-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-edit" data-v-b7a5a2ac></span></div><input${ssrRenderAttr("value", unref(contactForm).subject)} type="text" name="subject"${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac></div>`);
       if (unref(contactForm).errors.subject) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><div class="col-12 mb-3" data-v-c3837d91><h4 class="contact-one__input-title" data-v-c3837d91>${ssrInterpolate(trans("Message"))}</h4><div class="contact-one__input-box text-message-box" data-v-c3837d91><div class="contact-one__input-icon" data-v-c3837d91><span class="icon-edit" data-v-c3837d91></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Message"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-c3837d91>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
+      _push(`</div><div class="col-12 mb-3" data-v-b7a5a2ac><h4 class="contact-one__input-title" data-v-b7a5a2ac>${ssrInterpolate(trans("Message"))}</h4><div class="contact-one__input-box text-message-box" data-v-b7a5a2ac><div class="contact-one__input-icon" data-v-b7a5a2ac><span class="icon-edit" data-v-b7a5a2ac></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Message"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
       if (unref(contactForm).errors.message) {
-        _push(`<div class="text-danger mt-1 small" data-v-c3837d91>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
+        _push(`<div class="text-danger mt-1 small" data-v-b7a5a2ac>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
       } else {
         _push(`<!---->`);
       }
       _push(`</div></div>`);
       if (submitSuccess.value) {
-        _push(`<div class="alert alert-success" data-v-c3837d91>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div>`);
+        _push(`<div class="alert alert-success" data-v-b7a5a2ac>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<div class="contact-one__btn-box" data-v-c3837d91><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} data-v-c3837d91>`);
+      _push(`<div class="contact-one__btn-box" data-v-b7a5a2ac><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} data-v-b7a5a2ac>`);
       if (unref(contactForm).processing) {
-        _push(`<span data-v-c3837d91>${ssrInterpolate(trans("Sending..."))}</span>`);
+        _push(`<span data-v-b7a5a2ac>${ssrInterpolate(trans("Sending..."))}</span>`);
       } else {
-        _push(`<span data-v-c3837d91>${ssrInterpolate(__props.submitLabel)}</span>`);
+        _push(`<span data-v-b7a5a2ac>${ssrInterpolate(__props.submitLabel)}</span>`);
       }
-      _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-c3837d91></span></button></div></form></div></div></div></div>`);
+      _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-b7a5a2ac></span></button></div></form></div></div></div></div>`);
     };
   }
 };
@@ -7583,7 +7583,7 @@ _sfc_main$b.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ContactRequestModal.vue");
   return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-c3837d91"]]);
+const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-b7a5a2ac"]]);
 const __default__$6 = {
   components: {
     AppLayout: _sfc_main$q,
@@ -7645,15 +7645,15 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-f3b655c3${_scopeId}><title data-v-f3b655c3${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f3b655c3${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f3b655c3${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f3b655c3${_scopeId}><meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f3b655c3${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f3b655c3${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-85a417ae${_scopeId}><title data-v-85a417ae${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-85a417ae${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-85a417ae${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-85a417ae${_scopeId}><meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-85a417ae${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-85a417ae${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-f3b655c3${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-85a417ae${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="product" data-v-f3b655c3${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f3b655c3${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f3b655c3${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f3b655c3${_scopeId}>`);
+            _push2(`<meta property="og:type" content="product" data-v-85a417ae${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-85a417ae${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-85a417ae${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-85a417ae${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-f3b655c3${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-85a417ae${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -7718,13 +7718,13 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-f3b655c3${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-f3b655c3${_scopeId}></div><div class="container" data-v-f3b655c3${_scopeId}><div class="page-header__inner" data-v-f3b655c3${_scopeId}><h2 data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-f3b655c3${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f3b655c3${_scopeId}><li data-v-f3b655c3${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-85a417ae${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-85a417ae${_scopeId}></div><div class="container" data-v-85a417ae${_scopeId}><div class="page-header__inner" data-v-85a417ae${_scopeId}><h2 data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-85a417ae${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-85a417ae${_scopeId}><li data-v-85a417ae${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-f3b655c3${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-85a417ae${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -7734,7 +7734,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-f3b655c3${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f3b655c3${_scopeId}></span></li><li data-v-f3b655c3${_scopeId}>`);
+            _push2(`</li><li data-v-85a417ae${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-85a417ae${_scopeId}></span></li><li data-v-85a417ae${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("product.index")
             }, {
@@ -7749,14 +7749,14 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-f3b655c3${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f3b655c3${_scopeId}></span></li><li data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.name)}</li></ul></div></div></div></section><section class="blog-details products-page" data-v-f3b655c3${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-f3b655c3${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-f3b655c3${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-f3b655c3${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-f3b655c3${_scopeId}></div></div><div class="container position-relative" data-v-f3b655c3${_scopeId}><div class="row" data-v-f3b655c3${_scopeId}><div class="col-xl-12" data-v-f3b655c3${_scopeId}><article class="product-detail" data-v-f3b655c3${_scopeId}><div class="product-detail__glow" aria-hidden="true" data-v-f3b655c3${_scopeId}></div><header class="product-detail__header" data-v-f3b655c3${_scopeId}><div class="product-detail__identity" data-v-f3b655c3${_scopeId}>`);
+            _push2(`</li><li data-v-85a417ae${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-85a417ae${_scopeId}></span></li><li data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.name)}</li></ul></div></div></div></section><section class="blog-details products-page" data-v-85a417ae${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-85a417ae${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-85a417ae${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-85a417ae${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-85a417ae${_scopeId}></div></div><div class="container position-relative" data-v-85a417ae${_scopeId}><div class="row" data-v-85a417ae${_scopeId}><div class="col-xl-12" data-v-85a417ae${_scopeId}><article class="product-detail" data-v-85a417ae${_scopeId}><div class="product-detail__glow" aria-hidden="true" data-v-85a417ae${_scopeId}></div><header class="product-detail__header" data-v-85a417ae${_scopeId}><div class="product-detail__identity" data-v-85a417ae${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("product.index"),
               class: "product-detail__thumb"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} data-v-f3b655c3${_scopeId2}>`);
+                  _push3(`<img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} data-v-85a417ae${_scopeId2}>`);
                 } else {
                   return [
                     createVNode("img", {
@@ -7768,28 +7768,28 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`<div class="product-detail__intro" data-v-f3b655c3${_scopeId}>`);
+            _push2(`<div class="product-detail__intro" data-v-85a417ae${_scopeId}>`);
             if (product.value.category) {
-              _push2(`<p class="product-detail__category" data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.category.name)}</p>`);
+              _push2(`<p class="product-detail__category" data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.category.name)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<h1 class="product-detail__title" data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.name)}</h1>`);
+            _push2(`<h1 class="product-detail__title" data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.name)}</h1>`);
             if (product.value.short_description) {
-              _push2(`<p class="product-detail__subtitle" data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.short_description)}</p>`);
+              _push2(`<p class="product-detail__subtitle" data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.short_description)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="product-detail__actions" data-v-f3b655c3${_scopeId}><div class="product-detail__share" data-v-f3b655c3${_scopeId}><span class="product-detail__share-label" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="product-detail__share-links" data-v-f3b655c3${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Facebook" data-v-f3b655c3${_scopeId}><span class="icon-facebook" data-v-f3b655c3${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Twitter" data-v-f3b655c3${_scopeId}><span class="fab fa-twitter" data-v-f3b655c3${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="LinkedIn" data-v-f3b655c3${_scopeId}><span class="icon-linkedin" data-v-f3b655c3${_scopeId}></span></a></div></div><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-f3b655c3${_scopeId}></span></button></div></header>`);
+            _push2(`</div></div><div class="product-detail__actions" data-v-85a417ae${_scopeId}><div class="product-detail__share" data-v-85a417ae${_scopeId}><span class="product-detail__share-label" data-v-85a417ae${_scopeId}>${ssrInterpolate(trans("Share now"))}</span><div class="product-detail__share-links" data-v-85a417ae${_scopeId}><a${ssrRenderAttr("href", getShareUrl("facebook"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Facebook" data-v-85a417ae${_scopeId}><span class="icon-facebook" data-v-85a417ae${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("twitter"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="Twitter" data-v-85a417ae${_scopeId}><span class="fab fa-twitter" data-v-85a417ae${_scopeId}></span></a><a${ssrRenderAttr("href", getShareUrl("linkedin"))} target="_blank" rel="noopener" class="product-detail__share-btn" aria-label="LinkedIn" data-v-85a417ae${_scopeId}><span class="icon-linkedin" data-v-85a417ae${_scopeId}></span></a></div></div><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-85a417ae${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-85a417ae${_scopeId}></span></button></div></header>`);
             if (product.value.category || product.value.is_featured) {
-              _push2(`<div class="product-detail__meta" data-v-f3b655c3${_scopeId}>`);
+              _push2(`<div class="product-detail__meta" data-v-85a417ae${_scopeId}>`);
               if (product.value.category) {
-                _push2(`<div class="product-detail__pill" data-v-f3b655c3${_scopeId}><i class="fas fa-tag" data-v-f3b655c3${_scopeId}></i><span data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.category.name)}</span></div>`);
+                _push2(`<div class="product-detail__pill" data-v-85a417ae${_scopeId}><i class="fas fa-tag" data-v-85a417ae${_scopeId}></i><span data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.category.name)}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
               if (product.value.is_featured) {
-                _push2(`<div class="product-detail__pill product-detail__pill--featured" data-v-f3b655c3${_scopeId}><i class="fas fa-star" data-v-f3b655c3${_scopeId}></i><span data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Featured"))}</span></div>`);
+                _push2(`<div class="product-detail__pill product-detail__pill--featured" data-v-85a417ae${_scopeId}><i class="fas fa-star" data-v-85a417ae${_scopeId}></i><span data-v-85a417ae${_scopeId}>${ssrInterpolate(trans("Featured"))}</span></div>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -7797,25 +7797,25 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="product-detail__hero" data-v-f3b655c3${_scopeId}><img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} data-v-f3b655c3${_scopeId}></div>`);
+            _push2(`<div class="product-detail__hero" data-v-85a417ae${_scopeId}><img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} data-v-85a417ae${_scopeId}></div>`);
             if (product.value.short_description) {
-              _push2(`<div class="product-detail__section" data-v-f3b655c3${_scopeId}><div class="product-detail__section-head" data-v-f3b655c3${_scopeId}><span class="product-detail__section-icon" data-v-f3b655c3${_scopeId}><i class="fas fa-lightbulb" data-v-f3b655c3${_scopeId}></i></span><span class="product-detail__section-label" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Overview"))}</span></div><p class="product-detail__text" data-v-f3b655c3${_scopeId}>${ssrInterpolate(product.value.short_description)}</p></div>`);
+              _push2(`<div class="product-detail__section" data-v-85a417ae${_scopeId}><div class="product-detail__section-head" data-v-85a417ae${_scopeId}><span class="product-detail__section-icon" data-v-85a417ae${_scopeId}><i class="fas fa-lightbulb" data-v-85a417ae${_scopeId}></i></span><span class="product-detail__section-label" data-v-85a417ae${_scopeId}>${ssrInterpolate(trans("Overview"))}</span></div><p class="product-detail__text" data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.short_description)}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (product.value.description) {
-              _push2(`<div class="product-detail__section" data-v-f3b655c3${_scopeId}><div class="product-detail__section-head" data-v-f3b655c3${_scopeId}><span class="product-detail__section-icon" data-v-f3b655c3${_scopeId}><i class="fas fa-align-left" data-v-f3b655c3${_scopeId}></i></span><span class="product-detail__section-label" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Product Details"))}</span></div><div class="product-detail__content" data-v-f3b655c3${_scopeId}>${product.value.description ?? ""}</div></div>`);
+              _push2(`<div class="product-detail__section" data-v-85a417ae${_scopeId}><div class="product-detail__section-head" data-v-85a417ae${_scopeId}><span class="product-detail__section-icon" data-v-85a417ae${_scopeId}><i class="fas fa-align-left" data-v-85a417ae${_scopeId}></i></span><span class="product-detail__section-label" data-v-85a417ae${_scopeId}>${ssrInterpolate(trans("Product Details"))}</span></div><div class="product-detail__content" data-v-85a417ae${_scopeId}>${product.value.description ?? ""}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<footer class="product-detail__footer" data-v-f3b655c3${_scopeId}><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-f3b655c3${_scopeId}></span></button>`);
+            _push2(`<footer class="product-detail__footer" data-v-85a417ae${_scopeId}><button type="button" class="product-detail__pill product-detail__pill--cta" data-v-85a417ae${_scopeId}>${ssrInterpolate(trans("Request Live Demo"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-85a417ae${_scopeId}></span></button>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "product-detail__pill"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-f3b655c3${_scopeId2}></span>`);
+                  _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-85a417ae${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(toDisplayString(trans("Get in Touch")) + " ", 1),
@@ -7827,9 +7827,9 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
             }, _parent2, _scopeId));
             _push2(`</footer></article>`);
             if (relatedProducts.value.length) {
-              _push2(`<div class="products-related" data-v-f3b655c3${_scopeId}><div class="products-related__head" data-v-f3b655c3${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-f3b655c3${_scopeId}><div class="section-title__tagline-shape-1" data-v-f3b655c3${_scopeId}></div><span class="section-title__tagline" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("More Products"))}</span><div class="section-title__tagline-shape-2" data-v-f3b655c3${_scopeId}></div></div><h3 class="products-related__title" data-v-f3b655c3${_scopeId}>${ssrInterpolate(trans("Explore More Solutions"))}</h3></div><div class="row" data-v-f3b655c3${_scopeId}><!--[-->`);
+              _push2(`<div class="products-related" data-v-85a417ae${_scopeId}><div class="products-related__head" data-v-85a417ae${_scopeId}><div class="section-title__tagline-box justify-content-center" data-v-85a417ae${_scopeId}><div class="section-title__tagline-shape-1" data-v-85a417ae${_scopeId}></div><span class="section-title__tagline" data-v-85a417ae${_scopeId}>${ssrInterpolate(trans("More Products"))}</span><div class="section-title__tagline-shape-2" data-v-85a417ae${_scopeId}></div></div><h3 class="products-related__title" data-v-85a417ae${_scopeId}>${ssrInterpolate(trans("Explore More Solutions"))}</h3></div><div class="row" data-v-85a417ae${_scopeId}><!--[-->`);
               ssrRenderList(relatedProducts.value, (item) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-f3b655c3${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6" data-v-85a417ae${_scopeId}>`);
                 _push2(ssrRenderComponent(ProductCard, {
                   item,
                   locale: locale.value,
@@ -8122,7 +8122,7 @@ _sfc_main$a.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductShow.vue");
   return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
-const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-f3b655c3"]]);
+const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-85a417ae"]]);
 const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductShow
@@ -8167,26 +8167,26 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-71d4a05e${_scopeId}><title data-v-71d4a05e${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-71d4a05e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-71d4a05e${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-71d4a05e${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-0fe03073${_scopeId}><title data-v-0fe03073${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-0fe03073${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-0fe03073${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-0fe03073${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-71d4a05e${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-0fe03073${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-71d4a05e${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-71d4a05e${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-0fe03073${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-0fe03073${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-71d4a05e${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-0fe03073${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-71d4a05e${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-0fe03073${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-71d4a05e${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-71d4a05e${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-71d4a05e${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-71d4a05e${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-0fe03073${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-0fe03073${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-0fe03073${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-0fe03073${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-71d4a05e${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-0fe03073${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -8261,13 +8261,13 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="page-header" data-v-71d4a05e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-71d4a05e${_scopeId}></div><div class="container" data-v-71d4a05e${_scopeId}><div class="page-header__inner" data-v-71d4a05e${_scopeId}><h2 data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</h2><div class="thm-breadcrumb__box" data-v-71d4a05e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-71d4a05e${_scopeId}><li data-v-71d4a05e${_scopeId}>`);
+            _push2(`<div class="page-header" data-v-0fe03073${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-0fe03073${_scopeId}></div><div class="container" data-v-0fe03073${_scopeId}><div class="page-header__inner" data-v-0fe03073${_scopeId}><h1 data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</h1><div class="thm-breadcrumb__box" data-v-0fe03073${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-0fe03073${_scopeId}><li data-v-0fe03073${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-71d4a05e${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-0fe03073${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -8277,9 +8277,9 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-71d4a05e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-71d4a05e${_scopeId}></span></li><li data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</li></ul></div></div></div></div><section class="blog-page use-cases-page" data-v-71d4a05e${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-71d4a05e${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-71d4a05e${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-71d4a05e${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-71d4a05e${_scopeId}></div></div><div class="container position-relative" data-v-71d4a05e${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-71d4a05e${_scopeId}><div class="section-title__tagline-box" data-v-71d4a05e${_scopeId}><div class="section-title__tagline-shape-1" data-v-71d4a05e${_scopeId}></div><span class="section-title__tagline" data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-71d4a05e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2></div><div class="row" data-v-71d4a05e${_scopeId}><!--[-->`);
+            _push2(`</li><li data-v-0fe03073${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-0fe03073${_scopeId}></span></li><li data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</li></ul></div></div></div></div><section class="blog-page use-cases-page" data-v-0fe03073${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-0fe03073${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-0fe03073${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-0fe03073${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--three" data-v-0fe03073${_scopeId}></div></div><div class="container position-relative" data-v-0fe03073${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-0fe03073${_scopeId}><div class="section-title__tagline-box" data-v-0fe03073${_scopeId}><div class="section-title__tagline-shape-1" data-v-0fe03073${_scopeId}></div><span class="section-title__tagline" data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-0fe03073${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2></div><div class="row" data-v-0fe03073${_scopeId}><!--[-->`);
             ssrRenderList(useCases.value.data, (item, index) => {
-              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-71d4a05e${_scopeId}>`);
+              _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-0fe03073${_scopeId}>`);
               _push2(ssrRenderComponent(UseCaseCard, {
                 item,
                 locale: locale.value
@@ -8288,21 +8288,21 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
             });
             _push2(`<!--]-->`);
             if (!useCases.value.data.length) {
-              _push2(`<div class="col-12" data-v-71d4a05e${_scopeId}><div class="text-center py-5" data-v-71d4a05e${_scopeId}><h3 class="use-cases-page__empty" data-v-71d4a05e${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3></div></div>`);
+              _push2(`<div class="col-12" data-v-0fe03073${_scopeId}><div class="text-center py-5" data-v-0fe03073${_scopeId}><h3 class="use-cases-page__empty" data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("No records found"))}</h3></div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (useCases.value.last_page > 1) {
-              _push2(`<div class="blog-page__pagination" data-v-71d4a05e${_scopeId}><ul class="pg-pagination list-unstyled" data-v-71d4a05e${_scopeId}>`);
+              _push2(`<div class="blog-page__pagination" data-v-0fe03073${_scopeId}><ul class="pg-pagination list-unstyled" data-v-0fe03073${_scopeId}>`);
               if (useCases.value.prev_page_url) {
-                _push2(`<li class="prev" data-v-71d4a05e${_scopeId}>`);
+                _push2(`<li class="prev" data-v-0fe03073${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: useCases.value.prev_page_url,
                   "aria-label": "Previous"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="icon-left-arrow-1" data-v-71d4a05e${_scopeId2}></span>`);
+                      _push3(`<span class="icon-left-arrow-1" data-v-0fe03073${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", { class: "icon-left-arrow-1" })
@@ -8319,7 +8319,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               ssrRenderList(useCases.value.links, (link, index) => {
                 _push2(`<!--[-->`);
                 if (link.url && index > 0 && index < useCases.value.links.length - 1) {
-                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-71d4a05e${_scopeId}>`);
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-0fe03073${_scopeId}>`);
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
@@ -8342,14 +8342,14 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               });
               _push2(`<!--]-->`);
               if (useCases.value.next_page_url) {
-                _push2(`<li class="next" data-v-71d4a05e${_scopeId}>`);
+                _push2(`<li class="next" data-v-0fe03073${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: useCases.value.next_page_url,
                   "aria-label": "Next"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-71d4a05e${_scopeId2}></span>`);
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-0fe03073${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", {
@@ -8379,7 +8379,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Case Studies")), 1),
+                    createVNode("h1", null, toDisplayString(trans("Case Studies")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -8516,7 +8516,7 @@ _sfc_main$9.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue");
   return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-71d4a05e"]]);
+const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-0fe03073"]]);
 const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseIndex
@@ -9258,26 +9258,26 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-3ab06575${_scopeId}><title data-v-3ab06575${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-3ab06575${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-3ab06575${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-3ab06575${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-08f6db3e${_scopeId}><title data-v-08f6db3e${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-08f6db3e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-08f6db3e${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-08f6db3e${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-3ab06575${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-08f6db3e${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-3ab06575${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-3ab06575${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-08f6db3e${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-08f6db3e${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-3ab06575${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-08f6db3e${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-3ab06575${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-08f6db3e${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-3ab06575${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-3ab06575${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-3ab06575${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-3ab06575${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-08f6db3e${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-08f6db3e${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-08f6db3e${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-08f6db3e${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-3ab06575${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-08f6db3e${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -9352,13 +9352,13 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
       _push(ssrRenderComponent(_sfc_main$q, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="page-header" data-v-3ab06575${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-3ab06575${_scopeId}></div><div class="container" data-v-3ab06575${_scopeId}><div class="page-header__inner" data-v-3ab06575${_scopeId}><h2 data-v-3ab06575${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h2><div class="thm-breadcrumb__box" data-v-3ab06575${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-3ab06575${_scopeId}><li data-v-3ab06575${_scopeId}>`);
+            _push2(`<div class="page-header" data-v-08f6db3e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-08f6db3e${_scopeId}></div><div class="container" data-v-08f6db3e${_scopeId}><div class="page-header__inner" data-v-08f6db3e${_scopeId}><h1 data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h1><div class="thm-breadcrumb__box" data-v-08f6db3e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-08f6db3e${_scopeId}><li data-v-08f6db3e${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-3ab06575${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-08f6db3e${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -9368,9 +9368,9 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-3ab06575${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-3ab06575${_scopeId}></span></li><li data-v-3ab06575${_scopeId}>${ssrInterpolate(trans("Our Services"))}</li></ul></div></div></div></div><section class="services-two" data-v-3ab06575${_scopeId}><div class="container" data-v-3ab06575${_scopeId}><div class="services-two__top" data-v-3ab06575${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-3ab06575${_scopeId}><div class="section-title__tagline-box" data-v-3ab06575${_scopeId}><div class="section-title__tagline-shape-1" data-v-3ab06575${_scopeId}></div><span class="section-title__tagline" data-v-3ab06575${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span></div><h2 class="section-title__title title-animation" data-v-3ab06575${_scopeId}>${ssrInterpolate(trans("Scale Your Business Smarter with Next-Gen IT Solutions"))} <span data-v-3ab06575${_scopeId}></span></h2></div></div><div class="services-two__bottom" data-v-3ab06575${_scopeId}><div class="row" data-v-3ab06575${_scopeId}><div class="col-xl-8" data-v-3ab06575${_scopeId}><div class="services-two__services-list" data-v-3ab06575${_scopeId}><div class="row" data-v-3ab06575${_scopeId}><!--[-->`);
+            _push2(`</li><li data-v-08f6db3e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-08f6db3e${_scopeId}></span></li><li data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</li></ul></div></div></div></div><section class="services-two" data-v-08f6db3e${_scopeId}><div class="container" data-v-08f6db3e${_scopeId}><div class="services-two__top" data-v-08f6db3e${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-08f6db3e${_scopeId}><div class="section-title__tagline-box" data-v-08f6db3e${_scopeId}><div class="section-title__tagline-shape-1" data-v-08f6db3e${_scopeId}></div><span class="section-title__tagline" data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span></div><h2 class="section-title__title title-animation" data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Scale Your Business Smarter with Next-Gen IT Solutions"))} <span data-v-08f6db3e${_scopeId}></span></h2></div></div><div class="services-two__bottom" data-v-08f6db3e${_scopeId}><div class="row" data-v-08f6db3e${_scopeId}><div class="col-xl-8" data-v-08f6db3e${_scopeId}><div class="services-two__services-list" data-v-08f6db3e${_scopeId}><div class="row" data-v-08f6db3e${_scopeId}><!--[-->`);
             ssrRenderList(services.value.data, (serviceItem) => {
-              _push2(`<div class="col-xl-6 col-lg-6 col-md-6 mb-4" data-v-3ab06575${_scopeId}>`);
+              _push2(`<div class="col-xl-6 col-lg-6 col-md-6 mb-4" data-v-08f6db3e${_scopeId}>`);
               _push2(ssrRenderComponent(ServiceCardThree, {
                 title: getServiceTitle(serviceItem),
                 "short-desc": serviceItem.short_desc,
@@ -9387,22 +9387,22 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
             });
             _push2(`<!--]--></div>`);
             if (!services.value.data.length) {
-              _push2(`<div class="text-center py-5" data-v-3ab06575${_scopeId}><h3 class="text-muted" data-v-3ab06575${_scopeId}>${ssrInterpolate(trans("No services found"))}</h3></div>`);
+              _push2(`<div class="text-center py-5" data-v-08f6db3e${_scopeId}><h3 class="text-muted" data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("No services found"))}</h3></div>`);
             } else {
               _push2(`<!---->`);
             }
             _push2(`</div>`);
             if (services.value.last_page > 1) {
-              _push2(`<div class="blog-page__pagination services-pagination" data-v-3ab06575${_scopeId}><ul class="pg-pagination list-unstyled" data-v-3ab06575${_scopeId}>`);
+              _push2(`<div class="blog-page__pagination services-pagination" data-v-08f6db3e${_scopeId}><ul class="pg-pagination list-unstyled" data-v-08f6db3e${_scopeId}>`);
               if (services.value.prev_page_url) {
-                _push2(`<li class="prev" data-v-3ab06575${_scopeId}>`);
+                _push2(`<li class="prev" data-v-08f6db3e${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: services.value.prev_page_url,
                   "aria-label": "prev"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="icon-left-arrow-1" data-v-3ab06575${_scopeId2}></span>`);
+                      _push3(`<span class="icon-left-arrow-1" data-v-08f6db3e${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", { class: "icon-left-arrow-1" })
@@ -9419,7 +9419,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               ssrRenderList(services.value.links, (link, linkIndex) => {
                 _push2(`<!--[-->`);
                 if (link.url && linkIndex > 0 && linkIndex < services.value.links.length - 1) {
-                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-3ab06575${_scopeId}>`);
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-08f6db3e${_scopeId}>`);
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
@@ -9442,14 +9442,14 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               });
               _push2(`<!--]-->`);
               if (services.value.next_page_url) {
-                _push2(`<li class="next" data-v-3ab06575${_scopeId}>`);
+                _push2(`<li class="next" data-v-08f6db3e${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: services.value.next_page_url,
                   "aria-label": "Next"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-3ab06575${_scopeId2}></span>`);
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-08f6db3e${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", {
@@ -9468,14 +9468,14 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-4" data-v-3ab06575${_scopeId}><div class="services-index__sidebar" data-v-3ab06575${_scopeId}><div class="services-details__services-list-box" data-v-3ab06575${_scopeId}><h3 class="services-details__services-list-title" data-v-3ab06575${_scopeId}>${ssrInterpolate(trans("Service Categories"))}</h3><ul class="services-details__services-list list-unstyled" data-v-3ab06575${_scopeId}><li data-v-3ab06575${_scopeId}>`);
+            _push2(`</div><div class="col-xl-4" data-v-08f6db3e${_scopeId}><div class="services-index__sidebar" data-v-08f6db3e${_scopeId}><div class="services-details__services-list-box" data-v-08f6db3e${_scopeId}><h3 class="services-details__services-list-title" data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Service Categories"))}</h3><ul class="services-details__services-list list-unstyled" data-v-08f6db3e${_scopeId}><li data-v-08f6db3e${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("services.index"),
               class: { "active": !filters.value.category }
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(` (${ssrInterpolate(totalServicesCount.value)}) ${ssrInterpolate(trans("All Services"))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-3ab06575${_scopeId2}></span>`);
+                  _push3(` (${ssrInterpolate(totalServicesCount.value)}) ${ssrInterpolate(trans("All Services"))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-08f6db3e${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(" (" + toDisplayString(totalServicesCount.value) + ") " + toDisplayString(trans("All Services")) + " ", 1),
@@ -9489,14 +9489,14 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
             }, _parent2, _scopeId));
             _push2(`</li><!--[-->`);
             ssrRenderList(categories.value, (category) => {
-              _push2(`<li data-v-3ab06575${_scopeId}>`);
+              _push2(`<li data-v-08f6db3e${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("services.index", { category: category.slug }),
                 class: { "active": filters.value.category === category.slug }
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(` (${ssrInterpolate(category.services_count || 0)}) ${ssrInterpolate(getCategoryName(category))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-3ab06575${_scopeId2}></span>`);
+                    _push3(` (${ssrInterpolate(category.services_count || 0)}) ${ssrInterpolate(getCategoryName(category))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-08f6db3e${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(" (" + toDisplayString(category.services_count || 0) + ") " + toDisplayString(getCategoryName(category)) + " ", 1),
@@ -9521,7 +9521,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("Our Services")), 1),
+                    createVNode("h1", null, toDisplayString(trans("Our Services")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -9708,7 +9708,7 @@ _sfc_main$7.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceIndex.vue");
   return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-3ab06575"]]);
+const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-08f6db3e"]]);
 const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
@@ -9971,7 +9971,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
               }, _parent2, _scopeId));
               _push2(`</li>`);
             });
-            _push2(`<!--]--></ul></div><div class="services-details__need-help"${_scopeId}><div class="services-details__need-help-img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/need_help.jpg")}${ssrRenderAttr("alt", trans("Need help"))}${_scopeId}><div class="services-details__need-help-content"${_scopeId}><div class="services-details__need-help-bdr"${_scopeId}></div><h3 class="services-details__need-help-title"${_scopeId}>${ssrInterpolate(trans("Need Help?"))}</h3><p class="services-details__need-help-number"${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.website_phone || settings.value.phone}`)}${_scopeId}>${ssrInterpolate(settings.value.website_phone || settings.value.phone || "+12 (00) 345 789034")}</a></p></div></div></div></div></div><div class="col-xl-8 col-lg-7"${_scopeId}><div class="services-details__right"${_scopeId}><h3 class="services-details__title-1"${_scopeId}>${ssrInterpolate(getServiceTitle(service.value))}</h3><div class="services-details__bdr"${_scopeId}></div>`);
+            _push2(`<!--]--></ul></div><div class="services-details__need-help"${_scopeId}><div class="services-details__need-help-img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/need_help.jpg")}${ssrRenderAttr("alt", trans("Need help"))}${_scopeId}><div class="services-details__need-help-content"${_scopeId}><div class="services-details__need-help-bdr"${_scopeId}></div><h3 class="services-details__need-help-title"${_scopeId}>${ssrInterpolate(trans("Need Help?"))}</h3><p class="services-details__need-help-number"${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.website_phone || settings.value.phone}`)}${_scopeId}>${ssrInterpolate(settings.value.website_phone || settings.value.phone || "+12 (00) 345 789034")}</a></p></div></div></div></div></div><div class="col-xl-8 col-lg-7"${_scopeId}><div class="services-details__right"${_scopeId}><h1 class="services-details__title-1"${_scopeId}>${ssrInterpolate(getServiceTitle(service.value))}</h1><div class="services-details__bdr"${_scopeId}></div>`);
             if (service.value.reading_time) {
               _push2(`<ul class="blog-details__meta list-unstyled"${_scopeId}><li${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), null, {
@@ -10143,7 +10143,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                     ]),
                     createVNode("div", { class: "col-xl-8 col-lg-7" }, [
                       createVNode("div", { class: "services-details__right" }, [
-                        createVNode("h3", { class: "services-details__title-1" }, toDisplayString(getServiceTitle(service.value)), 1),
+                        createVNode("h1", { class: "services-details__title-1" }, toDisplayString(getServiceTitle(service.value)), 1),
                         createVNode("div", { class: "services-details__bdr" }),
                         service.value.reading_time ? (openBlock(), createBlock("ul", {
                           key: 0,

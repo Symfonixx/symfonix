@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\User\app\Repositories\Employee\EmployeeModelRepository;
 use Modules\User\app\Repositories\Employee\EmployeeRepository;
+use Modules\User\app\Repositories\Leave\LeaveModelRepository;
+use Modules\User\app\Repositories\Leave\LeaveRepository;
 use Modules\User\app\Repositories\User\UserModelRepository;
 use Modules\User\app\Repositories\User\UserRepository;
 use Modules\User\Repositories\Role\RoleModelRepository;
@@ -116,6 +118,7 @@ class UserServiceProvider extends ServiceProvider
         $this->app->bind(RoleRepository::class, RoleModelRepository::class);
         $this->app->bind(UserRepository::class, UserModelRepository::class);
         $this->app->bind(EmployeeRepository::class, EmployeeModelRepository::class);
+        $this->app->bind(LeaveRepository::class, LeaveModelRepository::class);
     }
 
     /**

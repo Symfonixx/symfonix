@@ -8,7 +8,7 @@ use Modules\CRM\Models\Lead;
 
 interface LeadRepository
 {
-    public function paginate(int $perPage = 15): LengthAwarePaginator;
+    public function paginate(array $filters = [], int $perPage = 15): LengthAwarePaginator;
 
     public function findOrFail(int $id): Lead;
 

@@ -14,6 +14,11 @@ return [
         'name' => 'Name',
         'email' => 'Email',
         'phone' => 'Phone',
+        'phone2' => 'Secondary Phone',
+        'source' => 'Source',
+        'select_source' => 'Select a source',
+        'customer' => 'Customer',
+        'select_customer' => 'Select a customer',
         'job_title' => 'Job Title',
         'company' => 'Company',
         'select_company' => 'Select a company',
@@ -44,9 +49,13 @@ return [
     'hints' => [
         'company' => 'Leave empty for standalone contacts not yet linked to a company.',
         'is_primary' => 'Mark as the main point of contact for the company.',
+        'customer' => 'Link this contact to an existing customer account, if one exists.',
     ],
     'validation' => [
         'fix_errors' => 'Please fix the following errors and try again.',
+        'email_unique' => 'A contact with this email address already exists.',
+        'phone_unique' => 'A contact with this phone number already exists.',
+        'phone' => 'The phone number may only contain digits and the characters + - ( ) and spaces.',
     ],
     'fallback_name' => 'Unknown Contact',
 ];

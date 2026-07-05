@@ -18,10 +18,31 @@ Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle'])->n
 Route::get('/chatbot', [BotManController::class, 'widget'])->name('chatbot.widget');
 
 Route::get('/robots.txt', function () {
-    $sitemapUrl = rtrim(request()->getSchemeAndHttpHost(), '/').'/sitemap.xml';
+    $host = rtrim(request()->getSchemeAndHttpHost(), '/');
+    $sitemapUrl = $host.'/sitemap.xml';
+
+    $lines = [
+        'User-agent: *',
+        // Allow public content, but keep private/admin areas out of the index
+        // so crawl budget is spent on pages that should rank.
+        'Disallow: /admin',
+        'Disallow: /login',
+        'Disallow: /register',
+        'Disallow: /password',
+        'Disallow: /email/verify',
+        'Disallow: /dashboard',
+        'Disallow: /telescope',
+        'Disallow: /pulse',
+        'Disallow: /storage/framework',
+        'Disallow: /*?*replytocom=',
+        'Allow: /',
+        '',
+        'Sitemap: '.$sitemapUrl,
+        '',
+    ];
 
     return response(
-        "User-agent: *\nDisallow:\nSitemap: {$sitemapUrl}\n",
+        implode("\n", $lines),
         200,
         ['Content-Type' => 'text/plain; charset=UTF-8']
     );

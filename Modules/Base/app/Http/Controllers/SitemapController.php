@@ -69,12 +69,6 @@ class SitemapController extends Controller
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'monthly',
             'priority' => '0.6',
-                ];
-        $entries[] = [
-            'path' => '/faq',
-            'lastmod' => now()->toAtomString(),
-            'changefreq' => 'monthly',
-            'priority' => '0.6',
         ];
 
         // Static pages (about-us, etc.) via Page model
@@ -219,19 +213,50 @@ class SitemapController extends Controller
     {
         $urls = [];
         $locales = $this->getSupportedLocales();
+        $defaultLocale = $this->getDefaultLocale();
 
         foreach ($entries as $entry) {
+            // Build the shared set of hreflang alternates for this path once.
+            $alternates = [];
+            foreach ($locales as $locale) {
+                $alternates[] = [
+                    'hreflang' => $locale,
+                    'href' => $this->buildLocalizedUrl($entry['path'], $locale),
+                ];
+            }
+            $alternates[] = [
+                'hreflang' => 'x-default',
+                'href' => $this->buildLocalizedUrl($entry['path'], $defaultLocale),
+            ];
+
             foreach ($locales as $locale) {
                 $urls[] = [
                     'loc' => $this->buildLocalizedUrl($entry['path'], $locale),
                     'lastmod' => $entry['lastmod'] ?? null,
                     'changefreq' => $entry['changefreq'] ?? null,
                     'priority' => $entry['priority'] ?? null,
+                    'alternates' => $alternates,
                 ];
             }
         }
 
         return $urls;
+    }
+
+    private function getDefaultLocale(): string
+    {
+        if (class_exists(LaravelLocalization::class)) {
+            try {
+                $default = LaravelLocalization::getDefaultLocale();
+                if (is_string($default) && $default !== '') {
+                    return $default;
+                }
+            } catch (\Throwable $e) {
+                // Fallback below.
+            }
+        }
+
+        return 'en';
     }
 
     private function getSupportedLocales(): array

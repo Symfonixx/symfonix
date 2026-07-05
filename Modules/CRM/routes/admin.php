@@ -59,4 +59,5 @@ Route::middleware(['can:CRM Management'])->group(function () {
     Route::post('leads/{lead}/block', [LeadController::class, 'block'])->name('leads.block');
     Route::post('leads/{lead}/unblock', [LeadController::class, 'unblock'])->name('leads.unblock');
     Route::post('leads/{lead}/convert', [LeadController::class, 'convertToDeal'])->name('leads.convert');
+    Route::post('leads/{lead}/convert-customer', [LeadController::class, 'convertToCustomer'])->name('leads.convertCustomer');
 });

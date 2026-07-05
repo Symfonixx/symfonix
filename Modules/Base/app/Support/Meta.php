@@ -17,6 +17,7 @@ class Meta
             'title' => null,
             'description' => null,
             'image' => null,
+            'type' => 'website',
         ],
         'twitter' => [
             'title' => null,
@@ -65,6 +66,34 @@ class Meta
     {
         $meta_img = Settings::get('meta_img');
         $this->data['twitter']['image'] = $url ?: $meta_img;
+
+        return $this;
+    }
+
+    public function type(string $value = 'website'): static
+    {
+        $this->data['og']['type'] = $value;
+
+        return $this;
+    }
+
+    public function canonical(?string $url = null): static
+    {
+        $this->data['canonical'] = $url ?: url()->current();
+
+        return $this;
+    }
+
+    public function robots(string $value = 'index, follow'): static
+    {
+        $this->data['robots'] = $value;
+
+        return $this;
+    }
+
+    public function noindex(): static
+    {
+        $this->data['robots'] = 'noindex, nofollow';
 
         return $this;
     }

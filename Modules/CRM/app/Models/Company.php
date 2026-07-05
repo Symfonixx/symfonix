@@ -19,9 +19,37 @@ class Company extends Model
 
     public const STATUS_DISABLED = 'disabled';
 
+    public const ACTIVITY_TECHNOLOGY = 'technology';
+
+    public const ACTIVITY_RETAIL = 'retail';
+
+    public const ACTIVITY_HEALTHCARE = 'healthcare';
+
+    public const ACTIVITY_FINANCE = 'finance';
+
+    public const ACTIVITY_EDUCATION = 'education';
+
+    public const ACTIVITY_MANUFACTURING = 'manufacturing';
+
+    public const ACTIVITY_CONSULTING = 'consulting';
+
+    public const ACTIVITY_OTHER = 'other';
+
+    public const ACTIVITY_TYPES = [
+        self::ACTIVITY_TECHNOLOGY,
+        self::ACTIVITY_RETAIL,
+        self::ACTIVITY_HEALTHCARE,
+        self::ACTIVITY_FINANCE,
+        self::ACTIVITY_EDUCATION,
+        self::ACTIVITY_MANUFACTURING,
+        self::ACTIVITY_CONSULTING,
+        self::ACTIVITY_OTHER,
+    ];
+
     protected $fillable = [
         'user_id',
         'name',
+        'activity_type',
         'email',
         'phone',
         'country',

@@ -9,8 +9,8 @@ class ListLeadsAction
 {
     public function __construct(private readonly LeadService $service) {}
 
-    public function execute(): LengthAwarePaginator
+    public function execute(array $filters = []): LengthAwarePaginator
     {
-        return $this->service->list();
+        return $this->service->list($filters);
     }
 }

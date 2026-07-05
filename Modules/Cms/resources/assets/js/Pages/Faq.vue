@@ -25,7 +25,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2 v-html="trans('FAQs')"></h2>
+                    <h1 v-html="trans('FAQs')"></h1>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>

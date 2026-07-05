@@ -83,7 +83,6 @@ class ContactService
 
         if ($lead->email) {
             $existing = Contact::query()
-                ->when($lead->company_id, fn ($query) => $query->where('company_id', $lead->company_id))
                 ->where('email', $lead->email)
                 ->first();
 

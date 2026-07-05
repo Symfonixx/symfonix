@@ -24,7 +24,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2>{{ trans('Case Studies') }}</h2>
+                    <h1>{{ trans('Case Studies') }}</h1>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>

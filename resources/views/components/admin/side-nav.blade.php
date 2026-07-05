@@ -135,7 +135,7 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['roles']) || isset($active['admins']) || isset($active['employees']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['roles']) || isset($active['admins']) || isset($active['employees']) || isset($active['leaves']) ? 'show' : '' }}">
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['roles']) ? 'active' : '' }}"
                    href="{{ route('admin.roles.index') }}">
@@ -155,6 +155,13 @@
                    href="{{ route('admin.employees.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">{{ __('Employees') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['leaves']) ? 'active' : '' }}"
+                   href="{{ route('admin.leaves.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('Leave Management') }}</span>
                 </a>
             </div>
         </div>

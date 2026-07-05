@@ -94,7 +94,7 @@
                             <span class="path2"></span>
                         </i>
                     </a>
-                    <form class="d-inline" method="POST" action="{{ route('admin.subscriptions.destroy', $subscription->id) }}">
+                    <form class="d-inline" method="POST" action="{{ route('admin.subscriptions.destroy', $subscription->id) }}" data-confirm-delete>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">

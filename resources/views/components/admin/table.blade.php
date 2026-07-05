@@ -60,9 +60,14 @@
         </div>
     @else
         @if($formUrl)
-            <form method="post" id="delete_all" action="{{ $formUrl }}">
+            {{-- Standalone bulk-delete form. It intentionally does NOT wrap the table:
+                 nesting the table (and its per-row action forms) inside a form produces
+                 invalid nested forms, which browsers ignore, causing row buttons to submit
+                 this bulk form instead. Selected IDs are injected via JS on submit. --}}
+            <form method="post" id="delete_all" action="{{ $formUrl }}" class="d-none">
                 @csrf
                 @method('DELETE')
+            </form>
         @endif
 
         <div class="card-body pt-0">
@@ -73,10 +78,6 @@
                 </table>
             </div>
         </div>
-
-        @if($formUrl)
-            </form>
-        @endif
 
         @if(isset($model) && $model instanceof \Illuminate\Pagination\LengthAwarePaginator && $model->hasPages())
             <div class="card-footer d-flex justify-content-between align-items-center flex-wrap gap-3">
@@ -153,13 +154,52 @@
                             }
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                $('#delete_all').submit();
+                                const form = document.getElementById('delete_all');
+                                // Remove any IDs injected by a previous attempt.
+                                form.querySelectorAll('input[name="ids[]"]').forEach((el) => el.remove());
+                                // Collect the checked row checkboxes (they live in the table, not the form).
+                                tableEl.querySelectorAll('tbody input[type="checkbox"]:checked').forEach((cb) => {
+                                    const input = document.createElement('input');
+                                    input.type = 'hidden';
+                                    input.name = 'ids[]';
+                                    input.value = cb.value;
+                                    form.appendChild(input);
+                                });
+                                form.submit();
                             }
                         });
                     });
                 };
 
                 initBulkActions();
+
+                // Confirmation for single-row action forms (e.g. delete) marked with
+                // [data-confirm-delete]. Prevents destructive actions without confirmation.
+                document.querySelectorAll('form[data-confirm-delete]').forEach((form) => {
+                    form.addEventListener('submit', function (event) {
+                        if (form.dataset.confirmed === 'true') {
+                            return;
+                        }
+                        event.preventDefault();
+                        Swal.fire({
+                            text: form.getAttribute('data-confirm-delete') || @json(__('This action cannot be undone.')),
+                            icon: "warning",
+                            showCancelButton: true,
+                            buttonsStyling: false,
+                            confirmButtonText: @json(__('Yes Delete!')),
+                            cancelButtonText: @json(__('No Cancel')),
+                            customClass: {
+                                confirmButton: "btn fw-bold btn-danger",
+                                cancelButton: "btn fw-bold btn-active-light-primary"
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                form.dataset.confirmed = 'true';
+                                form.submit();
+                            }
+                        });
+                    });
+                });
 
                 const searchInput = document.querySelector('[data-kt-data-table-filter="search"]');
                 const clearBtn = document.querySelector('[data-search-clear]');

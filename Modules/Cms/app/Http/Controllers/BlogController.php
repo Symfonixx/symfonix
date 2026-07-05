@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Base\Support\Schema;
 use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\BlogCategory;
 use Modules\SearchEngine\Models\SearchKeyword;
@@ -190,15 +191,40 @@ class BlogController extends Controller
             ->oldest('id')
             ->first();
 
+        $canonical = route('blogs.show', ['slug' => $blog->slug]);
+
         $meta = (new Meta)
             ->title($blog->title)
             ->description($blog->description)
             ->keywords($blog->keywords)
             ->ogImage($blog->image_link)
             ->twitterImage($blog->image_link)
+            ->type('article')
+            ->canonical($canonical)
             ->toArray();
 
+        $structuredData = [
+            Schema::breadcrumbs([
+                ['name' => __('Home'), 'url' => route('home')],
+                ['name' => __('Blogs'), 'url' => route('blogs.index')],
+                ['name' => $blog->title, 'url' => $canonical],
+            ]),
+            Schema::article([
+                'type' => 'BlogPosting',
+                'title' => $blog->title,
+                'description' => $blog->description,
+                'image' => $blog->image_link,
+                'url' => $canonical,
+                'datePublished' => optional($blog->created_at)->toAtomString(),
+                'dateModified' => optional($blog->updated_at)->toAtomString(),
+                'keywords' => $blog->keywords,
+                'section' => $blog->category?->name,
+                'locale' => $locale,
+            ]),
+        ];
+
         return $this->inertia('Cms::BlogShow', [
+            'structuredData' => $structuredData,
             'blog' => [
                 'id' => $blog->id,
                 'title' => $blog->title,

@@ -4,6 +4,7 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\CRM\Models\CrmSalesTarget;
 
@@ -43,6 +44,11 @@ class Employee extends Model
     public function crmSalesTarget(): HasOne
     {
         return $this->hasOne(CrmSalesTarget::class);
+    }
+
+    public function leaveRequests(): HasMany
+    {
+        return $this->hasMany(LeaveRequest::class);
     }
 
     public function getAvatarAttribute(): string

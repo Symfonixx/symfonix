@@ -52,10 +52,47 @@
         <label for="phone" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::contact.fields.phone') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <input id="phone" type="text" class="form-control form-control-solid @error('phone') is-invalid @enderror"
+        <input id="phone" type="tel" inputmode="tel" pattern="[0-9+\-\s()]+"
+               class="form-control form-control-solid @error('phone') is-invalid @enderror"
                name="phone" value="{{ old('phone', $contactData?->phone) }}"
                placeholder="{{ __('crm::contact.placeholders.phone') }}" maxlength="50"/>
         @error('phone')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="phone2" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::contact.fields.phone2') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="phone2" type="tel" inputmode="tel" pattern="[0-9+\-\s()]+"
+               class="form-control form-control-solid @error('phone2') is-invalid @enderror"
+               name="phone2" value="{{ old('phone2', $contactData?->phone2) }}"
+               placeholder="{{ __('crm::contact.placeholders.phone') }}" maxlength="50"/>
+        @error('phone2')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="source" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::contact.fields.source') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <select id="source" class="form-select form-select-solid @error('source') is-invalid @enderror"
+                data-control="select2" data-placeholder="{{ __('crm::contact.fields.select_source') }}"
+                data-allow-clear="true" name="source">
+            <option value=""></option>
+            @foreach(\Modules\CRM\Models\Contact::SOURCES as $source)
+                <option value="{{ $source }}" @selected(old('source', $contactData?->source) === $source)>
+                    {{ __('crm::lead.sources.' . $source) }}
+                </option>
+            @endforeach
+        </select>
+        @error('source')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>
@@ -101,6 +138,30 @@
         </select>
         <div class="form-text">{{ __('crm::contact.hints.company') }}</div>
         @error('company_id')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="user_id" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::contact.fields.customer') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <select id="user_id" class="form-select form-select-solid @error('user_id') is-invalid @enderror"
+                data-control="select2"
+                data-placeholder="{{ __('crm::contact.fields.select_customer') }}"
+                data-allow-clear="true"
+                name="user_id">
+            <option value=""></option>
+            @foreach(($customers ?? collect()) as $customer)
+                <option value="{{ $customer->id }}" @selected((int) old('user_id', $contactData?->user_id) === $customer->id)>
+                    {{ $customer->name }}@if($customer->email) ({{ $customer->email }})@endif
+                </option>
+            @endforeach
+        </select>
+        <div class="form-text">{{ __('crm::contact.hints.customer') }}</div>
+        @error('user_id')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>

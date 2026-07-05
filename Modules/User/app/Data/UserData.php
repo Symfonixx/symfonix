@@ -20,7 +20,7 @@ class UserData extends Data
         public string $email,
 
         #[Regex('/^[0-9]{10,15}$/')]
-        public int $mobile,
+        public string $mobile,
 
         #[Nullable, StringType, Min(6), Max(100)]
         public ?string $password,  // Make password nullable

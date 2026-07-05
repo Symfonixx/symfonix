@@ -66,7 +66,7 @@
                     <a href="{{ route('admin.contacts.edit', $contact) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="bi bi-pencil fs-5"></i>
                     </a>
-                    <form class="d-inline" method="POST" action="{{ route('admin.contacts.destroy', $contact) }}">
+                    <form class="d-inline" method="POST" action="{{ route('admin.contacts.destroy', $contact) }}" data-confirm-delete>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">

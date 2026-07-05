@@ -14,6 +14,8 @@ return [
     'fields' => [
         'id' => 'ID',
         'name' => 'Name',
+        'activity_type' => 'Activity Type',
+        'select_activity_type' => 'Select activity type',
         'email' => 'Email',
         'phone' => 'Phone',
         'customer' => 'Customer',
@@ -30,6 +32,7 @@ return [
     ],
     'actions' => [
         'add' => 'Add Company',
+        'add_customer' => 'Add Customer',
         'back_to_list' => 'Back to Companies',
     ],
     'search' => [
@@ -55,9 +58,25 @@ return [
     ],
     'hints' => [
         'customer' => 'Choose the customer account that owns this company.',
+        'add_customer' => 'Add a new customer if they are not in the list yet.',
         'status' => 'Disabled companies remain saved but are hidden from active workflows.',
+    ],
+    'activity_types' => [
+        'technology' => 'Technology',
+        'retail' => 'Retail',
+        'healthcare' => 'Healthcare',
+        'finance' => 'Finance',
+        'education' => 'Education',
+        'manufacturing' => 'Manufacturing',
+        'consulting' => 'Consulting',
+        'other' => 'Other',
+    ],
+    'filters' => [
+        'activity_type' => 'Filter by activity type',
+        'all' => 'All',
     ],
     'validation' => [
         'fix_errors' => 'Please fix the following errors and try again.',
+        'email_unique' => 'This email address is already used by another company.',
     ],
 ];

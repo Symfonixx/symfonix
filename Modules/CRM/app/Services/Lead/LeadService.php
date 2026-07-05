@@ -13,9 +13,35 @@ class LeadService
 {
     public function __construct(private readonly LeadRepository $repository) {}
 
-    public function list(): LengthAwarePaginator
+    public function list(array $filters = []): LengthAwarePaginator
     {
-        return $this->repository->paginate((int) config('core.page_size', 15));
+        return $this->repository->paginate($filters, (int) config('core.page_size', 15));
+    }
+
+    public function storeAttachments(Lead $lead, array $files): void
+    {
+        if ($files === []) {
+            return;
+        }
+
+        $stored = $lead->attachments ?? [];
+
+        foreach ($files as $file) {
+            if (! $file || ! $file->isValid()) {
+                continue;
+            }
+
+            $path = $file->store('leads/attachments', 'public');
+            $stored[] = [
+                'path' => $path,
+                'name' => $file->getClientOriginalName(),
+                'size' => $file->getSize(),
+            ];
+        }
+
+        if ($stored !== ($lead->attachments ?? [])) {
+            $lead->update(['attachments' => $stored]);
+        }
     }
 
     public function create(LeadData $data): ?Lead

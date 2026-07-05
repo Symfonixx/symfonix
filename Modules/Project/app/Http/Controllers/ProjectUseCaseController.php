@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Base\Support\Schema;
 use Modules\Project\Models\ProjectUseCase;
 use Modules\Project\Repositories\ProjectUseCase\ProjectUseCaseRepository;
 
@@ -52,15 +53,40 @@ class ProjectUseCaseController extends Controller
             ->get()
             ->map(fn (ProjectUseCase $item) => $this->mapUseCase($item, $locale));
 
+        $canonical = route('use-cases.show', ['slug' => $useCase->slug]);
+
         $meta = (new Meta)
             ->title($useCase->getTranslation('title', $locale).' | '.Seo::get('website_name', config('app.name')))
             ->description(strip_tags($useCase->getTranslation('summary', $locale) ?: ''))
             ->keywords(implode(', ', $useCase->technologies ?? []))
             ->ogImage($useCase->image_link)
             ->twitterImage($useCase->image_link)
+            ->type('article')
+            ->canonical($canonical)
             ->toArray();
 
+        $structuredData = [
+            Schema::breadcrumbs([
+                ['name' => __('Home'), 'url' => route('home')],
+                ['name' => __('project::use_case.pages.website_title'), 'url' => route('use-cases.index')],
+                ['name' => $useCase->getTranslation('title', $locale), 'url' => $canonical],
+            ]),
+            Schema::article([
+                'type' => 'Article',
+                'title' => $useCase->getTranslation('title', $locale),
+                'description' => strip_tags($useCase->getTranslation('summary', $locale) ?: ''),
+                'image' => $useCase->image_link,
+                'url' => $canonical,
+                'datePublished' => optional($useCase->created_at)->toAtomString(),
+                'dateModified' => optional($useCase->updated_at)->toAtomString(),
+                'keywords' => implode(', ', $useCase->technologies ?? []),
+                'section' => $useCase->category_tag,
+                'locale' => $locale,
+            ]),
+        ];
+
         return $this->inertia('Project::UseCaseShow', [
+            'structuredData' => $structuredData,
             'useCase' => $this->mapUseCase($useCase, $locale, true),
             'relatedUseCases' => $related,
         ], $meta);

@@ -42,21 +42,25 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
-        <label for="service_id" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::subscription.fields.service') }}</label>
+        <label for="service_ids" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::subscription.fields.services') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <select id="service_id" class="form-select form-select-solid @error('service_id') is-invalid @enderror"
+        @php
+            $selectedServiceIds = old('service_ids', $subscriptionData?->relationLoaded('services')
+                ? $subscriptionData->services->pluck('id')->all()
+                : array_filter([$subscriptionData?->service_id]));
+        @endphp
+        <select id="service_ids" class="form-select form-select-solid @error('service_ids') is-invalid @enderror"
                 data-control="select2" data-placeholder="{{ __('crm::subscription.fields.select_service') }}"
-                name="service_id">
-            <option value="">{{ __('crm::subscription.fields.select_service') }}</option>
+                name="service_ids[]" multiple>
             @foreach(($services ?? collect()) as $service)
-                <option value="{{ $service->id }}" @selected((int) old('service_id', $subscriptionData?->service_id) === $service->id)>
+                <option value="{{ $service->id }}" @selected(in_array($service->id, $selectedServiceIds))>
                     {{ $service->getTranslation('title', app()->getLocale()) }}
                 </option>
             @endforeach
         </select>
-        <div class="form-text">{{ __('crm::subscription.hints.service') }}</div>
-        @error('service_id')
+        <div class="form-text">{{ __('crm::subscription.hints.services') }}</div>
+        @error('service_ids')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>

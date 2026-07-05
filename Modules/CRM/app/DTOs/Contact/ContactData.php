@@ -15,6 +15,9 @@ class ContactData extends Data
         #[Nullable]
         public ?int $company_id,
 
+        #[Nullable]
+        public ?int $user_id,
+
         #[Required, StringType, Max(255)]
         public string $name,
 
@@ -23,6 +26,12 @@ class ContactData extends Data
 
         #[Nullable, StringType, Max(50)]
         public ?string $phone,
+
+        #[Nullable, StringType, Max(50)]
+        public ?string $phone2,
+
+        #[Nullable, StringType, Max(50)]
+        public ?string $source,
 
         #[Nullable, StringType, Max(100)]
         public ?string $job_title,
@@ -37,9 +46,12 @@ class ContactData extends Data
     {
         return new self(
             company_id: isset($payload['company_id']) && $payload['company_id'] !== '' ? (int) $payload['company_id'] : null,
+            user_id: isset($payload['user_id']) && $payload['user_id'] !== '' ? (int) $payload['user_id'] : null,
             name: $payload['name'],
             email: $payload['email'] ?? null,
             phone: $payload['phone'] ?? null,
+            phone2: $payload['phone2'] ?? null,
+            source: $payload['source'] ?? null,
             job_title: $payload['job_title'] ?? null,
             notes: $payload['notes'] ?? null,
             is_primary: filter_var($payload['is_primary'] ?? false, FILTER_VALIDATE_BOOLEAN),

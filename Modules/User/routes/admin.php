@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\User\Http\Controllers\Admin\AdminController;
 use Modules\User\Http\Controllers\Admin\DashboardController;
+use Modules\User\Http\Controllers\Admin\LeaveController;
 use Modules\User\Http\Controllers\Admin\ProfileController;
 use Modules\User\Http\Controllers\Admin\RoleController;
 use Modules\User\Http\Controllers\Admin\StaffController;
@@ -31,6 +32,10 @@ Route::middleware(['can:Hr Management'])
         Route::resource('admins', AdminController::class)->except('create', 'edit', 'show');
 
         Route::resource('employees', StaffController::class)->except('create', 'edit', 'show');
+
+        Route::resource('leaves', LeaveController::class)
+            ->parameters(['leaves' => 'leaveRequest'])
+            ->except('create', 'edit', 'show');
     });
 
 Route::middleware(['can:Sales Management'])

@@ -3,28 +3,42 @@
 namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreUserRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
         return [
             'img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:1048',
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',
-            'mobile' => 'required|numeric|min_digits:11|unique:users,mobile',
+            'mobile' => [
+                'required',
+                'string',
+                'regex:/^[0-9]{10,15}$/',
+                'unique:users,mobile',
+                function (string $attribute, mixed $value, \Closure $fail): void {
+                    if (str_starts_with((string) $value, '09') && strlen((string) $value) !== 11) {
+                        $fail(__('Syrian mobile numbers must be exactly 11 digits.'));
+                    }
+                },
+            ],
             'password' => 'required|min:6',
         ];
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return $this->user()?->can('Sales Management') ?? false;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('mobile')) {
+            $this->merge([
+                'mobile' => preg_replace('/\D/', '', (string) $this->input('mobile')),
+            ]);
+        }
     }
 }

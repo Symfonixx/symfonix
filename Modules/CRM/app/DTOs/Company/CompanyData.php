@@ -20,6 +20,9 @@ class CompanyData extends Data
         #[Required, StringType, Max(255)]
         public string $name,
 
+        #[Nullable, StringType, In(Company::ACTIVITY_TYPES)]
+        public ?string $activity_type,
+
         #[Nullable, Email, Max(255)]
         public ?string $email,
 
@@ -47,6 +50,7 @@ class CompanyData extends Data
         return new self(
             user_id: (int) $payload['user_id'],
             name: $payload['name'],
+            activity_type: $payload['activity_type'] ?? null,
             email: $payload['email'] ?? null,
             phone: $payload['phone'] ?? null,
             country: $payload['country'] ?? null,

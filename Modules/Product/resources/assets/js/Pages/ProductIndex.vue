@@ -24,7 +24,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2>{{ trans('Products') }}</h2>
+                    <h1>{{ trans('Products') }}</h1>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>

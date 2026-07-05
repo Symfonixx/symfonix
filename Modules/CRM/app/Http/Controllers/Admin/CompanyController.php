@@ -34,9 +34,10 @@ class CompanyController extends Controller
 
     public function index(CompanyIndexRequest $request)
     {
-        $model = $this->listCompaniesAction->execute($request->validated());
+        $filters = $request->validated();
+        $model = $this->listCompaniesAction->execute($filters);
 
-        return view('crm::admin.company.index', compact('model'));
+        return view('crm::admin.company.index', compact('model', 'filters'));
     }
 
     public function create()

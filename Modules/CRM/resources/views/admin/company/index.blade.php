@@ -16,6 +16,36 @@
 @endsection
 
 <x-admin-layout>
+    <div class="card mb-5">
+        <div class="card-body py-5">
+            <form method="GET" action="{{ route('admin.companies.index') }}" class="row g-4 align-items-end">
+                <div class="col-md-4">
+                    <label class="form-label">{{ __('crm::company.filters.activity_type') }}</label>
+                    <select name="activity_type" class="form-select form-select-solid" data-control="select2">
+                        <option value="">{{ __('crm::company.filters.all') }}</option>
+                        @foreach(\Modules\CRM\Models\Company::ACTIVITY_TYPES as $type)
+                            <option value="{{ $type }}" @selected(($filters['activity_type'] ?? '') === $type)>
+                                {{ __('crm::company.activity_types.' . $type) }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">{{ __('crm::company.fields.status') }}</label>
+                    <select name="status" class="form-select form-select-solid" data-control="select2">
+                        <option value="">{{ __('crm::company.filters.all') }}</option>
+                        <option value="active" @selected(($filters['status'] ?? '') === 'active')>{{ __('crm::company.status.active') }}</option>
+                        <option value="disabled" @selected(($filters['status'] ?? '') === 'disabled')>{{ __('crm::company.status.disabled') }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm">{{ __('Filter') }}</button>
+                    <a href="{{ route('admin.companies.index') }}" class="btn btn-light btn-sm">{{ __('Reset') }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <x-admin.table :model="$model" :search="__('crm::company.search.placeholder')" :formUrl="route('admin.companies.deleteMulti')">
         <thead>
         <tr class="text-start text-muted fw-bold fs-7 gs-0">
@@ -26,6 +56,7 @@
                 </div>
             </th>
             <th>{{ __('crm::company.fields.name') }}</th>
+            <th>{{ __('crm::company.fields.activity_type') }}</th>
             <th>{{ __('crm::company.fields.customer') }}</th>
             <th>{{ __('crm::company.fields.email') }}</th>
             <th>{{ __('crm::company.fields.phone') }}</th>
@@ -45,6 +76,13 @@
                     </div>
                 </td>
                 <td>{{ $company->name }}</td>
+                <td>
+                    @if($company->activity_type)
+                        {{ __('crm::company.activity_types.' . $company->activity_type) }}
+                    @else
+                        {{ __('N/A') }}
+                    @endif
+                </td>
                 <td>{{ $company->user?->name ?: __('N/A') }}</td>
                 <td>{{ $company->email ?: __('N/A') }}</td>
                 <td>{{ $company->phone ?: __('N/A') }}</td>
@@ -68,7 +106,7 @@
                             <span class="path2"></span>
                         </i>
                     </a>
-                    <form class="d-inline" method="POST" action="{{ route('admin.companies.destroy', $company->id) }}">
+                    <form class="d-inline" method="POST" action="{{ route('admin.companies.destroy', $company->id) }}" data-confirm-delete>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">

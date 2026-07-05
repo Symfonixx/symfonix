@@ -10,7 +10,8 @@ Developed By: Hadi Hilal
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="robots" content="index, follow"/>
+    <meta name="robots" content="{{ $page['props']['meta']['robots'] ?? 'index, follow' }}"/>
+    <meta name="googlebot" content="{{ $page['props']['meta']['robots'] ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' }}"/>
 
     @php
         $seo = \Modules\Base\Models\Seo::pluck('value', 'key');
@@ -23,30 +24,69 @@ Developed By: Hadi Hilal
     <meta name="description" content="{{ $page['props']['meta']['description'] ?? $seo->get('website_desc') }}">
     <meta name="keywords" content="{{ $page['props']['meta']['keywords'] ?? $seo->get('website_keywords') }}">
 
-    <link rel="canonical" href="{{ $page['props']['meta']['canonical'] ?? url()->current() }}">
+    @php
+        $metaProps = $page['props']['meta'] ?? [];
+        // Image values may be either a storage-relative path (e.g. "default.jpg")
+        // or an already-absolute URL (e.g. a model's image_link accessor).
+        $resolveImage = function ($value) {
+            if (empty($value)) {
+                return asset('images/blank.png');
+            }
+            if (\Illuminate\Support\Str::startsWith($value, ['http://', 'https://', '//'])) {
+                return $value;
+            }
+            return asset('storage/' . ltrim($value, '/'));
+        };
+        $ogImagePath = $metaProps['og']['image'] ?? $settings->get('meta_img');
+        $twitterImagePath = $metaProps['twitter']['image'] ?? $settings->get('meta_img');
+        $ogImageUrl = $resolveImage($ogImagePath);
+        $twitterImageUrl = $resolveImage($twitterImagePath);
+        $ogTitle = $metaProps['og']['title'] ?? $seo->get('website_name');
+        $ogDescription = $metaProps['og']['description'] ?? $seo->get('website_desc');
+        $canonicalUrl = $metaProps['canonical'] ?? url()->current();
+        $ogType = $metaProps['og']['type'] ?? 'website';
+        $twitterHandle = $settings->get('twitter')
+            ? '@'.ltrim(\Illuminate\Support\Str::of($settings->get('twitter'))->afterLast('/')->trim(), '@')
+            : null;
+    @endphp
+
+    <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ url('/rss.xml') }}">
 
-    <meta property="og:title" content="{{ $page['props']['meta']['og']['title'] ?? $seo->get('website_name') }}">
-    <meta property="og:description"
-          content="{{ $page['props']['meta']['og']['description'] ?? $seo->get('website_desc') }}">
-    <meta property="og:image"
-          content="{{ asset('storage/' . ($page['props']['meta']['og']['image'] ?? $settings->get('meta_img'))) }}">
+    {{-- Open Graph --}}
+    <meta property="og:type" content="{{ $ogType }}">
+    <meta property="og:site_name" content="{{ $seo->get('website_name') }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:locale" content="{{ str_replace('-', '_', app()->getLocale()) }}">
+    <meta property="og:locale:alternate" content="{{ app()->getLocale() === 'ar' ? 'en_US' : 'ar_AR' }}">
+    <meta property="og:title" content="{{ $ogTitle }}">
+    <meta property="og:description" content="{{ $ogDescription }}">
+    <meta property="og:image" content="{{ $ogImageUrl }}">
+    <meta property="og:image:secure_url" content="{{ $ogImageUrl }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ $ogTitle }}">
 
-    <meta name="twitter:title" content="{{ $page['props']['meta']['twitter']['title'] ?? $seo->get('website_name') }}">
-    <meta name="twitter:description"
-          content="{{ $page['props']['meta']['twitter']['description'] ?? $seo->get('website_desc') }}">
-    <meta name="twitter:image"
-          content="{{ asset('storage/' . ($page['props']['meta']['twitter']['image'] ?? $settings->get('meta_img'))) }}">
+    {{-- Twitter Card --}}
+    <meta name="twitter:card" content="summary_large_image">
+    @if($twitterHandle)
+        <meta name="twitter:site" content="{{ $twitterHandle }}">
+    @endif
+    <meta name="twitter:url" content="{{ $canonicalUrl }}">
+    <meta name="twitter:title" content="{{ $metaProps['twitter']['title'] ?? $seo->get('website_name') }}">
+    <meta name="twitter:description" content="{{ $metaProps['twitter']['description'] ?? $seo->get('website_desc') }}">
+    <meta name="twitter:image" content="{{ $twitterImageUrl }}">
+    <meta name="twitter:image:alt" content="{{ $metaProps['twitter']['title'] ?? $seo->get('website_name') }}">
 
     @php
         use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
         $currentUrl = url()->current();
-        $enUrl = LaravelLocalization::getLocalizedURL('en', $currentUrl);
-        $arUrl = LaravelLocalization::getLocalizedURL('ar', $currentUrl);
+        $supportedLocales = array_keys(LaravelLocalization::getSupportedLocales());
         $defaultUrl = LaravelLocalization::getLocalizedURL(LaravelLocalization::getDefaultLocale(), $currentUrl);
     @endphp
-    <link rel="alternate" hreflang="en" href="{{ $enUrl }}"/>
-    <link rel="alternate" hreflang="ar" href="{{ $arUrl }}"/>
+    @foreach($supportedLocales as $hreflang)
+        <link rel="alternate" hreflang="{{ $hreflang }}" href="{{ LaravelLocalization::getLocalizedURL($hreflang, $currentUrl) }}"/>
+    @endforeach
     <link rel="alternate" hreflang="x-default" href="{{ $defaultUrl }}"/>
 
     <link rel="icon" type="image/png" href="{{ asset('images/favicon/favicon-96x96.png') }}" sizes="96x96"/>
@@ -69,6 +109,17 @@ Developed By: Hadi Hilal
         <script type="application/ld+json">
             {!! json_encode($page['props']['faqSchema'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
         </script>
+    @endif
+
+    {{-- Page structured data: Article / Service / Product / BreadcrumbList (server-side for SEO) --}}
+    @if(!empty($page['props']['structuredData']))
+        @foreach($page['props']['structuredData'] as $schema)
+            @if(!empty($schema))
+                <script type="application/ld+json">
+                    {!! json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+                </script>
+            @endif
+        @endforeach
     @endif
 
     <link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}"/>
@@ -637,14 +688,60 @@ Developed By: Hadi Hilal
     })();
 </script>
 
+@php
+    $orgName = $seo->get('website_name') ?: config('app.name');
+    $siteUrl = rtrim(config('app.url') ?: url('/'), '/');
+    $logoPath = $settings->get('site_logo');
+    $logoUrl = $logoPath ? asset('storage/' . $logoPath) : null;
+
+    $sameAs = array_values(array_filter([
+        $settings->get('facebook'),
+        $settings->get('instagram'),
+        $settings->get('twitter'),
+        $settings->get('linkedin'),
+        $settings->get('github'),
+    ], fn ($v) => is_string($v) && str_starts_with($v, 'http')));
+
+    $organization = array_filter([
+        '@type' => 'Organization',
+        '@id' => $siteUrl . '/#organization',
+        'name' => $orgName,
+        'url' => $siteUrl,
+        'logo' => $logoUrl,
+        'image' => $logoUrl,
+        'description' => $seo->get('website_desc'),
+        'email' => $settings->get('email') ?: null,
+        'telephone' => $settings->get('phone') ?: null,
+        'address' => $settings->get('address') ? [
+            '@type' => 'PostalAddress',
+            'streetAddress' => $settings->get('address'),
+        ] : null,
+        'contactPoint' => ($settings->get('phone') || $settings->get('email')) ? array_filter([
+            '@type' => 'ContactPoint',
+            'contactType' => 'customer support',
+            'telephone' => $settings->get('phone') ?: null,
+            'email' => $settings->get('email') ?: null,
+        ]) : null,
+        'sameAs' => ! empty($sameAs) ? $sameAs : null,
+    ], fn ($v) => ! is_null($v) && $v !== '' && $v !== []);
+
+    $website = array_filter([
+        '@type' => 'WebSite',
+        '@id' => $siteUrl . '/#website',
+        'name' => $orgName,
+        'url' => $siteUrl,
+        'description' => $seo->get('website_desc'),
+        'inLanguage' => app()->getLocale(),
+        'publisher' => ['@id' => $siteUrl . '/#organization'],
+    ], fn ($v) => ! is_null($v) && $v !== '');
+
+    $schemaGraph = [
+        '@context' => 'https://schema.org',
+        '@graph' => [$organization, $website],
+    ];
+@endphp
 <script type="application/ld+json">
-    {
-      "@@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "{{env('APP_NAME')}}",
-      "url": "{{env('APP_URL')}}",
-      "logo": "{{ storage_path( $settings->get('site_logo')) }}"
-    }
+    {!! json_encode($schemaGraph, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
 </script>
 <script>
     @if (session('success'))

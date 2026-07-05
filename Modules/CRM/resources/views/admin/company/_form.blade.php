@@ -29,12 +29,15 @@
                 name="user_id" required>
             <option value="">{{ __('crm::company.fields.select_customer') }}</option>
             @foreach(($customers ?? collect()) as $customer)
-                <option value="{{ $customer->id }}" @selected((int) old('user_id', $companyData?->user_id) === $customer->id)>
+                <option value="{{ $customer->id }}" @selected((int) old('user_id', $companyData?->user_id ?? request('customer_id')) === $customer->id)>
                     {{ $customer->name }} ({{ $customer->email }})
                 </option>
             @endforeach
         </select>
         <div class="form-text">{{ __('crm::company.hints.customer') }}</div>
+        <button type="button" class="btn btn-sm btn-light-primary mt-3" data-bs-toggle="modal" data-bs-target="#quickCustomerModal">
+            <i class="bi bi-person-plus me-1"></i>{{ __('crm::company.actions.add_customer') }}
+        </button>
         @error('user_id')
         <span class="invalid-feedback d-block" role="alert">
             <strong>{{ $message }}</strong>
@@ -55,6 +58,27 @@
         <span class="invalid-feedback d-block" role="alert">
             <strong>{{ $message }}</strong>
         </span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="activity_type" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::company.fields.activity_type') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <select id="activity_type" class="form-select form-select-solid @error('activity_type') is-invalid @enderror"
+                data-control="select2" data-placeholder="{{ __('crm::company.fields.select_activity_type') }}"
+                data-allow-clear="true" name="activity_type">
+            <option value=""></option>
+            @foreach(\Modules\CRM\Models\Company::ACTIVITY_TYPES as $type)
+                <option value="{{ $type }}" @selected(old('activity_type', $companyData?->activity_type) === $type)>
+                    {{ __('crm::company.activity_types.' . $type) }}
+                </option>
+            @endforeach
+        </select>
+        @error('activity_type')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>
 </div>
@@ -194,5 +218,43 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
+    </div>
+</div>
+
+<div class="modal fade" id="quickCustomerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="{{ route('admin.customers.store') }}">
+                @csrf
+                <input type="hidden" name="type" value="customer">
+                <input type="hidden" name="return_url" value="{{ url()->current() }}">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('crm::company.actions.add_customer') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-5">
+                        <label class="form-label required">{{ __('Name') }}</label>
+                        <input type="text" name="name" class="form-control form-control-solid" required>
+                    </div>
+                    <div class="mb-5">
+                        <label class="form-label required">{{ __('Email') }}</label>
+                        <input type="email" name="email" class="form-control form-control-solid" required>
+                    </div>
+                    <div class="mb-5">
+                        <label class="form-label required">{{ __('Mobile') }}</label>
+                        <input type="tel" name="mobile" class="form-control form-control-solid" required>
+                    </div>
+                    <div class="mb-0">
+                        <label class="form-label required">{{ __('Password') }}</label>
+                        <input type="password" name="password" class="form-control form-control-solid" required minlength="6">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

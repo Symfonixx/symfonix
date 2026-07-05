@@ -15,6 +15,7 @@ return [
         'company' => 'Company',
         'select_company' => 'Select company',
         'service' => 'Service',
+        'services' => 'Services',
         'select_service' => 'Select service (optional)',
         'status' => 'Status',
         'billing_cycle' => 'Billing Cycle',
@@ -68,6 +69,7 @@ return [
         'auto_renew' => 'Automatically renew when the renewal date is reached.',
         'ends_at' => 'Optional hard end date for the subscription.',
         'service' => 'Optionally link this subscription to a catalog service.',
+        'services' => 'Select one or more catalog services for this subscription.',
     ],
     'empty' => [
         'company' => 'No subscriptions for this company yet.',

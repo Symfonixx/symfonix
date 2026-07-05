@@ -3,6 +3,7 @@
 namespace Modules\CRM\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
 use Modules\CRM\Actions\Contact\BulkDeleteContactsAction;
@@ -94,6 +95,11 @@ class ContactController extends Controller
         return [
             'companies' => Company::query()
                 ->select(['id', 'name'])
+                ->orderBy('name')
+                ->get(),
+            'customers' => User::query()
+                ->customers()
+                ->select(['id', 'name', 'email'])
                 ->orderBy('name')
                 ->get(),
         ];

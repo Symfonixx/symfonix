@@ -250,20 +250,6 @@ Author: Hadi Hilal
                         @endcan
                         <!--end::Messages-->
 
-                        <!--begin::Profile-->
-                        <div class="app-navbar-item ms-1 ms-md-3">
-                            <a href="{{ route('admin.profile.index') }}"
-                               class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px"
-                               title="{{ __('My Profile') }}">
-                                <i class="ki-duotone ki-profile-circle fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                </i>
-                            </a>
-                        </div>
-                        <!--end::Profile-->
-
                         <!--begin::User menu-->
                         <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
                             <!--begin::Menu wrapper-->

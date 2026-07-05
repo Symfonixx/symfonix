@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Base\Support\Schema;
 use Modules\SearchEngine\Models\SearchKeyword;
 use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
@@ -202,15 +203,35 @@ class ServiceController extends Controller
             ->take(10)
             ->get();
 
+        $canonical = route('services.show', ['slug' => $service->slug]);
+
         $meta = (new Meta)
             ->title($service->title)
             ->description($service->description)
             ->keywords($service->keywords)
             ->ogImage($service->image_link)
             ->twitterImage($service->image_link)
+            ->canonical($canonical)
             ->toArray();
 
+        $structuredData = [
+            Schema::breadcrumbs([
+                ['name' => __('Home'), 'url' => route('home')],
+                ['name' => __('Our Services'), 'url' => route('services.index')],
+                ['name' => $service->title, 'url' => $canonical],
+            ]),
+            Schema::service([
+                'title' => $service->title,
+                'description' => $service->description,
+                'image' => $service->image_link,
+                'url' => $canonical,
+                'category' => $service->category?->title,
+                'locale' => $locale,
+            ]),
+        ];
+
         return $this->inertia('Services::ServiceShow', [
+            'structuredData' => $structuredData,
             'service' => [
                 'id' => $service->id,
                 'title' => $service->title,

@@ -86,7 +86,7 @@
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__right">
 
-                                <h3 class="services-details__title-1">{{ getServiceTitle(service) }}</h3>
+                                <h1 class="services-details__title-1">{{ getServiceTitle(service) }}</h1>
                             <div class="services-details__bdr"></div>
                                   <ul class="blog-details__meta list-unstyled" v-if="service.reading_time">
                                     <li>

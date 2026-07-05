@@ -14,7 +14,7 @@ class SubscriptionModelRepository implements SubscriptionRepository
     public function paginate(array $filters = [], int $perPage = 15): LengthAwarePaginator
     {
         return Subscription::query()
-            ->with(['company:id,name', 'service:id,title'])
+            ->with(['company:id,name', 'service:id,title', 'services:id,title'])
             ->filter($filters)
             ->latest()
             ->paginate($perPage);

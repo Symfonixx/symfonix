@@ -63,7 +63,7 @@
                 name="pipeline_stage_id" required>
             @foreach(($stages ?? collect()) as $stage)
                 <option value="{{ $stage->id }}" @selected((int) old('pipeline_stage_id', $dealData?->pipeline_stage_id ?? $defaultStageId ?? null) === $stage->id)>
-                    {{ $stage->name }}
+                    {{ $stage->display_name }}
                 </option>
             @endforeach
         </select>
@@ -288,9 +288,18 @@
     addServiceBtn?.addEventListener('click', function () {
         const index = servicesWrapper.querySelectorAll('.deal-service-row').length;
         const template = servicesWrapper.querySelector('.deal-service-row').cloneNode(true);
+
+        // Drop any Select2 markup copied from the cloned row so it can be re-initialised.
+        template.querySelectorAll('.select2-container').forEach((el) => el.remove());
+
         template.querySelectorAll('[name]').forEach((input) => {
-            input.name = input.name.replace(/\services\[\d+\]/, `services[${index}]`);
+            input.name = input.name.replace(/services\[\d+\]/, `services[${index}]`);
             if (input.tagName === 'SELECT') {
+                input.classList.remove('select2-hidden-accessible');
+                input.removeAttribute('data-select2-id');
+                input.removeAttribute('aria-hidden');
+                input.removeAttribute('tabindex');
+                input.querySelectorAll('option').forEach((opt) => opt.removeAttribute('data-select2-id'));
                 input.value = '';
             } else if (input.name.includes('[quantity]')) {
                 input.value = 1;
@@ -298,7 +307,13 @@
                 input.value = '';
             }
         });
+
         servicesWrapper.appendChild(template);
+
+        if (window.jQuery && jQuery.fn.select2) {
+            jQuery(template).find('.deal-service-select').select2();
+        }
+
         bindServiceRow(template);
     });
 </script>

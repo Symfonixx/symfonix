@@ -48,7 +48,8 @@
 
                         <div class="col-md-12 mb-7">
                             <label for="mobile" class="required form-label">{{__('Mobile')}}</label>
-                            <input type="number" id="mobile"
+                            <input type="tel" id="mobile"
+                                   inputmode="tel"
                                    class="form-control form-control-solid @error('mobile') is-invalid @enderror"
                                    name="mobile" value="{{ old('mobile') }}" required>
                             @error('mobile')

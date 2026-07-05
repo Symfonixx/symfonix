@@ -11,6 +11,11 @@ class UserDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+        $this->call([
+            RoleScenarioSeeder::class,
+            EmployeeScenarioSeeder::class,
+            AdminScenarioSeeder::class,
+            LeaveScenarioSeeder::class,
+        ]);
     }
 }

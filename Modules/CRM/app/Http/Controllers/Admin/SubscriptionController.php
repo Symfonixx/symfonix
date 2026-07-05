@@ -50,7 +50,7 @@ class SubscriptionController extends Controller
     public function store(StoreSubscriptionRequest $request): RedirectResponse
     {
         $data = SubscriptionData::fromRequest($request->validated());
-        $subscription = $this->createSubscriptionAction->execute($data);
+        $subscription = $this->createSubscriptionAction->execute($data, $request->input('service_ids', []));
 
         if ($request->boolean('redirect_to_company') && $subscription) {
             return redirect()->route('admin.companies.show', $subscription->company_id);
@@ -64,6 +64,7 @@ class SubscriptionController extends Controller
         $subscription->loadMissing([
             'company:id,name,email,phone,status',
             'service:id,title',
+            'services:id,title',
             'crmActivities.user:id,name',
             'crmAuditLogs.user:id,name',
         ]);
@@ -73,6 +74,8 @@ class SubscriptionController extends Controller
 
     public function edit(Subscription $subscription)
     {
+        $subscription->loadMissing('services:id,title');
+
         return view('crm::admin.subscription.edit', array_merge(
             ['subscription' => $subscription],
             $this->formData(request())
@@ -82,7 +85,7 @@ class SubscriptionController extends Controller
     public function update(UpdateSubscriptionRequest $request, Subscription $subscription): RedirectResponse
     {
         $data = SubscriptionData::fromRequest($request->validated());
-        $this->updateSubscriptionAction->execute($subscription, $data);
+        $this->updateSubscriptionAction->execute($subscription, $data, $request->input('service_ids', []));
 
         return redirect()->route('admin.subscriptions.index');
     }

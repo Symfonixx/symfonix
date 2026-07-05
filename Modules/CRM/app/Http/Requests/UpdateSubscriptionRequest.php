@@ -13,6 +13,8 @@ class UpdateSubscriptionRequest extends FormRequest
         return [
             'company_id' => ['required', Rule::exists('companies', 'id')],
             'service_id' => ['nullable', 'integer', Rule::exists('services', 'id')],
+            'service_ids' => ['nullable', 'array'],
+            'service_ids.*' => ['integer', Rule::exists('services', 'id')],
             'name' => ['required', 'string', 'min:2', 'max:255'],
             'status' => ['required', Rule::in(Subscription::STATUSES)],
             'billing_cycle' => ['required', Rule::in(Subscription::BILLING_CYCLES)],
@@ -35,7 +37,7 @@ class UpdateSubscriptionRequest extends FormRequest
     {
         $this->merge([
             'auto_renew' => $this->boolean('auto_renew'),
-            'service_id' => $this->input('service_id') ?: null,
+            'service_id' => $this->input('service_id') ?: ($this->input('service_ids.0') ?: null),
         ]);
     }
 }

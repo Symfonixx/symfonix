@@ -24,7 +24,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2>{{ trans("Contact Us") }}</h2>
+                    <h1>{{ trans("Contact Us") }}</h1>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><Link :href="route('home')" ><i class="fas fa-home"></i>{{ trans("Home") }}</Link></li>

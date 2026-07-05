@@ -52,10 +52,79 @@
         <label for="phone" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.phone') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <input id="phone" type="text" class="form-control form-control-solid @error('phone') is-invalid @enderror"
+        <input id="phone" type="tel" inputmode="tel" pattern="[0-9+\-\s()]+"
+               class="form-control form-control-solid @error('phone') is-invalid @enderror"
                name="phone" value="{{ old('phone', $leadData?->phone) }}"
                placeholder="{{ __('crm::lead.placeholders.phone') }}" maxlength="50"/>
         @error('phone')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="job_title" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.job_title') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="job_title" type="text" class="form-control form-control-solid @error('job_title') is-invalid @enderror"
+               name="job_title" value="{{ old('job_title', $leadData?->job_title) }}"
+               placeholder="{{ __('crm::lead.placeholders.job_title') }}" maxlength="255"/>
+        @error('job_title')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <div class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.city') }} / {{ __('crm::lead.fields.country') }}</div>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <div class="row g-6">
+            <div class="col-md-6">
+                <input id="city" type="text" class="form-control form-control-solid @error('city') is-invalid @enderror"
+                       name="city" value="{{ old('city', $leadData?->city) }}"
+                       placeholder="{{ __('crm::lead.placeholders.city') }}" maxlength="100"/>
+                @error('city')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <input id="country" type="text" class="form-control form-control-solid @error('country') is-invalid @enderror"
+                       name="country" value="{{ old('country', $leadData?->country) }}"
+                       placeholder="{{ __('crm::lead.placeholders.country') }}" maxlength="100"/>
+                @error('country')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="website" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.website') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="website" type="url" class="form-control form-control-solid @error('website') is-invalid @enderror"
+               name="website" value="{{ old('website', $leadData?->website) }}"
+               placeholder="{{ __('crm::lead.placeholders.website') }}" maxlength="255"/>
+        @error('website')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="industry" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.industry') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="industry" type="text" class="form-control form-control-solid @error('industry') is-invalid @enderror"
+               name="industry" value="{{ old('industry', $leadData?->industry) }}"
+               placeholder="{{ __('crm::lead.placeholders.industry') }}" maxlength="150"/>
+        @error('industry')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>
@@ -210,6 +279,53 @@
                   name="problem_statement" rows="4"
                   placeholder="{{ __('crm::lead.placeholders.problem_statement') }}">{{ old('problem_statement', $leadData?->problem_statement) }}</textarea>
         @error('problem_statement')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="status" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.status') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <select id="status" class="form-select form-select-solid @error('status') is-invalid @enderror"
+                data-control="select2" name="status">
+            @foreach(\Modules\CRM\Models\Lead::STATUSES as $leadStatus)
+                <option value="{{ $leadStatus }}" @selected(old('status', $leadData?->status ?? \Modules\CRM\Models\Lead::STATUS_NEW) === $leadStatus)>
+                    {{ __('crm::lead.status.' . $leadStatus) }}
+                </option>
+            @endforeach
+        </select>
+        @error('status')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="attachments" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.attachments') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="attachments" type="file" class="form-control form-control-solid @error('attachments') is-invalid @enderror @error('attachments.*') is-invalid @enderror"
+               name="attachments[]" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.webp"/>
+        @if(!empty($leadData?->attachments))
+            <div class="mt-4">
+                @foreach($leadData->attachments as $attachment)
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <i class="bi bi-paperclip"></i>
+                        <a href="{{ asset('storage/' . $attachment['path']) }}" target="_blank" class="text-hover-primary">
+                            {{ $attachment['name'] ?? basename($attachment['path']) }}
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+        @error('attachments')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+        @error('attachments.*')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>

@@ -46,7 +46,7 @@
                         <div class="col-md-3 fw-bold">{{ __('crm::deal.fields.stage') }}</div>
                         <div class="col-md-9">
                             <span class="badge badge-light-{{ $deal->pipelineStage?->color ?? 'primary' }}">
-                                {{ $deal->pipelineStage?->name ?: __('N/A') }}
+                                {{ $deal->pipelineStage?->display_name ?: __('N/A') }}
                             </span>
                         </div>
                     </div>
@@ -269,7 +269,7 @@
                             <select name="pipeline_stage_id" class="form-select form-select-solid" required>
                                 @foreach($stages as $stage)
                                     <option value="{{ $stage->id }}" @selected($stage->id === $deal->pipeline_stage_id)>
-                                        {{ $stage->name }}
+                                        {{ $stage->display_name }}
                                     </option>
                                 @endforeach
                             </select>

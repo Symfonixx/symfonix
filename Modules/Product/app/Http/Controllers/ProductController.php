@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Base\Support\Schema;
 use Modules\Product\Models\Product;
 use Modules\Product\Repositories\ProductRepository;
 
@@ -55,15 +56,36 @@ class ProductController extends Controller
             ->get()
             ->map(fn (Product $item) => $this->mapProduct($item, $locale));
 
+        $canonical = route('product.show', ['slug' => $product->slug]);
+
         $meta = (new Meta)
             ->title($product->seoTitle($locale).' | '.Seo::get('website_name', config('app.name')))
             ->description($product->seoDescription($locale))
             ->keywords($product->seoKeywords($locale))
             ->ogImage($product->seoMetaImageLink())
             ->twitterImage($product->seoMetaImageLink())
+            ->type('product')
+            ->canonical($canonical)
             ->toArray();
 
+        $structuredData = [
+            Schema::breadcrumbs([
+                ['name' => __('Home'), 'url' => route('home')],
+                ['name' => __('product::product.pages.catalog_title'), 'url' => route('product.index')],
+                ['name' => $product->getTranslation('name', $locale), 'url' => $canonical],
+            ]),
+            Schema::product([
+                'name' => $product->getTranslation('name', $locale),
+                'description' => $product->seoDescription($locale) ?: $product->getTranslation('short_description', $locale),
+                'image' => $product->main_image_link,
+                'url' => $canonical,
+                'category' => $product->category?->name,
+                'locale' => $locale,
+            ]),
+        ];
+
         return $this->inertia('Product::ProductShow', [
+            'structuredData' => $structuredData,
             'product' => $this->mapProduct($product, $locale, detailed: true),
             'relatedProducts' => $related,
         ], $meta);

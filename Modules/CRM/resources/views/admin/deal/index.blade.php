@@ -51,7 +51,7 @@
                 <td>{{ $deal->company?->name ?: __('N/A') }}</td>
                 <td>
                     <span class="badge badge-light-{{ $deal->pipelineStage?->color ?? 'primary' }}">
-                        {{ $deal->pipelineStage?->name ?: __('N/A') }}
+                        {{ $deal->pipelineStage?->display_name ?: __('N/A') }}
                     </span>
                 </td>
                 <td>{{ $deal->assignee?->name ?: __('N/A') }}</td>
@@ -88,7 +88,7 @@
                             <span class="path2"></span>
                         </i>
                     </a>
-                    <form class="d-inline" method="POST" action="{{ route('admin.deals.destroy', $deal->id) }}">
+                    <form class="d-inline" method="POST" action="{{ route('admin.deals.destroy', $deal->id) }}" data-confirm-delete>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">

@@ -115,9 +115,16 @@
                         <div class="mt-3 p-3 bg-light rounded fs-7">
                             <div class="fw-semibold mb-2">{{ __('crm::timeline.fields_changed') }}</div>
                             @foreach(($item->new_values ?? []) as $field => $newValue)
+                                @php
+                                    $fieldKey = 'crm::timeline.audit_fields.'.$field;
+                                    $fieldLabel = \Illuminate\Support\Facades\Lang::has($fieldKey)
+                                        ? __($fieldKey)
+                                        : \Illuminate\Support\Str::of($field)->replace('_', ' ')->title();
+                                    $oldDisplay = $item->old_values[$field] ?? null;
+                                @endphp
                                 <div class="mb-1">
-                                    <code>{{ $field }}</code>:
-                                    <span class="text-muted">{{ $item->old_values[$field] ?? '—' }}</span>
+                                    <span class="fw-bold text-gray-800">{{ $fieldLabel }}</span>:
+                                    <span class="text-muted">{{ is_array($oldDisplay) ? json_encode($oldDisplay) : ($oldDisplay ?? '—') }}</span>
                                     →
                                     <span class="fw-semibold">{{ is_array($newValue) ? json_encode($newValue) : $newValue }}</span>
                                 </div>

@@ -15,6 +15,7 @@ class CompanyIndexRequest extends FormRequest
             'status' => ['nullable', Rule::in([Company::STATUS_ACTIVE, Company::STATUS_DISABLED])],
             'country' => ['nullable', 'string', 'max:100'],
             'city' => ['nullable', 'string', 'max:100'],
+            'activity_type' => ['nullable', Rule::in(Company::ACTIVITY_TYPES)],
             'with_trashed' => ['nullable', 'boolean'],
         ];
     }

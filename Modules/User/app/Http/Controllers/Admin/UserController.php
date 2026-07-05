@@ -26,7 +26,11 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $userData = UserData::validateAndCreate($request->all());
-        $this->userRepository->store($userData);
+        $user = $this->userRepository->store($userData);
+
+        if ($request->filled('return_url') && $user) {
+            return redirect($request->input('return_url').'?customer_id='.$user->id);
+        }
 
         return redirect()->route('admin.customers.index');
     }

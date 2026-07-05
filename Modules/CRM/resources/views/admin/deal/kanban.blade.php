@@ -28,7 +28,7 @@
                         <h3 class="card-title align-items-start flex-column">
                             <span class="card-label fw-bold text-gray-900">
                                 <span class="badge badge-light-{{ $stage->color }} me-2">&nbsp;</span>
-                                {{ $stage->name }}
+                                {{ $stage->display_name }}
                             </span>
                             <span class="text-muted mt-1 fw-semibold fs-7">
                                 {{ __('crm::deal.kanban.deals_count', ['count' => $stage->deals->count()]) }}
@@ -66,7 +66,7 @@
                                             onchange="this.form.submit()">
                                         @foreach($stages as $targetStage)
                                             <option value="{{ $targetStage->id }}" @selected($targetStage->id === $deal->pipeline_stage_id)>
-                                                → {{ $targetStage->name }}
+                                                → {{ $targetStage->display_name }}
                                             </option>
                                         @endforeach
                                     </select>
