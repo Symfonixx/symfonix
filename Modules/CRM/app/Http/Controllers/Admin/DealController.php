@@ -162,7 +162,7 @@ class DealController extends Controller
 
             'services:id,title',
 
-            'project:id,title,status',
+            'project:id,title,deal_id',
 
             'stageHistories.fromStage:id,name,color',
 
