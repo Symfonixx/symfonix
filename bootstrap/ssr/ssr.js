@@ -610,7 +610,7 @@ const _sfc_main$s = {
         }),
         _: 1
       }, _parent));
-      _push(`</li><li class="${ssrRenderClass({ current: isActive(["product.index", "product.show"], { prefixes: ["/product"] }) })}">`);
+      _push(`</li><li class="${ssrRenderClass({ current: isActive(["product.index", "product.show"], { prefixes: ["/products", "/product"] }) })}">`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("product.index")
       }, {

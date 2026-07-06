@@ -14,6 +14,9 @@ use Modules\Product\Http\Controllers\ProductController;
 |
 */
 
-    Route::get('product', [ProductController::class, 'index'])->name('product.index');
-    Route::get('product/{slug}', [ProductController::class, 'show'])->name('product.show');
+    Route::get('products', [ProductController::class, 'index'])->name('product.index');
+    Route::get('products/{slug}', [ProductController::class, 'show'])->name('product.show');
+
+    Route::redirect('product', 'products', 301);
+    Route::get('product/{slug}', fn (string $slug) => redirect("products/{$slug}", 301));
 

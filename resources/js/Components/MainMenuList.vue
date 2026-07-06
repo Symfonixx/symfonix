@@ -20,7 +20,7 @@
                 {{ trans('Case Studies') }}
             </Link>
         </li>
-        <li :class="{ current: isActive(['product.index', 'product.show'], { prefixes: ['/product'] }) }">
+        <li :class="{ current: isActive(['product.index', 'product.show'], { prefixes: ['/products', '/product'] }) }">
             <Link :href="route('product.index')">
                 {{ trans('Products') }}
             </Link>

@@ -168,7 +168,7 @@ class SitemapController extends Controller
         try {
             if (class_exists(Product::class)) {
                 $entries[] = [
-                    'path' => '/product',
+                    'path' => '/products',
                     'lastmod' => now()->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.8',
@@ -177,7 +177,7 @@ class SitemapController extends Controller
                 Product::published()->active()->select(['slug', 'updated_at'])->chunk(200, function ($products) use (&$entries) {
                     foreach ($products as $product) {
                         $entries[] = [
-                            'path' => '/product/'.$product->slug,
+                            'path' => '/products/'.$product->slug,
                             'lastmod' => optional($product->updated_at)->toAtomString(),
                             'changefreq' => 'weekly',
                             'priority' => '0.7',
