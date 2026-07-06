@@ -126,6 +126,59 @@ class FinanceService
             ->all();
     }
 
+    /**
+     * @return array<int, int>
+     */
+    public function getAvailableYears(): array
+    {
+        $years = JournalEntry::query()
+            ->selectRaw('YEAR(transaction_date) as year')
+            ->groupBy('year')
+            ->orderByDesc('year')
+            ->pluck('year')
+            ->map(fn ($year) => (int) $year)
+            ->values()
+            ->all();
+
+        if ($years === []) {
+            return [(int) now()->year];
+        }
+
+        return $years;
+    }
+
+    /**
+     * @return array<int, array{label: string, month: int, revenue: float, expenses: float}>
+     */
+    public function getMonthlyTrendForYear(int $year): array
+    {
+        $rows = JournalEntry::query()
+            ->whereYear('transaction_date', $year)
+            ->selectRaw('MONTH(transaction_date) as month')
+            ->selectRaw("SUM(CASE WHEN flow = '".JournalEntry::FLOW_REVENUE."' THEN amount ELSE 0 END) as revenue")
+            ->selectRaw("SUM(CASE WHEN flow = '".JournalEntry::FLOW_EXPENSE."' THEN amount ELSE 0 END) as expenses")
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get()
+            ->keyBy('month');
+
+        $months = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $date = Carbon::create($year, $month, 1);
+            $row = $rows->get($month);
+
+            $months[] = [
+                'label' => $date->translatedFormat('M'),
+                'month' => $month,
+                'revenue' => $row ? (float) $row->revenue : 0.0,
+                'expenses' => $row ? (float) $row->expenses : 0.0,
+            ];
+        }
+
+        return $months;
+    }
+
     public function updateProjectPaymentStatus(int $projectId): void
     {
         $project = Project::query()->findOrFail($projectId);

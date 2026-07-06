@@ -30,8 +30,17 @@ class FinancialDashboard extends Component
     /** @var array<int, array{label: string, profit: float, expenses: float, losses: float, revenue: float}> */
     public array $chartData = [];
 
+    /** @var array<int, array{label: string, month: int, revenue: float, expenses: float}> */
+    public array $trendChartData = [];
+
+    /** @var array<int, int> */
+    public array $availableYears = [];
+
+    public int $selectedYear;
+
     public function mount(FinanceService $financeService): void
     {
+        $this->selectedYear = (int) now()->year;
         $this->refreshMetrics($financeService);
     }
 
@@ -45,6 +54,11 @@ class FinancialDashboard extends Component
         $this->selectedMonths = [];
         $this->refreshMetrics($financeService);
         $this->dispatch('finance-month-filter-cleared');
+    }
+
+    public function updatedSelectedYear(FinanceService $financeService): void
+    {
+        $this->trendChartData = $financeService->getMonthlyTrendForYear($this->selectedYear);
     }
 
     #[On('transaction-logged')]
@@ -65,6 +79,14 @@ class FinancialDashboard extends Component
         $this->saasCurrency = $saas['primary_currency'];
 
         $this->chartData = $financeService->getMonthlyChartData($monthKeys);
+
+        $this->availableYears = $financeService->getAvailableYears();
+
+        if (! in_array($this->selectedYear, $this->availableYears, true)) {
+            $this->selectedYear = $this->availableYears[0] ?? (int) now()->year;
+        }
+
+        $this->trendChartData = $financeService->getMonthlyTrendForYear($this->selectedYear);
     }
 
     public function render(FinanceService $financeService)

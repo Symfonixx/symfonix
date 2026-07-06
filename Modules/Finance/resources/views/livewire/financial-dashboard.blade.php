@@ -185,7 +185,41 @@
         @endforeach
     </div>
 
-    <div class="card border-0 shadow-sm" wire:key="finance-chart-{{ md5(json_encode($selectedMonths)) }}">
+    <div class="card border-0 shadow-sm mb-8">
+        <div class="card-header border-0 pt-6">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 w-100">
+                <div>
+                    <h3 class="card-title fw-bold mb-1">{{ __('finance::finance.charts.trend_title') }}</h3>
+                    <span class="text-muted fs-7">{{ __('finance::finance.charts.trend_hint') }}</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <label class="form-label fw-semibold mb-0" for="finance-year-filter">
+                        {{ __('finance::finance.charts.year') }}
+                    </label>
+                    <select
+                        id="finance-year-filter"
+                        wire:model.live="selectedYear"
+                        class="form-select form-select-solid w-auto"
+                    >
+                        @foreach($availableYears as $year)
+                            <option value="{{ $year }}">{{ $year }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pt-2">
+            @if(empty($trendChartData) || collect($trendChartData)->every(fn ($row) => $row['revenue'] == 0 && $row['expenses'] == 0))
+                <p class="text-muted text-center py-10 mb-0">{{ __('finance::finance.charts.trend_empty', ['year' => $selectedYear]) }}</p>
+            @else
+                <div class="fin-chart-wrap" wire:ignore>
+                    <canvas id="finance-trend-chart"></canvas>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm">
         <div class="card-header border-0 pt-6">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 w-100">
                 <div>
@@ -203,7 +237,7 @@
             @if(empty($chartData))
                 <p class="text-muted text-center py-10 mb-0">{{ __('finance::finance.charts.empty') }}</p>
             @else
-                <div class="fin-chart-wrap">
+                <div class="fin-chart-wrap" wire:ignore>
                     <canvas id="finance-performance-chart"></canvas>
                 </div>
             @endif
@@ -212,13 +246,247 @@
 
     @script
     <script>
-        const syncFinanceChartPayload = () => {
-            window.__financeChartPayload = $wire.chartData ?? [];
-            document.dispatchEvent(new CustomEvent('finance-chart-render'));
+        const chartLabels = @json([
+            'profit' => __('finance::finance.charts.profit'),
+            'expenses' => __('finance::finance.charts.expenses'),
+            'losses' => __('finance::finance.charts.losses'),
+            'revenue' => __('finance::finance.metrics.total_revenue'),
+        ]);
+
+        const chartColors = {
+            profit: '#50cd89',
+            profitMuted: 'rgba(80, 205, 137, 0.55)',
+            expenses: '#f6aa33',
+            expensesMuted: 'rgba(246, 170, 51, 0.55)',
+            losses: '#f1416c',
+            lossesMuted: 'rgba(241, 65, 108, 0.55)',
+            revenue: '#3e97ff',
+            revenueFill: 'rgba(62, 151, 255, 0.12)',
+            expensesLine: '#f6aa33',
+            expensesFill: 'rgba(246, 170, 51, 0.12)',
         };
 
-        syncFinanceChartPayload();
-        $wire.$watch('chartData', () => syncFinanceChartPayload());
+        let performanceChart = null;
+        let trendChart = null;
+        let chartJsPromise = null;
+
+        const ensureChartJs = () => {
+            if (typeof Chart !== 'undefined') {
+                return Promise.resolve();
+            }
+
+            if (!chartJsPromise) {
+                chartJsPromise = new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
+                    script.async = true;
+                    script.onload = () => resolve();
+                    script.onerror = () => reject(new Error('Chart.js failed to load'));
+                    document.head.appendChild(script);
+                });
+            }
+
+            return chartJsPromise;
+        };
+
+        const destroyChart = (chart) => {
+            if (chart) {
+                chart.destroy();
+            }
+
+            return null;
+        };
+
+        const renderPerformanceChart = () => {
+            const canvas = document.getElementById('finance-performance-chart');
+            const payload = $wire.chartData ?? [];
+
+            if (!canvas) {
+                performanceChart = destroyChart(performanceChart);
+                return;
+            }
+
+            if (!payload.length) {
+                performanceChart = destroyChart(performanceChart);
+                return;
+            }
+
+            const profits = payload.map((item) => Number(item.profit));
+            const expenses = payload.map((item) => Number(item.expenses));
+            const losses = payload.map((item) => Number(item.losses));
+            const maxProfit = Math.max(...profits);
+            const maxExpenses = Math.max(...expenses);
+            const maxLosses = Math.max(...losses);
+
+            performanceChart = destroyChart(performanceChart);
+            performanceChart = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: payload.map((item) => item.label),
+                    datasets: [
+                        {
+                            label: chartLabels.profit,
+                            data: profits,
+                            backgroundColor: profits.map((value) => value === maxProfit && maxProfit > 0 ? chartColors.profit : chartColors.profitMuted),
+                            borderRadius: 6,
+                            maxBarThickness: 28,
+                        },
+                        {
+                            label: chartLabels.expenses,
+                            data: expenses,
+                            backgroundColor: expenses.map((value) => value === maxExpenses && maxExpenses > 0 ? chartColors.expenses : chartColors.expensesMuted),
+                            borderRadius: 6,
+                            maxBarThickness: 28,
+                        },
+                        {
+                            label: chartLabels.losses,
+                            data: losses,
+                            backgroundColor: losses.map((value) => value === maxLosses && maxLosses > 0 ? chartColors.losses : chartColors.lossesMuted),
+                            borderRadius: 6,
+                            maxBarThickness: 28,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { boxWidth: 12, padding: 16, usePointStyle: true },
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => {
+                                    const value = context.parsed.y ?? 0;
+                                    return `${context.dataset.label}: ${value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                },
+                            },
+                        },
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(226, 232, 240, 0.8)' },
+                            ticks: {
+                                callback: (value) => Number(value).toLocaleString(),
+                            },
+                        },
+                        x: {
+                            grid: { display: false },
+                        },
+                    },
+                },
+            });
+        };
+
+        const renderTrendChart = () => {
+            const canvas = document.getElementById('finance-trend-chart');
+            const payload = $wire.trendChartData ?? [];
+
+            if (!canvas) {
+                trendChart = destroyChart(trendChart);
+                return;
+            }
+
+            const hasValues = payload.some((item) => Number(item.revenue) > 0 || Number(item.expenses) > 0);
+
+            if (!payload.length || !hasValues) {
+                trendChart = destroyChart(trendChart);
+                return;
+            }
+
+            const revenues = payload.map((item) => Number(item.revenue));
+            const expenses = payload.map((item) => Number(item.expenses));
+
+            trendChart = destroyChart(trendChart);
+            trendChart = new Chart(canvas, {
+                type: 'line',
+                data: {
+                    labels: payload.map((item) => item.label),
+                    datasets: [
+                        {
+                            label: chartLabels.revenue,
+                            data: revenues,
+                            borderColor: chartColors.revenue,
+                            backgroundColor: chartColors.revenueFill,
+                            fill: true,
+                            tension: 0.35,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            borderWidth: 2,
+                        },
+                        {
+                            label: chartLabels.expenses,
+                            data: expenses,
+                            borderColor: chartColors.expensesLine,
+                            backgroundColor: chartColors.expensesFill,
+                            fill: true,
+                            tension: 0.35,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            borderWidth: 2,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { boxWidth: 12, padding: 16, usePointStyle: true },
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => {
+                                    const value = context.parsed.y ?? 0;
+                                    return `${context.dataset.label}: ${value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                                },
+                            },
+                        },
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(226, 232, 240, 0.8)' },
+                            ticks: {
+                                callback: (value) => Number(value).toLocaleString(),
+                            },
+                        },
+                        x: {
+                            grid: { display: false },
+                        },
+                    },
+                },
+            });
+        };
+
+        const renderFinanceCharts = () => {
+            ensureChartJs()
+                .then(() => {
+                    requestAnimationFrame(() => {
+                        renderPerformanceChart();
+                        renderTrendChart();
+                    });
+                })
+                .catch(() => {});
+        };
+
+        renderFinanceCharts();
+        $wire.$watch('chartData', () => renderFinanceCharts());
+        $wire.$watch('trendChartData', () => renderFinanceCharts());
+        $wire.$watch('selectedYear', () => renderFinanceCharts());
+
+        document.addEventListener('livewire:initialized', () => {
+            Livewire.hook('commit', ({ succeed }) => {
+                succeed(() => {
+                    renderFinanceCharts();
+                });
+            });
+        });
     </script>
     @endscript
 </div>

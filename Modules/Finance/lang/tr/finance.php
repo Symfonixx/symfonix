@@ -49,6 +49,10 @@ return [
     'charts' => [
         'performance_title' => 'Kâr vs. Gider vs. Zarar',
         'performance_hint' => 'En yüksek değerler vurgulanmış aylık karşılaştırma.',
+        'trend_title' => 'Gelir vs. Gider Trendi',
+        'trend_hint' => 'Seçilen yıl için aylık gelir ve gider.',
+        'trend_empty' => ':year yılı için işlem verisi yok.',
+        'year' => 'Yıl',
         'profit' => 'Kâr',
         'expenses' => 'Gider',
         'losses' => 'Zarar',

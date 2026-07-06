@@ -49,6 +49,10 @@ return [
     'charts' => [
         'performance_title' => 'Profit vs. Expenses vs. Losses',
         'performance_hint' => 'Monthly comparison with peak values highlighted.',
+        'trend_title' => 'Revenue vs. Expenses Trend',
+        'trend_hint' => 'Monthly revenue and expenses for the selected year.',
+        'trend_empty' => 'No transaction data available for :year.',
+        'year' => 'Year',
         'profit' => 'Profit',
         'expenses' => 'Expenses',
         'losses' => 'Losses',
