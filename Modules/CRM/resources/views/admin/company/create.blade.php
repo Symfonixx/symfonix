@@ -20,4 +20,6 @@
     <x-admin.create-card :title="__('crm::company.pages.create_title')" :formUrl="route('admin.companies.store')">
         @include('crm::admin.company._form')
     </x-admin.create-card>
+
+    @include('crm::admin.company._quick_customer_modal')
 </x-admin-layout>

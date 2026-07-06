@@ -210,18 +210,15 @@
         </div>
     </div>
 
-    @if(! empty($chartData))
-        <script>
-            window.__financeChartPayload = @json($chartData);
+    @script
+    <script>
+        const syncFinanceChartPayload = () => {
+            window.__financeChartPayload = $wire.chartData ?? [];
             document.dispatchEvent(new CustomEvent('finance-chart-render'));
-        </script>
-    @else
-        <script>
-            window.__financeChartPayload = [];
-            if (window.__financePerformanceChart) {
-                window.__financePerformanceChart.destroy();
-                window.__financePerformanceChart = null;
-            }
-        </script>
-    @endif
+        };
+
+        syncFinanceChartPayload();
+        $wire.$watch('chartData', () => syncFinanceChartPayload());
+    </script>
+    @endscript
 </div>

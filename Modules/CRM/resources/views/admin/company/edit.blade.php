@@ -21,4 +21,6 @@
         @method('PUT')
         @include('crm::admin.company._form', ['company' => $company])
     </x-admin.create-card>
+
+    @include('crm::admin.company._quick_customer_modal')
 </x-admin-layout>

@@ -37,7 +37,16 @@
             const chartPayload = window.__financeChartPayload || [];
             const canvas = document.getElementById('finance-performance-chart');
 
-            if (!canvas || typeof Chart === 'undefined') {
+            if (typeof Chart === 'undefined') {
+                return;
+            }
+
+            if (!canvas) {
+                if (window.__financePerformanceChart) {
+                    window.__financePerformanceChart.destroy();
+                    window.__financePerformanceChart = null;
+                }
+
                 return;
             }
 
@@ -119,8 +128,12 @@
             });
         };
 
-        document.addEventListener('finance-chart-render', renderFinanceChart);
-        renderFinanceChart();
+        const scheduleFinanceChartRender = () => {
+            requestAnimationFrame(renderFinanceChart);
+        };
+
+        document.addEventListener('finance-chart-render', scheduleFinanceChartRender);
+        scheduleFinanceChartRender();
 
         const initFinanceMonthSelect = () => {
             const select = document.getElementById('finance-month-filter');

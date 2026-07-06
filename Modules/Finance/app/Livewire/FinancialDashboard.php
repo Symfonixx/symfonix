@@ -27,6 +27,9 @@ class FinancialDashboard extends Component
 
     public string $saasCurrency = 'USD';
 
+    /** @var array<int, array{label: string, profit: float, expenses: float, losses: float, revenue: float}> */
+    public array $chartData = [];
+
     public function mount(FinanceService $financeService): void
     {
         $this->refreshMetrics($financeService);
@@ -60,15 +63,14 @@ class FinancialDashboard extends Component
         $this->arr = $saas['arr'];
         $this->activeSubscriptions = $saas['active_count'];
         $this->saasCurrency = $saas['primary_currency'];
+
+        $this->chartData = $financeService->getMonthlyChartData($monthKeys);
     }
 
     public function render(FinanceService $financeService)
     {
-        $monthKeys = $this->selectedMonths ?: null;
-
         return view('finance::livewire.financial-dashboard', [
             'availableMonths' => $financeService->getAvailableMonths(),
-            'chartData' => $financeService->getMonthlyChartData($monthKeys),
             'isLifetimeView' => empty($this->selectedMonths),
         ]);
     }
