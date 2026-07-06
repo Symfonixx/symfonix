@@ -1,0 +1,84 @@
+{
+    "menu": {
+        "products": "المنتجات",
+        "catalog": "الكتالوج"
+    },
+    "pages": {
+        "index_title": "كتالوج المنتجات",
+        "create_title": "إضافة منتج",
+        "edit_title": "تعديل منتج",
+        "catalog_title": "المنتجات"
+    },
+    "meta": {
+        "index_description": "تصفح كتالوج منتجاتنا B2B — منصات SaaS وخدمات احترافية وحلول مؤسسية.",
+        "index_keywords": "منتجات، كتالوج B2B، SaaS، برمجيات مؤسسية، خدمات تقنية"
+    },
+    "sections": {
+        "media": "الوسائط",
+        "content": "محتوى الموقع",
+        "seo": "تحسين محركات البحث"
+    },
+    "fields": {
+        "name": "اسم المنتج",
+        "category": "الفئة",
+        "select_category": "اختر الفئة",
+        "sku": "رمز المنتج",
+        "short_description": "وصف مختصر",
+        "short_description_help": "يظهر في بطاقات الكتالوج (حد أقصى 500 حرف).",
+        "description": "الوصف الكامل",
+        "description_help": "محتوى غني لصفحة تفاصيل المنتج.",
+        "main_image": "الصورة الرئيسية",
+        "main_image_help": "الصورة الأساسية للمنتج في الكتالوج.",
+        "seo_title": "عنوان SEO",
+        "seo_title_help": "الطول المثالي: 50–60 حرفاً.",
+        "seo_description": "وصف Meta",
+        "seo_description_help": "الطول المثالي: 120–160 حرفاً.",
+        "seo_keywords": "كلمات مفتاحية",
+        "seo_keywords_placeholder": "saas, crm, enterprise",
+        "seo_meta_img": "صورة المشاركة",
+        "seo_meta_img_help": "صورة OG/Twitter اختيارية.",
+        "price": "السعر",
+        "billing": "الفوترة",
+        "status": "الحالة",
+        "featured": "مميز",
+        "featured_help": "إبراز في الكتالوج والعروض",
+        "is_published": "نشر على الموقع",
+        "is_published_help": "إظهار هذا المنتج في موقع العرض B2B.",
+        "website_visibility": "الموقع"
+    },
+    "visibility": {
+        "published": "منشور",
+        "draft": "مسودة"
+    },
+    "billing": {
+        "one_time": "مرة واحدة",
+        "monthly": "شهري",
+        "quarterly": "ربع سنوي",
+        "yearly": "سنوي"
+    },
+    "status": {
+        "active": "نشط",
+        "archived": "مؤرشف"
+    },
+    "filters": {
+        "title": "التصفية",
+        "all_categories": "جميع الفئات",
+        "all_statuses": "جميع الحالات",
+        "all_visibility": "كل حالات الظهور"
+    },
+    "search": {
+        "placeholder": "ابحث بالاسم أو الرمز أو الوصف"
+    },
+    "actions": {
+        "add": "إضافة منتج",
+        "apply_filters": "تطبيق",
+        "clear_filters": "مسح",
+        "view_details": "عرض التفاصيل"
+    },
+    "messages": {
+        "archived_instead": "المنتج له سجل مبيعات وتم أرشفته بدلاً من حذفه."
+    },
+    "errors": {
+        "has_sales": "لا يمكن حذف منتج له مبيعات مسجلة."
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "menu": {
+        "crm": "CRM",
+        "companies": "Şirketler"
+    },
+    "pages": {
+        "index_title": "Şirketler",
+        "create_title": "Yeni Şirket Ekle",
+        "edit_title": "Şirketi Düzenle",
+        "show_title": "Şirket Detayları"
+    },
+    "fields": {
+        "id": "ID",
+        "name": "Ad",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "customer": "Musteri",
+        "select_customer": "Musteri secin",
+        "country": "Ülke",
+        "city": "Şehir",
+        "address": "Adres",
+        "notes": "Notlar",
+        "status": "Durum"
+    },
+    "status": {
+        "active": "Aktif",
+        "disabled": "Devre disi"
+    },
+    "actions": {
+        "add": "Şirket Ekle",
+        "back_to_list": "Sirketlere Don"
+    },
+    "search": {
+        "placeholder": "Şirketlerde ara"
+    },
+    "sections": {
+        "basic_information": "Temel Bilgiler",
+        "basic_information_hint": "Sirketin temel bilgilerini girin ve ilgili musteriyle eslestirin.",
+        "contact_information": "Iletisim Bilgileri",
+        "location": "Konum",
+        "location_hint": "Bu alanlar ekibinizin sirket konumunu daha net gormesini saglar.",
+        "additional_details": "Ek Detaylar",
+        "additional_details_hint": "Takip ve destek surecinde yararli olacak notlar ekleyin."
+    },
+    "placeholders": {
+        "name": "Ornek: Acme Teknoloji",
+        "email": "name@company.com",
+        "phone": "+90 5XX XXX XX XX",
+        "country": "Ornek: Turkiye",
+        "city": "Ornek: Istanbul",
+        "address": "Cadde, bina, ofis numarasi",
+        "notes": "Dahili ekip kullanimi icin istege bagli notlar"
+    },
+    "hints": {
+        "customer": "Bu sirketin bagli oldugu musteri hesabini secin.",
+        "status": "Devre disi sirketler kaydedilir ancak aktif akislar icinde gosterilmez."
+    },
+    "validation": {
+        "fix_errors": "Lutfen asagidaki hatalari duzeltip tekrar deneyin."
+    }
+}

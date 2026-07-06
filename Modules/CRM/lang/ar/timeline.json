@@ -1,0 +1,89 @@
+{
+    "title": "سجل النشاط",
+    "add_activity": "تسجيل نشاط",
+    "no_entries": "لا توجد أنشطة أو سجلات تدقيق بعد.",
+    "by": "بواسطة",
+    "system": "النظام",
+    "fields_changed": "الحقول المتغيرة",
+    "delete_activity": "حذف النشاط",
+    "activity_types": {
+        "note": "ملاحظة",
+        "call": "مكالمة",
+        "meeting": "اجتماع",
+        "task": "مهمة",
+        "email": "بريد إلكتروني"
+    },
+    "fields": {
+        "type": "النوع",
+        "title": "العنوان",
+        "body": "التفاصيل",
+        "scheduled_at": "موعد مجدول",
+        "completed_at": "تاريخ الإنجاز"
+    },
+    "placeholders": {
+        "title": "عنوان قصير اختياري",
+        "body": "ماذا حدث؟ أضف سياقاً لفريقك..."
+    },
+    "audit": {
+        "created": "تم إنشاء :name",
+        "updated": "تم تحديث :name",
+        "deleted": "تم حذف :name",
+        "stage_changed": "تغيير المرحلة من :from إلى :to",
+        "activity_logged": "تم تسجيل نشاط: :type",
+        "activity_removed": "تم حذف نشاط: :type",
+        "converted": "تم التحويل إلى صفقة"
+    },
+    "events": {
+        "created": "إنشاء",
+        "updated": "تحديث",
+        "deleted": "حذف",
+        "stage_changed": "تغيير مرحلة",
+        "activity_logged": "تسجيل نشاط",
+        "activity_removed": "حذف نشاط",
+        "converted": "تحويل",
+        "restored": "استعادة"
+    },
+    "errors": {
+        "invalid_subject": "نوع الكيان غير صالح."
+    },
+    "audit_fields": {
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "الهاتف",
+        "phone2": "هاتف إضافي",
+        "mobile": "الجوال",
+        "source": "المصدر",
+        "company_id": "الشركة",
+        "company_name": "اسم الشركة",
+        "user_id": "العميل",
+        "assigned_to": "مُسند إلى",
+        "pipeline_stage_id": "مرحلة الصفقة",
+        "service_id": "الخدمة",
+        "service_interest": "الخدمة المهتم بها",
+        "job_title": "المسمى الوظيفي",
+        "title": "العنوان",
+        "value": "القيمة",
+        "currency": "العملة",
+        "probability": "الاحتمالية",
+        "status": "الحالة",
+        "stage": "المرحلة",
+        "expected_close_date": "تاريخ الإغلاق المتوقع",
+        "project_budget": "ميزانية المشروع",
+        "problem_statement": "وصف المشكلة",
+        "description": "الوصف",
+        "lost_reason": "سبب الخسارة",
+        "notes": "ملاحظات",
+        "is_primary": "جهة الاتصال الرئيسية",
+        "blocked": "محظور",
+        "country": "الدولة",
+        "city": "المدينة",
+        "address": "العنوان",
+        "website": "الموقع الإلكتروني",
+        "industry": "مجال العمل",
+        "activity_type": "نوع النشاط",
+        "amount": "المبلغ",
+        "billing_cycle": "دورة الفوترة",
+        "renewal_at": "تاريخ التجديد",
+        "started_at": "تاريخ البدء"
+    }
+}

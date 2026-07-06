@@ -1,0 +1,60 @@
+{
+    "menu": {
+        "use_cases": "Use Cases"
+    },
+    "pages": {
+        "index_title": "Use Cases",
+        "create_title": "Add Use Case",
+        "edit_title": "Edit Use Case",
+        "website_title": "Case Studies",
+        "website_details": "Case Study"
+    },
+    "meta": {
+        "index_description": "Explore our case studies and see how we help businesses with innovative technology solutions.",
+        "index_keywords": "case studies, project solutions, IT solutions, web development"
+    },
+    "fields": {
+        "title": "Title",
+        "slug": "URL Slug",
+        "client_name": "Client Name",
+        "summary": "Summary",
+        "challenge": "Challenge",
+        "solution": "Solution",
+        "results": "Results",
+        "content": "Full Content",
+        "image": "Cover Image",
+        "technologies": "Technologies",
+        "category_tag": "Category Tag",
+        "project_url": "Live Project URL",
+        "completed_year": "Completed Year",
+        "linked_project": "Linked Internal Project",
+        "select_project": "Select project (optional)",
+        "sort_order": "Sort Order",
+        "featured": "Featured",
+        "published": "Published",
+        "status": "Status",
+        "visits": "Visits"
+    },
+    "actions": {
+        "add": "Add Use Case",
+        "back_to_list": "Back to Use Cases",
+        "view_on_site": "View on Website"
+    },
+    "hints": {
+        "slug": "Used in the public URL, e.g. /use-cases/your-slug",
+        "technologies": "Comma-separated or tag list, e.g. Laravel, Vue, AWS",
+        "category_tag": "Shown as a badge on the use case card, e.g. Web Development",
+        "linked_project": "Optionally connect this showcase item to an internal CRM project record."
+    },
+    "website": {
+        "tagline": "Case Studies",
+        "heading": "How We've Empowered Businesses with Innovative Tech Solutions",
+        "challenge_title": "The Challenge",
+        "solution_title": "Our Solution",
+        "results_title": "The Results",
+        "technologies_title": "Technologies Used",
+        "related_title": "More Case Studies",
+        "visit_project": "Visit Live Project",
+        "client": "Client"
+    }
+}

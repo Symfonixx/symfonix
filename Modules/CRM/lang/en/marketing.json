@@ -1,0 +1,75 @@
+{
+    "menu": {
+        "marketing": "Marketing"
+    },
+    "pages": {
+        "index_title": "Marketing",
+        "create_title": "Send Email",
+        "show_title": "Campaign Details"
+    },
+    "actions": {
+        "compose": "Compose Email",
+        "send": "Send Email",
+        "back_to_list": "Back to Marketing",
+        "view": "View"
+    },
+    "fields": {
+        "subject": "Subject",
+        "body": "Message",
+        "recipients": "Recipients",
+        "subscribers": "Subscribers",
+        "contacts": "Contacts",
+        "contact_forms": "Inquiries",
+        "custom_emails": "Custom Emails",
+        "all_subscribers": "All active subscribers",
+        "all_contacts": "All contacts with email",
+        "all_contact_forms": "All inquiries with email",
+        "select_subscribers": "Select subscribers",
+        "select_contacts": "Select contacts",
+        "select_contact_forms": "Select inquiries",
+        "sent_by": "Sent By",
+        "sent_at": "Sent At",
+        "recipients_count": "Recipients"
+    },
+    "sections": {
+        "compose": "Compose Email",
+        "compose_hint": "Write your message and choose who should receive it.",
+        "recipients": "Choose Recipients",
+        "recipients_hint": "Select one or more groups. Emails are deduplicated automatically.",
+        "history": "Sent Campaigns"
+    },
+    "placeholders": {
+        "subject": "Email subject line",
+        "body": "Write your marketing message here...",
+        "custom_emails": "Type an email and press Enter to add",
+        "select_subscribers": "Choose subscribers",
+        "select_contacts": "Choose contacts",
+        "select_contact_forms": "Choose inquiries"
+    },
+    "hints": {
+        "all_subscribers": "Sends to every non-blocked newsletter subscriber.",
+        "all_contacts": "Sends to every CRM contact that has an email address.",
+        "all_contact_forms": "Sends to every non-blocked inquiry that has an email address.",
+        "custom_emails": "Add any additional email addresses not listed above. Type an email and press Enter.",
+        "send_warning": "Emails are sent immediately from your server. This action cannot be undone."
+    },
+    "messages": {
+        "sent": "Email sent successfully to :count recipient(s).",
+        "send_failed": "Failed to send the email. Please check your mail configuration and try again.",
+        "empty": "No campaigns sent yet."
+    },
+    "validation": {
+        "fix_errors": "Please fix the following errors and try again.",
+        "select_recipients": "Select at least one recipient group or add custom emails.",
+        "no_recipients": "No valid email addresses were found for the selected recipients."
+    },
+    "sources": {
+        "all_subscribers": "All subscribers",
+        "subscribers": ":count subscriber(s)",
+        "all_contacts": "All contacts",
+        "contacts": ":count contact(s)",
+        "all_contact_forms": "All inquiries",
+        "contact_forms": ":count inquiry(ies)",
+        "custom_emails": "Custom emails"
+    }
+}

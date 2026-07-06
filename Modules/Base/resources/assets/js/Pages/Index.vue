@@ -192,6 +192,51 @@
         </section>
         <!--Services Three End -->
 
+        <!-- Products Start -->
+        <section class="home-products products-page" v-if="products && products.length">
+            <div class="products-page__bg" aria-hidden="true">
+                <div class="products-page__orb products-page__orb--one"></div>
+                <div class="products-page__orb products-page__orb--two"></div>
+                <div class="products-page__orb products-page__orb--three"></div>
+            </div>
+            <div class="container position-relative">
+                <div class="section-title text-center sec-title-animation animation-style1 home-products__head">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-1"></div>
+                        <span class="section-title__tagline">{{ trans('Our Products') }}</span>
+                        <div class="section-title__tagline-shape-2"></div>
+                    </div>
+                    <h2 class="section-title__title title-animation">
+                        {{ trans('B2B Solutions Built for Scale') }}
+                    </h2>
+                    <p class="home-products__intro">
+                        {{ trans('Discover enterprise-ready platforms and services designed to grow with your business.') }}
+                    </p>
+                </div>
+
+                <div class="home-products__grid">
+                    <div class="row g-4">
+                        <div
+                            v-for="(product, index) in products"
+                            :key="product.id"
+                            class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
+                            :data-wow-delay="`${(index % 3 + 1) * 100}ms`"
+                        >
+                            <ProductCard :item="product" :locale="locale" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center home-products__cta">
+                    <Link :href="route('product.index')" class="thm-btn">
+                        {{ trans('View All Products') }}
+                        <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
+                    </Link>
+                </div>
+            </div>
+        </section>
+        <!-- Products End -->
+
         <!-- Case Studies Start -->
         <section class="home-case-studies use-cases-page" v-if="useCases && useCases.length">
             <div class="use-cases-page__bg" aria-hidden="true">
@@ -876,6 +921,7 @@ const servicesCategories = computed(() => page.props.servicesCategories || [])
 const testimonials = computed(() => page.props.testimonials || [])
 const teams = computed(() => page.props.teams || [])
 const useCases = computed(() => page.props.useCases || [])
+const products = computed(() => page.props.products || [])
 const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => {
@@ -1258,17 +1304,107 @@ onMounted(() => {
 
 import AppLayout from '@/Layouts/App.vue';
 import UseCaseCard from '@/Components/UseCaseCard.vue';
+import ProductCard from '@/Components/ProductCard.vue';
 
 export default {
     components: {
         AppLayout,
         UseCaseCard,
+        ProductCard,
     }
 
 };
 </script>
 
 <style scoped>
+.home-products {
+    position: relative;
+    display: block;
+    padding: 140px 0 140px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.home-products__head {
+    margin-bottom: 58px;
+}
+
+.home-products__head :deep(.section-title__title) {
+    color: #fff;
+}
+
+.home-products__head :deep(.section-title__tagline) {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.home-products__intro {
+    max-width: 720px;
+    margin: 18px auto 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.home-products__grid {
+    position: relative;
+    z-index: 1;
+}
+
+.home-products :deep(.product-card) {
+    margin-bottom: 30px;
+}
+
+.home-products__cta {
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
+}
+
+.home-products .products-page__bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        145deg,
+        #0b192c 0%,
+        #0f2844 35%,
+        #155a8a 65%,
+        rgba(33, 137, 202, 0.55) 85%,
+        rgba(127, 196, 87, 0.2) 100%
+    );
+    pointer-events: none;
+}
+
+.home-products .products-page__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.45;
+}
+
+.home-products .products-page__orb--one {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -80px;
+    background: #2189ca;
+}
+
+.home-products .products-page__orb--two {
+    width: 360px;
+    height: 360px;
+    top: 40%;
+    right: -100px;
+    background: #7fc457;
+}
+
+.home-products .products-page__orb--three {
+    width: 280px;
+    height: 280px;
+    bottom: -60px;
+    left: 35%;
+    background: #1a5f8a;
+}
+
 .home-case-studies {
     position: relative;
     display: block;

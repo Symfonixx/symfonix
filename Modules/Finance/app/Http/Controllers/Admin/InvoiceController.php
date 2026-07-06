@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
+use Modules\Base\Support\CompanyBranding;
 use Modules\Finance\Http\Requests\StoreInvoiceRequest;
 use Modules\Finance\Models\Invoice;
 use Modules\Finance\Services\InvoiceService;
@@ -49,8 +50,9 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice): View
     {
         $invoice->load(['company', 'lines.service', 'subscription', 'deal']);
+        $companyBranding = CompanyBranding::forInvoice();
 
-        return view('finance::admin.invoice.show', compact('invoice'));
+        return view('finance::admin.invoice.show', compact('invoice', 'companyBranding'));
     }
 
     public function markSent(Invoice $invoice): RedirectResponse

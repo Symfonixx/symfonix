@@ -1,0 +1,70 @@
+{
+    "menu": {
+        "inquiries": "الاستفسارات"
+    },
+    "pages": {
+        "index_title": "الاستفسارات",
+        "create_title": "إضافة استفسار",
+        "edit_title": "تعديل استفسار"
+    },
+    "fields": {
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "mobile": "الجوال",
+        "service": "الخدمة",
+        "select_service": "اختر خدمة",
+        "subject": "الموضوع",
+        "message": "الرسالة",
+        "company": "الشركة المرتبطة",
+        "select_company": "اختر شركة",
+        "ip_address": "عنوان IP",
+        "blocked": "محظور"
+    },
+    "status": {
+        "active": "نشط",
+        "blocked": "محظور",
+        "converted": "تم التحويل"
+    },
+    "actions": {
+        "add": "إضافة استفسار",
+        "edit": "تعديل استفسار",
+        "view_details": "عرض التفاصيل",
+        "back_to_list": "العودة إلى الاستفسارات",
+        "convert_to_lead": "تحويل إلى عميل محتمل",
+        "convert_to_contact": "إضافة إلى جهات الاتصال"
+    },
+    "search": {
+        "placeholder": "البحث في الاستفسارات"
+    },
+    "sections": {
+        "contact_information": "معلومات المرسل",
+        "contact_information_hint": "تفاصيل الاستفسار الوارد.",
+        "company": "الشركة",
+        "company_hint": "اختياري. ربط الاستفسار بشركة موجودة إن وُجدت.",
+        "message": "الرسالة",
+        "status": "الحالة"
+    },
+    "placeholders": {
+        "name": "مثال: أحمد محمد",
+        "email": "name@example.com",
+        "mobile": "+966 50 000 0000",
+        "subject": "مثال: استفسار عن مشروع",
+        "message": "أدخل رسالة الاستفسار..."
+    },
+    "hints": {
+        "company": "اختياري. يمكن معالجة الاستفسارات دون ربطها بشركة.",
+        "blocked": "الاستفسارات المحظورة يتم تمييزها في النظام.",
+        "service": "ربط بخدمة من الكتالوج عندما يتوافق الاستفسار مع عرض معروف.",
+        "subject": "موضوع نصي حر عند عدم اختيار خدمة من الكتالوج."
+    },
+    "validation": {
+        "fix_errors": "يرجى تصحيح الأخطاء التالية والمحاولة مرة أخرى."
+    },
+    "conversion": {
+        "already_converted": "تم تحويل هذا الاستفسار إلى عميل محتمل مسبقاً.",
+        "already_has_contact": "هذا الاستفسار مرتبط بجهة اتصال CRM مسبقاً.",
+        "contact_failed": "تعذر إنشاء جهة اتصال CRM من هذا الاستفسار.",
+        "converted_to_lead": "تم تحويل الاستفسار إلى عميل محتمل.",
+        "converted_to_contact": "تمت إضافة الاستفسار إلى جهات الاتصال."
+    }
+}

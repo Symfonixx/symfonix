@@ -1,0 +1,25 @@
+{
+    "menu": "الفئات",
+    "pages": {
+        "index_title": "فئات المنتجات",
+        "create_title": "إضافة فئة",
+        "edit_title": "تعديل فئة"
+    },
+    "fields": {
+        "name": "الاسم",
+        "slug": "المعرّف",
+        "description": "الوصف",
+        "products_count": "المنتجات"
+    },
+    "hints": {
+        "slug": "اتركه فارغاً لإنشائه تلقائياً من الاسم."
+    },
+    "actions": {
+        "add": "إضافة فئة",
+        "back_to_products": "العودة إلى المنتجات",
+        "manage_categories": "إدارة الفئات"
+    },
+    "errors": {
+        "in_use": "لا يمكن حذف هذه الفئة لأنها مرتبطة بمنتجات."
+    }
+}

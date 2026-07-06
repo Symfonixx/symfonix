@@ -1,0 +1,25 @@
+{
+    "menu": "Kategoriler",
+    "pages": {
+        "index_title": "Ürün Kategorileri",
+        "create_title": "Kategori Ekle",
+        "edit_title": "Kategori Düzenle"
+    },
+    "fields": {
+        "name": "Ad",
+        "slug": "Slug",
+        "description": "Açıklama",
+        "products_count": "Ürünler"
+    },
+    "hints": {
+        "slug": "Adından otomatik oluşturmak için boş bırakın."
+    },
+    "actions": {
+        "add": "Kategori Ekle",
+        "back_to_products": "Ürünlere Dön",
+        "manage_categories": "Kategorileri Yönet"
+    },
+    "errors": {
+        "in_use": "Bağlı ürünleri olduğu için bu kategori silinemez."
+    }
+}

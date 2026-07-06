@@ -1,0 +1,12 @@
+{
+    "menu": "Sales Targets",
+    "title": "Sales Targets",
+    "subtitle": "Set per-rep deal and revenue targets used in the analytics leaderboard.",
+    "rep": "Sales Rep",
+    "deals_target": "Deals Target",
+    "value_target": "Revenue Target",
+    "value_target_hint": "Optional. Leave blank to track deals only.",
+    "default_hint": "Reps without a saved target use the default of :count deals from CRM config.",
+    "save": "Save Targets",
+    "saved": "Sales targets updated successfully."
+}

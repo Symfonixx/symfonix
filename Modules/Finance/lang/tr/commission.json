@@ -1,0 +1,25 @@
+{
+    "menu": "Komisyonlar",
+    "pages": {
+        "index_title": "Komisyon Yönetimi"
+    },
+    "fields": {
+        "deal": "Anlaşma",
+        "sales_rep": "Satış Temsilcisi",
+        "percentage": "Komisyon %",
+        "amount": "Tutar",
+        "status": "Durum"
+    },
+    "status": {
+        "pending": "Beklemede",
+        "paid": "Ödendi"
+    },
+    "actions": {
+        "record_payout": "Ödemeyi Kaydet"
+    },
+    "messages": {
+        "paid": "Komisyon ödemesi deftere kaydedildi.",
+        "payout_description": "Komisyon ödemesi: :name — :deal",
+        "no_pending": "Bekleyen komisyon ödemesi yok."
+    }
+}

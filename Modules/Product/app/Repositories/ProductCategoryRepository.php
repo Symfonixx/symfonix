@@ -2,7 +2,9 @@
 
 namespace Modules\Product\Repositories;
 
+use Exception;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Product\Models\ProductCategory;
@@ -13,13 +15,19 @@ class ProductCategoryRepository
 
     public function allOrdered(): Collection
     {
-        return ProductCategory::query()->orderBy('name')->get();
+        $locale = app()->getLocale();
+
+        return ProductCategory::query()
+            ->get()
+            ->sortBy(fn (ProductCategory $category) => $category->getTranslation('name', $locale))
+            ->values();
     }
 
     public function store(array $data): ?ProductCategory
     {
         return $this->execute(function () use ($data) {
             $data['slug'] = $data['slug'] ?? Str::slug($data['name']);
+            $data = $this->prepareCategoryData($data);
 
             $category = ProductCategory::query()->create($data);
             session()->flushMessage(true);
@@ -35,6 +43,7 @@ class ProductCategoryRepository
                 $data['slug'] = Str::slug($data['name']);
             }
 
+            $data = $this->prepareCategoryUpdateData($data, $category);
             $category->update($data);
             session()->flushMessage(true);
 
@@ -56,5 +65,51 @@ class ProductCategoryRepository
 
             return $deleted;
         });
+    }
+
+    private function prepareCategoryData(array $data): array
+    {
+        $locale = app()->getLocale();
+
+        return array_merge($data, $this->buildTranslations([
+            'name' => $data['name'] ?? '',
+            'description' => $data['description'] ?? '',
+        ], $locale));
+    }
+
+    private function prepareCategoryUpdateData(array $data, ProductCategory $category): array
+    {
+        $locale = app()->getLocale();
+
+        return array_merge($data, $this->buildTranslations([
+            'name' => $data['name'] ?? $category->getTranslation('name', $locale, false),
+            'description' => $data['description'] ?? $category->getTranslation('description', $locale, false),
+        ], $locale));
+    }
+
+    private function buildTranslations(array $fields, string $locale): array
+    {
+        $translations = [];
+
+        foreach ($fields as $field => $value) {
+            $translations[$field] = [$locale => $value];
+
+            foreach (otherLangs() as $lang) {
+                if ($value === '' || $value === null) {
+                    $translations[$field][$lang] = '';
+
+                    continue;
+                }
+
+                try {
+                    $translations[$field][$lang] = autoGoogleTranslator($lang, (string) $value);
+                } catch (Exception $e) {
+                    Log::error($e->getMessage());
+                    $translations[$field][$lang] = $value;
+                }
+            }
+        }
+
+        return $translations;
     }
 }

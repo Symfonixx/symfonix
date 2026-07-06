@@ -1,0 +1,37 @@
+{
+    "events": {
+        "viewed": "عرض",
+        "created": "إنشاء",
+        "updated": "تحديث",
+        "deleted": "حذف",
+        "action": "إجراء"
+    },
+    "resources": {
+        "admins": "مسؤول",
+        "customers": "عميل",
+        "employees": "موظف",
+        "leaves": "طلب إجازة",
+        "roles": "دور",
+        "leads": "عميل محتمل",
+        "deals": "صفقة",
+        "contacts": "جهة اتصال",
+        "companies": "شركة",
+        "subscriptions": "اشتراك",
+        "invoices": "فاتورة",
+        "products": "منتج",
+        "projects": "مشروع",
+        "activities": "نشاط",
+        "logs": "سجل",
+        "pages": "صفحة",
+        "posts": "مقال",
+        "services": "خدمة",
+        "categories": "تصنيف",
+        "marketing": "حملة تسويقية",
+        "expense_categories": "تصنيف مصروف",
+        "accounts_receivable": "حسابات مستحقة",
+        "commissions": "عمولة",
+        "salaries": "راتب",
+        "product_sales": "مبيعات منتج",
+        "system-configurations": "إعدادات النظام"
+    }
+}

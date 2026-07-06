@@ -382,12 +382,19 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['websiteConfigurations']) || isset($active['seo']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['websiteConfigurations']) || isset($active['systemConfigurations']) || isset($active['seo']) ? 'show' : '' }}">
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['websiteConfigurations']) ? 'active' : '' }}"
                    href="{{ route('admin.settings.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">{{ __('Website Configurations') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['systemConfigurations']) ? 'active' : '' }}"
+                   href="{{ route('admin.system-configurations.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('base::system.title') }}</span>
                 </a>
             </div>
             <div class="menu-item">

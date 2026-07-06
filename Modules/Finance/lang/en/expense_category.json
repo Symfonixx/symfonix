@@ -1,0 +1,24 @@
+{
+    "menu": "Expense Categories",
+    "pages": {
+        "index_title": "Expense Categories",
+        "create_title": "Add Expense Category",
+        "edit_title": "Edit Expense Category"
+    },
+    "fields": {
+        "name": "Name",
+        "slug": "Slug",
+        "transactions_count": "Transactions"
+    },
+    "hints": {
+        "slug": "Leave blank to auto-generate from the name."
+    },
+    "actions": {
+        "add": "Add Category",
+        "back_to_list": "Back to Categories",
+        "back_to_dashboard": "Back to Dashboard"
+    },
+    "errors": {
+        "in_use": "This category cannot be deleted because it has linked transactions."
+    }
+}

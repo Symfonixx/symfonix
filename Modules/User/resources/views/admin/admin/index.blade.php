@@ -65,7 +65,7 @@
                         <img src="{{$admin->avatar}}" alt="admin"/>
                     </div>
                     <div class="d-flex flex-column">
-                        <a href="#" class="text-gray-800 mb-1">{{$admin->name}}</a>
+                        <a href="{{ route('admin.admins.show', $admin) }}" class="text-gray-800 mb-1 text-hover-primary">{{$admin->name}}</a>
                         <a class="text-hover-primary text-gray-500" target="_blank"
                            href="mailto:{{$admin->email}}">{{$admin->email}}</a>
                     </div>
@@ -78,6 +78,9 @@
                 </td>
                 <td>{{$admin->created_at}}</td>
                 <td>
+                    <a href="{{ route('admin.admins.show', $admin) }}" class="btn btn-sm btn-light-info me-1">
+                        <i class="bi bi-eye"></i>
+                    </a>
                     <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{$admin->id}}">
                         <i class="bi bi-pencil"></i>
                     </a>

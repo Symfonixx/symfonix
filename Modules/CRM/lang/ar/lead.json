@@ -1,0 +1,133 @@
+{
+    "menu": {
+        "leads": "العملاء المحتملون"
+    },
+    "pages": {
+        "index_title": "العملاء المحتملون",
+        "create_title": "إضافة عميل محتمل",
+        "edit_title": "تعديل عميل محتمل",
+        "show_title": "تفاصيل العميل المحتمل"
+    },
+    "fields": {
+        "details": "التفاصيل",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "job_title": "المسمى الوظيفي",
+        "city": "المدينة",
+        "country": "الدولة",
+        "website": "الموقع الإلكتروني",
+        "industry": "مجال العمل",
+        "attachments": "المرفقات",
+        "company": "الشركة المرتبطة",
+        "company_name": "اسم الشركة (نص حر)",
+        "select_company": "اختر شركة",
+        "source": "المصدر",
+        "select_source": "اختر المصدر",
+        "service": "الخدمة",
+        "select_service": "اختر خدمة",
+        "service_interest": "الاهتمام بالخدمة (نص)",
+        "project_budget": "ميزانية المشروع",
+        "problem_statement": "وصف المشكلة",
+        "chat_transcript": "سجل المحادثة",
+        "ip_address": "عنوان IP",
+        "status": "الحالة",
+        "blocked": "محظور",
+        "assignee": "مسند إلى",
+        "select_assignee": "اختر الموظف"
+    },
+    "sources": {
+        "organic_search": "البحث العضوي",
+        "direct": "مباشر",
+        "social_media": "وسائل التواصل",
+        "referral": "إحالة",
+        "paid_ads": "إعلانات مدفوعة",
+        "website": "الموقع الإلكتروني",
+        "sales": "فريق المبيعات",
+        "manual": "إدخال يدوي"
+    },
+    "status": {
+        "active": "نشط",
+        "blocked": "محظور",
+        "new": "جديد",
+        "contacted": "تم التواصل",
+        "qualified": "مؤهل",
+        "unqualified": "غير مؤهل",
+        "converted": "تم التحويل",
+        "lost": "مفقود"
+    },
+    "badges": {
+        "unlinked": "غير مرتبط"
+    },
+    "actions": {
+        "add": "إضافة عميل محتمل",
+        "edit": "تعديل",
+        "view_details": "عرض التفاصيل",
+        "back_to_list": "العودة للقائمة",
+        "block": "حظر",
+        "unblock": "إلغاء الحظر",
+        "actions": "إجراءات"
+    },
+    "filters": {
+        "status": "تصفية حسب الحالة",
+        "source": "تصفية حسب المصدر",
+        "company": "تصفية حسب الشركة",
+        "assignee": "تصفية حسب المسؤول",
+        "all": "الكل"
+    },
+    "search": {
+        "placeholder": "البحث في العملاء المحتملين"
+    },
+    "sections": {
+        "contact_information": "معلومات الاتصال",
+        "contact_information_hint": "بيانات الاتصال الأساسية لهذا العميل المحتمل.",
+        "company": "الشركة",
+        "company_hint": "اربط بشركة موجودة في CRM، أو أدخل اسماً إذا لم تكن الشركة مسجلة بعد.",
+        "lead_details": "تفاصيل العميل المحتمل",
+        "lead_details_hint": "تتبع مصدر العميل المحتمل واهتماماته.",
+        "status": "الحالة"
+    },
+    "placeholders": {
+        "name": "مثال: أحمد محمد",
+        "email": "name@example.com",
+        "phone": "مثال: 4567 123 555 1+",
+        "company_name": "مثال: شركة أكمي للتقنية",
+        "job_title": "مثال: مدير تسويق",
+        "city": "مثال: دمشق",
+        "country": "مثال: سوريا",
+        "website": "https://example.com",
+        "industry": "مثال: تقنية",
+        "service_interest": "مثال: تطبيق ويب مخصص",
+        "project_budget": "مثال: 10,000 - 25,000 دولار",
+        "problem_statement": "صف احتياجات العميل المحتمل أو استفساره..."
+    },
+    "hints": {
+        "company": "اختياري. اختر شركة من CRM لربط هذا العميل المحتمل.",
+        "company_name": "استخدمه عندما لا تكون الشركة مسجلة في CRM. يُخفى عند ربط شركة.",
+        "service_interest": "نص حر عند عدم اختيار خدمة من الكتالوج.",
+        "blocked": "العملاء المحظورون يُعلَّمون ويمكن استبعادهم من سير العمل النشط.",
+        "assignee": "مندوب المبيعات المسؤول عن متابعة هذا العميل المحتمل."
+    },
+    "conversion": {
+        "convert": "تحويل إلى صفقة",
+        "convert_customer": "تحويل إلى عميل",
+        "confirm": "إنشاء الصفقة",
+        "view_deal": "عرض الصفقة",
+        "converted_badge": "تم التحويل",
+        "converted_to_customer": "تم تحويل العميل المحتمل إلى عميل",
+        "customer_requires_company": "اسم الشركة مطلوب لتحويل هذا العميل المحتمل إلى عميل.",
+        "customer_failed": "فشل تحويل العميل المحتمل إلى عميل.",
+        "modal_title": "تحويل العميل المحتمل إلى صفقة",
+        "modal_hint": "سيتم إنشاء صفقة جديدة في خط المبيعات وربطها بهذا العميل المحتمل.",
+        "deal_title": "عنوان الصفقة",
+        "deal_title_placeholder": "عنوان الصفقة",
+        "default_title": "صفقة :name",
+        "fallback_title": "عميل محتمل #:id",
+        "already_converted": "تم تحويل هذا العميل المحتمل إلى صفقة مسبقاً.",
+        "failed": "فشل تحويل العميل المحتمل إلى صفقة."
+    },
+    "validation": {
+        "fix_errors": "يرجى تصحيح الأخطاء التالية والمحاولة مرة أخرى.",
+        "phone": "يجب أن يحتوي رقم الهاتف على أرقام والرموز + - ( ) والمسافات فقط."
+    }
+}

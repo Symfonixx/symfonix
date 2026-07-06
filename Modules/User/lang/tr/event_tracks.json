@@ -1,0 +1,37 @@
+{
+    "events": {
+        "viewed": "Görüntülendi",
+        "created": "Oluşturuldu",
+        "updated": "Güncellendi",
+        "deleted": "Silindi",
+        "action": "İşlem"
+    },
+    "resources": {
+        "admins": "Yönetici",
+        "customers": "Müşteri",
+        "employees": "Çalışan",
+        "leaves": "İzin Talebi",
+        "roles": "Rol",
+        "leads": "Potansiyel Müşteri",
+        "deals": "Anlaşma",
+        "contacts": "İletişim",
+        "companies": "Şirket",
+        "subscriptions": "Abonelik",
+        "invoices": "Fatura",
+        "products": "Ürün",
+        "projects": "Proje",
+        "activities": "Aktivite",
+        "logs": "Günlük",
+        "pages": "Sayfa",
+        "posts": "Yazı",
+        "services": "Hizmet",
+        "categories": "Kategori",
+        "marketing": "Pazarlama Kampanyası",
+        "expense_categories": "Gider Kategorisi",
+        "accounts_receivable": "Alacak Hesapları",
+        "commissions": "Komisyon",
+        "salaries": "Maaş",
+        "product_sales": "Ürün Satışı",
+        "system-configurations": "Sistem Yapılandırması"
+    }
+}

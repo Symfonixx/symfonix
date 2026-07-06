@@ -1,0 +1,25 @@
+{
+    "menu": "Categories",
+    "pages": {
+        "index_title": "Product Categories",
+        "create_title": "Add Category",
+        "edit_title": "Edit Category"
+    },
+    "fields": {
+        "name": "Name",
+        "slug": "Slug",
+        "description": "Description",
+        "products_count": "Products"
+    },
+    "hints": {
+        "slug": "Leave blank to auto-generate from the name."
+    },
+    "actions": {
+        "add": "Add Category",
+        "back_to_products": "Back to Products",
+        "manage_categories": "Manage Categories"
+    },
+    "errors": {
+        "in_use": "This category cannot be deleted because it has linked products."
+    }
+}

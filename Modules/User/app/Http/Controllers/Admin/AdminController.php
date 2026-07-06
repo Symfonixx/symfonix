@@ -3,6 +3,7 @@
 namespace Modules\User\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Modules\User\app\Data\UserData;
 use Modules\User\app\Repositories\User\UserRepository;
@@ -21,6 +22,15 @@ class AdminController extends Controller
         $model = $this->userRepository->all('admin');
 
         return view('user::.admin.admin.index', compact('model'));
+    }
+
+    public function show(User $admin)
+    {
+        abort_if($admin->type !== User::TYPE_ADMIN, 404);
+
+        $eventTracks = $admin->adminEventTracks()->paginate(config('core.page_size'));
+
+        return view('user::.admin.admin.show', compact('admin', 'eventTracks'));
     }
 
     public function store(StoreUserRequest $request)

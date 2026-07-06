@@ -10,6 +10,7 @@ use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use Cloudstudio\Ollama\Facades\Ollama;
 use Illuminate\Support\Facades\Notification;
+use Modules\Base\Support\AdminEmail;
 use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
 
@@ -335,19 +336,7 @@ class ProjectInquiryConversation extends Conversation
     }
     protected function getAdminEmails(): array
     {
-        $emailSetting = config('services.admin_email')
-            ?: config('services.leads.admin_email')
-            ?: config('mail.from.address');
-        if (! $emailSetting) {
-            return [];
-        }
-
-        $emails = preg_split('/[,\s;]+/', $emailSetting);
-        $emails = array_filter($emails, function ($email) {
-            return filter_var($email, FILTER_VALIDATE_EMAIL);
-        });
-
-        return array_values(array_unique($emails));
+        return AdminEmail::addresses();
     }
 
     protected function analyzeIntent(string $message): array

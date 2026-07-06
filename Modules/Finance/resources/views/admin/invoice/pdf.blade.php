@@ -5,7 +5,11 @@
     <title>{{ $invoice->invoice_number }}</title>
     <style>
         body { font-family: DejaVu Sans, sans-serif; font-size: 12px; color: #1e293b; }
-        .header { margin-bottom: 30px; }
+        .header-table { width: 100%; margin-bottom: 30px; }
+        .header-table td { vertical-align: top; }
+        .issuer-logo { max-height: 50px; max-width: 200px; margin-bottom: 8px; }
+        .issuer-name { font-size: 16px; font-weight: bold; color: #0f172a; margin-bottom: 6px; }
+        .issuer-contact { color: #64748b; line-height: 1.6; }
         .title { font-size: 24px; font-weight: bold; color: #0f172a; }
         .meta { margin-top: 8px; color: #64748b; }
         .section-title { font-size: 11px; text-transform: uppercase; color: #64748b; margin-bottom: 6px; }
@@ -16,18 +20,38 @@
         .text-end { text-align: right; }
         .totals td { border: none; }
         .grand-total { font-size: 16px; font-weight: bold; }
-        .footer { margin-top: 40px; text-align: center; color: #64748b; }
+        .footer { margin-top: 24px; text-align: center; color: #64748b; }
+        .invoice-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+        .sign-block { margin-top: 32px; text-align: center; }
+        .sign-label { font-size: 10px; text-transform: uppercase; color: #64748b; margin-bottom: 8px; }
+        .sign-image { max-height: 80px; max-width: 200px; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="title">{{ __('finance::invoice.pdf.title') }} {{ $invoice->invoice_number }}</div>
-        <div class="meta">
-            {{ __('finance::invoice.pdf.issue_date') }}: {{ $invoice->issued_at?->format('Y-m-d') }}
-            &nbsp;|&nbsp;
-            {{ __('finance::invoice.pdf.due_date') }}: {{ $invoice->due_at?->format('Y-m-d') }}
-        </div>
-    </div>
+    <table class="header-table">
+        <tr>
+            <td>
+                @if($companyBranding['logo_path'])
+                    <img src="{{ $companyBranding['logo_path'] }}" class="issuer-logo" alt="{{ $companyBranding['name'] }}">
+                @else
+                    <div class="issuer-name">{{ $companyBranding['name'] }}</div>
+                @endif
+                <div class="issuer-contact">
+                    @if($companyBranding['phone']){{ $companyBranding['phone'] }}<br>@endif
+                    @if($companyBranding['email']){{ $companyBranding['email'] }}<br>@endif
+                    @if($companyBranding['address']){{ $companyBranding['address'] }}@endif
+                </div>
+            </td>
+            <td class="text-end">
+                <div class="title">{{ __('finance::invoice.pdf.title') }} {{ $invoice->invoice_number }}</div>
+                <div class="meta">
+                    {{ __('finance::invoice.pdf.issue_date') }}: {{ $invoice->issued_at?->format('Y-m-d') }}
+                    &nbsp;|&nbsp;
+                    {{ __('finance::invoice.pdf.due_date') }}: {{ $invoice->due_at?->format('Y-m-d') }}
+                </div>
+            </td>
+        </tr>
+    </table>
 
     <div class="bill-to">
         <div class="section-title">{{ __('finance::invoice.pdf.bill_to') }}</div>
@@ -78,6 +102,15 @@
         <p style="margin-top: 24px; color: #64748b;">{{ $invoice->notes }}</p>
     @endif
 
-    <div class="footer">{{ __('finance::invoice.pdf.thank_you') }}</div>
+    <div class="invoice-bottom">
+        <div class="footer">{{ __('finance::invoice.pdf.thank_you') }}</div>
+
+        @if($companyBranding['sign_path'])
+            <div class="sign-block">
+                <div class="sign-label">{{ __('finance::invoice.pdf.company_sign') }}</div>
+                <img src="{{ $companyBranding['sign_path'] }}" class="sign-image" alt="{{ $companyBranding['name'] }}">
+            </div>
+        @endif
+    </div>
 </body>
 </html>

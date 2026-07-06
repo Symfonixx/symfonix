@@ -1,0 +1,12 @@
+{
+    "menu": "Satış Hedefleri",
+    "title": "Satış Hedefleri",
+    "subtitle": "Analitik liderlik tablosunda kullanılan temsilci başına anlaşma ve gelir hedeflerini ayarlayın.",
+    "rep": "Satış Temsilcisi",
+    "deals_target": "Anlaşma Hedefi",
+    "value_target": "Gelir Hedefi",
+    "value_target_hint": "İsteğe bağlı. Yalnızca anlaşmaları takip etmek için boş bırakın.",
+    "default_hint": "Kayıtlı hedefi olmayan temsilciler CRM yapılandırmasındaki varsayılan :count anlaşmayı kullanır.",
+    "save": "Hedefleri Kaydet",
+    "saved": "Satış hedefleri başarıyla güncellendi."
+}

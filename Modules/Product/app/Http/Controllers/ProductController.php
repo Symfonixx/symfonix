@@ -79,7 +79,7 @@ class ProductController extends Controller
                 'description' => $product->seoDescription($locale) ?: $product->getTranslation('short_description', $locale),
                 'image' => $product->main_image_link,
                 'url' => $canonical,
-                'category' => $product->category?->name,
+                'category' => $product->category?->getTranslation('name', $locale),
                 'locale' => $locale,
             ]),
         ];
@@ -102,7 +102,7 @@ class ProductController extends Controller
             'is_featured' => $product->is_featured,
             'category' => $product->category ? [
                 'id' => $product->category->id,
-                'name' => $product->category->name,
+                'name' => $product->category->getTranslation('name', $locale),
                 'slug' => $product->category->slug,
             ] : null,
         ];

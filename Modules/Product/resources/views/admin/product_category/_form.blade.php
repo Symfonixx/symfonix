@@ -2,7 +2,7 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
-        <label for="name" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('product::category.fields.name') }}</label>
+        <label for="name" class="fs-6 fw-bold mt-2 mb-3 required"><i class="bi bi-translate text-primary mx-1"></i>{{ __('product::category.fields.name') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
         <input id="name" type="text" class="form-control form-control-solid @error('name') is-invalid @enderror"
@@ -29,7 +29,7 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
-        <label for="description" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::category.fields.description') }}</label>
+        <label for="description" class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1"></i>{{ __('product::category.fields.description') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
         <textarea id="description" class="form-control form-control-solid @error('description') is-invalid @enderror"

@@ -52,20 +52,36 @@
         <div class="col-xl-8">
             <div class="card mb-5">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between mb-6">
+                    <div class="d-flex justify-content-between align-items-start mb-6">
                         <div>
+                            @if($companyBranding['logo_url'])
+                                <img src="{{ $companyBranding['logo_url'] }}" alt="{{ $companyBranding['name'] }}" class="mb-3" style="max-height: 50px; max-width: 200px;">
+                            @else
+                                <div class="fw-bold fs-4 mb-2">{{ $companyBranding['name'] }}</div>
+                            @endif
+                            <div class="text-muted fs-7">
+                                @if($companyBranding['phone'])
+                                    <div><i class="bi bi-telephone me-1"></i>{{ $companyBranding['phone'] }}</div>
+                                @endif
+                                @if($companyBranding['email'])
+                                    <div><i class="bi bi-envelope me-1"></i>{{ $companyBranding['email'] }}</div>
+                                @endif
+                                @if($companyBranding['address'])
+                                    <div><i class="bi bi-geo-alt me-1"></i>{{ $companyBranding['address'] }}</div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="text-end">
                             <h2 class="fw-bold mb-1">{{ $invoice->invoice_number }}</h2>
                             <span class="badge badge-light-{{ $statusColor }}">
                                 {{ __('finance::invoice.status.'.$invoice->status) }}
                             </span>
-                        </div>
-                        <div class="text-end">
-                            <div class="fs-2hx fw-bold">{{ number_format($invoice->total, 2) }} {{ $invoice->currency }}</div>
+                            <div class="fs-2hx fw-bold mt-3">{{ number_format($invoice->total, 2) }} {{ $invoice->currency }}</div>
                         </div>
                     </div>
                     <div class="row mb-6">
                         <div class="col-md-6">
-                            <div class="text-muted fs-7">{{ __('finance::invoice.fields.company') }}</div>
+                            <div class="text-muted fs-7 text-uppercase">{{ __('finance::invoice.pdf.bill_to') }}</div>
                             <div class="fw-semibold">{{ $invoice->company?->name }}</div>
                             @if($invoice->company?->email)
                                 <div class="text-muted fs-7">{{ $invoice->company->email }}</div>
@@ -119,6 +135,17 @@
                             </tr>
                             </tfoot>
                         </table>
+                    </div>
+
+                    <div class="border-top pt-8 mt-8">
+                        <p class="text-center text-muted mb-0">{{ __('finance::invoice.pdf.thank_you') }}</p>
+
+                        @if($companyBranding['sign_url'])
+                            <div class="text-center mt-8">
+                                <div class="text-muted fs-8 text-uppercase mb-2">{{ __('finance::invoice.pdf.company_sign') }}</div>
+                                <img src="{{ $companyBranding['sign_url'] }}" alt="{{ $companyBranding['name'] }}" style="max-height: 80px; max-width: 200px;">
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

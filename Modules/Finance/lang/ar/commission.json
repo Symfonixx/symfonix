@@ -1,0 +1,25 @@
+{
+    "menu": "العمولات",
+    "pages": {
+        "index_title": "إدارة العمولات"
+    },
+    "fields": {
+        "deal": "الصفقة",
+        "sales_rep": "مندوب المبيعات",
+        "percentage": "نسبة العمولة",
+        "amount": "المبلغ",
+        "status": "الحالة"
+    },
+    "status": {
+        "pending": "معلق",
+        "paid": "مدفوع"
+    },
+    "actions": {
+        "record_payout": "تسجيل الدفع"
+    },
+    "messages": {
+        "paid": "تم تسجيل دفع العمولة في الدفتر.",
+        "payout_description": "دفع عمولة: :name — :deal",
+        "no_pending": "لا توجد مدفوعات عمولات معلقة."
+    }
+}

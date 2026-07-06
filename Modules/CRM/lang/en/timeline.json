@@ -1,0 +1,89 @@
+{
+    "title": "Activity Timeline",
+    "add_activity": "Log Activity",
+    "no_entries": "No activities or audit entries yet.",
+    "by": "by",
+    "system": "System",
+    "fields_changed": "Fields changed",
+    "delete_activity": "Remove activity",
+    "activity_types": {
+        "note": "Note",
+        "call": "Call",
+        "meeting": "Meeting",
+        "task": "Task",
+        "email": "Email"
+    },
+    "fields": {
+        "type": "Type",
+        "title": "Title",
+        "body": "Details",
+        "scheduled_at": "Scheduled At",
+        "completed_at": "Completed At"
+    },
+    "placeholders": {
+        "title": "Optional short title",
+        "body": "What happened? Add context for your team..."
+    },
+    "audit": {
+        "created": ":name was created",
+        "updated": ":name was updated",
+        "deleted": ":name was deleted",
+        "stage_changed": "Stage changed from :from to :to",
+        "activity_logged": "Activity logged: :type",
+        "activity_removed": "Activity removed: :type",
+        "converted": "Converted to deal"
+    },
+    "events": {
+        "created": "Created",
+        "updated": "Updated",
+        "deleted": "Deleted",
+        "stage_changed": "Stage Changed",
+        "activity_logged": "Activity Logged",
+        "activity_removed": "Activity Removed",
+        "converted": "Converted",
+        "restored": "Restored"
+    },
+    "errors": {
+        "invalid_subject": "Invalid CRM subject type."
+    },
+    "audit_fields": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "phone2": "Secondary Phone",
+        "mobile": "Mobile",
+        "source": "Source",
+        "company_id": "Company",
+        "company_name": "Company Name",
+        "user_id": "Customer",
+        "assigned_to": "Assigned To",
+        "pipeline_stage_id": "Pipeline Stage",
+        "service_id": "Service",
+        "service_interest": "Service Interest",
+        "job_title": "Job Title",
+        "title": "Title",
+        "value": "Value",
+        "currency": "Currency",
+        "probability": "Probability",
+        "status": "Status",
+        "stage": "Stage",
+        "expected_close_date": "Expected Close Date",
+        "project_budget": "Project Budget",
+        "problem_statement": "Problem Statement",
+        "description": "Description",
+        "lost_reason": "Lost Reason",
+        "notes": "Notes",
+        "is_primary": "Primary Contact",
+        "blocked": "Blocked",
+        "country": "Country",
+        "city": "City",
+        "address": "Address",
+        "website": "Website",
+        "industry": "Industry",
+        "activity_type": "Activity Type",
+        "amount": "Amount",
+        "billing_cycle": "Billing Cycle",
+        "renewal_at": "Renewal Date",
+        "started_at": "Start Date"
+    }
+}

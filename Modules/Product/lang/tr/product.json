@@ -1,0 +1,84 @@
+{
+    "menu": {
+        "products": "Ürünler",
+        "catalog": "Katalog"
+    },
+    "pages": {
+        "index_title": "Ürün Kataloğu",
+        "create_title": "Ürün Ekle",
+        "edit_title": "Ürün Düzenle",
+        "catalog_title": "Ürünler"
+    },
+    "meta": {
+        "index_description": "B2B ürün kataloğumuzu keşfedin — SaaS platformları, profesyonel hizmetler ve kurumsal çözümler.",
+        "index_keywords": "ürünler, B2B katalog, SaaS, kurumsal yazılım, BT hizmetleri"
+    },
+    "sections": {
+        "media": "Medya",
+        "content": "Web Sitesi İçeriği",
+        "seo": "SEO Paketi"
+    },
+    "fields": {
+        "name": "Ürün Adı",
+        "category": "Kategori",
+        "select_category": "Kategori seçin",
+        "sku": "SKU",
+        "short_description": "Kısa Açıklama",
+        "short_description_help": "Katalog kartlarında gösterilir (maks. 500 karakter).",
+        "description": "Tam Açıklama",
+        "description_help": "Ürün detay sayfası için zengin içerik.",
+        "main_image": "Ana Görsel",
+        "main_image_help": "Katalog ve detay sayfası için birincil ürün fotoğrafı.",
+        "seo_title": "SEO Başlığı",
+        "seo_title_help": "İdeal uzunluk: 50–60 karakter.",
+        "seo_description": "Meta Açıklama",
+        "seo_description_help": "İdeal uzunluk: 120–160 karakter.",
+        "seo_keywords": "Meta Anahtar Kelimeler",
+        "seo_keywords_placeholder": "saas, crm, enterprise",
+        "seo_meta_img": "Sosyal Paylaşım Görseli",
+        "seo_meta_img_help": "İsteğe bağlı OG/Twitter görseli.",
+        "price": "Fiyat",
+        "billing": "Faturalama",
+        "status": "Durum",
+        "featured": "Öne Çıkan",
+        "featured_help": "Katalog ve tekliflerde vurgula",
+        "is_published": "Web Sitesinde Yayınla",
+        "is_published_help": "Bu ürünü genel B2B vitrininde görünür yap.",
+        "website_visibility": "Web Sitesi"
+    },
+    "visibility": {
+        "published": "Yayında",
+        "draft": "Taslak"
+    },
+    "billing": {
+        "one_time": "Tek seferlik",
+        "monthly": "Aylık",
+        "quarterly": "Üç aylık",
+        "yearly": "Yıllık"
+    },
+    "status": {
+        "active": "Aktif",
+        "archived": "Arşivlendi"
+    },
+    "filters": {
+        "title": "Filtreler",
+        "all_categories": "Tüm kategoriler",
+        "all_statuses": "Tüm durumlar",
+        "all_visibility": "Tüm görünürlük"
+    },
+    "search": {
+        "placeholder": "Ad, SKU veya açıklamaya göre ara"
+    },
+    "actions": {
+        "add": "Ürün Ekle",
+        "apply_filters": "Uygula",
+        "clear_filters": "Temizle",
+        "view_details": "Detayları Gör"
+    },
+    "messages": {
+        "archived_instead": "Ürünün satış geçmişi olduğu için silinmek yerine arşivlendi."
+    },
+    "errors": {
+        "has_sales": "Kayıtlı satışı olan ürün silinemez."
+    }
+}

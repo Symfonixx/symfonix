@@ -1,0 +1,25 @@
+{
+    "pages": {
+        "index_title": "Proje Durumları",
+        "create_title": "Durum Ekle",
+        "edit_title": "Durumu Düzenle"
+    },
+    "fields": {
+        "name": "Ad",
+        "color_code": "Rozet Rengi",
+        "sort_order": "Sıralama",
+        "projects_count": "Projeler"
+    },
+    "actions": {
+        "add": "Durum Ekle",
+        "back_to_projects": "Projelere Dön",
+        "back_to_list": "Durumlara Dön"
+    },
+    "hints": {
+        "color_code": "Proje listesindeki durum rozetleri için onaltılık renk (ör. #0d6efd).",
+        "sort_order": "Düşük sayılar önce görünür. En düşük sıra, kazanılan anlaşmalardan otomatik proje oluşturulurken kullanılır."
+    },
+    "errors": {
+        "in_use": "Bu durum bir veya daha fazla projeye atandığı için silinemez."
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "menu": "الفواتير",
+    "pages": {
+        "index_title": "الفواتير",
+        "create_title": "إنشاء فاتورة",
+        "show_title": "تفاصيل الفاتورة"
+    },
+    "fields": {
+        "invoice_number": "رقم الفاتورة",
+        "company": "الشركة",
+        "select_company": "اختر الشركة",
+        "status": "الحالة",
+        "subtotal": "المجموع الفرعي",
+        "tax": "الضريبة",
+        "total": "الإجمالي",
+        "currency": "العملة",
+        "issued_at": "تاريخ الإصدار",
+        "due_at": "تاريخ الاستحقاق",
+        "paid_at": "تاريخ الدفع",
+        "notes": "ملاحظات",
+        "description": "الوصف",
+        "quantity": "الكمية",
+        "unit_price": "سعر الوحدة",
+        "amount": "المبلغ",
+        "line_items": "بنود الفاتورة",
+        "subscription": "الاشتراك",
+        "deal": "الصفقة"
+    },
+    "status": {
+        "draft": "مسودة",
+        "sent": "مرسلة",
+        "paid": "مدفوعة",
+        "overdue": "متأخرة",
+        "void": "ملغاة"
+    },
+    "actions": {
+        "create": "فاتورة جديدة",
+        "mark_sent": "تعيين كمرسلة",
+        "mark_paid": "تسجيل الدفع",
+        "void": "إلغاء الفاتورة",
+        "download_pdf": "تحميل PDF",
+        "from_deal": "إنشاء فاتورة",
+        "add_line": "إضافة بند"
+    },
+    "messages": {
+        "created": "تم إنشاء الفاتورة بنجاح.",
+        "sent": "تم تعيين الفاتورة كمرسلة.",
+        "paid": "تم تسجيل الدفع وتحديث الدفتر.",
+        "voided": "تم إلغاء الفاتورة.",
+        "deal_invoice_failed": "تعذر إنشاء فاتورة لهذه الصفقة.",
+        "subscription_renewal_note": "تجديد اشتراك: :name (:date)",
+        "deal_invoice_note": "فاتورة للصفقة: :title",
+        "payment_description": "فاتورة :number — :company"
+    },
+    "pdf": {
+        "title": "فاتورة",
+        "bill_to": "فاتورة إلى",
+        "issue_date": "تاريخ الإصدار",
+        "due_date": "تاريخ الاستحقاق",
+        "thank_you": "شكراً لتعاملكم معنا.",
+        "company_sign": "التوقيع المعتمد"
+    }
+}

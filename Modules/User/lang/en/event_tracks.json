@@ -1,0 +1,37 @@
+{
+    "events": {
+        "viewed": "Viewed",
+        "created": "Created",
+        "updated": "Updated",
+        "deleted": "Deleted",
+        "action": "Action"
+    },
+    "resources": {
+        "admins": "Admin",
+        "customers": "Customer",
+        "employees": "Employee",
+        "leaves": "Leave Request",
+        "roles": "Role",
+        "leads": "Lead",
+        "deals": "Deal",
+        "contacts": "Contact",
+        "companies": "Company",
+        "subscriptions": "Subscription",
+        "invoices": "Invoice",
+        "products": "Product",
+        "projects": "Project",
+        "activities": "Activity",
+        "logs": "Log",
+        "pages": "Page",
+        "posts": "Post",
+        "services": "Service",
+        "categories": "Category",
+        "marketing": "Marketing Campaign",
+        "expense_categories": "Expense Category",
+        "accounts_receivable": "Accounts Receivable",
+        "commissions": "Commission",
+        "salaries": "Salary",
+        "product_sales": "Product Sale",
+        "system-configurations": "System Configuration"
+    }
+}

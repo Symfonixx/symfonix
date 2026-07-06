@@ -1,0 +1,49 @@
+{
+    "title": "Aktivite Zaman Çizelgesi",
+    "add_activity": "Aktivite Kaydet",
+    "no_entries": "Henüz aktivite veya denetim kaydı yok.",
+    "by": "tarafından",
+    "system": "Sistem",
+    "fields_changed": "Değişen alanlar",
+    "delete_activity": "Aktiviteyi kaldır",
+    "activity_types": {
+        "note": "Not",
+        "call": "Arama",
+        "meeting": "Toplantı",
+        "task": "Görev",
+        "email": "E-posta"
+    },
+    "fields": {
+        "type": "Tür",
+        "title": "Başlık",
+        "body": "Detaylar",
+        "scheduled_at": "Planlanan Zaman",
+        "completed_at": "Tamamlanma"
+    },
+    "placeholders": {
+        "title": "İsteğe bağlı kısa başlık",
+        "body": "Ne oldu? Ekibiniz için bağlam ekleyin..."
+    },
+    "audit": {
+        "created": ":name oluşturuldu",
+        "updated": ":name güncellendi",
+        "deleted": ":name silindi",
+        "stage_changed": "Aşama :from → :to olarak değiştirildi",
+        "activity_logged": "Aktivite kaydedildi: :type",
+        "activity_removed": "Aktivite kaldırıldı: :type",
+        "converted": "Anlaşmaya dönüştürüldü"
+    },
+    "events": {
+        "created": "Oluşturuldu",
+        "updated": "Güncellendi",
+        "deleted": "Silindi",
+        "stage_changed": "Aşama Değişti",
+        "activity_logged": "Aktivite Kaydedildi",
+        "activity_removed": "Aktivite Kaldırıldı",
+        "converted": "Dönüştürüldü",
+        "restored": "Geri Yüklendi"
+    },
+    "errors": {
+        "invalid_subject": "Geçersiz CRM konu türü."
+    }
+}

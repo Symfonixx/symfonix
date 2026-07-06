@@ -5,9 +5,11 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Modules\User\app\Models\AdminEventTrack;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -75,6 +77,11 @@ class User extends Authenticatable
     public function scopeAdmins(Builder $builder): void
     {
         $builder->where('type', self::TYPE_ADMIN);
+    }
+
+    public function adminEventTracks(): HasMany
+    {
+        return $this->hasMany(AdminEventTrack::class)->latest('created_at');
     }
 
     public function getLastLoginHumanAttribute()

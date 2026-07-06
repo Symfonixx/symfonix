@@ -1,0 +1,24 @@
+{
+    "menu": "Gider Kategorileri",
+    "pages": {
+        "index_title": "Gider Kategorileri",
+        "create_title": "Gider Kategorisi Ekle",
+        "edit_title": "Gider Kategorisini Düzenle"
+    },
+    "fields": {
+        "name": "Ad",
+        "slug": "Slug",
+        "transactions_count": "İşlemler"
+    },
+    "hints": {
+        "slug": "Adından otomatik oluşturmak için boş bırakın."
+    },
+    "actions": {
+        "add": "Kategori Ekle",
+        "back_to_list": "Kategorilere Dön",
+        "back_to_dashboard": "Kontrol Paneline Dön"
+    },
+    "errors": {
+        "in_use": "Bağlı işlemler olduğu için bu kategori silinemez."
+    }
+}

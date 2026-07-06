@@ -1,0 +1,25 @@
+{
+    "pages": {
+        "index_title": "Project Statuses",
+        "create_title": "Add Status",
+        "edit_title": "Edit Status"
+    },
+    "fields": {
+        "name": "Name",
+        "color_code": "Badge Color",
+        "sort_order": "Sort Order",
+        "projects_count": "Projects"
+    },
+    "actions": {
+        "add": "Add Status",
+        "back_to_projects": "Back to Projects",
+        "back_to_list": "Back to Statuses"
+    },
+    "hints": {
+        "color_code": "Hex color used for status badges in the project list (e.g. #0d6efd).",
+        "sort_order": "Lower numbers appear first. The lowest sort order is used when auto-creating projects from won deals."
+    },
+    "errors": {
+        "in_use": "This status cannot be deleted because it is assigned to one or more projects."
+    }
+}

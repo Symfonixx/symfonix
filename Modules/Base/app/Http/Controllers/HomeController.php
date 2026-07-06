@@ -7,6 +7,7 @@ use Cache;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
 use Modules\Cms\Models\Blog;
+use Modules\Product\Models\Product;
 use Modules\Project\Models\ProjectUseCase;
 use Modules\Services\Models\ServiceCategory;
 use Modules\Team\Models\Team;
@@ -85,6 +86,41 @@ class HomeController extends Controller
             ];
         });
 
+        $featuredProducts = Product::query()
+            ->published()
+            ->active()
+            ->where('is_featured', true)
+            ->with('category:id,name,slug')
+            ->latest()
+            ->limit(6)
+            ->get();
+
+        if ($featuredProducts->isEmpty()) {
+            $featuredProducts = Product::query()
+                ->published()
+                ->active()
+                ->with('category:id,name,slug')
+                ->latest()
+                ->limit(6)
+                ->get();
+        }
+
+        $products = $featuredProducts->map(function (Product $product) use ($locale) {
+            return [
+                'id' => $product->id,
+                'name' => $product->getTranslation('name', $locale),
+                'slug' => $product->slug,
+                'short_description' => $product->getTranslation('short_description', $locale),
+                'main_image_link' => $product->main_image_link,
+                'is_featured' => $product->is_featured,
+                'category' => $product->category ? [
+                    'id' => $product->category->id,
+                    'name' => $product->category->getTranslation('name', $locale),
+                    'slug' => $product->category->slug,
+                ] : null,
+            ];
+        });
+
         $siteName = Seo::get('website_name', config('app.name'));
         $meta = (new Meta)
             ->title(__('Home').' | '.$siteName)
@@ -100,6 +136,7 @@ class HomeController extends Controller
             'testimonials' => $testimonials,
             'teams' => $teams,
             'useCases' => $useCases,
+            'products' => $products,
         ], $meta);
     }
 

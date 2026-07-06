@@ -1,0 +1,20 @@
+{
+    "title": "System Configurations",
+    "page_description": "Internal company details and admin notification settings.",
+    "form_description": "Configure company details for invoices and the admin notification email.",
+    "company_details": {
+        "title": "Company Details",
+        "description": "Used on invoices. Falls back to website contact settings when left blank.",
+        "phone": "Company Phone",
+        "email": "Company Email",
+        "address": "Company Address",
+        "sign_image": "Company Sign Image",
+        "sign_image_hint": "This will show in invoice."
+    },
+    "admin_notifications": {
+        "title": "Admin Notifications",
+        "description": "All system notification emails are sent to this address.",
+        "email": "Admin Email",
+        "email_hint": "Overrides ADMIN_EMAIL from .env when set. Supports comma-separated addresses."
+    }
+}

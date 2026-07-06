@@ -6,6 +6,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
+use Modules\Base\Support\CompanyBranding;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\Subscription;
 use Modules\CRM\Services\Subscription\SubscriptionService;
@@ -301,6 +302,7 @@ class InvoiceService
 
         $pdf = Pdf::loadView('finance::admin.invoice.pdf', [
             'invoice' => $invoice,
+            'companyBranding' => CompanyBranding::forInvoice(),
         ]);
 
         return $pdf->download($invoice->invoice_number.'.pdf');

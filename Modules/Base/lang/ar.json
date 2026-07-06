@@ -414,5 +414,19 @@
     "Instagram": "إنستغرام",
     "Twitter": "تويتر",
     "LinkedIn": "لينكد إن",
-    "Github": "جيت هاب"
+    "Github": "جيت هاب",
+    "System Configurations": "إعدادات النظام",
+    "Internal company details and admin notification settings.": "تفاصيل الشركة الداخلية وإعدادات إشعارات المسؤول.",
+    "Configure company details for invoices and the admin notification email.": "تكوين تفاصيل الشركة للفواتير وبريد إشعارات المسؤول.",
+    "Company Details": "تفاصيل الشركة",
+    "Used on invoices. Falls back to website contact settings when left blank.": "تُستخدم في الفواتير. عند تركها فارغة، يتم الرجوع إلى إعدادات اتصال الموقع.",
+    "Company Phone": "هاتف الشركة",
+    "Company Email": "بريد الشركة الإلكتروني",
+    "Company Address": "عنوان الشركة",
+    "Company Sign Image": "صورة توقيع الشركة",
+    "This will show in invoice.": "سيظهر هذا في الفاتورة.",
+    "Admin Notifications": "إشعارات المسؤول",
+    "All system notification emails are sent to this address.": "يتم إرسال جميع رسائل إشعارات النظام إلى هذا العنوان.",
+    "Admin Email": "بريد المسؤول الإلكتروني",
+    "Overrides ADMIN_EMAIL from .env when set. Supports comma-separated addresses.": "يتجاوز ADMIN_EMAIL من ملف .env عند التعيين. يدعم عناوين مفصولة بفواصل."
 }

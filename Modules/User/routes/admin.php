@@ -29,7 +29,7 @@ Route::middleware(['can:Hr Management'])
             });
         Route::resource('roles', RoleController::class)->except('destroy');
 
-        Route::resource('admins', AdminController::class)->except('create', 'edit', 'show');
+        Route::resource('admins', AdminController::class)->except('create', 'edit');
 
         Route::resource('employees', StaffController::class)->except('create', 'edit', 'show');
 

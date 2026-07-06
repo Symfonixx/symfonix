@@ -1,0 +1,9 @@
+{
+    "mail": {
+        "subject": "🔥 هجوم محتمل على :domain",
+        "message": "تم اكتشاف هجوم محتمل :middleware على :domain من عنوان IP :ip. تم التأثير على الرابط التالي: :url"
+    },
+    "slack": {
+        "message": "تم اكتشاف هجوم محتمل على :domain."
+    }
+}

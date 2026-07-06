@@ -1,0 +1,25 @@
+{
+    "menu": "Commissions",
+    "pages": {
+        "index_title": "Commission Management"
+    },
+    "fields": {
+        "deal": "Deal",
+        "sales_rep": "Sales Rep",
+        "percentage": "Commission %",
+        "amount": "Amount",
+        "status": "Status"
+    },
+    "status": {
+        "pending": "Pending",
+        "paid": "Paid"
+    },
+    "actions": {
+        "record_payout": "Record Payout"
+    },
+    "messages": {
+        "paid": "Commission payout recorded in the ledger.",
+        "payout_description": "Commission payout: :name — :deal",
+        "no_pending": "No pending commission payouts."
+    }
+}

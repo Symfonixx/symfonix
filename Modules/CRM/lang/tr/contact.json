@@ -1,0 +1,50 @@
+{
+    "menu": {
+        "contacts": "Kişiler"
+    },
+    "pages": {
+        "index_title": "Kişiler",
+        "create_title": "Kişi Ekle",
+        "edit_title": "Kişiyi Düzenle",
+        "show_title": "Kişi Detayları"
+    },
+    "fields": {
+        "name": "Ad",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "job_title": "Ünvan",
+        "company": "Şirket",
+        "select_company": "Şirket seçin",
+        "notes": "Notlar",
+        "is_primary": "Birincil Kişi"
+    },
+    "actions": {
+        "add": "Kişi Ekle",
+        "back_to_list": "Kişilere Dön"
+    },
+    "search": {
+        "placeholder": "Kişilerde ara"
+    },
+    "sections": {
+        "basic_information": "Temel Bilgiler",
+        "basic_information_hint": "CRM kişisi. Şirket bağlantısı isteğe bağlıdır.",
+        "company": "Şirket",
+        "company_hint": "İsteğe bağlı olarak mevcut bir şirkete bağlayın.",
+        "additional": "Ek Detaylar"
+    },
+    "placeholders": {
+        "name": "Örnek: Ahmet Yılmaz",
+        "email": "name@example.com",
+        "phone": "+90 555 000 0000",
+        "job_title": "Örnek: CTO",
+        "notes": "Bu kişi hakkında dahili notlar..."
+    },
+    "hints": {
+        "company": "Henüz bir şirkete bağlı olmayan kişiler için boş bırakın.",
+        "is_primary": "Şirket için ana iletişim kişisi olarak işaretleyin."
+    },
+    "validation": {
+        "fix_errors": "Lütfen aşağıdaki hataları düzeltip tekrar deneyin."
+    },
+    "fallback_name": "Bilinmeyen Kişi"
+}

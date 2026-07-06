@@ -419,5 +419,19 @@
     "Instagram": "Instagram",
     "Twitter": "Twitter",
     "LinkedIn": "LinkedIn",
-    "Github": "Github"
+    "Github": "Github",
+    "System Configurations": "Sistem Yapılandırmaları",
+    "Internal company details and admin notification settings.": "Dahili şirket bilgileri ve yönetici bildirim ayarları.",
+    "Configure company details for invoices and the admin notification email.": "Faturalar ve yönetici bildirim e-postası için şirket bilgilerini yapılandırın.",
+    "Company Details": "Şirket Bilgileri",
+    "Used on invoices. Falls back to website contact settings when left blank.": "Faturalarda kullanılır. Boş bırakılırsa web sitesi iletişim ayarlarına geri döner.",
+    "Company Phone": "Şirket Telefonu",
+    "Company Email": "Şirket E-postası",
+    "Company Address": "Şirket Adresi",
+    "Company Sign Image": "Şirket İmza Görseli",
+    "This will show in invoice.": "Bu faturada gösterilecektir.",
+    "Admin Notifications": "Yönetici Bildirimleri",
+    "All system notification emails are sent to this address.": "Tüm sistem bildirim e-postaları bu adrese gönderilir.",
+    "Admin Email": "Yönetici E-postası",
+    "Overrides ADMIN_EMAIL from .env when set. Supports comma-separated addresses.": "Ayarlandığında .env dosyasındaki ADMIN_EMAIL değerini geçersiz kılar. Virgülle ayrılmış adresleri destekler."
 }

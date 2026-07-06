@@ -1,0 +1,60 @@
+{
+    "menu": {
+        "use_cases": "Kullanım Senaryoları"
+    },
+    "pages": {
+        "index_title": "Kullanım Senaryoları",
+        "create_title": "Kullanım Senaryosu Ekle",
+        "edit_title": "Kullanım Senaryosunu Düzenle",
+        "website_title": "Vaka Çalışmaları",
+        "website_details": "Vaka Çalışması"
+    },
+    "meta": {
+        "index_description": "Vaka çalışmalarımızı keşfedin ve işletmelere yenilikçi teknoloji çözümleri sunma yaklaşımımızı görün.",
+        "index_keywords": "vaka çalışmaları, BT çözümleri, web geliştirme"
+    },
+    "fields": {
+        "title": "Başlık",
+        "slug": "URL Kısa Adı",
+        "client_name": "Müşteri Adı",
+        "summary": "Özet",
+        "challenge": "Zorluk",
+        "solution": "Çözüm",
+        "results": "Sonuçlar",
+        "content": "Tam İçerik",
+        "image": "Kapak Görseli",
+        "technologies": "Teknolojiler",
+        "category_tag": "Kategori Etiketi",
+        "project_url": "Canlı Proje URL'si",
+        "completed_year": "Tamamlanma Yılı",
+        "linked_project": "Bağlı Dahili Proje",
+        "select_project": "Proje seçin (isteğe bağlı)",
+        "sort_order": "Sıralama",
+        "featured": "Öne Çıkan",
+        "published": "Yayınlandı",
+        "status": "Durum",
+        "visits": "Ziyaretler"
+    },
+    "actions": {
+        "add": "Kullanım Senaryosu Ekle",
+        "back_to_list": "Kullanım Senaryolarına Dön",
+        "view_on_site": "Sitede Görüntüle"
+    },
+    "hints": {
+        "slug": "Genel URL'de kullanılır, örn. /use-cases/your-slug",
+        "technologies": "Virgülle ayrılmış veya etiket listesi, örn. Laravel, Vue, AWS",
+        "category_tag": "Portföy kartında rozet olarak gösterilir, örn. Web Geliştirme",
+        "linked_project": "İsteğe bağlı olarak dahili CRM proje kaydına bağlayın."
+    },
+    "website": {
+        "tagline": "Vaka Çalışmaları",
+        "heading": "İşletmeleri Yenilikçi Teknoloji Çözümleriyle Nasıl Güçlendirdik",
+        "challenge_title": "Zorluk",
+        "solution_title": "Çözümümüz",
+        "results_title": "Sonuçlar",
+        "technologies_title": "Kullanılan Teknolojiler",
+        "related_title": "Diğer Vaka Çalışmaları",
+        "visit_project": "Canlı Projeyi Ziyaret Et",
+        "client": "Müşteri"
+    }
+}

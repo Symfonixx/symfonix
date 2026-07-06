@@ -1,0 +1,80 @@
+{
+    "menu": {
+        "crm": "إدارة العملاء",
+        "companies": "الشركات"
+    },
+    "pages": {
+        "index_title": "الشركات",
+        "create_title": "إضافة شركة جديدة",
+        "edit_title": "تعديل الشركة",
+        "show_title": "تفاصيل الشركة"
+    },
+    "fields": {
+        "id": "المعرف",
+        "name": "الاسم",
+        "activity_type": "نوع النشاط",
+        "select_activity_type": "اختر نوع النشاط",
+        "email": "البريد الإلكتروني",
+        "phone": "الهاتف",
+        "customer": "العميل",
+        "select_customer": "اختر العميل",
+        "country": "الدولة",
+        "city": "المدينة",
+        "address": "العنوان",
+        "notes": "ملاحظات",
+        "status": "الحالة"
+    },
+    "status": {
+        "active": "نشط",
+        "disabled": "معطل"
+    },
+    "actions": {
+        "add": "إضافة شركة",
+        "add_customer": "إضافة عميل",
+        "back_to_list": "العودة إلى الشركات"
+    },
+    "search": {
+        "placeholder": "البحث في الشركات"
+    },
+    "sections": {
+        "basic_information": "المعلومات الأساسية",
+        "basic_information_hint": "ابدأ ببيانات الشركة الأساسية واربطها بالعميل المناسب.",
+        "contact_information": "معلومات التواصل",
+        "location": "الموقع",
+        "location_hint": "هذه الحقول تساعد فريقك على معرفة مكان الشركة بدقة.",
+        "additional_details": "تفاصيل إضافية",
+        "additional_details_hint": "أضف أي تفاصيل تساعد فريقك في المتابعة والدعم."
+    },
+    "placeholders": {
+        "name": "مثال: شركة أكمي للتقنية",
+        "email": "name@company.com",
+        "phone": "+966 5X XXX XXXX",
+        "country": "مثال: المملكة العربية السعودية",
+        "city": "مثال: الرياض",
+        "address": "الشارع، المبنى، رقم المكتب",
+        "notes": "ملاحظات اختيارية للاستخدام الداخلي"
+    },
+    "hints": {
+        "customer": "اختر حساب العميل المرتبط بهذه الشركة.",
+        "add_customer": "أضف عميلاً جديداً إذا لم يكن موجوداً في القائمة.",
+        "status": "الشركات المعطلة تبقى محفوظة لكنها لا تظهر ضمن العمليات النشطة."
+    },
+    "activity_types": {
+        "technology": "تقنية",
+        "retail": "تجزئة",
+        "healthcare": "رعاية صحية",
+        "finance": "مالية",
+        "education": "تعليم",
+        "manufacturing": "تصنيع",
+        "consulting": "استشارات",
+        "other": "أخرى"
+    },
+    "filters": {
+        "activity_type": "تصفية حسب نوع النشاط",
+        "all": "الكل"
+    },
+    "validation": {
+        "fix_errors": "يرجى تصحيح الأخطاء التالية ثم المحاولة مرة أخرى.",
+        "email_unique": "هذا البريد الإلكتروني مستخدم بالفعل من قبل شركة أخرى."
+    }
+}

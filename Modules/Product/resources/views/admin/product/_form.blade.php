@@ -16,7 +16,7 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
-        <label for="name" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('product::product.fields.name') }}</label>
+        <label for="name" class="fs-6 fw-bold mt-2 mb-3 required"><i class="bi bi-translate text-primary mx-1"></i>{{ __('product::product.fields.name') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
         <input id="name" type="text" class="form-control form-control-solid @error('name') is-invalid @enderror"
@@ -175,7 +175,7 @@
     <div class="card-body pt-0">
         <div class="row mb-8">
             <div class="col-xl-3">
-                <label for="short_description" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.short_description') }}</label>
+                <label for="short_description" class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1"></i>{{ __('product::product.fields.short_description') }}</label>
                 <div class="text-muted fs-7">{{ __('product::product.fields.short_description_help') }}</div>
             </div>
             <div class="col-xl-9 fv-row">
@@ -192,7 +192,7 @@
 
         <div class="row mb-0">
             <div class="col-xl-3">
-                <label for="product-description-editor" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.description') }}</label>
+                <label for="product-description-editor" class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1"></i>{{ __('product::product.fields.description') }}</label>
                 <div class="text-muted fs-7">{{ __('product::product.fields.description_help') }}</div>
             </div>
             <div class="col-xl-9 fv-row">
@@ -221,7 +221,7 @@
         <div class="card-body pt-0">
             <div class="row mb-8">
                 <div class="col-xl-3">
-                    <label for="seo_title" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.seo_title') }}</label>
+                    <label for="seo_title" class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1"></i>{{ __('product::product.fields.seo_title') }}</label>
                     <div class="text-muted fs-7">{{ __('product::product.fields.seo_title_help') }}</div>
                 </div>
                 <div class="col-xl-9 fv-row">
@@ -239,7 +239,7 @@
 
             <div class="row mb-8">
                 <div class="col-xl-3">
-                    <label for="seo_description" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.seo_description') }}</label>
+                    <label for="seo_description" class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1"></i>{{ __('product::product.fields.seo_description') }}</label>
                     <div class="text-muted fs-7">{{ __('product::product.fields.seo_description_help') }}</div>
                 </div>
                 <div class="col-xl-9 fv-row">
@@ -256,7 +256,7 @@
 
             <div class="row mb-8">
                 <div class="col-xl-3">
-                    <label for="seo_keywords" class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.seo_keywords') }}</label>
+                    <label for="seo_keywords" class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1"></i>{{ __('product::product.fields.seo_keywords') }}</label>
                 </div>
                 <div class="col-xl-9 fv-row">
                     <input id="seo_keywords" type="text" class="form-control form-control-solid @error('seo_keywords') is-invalid @enderror"

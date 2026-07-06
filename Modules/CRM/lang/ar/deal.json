@@ -1,0 +1,121 @@
+{
+    "menu": {
+        "deals": "الصفقات",
+        "pipeline": "خط المبيعات"
+    },
+    "pages": {
+        "index_title": "الصفقات",
+        "kanban_title": "لوحة خط المبيعات",
+        "create_title": "إضافة صفقة جديدة",
+        "edit_title": "تعديل الصفقة",
+        "show_title": "تفاصيل الصفقة"
+    },
+    "fields": {
+        "title": "العنوان",
+        "company": "الشركة",
+        "select_company": "اختر الشركة",
+        "stage": "مرحلة الصفقة",
+        "select_stage": "اختر المرحلة",
+        "assignee": "مسند إلى",
+        "select_assignee": "اختر الموظف",
+        "value": "القيمة",
+        "currency": "العملة",
+        "probability": "احتمالية الإغلاق (%)",
+        "expected_close_date": "تاريخ الإغلاق المتوقع",
+        "source": "المصدر",
+        "source_lead": "العميل المحتمل المصدر",
+        "description": "الوصف",
+        "lost_reason": "سبب الخسارة",
+        "status": "الحالة",
+        "notes": "ملاحظات",
+        "service": "الخدمة",
+        "quantity": "الكمية",
+        "unit_price": "سعر الوحدة",
+        "line_total": "إجمالي السطر",
+        "project": "المشروع"
+    },
+    "status": {
+        "open": "مفتوحة",
+        "won": "مكسوبة",
+        "lost": "مخسورة"
+    },
+    "actions": {
+        "add": "إضافة صفقة",
+        "add_service": "إضافة سطر خدمة",
+        "remove_service": "إزالة",
+        "back_to_list": "العودة للصفقات",
+        "list_view": "عرض القائمة",
+        "kanban_view": "لوحة المبيعات",
+        "move_stage": "نقل المرحلة",
+        "view_details": "عرض التفاصيل"
+    },
+    "search": {
+        "placeholder": "البحث في الصفقات"
+    },
+    "sections": {
+        "basic_information": "معلومات الصفقة",
+        "basic_information_hint": "التفاصيل الأساسية وموقع الصفقة في خط المبيعات.",
+        "financial": "التفاصيل المالية",
+        "financial_hint": "القيمة المتوقعة وجدول الإغلاق.",
+        "services": "الخدمات",
+        "services_hint": "إرفاق خدمات الكتالوج بهذه الصفقة.",
+        "linked_project": "المشروع المرتبط",
+        "additional_details": "تفاصيل إضافية",
+        "stage_history": "سجل المراحل",
+        "move_stage": "نقل إلى مرحلة أخرى",
+        "ledger_reconciliation": "مطابقة الدفتر"
+    },
+    "ledger": {
+        "expected_revenue": "الإيراد المتوقع",
+        "recorded_in_ledger": "المسجل في الدفتر",
+        "variance": "الفرق",
+        "reconciled": "متطابق",
+        "not_reconciled": "غير متطابق",
+        "transactions": "معاملات الإيراد",
+        "income_entry": "قيد إيراد",
+        "no_transactions": "لم يُسجّل أي إيراد لهذه الصفقة بعد."
+    },
+    "placeholders": {
+        "title": "مثال: مشروع إعادة تصميم الموقع",
+        "source": "مثال: الموقع، إحالة، اتصال مباشر",
+        "description": "سياق الصفقة لفريقك",
+        "lost_reason": "لماذا خُسرت هذه الصفقة؟",
+        "notes": "ملاحظة اختيارية حول تغيير المرحلة",
+        "value": "0.00",
+        "select_service": "اختر خدمة"
+    },
+    "hints": {
+        "stage": "نقل المراحل يحدّث حالة الصفقة ويسجّل السجل تلقائياً.",
+        "probability": "اتركه فارغاً لاستخدام الاحتمالية الافتراضية للمرحلة المختارة."
+    },
+    "history": {
+        "created": "تم إنشاء الصفقة",
+        "moved_from": "نُقلت من :from إلى :to",
+        "initial_stage": "المرحلة الأولية",
+        "by": "بواسطة",
+        "no_history": "لا يوجد سجل لتغييرات المراحل بعد."
+    },
+    "kanban": {
+        "empty_column": "لا توجد صفقات في هذه المرحلة",
+        "deals_count": ":count صفقة"
+    },
+    "validation": {
+        "fix_errors": "يرجى تصحيح الأخطاء التالية والمحاولة مجدداً."
+    },
+    "stages": {
+        "lead": "عميل محتمل",
+        "qualified": "مؤهل",
+        "proposal": "عرض سعر",
+        "negotiation": "تفاوض",
+        "closed_won": "مغلقة - مكسوبة",
+        "closed_lost": "مغلقة - مخسورة"
+    },
+    "notifications": {
+        "stage_changed_subject": "تحديث مرحلة الصفقة: :title",
+        "stage_changed_greeting": "تحديث خط المبيعات",
+        "stage_changed_line": "نُقلت الصفقة \":title\" من :from إلى :to.",
+        "changed_by": "بواسطة: :name",
+        "company": "الشركة: :name",
+        "view_deal": "عرض الصفقة"
+    }
+}

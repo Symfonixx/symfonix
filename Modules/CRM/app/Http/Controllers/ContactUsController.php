@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Base\Support\AdminEmail;
 use Modules\CRM\Models\ContactForm;
 
 class ContactUsController extends Controller
@@ -88,18 +89,6 @@ class ContactUsController extends Controller
 
     private function getAdminEmails(): array
     {
-        $emailSetting = config('services.admin_email')
-            ?: config('services.leads.admin_email')
-            ?: config('mail.from.address');
-        if (! $emailSetting) {
-            return [];
-        }
-
-        $emails = preg_split('/[,\s;]+/', $emailSetting);
-        $emails = array_filter($emails, function ($email) {
-            return filter_var($email, FILTER_VALIDATE_EMAIL);
-        });
-
-        return array_values(array_unique($emails));
+        return AdminEmail::addresses();
     }
 }

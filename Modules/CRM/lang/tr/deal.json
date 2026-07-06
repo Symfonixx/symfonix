@@ -1,0 +1,121 @@
+{
+    "menu": {
+        "deals": "Anlaşmalar",
+        "pipeline": "Satış Hattı"
+    },
+    "pages": {
+        "index_title": "Anlaşmalar",
+        "kanban_title": "Satış Hattı Panosu",
+        "create_title": "Yeni Anlaşma Ekle",
+        "edit_title": "Anlaşmayı Düzenle",
+        "show_title": "Anlaşma Detayları"
+    },
+    "fields": {
+        "title": "Başlık",
+        "company": "Şirket",
+        "select_company": "Şirket seçin",
+        "stage": "Hatt Aşaması",
+        "select_stage": "Aşama seçin",
+        "assignee": "Atanan Kişi",
+        "select_assignee": "Kişi seçin",
+        "value": "Değer",
+        "currency": "Para Birimi",
+        "probability": "Olasılık (%)",
+        "expected_close_date": "Beklenen Kapanış Tarihi",
+        "source": "Kaynak",
+        "source_lead": "Kaynak Potansiyel Müşteri",
+        "description": "Açıklama",
+        "lost_reason": "Kaybetme Nedeni",
+        "status": "Durum",
+        "notes": "Notlar",
+        "service": "Hizmet",
+        "quantity": "Adet",
+        "unit_price": "Birim Fiyat",
+        "line_total": "Satır Toplamı",
+        "project": "Proje"
+    },
+    "status": {
+        "open": "Açık",
+        "won": "Kazanıldı",
+        "lost": "Kaybedildi"
+    },
+    "actions": {
+        "add": "Anlaşma Ekle",
+        "add_service": "Hizmet Satırı Ekle",
+        "remove_service": "Kaldır",
+        "back_to_list": "Anlaşmalara Dön",
+        "list_view": "Liste Görünümü",
+        "kanban_view": "Hatt Panosu",
+        "move_stage": "Aşamayı Taşı",
+        "view_details": "Detayları Gör"
+    },
+    "search": {
+        "placeholder": "Anlaşmalarda ara"
+    },
+    "sections": {
+        "basic_information": "Anlaşma Bilgileri",
+        "basic_information_hint": "Temel anlaşma detayları ve hatt konumu.",
+        "financial": "Finansal Detaylar",
+        "financial_hint": "Beklenen değer ve kapanış zaman çizelgesi.",
+        "services": "Hizmetler",
+        "services_hint": "Bu anlaşmaya katalog hizmetleri ekleyin.",
+        "linked_project": "Bağlı Proje",
+        "additional_details": "Ek Detaylar",
+        "stage_history": "Aşama Geçmişi",
+        "move_stage": "Başka Aşamaya Taşı",
+        "ledger_reconciliation": "Defter Mutabakatı"
+    },
+    "ledger": {
+        "expected_revenue": "Beklenen Gelir",
+        "recorded_in_ledger": "Deftere Kayıtlı",
+        "variance": "Fark",
+        "reconciled": "Mutabık",
+        "not_reconciled": "Mutabık Değil",
+        "transactions": "Gelir İşlemleri",
+        "income_entry": "Gelir kaydı",
+        "no_transactions": "Bu anlaşma için henüz gelir kaydedilmedi."
+    },
+    "placeholders": {
+        "title": "Örnek: Web sitesi yeniden tasarım projesi",
+        "source": "Örnek: Web sitesi, Referans, Soğuk arama",
+        "description": "Ekibiniz için anlaşma bağlamı",
+        "lost_reason": "Bu anlaşma neden kaybedildi?",
+        "notes": "Bu aşama değişikliği hakkında isteğe bağlı not",
+        "value": "0.00",
+        "select_service": "Hizmet seçin"
+    },
+    "hints": {
+        "stage": "Aşama değişiklikleri anlaşma durumunu günceller ve geçmişi otomatik kaydeder.",
+        "probability": "Seçilen aşamanın varsayılan olasılığını kullanmak için boş bırakın."
+    },
+    "history": {
+        "created": "Anlaşma oluşturuldu",
+        "moved_from": ":from aşamasından :to aşamasına taşındı",
+        "initial_stage": "İlk aşama",
+        "by": "tarafından",
+        "no_history": "Henüz aşama değişikliği kaydedilmedi."
+    },
+    "kanban": {
+        "empty_column": "Bu aşamada anlaşma yok",
+        "deals_count": ":count anlaşma"
+    },
+    "validation": {
+        "fix_errors": "Lütfen aşağıdaki hataları düzeltip tekrar deneyin."
+    },
+    "stages": {
+        "lead": "Potansiyel Müşteri",
+        "qualified": "Nitelikli",
+        "proposal": "Teklif",
+        "negotiation": "Müzakere",
+        "closed_won": "Kapatıldı - Kazanıldı",
+        "closed_lost": "Kapatıldı - Kaybedildi"
+    },
+    "notifications": {
+        "stage_changed_subject": "Anlaşma aşaması güncellendi: :title",
+        "stage_changed_greeting": "Satış Hattı Güncellemesi",
+        "stage_changed_line": "\":title\" anlaşması :from aşamasından :to aşamasına taşındı.",
+        "changed_by": "Değiştiren: :name",
+        "company": "Şirket: :name",
+        "view_deal": "Anlaşmayı Gör"
+    }
+}

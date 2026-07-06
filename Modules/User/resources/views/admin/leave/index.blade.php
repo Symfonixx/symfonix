@@ -3,8 +3,8 @@
 @section('toolbar')
     @php
         $breadcrumbItems = [
-            ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
-            ['label' => 'Leave Management'],
+            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
+            ['label' => __('Leave Management')],
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Leave Management')" :breadcrumbItems="$breadcrumbItems"/>

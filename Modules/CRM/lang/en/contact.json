@@ -1,0 +1,59 @@
+{
+    "menu": {
+        "contacts": "Contacts"
+    },
+    "pages": {
+        "index_title": "Contacts",
+        "create_title": "Add Contact",
+        "edit_title": "Edit Contact",
+        "show_title": "Contact Details"
+    },
+    "fields": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "phone2": "Secondary Phone",
+        "source": "Source",
+        "select_source": "Select a source",
+        "customer": "Customer",
+        "select_customer": "Select a customer",
+        "job_title": "Job Title",
+        "company": "Company",
+        "select_company": "Select a company",
+        "notes": "Notes",
+        "is_primary": "Primary Contact"
+    },
+    "actions": {
+        "add": "Add Contact",
+        "back_to_list": "Back to Contacts"
+    },
+    "search": {
+        "placeholder": "Search in Contacts"
+    },
+    "sections": {
+        "basic_information": "Basic Information",
+        "basic_information_hint": "CRM contact person. Company link is optional.",
+        "company": "Company",
+        "company_hint": "Optionally associate this person with a company account.",
+        "additional": "Additional Details"
+    },
+    "placeholders": {
+        "name": "Example: John Smith",
+        "email": "name@example.com",
+        "phone": "+1 555 000 0000",
+        "job_title": "Example: CTO",
+        "notes": "Internal notes about this contact..."
+    },
+    "hints": {
+        "company": "Leave empty for standalone contacts not yet linked to a company.",
+        "is_primary": "Mark as the main point of contact for the company.",
+        "customer": "Link this contact to an existing customer account, if one exists."
+    },
+    "validation": {
+        "fix_errors": "Please fix the following errors and try again.",
+        "email_unique": "A contact with this email address already exists.",
+        "phone_unique": "A contact with this phone number already exists.",
+        "phone": "The phone number may only contain digits and the characters + - ( ) and spaces."
+    },
+    "fallback_name": "Unknown Contact"
+}

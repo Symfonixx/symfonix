@@ -126,23 +126,15 @@ class ProductRepository
     private function prepareProductUpdateData(array $data, Product $product): array
     {
         $locale = app()->getLocale();
-        $fields = [
+
+        return array_merge($data, $this->buildTranslations([
             'name' => $data['name'] ?? $product->getTranslation('name', $locale, false),
             'short_description' => $data['short_description'] ?? $product->getTranslation('short_description', $locale, false),
             'description' => $data['description'] ?? $product->getTranslation('description', $locale, false),
             'seo_title' => $data['seo_title'] ?? $product->getTranslation('seo_title', $locale, false),
             'seo_description' => $data['seo_description'] ?? $product->getTranslation('seo_description', $locale, false),
             'seo_keywords' => $data['seo_keywords'] ?? $product->getTranslation('seo_keywords', $locale, false),
-        ];
-
-        $translatable = [];
-        foreach ($fields as $field => $value) {
-            $translations = $product->getTranslations($field);
-            $translations[$locale] = $value;
-            $translatable[$field] = $translations;
-        }
-
-        return array_merge($data, $translatable);
+        ], $locale));
     }
 
     private function buildTranslations(array $fields, string $locale): array

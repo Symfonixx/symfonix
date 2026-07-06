@@ -1,0 +1,70 @@
+{
+    "menu": {
+        "inquiries": "Talepler"
+    },
+    "pages": {
+        "index_title": "Talepler",
+        "create_title": "Talep Ekle",
+        "edit_title": "Talebi Düzenle"
+    },
+    "fields": {
+        "name": "Ad",
+        "email": "E-posta",
+        "mobile": "Telefon",
+        "service": "Hizmet",
+        "select_service": "Hizmet seçin",
+        "subject": "Konu",
+        "message": "Mesaj",
+        "company": "Bağlı Şirket",
+        "select_company": "Şirket seçin",
+        "ip_address": "IP Adresi",
+        "blocked": "Engelli"
+    },
+    "status": {
+        "active": "Aktif",
+        "blocked": "Engelli",
+        "converted": "Dönüştürüldü"
+    },
+    "actions": {
+        "add": "Talep Ekle",
+        "edit": "Talebi Düzenle",
+        "view_details": "Detayları Gör",
+        "back_to_list": "Taleplere Dön",
+        "convert_to_lead": "Leade Dönüştür",
+        "convert_to_contact": "CRM Kişilerine Ekle"
+    },
+    "search": {
+        "placeholder": "Taleplerde ara"
+    },
+    "sections": {
+        "contact_information": "Gönderen Bilgileri",
+        "contact_information_hint": "Gelen talep detayları.",
+        "company": "Şirket",
+        "company_hint": "İsteğe bağlı. Biliniyorsa mevcut bir şirkete bağlayın.",
+        "message": "Mesaj",
+        "status": "Durum"
+    },
+    "placeholders": {
+        "name": "Örnek: Ahmet Yılmaz",
+        "email": "name@example.com",
+        "mobile": "+90 555 000 0000",
+        "subject": "Örnek: Proje talebi",
+        "message": "Talep mesajını girin..."
+    },
+    "hints": {
+        "company": "İsteğe bağlı. Talepler şirket olmadan işlenebilir.",
+        "blocked": "Engellenen talepler sistemde işaretlenir.",
+        "service": "Talep bilinen bir hizmetle eşleşiyorsa katalog hizmetine bağlayın.",
+        "subject": "Katalog hizmeti seçilmediğinde serbest metin konu."
+    },
+    "validation": {
+        "fix_errors": "Lütfen aşağıdaki hataları düzeltip tekrar deneyin."
+    },
+    "conversion": {
+        "already_converted": "Bu talep zaten bir leade dönüştürülmüş.",
+        "already_has_contact": "Bu talep zaten bir CRM kişisine bağlı.",
+        "contact_failed": "Bu talepten CRM kişisi oluşturulamadı.",
+        "converted_to_lead": "Talep leade dönüştürüldü.",
+        "converted_to_contact": "Talep CRM kişilerine eklendi."
+    }
+}

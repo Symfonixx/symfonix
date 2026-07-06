@@ -1,0 +1,20 @@
+{
+    "title": "Sistem Yapılandırmaları",
+    "page_description": "Dahili şirket bilgileri ve yönetici bildirim ayarları.",
+    "form_description": "Faturalar ve yönetici bildirim e-postası için şirket bilgilerini yapılandırın.",
+    "company_details": {
+        "title": "Şirket Bilgileri",
+        "description": "Faturalarda kullanılır. Boş bırakılırsa web sitesi iletişim ayarlarına geri döner.",
+        "phone": "Şirket Telefonu",
+        "email": "Şirket E-postası",
+        "address": "Şirket Adresi",
+        "sign_image": "Şirket İmza Görseli",
+        "sign_image_hint": "Bu faturada gösterilecektir."
+    },
+    "admin_notifications": {
+        "title": "Yönetici Bildirimleri",
+        "description": "Tüm sistem bildirim e-postaları bu adrese gönderilir.",
+        "email": "Yönetici E-postası",
+        "email_hint": "Ayarlandığında .env dosyasındaki ADMIN_EMAIL değerini geçersiz kılar. Virgülle ayrılmış adresleri destekler."
+    }
+}
