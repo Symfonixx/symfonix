@@ -244,14 +244,18 @@
         </div>
     </div>
 
-    @script
-    <script>
-        const chartLabels = @json([
+    @php
+        $chartLabels = [
             'profit' => __('finance::finance.charts.profit'),
             'expenses' => __('finance::finance.charts.expenses'),
             'losses' => __('finance::finance.charts.losses'),
             'revenue' => __('finance::finance.metrics.total_revenue'),
-        ]);
+        ];
+    @endphp
+
+    @script
+    <script>
+        const chartLabels = @json($chartLabels);
 
         const chartColors = {
             profit: '#50cd89',
