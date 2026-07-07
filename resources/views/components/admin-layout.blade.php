@@ -1,3 +1,9 @@
+@php
+    use Modules\Base\Support\AdminBranding;
+
+    $adminLogoUrl = AdminBranding::logoUrl();
+    $adminMinLogoUrl = AdminBranding::minLogoUrl();
+@endphp
 <!DOCTYPE html>
 <!--
 Author: Hadi Hilal
@@ -106,7 +112,7 @@ Author: Hadi Hilal
                 <!--begin::Mobile logo-->
                 <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
                     <a href="{{ route('admin.dashboard.index') }}" class="d-lg-none">
-                        <img alt="Logo" src="{{asset('images/admin_logo.png')}}" class="h-30px"/>
+                        <img alt="Logo" src="{{ $adminLogoUrl }}" class="h-30px"/>
                     </a>
                 </div>
                 <!--end::Mobile logo-->
@@ -158,24 +164,62 @@ Author: Hadi Hilal
                                     <span class="path3"></span>
                                     <span class="path4"></span>
                                 </i>
+                                @if($unreadNotificationCount > 0)
+                                    <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
+                                @endif
                             </div>
                             <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px"
                                  data-kt-menu="true">
                                 <div class="d-flex flex-column bgi-no-repeat rounded-top bg-primary">
                                     <h3 class="text-white fw-semibold px-9 py-6 mb-0">
                                         {{ __('Notifications') }}
-                                        <span class="fs-8 opacity-75 ps-3">0 {{ __('new') }}</span>
+                                        @if($unreadNotificationCount > 0)
+                                            <span class="fs-8 opacity-75 ps-3">{{ $unreadNotificationCount }} {{ __('new') }}</span>
+                                        @endif
                                     </h3>
                                 </div>
-                                <div class="px-5 py-8 text-center text-muted">
-                                    <i class="ki-duotone ki-notification-bing fs-3x text-gray-400 mb-4">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                    </i>
-                                    <div class="fw-semibold fs-6">{{ __('No notifications yet') }}</div>
-                                    <div class="fs-7">{{ __('You will see updates here when they arrive.') }}</div>
-                                </div>
+                                @if($recentNotifications->isNotEmpty())
+                                    <div class="scroll-y mh-325px my-5 px-8">
+                                        @foreach($recentNotifications as $notification)
+                                            <form action="{{ route('admin.notifications.read', $notification->id) }}" method="POST" class="d-flex flex-stack py-4 border-bottom border-gray-200">
+                                                @csrf
+                                                <button type="submit" class="btn btn-link text-start p-0 text-decoration-none w-100">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="symbol symbol-35px me-4">
+                                                            <span class="symbol-label bg-light-primary text-primary fw-semibold">
+                                                                <i class="bi bi-ticket-detailed"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="mb-0 me-2 flex-grow-1">
+                                                            <div class="fs-6 text-gray-800 fw-bold {{ $notification->read_at ? '' : 'text-primary' }}">
+                                                                {{ $notification->data['message'] ?? __('Notification') }}
+                                                            </div>
+                                                            <div class="text-gray-500 fs-7">{{ $notification->created_at->diffForHumans() }}</div>
+                                                        </div>
+                                                    </div>
+                                                </button>
+                                            </form>
+                                        @endforeach
+                                    </div>
+                                    <div class="py-3 text-center border-top">
+                                        <form action="{{ route('admin.notifications.read-all') }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-color-gray-600 btn-active-color-primary">
+                                                {{ __('Mark all as read') }}
+                                            </button>
+                                        </form>
+                                    </div>
+                                @else
+                                    <div class="px-5 py-8 text-center text-muted">
+                                        <i class="ki-duotone ki-notification-bing fs-3x text-gray-400 mb-4">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                        </i>
+                                        <div class="fw-semibold fs-6">{{ __('No notifications yet') }}</div>
+                                        <div class="fs-7">{{ __('You will see updates here when they arrive.') }}</div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <!--end::Notifications-->
@@ -473,9 +517,9 @@ Author: Hadi Hilal
 
                     <!--begin::Logo image-->
                     <a href="{{ route('admin.dashboard.index') }}" title="{{ __('Dashboard') }}">
-                        <img alt="Logo" src="{{asset('images/admin_logo.png')}}"
+                        <img alt="Logo" src="{{ $adminLogoUrl }}"
                              class="h-40px app-sidebar-logo-default"/>
-                        <img alt="Logo" src="{{asset('images/min_admin_logo.png')}}"
+                        <img alt="Logo" src="{{ $adminMinLogoUrl }}"
                              class="h-30px app-sidebar-logo-minimize"/>
                     </a>
                     <!--end::Logo image-->

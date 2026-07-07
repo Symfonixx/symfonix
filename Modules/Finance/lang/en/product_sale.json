@@ -12,13 +12,15 @@
         "default_price": "Catalog price",
         "total": "Total",
         "sold_at": "Sale Date",
-        "deal": "Deal"
+        "deal": "Deal",
+        "invoice": "Invoice"
     },
     "actions": {
         "record_sale": "Record Product Sale"
     },
     "messages": {
         "recorded": "Product sale recorded in the finance ledger.",
+        "recorded_with_invoice": "Product sale recorded. Invoice :number created and sent to the customer.",
         "deleted": "Product sale and its ledger entry were removed.",
         "confirm_delete": "Delete this product sale and remove it from the finance ledger?",
         "income": "Product sale: :product (×:quantity)",

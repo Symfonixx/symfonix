@@ -16,5 +16,13 @@
         "description": "Tüm sistem bildirim e-postaları bu adrese gönderilir.",
         "email": "Yönetici E-postası",
         "email_hint": "Ayarlandığında .env dosyasındaki ADMIN_EMAIL değerini geçersiz kılar. Virgülle ayrılmış adresleri destekler."
+    },
+    "admin_branding": {
+        "title": "Yönetim Paneli Markası",
+        "description": "Yönetim kenar çubuğunda ve mobil başlıkta gösterilen logolar.",
+        "logo": "Yönetim Logosu",
+        "logo_hint": "Kenar çubuğunda ve mobil başlıkta gösterilir. Önerilen boyut: 245 × 45 px.",
+        "min_logo": "Küçültülmüş Yönetim Logosu",
+        "min_logo_hint": "Kenar çubuğu daraltıldığında gösterilir. Ayarlanmazsa yönetim logosuna geri döner. Önerilen boyut: 50 × 50 px."
     }
 }

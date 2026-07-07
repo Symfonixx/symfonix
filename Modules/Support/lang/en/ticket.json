@@ -1,0 +1,85 @@
+{
+    "menu": {
+        "tickets": "Support Tickets",
+        "categories": "Ticket Categories"
+    },
+    "pages": {
+        "index_title": "Support Tickets",
+        "show_title": "Ticket Details",
+        "conversation": "Conversation"
+    },
+    "category": {
+        "pages": {
+            "index_title": "Ticket Categories",
+            "create_title": "Create Category",
+            "edit_title": "Edit Category"
+        },
+        "fields": {
+            "name": "Name",
+            "name_en": "Name (English)",
+            "name_ar": "Name (Arabic)",
+            "name_tr": "Name (Turkish)",
+            "sort_order": "Sort Order"
+        },
+        "actions": {
+            "add": "Add Category"
+        }
+    },
+    "fields": {
+        "ticket_number": "Ticket #",
+        "subject": "Subject",
+        "description": "Description",
+        "category": "Category / Department",
+        "priority": "Priority",
+        "status": "Status",
+        "customer": "Customer",
+        "attachment": "Attachment",
+        "reply": "Reply",
+        "assigned_to": "Assigned To",
+        "unassigned": "Unassigned"
+    },
+    "status": {
+        "open": "Open",
+        "in_progress": "In Progress",
+        "resolved": "Resolved",
+        "closed": "Closed"
+    },
+    "priority": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High",
+        "urgent": "Urgent"
+    },
+    "labels": {
+        "customer": "Customer",
+        "staff": "Support Staff"
+    },
+    "actions": {
+        "back_to_list": "Back to Tickets",
+        "manage": "Manage Ticket",
+        "send_reply": "Send Reply"
+    },
+    "messages": {
+        "closed": "This ticket is closed. No further replies can be added."
+    },
+    "search": {
+        "placeholder": "Search by ticket #, subject, or customer..."
+    },
+    "dashboard": {
+        "title": "Support Hub",
+        "open_tickets": "Open Tickets",
+        "total_tickets": "Total Tickets",
+        "recent_tickets": "Recent Tickets",
+        "no_tickets": "No support tickets yet."
+    },
+    "notifications": {
+        "greeting": "Hello :name,",
+        "view_ticket": "View Ticket",
+        "new_ticket_subject": "New support ticket :number",
+        "new_ticket_line": "Ticket :number (:subject) was submitted by :customer.",
+        "reply_admin_subject": "Customer replied to ticket :number",
+        "reply_admin_line": ":customer replied to ticket :number (:subject).",
+        "closed_admin_subject": "Customer closed ticket :number",
+        "closed_admin_line": ":customer closed ticket :number (:subject)."
+    }
+}

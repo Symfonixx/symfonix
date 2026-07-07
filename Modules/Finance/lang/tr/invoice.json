@@ -50,6 +50,7 @@
         "deal_invoice_failed": "Bu anlaşma için fatura oluşturulamadı.",
         "subscription_renewal_note": "Abonelik yenileme: :name (:date)",
         "deal_invoice_note": "Anlaşma faturası: :title",
+        "product_sale_invoice_note": "Ürün satışı: :product (×:quantity)",
         "payment_description": "Fatura :number — :company"
     },
     "pdf": {

@@ -1,0 +1,40 @@
+{
+    "week_visitors": "Bu Hafta",
+    "unread_notifications": "Okunmamış Bildirimler",
+    "contacts_this_month": "Bu Ayki Mesajlar",
+    "recent_activity": "Son Aktivite",
+    "recent_contacts": "Son Mesajlar",
+    "recent_leads": "Son Potansiyel Müşteriler",
+    "recent_notifications": "Son Bildirimler",
+    "no_contacts": "Henüz iletişim mesajı yok.",
+    "no_leads": "Henüz potansiyel müşteri yok.",
+    "no_notifications": "Henüz bildirim yok.",
+    "finance": {
+        "title": "Finans Özeti",
+        "revenue_this_month": "Bu Ayki Gelir",
+        "outstanding": "Bekleyen Alacaklar",
+        "open_invoices": "Açık Faturalar",
+        "paid_this_month": "Bu Ay Tahsil Edilen",
+        "recent_invoices": "Son Faturalar",
+        "no_invoices": "Henüz fatura yok."
+    },
+    "projects": {
+        "title": "Proje Özeti",
+        "active": "Aktif Projeler",
+        "unpaid": "Ödeme Bekleyen",
+        "recent": "Son Projeler",
+        "no_projects": "Henüz proje yok."
+    },
+    "products": {
+        "title": "Ürün Özeti",
+        "published": "Yayınlanan Ürünler",
+        "sales_this_month": "Bu Ayki Satışlar",
+        "revenue_this_month": "Satış Geliri",
+        "recent_sales": "Son Ürün Satışları",
+        "no_sales": "Henüz ürün satışı yok."
+    },
+    "leads": {
+        "new": "Yeni Potansiyel Müşteriler",
+        "this_month": "Bu Ayki Potansiyel Müşteriler"
+    }
+}

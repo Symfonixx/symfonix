@@ -324,6 +324,10 @@ class FinanceService
             return;
         }
 
+        if (ProductSale::query()->where('invoice_id', $invoice->id)->exists()) {
+            return;
+        }
+
         $invoice->loadMissing('company');
 
         $this->postRevenueEntry([
@@ -431,6 +435,7 @@ class FinanceService
                 'reference_id' => $salary->id,
                 'description' => __('finance::salary.messages.payout_description', [
                     'name' => $salary->employee?->name ?? '#'.$salary->employee_id,
+                    'period' => $salary->period?->format('Y-m') ?? '',
                 ]),
                 'transaction_date' => $paidAt,
                 'expense_category_id' => $category?->id,
@@ -539,9 +544,19 @@ class FinanceService
     public function deleteProductSale(ProductSale $sale): void
     {
         $dealId = $sale->deal_id;
+        $invoiceId = $sale->invoice_id;
 
-        DB::transaction(function () use ($sale) {
+        DB::transaction(function () use ($sale, $invoiceId) {
             $this->deleteJournalEntriesFor(ProductSale::class, $sale->id);
+
+            if ($invoiceId) {
+                $invoice = Invoice::query()->find($invoiceId);
+
+                if ($invoice && ! in_array($invoice->status, [Invoice::STATUS_PAID, Invoice::STATUS_VOID], true)) {
+                    $invoice->update(['status' => Invoice::STATUS_VOID]);
+                }
+            }
+
             $sale->delete();
         });
 

@@ -1,0 +1,85 @@
+{
+    "menu": {
+        "tickets": "Destek Talepleri",
+        "categories": "Talep Kategorileri"
+    },
+    "pages": {
+        "index_title": "Destek Talepleri",
+        "show_title": "Talep Detayları",
+        "conversation": "Görüşme"
+    },
+    "category": {
+        "pages": {
+            "index_title": "Talep Kategorileri",
+            "create_title": "Kategori Oluştur",
+            "edit_title": "Kategoriyi Düzenle"
+        },
+        "fields": {
+            "name": "Ad",
+            "name_en": "Ad (İngilizce)",
+            "name_ar": "Ad (Arapça)",
+            "name_tr": "Ad (Türkçe)",
+            "sort_order": "Sıralama"
+        },
+        "actions": {
+            "add": "Kategori Ekle"
+        }
+    },
+    "fields": {
+        "ticket_number": "Talep No",
+        "subject": "Konu",
+        "description": "Açıklama",
+        "category": "Kategori / Departman",
+        "priority": "Öncelik",
+        "status": "Durum",
+        "customer": "Müşteri",
+        "attachment": "Ek",
+        "reply": "Yanıt",
+        "assigned_to": "Atanan",
+        "unassigned": "Atanmamış"
+    },
+    "status": {
+        "open": "Açık",
+        "in_progress": "İşlemde",
+        "resolved": "Çözüldü",
+        "closed": "Kapalı"
+    },
+    "priority": {
+        "low": "Düşük",
+        "medium": "Orta",
+        "high": "Yüksek",
+        "urgent": "Acil"
+    },
+    "labels": {
+        "customer": "Müşteri",
+        "staff": "Destek Ekibi"
+    },
+    "actions": {
+        "back_to_list": "Taleplere Dön",
+        "manage": "Talebi Yönet",
+        "send_reply": "Yanıt Gönder"
+    },
+    "messages": {
+        "closed": "Bu talep kapalı. Yeni yanıt eklenemez."
+    },
+    "search": {
+        "placeholder": "Talep no, konu veya müşteri ile ara..."
+    },
+    "dashboard": {
+        "title": "Destek Merkezi",
+        "open_tickets": "Açık Talepler",
+        "total_tickets": "Toplam Talep",
+        "recent_tickets": "Son Talepler",
+        "no_tickets": "Henüz destek talebi yok."
+    },
+    "notifications": {
+        "greeting": "Merhaba :name,",
+        "view_ticket": "Talebi Görüntüle",
+        "new_ticket_subject": "Yeni destek talebi :number",
+        "new_ticket_line": ":customer tarafından :number (:subject) talebi gönderildi.",
+        "reply_admin_subject": "Müşteri :number talebine yanıt verdi",
+        "reply_admin_line": ":customer, :number (:subject) talebine yanıt verdi.",
+        "closed_admin_subject": "Müşteri :number talebini kapattı",
+        "closed_admin_line": ":customer, :number (:subject) talebini kapattı."
+    }
+}

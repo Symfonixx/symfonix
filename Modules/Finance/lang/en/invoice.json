@@ -53,6 +53,7 @@
         "subscription_renewal_note": "Subscription renewal: :name (:date)",
         "deal_invoice_note": "Invoice for deal: :title",
         "project_invoice_note": "Invoice for project: :title",
+        "product_sale_invoice_note": "Product sale: :product (×:quantity)",
         "payment_description": "Invoice :number — :company"
     },
     "pdf": {

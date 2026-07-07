@@ -24,7 +24,8 @@ class SalaryController extends Controller
     {
         $salaries = Salary::query()
             ->with('employee:id,name,email')
-            ->latest()
+            ->orderByDesc('period')
+            ->orderByDesc('id')
             ->paginate((int) config('core.page_size', 15));
 
         $employees = EmployeeAccess::assignableQuery()

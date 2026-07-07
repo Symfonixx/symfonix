@@ -184,6 +184,10 @@
     overflow: hidden;
 }
 
+.portal-panel--allow-overflow {
+    overflow: visible;
+}
+
 .portal-panel__header {
     display: flex;
     align-items: center;
@@ -669,4 +673,474 @@
     color: var(--techguru-white);
     border-color: var(--techguru-base);
     background: rgba(var(--techguru-base-rgb), 0.2);
+}
+
+/* Support tickets */
+.portal-ticket-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.portal-ticket-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    flex: 1;
+}
+
+.portal-ticket-filters__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 160px;
+}
+
+.portal-ticket-filters__group label {
+    color: var(--techguru-gray);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.portal-ticket-filters__actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.portal-ticket-list {
+    display: grid;
+    gap: 20px;
+}
+
+.portal-ticket-card {
+    padding: 24px;
+    border-radius: 14px;
+    background: rgba(var(--techguru-white-rgb), 0.03);
+    border: 1px solid rgba(var(--techguru-white-rgb), 0.08);
+}
+
+.portal-ticket-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.portal-ticket-card__number {
+    color: var(--techguru-base);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.portal-ticket-card__title {
+    color: var(--techguru-white);
+    font-size: 20px;
+    margin: 0;
+}
+
+.portal-ticket-card__meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.portal-ticket-card__meta span {
+    display: block;
+    color: var(--techguru-gray);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+
+.portal-ticket-card__meta strong {
+    color: var(--techguru-white);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.portal-ticket-form,
+.portal-ticket-reply {
+    display: grid;
+    gap: 20px;
+}
+
+.portal-form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.portal-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.portal-form-group label {
+    color: var(--techguru-white);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.portal-input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(var(--techguru-white-rgb), 0.12);
+    background: rgba(var(--techguru-white-rgb), 0.04);
+    color: var(--techguru-white);
+    font-size: 15px;
+}
+
+.portal-input:focus {
+    outline: none;
+    border-color: var(--techguru-base);
+}
+
+.portal-input--error {
+    border-color: #f1416c;
+}
+
+.portal-select {
+    position: relative;
+    width: 100%;
+}
+
+.portal-select__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(var(--techguru-white-rgb), 0.12);
+    background: rgba(var(--techguru-white-rgb), 0.04);
+    color: var(--techguru-white);
+    font-size: 15px;
+    line-height: 1.4;
+    text-align: left;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.portal-select__trigger--error {
+    border-color: #f1416c;
+}
+
+.portal-select__value {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.portal-select__value--placeholder {
+    color: var(--techguru-gray);
+}
+
+.portal-select__icon {
+    flex-shrink: 0;
+    font-size: 12px;
+    color: var(--techguru-gray);
+    transition: transform 0.2s ease;
+}
+
+.portal-select__icon--open {
+    transform: rotate(180deg);
+}
+
+.portal-select__menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 50;
+    margin: 0;
+    padding: 6px;
+    padding-left: 6px;
+    list-style: none;
+    list-style-type: none;
+    border-radius: 10px;
+    border: 1px solid rgba(var(--techguru-white-rgb), 0.12);
+    background: #12151c;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.portal-select__option {
+    padding: 12px 14px;
+    border-radius: 8px;
+    color: var(--techguru-gray);
+    cursor: pointer;
+    list-style: none;
+    list-style-type: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.portal-select__option:hover,
+.portal-select__option--selected {
+    background: rgba(var(--techguru-base-rgb), 0.15);
+    color: var(--techguru-white);
+}
+
+.portal-select--disabled .portal-select__trigger {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.portal-form-error {
+    color: #f1416c;
+    font-size: 13px;
+    margin: 0;
+}
+
+.portal-form-hint {
+    color: var(--techguru-gray);
+    font-size: 13px;
+    margin: 0;
+}
+
+.portal-ticket-form__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.portal-ticket-thread {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.portal-ticket-message {
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--techguru-white-rgb), 0.08);
+    background: rgba(var(--techguru-white-rgb), 0.03);
+}
+
+.portal-ticket-message--staff {
+    background: rgba(var(--techguru-base-rgb), 0.08);
+    border-color: rgba(var(--techguru-base-rgb), 0.2);
+}
+
+.portal-ticket-message__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+    color: var(--techguru-white);
+    font-size: 14px;
+}
+
+.portal-ticket-message__header span {
+    color: var(--techguru-gray);
+    font-size: 13px;
+}
+
+.portal-ticket-message__body {
+    color: var(--techguru-gray);
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.portal-ticket-message__attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: var(--techguru-base);
+}
+
+.portal-badge--success {
+    background: rgba(80, 205, 137, 0.15) !important;
+    color: #50cd89 !important;
+}
+
+.portal-badge--info {
+    background: rgba(0, 158, 247, 0.15) !important;
+    color: #009ef7 !important;
+}
+
+.portal-badge--neutral {
+    background: rgba(var(--techguru-white-rgb), 0.08) !important;
+    color: var(--techguru-gray) !important;
+}
+
+.portal-empty--compact {
+    padding: 24px;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .portal-ticket-card__meta,
+    .portal-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.portal-panel--narrow {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.portal-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+.portal-alert--success {
+    color: #b8f5c6;
+    background: rgba(40, 167, 69, 0.12);
+    border: 1px solid rgba(40, 167, 69, 0.25);
+}
+
+.portal-profile-form {
+    display: grid;
+    gap: 20px;
+}
+
+.portal-profile-form__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.portal-profile-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 8px;
+}
+
+.portal-profile-avatar__preview {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(var(--techguru-base-rgb), 0.45);
+    background: rgba(var(--techguru-white-rgb), 0.04);
+}
+
+.portal-profile-avatar__preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portal-profile-avatar__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.portal-profile-avatar__upload {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.portal-profile-2fa__text {
+    color: var(--techguru-gray);
+    margin-bottom: 16px;
+}
+
+.portal-profile-2fa__status {
+    margin-bottom: 16px;
+}
+
+.portal-profile-2fa__tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.portal-profile-2fa__qr {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    background: rgba(var(--techguru-white-rgb), 0.04);
+    border: 1px solid rgba(var(--techguru-white-rgb), 0.08);
+}
+
+.portal-profile-2fa__qr svg {
+    max-width: 180px;
+    height: auto;
+}
+
+.portal-profile-2fa__codes ul {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.portal-profile-2fa__codes code {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(var(--techguru-white-rgb), 0.06);
+    color: var(--techguru-white);
+    font-size: 13px;
+}
+
+.portal-profile-2fa__confirm {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.portal-profile-2fa__actions {
+    margin-top: 8px;
+}
+
+.portal-profile-2fa__disable {
+    border: none;
+    background: transparent;
+    color: #ff8a95;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.portal-profile-2fa__disable:hover {
+    color: #ffb3ba;
+}
+
+.thm-btn--sm {
+    padding: 12px 20px;
+    font-size: 14px;
 }

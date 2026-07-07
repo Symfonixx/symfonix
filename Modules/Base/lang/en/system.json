@@ -16,5 +16,13 @@
         "description": "All system notification emails are sent to this address.",
         "email": "Admin Email",
         "email_hint": "Overrides ADMIN_EMAIL from .env when set. Supports comma-separated addresses."
+    },
+    "admin_branding": {
+        "title": "Admin Panel Branding",
+        "description": "Logos shown in the admin sidebar and mobile header.",
+        "logo": "Admin Logo",
+        "logo_hint": "Displayed in the sidebar and mobile header. Recommended size: 245 × 45 px.",
+        "min_logo": "Admin Minimized Logo",
+        "min_logo_hint": "Shown when the sidebar is collapsed. Falls back to the admin logo when not set. Recommended size: 50 × 50 px."
     }
 }

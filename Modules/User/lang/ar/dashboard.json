@@ -1,0 +1,40 @@
+{
+    "week_visitors": "هذا الأسبوع",
+    "unread_notifications": "إشعارات غير مقروءة",
+    "contacts_this_month": "رسائل هذا الشهر",
+    "recent_activity": "النشاط الأخير",
+    "recent_contacts": "أحدث الرسائل",
+    "recent_leads": "أحدث العملاء المحتملين",
+    "recent_notifications": "أحدث الإشعارات",
+    "no_contacts": "لا توجد رسائل تواصل بعد.",
+    "no_leads": "لا يوجد عملاء محتملون بعد.",
+    "no_notifications": "لا توجد إشعارات بعد.",
+    "finance": {
+        "title": "نظرة عامة على المالية",
+        "revenue_this_month": "إيرادات هذا الشهر",
+        "outstanding": "المستحقات المعلقة",
+        "open_invoices": "فواتير مفتوحة",
+        "paid_this_month": "المحصّل هذا الشهر",
+        "recent_invoices": "أحدث الفواتير",
+        "no_invoices": "لا توجد فواتير بعد."
+    },
+    "projects": {
+        "title": "نظرة عامة على المشاريع",
+        "active": "مشاريع نشطة",
+        "unpaid": "بانتظار الدفع",
+        "recent": "أحدث المشاريع",
+        "no_projects": "لا توجد مشاريع بعد."
+    },
+    "products": {
+        "title": "نظرة عامة على المنتجات",
+        "published": "منتجات منشورة",
+        "sales_this_month": "مبيعات هذا الشهر",
+        "revenue_this_month": "إيرادات المبيعات",
+        "recent_sales": "أحدث مبيعات المنتجات",
+        "no_sales": "لا توجد مبيعات منتجات بعد."
+    },
+    "leads": {
+        "new": "عملاء محتملون جدد",
+        "this_month": "عملاء محتملون هذا الشهر"
+    }
+}

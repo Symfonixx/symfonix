@@ -18,6 +18,7 @@ class TeamController extends Controller
     public function __construct(TeamRepository $teamRepository)
     {
         $this->teamRepository = $teamRepository;
+        $this->setActive('cms');
         $this->setActive('teams');
     }
 

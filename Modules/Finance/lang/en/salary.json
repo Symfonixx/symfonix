@@ -5,6 +5,7 @@
     },
     "fields": {
         "employee": "Employee",
+        "period": "Salary Month",
         "base_salary": "Base Salary",
         "status": "Status",
         "paid_at": "Paid At"
@@ -22,8 +23,9 @@
         "paid": "Salary payout recorded in the ledger.",
         "deleted": "Salary record deleted.",
         "confirm_delete": "Delete this salary record? If already paid, the linked ledger entry will also be removed.",
-        "payout_description": "Salary payout: :name",
+        "payout_description": "Salary payout: :name (:period)",
         "no_pending": "No pending salary payouts.",
-        "no_records": "No salary records yet."
+        "no_records": "No salary records yet.",
+        "period_exists": "A salary record already exists for this employee in the selected month."
     }
 }

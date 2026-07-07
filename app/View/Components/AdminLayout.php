@@ -26,6 +26,16 @@ class AdminLayout extends Component
     {
         $recentMessages = collect();
         $unreadMessageCount = 0;
+        $recentNotifications = collect();
+        $unreadNotificationCount = 0;
+
+        if ($this->user) {
+            $unreadNotificationCount = $this->user->unreadNotifications()->count();
+            $recentNotifications = $this->user->notifications()
+                ->latest()
+                ->limit(5)
+                ->get();
+        }
 
         if ($this->user?->can('CRM Management')) {
             $recentMessages = ContactForm::query()
@@ -42,6 +52,8 @@ class AdminLayout extends Component
             'user' => $this->user,
             'recentMessages' => $recentMessages,
             'unreadMessageCount' => $unreadMessageCount,
+            'recentNotifications' => $recentNotifications,
+            'unreadNotificationCount' => $unreadNotificationCount,
         ]);
     }
 }

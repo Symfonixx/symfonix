@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use Modules\CRM\Models\Company;
 use Modules\Finance\Http\Requests\StoreProductSaleRequest;
 use Modules\Finance\Services\FinanceService;
+use Modules\Finance\Services\InvoiceService;
 use Modules\Product\Models\ProductSale;
 use Modules\Product\Repositories\ProductRepository;
 
@@ -16,6 +17,7 @@ class ProductSaleController extends Controller
 {
     public function __construct(
         private readonly FinanceService $financeService,
+        private readonly InvoiceService $invoiceService,
         private readonly ProductRepository $productRepository,
     ) {
         $this->setActive('finance_product_sales');
@@ -26,7 +28,7 @@ class ProductSaleController extends Controller
         $this->authorize('viewAny', ProductSale::class);
 
         $sales = ProductSale::query()
-            ->with(['product:id,name,sku', 'company:id,name', 'deal:id,title', 'seller:id,name'])
+            ->with(['product:id,name,sku', 'company:id,name', 'deal:id,title', 'seller:id,name', 'invoice:id,invoice_number'])
             ->latest('sold_at')
             ->paginate((int) config('core.page_size', 15));
 
@@ -41,9 +43,20 @@ class ProductSaleController extends Controller
     {
         $this->authorize('create', ProductSale::class);
 
-        $this->financeService->recordProductSale($request->validated());
+        $sale = $this->financeService->recordProductSale($request->validated());
 
-        session()->flushMessage(true, __('finance::product_sale.messages.recorded'));
+        if ($sale && $sale->company_id) {
+            $invoice = $this->invoiceService->createFromProductSale($sale);
+
+            session()->flushMessage(
+                true,
+                $invoice
+                    ? __('finance::product_sale.messages.recorded_with_invoice', ['number' => $invoice->invoice_number])
+                    : __('finance::product_sale.messages.recorded')
+            );
+        } else {
+            session()->flushMessage(true, __('finance::product_sale.messages.recorded'));
+        }
 
         return back();
     }

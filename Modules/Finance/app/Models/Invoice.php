@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\Subscription;
+use Modules\Product\Models\ProductSale;
 use Modules\Project\Models\Project;
 
 class Invoice extends Model
@@ -86,6 +87,11 @@ class Invoice extends Model
     public function lines(): HasMany
     {
         return $this->hasMany(InvoiceLine::class)->orderBy('sort_order');
+    }
+
+    public function productSales(): HasMany
+    {
+        return $this->hasMany(ProductSale::class);
     }
 
     public function journalEntries(): MorphMany

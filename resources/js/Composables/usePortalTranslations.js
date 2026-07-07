@@ -23,6 +23,8 @@ export function usePortalTranslations() {
 
     const paymentStatusLabel = (status) => t(`payment_status.${status}`);
     const invoiceStatusLabel = (status) => t(`invoice_status.${status}`);
+    const ticketStatusLabel = (status) => t(`ticket_status.${status}`);
+    const ticketPriorityLabel = (priority) => t(`ticket_priority.${priority}`);
 
-    return { t, paymentStatusLabel, invoiceStatusLabel };
+    return { t, paymentStatusLabel, invoiceStatusLabel, ticketStatusLabel, ticketPriorityLabel };
 }

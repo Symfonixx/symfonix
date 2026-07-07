@@ -16,7 +16,11 @@ class ProfileController extends Controller
         /** @var User $user */
         $user = Auth::user();
 
-        return view('user::admin.profile.index', compact('user'));
+        return view('user::admin.profile.index', [
+            'user' => $user,
+            'twoFactorEnabled' => $user->hasEnabledTwoFactorAuthentication(),
+            'twoFactorPending' => ! empty($user->two_factor_secret) && is_null($user->two_factor_confirmed_at),
+        ]);
     }
 
     public function update(Request $request): RedirectResponse

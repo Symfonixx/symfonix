@@ -3,7 +3,10 @@
 namespace Modules\Support\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Modules\Support\app\Policies\TicketPolicy;
+use Modules\Support\Models\Ticket;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class SupportServiceProvider extends ServiceProvider
@@ -19,6 +22,8 @@ class SupportServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::policy(Ticket::class, TicketPolicy::class);
+
         $this->registerCommands();
         $this->registerCommandSchedules();
         $this->registerTranslations();

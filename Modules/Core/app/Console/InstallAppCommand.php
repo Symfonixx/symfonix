@@ -40,6 +40,7 @@ class InstallAppCommand extends Command
         'Services Management',
         'Product Management',
         'Testimonials Management',
+        'Team Management',
     ];
 
     public function handle(): int

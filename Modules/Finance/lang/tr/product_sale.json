@@ -12,13 +12,15 @@
         "default_price": "Katalog fiyatı",
         "total": "Toplam",
         "sold_at": "Satış Tarihi",
-        "deal": "Anlaşma"
+        "deal": "Anlaşma",
+        "invoice": "Fatura"
     },
     "actions": {
         "record_sale": "Ürün Satışı Kaydet"
     },
     "messages": {
         "recorded": "Ürün satışı finans defterine kaydedildi.",
+        "recorded_with_invoice": "Ürün satışı kaydedildi. :number numaralı fatura oluşturuldu ve müşteriye gönderildi.",
         "deleted": "Ürün satışı ve defter kaydı kaldırıldı.",
         "confirm_delete": "Bu ürün satışını silmek ve finans defterinden kaldırmak istiyor musunuz?",
         "income": "Ürün satışı: :product (×:quantity)",

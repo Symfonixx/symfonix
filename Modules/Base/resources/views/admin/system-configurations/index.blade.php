@@ -23,6 +23,35 @@
         id="system-config-form"
     >
         <x-admin.settings-section
+            icon="bi-layout-sidebar"
+            :title="__('base::system.admin_branding.title')"
+            :description="__('base::system.admin_branding.description')"
+        >
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <x-admin.settings-image
+                        :label="__('base::system.admin_branding.logo')"
+                        name="logo"
+                        :current="$settings->get('logo') ?: ''"
+                        :imageUrl="\Modules\Base\Support\AdminBranding::logoUrl()"
+                        dimensions="245 × 45 px"
+                        :hint="__('base::system.admin_branding.logo_hint')"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <x-admin.settings-image
+                        :label="__('base::system.admin_branding.min_logo')"
+                        name="min_logo"
+                        :current="$settings->get('min_logo') ?: ''"
+                        :imageUrl="\Modules\Base\Support\AdminBranding::minLogoUrl()"
+                        dimensions="50 × 50 px"
+                        :hint="__('base::system.admin_branding.min_logo_hint')"
+                    />
+                </div>
+            </div>
+        </x-admin.settings-section>
+
+        <x-admin.settings-section
             icon="bi-building-gear"
             :title="__('base::system.company_details.title')"
             :description="__('base::system.company_details.description')"

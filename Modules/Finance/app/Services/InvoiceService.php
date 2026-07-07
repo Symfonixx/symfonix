@@ -14,6 +14,7 @@ use Modules\Finance\Events\InvoiceSentToCustomer;
 use Modules\Finance\Models\Invoice;
 use Modules\Finance\Models\InvoiceLine;
 use Modules\Finance\Models\SubscriptionBilling;
+use Modules\Product\Models\ProductSale;
 use Modules\Project\Models\Project;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -237,6 +238,61 @@ class InvoiceService
         return $invoice;
     }
 
+    public function createFromProductSale(ProductSale $sale): ?Invoice
+    {
+        if (! $sale->company_id || $sale->invoice_id) {
+            return null;
+        }
+
+        $sale->loadMissing(['product', 'company', 'deal']);
+
+        if (! $sale->product) {
+            return null;
+        }
+
+        $invoice = DB::transaction(function () use ($sale) {
+            $issuedAt = $sale->sold_at?->toDateString() ?? now()->toDateString();
+            $paymentTerms = (int) config('finance.invoice_payment_terms_days', 30);
+            $amount = (float) $sale->total_amount;
+
+            $lines = [[
+                'product_id' => $sale->product_id,
+                'description' => $sale->product->name,
+                'quantity' => $sale->quantity,
+                'unit_price' => (float) $sale->unit_price,
+                'amount' => $amount,
+                'sort_order' => 0,
+            ]];
+
+            $invoice = Invoice::query()->create([
+                'invoice_number' => $this->generateInvoiceNumber(),
+                'company_id' => $sale->company_id,
+                'deal_id' => $sale->deal_id,
+                'status' => Invoice::STATUS_SENT,
+                'subtotal' => $amount,
+                'tax_amount' => 0,
+                'total' => $amount,
+                'currency' => $sale->currency ?? config('finance.default_currency', 'USD'),
+                'issued_at' => $issuedAt,
+                'due_at' => Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
+                'notes' => __('finance::invoice.messages.product_sale_invoice_note', [
+                    'product' => $sale->product->name,
+                    'quantity' => $sale->quantity,
+                ]),
+            ]);
+
+            $this->syncLines($invoice, $lines);
+
+            $sale->update(['invoice_id' => $invoice->id]);
+
+            return $invoice->load('lines', 'company');
+        });
+
+        InvoiceSentToCustomer::dispatch($invoice->fresh(['company', 'project']));
+
+        return $invoice;
+    }
+
     public function markAsSent(Invoice $invoice): Invoice
     {
         if ($invoice->status === Invoice::STATUS_VOID) {
@@ -373,6 +429,7 @@ class InvoiceService
             InvoiceLine::query()->create([
                 'invoice_id' => $invoice->id,
                 'service_id' => $line['service_id'] ?? null,
+                'product_id' => $line['product_id'] ?? null,
                 'description' => $line['description'],
                 'quantity' => $quantity,
                 'unit_price' => $unitPrice,

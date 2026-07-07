@@ -17,9 +17,9 @@
             const codesBtn = $('#show_codes');
             const qrBox = $('#qr_box');
             const codesBox = $('#codes_box');
+            const twoFactorPending = @json($twoFactorPending);
 
-            qrBtn.on('click', function (e) {
-                e.preventDefault();
+            const loadQrCode = function () {
                 $.get('{{ route('two-factor.qr-code') }}', function (res) {
                     if (res.svg) {
                         qrBox.html(res.svg).removeClass('d-none');
@@ -27,10 +27,9 @@
                 }).fail(function () {
                     toastr.error('{{ __('An Error Occurred!') }}');
                 });
-            });
+            };
 
-            codesBtn.on('click', function (e) {
-                e.preventDefault();
+            const loadRecoveryCodes = function () {
                 $.get('{{ route('two-factor.recovery-codes') }}', function (res) {
                     if (res.recoveryCodes) {
                         let list = '<ul class="mb-0">';
@@ -43,7 +42,21 @@
                 }).fail(function () {
                     toastr.error('{{ __('An Error Occurred!') }}');
                 });
+            };
+
+            qrBtn.on('click', function (e) {
+                e.preventDefault();
+                loadQrCode();
             });
+
+            codesBtn.on('click', function (e) {
+                e.preventDefault();
+                loadRecoveryCodes();
+            });
+
+            if (twoFactorPending) {
+                loadQrCode();
+            }
         });
     </script>
 @endsection
@@ -146,7 +159,9 @@
 
                 <div>
                     <div class="fs-6 fw-bold mb-3">{{ __('Two-Factor Authentication') }}</div>
-                    @if(! empty($user->two_factor_secret))
+                    <p class="text-muted mb-5">{{ __('Add an extra layer of security to your account using an authenticator app.') }}</p>
+
+                    @if($twoFactorEnabled)
                         <div class="mb-5">
                             <span class="badge badge-light-success">{{ __('Enabled') }}</span>
                         </div>
@@ -156,10 +171,37 @@
                         </div>
                         <div id="qr_box" class="border rounded p-3 d-none"></div>
                         <div id="codes_box" class="border rounded p-3 d-none mt-3"></div>
-                        <form method="POST" action="{{ route('two-factor.disable') }}" class="mt-5">
+                        <form method="POST" action="{{ route('two-factor.disable') }}" class="mt-5" onsubmit="return confirm('{{ __('Are you sure you want to disable two-factor authentication?') }}')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">{{ __('Disable Two-Factor Authentication') }}</button>
+                        </form>
+                    @elseif($twoFactorPending)
+                        <div class="mb-5">
+                            <span class="badge badge-light-warning">{{ __('Pending confirmation') }}</span>
+                        </div>
+                        <p class="text-muted mb-5">{{ __('Scan the QR code with your authenticator app, then enter the generated code to finish setup.') }}</p>
+                        <div class="d-flex gap-2 mb-5">
+                            <a href="#" id="show_qr" class="btn btn-light-primary btn-sm">{{ __('Show QR Code') }}</a>
+                        </div>
+                        <div id="qr_box" class="border rounded p-3 d-none mb-5"></div>
+                        <div id="codes_box" class="border rounded p-3 d-none mt-3"></div>
+                        <form method="POST" action="{{ route('two-factor.confirm') }}" class="mb-5">
+                            @csrf
+                            <div class="row mb-6">
+                                <label class="col-lg-5 col-form-label required fw-semibold">{{ __('Authenticator Code') }}</label>
+                                <div class="col-lg-7">
+                                    <input type="text" name="code" class="form-control" inputmode="numeric" maxlength="6" placeholder="{{ __('Enter 6-digit code') }}" required>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">{{ __('Confirm Two-Factor Authentication') }}</button>
+                            </div>
+                        </form>
+                        <form method="POST" action="{{ route('two-factor.disable') }}" onsubmit="return confirm('{{ __('Are you sure you want to disable two-factor authentication?') }}')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-light-danger">{{ __('Disable Two-Factor Authentication') }}</button>
                         </form>
                     @else
                         <form method="POST" action="{{ route('two-factor.enable') }}">

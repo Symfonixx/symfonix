@@ -286,13 +286,13 @@
     </div>
 @endcan
 
-@canany(['CMS Management', 'Services Management'])
+@canany(['CMS Management', 'Services Management', 'Testimonials Management', 'Team Management'])
     <div class="menu-section-label">{{ __('Content') }}</div>
 @endcanany
 
-@can('CMS Management')
+@canany(['CMS Management', 'Testimonials Management', 'Team Management'])
     <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['cms']) ? 'here show' : '' }}">
+         class="menu-item menu-accordion {{ isset($active['cms']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['faqs']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']) ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-intersect"></i></span>
             <span class="menu-title">{{ __('CMS') }}</span>
@@ -300,7 +300,8 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['faqs']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['slides']) || isset($active['filemanager']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['faqs']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']) ? 'show' : '' }}">
+            @can('CMS Management')
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['pages']) ? 'active' : '' }}"
                    href="{{ route('admin.pages.index') }}">
@@ -336,9 +337,28 @@
                     <span class="menu-title">{{ __('File Manager') }}</span>
                 </a>
             </div>
+            @endcan
+            @can('Testimonials Management')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['testimonials']) ? 'active' : '' }}"
+                   href="{{ route('admin.testimonials.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('Testimonials') }}</span>
+                </a>
+            </div>
+            @endcan
+            @can('Team Management')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['teams']) ? 'active' : '' }}"
+                   href="{{ route('admin.teams.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('Our Team') }}</span>
+                </a>
+            </div>
+            @endcan
         </div>
     </div>
-@endcan
+@endcanany
 
 @can('Services Management')
     <div data-kt-menu-trigger="click"
@@ -418,7 +438,21 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['subscribers']) || isset($active['search_keywords']) || isset($active['complaints']) || isset($active['visitors']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['subscribers']) || isset($active['search_keywords']) || isset($active['complaints']) || isset($active['visitors']) || isset($active['tickets']) || isset($active['ticket_categories']) ? 'show' : '' }}">
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['tickets']) ? 'active' : '' }}"
+                   href="{{ route('admin.tickets.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('support::ticket.menu.tickets') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['ticket_categories']) ? 'active' : '' }}"
+                   href="{{ route('admin.ticket_categories.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('support::ticket.menu.categories') }}</span>
+                </a>
+            </div>
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['visitors']) ? 'active' : '' }}"
                    href="{{ route('admin.visitors.index') }}">

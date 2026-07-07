@@ -55,6 +55,17 @@
             </Link>
         </li>
 
+        <li
+            v-if="!auth"
+            class="d-md-none"
+            :class="{ current: isActive('login') }"
+        >
+            <Link :href="route('login')">
+                <i class="fas fa-sign-in-alt mx-1"></i>
+                {{ trans('Login') }}
+            </Link>
+        </li>
+
         <li v-if="auth?.type === 'admin'" :class="{ active: isActive('admin.dashboard.index') }">
             <a :href="route('admin.dashboard.index')">
                 {{ trans('Dashboard') }}
@@ -95,6 +106,24 @@
                     <Link :href="route('portal.subscriptions.index')">
                         <i class="fas fa-sync-alt mx-1"></i>
                         {{ portalLabel('menu.subscriptions') }}
+                    </Link>
+                </li>
+                <li
+                    class="portal-menu-item"
+                    :class="{ current: isActive(['portal.tickets.index', 'portal.tickets.create', 'portal.tickets.show'], { prefixes: ['/portal/tickets'] }) }"
+                >
+                    <Link :href="route('portal.tickets.index')">
+                        <i class="fas fa-life-ring mx-1"></i>
+                        {{ portalLabel('menu.tickets') }}
+                    </Link>
+                </li>
+                <li
+                    class="portal-menu-item"
+                    :class="{ current: isActive('portal.profile.index', { prefixes: ['/portal/profile'] }) }"
+                >
+                    <Link :href="route('portal.profile.index')">
+                        <i class="fas fa-user-cog mx-1"></i>
+                        {{ portalLabel('menu.profile') }}
                     </Link>
                 </li>
                 <li class="portal-menu-item portal-menu-item--logout text-danger">
@@ -195,6 +224,8 @@ const portalLabel = (key) => {
         'menu.my_dashboard': 'My Dashboard',
         'menu.projects': 'My Projects',
         'menu.subscriptions': 'My Subscriptions',
+        'menu.tickets': 'My Tickets',
+        'menu.profile': 'My Profile',
         'menu.logout': 'Logout',
     }
 

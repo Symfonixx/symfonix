@@ -16,6 +16,7 @@ class Salary extends Model
     protected $fillable = [
         'employee_id',
         'base_salary',
+        'period',
         'paid_at',
         'status',
     ];
@@ -24,6 +25,7 @@ class Salary extends Model
     {
         return [
             'base_salary' => 'decimal:2',
+            'period' => 'date',
             'paid_at' => 'date',
         ];
     }

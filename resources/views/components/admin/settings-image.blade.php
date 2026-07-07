@@ -4,10 +4,17 @@
     'current' => 'default.jpg',
     'dimensions' => null,
     'hint' => null,
+    'imageUrl' => null,
+    'fallbackAsset' => null,
 ])
 
 @php
-    $imageUrl = asset('storage/' . $current);
+    $hasStoredImage = $current && $current !== 'default.jpg';
+    if (! $imageUrl) {
+        $imageUrl = ($fallbackAsset && ! $hasStoredImage)
+            ? asset($fallbackAsset)
+            : asset('storage/' . $current);
+    }
 @endphp
 
 <div class="settings-image-card">

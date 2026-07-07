@@ -12,6 +12,7 @@ use Modules\Base\Models\Seo;
 use Modules\Base\Models\Settings;
 use Modules\Cms\Models\Page;
 use Modules\Services\Models\ServiceCategory;
+use Modules\Support\Models\Ticket;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -115,11 +116,22 @@ class HandleInertiaRequests extends Middleware
                 }));
             }, []),
             'auth' => fn () => $request->user()
-                ? $request->user()->only('id', 'name', 'email', 'type')
+                ? [
+                    ...$request->user()->only('id', 'name', 'email', 'type', 'mobile'),
+                    'avatar' => $request->user()->avatar,
+                ]
                 : null,
+            'flash' => fn () => [
+                'success' => $request->session()->get('success'),
+                'error' => $request->session()->get('error'),
+            ],
             'portal' => fn () => $request->user()?->isCustomer()
                 ? [
                     'unread_notifications' => $request->user()->unreadNotifications()->count(),
+                    'open_tickets' => Ticket::query()
+                        ->where('user_id', $request->user()->id)
+                        ->whereIn('status', [Ticket::STATUS_OPEN, Ticket::STATUS_IN_PROGRESS])
+                        ->count(),
                     'translations' => Lang::get('user::portal'),
                 ]
                 : null,

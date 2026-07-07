@@ -14,6 +14,12 @@
                     <MainMenuList />
                 </div>
                 <div class="main-menu-two__right d-none d-md-flex align-items-center">
+                    <div v-if="!auth" class="main-menu-two__btn-box">
+                        <Link :href="route('login')" class="thm-btn">
+                            {{ trans('Login') }}
+                        </Link>
+                    </div>
+
                     <div class="main-menu-two__search-box me-3">
                         <a
                             href="#"
@@ -41,6 +47,8 @@ import {Link, usePage} from '@inertiajs/vue3'
 import MainMenuList from '@/Components/MainMenuList.vue'
 
 const page = usePage()
+const trans = (key) => page.props.translations[key] || key
 const settings = computed(() => page.props.settings)
 const storage_path = computed(() => page.props.storage_path)
+const auth = computed(() => page.props.auth)
 </script>

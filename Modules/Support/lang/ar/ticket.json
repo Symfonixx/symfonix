@@ -1,0 +1,85 @@
+{
+    "menu": {
+        "tickets": "تذاكر الدعم",
+        "categories": "فئات التذاكر"
+    },
+    "pages": {
+        "index_title": "تذاكر الدعم",
+        "show_title": "تفاصيل التذكرة",
+        "conversation": "المحادثة"
+    },
+    "category": {
+        "pages": {
+            "index_title": "فئات التذاكر",
+            "create_title": "إنشاء فئة",
+            "edit_title": "تعديل الفئة"
+        },
+        "fields": {
+            "name": "الاسم",
+            "name_en": "الاسم (إنجليزي)",
+            "name_ar": "الاسم (عربي)",
+            "name_tr": "الاسم (تركي)",
+            "sort_order": "ترتيب العرض"
+        },
+        "actions": {
+            "add": "إضافة فئة"
+        }
+    },
+    "fields": {
+        "ticket_number": "رقم التذكرة",
+        "subject": "الموضوع",
+        "description": "الوصف",
+        "category": "الفئة / القسم",
+        "priority": "الأولوية",
+        "status": "الحالة",
+        "customer": "العميل",
+        "attachment": "مرفق",
+        "reply": "الرد",
+        "assigned_to": "مسند إلى",
+        "unassigned": "غير مسند"
+    },
+    "status": {
+        "open": "مفتوحة",
+        "in_progress": "قيد المعالجة",
+        "resolved": "تم الحل",
+        "closed": "مغلقة"
+    },
+    "priority": {
+        "low": "منخفضة",
+        "medium": "متوسطة",
+        "high": "عالية",
+        "urgent": "عاجلة"
+    },
+    "labels": {
+        "customer": "عميل",
+        "staff": "فريق الدعم"
+    },
+    "actions": {
+        "back_to_list": "العودة إلى التذاكر",
+        "manage": "إدارة التذكرة",
+        "send_reply": "إرسال الرد"
+    },
+    "messages": {
+        "closed": "هذه التذكرة مغلقة. لا يمكن إضافة ردود جديدة."
+    },
+    "search": {
+        "placeholder": "ابحث برقم التذكرة أو الموضوع أو العميل..."
+    },
+    "dashboard": {
+        "title": "مركز الدعم",
+        "open_tickets": "التذاكر المفتوحة",
+        "total_tickets": "إجمالي التذاكر",
+        "recent_tickets": "أحدث التذاكر",
+        "no_tickets": "لا توجد تذاكر دعم بعد."
+    },
+    "notifications": {
+        "greeting": "مرحباً :name،",
+        "view_ticket": "عرض التذكرة",
+        "new_ticket_subject": "تذكرة دعم جديدة :number",
+        "new_ticket_line": "تم إرسال التذكرة :number (:subject) بواسطة :customer.",
+        "reply_admin_subject": "رد العميل على التذكرة :number",
+        "reply_admin_line": "رد :customer على التذكرة :number (:subject).",
+        "closed_admin_subject": "أغلق العميل التذكرة :number",
+        "closed_admin_line": "أغلق :customer التذكرة :number (:subject)."
+    }
+}

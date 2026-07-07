@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
+use Modules\Finance\Models\Invoice;
 use Modules\Finance\Models\JournalEntry;
 
 class ProductSale extends Model
@@ -15,6 +16,7 @@ class ProductSale extends Model
     protected $fillable = [
         'product_id',
         'company_id',
+        'invoice_id',
         'deal_id',
         'user_id',
         'quantity',
@@ -43,6 +45,11 @@ class ProductSale extends Model
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function invoice(): BelongsTo
+    {
+        return $this->belongsTo(Invoice::class);
     }
 
     public function deal(): BelongsTo

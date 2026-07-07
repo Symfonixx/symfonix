@@ -4,12 +4,16 @@ use Illuminate\Support\Facades\Route;
 use Modules\User\Http\Controllers\Admin\AdminController;
 use Modules\User\Http\Controllers\Admin\DashboardController;
 use Modules\User\Http\Controllers\Admin\LeaveController;
+use Modules\User\Http\Controllers\Admin\NotificationController;
 use Modules\User\Http\Controllers\Admin\ProfileController;
 use Modules\User\Http\Controllers\Admin\RoleController;
 use Modules\User\Http\Controllers\Admin\StaffController;
 use Modules\User\Http\Controllers\Admin\UserController;
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+Route::post('notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
+Route::post('notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');
 
 // Profile (for any authenticated admin)
 Route::prefix('profile')->name('profile.')

@@ -50,6 +50,7 @@
         "deal_invoice_failed": "تعذر إنشاء فاتورة لهذه الصفقة.",
         "subscription_renewal_note": "تجديد اشتراك: :name (:date)",
         "deal_invoice_note": "فاتورة للصفقة: :title",
+        "product_sale_invoice_note": "بيع منتج: :product (×:quantity)",
         "payment_description": "فاتورة :number — :company"
     },
     "pdf": {

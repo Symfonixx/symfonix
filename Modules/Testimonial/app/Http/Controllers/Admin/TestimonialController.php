@@ -18,6 +18,7 @@ class TestimonialController extends Controller
     public function __construct(TestimonialRepository $testimonialRepository)
     {
         $this->testimonialRepository = $testimonialRepository;
+        $this->setActive('cms');
         $this->setActive('testimonials');
     }
 

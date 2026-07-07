@@ -2,6 +2,7 @@
 
 namespace Modules\User\Providers;
 
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Laravel\Fortify\Fortify;
@@ -69,6 +70,37 @@ class AuthServiceProvider extends ServiceProvider
             $meta['robots'] = 'noindex, nofollow';
 
             return Inertia::render('User::Auth/ResetPassword', ['meta' => $meta]);
+        });
+
+        Fortify::confirmPasswordView(function () {
+            $user = auth()->user();
+
+            if ($user?->isCustomer()) {
+                return Inertia::render('User::Portal/ConfirmPassword');
+            }
+
+            return view('auth.confirm-password');
+        });
+
+        Fortify::twoFactorChallengeView(function () {
+            $loginId = session('login.id');
+            $user = $loginId ? User::find($loginId) : null;
+
+            if ($user?->isAdmin()) {
+                return view('auth.two-factor-challenge');
+            }
+
+            $siteName = Seo::get('website_name', config('app.name'));
+            $meta = (new Meta)
+                ->title(__('Two-Factor Authentication').' | '.$siteName)
+                ->description(__('Please confirm access to your account by entering the authentication code provided by your authenticator application.'))
+                ->keywords(__('two factor authentication, login security'))
+                ->ogImage()
+                ->twitterImage()
+                ->toArray();
+            $meta['robots'] = 'noindex, nofollow';
+
+            return Inertia::render('User::Auth/TwoFactorChallenge', ['meta' => $meta]);
         });
 
     }

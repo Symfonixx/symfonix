@@ -1,0 +1,15 @@
+{
+    "Testimonials": "Müşteri Yorumları",
+    "Testimonial": "Müşteri Yorumu",
+    "Name": "Ad",
+    "Position": "Pozisyon",
+    "Url": "URL",
+    "Avatar": "Avatar",
+    "Quote": "Alıntı",
+    "Published": "Yayınlandı",
+    "Add New Testimonial": "Yeni Müşteri Yorumu Ekle",
+    "Edit Testimonial": "Müşteri Yorumunu Düzenle",
+    "Search In Testimonials": "Müşteri Yorumlarında Ara",
+    "Delete Selected": "Seçilenleri Sil",
+    "Are you sure you want to delete selected testimonials?": "Seçili müşteri yorumlarını silmek istediğinizden emin misiniz?"
+}

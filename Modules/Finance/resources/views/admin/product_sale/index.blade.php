@@ -82,6 +82,7 @@
                         <th>{{ __('finance::product_sale.fields.total') }}</th>
                         <th>{{ __('finance::product_sale.fields.sold_at') }}</th>
                         <th>{{ __('finance::product_sale.fields.deal') }}</th>
+                        <th>{{ __('finance::product_sale.fields.invoice') }}</th>
                         <th class="text-end">{{ __('Actions') }}</th>
                     </tr>
                     </thead>
@@ -97,6 +98,15 @@
                             <td class="fw-bold text-success">{{ number_format($sale->total_amount, 2) }} {{ $sale->currency }}</td>
                             <td>{{ $sale->sold_at?->format('Y-m-d') }}</td>
                             <td>{{ $sale->deal?->title ?? '—' }}</td>
+                            <td>
+                                @if($sale->invoice)
+                                    <a href="{{ route('admin.finance.invoices.show', $sale->invoice) }}" class="text-primary fw-semibold">
+                                        {{ $sale->invoice->invoice_number }}
+                                    </a>
+                                @else
+                                    —
+                                @endif
+                            </td>
                             <td class="text-end">
                                 <form class="d-inline" method="POST" action="{{ route('admin.finance.product-sales.destroy', $sale) }}">
                                     @csrf
@@ -110,7 +120,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center text-muted py-6">{{ __('finance::product_sale.messages.no_sales') }}</td>
+                            <td colspan="8" class="text-center text-muted py-6">{{ __('finance::product_sale.messages.no_sales') }}</td>
                         </tr>
                     @endforelse
                     </tbody>
