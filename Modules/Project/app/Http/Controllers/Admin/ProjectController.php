@@ -19,6 +19,8 @@ use Modules\Project\Http\Requests\StoreProjectRequest;
 use Modules\Project\Http\Requests\UpdateProjectRequest;
 use Modules\Project\Models\Project;
 use Modules\Project\Repositories\ProjectStatus\ProjectStatusRepository;
+use Modules\Project\Services\Project\ProjectService;
+use Modules\Finance\Http\Requests\StoreProjectInvoiceRequest;
 
 class ProjectController extends Controller
 {
@@ -29,7 +31,9 @@ class ProjectController extends Controller
         private readonly DeleteProjectAction $deleteProjectAction,
         private readonly BulkDeleteProjectsAction $bulkDeleteProjectsAction,
         private readonly ProjectStatusRepository $statusRepository,
+        private readonly ProjectService $projectService,
         private readonly \Modules\Finance\Services\FinanceService $financeService,
+        private readonly \Modules\Finance\Services\InvoiceService $invoiceService,
     ) {
         $this->authorizeResource(Project::class, 'project');
         $this->setActive('projects');
@@ -53,26 +57,53 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request): RedirectResponse
     {
         $data = ProjectData::fromRequest($request->validated());
-        $this->createProjectAction->execute($data);
+        $project = $this->createProjectAction->execute($data);
+
+        if ($project) {
+            $this->projectService->storeAttachments($project, $request->file('attachments', []));
+        }
 
         return redirect()->route('admin.projects.index');
     }
 
-    public function edit(Project $project)
+    public function show(Project $project)
     {
         $this->financeService->updateProjectPaymentStatus($project->id);
         $project->refresh();
+        $project->load(['company', 'status', 'deal', 'invoices' => fn ($q) => $q->with('company:id,name')]);
 
-        return view('project::admin.project.edit', array_merge([
+        return view('project::admin.project.show', [
             'project' => $project,
             'collectionSummary' => $this->financeService->getProjectCollectionSummary($project),
+        ]);
+    }
+
+    public function edit(Project $project)
+    {
+        return view('project::admin.project.edit', array_merge([
+            'project' => $project,
         ], $this->formData($project)));
+    }
+
+    public function storeInvoice(StoreProjectInvoiceRequest $request, Project $project): RedirectResponse
+    {
+        $this->authorize('view', $project);
+
+        $this->invoiceService->createForProject($project, $request->validated());
+
+        session()->flushMessage(true, __('finance::invoice.messages.created'));
+
+        return redirect()->route('admin.projects.show', $project);
     }
 
     public function update(UpdateProjectRequest $request, Project $project): RedirectResponse
     {
         $data = ProjectData::fromRequest($request->validated());
-        $this->updateProjectAction->execute($project, $data);
+        $updated = $this->updateProjectAction->execute($project, $data);
+
+        if ($updated) {
+            $this->projectService->storeAttachments($updated, $request->file('attachments', []));
+        }
 
         return redirect()->route('admin.projects.index');
     }

@@ -4,6 +4,7 @@ namespace Modules\Project\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Modules\Project\Rules\ProjectAttachmentFile;
 
 class UpdateProjectRequest extends FormRequest
 {
@@ -30,6 +31,8 @@ class UpdateProjectRequest extends FormRequest
             'budget' => ['nullable', 'numeric', 'min:0'],
             'start_date' => ['nullable', 'date'],
             'due_date' => ['nullable', 'date', 'after_or_equal:start_date'],
+            'attachments' => ['nullable', 'array'],
+            'attachments.*' => ['file', 'max:10240', new ProjectAttachmentFile],
         ];
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
+use Modules\Finance\Models\Invoice;
 use Modules\Finance\Models\JournalEntry;
 
 class Project extends Model
@@ -29,6 +30,7 @@ class Project extends Model
         'payment_status',
         'start_date',
         'due_date',
+        'attachments',
     ];
 
     protected function casts(): array
@@ -37,6 +39,7 @@ class Project extends Model
             'budget' => 'decimal:2',
             'start_date' => 'date',
             'due_date' => 'date',
+            'attachments' => 'array',
         ];
     }
 
@@ -79,6 +82,11 @@ class Project extends Model
     public function useCases(): HasMany
     {
         return $this->hasMany(ProjectUseCase::class);
+    }
+
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class)->latest('issued_at');
     }
 
     public function journalEntries(): \Illuminate\Database\Eloquent\Relations\MorphMany

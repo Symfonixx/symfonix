@@ -10,9 +10,11 @@ use Modules\Base\Support\CompanyBranding;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\Subscription;
 use Modules\CRM\Services\Subscription\SubscriptionService;
+use Modules\Finance\Events\InvoiceSentToCustomer;
 use Modules\Finance\Models\Invoice;
 use Modules\Finance\Models\InvoiceLine;
 use Modules\Finance\Models\SubscriptionBilling;
+use Modules\Project\Models\Project;
 use Symfony\Component\HttpFoundation\Response;
 
 class InvoiceService
@@ -53,6 +55,7 @@ class InvoiceService
                 'invoice_number' => $this->generateInvoiceNumber(),
                 'company_id' => $data['company_id'],
                 'deal_id' => $data['deal_id'] ?? null,
+                'project_id' => $data['project_id'] ?? null,
                 'status' => Invoice::STATUS_DRAFT,
                 'subtotal' => $subtotal,
                 'tax_amount' => $taxAmount,
@@ -65,8 +68,31 @@ class InvoiceService
 
             $this->syncLines($invoice, $lines);
 
+            if ($invoice->project_id) {
+                $this->financeService->updateProjectPaymentStatus($invoice->project_id);
+            }
+
             return $invoice->load('lines');
         });
+    }
+
+    public function createForProject(Project $project, array $data): Invoice
+    {
+        $project->loadMissing('deal');
+
+        $data['company_id'] = $project->company_id;
+        $data['project_id'] = $project->id;
+        $data['deal_id'] = $data['deal_id'] ?? $project->deal_id;
+
+        if (! isset($data['currency'])) {
+            $data['currency'] = $project->deal?->currency ?? config('finance.default_currency', 'USD');
+        }
+
+        if (empty($data['notes'])) {
+            $data['notes'] = __('finance::invoice.messages.project_invoice_note', ['title' => $project->title]);
+        }
+
+        return $this->markAsSent($this->createManual($data));
     }
 
     public function billSubscriptionRenewal(Subscription $subscription): ?Invoice
@@ -100,7 +126,7 @@ class InvoiceService
 
         $subscription->loadMissing(['company', 'service']);
 
-        return DB::transaction(function () use ($subscription, $billingDate) {
+        $invoice = DB::transaction(function () use ($subscription, $billingDate) {
             $amount = (float) $subscription->amount;
             $issuedAt = $billingDate;
             $paymentTerms = (int) config('finance.invoice_payment_terms_days', 30);
@@ -142,6 +168,10 @@ class InvoiceService
 
             return $invoice->load('lines', 'company');
         });
+
+        InvoiceSentToCustomer::dispatch($invoice->fresh(['company', 'project']));
+
+        return $invoice;
     }
 
     public function createFromDeal(Deal $deal): ?Invoice
@@ -152,7 +182,7 @@ class InvoiceService
 
         $deal->loadMissing('services');
 
-        return DB::transaction(function () use ($deal) {
+        $invoice = DB::transaction(function () use ($deal) {
             $lines = [];
             $sortOrder = 0;
 
@@ -201,6 +231,10 @@ class InvoiceService
 
             return $invoice->load('lines', 'company');
         });
+
+        InvoiceSentToCustomer::dispatch($invoice->fresh(['company', 'project']));
+
+        return $invoice;
     }
 
     public function markAsSent(Invoice $invoice): Invoice
@@ -209,9 +243,16 @@ class InvoiceService
             return $invoice;
         }
 
-        $invoice->update(['status' => Invoice::STATUS_SENT]);
+        $wasSent = $invoice->status === Invoice::STATUS_SENT;
 
-        return $invoice->fresh();
+        $invoice->update(['status' => Invoice::STATUS_SENT]);
+        $invoice = $invoice->fresh(['company', 'project']);
+
+        if (! $wasSent) {
+            InvoiceSentToCustomer::dispatch($invoice);
+        }
+
+        return $invoice;
     }
 
     public function markAsPaid(Invoice $invoice, ?string $paidAt = null): Invoice
@@ -229,6 +270,10 @@ class InvoiceService
             ]);
 
             $this->financeService->recordInvoicePayment($invoice->fresh(['company']), $paidAt);
+
+            if ($invoice->project_id) {
+                $this->financeService->updateProjectPaymentStatus($invoice->project_id);
+            }
         });
 
         return $invoice->fresh();
@@ -240,7 +285,13 @@ class InvoiceService
             return $invoice;
         }
 
+        $projectId = $invoice->project_id;
+
         $invoice->update(['status' => Invoice::STATUS_VOID]);
+
+        if ($projectId) {
+            $this->financeService->updateProjectPaymentStatus($projectId);
+        }
 
         return $invoice->fresh();
     }

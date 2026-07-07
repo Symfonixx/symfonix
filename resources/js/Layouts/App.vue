@@ -170,7 +170,7 @@
         <slot/>
 
         <!-- Newsletter Two Start -->
-        <section class="newsletter-two">
+        <section v-if="!isPortalPage" class="newsletter-two">
             <div class="newsletter-two__shape-1">
                 <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-1.png'"
                      :alt="trans('Newsletter decoration')">
@@ -595,6 +595,7 @@ const locale = computed(() => page.props.locale)
 const seo = computed(() => page.props.seo)
 const servicesList = computed(() => page.props.servicesList)
 const footerPages = computed(() => page.props.footerPages || [])
+const isPortalPage = computed(() => /\/portal(\/|$)/.test(page.url))
 
 
 const subscribeSuccess = ref(false)

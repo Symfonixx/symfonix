@@ -15,6 +15,7 @@ use Modules\Finance\Models\JournalLine;
 use Modules\Finance\Models\Salary;
 use Modules\Product\Models\Product;
 use Modules\Product\Models\ProductSale;
+use Modules\Project\Events\ProjectPaymentStatusChanged;
 use Modules\Project\Models\Project;
 
 class FinanceService
@@ -183,37 +184,55 @@ class FinanceService
     {
         $project = Project::query()->findOrFail($projectId);
         $budget = (float) ($project->budget ?? 0);
-        $totalPaid = $this->sumProjectRelatedIncome($project);
+        $invoiced = $this->sumProjectInvoicedAmount($project);
+        $remaining = max(0, round($budget - $invoiced, 2));
+        $previousStatus = $project->payment_status;
 
-        if ($budget <= 0 || $totalPaid <= 0) {
+        if ($budget <= 0 || $invoiced <= 0) {
             $status = Project::PAYMENT_UNPAID;
-        } elseif ($totalPaid >= $budget) {
+        } elseif ($remaining <= 0) {
             $status = Project::PAYMENT_FULLY_PAID;
         } else {
             $status = Project::PAYMENT_PARTIALLY_PAID;
         }
 
         $project->update(['payment_status' => $status]);
+
+        if ($previousStatus !== $status) {
+            ProjectPaymentStatusChanged::dispatch($project->fresh(), $previousStatus, $status);
+        }
     }
 
     /**
-     * @return array{collected: float, budget: float, currency: string, payment_status: string, collection_rate: float}
+     * @return array{invoiced: float, remaining: float, budget: float, currency: string, payment_status: string, collection_rate: float, collected: float}
      */
     public function getProjectCollectionSummary(Project $project): array
     {
         $project->loadMissing('deal');
 
-        $collected = $this->sumProjectRelatedIncome($project);
+        $invoiced = $this->sumProjectInvoicedAmount($project);
         $budget = (float) ($project->budget ?? 0);
+        $remaining = max(0, round($budget - $invoiced, 2));
         $currency = $project->deal?->currency ?? $this->defaultCurrency();
+        $collected = $this->sumProjectRelatedIncome($project);
 
         return [
+            'invoiced' => $invoiced,
+            'remaining' => $remaining,
             'collected' => $collected,
             'budget' => $budget,
             'currency' => $currency,
             'payment_status' => $project->payment_status,
-            'collection_rate' => $budget > 0 ? min(100, round(($collected / $budget) * 100, 1)) : 0.0,
+            'collection_rate' => $budget > 0 ? min(100, round(($invoiced / $budget) * 100, 1)) : 0.0,
         ];
+    }
+
+    public function sumProjectInvoicedAmount(Project $project): float
+    {
+        return round((float) Invoice::query()
+            ->where('project_id', $project->id)
+            ->where('status', '!=', Invoice::STATUS_VOID)
+            ->sum('total'), 2);
     }
 
     public function resolveDealRecognizedRevenue(Deal $deal): float

@@ -1,9 +1,9 @@
-import { useSSRContext, computed, mergeProps, unref, withCtx, createVNode, createTextVNode, toDisplayString, ref, onMounted, onUnmounted, nextTick, openBlock, createBlock, createCommentVNode, Fragment, renderList, withModifiers, withDirectives, vModelText, watch, vShow, resolveComponent, vModelCheckbox, createSSRApp, h } from "vue";
+import { useSSRContext, computed, mergeProps, unref, withCtx, createVNode, createTextVNode, toDisplayString, openBlock, createBlock, createCommentVNode, ref, onMounted, onUnmounted, nextTick, Fragment, renderList, withModifiers, withDirectives, vModelText, watch, vShow, renderSlot, resolveComponent, vModelCheckbox, createSSRApp, h } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrInterpolate, ssrRenderClass, ssrRenderList, ssrIncludeBooleanAttr, ssrRenderSlot, ssrRenderStyle, ssrLooseContain } from "vue/server-renderer";
 import { usePage, Link, useForm, router, Head, createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
-const _sfc_main$u = {
+const _sfc_main$A = {
   __name: "HomeBlogCard",
   __ssrInlineRender: true,
   props: {
@@ -310,11 +310,11 @@ const _sfc_main$u = {
     };
   }
 };
-const _sfc_setup$u = _sfc_main$u.setup;
-_sfc_main$u.setup = (props, ctx) => {
+const _sfc_setup$A = _sfc_main$A.setup;
+_sfc_main$A.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/HomeBlogCard.vue");
-  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -323,7 +323,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$t = {
+const _sfc_main$z = {
   __name: "ServiceCardThree",
   __ssrInlineRender: true,
   props: {
@@ -476,14 +476,14 @@ const _sfc_main$t = {
     };
   }
 };
-const _sfc_setup$t = _sfc_main$t.setup;
-_sfc_main$t.setup = (props, ctx) => {
+const _sfc_setup$z = _sfc_main$z.setup;
+_sfc_main$z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
-  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
+  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-0bfa2789"]]);
-const _sfc_main$s = {
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-0bfa2789"]]);
+const _sfc_main$y = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
   setup(__props) {
@@ -493,6 +493,31 @@ const _sfc_main$s = {
     const headerPages = computed(() => page.props.headerPages || []);
     const auth = computed(() => page.props.auth);
     const asset_path = computed(() => page.props.asset_path || "");
+    const portalTranslations = computed(() => {
+      var _a;
+      return ((_a = page.props.portal) == null ? void 0 : _a.translations) || {};
+    });
+    const unreadCount = computed(() => {
+      var _a;
+      return ((_a = page.props.portal) == null ? void 0 : _a.unread_notifications) || 0;
+    });
+    const portalLabel = (key) => {
+      const parts = key.split(".");
+      let value = portalTranslations.value;
+      for (const part of parts) {
+        value = value == null ? void 0 : value[part];
+      }
+      if (typeof value === "string") {
+        return value;
+      }
+      const fallbacks = {
+        "menu.my_dashboard": "My Dashboard",
+        "menu.projects": "My Projects",
+        "menu.subscriptions": "My Subscriptions",
+        "menu.logout": "Logout"
+      };
+      return fallbacks[key] || key;
+    };
     const normalizePath = (path) => {
       if (!path) return "";
       const withoutQuery = path.split("?")[0];
@@ -549,7 +574,7 @@ const _sfc_main$s = {
       }
     };
     return (_ctx, _push, _parent, _attrs) => {
-      var _a;
+      var _a, _b;
       _push(`<ul${ssrRenderAttrs(mergeProps({ class: "main-menu__list" }, _attrs))}><li class="${ssrRenderClass({ current: isActive("home") })}">`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("home")
@@ -698,17 +723,97 @@ const _sfc_main$s = {
       } else {
         _push(`<!---->`);
       }
-      _push(`<li class="dropdown"><a href="#" aria-label="Change language"><img${ssrRenderAttr("src", asset_path.value + `images/langs/${locale.value}.png`)} width="20"${ssrRenderAttr("alt", trans("Current language"))}></a><ul class="shadow-box"><li><a href="#" class="${ssrRenderClass({ active: locale.value === "ar" })}"><img class="me-1"${ssrRenderAttr("src", asset_path.value + "images/langs/ar.png")} width="20"${ssrRenderAttr("alt", trans("Arabic"))}> ${ssrInterpolate(trans("Arabic"))}</a></li><li><a href="#" class="${ssrRenderClass({ active: locale.value === "en" })}"><img class="me-1"${ssrRenderAttr("src", asset_path.value + "images/langs/en.png")} width="20"${ssrRenderAttr("alt", trans("English"))}> ${ssrInterpolate(trans("English"))}</a></li><li><a href="#" class="${ssrRenderClass({ active: locale.value === "tr" })}"><img class="me-1"${ssrRenderAttr("src", asset_path.value + "images/langs/tr.png")} width="20"${ssrRenderAttr("alt", trans("Turkish"))}> ${ssrInterpolate(trans("Turkish"))}</a></li></ul></li></ul>`);
+      if (((_b = auth.value) == null ? void 0 : _b.type) === "customer") {
+        _push(`<li class="dropdown portal-account-dropdown"><a href="#" aria-label="Customer account"><i class="fas fa-user-circle mx-1"></i>${ssrInterpolate(auth.value.name)}</a><ul class="shadow-box portal-account-menu"><li class="${ssrRenderClass([{ current: isActive("portal.dashboard") }, "portal-menu-item"])}">`);
+        _push(ssrRenderComponent(unref(Link), {
+          href: _ctx.route("portal.dashboard")
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`<i class="fas fa-th-large mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.my_dashboard"))}`);
+            } else {
+              return [
+                createVNode("i", { class: "fas fa-th-large mx-1" }),
+                createTextVNode(" " + toDisplayString(portalLabel("menu.my_dashboard")), 1)
+              ];
+            }
+          }),
+          _: 1
+        }, _parent));
+        _push(`</li><li class="${ssrRenderClass([{ current: isActive(["portal.projects.index", "portal.projects.show"], { prefixes: ["/portal/projects"] }) }, "portal-menu-item"])}">`);
+        _push(ssrRenderComponent(unref(Link), {
+          href: _ctx.route("portal.projects.index")
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`<i class="fas fa-folder-open mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.projects"))} `);
+              if (unreadCount.value) {
+                _push2(`<span class="portal-menu-badge"${_scopeId}>${ssrInterpolate(unreadCount.value)}</span>`);
+              } else {
+                _push2(`<!---->`);
+              }
+            } else {
+              return [
+                createVNode("i", { class: "fas fa-folder-open mx-1" }),
+                createTextVNode(" " + toDisplayString(portalLabel("menu.projects")) + " ", 1),
+                unreadCount.value ? (openBlock(), createBlock("span", {
+                  key: 0,
+                  class: "portal-menu-badge"
+                }, toDisplayString(unreadCount.value), 1)) : createCommentVNode("", true)
+              ];
+            }
+          }),
+          _: 1
+        }, _parent));
+        _push(`</li><li class="${ssrRenderClass([{ current: isActive("portal.subscriptions.index", { prefixes: ["/portal/subscriptions"] }) }, "portal-menu-item"])}">`);
+        _push(ssrRenderComponent(unref(Link), {
+          href: _ctx.route("portal.subscriptions.index")
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`<i class="fas fa-sync-alt mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.subscriptions"))}`);
+            } else {
+              return [
+                createVNode("i", { class: "fas fa-sync-alt mx-1" }),
+                createTextVNode(" " + toDisplayString(portalLabel("menu.subscriptions")), 1)
+              ];
+            }
+          }),
+          _: 1
+        }, _parent));
+        _push(`</li><li class="portal-menu-item portal-menu-item--logout text-danger">`);
+        _push(ssrRenderComponent(unref(Link), {
+          href: _ctx.route("logout"),
+          method: "post",
+          as: "a"
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`<i class="fas fa-sign-out-alt mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.logout"))}`);
+            } else {
+              return [
+                createVNode("i", { class: "fas fa-sign-out-alt mx-1" }),
+                createTextVNode(" " + toDisplayString(portalLabel("menu.logout")), 1)
+              ];
+            }
+          }),
+          _: 1
+        }, _parent));
+        _push(`</li></ul></li>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<li class="dropdown"><a href="#" aria-label="Change language"><img${ssrRenderAttr("src", asset_path.value + `images/langs/${locale.value}.png`)} width="20"${ssrRenderAttr("alt", trans("Current language"))}></a><ul class="shadow-box"><li><a href="#" class="${ssrRenderClass({ active: locale.value === "ar" })}"><img class="mx-1"${ssrRenderAttr("src", asset_path.value + "images/langs/ar.png")} width="20"${ssrRenderAttr("alt", trans("Arabic"))}> ${ssrInterpolate(trans("Arabic"))}</a></li><li><a href="#" class="${ssrRenderClass({ active: locale.value === "en" })}"><img class="mx-1"${ssrRenderAttr("src", asset_path.value + "images/langs/en.png")} width="20"${ssrRenderAttr("alt", trans("English"))}> ${ssrInterpolate(trans("English"))}</a></li><li><a href="#" class="${ssrRenderClass({ active: locale.value === "tr" })}"><img class="mx-1"${ssrRenderAttr("src", asset_path.value + "images/langs/tr.png")} width="20"${ssrRenderAttr("alt", trans("Turkish"))}> ${ssrInterpolate(trans("Turkish"))}</a></li></ul></li></ul>`);
     };
   }
 };
-const _sfc_setup$s = _sfc_main$s.setup;
-_sfc_main$s.setup = (props, ctx) => {
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuList.vue");
-  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
-const _sfc_main$r = {
+const _sfc_main$x = {
   __name: "MainMenuNav",
   __ssrInlineRender: true,
   setup(__props) {
@@ -735,18 +840,18 @@ const _sfc_main$r = {
         _: 1
       }, _parent));
       _push(`</div></div><div class="main-menu-two__main-menu-box"><a href="#" class="mobile-nav__toggler" aria-label="Open mobile menu"><i class="fa fa-bars"></i></a>`);
-      _push(ssrRenderComponent(_sfc_main$s, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$y, null, null, _parent));
       _push(`</div><div class="main-menu-two__right d-none d-md-flex align-items-center"><div class="main-menu-two__search-box me-3"><a href="#" class="main-menu-two__search searcher-toggler-box icon-search-interface-symbol" aria-label="Open search"></a></div><div class="main-menu-two__nav-sidebar-icon"><a class="navSidebar-button" href="#" aria-label="Open sidebar"><span class="icon-dots-menu-one"></span><span class="icon-dots-menu-two"></span><span class="icon-dots-menu-three"></span></a></div></div></div></div></nav>`);
     };
   }
 };
-const _sfc_setup$r = _sfc_main$r.setup;
-_sfc_main$r.setup = (props, ctx) => {
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuNav.vue");
-  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const _sfc_main$q = {
+const _sfc_main$w = {
   __name: "App",
   __ssrInlineRender: true,
   setup(__props) {
@@ -759,6 +864,7 @@ const _sfc_main$q = {
     const seo = computed(() => page.props.seo);
     computed(() => page.props.servicesList);
     const footerPages = computed(() => page.props.footerPages || []);
+    const isPortalPage = computed(() => /\/portal(\/|$)/.test(page.url));
     const subscribeSuccess = ref(false);
     const subscribeForm = useForm({
       email: ""
@@ -956,45 +1062,50 @@ const _sfc_main$q = {
         _push(`<!---->`);
       }
       _push(`</form></div></div></div></div></div></div></div><div class="page-wrapper"><header class="main-header-two"><div class="main-menu-two__top"><div class="main-menu-two__top-inner"><p class="main-menu-two__top-text">${ssrInterpolate(trans("We Build Technology In Perfect Harmony"))}</p><ul class="list-unstyled main-menu-two__contact-list"><li><div class="icon"><i class="icon-pin"></i></div><div class="text"><p>${ssrInterpolate(settings.value.address)}</p></div></li><li><div class="icon"><i class="icon-search-mail"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `mailto::${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li><div class="icon"><i class="icon-phone-call"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div>`);
-      _push(ssrRenderComponent(_sfc_main$r, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$x, null, null, _parent));
       _push(`</header><div class="stricky-header stricked-menu main-menu main-menu-two"><div class="sticky-header__content">`);
-      _push(ssrRenderComponent(_sfc_main$r, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$x, null, null, _parent));
       _push(`</div></div>`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
-      _push(`<section class="newsletter-two"><div class="newsletter-two__shape-1"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-1.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="newsletter-two__shape-2 float-bob-x"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-2.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="container"><div class="newsletter-two__inner"><div class="newsletter-two__left"><h2 class="newsletter-two__title">${ssrInterpolate(trans("Subscribe to Our Newsletter"))}</h2><p class="newsletter-two__text">${ssrInterpolate(trans("Engineering insights, product updates, and practical tech lessons—delivered occasionally, not daily"))}</p></div><div class="newsletter-two__right"><form class="newsletter-two__form"><div class="newsletter-two__input"><input type="email" name="email"${ssrRenderAttr("value", unref(subscribeForm).email)}${ssrRenderAttr("placeholder", trans("Enter your email address"))}${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""} required="">`);
-      if (unref(subscribeForm).errors.email) {
-        _push(`<div class="text-danger mt-1 small">${ssrInterpolate(unref(subscribeForm).errors.email)}</div>`);
+      if (!isPortalPage.value) {
+        _push(`<section class="newsletter-two"><div class="newsletter-two__shape-1"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-1.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="newsletter-two__shape-2 float-bob-x"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-2.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="container"><div class="newsletter-two__inner"><div class="newsletter-two__left"><h2 class="newsletter-two__title">${ssrInterpolate(trans("Subscribe to Our Newsletter"))}</h2><p class="newsletter-two__text">${ssrInterpolate(trans("Engineering insights, product updates, and practical tech lessons—delivered occasionally, not daily"))}</p></div><div class="newsletter-two__right"><form class="newsletter-two__form"><div class="newsletter-two__input"><input type="email" name="email"${ssrRenderAttr("value", unref(subscribeForm).email)}${ssrRenderAttr("placeholder", trans("Enter your email address"))}${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""} required="">`);
+        if (unref(subscribeForm).errors.email) {
+          _push(`<div class="text-danger mt-1 small">${ssrInterpolate(unref(subscribeForm).errors.email)}</div>`);
+        } else {
+          _push(`<!---->`);
+        }
+        _push(`</div><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""}>`);
+        if (unref(subscribeForm).processing) {
+          _push(`<span>${ssrInterpolate(trans("Subscribing..."))}</span>`);
+        } else {
+          _push(`<span>${ssrInterpolate(trans("Subscribe Now"))}</span>`);
+        }
+        _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"></span></button><div class="checked-box"><input type="checkbox" name="skipper1" id="skipper" checked=""><label for="skipper"><span></span>`);
+        _push(ssrRenderComponent(unref(Link), {
+          href: _ctx.route("privacy-policy")
+        }, {
+          default: withCtx((_, _push2, _parent2, _scopeId) => {
+            if (_push2) {
+              _push2(`${ssrInterpolate(trans("By subscribing, you accept our privacy policy"))}`);
+            } else {
+              return [
+                createTextVNode(toDisplayString(trans("By subscribing, you accept our privacy policy")), 1)
+              ];
+            }
+          }),
+          _: 1
+        }, _parent));
+        _push(`</label></div>`);
+        if (subscribeSuccess.value) {
+          _push(`<div class="alert alert-success mt-2">${ssrInterpolate(trans("Thank you for subscribing to our newsletter!"))}</div>`);
+        } else {
+          _push(`<!---->`);
+        }
+        _push(`</form></div></div></div></section>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""}>`);
-      if (unref(subscribeForm).processing) {
-        _push(`<span>${ssrInterpolate(trans("Subscribing..."))}</span>`);
-      } else {
-        _push(`<span>${ssrInterpolate(trans("Subscribe Now"))}</span>`);
-      }
-      _push(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"></span></button><div class="checked-box"><input type="checkbox" name="skipper1" id="skipper" checked=""><label for="skipper"><span></span>`);
-      _push(ssrRenderComponent(unref(Link), {
-        href: _ctx.route("privacy-policy")
-      }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`${ssrInterpolate(trans("By subscribing, you accept our privacy policy"))}`);
-          } else {
-            return [
-              createTextVNode(toDisplayString(trans("By subscribing, you accept our privacy policy")), 1)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`</label></div>`);
-      if (subscribeSuccess.value) {
-        _push(`<div class="alert alert-success mt-2">${ssrInterpolate(trans("Thank you for subscribing to our newsletter!"))}</div>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</form></div></div></div></section><footer class="site-footer-two"><div class="site-footer-two__top"><div class="container"><div class="row"><div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"><div class="site-footer-two__about"><div class="site-footer-two__logo">`);
+      _push(`<footer class="site-footer-two"><div class="site-footer-two__top"><div class="container"><div class="row"><div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"><div class="site-footer-two__about"><div class="site-footer-two__logo">`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("home")
       }, {
@@ -1239,7 +1350,7 @@ const _sfc_main$q = {
         _: 1
       }, _parent));
       _push(`</div><div class="mobile-nav__container">`);
-      _push(ssrRenderComponent(_sfc_main$s, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$y, null, null, _parent));
       _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
       if (settings.value.twitter) {
         _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
@@ -1270,13 +1381,13 @@ const _sfc_main$q = {
     };
   }
 };
-const _sfc_setup$q = _sfc_main$q.setup;
-_sfc_main$q.setup = (props, ctx) => {
+const _sfc_setup$w = _sfc_main$w.setup;
+_sfc_main$w.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/App.vue");
-  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
+  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-const _sfc_main$p = {
+const _sfc_main$v = {
   __name: "UseCaseCard",
   __ssrInlineRender: true,
   props: {
@@ -1411,20 +1522,157 @@ const _sfc_main$p = {
     };
   }
 };
-const _sfc_setup$p = _sfc_main$p.setup;
-_sfc_main$p.setup = (props, ctx) => {
+const _sfc_setup$v = _sfc_main$v.setup;
+_sfc_main$v.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UseCaseCard.vue");
-  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
+  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
-const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-9f66d710"]]);
-const __default__$h = {
-  components: {
-    AppLayout: _sfc_main$q,
-    UseCaseCard
+const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-9f66d710"]]);
+const _sfc_main$u = {
+  __name: "ProductCard",
+  __ssrInlineRender: true,
+  props: {
+    item: {
+      type: Object,
+      required: true
+    },
+    locale: {
+      type: String,
+      default: "en"
+    },
+    variant: {
+      type: String,
+      default: "default"
+    }
+  },
+  setup(__props) {
+    const props = __props;
+    const page = usePage();
+    const trans = (key) => {
+      var _a;
+      return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
+    };
+    const cardUrl = computed(() => {
+      var _a;
+      if (!((_a = props.item) == null ? void 0 : _a.slug)) {
+        return "#";
+      }
+      try {
+        return route("product.show", props.item.slug);
+      } catch {
+        return "#";
+      }
+    });
+    const truncate = (text, length) => {
+      if (!text) {
+        return "";
+      }
+      return text.length > length ? `${text.substring(0, length)}…` : text;
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<article${ssrRenderAttrs(mergeProps({
+        class: ["product-card", [`product-card--${__props.variant}`, { "product-card--featured": __props.item.is_featured }]]
+      }, _attrs))} data-v-17fca12f><div class="product-card__glow" aria-hidden="true" data-v-17fca12f></div>`);
+      _push(ssrRenderComponent(unref(Link), {
+        href: cardUrl.value,
+        class: "product-card__media",
+        "aria-label": __props.item.name
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} loading="lazy" data-v-17fca12f${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-17fca12f${_scopeId}></div>`);
+            if (__props.item.is_featured) {
+              _push2(`<span class="product-card__badge" data-v-17fca12f${_scopeId}><i class="fas fa-star" data-v-17fca12f${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
+            } else {
+              _push2(`<!---->`);
+            }
+          } else {
+            return [
+              createVNode("img", {
+                src: __props.item.main_image_link,
+                alt: __props.item.name,
+                loading: "lazy"
+              }, null, 8, ["src", "alt"]),
+              createVNode("div", {
+                class: "product-card__media-overlay",
+                "aria-hidden": "true"
+              }),
+              __props.item.is_featured ? (openBlock(), createBlock("span", {
+                key: 0,
+                class: "product-card__badge"
+              }, [
+                createVNode("i", { class: "fas fa-star" }),
+                createTextVNode(" " + toDisplayString(trans("Featured")), 1)
+              ])) : createCommentVNode("", true)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<div class="product-card__body" data-v-17fca12f>`);
+      if (__props.item.category) {
+        _push(`<p class="product-card__category" data-v-17fca12f>${ssrInterpolate(__props.item.category.name)}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<h3 class="product-card__title" data-v-17fca12f>`);
+      _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`${ssrInterpolate(__props.item.name)}`);
+          } else {
+            return [
+              createTextVNode(toDisplayString(__props.item.name), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</h3>`);
+      if (__props.item.short_description && __props.variant !== "compact") {
+        _push(`<p class="product-card__summary" data-v-17fca12f>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div><footer class="product-card__footer" data-v-17fca12f>`);
+      _push(ssrRenderComponent(unref(Link), {
+        href: cardUrl.value,
+        class: "product-card__pill product-card__pill--cta"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<span data-v-17fca12f${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-17fca12f${_scopeId}></span>`);
+          } else {
+            return [
+              createVNode("span", null, toDisplayString(trans("View Details")), 1),
+              createVNode("span", {
+                class: `icon-${__props.locale === "ar" ? "left" : "right"}-arrow`
+              }, null, 2)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</footer></article>`);
+    };
   }
 };
-const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+};
+const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-17fca12f"]]);
+const __default__$h = {
+  components: {
+    AppLayout: _sfc_main$w,
+    UseCaseCard,
+    ProductCard
+  }
+};
+const _sfc_main$t = /* @__PURE__ */ Object.assign(__default__$h, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1439,6 +1687,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
     const testimonials = computed(() => page.props.testimonials || []);
     const teams = computed(() => page.props.teams || []);
     const useCases = computed(() => page.props.useCases || []);
+    const products = computed(() => page.props.products || []);
     const meta = computed(() => page.props.meta || {});
     const metaTitle = computed(() => {
       return meta.value.title || `${trans("Home")} | ${seo.value.website_name || ""}`.trim();
@@ -1747,26 +1996,26 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<title data-v-6eb5750c${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-6eb5750c${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-6eb5750c${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-6eb5750c${_scopeId}>`);
+            _push2(`<title data-v-24549abd${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-24549abd${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-24549abd${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-24549abd${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-6eb5750c${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-24549abd${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-6eb5750c${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-6eb5750c${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-24549abd${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-24549abd${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-6eb5750c${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-24549abd${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-6eb5750c${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-24549abd${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-6eb5750c${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-6eb5750c${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-6eb5750c${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-6eb5750c${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-24549abd${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-24549abd${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-24549abd${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-24549abd${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-6eb5750c${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-24549abd${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -1834,21 +2083,21 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="banner-one" data-v-6eb5750c${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
+            _push2(`<section class="banner-one" data-v-24549abd${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/home/banner-bg.jpg)`
-            })}" data-v-6eb5750c${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
+            })}" data-v-24549abd${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/shapes/banner-one-shape-bg.png)`
-            })}" data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="banner-one__inner" data-v-6eb5750c${_scopeId}><h1 class="banner-one__title px-4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Transform complex technical ideas into intelligent systems"))} <br data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability"))}</span></h1><div class="banner-one__btn-box mb-5" data-v-6eb5750c${_scopeId}>`);
+            })}" data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="banner-one__inner" data-v-24549abd${_scopeId}><h1 class="banner-one__title px-4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Transform complex technical ideas into intelligent systems"))} <br data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability"))}</span></h1><div class="banner-one__btn-box mb-5" data-v-24549abd${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "thm-btn contact-btn mx-2"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-6eb5750c${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
+                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-24549abd${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
                 } else {
                   return [
                     createVNode("span", {
@@ -1866,7 +2115,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-6eb5750c${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
+                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-24549abd${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
                 } else {
                   return [
                     createVNode("span", {
@@ -1878,11 +2127,11 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</div></div></div></section><section class="about-three" data-v-6eb5750c${_scopeId}><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-6eb5750c${_scopeId}><div class="about-three__img-box" data-v-6eb5750c${_scopeId}><div class="about-three__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))} data-v-6eb5750c${_scopeId}></div></div></div></div><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="about-three__right" data-v-6eb5750c${_scopeId}><div class="section-title sec-title-animation animation-style1" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Tech Solutions"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div></div><p class="about-three__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled" data-v-6eb5750c${_scopeId}><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-tick-inside-circle" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h2 class="h3" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Developing Secure & Scalable Systems"))}</h2></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-tick-inside-circle" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h2 class="h3" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-tick-inside-circle" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h2 class="h3" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-tick-inside-circle" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h2 class="h3" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box" data-v-6eb5750c${_scopeId}><div class="about-three__btn-box" data-v-6eb5750c${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-6eb5750c${_scopeId}></span></a></div><div class="about-three__call-box" data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-customer-service-headset" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p data-v-6eb5750c${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
+            _push2(`</div></div></div></section><section class="about-three" data-v-24549abd${_scopeId}><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-24549abd${_scopeId}><div class="about-three__img-box" data-v-24549abd${_scopeId}><div class="about-three__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))} data-v-24549abd${_scopeId}></div></div></div></div><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="about-three__right" data-v-24549abd${_scopeId}><div class="section-title sec-title-animation animation-style1" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Tech Solutions"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div></div><p class="about-three__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled" data-v-24549abd${_scopeId}><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-tick-inside-circle" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h2 class="h3" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Developing Secure & Scalable Systems"))}</h2></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-tick-inside-circle" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h2 class="h3" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-tick-inside-circle" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h2 class="h3" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-tick-inside-circle" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h2 class="h3" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box" data-v-24549abd${_scopeId}><div class="about-three__btn-box" data-v-24549abd${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId}></span></a></div><div class="about-three__call-box" data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-customer-service-headset" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p data-v-24549abd${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
             if (servicesCategories.value && servicesCategories.value.length) {
-              _push2(`<section class="services-three" data-v-6eb5750c${_scopeId}><div class="container" data-v-6eb5750c${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel" data-v-6eb5750c${_scopeId}><!--[-->`);
+              _push2(`<section class="services-three" data-v-24549abd${_scopeId}><div class="container" data-v-24549abd${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel" data-v-24549abd${_scopeId}><!--[-->`);
               ssrRenderList(servicesCategories.value, (servicesCategory) => {
-                _push2(`<div class="item" data-v-6eb5750c${_scopeId}>`);
+                _push2(`<div class="item" data-v-24549abd${_scopeId}>`);
                 _push2(ssrRenderComponent(ServiceCardThree, {
                   title: translateField(servicesCategory.title),
                   "short-desc": translateField(servicesCategory.description),
@@ -1895,14 +2144,14 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div><div class="text-center mt-4" data-v-6eb5750c${_scopeId}>`);
+              _push2(`<!--]--></div><div class="text-center mt-4" data-v-24549abd${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("services.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-6eb5750c${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Services")) + " ", 1),
@@ -1918,24 +2167,57 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
             } else {
               _push2(`<!---->`);
             }
+            if (products.value && products.value.length) {
+              _push2(`<section class="home-products products-page" data-v-24549abd${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-24549abd${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-24549abd${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-24549abd${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-24549abd${_scopeId}></div></div><div class="container position-relative" data-v-24549abd${_scopeId}><div class="section-title text-center sec-title-animation animation-style1 home-products__head" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Products"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("B2B Solutions Built for Scale"))}</h2><p class="home-products__intro" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Discover enterprise-ready platforms and services designed to grow with your business."))}</p></div><div class="home-products__grid" data-v-24549abd${_scopeId}><div class="row g-4" data-v-24549abd${_scopeId}><!--[-->`);
+              ssrRenderList(products.value, (product, index) => {
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-24549abd${_scopeId}>`);
+                _push2(ssrRenderComponent(ProductCard, {
+                  item: product,
+                  locale: locale.value
+                }, null, _parent2, _scopeId));
+                _push2(`</div>`);
+              });
+              _push2(`<!--]--></div></div><div class="text-center home-products__cta" data-v-24549abd${_scopeId}>`);
+              _push2(ssrRenderComponent(unref(Link), {
+                href: _ctx.route("product.index"),
+                class: "thm-btn"
+              }, {
+                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  if (_push3) {
+                    _push3(`${ssrInterpolate(trans("View All Products"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId2}></span>`);
+                  } else {
+                    return [
+                      createTextVNode(toDisplayString(trans("View All Products")) + " ", 1),
+                      createVNode("span", {
+                        class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow `
+                      }, null, 2)
+                    ];
+                  }
+                }),
+                _: 1
+              }, _parent2, _scopeId));
+              _push2(`</div></div></section>`);
+            } else {
+              _push2(`<!---->`);
+            }
             if (useCases.value && useCases.value.length) {
-              _push2(`<section class="home-case-studies use-cases-page" data-v-6eb5750c${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-6eb5750c${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-6eb5750c${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-6eb5750c${_scopeId}></div></div><div class="container position-relative" data-v-6eb5750c${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="home-case-studies__intro" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="use-cases-page__grid" data-v-6eb5750c${_scopeId}><div class="row g-4" data-v-6eb5750c${_scopeId}><!--[-->`);
+              _push2(`<section class="home-case-studies use-cases-page" data-v-24549abd${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-24549abd${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-24549abd${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-24549abd${_scopeId}></div></div><div class="container position-relative" data-v-24549abd${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="home-case-studies__intro" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="use-cases-page__grid" data-v-24549abd${_scopeId}><div class="row g-4" data-v-24549abd${_scopeId}><!--[-->`);
               ssrRenderList(useCases.value, (item) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-6eb5750c${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-24549abd${_scopeId}>`);
                 _push2(ssrRenderComponent(UseCaseCard, {
                   item,
                   locale: locale.value
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div></div><div class="text-center home-case-studies__cta" data-v-6eb5750c${_scopeId}>`);
+              _push2(`<!--]--></div></div><div class="text-center home-case-studies__cta" data-v-24549abd${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("use-cases.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Case Studies"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-6eb5750c${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Case Studies"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Case Studies")) + " ", 1),
@@ -1951,68 +2233,68 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="why-choose-two" data-v-6eb5750c${_scopeId}><div class="why-choose-two__shape-1 float-bob-y" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/why-choose-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="${ssrRenderClass(`why-choose-two__left wow ${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-6eb5750c${_scopeId}><div class="why-choose-two__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/why_choose_us.jpg")} alt="why_choose_us" data-v-6eb5750c${_scopeId}></div></div></div><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="why-choose-two__right" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Your Business with"))} `);
+            _push2(`<section class="why-choose-two" data-v-24549abd${_scopeId}><div class="why-choose-two__shape-1 float-bob-y" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/why-choose-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="${ssrRenderClass(`why-choose-two__left wow ${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-24549abd${_scopeId}><div class="why-choose-two__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/why_choose_us.jpg")} alt="why_choose_us" data-v-24549abd${_scopeId}></div></div></div><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="why-choose-two__right" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Your Business with"))} `);
             if (locale.value === "ar") {
-              _push2(`<span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
+              _push2(`<span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Reliable &"))}</span><br data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Future-Ready"))}</span><br data-v-6eb5750c${_scopeId}>`);
+            _push2(`<span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Reliable &"))}</span><br data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Future-Ready"))}</span><br data-v-24549abd${_scopeId}>`);
             if (locale.value !== "ar") {
-              _push2(`<span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
+              _push2(`<span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</h2></div><p class="why-choose-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points" data-v-6eb5750c${_scopeId}><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-quality" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-team" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-customer-centricity" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
+            _push2(`</h2></div><p class="why-choose-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points" data-v-24549abd${_scopeId}><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-quality" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-team" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-customer-centricity" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
             if (teams.value && teams.value.length > 0) {
-              _push2(`<section class="team-two d-none" data-v-6eb5750c${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}" data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-5" data-v-6eb5750c${_scopeId}><div class="team-two__left" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7" data-v-6eb5750c${_scopeId}><div class="team-two__right" data-v-6eb5750c${_scopeId}><div class="team-two__carousel owl-theme owl-carousel" data-v-6eb5750c${_scopeId}><!--[-->`);
+              _push2(`<section class="team-two d-none" data-v-24549abd${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}" data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-5" data-v-24549abd${_scopeId}><div class="team-two__left" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7" data-v-24549abd${_scopeId}><div class="team-two__right" data-v-24549abd${_scopeId}><div class="team-two__carousel owl-theme owl-carousel" data-v-24549abd${_scopeId}><!--[-->`);
               ssrRenderList(teams.value, (team) => {
-                _push2(`<div class="item" data-v-6eb5750c${_scopeId}><div class="team-two__single" data-v-6eb5750c${_scopeId}><div class="team-two__img-box" data-v-6eb5750c${_scopeId}><div class="team-two__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))} data-v-6eb5750c${_scopeId}></div><div class="team-two__social" data-v-6eb5750c${_scopeId}>`);
+                _push2(`<div class="item" data-v-24549abd${_scopeId}><div class="team-two__single" data-v-24549abd${_scopeId}><div class="team-two__img-box" data-v-24549abd${_scopeId}><div class="team-two__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))} data-v-24549abd${_scopeId}></div><div class="team-two__social" data-v-24549abd${_scopeId}>`);
                 if (team.facebook) {
-                  _push2(`<a${ssrRenderAttr("href", team.facebook)} target="_blank" data-v-6eb5750c${_scopeId}><span class="icon-facebook" data-v-6eb5750c${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.facebook)} target="_blank" data-v-24549abd${_scopeId}><span class="icon-facebook" data-v-24549abd${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.behance) {
-                  _push2(`<a${ssrRenderAttr("href", team.behance)} target="_blank" data-v-6eb5750c${_scopeId}><span class="icon-dribble" data-v-6eb5750c${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.behance)} target="_blank" data-v-24549abd${_scopeId}><span class="icon-dribble" data-v-24549abd${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.linked_in) {
-                  _push2(`<a${ssrRenderAttr("href", team.linked_in)} target="_blank" data-v-6eb5750c${_scopeId}><span class="icon-linkedin" data-v-6eb5750c${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.linked_in)} target="_blank" data-v-24549abd${_scopeId}><span class="icon-linkedin" data-v-24549abd${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.github) {
-                  _push2(`<a${ssrRenderAttr("href", team.github)} target="_blank" data-v-6eb5750c${_scopeId}><span class="icon-github" data-v-6eb5750c${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.github)} target="_blank" data-v-24549abd${_scopeId}><span class="icon-github" data-v-24549abd${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
-                _push2(`</div><div class="team-two__title-box" data-v-6eb5750c${_scopeId}><h3 data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(translateField(team.name))}</a></h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
+                _push2(`</div><div class="team-two__title-box" data-v-24549abd${_scopeId}><h3 data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(translateField(team.name))}</a></h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="feature-one" data-v-6eb5750c${_scopeId}><div class="feature-one__shape-2 float-bob-y" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-6eb5750c${_scopeId}><div class="feature-one__single" data-v-6eb5750c${_scopeId}><div class="feature-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))} data-v-6eb5750c${_scopeId}></div><h3 class="feature-one__title" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms" data-v-6eb5750c${_scopeId}><div class="feature-one__single" data-v-6eb5750c${_scopeId}><div class="feature-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))} data-v-6eb5750c${_scopeId}></div><h3 class="feature-one__title" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms" data-v-6eb5750c${_scopeId}><div class="feature-one__single" data-v-6eb5750c${_scopeId}><div class="feature-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))} data-v-6eb5750c${_scopeId}></div><h3 class="feature-one__title" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms" data-v-6eb5750c${_scopeId}><div class="feature-one__single" data-v-6eb5750c${_scopeId}><div class="feature-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))} data-v-6eb5750c${_scopeId}></div><h3 class="feature-one__title" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one" data-v-6eb5750c${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}" data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="cta-one__inner" data-v-6eb5750c${_scopeId}><h3 class="cta-one__title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Let the Symfonix experts review your technical idea"))}</h3><div class="cta-one__contact-info" data-v-6eb5750c${_scopeId}><div class="cta-one__contact-icon" data-v-6eb5750c${_scopeId}><span class="icon-customer-service-headset" data-v-6eb5750c${_scopeId}></span></div><div class="cta-one__contact-details" data-v-6eb5750c${_scopeId}><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Book your free consultation"))}</p><h4 data-v-6eb5750c${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
+            _push2(`<section class="feature-one" data-v-24549abd${_scopeId}><div class="feature-one__shape-2 float-bob-y" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-24549abd${_scopeId}><div class="feature-one__single" data-v-24549abd${_scopeId}><div class="feature-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))} data-v-24549abd${_scopeId}></div><h3 class="feature-one__title" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms" data-v-24549abd${_scopeId}><div class="feature-one__single" data-v-24549abd${_scopeId}><div class="feature-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))} data-v-24549abd${_scopeId}></div><h3 class="feature-one__title" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms" data-v-24549abd${_scopeId}><div class="feature-one__single" data-v-24549abd${_scopeId}><div class="feature-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))} data-v-24549abd${_scopeId}></div><h3 class="feature-one__title" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms" data-v-24549abd${_scopeId}><div class="feature-one__single" data-v-24549abd${_scopeId}><div class="feature-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))} data-v-24549abd${_scopeId}></div><h3 class="feature-one__title" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one" data-v-24549abd${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}" data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="cta-one__inner" data-v-24549abd${_scopeId}><h3 class="cta-one__title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Let the Symfonix experts review your technical idea"))}</h3><div class="cta-one__contact-info" data-v-24549abd${_scopeId}><div class="cta-one__contact-icon" data-v-24549abd${_scopeId}><span class="icon-customer-service-headset" data-v-24549abd${_scopeId}></span></div><div class="cta-one__contact-details" data-v-24549abd${_scopeId}><p data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Book your free consultation"))}</p><h4 data-v-24549abd${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
             if (testimonials.value && testimonials.value.length) {
-              _push2(`<section class="testimonial-one pb-5" data-v-6eb5750c${_scopeId}><div class="testimonial-one__shape-2 float-bob-y" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-3" data-v-6eb5750c${_scopeId}></div><div class="col-xl-9" data-v-6eb5750c${_scopeId}><div class="testimonial-one__content-box" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel" data-v-6eb5750c${_scopeId}><!--[-->`);
+              _push2(`<section class="testimonial-one pb-5" data-v-24549abd${_scopeId}><div class="testimonial-one__shape-2 float-bob-y" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-3" data-v-24549abd${_scopeId}></div><div class="col-xl-9" data-v-24549abd${_scopeId}><div class="testimonial-one__content-box" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel" data-v-24549abd${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="item" data-v-6eb5750c${_scopeId}><div class="testimonial-one__single" data-v-6eb5750c${_scopeId}><div class="testimonial-one__img-box" data-v-6eb5750c${_scopeId}><div class="testimonial-one__img" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))} data-v-6eb5750c${_scopeId}></div></div><div class="testimonial-one__content" data-v-6eb5750c${_scopeId}><p class="testimonial-one__text" data-v-6eb5750c${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom" data-v-6eb5750c${_scopeId}><div class="testimonial-one__quote-and-client-info" data-v-6eb5750c${_scopeId}><div class="testimonial-one__quote" data-v-6eb5750c${_scopeId}><span class="icon-left" data-v-6eb5750c${_scopeId}></span></div><div class="testimonial-one__client-info" data-v-6eb5750c${_scopeId}><p class="testimonial-one__client-sub-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name" data-v-6eb5750c${_scopeId}><a href="#" data-v-6eb5750c${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
+                _push2(`<div class="item" data-v-24549abd${_scopeId}><div class="testimonial-one__single" data-v-24549abd${_scopeId}><div class="testimonial-one__img-box" data-v-24549abd${_scopeId}><div class="testimonial-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))} data-v-24549abd${_scopeId}></div></div><div class="testimonial-one__content" data-v-24549abd${_scopeId}><p class="testimonial-one__text" data-v-24549abd${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom" data-v-24549abd${_scopeId}><div class="testimonial-one__quote-and-client-info" data-v-24549abd${_scopeId}><div class="testimonial-one__quote" data-v-24549abd${_scopeId}><span class="icon-left" data-v-24549abd${_scopeId}></span></div><div class="testimonial-one__client-info" data-v-24549abd${_scopeId}><p class="testimonial-one__client-sub-title" data-v-24549abd${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
             if (posts.value && posts.value.length) {
-              _push2(`<section class="blog-two blog-three" data-v-6eb5750c${_scopeId}><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="${ssrRenderClass(`blog-two__left wow fadeIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style1" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Explore Our Latest Blogs for Expert Insights"))}</h2></div><p class="blog-two-text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry"))}</p><div class="blog-two__top-btn-box" data-v-6eb5750c${_scopeId}>`);
+              _push2(`<section class="blog-two blog-three" data-v-24549abd${_scopeId}><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="${ssrRenderClass(`blog-two__left wow fadeIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style1" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Explore Our Latest Blogs for Expert Insights"))}</h2></div><p class="blog-two-text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry"))}</p><div class="blog-two__top-btn-box" data-v-24549abd${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("blogs.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-6eb5750c${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Blogs")) + " ", 1),
@@ -2026,8 +2308,8 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
               }, _parent2, _scopeId));
               _push2(`</div>`);
               if (featuredPost.value) {
-                _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-6eb5750c${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$u, {
+                _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-24549abd${_scopeId}>`);
+                _push2(ssrRenderComponent(_sfc_main$A, {
                   post: featuredPost.value,
                   variant: "featured",
                   locale: locale.value,
@@ -2038,9 +2320,9 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
               } else {
                 _push2(`<!---->`);
               }
-              _push2(`</div></div><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="blog-two__right" data-v-6eb5750c${_scopeId}><!--[-->`);
+              _push2(`</div></div><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="blog-two__right" data-v-24549abd${_scopeId}><!--[-->`);
               ssrRenderList(sidePosts.value, (post, idx) => {
-                _push2(ssrRenderComponent(_sfc_main$u, {
+                _push2(ssrRenderComponent(_sfc_main$A, {
                   key: post.id || idx,
                   post,
                   variant: "compact",
@@ -2055,65 +2337,65 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="contact-two" data-v-6eb5750c${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2" data-v-6eb5750c${_scopeId}><div class="contact-two__sliding-text-item" data-v-6eb5750c${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-6eb5750c${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-6eb5750c${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y" data-v-6eb5750c${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-6eb5750c${_scopeId}></div><div class="container" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="contact-two__left" data-v-6eb5750c${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-box" data-v-6eb5750c${_scopeId}><div class="section-title__tagline-shape-1" data-v-6eb5750c${_scopeId}></div><span class="section-title__tagline" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2" data-v-6eb5750c${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled" data-v-6eb5750c${_scopeId}>`);
+            _push2(`<section class="contact-two" data-v-24549abd${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2" data-v-24549abd${_scopeId}><div class="contact-two__sliding-text-item" data-v-24549abd${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-24549abd${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-24549abd${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="contact-two__left" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled" data-v-24549abd${_scopeId}>`);
             if (settings.value.email) {
-              _push2(`<li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-mail" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p data-v-6eb5750c${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)} data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
+              _push2(`<li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-mail" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p data-v-24549abd${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)} data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
             if (settings.value.phone) {
-              _push2(`<li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-phone-call" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p data-v-6eb5750c${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
+              _push2(`<li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-phone-call" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p data-v-24549abd${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
             if (settings.value.address) {
-              _push2(`<li data-v-6eb5750c${_scopeId}><div class="icon" data-v-6eb5750c${_scopeId}><span class="icon-pin" data-v-6eb5750c${_scopeId}></span></div><div class="content" data-v-6eb5750c${_scopeId}><h3 class="h4" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p data-v-6eb5750c${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
+              _push2(`<li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-pin" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</ul></div></div><div class="col-xl-6" data-v-6eb5750c${_scopeId}><div class="${ssrRenderClass(`contact-two__right wow slideIn${locale.value === "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-6eb5750c${_scopeId}><form class="contact-form-validated contact-one__form" data-v-6eb5750c${_scopeId}><div class="row" data-v-6eb5750c${_scopeId}><div class="col-xl-6 col-lg-6" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h3><div class="contact-one__input-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-user-1" data-v-6eb5750c${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-6eb5750c${_scopeId}></div>`);
+            _push2(`</ul></div></div><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="${ssrRenderClass(`contact-two__right wow slideIn${locale.value === "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-24549abd${_scopeId}><form class="contact-form-validated contact-one__form" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6 col-lg-6" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h3><div class="contact-one__input-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-user-1" data-v-24549abd${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-24549abd${_scopeId}></div>`);
             if (unref(contactForm).errors.name) {
-              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><div class="contact-one__input-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-email" data-v-6eb5750c${_scopeId}></span></div><input type="email" name="email"${ssrRenderAttr("value", unref(contactForm).email)}${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}" required data-v-6eb5750c${_scopeId}>`);
+            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><div class="contact-one__input-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-email" data-v-24549abd${_scopeId}></span></div><input type="email" name="email"${ssrRenderAttr("value", unref(contactForm).email)}${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}" required data-v-24549abd${_scopeId}>`);
             if (unref(contactForm).errors.email) {
-              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="col-xl-6 col-lg-6" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h3><div class="contact-one__input-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-phone-call" data-v-6eb5750c${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-6eb5750c${_scopeId}></div>`);
+            _push2(`</div></div><div class="col-xl-6 col-lg-6" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h3><div class="contact-one__input-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-phone-call" data-v-24549abd${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-24549abd${_scopeId}></div>`);
             if (unref(contactForm).errors.mobile) {
-              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Subject"))}</h3><div class="contact-one__input-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-edit" data-v-6eb5750c${_scopeId}></span></div><input type="text" name="subject"${ssrRenderAttr("value", unref(contactForm).subject)}${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}" required data-v-6eb5750c${_scopeId}>`);
+            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Subject"))}</h3><div class="contact-one__input-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-edit" data-v-24549abd${_scopeId}></span></div><input type="text" name="subject"${ssrRenderAttr("value", unref(contactForm).subject)}${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}" required data-v-24549abd${_scopeId}>`);
             if (unref(contactForm).errors.subject) {
-              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div></div><div class="col-xl-12" data-v-6eb5750c${_scopeId}><h3 class="h4 contact-one__input-title" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Message"))}</h3><div class="contact-one__input-box text-message-box" data-v-6eb5750c${_scopeId}><div class="contact-one__input-icon" data-v-6eb5750c${_scopeId}><span class="icon-edit" data-v-6eb5750c${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
+            _push2(`</div></div></div><div class="col-xl-12" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Message"))}</h3><div class="contact-one__input-box text-message-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-edit" data-v-24549abd${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
             if (unref(contactForm).errors.message) {
-              _push2(`<div class="text-danger mt-1 small" data-v-6eb5750c${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="contact-one__btn-box" data-v-6eb5750c${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}" data-v-6eb5750c${_scopeId}>`);
+            _push2(`<div class="contact-one__btn-box" data-v-24549abd${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}" data-v-24549abd${_scopeId}>`);
             if (unref(contactForm).processing) {
-              _push2(`<span data-v-6eb5750c${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-6eb5750c${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
+              _push2(`<span data-v-24549abd${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-24549abd${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
             } else {
-              _push2(`<span data-v-6eb5750c${_scopeId}><span data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}" data-v-6eb5750c${_scopeId}></i></span>`);
+              _push2(`<span data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}" data-v-24549abd${_scopeId}></i></span>`);
             }
             _push2(`</button></div></div>`);
             if (contactSubmitSuccess.value) {
-              _push2(`<div class="col-12 mt-3" data-v-6eb5750c${_scopeId}><div class="alert alert-success" data-v-6eb5750c${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
+              _push2(`<div class="col-12 mt-3" data-v-24549abd${_scopeId}><div class="alert alert-success" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</form><div class="result" data-v-6eb5750c${_scopeId}></div></div></div></div></div></section>`);
+            _push2(`</form><div class="result" data-v-24549abd${_scopeId}></div></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "banner-one" }, [
@@ -2311,8 +2593,62 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              useCases.value && useCases.value.length ? (openBlock(), createBlock("section", {
+              products.value && products.value.length ? (openBlock(), createBlock("section", {
                 key: 1,
+                class: "home-products products-page"
+              }, [
+                createVNode("div", {
+                  class: "products-page__bg",
+                  "aria-hidden": "true"
+                }, [
+                  createVNode("div", { class: "products-page__orb products-page__orb--one" }),
+                  createVNode("div", { class: "products-page__orb products-page__orb--two" }),
+                  createVNode("div", { class: "products-page__orb products-page__orb--three" })
+                ]),
+                createVNode("div", { class: "container position-relative" }, [
+                  createVNode("div", { class: "section-title text-center sec-title-animation animation-style1 home-products__head" }, [
+                    createVNode("div", { class: "section-title__tagline-box" }, [
+                      createVNode("div", { class: "section-title__tagline-shape-1" }),
+                      createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Our Products")), 1),
+                      createVNode("div", { class: "section-title__tagline-shape-2" })
+                    ]),
+                    createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("B2B Solutions Built for Scale")), 1),
+                    createVNode("p", { class: "home-products__intro" }, toDisplayString(trans("Discover enterprise-ready platforms and services designed to grow with your business.")), 1)
+                  ]),
+                  createVNode("div", { class: "home-products__grid" }, [
+                    createVNode("div", { class: "row g-4" }, [
+                      (openBlock(true), createBlock(Fragment, null, renderList(products.value, (product, index) => {
+                        return openBlock(), createBlock("div", {
+                          key: product.id,
+                          class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
+                          "data-wow-delay": `${(index % 3 + 1) * 100}ms`
+                        }, [
+                          createVNode(ProductCard, {
+                            item: product,
+                            locale: locale.value
+                          }, null, 8, ["item", "locale"])
+                        ], 8, ["data-wow-delay"]);
+                      }), 128))
+                    ])
+                  ]),
+                  createVNode("div", { class: "text-center home-products__cta" }, [
+                    createVNode(unref(Link), {
+                      href: _ctx.route("product.index"),
+                      class: "thm-btn"
+                    }, {
+                      default: withCtx(() => [
+                        createTextVNode(toDisplayString(trans("View All Products")) + " ", 1),
+                        createVNode("span", {
+                          class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow `
+                        }, null, 2)
+                      ]),
+                      _: 1
+                    }, 8, ["href"])
+                  ])
+                ])
+              ])) : createCommentVNode("", true),
+              useCases.value && useCases.value.length ? (openBlock(), createBlock("section", {
+                key: 2,
                 class: "home-case-studies use-cases-page"
               }, [
                 createVNode("div", {
@@ -2441,7 +2777,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
                 ])
               ]),
               teams.value && teams.value.length > 0 ? (openBlock(), createBlock("section", {
-                key: 2,
+                key: 3,
                 class: "team-two d-none"
               }, [
                 createVNode("div", {
@@ -2637,7 +2973,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
                 ])
               ]),
               testimonials.value && testimonials.value.length ? (openBlock(), createBlock("section", {
-                key: 3,
+                key: 4,
                 class: "testimonial-one pb-5"
               }, [
                 createVNode("div", { class: "testimonial-one__shape-2 float-bob-y" }, [
@@ -2700,7 +3036,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
                 ])
               ])) : createCommentVNode("", true),
               posts.value && posts.value.length ? (openBlock(), createBlock("section", {
-                key: 4,
+                key: 5,
                 class: "blog-two blog-three"
               }, [
                 createVNode("div", { class: "container" }, [
@@ -2737,7 +3073,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
                           key: 0,
                           class: "blog-two__left-content-box d-none d-md-block"
                         }, [
-                          createVNode(_sfc_main$u, {
+                          createVNode(_sfc_main$A, {
                             post: featuredPost.value,
                             variant: "featured",
                             locale: locale.value,
@@ -2750,7 +3086,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
                     createVNode("div", { class: "col-xl-6" }, [
                       createVNode("div", { class: "blog-two__right" }, [
                         (openBlock(true), createBlock(Fragment, null, renderList(sidePosts.value, (post, idx) => {
-                          return openBlock(), createBlock(_sfc_main$u, {
+                          return openBlock(), createBlock(_sfc_main$A, {
                             key: post.id || idx,
                             post,
                             variant: "compact",
@@ -3013,23 +3349,23 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$h, {
     };
   }
 });
-const _sfc_setup$o = _sfc_main$o.setup;
-_sfc_main$o.setup = (props, ctx) => {
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Base/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
-const Index = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-6eb5750c"]]);
+const Index = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-24549abd"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$g = {
   components: {
-    AppLayout: _sfc_main$q
+    AppLayout: _sfc_main$w
   }
 };
-const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$g, {
+const _sfc_main$s = /* @__PURE__ */ Object.assign(__default__$g, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -3199,7 +3535,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$g, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -3525,22 +3861,22 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$g, {
     };
   }
 });
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$s = _sfc_main$s.setup;
+_sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/CRM/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$n
+  default: _sfc_main$s
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$f = {
   components: {
-    AppLayout: _sfc_main$q
+    AppLayout: _sfc_main$w
   }
 };
-const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$f, {
+const _sfc_main$r = /* @__PURE__ */ Object.assign(__default__$f, {
   __name: "AboutUs",
   __ssrInlineRender: true,
   setup(__props) {
@@ -3755,7 +4091,7 @@ const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$f, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("About Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4367,17 +4703,17 @@ const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$f, {
     };
   }
 });
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$r = _sfc_main$r.setup;
+_sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/AboutUs.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
 const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$m
+  default: _sfc_main$r
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$l = {
+const _sfc_main$q = {
   __name: "CtaTwo",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4410,20 +4746,20 @@ const _sfc_main$l = {
     };
   }
 };
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$q = _sfc_main$q.setup;
+_sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/CtaTwo.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
 const __default__$e = {
   components: {
-    AppLayout: _sfc_main$q,
-    HomeBlogCard: _sfc_main$u,
-    CtaTwo: _sfc_main$l
+    AppLayout: _sfc_main$w,
+    HomeBlogCard: _sfc_main$A,
+    CtaTwo: _sfc_main$q
   }
 };
-const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
+const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$e, {
   __name: "BlogIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4546,7 +4882,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4570,7 +4906,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
               _push2(`<!--[-->`);
               ssrRenderList(blogs.value.data, (blog) => {
                 _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$u, {
+                _push2(ssrRenderComponent(_sfc_main$A, {
                   post: blog,
                   variant: "featured",
                   locale: locale.value,
@@ -4660,7 +4996,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -4715,7 +5051,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
                         class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
                         "data-wow-delay": "100ms"
                       }, [
-                        createVNode(_sfc_main$u, {
+                        createVNode(_sfc_main$A, {
                           post: blog,
                           variant: "featured",
                           locale: locale.value,
@@ -4791,7 +5127,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -4801,24 +5137,24 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$e, {
     };
   }
 });
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogIndex.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
 const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$k
+  default: _sfc_main$p
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$d = {
   components: {
-    AppLayout: _sfc_main$q,
-    HomeBlogCard: _sfc_main$u,
-    CtaTwo: _sfc_main$l
+    AppLayout: _sfc_main$w,
+    HomeBlogCard: _sfc_main$A,
+    CtaTwo: _sfc_main$q
   }
 };
-const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
+const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$d, {
   __name: "BlogShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4879,7 +5215,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Blog Details"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5058,7 +5394,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(`<div class="container"${_scopeId}><div class="related-blogs mt-20 mt-xs-10"${_scopeId}><h4 class="mb-5"${_scopeId}>${ssrInterpolate(trans("Related Blogs"))}:</h4><div class="row"${_scopeId}><!--[-->`);
               ssrRenderList(relatedBlogs.value, (relatedBlog) => {
                 _push2(`<div class="col-md-4 mb-30"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$u, {
+                _push2(ssrRenderComponent(_sfc_main$A, {
                   post: relatedBlog,
                   variant: "featured",
                   locale: locale.value,
@@ -5072,7 +5408,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(`<!---->`);
             }
             _push2(`</section>`);
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -5361,7 +5697,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
                           key: relatedBlog.id,
                           class: "col-md-4 mb-30"
                         }, [
-                          createVNode(_sfc_main$u, {
+                          createVNode(_sfc_main$A, {
                             post: relatedBlog,
                             variant: "featured",
                             locale: locale.value,
@@ -5374,7 +5710,7 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
                   ])
                 ])) : createCommentVNode("", true)
               ]),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -5384,23 +5720,23 @@ const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$d, {
     };
   }
 });
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogShow.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
 const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$j
+  default: _sfc_main$o
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$c = {
   components: {
-    AppLayout: _sfc_main$q,
-    CtaTwo: _sfc_main$l
+    AppLayout: _sfc_main$w,
+    CtaTwo: _sfc_main$q
   }
 };
-const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
+const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$c, {
   __name: "Faq",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5637,7 +5973,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-f57d8941${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-f57d8941${_scopeId}></div><div class="container" data-v-f57d8941${_scopeId}><div class="page-header__inner" data-v-f57d8941${_scopeId}><h1 data-v-f57d8941${_scopeId}>${trans("FAQs") ?? ""}</h1><div class="thm-breadcrumb__box" data-v-f57d8941${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f57d8941${_scopeId}><li data-v-f57d8941${_scopeId}>`);
@@ -5671,7 +6007,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<div class="text-center py-5" data-v-f57d8941${_scopeId}><p data-v-f57d8941${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -5765,7 +6101,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -5775,23 +6111,23 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$c, {
     };
   }
 });
-const _sfc_setup$i = _sfc_main$i.setup;
-_sfc_main$i.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Faq.vue");
-  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-f57d8941"]]);
+const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-f57d8941"]]);
 const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Faq
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$b = {
   components: {
-    AppLayout: _sfc_main$q
+    AppLayout: _sfc_main$w
   }
 };
-const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$b, {
+const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$b, {
   __name: "PageShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5825,7 +6161,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$b, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5908,22 +6244,22 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$b, {
     };
   }
 });
-const _sfc_setup$h = _sfc_main$h.setup;
-_sfc_main$h.setup = (props, ctx) => {
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PageShow.vue");
-  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
 const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$h
+  default: _sfc_main$m
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$a = {
   components: {
-    AppLayout: _sfc_main$q
+    AppLayout: _sfc_main$w
   }
 };
-const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
+const _sfc_main$l = /* @__PURE__ */ Object.assign(__default__$a, {
   __name: "PrivacyPolicy",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6045,7 +6381,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f;
           if (_push2) {
@@ -6232,23 +6568,23 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$a, {
     };
   }
 });
-const _sfc_setup$g = _sfc_main$g.setup;
-_sfc_main$g.setup = (props, ctx) => {
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue");
-  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-e574eeb2"]]);
+const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-e574eeb2"]]);
 const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: PrivacyPolicy
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$9 = {
   components: {
-    AppLayout: _sfc_main$q
+    AppLayout: _sfc_main$w
   }
 };
-const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$9, {
+const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$9, {
   __name: "Team",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6393,7 +6729,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$9, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6577,22 +6913,22 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$9, {
     };
   }
 });
-const _sfc_setup$f = _sfc_main$f.setup;
-_sfc_main$f.setup = (props, ctx) => {
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Team.vue");
-  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
 const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$f
+  default: _sfc_main$k
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$8 = {
   components: {
-    AppLayout: _sfc_main$q
+    AppLayout: _sfc_main$w
   }
 };
-const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$8, {
+const _sfc_main$j = /* @__PURE__ */ Object.assign(__default__$8, {
   __name: "Testimonials",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6730,7 +7066,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$8, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6864,160 +7200,24 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$8, {
     };
   }
 });
-const _sfc_setup$e = _sfc_main$e.setup;
-_sfc_main$e.setup = (props, ctx) => {
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Testimonials.vue");
-  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
 const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$e
+  default: _sfc_main$j
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$d = {
-  __name: "ProductCard",
-  __ssrInlineRender: true,
-  props: {
-    item: {
-      type: Object,
-      required: true
-    },
-    locale: {
-      type: String,
-      default: "en"
-    },
-    variant: {
-      type: String,
-      default: "default"
-    }
-  },
-  setup(__props) {
-    const props = __props;
-    const page = usePage();
-    const trans = (key) => {
-      var _a;
-      return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-    };
-    const cardUrl = computed(() => {
-      var _a;
-      if (!((_a = props.item) == null ? void 0 : _a.slug)) {
-        return "#";
-      }
-      try {
-        return route("product.show", props.item.slug);
-      } catch {
-        return "#";
-      }
-    });
-    const truncate = (text, length) => {
-      if (!text) {
-        return "";
-      }
-      return text.length > length ? `${text.substring(0, length)}…` : text;
-    };
-    return (_ctx, _push, _parent, _attrs) => {
-      _push(`<article${ssrRenderAttrs(mergeProps({
-        class: ["product-card", [`product-card--${__props.variant}`, { "product-card--featured": __props.item.is_featured }]]
-      }, _attrs))} data-v-17fca12f><div class="product-card__glow" aria-hidden="true" data-v-17fca12f></div>`);
-      _push(ssrRenderComponent(unref(Link), {
-        href: cardUrl.value,
-        class: "product-card__media",
-        "aria-label": __props.item.name
-      }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} loading="lazy" data-v-17fca12f${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-17fca12f${_scopeId}></div>`);
-            if (__props.item.is_featured) {
-              _push2(`<span class="product-card__badge" data-v-17fca12f${_scopeId}><i class="fas fa-star" data-v-17fca12f${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
-            } else {
-              _push2(`<!---->`);
-            }
-          } else {
-            return [
-              createVNode("img", {
-                src: __props.item.main_image_link,
-                alt: __props.item.name,
-                loading: "lazy"
-              }, null, 8, ["src", "alt"]),
-              createVNode("div", {
-                class: "product-card__media-overlay",
-                "aria-hidden": "true"
-              }),
-              __props.item.is_featured ? (openBlock(), createBlock("span", {
-                key: 0,
-                class: "product-card__badge"
-              }, [
-                createVNode("i", { class: "fas fa-star" }),
-                createTextVNode(" " + toDisplayString(trans("Featured")), 1)
-              ])) : createCommentVNode("", true)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`<div class="product-card__body" data-v-17fca12f>`);
-      if (__props.item.category) {
-        _push(`<p class="product-card__category" data-v-17fca12f>${ssrInterpolate(__props.item.category.name)}</p>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`<h3 class="product-card__title" data-v-17fca12f>`);
-      _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`${ssrInterpolate(__props.item.name)}`);
-          } else {
-            return [
-              createTextVNode(toDisplayString(__props.item.name), 1)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`</h3>`);
-      if (__props.item.short_description && __props.variant !== "compact") {
-        _push(`<p class="product-card__summary" data-v-17fca12f>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
-      } else {
-        _push(`<!---->`);
-      }
-      _push(`</div><footer class="product-card__footer" data-v-17fca12f>`);
-      _push(ssrRenderComponent(unref(Link), {
-        href: cardUrl.value,
-        class: "product-card__pill product-card__pill--cta"
-      }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`<span data-v-17fca12f${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-17fca12f${_scopeId}></span>`);
-          } else {
-            return [
-              createVNode("span", null, toDisplayString(trans("View Details")), 1),
-              createVNode("span", {
-                class: `icon-${__props.locale === "ar" ? "left" : "right"}-arrow`
-              }, null, 2)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`</footer></article>`);
-    };
-  }
-};
-const _sfc_setup$d = _sfc_main$d.setup;
-_sfc_main$d.setup = (props, ctx) => {
-  const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
-  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
-};
-const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-17fca12f"]]);
 const __default__$7 = {
   components: {
-    AppLayout: _sfc_main$q,
-    CtaTwo: _sfc_main$l,
+    AppLayout: _sfc_main$w,
+    CtaTwo: _sfc_main$q,
     ProductCard
   }
 };
-const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
+const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$7, {
   __name: "ProductIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7145,7 +7345,7 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-ad6cf210${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-ad6cf210${_scopeId}></div><div class="container" data-v-ad6cf210${_scopeId}><div class="page-header__inner" data-v-ad6cf210${_scopeId}><h1 data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Products"))}</h1><div class="thm-breadcrumb__box" data-v-ad6cf210${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-ad6cf210${_scopeId}><li data-v-ad6cf210${_scopeId}>`);
@@ -7268,7 +7468,7 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -7423,7 +7623,7 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -7433,18 +7633,18 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$7, {
     };
   }
 });
-const _sfc_setup$c = _sfc_main$c.setup;
-_sfc_main$c.setup = (props, ctx) => {
+const _sfc_setup$i = _sfc_main$i.setup;
+_sfc_main$i.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductIndex.vue");
-  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
-const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-ad6cf210"]]);
+const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-ad6cf210"]]);
 const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductIndex
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$b = {
+const _sfc_main$h = {
   __name: "ContactRequestModal",
   __ssrInlineRender: true,
   props: {
@@ -7577,22 +7777,22 @@ const _sfc_main$b = {
     };
   }
 };
-const _sfc_setup$b = _sfc_main$b.setup;
-_sfc_main$b.setup = (props, ctx) => {
+const _sfc_setup$h = _sfc_main$h.setup;
+_sfc_main$h.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ContactRequestModal.vue");
-  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
-const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-b7a5a2ac"]]);
+const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-b7a5a2ac"]]);
 const __default__$6 = {
   components: {
-    AppLayout: _sfc_main$q,
-    CtaTwo: _sfc_main$l,
+    AppLayout: _sfc_main$w,
+    CtaTwo: _sfc_main$q,
     ContactRequestModal,
     ProductCard
   }
 };
-const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
+const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$6, {
   __name: "ProductShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7715,7 +7915,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-85a417ae${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-85a417ae${_scopeId}></div><div class="container" data-v-85a417ae${_scopeId}><div class="page-header__inner" data-v-85a417ae${_scopeId}><h2 data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-85a417ae${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-85a417ae${_scopeId}><li data-v-85a417ae${_scopeId}>`);
@@ -7852,7 +8052,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
               "default-message": demoMessage.value,
               "submit-label": trans("Send Request")
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -8106,7 +8306,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
                 "default-message": demoMessage.value,
                 "submit-label": trans("Send Request")
               }, null, 8, ["title", "description", "default-subject", "default-message", "submit-label"]),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -8116,25 +8316,821 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
     };
   }
 });
-const _sfc_setup$a = _sfc_main$a.setup;
-_sfc_main$a.setup = (props, ctx) => {
+const _sfc_setup$g = _sfc_main$g.setup;
+_sfc_main$g.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductShow.vue");
-  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
+  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-85a417ae"]]);
+const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-85a417ae"]]);
 const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductShow
 }, Symbol.toStringTag, { value: "Module" }));
+function usePortalTranslations() {
+  const page = usePage();
+  const t = (key, replacements = {}) => {
+    var _a;
+    const parts = key.split(".");
+    let value = (_a = page.props.portal) == null ? void 0 : _a.translations;
+    for (const part of parts) {
+      value = value == null ? void 0 : value[part];
+    }
+    if (typeof value !== "string") {
+      return key;
+    }
+    return Object.entries(replacements).reduce(
+      (text, [placeholder, replacement]) => text.replace(`:${placeholder}`, String(replacement)),
+      value
+    );
+  };
+  const paymentStatusLabel = (status) => t(`payment_status.${status}`);
+  const invoiceStatusLabel = (status) => t(`invoice_status.${status}`);
+  return { t, paymentStatusLabel, invoiceStatusLabel };
+}
+const _sfc_main$f = {
+  __name: "PortalNav",
+  __ssrInlineRender: true,
+  props: {
+    active: { type: String, default: "dashboard" }
+  },
+  setup(__props) {
+    const page = usePage();
+    const { t } = usePortalTranslations();
+    const unreadCount = computed(() => {
+      var _a;
+      return ((_a = page.props.portal) == null ? void 0 : _a.unread_notifications) || 0;
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<nav${ssrRenderAttrs(mergeProps({
+        class: "portal-tabs",
+        "aria-label": "Portal navigation"
+      }, _attrs))}>`);
+      _push(ssrRenderComponent(unref(Link), {
+        href: _ctx.route("portal.dashboard"),
+        class: ["portal-tabs__link", { "portal-tabs__link--active": __props.active === "dashboard" }]
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<i class="fas fa-th-large"${_scopeId}></i> ${ssrInterpolate(unref(t)("menu.my_dashboard"))}`);
+          } else {
+            return [
+              createVNode("i", { class: "fas fa-th-large" }),
+              createTextVNode(" " + toDisplayString(unref(t)("menu.my_dashboard")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(unref(Link), {
+        href: _ctx.route("portal.projects.index"),
+        class: ["portal-tabs__link", { "portal-tabs__link--active": __props.active === "projects" }]
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t)("menu.projects"))} `);
+            if (unreadCount.value) {
+              _push2(`<span class="portal-tabs__badge"${_scopeId}>${ssrInterpolate(unreadCount.value)}</span>`);
+            } else {
+              _push2(`<!---->`);
+            }
+          } else {
+            return [
+              createVNode("i", { class: "fas fa-folder-open" }),
+              createTextVNode(" " + toDisplayString(unref(t)("menu.projects")) + " ", 1),
+              unreadCount.value ? (openBlock(), createBlock("span", {
+                key: 0,
+                class: "portal-tabs__badge"
+              }, toDisplayString(unreadCount.value), 1)) : createCommentVNode("", true)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(unref(Link), {
+        href: _ctx.route("portal.subscriptions.index"),
+        class: ["portal-tabs__link", { "portal-tabs__link--active": __props.active === "subscriptions" }]
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<i class="fas fa-sync-alt"${_scopeId}></i> ${ssrInterpolate(unref(t)("menu.subscriptions"))}`);
+          } else {
+            return [
+              createVNode("i", { class: "fas fa-sync-alt" }),
+              createTextVNode(" " + toDisplayString(unref(t)("menu.subscriptions")), 1)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</nav>`);
+    };
+  }
+};
+const _sfc_setup$f = _sfc_main$f.setup;
+_sfc_main$f.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portal/PortalNav.vue");
+  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
+};
+const _sfc_main$e = {
+  __name: "PortalShell",
+  __ssrInlineRender: true,
+  props: {
+    title: { type: String, required: true },
+    subtitle: { type: String, default: "" },
+    active: { type: String, default: "dashboard" },
+    breadcrumbs: { type: Array, default: () => [] },
+    metaTitle: { type: String, default: "" },
+    metaDescription: { type: String, default: "" }
+  },
+  setup(__props) {
+    const props = __props;
+    const page = usePage();
+    const locale = computed(() => page.props.locale);
+    const asset_path = computed(() => page.props.asset_path || "");
+    const seo = computed(() => page.props.seo || {});
+    const homeLabels = { en: "Home", ar: "الرئيسية", tr: "Ana Sayfa" };
+    const homeLabel = computed(() => homeLabels[locale.value] || homeLabels.en);
+    const arrowClass = computed(() => `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`);
+    const flatBreadcrumbs = computed(() => {
+      const items = [
+        {
+          key: "home",
+          type: "link",
+          label: homeLabel.value,
+          href: route("home"),
+          home: true
+        }
+      ];
+      props.breadcrumbs.forEach((crumb, index) => {
+        items.push({ key: `sep-${index}`, type: "separator" });
+        if (crumb.href) {
+          items.push({
+            key: `link-${index}`,
+            type: "link",
+            label: crumb.label,
+            href: crumb.href
+          });
+        } else {
+          items.push({
+            key: `text-${index}`,
+            type: "text",
+            label: crumb.label
+          });
+        }
+      });
+      return items;
+    });
+    const pageTitle = computed(() => {
+      const title = props.metaTitle || props.title;
+      return `${title} | ${seo.value.website_name || ""}`.trim();
+    });
+    const pageDescription = computed(() => props.metaDescription || props.subtitle || "");
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/portal.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(pageTitle.value)}</title><meta name="description"${ssrRenderAttr("content", pageDescription.value)}${_scopeId}><meta name="robots" content="noindex, nofollow"${_scopeId}>`);
+          } else {
+            return [
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/page-header.css"
+              }, null, 8, ["href"]),
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/portal.css"
+              }, null, 8, ["href"]),
+              createVNode("title", null, toDisplayString(pageTitle.value), 1),
+              createVNode("meta", {
+                name: "description",
+                content: pageDescription.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "robots",
+                content: "noindex, nofollow"
+              })
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(_sfc_main$w, null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<section class="page-header portal-page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(__props.title)}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><!--[-->`);
+            ssrRenderList(flatBreadcrumbs.value, (item) => {
+              _push2(`<li${_scopeId}>`);
+              if (item.type === "separator") {
+                _push2(`<span class="${ssrRenderClass(arrowClass.value)}"${_scopeId}></span>`);
+              } else if (item.type === "link") {
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: item.href
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      if (item.home) {
+                        _push3(`<i class="fas fa-home"${_scopeId2}></i>`);
+                      } else {
+                        _push3(`<!---->`);
+                      }
+                      _push3(`${ssrInterpolate(item.label)}`);
+                    } else {
+                      return [
+                        item.home ? (openBlock(), createBlock("i", {
+                          key: 0,
+                          class: "fas fa-home"
+                        })) : createCommentVNode("", true),
+                        createTextVNode(toDisplayString(item.label), 1)
+                      ];
+                    }
+                  }),
+                  _: 2
+                }, _parent2, _scopeId));
+              } else {
+                _push2(`<!--[-->${ssrInterpolate(item.label)}<!--]-->`);
+              }
+              _push2(`</li>`);
+            });
+            _push2(`<!--]--></ul></div>`);
+            if (__props.subtitle) {
+              _push2(`<p class="portal-page-header__subtitle"${_scopeId}>${ssrInterpolate(__props.subtitle)}</p>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div></section><section class="portal-one"${_scopeId}><div class="container"${_scopeId}>`);
+            _push2(ssrRenderComponent(_sfc_main$f, { active: __props.active }, null, _parent2, _scopeId));
+            ssrRenderSlot(_ctx.$slots, "default", {}, null, _push2, _parent2, _scopeId);
+            _push2(`</div></section>`);
+          } else {
+            return [
+              createVNode("section", { class: "page-header portal-page-header" }, [
+                createVNode("div", {
+                  class: "page-header__bg",
+                  style: { backgroundImage: `url(${asset_path.value}images/backgrounds/login-bg.jpg)` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "page-header__inner" }, [
+                    createVNode("h2", null, toDisplayString(__props.title), 1),
+                    createVNode("div", { class: "thm-breadcrumb__box" }, [
+                      createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
+                        (openBlock(true), createBlock(Fragment, null, renderList(flatBreadcrumbs.value, (item) => {
+                          return openBlock(), createBlock("li", {
+                            key: item.key
+                          }, [
+                            item.type === "separator" ? (openBlock(), createBlock("span", {
+                              key: 0,
+                              class: arrowClass.value
+                            }, null, 2)) : item.type === "link" ? (openBlock(), createBlock(unref(Link), {
+                              key: 1,
+                              href: item.href
+                            }, {
+                              default: withCtx(() => [
+                                item.home ? (openBlock(), createBlock("i", {
+                                  key: 0,
+                                  class: "fas fa-home"
+                                })) : createCommentVNode("", true),
+                                createTextVNode(toDisplayString(item.label), 1)
+                              ]),
+                              _: 2
+                            }, 1032, ["href"])) : (openBlock(), createBlock(Fragment, { key: 2 }, [
+                              createTextVNode(toDisplayString(item.label), 1)
+                            ], 64))
+                          ]);
+                        }), 128))
+                      ])
+                    ]),
+                    __props.subtitle ? (openBlock(), createBlock("p", {
+                      key: 0,
+                      class: "portal-page-header__subtitle"
+                    }, toDisplayString(__props.subtitle), 1)) : createCommentVNode("", true)
+                  ])
+                ])
+              ]),
+              createVNode("section", { class: "portal-one" }, [
+                createVNode("div", { class: "container" }, [
+                  createVNode(_sfc_main$f, { active: __props.active }, null, 8, ["active"]),
+                  renderSlot(_ctx.$slots, "default")
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 3
+      }, _parent));
+      _push(`<!--]-->`);
+    };
+  }
+};
+const _sfc_setup$e = _sfc_main$e.setup;
+_sfc_main$e.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portal/PortalShell.vue");
+  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
+};
+const _sfc_main$d = {
+  __name: "Index",
+  __ssrInlineRender: true,
+  props: {
+    projects: { type: Object, required: true },
+    meta: { type: Object, default: () => ({}) }
+  },
+  setup(__props) {
+    const props = __props;
+    const page = usePage();
+    const { t, paymentStatusLabel } = usePortalTranslations();
+    const locale = computed(() => page.props.locale);
+    const metaTitle = computed(() => {
+      var _a;
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t("pages.projects_title");
+    });
+    const metaDescription = computed(() => {
+      var _a;
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.projects_description");
+    });
+    const formatMoney = (amount, currency) => `${Number(amount).toFixed(2)} ${currency || ""}`.trim();
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(_sfc_main$e, mergeProps({
+        title: unref(t)("projects.title"),
+        subtitle: unref(t)("projects.subtitle"),
+        active: "projects",
+        breadcrumbs: [
+          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t)("projects.title") }
+        ],
+        "meta-title": metaTitle.value,
+        "meta-description": metaDescription.value
+      }, _attrs), {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          var _a, _b;
+          if (_push2) {
+            if (__props.projects.data.length === 0) {
+              _push2(`<div class="portal-panel"${_scopeId}><div class="portal-empty"${_scopeId}><i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t)("projects.no_projects"))}</div></div>`);
+            } else {
+              _push2(`<div class="row g-4"${_scopeId}><!--[-->`);
+              ssrRenderList(__props.projects.data, (project) => {
+                var _a2, _b2, _c, _d;
+                _push2(`<div class="col-md-6 col-xl-4"${_scopeId}><article class="portal-project-card"${_scopeId}><div class="portal-project-card__top"${_scopeId}><h3 class="portal-project-card__title"${_scopeId}>${ssrInterpolate(project.title)}</h3><span class="portal-badge" style="${ssrRenderStyle({ backgroundColor: (((_a2 = project.status) == null ? void 0 : _a2.color_code) || "#6c757d") + "33", color: ((_b2 = project.status) == null ? void 0 : _b2.color_code) || "#C5C8CD" })}"${_scopeId}>${ssrInterpolate((_c = project.status) == null ? void 0 : _c.name)}</span></div>`);
+                if ((_d = project.company) == null ? void 0 : _d.name) {
+                  _push2(`<div class="portal-project-card__company"${_scopeId}><i class="fas fa-building me-1"${_scopeId}></i>${ssrInterpolate(project.company.name)}</div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.payment_status"))}</span><strong${_scopeId}>${ssrInterpolate(unref(paymentStatusLabel)(project.payment_status))}</strong></div><div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.remaining"))}</span><strong${_scopeId}>${ssrInterpolate(formatMoney(project.collection.remaining, project.collection.currency))}</strong></div><div class="mb-3"${_scopeId}><div class="portal-progress"${_scopeId}><div class="portal-progress__bar" style="${ssrRenderStyle({ width: `${project.collection.collection_rate}%` })}"${_scopeId}></div></div></div><div class="portal-project-card__footer"${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: _ctx.route("portal.projects.show", project.id),
+                  class: "thm-btn w-100 text-center"
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`${ssrInterpolate(unref(t)("projects.view_details"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
+                    } else {
+                      return [
+                        createTextVNode(toDisplayString(unref(t)("projects.view_details")) + " ", 1),
+                        createVNode("span", {
+                          class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
+                        }, null, 2)
+                      ];
+                    }
+                  }),
+                  _: 2
+                }, _parent2, _scopeId));
+                _push2(`</div></article></div>`);
+              });
+              _push2(`<!--]--></div>`);
+            }
+            if (((_a = __props.projects.links) == null ? void 0 : _a.length) > 3) {
+              _push2(`<nav class="portal-pagination" aria-label="Pagination"${_scopeId}><!--[-->`);
+              ssrRenderList(__props.projects.links, (link) => {
+                _push2(ssrRenderComponent(unref(Link), {
+                  key: link.label,
+                  href: link.url || "#",
+                  class: ["portal-pagination__link", { "portal-pagination__link--active": link.active }]
+                }, null, _parent2, _scopeId));
+              });
+              _push2(`<!--]--></nav>`);
+            } else {
+              _push2(`<!---->`);
+            }
+          } else {
+            return [
+              __props.projects.data.length === 0 ? (openBlock(), createBlock("div", {
+                key: 0,
+                class: "portal-panel"
+              }, [
+                createVNode("div", { class: "portal-empty" }, [
+                  createVNode("i", { class: "fas fa-folder-open" }),
+                  createTextVNode(" " + toDisplayString(unref(t)("projects.no_projects")), 1)
+                ])
+              ])) : (openBlock(), createBlock("div", {
+                key: 1,
+                class: "row g-4"
+              }, [
+                (openBlock(true), createBlock(Fragment, null, renderList(__props.projects.data, (project) => {
+                  var _a2, _b2, _c, _d;
+                  return openBlock(), createBlock("div", {
+                    key: project.id,
+                    class: "col-md-6 col-xl-4"
+                  }, [
+                    createVNode("article", { class: "portal-project-card" }, [
+                      createVNode("div", { class: "portal-project-card__top" }, [
+                        createVNode("h3", { class: "portal-project-card__title" }, toDisplayString(project.title), 1),
+                        createVNode("span", {
+                          class: "portal-badge",
+                          style: { backgroundColor: (((_a2 = project.status) == null ? void 0 : _a2.color_code) || "#6c757d") + "33", color: ((_b2 = project.status) == null ? void 0 : _b2.color_code) || "#C5C8CD" }
+                        }, toDisplayString((_c = project.status) == null ? void 0 : _c.name), 5)
+                      ]),
+                      ((_d = project.company) == null ? void 0 : _d.name) ? (openBlock(), createBlock("div", {
+                        key: 0,
+                        class: "portal-project-card__company"
+                      }, [
+                        createVNode("i", { class: "fas fa-building me-1" }),
+                        createTextVNode(toDisplayString(project.company.name), 1)
+                      ])) : createCommentVNode("", true),
+                      createVNode("div", { class: "portal-project-card__meta" }, [
+                        createVNode("span", null, toDisplayString(unref(t)("fields.payment_status")), 1),
+                        createVNode("strong", null, toDisplayString(unref(paymentStatusLabel)(project.payment_status)), 1)
+                      ]),
+                      createVNode("div", { class: "portal-project-card__meta" }, [
+                        createVNode("span", null, toDisplayString(unref(t)("fields.remaining")), 1),
+                        createVNode("strong", null, toDisplayString(formatMoney(project.collection.remaining, project.collection.currency)), 1)
+                      ]),
+                      createVNode("div", { class: "mb-3" }, [
+                        createVNode("div", { class: "portal-progress" }, [
+                          createVNode("div", {
+                            class: "portal-progress__bar",
+                            style: { width: `${project.collection.collection_rate}%` }
+                          }, null, 4)
+                        ])
+                      ]),
+                      createVNode("div", { class: "portal-project-card__footer" }, [
+                        createVNode(unref(Link), {
+                          href: _ctx.route("portal.projects.show", project.id),
+                          class: "thm-btn w-100 text-center"
+                        }, {
+                          default: withCtx(() => [
+                            createTextVNode(toDisplayString(unref(t)("projects.view_details")) + " ", 1),
+                            createVNode("span", {
+                              class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
+                            }, null, 2)
+                          ]),
+                          _: 1
+                        }, 8, ["href"])
+                      ])
+                    ])
+                  ]);
+                }), 128))
+              ])),
+              ((_b = __props.projects.links) == null ? void 0 : _b.length) > 3 ? (openBlock(), createBlock("nav", {
+                key: 2,
+                class: "portal-pagination",
+                "aria-label": "Pagination"
+              }, [
+                (openBlock(true), createBlock(Fragment, null, renderList(__props.projects.links, (link) => {
+                  return openBlock(), createBlock(unref(Link), {
+                    key: link.label,
+                    href: link.url || "#",
+                    class: ["portal-pagination__link", { "portal-pagination__link--active": link.active }],
+                    innerHTML: link.label
+                  }, null, 8, ["href", "class", "innerHTML"]);
+                }), 128))
+              ])) : createCommentVNode("", true)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+};
+const _sfc_setup$d = _sfc_main$d.setup;
+_sfc_main$d.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/Portal/Projects/Index.vue");
+  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
+};
+const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$d
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$c = {
+  __name: "Show",
+  __ssrInlineRender: true,
+  props: {
+    project: { type: Object, required: true },
+    invoices: { type: Array, default: () => [] },
+    meta: { type: Object, default: () => ({}) }
+  },
+  setup(__props) {
+    const props = __props;
+    const { t, paymentStatusLabel, invoiceStatusLabel } = usePortalTranslations();
+    const metaTitle = computed(() => {
+      var _a;
+      return ((_a = props.meta) == null ? void 0 : _a.title) || props.project.title;
+    });
+    const metaDescription = computed(() => {
+      var _a;
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.project_show_description");
+    });
+    const collection = computed(() => props.project.collection ?? {
+      budget: 0,
+      invoiced: 0,
+      remaining: 0,
+      currency: "USD",
+      collection_rate: 0
+    });
+    const invoiceList = computed(() => {
+      if (Array.isArray(props.invoices)) {
+        return props.invoices;
+      }
+      return Object.values(props.invoices ?? {});
+    });
+    const attachments = computed(() => {
+      const items = props.project.attachments;
+      return Array.isArray(items) ? items : [];
+    });
+    const statusBadgeStyle = computed(() => {
+      var _a;
+      const color = ((_a = props.project.status) == null ? void 0 : _a.color_code) || "#6c757d";
+      return {
+        backgroundColor: `${color}33`,
+        color
+      };
+    });
+    const formatMoney = (amount, currency) => `${Number(amount ?? 0).toFixed(2)} ${currency || ""}`.trim();
+    const invoiceBadgeClass = (status) => {
+      if (status === "paid") return "portal-badge--paid";
+      if (status === "overdue") return "portal-badge--overdue";
+      return "portal-badge--invoice";
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      var _a;
+      _push(ssrRenderComponent(_sfc_main$e, mergeProps({
+        title: __props.project.title,
+        subtitle: (_a = __props.project.company) == null ? void 0 : _a.name,
+        active: "projects",
+        breadcrumbs: [
+          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t)("projects.title"), href: _ctx.route("portal.projects.index") },
+          { label: __props.project.title }
+        ],
+        "meta-title": metaTitle.value,
+        "meta-description": metaDescription.value
+      }, _attrs), {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          var _a2, _b, _c, _d;
+          if (_push2) {
+            _push2(`<div class="portal-grid portal-grid--show"${_scopeId}><div${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.details"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-details"${_scopeId}><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.status"))}</div><div class="portal-details__value"${_scopeId}><span class="portal-badge" style="${ssrRenderStyle(statusBadgeStyle.value)}"${_scopeId}>${ssrInterpolate(((_a2 = __props.project.status) == null ? void 0 : _a2.name) || "—")}</span></div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.payment_status"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(unref(paymentStatusLabel)(__props.project.payment_status))}</div></div>`);
+            if ((_b = __props.project.company) == null ? void 0 : _b.name) {
+              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.company"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.company.name)}</div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (__props.project.start_date) {
+              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.start_date"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.start_date)}</div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (__props.project.due_date) {
+              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.due_date"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.due_date)}</div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (__props.project.description) {
+              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.description"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.description)}</div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div></div>`);
+            if (attachments.value.length) {
+              _push2(`<div class="portal-panel" style="${ssrRenderStyle({ "margin-top": "24px" })}"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.attachments"))}</h2></div><div class="portal-panel__body"${_scopeId}><ul class="list-unstyled mb-0"${_scopeId}><!--[-->`);
+              ssrRenderList(attachments.value, (attachment, index) => {
+                _push2(`<li class="mb-2"${_scopeId}><a${ssrRenderAttr("href", attachment.url)} target="_blank" class="portal-panel__action"${_scopeId}><i class="fas fa-paperclip"${_scopeId}></i>${ssrInterpolate(attachment.name)}</a></li>`);
+              });
+              _push2(`<!--]--></ul></div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div><div class="portal-grid__stack"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.billing"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-billing-grid"${_scopeId}><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.budget"))}</div><div class="portal-billing-item__value"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.budget, collection.value.currency))}</div></div><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.invoiced"))}</div><div class="portal-billing-item__value"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.invoiced, collection.value.currency))}</div></div><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.remaining"))}</div><div class="portal-billing-item__value portal-billing-item__value--accent"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.remaining, collection.value.currency))}</div></div></div><div${_scopeId}><div class="d-flex justify-content-between mb-2"${_scopeId}><span class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.collection_rate"))}</span><span class="portal-details__value"${_scopeId}>${ssrInterpolate(collection.value.collection_rate)}%</span></div><div class="portal-progress" style="${ssrRenderStyle({ "height": "10px" })}"${_scopeId}><div class="portal-progress__bar" style="${ssrRenderStyle({ width: `${collection.value.collection_rate}%` })}"${_scopeId}></div></div></div></div></div><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.invoices"))}</h2></div><div class="portal-panel__body"${_scopeId}>`);
+            if (invoiceList.value.length === 0) {
+              _push2(`<div class="portal-empty"${_scopeId}><span class="portal-empty__icon"${_scopeId}><i class="fas fa-file-alt"${_scopeId}></i></span> ${ssrInterpolate(unref(t)("projects.no_invoices"))}</div>`);
+            } else {
+              _push2(`<div class="portal-invoice-list"${_scopeId}><!--[-->`);
+              ssrRenderList(invoiceList.value, (invoice) => {
+                _push2(`<article class="portal-invoice-card"${_scopeId}><div class="portal-invoice-card__top"${_scopeId}><div${_scopeId}><div class="portal-invoice-card__number"${_scopeId}>${ssrInterpolate(invoice.invoice_number)}</div><span class="${ssrRenderClass([invoiceBadgeClass(invoice.status), "portal-badge mt-2"])}"${_scopeId}>${ssrInterpolate(unref(invoiceStatusLabel)(invoice.status))}</span></div><div class="portal-invoice-card__total"${_scopeId}>${ssrInterpolate(formatMoney(invoice.total, invoice.currency))}</div></div><div class="portal-invoice-card__meta"${_scopeId}><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.issued_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.issued_at || "—")}</strong></div><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.due_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.due_at || "—")}</strong></div><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.paid_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.paid_at || "—")}</strong></div></div><a${ssrRenderAttr("href", invoice.pdf_url)} class="portal-panel__action" target="_blank" rel="noopener"${_scopeId}><i class="fas fa-download"${_scopeId}></i> ${ssrInterpolate(unref(t)("projects.download_pdf"))}</a></article>`);
+              });
+              _push2(`<!--]--></div>`);
+            }
+            _push2(`</div></div></div></div>`);
+          } else {
+            return [
+              createVNode("div", { class: "portal-grid portal-grid--show" }, [
+                createVNode("div", null, [
+                  createVNode("div", { class: "portal-panel" }, [
+                    createVNode("div", { class: "portal-panel__header" }, [
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.details")), 1)
+                    ]),
+                    createVNode("div", { class: "portal-panel__body" }, [
+                      createVNode("div", { class: "portal-details" }, [
+                        createVNode("div", { class: "portal-details__row" }, [
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.status")), 1),
+                          createVNode("div", { class: "portal-details__value" }, [
+                            createVNode("span", {
+                              class: "portal-badge",
+                              style: statusBadgeStyle.value
+                            }, toDisplayString(((_c = __props.project.status) == null ? void 0 : _c.name) || "—"), 5)
+                          ])
+                        ]),
+                        createVNode("div", { class: "portal-details__row" }, [
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.payment_status")), 1),
+                          createVNode("div", { class: "portal-details__value" }, toDisplayString(unref(paymentStatusLabel)(__props.project.payment_status)), 1)
+                        ]),
+                        ((_d = __props.project.company) == null ? void 0 : _d.name) ? (openBlock(), createBlock("div", {
+                          key: 0,
+                          class: "portal-details__row"
+                        }, [
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.company")), 1),
+                          createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.project.company.name), 1)
+                        ])) : createCommentVNode("", true),
+                        __props.project.start_date ? (openBlock(), createBlock("div", {
+                          key: 1,
+                          class: "portal-details__row"
+                        }, [
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.start_date")), 1),
+                          createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.project.start_date), 1)
+                        ])) : createCommentVNode("", true),
+                        __props.project.due_date ? (openBlock(), createBlock("div", {
+                          key: 2,
+                          class: "portal-details__row"
+                        }, [
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.due_date")), 1),
+                          createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.project.due_date), 1)
+                        ])) : createCommentVNode("", true),
+                        __props.project.description ? (openBlock(), createBlock("div", {
+                          key: 3,
+                          class: "portal-details__row"
+                        }, [
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.description")), 1),
+                          createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.project.description), 1)
+                        ])) : createCommentVNode("", true)
+                      ])
+                    ])
+                  ]),
+                  attachments.value.length ? (openBlock(), createBlock("div", {
+                    key: 0,
+                    class: "portal-panel",
+                    style: { "margin-top": "24px" }
+                  }, [
+                    createVNode("div", { class: "portal-panel__header" }, [
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.attachments")), 1)
+                    ]),
+                    createVNode("div", { class: "portal-panel__body" }, [
+                      createVNode("ul", { class: "list-unstyled mb-0" }, [
+                        (openBlock(true), createBlock(Fragment, null, renderList(attachments.value, (attachment, index) => {
+                          return openBlock(), createBlock("li", {
+                            key: index,
+                            class: "mb-2"
+                          }, [
+                            createVNode("a", {
+                              href: attachment.url,
+                              target: "_blank",
+                              class: "portal-panel__action"
+                            }, [
+                              createVNode("i", { class: "fas fa-paperclip" }),
+                              createTextVNode(toDisplayString(attachment.name), 1)
+                            ], 8, ["href"])
+                          ]);
+                        }), 128))
+                      ])
+                    ])
+                  ])) : createCommentVNode("", true)
+                ]),
+                createVNode("div", { class: "portal-grid__stack" }, [
+                  createVNode("div", { class: "portal-panel" }, [
+                    createVNode("div", { class: "portal-panel__header" }, [
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.billing")), 1)
+                    ]),
+                    createVNode("div", { class: "portal-panel__body" }, [
+                      createVNode("div", { class: "portal-billing-grid" }, [
+                        createVNode("div", { class: "portal-billing-item" }, [
+                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t)("fields.budget")), 1),
+                          createVNode("div", { class: "portal-billing-item__value" }, toDisplayString(formatMoney(collection.value.budget, collection.value.currency)), 1)
+                        ]),
+                        createVNode("div", { class: "portal-billing-item" }, [
+                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t)("fields.invoiced")), 1),
+                          createVNode("div", { class: "portal-billing-item__value" }, toDisplayString(formatMoney(collection.value.invoiced, collection.value.currency)), 1)
+                        ]),
+                        createVNode("div", { class: "portal-billing-item" }, [
+                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t)("fields.remaining")), 1),
+                          createVNode("div", { class: "portal-billing-item__value portal-billing-item__value--accent" }, toDisplayString(formatMoney(collection.value.remaining, collection.value.currency)), 1)
+                        ])
+                      ]),
+                      createVNode("div", null, [
+                        createVNode("div", { class: "d-flex justify-content-between mb-2" }, [
+                          createVNode("span", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.collection_rate")), 1),
+                          createVNode("span", { class: "portal-details__value" }, toDisplayString(collection.value.collection_rate) + "%", 1)
+                        ]),
+                        createVNode("div", {
+                          class: "portal-progress",
+                          style: { "height": "10px" }
+                        }, [
+                          createVNode("div", {
+                            class: "portal-progress__bar",
+                            style: { width: `${collection.value.collection_rate}%` }
+                          }, null, 4)
+                        ])
+                      ])
+                    ])
+                  ]),
+                  createVNode("div", { class: "portal-panel" }, [
+                    createVNode("div", { class: "portal-panel__header" }, [
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.invoices")), 1)
+                    ]),
+                    createVNode("div", { class: "portal-panel__body" }, [
+                      invoiceList.value.length === 0 ? (openBlock(), createBlock("div", {
+                        key: 0,
+                        class: "portal-empty"
+                      }, [
+                        createVNode("span", { class: "portal-empty__icon" }, [
+                          createVNode("i", { class: "fas fa-file-alt" })
+                        ]),
+                        createTextVNode(" " + toDisplayString(unref(t)("projects.no_invoices")), 1)
+                      ])) : (openBlock(), createBlock("div", {
+                        key: 1,
+                        class: "portal-invoice-list"
+                      }, [
+                        (openBlock(true), createBlock(Fragment, null, renderList(invoiceList.value, (invoice) => {
+                          return openBlock(), createBlock("article", {
+                            key: invoice.id,
+                            class: "portal-invoice-card"
+                          }, [
+                            createVNode("div", { class: "portal-invoice-card__top" }, [
+                              createVNode("div", null, [
+                                createVNode("div", { class: "portal-invoice-card__number" }, toDisplayString(invoice.invoice_number), 1),
+                                createVNode("span", {
+                                  class: ["portal-badge mt-2", invoiceBadgeClass(invoice.status)]
+                                }, toDisplayString(unref(invoiceStatusLabel)(invoice.status)), 3)
+                              ]),
+                              createVNode("div", { class: "portal-invoice-card__total" }, toDisplayString(formatMoney(invoice.total, invoice.currency)), 1)
+                            ]),
+                            createVNode("div", { class: "portal-invoice-card__meta" }, [
+                              createVNode("div", { class: "portal-invoice-card__meta-item" }, [
+                                createVNode("span", null, toDisplayString(unref(t)("fields.issued_at")), 1),
+                                createVNode("strong", null, toDisplayString(invoice.issued_at || "—"), 1)
+                              ]),
+                              createVNode("div", { class: "portal-invoice-card__meta-item" }, [
+                                createVNode("span", null, toDisplayString(unref(t)("fields.due_at")), 1),
+                                createVNode("strong", null, toDisplayString(invoice.due_at || "—"), 1)
+                              ]),
+                              createVNode("div", { class: "portal-invoice-card__meta-item" }, [
+                                createVNode("span", null, toDisplayString(unref(t)("fields.paid_at")), 1),
+                                createVNode("strong", null, toDisplayString(invoice.paid_at || "—"), 1)
+                              ])
+                            ]),
+                            createVNode("a", {
+                              href: invoice.pdf_url,
+                              class: "portal-panel__action",
+                              target: "_blank",
+                              rel: "noopener"
+                            }, [
+                              createVNode("i", { class: "fas fa-download" }),
+                              createTextVNode(" " + toDisplayString(unref(t)("projects.download_pdf")), 1)
+                            ], 8, ["href"])
+                          ]);
+                        }), 128))
+                      ]))
+                    ])
+                  ])
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+};
+const _sfc_setup$c = _sfc_main$c.setup;
+_sfc_main$c.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/Portal/Projects/Show.vue");
+  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+};
+const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$c
+}, Symbol.toStringTag, { value: "Module" }));
 const __default__$5 = {
   components: {
-    AppLayout: _sfc_main$q,
-    CtaTwo: _sfc_main$l,
+    AppLayout: _sfc_main$w,
+    CtaTwo: _sfc_main$q,
     UseCaseCard
   }
 };
-const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
+const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$5, {
   __name: "UseCaseIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8258,7 +9254,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-0fe03073${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-0fe03073${_scopeId}></div><div class="container" data-v-0fe03073${_scopeId}><div class="page-header__inner" data-v-0fe03073${_scopeId}><h1 data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</h1><div class="thm-breadcrumb__box" data-v-0fe03073${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-0fe03073${_scopeId}><li data-v-0fe03073${_scopeId}>`);
@@ -8369,7 +9365,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -8500,7 +9496,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -8510,25 +9506,25 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
     };
   }
 });
-const _sfc_setup$9 = _sfc_main$9.setup;
-_sfc_main$9.setup = (props, ctx) => {
+const _sfc_setup$b = _sfc_main$b.setup;
+_sfc_main$b.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue");
-  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
+  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-0fe03073"]]);
-const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-0fe03073"]]);
+const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseIndex
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$4 = {
   components: {
-    AppLayout: _sfc_main$q,
-    CtaTwo: _sfc_main$l,
+    AppLayout: _sfc_main$w,
+    CtaTwo: _sfc_main$q,
     UseCaseCard
   }
 };
-const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
+const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$4, {
   __name: "UseCaseShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8663,7 +9659,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-95493371${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-95493371${_scopeId}></div><div class="container" data-v-95493371${_scopeId}><div class="page-header__inner" data-v-95493371${_scopeId}><h2 data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-95493371${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-95493371${_scopeId}><li data-v-95493371${_scopeId}>`);
@@ -8820,7 +9816,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -9119,7 +10115,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -9129,24 +10125,24 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
     };
   }
 });
-const _sfc_setup$8 = _sfc_main$8.setup;
-_sfc_main$8.setup = (props, ctx) => {
+const _sfc_setup$a = _sfc_main$a.setup;
+_sfc_main$a.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseShow.vue");
-  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
-const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-95493371"]]);
-const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-95493371"]]);
+const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseShow
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$3 = {
   components: {
-    AppLayout: _sfc_main$q,
-    CtaTwo: _sfc_main$l
+    AppLayout: _sfc_main$w,
+    CtaTwo: _sfc_main$q
   }
 };
-const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
+const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$3, {
   __name: "ServiceIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9349,7 +10345,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-08f6db3e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-08f6db3e${_scopeId}></div><div class="container" data-v-08f6db3e${_scopeId}><div class="page-header__inner" data-v-08f6db3e${_scopeId}><h1 data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h1><div class="thm-breadcrumb__box" data-v-08f6db3e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-08f6db3e${_scopeId}><li data-v-08f6db3e${_scopeId}>`);
@@ -9511,7 +10507,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               _push2(`</li>`);
             });
             _push2(`<!--]--></ul></div></div></div></div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -9692,7 +10688,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -9702,24 +10698,24 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
     };
   }
 });
-const _sfc_setup$7 = _sfc_main$7.setup;
-_sfc_main$7.setup = (props, ctx) => {
+const _sfc_setup$9 = _sfc_main$9.setup;
+_sfc_main$9.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceIndex.vue");
-  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
+  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-08f6db3e"]]);
-const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-08f6db3e"]]);
+const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$2 = {
   components: {
-    AppLayout: _sfc_main$q,
-    CtaTwo: _sfc_main$l
+    AppLayout: _sfc_main$w,
+    CtaTwo: _sfc_main$q
   }
 };
-const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
+const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$2, {
   __name: "ServiceShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9893,7 +10889,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
@@ -10028,7 +11024,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(ssrRenderComponent(_sfc_main$l, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$q, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -10284,7 +11280,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              createVNode(_sfc_main$l)
+              createVNode(_sfc_main$q)
             ];
           }
         }),
@@ -10294,19 +11290,19 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
     };
   }
 });
-const _sfc_setup$6 = _sfc_main$6.setup;
-_sfc_main$6.setup = (props, ctx) => {
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceShow.vue");
-  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
-const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$6
+  default: _sfc_main$8
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$5 = {
+const _sfc_main$7 = {
   components: {
-    AppLayout: _sfc_main$q,
+    AppLayout: _sfc_main$w,
     Link,
     Head
   },
@@ -10622,20 +11618,20 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$5 = _sfc_main$5.setup;
-_sfc_main$5.setup = (props, ctx) => {
+const _sfc_setup$7 = _sfc_main$7.setup;
+_sfc_main$7.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue");
-  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
+  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-5b68d6b8"]]);
-const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-5b68d6b8"]]);
+const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ForgotPassword
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$4 = {
+const _sfc_main$6 = {
   components: {
-    AppLayout: _sfc_main$q,
+    AppLayout: _sfc_main$w,
     Link,
     Head
   },
@@ -11002,20 +11998,20 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$4 = _sfc_main$4.setup;
-_sfc_main$4.setup = (props, ctx) => {
+const _sfc_setup$6 = _sfc_main$6.setup;
+_sfc_main$6.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Login.vue");
-  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
+  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
 };
-const Login = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender$2]]);
-const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Login = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender$2]]);
+const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Login
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3 = {
+const _sfc_main$5 = {
   components: {
-    AppLayout: _sfc_main$q,
+    AppLayout: _sfc_main$w,
     Link,
     Head
   },
@@ -11423,20 +12419,20 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$3 = _sfc_main$3.setup;
-_sfc_main$3.setup = (props, ctx) => {
+const _sfc_setup$5 = _sfc_main$5.setup;
+_sfc_main$5.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Register.vue");
-  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-const Register = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-daff4a9e"]]);
-const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Register = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-daff4a9e"]]);
+const __vite_glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Register
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2 = {
+const _sfc_main$4 = {
   components: {
-    AppLayout: _sfc_main$q,
+    AppLayout: _sfc_main$w,
     Link,
     Head
   },
@@ -11821,20 +12817,466 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$2 = _sfc_main$2.setup;
-_sfc_main$2.setup = (props, ctx) => {
+const _sfc_setup$4 = _sfc_main$4.setup;
+_sfc_main$4.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue");
-  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
-const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-f5323f04"]]);
-const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["ssrRender", _sfc_ssrRender], ["__scopeId", "data-v-f5323f04"]]);
+const __vite_glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ResetPassword
 }, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$3 = {
+  __name: "Dashboard",
+  __ssrInlineRender: true,
+  props: {
+    projects: { type: Array, default: () => [] },
+    stats: { type: Object, required: true },
+    notifications: { type: Array, default: () => [] },
+    meta: { type: Object, default: () => ({}) }
+  },
+  setup(__props) {
+    const props = __props;
+    const page = usePage();
+    const { t } = usePortalTranslations();
+    const locale = computed(() => page.props.locale);
+    const auth = computed(() => page.props.auth);
+    const metaTitle = computed(() => {
+      var _a;
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t("pages.dashboard_title");
+    });
+    const metaDescription = computed(() => {
+      var _a;
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.dashboard_description");
+    });
+    const welcomeSubtitle = computed(() => {
+      var _a;
+      return `${t("dashboard.welcome", { name: (_a = auth.value) == null ? void 0 : _a.name })} — ${t("dashboard.subtitle")}`;
+    });
+    const formatMoney = (amount, currency) => `${Number(amount).toFixed(2)} ${currency || ""}`.trim();
+    const markAllRead = () => router.post(route("portal.notifications.read-all"));
+    const openNotification = (notification) => router.post(route("portal.notifications.read", notification.id));
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(_sfc_main$e, mergeProps({
+        title: unref(t)("menu.my_dashboard"),
+        subtitle: welcomeSubtitle.value,
+        active: "dashboard",
+        breadcrumbs: [{ label: unref(t)("menu.my_dashboard") }],
+        "meta-title": metaTitle.value,
+        "meta-description": metaDescription.value
+      }, _attrs), {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="portal-stats"${_scopeId}><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-briefcase"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t)("dashboard.total_projects"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.total_projects)}</span></div><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-spinner"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t)("dashboard.active_projects"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.active_projects)}</span></div><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-bell"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t)("menu.notifications"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.unread_notifications)}</span></div></div><div class="row g-4"${_scopeId}><div class="col-lg-7"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("dashboard.recent_projects"))}</h2>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("portal.projects.index"),
+              class: "portal-panel__action"
+            }, {
+              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`${ssrInterpolate(unref(t)("dashboard.view_all_projects"))} <i class="${ssrRenderClass(`fas fa-arrow-${locale.value === "ar" ? "left" : "right"}`)}"${_scopeId2}></i>`);
+                } else {
+                  return [
+                    createTextVNode(toDisplayString(unref(t)("dashboard.view_all_projects")) + " ", 1),
+                    createVNode("i", {
+                      class: `fas fa-arrow-${locale.value === "ar" ? "left" : "right"}`
+                    }, null, 2)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</div><div class="portal-panel__body"${_scopeId}>`);
+            if (__props.projects.length === 0) {
+              _push2(`<div class="portal-empty"${_scopeId}><i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t)("dashboard.no_projects"))}</div>`);
+            } else {
+              _push2(`<div class="portal-table-wrap"${_scopeId}><table class="portal-table"${_scopeId}><thead${_scopeId}><tr${_scopeId}><th${_scopeId}>${ssrInterpolate(unref(t)("fields.status"))}</th><th${_scopeId}>${ssrInterpolate(unref(t)("projects.title"))}</th><th${_scopeId}>${ssrInterpolate(unref(t)("fields.remaining"))}</th><th${_scopeId}></th></tr></thead><tbody${_scopeId}><!--[-->`);
+              ssrRenderList(__props.projects, (project) => {
+                var _a, _b, _c;
+                _push2(`<tr${_scopeId}><td${_scopeId}><span class="portal-badge" style="${ssrRenderStyle({ backgroundColor: (((_a = project.status) == null ? void 0 : _a.color_code) || "#6c757d") + "33", color: ((_b = project.status) == null ? void 0 : _b.color_code) || "#C5C8CD" })}"${_scopeId}>${ssrInterpolate((_c = project.status) == null ? void 0 : _c.name)}</span></td><td${_scopeId}>${ssrInterpolate(project.title)}</td><td${_scopeId}>${ssrInterpolate(formatMoney(project.collection.remaining, project.collection.currency))}</td><td class="text-end"${_scopeId}>`);
+                _push2(ssrRenderComponent(unref(Link), {
+                  href: _ctx.route("portal.projects.show", project.id),
+                  class: "thm-btn",
+                  style: { "padding": "10px 20px", "font-size": "14px" }
+                }, {
+                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    if (_push3) {
+                      _push3(`${ssrInterpolate(unref(t)("projects.view_details"))}`);
+                    } else {
+                      return [
+                        createTextVNode(toDisplayString(unref(t)("projects.view_details")), 1)
+                      ];
+                    }
+                  }),
+                  _: 2
+                }, _parent2, _scopeId));
+                _push2(`</td></tr>`);
+              });
+              _push2(`<!--]--></tbody></table></div>`);
+            }
+            _push2(`</div></div></div><div class="col-lg-5"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("dashboard.recent_notifications"))}</h2>`);
+            if (__props.notifications.length) {
+              _push2(`<button type="button" class="portal-link-muted"${_scopeId}>${ssrInterpolate(unref(t)("notifications.mark_all_read"))}</button>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div><div class="portal-panel__body"${_scopeId}>`);
+            if (__props.notifications.length === 0) {
+              _push2(`<div class="portal-empty"${_scopeId}><i class="fas fa-bell-slash"${_scopeId}></i> ${ssrInterpolate(unref(t)("dashboard.no_notifications"))}</div>`);
+            } else {
+              _push2(`<div class="portal-notifications"${_scopeId}><!--[-->`);
+              ssrRenderList(__props.notifications, (notification) => {
+                _push2(`<button type="button" class="${ssrRenderClass([{ "portal-notification--unread": !notification.read_at }, "portal-notification"])}"${_scopeId}><div class="portal-notification__inner"${_scopeId}><span class="portal-notification__dot"${_scopeId}></span><div${_scopeId}><div class="portal-notification__message"${_scopeId}>${ssrInterpolate(notification.message)}</div><div class="portal-notification__time"${_scopeId}>${ssrInterpolate(notification.created_at)}</div></div></div></button>`);
+              });
+              _push2(`<!--]--></div>`);
+            }
+            _push2(`</div></div></div></div>`);
+          } else {
+            return [
+              createVNode("div", { class: "portal-stats" }, [
+                createVNode("div", { class: "portal-stat" }, [
+                  createVNode("span", { class: "portal-stat__icon" }, [
+                    createVNode("i", { class: "fas fa-briefcase" })
+                  ]),
+                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t)("dashboard.total_projects")), 1),
+                  createVNode("span", { class: "portal-stat__value" }, toDisplayString(__props.stats.total_projects), 1)
+                ]),
+                createVNode("div", { class: "portal-stat" }, [
+                  createVNode("span", { class: "portal-stat__icon" }, [
+                    createVNode("i", { class: "fas fa-spinner" })
+                  ]),
+                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t)("dashboard.active_projects")), 1),
+                  createVNode("span", { class: "portal-stat__value" }, toDisplayString(__props.stats.active_projects), 1)
+                ]),
+                createVNode("div", { class: "portal-stat" }, [
+                  createVNode("span", { class: "portal-stat__icon" }, [
+                    createVNode("i", { class: "fas fa-bell" })
+                  ]),
+                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t)("menu.notifications")), 1),
+                  createVNode("span", { class: "portal-stat__value" }, toDisplayString(__props.stats.unread_notifications), 1)
+                ])
+              ]),
+              createVNode("div", { class: "row g-4" }, [
+                createVNode("div", { class: "col-lg-7" }, [
+                  createVNode("div", { class: "portal-panel" }, [
+                    createVNode("div", { class: "portal-panel__header" }, [
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("dashboard.recent_projects")), 1),
+                      createVNode(unref(Link), {
+                        href: _ctx.route("portal.projects.index"),
+                        class: "portal-panel__action"
+                      }, {
+                        default: withCtx(() => [
+                          createTextVNode(toDisplayString(unref(t)("dashboard.view_all_projects")) + " ", 1),
+                          createVNode("i", {
+                            class: `fas fa-arrow-${locale.value === "ar" ? "left" : "right"}`
+                          }, null, 2)
+                        ]),
+                        _: 1
+                      }, 8, ["href"])
+                    ]),
+                    createVNode("div", { class: "portal-panel__body" }, [
+                      __props.projects.length === 0 ? (openBlock(), createBlock("div", {
+                        key: 0,
+                        class: "portal-empty"
+                      }, [
+                        createVNode("i", { class: "fas fa-folder-open" }),
+                        createTextVNode(" " + toDisplayString(unref(t)("dashboard.no_projects")), 1)
+                      ])) : (openBlock(), createBlock("div", {
+                        key: 1,
+                        class: "portal-table-wrap"
+                      }, [
+                        createVNode("table", { class: "portal-table" }, [
+                          createVNode("thead", null, [
+                            createVNode("tr", null, [
+                              createVNode("th", null, toDisplayString(unref(t)("fields.status")), 1),
+                              createVNode("th", null, toDisplayString(unref(t)("projects.title")), 1),
+                              createVNode("th", null, toDisplayString(unref(t)("fields.remaining")), 1),
+                              createVNode("th")
+                            ])
+                          ]),
+                          createVNode("tbody", null, [
+                            (openBlock(true), createBlock(Fragment, null, renderList(__props.projects, (project) => {
+                              var _a, _b, _c;
+                              return openBlock(), createBlock("tr", {
+                                key: project.id
+                              }, [
+                                createVNode("td", null, [
+                                  createVNode("span", {
+                                    class: "portal-badge",
+                                    style: { backgroundColor: (((_a = project.status) == null ? void 0 : _a.color_code) || "#6c757d") + "33", color: ((_b = project.status) == null ? void 0 : _b.color_code) || "#C5C8CD" }
+                                  }, toDisplayString((_c = project.status) == null ? void 0 : _c.name), 5)
+                                ]),
+                                createVNode("td", null, toDisplayString(project.title), 1),
+                                createVNode("td", null, toDisplayString(formatMoney(project.collection.remaining, project.collection.currency)), 1),
+                                createVNode("td", { class: "text-end" }, [
+                                  createVNode(unref(Link), {
+                                    href: _ctx.route("portal.projects.show", project.id),
+                                    class: "thm-btn",
+                                    style: { "padding": "10px 20px", "font-size": "14px" }
+                                  }, {
+                                    default: withCtx(() => [
+                                      createTextVNode(toDisplayString(unref(t)("projects.view_details")), 1)
+                                    ]),
+                                    _: 1
+                                  }, 8, ["href"])
+                                ])
+                              ]);
+                            }), 128))
+                          ])
+                        ])
+                      ]))
+                    ])
+                  ])
+                ]),
+                createVNode("div", { class: "col-lg-5" }, [
+                  createVNode("div", { class: "portal-panel" }, [
+                    createVNode("div", { class: "portal-panel__header" }, [
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("dashboard.recent_notifications")), 1),
+                      __props.notifications.length ? (openBlock(), createBlock("button", {
+                        key: 0,
+                        type: "button",
+                        class: "portal-link-muted",
+                        onClick: markAllRead
+                      }, toDisplayString(unref(t)("notifications.mark_all_read")), 1)) : createCommentVNode("", true)
+                    ]),
+                    createVNode("div", { class: "portal-panel__body" }, [
+                      __props.notifications.length === 0 ? (openBlock(), createBlock("div", {
+                        key: 0,
+                        class: "portal-empty"
+                      }, [
+                        createVNode("i", { class: "fas fa-bell-slash" }),
+                        createTextVNode(" " + toDisplayString(unref(t)("dashboard.no_notifications")), 1)
+                      ])) : (openBlock(), createBlock("div", {
+                        key: 1,
+                        class: "portal-notifications"
+                      }, [
+                        (openBlock(true), createBlock(Fragment, null, renderList(__props.notifications, (notification) => {
+                          return openBlock(), createBlock("button", {
+                            key: notification.id,
+                            type: "button",
+                            class: ["portal-notification", { "portal-notification--unread": !notification.read_at }],
+                            onClick: ($event) => openNotification(notification)
+                          }, [
+                            createVNode("div", { class: "portal-notification__inner" }, [
+                              createVNode("span", { class: "portal-notification__dot" }),
+                              createVNode("div", null, [
+                                createVNode("div", { class: "portal-notification__message" }, toDisplayString(notification.message), 1),
+                                createVNode("div", { class: "portal-notification__time" }, toDisplayString(notification.created_at), 1)
+                              ])
+                            ])
+                          ], 10, ["onClick"]);
+                        }), 128))
+                      ]))
+                    ])
+                  ])
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+};
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Dashboard.vue");
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+};
+const __vite_glob_0_22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$3
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$2 = {
+  __name: "Index",
+  __ssrInlineRender: true,
+  props: {
+    subscriptions: { type: Object, required: true },
+    meta: { type: Object, default: () => ({}) }
+  },
+  setup(__props) {
+    const props = __props;
+    const { t } = usePortalTranslations();
+    const metaTitle = computed(() => {
+      var _a;
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t("pages.subscriptions_title");
+    });
+    const metaDescription = computed(() => {
+      var _a;
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.subscriptions_description");
+    });
+    const formatMoney = (amount, currency) => `${Number(amount ?? 0).toFixed(2)} ${currency || ""}`.trim();
+    const subscriptionBadgeClass = (status) => {
+      if (status === "active" || status === "trial") return "portal-badge--paid";
+      if (status === "cancelled" || status === "expired") return "portal-badge--overdue";
+      return "portal-badge--invoice";
+    };
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(_sfc_main$e, mergeProps({
+        title: unref(t)("subscriptions.title"),
+        subtitle: unref(t)("subscriptions.subtitle"),
+        active: "subscriptions",
+        breadcrumbs: [
+          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t)("subscriptions.title") }
+        ],
+        "meta-title": metaTitle.value,
+        "meta-description": metaDescription.value
+      }, _attrs), {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          var _a, _b;
+          if (_push2) {
+            if (__props.subscriptions.data.length === 0) {
+              _push2(`<div class="portal-panel"${_scopeId}><div class="portal-empty"${_scopeId}><i class="fas fa-sync-alt"${_scopeId}></i> ${ssrInterpolate(unref(t)("subscriptions.no_subscriptions"))}</div></div>`);
+            } else {
+              _push2(`<div class="row g-4"${_scopeId}><!--[-->`);
+              ssrRenderList(__props.subscriptions.data, (subscription) => {
+                var _a2;
+                _push2(`<div class="col-md-6 col-xl-4"${_scopeId}><article class="portal-project-card"${_scopeId}><div class="portal-project-card__top"${_scopeId}><h3 class="portal-project-card__title"${_scopeId}>${ssrInterpolate(subscription.name)}</h3><span class="${ssrRenderClass([subscriptionBadgeClass(subscription.status), "portal-badge"])}"${_scopeId}>${ssrInterpolate(subscription.status_label)}</span></div>`);
+                if ((_a2 = subscription.company) == null ? void 0 : _a2.name) {
+                  _push2(`<div class="portal-project-card__company"${_scopeId}><i class="fas fa-building me-1"${_scopeId}></i>${ssrInterpolate(subscription.company.name)}</div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.amount"))}</span><strong${_scopeId}>${ssrInterpolate(formatMoney(subscription.amount, subscription.currency))}</strong></div><div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.billing_cycle"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.billing_cycle_label)}</strong></div>`);
+                if (subscription.renewal_at) {
+                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.renewal_at"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.renewal_at)}</strong></div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                if (subscription.service_name) {
+                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.service"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.service_name)}</strong></div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                if (subscription.auto_renew) {
+                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.auto_renew"))}</span><strong${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.auto_renew_enabled"))}</strong></div>`);
+                } else {
+                  _push2(`<!---->`);
+                }
+                _push2(`</article></div>`);
+              });
+              _push2(`<!--]--></div>`);
+            }
+            if (((_a = __props.subscriptions.links) == null ? void 0 : _a.length) > 3) {
+              _push2(`<nav class="portal-pagination" aria-label="Pagination"${_scopeId}><!--[-->`);
+              ssrRenderList(__props.subscriptions.links, (link) => {
+                _push2(ssrRenderComponent(unref(Link), {
+                  key: link.label,
+                  href: link.url || "#",
+                  class: ["portal-pagination__link", { "portal-pagination__link--active": link.active }]
+                }, null, _parent2, _scopeId));
+              });
+              _push2(`<!--]--></nav>`);
+            } else {
+              _push2(`<!---->`);
+            }
+          } else {
+            return [
+              __props.subscriptions.data.length === 0 ? (openBlock(), createBlock("div", {
+                key: 0,
+                class: "portal-panel"
+              }, [
+                createVNode("div", { class: "portal-empty" }, [
+                  createVNode("i", { class: "fas fa-sync-alt" }),
+                  createTextVNode(" " + toDisplayString(unref(t)("subscriptions.no_subscriptions")), 1)
+                ])
+              ])) : (openBlock(), createBlock("div", {
+                key: 1,
+                class: "row g-4"
+              }, [
+                (openBlock(true), createBlock(Fragment, null, renderList(__props.subscriptions.data, (subscription) => {
+                  var _a2;
+                  return openBlock(), createBlock("div", {
+                    key: subscription.id,
+                    class: "col-md-6 col-xl-4"
+                  }, [
+                    createVNode("article", { class: "portal-project-card" }, [
+                      createVNode("div", { class: "portal-project-card__top" }, [
+                        createVNode("h3", { class: "portal-project-card__title" }, toDisplayString(subscription.name), 1),
+                        createVNode("span", {
+                          class: ["portal-badge", subscriptionBadgeClass(subscription.status)]
+                        }, toDisplayString(subscription.status_label), 3)
+                      ]),
+                      ((_a2 = subscription.company) == null ? void 0 : _a2.name) ? (openBlock(), createBlock("div", {
+                        key: 0,
+                        class: "portal-project-card__company"
+                      }, [
+                        createVNode("i", { class: "fas fa-building me-1" }),
+                        createTextVNode(toDisplayString(subscription.company.name), 1)
+                      ])) : createCommentVNode("", true),
+                      createVNode("div", { class: "portal-project-card__meta" }, [
+                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.amount")), 1),
+                        createVNode("strong", null, toDisplayString(formatMoney(subscription.amount, subscription.currency)), 1)
+                      ]),
+                      createVNode("div", { class: "portal-project-card__meta" }, [
+                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.billing_cycle")), 1),
+                        createVNode("strong", null, toDisplayString(subscription.billing_cycle_label), 1)
+                      ]),
+                      subscription.renewal_at ? (openBlock(), createBlock("div", {
+                        key: 1,
+                        class: "portal-project-card__meta"
+                      }, [
+                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.renewal_at")), 1),
+                        createVNode("strong", null, toDisplayString(subscription.renewal_at), 1)
+                      ])) : createCommentVNode("", true),
+                      subscription.service_name ? (openBlock(), createBlock("div", {
+                        key: 2,
+                        class: "portal-project-card__meta"
+                      }, [
+                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.service")), 1),
+                        createVNode("strong", null, toDisplayString(subscription.service_name), 1)
+                      ])) : createCommentVNode("", true),
+                      subscription.auto_renew ? (openBlock(), createBlock("div", {
+                        key: 3,
+                        class: "portal-project-card__meta"
+                      }, [
+                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.auto_renew")), 1),
+                        createVNode("strong", null, toDisplayString(unref(t)("subscriptions.auto_renew_enabled")), 1)
+                      ])) : createCommentVNode("", true)
+                    ])
+                  ]);
+                }), 128))
+              ])),
+              ((_b = __props.subscriptions.links) == null ? void 0 : _b.length) > 3 ? (openBlock(), createBlock("nav", {
+                key: 2,
+                class: "portal-pagination",
+                "aria-label": "Pagination"
+              }, [
+                (openBlock(true), createBlock(Fragment, null, renderList(__props.subscriptions.links, (link) => {
+                  return openBlock(), createBlock(unref(Link), {
+                    key: link.label,
+                    href: link.url || "#",
+                    class: ["portal-pagination__link", { "portal-pagination__link--active": link.active }],
+                    innerHTML: link.label
+                  }, null, 8, ["href", "class", "innerHTML"]);
+                }), 128))
+              ])) : createCommentVNode("", true)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+    };
+  }
+};
+const _sfc_setup$2 = _sfc_main$2.setup;
+_sfc_main$2.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Index.vue");
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+};
+const __vite_glob_0_23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$2
+}, Symbol.toStringTag, { value: "Module" }));
 const __default__$1 = {
   components: {
-    AppLayout: _sfc_main$q
+    AppLayout: _sfc_main$w
   }
 };
 const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
@@ -11964,7 +13406,7 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-417e1791${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ "background-image": "url(assets/images/backgrounds/page-header-bg.jpg)" })}" data-v-417e1791${_scopeId}></div><div class="container" data-v-417e1791${_scopeId}><div class="page-header__inner" data-v-417e1791${_scopeId}><h2 data-v-417e1791${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h2><div class="thm-breadcrumb__box" data-v-417e1791${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-417e1791${_scopeId}><li data-v-417e1791${_scopeId}>`);
@@ -12082,7 +13524,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__ = {
   components: {
-    AppLayout: _sfc_main$q
+    AppLayout: _sfc_main$w
   }
 };
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
@@ -12214,7 +13656,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$q, null, {
+      _push(ssrRenderComponent(_sfc_main$w, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
           if (_push2) {
@@ -12357,14 +13799,18 @@ createServer(
             "../../Modules/Cms/resources/assets/js/Pages/Testimonials.vue": __vite_glob_0_9,
             "../../Modules/Product/resources/assets/js/Pages/ProductIndex.vue": __vite_glob_0_10,
             "../../Modules/Product/resources/assets/js/Pages/ProductShow.vue": __vite_glob_0_11,
-            "../../Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue": __vite_glob_0_12,
-            "../../Modules/Project/resources/assets/js/Pages/UseCaseShow.vue": __vite_glob_0_13,
-            "../../Modules/Services/resources/assets/js/Pages/ServiceIndex.vue": __vite_glob_0_14,
-            "../../Modules/Services/resources/assets/js/Pages/ServiceShow.vue": __vite_glob_0_15,
-            "../../Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": __vite_glob_0_16,
-            "../../Modules/User/resources/assets/js/Pages/Auth/Login.vue": __vite_glob_0_17,
-            "../../Modules/User/resources/assets/js/Pages/Auth/Register.vue": __vite_glob_0_18,
-            "../../Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": __vite_glob_0_19
+            "../../Modules/Project/resources/assets/js/Pages/Portal/Projects/Index.vue": __vite_glob_0_12,
+            "../../Modules/Project/resources/assets/js/Pages/Portal/Projects/Show.vue": __vite_glob_0_13,
+            "../../Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue": __vite_glob_0_14,
+            "../../Modules/Project/resources/assets/js/Pages/UseCaseShow.vue": __vite_glob_0_15,
+            "../../Modules/Services/resources/assets/js/Pages/ServiceIndex.vue": __vite_glob_0_16,
+            "../../Modules/Services/resources/assets/js/Pages/ServiceShow.vue": __vite_glob_0_17,
+            "../../Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": __vite_glob_0_18,
+            "../../Modules/User/resources/assets/js/Pages/Auth/Login.vue": __vite_glob_0_19,
+            "../../Modules/User/resources/assets/js/Pages/Auth/Register.vue": __vite_glob_0_20,
+            "../../Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": __vite_glob_0_21,
+            "../../Modules/User/resources/assets/js/Pages/Portal/Dashboard.vue": __vite_glob_0_22,
+            "../../Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Index.vue": __vite_glob_0_23
           })
         );
       }

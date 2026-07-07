@@ -61,6 +61,51 @@
             </a>
         </li>
 
+        <li
+            v-if="auth?.type === 'customer'"
+            class="dropdown portal-account-dropdown"
+        >
+            <a href="#" aria-label="Customer account" @click.prevent>
+                <i class="fas fa-user-circle mx-1"></i>{{ auth.name }}
+            </a>
+            <ul class="shadow-box portal-account-menu">
+                <li
+                    class="portal-menu-item"
+                    :class="{ current: isActive('portal.dashboard') }"
+                >
+                    <Link :href="route('portal.dashboard')">
+                        <i class="fas fa-th-large mx-1"></i>
+                        {{ portalLabel('menu.my_dashboard') }}
+                    </Link>
+                </li>
+                <li
+                    class="portal-menu-item"
+                    :class="{ current: isActive(['portal.projects.index', 'portal.projects.show'], { prefixes: ['/portal/projects'] }) }"
+                >
+                    <Link :href="route('portal.projects.index')">
+                        <i class="fas fa-folder-open mx-1"></i>
+                        {{ portalLabel('menu.projects') }}
+                        <span v-if="unreadCount" class="portal-menu-badge">{{ unreadCount }}</span>
+                    </Link>
+                </li>
+                <li
+                    class="portal-menu-item"
+                    :class="{ current: isActive('portal.subscriptions.index', { prefixes: ['/portal/subscriptions'] }) }"
+                >
+                    <Link :href="route('portal.subscriptions.index')">
+                        <i class="fas fa-sync-alt mx-1"></i>
+                        {{ portalLabel('menu.subscriptions') }}
+                    </Link>
+                </li>
+                <li class="portal-menu-item portal-menu-item--logout text-danger">
+                    <Link :href="route('logout')" method="post" as="a">
+                        <i class="fas fa-sign-out-alt mx-1"></i>
+                        {{ portalLabel('menu.logout') }}
+                    </Link>
+                </li>
+            </ul>
+        </li>
+
         <li class="dropdown">
             <a href="#" aria-label="Change language">
                 <img
@@ -77,7 +122,7 @@
                         :class="{ active: locale === 'ar' }"
                     >
                         <img
-                            class="me-1"
+                            class="mx-1"
                             :src="asset_path + 'images/langs/ar.png'"
                             width="20"
                             :alt="trans('Arabic')"
@@ -93,7 +138,7 @@
                         :class="{ active: locale === 'en' }"
                     >
                         <img
-                            class="me-1"
+                            class="mx-1"
                             :src="asset_path + 'images/langs/en.png'"
                             width="20"
                             :alt="trans('English')"
@@ -108,7 +153,7 @@
                         :class="{ active: locale === 'tr' }"
                     >
                         <img
-                            class="me-1"
+                            class="mx-1"
                             :src="asset_path + 'images/langs/tr.png'"
                             width="20"
                             :alt="trans('Turkish')"
@@ -131,6 +176,30 @@ const locale = computed(() => page.props.locale)
 const headerPages = computed(() => page.props.headerPages || [])
 const auth = computed(() => page.props.auth)
 const asset_path = computed(() => page.props.asset_path || '')
+const portalTranslations = computed(() => page.props.portal?.translations || {})
+const unreadCount = computed(() => page.props.portal?.unread_notifications || 0)
+
+const portalLabel = (key) => {
+    const parts = key.split('.')
+    let value = portalTranslations.value
+
+    for (const part of parts) {
+        value = value?.[part]
+    }
+
+    if (typeof value === 'string') {
+        return value
+    }
+
+    const fallbacks = {
+        'menu.my_dashboard': 'My Dashboard',
+        'menu.projects': 'My Projects',
+        'menu.subscriptions': 'My Subscriptions',
+        'menu.logout': 'Logout',
+    }
+
+    return fallbacks[key] || key
+}
 
 const normalizePath = (path) => {
     if (!path) return ''
@@ -197,25 +266,25 @@ const isPageActive = (pageItem) => {
 const switchLocale = (newLocale) => {
     const currentPath = window.location.pathname
     const currentLocale = locale.value
-    
+
     // Remove current locale from path if it exists
     let pathWithoutLocale = currentPath
     if (currentLocale && currentPath.startsWith(`/${currentLocale}`)) {
         pathWithoutLocale = currentPath.substring(`/${currentLocale}`.length) || '/'
     }
-    
+
     // Ensure path starts with /
     if (!pathWithoutLocale.startsWith('/')) {
         pathWithoutLocale = '/' + pathWithoutLocale
     }
-    
+
     // Build new URL with new locale
     const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
-    
+
     // Preserve query string and hash if present
     const queryString = window.location.search
     const hash = window.location.hash
-    
+
     window.location.href = newPath + queryString + hash
 }
 </script>

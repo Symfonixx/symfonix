@@ -156,6 +156,36 @@
     </div>
 </div>
 
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="attachments" class="fs-6 fw-bold mt-2 mb-3">{{ __('project::project.fields.attachments') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <input id="attachments" type="file" class="form-control form-control-solid @error('attachments') is-invalid @enderror @error('attachments.*') is-invalid @enderror"
+               name="attachments[]" multiple
+               accept=".doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.zip,.rar,.7z,.odt,.ods,.rtf"/>
+        <div class="form-text">{{ __('project::project.hints.attachments') }}</div>
+        @if(!empty($projectData?->attachments))
+            <div class="mt-4">
+                @foreach($projectData->attachments as $attachment)
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <i class="bi bi-paperclip"></i>
+                        <a href="{{ asset('storage/' . $attachment['path']) }}" target="_blank" class="text-hover-primary">
+                            {{ $attachment['name'] ?? basename($attachment['path']) }}
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+        @error('attachments')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+        @error('attachments.*')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function () {

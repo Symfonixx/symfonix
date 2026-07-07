@@ -1,0 +1,94 @@
+{
+    "menu": {
+        "dashboard": "My Portal",
+        "projects": "My Projects",
+        "subscriptions": "My Subscriptions",
+        "notifications": "Notifications",
+        "logout": "Logout",
+        "my_dashboard": "My Dashboard"
+    },
+    "pages": {
+        "dashboard_title": "Customer Portal",
+        "dashboard_description": "View your projects, invoices, and updates.",
+        "projects_title": "My Projects",
+        "projects_description": "Track your active and completed projects.",
+        "project_show_description": "Project details, billing progress, and invoices.",
+        "subscriptions_title": "My Subscriptions",
+        "subscriptions_description": "Review your active plans, billing cycles, and renewals."
+    },
+    "dashboard": {
+        "welcome": "Welcome back, :name",
+        "subtitle": "Here is an overview of your projects and recent updates.",
+        "total_projects": "Total Projects",
+        "active_projects": "Active Projects",
+        "recent_projects": "Recent Projects",
+        "recent_notifications": "Recent Notifications",
+        "view_all_projects": "View All Projects",
+        "no_projects": "You do not have any projects yet.",
+        "no_notifications": "No notifications yet."
+    },
+    "projects": {
+        "title": "Projects",
+        "subtitle": "All projects linked to your account.",
+        "view_details": "View Details",
+        "no_projects": "No projects found.",
+        "back_to_projects": "Back to Projects",
+        "details": "Project Details",
+        "billing": "Billing Progress",
+        "invoices": "Invoices",
+        "no_invoices": "No invoices for this project yet.",
+        "download_pdf": "Download PDF",
+        "attachments": "Attachments"
+    },
+    "subscriptions": {
+        "title": "Subscriptions",
+        "subtitle": "All subscriptions linked to your account.",
+        "no_subscriptions": "No subscriptions found.",
+        "amount": "Amount",
+        "billing_cycle": "Billing Cycle",
+        "renewal_at": "Next Renewal",
+        "service": "Service",
+        "auto_renew": "Auto Renew",
+        "auto_renew_enabled": "Enabled"
+    },
+    "fields": {
+        "status": "Stage",
+        "payment_status": "Payment Status",
+        "budget": "Budget",
+        "invoiced": "Invoiced",
+        "remaining": "Remaining to Pay",
+        "collection_rate": "Billing Progress",
+        "start_date": "Start Date",
+        "due_date": "Due Date",
+        "description": "Description",
+        "company": "Company",
+        "invoice_number": "Invoice #",
+        "total": "Total",
+        "issued_at": "Issued",
+        "due_at": "Due",
+        "paid_at": "Paid"
+    },
+    "notifications": {
+        "greeting": "Hello :name,",
+        "mark_all_read": "Mark all as read",
+        "initial_stage": "Initial",
+        "status_changed_subject": "Project stage updated: :title",
+        "status_changed_line": "The stage of project \":title\" changed from :from to :to.",
+        "payment_changed_subject": "Payment status updated: :title",
+        "payment_changed_line": "The payment status of project \":title\" changed from :from to :to.",
+        "invoice_subject": "New invoice :number",
+        "invoice_line": "Invoice :number for :total has been issued.",
+        "invoice_project": "Related project: :title",
+        "view_project": "View Project"
+    },
+    "payment_status": {
+        "unpaid": "Unpaid",
+        "partially_paid": "Partially Paid",
+        "fully_paid": "Fully Paid"
+    },
+    "invoice_status": {
+        "sent": "Sent",
+        "paid": "Paid",
+        "overdue": "Overdue"
+    }
+}

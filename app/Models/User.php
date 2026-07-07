@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\CRM\Models\Company;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -82,6 +83,29 @@ class User extends Authenticatable
     public function adminEventTracks(): HasMany
     {
         return $this->hasMany(AdminEventTrack::class)->latest('created_at');
+    }
+
+    public function companies(): HasMany
+    {
+        return $this->hasMany(Company::class);
+    }
+
+    public function isCustomer(): bool
+    {
+        return $this->type === self::TYPE_CUSTOMER;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->type === self::TYPE_ADMIN;
+    }
+
+    /**
+     * @return array<int, int>
+     */
+    public function companyIds(): array
+    {
+        return $this->companies()->pluck('id')->all();
     }
 
     public function getLastLoginHumanAttribute()

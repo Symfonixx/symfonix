@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'is_admin' => \App\Http\Middleware\IsAdmin::class,
+            'is_customer' => \App\Http\Middleware\IsCustomer::class,
             /**** localS ****/
             'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
             'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,

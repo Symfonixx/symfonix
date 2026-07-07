@@ -1,4 +1,6 @@
-@php($subscriptionData = $subscription ?? null)
+@php
+    $subscriptionData = $subscription ?? null;
+@endphp
 
 @if ($errors->any())
     <div class="alert alert-danger d-flex align-items-start p-5 mb-10">
@@ -49,12 +51,17 @@
             $selectedServiceIds = old('service_ids', $subscriptionData?->relationLoaded('services')
                 ? $subscriptionData->services->pluck('id')->all()
                 : array_filter([$subscriptionData?->service_id]));
+            $selectedServiceIds = collect($selectedServiceIds)
+                ->flatten()
+                ->filter(fn ($id) => filled($id))
+                ->map(fn ($id) => (int) $id)
+                ->all();
         @endphp
         <select id="service_ids" class="form-select form-select-solid @error('service_ids') is-invalid @enderror"
                 data-control="select2" data-placeholder="{{ __('crm::subscription.fields.select_service') }}"
                 name="service_ids[]" multiple>
             @foreach(($services ?? collect()) as $service)
-                <option value="{{ $service->id }}" @selected(in_array($service->id, $selectedServiceIds))>
+                <option value="{{ $service->id }}" @selected(in_array((int) $service->id, $selectedServiceIds, true))>
                     {{ $service->getTranslation('title', app()->getLocale()) }}
                 </option>
             @endforeach

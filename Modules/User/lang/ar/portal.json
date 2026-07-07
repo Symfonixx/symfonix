@@ -1,0 +1,94 @@
+{
+    "menu": {
+        "dashboard": "بوابتي",
+        "projects": "مشاريعي",
+        "subscriptions": "اشتراكاتي",
+        "notifications": "الإشعارات",
+        "logout": "تسجيل الخروج",
+        "my_dashboard": "لوحة التحكم"
+    },
+    "pages": {
+        "dashboard_title": "بوابة العميل",
+        "dashboard_description": "اعرض مشاريعك وفواتيرك وآخر التحديثات.",
+        "projects_title": "مشاريعي",
+        "projects_description": "تابع مشاريعك النشطة والمكتملة.",
+        "project_show_description": "تفاصيل المشروع وتقدم الفوترة والفواتير.",
+        "subscriptions_title": "اشتراكاتي",
+        "subscriptions_description": "راجع خططك النشطة ودورات الفوترة ومواعيد التجديد."
+    },
+    "dashboard": {
+        "welcome": "مرحباً بعودتك، :name",
+        "subtitle": "إليك نظرة عامة على مشاريعك وآخر التحديثات.",
+        "total_projects": "إجمالي المشاريع",
+        "active_projects": "المشاريع النشطة",
+        "recent_projects": "أحدث المشاريع",
+        "recent_notifications": "أحدث الإشعارات",
+        "view_all_projects": "عرض كل المشاريع",
+        "no_projects": "ليس لديك أي مشاريع بعد.",
+        "no_notifications": "لا توجد إشعارات بعد."
+    },
+    "projects": {
+        "title": "المشاريع",
+        "subtitle": "جميع المشاريع المرتبطة بحسابك.",
+        "view_details": "عرض التفاصيل",
+        "no_projects": "لم يتم العثور على مشاريع.",
+        "back_to_projects": "العودة إلى المشاريع",
+        "details": "تفاصيل المشروع",
+        "billing": "تقدم الفوترة",
+        "invoices": "الفواتير",
+        "no_invoices": "لا توجد فواتير لهذا المشروع بعد.",
+        "download_pdf": "تحميل PDF",
+        "attachments": "المرفقات"
+    },
+    "subscriptions": {
+        "title": "الاشتراكات",
+        "subtitle": "جميع الاشتراكات المرتبطة بحسابك.",
+        "no_subscriptions": "لم يتم العثور على اشتراكات.",
+        "amount": "المبلغ",
+        "billing_cycle": "دورة الفوترة",
+        "renewal_at": "التجديد القادم",
+        "service": "الخدمة",
+        "auto_renew": "تجديد تلقائي",
+        "auto_renew_enabled": "مفعل"
+    },
+    "fields": {
+        "status": "المرحلة",
+        "payment_status": "حالة الدفع",
+        "budget": "الميزانية",
+        "invoiced": "المفوتر",
+        "remaining": "المتبقي للدفع",
+        "collection_rate": "تقدم الفوترة",
+        "start_date": "تاريخ البدء",
+        "due_date": "تاريخ الاستحقاق",
+        "description": "الوصف",
+        "company": "الشركة",
+        "invoice_number": "رقم الفاتورة",
+        "total": "الإجمالي",
+        "issued_at": "تاريخ الإصدار",
+        "due_at": "تاريخ الاستحقاق",
+        "paid_at": "تاريخ الدفع"
+    },
+    "notifications": {
+        "greeting": "مرحباً :name،",
+        "mark_all_read": "تعليم الكل كمقروء",
+        "initial_stage": "البداية",
+        "status_changed_subject": "تم تحديث مرحلة المشروع: :title",
+        "status_changed_line": "تم تغيير مرحلة المشروع \":title\" من :from إلى :to.",
+        "payment_changed_subject": "تم تحديث حالة الدفع: :title",
+        "payment_changed_line": "تم تغيير حالة الدفع للمشروع \":title\" من :from إلى :to.",
+        "invoice_subject": "فاتورة جديدة :number",
+        "invoice_line": "تم إصدار الفاتورة :number بمبلغ :total.",
+        "invoice_project": "المشروع المرتبط: :title",
+        "view_project": "عرض المشروع"
+    },
+    "payment_status": {
+        "unpaid": "غير مدفوع",
+        "partially_paid": "مدفوع جزئياً",
+        "fully_paid": "مدفوع بالكامل"
+    },
+    "invoice_status": {
+        "sent": "مرسلة",
+        "paid": "مدفوعة",
+        "overdue": "متأخرة"
+    }
+}

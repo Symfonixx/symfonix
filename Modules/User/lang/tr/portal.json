@@ -1,0 +1,94 @@
+{
+    "menu": {
+        "dashboard": "Portalım",
+        "projects": "Projelerim",
+        "subscriptions": "Aboneliklerim",
+        "notifications": "Bildirimler",
+        "logout": "Çıkış Yap",
+        "my_dashboard": "Panelim"
+    },
+    "pages": {
+        "dashboard_title": "Müşteri Portalı",
+        "dashboard_description": "Projelerinizi, faturalarınızı ve güncellemeleri görüntüleyin.",
+        "projects_title": "Projelerim",
+        "projects_description": "Aktif ve tamamlanan projelerinizi takip edin.",
+        "project_show_description": "Proje detayları, faturalama ilerlemesi ve faturalar.",
+        "subscriptions_title": "Aboneliklerim",
+        "subscriptions_description": "Aktif planlarınızı, faturalama döngülerinizi ve yenilemelerinizi inceleyin."
+    },
+    "dashboard": {
+        "welcome": "Tekrar hoş geldiniz, :name",
+        "subtitle": "Projelerinize ve son güncellemelere genel bir bakış.",
+        "total_projects": "Toplam Proje",
+        "active_projects": "Aktif Projeler",
+        "recent_projects": "Son Projeler",
+        "recent_notifications": "Son Bildirimler",
+        "view_all_projects": "Tüm Projeleri Görüntüle",
+        "no_projects": "Henüz projeniz bulunmuyor.",
+        "no_notifications": "Henüz bildirim yok."
+    },
+    "projects": {
+        "title": "Projeler",
+        "subtitle": "Hesabınıza bağlı tüm projeler.",
+        "view_details": "Detayları Görüntüle",
+        "no_projects": "Proje bulunamadı.",
+        "back_to_projects": "Projelere Dön",
+        "details": "Proje Detayları",
+        "billing": "Faturalama İlerlemesi",
+        "invoices": "Faturalar",
+        "no_invoices": "Bu proje için henüz fatura yok.",
+        "download_pdf": "PDF İndir",
+        "attachments": "Ekler"
+    },
+    "subscriptions": {
+        "title": "Abonelikler",
+        "subtitle": "Hesabınıza bağlı tüm abonelikler.",
+        "no_subscriptions": "Abonelik bulunamadı.",
+        "amount": "Tutar",
+        "billing_cycle": "Faturalama Döngüsü",
+        "renewal_at": "Sonraki Yenileme",
+        "service": "Hizmet",
+        "auto_renew": "Otomatik Yenileme",
+        "auto_renew_enabled": "Etkin"
+    },
+    "fields": {
+        "status": "Aşama",
+        "payment_status": "Ödeme Durumu",
+        "budget": "Bütçe",
+        "invoiced": "Faturalanan",
+        "remaining": "Ödenecek Kalan",
+        "collection_rate": "Faturalama İlerlemesi",
+        "start_date": "Başlangıç Tarihi",
+        "due_date": "Bitiş Tarihi",
+        "description": "Açıklama",
+        "company": "Şirket",
+        "invoice_number": "Fatura No",
+        "total": "Toplam",
+        "issued_at": "Düzenlenme",
+        "due_at": "Vade",
+        "paid_at": "Ödeme"
+    },
+    "notifications": {
+        "greeting": "Merhaba :name,",
+        "mark_all_read": "Tümünü okundu işaretle",
+        "initial_stage": "Başlangıç",
+        "status_changed_subject": "Proje aşaması güncellendi: :title",
+        "status_changed_line": "\":title\" projesinin aşaması :from durumundan :to durumuna değiştirildi.",
+        "payment_changed_subject": "Ödeme durumu güncellendi: :title",
+        "payment_changed_line": "\":title\" projesinin ödeme durumu :from durumundan :to durumuna değiştirildi.",
+        "invoice_subject": "Yeni fatura :number",
+        "invoice_line": ":number numaralı fatura :total tutarında düzenlendi.",
+        "invoice_project": "İlgili proje: :title",
+        "view_project": "Projeyi Görüntüle"
+    },
+    "payment_status": {
+        "unpaid": "Ödenmedi",
+        "partially_paid": "Kısmen Ödendi",
+        "fully_paid": "Tamamen Ödendi"
+    },
+    "invoice_status": {
+        "sent": "Gönderildi",
+        "paid": "Ödendi",
+        "overdue": "Gecikmiş"
+    }
+}

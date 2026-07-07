@@ -166,6 +166,12 @@
                             <a href="{{ route('admin.deals.show', $invoice->deal_id) }}">{{ $invoice->deal->title }}</a>
                         </div>
                     @endif
+                    @if($invoice->project)
+                        <div class="mb-4">
+                            <div class="text-muted fs-7">{{ __('finance::invoice.fields.project') }}</div>
+                            <a href="{{ route('admin.projects.show', $invoice->project_id) }}">{{ $invoice->project->title }}</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

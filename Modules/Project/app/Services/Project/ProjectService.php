@@ -4,8 +4,11 @@ namespace Modules\Project\Services\Project;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Modules\Project\DTOs\Project\ProjectData;
+use Modules\Project\Events\ProjectStatusChanged;
 use Modules\Project\Models\Project;
+use Modules\Project\Models\ProjectStatus;
 use Modules\Project\Repositories\Project\ProjectRepository;
 
 class ProjectService
@@ -15,6 +18,32 @@ class ProjectService
     public function list(array $filters = []): LengthAwarePaginator
     {
         return $this->repository->paginate($filters, (int) config('core.page_size', 15));
+    }
+
+    public function storeAttachments(Project $project, array $files): void
+    {
+        if ($files === []) {
+            return;
+        }
+
+        $stored = $project->attachments ?? [];
+
+        foreach ($files as $file) {
+            if (! $file || ! $file->isValid()) {
+                continue;
+            }
+
+            $path = $file->store('projects/attachments', 'public');
+            $stored[] = [
+                'path' => $path,
+                'name' => $file->getClientOriginalName(),
+                'size' => $file->getSize(),
+            ];
+        }
+
+        if ($stored !== ($project->attachments ?? [])) {
+            $project->update(['attachments' => $stored]);
+        }
     }
 
     public function create(ProjectData $data): ?Project
@@ -34,7 +63,27 @@ class ProjectService
 
     public function update(Project $project, ProjectData $data): ?Project
     {
+        $project->loadMissing('status');
+        $previousStatusId = $project->project_status_id;
+        $fromStatus = $project->status;
+
         $updated = $this->repository->update($project, $data);
+
+        if ($updated && $previousStatusId !== $project->project_status_id) {
+            $project->load('status');
+            $toStatus = $project->status;
+
+            if ($toStatus instanceof ProjectStatus) {
+                ProjectStatusChanged::dispatch($project, $fromStatus, $toStatus);
+            }
+
+            Log::info('Project status changed', [
+                'project_id' => $project->id,
+                'from_status_id' => $previousStatusId,
+                'to_status_id' => $project->project_status_id,
+                'actor_id' => auth()->id(),
+            ]);
+        }
 
         if ($updated) {
             Log::info('Project updated', [
@@ -49,6 +98,8 @@ class ProjectService
 
     public function delete(Project $project): ?bool
     {
+        $this->deleteAttachments($project);
+
         $deleted = $this->repository->delete($project);
 
         if ($deleted) {
@@ -74,5 +125,14 @@ class ProjectService
         }
 
         return $deleted;
+    }
+
+    private function deleteAttachments(Project $project): void
+    {
+        foreach ($project->attachments ?? [] as $attachment) {
+            if (! empty($attachment['path'])) {
+                Storage::disk('public')->delete($attachment['path']);
+            }
+        }
     }
 }

@@ -40,16 +40,18 @@ class InvoiceController extends Controller
 
     public function store(StoreInvoiceRequest $request): RedirectResponse
     {
-        $invoice = $this->invoiceService->createManual($request->validated());
+        $invoice = $this->invoiceService->markAsSent(
+            $this->invoiceService->createManual($request->validated())
+        );
 
-        session()->flushMessage(true, __('finance::invoice.messages.created'));
+        session()->flushMessage(true, __('finance::invoice.messages.created_and_sent'));
 
         return redirect()->route('admin.finance.invoices.show', $invoice);
     }
 
     public function show(Invoice $invoice): View
     {
-        $invoice->load(['company', 'lines.service', 'subscription', 'deal']);
+        $invoice->load(['company', 'lines.service', 'subscription', 'deal', 'project']);
         $companyBranding = CompanyBranding::forInvoice();
 
         return view('finance::admin.invoice.show', compact('invoice', 'companyBranding'));
@@ -104,7 +106,7 @@ class InvoiceController extends Controller
             return back();
         }
 
-        session()->flushMessage(true, __('finance::invoice.messages.created'));
+        session()->flushMessage(true, __('finance::invoice.messages.created_and_sent'));
 
         return redirect()->route('admin.finance.invoices.show', $invoice);
     }

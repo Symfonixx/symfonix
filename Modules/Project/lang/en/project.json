@@ -6,6 +6,7 @@
     "pages": {
         "index_title": "Projects",
         "create_title": "Add New Project",
+        "show_title": "Project Details",
         "edit_title": "Edit Project"
     },
     "fields": {
@@ -20,16 +21,21 @@
         "budget": "Budget",
         "payment_status": "Payment Status",
         "collected": "Collected",
+        "invoiced": "Invoiced",
+        "remaining": "Remaining",
         "collection_rate": "Collection Rate",
         "start_date": "Start Date",
-        "due_date": "Due Date"
+        "due_date": "Due Date",
+        "attachments": "Attachments"
     },
     "actions": {
         "add": "Add Project",
         "manage_statuses": "Manage Statuses",
         "back_to_list": "Back to Projects",
+        "back_to_project": "Back to Project",
         "apply_filters": "Apply Filters",
-        "clear_filters": "Clear"
+        "clear_filters": "Clear",
+        "add_invoice": "Add Invoice"
     },
     "search": {
         "placeholder": "Search projects"
@@ -40,7 +46,11 @@
         "all_statuses": "All Statuses"
     },
     "sections": {
-        "collection": "Collection Progress"
+        "basic_information": "Basic Information",
+        "collection": "Billing Progress",
+        "invoices": "Project Invoices",
+        "add_invoice": "Add Invoice",
+        "attachments": "Attachments"
     },
     "payment_status": {
         "unpaid": "Unpaid",
@@ -48,11 +58,21 @@
         "fully_paid": "Fully Paid"
     },
     "hints": {
-        "deal": "Link an open or won CRM deal. Deals already linked to another project are hidden."
+        "deal": "Link an open or won CRM deal. Deals already linked to another project are hidden.",
+        "attachments": "Upload multiple files (documents, archives, etc.). PDF and image files are not allowed. Max 10 MB per file."
     },
     "placeholders": {
         "title": "Enter project title",
         "description": "Project scope, deliverables, notes…",
         "budget": "0.00"
+    },
+    "messages": {
+        "no_invoices": "No invoices for this project yet.",
+        "invoice_exceeds_remaining": "Invoice total exceeds the remaining budget of :remaining.",
+        "no_attachments": "No attachments for this project yet."
+    },
+    "validation": {
+        "attachment_pdf_not_allowed": "PDF files are not allowed as project attachments.",
+        "attachment_image_not_allowed": "Image files are not allowed as project attachments."
     }
 }

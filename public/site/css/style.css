@@ -2647,5 +2647,90 @@ ul {
 
 
 /*--------------------------------------------------------------
+# Customer portal account dropdown
+--------------------------------------------------------------*/
+.main-menu .main-menu__list > li.portal-account-dropdown > ul.shadow-box,
+.stricky-header .main-menu__list > li.portal-account-dropdown > ul.shadow-box {
+    left: auto;
+    right: 0;
+    min-width: 240px;
+    padding: 12px 0;
+}
+
+.main-menu .main-menu__list > li.portal-account-dropdown > a::before,
+.stricky-header .main-menu__list > li.portal-account-dropdown > a::before {
+    display: none;
+}
+
+.main-menu .main-menu__list > li.portal-account-dropdown > a:focus,
+.stricky-header .main-menu__list > li.portal-account-dropdown > a:focus {
+    outline: none;
+}
+
+.main-menu .main-menu__list > li > ul.shadow-box > li.portal-menu-item > a::before,
+.stricky-header .main-menu__list > li > ul.shadow-box > li.portal-menu-item > a::before {
+    display: none;
+}
+
+.main-menu .main-menu__list > li > ul.shadow-box .portal-menu-item a,
+.main-menu .main-menu__list > li > ul.shadow-box .portal-menu-item button,
+.stricky-header .main-menu__list > li > ul.shadow-box .portal-menu-item a,
+.stricky-header .main-menu__list > li > ul.shadow-box .portal-menu-item button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: var(--techguru-gray);
+    font-family: inherit;
+    font-size: 15px;
+    text-align: start;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.main-menu .main-menu__list > li > ul.shadow-box .portal-menu-item a:hover,
+.main-menu .main-menu__list > li > ul.shadow-box .portal-menu-item button:hover,
+.stricky-header .main-menu__list > li > ul.shadow-box .portal-menu-item a:hover,
+.stricky-header .main-menu__list > li > ul.shadow-box .portal-menu-item button:hover {
+    color: var(--techguru-white);
+    background: rgba(var(--techguru-white-rgb), 0.06);
+}
+
+.main-menu .main-menu__list > li > ul.shadow-box .portal-menu-item.current > a,
+.stricky-header .main-menu__list > li > ul.shadow-box .portal-menu-item.current > a {
+    color: var(--techguru-white);
+    background: rgba(var(--techguru-base-rgb), 0.15);
+}
+
+.main-menu .main-menu__list > li > ul.shadow-box .portal-menu-item--logout a,
+.stricky-header .main-menu__list > li > ul.shadow-box .portal-menu-item--logout a {
+    color: #ff8a95;
+}
+
+.main-menu .main-menu__list > li > ul.shadow-box .portal-menu-item--logout a:hover,
+.stricky-header .main-menu__list > li > ul.shadow-box .portal-menu-item--logout a:hover {
+    color: #ffb3ba;
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.main-menu .main-menu__list > li > ul.shadow-box .portal-menu-badge,
+.stricky-header .main-menu__list > li > ul.shadow-box .portal-menu-badge {
+    margin-inline-start: auto;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--techguru-accent);
+    color: var(--techguru-black);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+}
+
+/*--------------------------------------------------------------
 # End
 --------------------------------------------------------------*/

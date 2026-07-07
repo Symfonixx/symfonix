@@ -16,6 +16,7 @@ class StoreInvoiceRequest extends FormRequest
         return [
             'company_id' => ['required', 'exists:companies,id'],
             'deal_id' => ['nullable', 'exists:deals,id'],
+            'project_id' => ['nullable', 'exists:projects,id'],
             'currency' => ['required', 'string', 'size:3'],
             'issued_at' => ['required', 'date'],
             'due_at' => ['nullable', 'date', 'after_or_equal:issued_at'],

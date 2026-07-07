@@ -6,6 +6,7 @@
     "pages": {
         "index_title": "المشاريع",
         "create_title": "إضافة مشروع جديد",
+        "show_title": "تفاصيل المشروع",
         "edit_title": "تعديل المشروع"
     },
     "fields": {
@@ -20,16 +21,21 @@
         "budget": "الميزانية",
         "payment_status": "حالة الدفع",
         "collected": "المحصّل",
+        "invoiced": "المفوتر",
+        "remaining": "المتبقي",
         "collection_rate": "نسبة التحصيل",
         "start_date": "تاريخ البدء",
-        "due_date": "تاريخ الاستحقاق"
+        "due_date": "تاريخ الاستحقاق",
+        "attachments": "المرفقات"
     },
     "actions": {
         "add": "إضافة مشروع",
         "manage_statuses": "إدارة الحالات",
         "back_to_list": "العودة إلى المشاريع",
+        "back_to_project": "العودة إلى المشروع",
         "apply_filters": "تطبيق الفلاتر",
-        "clear_filters": "مسح"
+        "clear_filters": "مسح",
+        "add_invoice": "إضافة فاتورة"
     },
     "search": {
         "placeholder": "البحث في المشاريع"
@@ -40,7 +46,11 @@
         "all_statuses": "جميع الحالات"
     },
     "sections": {
-        "collection": "تقدم التحصيل"
+        "basic_information": "المعلومات الأساسية",
+        "collection": "تقدم الفوترة",
+        "invoices": "فواتير المشروع",
+        "add_invoice": "إضافة فاتورة",
+        "attachments": "المرفقات"
     },
     "payment_status": {
         "unpaid": "غير مدفوع",
@@ -48,11 +58,21 @@
         "fully_paid": "مدفوع بالكامل"
     },
     "hints": {
-        "deal": "اربط صفقة مفتوحة أو مكسوبة. الصفقات المرتبطة بمشروع آخر لا تظهر هنا."
+        "deal": "اربط صفقة مفتوحة أو مكسوبة. الصفقات المرتبطة بمشروع آخر لا تظهر هنا.",
+        "attachments": "ارفع ملفات متعددة (مستندات، أرشيفات، إلخ). ملفات PDF والصور غير مسموحة. الحد الأقصى 10 ميجابايت لكل ملف."
     },
     "placeholders": {
         "title": "أدخل عنوان المشروع",
         "description": "نطاق المشروع، المخرجات، الملاحظات…",
         "budget": "0.00"
+    },
+    "messages": {
+        "no_invoices": "لا توجد فواتير لهذا المشروع بعد.",
+        "invoice_exceeds_remaining": "إجمالي الفاتورة يتجاوز الميزانية المتبقية البالغة :remaining.",
+        "no_attachments": "لا توجد مرفقات لهذا المشروع بعد."
+    },
+    "validation": {
+        "attachment_pdf_not_allowed": "ملفات PDF غير مسموحة كمرفقات للمشروع.",
+        "attachment_image_not_allowed": "ملفات الصور غير مسموحة كمرفقات للمشروع."
     }
 }

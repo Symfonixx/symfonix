@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App;
 use Cache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Inertia\Middleware;
 use Module;
 use Modules\Base\Models\Seo;
@@ -115,6 +116,12 @@ class HandleInertiaRequests extends Middleware
             }, []),
             'auth' => fn () => $request->user()
                 ? $request->user()->only('id', 'name', 'email', 'type')
+                : null,
+            'portal' => fn () => $request->user()?->isCustomer()
+                ? [
+                    'unread_notifications' => $request->user()->unreadNotifications()->count(),
+                    'translations' => Lang::get('user::portal'),
+                ]
                 : null,
         ]);
 

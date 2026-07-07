@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\CRM\Concerns\HasCrmTimeline;
 use Modules\CRM\Filters\Company\CompanyFilter;
+use Modules\Project\Models\Project;
 
 class Company extends Model
 {
@@ -92,5 +93,10 @@ class Company extends Model
     public function leads(): HasMany
     {
         return $this->hasMany(Lead::class);
+    }
+
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class);
     }
 }

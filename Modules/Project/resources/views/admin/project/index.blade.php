@@ -90,7 +90,11 @@
                         <input class="form-check-input" type="checkbox" name="ids[]" value="{{ $project->id }}"/>
                     </div>
                 </td>
-                <td>{{ $project->title }}</td>
+                <td>
+                    <a href="{{ route('admin.projects.show', $project) }}" class="text-hover-primary fw-bold">
+                        {{ $project->title }}
+                    </a>
+                </td>
                 <td>
                     @if($project->company)
                         <a href="{{ route('admin.companies.show', $project->company_id) }}" class="text-hover-primary">
@@ -135,6 +139,10 @@
                 <td>{{ $project->due_date?->format('Y-m-d') ?: __('N/A') }}</td>
                 <td>{{ $project->created_at->diffForHumans() }}</td>
                 <td class="text-end">
+                    <a href="{{ route('admin.projects.show', $project->id) }}"
+                       class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                        <i class="bi bi-eye fs-5"></i>
+                    </a>
                     <a href="{{ route('admin.projects.edit', $project->id) }}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="ki-duotone ki-message-edit fs-1">
