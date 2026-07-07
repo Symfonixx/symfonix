@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained('companies')->restrictOnDelete();
             $table->foreignId('subscription_id')->nullable()->constrained('subscriptions')->nullOnDelete();
             $table->foreignId('deal_id')->nullable()->constrained('deals')->nullOnDelete();
+            $table->foreignId('project_id')->nullable()->constrained('projects')->nullOnDelete();
             $table->enum('status', ['draft', 'sent', 'paid', 'overdue', 'void'])->default('draft')->index();
             $table->decimal('subtotal', 15, 2)->default(0);
             $table->decimal('tax_amount', 15, 2)->default(0);
@@ -27,6 +28,7 @@ return new class extends Migration
 
             $table->index(['company_id', 'status']);
             $table->index('due_at');
+            $table->index('project_id');
         });
     }
 

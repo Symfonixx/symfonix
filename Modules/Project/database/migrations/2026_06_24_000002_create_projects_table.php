@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('payment_status', ['unpaid', 'partially_paid', 'fully_paid'])->default('unpaid');
             $table->date('start_date')->nullable();
             $table->date('due_date')->nullable();
+            $table->json('attachments')->nullable();
             $table->timestamps();
         });
     }

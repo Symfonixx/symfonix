@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('invoice_id')->constrained('invoices')->cascadeOnDelete();
             $table->foreignId('service_id')->nullable()->constrained('services')->nullOnDelete();
+            $table->foreignId('product_id')->nullable()->constrained('products')->nullOnDelete();
             $table->string('description');
             $table->unsignedInteger('quantity')->default(1);
             $table->decimal('unit_price', 15, 2);

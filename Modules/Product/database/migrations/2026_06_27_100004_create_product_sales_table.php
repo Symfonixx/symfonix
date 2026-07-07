@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->nullOnDelete();
+            $table->foreignId('invoice_id')->nullable()->constrained('invoices')->nullOnDelete();
             $table->foreignId('deal_id')->nullable()->constrained('deals')->nullOnDelete();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->unsignedInteger('quantity')->default(1);

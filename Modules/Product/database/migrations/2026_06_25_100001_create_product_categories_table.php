@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
             $table->string('slug')->unique();
-            $table->text('description')->nullable();
+            $table->json('description')->nullable();
             $table->timestamps();
         });
     }

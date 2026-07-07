@@ -72,6 +72,9 @@ class InstallAppCommand extends Command
         $this->seedPipelineStages();
         $this->components->info('CRM pipeline stages seeded.');
 
+        $this->seedTicketCategories();
+        $this->components->info('Support ticket categories seeded.');
+
         $role = Role::query()->firstOrCreate([
             'name' => 'Admin',
             'guard_name' => 'web',
@@ -135,6 +138,14 @@ class InstallAppCommand extends Command
     {
         Artisan::call('db:seed', [
             '--class' => 'Modules\\CRM\\Database\\Seeders\\PipelineStageSeeder',
+            '--force' => true,
+        ]);
+    }
+
+    private function seedTicketCategories(): void
+    {
+        Artisan::call('db:seed', [
+            '--class' => 'Modules\\Support\\Database\\Seeders\\TicketCategorySeeder',
             '--force' => true,
         ]);
     }
