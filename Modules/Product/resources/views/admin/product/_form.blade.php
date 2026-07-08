@@ -293,6 +293,8 @@
     </div>
 </div>
 
+<x-admin.auto-translate-checkbox :default="! $productData"/>
+
 @push('scripts')
 <script>
     (function () {

@@ -24,6 +24,7 @@ Route::middleware(['can:Finance Management'])->prefix('finance')->name('finance.
     Route::post('invoices/{invoice}/sent', [InvoiceController::class, 'markSent'])->name('invoices.sent');
     Route::post('invoices/{invoice}/paid', [InvoiceController::class, 'markPaid'])->name('invoices.paid');
     Route::post('invoices/{invoice}/void', [InvoiceController::class, 'void'])->name('invoices.void');
+    Route::delete('invoices/{invoice}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
     Route::get('invoices/{invoice}/pdf', [InvoiceController::class, 'downloadPdf'])->name('invoices.pdf');
     Route::post('invoices/from-deal/{deal}', [InvoiceController::class, 'createFromDeal'])->name('invoices.from-deal');
 

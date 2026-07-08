@@ -31,6 +31,14 @@ class UpdateProductCategoryRequest extends FormRequest
                 Rule::unique('product_categories', 'slug')->ignore($categoryId),
             ],
             'description' => ['nullable', 'string'],
+            'auto_translate' => ['nullable', 'boolean'],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'auto_translate' => $this->boolean('auto_translate'),
+        ]);
     }
 }

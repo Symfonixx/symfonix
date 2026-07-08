@@ -34,6 +34,7 @@ class UpdateProjectUseCaseRequest extends FormRequest
             'featured' => ['nullable', 'boolean'],
             'publish' => ['nullable', 'boolean'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
+            'auto_translate' => ['nullable', 'boolean'],
         ];
     }
 
@@ -42,6 +43,7 @@ class UpdateProjectUseCaseRequest extends FormRequest
         $this->merge([
             'featured' => $this->boolean('featured'),
             'publish' => $this->boolean('publish'),
+            'auto_translate' => $this->boolean('auto_translate'),
         ]);
     }
 }

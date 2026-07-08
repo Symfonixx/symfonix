@@ -3,5 +3,9 @@
     "An Error Occurred!": "حدث خطأ!",
     "The selected file is not valid.": "الملف المحدد غير صالح.",
     "File type is not allowed.": "نوع الملف غير مسموح به.",
-    "The Operation Done Successfully": "تمت العملية بنجاح"
+    "The Operation Done Successfully": "تمت العملية بنجاح",
+    "Auto translate to other languages": "ترجمة تلقائية إلى اللغات الأخرى",
+    "If enabled, content will be automatically translated into other languages when you save.": "عند التفعيل، ستُترجم المحتويات تلقائياً إلى اللغات الأخرى عند الحفظ.",
+    "Translation": "الترجمة",
+    "Choose whether to update all language versions when saving.": "اختر ما إذا كنت تريد تحديث جميع نسخ اللغات عند الحفظ."
 }

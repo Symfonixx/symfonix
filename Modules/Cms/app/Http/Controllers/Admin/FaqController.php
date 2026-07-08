@@ -55,6 +55,7 @@ class FaqController extends Controller
             'rank' => $rank,
             'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
         $this->faqRepository->store($data);
 
         return redirect()->route('admin.faqs.index');
@@ -85,6 +86,7 @@ class FaqController extends Controller
             'rank' => $rank,
             'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
         $this->faqRepository->update($data, $faq);
 
         return redirect()->route('admin.faqs.index');

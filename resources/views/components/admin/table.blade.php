@@ -173,33 +173,7 @@
 
                 initBulkActions();
 
-                // Confirmation for single-row action forms (e.g. delete) marked with
-                // [data-confirm-delete]. Prevents destructive actions without confirmation.
-                document.querySelectorAll('form[data-confirm-delete]').forEach((form) => {
-                    form.addEventListener('submit', function (event) {
-                        if (form.dataset.confirmed === 'true') {
-                            return;
-                        }
-                        event.preventDefault();
-                        Swal.fire({
-                            text: form.getAttribute('data-confirm-delete') || @json(__('This action cannot be undone.')),
-                            icon: "warning",
-                            showCancelButton: true,
-                            buttonsStyling: false,
-                            confirmButtonText: @json(__('Yes Delete!')),
-                            cancelButtonText: @json(__('No Cancel')),
-                            customClass: {
-                                confirmButton: "btn fw-bold btn-danger",
-                                cancelButton: "btn fw-bold btn-active-light-primary"
-                            }
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                form.dataset.confirmed = 'true';
-                                form.submit();
-                            }
-                        });
-                    });
-                });
+                // Form confirmations ([data-confirm], DELETE) are handled globally in admin-layout.
 
                 const searchInput = document.querySelector('[data-kt-data-table-filter="search"]');
                 const clearBtn = document.querySelector('[data-search-clear]');

@@ -38,6 +38,7 @@
         "mark_sent": "Gönderildi Olarak İşaretle",
         "mark_paid": "Ödemeyi Kaydet",
         "void": "Faturayı İptal Et",
+        "delete": "Faturayı Sil",
         "download_pdf": "PDF İndir",
         "from_deal": "Fatura Oluştur",
         "add_line": "Kalem Ekle"
@@ -47,6 +48,8 @@
         "sent": "Fatura gönderildi olarak işaretlendi.",
         "paid": "Ödeme kaydedildi ve defter güncellendi.",
         "voided": "Fatura iptal edildi.",
+        "deleted": "Fatura ve ilgili muhasebe kayıtları silindi.",
+        "confirm_delete": "Bu faturayı kalıcı olarak silmek istiyor musunuz? İlgili muhasebe kayıtları da kaldırılacak.",
         "deal_invoice_failed": "Bu anlaşma için fatura oluşturulamadı.",
         "subscription_renewal_note": "Abonelik yenileme: :name (:date)",
         "deal_invoice_note": "Anlaşma faturası: :title",

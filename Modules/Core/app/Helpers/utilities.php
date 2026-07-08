@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
 use Stichoza\GoogleTranslate\Exceptions\LargeTextException;
 use Stichoza\GoogleTranslate\Exceptions\RateLimitException;
 use Stichoza\GoogleTranslate\Exceptions\TranslationRequestException;
@@ -34,4 +35,90 @@ if (! function_exists('otherLangs')) {
         ));
     }
 
+}
+
+if (! function_exists('wantsAutoTranslate')) {
+    /**
+     * Whether the current request opted into auto-translating other locales.
+     */
+    function wantsAutoTranslate(array|bool|null $source = null): bool
+    {
+        if (is_bool($source)) {
+            return $source;
+        }
+
+        $value = is_array($source)
+            ? ($source['auto_translate'] ?? false)
+            : request()->boolean('auto_translate');
+
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    }
+}
+
+if (! function_exists('buildFieldTranslations')) {
+    /**
+     * Build locale => value map for one translatable field.
+     *
+     * @param  array<string, string>|null  $existing
+     * @return array<string, string>
+     */
+    function buildFieldTranslations(?string $value, bool $autoTranslate, ?array $existing = null): array
+    {
+        $locale = app()->getLocale();
+        $value = $value ?? '';
+
+        if ($autoTranslate) {
+            $translations = [$locale => $value];
+
+            foreach (otherLangs() as $lang) {
+                if ($value === '') {
+                    $translations[$lang] = '';
+
+                    continue;
+                }
+
+                try {
+                    $translations[$lang] = autoGoogleTranslator($lang, $value);
+                } catch (Exception $e) {
+                    Log::error($e->getMessage());
+                    $translations[$lang] = $existing[$lang] ?? $value;
+                }
+            }
+
+            return $translations;
+        }
+
+        if ($existing !== null) {
+            $translations = $existing;
+            $translations[$locale] = $value;
+
+            return $translations;
+        }
+
+        return [$locale => $value];
+    }
+}
+
+if (! function_exists('buildTranslations')) {
+    /**
+     * Build translations for multiple fields at once.
+     *
+     * @param  array<string, string|null>  $fields
+     * @param  array<string, array<string, string>>|null  $existing
+     * @return array<string, array<string, string>>
+     */
+    function buildTranslations(array $fields, bool $autoTranslate, ?array $existing = null): array
+    {
+        $result = [];
+
+        foreach ($fields as $field => $value) {
+            $result[$field] = buildFieldTranslations(
+                $value === null ? null : (string) $value,
+                $autoTranslate,
+                $existing[$field] ?? null
+            );
+        }
+
+        return $result;
+    }
 }

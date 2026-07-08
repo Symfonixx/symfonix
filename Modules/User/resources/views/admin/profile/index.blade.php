@@ -171,7 +171,8 @@
                         </div>
                         <div id="qr_box" class="border rounded p-3 d-none"></div>
                         <div id="codes_box" class="border rounded p-3 d-none mt-3"></div>
-                        <form method="POST" action="{{ route('two-factor.disable') }}" class="mt-5" onsubmit="return confirm('{{ __('Are you sure you want to disable two-factor authentication?') }}')">
+                        <form method="POST" action="{{ route('two-factor.disable') }}" class="mt-5"
+                              data-confirm="{{ __('Are you sure you want to disable two-factor authentication?') }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">{{ __('Disable Two-Factor Authentication') }}</button>
@@ -198,7 +199,8 @@
                                 <button type="submit" class="btn btn-primary">{{ __('Confirm Two-Factor Authentication') }}</button>
                             </div>
                         </form>
-                        <form method="POST" action="{{ route('two-factor.disable') }}" onsubmit="return confirm('{{ __('Are you sure you want to disable two-factor authentication?') }}')">
+                        <form method="POST" action="{{ route('two-factor.disable') }}"
+                              data-confirm="{{ __('Are you sure you want to disable two-factor authentication?') }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-light-danger">{{ __('Disable Two-Factor Authentication') }}</button>

@@ -6,7 +6,6 @@ use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Core\Traits\FileTrait;
@@ -110,57 +109,40 @@ class ProductRepository
 
     private function prepareProductData(array $data): array
     {
-        $locale = app()->getLocale();
-        $translatable = $this->buildTranslations([
+        $autoTranslate = wantsAutoTranslate($data);
+        unset($data['auto_translate']);
+
+        return array_merge($data, buildTranslations([
             'name' => $data['name'] ?? '',
             'short_description' => $data['short_description'] ?? '',
             'description' => $data['description'] ?? '',
             'seo_title' => $data['seo_title'] ?? '',
             'seo_description' => $data['seo_description'] ?? '',
             'seo_keywords' => $data['seo_keywords'] ?? '',
-        ], $locale);
-
-        return array_merge($data, $translatable);
+        ], $autoTranslate));
     }
 
     private function prepareProductUpdateData(array $data, Product $product): array
     {
         $locale = app()->getLocale();
+        $autoTranslate = wantsAutoTranslate($data);
+        unset($data['auto_translate']);
 
-        return array_merge($data, $this->buildTranslations([
+        return array_merge($data, buildTranslations([
             'name' => $data['name'] ?? $product->getTranslation('name', $locale, false),
             'short_description' => $data['short_description'] ?? $product->getTranslation('short_description', $locale, false),
             'description' => $data['description'] ?? $product->getTranslation('description', $locale, false),
             'seo_title' => $data['seo_title'] ?? $product->getTranslation('seo_title', $locale, false),
             'seo_description' => $data['seo_description'] ?? $product->getTranslation('seo_description', $locale, false),
             'seo_keywords' => $data['seo_keywords'] ?? $product->getTranslation('seo_keywords', $locale, false),
-        ], $locale));
-    }
-
-    private function buildTranslations(array $fields, string $locale): array
-    {
-        $translations = [];
-
-        foreach ($fields as $field => $value) {
-            $translations[$field] = [$locale => $value];
-
-            foreach (otherLangs() as $lang) {
-                if ($value === '' || $value === null) {
-                    $translations[$field][$lang] = '';
-
-                    continue;
-                }
-
-                try {
-                    $translations[$field][$lang] = autoGoogleTranslator($lang, (string) $value);
-                } catch (Exception $e) {
-                    Log::error($e->getMessage());
-                    $translations[$field][$lang] = $value;
-                }
-            }
-        }
-
-        return $translations;
+        ], $autoTranslate, [
+            'name' => $product->getTranslations('name'),
+            'short_description' => $product->getTranslations('short_description'),
+            'description' => $product->getTranslations('description'),
+            'seo_title' => $product->getTranslations('seo_title'),
+            'seo_description' => $product->getTranslations('seo_description'),
+            'seo_keywords' => $product->getTranslations('seo_keywords'),
+        ]));
     }
 
     private function handleUploads(array $data, ?Product $product = null): array

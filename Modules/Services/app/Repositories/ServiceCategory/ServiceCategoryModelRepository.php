@@ -3,9 +3,7 @@
 namespace Modules\Services\Repositories\ServiceCategory;
 
 use Config;
-use Exception;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Log;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Core\Traits\FileTrait;
 use Modules\Services\Models\ServiceCategory;
@@ -41,44 +39,29 @@ class ServiceCategoryModelRepository implements ServiceCategoryRepository
     private function prepareCategoryData(array $data, ?string $existingImage = null): array
     {
         $path = $data['image'] ? $this->upload($data['image'], $this->uploadPath, $data['slug'], $existingImage) : $existingImage;
-        $transTitle = [app()->getLocale() => $data['title']];
-        $transDesc = [app()->getLocale() => $data['description'] ?? ''];
-        foreach (otherLangs() as $lang) {
-            try {
-                $transTitle[$lang] = autoGoogleTranslator($lang, $data['title'] ?? '');
-                $transDesc[$lang] = autoGoogleTranslator($lang, $data['description'] ?? '');
-            } catch (Exception $e) {
-                Log::error($e->getMessage());
-            }
-        }
+        $translations = buildTranslations([
+            'title' => $data['title'] ?? '',
+            'description' => $data['description'] ?? '',
+        ], wantsAutoTranslate($data));
 
-        return array_merge($data, [
+        return array_merge($data, $translations, [
             'image' => $path,
-            'title' => $transTitle,
-            'description' => $transDesc,
         ]);
     }
 
-    /**
-     * Prepare service category data for update without auto translation.
-     * Only the current locale is updated; other locales remain untouched.
-     */
     private function prepareCategoryUpdateData(array $data, ServiceCategory $category): array
     {
         $path = $data['image'] ? $this->upload($data['image'], $this->uploadPath, $data['slug'], $category->image) : $category->image;
+        $translations = buildTranslations([
+            'title' => $data['title'] ?? '',
+            'description' => $data['description'] ?? '',
+        ], wantsAutoTranslate($data), [
+            'title' => $category->getTranslations('title'),
+            'description' => $category->getTranslations('description'),
+        ]);
 
-        $locale = app()->getLocale();
-
-        $transTitle = $category->getTranslations('title');
-        $transDesc = $category->getTranslations('description');
-
-        $transTitle[$locale] = $data['title'] ?? ($transTitle[$locale] ?? '');
-        $transDesc[$locale] = $data['description'] ?? ($transDesc[$locale] ?? '');
-
-        return array_merge($data, [
+        return array_merge($data, $translations, [
             'image' => $path,
-            'title' => $transTitle,
-            'description' => $transDesc,
         ]);
     }
 

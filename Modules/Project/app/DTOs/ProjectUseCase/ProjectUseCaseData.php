@@ -62,6 +62,8 @@ class ProjectUseCaseData extends Data
 
         #[Min(0)]
         public int $sort_order = 0,
+
+        public bool $auto_translate = false,
     ) {}
 
     public static function fromRequest(array $payload): self
@@ -86,6 +88,7 @@ class ProjectUseCaseData extends Data
                 ? $payload['status']
                 : CmsStatus::from($payload['status'] ?? CmsStatus::ARCHIVED->value),
             sort_order: (int) ($payload['sort_order'] ?? 0),
+            auto_translate: wantsAutoTranslate($payload),
         );
     }
 }

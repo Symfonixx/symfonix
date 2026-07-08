@@ -67,6 +67,12 @@
                 'showFeatured' => false,
             ])
 
+            <div class="card mb-6">
+                <div class="card-body">
+                    <x-admin.auto-translate-checkbox :default="! $faqData" class="mb-0"/>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-header border-0 pt-6">
                     <h3 class="card-title fw-bold fs-5">

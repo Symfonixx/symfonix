@@ -40,6 +40,7 @@ class UpdateProductRequest extends FormRequest
             'status' => ['required', Rule::in([Product::STATUS_ACTIVE, Product::STATUS_ARCHIVED])],
             'is_featured' => ['nullable', 'boolean'],
             'is_published' => ['nullable', 'boolean'],
+            'auto_translate' => ['nullable', 'boolean'],
         ];
     }
 
@@ -48,6 +49,7 @@ class UpdateProductRequest extends FormRequest
         $this->merge([
             'is_featured' => $this->boolean('is_featured'),
             'is_published' => $this->boolean('is_published'),
+            'auto_translate' => $this->boolean('auto_translate'),
         ]);
     }
 }

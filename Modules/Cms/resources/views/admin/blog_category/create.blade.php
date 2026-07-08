@@ -17,6 +17,14 @@
                                    placeholder="{{ __('Category name') }}">
                         </div>
 
+                        <div class="mb-6">
+                            <div class="form-check form-switch form-check-custom form-check-solid">
+                                <input type="hidden" name="auto_translate" value="0">
+                                <input class="form-check-input" type="checkbox" name="auto_translate" value="1" id="createCatAutoTranslate" checked>
+                                <label class="form-check-label" for="createCatAutoTranslate">{{ __('Auto translate to other languages') }}</label>
+                            </div>
+                        </div>
+
                         <div class="mb-0">
                             <label for="gslug" class="form-label fw-semibold required">{{ __('Url') }}</label>
                             <input type="text" class="form-control form-control-solid" id="gslug" name="gslug" required

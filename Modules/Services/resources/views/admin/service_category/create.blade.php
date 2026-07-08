@@ -60,6 +60,14 @@
                             <label for="description" class="form-label">{{ __('Description') }}</label>
                             <textarea class="form-control" name="description" rows="3"></textarea>
                         </div>
+
+                        <div class="mb-0">
+                            <div class="form-check form-switch form-check-custom form-check-solid">
+                                <input type="hidden" name="auto_translate" value="0">
+                                <input class="form-check-input" type="checkbox" name="auto_translate" value="1" id="serviceCatAutoTranslate" checked>
+                                <label class="form-check-label" for="serviceCatAutoTranslate">{{ __('Auto translate to other languages') }}</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
@@ -154,6 +162,8 @@
                     <textarea class="form-control form-control-solid" name="description" rows="3" placeholder="{{__('Description')}}">{{old('description')}}</textarea>
                 </div>
             </div>
+
+            <x-admin.auto-translate-checkbox :default="true" class="mb-0"/>
         </x-admin.create-card>
     </x-admin-layout>
 @endif

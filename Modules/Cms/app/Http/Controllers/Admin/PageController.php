@@ -70,6 +70,7 @@ class PageController extends Controller
             'add_to_footer' => $request->boolean('add_to_footer'),
             'add_to_top_bar' => $request->boolean('add_to_top_bar'),
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
 
         $this->pageRepository->store($data);
 
@@ -104,6 +105,7 @@ class PageController extends Controller
             'add_to_footer' => $request->boolean('add_to_footer'),
             'add_to_top_bar' => $request->boolean('add_to_top_bar'),
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
         $this->pageRepository->update($data, $page);
 
         return redirect()->route('admin.pages.index');

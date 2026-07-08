@@ -66,7 +66,7 @@
                                 </button>
                             @endif
                             <form method="POST" action="{{ route('admin.projects.employees.destroy', [$project, $assignment]) }}"
-                                  onsubmit="return confirm('{{ __('project::project.messages.confirm_remove_employee') }}')">
+                                  data-confirm="{{ __('project::project.messages.confirm_remove_employee') }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-icon btn-sm btn-light-danger" title="{{ __('Delete') }}">

@@ -87,6 +87,15 @@ class InvoiceController extends Controller
         return back();
     }
 
+    public function destroy(Invoice $invoice): RedirectResponse
+    {
+        $this->invoiceService->deleteInvoice($invoice);
+
+        session()->flushMessage(true, __('finance::invoice.messages.deleted'));
+
+        return redirect()->route('admin.finance.invoices.index');
+    }
+
     public function downloadPdf(Invoice $invoice): Response
     {
         $this->authorize('view', $invoice);

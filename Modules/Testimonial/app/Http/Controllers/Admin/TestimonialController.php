@@ -46,6 +46,7 @@ class TestimonialController extends Controller
             'quote' => $request->input('quote'),
             'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
         $this->testimonialRepository->update($data, $testimonial);
 
         return redirect()->route('admin.testimonials.index');

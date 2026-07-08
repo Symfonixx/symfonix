@@ -714,12 +714,20 @@ class FinanceService
             ->exists();
     }
 
+    public function deleteJournalEntriesForReference(string $referenceType, int $referenceId): void
+    {
+        $this->deleteJournalEntriesFor($referenceType, $referenceId);
+    }
+
     private function deleteJournalEntriesFor(string $referenceType, int $referenceId): void
     {
         JournalEntry::query()
             ->where('reference_type', $referenceType)
             ->where('reference_id', $referenceId)
-            ->each(fn (JournalEntry $entry) => $entry->delete());
+            ->each(function (JournalEntry $entry) {
+                $entry->lines()->delete();
+                $entry->delete();
+            });
     }
 
     private function baseJournalEntryQuery(?array $dateRange = null, ?array $monthKeys = null)

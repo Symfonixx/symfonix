@@ -84,22 +84,23 @@
                             <td class="text-end">
                                 <div class="d-flex justify-content-end align-items-center gap-2 flex-wrap">
                                     @if($salary->status === 'pending')
-                                        <form method="POST" action="{{ route('admin.finance.salaries.payout', $salary) }}" class="d-inline-flex align-items-center gap-2">
+                                        <form method="POST" action="{{ route('admin.finance.salaries.payout', $salary) }}"
+                                              class="d-inline-flex align-items-center gap-2"
+                                              data-confirm="{{ __('Are you sure?') }}">
                                             @csrf
                                             <input type="date" name="paid_at" value="{{ now()->toDateString() }}"
                                                    class="form-control form-control-solid form-control-sm w-auto"
                                                    title="{{ __('finance::salary.fields.paid_at') }}" required>
-                                            <button type="submit" class="btn btn-sm btn-light-primary"
-                                                    onclick="return confirm(@json(__('Are you sure?')))">
+                                            <button type="submit" class="btn btn-sm btn-light-primary">
                                                 <i class="bi bi-cash-coin me-1"></i>{{ __('finance::salary.actions.record_payout') }}
                                             </button>
                                         </form>
                                     @endif
-                                    <form class="d-inline" method="POST" action="{{ route('admin.finance.salaries.destroy', $salary) }}">
+                                    <form class="d-inline" method="POST" action="{{ route('admin.finance.salaries.destroy', $salary) }}"
+                                          data-confirm="{{ __('finance::salary.messages.confirm_delete') }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
-                                                onclick="return confirm(@json(__('finance::salary.messages.confirm_delete')))">
+                                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
                                             <i class="bi bi-trash fs-5"></i>
                                         </button>
                                     </form>

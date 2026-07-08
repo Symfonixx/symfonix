@@ -352,6 +352,20 @@ class InvoiceService
         return $invoice->fresh();
     }
 
+    public function deleteInvoice(Invoice $invoice): void
+    {
+        $projectId = $invoice->project_id;
+
+        DB::transaction(function () use ($invoice) {
+            $this->financeService->deleteJournalEntriesForReference(Invoice::class, $invoice->id);
+            $invoice->delete();
+        });
+
+        if ($projectId) {
+            $this->financeService->updateProjectPaymentStatus($projectId);
+        }
+    }
+
     public function markOverdueInvoices(): int
     {
         return Invoice::query()

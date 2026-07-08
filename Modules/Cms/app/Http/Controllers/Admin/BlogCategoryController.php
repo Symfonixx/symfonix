@@ -37,6 +37,7 @@ class BlogCategoryController extends Controller
         $data = [
             'name' => $request->input('name'),
             'slug' => $request->input('slug'),
+            'auto_translate' => $request->boolean('auto_translate'),
         ];
         $this->categoryRepository->store($data);
 
@@ -53,6 +54,7 @@ class BlogCategoryController extends Controller
         $data = [
             'name' => $request->input('name'),
             'slug' => $blogs_category->slug,
+            'auto_translate' => $request->boolean('auto_translate'),
         ];
         $this->categoryRepository->update($data, $blogs_category);
 

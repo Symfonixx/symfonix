@@ -17,6 +17,14 @@ class StoreProductCategoryRequest extends FormRequest
             'name' => ['required', 'string', 'max:255', 'unique:product_categories,name'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:product_categories,slug'],
             'description' => ['nullable', 'string'],
+            'auto_translate' => ['nullable', 'boolean'],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'auto_translate' => $this->boolean('auto_translate'),
+        ]);
     }
 }

@@ -27,23 +27,31 @@
             </form>
         @endif
         @if(in_array($invoice->status, ['sent', 'overdue']))
-            <form method="POST" action="{{ route('admin.finance.invoices.paid', $invoice) }}">
+            <form method="POST" action="{{ route('admin.finance.invoices.paid', $invoice) }}"
+                  data-confirm="{{ __('Are you sure?') }}">
                 @csrf
-                <button type="submit" class="btn btn-sm btn-success"
-                        onclick="return confirm(@json(__('Are you sure?')))">
+                <button type="submit" class="btn btn-sm btn-success">
                     {{ __('finance::invoice.actions.mark_paid') }}
                 </button>
             </form>
         @endif
         @if(!in_array($invoice->status, ['paid', 'void']))
-            <form method="POST" action="{{ route('admin.finance.invoices.void', $invoice) }}">
+            <form method="POST" action="{{ route('admin.finance.invoices.void', $invoice) }}"
+                  data-confirm="{{ __('Are you sure?') }}">
                 @csrf
-                <button type="submit" class="btn btn-sm btn-light-danger"
-                        onclick="return confirm(@json(__('Are you sure?')))">
+                <button type="submit" class="btn btn-sm btn-light-danger">
                     {{ __('finance::invoice.actions.void') }}
                 </button>
             </form>
         @endif
+        <form method="POST" action="{{ route('admin.finance.invoices.destroy', $invoice) }}"
+              data-confirm="{{ __('finance::invoice.messages.confirm_delete') }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-sm btn-danger">
+                {{ __('finance::invoice.actions.delete') }}
+            </button>
+        </form>
     </div>
 @endsection
 

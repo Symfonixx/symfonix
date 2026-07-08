@@ -2,10 +2,8 @@
 
 namespace Modules\Project\Repositories\ProjectUseCase;
 
-use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Modules\Cms\Enums\CmsStatus;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Core\Traits\FileTrait;
@@ -105,16 +103,19 @@ class ProjectUseCaseModelRepository implements ProjectUseCaseRepository
 
     private function prepareData(ProjectUseCaseData $data): array
     {
-        return [
+        $translations = buildTranslations([
+            'title' => $data->title,
+            'client_name' => $data->client_name ?? '',
+            'summary' => $data->summary ?? '',
+            'challenge' => $data->challenge ?? '',
+            'solution' => $data->solution ?? '',
+            'results' => $data->results ?? '',
+            'content' => $data->content ?? '',
+        ], $data->auto_translate);
+
+        return array_merge($translations, [
             'project_id' => $data->project_id,
             'slug' => $data->slug,
-            'title' => $this->translateOnCreate($data->title),
-            'client_name' => $this->translateOnCreate($data->client_name ?? ''),
-            'summary' => $this->translateOnCreate($data->summary ?? ''),
-            'challenge' => $this->translateOnCreate($data->challenge ?? ''),
-            'solution' => $this->translateOnCreate($data->solution ?? ''),
-            'results' => $this->translateOnCreate($data->results ?? ''),
-            'content' => $this->translateOnCreate($data->content ?? ''),
             'image' => $this->handleImageUpload($data),
             'technologies' => $this->parseTechnologies($data->technologies),
             'category_tag' => $data->category_tag,
@@ -123,21 +124,32 @@ class ProjectUseCaseModelRepository implements ProjectUseCaseRepository
             'featured' => $data->featured,
             'status' => $data->status->value,
             'sort_order' => $data->sort_order,
-        ];
+        ]);
     }
 
     private function prepareUpdateData(ProjectUseCaseData $data, ProjectUseCase $useCase): array
     {
-        return [
+        $translations = buildTranslations([
+            'title' => $data->title,
+            'client_name' => $data->client_name ?? '',
+            'summary' => $data->summary ?? '',
+            'challenge' => $data->challenge ?? '',
+            'solution' => $data->solution ?? '',
+            'results' => $data->results ?? '',
+            'content' => $data->content ?? '',
+        ], $data->auto_translate, [
+            'title' => $useCase->getTranslations('title'),
+            'client_name' => $useCase->getTranslations('client_name'),
+            'summary' => $useCase->getTranslations('summary'),
+            'challenge' => $useCase->getTranslations('challenge'),
+            'solution' => $useCase->getTranslations('solution'),
+            'results' => $useCase->getTranslations('results'),
+            'content' => $useCase->getTranslations('content'),
+        ]);
+
+        return array_merge($translations, [
             'project_id' => $data->project_id,
             'slug' => $data->slug,
-            'title' => $this->mergeTranslation($useCase, 'title', $data->title),
-            'client_name' => $this->mergeTranslation($useCase, 'client_name', $data->client_name ?? ''),
-            'summary' => $this->mergeTranslation($useCase, 'summary', $data->summary ?? ''),
-            'challenge' => $this->mergeTranslation($useCase, 'challenge', $data->challenge ?? ''),
-            'solution' => $this->mergeTranslation($useCase, 'solution', $data->solution ?? ''),
-            'results' => $this->mergeTranslation($useCase, 'results', $data->results ?? ''),
-            'content' => $this->mergeTranslation($useCase, 'content', $data->content ?? ''),
             'image' => $this->handleImageUpload($data, $useCase->image),
             'technologies' => $this->parseTechnologies($data->technologies),
             'category_tag' => $data->category_tag,
@@ -146,31 +158,7 @@ class ProjectUseCaseModelRepository implements ProjectUseCaseRepository
             'featured' => $data->featured,
             'status' => $data->status->value,
             'sort_order' => $data->sort_order,
-        ];
-    }
-
-    private function translateOnCreate(string $value): array
-    {
-        $locale = app()->getLocale();
-        $translations = [$locale => $value];
-
-        foreach (otherLangs() as $lang) {
-            try {
-                $translations[$lang] = autoGoogleTranslator($lang, $value);
-            } catch (Exception $e) {
-                Log::error($e->getMessage());
-            }
-        }
-
-        return $translations;
-    }
-
-    private function mergeTranslation(ProjectUseCase $useCase, string $field, string $value): array
-    {
-        $translations = $useCase->getTranslations($field);
-        $translations[app()->getLocale()] = $value;
-
-        return $translations;
+        ]);
     }
 
     private function handleImageUpload(ProjectUseCaseData $data, ?string $existing = null): ?string

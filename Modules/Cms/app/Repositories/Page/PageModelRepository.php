@@ -3,9 +3,7 @@
 namespace Modules\Cms\Repositories\Page;
 
 use Config;
-use Exception;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Log;
 use Modules\Cms\Enums\CmsStatus;
 use Modules\Cms\Models\Page;
 use Modules\Core\Traits\ExceptionHandlerTrait;
@@ -58,63 +56,40 @@ class PageModelRepository implements PageRepository
     {
         $path = $this->handleImageUpload($data, $existingImage);
         $keywords = $this->parseKeywords($data['keywords']);
+        $autoTranslate = wantsAutoTranslate($data);
+        $translations = buildTranslations([
+            'title' => $data['title'] ?? '',
+            'description' => $data['description'] ?? '',
+            'content' => $data['content'] ?? '',
+            'keywords' => $keywords,
+        ], $autoTranslate);
 
-        $transTitle = [app()->getLocale() => $data['title']];
-        $transDesc = [app()->getLocale() => $data['description']];
-        $transKeywords = [app()->getLocale() => $keywords];
-        $transContent = [app()->getLocale() => $data['content']];
-        foreach (otherLangs() as $lang) {
-            try {
-                $transTitle[$lang] = autoGoogleTranslator($lang, $data['title']);
-                $transDesc[$lang] = autoGoogleTranslator($lang, $data['description']);
-                $transKeywords[$lang] = autoGoogleTranslator($lang, $keywords);
-                $transContent[$lang] = autoGoogleTranslator($lang, $data['content']);
-
-            } catch (Exception $e) {
-                Log::error($e->getMessage());
-            }
-        }
-
-        return array_merge($data, [
+        return array_merge($data, $translations, [
             'image' => $path,
-            'title' => $transTitle,
-            'description' => $transDesc,
-            'content' => $transContent,
-            'keywords' => $transKeywords,
-            // Persist status to the correct column as a string value.
             'status' => $data['status'] instanceof CmsStatus ? $data['status']->value : $data['status'],
             'featured' => (int) $data['featured'],
         ]);
     }
 
-    /**
-     * Prepare page data for update without auto translation.
-     * Only the current locale is updated; other locales are preserved.
-     */
     private function preparePageUpdateData(array $data, Page $page): array
     {
         $path = $this->handleImageUpload($data, $page->image);
         $keywords = $this->parseKeywords($data['keywords'] ?? null);
+        $autoTranslate = wantsAutoTranslate($data);
+        $translations = buildTranslations([
+            'title' => $data['title'] ?? '',
+            'description' => $data['description'] ?? '',
+            'content' => $data['content'] ?? '',
+            'keywords' => $keywords,
+        ], $autoTranslate, [
+            'title' => $page->getTranslations('title'),
+            'description' => $page->getTranslations('description'),
+            'content' => $page->getTranslations('content'),
+            'keywords' => $page->getTranslations('keywords'),
+        ]);
 
-        $locale = app()->getLocale();
-
-        $transTitle = $page->getTranslations('title');
-        $transDesc = $page->getTranslations('description');
-        $transKeywords = $page->getTranslations('keywords');
-        $transContent = $page->getTranslations('content');
-
-        $transTitle[$locale] = $data['title'] ?? ($transTitle[$locale] ?? '');
-        $transDesc[$locale] = $data['description'] ?? ($transDesc[$locale] ?? '');
-        $transKeywords[$locale] = $keywords ?? ($transKeywords[$locale] ?? '');
-        $transContent[$locale] = $data['content'] ?? ($transContent[$locale] ?? '');
-
-        return array_merge($data, [
+        return array_merge($data, $translations, [
             'image' => $path,
-            'title' => $transTitle,
-            'description' => $transDesc,
-            'content' => $transContent,
-            'keywords' => $transKeywords,
-            // Persist status to the correct column as a string value.
             'status' => $data['status'] instanceof CmsStatus ? $data['status']->value : $data['status'],
             'featured' => (int) $data['featured'],
         ]);

@@ -118,6 +118,12 @@
 
             @include('cms::admin.shared._publish-aside', ['item' => $blogData])
 
+            <div class="card mb-6">
+                <div class="card-body">
+                    <x-admin.auto-translate-checkbox :default="! $blogData" class="mb-0"/>
+                </div>
+            </div>
+
             @include('cms::admin.shared._seo-preview-aside', [
                 'formId' => 'blog-form',
                 'defaultImage' => $blogData?->image_link ?? asset('images/default.jpg'),

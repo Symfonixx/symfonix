@@ -3,9 +3,7 @@
 namespace Modules\Cms\Repositories\BlogCategory;
 
 use Config;
-use Exception;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Log;
 use Modules\Cms\Models\BlogCategory;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 
@@ -37,34 +35,51 @@ class BlogCategoryModelRepository implements BlogCategoryRepository
 
     private function prepareCategoryData(array $data): array
     {
-        $transName = [app()->getLocale() => $data['name']];
-        foreach (otherLangs() as $lang) {
-            try {
-                $transName[$lang] = autoGoogleTranslator($lang, $data['name']);
-            } catch (Exception $e) {
-                Log::error($e->getMessage());
-            }
+        if (is_array($data['name'] ?? null)) {
+            $name = $data['name'][app()->getLocale()]
+                ?? $data['name'][array_key_first($data['name'])]
+                ?? '';
+
+            return array_merge($data, buildTranslations(
+                ['name' => (string) $name],
+                wantsAutoTranslate($data),
+                ['name' => array_map('strval', $data['name'])]
+            ));
         }
 
-        return array_merge($data, [
-            'name' => $transName,
-        ]);
+        return array_merge($data, buildTranslations([
+            'name' => $data['name'] ?? '',
+        ], wantsAutoTranslate($data)));
     }
 
-    /**
-     * Prepare category data for update without auto translation.
-     * Only the current locale is updated; other locales are preserved.
-     */
     private function prepareCategoryUpdateData(array $data, BlogCategory $category): array
     {
-        $locale = app()->getLocale();
+        if (is_array($data['name'] ?? null)) {
+            $existing = $category->getTranslations('name');
+            $provided = array_map('strval', $data['name']);
+            $merged = array_merge($existing, $provided);
 
-        $transName = $category->getTranslations('name');
-        $transName[$locale] = $data['name'] ?? ($transName[$locale] ?? '');
+            if (wantsAutoTranslate($data)) {
+                $source = $provided[app()->getLocale()]
+                    ?? $merged[app()->getLocale()]
+                    ?? reset($merged)
+                    ?: '';
 
-        return array_merge($data, [
-            'name' => $transName,
-        ]);
+                return array_merge($data, buildTranslations(
+                    ['name' => (string) $source],
+                    true,
+                    ['name' => $merged]
+                ));
+            }
+
+            return array_merge($data, ['name' => $merged]);
+        }
+
+        return array_merge($data, buildTranslations([
+            'name' => $data['name'] ?? '',
+        ], wantsAutoTranslate($data), [
+            'name' => $category->getTranslations('name'),
+        ]));
     }
 
     public function update(array $data, BlogCategory $category): mixed

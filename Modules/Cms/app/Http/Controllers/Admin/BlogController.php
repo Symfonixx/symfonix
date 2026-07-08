@@ -52,6 +52,7 @@ class BlogController extends Controller
             'featured' => $request->boolean('featured'),
             'category_id' => $request->input('category_id'),
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
         $this->blogRepository->store($data);
 
         return redirect()->route('admin.blogs.index');
@@ -77,6 +78,7 @@ class BlogController extends Controller
             'featured' => $request->boolean('featured'),
             'category_id' => $request->input('category_id'),
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
         $this->blogRepository->update($data, $blog);
 
         return redirect()->route('admin.blogs.index');

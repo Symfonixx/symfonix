@@ -102,6 +102,12 @@
                 'showNavigation' => true,
             ])
 
+            <div class="card mb-6">
+                <div class="card-body">
+                    <x-admin.auto-translate-checkbox :default="! $pageData" class="mb-0"/>
+                </div>
+            </div>
+
             @include('cms::admin.shared._seo-preview-aside', [
                 'formId' => 'page-form',
                 'defaultImage' => $pageData?->image_link ?? asset('images/default.jpg'),

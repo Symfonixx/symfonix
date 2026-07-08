@@ -698,22 +698,33 @@ Author: Hadi Hilal
         });
     })();
 
-    // Confirm before inline delete forms
+    // Metronic Swal confirmation for destructive / flagged forms.
+    // Supports: DELETE forms, [data-confirm], [data-confirm-delete].
     document.addEventListener('submit', function (e) {
         const form = e.target;
-        if (!form.matches('form[method="POST"]') || !form.querySelector('input[name="_method"][value="DELETE"]')) return;
-        if (form.dataset.confirmed === 'true') return;
+        if (!(form instanceof HTMLFormElement)) return;
+        if (form.dataset.confirmed === 'true' || form.hasAttribute('data-skip-confirm')) return;
+
+        const hasConfirmAttr = form.hasAttribute('data-confirm') || form.hasAttribute('data-confirm-delete');
+        const isDelete = !!form.querySelector('input[name="_method"][value="DELETE"]');
+        if (!hasConfirmAttr && !isDelete) return;
 
         e.preventDefault();
+
+        const customText = form.getAttribute('data-confirm') || form.getAttribute('data-confirm-delete');
         Swal.fire({
-            text: @json(__('Are you sure you want to delete it?')),
+            text: (customText && customText.trim() !== '')
+                ? customText
+                : @json(__('Are you sure you want to delete it?')),
             icon: 'warning',
             showCancelButton: true,
             buttonsStyling: false,
-            confirmButtonText: @json(__('Yes, Delete!')),
+            confirmButtonText: isDelete
+                ? @json(__('Yes, Delete!'))
+                : @json(__('Yes')),
             cancelButtonText: @json(__('No, Cancel')),
             customClass: {
-                confirmButton: 'btn fw-bold btn-danger',
+                confirmButton: isDelete ? 'btn fw-bold btn-danger' : 'btn fw-bold btn-primary',
                 cancelButton: 'btn fw-bold btn-active-light-primary',
             },
         }).then(function (result) {

@@ -39,6 +39,7 @@
         "mark_sent": "Mark as Sent",
         "mark_paid": "Record Payment",
         "void": "Void Invoice",
+        "delete": "Delete Invoice",
         "download_pdf": "Download PDF",
         "from_deal": "Generate Invoice",
         "add_line": "Add Line"
@@ -49,6 +50,8 @@
         "sent": "Invoice marked as sent.",
         "paid": "Payment recorded and ledger updated.",
         "voided": "Invoice voided.",
+        "deleted": "Invoice and related ledger entries were deleted.",
+        "confirm_delete": "Delete this invoice permanently? Related ledger entries will also be removed.",
         "deal_invoice_failed": "Could not generate invoice for this deal.",
         "subscription_renewal_note": "Subscription renewal: :name (:date)",
         "deal_invoice_note": "Invoice for deal: :title",

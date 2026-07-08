@@ -3,6 +3,10 @@
     "An Error Occurred!": "Bir Hata Oluştu!",
     "The selected file is not valid.": "Seçilen dosya geçerli değil.",
     "File type is not allowed.": "Dosya türüne izin verilmiyor.",
-    "The Operation Done Successfully": "İşlem Başarıyla Tamamlandı"
+    "The Operation Done Successfully": "İşlem Başarıyla Tamamlandı",
+    "Auto translate to other languages": "Diğer dillere otomatik çevir",
+    "If enabled, content will be automatically translated into other languages when you save.": "Etkinleştirildiğinde, içerik kaydedildiğinde diğer dillere otomatik olarak çevrilir.",
+    "Translation": "Çeviri",
+    "Choose whether to update all language versions when saving.": "Kaydederken tüm dil sürümlerinin güncellenip güncellenmeyeceğini seçin."
 }
 

@@ -2,9 +2,7 @@
 
 namespace Modules\Product\Repositories;
 
-use Exception;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Product\Models\ProductCategory;
@@ -69,47 +67,27 @@ class ProductCategoryRepository
 
     private function prepareCategoryData(array $data): array
     {
-        $locale = app()->getLocale();
+        $autoTranslate = wantsAutoTranslate($data);
+        unset($data['auto_translate']);
 
-        return array_merge($data, $this->buildTranslations([
+        return array_merge($data, buildTranslations([
             'name' => $data['name'] ?? '',
             'description' => $data['description'] ?? '',
-        ], $locale));
+        ], $autoTranslate));
     }
 
     private function prepareCategoryUpdateData(array $data, ProductCategory $category): array
     {
         $locale = app()->getLocale();
+        $autoTranslate = wantsAutoTranslate($data);
+        unset($data['auto_translate']);
 
-        return array_merge($data, $this->buildTranslations([
+        return array_merge($data, buildTranslations([
             'name' => $data['name'] ?? $category->getTranslation('name', $locale, false),
             'description' => $data['description'] ?? $category->getTranslation('description', $locale, false),
-        ], $locale));
-    }
-
-    private function buildTranslations(array $fields, string $locale): array
-    {
-        $translations = [];
-
-        foreach ($fields as $field => $value) {
-            $translations[$field] = [$locale => $value];
-
-            foreach (otherLangs() as $lang) {
-                if ($value === '' || $value === null) {
-                    $translations[$field][$lang] = '';
-
-                    continue;
-                }
-
-                try {
-                    $translations[$field][$lang] = autoGoogleTranslator($lang, (string) $value);
-                } catch (Exception $e) {
-                    Log::error($e->getMessage());
-                    $translations[$field][$lang] = $value;
-                }
-            }
-        }
-
-        return $translations;
+        ], $autoTranslate, [
+            'name' => $category->getTranslations('name'),
+            'description' => $category->getTranslations('description'),
+        ]));
     }
 }

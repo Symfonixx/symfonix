@@ -21,6 +21,13 @@
                         </div>
                     @endforeach
                     <div class="mb-3">
+                        <div class="form-check form-switch form-check-custom form-check-solid">
+                            <input type="hidden" name="auto_translate" value="0">
+                            <input class="form-check-input" type="checkbox" name="auto_translate" value="1" id="editCatAutoTranslate{{$blogs_category->id}}">
+                            <label class="form-check-label" for="editCatAutoTranslate{{$blogs_category->id}}">{{ __('Auto translate to other languages') }}</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label for="slug" class="form-label">{{ __('Slug') }}</label>
                         <input type="text" class="form-control" name="slug" value="{{$blogs_category->slug}}" required readonly>
                     </div>

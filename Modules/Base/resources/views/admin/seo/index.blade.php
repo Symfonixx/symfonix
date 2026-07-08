@@ -97,6 +97,14 @@
                         counterTarget="seo-about"
                     />
                 </x-admin.settings-section>
+
+                <x-admin.settings-section
+                    icon="bi-translate"
+                    :title="__('Translation')"
+                    :description="__('Choose whether to update all language versions when saving.')"
+                >
+                    <x-admin.auto-translate-checkbox :default="false" class="mb-0"/>
+                </x-admin.settings-section>
             </x-admin.create-card>
         </div>
 

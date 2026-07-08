@@ -53,8 +53,7 @@
                                       action="{{ route('admin.finance.expense-categories.destroy', $category->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
-                                            onclick="return confirm(@json(__('Are you sure?')))">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

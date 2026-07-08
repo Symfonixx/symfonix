@@ -184,7 +184,7 @@
     </div>
 </div>
 
-<div class="row mb-0">
+<div class="row mb-8">
     <div class="col-xl-3">
         <div class="fs-6 fw-bold mt-2 mb-3">{{ __('project::use_case.fields.featured') }}</div>
     </div>
@@ -195,3 +195,5 @@
         </div>
     </div>
 </div>
+
+<x-admin.auto-translate-checkbox :default="! $useCaseData" class="mb-0"/>

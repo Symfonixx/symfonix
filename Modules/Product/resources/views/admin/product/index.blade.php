@@ -123,8 +123,7 @@
                                 <form class="d-inline" method="POST" action="{{ route('admin.products.destroy', $product) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
-                                            onclick="return confirm(@json(__('Are you sure?')))">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

@@ -48,6 +48,7 @@ class TeamController extends Controller
             'avatar' => $request->file('avatar'),
             'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
         $this->teamRepository->store($data);
 
         return redirect()->route('admin.teams.index');
@@ -72,6 +73,7 @@ class TeamController extends Controller
             'avatar' => $request->file('avatar'),
             'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
         ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
         $this->teamRepository->update($data, $team);
 
         return redirect()->route('admin.teams.index');

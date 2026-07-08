@@ -73,8 +73,25 @@
                                     @if($this->canDelete($entry))
                                         <button type="button"
                                                 class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
-                                                wire:click="deleteTransaction({{ $entry->id }})"
-                                                wire:confirm="{{ __('finance::finance.messages.confirm_delete_transaction') }}"
+                                                x-data
+                                                @click.prevent="
+                                                    Swal.fire({
+                                                        text: @js(__('finance::finance.messages.confirm_delete_transaction')),
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        buttonsStyling: false,
+                                                        confirmButtonText: @js(__('Yes Delete!')),
+                                                        cancelButtonText: @js(__('No Cancel')),
+                                                        customClass: {
+                                                            confirmButton: 'btn fw-bold btn-danger',
+                                                            cancelButton: 'btn fw-bold btn-active-light-primary'
+                                                        }
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            $wire.deleteTransaction({{ $entry->id }});
+                                                        }
+                                                    })
+                                                "
                                                 wire:loading.attr="disabled"
                                                 wire:target="deleteTransaction({{ $entry->id }})"
                                                 title="{{ __('finance::finance.actions.delete') }}">

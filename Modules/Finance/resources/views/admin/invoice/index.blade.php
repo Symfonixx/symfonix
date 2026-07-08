@@ -90,6 +90,14 @@
                                 <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}" class="btn btn-sm btn-light">
                                     <i class="bi bi-file-pdf"></i>
                                 </a>
+                                <form class="d-inline" method="POST" action="{{ route('admin.finance.invoices.destroy', $invoice) }}"
+                                      data-confirm="{{ __('finance::invoice.messages.confirm_delete') }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                        <i class="bi bi-trash fs-5"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @empty

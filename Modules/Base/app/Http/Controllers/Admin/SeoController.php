@@ -28,9 +28,10 @@ class SeoController extends Controller
     public function store(Request $request)
     {
         $data = $request->input('data', []);
+        $autoTranslate = $request->boolean('auto_translate');
         if (is_array($data)) {
             foreach ($data as $key => $value) {
-                Seo::set($key, $value === null ? '' : $value);
+                Seo::set($key, $value === null ? '' : $value, $autoTranslate);
             }
         }
         session()->flushMessage(true);

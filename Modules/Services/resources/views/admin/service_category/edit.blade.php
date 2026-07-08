@@ -79,6 +79,8 @@
                 <textarea class="form-control form-control-solid" name="description" rows="3" placeholder="{{__('Description')}}">{{ old('description', $service_category->getTranslation('description', app()->getLocale(), false)) }}</textarea>
             </div>
         </div>
+
+        <x-admin.auto-translate-checkbox :default="false" class="mb-0"/>
     </x-admin.create-card>
 </x-admin-layout>
 

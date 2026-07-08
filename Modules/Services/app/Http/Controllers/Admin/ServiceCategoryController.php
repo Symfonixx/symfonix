@@ -41,6 +41,7 @@ class ServiceCategoryController extends Controller
             'description' => $request->input('description'),
             'color_code' => $request->input('color_code'),
             'image' => $request->file('image'),
+            'auto_translate' => $request->boolean('auto_translate'),
         ];
         $this->categoryRepository->store($data);
 
@@ -60,6 +61,7 @@ class ServiceCategoryController extends Controller
             'description' => $request->input('description'),
             'color_code' => $request->input('color_code'),
             'image' => $request->file('image'),
+            'auto_translate' => $request->boolean('auto_translate'),
         ];
         $this->categoryRepository->update($data, $service_category);
 

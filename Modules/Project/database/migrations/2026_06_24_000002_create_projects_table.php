@@ -8,6 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('projects')) {
+            if (! Schema::hasColumn('projects', 'attachments')) {
+                Schema::table('projects', function (Blueprint $table) {
+                    $table->json('attachments')->nullable()->after('due_date');
+                });
+            }
+
+            return;
+        }
+
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');

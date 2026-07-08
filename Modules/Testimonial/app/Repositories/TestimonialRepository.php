@@ -4,7 +4,7 @@ namespace Modules\Testimonial\Repositories;
 
 use Exception;
 use Illuminate\Support\Collection;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Modules\Cms\Enums\CmsStatus;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Testimonial\Models\Testimonial;
@@ -29,12 +29,14 @@ class TestimonialRepository
     public function update(array $data, Testimonial $testimonial): mixed
     {
         return $this->execute(function () use ($data, $testimonial) {
-            $locale = app()->getLocale();
-            $transQuote = $testimonial->getTranslations('quote');
-            $transQuote[$locale] = $data['quote'] ?? ($transQuote[$locale] ?? '');
+            $translations = buildTranslations([
+                'quote' => $data['quote'] ?? '',
+            ], wantsAutoTranslate($data), [
+                'quote' => $testimonial->getTranslations('quote'),
+            ]);
 
             $testimonial->update([
-                'quote' => $transQuote,
+                'quote' => $translations['quote'],
                 'status' => $data['status'] instanceof CmsStatus ? $data['status']->value : $data['status'],
             ]);
 

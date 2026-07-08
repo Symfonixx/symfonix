@@ -2,7 +2,6 @@
 
 namespace Modules\Base\Models;
 
-use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -49,33 +48,23 @@ class Seo extends Model
     /**
      * Set SEO value by key.
      */
-    public static function set(string $key, string $value): bool
+    public static function set(string $key, string $value, ?bool $autoTranslate = null): bool
     {
         $seo = self::getAllSeoEntries();
-
         $model = $seo->firstWhere('key', $key);
+        $shouldTranslate = $autoTranslate ?? wantsAutoTranslate();
+
+        $translations = buildFieldTranslations(
+            $value,
+            $shouldTranslate,
+            $model?->getTranslations('value')
+        );
 
         if ($model) {
-            // Update existing record: only change the current locale, keep other locales.
-            $translations = $model->getTranslations('value');
-            $locale = app()->getLocale();
-            $translations[$locale] = $value;
-
             $model->update(['value' => $translations]);
         } else {
-            // Create new record: generate translations for all supported languages.
-            $translations = [app()->getLocale() => $value];
-
-            foreach (otherLangs() as $lang) {
-                try {
-                    $translations[$lang] = autoGoogleTranslator($lang, $value);
-                } catch (Exception $e) {
-                    session()->flushMessage(false, $e->getMessage(), $e);
-                }
-            }
-
             $model = self::create(['key' => $key, 'value' => $translations]);
-            $seo->push($model); // Update the cached collection.
+            $seo->push($model);
         }
 
         self::cacheSeoEntries($seo);

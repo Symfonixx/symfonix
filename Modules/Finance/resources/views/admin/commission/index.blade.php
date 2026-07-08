@@ -51,10 +51,10 @@
                             </td>
                             <td class="text-end">
                                 @if($commission->status === 'pending')
-                                    <form method="POST" action="{{ route('admin.finance.commissions.payout', $commission) }}" class="d-inline">
+                                    <form method="POST" action="{{ route('admin.finance.commissions.payout', $commission) }}"
+                                          class="d-inline" data-confirm="{{ __('Are you sure?') }}">
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-light-primary"
-                                                onclick="return confirm(@json(__('Are you sure?')))">
+                                        <button type="submit" class="btn btn-sm btn-light-primary">
                                             <i class="bi bi-cash-coin me-1"></i>{{ __('finance::commission.actions.record_payout') }}
                                         </button>
                                     </form>

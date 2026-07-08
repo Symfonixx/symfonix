@@ -50,6 +50,7 @@ class ServiceController extends Controller
             'service_category_id' => $request->input('service_category_id'),
             'status' => $request->input('status') ? ServiceStatus::PUBLISHED : ServiceStatus::ARCHIVED,
             'featured' => $request->boolean('featured'),
+            'auto_translate' => $request->boolean('auto_translate'),
         ];
         $this->serviceRepository->store($data);
 
@@ -75,6 +76,7 @@ class ServiceController extends Controller
             'service_category_id' => $request->input('service_category_id'),
             'status' => $request->input('status') ? ServiceStatus::PUBLISHED : ServiceStatus::ARCHIVED,
             'featured' => $request->boolean('featured'),
+            'auto_translate' => $request->boolean('auto_translate'),
         ];
         $this->serviceRepository->update($data, $service);
 

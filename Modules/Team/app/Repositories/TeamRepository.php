@@ -2,9 +2,7 @@
 
 namespace Modules\Team\Repositories;
 
-use Exception;
 use Illuminate\Support\Collection;
-use Log;
 use Modules\Cms\Enums\CmsStatus;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Core\Traits\FileTrait;
@@ -41,51 +39,33 @@ class TeamRepository
     {
         $path = $this->handleImageUpload($data, $existingImage);
         $resumePath = $this->handleResumeUpload($data, null);
-        $transName = [app()->getLocale() => $data['name']];
-        $transPosition = [app()->getLocale() => $data['position']];
+        $translations = buildTranslations([
+            'name' => $data['name'] ?? '',
+            'position' => $data['position'] ?? '',
+        ], wantsAutoTranslate($data));
 
-        foreach (otherLangs() as $lang) {
-            try {
-                $transName[$lang] = autoGoogleTranslator($lang, $data['name'] ?? '');
-                $transPosition[$lang] = autoGoogleTranslator($lang, $data['position'] ?? '');
-            } catch (Exception $e) {
-                Log::error($e->getMessage());
-            }
-        }
-
-        return array_merge($data, [
+        return array_merge($data, $translations, [
             'avatar' => $path,
             'resume' => $resumePath,
-            'name' => $transName,
-            'position' => $transPosition,
-            // Persist status as enum string into the status column
             'status' => $data['status'] instanceof CmsStatus ? $data['status']->value : $data['status'],
         ]);
     }
 
-    /**
-     * Prepare team data for update without auto translation.
-     * Only the current locale is updated; other locales are preserved.
-     */
     private function prepareTeamUpdateData(array $data, Team $team): array
     {
         $path = $this->handleImageUpload($data, $team->avatar);
         $resumePath = $this->handleResumeUpload($data, $team->resume);
+        $translations = buildTranslations([
+            'name' => $data['name'] ?? '',
+            'position' => $data['position'] ?? '',
+        ], wantsAutoTranslate($data), [
+            'name' => $team->getTranslations('name'),
+            'position' => $team->getTranslations('position'),
+        ]);
 
-        $locale = app()->getLocale();
-
-        $transName = $team->getTranslations('name');
-        $transPosition = $team->getTranslations('position');
-
-        $transName[$locale] = $data['name'] ?? ($transName[$locale] ?? '');
-        $transPosition[$locale] = $data['position'] ?? ($transPosition[$locale] ?? '');
-
-        return array_merge($data, [
+        return array_merge($data, $translations, [
             'avatar' => $path,
             'resume' => $resumePath,
-            'name' => $transName,
-            'position' => $transPosition,
-            // Persist status as enum string into the status column
             'status' => $data['status'] instanceof CmsStatus ? $data['status']->value : $data['status'],
         ]);
     }

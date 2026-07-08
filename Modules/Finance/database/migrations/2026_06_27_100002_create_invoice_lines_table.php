@@ -8,6 +8,20 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('invoice_lines')) {
+            if (! Schema::hasColumn('invoice_lines', 'product_id')) {
+                Schema::table('invoice_lines', function (Blueprint $table) {
+                    $table->foreignId('product_id')
+                        ->nullable()
+                        ->after('service_id')
+                        ->constrained('products')
+                        ->nullOnDelete();
+                });
+            }
+
+            return;
+        }
+
         Schema::create('invoice_lines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('invoice_id')->constrained('invoices')->cascadeOnDelete();

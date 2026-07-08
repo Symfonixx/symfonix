@@ -8,6 +8,21 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('invoices')) {
+            if (! Schema::hasColumn('invoices', 'project_id')) {
+                Schema::table('invoices', function (Blueprint $table) {
+                    $table->foreignId('project_id')
+                        ->nullable()
+                        ->after('deal_id')
+                        ->constrained('projects')
+                        ->nullOnDelete();
+                    $table->index('project_id');
+                });
+            }
+
+            return;
+        }
+
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_number')->unique();

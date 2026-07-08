@@ -108,11 +108,11 @@
                                 @endif
                             </td>
                             <td class="text-end">
-                                <form class="d-inline" method="POST" action="{{ route('admin.finance.product-sales.destroy', $sale) }}">
+                                <form class="d-inline" method="POST" action="{{ route('admin.finance.product-sales.destroy', $sale) }}"
+                                      data-confirm="{{ __('finance::product_sale.messages.confirm_delete') }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
-                                            onclick="return confirm(@json(__('finance::product_sale.messages.confirm_delete')))">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

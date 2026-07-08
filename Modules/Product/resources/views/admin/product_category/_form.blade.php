@@ -40,6 +40,8 @@
     </div>
 </div>
 
+<x-admin.auto-translate-checkbox :default="! $categoryData"/>
+
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function () {

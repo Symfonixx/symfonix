@@ -3,9 +3,7 @@
 namespace Modules\Cms\Repositories\Faq;
 
 use Config;
-use Exception;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Log;
 use Modules\Cms\Enums\CmsStatus;
 use Modules\Cms\Models\Faq;
 use Modules\Core\Traits\ExceptionHandlerTrait;
@@ -38,43 +36,30 @@ class FaqModelRepository implements FaqRepository
 
     private function prepareFaqData(array $data): array
     {
-        $transQuestion = [app()->getLocale() => $data['question']];
-        $transAnswer = [app()->getLocale() => $data['answer']];
+        $autoTranslate = wantsAutoTranslate($data);
+        $translations = buildTranslations([
+            'question' => $data['question'] ?? '',
+            'answer' => $data['answer'] ?? '',
+        ], $autoTranslate);
 
-        foreach (otherLangs() as $lang) {
-            try {
-                $transQuestion[$lang] = autoGoogleTranslator($lang, $data['question'] ?? '');
-                $transAnswer[$lang] = autoGoogleTranslator($lang, $data['answer'] ?? '');
-            } catch (Exception $e) {
-                Log::error($e->getMessage());
-            }
-        }
-
-        return array_merge($data, [
-            'question' => $transQuestion,
-            'answer' => $transAnswer,
+        return array_merge($data, $translations, [
             'rank' => $data['rank'] ?? 0,
             'status' => $data['status'] instanceof CmsStatus ? $data['status']->value : $data['status'],
         ]);
     }
 
-    /**
-     * Prepare FAQ data for update without auto translation.
-     * Only the current locale is updated; other locales are kept as-is.
-     */
     private function prepareFaqUpdateData(array $data, Faq $faq): array
     {
-        $locale = app()->getLocale();
+        $autoTranslate = wantsAutoTranslate($data);
+        $translations = buildTranslations([
+            'question' => $data['question'] ?? '',
+            'answer' => $data['answer'] ?? '',
+        ], $autoTranslate, [
+            'question' => $faq->getTranslations('question'),
+            'answer' => $faq->getTranslations('answer'),
+        ]);
 
-        $transQuestion = $faq->getTranslations('question');
-        $transAnswer = $faq->getTranslations('answer');
-
-        $transQuestion[$locale] = $data['question'] ?? ($transQuestion[$locale] ?? '');
-        $transAnswer[$locale] = $data['answer'] ?? ($transAnswer[$locale] ?? '');
-
-        return array_merge($data, [
-            'question' => $transQuestion,
-            'answer' => $transAnswer,
+        return array_merge($data, $translations, [
             'rank' => $data['rank'] ?? $faq->rank,
             'status' => $data['status'] instanceof CmsStatus ? $data['status']->value : $data['status'],
         ]);

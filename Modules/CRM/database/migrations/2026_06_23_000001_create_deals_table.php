@@ -8,6 +8,23 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('deals')) {
+            if (! Schema::hasTable('deal_service')) {
+                Schema::create('deal_service', function (Blueprint $table) {
+                    $table->id();
+                    $table->foreignId('deal_id')->constrained('deals')->cascadeOnDelete();
+                    $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
+                    $table->unsignedInteger('quantity')->default(1);
+                    $table->decimal('unit_price', 15, 2)->default(0);
+                    $table->timestamps();
+
+                    $table->unique(['deal_id', 'service_id']);
+                });
+            }
+
+            return;
+        }
+
         Schema::create('deals', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -30,9 +47,11 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::table('leads', function (Blueprint $table) {
-            $table->foreign('deal_id')->references('id')->on('deals')->nullOnDelete();
-        });
+        if (Schema::hasTable('leads') && Schema::hasColumn('leads', 'deal_id')) {
+            Schema::table('leads', function (Blueprint $table) {
+                $table->foreign('deal_id')->references('id')->on('deals')->nullOnDelete();
+            });
+        }
 
         Schema::create('deal_service', function (Blueprint $table) {
             $table->id();
@@ -50,9 +69,11 @@ return new class extends Migration
     {
         Schema::dropIfExists('deal_service');
 
-        Schema::table('leads', function (Blueprint $table) {
-            $table->dropForeign(['deal_id']);
-        });
+        if (Schema::hasTable('leads') && Schema::hasColumn('leads', 'deal_id')) {
+            Schema::table('leads', function (Blueprint $table) {
+                $table->dropForeign(['deal_id']);
+            });
+        }
 
         Schema::dropIfExists('deals');
     }

@@ -153,5 +153,7 @@
             </div>
         </div>
 
+        <x-admin.auto-translate-checkbox :default="true" class="mb-0"/>
+
     </x-admin.create-card>
 </x-admin-layout>
