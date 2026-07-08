@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Base\Http\Controllers\Admin\BackupController;
 use Modules\Base\Http\Controllers\Admin\FileManager;
 use Modules\Base\Http\Controllers\Admin\LogController;
 use Modules\Base\Http\Controllers\Admin\SeoController;
@@ -14,6 +15,11 @@ Route::middleware('can:Settings Management')->group(function () {
     Route::get('system-configurations', [SystemConfigurationController::class, 'index'])->name('system-configurations.index');
     Route::post('system-configurations', [SystemConfigurationController::class, 'store'])->name('system-configurations.store');
     Route::resource('seo', SeoController::class)->only(['index', 'store']);
+
+    Route::get('backups', [BackupController::class, 'index'])->name('backups.index');
+    Route::post('backups', [BackupController::class, 'store'])->name('backups.store');
+    Route::get('backups/{filename}/download', [BackupController::class, 'download'])->name('backups.download');
+    Route::delete('backups/{filename}', [BackupController::class, 'destroy'])->name('backups.destroy');
 });
 
 // Group for Logs Management

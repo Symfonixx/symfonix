@@ -32,7 +32,9 @@ class BaseServiceProvider extends ServiceProvider
      */
     protected function registerCommands(): void
     {
-        // $this->commands([]);
+        $this->commands([
+            \Modules\Base\Console\RunAutoBackupCommand::class,
+        ]);
     }
 
     /**
@@ -40,10 +42,10 @@ class BaseServiceProvider extends ServiceProvider
      */
     protected function registerCommandSchedules(): void
     {
-        // $this->app->booted(function () {
-        //     $schedule = $this->app->make(Schedule::class);
-        //     $schedule->command('inspire')->hourly();
-        // });
+        $this->app->booted(function () {
+            $schedule = $this->app->make(\Illuminate\Console\Scheduling\Schedule::class);
+            $schedule->command('base:run-auto-backup')->daily()->withoutOverlapping();
+        });
     }
 
     /**

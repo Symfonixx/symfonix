@@ -48,6 +48,15 @@ class SystemConfigurationController extends Controller
 
         $data = $request->input('data', []);
         if (is_array($data)) {
+            if (array_key_exists('auto_backup_interval_days', $data)) {
+                $days = (int) $data['auto_backup_interval_days'];
+                $data['auto_backup_interval_days'] = (string) max(1, min(365, $days));
+            }
+
+            if (array_key_exists('auto_backup_enabled', $data)) {
+                $data['auto_backup_enabled'] = filter_var($data['auto_backup_enabled'], FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
+            }
+
             foreach ($data as $key => $value) {
                 Settings::set($key, $value === null ? '' : $value);
             }

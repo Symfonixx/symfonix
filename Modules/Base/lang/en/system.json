@@ -24,5 +24,16 @@
         "logo_hint": "Displayed in the sidebar and mobile header. Recommended size: 245 × 45 px.",
         "min_logo": "Admin Minimized Logo",
         "min_logo_hint": "Shown when the sidebar is collapsed. Falls back to the admin logo when not set. Recommended size: 50 × 50 px."
+    },
+    "backup": {
+        "title": "Automatic Backup",
+        "description": "Schedule database backups. Manual backups can also be created from the Backups page.",
+        "enabled": "Enable Automatic Backup",
+        "enabled_label": "Run backups automatically",
+        "enabled_hint": "Uses the interval below. Requires the server cron: php artisan schedule:run",
+        "interval_days": "Backup Interval (Days)",
+        "interval_days_hint": "Create an automatic backup every N days (1–365).",
+        "last_run": "Last Automatic Backup",
+        "manage_link": "Manage backups"
     }
 }

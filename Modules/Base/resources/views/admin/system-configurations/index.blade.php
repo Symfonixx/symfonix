@@ -107,5 +107,65 @@
                 :hint="__('base::system.admin_notifications.email_hint')"
             />
         </x-admin.settings-section>
+
+        <x-admin.settings-section
+            icon="bi-database-down"
+            :title="__('base::system.backup.title')"
+            :description="__('base::system.backup.description')"
+        >
+            <div class="row mb-6 settings-field">
+                <div class="col-lg-4">
+                    <label class="settings-field-label" for="field-auto-backup-enabled">
+                        <i class="bi bi-arrow-repeat text-primary me-1"></i>
+                        {{ __('base::system.backup.enabled') }}
+                    </label>
+                    <div class="settings-field-hint">{{ __('base::system.backup.enabled_hint') }}</div>
+                </div>
+                <div class="col-lg-8">
+                    <input type="hidden" name="data[auto_backup_enabled]" value="0">
+                    <div class="form-check form-switch form-check-custom form-check-solid mt-2">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="field-auto-backup-enabled"
+                            name="data[auto_backup_enabled]"
+                            value="1"
+                            @checked(old('data.auto_backup_enabled', $settings->get('auto_backup_enabled', '0')) == '1')
+                        />
+                        <label class="form-check-label" for="field-auto-backup-enabled">
+                            {{ __('base::system.backup.enabled_label') }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <x-admin.settings-field
+                :label="__('base::system.backup.interval_days')"
+                name="data[auto_backup_interval_days]"
+                type="number"
+                :value="$settings->get('auto_backup_interval_days', '7')"
+                placeholder="7"
+                icon="bi-calendar3"
+                :hint="__('base::system.backup.interval_days_hint')"
+            />
+            @if($settings->get('auto_backup_last_run'))
+                <div class="row mb-2">
+                    <div class="col-lg-4">
+                        <span class="settings-field-label">{{ __('base::system.backup.last_run') }}</span>
+                    </div>
+                    <div class="col-lg-8">
+                        <span class="text-gray-700 fw-semibold">{{ $settings->get('auto_backup_last_run') }}</span>
+                        <a href="{{ route('admin.backups.index') }}" class="ms-3 fs-7 fw-semibold">
+                            {{ __('base::system.backup.manage_link') }}
+                        </a>
+                    </div>
+                </div>
+            @else
+                <div class="text-muted fs-7">
+                    <a href="{{ route('admin.backups.index') }}" class="fw-semibold">
+                        {{ __('base::system.backup.manage_link') }}
+                    </a>
+                </div>
+            @endif
+        </x-admin.settings-section>
     </x-admin.create-card>
 </x-admin-layout>

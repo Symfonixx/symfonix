@@ -24,5 +24,16 @@
         "logo_hint": "Kenar çubuğunda ve mobil başlıkta gösterilir. Önerilen boyut: 245 × 45 px.",
         "min_logo": "Küçültülmüş Yönetim Logosu",
         "min_logo_hint": "Kenar çubuğu daraltıldığında gösterilir. Ayarlanmazsa yönetim logosuna geri döner. Önerilen boyut: 50 × 50 px."
+    },
+    "backup": {
+        "title": "Otomatik Yedekleme",
+        "description": "Veritabanı yedeklerini zamanlayın. Manuel yedekler Yedeklemeler sayfasından da oluşturulabilir.",
+        "enabled": "Otomatik Yedeklemeyi Etkinleştir",
+        "enabled_label": "Yedekleri otomatik çalıştır",
+        "enabled_hint": "Aşağıdaki aralığı kullanır. Sunucu cron gerekir: php artisan schedule:run",
+        "interval_days": "Yedekleme Aralığı (Gün)",
+        "interval_days_hint": "Her N günde bir otomatik yedek oluştur (1–365).",
+        "last_run": "Son Otomatik Yedek",
+        "manage_link": "Yedekleri yönet"
     }
 }

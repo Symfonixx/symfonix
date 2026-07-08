@@ -478,6 +478,16 @@
     </div>
 @endcan
 
+@can('Settings Management')
+    <div class="menu-item">
+        <a class="menu-link {{ isset($active['backups']) ? 'active' : '' }}"
+           href="{{ route('admin.backups.index') }}">
+            <span class="menu-icon"><i class="bi bi-database-down"></i></span>
+            <span class="menu-title">{{ __('base::backup.title') }}</span>
+        </a>
+    </div>
+@endcan
+
 @can('Logs Management')
     <div class="menu-item">
         <a class="menu-link {{ isset($active['logs']) ? 'active' : '' }}"
