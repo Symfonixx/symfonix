@@ -62,12 +62,27 @@
                 </td>
                 <td>
                     <span class="badge badge-light-{{$testimonial->status == 'Published' ? 'success' : 'warning'}} fs-7 fw-bold">
-                        {{__($testimonial->status)}}
+                        {{ $testimonial->status == 'Published' ? __('Published') : __('Pending Approval') }}
                     </span>
                 </td>
                 <td>{{$testimonial->created_at->diffForHumans() }}</td>
                 <td class="text-end">
                     <div class="d-flex align-items-center justify-content-end gap-2">
+                        @if($testimonial->status !== 'Published')
+                            <form action="{{ route('admin.testimonials.approve', $testimonial) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-success" title="{{ __('Approve for Website') }}">
+                                    <i class="bi bi-check-lg"></i>
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{ route('admin.testimonials.unpublish', $testimonial) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-warning" title="{{ __('Remove from Website') }}">
+                                    <i class="bi bi-eye-slash"></i>
+                                </button>
+                            </form>
+                        @endif
                         <button type="button" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#testimonialModal{{ $testimonial->id }}">
                             <i class="bi bi-eye"></i> {{ __('View Details') }}
                         </button>
@@ -114,7 +129,7 @@
                                             <strong>{{ __('Status') }}:</strong>
                                             <p>
                                                 <span class="badge badge-light-{{$testimonial->status == 'Published' ? 'success' : 'warning'}} fs-7 fw-bold">
-                                                    {{__($testimonial->status)}}
+                                                    {{ $testimonial->status == 'Published' ? __('Published') : __('Pending Approval') }}
                                                 </span>
                                             </p>
                                         </div>

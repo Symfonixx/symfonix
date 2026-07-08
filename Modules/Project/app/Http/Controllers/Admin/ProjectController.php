@@ -84,6 +84,7 @@ class ProjectController extends Controller
             'company',
             'status',
             'deal',
+            'testimonial.customer:id,name,email,img',
             'invoices' => fn ($q) => $q->with('company:id,name'),
             'assignments.employee',
         ]);

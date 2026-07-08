@@ -40,7 +40,8 @@
         "profit_or_loss": "Profit / Loss",
         "margin_rate": "Margin",
         "assignment_status": "Status",
-        "notes": "Notes"
+        "notes": "Notes",
+        "submitted_at": "Submitted At"
     },
     "actions": {
         "add": "Add Project",
@@ -52,7 +53,9 @@
         "add_invoice": "Add Invoice",
         "assign_employee": "Assign",
         "finish_work": "Finish",
-        "log_expense": "Log Expense"
+        "log_expense": "Log Expense",
+        "approve_review": "Approve for Website",
+        "unpublish_review": "Remove from Website"
     },
     "search": {
         "placeholder": "Search projects"
@@ -62,6 +65,12 @@
         "all_companies": "All Companies",
         "all_statuses": "All Statuses"
     },
+    "tabs": {
+        "overview": "Overview",
+        "team": "Team",
+        "finance": "Finance",
+        "review": "Review"
+    },
     "sections": {
         "basic_information": "Basic Information",
         "collection": "Billing Progress",
@@ -70,7 +79,13 @@
         "expenses": "Project Expenses",
         "invoices": "Project Invoices",
         "add_invoice": "Add Invoice",
-        "attachments": "Attachments"
+        "attachments": "Attachments",
+        "client_review": "Client Review",
+        "quick_actions": "Quick Actions"
+    },
+    "review": {
+        "pending": "Pending Approval",
+        "approved": "Published on Website"
     },
     "payment_status": {
         "unpaid": "Unpaid",
@@ -85,7 +100,8 @@
         "deal": "Link an open or won CRM deal. Deals already linked to another project are hidden.",
         "attachments": "Upload multiple files (documents, archives, etc.). PDF and image files are not allowed. Max 10 MB per file.",
         "profit_and_loss": "Profit or loss = invoiced amount − (labor cost + project expenses).",
-        "labor_cost": "Labor cost uses the employee’s latest monthly salary ÷ :days working days × days assigned to this project."
+        "labor_cost": "Labor cost uses the employee’s latest monthly salary ÷ :days working days × days assigned to this project.",
+        "client_review": "Only approved reviews appear as testimonials on the public website."
     },
     "placeholders": {
         "title": "Enter project title",
@@ -105,7 +121,8 @@
         "employee_already_assigned": "This employee is already actively assigned to the project.",
         "confirm_remove_employee": "Remove this employee assignment?",
         "expense_logged": "Project expense posted to finance.",
-        "expense_description": "Project expense: :title"
+        "expense_description": "Project expense: :title",
+        "no_review": "No client review submitted for this project yet."
     },
     "validation": {
         "attachment_pdf_not_allowed": "PDF files are not allowed as project attachments.",

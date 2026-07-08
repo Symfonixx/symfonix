@@ -82,7 +82,9 @@
                                 class="portal-badge mt-3"
                                 :class="project.review.status === 'Published' ? 'portal-badge--paid' : 'portal-badge--invoice'"
                             >
-                                {{ project.review.status }}
+                                {{ project.review.status === 'Published'
+                                    ? t('projects.review_status_published')
+                                    : t('projects.review_status_pending') }}
                             </span>
                         </div>
                         <form v-else-if="project.can_review" @submit.prevent="submitReview">

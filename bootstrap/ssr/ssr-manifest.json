@@ -36,6 +36,7 @@
   "Modules/User/resources/assets/js/Pages/Auth/Register.vue?vue&type=style&index=0&scoped=daff4a9e&lang.css": [],
   "Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": [],
   "Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue?vue&type=style&index=0&scoped=f5323f04&lang.css": [],
+  "Modules/User/resources/assets/js/Pages/Auth/TwoFactorChallenge.vue": [],
   "Modules/User/resources/assets/js/Pages/Portal/ConfirmPassword.vue": [],
   "Modules/User/resources/assets/js/Pages/Portal/Dashboard.vue": [],
   "Modules/User/resources/assets/js/Pages/Portal/Profile.vue": [],

@@ -40,7 +40,8 @@
         "profit_or_loss": "ربح / خسارة",
         "margin_rate": "الهامش",
         "assignment_status": "الحالة",
-        "notes": "ملاحظات"
+        "notes": "ملاحظات",
+        "submitted_at": "تاريخ الإرسال"
     },
     "actions": {
         "add": "إضافة مشروع",
@@ -52,7 +53,9 @@
         "add_invoice": "إضافة فاتورة",
         "assign_employee": "تعيين",
         "finish_work": "إنهاء",
-        "log_expense": "تسجيل مصروف"
+        "log_expense": "تسجيل مصروف",
+        "approve_review": "اعتماد للموقع",
+        "unpublish_review": "إزالة من الموقع"
     },
     "search": {
         "placeholder": "البحث في المشاريع"
@@ -62,6 +65,12 @@
         "all_companies": "جميع الشركات",
         "all_statuses": "جميع الحالات"
     },
+    "tabs": {
+        "overview": "نظرة عامة",
+        "team": "الفريق",
+        "finance": "المالية",
+        "review": "التقييم"
+    },
     "sections": {
         "basic_information": "المعلومات الأساسية",
         "collection": "تقدم الفوترة",
@@ -70,7 +79,13 @@
         "expenses": "مصروفات المشروع",
         "invoices": "فواتير المشروع",
         "add_invoice": "إضافة فاتورة",
-        "attachments": "المرفقات"
+        "attachments": "المرفقات",
+        "client_review": "تقييم العميل",
+        "quick_actions": "إجراءات سريعة"
+    },
+    "review": {
+        "pending": "بانتظار الاعتماد",
+        "approved": "منشور على الموقع"
     },
     "payment_status": {
         "unpaid": "غير مدفوع",
@@ -85,7 +100,8 @@
         "deal": "اربط صفقة مفتوحة أو مكسوبة. الصفقات المرتبطة بمشروع آخر لا تظهر هنا.",
         "attachments": "ارفع ملفات متعددة (مستندات، أرشيفات، إلخ). ملفات PDF والصور غير مسموحة. الحد الأقصى 10 ميجابايت لكل ملف.",
         "profit_and_loss": "الربح أو الخسارة = المبلغ المفوتر − (تكلفة العمالة + مصروفات المشروع).",
-        "labor_cost": "تكلفة العمالة تعتمد على آخر راتب شهري للموظف ÷ :days يوم عمل × عدد أيام التعيين في المشروع."
+        "labor_cost": "تكلفة العمالة تعتمد على آخر راتب شهري للموظف ÷ :days يوم عمل × عدد أيام التعيين في المشروع.",
+        "client_review": "التقييمات المعتمدة فقط تظهر كشهادات على الموقع العام."
     },
     "placeholders": {
         "title": "أدخل عنوان المشروع",
@@ -105,7 +121,8 @@
         "employee_already_assigned": "هذا الموظف معيّن حالياً على المشروع.",
         "confirm_remove_employee": "هل تريد إزالة تعيين هذا الموظف؟",
         "expense_logged": "تم ترحيل مصروف المشروع إلى المالية.",
-        "expense_description": "مصروف المشروع: :title"
+        "expense_description": "مصروف المشروع: :title",
+        "no_review": "لم يُرسل العميل تقييماً لهذا المشروع بعد."
     },
     "validation": {
         "attachment_pdf_not_allowed": "ملفات PDF غير مسموحة كمرفقات للمشروع.",

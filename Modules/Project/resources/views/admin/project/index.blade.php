@@ -6,6 +6,7 @@
             ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
             ['label' => __('project::project.menu.projects')],
         ];
+        $hasFilters = filled($filters['company_id'] ?? null) || filled($filters['project_status_id'] ?? null);
     @endphp
     <x-admin.breadcrumb :pageTitle="__('project::project.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
@@ -19,15 +20,12 @@
 @endsection
 
 <x-admin-layout>
-    <div class="card mb-6">
-        <div class="card-header border-0 pt-6">
-            <h3 class="card-title fw-bold">{{ __('project::project.filters.title') }}</h3>
-        </div>
-        <div class="card-body pt-0">
+    <div class="card mb-5">
+        <div class="card-body py-5">
             <form method="GET" action="{{ route('admin.projects.index') }}" class="row g-4 align-items-end">
                 <div class="col-md-4">
-                    <label for="company_id" class="form-label">{{ __('project::project.fields.company') }}</label>
-                    <select id="company_id" name="company_id" class="form-select form-select-solid"
+                    <label for="company_id" class="form-label fs-7 text-muted mb-1">{{ __('project::project.fields.company') }}</label>
+                    <select id="company_id" name="company_id" class="form-select form-select-solid form-select-sm"
                             data-control="select2" data-placeholder="{{ __('project::project.filters.all_companies') }}">
                         <option value="">{{ __('project::project.filters.all_companies') }}</option>
                         @foreach($companies as $company)
@@ -38,8 +36,8 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="project_status_id" class="form-label">{{ __('project::project.fields.status') }}</label>
-                    <select id="project_status_id" name="project_status_id" class="form-select form-select-solid"
+                    <label for="project_status_id" class="form-label fs-7 text-muted mb-1">{{ __('project::project.fields.status') }}</label>
+                    <select id="project_status_id" name="project_status_id" class="form-select form-select-solid form-select-sm"
                             data-control="select2" data-placeholder="{{ __('project::project.filters.all_statuses') }}">
                         <option value="">{{ __('project::project.filters.all_statuses') }}</option>
                         @foreach($statuses as $status)
@@ -50,12 +48,14 @@
                     </select>
                 </div>
                 <div class="col-md-4 d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('project::project.actions.apply_filters') }}
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        <i class="bi bi-funnel me-1"></i>{{ __('project::project.actions.apply_filters') }}
                     </button>
-                    <a href="{{ route('admin.projects.index') }}" class="btn btn-light">
-                        {{ __('project::project.actions.clear_filters') }}
-                    </a>
+                    @if($hasFilters)
+                        <a href="{{ route('admin.projects.index') }}" class="btn btn-sm btn-light">
+                            {{ __('project::project.actions.clear_filters') }}
+                        </a>
+                    @endif
                 </div>
             </form>
         </div>
@@ -63,27 +63,31 @@
 
     <x-admin.table :model="$model" :search="__('project::project.search.placeholder')" :formUrl="route('admin.projects.deleteMulti')">
         <thead>
-        <tr class="text-start text-muted fw-bold fs-7 gs-0">
+        <tr class="text-start text-muted fw-bold fs-7 gs-0 text-uppercase">
             <th class="w-10px pe-2" data-orderable="false">
                 <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
                     <input class="form-check-input" type="checkbox" data-kt-check="true"
                            data-kt-check-target="#dataTable .form-check-input" value="1"/>
                 </div>
             </th>
-            <th>{{ __('project::project.fields.title') }}</th>
-            <th>{{ __('project::project.fields.company') }}</th>
-            <th>{{ __('project::project.fields.status') }}</th>
-            <th>{{ __('project::project.fields.deal') }}</th>
-            <th>{{ __('project::project.fields.budget') }}</th>
-            <th>{{ __('project::project.fields.payment_status') }}</th>
-            <th>{{ __('project::project.fields.start_date') }}</th>
-            <th>{{ __('project::project.fields.due_date') }}</th>
-            <th>{{ __('Created At') }}</th>
-            <th class="text-end"></th>
+            <th class="min-w-200px">{{ __('project::project.fields.title') }}</th>
+            <th class="min-w-100px">{{ __('project::project.fields.status') }}</th>
+            <th class="min-w-120px">{{ __('project::project.fields.budget') }}</th>
+            <th class="min-w-120px">{{ __('project::project.fields.payment_status') }}</th>
+            <th class="min-w-125px">{{ __('project::project.fields.due_date') }}</th>
+            <th class="min-w-100px">{{ __('Created At') }}</th>
+            <th class="text-end min-w-100px"></th>
         </tr>
         </thead>
         <tbody class="text-gray-600 fw-semibold">
         @foreach($model as $project)
+            @php
+                $paymentColor = match($project->payment_status) {
+                    'fully_paid' => 'success',
+                    'partially_paid' => 'warning',
+                    default => 'danger',
+                };
+            @endphp
             <tr>
                 <td>
                     <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -91,18 +95,26 @@
                     </div>
                 </td>
                 <td>
-                    <a href="{{ route('admin.projects.show', $project) }}" class="text-hover-primary fw-bold">
-                        {{ $project->title }}
-                    </a>
-                </td>
-                <td>
-                    @if($project->company)
-                        <a href="{{ route('admin.companies.show', $project->company_id) }}" class="text-hover-primary">
-                            {{ $project->company->name }}
+                    <div class="d-flex flex-column">
+                        <a href="{{ route('admin.projects.show', $project) }}" class="text-gray-800 text-hover-primary fw-bold mb-1">
+                            {{ $project->title }}
                         </a>
-                    @else
-                        {{ __('N/A') }}
-                    @endif
+                        <span class="text-muted fs-7">
+                            @if($project->company)
+                                <a href="{{ route('admin.companies.show', $project->company_id) }}" class="text-muted text-hover-primary">
+                                    {{ $project->company->name }}
+                                </a>
+                            @else
+                                {{ __('N/A') }}
+                            @endif
+                            @if($project->deal)
+                                <span class="mx-1">·</span>
+                                <a href="{{ route('admin.deals.show', $project->deal_id) }}" class="text-muted text-hover-primary">
+                                    {{ $project->deal->title }}
+                                </a>
+                            @endif
+                        </span>
+                    </div>
                 </td>
                 <td>
                     @if($project->status)
@@ -110,41 +122,44 @@
                             {{ $project->status->name }}
                         </span>
                     @else
-                        {{ __('N/A') }}
+                        <span class="text-muted">{{ __('N/A') }}</span>
                     @endif
                 </td>
                 <td>
-                    @if($project->deal)
-                        <a href="{{ route('admin.deals.show', $project->deal_id) }}" class="text-hover-primary">
-                            {{ $project->deal->title }}
-                        </a>
+                    @if($project->budget !== null)
+                        <span class="fw-bold text-gray-800">{{ number_format($project->budget, 2) }}</span>
                     @else
-                        {{ __('N/A') }}
+                        <span class="text-muted">{{ __('N/A') }}</span>
                     @endif
                 </td>
-                <td>{{ $project->budget !== null ? number_format($project->budget, 2) : __('N/A') }}</td>
                 <td>
-                    @php
-                        $paymentColor = match($project->payment_status) {
-                            'fully_paid' => 'success',
-                            'partially_paid' => 'warning',
-                            default => 'danger',
-                        };
-                    @endphp
                     <span class="badge badge-light-{{ $paymentColor }}">
                         {{ __('project::project.payment_status.'.$project->payment_status) }}
                     </span>
                 </td>
-                <td>{{ $project->start_date?->format('Y-m-d') ?: __('N/A') }}</td>
-                <td>{{ $project->due_date?->format('Y-m-d') ?: __('N/A') }}</td>
-                <td>{{ $project->created_at->diffForHumans() }}</td>
+                <td>
+                    @if($project->due_date)
+                        <span class="{{ $project->due_date->isPast() && ! $project->isCompleted() ? 'text-danger' : '' }}">
+                            {{ $project->due_date->format('Y-m-d') }}
+                        </span>
+                    @else
+                        <span class="text-muted">{{ __('N/A') }}</span>
+                    @endif
+                </td>
+                <td>
+                    <span class="text-muted fs-7" title="{{ $project->created_at }}">
+                        {{ $project->created_at->diffForHumans() }}
+                    </span>
+                </td>
                 <td class="text-end">
                     <a href="{{ route('admin.projects.show', $project->id) }}"
-                       class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                       class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                       title="{{ __('View') }}">
                         <i class="bi bi-eye fs-5"></i>
                     </a>
                     <a href="{{ route('admin.projects.edit', $project->id) }}"
-                       class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                       class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                       title="{{ __('Edit') }}">
                         <i class="ki-duotone ki-message-edit fs-1">
                             <span class="path1"></span>
                             <span class="path2"></span>
@@ -153,7 +168,8 @@
                     <form class="d-inline" method="POST" action="{{ route('admin.projects.destroy', $project->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
+                                title="{{ __('Delete') }}">
                             <i class="bi bi-trash fs-5"></i>
                         </button>
                     </form>

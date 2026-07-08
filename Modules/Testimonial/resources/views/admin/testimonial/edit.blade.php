@@ -54,7 +54,7 @@
         </div>
         <div class="row mb-8">
             <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Published')}}</div>
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Approve for Website')}}</div>
             </div>
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
@@ -64,6 +64,7 @@
                            name="publish"
                            id="flexSwitch30x50"/>
                 </div>
+                <div class="form-text">{{ __('Only approved reviews appear as testimonials on the public website.') }}</div>
             </div>
         </div>
     </x-admin.create-card>

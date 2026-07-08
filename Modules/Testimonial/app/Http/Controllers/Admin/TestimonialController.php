@@ -51,6 +51,20 @@ class TestimonialController extends Controller
         return redirect()->route('admin.testimonials.index');
     }
 
+    public function approve(Testimonial $testimonial): RedirectResponse
+    {
+        $this->testimonialRepository->approve($testimonial);
+
+        return back();
+    }
+
+    public function unpublish(Testimonial $testimonial): RedirectResponse
+    {
+        $this->testimonialRepository->unpublish($testimonial);
+
+        return back();
+    }
+
     public function deleteMulti(DeleteMultiRequest $request): RedirectResponse
     {
         $this->testimonialRepository->deleteMulti($request->input('ids'));

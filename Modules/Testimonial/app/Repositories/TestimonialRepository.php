@@ -44,7 +44,10 @@ class TestimonialRepository
         });
     }
 
-    public function storeFromProjectReview(int $projectId, int $customerId, string $quote, string $status = 'Published'): Testimonial
+    /**
+     * Client reviews start as Archived until an admin approves them for the website.
+     */
+    public function storeFromProjectReview(int $projectId, int $customerId, string $quote, string $status = 'Archived'): Testimonial
     {
         $transQuote = [app()->getLocale() => $quote];
 
@@ -63,6 +66,26 @@ class TestimonialRepository
             'quote' => $transQuote,
             'status' => $status,
         ]);
+    }
+
+    public function approve(Testimonial $testimonial): mixed
+    {
+        return $this->execute(function () use ($testimonial) {
+            $testimonial->update(['status' => CmsStatus::PUBLISHED->value]);
+            session()->flushMessage(true);
+
+            return true;
+        });
+    }
+
+    public function unpublish(Testimonial $testimonial): mixed
+    {
+        return $this->execute(function () use ($testimonial) {
+            $testimonial->update(['status' => CmsStatus::ARCHIVED->value]);
+            session()->flushMessage(true);
+
+            return true;
+        });
     }
 
     public function deleteMulti(array $ids): ?bool

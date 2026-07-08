@@ -40,7 +40,8 @@
         "profit_or_loss": "Kar / Zarar",
         "margin_rate": "Marj",
         "assignment_status": "Durum",
-        "notes": "Notlar"
+        "notes": "Notlar",
+        "submitted_at": "Gönderilme Tarihi"
     },
     "actions": {
         "add": "Proje Ekle",
@@ -52,7 +53,9 @@
         "add_invoice": "Fatura Ekle",
         "assign_employee": "Ata",
         "finish_work": "Bitir",
-        "log_expense": "Gider Kaydet"
+        "log_expense": "Gider Kaydet",
+        "approve_review": "Web Sitesinde Yayınla",
+        "unpublish_review": "Siteden Kaldır"
     },
     "search": {
         "placeholder": "Projelerde ara"
@@ -62,6 +65,12 @@
         "all_companies": "Tüm Şirketler",
         "all_statuses": "Tüm Durumlar"
     },
+    "tabs": {
+        "overview": "Genel Bakış",
+        "team": "Ekip",
+        "finance": "Finans",
+        "review": "Değerlendirme"
+    },
     "sections": {
         "basic_information": "Temel Bilgiler",
         "collection": "Faturalama Durumu",
@@ -70,7 +79,13 @@
         "expenses": "Proje Giderleri",
         "invoices": "Proje Faturaları",
         "add_invoice": "Fatura Ekle",
-        "attachments": "Ekler"
+        "attachments": "Ekler",
+        "client_review": "Müşteri Değerlendirmesi",
+        "quick_actions": "Hızlı İşlemler"
+    },
+    "review": {
+        "pending": "Onay Bekliyor",
+        "approved": "Sitede Yayınlandı"
     },
     "payment_status": {
         "unpaid": "Ödenmedi",
@@ -85,7 +100,8 @@
         "deal": "Açık veya kazanılmış bir CRM anlaşması bağlayın. Başka bir projeye bağlı anlaşmalar gizlenir.",
         "attachments": "Birden fazla dosya yükleyin (belgeler, arşivler vb.). PDF ve görsel dosyalarına izin verilmez. Dosya başına en fazla 10 MB.",
         "profit_and_loss": "Kar veya zarar = faturalanan tutar − (işgücü maliyeti + proje giderleri).",
-        "labor_cost": "İşgücü maliyeti, çalışanın son aylık maaşının :days iş gününe bölümü × projedeki gün sayısıdır."
+        "labor_cost": "İşgücü maliyeti, çalışanın son aylık maaşının :days iş gününe bölümü × projedeki gün sayısıdır.",
+        "client_review": "Yalnızca onaylanan değerlendirmeler public sitede referans olarak görünür."
     },
     "placeholders": {
         "title": "Proje başlığını girin",
@@ -105,7 +121,8 @@
         "employee_already_assigned": "Bu çalışan zaten projede aktif olarak atanmış.",
         "confirm_remove_employee": "Bu çalışan ataması kaldırılsın mı?",
         "expense_logged": "Proje gideri finansa işlendi.",
-        "expense_description": "Proje gideri: :title"
+        "expense_description": "Proje gideri: :title",
+        "no_review": "Bu proje için henüz müşteri değerlendirmesi gönderilmedi."
     },
     "validation": {
         "attachment_pdf_not_allowed": "PDF dosyaları proje eki olarak kabul edilmez.",
