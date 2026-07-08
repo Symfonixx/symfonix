@@ -72,10 +72,14 @@
     },
     "actions": {
         "log_transaction": "Log Transaction",
-        "daily_action_center": "Daily Action Center"
+        "daily_action_center": "Daily Action Center",
+        "delete": "Delete"
     },
     "messages": {
         "transaction_logged": "Journal entry posted successfully.",
+        "transaction_deleted": "Journal entry deleted successfully.",
+        "confirm_delete_transaction": "Delete this journal entry? This cannot be undone.",
+        "cannot_delete_system_entry": "System-generated entries cannot be deleted from the daily log.",
         "double_entry_hint": "Each entry posts balanced debit and credit lines (Cash ↔ Revenue or Expense ↔ Cash).",
         "sale_income": "Sale income: :title",
         "project_income": "Project payment: :title"

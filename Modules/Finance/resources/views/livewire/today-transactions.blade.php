@@ -26,6 +26,19 @@
             </div>
         </div>
         <div class="card-body pt-0">
+            @if (session('finance_log_success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('finance_log_success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+            @if (session('finance_log_error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('finance_log_error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+
             @if($entries->isEmpty())
                 <p class="text-muted mb-0">{{ __('finance::finance.filters.no_transactions_in_range') }}</p>
             @else
@@ -38,6 +51,7 @@
                             <th>{{ __('finance::finance.fields.category') }}</th>
                             <th>{{ __('finance::finance.fields.description') }}</th>
                             <th>{{ __('finance::finance.fields.date') }}</th>
+                            <th class="text-end">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -55,6 +69,26 @@
                                 <td>{{ $expenseLine?->expenseCategory?->name ?? '—' }}</td>
                                 <td class="text-muted">{{ \Illuminate\Support\Str::limit($entry->description, 50) ?: '—' }}</td>
                                 <td class="text-muted">{{ $entry->transaction_date?->format('Y-m-d') }}</td>
+                                <td class="text-end">
+                                    @if($this->canDelete($entry))
+                                        <button type="button"
+                                                class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
+                                                wire:click="deleteTransaction({{ $entry->id }})"
+                                                wire:confirm="{{ __('finance::finance.messages.confirm_delete_transaction') }}"
+                                                wire:loading.attr="disabled"
+                                                wire:target="deleteTransaction({{ $entry->id }})"
+                                                title="{{ __('finance::finance.actions.delete') }}">
+                                            <span wire:loading.remove wire:target="deleteTransaction({{ $entry->id }})">
+                                                <i class="bi bi-trash fs-5"></i>
+                                            </span>
+                                            <span wire:loading wire:target="deleteTransaction({{ $entry->id }})">
+                                                <span class="spinner-border spinner-border-sm"></span>
+                                            </span>
+                                        </button>
+                                    @else
+                                        <span class="text-muted fs-8">—</span>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

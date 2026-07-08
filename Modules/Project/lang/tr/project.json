@@ -26,7 +26,21 @@
         "collection_rate": "Tahsilat Oranı",
         "start_date": "Başlangıç Tarihi",
         "due_date": "Bitiş Tarihi",
-        "attachments": "Ekler"
+        "attachments": "Ekler",
+        "employee": "Çalışan",
+        "select_employee": "Çalışan seçin",
+        "role": "Rol",
+        "started_at": "Başlangıç",
+        "ended_at": "Bitiş",
+        "days_worked": "Çalışılan Gün",
+        "daily_rate": "Günlük Ücret",
+        "labor_cost": "İşgücü Maliyeti",
+        "project_expenses": "Proje Giderleri",
+        "total_cost": "Toplam Maliyet",
+        "profit_or_loss": "Kar / Zarar",
+        "margin_rate": "Marj",
+        "assignment_status": "Durum",
+        "notes": "Notlar"
     },
     "actions": {
         "add": "Proje Ekle",
@@ -35,7 +49,10 @@
         "back_to_project": "Projeye Dön",
         "apply_filters": "Filtreleri Uygula",
         "clear_filters": "Temizle",
-        "add_invoice": "Fatura Ekle"
+        "add_invoice": "Fatura Ekle",
+        "assign_employee": "Ata",
+        "finish_work": "Bitir",
+        "log_expense": "Gider Kaydet"
     },
     "search": {
         "placeholder": "Projelerde ara"
@@ -48,6 +65,9 @@
     "sections": {
         "basic_information": "Temel Bilgiler",
         "collection": "Faturalama Durumu",
+        "profit_and_loss": "Kar & Zarar",
+        "team": "Atanan Çalışanlar",
+        "expenses": "Proje Giderleri",
         "invoices": "Proje Faturaları",
         "add_invoice": "Fatura Ekle",
         "attachments": "Ekler"
@@ -57,19 +77,35 @@
         "partially_paid": "Kısmen Ödendi",
         "fully_paid": "Tamamen Ödendi"
     },
+    "assignment_status": {
+        "active": "Çalışıyor",
+        "finished": "Tamamlandı"
+    },
     "hints": {
         "deal": "Açık veya kazanılmış bir CRM anlaşması bağlayın. Başka bir projeye bağlı anlaşmalar gizlenir.",
-        "attachments": "Birden fazla dosya yükleyin (belgeler, arşivler vb.). PDF ve görsel dosyalarına izin verilmez. Dosya başına en fazla 10 MB."
+        "attachments": "Birden fazla dosya yükleyin (belgeler, arşivler vb.). PDF ve görsel dosyalarına izin verilmez. Dosya başına en fazla 10 MB.",
+        "profit_and_loss": "Kar veya zarar = faturalanan tutar − (işgücü maliyeti + proje giderleri).",
+        "labor_cost": "İşgücü maliyeti, çalışanın son aylık maaşının :days iş gününe bölümü × projedeki gün sayısıdır."
     },
     "placeholders": {
         "title": "Proje başlığını girin",
         "description": "Proje kapsamı, teslimatlar, notlar…",
-        "budget": "0.00"
+        "budget": "0.00",
+        "role": "Geliştirici, QA…"
     },
     "messages": {
         "no_invoices": "Bu proje için henüz fatura yok.",
         "invoice_exceeds_remaining": "Fatura tutarı kalan bütçeyi (:remaining) aşıyor.",
-        "no_attachments": "Bu proje için henüz ek yok."
+        "no_attachments": "Bu proje için henüz ek yok.",
+        "no_employees": "Bu projeye henüz çalışan atanmadı.",
+        "no_expenses": "Bu proje için henüz gider kaydı yok.",
+        "employee_assigned": "Çalışan projeye atandı.",
+        "employee_finished": "Çalışanın bu projedeki işi tamamlandı olarak işaretlendi.",
+        "employee_removed": "Çalışan ataması kaldırıldı.",
+        "employee_already_assigned": "Bu çalışan zaten projede aktif olarak atanmış.",
+        "confirm_remove_employee": "Bu çalışan ataması kaldırılsın mı?",
+        "expense_logged": "Proje gideri finansa işlendi.",
+        "expense_description": "Proje gideri: :title"
     },
     "validation": {
         "attachment_pdf_not_allowed": "PDF dosyaları proje eki olarak kabul edilmez.",

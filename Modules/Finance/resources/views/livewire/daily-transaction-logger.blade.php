@@ -50,18 +50,16 @@
                     </div>
                 @endif
 
-                @if($type === 'credit')
-                    <div class="mb-4">
-                        <label class="form-label fw-semibold" for="project_id">{{ __('finance::finance.fields.project') }}</label>
-                        <select id="project_id" wire:model="project_id" class="form-select form-select-solid">
-                            <option value="">{{ __('None') }}</option>
-                            @foreach($projects as $project)
-                                <option value="{{ $project->id }}">{{ $project->title }}</option>
-                            @endforeach
-                        </select>
-                        @error('project_id') <div class="text-danger fs-7 mt-1">{{ $message }}</div> @enderror
-                    </div>
-                @endif
+                <div class="mb-4">
+                    <label class="form-label fw-semibold" for="project_id">{{ __('finance::finance.fields.project') }}</label>
+                    <select id="project_id" wire:model="project_id" class="form-select form-select-solid">
+                        <option value="">{{ __('None') }}</option>
+                        @foreach($projects as $project)
+                            <option value="{{ $project->id }}">{{ $project->title }}</option>
+                        @endforeach
+                    </select>
+                    @error('project_id') <div class="text-danger fs-7 mt-1">{{ $message }}</div> @enderror
+                </div>
 
                 <div class="mb-4">
                     <label class="form-label fw-semibold" for="amount">{{ __('finance::finance.fields.amount') }}</label>

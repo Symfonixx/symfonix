@@ -198,7 +198,8 @@ class ServiceController extends Controller
             ->first();
 
         // Testimonials for service show page
-        $testimonials = Testimonial::where('status', 'Published')
+        $testimonials = Testimonial::published()
+            ->withDisplayRelations()
             ->latest()
             ->take(10)
             ->get();

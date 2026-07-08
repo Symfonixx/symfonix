@@ -43,7 +43,8 @@ class PageController extends Controller
             ->inRandomOrder()
             ->get();
 
-        $testimonials = Testimonial::where('status', 'Published')
+        $testimonials = Testimonial::published()
+            ->withDisplayRelations()
             ->latest()
             ->take(10)
             ->get();
@@ -107,7 +108,8 @@ class PageController extends Controller
             ->ogImage()
             ->twitterImage()
             ->toArray();
-        $testimonials = Testimonial::where('status', 'Published')
+        $testimonials = Testimonial::published()
+            ->withDisplayRelations()
             ->latest()
             ->get();
 

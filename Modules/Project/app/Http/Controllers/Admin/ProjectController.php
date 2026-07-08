@@ -8,19 +8,28 @@ use Illuminate\Support\Collection;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
+use Modules\Finance\Http\Requests\StoreProjectInvoiceRequest;
+use Modules\Finance\Models\ExpenseCategory;
+use Modules\Finance\Services\FinanceService;
+use Modules\Finance\Services\InvoiceService;
 use Modules\Project\Actions\Project\BulkDeleteProjectsAction;
 use Modules\Project\Actions\Project\CreateProjectAction;
 use Modules\Project\Actions\Project\DeleteProjectAction;
 use Modules\Project\Actions\Project\ListProjectsAction;
 use Modules\Project\Actions\Project\UpdateProjectAction;
 use Modules\Project\DTOs\Project\ProjectData;
+use Modules\Project\Http\Requests\FinishProjectEmployeeRequest;
 use Modules\Project\Http\Requests\ProjectIndexRequest;
+use Modules\Project\Http\Requests\StoreProjectEmployeeRequest;
+use Modules\Project\Http\Requests\StoreProjectExpenseRequest;
 use Modules\Project\Http\Requests\StoreProjectRequest;
 use Modules\Project\Http\Requests\UpdateProjectRequest;
 use Modules\Project\Models\Project;
+use Modules\Project\Models\ProjectEmployee;
 use Modules\Project\Repositories\ProjectStatus\ProjectStatusRepository;
+use Modules\Project\Services\Project\ProjectCostingService;
 use Modules\Project\Services\Project\ProjectService;
-use Modules\Finance\Http\Requests\StoreProjectInvoiceRequest;
+use Modules\User\Models\Employee;
 
 class ProjectController extends Controller
 {
@@ -32,8 +41,9 @@ class ProjectController extends Controller
         private readonly BulkDeleteProjectsAction $bulkDeleteProjectsAction,
         private readonly ProjectStatusRepository $statusRepository,
         private readonly ProjectService $projectService,
-        private readonly \Modules\Finance\Services\FinanceService $financeService,
-        private readonly \Modules\Finance\Services\InvoiceService $invoiceService,
+        private readonly ProjectCostingService $projectCostingService,
+        private readonly FinanceService $financeService,
+        private readonly InvoiceService $invoiceService,
     ) {
         $this->authorizeResource(Project::class, 'project');
         $this->setActive('projects');
@@ -70,11 +80,20 @@ class ProjectController extends Controller
     {
         $this->financeService->updateProjectPaymentStatus($project->id);
         $project->refresh();
-        $project->load(['company', 'status', 'deal', 'invoices' => fn ($q) => $q->with('company:id,name')]);
+        $project->load([
+            'company',
+            'status',
+            'deal',
+            'invoices' => fn ($q) => $q->with('company:id,name'),
+            'assignments.employee',
+        ]);
 
         return view('project::admin.project.show', [
             'project' => $project,
             'collectionSummary' => $this->financeService->getProjectCollectionSummary($project),
+            'profitAndLoss' => $this->projectCostingService->getProjectProfitAndLoss($project),
+            'employees' => Employee::query()->assignable()->get(['id', 'name', 'email']),
+            'expenseCategories' => ExpenseCategory::query()->orderBy('name')->get(['id', 'name']),
         ]);
     }
 
@@ -92,6 +111,70 @@ class ProjectController extends Controller
         $this->invoiceService->createForProject($project, $request->validated());
 
         session()->flushMessage(true, __('finance::invoice.messages.created'));
+
+        return redirect()->route('admin.projects.show', $project);
+    }
+
+    public function assignEmployee(StoreProjectEmployeeRequest $request, Project $project): RedirectResponse
+    {
+        $this->authorize('update', $project);
+
+        $project->assignments()->create($request->validated());
+
+        session()->flushMessage(true, __('project::project.messages.employee_assigned'));
+
+        return redirect()->route('admin.projects.show', $project);
+    }
+
+    public function finishEmployee(
+        FinishProjectEmployeeRequest $request,
+        Project $project,
+        ProjectEmployee $assignment
+    ): RedirectResponse {
+        $this->authorize('update', $project);
+        $this->ensureAssignmentBelongsToProject($project, $assignment);
+
+        if ($assignment->isActive()) {
+            $assignment->finish($request->date('ended_at'));
+        }
+
+        session()->flushMessage(true, __('project::project.messages.employee_finished'));
+
+        return redirect()->route('admin.projects.show', $project);
+    }
+
+    public function removeEmployee(Project $project, ProjectEmployee $assignment): RedirectResponse
+    {
+        $this->authorize('update', $project);
+        $this->ensureAssignmentBelongsToProject($project, $assignment);
+
+        $assignment->delete();
+
+        session()->flushMessage(true, __('project::project.messages.employee_removed'));
+
+        return redirect()->route('admin.projects.show', $project);
+    }
+
+    public function storeExpense(StoreProjectExpenseRequest $request, Project $project): RedirectResponse
+    {
+        $this->authorize('view', $project);
+
+        $data = $request->validated();
+
+        $this->financeService->logTransaction([
+            'flow' => 'expense',
+            'amount' => $data['amount'],
+            'currency' => $data['currency'],
+            'expense_category_id' => $data['expense_category_id'],
+            'description' => $data['description'] ?: __('project::project.messages.expense_description', [
+                'title' => $project->title,
+            ]),
+            'transaction_date' => $data['transaction_date'],
+            'reference_type' => Project::class,
+            'reference_id' => $project->id,
+        ]);
+
+        session()->flushMessage(true, __('project::project.messages.expense_logged'));
 
         return redirect()->route('admin.projects.show', $project);
     }
@@ -120,6 +203,11 @@ class ProjectController extends Controller
         $this->bulkDeleteProjectsAction->execute($request->input('ids', []));
 
         return back();
+    }
+
+    private function ensureAssignmentBelongsToProject(Project $project, ProjectEmployee $assignment): void
+    {
+        abort_unless((int) $assignment->project_id === (int) $project->id, 404);
     }
 
     private function formData(?Project $project = null): array
@@ -158,4 +246,3 @@ class ProjectController extends Controller
             ->get();
     }
 }
-

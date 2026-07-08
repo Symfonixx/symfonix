@@ -2,29 +2,75 @@
 
 namespace Modules\Testimonial\Models;
 
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Project\Models\Project;
 use Spatie\Translatable\HasTranslations;
 
 class Testimonial extends Model
 {
     use HasTranslations;
 
-    public $translatable = ['name', 'position', 'quote'];
-
-    protected $appends = ['avatar_link'];
+    public $translatable = ['quote'];
 
     protected $fillable = [
-        'name', 'position', 'url', 'avatar', 'quote', 'status',
+        'project_id',
+        'customer_id',
+        'quote',
+        'status',
     ];
 
-    public function getAvatarLinkAttribute()
+    protected $appends = [
+        'avatar_link',
+        'name',
+        'position',
+    ];
+
+    public function project(): BelongsTo
     {
-        if ($this->attributes['avatar']) {
-            $path = asset('storage/'.$this->attributes['avatar']);
-        } else {
-            $path = asset('images/blank.png');
+        return $this->belongsTo(Project::class);
+    }
+
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'customer_id');
+    }
+
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query->where('status', 'Published');
+    }
+
+    public function scopeWithDisplayRelations(Builder $query): Builder
+    {
+        return $query->with([
+            'customer:id,name,email,img',
+            'project:id,title,company_id',
+            'project.company:id,name',
+        ]);
+    }
+
+    public function getAvatarLinkAttribute(): string
+    {
+        return $this->customer?->avatar ?? asset('images/avatar.png');
+    }
+
+    public function getNameAttribute(): string
+    {
+        return $this->customer?->name ?? '';
+    }
+
+    public function getPositionAttribute(): string
+    {
+        $companyName = $this->project?->company?->name;
+        $projectTitle = $this->project?->title;
+
+        if ($companyName && $projectTitle) {
+            return $companyName.' · '.$projectTitle;
         }
 
-        return $path;
+        return $companyName ?? $projectTitle ?? '';
     }
 }

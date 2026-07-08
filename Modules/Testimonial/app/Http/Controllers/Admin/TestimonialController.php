@@ -24,43 +24,25 @@ class TestimonialController extends Controller
 
     public function index()
     {
-        $model = $this->testimonialRepository->all(['id', 'name', 'position', 'url', 'avatar', 'quote', 'status', 'created_at']);
+        $model = $this->testimonialRepository->all();
 
         return view('testimonial::admin.testimonial.index', compact('model'));
     }
 
-    public function create()
-    {
-        return view('testimonial::admin.testimonial.create');
-    }
-
-    public function store(Request $request): RedirectResponse
-    {
-        $data = TestimonialData::validate([
-            'name' => $request->input('name'),
-            'position' => $request->input('position'),
-            'url' => $request->input('url'),
-            'avatar' => $request->file('avatar'),
-            'quote' => $request->input('quote'),
-            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
-        ]);
-        $this->testimonialRepository->store($data);
-
-        return redirect()->route('admin.testimonials.index');
-    }
-
     public function edit(Testimonial $testimonial)
     {
+        $testimonial->load([
+            'customer:id,name,email,img',
+            'project:id,title,company_id',
+            'project.company:id,name',
+        ]);
+
         return view('testimonial::admin.testimonial.edit', compact('testimonial'));
     }
 
     public function update(Request $request, Testimonial $testimonial): RedirectResponse
     {
         $data = TestimonialData::validate([
-            'name' => $request->input('name'),
-            'position' => $request->input('position'),
-            'url' => $request->input('url'),
-            'avatar' => $request->file('avatar'),
             'quote' => $request->input('quote'),
             'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
         ]);

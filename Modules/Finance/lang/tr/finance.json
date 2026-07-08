@@ -70,10 +70,14 @@
     },
     "actions": {
         "log_transaction": "İşlem Kaydet",
-        "daily_action_center": "Günlük İşlem Merkezi"
+        "daily_action_center": "Günlük İşlem Merkezi",
+        "delete": "Sil"
     },
     "messages": {
         "transaction_logged": "Yevmiye kaydı başarıyla oluşturuldu.",
+        "transaction_deleted": "Yevmiye kaydı başarıyla silindi.",
+        "confirm_delete_transaction": "Bu yevmiye kaydı silinsin mi? Bu işlem geri alınamaz.",
+        "cannot_delete_system_entry": "Sistem tarafından oluşturulan kayıtlar günlük kayıttan silinemez.",
         "double_entry_hint": "Her kayıt dengeli borç ve alacak satırları oluşturur (Kasa ↔ Gelir veya Gider ↔ Kasa).",
         "sale_income": "Satış geliri: :title",
         "project_income": "Proje ödemesi: :title"

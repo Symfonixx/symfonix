@@ -2,15 +2,19 @@
 
 namespace Modules\Project\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
 use Modules\Finance\Models\Invoice;
 use Modules\Finance\Models\JournalEntry;
+use Modules\Testimonial\Models\Testimonial;
+use Modules\User\Models\Employee;
 
 class Project extends Model
 {
@@ -87,6 +91,49 @@ class Project extends Model
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class)->latest('issued_at');
+    }
+
+    public function assignments(): HasMany
+    {
+        return $this->hasMany(ProjectEmployee::class)->latest('started_at');
+    }
+
+    public function employees(): BelongsToMany
+    {
+        return $this->belongsToMany(Employee::class, 'project_employees')
+            ->withPivot(['id', 'role', 'started_at', 'ended_at', 'notes'])
+            ->withTimestamps();
+    }
+
+    public function testimonial(): HasOne
+    {
+        return $this->hasOne(Testimonial::class);
+    }
+
+    public function isCompleted(): bool
+    {
+        if (! $this->relationLoaded('status')) {
+            $this->load('status:id,name');
+        }
+
+        return strcasecmp((string) $this->status?->name, 'Completed') === 0;
+    }
+
+    public function canBeReviewedBy(User $user): bool
+    {
+        if (! $user->isCustomer()) {
+            return false;
+        }
+
+        if (! in_array($this->company_id, $user->companyIds(), true)) {
+            return false;
+        }
+
+        if (! $this->isCompleted()) {
+            return false;
+        }
+
+        return ! $this->testimonial()->exists();
     }
 
     public function journalEntries(): \Illuminate\Database\Eloquent\Relations\MorphMany

@@ -26,7 +26,21 @@
         "collection_rate": "Collection Rate",
         "start_date": "Start Date",
         "due_date": "Due Date",
-        "attachments": "Attachments"
+        "attachments": "Attachments",
+        "employee": "Employee",
+        "select_employee": "Select employee",
+        "role": "Role",
+        "started_at": "Started At",
+        "ended_at": "Ended At",
+        "days_worked": "Days Worked",
+        "daily_rate": "Daily Rate",
+        "labor_cost": "Labor Cost",
+        "project_expenses": "Project Expenses",
+        "total_cost": "Total Cost",
+        "profit_or_loss": "Profit / Loss",
+        "margin_rate": "Margin",
+        "assignment_status": "Status",
+        "notes": "Notes"
     },
     "actions": {
         "add": "Add Project",
@@ -35,7 +49,10 @@
         "back_to_project": "Back to Project",
         "apply_filters": "Apply Filters",
         "clear_filters": "Clear",
-        "add_invoice": "Add Invoice"
+        "add_invoice": "Add Invoice",
+        "assign_employee": "Assign",
+        "finish_work": "Finish",
+        "log_expense": "Log Expense"
     },
     "search": {
         "placeholder": "Search projects"
@@ -48,6 +65,9 @@
     "sections": {
         "basic_information": "Basic Information",
         "collection": "Billing Progress",
+        "profit_and_loss": "Profit & Loss",
+        "team": "Assigned Employees",
+        "expenses": "Project Expenses",
         "invoices": "Project Invoices",
         "add_invoice": "Add Invoice",
         "attachments": "Attachments"
@@ -57,19 +77,35 @@
         "partially_paid": "Partially Paid",
         "fully_paid": "Fully Paid"
     },
+    "assignment_status": {
+        "active": "Working",
+        "finished": "Finished"
+    },
     "hints": {
         "deal": "Link an open or won CRM deal. Deals already linked to another project are hidden.",
-        "attachments": "Upload multiple files (documents, archives, etc.). PDF and image files are not allowed. Max 10 MB per file."
+        "attachments": "Upload multiple files (documents, archives, etc.). PDF and image files are not allowed. Max 10 MB per file.",
+        "profit_and_loss": "Profit or loss = invoiced amount − (labor cost + project expenses).",
+        "labor_cost": "Labor cost uses the employee’s latest monthly salary ÷ :days working days × days assigned to this project."
     },
     "placeholders": {
         "title": "Enter project title",
         "description": "Project scope, deliverables, notes…",
-        "budget": "0.00"
+        "budget": "0.00",
+        "role": "Developer, QA…"
     },
     "messages": {
         "no_invoices": "No invoices for this project yet.",
         "invoice_exceeds_remaining": "Invoice total exceeds the remaining budget of :remaining.",
-        "no_attachments": "No attachments for this project yet."
+        "no_attachments": "No attachments for this project yet.",
+        "no_employees": "No employees assigned to this project yet.",
+        "no_expenses": "No expenses logged for this project yet.",
+        "employee_assigned": "Employee assigned to the project.",
+        "employee_finished": "Employee work on this project has been marked finished.",
+        "employee_removed": "Employee assignment removed.",
+        "employee_already_assigned": "This employee is already actively assigned to the project.",
+        "confirm_remove_employee": "Remove this employee assignment?",
+        "expense_logged": "Project expense posted to finance.",
+        "expense_description": "Project expense: :title"
     },
     "validation": {
         "attachment_pdf_not_allowed": "PDF files are not allowed as project attachments.",

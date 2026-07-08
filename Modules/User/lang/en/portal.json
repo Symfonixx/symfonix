@@ -46,7 +46,17 @@
         "invoices": "Invoices",
         "no_invoices": "No invoices for this project yet.",
         "download_pdf": "Download PDF",
-        "attachments": "Attachments"
+        "attachments": "Attachments",
+        "review_title": "Project Review",
+        "review_prompt": "This project is completed. Share your experience — your review may be published as a testimonial.",
+        "review_placeholder": "Write your review (at least 10 characters)...",
+        "submit_review": "Submit Review",
+        "review_submitted": "Thank you! Your review has been submitted.",
+        "review_submitted_hint": "You already submitted a review for this project:",
+        "review_unavailable": "A review is not available for this project.",
+        "review_quote_required": "Please write your review.",
+        "review_quote_min": "Your review must be at least 10 characters.",
+        "review_quote_max": "Your review may not be longer than 2000 characters."
     },
     "subscriptions": {
         "title": "Subscriptions",

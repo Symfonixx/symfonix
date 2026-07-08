@@ -4,9 +4,13 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Modules\CRM\Models\CrmSalesTarget;
+use Modules\Finance\Models\Salary;
+use Modules\Project\Models\Project;
+use Modules\Project\Models\ProjectEmployee;
 
 class Employee extends Model
 {
@@ -49,6 +53,23 @@ class Employee extends Model
     public function leaveRequests(): HasMany
     {
         return $this->hasMany(LeaveRequest::class);
+    }
+
+    public function salaries(): HasMany
+    {
+        return $this->hasMany(Salary::class)->latest('period');
+    }
+
+    public function projectAssignments(): HasMany
+    {
+        return $this->hasMany(ProjectEmployee::class);
+    }
+
+    public function projects(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'project_employees')
+            ->withPivot(['id', 'role', 'started_at', 'ended_at', 'notes'])
+            ->withTimestamps();
     }
 
     public function getAvatarAttribute(): string

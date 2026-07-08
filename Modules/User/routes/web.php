@@ -5,6 +5,7 @@ use Modules\CRM\Http\Controllers\Portal\SubscriptionController as PortalSubscrip
 use Modules\Finance\Http\Controllers\Portal\InvoiceController as PortalInvoiceController;
 use Modules\Project\Http\Controllers\Portal\ProjectController as PortalProjectController;
 use Modules\Support\app\Http\Controllers\Portal\TicketController as PortalTicketController;
+use Modules\Testimonial\Http\Controllers\Portal\ProjectReviewController as PortalProjectReviewController;
 use Modules\User\Http\Controllers\Portal\DashboardController;
 use Modules\User\Http\Controllers\Portal\NotificationController;
 use Modules\User\Http\Controllers\Portal\ProfileController;
@@ -14,6 +15,7 @@ Route::middleware(['auth', 'is_customer'])->prefix('portal')->name('portal.')->g
     Route::get('/subscriptions', [PortalSubscriptionController::class, 'index'])->name('subscriptions.index');
     Route::get('/projects', [PortalProjectController::class, 'index'])->name('projects.index');
     Route::get('/projects/{project}', [PortalProjectController::class, 'show'])->name('projects.show');
+    Route::post('/projects/{project}/review', [PortalProjectReviewController::class, 'store'])->name('projects.review');
     Route::get('/tickets', [PortalTicketController::class, 'index'])->name('tickets.index');
     Route::get('/tickets/create', [PortalTicketController::class, 'create'])->name('tickets.create');
     Route::post('/tickets', [PortalTicketController::class, 'store'])->name('tickets.store');

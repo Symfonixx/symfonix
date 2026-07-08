@@ -48,6 +48,7 @@ class ProjectController extends Controller
         $project->load([
             'status:id,name,color_code',
             'company:id,name',
+            'testimonial',
             'invoices' => fn ($q) => $q
                 ->whereNotIn('status', [Invoice::STATUS_DRAFT, Invoice::STATUS_VOID])
                 ->with('lines'),
@@ -67,6 +68,9 @@ class ProjectController extends Controller
             'pdf_url' => route('portal.invoices.pdf', $invoice),
         ]);
 
+        $canReview = $project->canBeReviewedBy($request->user());
+        $existingReview = $project->testimonial;
+
         return $this->inertia('Project::Portal/Projects/Show', [
             'project' => [
                 'id' => $project->id,
@@ -79,6 +83,13 @@ class ProjectController extends Controller
                 'start_date' => $project->start_date?->toDateString(),
                 'due_date' => $project->due_date?->toDateString(),
                 'collection' => $collection,
+                'is_completed' => $project->isCompleted(),
+                'can_review' => $canReview,
+                'review' => $existingReview ? [
+                    'quote' => $existingReview->quote,
+                    'status' => $existingReview->status,
+                    'created_at' => $existingReview->created_at?->toDateString(),
+                ] : null,
                 'attachments' => collect($project->attachments ?? [])->map(fn (array $attachment) => [
                     'name' => $attachment['name'] ?? basename($attachment['path'] ?? ''),
                     'url' => ! empty($attachment['path']) ? asset('storage/'.$attachment['path']) : null,

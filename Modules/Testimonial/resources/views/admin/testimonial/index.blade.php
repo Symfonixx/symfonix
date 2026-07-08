@@ -10,11 +10,6 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Testimonials')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold  btn-primary" href="{{route('admin.testimonials.create')}}">
-            {{__('Add New Testimonial')}} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
-    </div>
 @endsection
 @section('js')
 @endsection
@@ -29,7 +24,8 @@
                 </div>
             </th>
             <th class="min-w-100px">{{__('Avatar')}}</th>
-            <th class="min-w-150px">{{__('Details')}}</th>
+            <th class="min-w-150px">{{__('Customer')}}</th>
+            <th class="min-w-150px">{{__('Project')}}</th>
             <th class="min-w-100px">{{__('Published')}}</th>
             <th class="min-w-100px">{{__('Created At')}}</th>
             <th class="min-w-100px text-end rounded-end"></th>
@@ -45,24 +41,22 @@
                 </td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <a href="{{$testimonial->avatar_link}}" target="_blank" >
-                            <img src="{{$testimonial->avatar_link}}" alt="{{$testimonial->name}}" class="img-fluid h-50px"/>
-                        </a>
+                        <img src="{{$testimonial->avatar_link}}" alt="{{$testimonial->name}}" class="img-fluid h-50px rounded-circle"/>
                     </div>
                 </td>
                 <td>
                     <div class="d-flex flex-column">
-                        <span class="text-gray-800 mb-1">
-                            {{$testimonial->name}}
-                        </span>
-                        @if($testimonial->position)
-                            <span class="text-gray-500 mb-1">
-                                {{$testimonial->position}}
-                            </span>
+                        <span class="text-gray-800 mb-1">{{ $testimonial->name }}</span>
+                        @if($testimonial->customer?->email)
+                            <span class="text-gray-500">{{ $testimonial->customer->email }}</span>
                         @endif
-                        @if($testimonial->url)
-                            <a class="text-hover-primary text-gray-500" target="_blank"
-                               href="{{$testimonial->url}}">{{$testimonial->url}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex flex-column">
+                        <span class="text-gray-800 mb-1">{{ $testimonial->project?->title ?? '—' }}</span>
+                        @if($testimonial->project?->company?->name)
+                            <span class="text-gray-500">{{ $testimonial->project->company->name }}</span>
                         @endif
                     </div>
                 </td>
@@ -88,7 +82,6 @@
                 </td>
             </tr>
 
-            <!-- Testimonial Details Modal -->
             <div class="modal fade" id="testimonialModal{{ $testimonial->id }}" tabindex="-1" aria-labelledby="testimonialModalLabel{{ $testimonial->id }}" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -99,29 +92,23 @@
                         <div class="modal-body">
                             <div class="row mb-3">
                                 <div class="col-md-3 text-center">
-                                    <a href="{{$testimonial->avatar_link}}" target="_blank">
-                                        <img src="{{$testimonial->avatar_link}}" alt="{{$testimonial->name}}" class="img-fluid mb-2">
-                                    </a>
+                                    <img src="{{$testimonial->avatar_link}}" alt="{{$testimonial->name}}" class="img-fluid mb-2 rounded-circle" style="max-width: 120px;">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="row mb-2">
                                         <div class="col-md-6">
-                                            <strong>{{ __('Name') }}:</strong>
+                                            <strong>{{ __('Customer') }}:</strong>
                                             <p>{{ $testimonial->name }}</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <strong>{{ __('Position') }}:</strong>
-                                            <p>{{ $testimonial->position ?: '-' }}</p>
+                                            <strong>{{ __('Project') }}:</strong>
+                                            <p>{{ $testimonial->project?->title ?: '-' }}</p>
                                         </div>
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col-md-6">
-                                            <strong>{{ __('Url') }}:</strong>
-                                            @if($testimonial->url)
-                                                <p><a href="{{ $testimonial->url }}" target="_blank">{{ $testimonial->url }}</a></p>
-                                            @else
-                                                <p>-</p>
-                                            @endif
+                                            <strong>{{ __('Company') }}:</strong>
+                                            <p>{{ $testimonial->project?->company?->name ?: '-' }}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <strong>{{ __('Status') }}:</strong>

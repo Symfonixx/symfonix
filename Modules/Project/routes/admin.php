@@ -8,6 +8,10 @@ use Modules\Project\Http\Controllers\Admin\ProjectUseCaseController;
 Route::middleware(['can:Project Management'])->group(function () {
     Route::delete('projects/deleteMulti', [ProjectController::class, 'deleteMulti'])->name('projects.deleteMulti');
     Route::post('projects/{project}/invoices', [ProjectController::class, 'storeInvoice'])->name('projects.invoices.store');
+    Route::post('projects/{project}/employees', [ProjectController::class, 'assignEmployee'])->name('projects.employees.store');
+    Route::post('projects/{project}/employees/{assignment}/finish', [ProjectController::class, 'finishEmployee'])->name('projects.employees.finish');
+    Route::delete('projects/{project}/employees/{assignment}', [ProjectController::class, 'removeEmployee'])->name('projects.employees.destroy');
+    Route::post('projects/{project}/expenses', [ProjectController::class, 'storeExpense'])->name('projects.expenses.store');
     Route::resource('projects', ProjectController::class);
 
     Route::resource('project-statuses', ProjectStatusController::class)->except(['show']);

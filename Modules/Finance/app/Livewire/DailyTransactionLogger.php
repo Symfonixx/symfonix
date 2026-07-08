@@ -56,7 +56,7 @@ class DailyTransactionLogger extends Component
         $referenceType = null;
         $referenceId = null;
 
-        if ($this->type === 'credit' && $this->project_id) {
+        if ($this->project_id) {
             $referenceType = Project::class;
             $referenceId = $this->project_id;
         }

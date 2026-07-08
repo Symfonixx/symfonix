@@ -26,7 +26,21 @@
         "collection_rate": "نسبة التحصيل",
         "start_date": "تاريخ البدء",
         "due_date": "تاريخ الاستحقاق",
-        "attachments": "المرفقات"
+        "attachments": "المرفقات",
+        "employee": "الموظف",
+        "select_employee": "اختر الموظف",
+        "role": "الدور",
+        "started_at": "تاريخ البدء",
+        "ended_at": "تاريخ الانتهاء",
+        "days_worked": "أيام العمل",
+        "daily_rate": "الأجر اليومي",
+        "labor_cost": "تكلفة العمالة",
+        "project_expenses": "مصروفات المشروع",
+        "total_cost": "إجمالي التكلفة",
+        "profit_or_loss": "ربح / خسارة",
+        "margin_rate": "الهامش",
+        "assignment_status": "الحالة",
+        "notes": "ملاحظات"
     },
     "actions": {
         "add": "إضافة مشروع",
@@ -35,7 +49,10 @@
         "back_to_project": "العودة إلى المشروع",
         "apply_filters": "تطبيق الفلاتر",
         "clear_filters": "مسح",
-        "add_invoice": "إضافة فاتورة"
+        "add_invoice": "إضافة فاتورة",
+        "assign_employee": "تعيين",
+        "finish_work": "إنهاء",
+        "log_expense": "تسجيل مصروف"
     },
     "search": {
         "placeholder": "البحث في المشاريع"
@@ -48,6 +65,9 @@
     "sections": {
         "basic_information": "المعلومات الأساسية",
         "collection": "تقدم الفوترة",
+        "profit_and_loss": "الربح والخسارة",
+        "team": "الموظفون المعيّنون",
+        "expenses": "مصروفات المشروع",
         "invoices": "فواتير المشروع",
         "add_invoice": "إضافة فاتورة",
         "attachments": "المرفقات"
@@ -57,19 +77,35 @@
         "partially_paid": "مدفوع جزئياً",
         "fully_paid": "مدفوع بالكامل"
     },
+    "assignment_status": {
+        "active": "يعمل",
+        "finished": "منتهٍ"
+    },
     "hints": {
         "deal": "اربط صفقة مفتوحة أو مكسوبة. الصفقات المرتبطة بمشروع آخر لا تظهر هنا.",
-        "attachments": "ارفع ملفات متعددة (مستندات، أرشيفات، إلخ). ملفات PDF والصور غير مسموحة. الحد الأقصى 10 ميجابايت لكل ملف."
+        "attachments": "ارفع ملفات متعددة (مستندات، أرشيفات، إلخ). ملفات PDF والصور غير مسموحة. الحد الأقصى 10 ميجابايت لكل ملف.",
+        "profit_and_loss": "الربح أو الخسارة = المبلغ المفوتر − (تكلفة العمالة + مصروفات المشروع).",
+        "labor_cost": "تكلفة العمالة تعتمد على آخر راتب شهري للموظف ÷ :days يوم عمل × عدد أيام التعيين في المشروع."
     },
     "placeholders": {
         "title": "أدخل عنوان المشروع",
         "description": "نطاق المشروع، المخرجات، الملاحظات…",
-        "budget": "0.00"
+        "budget": "0.00",
+        "role": "مطور، ضمان جودة…"
     },
     "messages": {
         "no_invoices": "لا توجد فواتير لهذا المشروع بعد.",
         "invoice_exceeds_remaining": "إجمالي الفاتورة يتجاوز الميزانية المتبقية البالغة :remaining.",
-        "no_attachments": "لا توجد مرفقات لهذا المشروع بعد."
+        "no_attachments": "لا توجد مرفقات لهذا المشروع بعد.",
+        "no_employees": "لا يوجد موظفون معيّنون لهذا المشروع بعد.",
+        "no_expenses": "لا توجد مصروفات مسجّلة لهذا المشروع بعد.",
+        "employee_assigned": "تم تعيين الموظف على المشروع.",
+        "employee_finished": "تم إنهاء عمل الموظف على هذا المشروع.",
+        "employee_removed": "تم إزالة تعيين الموظف.",
+        "employee_already_assigned": "هذا الموظف معيّن حالياً على المشروع.",
+        "confirm_remove_employee": "هل تريد إزالة تعيين هذا الموظف؟",
+        "expense_logged": "تم ترحيل مصروف المشروع إلى المالية.",
+        "expense_description": "مصروف المشروع: :title"
     },
     "validation": {
         "attachment_pdf_not_allowed": "ملفات PDF غير مسموحة كمرفقات للمشروع.",

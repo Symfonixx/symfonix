@@ -46,7 +46,17 @@
         "invoices": "Faturalar",
         "no_invoices": "Bu proje için henüz fatura yok.",
         "download_pdf": "PDF İndir",
-        "attachments": "Ekler"
+        "attachments": "Ekler",
+        "review_title": "Proje Değerlendirmesi",
+        "review_prompt": "Bu proje tamamlandı. Deneyiminizi paylaşın — değerlendirmeiniz referans olarak yayınlanabilir.",
+        "review_placeholder": "Değerlendirmenizi yazın (en az 10 karakter)...",
+        "submit_review": "Değerlendirme Gönder",
+        "review_submitted": "Teşekkürler! Değerlendirmeniz gönderildi.",
+        "review_submitted_hint": "Bu proje için zaten bir değerlendirme gönderdiniz:",
+        "review_unavailable": "Bu proje için değerlendirme mevcut değil.",
+        "review_quote_required": "Lütfen değerlendirmenizi yazın.",
+        "review_quote_min": "Değerlendirmeniz en az 10 karakter olmalıdır.",
+        "review_quote_max": "Değerlendirmeniz 2000 karakterden uzun olamaz."
     },
     "subscriptions": {
         "title": "Abonelikler",

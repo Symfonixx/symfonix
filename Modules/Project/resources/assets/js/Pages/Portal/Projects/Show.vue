@@ -68,6 +68,44 @@
                         </ul>
                     </div>
                 </div>
+
+                <div v-if="project.is_completed" class="portal-panel" style="margin-top: 24px;">
+                    <div class="portal-panel__header">
+                        <h2 class="portal-panel__title">{{ t('projects.review_title') }}</h2>
+                    </div>
+                    <div class="portal-panel__body">
+                        <div v-if="project.review" class="portal-details">
+                            <p class="mb-2">{{ t('projects.review_submitted_hint') }}</p>
+                            <div class="bg-light p-3 rounded">“{{ reviewQuote }}”</div>
+                            <span
+                                v-if="project.review.status"
+                                class="portal-badge mt-3"
+                                :class="project.review.status === 'Published' ? 'portal-badge--paid' : 'portal-badge--invoice'"
+                            >
+                                {{ project.review.status }}
+                            </span>
+                        </div>
+                        <form v-else-if="project.can_review" @submit.prevent="submitReview">
+                            <p class="mb-3">{{ t('projects.review_prompt') }}</p>
+                            <textarea
+                                v-model="reviewForm.quote"
+                                class="form-control"
+                                rows="4"
+                                :placeholder="t('projects.review_placeholder')"
+                                required
+                                minlength="10"
+                                maxlength="2000"
+                            ></textarea>
+                            <p v-if="reviewForm.errors.quote" class="text-danger mt-2 mb-0">{{ reviewForm.errors.quote }}</p>
+                            <button type="submit" class="thm-btn mt-3" :disabled="reviewForm.processing" style="padding: 10px 20px; font-size: 14px;">
+                                {{ t('projects.submit_review') }}
+                            </button>
+                        </form>
+                        <div v-else class="portal-empty">
+                            {{ t('projects.review_unavailable') }}
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="portal-grid__stack">
@@ -166,6 +204,7 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useForm, usePage } from '@inertiajs/vue3';
 import PortalShell from '@/Components/Portal/PortalShell.vue';
 import { usePortalTranslations } from '@/Composables/usePortalTranslations';
 
@@ -175,7 +214,27 @@ const props = defineProps({
     meta: { type: Object, default: () => ({}) },
 });
 
+const page = usePage();
 const { t, paymentStatusLabel, invoiceStatusLabel } = usePortalTranslations();
+
+const reviewForm = useForm({
+    quote: '',
+});
+
+const reviewQuote = computed(() => {
+    const quote = props.project.review?.quote;
+    if (!quote) return '';
+    if (typeof quote === 'string') return quote;
+    const loc = page.props.locale || 'en';
+    return quote[loc] || Object.values(quote)[0] || '';
+});
+
+const submitReview = () => {
+    reviewForm.post(route('portal.projects.review', props.project.id), {
+        preserveScroll: true,
+        onSuccess: () => reviewForm.reset('quote'),
+    });
+};
 
 const metaTitle = computed(() => props.meta?.title || props.project.title);
 const metaDescription = computed(() => props.meta?.description || t('pages.project_show_description'));

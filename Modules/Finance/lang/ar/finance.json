@@ -70,10 +70,14 @@
     },
     "actions": {
         "log_transaction": "تسجيل معاملة",
-        "daily_action_center": "مركز الإجراءات اليومية"
+        "daily_action_center": "مركز الإجراءات اليومية",
+        "delete": "حذف"
     },
     "messages": {
         "transaction_logged": "تم ترحيل القيد بنجاح.",
+        "transaction_deleted": "تم حذف القيد بنجاح.",
+        "confirm_delete_transaction": "حذف هذا القيد؟ لا يمكن التراجع عن هذا الإجراء.",
+        "cannot_delete_system_entry": "لا يمكن حذف القيود التي أنشأها النظام من السجل اليومي.",
         "double_entry_hint": "كل قيد يُنشئ سطرين متوازنين: مدين ودائن (النقد ↔ الإيراد أو المصروف ↔ النقد).",
         "sale_income": "إيراد البيع: :title",
         "project_income": "دفعة المشروع: :title"

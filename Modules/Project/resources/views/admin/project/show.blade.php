@@ -105,5 +105,6 @@
         </div>
     </div>
 
+    @include('project::admin.project._team_and_pnl')
     @include('project::admin.project._invoices')
 </x-admin-layout>

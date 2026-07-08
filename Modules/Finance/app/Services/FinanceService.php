@@ -603,6 +603,34 @@ class FinanceService
     }
 
     /**
+     * Delete a manually logged journal entry from the daily log.
+     * System-generated entries (salary, product sale, invoice, deal, etc.) are rejected.
+     */
+    public function deleteJournalEntry(JournalEntry $entry): void
+    {
+        if ($entry->reference_type && $entry->reference_type !== Project::class) {
+            throw new \InvalidArgumentException(
+                __('finance::finance.messages.cannot_delete_system_entry')
+            );
+        }
+
+        $projectId = (
+            $entry->flow === JournalEntry::FLOW_REVENUE
+            && $entry->reference_type === Project::class
+            && $entry->reference_id
+        ) ? (int) $entry->reference_id : null;
+
+        DB::transaction(function () use ($entry) {
+            $entry->lines()->delete();
+            $entry->delete();
+        });
+
+        if ($projectId) {
+            $this->updateProjectPaymentStatus($projectId);
+        }
+    }
+
+    /**
      * Post a balanced revenue entry: Debit Cash, Credit Revenue.
      */
     public function postRevenueEntry(array $data): JournalEntry

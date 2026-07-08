@@ -46,7 +46,17 @@
         "invoices": "الفواتير",
         "no_invoices": "لا توجد فواتير لهذا المشروع بعد.",
         "download_pdf": "تحميل PDF",
-        "attachments": "المرفقات"
+        "attachments": "المرفقات",
+        "review_title": "تقييم المشروع",
+        "review_prompt": "تم إكمال هذا المشروع. شارك تجربتك — قد يُنشر تقييمك كشهادة.",
+        "review_placeholder": "اكتب تقييمك (10 أحرف على الأقل)...",
+        "submit_review": "إرسال التقييم",
+        "review_submitted": "شكراً لك! تم إرسال تقييمك.",
+        "review_submitted_hint": "لقد أرسلت تقييماً لهذا المشروع مسبقاً:",
+        "review_unavailable": "التقييم غير متاح لهذا المشروع.",
+        "review_quote_required": "يرجى كتابة تقييمك.",
+        "review_quote_min": "يجب أن يكون التقييم 10 أحرف على الأقل.",
+        "review_quote_max": "يجب ألا يتجاوز التقييم 2000 حرف."
     },
     "subscriptions": {
         "title": "الاشتراكات",

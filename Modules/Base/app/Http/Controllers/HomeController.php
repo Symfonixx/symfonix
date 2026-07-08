@@ -47,7 +47,8 @@ class HomeController extends Controller
             $q->published()->take(5);
         }])->latest()->get();
 
-        $testimonials = Testimonial::where('status', 'Published')
+        $testimonials = Testimonial::published()
+            ->withDisplayRelations()
             ->latest()
             ->take(10)
             ->get();
