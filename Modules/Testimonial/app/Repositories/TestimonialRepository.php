@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Modules\Cms\Enums\CmsStatus;
 use Modules\Core\Traits\ExceptionHandlerTrait;
+use Modules\Testimonial\Events\TestimonialSubmitted;
 use Modules\Testimonial\Models\Testimonial;
 
 class TestimonialRepository
@@ -62,12 +63,18 @@ class TestimonialRepository
             }
         }
 
-        return Testimonial::create([
+        $testimonial = Testimonial::create([
             'project_id' => $projectId,
             'customer_id' => $customerId,
             'quote' => $transQuote,
             'status' => $status,
         ]);
+
+        if ($status === CmsStatus::ARCHIVED->value) {
+            event(new TestimonialSubmitted($testimonial));
+        }
+
+        return $testimonial;
     }
 
     public function approve(Testimonial $testimonial): mixed

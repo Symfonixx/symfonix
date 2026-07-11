@@ -1,0 +1,10 @@
+{
+    "new_testimonial_subject": "New testimonial awaiting approval",
+    "new_testimonial_line": ":customer submitted a review for project :project.",
+    "greeting": "Hello :name,",
+    "view_testimonials": "Review Testimonials",
+    "pending_approval": "Pending Approval",
+    "dashboard": {
+        "pending_approval": "Testimonials Pending Approval"
+    }
+}

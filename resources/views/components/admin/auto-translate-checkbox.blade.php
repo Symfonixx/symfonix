@@ -3,11 +3,10 @@
 ])
 
 @php
-    if (old()->has('auto_translate')) {
-        $isChecked = filter_var(old('auto_translate'), FILTER_VALIDATE_BOOLEAN);
-    } else {
-        $isChecked = (bool) $default;
-    }
+    $oldAutoTranslate = old('auto_translate');
+    $isChecked = $oldAutoTranslate !== null
+        ? filter_var($oldAutoTranslate, FILTER_VALIDATE_BOOLEAN)
+        : (bool) $default;
 @endphp
 
 <div {{ $attributes->merge(['class' => 'row mb-8']) }}>

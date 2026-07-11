@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Symfonix Suite dokümantasyonu — CRM, İK, Finans ve CMS modüllerini tek bir yüksek performanslı iş platformunda birleştiren bütünleşik sistem.">
+  <title>Symfonix Suite — Dokümantasyon</title>
+  <link rel="alternate" hreflang="en" href="../index.html">
+  <link rel="alternate" hreflang="ar" href="../ar/index.html">
+  <link rel="alternate" hreflang="tr" href="./index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">İçeriğe geç</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="brand" aria-label="Symfonix Suite ana sayfası">
+        <img src="../images/logo.png" alt="Symfonix Suite logosu" class="brand-logo" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-name">Symfonix Suite</span>
+          <span class="brand-tagline">Dokümantasyon</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Birincil gezinme">
+        <a href="#introduction">Giriş</a>
+        <a href="#architecture">Mimari</a>
+        <a href="#modules">Modüller</a>
+        <a href="#getting-started">Başlangıç</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" aria-label="Dil değiştirici">
+          <a href="../index.html" lang="en">EN</a>
+          <a href="../ar/index.html" lang="ar">AR</a>
+          <a href="./index.html" class="is-active" lang="tr">TR</a>
+        </div>
+        <a href="#getting-started" class="btn btn-ghost">Dağıtım</a>
+        <a href="#introduction" class="btn btn-primary">Dokümantasyonu oku</a>
+        <button class="menu-toggle" type="button" aria-label="Gezinme menüsünü aç/kapat" aria-expanded="false" aria-controls="sidebar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="Dokümantasyon gezinmesi">
+      <div class="sidebar-inner">
+        <div class="sidebar-search">
+          <input type="search" id="doc-search" placeholder="Dokümanda ara..." aria-label="Dokümanda ara">
+        </div>
+
+        <nav>
+          <div class="nav-group">
+            <div class="nav-group-label">Genel Bakış</div>
+            <ul class="sidebar-nav">
+              <li><a href="#introduction" class="is-active">Giriş ve Vizyon</a></li>
+              <li><a href="#why-symfonix">Neden Symfonix Suite</a></li>
+              <li><a href="#value-proposition">Kurumsal Değer</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Platform</div>
+            <ul class="sidebar-nav">
+              <li><a href="#architecture">Sistem Mimarisi</a></li>
+              <li><a href="#core-engine">Çekirdek Motor</a></li>
+              <li><a href="#data-consistency">Veri Tutarlılığı</a></li>
+              <li><a href="#performance">Performans</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Modüller</div>
+            <ul class="sidebar-nav">
+              <li><a href="#modules">Temel Modüller</a></li>
+              <li><a href="#crm">CRM ve Pipeline</a></li>
+              <li><a href="#hr">İnsan Kaynakları</a></li>
+              <li><a href="#finance">Finans</a></li>
+              <li><a href="#cms">İçerik Yönetimi</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Geliştiriciler</div>
+            <ul class="sidebar-nav">
+              <li><a href="#getting-started">Başlangıç</a></li>
+              <li><a href="#requirements">Gereksinimler</a></li>
+              <li><a href="#installation">Kurulum</a></li>
+              <li><a href="#module-deployment">Modül Dağıtımı</a></li>
+              <li><a href="#permissions">Yetkiler ve Roller</a></li>
+              <li><a href="#production">Prodüksiyon</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="main-content" id="main-content">
+      <div class="content-wrapper">
+        <section class="hero" aria-labelledby="hero-title">
+          <span class="hero-badge">Kurumsal Platform · v1.0</span>
+          <h1 id="hero-title">Tüm iş fonksiyonları için tek platform.</h1>
+          <p class="hero-lead">
+            Symfonix Suite; CRM, İK, Finans, CMS ve temel operasyonel süreçleri tek bir yüksek performanslı, modüler iş yönetim platformunda birleştirerek parçalı SaaS yapılarından doğan entegrasyon yükünü ortadan kaldırır.
+          </p>
+          <div class="hero-actions">
+            <a href="#getting-started" class="btn btn-primary">Hemen başla</a>
+            <a href="#architecture" class="btn btn-ghost">Mimariyi incele</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">13+</div>
+              <div class="stat-label">İş modülü</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">1</div>
+              <div class="stat-label">Birleşik veritabanı</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">Birleştirilebilir iş akışları</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">B2B</div>
+              <div class="stat-label">Kurumsal hazır</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="introduction">
+          <h2>Giriş ve Vizyon</h2>
+          <p class="section-intro">
+            Symfonix Suite, satışın bir araçta, maaş yönetiminin başka bir araçta ve içerik operasyonlarının üçüncü bir sistemde tutulduğu dağınık iş yazılımı yapısını aşmış şirketler için tasarlandı.
+          </p>
+          <p>
+            <strong>Symfonix</strong> adı ürün felsefesini yansıtır: teknolojilerin çatışması değil uyum içinde orkestrasyonu. Şirketlerin onlarca SaaS ürününü birbirine bağlamak zorunda kalması yerine, platform bağımsız iş modüllerini ihtiyaçlara göre yükleyen bir <em>çekirdek sistem motoru</em> sunar.
+          </p>
+          <p>
+            Laravel 13 ve <code>nwidart/laravel-modules</code> tabanlı modüler mimarisi sayesinde platform; ajanslar, hizmet şirketleri ve orta ölçekli B2B işletmeler için esnek ama bütünleşik bir operasyon omurgası sağlar.
+          </p>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🔗</div>
+              <h3>Birleşik Ekosistem</h3>
+              <p>Farklı üçüncü parti araçları tek bir veritabanı ve tutarlı kullanıcı deneyimi sunan ortak platformda birleştirir.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🧩</div>
+              <h3>Modüler Tasarım</h3>
+              <p>CRM, İK, Finans, CMS ve diğer modüller bağımsız etkinleştirilebilir; yine de veri katmanında derin entegrasyon sağlar.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⚡</div>
+              <h3>Yüksek Performans</h3>
+              <p>Inertia.js tabanlı yönetim deneyimi, optimize sorgular ve prodüksiyon için isteğe bağlı Redis desteği sunar.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🌐</div>
+              <h3>Küresel Hazırlık</h3>
+              <p>İngilizce, Arapça ve Türkçe yerelleştirme, rol tabanlı erişim ve çok şubeli organizasyon yapısı desteklenir.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="why-symfonix">
+          <h3>Neden Symfonix Suite?</h3>
+          <p>B2B şirketler büyüdükçe genellikle şu sorunlarla karşılaşır:</p>
+          <ul>
+            <li><strong>Veri adacıkları</strong> — CRM'deki müşteri bilgileri finans tarafındaki kayıtlarla uyuşmaz.</li>
+            <li><strong>Entegrasyon vergisi</strong> — CSV aktarımları ve manuel süreçler operasyonu yavaşlatır.</li>
+            <li><strong>Yetki dağınıklığı</strong> — erişim yönetimi birçok panel arasında bölünür.</li>
+            <li><strong>Raporlama körlüğü</strong> — yönetim gerçek zamanlı çapraz fonksiyon görünürlüğü elde edemez.</li>
+          </ul>
+          <p>
+            Symfonix Suite bu sürtünmeyi mimari düzeyde ortadan kaldırır. CRM'de kapanan bir anlaşma proje kaydını tetikleyebilir, ürün satışı finans tarafına anında yansıyabilir, yeni çalışan rolleri merkezi izin sistemi üzerinden otomatik yayılabilir.
+          </p>
+        </section>
+
+        <section class="doc-section" id="value-proposition">
+          <h3>Kurumsal Mimari Değer</h3>
+          <p>Platform işletmeler ve teknik karar vericiler için üç temel alanda değer üretir:</p>
+          <ul class="feature-list">
+            <li>
+              <strong>Toplam sahip olma maliyetini düşürür</strong>
+              Tedarikçi sayısını ve entegrasyon bakım yükünü azaltır, ayrıca kendi altyapınızda barındırılabilir.
+            </li>
+            <li>
+              <strong>Operasyonel hızı artırır</strong>
+              Modüller arası veri akışı aynı şema üzerinde milisaniyeler içinde gerçekleşir.
+            </li>
+            <li>
+              <strong>Geleceğe dönük modülerlik sağlar</strong>
+              Yeni yetenekler çekirdeği yeniden yazmadan eklenebilir.
+            </li>
+          </ul>
+          <div class="callout callout--info">
+            <span class="callout-icon" aria-hidden="true">ℹ️</span>
+            <div class="callout-content">
+              <p><strong>Aşamalı benimseme için tasarlandı.</strong> Kurumlar bugün ihtiyaç duydukları modülleri etkinleştirip zamanla yeni bileşenler ekleyebilir; kayıt, yönlendirme ve yetkilendirme çekirdek motor tarafından yönetilir.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="architecture">
+          <h2>Sistem Mimarisi</h2>
+          <p class="section-intro">
+            Symfonix Suite, iş mantığını bağımsız modüllerde tutan; bunları ortak bir çekirdek motor ile yöneten ve tek ilişkisel veritabanına bağlayan katmanlı bir mimari izler.
+          </p>
+
+          <div class="arch-diagram" role="img" aria-label="İş modülleri, çekirdek sistem motoru ve veri katmanını gösteren mimari diyagram">
+            <div class="arch-layer arch-layer--modules">
+              <div class="arch-layer-label">İş Modülleri (dinamik yükleme)</div>
+              <span class="arch-chip">CRM</span>
+              <span class="arch-chip">HR / User</span>
+              <span class="arch-chip">Finance</span>
+              <span class="arch-chip">CMS</span>
+              <span class="arch-chip">Project</span>
+              <span class="arch-chip">Product</span>
+              <span class="arch-chip">Support</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--core">
+              <div class="arch-layer-label">Çekirdek Sistem Motoru</div>
+              <span class="arch-chip">Module Registry</span>
+              <span class="arch-chip">Auth &amp; Permissions</span>
+              <span class="arch-chip">Event Bus</span>
+              <span class="arch-chip">Shared Services</span>
+              <span class="arch-chip">Admin Shell (Inertia)</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--data">
+              <div class="arch-layer-label">Veri Katmanı</div>
+              <span class="arch-chip">MySQL / MariaDB</span>
+              <span class="arch-chip">Redis (cache / queues)</span>
+              <span class="arch-chip">File Storage</span>
+            </div>
+          </div>
+
+          <p>
+            Her modül <code>Modules/</code> altında bağımsız bir Laravel paketi gibi yaşar; kendi route, model, migration ve service provider yapılarına sahiptir. Çekirdek motor etkin modülleri açılışta keşfeder ve kaydeder.
+          </p>
+        </section>
+
+        <section class="doc-section" id="core-engine">
+          <h3>Çekirdek Motor</h3>
+          <p>
+            <strong>Core</strong> ve <strong>Base</strong> modülleri platformun omurgasını oluşturur. Core kurulum komutlarını ve ortak servisleri sunarken, Base genel ayarları, ülkeleri, şubeleri ve SEO yapılandırmasını yönetir.
+          </p>
+          <ol>
+            <li><strong>Modül yaşam döngüsü</strong> — etkinleştirme, devre dışı bırakma ve migration işlemleri.</li>
+            <li><strong>Yetki sentezi</strong> — modüllerden gelen izinleri Spatie Permission altında birleştirme.</li>
+            <li><strong>Yönetim kabuğu</strong> — panel iskeleti ve sayfa navigasyonu.</li>
+            <li><strong>Çapraz modül olayları</strong> — sıkı bağımlılık olmadan iş akışları kurma.</li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="data-consistency">
+          <h3>Veri Tutarlılığı</h3>
+          <p>
+            Tüm modüller tek veritabanı üzerinde çalıştığı için referans bütünlüğü şema seviyesinde korunur; bu da gece senkronizasyonları veya manuel eşleştirme ihtiyacını azaltır.
+          </p>
+          <p>
+            <code>spatie/laravel-data</code> ile veri taşıma nesneleri standartlaştırılır, çok dilli modeller ise CMS ve katalog içeriklerinin dillere göre tutarlı kalmasını sağlar.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Konu</th>
+                  <th>Yaklaşım</th>
+                  <th>Fayda</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Şema sahipliği</td><td>Modül bazlı migration</td><td>Bağımsız evrim ve düşük merkezi darboğaz</td></tr>
+                <tr><td>Paylaşılan varlıklar</td><td>Core/Base modelleri</td><td>Organizasyon verisi için tek doğru kaynak</td></tr>
+                <tr><td>İşlemler</td><td>Laravel DB transaction</td><td>Çok tablolü işlemlerde atomiklik</td></tr>
+                <tr><td>Denetlenebilirlik</td><td>DB loglama + Telescope</td><td>Uyumluluk ve hata ayıklama görünürlüğü</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="performance">
+          <h3>Performans</h3>
+          <ul>
+            <li><strong>Inertia.js</strong> tam API ayrımının karmaşıklığını yaşamadan SPA benzeri gezinme sağlar.</li>
+            <li><strong>Eager loading ve repository desenleri</strong> özellikle CRM ve Finans gibi modüllerde N+1 sorunlarını azaltır.</li>
+            <li><strong>Redis</strong> önbellek, oturum ve kuyruk işleme için prodüksiyonda önemli iyileştirme sunar.</li>
+            <li><strong>Laravel Pulse</strong> canlı performans izleme imkanı verir.</li>
+            <li><strong>Vite</strong> optimize edilmiş ve cache-busted frontend çıktıları üretir.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="modules">
+          <h2>Temel Modüller ve Arayüzler</h2>
+          <p class="section-intro">
+            Symfonix Suite, her biri yönetim arayüzü ve ortak izin sistemiyle entegre çalışan kapsamlı iş modülleriyle gelir.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Modül</th>
+                  <th>Alan</th>
+                  <th>Ana Yetkinlikler</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>CRM</strong></td><td>Satış ve ilişkiler</td><td>Lead, deal, company, pipeline, subscription, activity</td></tr>
+                <tr><td><strong>User</strong></td><td>İK ve erişim</td><td>Kullanıcılar, çalışanlar, roller, izinler, portal paneli</td></tr>
+                <tr><td><strong>Finance</strong></td><td>Muhasebe</td><td>İşlemler, maaşlar, komisyonlar, giderler, journal entry</td></tr>
+                <tr><td><strong>Cms</strong></td><td>İçerik</td><td>Sayfalar, blog, SSS, çok dilli içerik</td></tr>
+                <tr><td><strong>Product</strong></td><td>Katalog</td><td>Ürün kategorileri, katalog öğeleri, satış entegrasyonu</td></tr>
+                <tr><td><strong>Project</strong></td><td>Teslimat</td><td>Projeler, durumlar, use case kayıtları</td></tr>
+                <tr><td><strong>Support</strong></td><td>Destek</td><td>Ticket, aboneler ve şikayet yönetimi</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="crm">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Satış</span>
+              <span class="tag tag--neutral">Pipeline Yönetimi</span>
+            </div>
+            <h3>CRM ve Pipeline</h3>
+            <p>CRM modülü ilk temastan anlaşma kapanışına kadar tüm gelir yaşam döngüsünü yönetir.</p>
+            <ul>
+              <li><strong>Lead yönetimi</strong> ve kaynak takibi</li>
+              <li><strong>Kanban pipeline</strong> ile görsel aşama yönetimi</li>
+              <li><strong>Şirket kayıtları</strong> ile kontak, deal ve proje ilişkileri</li>
+              <li><strong>Aktivite ve görevler</strong> ile satış koordinasyonu</li>
+              <li><strong>Abonelikler</strong> ile tekrar eden hizmet sözleşmeleri</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="hr">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">İnsan</span>
+              <span class="tag tag--neutral">Kimlik ve Erişim</span>
+            </div>
+            <h3>İnsan Kaynakları</h3>
+            <p>User modülü çalışan kayıtları, kullanıcı hesapları, roller ve izinler arasında köprü kurar.</p>
+            <ul>
+              <li><strong>Çalışan profilleri</strong> ve organizasyonel bilgiler</li>
+              <li><strong>Rol tabanlı erişim kontrolü</strong></li>
+              <li><strong>İzin matrisi</strong> ile modül bazlı yetkilendirme</li>
+              <li><strong>Portal paneli</strong> ile personel öz-servis deneyimi</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="finance">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Muhasebe</span>
+              <span class="tag tag--neutral">Gelir ve Gider</span>
+            </div>
+            <h3>Finans</h3>
+            <p>Finans modülü günlük işlemlerden maaşlara, komisyonlardan gider yönetimine kadar tüm finansal süreci kapsar.</p>
+            <ul>
+              <li><strong>Gelir/gider kayıtları</strong> ve filtreleme</li>
+              <li><strong>Journal entry</strong> desteği</li>
+              <li><strong>Maaş yönetimi</strong> ve çalışan bağlantısı</li>
+              <li><strong>Komisyon hesaplama</strong> ve satış hedefleri</li>
+              <li><strong>Fatura bildirimleri</strong> için event/listener tabanlı akış</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="cms">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">İçerik</span>
+              <span class="tag tag--neutral">Çok Dilli</span>
+            </div>
+            <h3>İçerik Yönetimi</h3>
+            <p>CMS modülü kamuya açık web sitesini ve içerik yönetim deneyimini besler; sayfalar, blog yazıları ve SSS kayıtlarını yönetir.</p>
+            <ul>
+              <li><strong>Statik sayfalar</strong> ve slug bazlı yönlendirme</li>
+              <li><strong>Blog yönetimi</strong> ve SEO metadataları</li>
+              <li><strong>SSS yönetimi</strong> ve bilgi tabanı yapıları</li>
+              <li><strong>Yerelleştirme</strong> ile İngilizce, Arapça ve Türkçe içerik desteği</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="getting-started">
+          <h2>Başlangıç</h2>
+          <p class="section-intro">Bu bölüm Symfonix Suite'i temiz bir kurulumdan çalışan yönetim paneline kadar ayağa kaldırmak için gereken temel adımları özetler.</p>
+        </section>
+
+        <section class="doc-section" id="requirements">
+          <h3>Gereksinimler</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Bağımlılık</th><th>Sürüm</th><th>Not</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>PHP</td><td>8.3+</td><td>Laravel için gerekli temel eklentilerle</td></tr>
+                <tr><td>Composer</td><td>2.x</td><td>PHP paket yönetimi</td></tr>
+                <tr><td>Node.js</td><td>18+</td><td>Frontend derleme için npm ile birlikte</td></tr>
+                <tr><td>MySQL / MariaDB</td><td>8.0+ / 10.6+</td><td>Birincil veri kaynağı</td></tr>
+                <tr><td>Redis</td><td>6+</td><td>Prodüksiyonda önerilir</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="installation">
+          <h3>Kurulum</h3>
+          <ol class="steps">
+            <li>
+              <h4>Ortamı yapılandır</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>cp .env.example .env</code></pre>
+              <span class="code-label">.env</span>
+              <pre><code>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=symfonix
+DB_USERNAME=root
+DB_PASSWORD=</code></pre>
+            </li>
+            <li>
+              <h4>Bağımlılıkları yükle</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install
+npm install && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>Kurulum komutunu çalıştır</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan app:install</code></pre>
+            </li>
+            <li>
+              <h4>Uygulamayı başlat</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan serve</code></pre>
+            </li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="module-deployment">
+          <h3>Modül Dağıtımı</h3>
+          <p>Modüller <code>nwidart/laravel-modules</code> standardına göre yapılandırılır ve bağımsız migration, route, view ve provider dosyalarıyla çalışır.</p>
+          <span class="code-label">Terminal</span>
+          <pre><code>php artisan module:list
+php artisan module:enable CRM
+php artisan module:disable Testimonial
+php artisan module:migrate Finance</code></pre>
+        </section>
+
+        <section class="doc-section" id="permissions">
+          <h3>Yetkiler ve Roller</h3>
+          <p>Platform, rol ve izin yönetimi için <code>Spatie Laravel Permission</code> kullanır. İzinler kurulum sırasında oluşturulur ve yönetim panelinden rollere atanır.</p>
+        </section>
+
+        <section class="doc-section" id="production">
+          <h3>Prodüksiyon</h3>
+          <ol class="steps">
+            <li>
+              <h4>Prodüksiyon ortamını ayarla</h4>
+              <span class="code-label">.env</span>
+              <pre><code>APP_ENV=production
+APP_DEBUG=false
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis</code></pre>
+            </li>
+            <li>
+              <h4>Üretim bağımlılıklarını yükle</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install --no-dev --optimize-autoloader
+npm ci && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>Migration ve cache işlemleri</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache</code></pre>
+            </li>
+          </ol>
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>Güvenlik kontrolü:</strong> <code>APP_DEBUG=false</code> olmalı, yönetici hesapları için iki faktörlü doğrulama etkinleştirilmeli ve <code>.env</code> dosyaları asla sürüm kontrolüne eklenmemelidir.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Symfonix Suite. Tüm hakları saklıdır.</p>
+      <p>
+        <a href="#introduction">Dokümantasyon</a>
+        &nbsp;·&nbsp;
+        <a href="#getting-started">Başlangıç</a>
+        &nbsp;·&nbsp;
+        <a href="../index.html">English</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var toggle = document.querySelector('.menu-toggle');
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+
+      function openSidebar() {
+        sidebar.classList.add('is-open');
+        overlay.classList.add('is-visible');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('is-open');
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function () {
+        if (sidebar.classList.contains('is-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+
+      sidebar.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 768) {
+            closeSidebar();
+          }
+        });
+      });
+
+      var sections = document.querySelectorAll('.doc-section[id], .hero');
+      var navLinks = document.querySelectorAll('.sidebar-nav a');
+
+      function setActiveNav() {
+        var scrollPos = window.scrollY + 120;
+        var current = '';
+
+        sections.forEach(function (section) {
+          if (section.offsetTop <= scrollPos) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', setActiveNav, { passive: true });
+      setActiveNav();
+
+      var searchInput = document.getElementById('doc-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          var query = this.value.toLowerCase().trim();
+          navLinks.forEach(function (link) {
+            var li = link.parentElement;
+            var text = link.textContent.toLowerCase();
+            li.style.display = !query || text.includes(query) ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

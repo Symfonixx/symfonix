@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use Modules\CRM\Models\ContactForm;
+use Modules\Testimonial\Models\Testimonial;
 
 class AdminLayout extends Component
 {
@@ -28,6 +29,7 @@ class AdminLayout extends Component
         $unreadMessageCount = 0;
         $recentNotifications = collect();
         $unreadNotificationCount = 0;
+        $pendingTestimonialCount = 0;
 
         if ($this->user) {
             $unreadNotificationCount = $this->user->unreadNotifications()->count();
@@ -48,12 +50,19 @@ class AdminLayout extends Component
                 ->count();
         }
 
+        if ($this->user?->can('Testimonials Management')) {
+            $pendingTestimonialCount = Testimonial::query()
+                ->where('status', 'Archived')
+                ->count();
+        }
+
         return view('components.admin-layout', [
             'user' => $this->user,
             'recentMessages' => $recentMessages,
             'unreadMessageCount' => $unreadMessageCount,
             'recentNotifications' => $recentNotifications,
             'unreadNotificationCount' => $unreadNotificationCount,
+            'pendingTestimonialCount' => $pendingTestimonialCount,
         ]);
     }
 }

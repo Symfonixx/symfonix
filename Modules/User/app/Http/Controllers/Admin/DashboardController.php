@@ -18,6 +18,7 @@ use Modules\Project\Models\Project;
 use Modules\Services\Models\Service;
 use Modules\Support\Models\Subscriber;
 use Modules\Support\Models\Ticket;
+use Modules\Testimonial\Models\Testimonial;
 use Modules\User\app\Repositories\Employee\EmployeeRepository;
 use Monishroy\VisitorTracking\Helpers\Visitor;
 use MonishRoy\VisitorTracking\Models\VisitorTable;
@@ -156,6 +157,15 @@ class DashboardController extends Controller
                 ->get();
         }
 
+        $testimonialStats = null;
+        if ($user?->can('Testimonials Management')) {
+            $testimonialStats = [
+                'pending_approval' => Testimonial::query()
+                    ->where('status', 'Archived')
+                    ->count(),
+            ];
+        }
+
         $productStats = null;
         $recentProductSales = collect();
         if ($user?->can('Product Management')) {
@@ -196,6 +206,7 @@ class DashboardController extends Controller
             'recentLeads',
             'notificationStats',
             'recentNotifications',
+            'testimonialStats',
         ));
     }
 }

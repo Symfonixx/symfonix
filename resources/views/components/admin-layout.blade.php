@@ -551,7 +551,7 @@ Author: Hadi Hilal
                             <!--begin::Menu-->
                             <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6"
                                  id="kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
-                                <x-admin.side-nav></x-admin.side-nav>
+                                <x-admin.side-nav :pending-testimonial-count="$pendingTestimonialCount ?? 0"></x-admin.side-nav>
                             </div>
                             <!--end::Menu-->
                         </div>

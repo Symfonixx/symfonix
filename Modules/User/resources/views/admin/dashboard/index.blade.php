@@ -46,6 +46,14 @@
                         <i class="bi bi-currency-dollar me-1"></i>{{ __('finance::finance.menu.finance') }}
                     </a>
                 @endcan
+                @can('Testimonials Management')
+                    <a href="{{ route('admin.testimonials.index') }}" class="btn btn-sm btn-light fw-semibold text-primary">
+                        <i class="bi bi-chat-quote me-1"></i>{{ __('Testimonials') }}
+                        @if(($testimonialStats['pending_approval'] ?? 0) > 0)
+                            <span class="badge badge-circle badge-danger ms-1">{{ $testimonialStats['pending_approval'] }}</span>
+                        @endif
+                    </a>
+                @endcan
                 @if(($notificationStats['unread'] ?? 0) > 0)
                     <span class="btn btn-sm btn-light fw-semibold text-danger disabled">
                         <i class="bi bi-bell me-1"></i>{{ __('user::dashboard.unread_notifications') }}
@@ -115,6 +123,20 @@
                     <div class="stat-value text-gray-900">{{ number_format($ticketStats['open'] ?? 0) }}</div>
                     <div class="stat-label">{{ __('support::ticket.dashboard.open_tickets') }}</div>
                     <a href="{{ route('admin.tickets.index') }}" class="stat-link text-warning">{{ __('View all') }} →</a>
+                </div>
+            </div>
+        </div>
+        @endcan
+        @can('Testimonials Management')
+        <div class="col-sm-6 col-xl-3">
+            <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
+                <div class="stat-icon bg-light-warning text-warning">
+                    <i class="bi bi-chat-quote"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <div class="stat-value text-gray-900">{{ number_format($testimonialStats['pending_approval'] ?? 0) }}</div>
+                    <div class="stat-label">{{ __('testimonial::notifications.dashboard.pending_approval') }}</div>
+                    <a href="{{ route('admin.testimonials.index') }}" class="stat-link text-warning">{{ __('View all') }} →</a>
                 </div>
             </div>
         </div>

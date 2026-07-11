@@ -1,0 +1,10 @@
+{
+    "new_testimonial_subject": "Onay bekleyen yeni müşteri yorumu",
+    "new_testimonial_line": ":customer, :project projesi için bir yorum gönderdi.",
+    "greeting": "Merhaba :name,",
+    "view_testimonials": "Müşteri Yorumlarını İncele",
+    "pending_approval": "Onay Bekliyor",
+    "dashboard": {
+        "pending_approval": "Onay Bekleyen Müşteri Yorumları"
+    }
+}

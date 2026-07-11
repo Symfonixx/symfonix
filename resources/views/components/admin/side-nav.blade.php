@@ -1,3 +1,5 @@
+@props(['pendingTestimonialCount' => 0])
+
 <div class="menu-section-label">{{ __('Overview') }}</div>
 
 <div class="menu-item">
@@ -344,6 +346,9 @@
                    href="{{ route('admin.testimonials.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">{{ __('Testimonials') }}</span>
+                    @if($pendingTestimonialCount > 0)
+                        <span class="badge badge-circle badge-danger ms-auto">{{ $pendingTestimonialCount }}</span>
+                    @endif
                 </a>
             </div>
             @endcan

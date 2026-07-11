@@ -3,6 +3,8 @@
 namespace Modules\Testimonial\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Modules\Testimonial\Events\TestimonialSubmitted;
+use Modules\Testimonial\Listeners\NotifyAdminsOfNewTestimonial;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -11,7 +13,11 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array<string, array<int, string>>
      */
-    protected $listen = [];
+    protected $listen = [
+        TestimonialSubmitted::class => [
+            NotifyAdminsOfNewTestimonial::class,
+        ],
+    ];
 
     /**
      * Indicates if events should be discovered.

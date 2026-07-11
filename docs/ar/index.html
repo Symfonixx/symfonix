@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="توثيق Symfonix Suite — منصة موحدة لإدارة الأعمال تجمع CRM والموارد البشرية والمالية وإدارة المحتوى ضمن نظام معياري عالي الأداء.">
+  <title>Symfonix Suite — التوثيق</title>
+  <link rel="alternate" hreflang="en" href="../index.html">
+  <link rel="alternate" hreflang="ar" href="./index.html">
+  <link rel="alternate" hreflang="tr" href="../tr/index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">انتقل إلى المحتوى</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="brand" aria-label="الصفحة الرئيسية لتوثيق Symfonix Suite">
+        <img src="../images/logo.png" alt="شعار Symfonix Suite" class="brand-logo" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-name">Symfonix Suite</span>
+          <span class="brand-tagline">التوثيق</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="التنقل الرئيسي">
+        <a href="#introduction">المقدمة</a>
+        <a href="#architecture">الهيكلية</a>
+        <a href="#modules">الوحدات</a>
+        <a href="#getting-started">البدء</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" aria-label="مبدل اللغة">
+          <a href="../index.html" lang="en">EN</a>
+          <a href="./index.html" class="is-active" lang="ar">AR</a>
+          <a href="../tr/index.html" lang="tr">TR</a>
+        </div>
+        <a href="#getting-started" class="btn btn-ghost">النشر</a>
+        <a href="#introduction" class="btn btn-primary">اقرأ التوثيق</a>
+        <button class="menu-toggle" type="button" aria-label="تبديل قائمة التنقل" aria-expanded="false" aria-controls="sidebar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="تنقل التوثيق">
+      <div class="sidebar-inner">
+        <div class="sidebar-search">
+          <input type="search" id="doc-search" placeholder="ابحث في التوثيق..." aria-label="ابحث في التوثيق">
+        </div>
+
+        <nav>
+          <div class="nav-group">
+            <div class="nav-group-label">نظرة عامة</div>
+            <ul class="sidebar-nav">
+              <li><a href="#introduction" class="is-active">المقدمة والرؤية</a></li>
+              <li><a href="#why-symfonix">لماذا Symfonix Suite</a></li>
+              <li><a href="#value-proposition">القيمة للمؤسسات</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">المنصة</div>
+            <ul class="sidebar-nav">
+              <li><a href="#architecture">هيكلية النظام</a></li>
+              <li><a href="#core-engine">المحرك الأساسي</a></li>
+              <li><a href="#data-consistency">اتساق البيانات</a></li>
+              <li><a href="#performance">الأداء</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">الوحدات</div>
+            <ul class="sidebar-nav">
+              <li><a href="#modules">نظرة عامة على الوحدات</a></li>
+              <li><a href="#crm">CRM وخطوط المبيعات</a></li>
+              <li><a href="#hr">الموارد البشرية</a></li>
+              <li><a href="#finance">المالية</a></li>
+              <li><a href="#cms">إدارة المحتوى</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">للمطورين</div>
+            <ul class="sidebar-nav">
+              <li><a href="#getting-started">البدء</a></li>
+              <li><a href="#requirements">المتطلبات</a></li>
+              <li><a href="#installation">التثبيت</a></li>
+              <li><a href="#module-deployment">نشر الوحدات</a></li>
+              <li><a href="#permissions">الصلاحيات والأدوار</a></li>
+              <li><a href="#production">بيئة الإنتاج</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="main-content" id="main-content">
+      <div class="content-wrapper">
+        <section class="hero" aria-labelledby="hero-title">
+          <span class="hero-badge">منصة مؤسسية · v1.0</span>
+          <h1 id="hero-title">منصة واحدة لكل وظائف الأعمال.</h1>
+          <p class="hero-lead">
+            Symfonix Suite منصة موحدة لإدارة الأعمال تجمع CRM والموارد البشرية والمالية وإدارة المحتوى وسير العمل التشغيلي ضمن نظام معياري عالي الأداء، لتقليل تعقيد الأدوات المتفرقة والتكاملات الهشة.
+          </p>
+          <div class="hero-actions">
+            <a href="#getting-started" class="btn btn-primary">ابدأ الآن</a>
+            <a href="#architecture" class="btn btn-ghost">استكشف الهيكلية</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">13+</div>
+              <div class="stat-label">وحدة أعمال</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">1</div>
+              <div class="stat-label">قاعدة بيانات موحدة</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">سير عمل قابل للتركيب</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">B2B</div>
+              <div class="stat-label">جاهزة للمؤسسات</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="introduction">
+          <h2>المقدمة والرؤية</h2>
+          <p class="section-intro">
+            تم تطوير Symfonix Suite للمؤسسات التي تجاوزت مرحلة استخدام أدوات منفصلة لكل وظيفة، حيث توجد المبيعات في نظام والرواتب في نظام آخر والمحتوى في مكان ثالث مع تكرار للبيانات ومشكلات مزامنة مستمرة.
+          </p>
+          <p>
+            تعكس كلمة <strong>Symfonix</strong> فلسفة المنتج: تناغم التقنيات داخل المؤسسة بدل تصادمها. فبدل أن تتحول الشركة إلى جهة تقوم بربط عشرات الخدمات يدويًا، توفر المنصة <em>محركًا أساسيًا</em> يقوم بتحميل الوحدات المستقلة حسب الحاجة التشغيلية.
+          </p>
+          <p>
+            تعتمد المنصة على Laravel 13 وبنية معيارية باستخدام <code>nwidart/laravel-modules</code>، ما يجعلها مناسبة للوكالات والشركات الخدمية والمؤسسات متوسطة الحجم التي تحتاج بنية تشغيل موحدة دون التضحية بالمرونة.
+          </p>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🔗</div>
+              <h3>منظومة موحدة</h3>
+              <p>استبدال تعدد الاشتراكات والأنظمة المتفرقة بمنصة واحدة تشارك قاعدة بيانات موحدة وتجربة استخدام متسقة.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🧩</div>
+              <h3>تصميم معياري</h3>
+              <p>يمكن تفعيل CRM والموارد البشرية والمالية وإدارة المحتوى والوحدات الأخرى بشكل مستقل مع تكامل عميق على مستوى البيانات.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⚡</div>
+              <h3>أداء مرتفع</h3>
+              <p>واجهة إدارة سريعة مع Inertia.js واستعلامات محسنة ودعم Redis للتخزين المؤقت والمهام الخلفية.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🌐</div>
+              <h3>جاهزية متعددة اللغات</h3>
+              <p>دعم مدمج للإنجليزية والعربية والتركية مع صلاحيات دقيقة وهيكل تنظيمي يدعم الفروع.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="why-symfonix">
+          <h3>لماذا Symfonix Suite؟</h3>
+          <p>مع نمو الأعمال تتراكم الديون البرمجية: CRM هنا، محاسبة هناك، وجداول بيانات للباقي. هذا يخلق:</p>
+          <ul>
+            <li><strong>جزر بيانات</strong> حيث لا تتطابق بيانات العملاء بين المبيعات والمالية.</li>
+            <li><strong>تكلفة تكامل مرتفعة</strong> بسبب الاعتماد على ملفات CSV والتدفقات اليدوية.</li>
+            <li><strong>تشتت في الصلاحيات</strong> عبر لوحات تحكم متعددة.</li>
+            <li><strong>ضعف في التقارير</strong> لأن الإدارة لا تحصل على صورة موحدة لحظية.</li>
+          </ul>
+          <p>
+            تعالج Symfonix Suite هذه المشكلات من الجذور. عند إغلاق صفقة في CRM يمكن إنشاء مشروع تلقائيًا، وعند تسجيل عملية بيع يتم تحديث المالية، وعند إضافة موظف جديد تنتشر الصلاحيات من خلال نظام الأدوار المركزي.
+          </p>
+        </section>
+
+        <section class="doc-section" id="value-proposition">
+          <h3>القيمة المعمارية للمؤسسات</h3>
+          <p>تقدم المنصة قيمة حقيقية لمديري الأعمال والفرق التقنية عبر ثلاث محاور رئيسية:</p>
+          <ul class="feature-list">
+            <li>
+              <strong>خفض التكلفة الإجمالية للملكية</strong>
+              تقليل عدد الموردين الخارجيين وتقليص عبء صيانة التكاملات مع إمكانية الاستضافة على بنيتك الخاصة.
+            </li>
+            <li>
+              <strong>تسريع التنفيذ التشغيلي</strong>
+              تعمل التدفقات بين الوحدات مباشرة على نفس قاعدة البيانات دون انتظار مزامنة أو Webhooks.
+            </li>
+            <li>
+              <strong>قابلية توسع مستقبلية</strong>
+              يمكن إضافة وحدات جديدة مع نمو المؤسسة دون إعادة بناء النظام الأساسي.
+            </li>
+          </ul>
+          <div class="callout callout--info">
+            <span class="callout-icon" aria-hidden="true">ℹ️</span>
+            <div class="callout-content">
+              <p><strong>منصة قابلة للتركيب.</strong> لا تحتاج المؤسسة إلى اعتماد كل شيء دفعة واحدة. يمكن تشغيل الوحدات المطلوبة اليوم وإضافة غيرها لاحقًا بينما يتكفل المحرك الأساسي بالتسجيل والتوجيه والصلاحيات.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="architecture">
+          <h2>هيكلية النظام</h2>
+          <p class="section-intro">
+            تعتمد Symfonix Suite على هيكلية متعددة الطبقات، حيث تبقى منطق الأعمال داخل وحدات مستقلة، بينما يتولى المحرك الأساسي التنسيق بينها فوق قاعدة بيانات موحدة.
+          </p>
+
+          <div class="arch-diagram" role="img" aria-label="مخطط معماري يوضح طبقة الوحدات وطبقة المحرك الأساسي وطبقة البيانات">
+            <div class="arch-layer arch-layer--modules">
+              <div class="arch-layer-label">وحدات الأعمال (تحميل ديناميكي)</div>
+              <span class="arch-chip">CRM</span>
+              <span class="arch-chip">HR / User</span>
+              <span class="arch-chip">Finance</span>
+              <span class="arch-chip">CMS</span>
+              <span class="arch-chip">Project</span>
+              <span class="arch-chip">Product</span>
+              <span class="arch-chip">Support</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--core">
+              <div class="arch-layer-label">المحرك الأساسي</div>
+              <span class="arch-chip">Module Registry</span>
+              <span class="arch-chip">Auth &amp; Permissions</span>
+              <span class="arch-chip">Event Bus</span>
+              <span class="arch-chip">Shared Services</span>
+              <span class="arch-chip">Admin Shell (Inertia)</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--data">
+              <div class="arch-layer-label">طبقة البيانات</div>
+              <span class="arch-chip">MySQL / MariaDB</span>
+              <span class="arch-chip">Redis (cache / queues)</span>
+              <span class="arch-chip">File Storage</span>
+            </div>
+          </div>
+
+          <p>
+            كل وحدة في المجلد <code>Modules/</code> تملك نماذجها وراوتاتها وملفات الترحيل الخاصة بها، بينما يكتشف المحرك الأساسي الوحدات النشطة ويقوم بتسجيلها وتشغيلها.
+          </p>
+        </section>
+
+        <section class="doc-section" id="core-engine">
+          <h3>المحرك الأساسي</h3>
+          <p>
+            تشكل وحدتا <strong>Core</strong> و<strong>Base</strong> العمود الفقري للمنصة. تتولى Core أوامر التثبيت والخدمات المشتركة، بينما تدير Base الإعدادات العامة والفروع والدول وتهيئة SEO ودمج مدير الملفات.
+          </p>
+          <ol>
+            <li><strong>إدارة دورة حياة الوحدات</strong> من التفعيل والتعطيل إلى الترحيل.</li>
+            <li><strong>تجميع الصلاحيات</strong> من كل الوحدات في سجل موحد باستخدام Spatie Permission.</li>
+            <li><strong>قالب الإدارة الموحد</strong> لعرض الصفحات وبناء التنقل داخل لوحة الإدارة.</li>
+            <li><strong>الأحداث عبر الوحدات</strong> لربط العمليات دون إنشاء اعتماد مباشر بين الوحدات.</li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="data-consistency">
+          <h3>اتساق البيانات</h3>
+          <p>
+            لأن جميع الوحدات تعمل على قاعدة بيانات واحدة، يتم فرض العلاقات المرجعية على مستوى المخطط نفسه، وليس عبر مزامنة ليلية أو عمليات استيراد يدوية.
+          </p>
+          <p>
+            تستخدم المنصة DTOs عبر <code>spatie/laravel-data</code> لتوحيد نقل البيانات بين الطبقات، كما تتيح النماذج متعددة اللغات إدارة المحتوى والبيانات عبر أكثر من لغة دون ازدواجية.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>المجال</th>
+                  <th>النهج</th>
+                  <th>الفائدة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ملكية المخطط</td>
+                  <td>ترحيلات لكل وحدة</td>
+                  <td>تطوير مستقل دون ازدحام مركزي</td>
+                </tr>
+                <tr>
+                  <td>الكيانات المشتركة</td>
+                  <td>نماذج Core وBase</td>
+                  <td>مصدر واحد للحقيقة التنظيمية</td>
+                </tr>
+                <tr>
+                  <td>المعاملات</td>
+                  <td>Laravel DB transactions</td>
+                  <td>تنفيذ ذري للعمليات متعددة الجداول</td>
+                </tr>
+                <tr>
+                  <td>التتبع</td>
+                  <td>سجلات قاعدة البيانات وTelescope</td>
+                  <td>شفافية أفضل في المراجعة والاستكشاف</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="performance">
+          <h3>الأداء</h3>
+          <ul>
+            <li><strong>Inertia.js</strong> يوفر تنقلًا سريعًا بأسلوب SPA دون الحاجة لفصل الواجهة عن الخادم بالكامل.</li>
+            <li><strong>التحميل المسبق والأنماط المستودعية</strong> تقلل مشكلات N+1 في الوحدات ذات الحمل العالي.</li>
+            <li><strong>Redis</strong> يحسن الكاش والمهام الخلفية والجلسات في بيئات الإنتاج.</li>
+            <li><strong>Laravel Pulse</strong> يقدم مراقبة أداء مستمرة عند تفعيله.</li>
+            <li><strong>Vite</strong> ينتج ملفات أمامية محسنة وقابلة للتخزين المؤقت.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="modules">
+          <h2>الوحدات الأساسية والواجهات</h2>
+          <p class="section-intro">
+            تأتي Symfonix Suite بمجموعة متكاملة من الوحدات التجارية، وتوفر كل وحدة واجهة إدارة خاصة بها مع تكامل موحد للصلاحيات والإشعارات.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>الوحدة</th>
+                  <th>المجال</th>
+                  <th>القدرات الأساسية</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>CRM</strong></td><td>المبيعات والعلاقات</td><td>العملاء المحتملون، الصفقات، الشركات، مراحل البيع، الاشتراكات، الأنشطة</td></tr>
+                <tr><td><strong>User</strong></td><td>الموارد البشرية والوصول</td><td>المستخدمون، الموظفون، الأدوار، الصلاحيات، لوحة البوابة</td></tr>
+                <tr><td><strong>Finance</strong></td><td>المحاسبة</td><td>المعاملات، الرواتب، العمولات، المصروفات، القيود اليومية</td></tr>
+                <tr><td><strong>Cms</strong></td><td>المحتوى</td><td>الصفحات، المقالات، الأسئلة الشائعة، المحتوى متعدد اللغات</td></tr>
+                <tr><td><strong>Product</strong></td><td>الكتالوج</td><td>الأصناف والفئات وتكامل المبيعات</td></tr>
+                <tr><td><strong>Project</strong></td><td>التنفيذ</td><td>المشاريع والحالات وحالات الاستخدام ومتابعة التسليم</td></tr>
+                <tr><td><strong>Support</strong></td><td>الدعم</td><td>التذاكر والمشتركين والشكاوى</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="crm">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">المبيعات</span>
+              <span class="tag tag--neutral">إدارة خط المبيعات</span>
+            </div>
+            <h3>CRM وخطوط المبيعات</h3>
+            <p>وحدة CRM هي محرك الإيرادات في المنصة، وتغطي الرحلة من أول تواصل وحتى إغلاق الصفقة مع تتبع الأنشطة والاشتراكات.</p>
+            <ul>
+              <li><strong>إدارة العملاء المحتملين</strong> مع حقول مخصصة وتتبع المصادر.</li>
+              <li><strong>لوحة خط المبيعات</strong> بمراحل قابلة للتخصيص وتحريك مرئي للصفقات.</li>
+              <li><strong>سجلات الشركات</strong> تربط الشركات بالصفقات والمشاريع وجهات الاتصال.</li>
+              <li><strong>الأنشطة والمهام</strong> للمكالمات والاجتماعات والمتابعات.</li>
+              <li><strong>الاشتراكات</strong> للعقود المتكررة والتجديد والفوترة.</li>
+            </ul>
+            <p>تدفقات المراحل مبنية بشكل يتيح للوحدات الأخرى الاستماع للأحداث، مثل إنشاء مشروع بعد إغلاق صفقة ناجحة.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="hr">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">الأفراد</span>
+              <span class="tag tag--neutral">الهوية والصلاحيات</span>
+            </div>
+            <h3>الموارد البشرية</h3>
+            <p>توفر وحدة User أساس الموارد البشرية والهوية الرقمية داخل المنصة من خلال الربط بين حسابات المستخدمين وملفات الموظفين والأدوار والصلاحيات.</p>
+            <ul>
+              <li><strong>ملفات الموظفين</strong> بمعلومات الاتصال والحالة الوظيفية والبنية التنظيمية.</li>
+              <li><strong>الصلاحيات المعتمدة على الأدوار</strong> عبر Spatie Laravel Permission.</li>
+              <li><strong>مصفوفة صلاحيات دقيقة</strong> لكل وحدة من وحدات المنصة.</li>
+              <li><strong>بوابة الموظف</strong> للوصول إلى الموارد ولوحات المعلومات الشخصية.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="finance">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">المحاسبة</span>
+              <span class="tag tag--neutral">الإيرادات والمصروفات</span>
+            </div>
+            <h3>المالية</h3>
+            <p>تغطي وحدة Finance العمليات المالية اليومية من تسجيل الدخل والمصروفات إلى الرواتب والعمولات والقيود، مع تكامل قائم على الأحداث مع باقي الوحدات.</p>
+            <ul>
+              <li><strong>المعاملات</strong> مع تصنيف وفلاتر ولوحات يومية.</li>
+              <li><strong>القيود اليومية</strong> لدعم الممارسات المحاسبية الرسمية.</li>
+              <li><strong>الرواتب</strong> مرتبطة مباشرة بملفات الموظفين.</li>
+              <li><strong>العمولات</strong> على أساس الصفقات وأهداف المبيعات.</li>
+              <li><strong>الإشعارات والفواتير</strong> عبر Listeners منفصلة للحفاظ على الترابط الضعيف.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="cms">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">المحتوى</span>
+              <span class="tag tag--neutral">متعدد اللغات</span>
+            </div>
+            <h3>إدارة المحتوى</h3>
+            <p>تشغل وحدة CMS الموقع العام إلى جانب لوحة الإدارة، وتوفر نظامًا متكاملًا لإدارة الصفحات والمقالات والأسئلة الشائعة وإعدادات SEO.</p>
+            <ul>
+              <li><strong>الصفحات الثابتة</strong> مع Slugs ومحتوى مترجم.</li>
+              <li><strong>المدونة</strong> مع تصنيفات وصور وبيانات SEO.</li>
+              <li><strong>الأسئلة الشائعة</strong> بطريقة منظمة وقابلة للإدارة.</li>
+              <li><strong>دعم اللغات</strong> للإنجليزية والعربية والتركية مع دعم RTL للعربية.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="getting-started">
+          <h2>البدء</h2>
+          <p class="section-intro">يوضح هذا الدليل خطوات تشغيل Symfonix Suite من مشروع جديد حتى الوصول إلى لوحة الإدارة مع الوحدات الأساسية.</p>
+        </section>
+
+        <section class="doc-section" id="requirements">
+          <h3>المتطلبات</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>الاعتماد</th><th>الإصدار</th><th>ملاحظات</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>PHP</td><td>8.3+</td><td>مع الإضافات الأساسية الخاصة بـ Laravel</td></tr>
+                <tr><td>Composer</td><td>2.x</td><td>إدارة حزم PHP</td></tr>
+                <tr><td>Node.js</td><td>18+</td><td>مع npm لبناء الأصول الأمامية</td></tr>
+                <tr><td>MySQL / MariaDB</td><td>8.0+ / 10.6+</td><td>قاعدة البيانات الأساسية</td></tr>
+                <tr><td>Redis</td><td>6+</td><td>اختياري لكنه موصى به للإنتاج</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="installation">
+          <h3>التثبيت</h3>
+          <ol class="steps">
+            <li>
+              <h4>نسخ المشروع وضبط البيئة</h4>
+              <p>انسخ ملف البيئة وحدد معلومات قاعدة البيانات:</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>cp .env.example .env</code></pre>
+              <span class="code-label">.env</span>
+              <pre><code>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=symfonix
+DB_USERNAME=root
+DB_PASSWORD=</code></pre>
+            </li>
+            <li>
+              <h4>تثبيت الاعتمادات</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install
+npm install && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>تشغيل أمر التثبيت</h4>
+              <p>يقوم <code>app:install</code> بتشغيل الترحيلات والبيانات الأولية والصلاحيات وإنشاء المستخدم الإداري:</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan app:install</code></pre>
+            </li>
+            <li>
+              <h4>تشغيل التطبيق</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan serve</code></pre>
+            </li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="module-deployment">
+          <h3>نشر الوحدات</h3>
+          <p>تتبع الوحدات هيكل <code>nwidart/laravel-modules</code> القياسي، حيث تمتلك كل وحدة نماذجها وراوتاتها وترحيلاتها وموفري الخدمة.</p>
+          <span class="code-label">Terminal</span>
+          <pre><code>php artisan module:list
+php artisan module:enable CRM
+php artisan module:disable Testimonial
+php artisan module:migrate Finance</code></pre>
+        </section>
+
+        <section class="doc-section" id="permissions">
+          <h3>الصلاحيات والأدوار</h3>
+          <p>تعتمد المنصة على <code>Spatie Laravel Permission</code> لإنشاء الأدوار وإسناد الصلاحيات الدقيقة لكل وحدة أثناء التثبيت ومن خلال لوحة الإدارة.</p>
+        </section>
+
+        <section class="doc-section" id="production">
+          <h3>بيئة الإنتاج</h3>
+          <ol class="steps">
+            <li>
+              <h4>إعداد البيئة</h4>
+              <span class="code-label">.env</span>
+              <pre><code>APP_ENV=production
+APP_DEBUG=false
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis</code></pre>
+            </li>
+            <li>
+              <h4>بناء الإنتاج</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install --no-dev --optimize-autoloader
+npm ci && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>الكاش والمهام الخلفية</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache</code></pre>
+            </li>
+          </ol>
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>مراجعة الأمان:</strong> عطّل وضع التصحيح في الإنتاج، وفعّل المصادقة الثنائية للمشرفين، ولا تقم أبدًا بإضافة ملف <code>.env</code> إلى Git.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Symfonix Suite. جميع الحقوق محفوظة.</p>
+      <p>
+        <a href="#introduction">التوثيق</a>
+        &nbsp;·&nbsp;
+        <a href="#getting-started">البدء</a>
+        &nbsp;·&nbsp;
+        <a href="../index.html">English</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var toggle = document.querySelector('.menu-toggle');
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+
+      function openSidebar() {
+        sidebar.classList.add('is-open');
+        overlay.classList.add('is-visible');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('is-open');
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function () {
+        if (sidebar.classList.contains('is-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+
+      sidebar.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 768) {
+            closeSidebar();
+          }
+        });
+      });
+
+      var sections = document.querySelectorAll('.doc-section[id], .hero');
+      var navLinks = document.querySelectorAll('.sidebar-nav a');
+
+      function setActiveNav() {
+        var scrollPos = window.scrollY + 120;
+        var current = '';
+
+        sections.forEach(function (section) {
+          if (section.offsetTop <= scrollPos) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', setActiveNav, { passive: true });
+      setActiveNav();
+
+      var searchInput = document.getElementById('doc-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          var query = this.value.toLowerCase().trim();
+          navLinks.forEach(function (link) {
+            var li = link.parentElement;
+            var text = link.textContent.toLowerCase();
+            li.style.display = !query || text.includes(query) ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

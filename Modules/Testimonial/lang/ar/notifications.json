@@ -1,0 +1,10 @@
+{
+    "new_testimonial_subject": "شهادة جديدة بانتظار الموافقة",
+    "new_testimonial_line": "أرسل :customer مراجعة لمشروع :project.",
+    "greeting": "مرحباً :name،",
+    "view_testimonials": "مراجعة الشهادات",
+    "pending_approval": "بانتظار الموافقة",
+    "dashboard": {
+        "pending_approval": "شهادات بانتظار الموافقة"
+    }
+}
