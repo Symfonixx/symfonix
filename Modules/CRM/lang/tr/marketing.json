@@ -29,14 +29,18 @@
         "select_contact_forms": "Talepleri seç",
         "sent_by": "Gönderen",
         "sent_at": "Gönderim Tarihi",
-        "recipients_count": "Alıcılar"
+        "recipients_count": "Alıcılar",
+        "send_as_marketing": "Pazarlama e-postası olarak gönder",
+        "marketing_audience": "Gönderilecek kişiler",
+        "all_audiences": "Herkes"
     },
     "sections": {
         "compose": "E-posta Oluştur",
         "compose_hint": "Mesajınızı yazın ve kimin alacağını seçin.",
         "recipients": "Alıcıları Seç",
         "recipients_hint": "Bir veya daha fazla grup seçin. E-postalar otomatik olarak tekilleştirilir.",
-        "history": "Gönderilen Kampanyalar"
+        "history": "Gönderilen Kampanyalar",
+        "send_as_marketing": "Pazarlama E-postası"
     },
     "placeholders": {
         "subject": "E-posta konusu",
@@ -51,17 +55,24 @@
         "all_contacts": "E-posta adresi olan tüm CRM kişilerine gönderir.",
         "all_contact_forms": "Engellenmemiş ve e-postası olan tüm taleplere gönderir.",
         "custom_emails": "Yukarıda listelenmeyen ek e-posta adresleri ekleyin. E-posta yazıp Enter'a basın.",
-        "send_warning": "E-postalar sunucunuzdan hemen gönderilir. Bu işlem geri alınamaz."
+        "send_warning": "E-postalar arka planda kuyruğa alınarak gönderilir. Bu işlem geri alınamaz.",
+        "send_as_marketing": "Bu içerikten bir pazarlama kampanyası oluşturun ve kaydettikten sonra kuyruğa alın.",
+        "all_audiences": "Geçerli e-posta adresi olan aboneler, kişiler ve talepler."
     },
     "messages": {
         "sent": "E-posta :count alıcıya başarıyla gönderildi.",
+        "queued": "E-posta :count alıcı için başarıyla kuyruğa alındı.",
         "send_failed": "E-posta gönderilemedi. Lütfen posta yapılandırmanızı kontrol edin ve tekrar deneyin.",
         "empty": "Henüz kampanya gönderilmedi."
     },
     "validation": {
         "fix_errors": "Lütfen aşağıdaki hataları düzeltin ve tekrar deneyin.",
         "select_recipients": "En az bir alıcı grubu seçin veya özel e-posta ekleyin.",
-        "no_recipients": "Seçilen alıcılar için geçerli e-posta adresi bulunamadı."
+        "no_recipients": "Seçilen alıcılar için geçerli e-posta adresi bulunamadı.",
+        "subject_required": "Konu metin içermelidir.",
+        "subject_too_long": "Konu 255 karakterden uzun olamaz.",
+        "body_required": "Mesaj metin içermelidir.",
+        "permission_required": "Pazarlama e-postası gönderme yetkiniz yok."
     },
     "sources": {
         "all_subscribers": "Tüm aboneler",

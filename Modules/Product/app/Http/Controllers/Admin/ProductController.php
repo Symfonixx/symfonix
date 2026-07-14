@@ -10,12 +10,14 @@ use Modules\Product\Http\Requests\UpdateProductRequest;
 use Modules\Product\Models\Product;
 use Modules\Product\Repositories\ProductCategoryRepository;
 use Modules\Product\Repositories\ProductRepository;
+use Modules\CRM\Services\Marketing\ContentMarketingEmailSender;
 
 class ProductController extends Controller
 {
     public function __construct(
         private readonly ProductRepository $productRepository,
         private readonly ProductCategoryRepository $categoryRepository,
+        private readonly ContentMarketingEmailSender $contentMarketingEmailSender,
     ) {
         $this->authorizeResource(Product::class, 'product');
         $this->setActive('products');
@@ -43,6 +45,27 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request): RedirectResponse
     {
         $this->productRepository->store($request->validated());
+
+        if ($this->contentMarketingEmailSender->shouldSend($request)) {
+            try {
+                $campaign = $this->contentMarketingEmailSender->send(
+                    $request,
+                    (string) $request->input('name'),
+                    $this->contentMarketingEmailSender->buildBody(
+                        $request->input('short_description'),
+                        $request->input('description'),
+                    ),
+                );
+
+                session()->flushMessage(
+                    true,
+                    __('crm::marketing.messages.queued', ['count' => $campaign->recipients_count]),
+                );
+            } catch (\Throwable $e) {
+                report($e);
+                session()->flushMessage(false, __('crm::marketing.messages.send_failed'));
+            }
+        }
 
         return redirect()->route('admin.products.index');
     }

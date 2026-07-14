@@ -132,6 +132,10 @@
     </div>
 </div>
 
+@if (! $blogData)
+    @include('crm::admin.shared._send_as_marketing')
+@endif
+
 @include('cms::admin.shared._form-scripts')
 
 @push('scripts')

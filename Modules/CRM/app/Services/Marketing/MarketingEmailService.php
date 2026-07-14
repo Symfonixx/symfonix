@@ -3,13 +3,12 @@
 namespace Modules\CRM\Services\Marketing;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
-use Modules\CRM\Mail\MarketingEmail;
+use Modules\CRM\Jobs\SendMarketingCampaignJob;
 use Modules\CRM\Models\Contact;
 use Modules\CRM\Models\ContactForm;
 use Modules\CRM\Models\MarketingCampaign;
 use Modules\Support\Models\Subscriber;
+use Illuminate\Support\Str;
 
 class MarketingEmailService
 {
@@ -32,17 +31,17 @@ class MarketingEmailService
             throw new \InvalidArgumentException(__('crm::marketing.validation.no_recipients'));
         }
 
-        $recipients->each(function (string $email) use ($subject, $body) {
-            Mail::to($email)->send(new MarketingEmail($subject, $body));
-        });
-
-        return MarketingCampaign::query()->create([
+        $campaign = MarketingCampaign::query()->create([
             'user_id' => $userId,
             'subject' => $subject,
             'body' => $body,
             'recipients_count' => $recipients->count(),
             'recipient_sources' => $this->buildRecipientSources($recipientData),
         ]);
+
+        SendMarketingCampaignJob::dispatch($campaign->id, $recipients->all());
+
+        return $campaign;
     }
 
     /**

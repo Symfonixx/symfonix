@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
+use Modules\CRM\Services\Marketing\ContentMarketingEmailSender;
 use Modules\Services\Enums\ServiceStatus;
 use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
@@ -15,8 +16,10 @@ class ServiceController extends Controller
 {
     protected ServiceRepository $serviceRepository;
 
-    public function __construct(ServiceRepository $serviceRepository)
-    {
+    public function __construct(
+        ServiceRepository $serviceRepository,
+        private readonly ContentMarketingEmailSender $contentMarketingEmailSender,
+    ) {
         $this->serviceRepository = $serviceRepository;
         $this->authorizeResource(Service::class, 'service');
         $this->setActive('services');
@@ -40,6 +43,8 @@ class ServiceController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $this->contentMarketingEmailSender->validate($request);
+
         $data = [
             'title' => $request->input('title'),
             'slug' => $request->input('slug'),
@@ -53,6 +58,27 @@ class ServiceController extends Controller
             'auto_translate' => $request->boolean('auto_translate'),
         ];
         $this->serviceRepository->store($data);
+
+        if ($this->contentMarketingEmailSender->shouldSend($request)) {
+            try {
+                $campaign = $this->contentMarketingEmailSender->send(
+                    $request,
+                    (string) $request->input('title'),
+                    $this->contentMarketingEmailSender->buildBody(
+                        $request->input('description'),
+                        $request->input('content'),
+                    ),
+                );
+
+                session()->flushMessage(
+                    true,
+                    __('crm::marketing.messages.queued', ['count' => $campaign->recipients_count]),
+                );
+            } catch (\Throwable $e) {
+                report($e);
+                session()->flushMessage(false, __('crm::marketing.messages.send_failed'));
+            }
+        }
 
         return redirect()->route('admin.services.index');
     }

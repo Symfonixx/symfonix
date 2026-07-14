@@ -22,9 +22,9 @@
         <label for="subject" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('crm::marketing.fields.subject') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <input id="subject" type="text" class="form-control form-control-solid @error('subject') is-invalid @enderror"
-               name="subject" value="{{ old('subject') }}"
-               placeholder="{{ __('crm::marketing.placeholders.subject') }}" maxlength="255" autofocus required/>
+        <textarea id="subject" class="form-control form-control-solid @error('subject') is-invalid @enderror"
+                  name="subject" rows="3"
+                  placeholder="{{ __('crm::marketing.placeholders.subject') }}" autofocus>{!! old('subject') !!}</textarea>
         @error('subject')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
@@ -38,7 +38,7 @@
     <div class="col-xl-9 fv-row">
         <textarea id="body" class="form-control form-control-solid @error('body') is-invalid @enderror"
                   name="body" rows="8"
-                  placeholder="{{ __('crm::marketing.placeholders.body') }}" required>{{ old('body') }}</textarea>
+                  placeholder="{{ __('crm::marketing.placeholders.body') }}">{!! old('body') !!}</textarea>
         @error('body')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror

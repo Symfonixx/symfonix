@@ -11,8 +11,7 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
 {
     public function model(array $row)
     {
-        // Match export format: ID, Email, IP Address, Language, Blocked, Created At
-        // Email is required, others are optional
+        // WithHeadingRow slugifies headers: Email → email, IP Address → ip_address, etc.
         $email = $row['email'] ?? $row['Email'] ?? null;
 
         if (! $email) {
@@ -22,8 +21,8 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
         // Check if subscriber with this email already exists
         $subscriber = Subscriber::where('email', $email)->first();
 
-        // Get values matching export format exactly
         $ipAddress = $row['ip_address'] ?? $row['IP Address'] ?? null;
+        $ipAddress = filled($ipAddress) ? trim((string) $ipAddress) : null;
         $lang = $row['language'] ?? $row['Language'] ?? $row['lang'] ?? 'en';
 
         // Handle blocked field - can be Yes/No, 1/0, true/false
@@ -52,7 +51,7 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
         // Create new subscriber (ignore ID and Created At from import)
         return new Subscriber([
             'email' => $email,
-            'ip_address' => $ipAddress,
+            'ip_address' => $ipAddress ?? '0.0.0.0',
             'lang' => $lang ?? 'en',
             'blocked' => $isBlocked,
         ]);
@@ -60,16 +59,12 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
 
     public function rules(): array
     {
+        // WithHeadingRow slugifies column names (e.g. "Email" → "email", "IP Address" → "ip_address")
         return [
-            'email' => 'required|email',
-            'Email' => 'required|email',
+            'email' => 'nullable|email',
             'ip_address' => 'nullable|ip',
-            'IP Address' => 'nullable|ip',
             'language' => 'nullable|string|max:2',
-            'Language' => 'nullable|string|max:2',
-            'lang' => 'nullable|string|max:2',
             'blocked' => 'nullable',
-            'Blocked' => 'nullable',
         ];
     }
 }

@@ -17,6 +17,18 @@
 @endsection
 
 @section('js')
+    @include('base::shared._tinymce', [
+        'selector' => '#subject',
+        'height' => 120,
+        'toolbar' => 'bold italic underline strikethrough | removeformat',
+        'plugins' => 'autolink',
+    ])
+
+    @include('base::shared._tinymce', [
+        'selector' => '#body',
+        'height' => 450,
+    ])
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var input = document.querySelector('#custom_emails');

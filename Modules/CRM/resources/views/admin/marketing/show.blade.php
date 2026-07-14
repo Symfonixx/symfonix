@@ -5,7 +5,7 @@
         $breadcrumbItems = [
             ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
             ['label' => __('crm::marketing.pages.index_title'), 'url' => route('admin.crm.marketing.index')],
-            ['label' => $campaign->subject],
+            ['label' => strip_tags($campaign->subject)],
         ];
 
         $sources = $campaign->recipient_sources ?? [];
@@ -50,7 +50,7 @@
     <div class="card">
         <div class="card-header border-0 pt-6">
             <div class="card-title flex-column align-items-start">
-                <h2 class="fw-bold mb-1">{{ $campaign->subject }}</h2>
+                <h2 class="fw-bold mb-1">{!! $campaign->subject !!}</h2>
                 <span class="text-muted fs-7">
                     {{ __('crm::marketing.fields.sent_by') }}: {{ $campaign->user?->name ?? '—' }}
                     · {{ $campaign->created_at?->format('Y-m-d H:i') }}
@@ -84,7 +84,7 @@
             @endif
 
             <div class="bg-light rounded p-6">
-                {!! nl2br(e($campaign->body)) !!}
+                {!! $campaign->body !!}
             </div>
         </div>
     </div>

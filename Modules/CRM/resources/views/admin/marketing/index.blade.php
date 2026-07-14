@@ -43,7 +43,7 @@
                         <tbody class="text-gray-600 fw-semibold">
                         @foreach($model as $campaign)
                             <tr>
-                                <td>{{ $campaign->subject }}</td>
+                                <td>{{ Str::limit(strip_tags($campaign->subject), 80) }}</td>
                                 <td>
                                     <span class="badge badge-light-primary">{{ $campaign->recipients_count }}</span>
                                 </td>

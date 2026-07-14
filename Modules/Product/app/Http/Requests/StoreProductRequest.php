@@ -4,6 +4,7 @@ namespace Modules\Product\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Modules\CRM\Services\Marketing\ContentMarketingEmailSender;
 use Modules\Product\Models\Product;
 
 class StoreProductRequest extends FormRequest
@@ -39,6 +40,7 @@ class StoreProductRequest extends FormRequest
             'is_featured' => ['nullable', 'boolean'],
             'is_published' => ['nullable', 'boolean'],
             'auto_translate' => ['nullable', 'boolean'],
+            ...app(ContentMarketingEmailSender::class)->validationRules(),
         ];
     }
 
@@ -48,6 +50,20 @@ class StoreProductRequest extends FormRequest
             'is_featured' => $this->boolean('is_featured'),
             'is_published' => $this->boolean('is_published'),
             'auto_translate' => $this->boolean('auto_translate'),
+            'send_as_marketing' => $this->boolean('send_as_marketing'),
         ]);
+    }
+
+    public function withValidator($validator): void
+    {
+        $validator->after(function ($validator) {
+            if ($validator->errors()->isNotEmpty() || ! $this->boolean('send_as_marketing')) {
+                return;
+            }
+
+            if (! $this->user()?->can('CRM Management')) {
+                $validator->errors()->add('send_as_marketing', __('crm::marketing.validation.permission_required'));
+            }
+        });
     }
 }

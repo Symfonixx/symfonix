@@ -11,13 +11,16 @@ use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\BlogCategory;
 use Modules\Cms\Repositories\Blog\BlogRepository;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
+use Modules\CRM\Services\Marketing\ContentMarketingEmailSender;
 
 class BlogController extends Controller
 {
     protected BlogRepository $blogRepository;
 
-    public function __construct(BlogRepository $blogRepository)
-    {
+    public function __construct(
+        BlogRepository $blogRepository,
+        private readonly ContentMarketingEmailSender $contentMarketingEmailSender,
+    ) {
         $this->blogRepository = $blogRepository;
         $this->setActive('cms');
         $this->setActive('blogs');
@@ -41,6 +44,8 @@ class BlogController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $this->contentMarketingEmailSender->validate($request);
+
         $data = BlogData::validate([
             'title' => $request->input('title'),
             'slug' => $request->input('slug'),
@@ -54,6 +59,27 @@ class BlogController extends Controller
         ]);
         $data['auto_translate'] = $request->boolean('auto_translate');
         $this->blogRepository->store($data);
+
+        if ($this->contentMarketingEmailSender->shouldSend($request)) {
+            try {
+                $campaign = $this->contentMarketingEmailSender->send(
+                    $request,
+                    (string) $request->input('title'),
+                    $this->contentMarketingEmailSender->buildBody(
+                        $request->input('description'),
+                        $request->input('content'),
+                    ),
+                );
+
+                session()->flushMessage(
+                    true,
+                    __('crm::marketing.messages.queued', ['count' => $campaign->recipients_count]),
+                );
+            } catch (\Throwable $e) {
+                report($e);
+                session()->flushMessage(false, __('crm::marketing.messages.send_failed'));
+            }
+        }
 
         return redirect()->route('admin.blogs.index');
     }

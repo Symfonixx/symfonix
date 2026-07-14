@@ -1,15 +1,22 @@
 @php
     $editorSelector = $selector ?? '#tinymce';
     $editorHeight = $height ?? 500;
+    $editorToolbar = $toolbar ?? 'code | undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat';
+    $editorPlugins = $plugins ?? 'code anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount';
 @endphp
 
+@once('tinymce-cdn')
+    @push('scripts')
+        <script src="https://cdn.tiny.cloud/1/{{ Config::get('core.tinymce_key') }}/tinymce/7/tinymce.min.js"></script>
+    @endpush
+@endonce
+
 @push('scripts')
-    <script src="https://cdn.tiny.cloud/1/{{ Config::get('core.tinymce_key') }}/tinymce/7/tinymce.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const selector = @json($editorSelector);
 
-            if (typeof tinymce === 'undefined' || !document.querySelector(selector)) {
+            if (typeof tinymce === 'undefined' || typeof tinymce.init !== 'function' || !document.querySelector(selector)) {
                 return;
             }
 
@@ -19,12 +26,15 @@
                 menubar: false,
                 branding: false,
                 promotion: false,
-                plugins: 'code anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                toolbar: 'code | undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                plugins: @json($editorPlugins),
+                toolbar: @json($editorToolbar),
                 @if(app()->getLocale() === 'ar')
                 language: 'ar',
                 @endif
                 setup: function (editor) {
+                    editor.on('init', function () {
+                        editor.targetElm.removeAttribute('required');
+                    });
                     editor.on('SetContent', function () {
                         cleanFontStyles(editor);
                     });
@@ -39,11 +49,17 @@
                     return;
                 }
 
-                form.addEventListener('submit', function () {
+                var syncEditors = function () {
                     if (typeof tinymce !== 'undefined') {
                         tinymce.triggerSave();
                     }
+                };
+
+                form.querySelectorAll('[type="submit"]').forEach(function (button) {
+                    button.addEventListener('click', syncEditors);
                 });
+
+                form.addEventListener('submit', syncEditors);
             });
 
             function cleanFontStyles(editor) {

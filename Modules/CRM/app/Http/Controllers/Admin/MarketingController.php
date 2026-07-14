@@ -45,7 +45,7 @@ class MarketingController extends Controller
 
             session()->flushMessage(
                 true,
-                __('crm::marketing.messages.sent', ['count' => $campaign->recipients_count]),
+                __('crm::marketing.messages.queued', ['count' => $campaign->recipients_count]),
             );
         } catch (\InvalidArgumentException $e) {
             session()->flushMessage(false, $e->getMessage());

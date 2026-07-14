@@ -29,14 +29,18 @@
         "select_contact_forms": "Select inquiries",
         "sent_by": "Sent By",
         "sent_at": "Sent At",
-        "recipients_count": "Recipients"
+        "recipients_count": "Recipients",
+        "send_as_marketing": "Send as marketing email",
+        "marketing_audience": "Send to",
+        "all_audiences": "Everyone"
     },
     "sections": {
         "compose": "Compose Email",
         "compose_hint": "Write your message and choose who should receive it.",
         "recipients": "Choose Recipients",
         "recipients_hint": "Select one or more groups. Emails are deduplicated automatically.",
-        "history": "Sent Campaigns"
+        "history": "Sent Campaigns",
+        "send_as_marketing": "Marketing Email"
     },
     "placeholders": {
         "subject": "Email subject line",
@@ -51,17 +55,24 @@
         "all_contacts": "Sends to every CRM contact that has an email address.",
         "all_contact_forms": "Sends to every non-blocked inquiry that has an email address.",
         "custom_emails": "Add any additional email addresses not listed above. Type an email and press Enter.",
-        "send_warning": "Emails are sent immediately from your server. This action cannot be undone."
+        "send_warning": "Emails are queued and sent in the background. This action cannot be undone.",
+        "send_as_marketing": "Create a marketing campaign from this content and queue it after saving.",
+        "all_audiences": "Subscribers, contacts, and inquiries with valid email addresses."
     },
     "messages": {
         "sent": "Email sent successfully to :count recipient(s).",
+        "queued": "Email queued successfully for :count recipient(s).",
         "send_failed": "Failed to send the email. Please check your mail configuration and try again.",
         "empty": "No campaigns sent yet."
     },
     "validation": {
         "fix_errors": "Please fix the following errors and try again.",
         "select_recipients": "Select at least one recipient group or add custom emails.",
-        "no_recipients": "No valid email addresses were found for the selected recipients."
+        "no_recipients": "No valid email addresses were found for the selected recipients.",
+        "subject_required": "The subject must contain text.",
+        "subject_too_long": "The subject may not be greater than 255 characters.",
+        "body_required": "The message must contain text.",
+        "permission_required": "You do not have permission to send marketing emails."
     },
     "sources": {
         "all_subscribers": "All subscribers",

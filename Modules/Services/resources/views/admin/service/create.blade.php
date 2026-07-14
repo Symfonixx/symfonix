@@ -155,5 +155,7 @@
 
         <x-admin.auto-translate-checkbox :default="true" class="mb-0"/>
 
+        @include('crm::admin.shared._send_as_marketing')
+
     </x-admin.create-card>
 </x-admin-layout>

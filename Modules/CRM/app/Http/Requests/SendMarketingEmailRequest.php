@@ -15,7 +15,7 @@ class SendMarketingEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'subject' => ['required', 'string', 'max:255'],
+            'subject' => ['required', 'string', 'max:2000'],
             'body' => ['required', 'string', 'max:50000'],
             'all_subscribers' => ['sometimes', 'boolean'],
             'subscriber_ids' => ['sometimes', 'array'],
@@ -47,6 +47,20 @@ class SendMarketingEmailRequest extends FormRequest
 
             if (! $hasRecipients) {
                 $validator->errors()->add('recipients', __('crm::marketing.validation.select_recipients'));
+            }
+
+            $plainSubject = trim(strip_tags((string) $this->input('subject', '')));
+
+            if ($plainSubject === '') {
+                $validator->errors()->add('subject', __('crm::marketing.validation.subject_required'));
+            } elseif (mb_strlen($plainSubject) > 255) {
+                $validator->errors()->add('subject', __('crm::marketing.validation.subject_too_long'));
+            }
+
+            $plainBody = trim(strip_tags((string) $this->input('body', '')));
+
+            if ($plainBody === '') {
+                $validator->errors()->add('body', __('crm::marketing.validation.body_required'));
             }
         });
     }

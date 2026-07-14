@@ -40,6 +40,12 @@ class SubscriberController extends Controller
         try {
             Excel::import(new SubscriberImport, $request->file('file'));
             session()->flushMessage(true, __('Subscribers imported successfully.'));
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $messages = collect($e->failures())
+                ->flatMap(fn ($failure) => $failure->errors())
+                ->unique()
+                ->implode(' ');
+            session()->flushMessage(false, __('Error importing subscribers: :message', ['message' => $messages]));
         } catch (\Exception $e) {
             session()->flushMessage(false, __('Error importing subscribers: :message', ['message' => $e->getMessage()]));
         }

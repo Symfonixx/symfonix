@@ -295,6 +295,10 @@
 
 <x-admin.auto-translate-checkbox :default="! $productData"/>
 
+@if (! $productData)
+    @include('crm::admin.shared._send_as_marketing')
+@endif
+
 @push('scripts')
 <script>
     (function () {

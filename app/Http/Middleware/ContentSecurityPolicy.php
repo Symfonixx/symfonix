@@ -52,6 +52,7 @@ class ContentSecurityPolicy
             $scriptSrc[] = 'https://cdnjs.cloudflare.com';
             $scriptSrc[] = 'https://cdn.jsdelivr.net';
             $scriptSrc[] = 'https://code.jquery.com';
+            $scriptSrc[] = 'https://cdn.tiny.cloud';
         }
 
         // Allow inline scripts (consider using nonces in the future for better security)
@@ -75,6 +76,7 @@ class ContentSecurityPolicy
             $styleSrc[] = 'https://cdnjs.cloudflare.com';
             $styleSrc[] = 'https://cdn.jsdelivr.net';
             $styleSrc[] = 'https://maxcdn.bootstrapcdn.com';
+            $styleSrc[] = 'https://cdn.tiny.cloud';
         }
 
         $directives['style-src'] = implode(' ', $styleSrc);
@@ -87,18 +89,25 @@ class ContentSecurityPolicy
             $fontSrc[] = 'https://cdnjs.cloudflare.com';
             $fontSrc[] = 'https://cdn.jsdelivr.net';
             $fontSrc[] = 'https://maxcdn.bootstrapcdn.com';
+            $fontSrc[] = 'https://cdn.tiny.cloud';
         }
 
         $directives['font-src'] = implode(' ', $fontSrc);
 
         // Image sources
         $imgSrc = ["'self'", 'data:', 'blob:'];
+        if ($this->requiresCdnSources($request)) {
+            $imgSrc[] = 'https://cdn.tiny.cloud';
+        }
         $directives['img-src'] = implode(' ', $imgSrc);
 
         // Connect sources (for AJAX, WebSocket, etc.)
         $connectSrc = ["'self'"];
         if (config('app.debug') && config('app.env') !== 'production') {
             $connectSrc[] = $request->getSchemeAndHttpHost() . ':5173'; // Vite dev server
+        }
+        if ($this->requiresCdnSources($request)) {
+            $connectSrc[] = 'https://cdn.tiny.cloud';
         }
         $directives['connect-src'] = implode(' ', $connectSrc);
 

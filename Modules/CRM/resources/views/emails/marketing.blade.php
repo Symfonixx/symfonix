@@ -1,7 +1,7 @@
 @component('mail::message')
-# {{ $subject }}
+{!! $subject !!}
 
-{!! nl2br(e($body)) !!}
+{!! $body !!}
 
 @slot('subcopy')
 {{ __('You are receiving this message from :name.', ['name' => config('app.name')]) }}
