@@ -3,6 +3,7 @@
     $editorHeight = $height ?? 500;
     $editorToolbar = $toolbar ?? 'code | undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat';
     $editorPlugins = $plugins ?? 'code anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount';
+    $lfmUrl = route('admin.unisharp.lfm.show');
 @endphp
 
 @once('tinymce-cdn')
@@ -15,6 +16,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const selector = @json($editorSelector);
+            const lfmUrl = @json($lfmUrl);
 
             if (typeof tinymce === 'undefined' || typeof tinymce.init !== 'function' || !document.querySelector(selector)) {
                 return;
@@ -26,8 +28,40 @@
                 menubar: false,
                 branding: false,
                 promotion: false,
+                relative_urls: false,
+                remove_script_host: false,
                 plugins: @json($editorPlugins),
                 toolbar: @json($editorToolbar),
+                file_picker_types: 'file image media',
+                file_picker_callback: function (callback, value, meta) {
+                    const width = window.innerWidth * 0.8;
+                    const height = window.innerHeight * 0.8;
+                    const type = meta.filetype === 'image' ? 'image' : 'file';
+                    const cmsURL = lfmUrl + '?editor=tinymce5&type=' + type;
+
+                    tinymce.activeEditor.windowManager.openUrl({
+                        title: type === 'image' ? 'Image Manager' : 'File Manager (PDF & files)',
+                        url: cmsURL,
+                        width: width,
+                        height: height,
+                        onMessage: function (api, message) {
+                            if (message.mceAction !== 'insert' || !message.content) {
+                                return;
+                            }
+
+                            const url = message.content;
+                            const filename = decodeURIComponent(url.split('/').pop().split('?')[0] || 'file');
+
+                            if (meta.filetype === 'image') {
+                                callback(url, { alt: filename });
+                            } else {
+                                callback(url, { text: filename, title: filename });
+                            }
+
+                            api.close();
+                        }
+                    });
+                },
                 @if(app()->getLocale() === 'ar')
                 language: 'ar',
                 @endif
