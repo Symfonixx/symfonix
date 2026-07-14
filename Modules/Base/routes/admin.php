@@ -28,8 +28,10 @@ Route::middleware('can:Logs Management')->group(function () {
     Route::resource('logs', LogController::class)->only(['index', 'show']);
 });
 
-Route::get('filemanager', [FileManager::class, 'index'])->name('filemanager.index');
+// Shell page stays behind CMS Management; LFM API uses auth + is_admin from the admin route group.
+// Do not use can:Media Management (permission does not exist and causes 403).
+Route::middleware('can:CMS Management')->get('filemanager', [FileManager::class, 'index'])->name('filemanager.index');
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['can:Media Management']], function () {
+Route::group(['prefix' => 'laravel-filemanager'], function () {
     Lfm::routes();
 });

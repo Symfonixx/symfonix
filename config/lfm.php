@@ -15,7 +15,7 @@ return [
     |--------------------------------------------------------------------------
      */
 
-    'use_package_routes' => true,
+    'use_package_routes' => false,
 
     // Middlewares to be applied to default routes when use_package_routes is true
     'middlewares' => ['web', 'auth'],
@@ -32,14 +32,15 @@ return [
     |
      */
 
-    'allow_private_folder' => true,
+    // Shared library for all CMS admins (not per-user folders)
+    'allow_private_folder' => false,
 
     // Flexible way to customize client folders accessibility
     // If you want to customize client folders, publish tag="lfm_handler"
     // Then you can rewrite userField function in App\Handler\ConfigHandler class
     // And set 'user_field' to App\Handler\ConfigHandler::class
     // Ex: The private folder of user will be named as the user id.
-    'private_folder_name' => UniSharp\LaravelFilemanager\Handlers\ConfigHandler::class,
+    'private_folder_name' => App\Handlers\LfmConfigHandler::class,
 
     'allow_shared_folder' => true,
 
@@ -64,8 +65,8 @@ return [
                 'image/pjpeg',
                 'image/png',
                 'image/gif',
+                'image/webp',
                 'application/pdf',
-                'text/plain',
             ],
         ],
         'image' => [
@@ -80,6 +81,7 @@ return [
                 'image/pjpeg',
                 'image/png',
                 'image/gif',
+                'image/webp',
             ],
         ],
     ],
@@ -152,6 +154,7 @@ return [
         'image/jpeg',
         'image/pjpeg',
         'image/png',
+        'image/webp',
     ],
 
     'thumb_img_width' => 200, // px
