@@ -36,6 +36,7 @@ class MarketingEmailService
             'subject' => $subject,
             'body' => $body,
             'recipients_count' => $recipients->count(),
+            'status' => MarketingCampaign::STATUS_PENDING,
             'recipient_sources' => $this->buildRecipientSources($recipientData),
         ]);
 

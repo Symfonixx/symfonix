@@ -35,10 +35,16 @@ class SendMarketingCampaignJob implements ShouldQueue
         foreach ($this->recipients as $email) {
             Mail::to($email)->queue(new MarketingEmail($campaign->subject, $campaign->body));
         }
+
+        $campaign->markAsFinished();
     }
 
     public function failed(Throwable $exception): void
     {
         report($exception);
+
+        MarketingCampaign::query()
+            ->whereKey($this->campaignId)
+            ->update(['status' => MarketingCampaign::STATUS_FAILED]);
     }
 }

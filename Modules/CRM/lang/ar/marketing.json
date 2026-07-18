@@ -32,7 +32,13 @@
         "recipients_count": "المستلمون",
         "send_as_marketing": "إرسال كبريد تسويقي",
         "marketing_audience": "الإرسال إلى",
-        "all_audiences": "الجميع"
+        "all_audiences": "الجميع",
+        "status": "الحالة"
+    },
+    "status": {
+        "pending": "قيد الانتظار",
+        "finished": "مكتمل",
+        "failed": "فشل"
     },
     "sections": {
         "compose": "إنشاء البريد",

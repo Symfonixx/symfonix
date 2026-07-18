@@ -32,7 +32,13 @@
         "recipients_count": "Alıcılar",
         "send_as_marketing": "Pazarlama e-postası olarak gönder",
         "marketing_audience": "Gönderilecek kişiler",
-        "all_audiences": "Herkes"
+        "all_audiences": "Herkes",
+        "status": "Durum"
+    },
+    "status": {
+        "pending": "Beklemede",
+        "finished": "Tamamlandı",
+        "failed": "Başarısız"
     },
     "sections": {
         "compose": "E-posta Oluştur",

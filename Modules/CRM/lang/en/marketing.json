@@ -32,7 +32,13 @@
         "recipients_count": "Recipients",
         "send_as_marketing": "Send as marketing email",
         "marketing_audience": "Send to",
-        "all_audiences": "Everyone"
+        "all_audiences": "Everyone",
+        "status": "Status"
+    },
+    "status": {
+        "pending": "Pending",
+        "finished": "Finished",
+        "failed": "Failed"
     },
     "sections": {
         "compose": "Compose Email",

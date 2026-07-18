@@ -51,7 +51,16 @@
         <div class="card-header border-0 pt-6">
             <div class="card-title flex-column align-items-start">
                 <h2 class="fw-bold mb-1">{!! $campaign->subject !!}</h2>
+                @php
+                    $status = $campaign->status ?? 'pending';
+                    $statusBadge = match ($status) {
+                        'finished' => 'badge-light-success',
+                        'failed' => 'badge-light-danger',
+                        default => 'badge-light-warning',
+                    };
+                @endphp
                 <span class="text-muted fs-7">
+                    <span class="badge {{ $statusBadge }} me-1">{{ __('crm::marketing.status.'.$status) }}</span>
                     {{ __('crm::marketing.fields.sent_by') }}: {{ $campaign->user?->name ?? '—' }}
                     · {{ $campaign->created_at?->format('Y-m-d H:i') }}
                     · {{ __('crm::marketing.fields.recipients_count') }}: {{ $campaign->recipients_count }}

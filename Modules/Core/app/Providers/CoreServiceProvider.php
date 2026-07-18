@@ -5,6 +5,7 @@ namespace Modules\Core\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallAppCommand;
+use Modules\Core\Console\SeedDummyDataCommand;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class CoreServiceProvider extends ServiceProvider
@@ -33,7 +34,10 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerCommands(): void
     {
-        $this->commands([InstallAppCommand::class]);
+        $this->commands([
+            InstallAppCommand::class,
+            SeedDummyDataCommand::class,
+        ]);
     }
 
     /**

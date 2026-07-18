@@ -34,6 +34,7 @@
                         <thead>
                         <tr class="text-start text-muted fw-bold fs-7 gs-0">
                             <th>{{ __('crm::marketing.fields.subject') }}</th>
+                            <th>{{ __('crm::marketing.fields.status') }}</th>
                             <th>{{ __('crm::marketing.fields.recipients_count') }}</th>
                             <th>{{ __('crm::marketing.fields.sent_by') }}</th>
                             <th>{{ __('crm::marketing.fields.sent_at') }}</th>
@@ -42,8 +43,21 @@
                         </thead>
                         <tbody class="text-gray-600 fw-semibold">
                         @foreach($model as $campaign)
+                            @php
+                                $status = $campaign->status ?? 'pending';
+                                $statusBadge = match ($status) {
+                                    'finished' => 'badge-light-success',
+                                    'failed' => 'badge-light-danger',
+                                    default => 'badge-light-warning',
+                                };
+                            @endphp
                             <tr>
                                 <td>{{ Str::limit(strip_tags($campaign->subject), 80) }}</td>
+                                <td>
+                                    <span class="badge {{ $statusBadge }}">
+                                        {{ __('crm::marketing.status.'.$status) }}
+                                    </span>
+                                </td>
                                 <td>
                                     <span class="badge badge-light-primary">{{ $campaign->recipients_count }}</span>
                                 </td>
