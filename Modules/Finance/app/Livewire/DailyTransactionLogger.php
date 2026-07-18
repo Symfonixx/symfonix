@@ -26,7 +26,7 @@ class DailyTransactionLogger extends Component
     public function mount(): void
     {
         $this->transaction_date = now()->toDateString();
-        $this->currency = (string) config('finance.default_currency', config('crm.default_currency', 'USD'));
+        $this->currency = app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency();
     }
 
     public function updatedType(): void

@@ -4,9 +4,12 @@ namespace Modules\Base\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Modules\Base\Models\Settings;
 use Modules\Core\Traits\FileTrait;
+use Modules\Finance\Models\ExchangeRate;
+use Modules\Finance\Services\CurrencyService;
 
 class SystemConfigurationController extends Controller
 {
@@ -22,7 +25,24 @@ class SystemConfigurationController extends Controller
         $this->setActive('systemConfigurations');
         $settings = Settings::pluck('value', 'key');
 
-        return view('base::admin.system-configurations.index', compact('settings'));
+        $currencyService = app(CurrencyService::class);
+        $supportedCurrencies = $currencyService->supportedCurrencies();
+        $defaultCurrency = $settings->get(
+            'default_currency',
+            $currencyService->defaultCurrency()
+        );
+        $hasFixerKey = filled($currencyService->fixerApiKey());
+        $latestRateFetchedAt = ExchangeRate::query()
+            ->whereNotNull('fetched_at')
+            ->max('fetched_at');
+
+        return view('base::admin.system-configurations.index', compact(
+            'settings',
+            'supportedCurrencies',
+            'defaultCurrency',
+            'hasFixerKey',
+            'latestRateFetchedAt',
+        ));
     }
 
     public function store(Request $request)
@@ -57,13 +77,57 @@ class SystemConfigurationController extends Controller
                 $data['auto_backup_enabled'] = filter_var($data['auto_backup_enabled'], FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
             }
 
+            if (array_key_exists('default_currency', $data)) {
+                $currency = strtoupper(trim((string) $data['default_currency']));
+                $supported = app(CurrencyService::class)->supportedCurrencies();
+
+                if (! in_array($currency, $supported, true)) {
+                    $currency = app(CurrencyService::class)->defaultCurrency();
+                }
+
+                $data['default_currency'] = $currency;
+            }
+
             foreach ($data as $key => $value) {
                 Settings::set($key, $value === null ? '' : $value);
             }
         }
 
         cache()->forget('settings');
+        app(CurrencyService::class)->forgetRateCache();
         session()->flushMessage(true);
+
+        return back();
+    }
+
+    public function fetchRates(Request $request)
+    {
+        $data = $request->input('data', []);
+
+        if (is_array($data)) {
+            if (array_key_exists('default_currency', $data)) {
+                $currency = strtoupper(trim((string) $data['default_currency']));
+                $supported = app(CurrencyService::class)->supportedCurrencies();
+
+                if (in_array($currency, $supported, true)) {
+                    Settings::set('default_currency', $currency);
+                }
+            }
+
+            if (array_key_exists('fixer_api_key', $data)) {
+                Settings::set('fixer_api_key', (string) ($data['fixer_api_key'] ?? ''));
+            }
+        }
+
+        cache()->forget('settings');
+
+        $exitCode = Artisan::call('finance:fetch-exchange-rates', ['--sync' => true]);
+
+        if ($exitCode === 0) {
+            session()->flushMessage(true, __('Exchange rates updated successfully.'));
+        } else {
+            session()->flushMessage(false, trim(Artisan::output()) ?: __('Failed to fetch exchange rates.'));
+        }
 
         return back();
     }

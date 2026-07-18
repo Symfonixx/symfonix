@@ -57,7 +57,7 @@
                     {{ __('finance::finance.metrics.lifetime_profit') }}
                 </h2>
                 <div class="fin-hero-profit fw-bolder {{ $lifetimeProfit >= 0 ? 'fin-color-profit' : 'fin-color-loss' }}">
-                    {{ number_format($lifetimeProfit, 2) }}
+                    {{ number_format($lifetimeProfit, 2) }} {{ $displayCurrency }}
                 </div>
                 <p class="text-white opacity-75 mb-0 mt-3 fs-7">
                     {{ $isLifetimeView
@@ -69,15 +69,15 @@
                 <div class="d-flex flex-wrap gap-4 justify-content-end">
                     <div>
                         <span class="text-white opacity-75 d-block fs-8">{{ __('finance::finance.metrics.total_revenue') }}</span>
-                        <span class="text-white fw-bold fs-4">{{ number_format($totalRevenue, 2) }}</span>
+                        <span class="text-white fw-bold fs-4">{{ number_format($totalRevenue, 2) }} {{ $displayCurrency }}</span>
                     </div>
                     <div>
                         <span class="text-white opacity-75 d-block fs-8">{{ __('finance::finance.metrics.total_expenses') }}</span>
-                        <span class="text-white fw-bold fs-4">{{ number_format($totalExpenses, 2) }}</span>
+                        <span class="text-white fw-bold fs-4">{{ number_format($totalExpenses, 2) }} {{ $displayCurrency }}</span>
                     </div>
                     <div>
                         <span class="text-white opacity-75 d-block fs-8">{{ __('finance::finance.metrics.total_losses') }}</span>
-                        <span class="text-white fw-bold fs-4">{{ number_format($totalLosses, 2) }}</span>
+                        <span class="text-white fw-bold fs-4">{{ number_format($totalLosses, 2) }} {{ $displayCurrency }}</span>
                     </div>
                 </div>
             </div>
@@ -145,21 +145,21 @@
         $metricCards = [
             [
                 'title' => __('finance::finance.metrics.total_revenue'),
-                'value' => number_format($totalRevenue, 2),
+                'value' => number_format($totalRevenue, 2).' '.$displayCurrency,
                 'icon' => 'arrow-down-circle',
                 'color' => 'success',
                 'valueClass' => 'fin-color-profit',
             ],
             [
                 'title' => __('finance::finance.metrics.total_expenses'),
-                'value' => number_format($totalExpenses, 2),
+                'value' => number_format($totalExpenses, 2).' '.$displayCurrency,
                 'icon' => 'arrow-up-circle',
                 'color' => 'warning',
                 'valueClass' => 'fin-color-expense',
             ],
             [
                 'title' => __('finance::finance.metrics.total_losses'),
-                'value' => number_format($totalLosses, 2),
+                'value' => number_format($totalLosses, 2).' '.$displayCurrency,
                 'icon' => 'graph-down-arrow',
                 'color' => 'danger',
                 'valueClass' => 'fin-color-loss',

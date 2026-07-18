@@ -86,6 +86,7 @@
               <li><a href="#crm">CRM وخطوط المبيعات</a></li>
               <li><a href="#hr">الموارد البشرية</a></li>
               <li><a href="#finance">المالية</a></li>
+              <li><a href="#currency-setup">إعداد العملات المتعددة</a></li>
               <li><a href="#cms">إدارة المحتوى</a></li>
             </ul>
           </div>
@@ -337,7 +338,7 @@
               <tbody>
                 <tr><td><strong>CRM</strong></td><td>المبيعات والعلاقات</td><td>العملاء المحتملون، الصفقات، الشركات، مراحل البيع، الاشتراكات، الأنشطة</td></tr>
                 <tr><td><strong>User</strong></td><td>الموارد البشرية والوصول</td><td>المستخدمون، الموظفون، الأدوار، الصلاحيات، لوحة البوابة</td></tr>
-                <tr><td><strong>Finance</strong></td><td>المحاسبة</td><td>المعاملات، الرواتب، العمولات، المصروفات، القيود اليومية</td></tr>
+                <tr><td><strong>Finance</strong></td><td>المحاسبة</td><td>المعاملات متعددة العملات، الرواتب، العمولات، المصروفات، القيود والفواتير</td></tr>
                 <tr><td><strong>Cms</strong></td><td>المحتوى</td><td>الصفحات، المقالات، الأسئلة الشائعة، المحتوى متعدد اللغات</td></tr>
                 <tr><td><strong>Product</strong></td><td>الكتالوج</td><td>الأصناف والفئات وتكامل المبيعات</td></tr>
                 <tr><td><strong>Project</strong></td><td>التنفيذ</td><td>المشاريع والحالات وحالات الاستخدام ومتابعة التسليم</td></tr>
@@ -390,14 +391,47 @@
               <span class="tag tag--neutral">الإيرادات والمصروفات</span>
             </div>
             <h3>المالية</h3>
-            <p>تغطي وحدة Finance العمليات المالية اليومية من تسجيل الدخل والمصروفات إلى الرواتب والعمولات والقيود، مع تكامل قائم على الأحداث مع باقي الوحدات.</p>
+            <p>تغطي وحدة Finance العمليات المالية متعددة العملات من تسجيل الدخل والمصروفات إلى الرواتب والعمولات والقيود والفواتير، مع تكامل قائم على الأحداث مع باقي الوحدات.</p>
             <ul>
               <li><strong>المعاملات</strong> مع تصنيف وفلاتر ولوحات يومية.</li>
               <li><strong>القيود اليومية</strong> لدعم الممارسات المحاسبية الرسمية.</li>
               <li><strong>الرواتب</strong> مرتبطة مباشرة بملفات الموظفين.</li>
               <li><strong>العمولات</strong> على أساس الصفقات وأهداف المبيعات.</li>
               <li><strong>الإشعارات والفواتير</strong> عبر Listeners منفصلة للحفاظ على الترابط الضعيف.</li>
+              <li><strong>سياق العملة</strong> يفصل بين عملة المحاسبة الأساسية وعملة المعاملة وعملة العرض الخاصة بجلسة المستخدم، مع حفظ سعر الصرف وقت الترحيل.</li>
             </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="currency-setup">
+          <h3>إعداد العملات المتعددة</h3>
+          <p>
+            <strong>العملة الافتراضية</strong> هي أساس المحاسبة، بينما يحتفظ كل سجل <strong>بعملة المعاملة</strong>، ويغيّر محدد العملة في ترويسة لوحة الإدارة <strong>عملة العرض</strong> فقط. تحفظ القيود سعر التحويل إلى العملة الأساسية والمبلغ الأساسي وقت الترحيل، لذلك لا يؤدي تحديث الأسعار لاحقًا إلى تعديل القيد الأصلي.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>الإعداد</th><th>الغرض</th><th>الافتراضي</th></tr></thead>
+              <tbody>
+                <tr><td><code>FINANCE_DEFAULT_CURRENCY</code></td><td>عملة المحاسبة الأساسية</td><td><code>USD</code></td></tr>
+                <tr><td><code>FINANCE_SUPPORTED_CURRENCIES</code></td><td>العملات المتاحة مفصولة بفواصل</td><td><code>USD,EUR,GBP,TRY</code></td></tr>
+                <tr><td><code>FIXER_API_KEY</code></td><td>مفتاح Fixer أو API Layer</td><td>فارغ</td></tr>
+                <tr><td><code>FIXER_BASE_URL</code></td><td>عنوان خدمة أسعار الصرف</td><td><code>https://data.fixer.io/api</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>يمكن لمن يملك صلاحية <code>Settings Management</code> تعديل العملة الافتراضية ومفتاح Fixer من <strong>إعدادات النظام ← المالية</strong>، وتكون قيم قاعدة البيانات أعلى أولوية من ملف البيئة. تبقى قائمة العملات المدعومة محددة من البيئة/الإعدادات. خطط Fixer المجانية تعتمد EUR، ويحسب النظام العملات الأساسية الأخرى عبر أسعار متقاطعة مع EUR.</p>
+          <span class="code-label">Terminal</span>
+          <pre><code># إرسال التحديث إلى الطابور
+php artisan finance:fetch-exchange-rates
+
+# تنفيذ فوري مع إمكانية تحديد العملة الأساسية
+php artisan finance:fetch-exchange-rates --sync
+php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>لا تستخدم الأسعار الاحتياطية في محاسبة الإنتاج.</strong> يضيف التثبيت أسعارًا تقريبية، وقد يستخدم النظام سعر <code>1.0</code> عند غياب مفتاح Fixer أو السعر المخزن. اضبط المزامنة وراقبها قبل تسجيل معاملات فعلية. تغيير العملة الافتراضية بعد وجود قيود يتطلب ترحيل بيانات مضبوطًا لأن المبالغ الأساسية التاريخية تحتفظ بأساس المحاسبة الأصلي.</p>
+            </div>
           </div>
         </section>
 
@@ -455,7 +489,12 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=symfonix
 DB_USERNAME=root
-DB_PASSWORD=</code></pre>
+DB_PASSWORD=
+
+FINANCE_DEFAULT_CURRENCY=USD
+FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
+FIXER_API_KEY=
+FIXER_BASE_URL=https://data.fixer.io/api</code></pre>
             </li>
             <li>
               <h4>تثبيت الاعتمادات</h4>
@@ -465,7 +504,7 @@ npm install && npm run build</code></pre>
             </li>
             <li>
               <h4>تشغيل أمر التثبيت</h4>
-              <p>يقوم <code>app:install</code> بتشغيل الترحيلات والبيانات الأولية والصلاحيات وإنشاء المستخدم الإداري:</p>
+              <p>يقوم <code>app:install</code> بتشغيل الترحيلات والبيانات الأولية والصلاحيات وإضافة إعدادات العملات والأسعار الأساسية وإنشاء المستخدم الإداري:</p>
               <span class="code-label">Terminal</span>
               <pre><code>php artisan app:install</code></pre>
             </li>
@@ -517,12 +556,14 @@ npm ci && npm run build</code></pre>
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache</code></pre>
+              <p>شغّل عامل الطابور وجدولة Laravel. تقوم الجدولة بتحديث أسعار الصرف كل ساعة، بينما تحتاج التحديثات اليدوية غير المتزامنة إلى عامل الطابور.</p>
+              <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
             </li>
           </ol>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>مراجعة الأمان:</strong> عطّل وضع التصحيح في الإنتاج، وفعّل المصادقة الثنائية للمشرفين، ولا تقم أبدًا بإضافة ملف <code>.env</code> إلى Git.</p>
+              <p><strong>مراجعة الإنتاج:</strong> عطّل وضع التصحيح، وفعّل المصادقة الثنائية، ولا تضف ملف <code>.env</code> إلى Git. اضبط مفتاح Fixer صالحًا وراقب آخر جلب ناجح من <strong>إعدادات النظام ← المالية</strong> لأن الأسعار المخزنة لا تُرفض تلقائيًا عند تقادمها.</p>
             </div>
           </div>
         </section>

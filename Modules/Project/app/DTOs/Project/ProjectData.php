@@ -32,6 +32,9 @@ class ProjectData extends Data
         #[Nullable, Numeric, Min(0)]
         public ?float $budget,
 
+        #[Nullable, StringType, Max(3)]
+        public ?string $currency,
+
         #[Nullable, Date]
         public ?string $start_date,
 
@@ -41,6 +44,10 @@ class ProjectData extends Data
 
     public static function fromRequest(array $payload): self
     {
+        $currency = isset($payload['currency'])
+            ? strtoupper((string) $payload['currency'])
+            : null;
+
         return new self(
             title: $payload['title'],
             description: $payload['description'] ?? null,
@@ -48,6 +55,7 @@ class ProjectData extends Data
             project_status_id: (int) $payload['project_status_id'],
             deal_id: isset($payload['deal_id']) ? (int) $payload['deal_id'] : null,
             budget: isset($payload['budget']) ? (float) $payload['budget'] : null,
+            currency: $currency,
             start_date: $payload['start_date'] ?? null,
             due_date: $payload['due_date'] ?? null,
         );

@@ -482,6 +482,28 @@ Author: Hadi Hilal
                             <!--end::Menu wrapper-->
                         </div>
                         <!--end::User menu-->
+                        <!--begin::Display currency-->
+                        @isset($currencyContext)
+                            <div class="app-navbar-item ms-1 ms-md-3">
+                                <form method="POST" action="{{ route('admin.display-currency.update') }}" class="d-flex align-items-center">
+                                    @csrf
+                                    <select
+                                        name="currency"
+                                        class="form-select form-select-solid form-select-sm w-auto"
+                                        onchange="this.form.submit()"
+                                        title="{{ __('Display Currency') }}"
+                                        aria-label="{{ __('Display Currency') }}"
+                                    >
+                                        @foreach($currencyContext['supported'] as $code)
+                                            <option value="{{ $code }}" @selected($currencyContext['display'] === $code)>
+                                                {{ $code }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </form>
+                            </div>
+                        @endisset
+                        <!--end::Display currency-->
                         <!--begin::Header menu toggle-->
                         <div class="app-navbar-item d-lg-none ms-2 me-n2" title="Show header menu">
                             <div class="btn btn-flex btn-icon btn-active-color-primary w-30px h-30px"

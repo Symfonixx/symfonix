@@ -28,7 +28,7 @@ Built on **Laravel 13** with **nwidart/laravel-modules**, **Spatie Permission**,
 | **CRM** | Leads, deals, companies, contacts, pipeline, subscriptions, activities, sales targets, marketing campaigns, client portal |
 | **Project** | Projects, statuses, use cases |
 | **Product** | Product catalog and sales |
-| **Finance** | Transactions, salaries, commissions, expenses |
+| **Finance** | Multi-currency transactions, invoices, journal entries, salaries, commissions, expenses, and exchange-rate synchronization |
 | **Support** | Tickets, subscribers, visitors |
 | **Team** | Team members |
 | **Testimonial** | Client testimonials |
@@ -60,6 +60,17 @@ DB_DATABASE=symfonix
 DB_USERNAME=root
 DB_PASSWORD=
 ```
+
+Configure the finance currency context and Fixer integration:
+
+```env
+FINANCE_DEFAULT_CURRENCY=USD
+FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
+FIXER_API_KEY=
+FIXER_BASE_URL=https://data.fixer.io/api
+```
+
+The default currency is the accounting base currency. Individual transactions, invoices, projects, deals, subscriptions, and products may use any configured supported currency. Administrators can set the default currency and Fixer key under **System Configurations → Finance**; database settings override the matching environment values. Each user can select a display currency from the admin header without changing stored transaction currencies.
 
 ### 2. Install dependencies
 
@@ -112,8 +123,28 @@ php artisan queue:work
 4. Creates all application permissions
 5. Seeds default CRM pipeline stages (Lead → Closed Won/Lost)
 6. Seeds support ticket categories
-7. Creates the **Admin** role with every permission
-8. Creates the admin user and assigns the Admin role
+7. Seeds currency settings and baseline USD/EUR/GBP/TRY exchange rates
+8. Creates the **Admin** role with every permission
+9. Creates the admin user and assigns the Admin role
+
+## Multi-currency operations
+
+Exchange rates are stored as “1 unit of base currency equals N units of target currency.” Financial postings snapshot their source-to-base rate and base amount so later rate updates do not rewrite the original posting.
+
+```bash
+# Fetch rates asynchronously (requires a queue worker)
+php artisan finance:fetch-exchange-rates
+
+# Fetch immediately
+php artisan finance:fetch-exchange-rates --sync
+
+# Override the requested base currency
+php artisan finance:fetch-exchange-rates --base=EUR --sync
+```
+
+Rates are refreshed hourly by the Laravel scheduler. Free Fixer plans are EUR-based; the application derives other base currencies through EUR cross-rates. Rate lookups are cached for 15 minutes and invalidated after synchronization or currency-setting changes.
+
+> **Production warning:** The seeded rates are approximate. If no Fixer key or stored rate is available, the application can fall back to a `1.0` rate; this is useful for setup/demo data but is not financially accurate. Configure and monitor rate synchronization before posting production transactions. Do not change the default currency after postings exist without a controlled data migration, because historical base amounts retain the original accounting base.
 
 ## Permissions
 
@@ -167,7 +198,8 @@ For production:
 3. Run `npm ci && npm run build`
 4. Run `php artisan app:install` on a fresh database, or `php artisan migrate --force` on an existing one
 5. Run `php artisan config:cache`, `php artisan route:cache`, `php artisan view:cache`
-6. Configure a queue worker and scheduler (`php artisan schedule:run` via cron)
+6. Configure a queue worker and scheduler (`php artisan schedule:run` via cron); the scheduler refreshes exchange rates hourly
+7. Configure a valid Fixer key and monitor the last successful fetch under **System Configurations → Finance**
 
 ## Key packages
 

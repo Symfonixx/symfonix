@@ -75,6 +75,9 @@ class InstallAppCommand extends Command
         $this->seedTicketCategories();
         $this->components->info('Support ticket categories seeded.');
 
+        $this->seedCurrencySettings();
+        $this->components->info('Currency settings and baseline exchange rates seeded.');
+
         $role = Role::query()->firstOrCreate([
             'name' => 'Admin',
             'guard_name' => 'web',
@@ -97,6 +100,7 @@ class InstallAppCommand extends Command
         $this->components->info('Symfonix installed successfully.');
         $this->line("  Email:    {$user->email}");
         $this->line("  Password: {$this->option('password')}");
+        $this->line('  Default currency: '.(\Modules\Base\Models\Settings::get('default_currency') ?: config('finance.default_currency', 'USD')));
         $this->newLine();
 
         return self::SUCCESS;
@@ -146,6 +150,14 @@ class InstallAppCommand extends Command
     {
         Artisan::call('db:seed', [
             '--class' => 'Modules\\Support\\Database\\Seeders\\TicketCategorySeeder',
+            '--force' => true,
+        ]);
+    }
+
+    private function seedCurrencySettings(): void
+    {
+        Artisan::call('db:seed', [
+            '--class' => 'Modules\\Finance\\Database\\Seeders\\CurrencySettingsSeeder',
             '--force' => true,
         ]);
     }

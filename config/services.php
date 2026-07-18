@@ -42,4 +42,9 @@ return [
         'admin_email' => env('LEADS_ADMIN_EMAIL', env('ADMIN_EMAIL')),
     ],
 
+    'fixer' => [
+        'api_key' => env('FIXER_API_KEY'),
+        'base_url' => env('FIXER_BASE_URL', 'https://data.fixer.io/api'),
+    ],
+
 ];

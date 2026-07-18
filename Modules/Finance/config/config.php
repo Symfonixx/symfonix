@@ -18,10 +18,21 @@ return [
     | Default Currency
     |--------------------------------------------------------------------------
     |
-    | Applied to ledger entries when no source currency is available.
+    | Fallback when the Settings `default_currency` key is not set.
+    | Runtime resolution should go through CurrencyService::defaultCurrency().
     |
     */
     'default_currency' => env('FINANCE_DEFAULT_CURRENCY', 'USD'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Supported Currencies
+    |--------------------------------------------------------------------------
+    */
+    'supported_currencies' => array_values(array_filter(array_map(
+        'trim',
+        explode(',', (string) env('FINANCE_SUPPORTED_CURRENCIES', 'USD,EUR,GBP,TRY'))
+    ))),
 
     /*
     |--------------------------------------------------------------------------

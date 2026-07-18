@@ -23,6 +23,7 @@ class InvoiceService
     public function __construct(
         private readonly FinanceService $financeService,
         private readonly SubscriptionService $subscriptionService,
+        private readonly CurrencyService $currencyService,
     ) {}
 
     public function paginate(array $filters = []): LengthAwarePaginator
@@ -61,7 +62,7 @@ class InvoiceService
                 'subtotal' => $subtotal,
                 'tax_amount' => $taxAmount,
                 'total' => $total,
-                'currency' => strtoupper($data['currency'] ?? config('finance.default_currency', 'USD')),
+                'currency' => strtoupper($data['currency'] ?? $this->currencyService->defaultCurrency()),
                 'issued_at' => $issuedAt,
                 'due_at' => $data['due_at'] ?? Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
                 'notes' => $data['notes'] ?? null,
@@ -86,7 +87,9 @@ class InvoiceService
         $data['deal_id'] = $data['deal_id'] ?? $project->deal_id;
 
         if (! isset($data['currency'])) {
-            $data['currency'] = $project->deal?->currency ?? config('finance.default_currency', 'USD');
+            $data['currency'] = $project->currency
+                ?? $project->deal?->currency
+                ?? $this->currencyService->defaultCurrency();
         }
 
         if (empty($data['notes'])) {
@@ -140,7 +143,7 @@ class InvoiceService
                 'subtotal' => $amount,
                 'tax_amount' => 0,
                 'total' => $amount,
-                'currency' => $subscription->currency ?? config('finance.default_currency', 'USD'),
+                'currency' => $subscription->currency ?? $this->currencyService->defaultCurrency(),
                 'issued_at' => $issuedAt,
                 'due_at' => Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
                 'notes' => __('finance::invoice.messages.subscription_renewal_note', [
@@ -222,7 +225,7 @@ class InvoiceService
                 'subtotal' => $subtotal,
                 'tax_amount' => 0,
                 'total' => $subtotal,
-                'currency' => $deal->currency ?? config('finance.default_currency', 'USD'),
+                'currency' => $deal->currency ?? $this->currencyService->defaultCurrency(),
                 'issued_at' => $issuedAt,
                 'due_at' => Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
                 'notes' => __('finance::invoice.messages.deal_invoice_note', ['title' => $deal->title]),
@@ -272,7 +275,7 @@ class InvoiceService
                 'subtotal' => $amount,
                 'tax_amount' => 0,
                 'total' => $amount,
-                'currency' => $sale->currency ?? config('finance.default_currency', 'USD'),
+                'currency' => $sale->currency ?? $this->currencyService->defaultCurrency(),
                 'issued_at' => $issuedAt,
                 'due_at' => Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
                 'notes' => __('finance::invoice.messages.product_sale_invoice_note', [

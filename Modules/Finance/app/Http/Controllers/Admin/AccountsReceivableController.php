@@ -17,7 +17,7 @@ class AccountsReceivableController extends Controller
 
     public function index(): View
     {
-        $currency = request('currency', config('finance.default_currency', 'USD'));
+        $currency = request('currency', app(\Modules\Finance\Services\CurrencyService::class)->displayCurrency());
         $aging = $this->financeService->getAccountsReceivableAging($currency);
 
         return view('finance::admin.accounts_receivable.index', compact('aging', 'currency'));

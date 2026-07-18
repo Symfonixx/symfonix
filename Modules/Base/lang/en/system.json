@@ -1,7 +1,14 @@
 {
     "title": "System Configurations",
-    "page_description": "Internal company details and admin notification settings.",
-    "form_description": "Configure company details for invoices and the admin notification email.",
+    "page_description": "Internal company details, currency, API credentials, and admin notification settings.",
+    "form_description": "Configure company details for invoices, multi-currency defaults, API keys, and the admin notification email.",
+    "tabs": {
+        "branding": "Branding",
+        "company": "Company",
+        "finance": "Finance",
+        "notifications": "Notifications",
+        "backup": "Backup"
+    },
     "company_details": {
         "title": "Company Details",
         "description": "Used on invoices. Falls back to website contact settings when left blank.",
@@ -9,7 +16,31 @@
         "email": "Company Email",
         "address": "Company Address",
         "sign_image": "Company Sign Image",
-        "sign_image_hint": "This will show in invoice."
+        "sign_image_hint": "Appears on invoices as the authorized signature."
+    },
+    "currency": {
+        "title": "Default Currency",
+        "description": "System-wide base currency used for ledgers, budgets, and exchange-rate snapshots.",
+        "default": "Default Currency",
+        "default_hint": "New transactions and budgets default to this currency. Exchange rates are fetched relative to it.",
+        "names": {
+            "USD": "US Dollar",
+            "EUR": "Euro",
+            "GBP": "British Pound",
+            "TRY": "Turkish Lira"
+        }
+    },
+    "api_configs": {
+        "title": "Exchange Rate API",
+        "description": "Credentials used to refresh live FX rates for multi-currency accounting.",
+        "fixer_api_key": "Fixer.io API Key",
+        "fixer_api_key_hint": "Used to fetch live exchange rates. Keep this secret — it is not shared to the public site.",
+        "fetch_rates": "Fetch rates now",
+        "key_configured": "API key configured",
+        "key_missing": "API key not set",
+        "rates_updated": "Rates last updated",
+        "rates_never": "No rates fetched yet",
+        "status_title": "FX status"
     },
     "admin_notifications": {
         "title": "Admin Notifications",
@@ -34,6 +65,9 @@
         "interval_days": "Backup Interval (Days)",
         "interval_days_hint": "Create an automatic backup every N days (1–365).",
         "last_run": "Last Automatic Backup",
-        "manage_link": "Manage backups"
+        "manage_link": "Manage backups",
+        "status_on": "Automatic backups are on",
+        "status_off": "Automatic backups are off",
+        "never_run": "Not run yet"
     }
 }

@@ -65,6 +65,7 @@ class SystemDummyDataSeeder extends Seeder
         $this->seedTestimonials();
         $this->seedSupport();
         $this->seedProductSales();
+        $this->seedMultiCurrencyFinance();
 
         $this->command?->info('All modules seeded with dummy data and images.');
     }
@@ -76,6 +77,7 @@ class SystemDummyDataSeeder extends Seeder
             TicketCategorySeeder::class,
             ProjectStatusSeeder::class,
             ExpenseCategorySeeder::class,
+            \Modules\Finance\Database\Seeders\CurrencySettingsSeeder::class,
         ]);
     }
 
@@ -560,6 +562,7 @@ class SystemDummyDataSeeder extends Seeder
         foreach ($companyModels->take(4) as $index => $company) {
             $assignee = $employees[$index % max($employees->count(), 1)] ?? null;
             $stage = $index === 0 ? $wonStage : ($stages[$index % max($stages->count(), 1)] ?? $openStage);
+            $currencies = ['USD', 'EUR', 'GBP', 'TRY'];
 
             Deal::query()->updateOrCreate(
                 [
@@ -570,7 +573,7 @@ class SystemDummyDataSeeder extends Seeder
                     'pipeline_stage_id' => $stage?->id,
                     'assigned_to' => $assignee?->id,
                     'value' => 8000 + ($index * 4500),
-                    'currency' => 'USD',
+                    'currency' => $currencies[$index % count($currencies)],
                     'probability' => $stage?->probability ?? 25,
                     'expected_close_date' => now()->addDays(14 + ($index * 7))->toDateString(),
                     'source' => Lead::SOURCE_WEBSITE,
@@ -589,6 +592,8 @@ class SystemDummyDataSeeder extends Seeder
                 continue;
             }
 
+            $subscriptionCurrencies = ['USD', 'EUR', 'GBP'];
+
             Subscription::query()->updateOrCreate(
                 [
                     'company_id' => $company->id,
@@ -599,7 +604,7 @@ class SystemDummyDataSeeder extends Seeder
                     'status' => Subscription::STATUS_ACTIVE,
                     'billing_cycle' => Subscription::BILLING_MONTHLY,
                     'amount' => 1200 + ($index * 300),
-                    'currency' => 'USD',
+                    'currency' => $subscriptionCurrencies[$index % count($subscriptionCurrencies)],
                     'starts_at' => now()->subMonths(2)->toDateString(),
                     'ends_at' => null,
                     'renewal_at' => now()->addMonth()->toDateString(),
@@ -637,17 +642,18 @@ class SystemDummyDataSeeder extends Seeder
         }
 
         $projects = [
-            ['title' => 'CRM Rollout', 'budget' => 25000, 'payment' => Project::PAYMENT_PARTIALLY_PAID],
-            ['title' => 'E-Commerce Rebuild', 'budget' => 48000, 'payment' => Project::PAYMENT_UNPAID],
-            ['title' => 'Patient Portal', 'budget' => 32000, 'payment' => Project::PAYMENT_FULLY_PAID],
-            ['title' => 'Learning Platform', 'budget' => 41000, 'payment' => Project::PAYMENT_PARTIALLY_PAID],
-            ['title' => 'Analytics Dashboard', 'budget' => 18000, 'payment' => Project::PAYMENT_UNPAID],
+            ['title' => 'CRM Rollout', 'budget' => 25000, 'currency' => 'USD', 'payment' => Project::PAYMENT_PARTIALLY_PAID],
+            ['title' => 'E-Commerce Rebuild', 'budget' => 44000, 'currency' => 'EUR', 'payment' => Project::PAYMENT_UNPAID],
+            ['title' => 'Patient Portal', 'budget' => 32000, 'currency' => 'GBP', 'payment' => Project::PAYMENT_FULLY_PAID],
+            ['title' => 'Learning Platform', 'budget' => 41000, 'currency' => 'USD', 'payment' => Project::PAYMENT_PARTIALLY_PAID],
+            ['title' => 'Analytics Dashboard', 'budget' => 620000, 'currency' => 'TRY', 'payment' => Project::PAYMENT_UNPAID],
         ];
 
         foreach ($projects as $index => $item) {
             $company = $companies[$index % $companies->count()];
             $status = $statuses[$index % $statuses->count()];
             $deal = $deals[$index % max($deals->count(), 1)] ?? null;
+            $currencyService = app(\Modules\Finance\Services\CurrencyService::class);
 
             $project = Project::query()->updateOrCreate(
                 [
@@ -659,6 +665,8 @@ class SystemDummyDataSeeder extends Seeder
                     'project_status_id' => $status->id,
                     'deal_id' => $deal?->id,
                     'budget' => $item['budget'],
+                    'currency' => $item['currency'],
+                    'budget_exchange_rate' => $currencyService->snapshotRateToBase($item['currency']),
                     'payment_status' => $item['payment'],
                     'start_date' => now()->subDays(40 - ($index * 5))->toDateString(),
                     'due_date' => now()->addDays(30 + ($index * 10))->toDateString(),
@@ -833,5 +841,10 @@ class SystemDummyDataSeeder extends Seeder
     private function seedProductSales(): void
     {
         $this->call(ProductSaleScenarioSeeder::class);
+    }
+
+    private function seedMultiCurrencyFinance(): void
+    {
+        $this->call(\Modules\Finance\Database\Seeders\MultiCurrencyTransactionSeeder::class);
     }
 }

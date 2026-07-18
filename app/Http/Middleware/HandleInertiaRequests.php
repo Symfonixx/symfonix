@@ -65,7 +65,19 @@ class HandleInertiaRequests extends Middleware
             'app_env' => $safe(fn () => config('app.env'), 'production'),
             'app_debug' => $safe(fn () => config('app.debug'), false),
             'translations' => $safe(fn () => $this->getTranslations(), []),
-            'settings' => $safe(fn () => Settings::pluck('value', 'key'), []),
+            'settings' => $safe(function () {
+                $hidden = [
+                    \Modules\Finance\Services\CurrencyService::SETTINGS_FIXER_API_KEY,
+                    'fixer_api_key',
+                ];
+
+                return Settings::pluck('value', 'key')
+                    ->except($hidden)
+                    ->all();
+            }, []),
+            'currency' => $safe(function () {
+                return app(\Modules\Finance\Services\CurrencyService::class)->sharePayload();
+            }, ['default' => 'USD', 'display' => 'USD', 'supported' => ['USD']]),
             'seo' => $safe(fn () => Seo::pluck('value', 'key'), ['website_name' => config('app.name', 'Sham Vision')]),
             'meta' => $safe(function () {
                 $seo = Seo::pluck('value', 'key');

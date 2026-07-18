@@ -86,6 +86,7 @@
               <li><a href="#crm">CRM ve Pipeline</a></li>
               <li><a href="#hr">İnsan Kaynakları</a></li>
               <li><a href="#finance">Finans</a></li>
+              <li><a href="#currency-setup">Çoklu Para Birimi</a></li>
               <li><a href="#cms">İçerik Yönetimi</a></li>
             </ul>
           </div>
@@ -321,7 +322,7 @@
               <tbody>
                 <tr><td><strong>CRM</strong></td><td>Satış ve ilişkiler</td><td>Lead, deal, company, pipeline, subscription, activity</td></tr>
                 <tr><td><strong>User</strong></td><td>İK ve erişim</td><td>Kullanıcılar, çalışanlar, roller, izinler, portal paneli</td></tr>
-                <tr><td><strong>Finance</strong></td><td>Muhasebe</td><td>İşlemler, maaşlar, komisyonlar, giderler, journal entry</td></tr>
+                <tr><td><strong>Finance</strong></td><td>Muhasebe</td><td>Çoklu para birimli işlemler, maaşlar, komisyonlar, giderler, yevmiye kayıtları ve faturalar</td></tr>
                 <tr><td><strong>Cms</strong></td><td>İçerik</td><td>Sayfalar, blog, SSS, çok dilli içerik</td></tr>
                 <tr><td><strong>Product</strong></td><td>Katalog</td><td>Ürün kategorileri, katalog öğeleri, satış entegrasyonu</td></tr>
                 <tr><td><strong>Project</strong></td><td>Teslimat</td><td>Projeler, durumlar, use case kayıtları</td></tr>
@@ -373,14 +374,47 @@
               <span class="tag tag--neutral">Gelir ve Gider</span>
             </div>
             <h3>Finans</h3>
-            <p>Finans modülü günlük işlemlerden maaşlara, komisyonlardan gider yönetimine kadar tüm finansal süreci kapsar.</p>
+            <p>Finans modülü çoklu para birimli günlük işlemlerden maaşlara, komisyonlardan gider ve fatura yönetimine kadar tüm finansal süreci kapsar.</p>
             <ul>
               <li><strong>Gelir/gider kayıtları</strong> ve filtreleme</li>
               <li><strong>Journal entry</strong> desteği</li>
               <li><strong>Maaş yönetimi</strong> ve çalışan bağlantısı</li>
               <li><strong>Komisyon hesaplama</strong> ve satış hedefleri</li>
               <li><strong>Fatura bildirimleri</strong> için event/listener tabanlı akış</li>
+              <li><strong>Para birimi bağlamı</strong> ile muhasebe tabanı, işlem para birimi ve oturuma özel görüntüleme para birimi birbirinden ayrılır; kayıt anındaki kur saklanır.</li>
             </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="currency-setup">
+          <h3>Çoklu Para Birimi Kurulumu</h3>
+          <p>
+            <strong>Varsayılan para birimi</strong> muhasebe tabanıdır; her kayıt kendi <strong>işlem para birimini</strong> korur. Yönetim başlığındaki seçici yalnızca kullanıcının <strong>görüntüleme para birimini</strong> değiştirir. Yevmiye kayıtları, kayıt anındaki işlemden tabana kuru ve taban tutarını sakladığından sonraki kur güncellemeleri özgün kaydı değiştirmez.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Ayar</th><th>Amaç</th><th>Varsayılan</th></tr></thead>
+              <tbody>
+                <tr><td><code>FINANCE_DEFAULT_CURRENCY</code></td><td>Muhasebe taban para birimi</td><td><code>USD</code></td></tr>
+                <tr><td><code>FINANCE_SUPPORTED_CURRENCIES</code></td><td>Virgülle ayrılmış kullanılabilir para birimleri</td><td><code>USD,EUR,GBP,TRY</code></td></tr>
+                <tr><td><code>FIXER_API_KEY</code></td><td>Fixer veya API Layer anahtarı</td><td>Boş</td></tr>
+                <tr><td><code>FIXER_BASE_URL</code></td><td>Döviz kuru servis adresi</td><td><code>https://data.fixer.io/api</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><code>Settings Management</code> yetkisine sahip kullanıcılar varsayılan para birimini ve Fixer anahtarını <strong>Sistem Yapılandırmaları → Finans</strong> bölümünden değiştirebilir; veritabanındaki ayarlar ortam değerlerinden önceliklidir. Desteklenen para birimleri listesi ortam/yapılandırma üzerinden yönetilir. Ücretsiz Fixer planları EUR tabanlıdır; sistem diğer tabanları EUR çapraz kurlarıyla türetir.</p>
+          <span class="code-label">Terminal</span>
+          <pre><code># Güncellemeyi kuyruğa al
+php artisan finance:fetch-exchange-rates
+
+# Hemen çalıştır; gerekirse tabanı geçersiz kıl
+php artisan finance:fetch-exchange-rates --sync
+php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>Yedek kurları prodüksiyon muhasebesinde kullanmayın.</strong> Kurulum yaklaşık başlangıç kurları ekler; Fixer anahtarı veya kayıtlı kur yoksa sistem <code>1.0</code> değerine düşebilir. Canlı işlemlerden önce senkronizasyonu yapılandırıp izleyin. Kayıtlar oluştuktan sonra varsayılan para birimini değiştirmek, tarihsel taban tutarları eski muhasebe tabanını koruduğu için kontrollü veri migration'ı gerektirir.</p>
+            </div>
           </div>
         </section>
 
@@ -437,7 +471,12 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=symfonix
 DB_USERNAME=root
-DB_PASSWORD=</code></pre>
+DB_PASSWORD=
+
+FINANCE_DEFAULT_CURRENCY=USD
+FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
+FIXER_API_KEY=
+FIXER_BASE_URL=https://data.fixer.io/api</code></pre>
             </li>
             <li>
               <h4>Bağımlılıkları yükle</h4>
@@ -447,6 +486,7 @@ npm install && npm run build</code></pre>
             </li>
             <li>
               <h4>Kurulum komutunu çalıştır</h4>
+              <p><code>app:install</code> migration'ları, izinleri, yönetici hesabını, para birimi ayarlarını ve yaklaşık başlangıç kurlarını oluşturur.</p>
               <span class="code-label">Terminal</span>
               <pre><code>php artisan app:install</code></pre>
             </li>
@@ -498,12 +538,14 @@ npm ci && npm run build</code></pre>
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache</code></pre>
+              <p>Kuyruk worker'ını ve Laravel scheduler'ını çalıştırın. Scheduler kurları saatlik olarak yeniler; asenkron manuel güncellemeler worker gerektirir.</p>
+              <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
             </li>
           </ol>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>Güvenlik kontrolü:</strong> <code>APP_DEBUG=false</code> olmalı, yönetici hesapları için iki faktörlü doğrulama etkinleştirilmeli ve <code>.env</code> dosyaları asla sürüm kontrolüne eklenmemelidir.</p>
+              <p><strong>Prodüksiyon kontrolü:</strong> <code>APP_DEBUG=false</code> olmalı, iki faktörlü doğrulama etkinleştirilmeli ve <code>.env</code> sürüm kontrolüne eklenmemelidir. Geçerli bir Fixer anahtarı yapılandırın ve kayıtlı kurlar eskidiğinde otomatik reddedilmediği için <strong>Sistem Yapılandırmaları → Finans</strong> ekranındaki son başarılı güncellemeyi izleyin.</p>
             </div>
           </div>
         </section>

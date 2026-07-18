@@ -27,6 +27,8 @@ class FinancialDashboard extends Component
 
     public string $saasCurrency = 'USD';
 
+    public string $displayCurrency = 'USD';
+
     /** @var array<int, array{label: string, profit: float, expenses: float, losses: float, revenue: float}> */
     public array $chartData = [];
 
@@ -41,6 +43,7 @@ class FinancialDashboard extends Component
     public function mount(FinanceService $financeService): void
     {
         $this->selectedYear = (int) now()->year;
+        $this->displayCurrency = app(\Modules\Finance\Services\CurrencyService::class)->displayCurrency();
         $this->refreshMetrics($financeService);
     }
 
@@ -77,6 +80,7 @@ class FinancialDashboard extends Component
         $this->arr = $saas['arr'];
         $this->activeSubscriptions = $saas['active_count'];
         $this->saasCurrency = $saas['primary_currency'];
+        $this->displayCurrency = app(\Modules\Finance\Services\CurrencyService::class)->displayCurrency();
 
         $this->chartData = $financeService->getMonthlyChartData($monthKeys);
 

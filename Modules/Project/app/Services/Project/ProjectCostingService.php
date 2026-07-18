@@ -143,8 +143,9 @@ class ProjectCostingService
         $laborCost = $breakdown['labor_cost'];
         $totalCost = round($laborCost + $expenses, 2);
         $profitOrLoss = round($invoiced - $totalCost, 2);
-        $currency = $project->deal?->currency
-            ?? (string) config('finance.default_currency', config('crm.default_currency', 'USD'));
+        $currency = $project->currency
+            ?? $project->deal?->currency
+            ?? app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency();
 
         return [
             'currency' => $currency,

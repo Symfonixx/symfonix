@@ -127,7 +127,9 @@
                 </td>
                 <td>
                     @if($project->budget !== null)
-                        <span class="fw-bold text-gray-800">{{ number_format($project->budget, 2) }}</span>
+                        <span class="fw-bold text-gray-800">
+                            <x-finance-money :amount="$project->budget" :currency="$project->currency ?? 'USD'" />
+                        </span>
                     @else
                         <span class="text-muted">{{ __('N/A') }}</span>
                     @endif

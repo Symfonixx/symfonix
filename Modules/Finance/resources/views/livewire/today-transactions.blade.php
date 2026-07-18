@@ -65,7 +65,15 @@
                                         {{ $sideLabel($entry->flow) }}
                                     </span>
                                 </td>
-                                <td class="fw-bold">{{ number_format($entry->amount, 2) }} {{ $entry->currency }}</td>
+                                <td class="fw-bold">
+                                    <x-finance-money
+                                        :amount="$entry->amount"
+                                        :currency="$entry->currency"
+                                        :exchange-rate="$entry->exchange_rate"
+                                        :base-amount="$entry->base_amount"
+                                    />
+                                    <div class="text-muted fs-8">{{ number_format($entry->amount, 2) }} {{ $entry->currency }}</div>
+                                </td>
                                 <td>{{ $expenseLine?->expenseCategory?->name ?? '—' }}</td>
                                 <td class="text-muted">{{ \Illuminate\Support\Str::limit($entry->description, 50) ?: '—' }}</td>
                                 <td class="text-muted">{{ $entry->transaction_date?->format('Y-m-d') }}</td>

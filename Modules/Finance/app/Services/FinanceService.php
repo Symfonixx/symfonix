@@ -20,24 +20,28 @@ use Modules\Project\Models\Project;
 
 class FinanceService
 {
+    public function __construct(
+        private readonly CurrencyService $currencyService
+    ) {}
+
     /**
-     * Sum all revenue (credit to revenue account).
+     * Sum all revenue converted into the active display currency.
      */
     public function getTotalIncome(?array $dateRange = null, ?array $monthKeys = null): float
     {
-        return (float) $this->baseJournalEntryQuery($dateRange, $monthKeys)
-            ->revenue()
-            ->sum('amount');
+        return $this->sumJournalAmountInDisplayCurrency(
+            $this->baseJournalEntryQuery($dateRange, $monthKeys)->revenue()
+        );
     }
 
     /**
-     * Sum all expenses (debit to expense account).
+     * Sum all expenses converted into the active display currency.
      */
     public function getTotalExpenses(?array $dateRange = null, ?array $monthKeys = null): float
     {
-        return (float) $this->baseJournalEntryQuery($dateRange, $monthKeys)
-            ->expense()
-            ->sum('amount');
+        return $this->sumJournalAmountInDisplayCurrency(
+            $this->baseJournalEntryQuery($dateRange, $monthKeys)->expense()
+        );
     }
 
     public function getNetProfit(?array $dateRange = null, ?array $monthKeys = null): float
@@ -98,25 +102,44 @@ class FinanceService
      */
     public function getMonthlyChartData(?array $monthKeys = null): array
     {
-        $query = JournalEntry::query()
-            ->selectRaw('YEAR(transaction_date) as year, MONTH(transaction_date) as month')
-            ->selectRaw("SUM(CASE WHEN flow = '".JournalEntry::FLOW_REVENUE."' THEN amount ELSE 0 END) as revenue")
-            ->selectRaw("SUM(CASE WHEN flow = '".JournalEntry::FLOW_EXPENSE."' THEN amount ELSE 0 END) as expenses")
-            ->groupBy('year', 'month')
-            ->orderBy('year')
-            ->orderBy('month');
+        $entries = JournalEntry::query()
+            ->select(['flow', 'amount', 'currency', 'exchange_rate', 'base_amount', 'transaction_date']);
 
-        $this->applyMonthFilter($query, $monthKeys);
+        $this->applyMonthFilter($entries, $monthKeys);
 
-        return $query->get()
-            ->map(function ($row) {
-                $revenue = (float) $row->revenue;
-                $expenses = (float) $row->expenses;
+        $grouped = [];
+
+        foreach ($entries->get() as $entry) {
+            $key = $entry->transaction_date->format('Y-m');
+
+            if (! isset($grouped[$key])) {
+                $grouped[$key] = [
+                    'label' => $entry->transaction_date->translatedFormat('M Y'),
+                    'sort' => $key,
+                    'revenue' => 0.0,
+                    'expenses' => 0.0,
+                ];
+            }
+
+            $amount = $this->entryAmountInDisplayCurrency($entry);
+
+            if ($entry->flow === JournalEntry::FLOW_REVENUE) {
+                $grouped[$key]['revenue'] += $amount;
+            } else {
+                $grouped[$key]['expenses'] += $amount;
+            }
+        }
+
+        ksort($grouped);
+
+        return collect($grouped)
+            ->map(function (array $row) {
+                $revenue = round($row['revenue'], 2);
+                $expenses = round($row['expenses'], 2);
                 $net = $revenue - $expenses;
-                $date = Carbon::create((int) $row->year, (int) $row->month, 1);
 
                 return [
-                    'label' => $date->translatedFormat('M Y'),
+                    'label' => $row['label'],
                     'profit' => max(0, $net),
                     'expenses' => $expenses,
                     'losses' => max(0, -$net),
@@ -153,27 +176,37 @@ class FinanceService
      */
     public function getMonthlyTrendForYear(int $year): array
     {
-        $rows = JournalEntry::query()
+        $entries = JournalEntry::query()
             ->whereYear('transaction_date', $year)
-            ->selectRaw('MONTH(transaction_date) as month')
-            ->selectRaw("SUM(CASE WHEN flow = '".JournalEntry::FLOW_REVENUE."' THEN amount ELSE 0 END) as revenue")
-            ->selectRaw("SUM(CASE WHEN flow = '".JournalEntry::FLOW_EXPENSE."' THEN amount ELSE 0 END) as expenses")
-            ->groupBy('month')
-            ->orderBy('month')
-            ->get()
-            ->keyBy('month');
+            ->get(['flow', 'amount', 'currency', 'exchange_rate', 'base_amount', 'transaction_date']);
+
+        $byMonth = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $byMonth[$month] = ['revenue' => 0.0, 'expenses' => 0.0];
+        }
+
+        foreach ($entries as $entry) {
+            $month = (int) $entry->transaction_date->format('n');
+            $amount = $this->entryAmountInDisplayCurrency($entry);
+
+            if ($entry->flow === JournalEntry::FLOW_REVENUE) {
+                $byMonth[$month]['revenue'] += $amount;
+            } else {
+                $byMonth[$month]['expenses'] += $amount;
+            }
+        }
 
         $months = [];
 
         for ($month = 1; $month <= 12; $month++) {
             $date = Carbon::create($year, $month, 1);
-            $row = $rows->get($month);
 
             $months[] = [
                 'label' => $date->translatedFormat('M'),
                 'month' => $month,
-                'revenue' => $row ? (float) $row->revenue : 0.0,
-                'expenses' => $row ? (float) $row->expenses : 0.0,
+                'revenue' => round($byMonth[$month]['revenue'], 2),
+                'expenses' => round($byMonth[$month]['expenses'], 2),
             ];
         }
 
@@ -213,7 +246,9 @@ class FinanceService
         $invoiced = $this->sumProjectInvoicedAmount($project);
         $budget = (float) ($project->budget ?? 0);
         $remaining = max(0, round($budget - $invoiced, 2));
-        $currency = $project->deal?->currency ?? $this->defaultCurrency();
+        $currency = $project->currency
+            ?? $project->deal?->currency
+            ?? $this->defaultCurrency();
         $collected = $this->sumProjectRelatedIncome($project);
 
         return [
@@ -369,15 +404,21 @@ class FinanceService
             $totals[$currency]['arr'] = round($data['mrr'] * 12, 2);
         }
 
-        $primaryCurrency = $this->defaultCurrency();
-        $primary = $totals[$primaryCurrency] ?? ['mrr' => 0.0, 'arr' => 0.0, 'active_count' => 0];
+        $primaryCurrency = $this->currencyService->displayCurrency();
+        $primaryMrr = 0.0;
+        $primaryCount = 0;
+
+        foreach ($totals as $currency => $data) {
+            $primaryMrr += $this->currencyService->convert($data['mrr'], $currency, $primaryCurrency);
+            $primaryCount += $data['active_count'];
+        }
 
         return [
             'totals' => $totals,
             'primary_currency' => $primaryCurrency,
-            'mrr' => $primary['mrr'],
-            'arr' => $primary['arr'],
-            'active_count' => $primary['active_count'],
+            'mrr' => round($primaryMrr, 2),
+            'arr' => round($primaryMrr * 12, 2),
+            'active_count' => $primaryCount,
         ];
     }
 
@@ -655,10 +696,20 @@ class FinanceService
         }
 
         return DB::transaction(function () use ($data, $flow, $amount) {
+            $currency = strtoupper((string) ($data['currency'] ?? $this->defaultCurrency()));
+            $exchangeRate = isset($data['exchange_rate'])
+                ? (float) $data['exchange_rate']
+                : $this->currencyService->snapshotRateToBase($currency);
+            $baseAmount = isset($data['base_amount'])
+                ? round((float) $data['base_amount'], 2)
+                : round($amount * $exchangeRate, 2);
+
             $entry = JournalEntry::query()->create([
                 'flow' => $flow,
                 'amount' => $amount,
-                'currency' => $data['currency'] ?? $this->defaultCurrency(),
+                'currency' => $currency,
+                'exchange_rate' => $exchangeRate,
+                'base_amount' => $baseAmount,
                 'reference_type' => $data['reference_type'] ?? null,
                 'reference_id' => $data['reference_id'] ?? null,
                 'description' => $data['description'] ?? null,
@@ -773,7 +824,39 @@ class FinanceService
 
     private function defaultCurrency(): string
     {
-        return (string) config('finance.default_currency', config('crm.default_currency', 'USD'));
+        return $this->currencyService->defaultCurrency();
+    }
+
+    private function sumJournalAmountInDisplayCurrency($query): float
+    {
+        $total = 0.0;
+
+        $query->get(['amount', 'currency', 'exchange_rate', 'base_amount'])
+            ->each(function (JournalEntry $entry) use (&$total) {
+                $total += $this->entryAmountInDisplayCurrency($entry);
+            });
+
+        return round($total, 2);
+    }
+
+    private function entryAmountInDisplayCurrency(JournalEntry $entry): float
+    {
+        if ($entry->base_amount !== null) {
+            return $this->currencyService->convertFromBaseAmount((float) $entry->base_amount);
+        }
+
+        if ($entry->exchange_rate !== null) {
+            return $this->currencyService->convertUsingHistoricalRate(
+                (float) $entry->amount,
+                (string) $entry->currency,
+                (float) $entry->exchange_rate
+            );
+        }
+
+        return $this->currencyService->convert(
+            (float) $entry->amount,
+            (string) ($entry->currency ?: $this->defaultCurrency())
+        );
     }
 
     private function sumDealServiceLineItems(Deal $deal): float

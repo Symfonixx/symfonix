@@ -21,10 +21,20 @@ class StoreProjectRequest extends FormRequest
             'project_status_id' => ['required', 'integer', 'exists:project_statuses,id'],
             'deal_id' => ['nullable', 'integer', 'exists:deals,id', 'unique:projects,deal_id'],
             'budget' => ['nullable', 'numeric', 'min:0'],
+            'currency' => ['nullable', 'string', 'size:3'],
             'start_date' => ['nullable', 'date'],
             'due_date' => ['nullable', 'date', 'after_or_equal:start_date'],
             'attachments' => ['nullable', 'array'],
             'attachments.*' => ['file', 'max:10240', new ProjectAttachmentFile],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('currency')) {
+            $this->merge([
+                'currency' => strtoupper((string) $this->input('currency')),
+            ]);
+        }
     }
 }

@@ -116,13 +116,30 @@
         <div class="fs-6 fw-bold mt-2 mb-3">{{ __('project::project.fields.budget') }}</div>
     </div>
     <div class="col-xl-9 fv-row">
-        <input id="budget" type="number" step="0.01" min="0"
-               class="form-control form-control-solid @error('budget') is-invalid @enderror"
-               name="budget" value="{{ old('budget', $projectData?->budget) }}"
-               placeholder="{{ __('project::project.placeholders.budget') }}"/>
-        @error('budget')
-        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
-        @enderror
+        <div class="row g-6">
+            <div class="col-md-8">
+                <input id="budget" type="number" step="0.01" min="0"
+                       class="form-control form-control-solid @error('budget') is-invalid @enderror"
+                       name="budget" value="{{ old('budget', $projectData?->budget) }}"
+                       placeholder="{{ __('project::project.placeholders.budget') }}"/>
+                @error('budget')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+            <div class="col-md-4">
+                @php($currencyOptions = app(\Modules\Finance\Services\CurrencyService::class)->supportedCurrencies())
+                @php($budgetCurrency = old('currency', $projectData?->currency ?? app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency()))
+                <select id="currency" name="currency"
+                        class="form-select form-select-solid @error('currency') is-invalid @enderror">
+                    @foreach($currencyOptions as $code)
+                        <option value="{{ $code }}" @selected($budgetCurrency === $code)>{{ $code }}</option>
+                    @endforeach
+                </select>
+                @error('currency')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
     </div>
 </div>
 

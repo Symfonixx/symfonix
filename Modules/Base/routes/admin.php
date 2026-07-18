@@ -14,6 +14,7 @@ Route::middleware('can:Settings Management')->group(function () {
     Route::resource('settings', SettingsController::class)->only(['index', 'store']);
     Route::get('system-configurations', [SystemConfigurationController::class, 'index'])->name('system-configurations.index');
     Route::post('system-configurations', [SystemConfigurationController::class, 'store'])->name('system-configurations.store');
+    Route::post('system-configurations/fetch-rates', [SystemConfigurationController::class, 'fetchRates'])->name('system-configurations.fetch-rates');
     Route::resource('seo', SeoController::class)->only(['index', 'store']);
 
     Route::get('backups', [BackupController::class, 'index'])->name('backups.index');

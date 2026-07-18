@@ -91,6 +91,7 @@
               <li><a href="#crm">CRM &amp; Pipelines</a></li>
               <li><a href="#hr">Human Resources</a></li>
               <li><a href="#finance">Finance</a></li>
+              <li><a href="#currency-setup">Multi-currency Setup</a></li>
               <li><a href="#cms">Content Management</a></li>
             </ul>
           </div>
@@ -372,7 +373,7 @@
                 <tr>
                   <td><strong>Finance</strong></td>
                   <td>Accounting</td>
-                  <td>Transactions, salaries, commissions, expenses, journal entries, invoices</td>
+                  <td>Multi-currency transactions, salaries, commissions, expenses, journal entries, invoices</td>
                 </tr>
                 <tr>
                   <td><strong>Cms</strong></td>
@@ -473,7 +474,7 @@
             </div>
             <h3>Finance</h3>
             <p>
-              The Finance module provides end-to-end financial operations — from daily transaction logging to salary disbursement, commission calculation, and expense categorization. It listens to events from CRM and Product modules to maintain accurate books without manual data entry.
+              The Finance module provides end-to-end, multi-currency financial operations — from daily transaction logging to salary disbursement, commission calculation, invoicing, and expense categorization. It listens to events from CRM and Product modules to maintain accurate books without manual data entry.
             </p>
 
             <h4>Key Interfaces</h4>
@@ -485,12 +486,53 @@
               <li><strong>Expenses</strong> — operational expense logging with customizable expense categories.</li>
               <li><strong>Product Sales</strong> — revenue recording from Product catalog sales, connected to the broader commercial workflow for accurate reporting.</li>
               <li><strong>Invoice Notifications</strong> — automated customer notifications when invoices are sent, via Laravel event listeners.</li>
+              <li><strong>Currency Context</strong> — separate accounting-base, transaction, and per-session display currencies with posting-time exchange-rate snapshots.</li>
             </ul>
 
             <h4>Event-Driven Integration</h4>
             <p>
               Finance uses Laravel's event/listener pattern for cross-module workflows. For example, <code>NotifyCustomerOfInvoiceSent</code> listens for invoice events and dispatches notifications — keeping Finance decoupled from CRM implementation details while maintaining data flow.
             </p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="currency-setup">
+          <h3>Multi-currency Setup</h3>
+          <p>
+            Symfonix separates three currency concepts: the <strong>default currency</strong> is the accounting base, each business record retains its <strong>transaction currency</strong>, and the admin-header selector controls only the user's <strong>display currency</strong>. Journal entries snapshot both the posting-time source-to-base rate and converted base amount; changing display currency never changes the stored posting.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Setting</th><th>Purpose</th><th>Default</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>FINANCE_DEFAULT_CURRENCY</code></td><td>Accounting base currency</td><td><code>USD</code></td></tr>
+                <tr><td><code>FINANCE_SUPPORTED_CURRENCIES</code></td><td>Comma-separated currencies available to users</td><td><code>USD,EUR,GBP,TRY</code></td></tr>
+                <tr><td><code>FIXER_API_KEY</code></td><td>Fixer or API Layer credential</td><td>Empty</td></tr>
+                <tr><td><code>FIXER_BASE_URL</code></td><td>Exchange-rate API endpoint</td><td><code>https://data.fixer.io/api</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Users with <code>Settings Management</code> can override the default currency and Fixer key under <strong>System Configurations → Finance</strong>; stored settings take precedence over environment values. The supported-currency list remains environment/config driven. Free Fixer plans return EUR-based rates, so Symfonix derives non-EUR defaults through EUR cross-rates.
+          </p>
+
+          <span class="code-label">Terminal</span>
+          <pre><code># Queue a rate update (requires a running queue worker)
+php artisan finance:fetch-exchange-rates
+
+# Fetch immediately, optionally overriding the base
+php artisan finance:fetch-exchange-rates --sync
+php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
+
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>Do not use fallback rates for production accounting.</strong> Installation seeds approximate baseline rates, and a missing Fixer key or unavailable stored rate can result in a <code>1.0</code> fallback. Configure and monitor synchronization before posting live transactions. Changing the default currency after postings exist requires a controlled migration because historical base amounts retain the original accounting base.</p>
+            </div>
           </div>
         </section>
 
@@ -591,7 +633,12 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=symfonix
 DB_USERNAME=root
-DB_PASSWORD=</code></pre>
+DB_PASSWORD=
+
+FINANCE_DEFAULT_CURRENCY=USD
+FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
+FIXER_API_KEY=
+FIXER_BASE_URL=https://data.fixer.io/api</code></pre>
             </li>
             <li>
               <h4>Install dependencies</h4>
@@ -602,7 +649,7 @@ npm install && npm run build</code></pre>
             </li>
             <li>
               <h4>Run the install command</h4>
-              <p>The <code>app:install</code> artisan command handles the full bootstrap — migrations, seed data, permissions, CRM pipeline stages, and admin user creation:</p>
+              <p>The <code>app:install</code> artisan command handles the full bootstrap — migrations, seed data, permissions, CRM pipeline stages, baseline currency settings and rates, and admin user creation:</p>
               <span class="code-label">Terminal</span>
               <pre><code>php artisan app:install</code></pre>
               <p>Custom admin credentials:</p>
@@ -624,7 +671,7 @@ npm install && npm run build</code></pre>
           <div class="callout callout--tip">
             <span class="callout-icon" aria-hidden="true">💡</span>
             <div class="callout-content">
-              <p>The install command generates <code>APP_KEY</code>, runs all module migrations, seeds countries, creates application permissions, seeds default CRM pipeline stages, and assigns the Admin role with full permissions.</p>
+              <p>The install command generates <code>APP_KEY</code>, runs all module migrations, seeds countries and baseline currency rates, creates application permissions, seeds default CRM pipeline stages, and assigns the Admin role with full permissions.</p>
             </div>
           </div>
         </section>
@@ -760,7 +807,7 @@ php artisan view:cache</code></pre>
             </li>
             <li>
               <h4>Configure background services</h4>
-              <p>Set up a queue worker and scheduler via cron:</p>
+              <p>Set up a queue worker and scheduler via cron. The scheduler performs a synchronous exchange-rate refresh every hour; queued manual fetches require the worker.</p>
               <span class="code-label">crontab</span>
               <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
             </li>
@@ -769,7 +816,7 @@ php artisan view:cache</code></pre>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>Security checklist:</strong> Ensure <code>APP_DEBUG=false</code>, restrict <code>/admin</code> access via firewall rules if needed, enable Laravel Fortify two-factor authentication for admin accounts, and never commit <code>.env</code> files to version control.</p>
+              <p><strong>Production checklist:</strong> Ensure <code>APP_DEBUG=false</code>, restrict <code>/admin</code> access if needed, enable two-factor authentication, never commit <code>.env</code>, configure a valid Fixer key, and monitor the last successful rate fetch under <strong>System Configurations → Finance</strong>. Stored rates have no automatic staleness rejection.</p>
             </div>
           </div>
         </section>

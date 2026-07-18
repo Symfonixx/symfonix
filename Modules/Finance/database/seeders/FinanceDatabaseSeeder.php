@@ -10,6 +10,7 @@ class FinanceDatabaseSeeder extends Seeder
     {
         $this->call([
             ExpenseCategorySeeder::class,
+            CurrencySettingsSeeder::class,
         ]);
     }
 }

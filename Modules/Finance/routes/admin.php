@@ -5,6 +5,7 @@ use Modules\Finance\Http\Controllers\Admin\AccountsReceivableController;
 use Modules\Finance\Http\Controllers\Admin\CommissionController;
 use Modules\Finance\Http\Controllers\Admin\DailyLogController;
 use Modules\Finance\Http\Controllers\Admin\DashboardController;
+use Modules\Finance\Http\Controllers\Admin\DisplayCurrencyController;
 use Modules\Finance\Http\Controllers\Admin\ExpenseCategoryController;
 use Modules\Finance\Http\Controllers\Admin\InvoiceController;
 use Modules\Finance\Http\Controllers\Admin\ProductSaleController;
@@ -40,3 +41,6 @@ Route::middleware(['can:Finance Management'])->prefix('finance')->name('finance.
     Route::post('product-sales', [ProductSaleController::class, 'store'])->name('product-sales.store');
     Route::delete('product-sales/{product_sale}', [ProductSaleController::class, 'destroy'])->name('product-sales.destroy');
 });
+
+Route::post('display-currency', [DisplayCurrencyController::class, 'update'])
+    ->name('display-currency.update');

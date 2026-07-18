@@ -5,6 +5,8 @@ namespace Modules\Finance\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Modules\Finance\Console\FetchExchangeRatesCommand;
+use Modules\Finance\Console\ProcessSubscriptionRenewalsCommand;
 use Modules\Finance\Models\Commission;
 use Modules\Finance\Models\ExpenseCategory;
 use Modules\Finance\Models\Invoice;
@@ -15,8 +17,11 @@ use Modules\Finance\Policies\InvoicePolicy;
 use Modules\Finance\Policies\SalaryPolicy;
 use Modules\Finance\Repositories\ExpenseCategory\ExpenseCategoryModelRepository;
 use Modules\Finance\Repositories\ExpenseCategory\ExpenseCategoryRepository;
+use Modules\Finance\Services\CurrencyService;
 use Modules\Finance\Services\FinanceService;
+use Modules\Finance\Services\FixerExchangeRateService;
 use Modules\Finance\Services\InvoiceService;
+use Modules\Finance\View\Components\MoneyAmount;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class FinanceServiceProvider extends ServiceProvider
@@ -42,6 +47,13 @@ class FinanceServiceProvider extends ServiceProvider
         Gate::policy(ExpenseCategory::class, ExpenseCategoryPolicy::class);
         Gate::policy(Invoice::class, InvoicePolicy::class);
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+
+        Blade::component('finance-money', MoneyAmount::class);
+
+        \Illuminate\Support\Facades\View::composer('components.admin-layout', function ($view) {
+            $currencyService = app(CurrencyService::class);
+            $view->with('currencyContext', $currencyService->sharePayload());
+        });
     }
 
     /**
@@ -49,6 +61,8 @@ class FinanceServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->singleton(CurrencyService::class);
+        $this->app->singleton(FixerExchangeRateService::class);
         $this->app->singleton(FinanceService::class);
         $this->app->singleton(InvoiceService::class);
         $this->app->bind(ExpenseCategoryRepository::class, ExpenseCategoryModelRepository::class);
@@ -62,7 +76,8 @@ class FinanceServiceProvider extends ServiceProvider
     protected function registerCommands(): void
     {
         $this->commands([
-            \Modules\Finance\Console\ProcessSubscriptionRenewalsCommand::class,
+            ProcessSubscriptionRenewalsCommand::class,
+            FetchExchangeRatesCommand::class,
         ]);
     }
 
@@ -74,6 +89,9 @@ class FinanceServiceProvider extends ServiceProvider
         $this->app->booted(function () {
             $schedule = $this->app->make(\Illuminate\Console\Scheduling\Schedule::class);
             $schedule->command('finance:process-subscription-renewals')->daily();
+            $schedule->command('finance:fetch-exchange-rates --sync')
+                ->twiceDaily(1, 13)
+                ->withoutOverlapping();
         });
     }
 

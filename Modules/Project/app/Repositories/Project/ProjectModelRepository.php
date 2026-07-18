@@ -33,7 +33,14 @@ class ProjectModelRepository implements ProjectRepository
     public function create(ProjectData $data): ?Project
     {
         return $this->execute(function () use ($data) {
-            $project = Project::create($data->toArray());
+            $payload = $data->toArray();
+            $currency = strtoupper((string) ($payload['currency']
+                ?? app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency()));
+            $payload['currency'] = $currency;
+            $payload['budget_exchange_rate'] = app(\Modules\Finance\Services\CurrencyService::class)
+                ->snapshotRateToBase($currency);
+
+            $project = Project::create($payload);
             session()->flushMessage(true);
 
             return $project;
@@ -43,7 +50,17 @@ class ProjectModelRepository implements ProjectRepository
     public function update(Project $project, ProjectData $data): ?Project
     {
         return $this->execute(function () use ($project, $data) {
-            $project->update($data->toArray());
+            $payload = $data->toArray();
+            $currency = strtoupper((string) ($payload['currency'] ?? $project->currency
+                ?? app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency()));
+            $payload['currency'] = $currency;
+
+            if ($project->currency !== $currency || (float) $project->budget !== (float) ($payload['budget'] ?? null)) {
+                $payload['budget_exchange_rate'] = app(\Modules\Finance\Services\CurrencyService::class)
+                    ->snapshotRateToBase($currency);
+            }
+
+            $project->update($payload);
             session()->flushMessage(true);
 
             return $project;

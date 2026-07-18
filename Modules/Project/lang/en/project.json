@@ -19,6 +19,7 @@
         "deal": "Linked Deal",
         "select_deal": "Select deal (optional)",
         "budget": "Budget",
+        "currency": "Currency",
         "payment_status": "Payment Status",
         "collected": "Collected",
         "invoiced": "Invoiced",

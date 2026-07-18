@@ -17,6 +17,8 @@ class JournalEntry extends Model
         'flow',
         'amount',
         'currency',
+        'exchange_rate',
+        'base_amount',
         'reference_type',
         'reference_id',
         'description',
@@ -27,6 +29,8 @@ class JournalEntry extends Model
     {
         return [
             'amount' => 'decimal:2',
+            'exchange_rate' => 'decimal:8',
+            'base_amount' => 'decimal:2',
             'transaction_date' => 'date',
         ];
     }

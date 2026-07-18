@@ -31,6 +31,8 @@ class Project extends Model
         'project_status_id',
         'deal_id',
         'budget',
+        'currency',
+        'budget_exchange_rate',
         'payment_status',
         'start_date',
         'due_date',
@@ -41,6 +43,7 @@ class Project extends Model
     {
         return [
             'budget' => 'decimal:2',
+            'budget_exchange_rate' => 'decimal:8',
             'start_date' => 'date',
             'due_date' => 'date',
             'attachments' => 'array',
@@ -167,6 +170,9 @@ class Project extends Model
             return null;
         }
 
+        $currency = strtoupper((string) ($deal->currency
+            ?? app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency()));
+
         return static::create([
             'title' => $deal->title,
             'description' => $deal->description,
@@ -174,6 +180,9 @@ class Project extends Model
             'project_status_id' => $defaultStatus->id,
             'deal_id' => $deal->id,
             'budget' => $deal->value,
+            'currency' => $currency,
+            'budget_exchange_rate' => app(\Modules\Finance\Services\CurrencyService::class)
+                ->snapshotRateToBase($currency),
             'start_date' => now()->toDateString(),
             'due_date' => $deal->expected_close_date,
         ]);
