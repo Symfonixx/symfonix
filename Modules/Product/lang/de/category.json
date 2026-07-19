@@ -1,0 +1,25 @@
+{
+    "menu": "Kategorien",
+    "pages": {
+        "index_title": "Produktkategorien",
+        "create_title": "Kategorie hinzufügen",
+        "edit_title": "Kategorie bearbeiten"
+    },
+    "fields": {
+        "name": "Name",
+        "slug": "Schnecke",
+        "description": "Beschreibung",
+        "products_count": "Produkte"
+    },
+    "hints": {
+        "slug": "Lassen Sie das Feld leer, um eine automatische Generierung anhand des Namens durchzuführen."
+    },
+    "actions": {
+        "add": "Kategorie hinzufügen",
+        "back_to_products": "Zurück zu Produkten",
+        "manage_categories": "Kategorien verwalten"
+    },
+    "errors": {
+        "in_use": "Diese Kategorie kann nicht gelöscht werden, da sie über verknüpfte Produkte verfügt."
+    }
+}

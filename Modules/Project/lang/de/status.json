@@ -1,0 +1,25 @@
+{
+    "pages": {
+        "index_title": "Projektstatus",
+        "create_title": "Status hinzufügen",
+        "edit_title": "Status bearbeiten"
+    },
+    "fields": {
+        "name": "Name",
+        "color_code": "Abzeichenfarbe",
+        "sort_order": "Sortierreihenfolge",
+        "projects_count": "Projekte"
+    },
+    "actions": {
+        "add": "Status hinzufügen",
+        "back_to_projects": "Zurück zu Projekten",
+        "back_to_list": "Zurück zu Status"
+    },
+    "hints": {
+        "color_code": "Hexadezimalfarbe, die für Statusabzeichen in der Projektliste verwendet wird (z. B. #0d6efd).",
+        "sort_order": "Niedrigere Zahlen erscheinen zuerst. Bei der automatischen Erstellung von Projekten aus gewonnenen Deals wird die niedrigste Sortierreihenfolge verwendet."
+    },
+    "errors": {
+        "in_use": "Dieser Status kann nicht gelöscht werden, da er einem oder mehreren Projekten zugeordnet ist."
+    }
+}

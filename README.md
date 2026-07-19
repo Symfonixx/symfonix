@@ -12,7 +12,7 @@ Built on **Laravel 13** with **nwidart/laravel-modules**, **Spatie Permission**,
 | Admin UI | Metronic, Bootstrap 5, Blade, Inertia/Vue, Livewire |
 | Auth | Laravel Fortify (including 2FA) |
 | Roles | Spatie Laravel Permission |
-| i18n | English, Arabic, Turkish (`mcamara/laravel-localization`) |
+| i18n | English, Arabic, German, Turkish (`mcamara/laravel-localization`) |
 | Frontend build | Vite, Vue 3, Tailwind (where used) |
 | Extras | BotMan chatbot, visitor tracking, DomPDF, Excel export, Telescope, Pulse |
 
@@ -207,7 +207,7 @@ For production:
 - [laravel-permission](https://github.com/spatie/laravel-permission) — roles and permissions
 - [laravel-data](https://github.com/spatie/laravel-data) — DTOs
 - [laravel-translatable](https://github.com/spatie/laravel-translatable) — model translations
-- [laravel-localization](https://github.com/mcamara/laravel-localization) — English, Arabic, Turkish
+- [laravel-localization](https://github.com/mcamara/laravel-localization) — English, Arabic, German, Turkish
 - [inertia-laravel](https://inertiajs.com) / Vue 3 — SPA-style pages
 - [livewire](https://livewire.laravel.com) — reactive Blade components
 - [intervention/image](https://github.com/Intervention/image) — image handling

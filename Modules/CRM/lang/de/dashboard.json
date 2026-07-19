@@ -1,0 +1,69 @@
+{
+    "menu": "Analytik",
+    "title": "CRM-Analysen und -Metriken",
+    "subtitle": "Echtzeit-Einblicke in Leads, Pipeline und Teamleistung.",
+    "filters": {
+        "period": "Datumsbereich",
+        "assignee": "Vertriebsmitarbeiter",
+        "all_reps": "Alle Vertriebsmitarbeiter",
+        "apply": "Filter anwenden",
+        "periods": {
+            "today": "Heute",
+            "last_7_days": "Letzte 7 Tage",
+            "this_month": "Diesen Monat",
+            "last_month": "Letzten Monat",
+            "this_quarter": "Dieses Quartal",
+            "this_year": "Dieses Jahr",
+            "custom": "Benutzerdefinierter Bereich"
+        }
+    },
+    "metrics": {
+        "total_leads": "Gesamtzahl der Leads",
+        "conversion_rate": "Conversion-Rate",
+        "pipeline_value": "Pipeline-Wert",
+        "won_deals": "Gewonnene Angebote",
+        "vs_previous": "im Vergleich zur Vorperiode",
+        "leads_converted": ":converted von :total führt konvertiert",
+        "won_value": ":count-Angebote · :value"
+    },
+    "charts": {
+        "pipeline_funnel": "Sales-Pipeline-Trichter",
+        "pipeline_hint": "Aktuelle Verteilung von Leads und Deals über Pipeline-Stufen.",
+        "lead_channels": "Kanäle zur Lead-Akquise",
+        "lead_channels_hint": "Woher Ihre Leads im ausgewählten Zeitraum stammen.",
+        "deals": "Angebote",
+        "leads": "führt"
+    },
+    "funnel": {
+        "unconverted_leads": "Nicht konvertierte Leads"
+    },
+    "channels": {
+        "organic_search": "Organische Suche",
+        "direct": "Direkt",
+        "social_media": "Soziale Medien",
+        "referral": "Empfehlungen",
+        "paid_ads": "Bezahlte Anzeigen",
+        "website": "Webseite",
+        "sales": "Vertriebsreichweite",
+        "manual": "Manuelle Eingabe",
+        "unknown": "Andere"
+    },
+    "leaderboard": {
+        "title": "Teamleistung",
+        "subtitle": "Geschlossen-gewonnene Leistung für den ausgewählten Zeitraum.",
+        "rep": "Vertriebsmitarbeiter",
+        "closed_deals": "Geschlossene Angebote",
+        "closed_value": "Geschlossener Wert",
+        "target": "Ziel",
+        "achievement": "Leistung",
+        "empty": "Für diesen Zeitraum wurden keine abgeschlossenen Geschäfte erfasst."
+    },
+    "activity": {
+        "title": "Letzte CRM-Aktivität",
+        "subtitle": "Neueste Audit-Ereignisse und protokollierte Aktivitäten.",
+        "empty": "Keine aktuelle Aktivität zum Anzeigen.",
+        "logged": "Protokolliert :type: :title",
+        "fallback": "CRM-Ereignis aufgezeichnet"
+    },
+    "unknown_rep": "Unbekannt"
+}

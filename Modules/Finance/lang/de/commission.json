@@ -1,0 +1,25 @@
+{
+    "menu": "Provisionen",
+    "pages": {
+        "index_title": "Provisionsmanagement"
+    },
+    "fields": {
+        "deal": "Handeln",
+        "sales_rep": "Vertriebsmitarbeiter",
+        "percentage": "Provision %",
+        "amount": "Menge",
+        "status": "Status"
+    },
+    "status": {
+        "pending": "Ausstehend",
+        "paid": "Bezahlt"
+    },
+    "actions": {
+        "record_payout": "Rekordauszahlung"
+    },
+    "messages": {
+        "paid": "Provisionsauszahlung wird im Hauptbuch erfasst.",
+        "payout_description": "Provisionsauszahlung: :name — :deal",
+        "no_pending": "Keine ausstehenden Provisionsauszahlungen."
+    }
+}

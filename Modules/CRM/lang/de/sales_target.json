@@ -1,0 +1,12 @@
+{
+    "menu": "Verkaufsziele",
+    "title": "Verkaufsziele",
+    "subtitle": "Legen Sie Geschäfts- und Umsatzziele pro Mitarbeiter fest, die in der Analyse-Bestenliste verwendet werden.",
+    "rep": "Vertriebsmitarbeiter",
+    "deals_target": "Angebote Ziel",
+    "value_target": "Umsatzziel",
+    "value_target_hint": "Optional. Lassen Sie das Feld leer, um nur Angebote zu verfolgen.",
+    "default_hint": "Vertriebsmitarbeiter ohne gespeichertes Ziel verwenden die Standard-Deals :count aus der CRM-Konfiguration.",
+    "save": "Ziele speichern",
+    "saved": "Verkaufsziele erfolgreich aktualisiert."
+}

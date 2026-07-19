@@ -1,0 +1,24 @@
+{
+    "menu": "Ausgabenkategorien",
+    "pages": {
+        "index_title": "Ausgabenkategorien",
+        "create_title": "Ausgabenkategorie hinzufügen",
+        "edit_title": "Ausgabenkategorie bearbeiten"
+    },
+    "fields": {
+        "name": "Name",
+        "slug": "Schnecke",
+        "transactions_count": "Transaktionen"
+    },
+    "hints": {
+        "slug": "Lassen Sie das Feld leer, um eine automatische Generierung anhand des Namens durchzuführen."
+    },
+    "actions": {
+        "add": "Kategorie hinzufügen",
+        "back_to_list": "Zurück zu den Kategorien",
+        "back_to_dashboard": "Zurück zum Dashboard"
+    },
+    "errors": {
+        "in_use": "Diese Kategorie kann nicht gelöscht werden, da sie über verknüpfte Transaktionen verfügt."
+    }
+}

@@ -1176,7 +1176,25 @@ code {
 /* Print
    -------------------------------------------------------------------------- */
 
+@page {
+  size: A4;
+  margin: 14mm;
+}
+
 @media print {
+  html,
+  body {
+    width: auto;
+    background: #fff;
+  }
+
+  body {
+    font-size: 10pt;
+    line-height: 1.5;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
   .site-header,
   .sidebar,
   .sidebar-overlay,
@@ -1185,11 +1203,25 @@ code {
     display: none !important;
   }
 
+  .docs-shell {
+    display: block;
+    min-height: 0;
+  }
+
   .main-content {
+    margin: 0 !important;
     padding: 0;
   }
 
+  .content-wrapper,
+  .footer-inner {
+    width: 100%;
+    max-width: none;
+  }
+
   .hero {
+    padding: 24px;
+    margin-bottom: 28px;
     background: none;
     color: inherit;
     border: 1px solid #ccc;
@@ -1198,5 +1230,34 @@ code {
   .hero-lead,
   .stat-label {
     color: inherit;
+  }
+
+  .doc-section {
+    margin-bottom: 28px;
+  }
+
+  .doc-section h2,
+  .doc-section h3,
+  .doc-section h4 {
+    break-after: avoid;
+  }
+
+  .card,
+  .feature-list li,
+  .callout,
+  .module-block,
+  .table-wrap,
+  .arch-layer,
+  pre {
+    break-inside: avoid;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer {
+    margin: 0 !important;
   }
 }

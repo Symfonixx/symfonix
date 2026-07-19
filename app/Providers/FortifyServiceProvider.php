@@ -28,6 +28,10 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Prevent Fortify from registering unlocalized /login routes that would
+        // override the locale-prefixed ones loaded in configureRoutes().
+        Fortify::ignoreRoutes();
+
         $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
         $this->app->singleton(RegisterResponseContract::class, RegisterResponse::class);
         $this->app->singleton(TwoFactorLoginResponseContract::class, TwoFactorLoginResponse::class);

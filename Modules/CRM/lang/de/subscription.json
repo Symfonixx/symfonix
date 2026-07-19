@@ -1,0 +1,78 @@
+{
+    "menu": {
+        "subscriptions": "Abonnements"
+    },
+    "pages": {
+        "index_title": "Abonnements",
+        "create_title": "Abonnement hinzufügen",
+        "edit_title": "Abonnement bearbeiten",
+        "show_title": "Abonnementdetails"
+    },
+    "fields": {
+        "name": "Planname",
+        "company": "Unternehmen",
+        "select_company": "Unternehmen auswählen",
+        "service": "Service",
+        "services": "Dienstleistungen",
+        "select_service": "Service auswählen (optional)",
+        "status": "Status",
+        "billing_cycle": "Abrechnungszeitraum",
+        "amount": "Menge",
+        "currency": "Währung",
+        "starts_at": "Startdatum",
+        "ends_at": "Enddatum",
+        "renewal_at": "Nächste Erneuerung",
+        "auto_renew": "Automatische Verlängerung",
+        "notes": "Notizen"
+    },
+    "status": {
+        "active": "Aktiv",
+        "trial": "Versuch",
+        "paused": "Angehalten",
+        "cancelled": "Abgesagt",
+        "expired": "Abgelaufen"
+    },
+    "billing_cycle": {
+        "monthly": "Monatlich",
+        "quarterly": "Vierteljährlich",
+        "yearly": "Jährlich",
+        "one_time": "Einmalig"
+    },
+    "actions": {
+        "add": "Abonnement hinzufügen",
+        "add_for_company": "Abonnement hinzufügen",
+        "back_to_list": "Zurück zu Abonnements",
+        "view_all": "Alle Abonnements anzeigen",
+        "renewing_soon": "Wird bald erneuert"
+    },
+    "search": {
+        "placeholder": "Abonnements suchen"
+    },
+    "sections": {
+        "basic_information": "Abonnementdetails",
+        "basic_information_hint": "Verknüpfen Sie dieses Abonnement mit einem Unternehmen und definieren Sie den Plan.",
+        "billing": "Abrechnung",
+        "billing_hint": "Betrag, Zyklus und Erneuerungsplan.",
+        "dates": "Termine",
+        "dates_hint": "Start-, End- und nächste Verlängerungstermine.",
+        "company_subscriptions": "Abonnements"
+    },
+    "placeholders": {
+        "name": "Beispiel: Premium-Supportplan",
+        "amount": "0,00",
+        "notes": "Interne Notizen zu diesem Abonnement"
+    },
+    "hints": {
+        "renewal_at": "Lassen Sie das Feld leer, um eine automatische Berechnung anhand des Startdatums und des Abrechnungszeitraums durchzuführen.",
+        "auto_renew": "Automatisch verlängern, wenn das Verlängerungsdatum erreicht ist.",
+        "ends_at": "Optionales festes Enddatum für das Abonnement.",
+        "service": "Verknüpfen Sie dieses Abonnement optional mit einem Katalogdienst.",
+        "services": "Wählen Sie einen oder mehrere Katalogdienste für dieses Abonnement aus."
+    },
+    "empty": {
+        "company": "Noch keine Abonnements für dieses Unternehmen."
+    },
+    "validation": {
+        "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut."
+    }
+}

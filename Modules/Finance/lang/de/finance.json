@@ -1,0 +1,87 @@
+{
+    "menu": {
+        "finance": "Finanzen",
+        "dashboard": "Dashboard",
+        "daily_log": "Tägliches Protokoll",
+        "expense_categories": "Ausgabenkategorien",
+        "salaries": "Gehälter",
+        "commissions": "Provisionen",
+        "product_sales": "Produktverkauf",
+        "invoices": "Rechnungen",
+        "accounts_receivable": "Forderungen"
+    },
+    "pages": {
+        "dashboard_title": "Finanz-Dashboard",
+        "dashboard_subtitle": "Gesamtleistung, monatliche Trends und Gewinnanalyse."
+    },
+    "metrics": {
+        "total_credit": "Gesamtguthaben (Umsatz)",
+        "total_debit": "Gesamtbelastung (Ausgaben)",
+        "net_profit": "Reingewinn",
+        "lifetime_profit": "Gesamtgewinn",
+        "total_revenue": "Gesamtumsatz",
+        "total_expenses": "Gesamtkosten",
+        "total_losses": "Gesamtverluste",
+        "lifetime_scope": "Gesamtzeitraum",
+        "filtered_scope": "Ausgewählter Zeitraum",
+        "lifetime_hint": "Aggregiert über jede aufgezeichnete Transaktion.",
+        "filtered_hint": "Aggregiert über :count ausgewählte Monate.",
+        "today_transactions": "Heutige Transaktionen",
+        "no_transactions_today": "Heute wurden keine Transaktionen protokolliert.",
+        "mrr": "MRR",
+        "arr": "ARR",
+        "active_subscriptions": "Aktive Abonnements",
+        "saas_metrics": "SaaS-Metriken",
+        "saas_hint": "Normalisiert aus aktiven und wiederkehrenden Probeabonnements."
+    },
+    "filters": {
+        "months": "Monate",
+        "months_placeholder": "Monat(e) auswählen",
+        "months_hint": "Wählen Sie einen oder mehrere Monate aus oder verwenden Sie die Lifetime-Ansicht für Gesamtsummen aller Zeiten.",
+        "all_months": "Lebenszeitansicht",
+        "from_date": "Aus",
+        "to_date": "Zu",
+        "reset": "Zurücksetzen",
+        "no_transactions_in_range": "Für den ausgewählten Datumsbereich wurden keine Transaktionen gefunden."
+    },
+    "charts": {
+        "performance_title": "Gewinn vs. Ausgaben vs. Verluste",
+        "performance_hint": "Monatlicher Vergleich mit hervorgehobenen Spitzenwerten.",
+        "trend_title": "Umsatz- vs. Ausgabentrend",
+        "trend_hint": "Monatliche Einnahmen und Ausgaben für das ausgewählte Jahr.",
+        "trend_empty": "Für :year sind keine Transaktionsdaten verfügbar.",
+        "year": "Jahr",
+        "profit": "Profitieren",
+        "expenses": "Kosten",
+        "losses": "Verluste",
+        "empty": "Für den ausgewählten Zeitraum sind keine Transaktionsdaten verfügbar."
+    },
+    "fields": {
+        "type": "Typ",
+        "entry_type": "Eintrag",
+        "amount": "Menge",
+        "currency": "Währung",
+        "description": "Beschreibung",
+        "category": "Kategorie",
+        "date": "Datum",
+        "project": "Projekt (optional)",
+        "credit": "Kredit (Umsatz)",
+        "debit": "Lastschrift (Ausgabe)",
+        "income": "Einkommen",
+        "expense": "Kosten"
+    },
+    "actions": {
+        "log_transaction": "Transaktion protokollieren",
+        "daily_action_center": "Tägliches Aktionszentrum",
+        "delete": "Löschen"
+    },
+    "messages": {
+        "transaction_logged": "Journaleintrag erfolgreich gebucht.",
+        "transaction_deleted": "Journaleintrag erfolgreich gelöscht.",
+        "confirm_delete_transaction": "Diesen Journaleintrag löschen? Dies kann nicht rückgängig gemacht werden.",
+        "cannot_delete_system_entry": "Systemgenerierte Einträge können nicht aus dem Tagesprotokoll gelöscht werden.",
+        "double_entry_hint": "Jeder Eintrag verbucht ausgeglichene Soll- und Habenlinien (Bargeld ↔ Einnahmen oder Ausgaben ↔ Bargeld).",
+        "sale_income": "Verkaufserlös: :title",
+        "project_income": "Projektzahlung: :title"
+    }
+}

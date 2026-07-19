@@ -1,0 +1,40 @@
+{
+    "week_visitors": "Diese Woche",
+    "unread_notifications": "Ungelesene Benachrichtigungen",
+    "contacts_this_month": "Kontakte diesen Monat",
+    "recent_activity": "Letzte Aktivität",
+    "recent_contacts": "Aktuelle Nachrichten",
+    "recent_leads": "Aktuelle Hinweise",
+    "recent_notifications": "Aktuelle Benachrichtigungen",
+    "no_contacts": "Noch keine Kontaktnachrichten.",
+    "no_leads": "Noch keine Hinweise.",
+    "no_notifications": "Noch keine Benachrichtigungen.",
+    "finance": {
+        "title": "Finanzübersicht",
+        "revenue_this_month": "Umsatz in diesem Monat",
+        "outstanding": "Ausstehende Forderungen",
+        "open_invoices": "Offene Rechnungen",
+        "paid_this_month": "Diesen Monat gesammelt",
+        "recent_invoices": "Aktuelle Rechnungen",
+        "no_invoices": "Noch keine Rechnungen."
+    },
+    "projects": {
+        "title": "Projektübersicht",
+        "active": "Aktive Projekte",
+        "unpaid": "Warten auf Zahlung",
+        "recent": "Aktuelle Projekte",
+        "no_projects": "Noch keine Projekte."
+    },
+    "products": {
+        "title": "Produktübersicht",
+        "published": "Veröffentlichte Produkte",
+        "sales_this_month": "Verkäufe in diesem Monat",
+        "revenue_this_month": "Umsatzerlöse",
+        "recent_sales": "Aktuelle Produktverkäufe",
+        "no_sales": "Noch keine Produktverkäufe."
+    },
+    "leads": {
+        "new": "Neue Leads",
+        "this_month": "Leads diesen Monat"
+    }
+}

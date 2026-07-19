@@ -1,0 +1,11 @@
+{
+    "Error!": "Fehler!",
+    "An Error Occurred!": "Es ist ein Fehler aufgetreten!",
+    "The selected file is not valid.": "Die ausgewählte Datei ist ungültig.",
+    "File type is not allowed.": "Der Dateityp ist nicht zulässig.",
+    "The Operation Done Successfully": "Der Vorgang wurde erfolgreich durchgeführt",
+    "Auto translate to other languages": "Automatische Übersetzung in andere Sprachen",
+    "If enabled, content will be automatically translated into other languages when you save.": "Wenn diese Option aktiviert ist, werden Inhalte beim Speichern automatisch in andere Sprachen übersetzt.",
+    "Translation": "Übersetzung",
+    "Choose whether to update all language versions when saving.": "Wählen Sie aus, ob beim Speichern alle Sprachversionen aktualisiert werden sollen."
+}

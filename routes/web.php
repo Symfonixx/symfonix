@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BotManController;
+use App\Http\Controllers\DocsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,12 @@ Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle'])->n
 
 // Optional page that can host the widget iframe (used by frameEndpoint if desired).
 Route::get('/chatbot', [BotManController::class, 'widget'])->name('chatbot.widget');
+
+if (config('docs.enabled')) {
+    Route::get('/docs/{path?}', DocsController::class)
+        ->where('path', '.*')
+        ->name('docs');
+}
 
 Route::get('/robots.txt', function () {
     $host = rtrim(request()->getSchemeAndHttpHost(), '/');

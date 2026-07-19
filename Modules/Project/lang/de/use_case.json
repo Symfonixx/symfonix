@@ -1,0 +1,60 @@
+{
+    "menu": {
+        "use_cases": "Anwendungsfälle"
+    },
+    "pages": {
+        "index_title": "Anwendungsfälle",
+        "create_title": "Anwendungsfall hinzufügen",
+        "edit_title": "Anwendungsfall bearbeiten",
+        "website_title": "Fallstudien",
+        "website_details": "Fallstudie"
+    },
+    "meta": {
+        "index_description": "Entdecken Sie unsere Fallstudien und erfahren Sie, wie wir Unternehmen mit innovativen Technologielösungen helfen.",
+        "index_keywords": "Fallstudien, Projektlösungen, IT-Lösungen, Webentwicklung"
+    },
+    "fields": {
+        "title": "Titel",
+        "slug": "URL-Slug",
+        "client_name": "Kundenname",
+        "summary": "Zusammenfassung",
+        "challenge": "Herausforderung",
+        "solution": "Lösung",
+        "results": "Ergebnisse",
+        "content": "Vollständiger Inhalt",
+        "image": "Titelbild",
+        "technologies": "Technologien",
+        "category_tag": "Kategorie-Tag",
+        "project_url": "Live-Projekt-URL",
+        "completed_year": "Abgeschlossenes Jahr",
+        "linked_project": "Verknüpftes internes Projekt",
+        "select_project": "Projekt auswählen (optional)",
+        "sort_order": "Sortierreihenfolge",
+        "featured": "Hervorgehoben",
+        "published": "Veröffentlicht",
+        "status": "Status",
+        "visits": "Besuche"
+    },
+    "actions": {
+        "add": "Anwendungsfall hinzufügen",
+        "back_to_list": "Zurück zu Anwendungsfällen",
+        "view_on_site": "Auf der Website ansehen"
+    },
+    "hints": {
+        "slug": "Wird in der öffentlichen URL verwendet, z.B. /use-cases/your-slug",
+        "technologies": "Komma-getrennt oder Tag-Liste, z.B. Laravel, Vue, AWS",
+        "category_tag": "Wird als Abzeichen auf der Anwendungsfallkarte angezeigt, z. B. Webentwicklung",
+        "linked_project": "Verbinden Sie dieses Showcase-Element optional mit einem internen CRM-Projektdatensatz."
+    },
+    "website": {
+        "tagline": "Fallstudien",
+        "heading": "Wie wir Unternehmen mit innovativen technischen Lösungen gestärkt haben",
+        "challenge_title": "Die Herausforderung",
+        "solution_title": "Unsere Lösung",
+        "results_title": "Die Ergebnisse",
+        "technologies_title": "Verwendete Technologien",
+        "related_title": "Weitere Fallstudien",
+        "visit_project": "Besuchen Sie Live-Projekt",
+        "client": "Kunde"
+    }
+}

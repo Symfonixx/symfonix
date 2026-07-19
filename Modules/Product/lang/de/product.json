@@ -1,0 +1,84 @@
+{
+    "menu": {
+        "products": "Produkte",
+        "catalog": "Katalog"
+    },
+    "pages": {
+        "index_title": "Produktkatalog",
+        "create_title": "Produkt hinzufügen",
+        "edit_title": "Produkt bearbeiten",
+        "catalog_title": "Produkte"
+    },
+    "meta": {
+        "index_description": "Stöbern Sie in unserem B2B-Produktkatalog – SaaS-Plattformen, professionelle Dienstleistungen und Unternehmenslösungen.",
+        "index_keywords": "Produkte, B2B-Katalog, SaaS, Unternehmenssoftware, IT-Dienstleistungen"
+    },
+    "sections": {
+        "media": "Medien",
+        "content": "Website-Inhalt",
+        "seo": "SEO-Suite"
+    },
+    "fields": {
+        "name": "Produktname",
+        "category": "Kategorie",
+        "select_category": "Kategorie auswählen",
+        "sku": "Artikelnummer",
+        "short_description": "Kurzbeschreibung",
+        "short_description_help": "Wird auf Katalogkarten und Angebotsseiten angezeigt (max. 500 Zeichen). Optional automatisch übersetzt, wenn das Kontrollkästchen „Übersetzen“ aktiviert ist.",
+        "description": "Vollständige Beschreibung",
+        "description_help": "Umfangreicher Inhalt für die Produktdetailseite – Funktionen, Spezifikationen und Vorteile. Optional automatisch übersetzt, wenn das Kontrollkästchen „Übersetzen“ aktiviert ist.",
+        "main_image": "Hauptbild",
+        "main_image_help": "Hauptproduktfoto für Katalogkarten und Detailseite (1200 Pixel Breite empfohlen).",
+        "seo_title": "SEO-Titel",
+        "seo_title_help": "Ideale Länge: 50–60 Zeichen. Falls leer, wird auf den Produktnamen zurückgegriffen. Optional automatisch übersetzt, wenn das Kontrollkästchen „Übersetzen“ aktiviert ist.",
+        "seo_description": "Meta-Beschreibung",
+        "seo_description_help": "Ideale Länge: 120–160 Zeichen. Falls leer, wird auf die Kurzbeschreibung zurückgegriffen. Optional automatisch übersetzt, wenn das Kontrollkästchen „Übersetzen“ aktiviert ist.",
+        "seo_keywords": "Meta-Schlüsselwörter",
+        "seo_keywords_placeholder": "Saas, CRM, Unternehmen",
+        "seo_meta_img": "Social-Share-Bild",
+        "seo_meta_img_help": "Optionales OG/Twitter-Bild. Falls leer, wird auf das Hauptbild zurückgegriffen.",
+        "price": "Preis",
+        "billing": "Abrechnung",
+        "status": "Status",
+        "featured": "Hervorgehoben",
+        "featured_help": "Hervorheben im Katalog und in den Angeboten",
+        "is_published": "Auf der Website veröffentlichen",
+        "is_published_help": "Machen Sie dieses Produkt im öffentlichen B2B-Schaufenster sichtbar.",
+        "website_visibility": "Webseite"
+    },
+    "visibility": {
+        "published": "Veröffentlicht",
+        "draft": "Entwurf"
+    },
+    "billing": {
+        "one_time": "Einmalig",
+        "monthly": "Monatlich",
+        "quarterly": "Vierteljährlich",
+        "yearly": "Jährlich"
+    },
+    "status": {
+        "active": "Aktiv",
+        "archived": "Archiviert"
+    },
+    "filters": {
+        "title": "Filter",
+        "all_categories": "Alle Kategorien",
+        "all_statuses": "Alle Status",
+        "all_visibility": "Alle Sichtbarkeit"
+    },
+    "search": {
+        "placeholder": "Suchen Sie nach Name, SKU oder Beschreibung"
+    },
+    "actions": {
+        "add": "Produkt hinzufügen",
+        "apply_filters": "Anwenden",
+        "clear_filters": "Klar",
+        "view_details": "Details anzeigen"
+    },
+    "messages": {
+        "archived_instead": "Das Produkt verfügt über eine Verkaufshistorie und wurde archiviert statt gelöscht."
+    },
+    "errors": {
+        "has_sales": "Ein Produkt, für das Verkäufe erfasst wurden, kann nicht gelöscht werden."
+    }
+}

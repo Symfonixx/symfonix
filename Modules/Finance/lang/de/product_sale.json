@@ -1,0 +1,29 @@
+{
+    "menu": "Produktverkauf",
+    "pages": {
+        "index_title": "Produktverkauf"
+    },
+    "fields": {
+        "product": "Produkt",
+        "select_product": "Produkt auswählen",
+        "company": "Unternehmen",
+        "quantity": "Menge",
+        "unit_price": "Stückpreis",
+        "default_price": "Katalogpreis",
+        "total": "Gesamt",
+        "sold_at": "Verkaufsdatum",
+        "deal": "Handeln",
+        "invoice": "Rechnung"
+    },
+    "actions": {
+        "record_sale": "Produktverkauf aufzeichnen"
+    },
+    "messages": {
+        "recorded": "Der Produktverkauf wird im Finanzbuch erfasst.",
+        "recorded_with_invoice": "Produktverkauf erfasst. Rechnung :number erstellt und an den Kunden gesendet.",
+        "deleted": "Der Produktverkauf und sein Hauptbucheintrag wurden entfernt.",
+        "confirm_delete": "Diesen Produktverkauf löschen und aus dem Finanzbuch entfernen?",
+        "income": "Produktverkauf: :product (×:quantity)",
+        "no_sales": "Es wurden noch keine Produktverkäufe erfasst."
+    }
+}

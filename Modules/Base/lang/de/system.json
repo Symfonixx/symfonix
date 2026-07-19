@@ -1,0 +1,73 @@
+{
+    "title": "Systemkonfigurationen",
+    "page_description": "Interne Unternehmensdetails, Währung, API-Anmeldeinformationen und Einstellungen für Administratorbenachrichtigungen.",
+    "form_description": "Konfigurieren Sie Unternehmensdetails für Rechnungen, Standardwährungen für mehrere Währungen, API-Schlüssel und die Administrator-Benachrichtigungs-E-Mail.",
+    "tabs": {
+        "branding": "Branding",
+        "company": "Unternehmen",
+        "finance": "Finanzen",
+        "notifications": "Benachrichtigungen",
+        "backup": "Sicherung"
+    },
+    "company_details": {
+        "title": "Firmendetails",
+        "description": "Wird auf Rechnungen verwendet. Wenn das Feld leer bleibt, wird auf die Kontakteinstellungen der Website zurückgegriffen.",
+        "phone": "Firmentelefon",
+        "email": "Firmen-E-Mail",
+        "address": "Firmenadresse",
+        "sign_image": "Firmenzeichenbild",
+        "sign_image_hint": "Erscheint auf Rechnungen als autorisierte Unterschrift."
+    },
+    "currency": {
+        "title": "Standardwährung",
+        "description": "Systemweite Basiswährung, die für Hauptbücher, Budgets und Wechselkurs-Snapshots verwendet wird.",
+        "default": "Standardwährung",
+        "default_hint": "Für neue Transaktionen und Budgets wird standardmäßig diese Währung verwendet. Wechselkurse werden relativ dazu ermittelt.",
+        "names": {
+            "USD": "US-Dollar",
+            "EUR": "Euro",
+            "GBP": "Britisches Pfund",
+            "TRY": "Türkische Lira"
+        }
+    },
+    "api_configs": {
+        "title": "Wechselkurs-API",
+        "description": "Anmeldeinformationen, die zum Aktualisieren der Live-Wechselkurse für die Buchhaltung mit mehreren Währungen verwendet werden.",
+        "fixer_api_key": "Fixer.io-API-Schlüssel",
+        "fixer_api_key_hint": "Wird zum Abrufen von Live-Wechselkursen verwendet. Halten Sie dies geheim – es wird nicht an die öffentliche Website weitergegeben.",
+        "fetch_rates": "Jetzt Preise abrufen",
+        "key_configured": "API-Schlüssel konfiguriert",
+        "key_missing": "API-Schlüssel nicht festgelegt",
+        "rates_updated": "Preise zuletzt aktualisiert",
+        "rates_never": "Noch keine Tarife abgerufen",
+        "status_title": "FX-Status"
+    },
+    "admin_notifications": {
+        "title": "Admin-Benachrichtigungen",
+        "description": "Alle Systembenachrichtigungs-E-Mails werden an diese Adresse gesendet.",
+        "email": "Admin-E-Mail",
+        "email_hint": "Überschreibt ADMIN_EMAIL aus .env, wenn es festgelegt ist. Unterstützt durch Kommas getrennte Adressen."
+    },
+    "admin_branding": {
+        "title": "Branding des Admin-Panels",
+        "description": "Logos werden in der Admin-Seitenleiste und im mobilen Header angezeigt.",
+        "logo": "Admin-Logo",
+        "logo_hint": "Wird in der Seitenleiste und im mobilen Header angezeigt. Empfohlene Größe: 245 × 45 px.",
+        "min_logo": "Admin-minimiertes Logo",
+        "min_logo_hint": "Wird angezeigt, wenn die Seitenleiste ausgeblendet ist. Fällt auf das Admin-Logo zurück, wenn es nicht festgelegt ist. Empfohlene Größe: 50 × 50 px."
+    },
+    "backup": {
+        "title": "Automatische Sicherung",
+        "description": "Planen Sie Datenbanksicherungen. Manuelle Backups können auch über die Seite „Backups“ erstellt werden.",
+        "enabled": "Aktivieren Sie die automatische Sicherung",
+        "enabled_label": "Führen Sie Backups automatisch durch",
+        "enabled_hint": "Verwendet das unten stehende Intervall. Erfordert den Server-Cron: PHP Artisan Schedule:run",
+        "interval_days": "Sicherungsintervall (Tage)",
+        "interval_days_hint": "Erstellen Sie alle N Tage (1–365) ein automatisches Backup.",
+        "last_run": "Letzte automatische Sicherung",
+        "manage_link": "Backups verwalten",
+        "status_on": "Automatische Backups sind aktiviert",
+        "status_off": "Automatische Backups sind deaktiviert",
+        "never_run": "Noch nicht ausgeführt"
+    }
+}

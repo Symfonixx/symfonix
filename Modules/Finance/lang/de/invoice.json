@@ -1,0 +1,70 @@
+{
+    "menu": "Rechnungen",
+    "pages": {
+        "index_title": "Rechnungen",
+        "create_title": "Rechnung erstellen",
+        "show_title": "Rechnungsdetails"
+    },
+    "fields": {
+        "invoice_number": "Rechnung #",
+        "company": "Unternehmen",
+        "select_company": "Unternehmen auswählen",
+        "status": "Status",
+        "subtotal": "Zwischensumme",
+        "tax": "Steuer",
+        "total": "Gesamt",
+        "currency": "Währung",
+        "issued_at": "Ausgabedatum",
+        "due_at": "Fälligkeitsdatum",
+        "paid_at": "Bezahltes Datum",
+        "notes": "Notizen",
+        "description": "Beschreibung",
+        "quantity": "Menge",
+        "unit_price": "Stückpreis",
+        "amount": "Menge",
+        "line_items": "Werbebuchungen",
+        "subscription": "Abonnement",
+        "deal": "Handeln",
+        "project": "Projekt"
+    },
+    "status": {
+        "draft": "Entwurf",
+        "sent": "Gesendet",
+        "paid": "Bezahlt",
+        "overdue": "Überfällig",
+        "void": "Leere"
+    },
+    "actions": {
+        "create": "Neue Rechnung",
+        "mark_sent": "Als gesendet markieren",
+        "mark_paid": "Zahlung aufzeichnen",
+        "void": "Rechnung ungültig",
+        "delete": "Rechnung löschen",
+        "download_pdf": "PDF herunterladen",
+        "from_deal": "Rechnung erstellen",
+        "add_line": "Zeile hinzufügen"
+    },
+    "messages": {
+        "created": "Rechnung erfolgreich erstellt.",
+        "created_and_sent": "Rechnung erstellt und an den Kunden gesendet.",
+        "sent": "Rechnung als gesendet markiert.",
+        "paid": "Zahlung erfasst und Hauptbuch aktualisiert.",
+        "voided": "Rechnung ungültig.",
+        "deleted": "Rechnung und zugehörige Sachkontoeinträge wurden gelöscht.",
+        "confirm_delete": "Diese Rechnung dauerhaft löschen? Zugehörige Hauptbucheinträge werden ebenfalls entfernt.",
+        "deal_invoice_failed": "Für diesen Deal konnte keine Rechnung erstellt werden.",
+        "subscription_renewal_note": "Abonnementverlängerung: :name (:date)",
+        "deal_invoice_note": "Rechnung für Geschäft: :title",
+        "project_invoice_note": "Rechnung für Projekt: :title",
+        "product_sale_invoice_note": "Produktverkauf: :product (×:quantity)",
+        "payment_description": "Rechnung :number — :company"
+    },
+    "pdf": {
+        "title": "Rechnung",
+        "bill_to": "Gesetzesentwurf für",
+        "issue_date": "Ausgabedatum",
+        "due_date": "Fälligkeitsdatum",
+        "thank_you": "Vielen Dank für Ihr Geschäft.",
+        "company_sign": "Autorisierte Unterschrift"
+    }
+}

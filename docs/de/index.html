@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dokumentation der Symfonix Suite — die modulare All-in-one-Plattform für CRM, Personalwesen, Finanzen, CMS und integrierte Geschäftsabläufe.">
+  <title>Symfonix Suite — Dokumentation</title>
+  <link rel="alternate" hreflang="en" href="../index.html">
+  <link rel="alternate" hreflang="ar" href="../ar/index.html">
+  <link rel="alternate" hreflang="tr" href="../tr/index.html">
+  <link rel="alternate" hreflang="de" href="./index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+
+  <!-- Kopfzeile -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="brand" aria-label="Startseite der Symfonix Suite">
+        <img src="../images/logo.png" alt="Logo der Symfonix Suite" class="brand-logo" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-name">Symfonix Suite</span>
+          <span class="brand-tagline">Dokumentation</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Hauptnavigation">
+        <a href="#introduction">Einführung</a>
+        <a href="#architecture">Architektur</a>
+        <a href="#modules">Module</a>
+        <a href="#getting-started">Erste Schritte</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switcher" aria-label="Sprachauswahl">
+          <a href="../index.html" lang="en">EN</a>
+          <a href="../ar/index.html" lang="ar">AR</a>
+          <a href="../tr/index.html" lang="tr">TR</a>
+          <a href="./index.html" class="is-active" lang="de">DE</a>
+        </div>
+        <a href="#getting-started" class="btn btn-ghost">Bereitstellen</a>
+        <a href="#introduction" class="btn btn-primary">Dokumentation lesen</a>
+        <button class="menu-toggle" type="button" aria-label="Navigationsmenü ein- oder ausblenden" aria-expanded="false" aria-controls="sidebar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+
+    <!-- Seitenleisten-Overlay (Mobilgeräte) -->
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <!-- Seitenleistennavigation -->
+    <aside class="sidebar" id="sidebar" aria-label="Dokumentationsnavigation">
+      <div class="sidebar-inner">
+        <div class="sidebar-search">
+          <input type="search" id="doc-search" placeholder="Dokumentation durchsuchen …" aria-label="Dokumentation durchsuchen">
+        </div>
+
+        <nav>
+          <div class="nav-group">
+            <div class="nav-group-label">Überblick</div>
+            <ul class="sidebar-nav">
+              <li><a href="#introduction" class="is-active">Einführung &amp; Vision</a></li>
+              <li><a href="#why-symfonix">Warum Symfonix Suite?</a></li>
+              <li><a href="#value-proposition">Mehrwert für Unternehmen</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Plattform</div>
+            <ul class="sidebar-nav">
+              <li><a href="#architecture">Systemarchitektur</a></li>
+              <li><a href="#core-engine">Core Engine</a></li>
+              <li><a href="#data-consistency">Datenkonsistenz</a></li>
+              <li><a href="#performance">Leistung</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Module</div>
+            <ul class="sidebar-nav">
+              <li><a href="#modules">Überblick über die Kernmodule</a></li>
+              <li><a href="#crm">CRM &amp; Pipelines</a></li>
+              <li><a href="#hr">Personalwesen</a></li>
+              <li><a href="#finance">Finanzen</a></li>
+              <li><a href="#currency-setup">Mehrwährungssystem einrichten</a></li>
+              <li><a href="#cms">Content-Management</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-label">Entwicklung</div>
+            <ul class="sidebar-nav">
+              <li><a href="#getting-started">Erste Schritte</a></li>
+              <li><a href="#requirements">Voraussetzungen</a></li>
+              <li><a href="#installation">Installation</a></li>
+              <li><a href="#module-deployment">Modulbereitstellung</a></li>
+              <li><a href="#permissions">Berechtigungen &amp; Rollen</a></li>
+              <li><a href="#production">Produktivbereitstellung</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Hauptinhalt -->
+    <main class="main-content" id="main-content">
+      <div class="content-wrapper">
+
+        <!-- Hero-Bereich -->
+        <section class="hero" aria-labelledby="hero-title">
+          <span class="hero-badge">Unternehmensplattform · v1.0</span>
+          <h1 id="hero-title">Eine Plattform. Alle Unternehmensfunktionen.</h1>
+          <p class="hero-lead">
+            Symfonix Suite ist eine modulare All-in-one-Plattform für die Unternehmensverwaltung. Sie vereint CRM, Personalwesen, Finanzen, CMS und zentrale betriebliche Abläufe in einem einzigen leistungsstarken Ökosystem und beseitigt damit die Integrationsprobleme fragmentierter SaaS-Werkzeuge.
+          </p>
+          <div class="hero-actions">
+            <a href="#getting-started" class="btn btn-primary">Jetzt starten</a>
+            <a href="#architecture" class="btn btn-ghost">Architektur erkunden</a>
+            <a href="../pdf/symfonix-docs-de.pdf" class="btn btn-ghost" download>PDF herunterladen</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">13+</div>
+              <div class="stat-label">Geschäftsmodule</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">1</div>
+              <div class="stat-label">Einheitliche Datenbank</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">Kombinierbare Workflows</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">B2B</div>
+              <div class="stat-label">Für Unternehmen ausgelegt</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 1. Einführung & Vision -->
+        <section class="doc-section" id="introduction">
+          <h2>Einführung &amp; Vision</h2>
+          <p class="section-intro">
+            Symfonix Suite wurde für Organisationen entwickelt, die über ein Flickwerk voneinander getrennter Software hinausgewachsen sind — bei dem der Vertrieb in einem Werkzeug, die Lohnabrechnung in einem anderen und die Bestandsverwaltung in einem dritten liegen, jeweils mit eigener Anmeldung, eigenem Datenmodell und fehleranfälliger Synchronisierung.
+          </p>
+
+          <p>
+            Der Name <strong>Symfonix</strong> spiegelt die Produktphilosophie wider: eine bewusst orchestrierte Symphonie von Geschäftstechnologien. Anstatt Unternehmen zu Systemintegratoren zu machen, stellt Symfonix Suite eine <em>Core Engine</em> bereit, die unabhängige, entkoppelte Geschäftsmodule je nach betrieblichem Bedarf dynamisch lädt — heute CRM, Finanzen vom ersten Tag an und weitere Funktionen, wenn die Organisation wächst.
+          </p>
+
+          <p>
+            Symfonix Suite basiert auf einem modernen Laravel-Fundament mit modularer Architektur (<code>nwidart/laravel-modules</code>) und richtet sich an Agenturen, Dienstleistungsunternehmen, Distributoren und mittelständische B2B-Unternehmen, die ein einheitliches betriebliches Rückgrat benötigen, ohne auf die Flexibilität zu verzichten, nur die tatsächlich benötigten Module zu aktivieren.
+          </p>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🔗</div>
+              <h3>Einheitliches Ökosystem</h3>
+              <p>Ersetzen Sie fragmentierte SaaS-Abonnements von Drittanbietern durch eine Plattform mit gemeinsamer Datenbank und durchgängigem Nutzungserlebnis.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🧩</div>
+              <h3>Konsequent modular</h3>
+              <p>Aktivieren Sie CRM, Personalwesen, Finanzen, CMS und weitere Geschäftsmodule unabhängig voneinander. Jedes Modul ist entkoppelt und zugleich auf Datenebene tief integriert.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">⚡</div>
+              <h3>Hohe Leistung</h3>
+              <p>Serverseitig gerenderte Administration mit Inertia.js-SPA-Navigation, optimierten Abfragen und optionalem Redis-Caching für Produktivlasten.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🌐</div>
+              <h3>International einsatzbereit</h3>
+              <p>Integrierte Lokalisierung für Englisch, Arabisch, Türkisch und Deutsch, rollenbasierte Zugriffskontrolle und Organisationsstrukturen mit mehreren Niederlassungen.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="why-symfonix">
+          <h3>Warum Symfonix Suite?</h3>
+          <p>
+            Die meisten B2B-Organisationen häufen im Laufe ihres Wachstums Softwareschulden an. Hier ein CRM, dort eine Buchhaltungslösung, eine Tabelle für Bestände und E-Mail für alles Weitere. Jede Ergänzung führt zu:
+          </p>
+          <ul>
+            <li><strong>Datensilos</strong> — Kundendaten im CRM stimmen nicht mit den Rechnungsempfängern im Finanzsystem überein.</li>
+            <li><strong>Integrationsaufwand</strong> — Zapier-Workflows, CSV-Exporte und manuelle Abstimmungen binden Zeit in Entwicklung und Betrieb.</li>
+            <li><strong>Unübersichtlichen Berechtigungen</strong> — die Zugriffskontrolle ist über zahlreiche Administrationsoberflächen verschiedener Anbieter verteilt.</li>
+            <li><strong>Fehlender Berichtstransparenz</strong> — die Geschäftsleitung erhält keinen funktionsübergreifenden Echtzeitüberblick.</li>
+          </ul>
+          <p>
+            Symfonix Suite beseitigt diese Reibungsverluste von Grund auf. Wird ein Abschluss im CRM gewonnen, kann das Projektmodul die Leistungserbringung anlegen. Wird ein Produktverkauf erfasst, verbucht Finance den Umsatz. Nimmt HR neue Mitarbeitende auf, werden Berechtigungen über das einheitliche Rollensystem von Spatie weitergegeben. Eine Anmeldung. Eine verlässliche Datenbasis.
+          </p>
+
+          <h4>Warum Unternehmen Symfonix Suite wählen</h4>
+          <ul class="feature-list">
+            <li>
+              <strong>Niedrigere Softwarekosten</strong>
+              Ersetzen Sie sich überschneidende Abonnements und reduzieren Sie den Wartungsaufwand externer Integrationen.
+            </li>
+            <li>
+              <strong>Schnellere tägliche Abläufe</strong>
+              Verbinden Sie Vertrieb, Finanzen, Projekte, Personalwesen und Content-Teams durch gemeinsame Workflows statt manueller Übergaben.
+            </li>
+            <li>
+              <strong>Verlässliche Geschäftsdaten</strong>
+              Verwalten Sie Kunden, Transaktionen, Projekte und Berechtigungen in einem kontrollierten System für bessere Berichte und Entscheidungen.
+            </li>
+            <li>
+              <strong>Kontrolle und Datenhoheit</strong>
+              Betreiben Sie die Plattform selbst, steuern Sie Zugriffe nach Rollen und behalten Sie die Kontrolle über Unternehmens- und Kundendaten.
+            </li>
+            <li>
+              <strong>Wachstum ohne Systemwechsel</strong>
+              Beginnen Sie mit den heute benötigten Modulen und aktivieren Sie weitere Funktionen, wenn Teams, Niederlassungen und Prozesse wachsen.
+            </li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="value-proposition">
+          <h3>Architektonischer Mehrwert für B2B-Unternehmen</h3>
+          <p>
+            Für Unternehmenskunden und technische Entscheidungsträger schafft Symfonix Suite in drei Bereichen Mehrwert:
+          </p>
+
+          <ul class="feature-list">
+            <li>
+              <strong>Gesamtbetriebskosten</strong>
+              Konsolidieren Sie Lieferantenverträge, reduzieren Sie den Integrationsaufwand und betreiben Sie die Lösung auf eigener Infrastruktur oder in verwaltetem Hosting — bei vollständiger Datenhoheit.
+            </li>
+            <li>
+              <strong>Operative Geschwindigkeit</strong>
+              Modulübergreifende Workflows werden innerhalb von Millisekunden auf einem gemeinsamen Schema ausgeführt. Keine Webhook-Verzögerungen, keine Synchronisierungswarteschlangen und keine Dashboards mit „Daten noch nicht verfügbar“.
+            </li>
+            <li>
+              <strong>Zukunftssichere Modularität</strong>
+              Neue Geschäftsfunktionen werden als installierbare Module ausgeliefert, ohne den Kern neu zu schreiben. Die Plattform wächst mit dem Unternehmen statt gegen seine Anforderungen.
+            </li>
+          </ul>
+
+          <div class="callout callout--info">
+            <span class="callout-icon" aria-hidden="true">ℹ️</span>
+            <div class="callout-content">
+              <p><strong>Für flexible Kombination entwickelt.</strong> Symfonix Suite ist kein monolithisches ERP, das vollständig übernommen werden muss. Aktivieren Sie die heute benötigten Module und ergänzen Sie weitere, sobald sich die Anforderungen entwickeln — die Core Engine übernimmt Erkennung, Routing und Berechtigungsregistrierung automatisch.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Systemarchitektur -->
+        <section class="doc-section" id="architecture">
+          <h2>Systemarchitektur</h2>
+          <p class="section-intro">
+            Symfonix Suite folgt einer modularen Schichtenarchitektur, in der die Geschäftslogik in eigenständigen Modulen liegt, von einer gemeinsamen Core Engine orchestriert wird und auf einer einzigen relationalen Datenbank aufsetzt.
+          </p>
+
+          <div class="arch-diagram" role="img" aria-label="Architekturdiagramm mit Modulebene, Core-Engine-Ebene und Datenebene">
+            <div class="arch-layer arch-layer--modules">
+              <div class="arch-layer-label">Geschäftsmodule (dynamisch geladen)</div>
+              <span class="arch-chip">CRM</span>
+              <span class="arch-chip">HR / User</span>
+              <span class="arch-chip">Finance</span>
+              <span class="arch-chip">CMS</span>
+              <span class="arch-chip">Project</span>
+              <span class="arch-chip">Product</span>
+              <span class="arch-chip">Support</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--core">
+              <div class="arch-layer-label">Core Engine des Systems</div>
+              <span class="arch-chip">Modulregistrierung</span>
+              <span class="arch-chip">Authentifizierung &amp; Berechtigungen</span>
+              <span class="arch-chip">Event-Bus</span>
+              <span class="arch-chip">Gemeinsame Dienste</span>
+              <span class="arch-chip">Administrationsoberfläche (Inertia)</span>
+            </div>
+            <div class="arch-connector" aria-hidden="true">↕</div>
+            <div class="arch-layer arch-layer--data">
+              <div class="arch-layer-label">Datenebene</div>
+              <span class="arch-chip">MySQL / MariaDB</span>
+              <span class="arch-chip">Redis (Cache / Warteschlangen)</span>
+              <span class="arch-chip">Dateispeicher</span>
+            </div>
+          </div>
+
+          <p>
+            Jedes Modul ist ein vollwertiges Laravel-Paket unter <code>Modules/</code> mit eigenen Routen, Controllern, Modellen, Migrationen, Ansichten und Service-Providern. Die Core Engine erkennt aktivierte Module beim Start, registriert deren Service-Provider, führt Routendateien zusammen und verarbeitet Migrationen in der Reihenfolge ihrer Abhängigkeiten.
+          </p>
+        </section>
+
+        <section class="doc-section" id="core-engine">
+          <h3>Die Core Engine</h3>
+          <p>
+            Die Module <strong>Core</strong> und <strong>Base</strong> bilden die System-Engine. Core stellt den Installationsbefehl (<code>php artisan app:install</code>), gemeinsame Hilfsfunktionen und die Bootstrap-Logik bereit. Base verwaltet globale Einstellungen, Länder, Niederlassungen, SEO-Konfiguration und die Integration des Dateimanagers.
+          </p>
+          <p>Zu den zentralen Aufgaben der Core Engine gehören:</p>
+          <ol>
+            <li><strong>Modul-Lebenszyklus</strong> — Module über standardisierte Artisan-Befehle registrieren, aktivieren, deaktivieren und migrieren.</li>
+            <li><strong>Berechtigungszusammenführung</strong> — Berechtigungsdefinitionen aller aktiven Module in einer einheitlichen Spatie-Permission-Registrierung bündeln.</li>
+            <li><strong>Administrationsoberfläche</strong> — das Metronic-basierte Administrationslayout, die Navigationsstruktur und die Inertia-Pipeline zum Rendern von Seiten bereitstellen.</li>
+            <li><strong>Modulübergreifende Ereignisse</strong> — das Ereignissystem von Laravel ermöglicht lose Kopplung, etwa wenn Finance auf Ereignisse zu versendeten Rechnungen aus CRM-Abonnements reagiert.</li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="data-consistency">
+          <h3>Datenkonsistenz</h3>
+          <p>
+            Da alle Module eine gemeinsame Datenbank nutzen, wird die referenzielle Integrität auf Schemaebene durchgesetzt und nicht lediglich durch nächtliche Synchronisierungsaufträge angenähert. Fremdschlüssel verbinden Kunden mit Abschlüssen, Mitarbeitende mit Gehaltsdaten, Produkte mit Bestandsbewegungen und Projekte mit Unternehmen.
+          </p>
+          <p>
+            Spatie Laravel Data DTOs standardisieren den Datentransfer zwischen den Schichten und gewährleisten typsichere Nutzdaten über Modulgrenzen hinweg. Übersetzbare Modelle (über <code>spatie/laravel-translatable</code>) halten CMS-Inhalte und Produktkataloge sprachübergreifend konsistent, ohne Datensätze zu duplizieren.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Aspekt</th>
+                  <th>Ansatz</th>
+                  <th>Vorteil</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Verantwortung für das Schema</td>
+                  <td>Migrationen je Modul</td>
+                  <td>Module entwickeln sich unabhängig und ohne zentralen Engpass weiter</td>
+                </tr>
+                <tr>
+                  <td>Gemeinsame Entitäten</td>
+                  <td>Core-/Base-Modelle (User, Country, Branch)</td>
+                  <td>Eine verlässliche Quelle für Organisationsdaten</td>
+                </tr>
+                <tr>
+                  <td>Transaktionen</td>
+                  <td>Laravel-Datenbanktransaktionen</td>
+                  <td>Atomare tabellenübergreifende Vorgänge, etwa Bestandsabzug und Rechnung</td>
+                </tr>
+                <tr>
+                  <td>Prüfpfad</td>
+                  <td>Datenbankprotokollierung + Telescope (Entwicklung)</td>
+                  <td>Nachvollziehbarkeit für Compliance und Fehlerdiagnose</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="performance">
+          <h3>Leistung</h3>
+          <p>
+            Symfonix Suite ist auch unter realer Unternehmenslast auf reaktionsschnelle Administration ausgelegt:
+          </p>
+          <ul>
+            <li><strong>Inertia.js</strong> ermöglicht SPA-ähnliche Navigation ohne die Komplexität einer separaten Frontend-API-Schicht.</li>
+            <li><strong>Eager Loading &amp; Repository-Muster</strong> verhindern in stark frequentierten Modulen wie CRM und Finance N+1-Abfrageprobleme.</li>
+            <li><strong>Redis</strong> beschleunigt optional Sitzungsspeicherung, Cache und Warteschlangenverarbeitung für Hintergrundaufgaben wie die PDF-Erstellung von Rechnungen und den Versand von Benachrichtigungen.</li>
+            <li><strong>Laravel Pulse</strong> bietet bei Aktivierung eine Leistungsüberwachung im Produktivbetrieb.</li>
+            <li>Die <strong>Asset-Pipeline</strong> über Vite erzeugt optimierte Frontend-Bundles mit Cache-Busting.</li>
+          </ul>
+        </section>
+
+        <!-- 3. Kernmodule -->
+        <section class="doc-section" id="modules">
+          <h2>Kernmodule &amp; Oberflächen</h2>
+          <p class="section-intro">
+            Symfonix Suite wird mit einem umfassenden Satz an Geschäftsmodulen ausgeliefert. Jedes Modul bietet eine eigene Administrationsoberfläche, gegebenenfalls API-Routen und eine Integration in die gemeinsamen Berechtigungs- und Benachrichtigungssysteme.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Modul</th>
+                  <th>Bereich</th>
+                  <th>Zentrale Funktionen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>CRM</strong></td>
+                  <td>Vertrieb &amp; Beziehungen</td>
+                  <td>Leads, Abschlüsse, Unternehmen, Pipeline-Phasen, Abonnements, Aktivitäten, Marketing</td>
+                </tr>
+                <tr>
+                  <td><strong>User</strong></td>
+                  <td>Personalwesen &amp; Zugriff</td>
+                  <td>Benutzer, Mitarbeitende, Rollen, Berechtigungen, Portal-Dashboard</td>
+                </tr>
+                <tr>
+                  <td><strong>Finance</strong></td>
+                  <td>Buchhaltung</td>
+                  <td>Mehrwährungstransaktionen, Gehälter, Provisionen, Ausgaben, Buchungssätze, Rechnungen</td>
+                </tr>
+                <tr>
+                  <td><strong>Cms</strong></td>
+                  <td>Inhalte</td>
+                  <td>Seiten, Blogbeiträge, häufig gestellte Fragen, übersetzbare Inhalte</td>
+                </tr>
+                <tr>
+                  <td><strong>Product</strong></td>
+                  <td>Katalog</td>
+                  <td>Produktkategorien, Katalogeinträge, Vertriebsintegration</td>
+                </tr>
+                <tr>
+                  <td><strong>Project</strong></td>
+                  <td>Leistungserbringung</td>
+                  <td>Projekte, Status, Anwendungsfälle, Nachverfolgung der Kundenleistungen</td>
+                </tr>
+                <tr>
+                  <td><strong>Support</strong></td>
+                  <td>Kundenservice</td>
+                  <td>Tickets, Kontaktabonnenten, Beschwerden</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- CRM -->
+        <section class="doc-section" id="crm">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Vertrieb</span>
+              <span class="tag tag--neutral">Pipeline-Management</span>
+            </div>
+            <h3>CRM &amp; Pipelines</h3>
+            <p>
+              Das CRM-Modul ist der Umsatzmotor der Symfonix Suite. Es verwaltet den gesamten Lebenszyklus vom Erstkontakt bis zum gewonnenen Abschluss — mit visuellen Pipeline-Phasen, Aktivitätsverfolgung und Abonnementverwaltung für wiederkehrende Umsatzmodelle.
+            </p>
+
+            <h4>Zentrale Oberflächen</h4>
+            <ul>
+              <li><strong>Lead-Management</strong> — eingehende Leads mit benutzerdefinierten Feldern und Quellenzuordnung erfassen, qualifizieren und konvertieren.</li>
+              <li><strong>Vertriebspipeline</strong> — Pipeline im Kanban-Stil mit konfigurierbaren Phasen (Standard: Lead → Qualifiziert → Angebot → Verhandlung → Gewonnen/Verloren). Phasenwechsel per Drag-and-drop mit Aktivitätsprotokollierung.</li>
+              <li><strong>Unternehmensdaten</strong> — B2B-Kundenverwaltung mit verknüpften Kontakten, Abschlüssen, Projekten und Abonnementhistorie.</li>
+              <li><strong>Aktivitäten &amp; Aufgaben</strong> — Anrufe, Besprechungen und Nachfassaktionen planen und Leads, Abschlüssen oder Unternehmen zuordnen.</li>
+              <li><strong>Abonnements</strong> — wiederkehrende Dienstleistungsverträge mit Verlängerungsverfolgung und Finance-Integration für die Rechnungsstellung verwalten.</li>
+              <li><strong>Marketing</strong> — Kampagnenverfolgung und Kontaktformularverwaltung zur Gewinnung eingehender Leads.</li>
+              <li><strong>Vertriebsziele</strong> — Team- und Einzelquoten festlegen und anhand der Pipeline-Leistung überwachen.</li>
+            </ul>
+
+            <h4>Pipeline-Workflow</h4>
+            <p>
+              Abschlüsse durchlaufen die unter <code>CRM/database/seeders</code> definierten Pipeline-Phasen. Phasenwechsel lösen Ereignisse aus, auf die andere Module reagieren können — beispielsweise kann das Verschieben eines Abschlusses auf „Gewonnen“ automatisch einen Project-Datensatz anlegen und eine Finance-Transaktion erzeugen.
+            </p>
+
+            <div class="callout callout--tip">
+              <span class="callout-icon" aria-hidden="true">💡</span>
+              <div class="callout-content">
+                <p>CRM-Berechtigungen sind granular: <code>CRM Management</code> gewährt Vollzugriff, <code>CRM View All</code> dagegen eine schreibgeschützte Sicht auf alle Pipelines — hilfreich für Führungskräfte und funktionsübergreifende Teams.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Personalwesen -->
+        <section class="doc-section" id="hr">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Personal</span>
+              <span class="tag tag--neutral">Zugriffskontrolle</span>
+            </div>
+            <h3>Personalwesen</h3>
+            <p>
+              Das User-Modul dient als Personal- und Identitätsfundament der Symfonix Suite. Es verbindet Personaldaten mit Systemauthentifizierung, Rollenzuweisung und der über das Finance-Modul integrierten Lohnabrechnung.
+            </p>
+
+            <h4>Zentrale Oberflächen</h4>
+            <ul>
+              <li><strong>Mitarbeiterprofile</strong> — umfassende, mit Benutzerkonten verknüpfte Personaldaten einschließlich Kontaktdaten, Abteilungszuordnung und Beschäftigungsstatus.</li>
+              <li><strong>Rollenbasierte Zugriffskontrolle</strong> — unterstützt durch Spatie Laravel Permission, mit vordefinierten Rollen (Admin) und der Möglichkeit, in der Administration eigene Rollen zu erstellen.</li>
+              <li><strong>Berechtigungsmatrix</strong> — fein abgestufte Berechtigungen je Modul (<code>CRM Management</code>, <code>Hr Management</code>, <code>Finance Management</code> usw.), die jeder Rolle zugewiesen werden können.</li>
+              <li><strong>Portal-Dashboard</strong> — mitarbeiterorientiertes Self-Service-Portal für den Zugriff auf zugewiesene Ressourcen und persönliche Dashboards.</li>
+              <li><strong>Integration des Team-Moduls</strong> — öffentliche Teamprofile für die Unternehmenswebsite, die gemeinsam mit internen Personaldaten verwaltet werden.</li>
+            </ul>
+
+            <h4>Brücke zwischen HR und Finance</h4>
+            <p>
+              Personaldaten sind direkt mit der Gehalts- und Provisionsverwaltung in Finance verbunden. Bei der Lohnabrechnung werden Transaktionen mit vollständigem Prüfverlauf den richtigen Mitarbeitenden zugeordnet — ohne CSV-Importe zwischen Personal- und Buchhaltungssystemen.
+            </p>
+          </div>
+        </section>
+
+        <!-- Finanzen -->
+        <section class="doc-section" id="finance">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Buchhaltung</span>
+              <span class="tag tag--neutral">Umsätze &amp; Ausgaben</span>
+            </div>
+            <h3>Finanzen</h3>
+            <p>
+              Das Finance-Modul deckt durchgängig mehrwährungsfähige Finanzprozesse ab — von der täglichen Transaktionserfassung über Gehaltsauszahlungen und Provisionsberechnungen bis zur Rechnungsstellung und Ausgabenkategorisierung. Es reagiert auf Ereignisse aus den Modulen CRM und Product, damit die Bücher ohne manuelle Dateneingabe korrekt bleiben.
+            </p>
+
+            <h4>Zentrale Oberflächen</h4>
+            <ul>
+              <li><strong>Transaktionen</strong> — Echtzeitbuch mit Einnahmen und Ausgaben, Kategorisierung, Filtern und einem Livewire-Dashboard-Widget für die heutigen Transaktionen.</li>
+              <li><strong>Buchungssätze</strong> — Unterstützung der doppelten Buchführung für Organisationen mit formalen Buchhaltungsanforderungen.</li>
+              <li><strong>Gehälter</strong> — Verwaltung wiederkehrender Lohn- und Gehaltszahlungen, verknüpft mit Personaldaten im User-Modul.</li>
+              <li><strong>Provisionen</strong> — Verfolgung von Vertriebsprovisionen, verknüpft mit CRM-Abschlüssen und Vertriebszielen.</li>
+              <li><strong>Ausgaben</strong> — Erfassung betrieblicher Ausgaben mit anpassbaren Ausgabenkategorien.</li>
+              <li><strong>Produktverkäufe</strong> — Umsatzerfassung aus Verkäufen des Product-Katalogs, eingebunden in den umfassenderen Vertriebsprozess für korrekte Berichte.</li>
+              <li><strong>Rechnungsbenachrichtigungen</strong> — automatische Kundenbenachrichtigungen beim Versand von Rechnungen über Laravel-Event-Listener.</li>
+              <li><strong>Währungskontext</strong> — getrennte Basiswährung der Buchhaltung, Transaktionswährung und sitzungsbezogene Anzeigewährung mit Wechselkurssnapshots zum Buchungszeitpunkt.</li>
+            </ul>
+
+            <h4>Ereignisgesteuerte Integration</h4>
+            <p>
+              Finance nutzt das Event-/Listener-Muster von Laravel für modulübergreifende Workflows. Beispielsweise reagiert <code>NotifyCustomerOfInvoiceSent</code> auf Rechnungsereignisse und versendet Benachrichtigungen. So bleibt Finance von den Implementierungsdetails des CRM entkoppelt, während der Datenfluss erhalten bleibt.
+            </p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="currency-setup">
+          <h3>Mehrwährungssystem einrichten</h3>
+          <p>
+            Symfonix unterscheidet drei Währungskonzepte: Die <strong>Standardwährung</strong> ist die Basiswährung der Buchhaltung, jeder Geschäftsvorgang behält seine <strong>Transaktionswährung</strong>, und die Auswahl in der Kopfzeile der Administration steuert ausschließlich die <strong>Anzeigewährung</strong> des Benutzers. Buchungssätze speichern sowohl den zum Buchungszeitpunkt geltenden Kurs von der Ausgangs- in die Basiswährung als auch den umgerechneten Basisbetrag. Eine Änderung der Anzeigewährung verändert niemals die gespeicherte Buchung.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Einstellung</th><th>Zweck</th><th>Standardwert</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>FINANCE_DEFAULT_CURRENCY</code></td><td>Basiswährung der Buchhaltung</td><td><code>USD</code></td></tr>
+                <tr><td><code>FINANCE_SUPPORTED_CURRENCIES</code></td><td>Durch Kommas getrennte, für Benutzer verfügbare Währungen</td><td><code>USD,EUR,GBP,TRY</code></td></tr>
+                <tr><td><code>FIXER_API_KEY</code></td><td>Zugangsdaten für Fixer oder API Layer</td><td>Leer</td></tr>
+                <tr><td><code>FIXER_BASE_URL</code></td><td>API-Endpunkt für Wechselkurse</td><td><code>https://data.fixer.io/api</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Benutzer mit der Berechtigung <code>Settings Management</code> können die Standardwährung und den Fixer-Schlüssel unter <strong>Systemkonfigurationen → Finanzen</strong> überschreiben; gespeicherte Einstellungen haben Vorrang vor Umgebungswerten. Die Liste unterstützter Währungen bleibt umgebungs- bzw. konfigurationsgesteuert. Kostenlose Fixer-Tarife liefern EUR-basierte Kurse, daher leitet Symfonix andere Basiswährungen über EUR-Kreuzkurse ab.
+          </p>
+
+          <span class="code-label">Terminal</span>
+          <pre><code># Eine Kursaktualisierung einreihen (erfordert einen laufenden Queue-Worker)
+php artisan finance:fetch-exchange-rates
+
+# Sofort abrufen und optional die Basis überschreiben
+php artisan finance:fetch-exchange-rates --sync
+php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
+
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>Verwenden Sie Ersatzkurse nicht für die produktive Buchhaltung.</strong> Bei der Installation werden ungefähre Basiskurse eingespielt; ein fehlender Fixer-Schlüssel oder nicht verfügbarer gespeicherter Kurs kann zum Ersatzwert <code>1.0</code> führen. Konfigurieren und überwachen Sie die Synchronisierung, bevor Sie echte Transaktionen buchen. Eine Änderung der Standardwährung nach vorhandenen Buchungen erfordert eine kontrollierte Migration, da historische Basisbeträge ihre ursprüngliche Buchhaltungsbasis behalten.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- CMS -->
+        <section class="doc-section" id="cms">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Inhalte</span>
+              <span class="tag tag--neutral">Mehrsprachig</span>
+            </div>
+            <h3>Content-Management (CMS)</h3>
+            <p>
+              Das CMS-Modul betreibt die öffentliche Website neben der Administrationsoberfläche. Es bietet eine vollständige Umgebung zur Inhaltserstellung mit Mehrsprachigkeit, SEO-Integration und Rich-Text-Bearbeitung über TinyMCE.
+            </p>
+
+            <h4>Zentrale Oberflächen</h4>
+            <ul>
+              <li><strong>Seiten</strong> — statische Seiten wie Über uns, Leistungen und Kontakt mit Slug-basiertem Routing und übersetzbaren Inhaltsfeldern erstellen und verwalten.</li>
+              <li><strong>Blog</strong> — Beiträge mit Kategorien, geschätzter Lesezeit, Titelbildern und SEO-Metadaten veröffentlichen.</li>
+              <li><strong>Häufig gestellte Fragen</strong> — strukturierte Verwaltung häufig gestellter Fragen für Support- und Marketingseiten.</li>
+              <li><strong>SEO-Einstellungen</strong> — globale und seitenspezifische SEO-Konfiguration über die SEO-Oberfläche des Base-Moduls, einschließlich Meta-Titeln, Beschreibungen und Open-Graph-Tags.</li>
+              <li><strong>Leistungspräsentation</strong> — das Services-Modul erweitert die CMS-Funktionen um Leistungskategorien und Angebotsseiten für Agenturen und Beratungsunternehmen.</li>
+            </ul>
+
+            <h4>Lokalisierung</h4>
+            <p>
+              Inhalte können über <code>mcamara/laravel-localization</code> und Spatie Translatable in Englisch, Arabisch, Türkisch und Deutsch übersetzt werden. Das Theme der öffentlichen Website unterstützt für arabische Sprachversionen von Haus aus ein Rechts-nach-links-Layout.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. Erste Schritte -->
+        <section class="doc-section" id="getting-started">
+          <h2>Erste Schritte</h2>
+          <p class="section-intro">
+            Diese Anleitung begleitet Sie von einem frisch geklonten Repository bis zu einer laufenden Administrationsoberfläche der Symfonix Suite mit allen installierten Kernmodulen. Die Plattform verwendet Laravel 13 mit modularer Architektur — jedes Geschäftsmodul ist ein eigenständiges Paket, das über das Modulsystem aktiviert wird.
+          </p>
+        </section>
+
+        <section class="doc-section" id="requirements">
+          <h3>Voraussetzungen</h3>
+          <p>Stellen Sie sicher, dass Ihr Server oder Ihre lokale Entwicklungsumgebung mindestens die folgenden Anforderungen erfüllt:</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Abhängigkeit</th>
+                  <th>Version</th>
+                  <th>Hinweise</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PHP</td>
+                  <td>8.3+</td>
+                  <td>Erweiterungen: BCMath, Ctype, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML</td>
+                </tr>
+                <tr>
+                  <td>Composer</td>
+                  <td>2.x</td>
+                  <td>Verwaltung von PHP-Abhängigkeiten</td>
+                </tr>
+                <tr>
+                  <td>Node.js</td>
+                  <td>18+</td>
+                  <td>Mit npm zur Kompilierung der Frontend-Assets</td>
+                </tr>
+                <tr>
+                  <td>MySQL / MariaDB</td>
+                  <td>8.0+ / 10.6+</td>
+                  <td>Primärer Datenspeicher — eine Datenbank für alle Module</td>
+                </tr>
+                <tr>
+                  <td>Redis</td>
+                  <td>6+</td>
+                  <td>Optional — für Cache und Warteschlangen im Produktivbetrieb empfohlen</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="installation">
+          <h3>Installation</h3>
+          <p>Führen Sie die folgenden Schritte aus, um eine neue Instanz der Symfonix Suite bereitzustellen:</p>
+
+          <ol class="steps">
+            <li>
+              <h4>Repository klonen und Umgebung konfigurieren</h4>
+              <p>Kopieren Sie die Umgebungsdatei und tragen Sie Ihre Datenbankzugangsdaten ein:</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>cp .env.example .env</code></pre>
+              <p>Bearbeiten Sie <code>.env</code> und konfigurieren Sie Ihre Datenbankverbindung:</p>
+              <span class="code-label">.env</span>
+              <pre><code>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=symfonix
+DB_USERNAME=root
+DB_PASSWORD=
+
+FINANCE_DEFAULT_CURRENCY=USD
+FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
+FIXER_API_KEY=
+FIXER_BASE_URL=https://data.fixer.io/api</code></pre>
+            </li>
+            <li>
+              <h4>Abhängigkeiten installieren</h4>
+              <p>Installieren Sie die PHP- und Node.js-Abhängigkeiten und kompilieren Sie anschließend die Frontend-Assets:</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install
+npm install && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>Installationsbefehl ausführen</h4>
+              <p>Der Artisan-Befehl <code>app:install</code> übernimmt den vollständigen Bootstrap-Prozess — Migrationen, Ausgangsdaten, Berechtigungen, CRM-Pipeline-Phasen, grundlegende Währungseinstellungen und Wechselkurse sowie die Erstellung des Administratorkontos:</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan app:install</code></pre>
+              <p>Eigene Administratorzugangsdaten:</p>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan app:install \
+  --email=you@company.com \
+  --password=secret \
+  --name="Your Name" \
+  --mobile=1234567890</code></pre>
+            </li>
+            <li>
+              <h4>Anwendung starten</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan serve</code></pre>
+              <p>Rufen Sie <code>/admin</code> auf und melden Sie sich mit den nach der Installation angezeigten Zugangsdaten an.</p>
+            </li>
+          </ol>
+
+          <div class="callout callout--tip">
+            <span class="callout-icon" aria-hidden="true">💡</span>
+            <div class="callout-content">
+              <p>Der Installationsbefehl erzeugt <code>APP_KEY</code>, führt alle Modulmigrationen aus, legt Länder und grundlegende Wechselkurse an, erstellt Anwendungsberechtigungen, richtet die standardmäßigen CRM-Pipeline-Phasen ein und weist der Rolle Admin sämtliche Berechtigungen zu.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="module-deployment">
+          <h3>Modulbereitstellung</h3>
+          <p>
+            Die Module der Symfonix Suite folgen der Konvention von <a href="https://github.com/nWidart/laravel-modules" target="_blank" rel="noopener noreferrer">nwidart/laravel-modules</a>. Jedes Modul befindet sich unter <code>Modules/{ModuleName}/</code> und besitzt eine standardisierte Struktur:
+          </p>
+
+          <span class="code-label">Modulstruktur</span>
+          <pre><code>Modules/
+├── CRM/
+│   ├── app/
+│   │   ├── Http/Controllers/
+│   │   ├── Models/
+│   │   ├── Actions/
+│   │   └── Providers/
+│   ├── database/migrations/
+│   ├── resources/views/
+│   ├── routes/
+│   │   ├── web.php
+│   │   └── api.php
+│   ├── module.json
+│   └── composer.json
+├── Finance/
+├── Product/
+└── ...</code></pre>
+
+          <h4>Module aktivieren &amp; deaktivieren</h4>
+          <p>Die Modulaktivierung wird über <code>module.json</code> und die Modulstatusdatei gesteuert:</p>
+          <span class="code-label">Terminal</span>
+          <pre><code># Alle Module und ihren Status auflisten
+php artisan module:list
+
+# Ein Modul aktivieren
+php artisan module:enable Stock
+
+# Ein Modul deaktivieren
+php artisan module:disable Testimonial
+
+# Migrationen für ein bestimmtes Modul ausführen
+php artisan module:migrate CRM</code></pre>
+
+          <h4>Neues Modul erstellen</h4>
+          <p>So erzeugen Sie das Grundgerüst eines neuen Geschäftsmoduls, beispielsweise eines eigenen Berichtsmoduls:</p>
+          <span class="code-label">Terminal</span>
+          <pre><code>php artisan module:make Reporting
+
+# Modulkomponenten erzeugen
+php artisan module:make-controller ReportController Reporting
+php artisan module:make-model Report Reporting -m
+php artisan module:make-migration create_reports_table Reporting</code></pre>
+
+          <p>Registrieren Sie Berechtigungen im Service-Provider Ihres Moduls und ergänzen Sie sie im Berechtigungs-Seeder des Installationsbefehls, damit sie bei Neuinstallationen automatisch bereitgestellt werden.</p>
+
+          <h4>Frontend-Entwicklung</h4>
+          <p>Starten Sie während der Entwicklung den Vite-Entwicklungsserver zusammen mit der Laravel-Anwendung, um Hot Module Replacement zu nutzen:</p>
+          <span class="code-label">Terminal</span>
+          <pre><code># Terminal 1 — Laravel
+php artisan serve
+
+# Terminal 2 — Vite HMR
+npm run dev
+
+# Terminal 3 — Queue-Worker (für asynchrone Aufgaben)
+php artisan queue:work</code></pre>
+        </section>
+
+        <section class="doc-section" id="permissions">
+          <h3>Berechtigungen &amp; Rollen</h3>
+          <p>
+            Symfonix Suite verwendet <a href="https://github.com/spatie/laravel-permission" target="_blank" rel="noopener noreferrer">Spatie Laravel Permission</a> zur Autorisierung. Berechtigungen werden während <code>app:install</code> erstellt und über die Administrationsoberfläche Rollen zugewiesen.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Berechtigung</th>
+                  <th>Modul</th>
+                  <th>Umfang</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Settings Management</td><td>Base</td><td>Globale Einstellungen, Niederlassungen, SEO</td></tr>
+                <tr><td>CMS Management</td><td>Cms</td><td>Seiten, Blog, häufig gestellte Fragen</td></tr>
+                <tr><td>Hr Management</td><td>User</td><td>Mitarbeitende, Benutzerkonten</td></tr>
+                <tr><td>CRM Management</td><td>CRM</td><td>Vollständiger Lese- und Schreibzugriff auf das CRM</td></tr>
+                <tr><td>CRM View All</td><td>CRM</td><td>Schreibgeschützter Zugriff auf alle Pipelines</td></tr>
+                <tr><td>Finance Management</td><td>Finance</td><td>Transaktionen, Gehälter, Ausgaben</td></tr>
+                <tr><td>Project Management</td><td>Project</td><td>Projekte und Nachverfolgung der Leistungserbringung</td></tr>
+                <tr><td>Product Management</td><td>Product</td><td>Katalog und Kategorien</td></tr>
+                <tr><td>Services Management</td><td>Services</td><td>Dienstleistungsangebote</td></tr>
+                <tr><td>Support Management</td><td>Support</td><td>Tickets und Abonnenten</td></tr>
+                <tr><td>Sales Management</td><td>CRM / Product</td><td>Vertriebsprozesse</td></tr>
+                <tr><td>App Monitoring</td><td>Core</td><td>Zugriff auf Telescope und Pulse</td></tr>
+                <tr><td>Logs Management</td><td>Base</td><td>Anzeige der Anwendungsprotokolle</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Weisen Sie Rollen in der Administrationsoberfläche unter <strong>Benutzerverwaltung → Rollen</strong> Berechtigungen zu. Die Standardrolle <strong>Admin</strong> erhält bei einer Neuinstallation alle Berechtigungen.</p>
+        </section>
+
+        <section class="doc-section" id="production">
+          <h3>Produktivbereitstellung</h3>
+          <p>Wenden Sie nach der Installation in Produktivumgebungen die folgenden Optimierungen an:</p>
+
+          <ol class="steps">
+            <li>
+              <h4>Umgebung konfigurieren</h4>
+              <span class="code-label">.env</span>
+              <pre><code>APP_ENV=production
+APP_DEBUG=false
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis</code></pre>
+            </li>
+            <li>
+              <h4>Produktionsabhängigkeiten installieren</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>composer install --no-dev --optimize-autoloader
+npm ci && npm run build</code></pre>
+            </li>
+            <li>
+              <h4>Migrationen und Cache ausführen</h4>
+              <span class="code-label">Terminal</span>
+              <pre><code>php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache</code></pre>
+            </li>
+            <li>
+              <h4>Hintergrunddienste konfigurieren</h4>
+              <p>Richten Sie über cron einen Queue-Worker und den Scheduler ein. Der Scheduler aktualisiert die Wechselkurse stündlich synchron; manuell eingereihte Abrufe benötigen den Worker.</p>
+              <span class="code-label">crontab</span>
+              <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
+            </li>
+          </ol>
+
+          <div class="callout callout--warning">
+            <span class="callout-icon" aria-hidden="true">⚠️</span>
+            <div class="callout-content">
+              <p><strong>Checkliste für den Produktivbetrieb:</strong> Stellen Sie sicher, dass <code>APP_DEBUG=false</code> gesetzt ist, beschränken Sie bei Bedarf den Zugriff auf <code>/admin</code>, aktivieren Sie die Zwei-Faktor-Authentifizierung, übertragen Sie <code>.env</code> niemals in die Versionsverwaltung, konfigurieren Sie einen gültigen Fixer-Schlüssel und überwachen Sie den letzten erfolgreichen Kursabruf unter <strong>Systemkonfigurationen → Finanzen</strong>. Gespeicherte Kurse werden nicht automatisch wegen ihres Alters abgelehnt.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Fußzeile -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Symfonix Suite. Alle Rechte vorbehalten.</p>
+      <p>
+        <a href="#introduction">Dokumentation</a>
+        &nbsp;·&nbsp;
+        <a href="#getting-started">Erste Schritte</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* Mobile Seitenleiste ein-/ausblenden */
+      var toggle = document.querySelector('.menu-toggle');
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+
+      function openSidebar() {
+        sidebar.classList.add('is-open');
+        overlay.classList.add('is-visible');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('is-open');
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function () {
+        if (sidebar.classList.contains('is-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+
+      /* Seitenleiste auf Mobilgeräten nach Auswahl eines Links schließen */
+      sidebar.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 768) {
+            closeSidebar();
+          }
+        });
+      });
+
+      /* Aktiven Navigationseintrag beim Scrollen hervorheben */
+      var sections = document.querySelectorAll('.doc-section[id], .hero');
+      var navLinks = document.querySelectorAll('.sidebar-nav a');
+
+      function setActiveNav() {
+        var scrollPos = window.scrollY + 120;
+        var current = '';
+
+        sections.forEach(function (section) {
+          if (section.offsetTop <= scrollPos) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', setActiveNav, { passive: true });
+      setActiveNav();
+
+      /* Einfache Dokumentationssuche */
+      var searchInput = document.getElementById('doc-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          var query = this.value.toLowerCase().trim();
+          navLinks.forEach(function (link) {
+            var li = link.parentElement;
+            var text = link.textContent.toLowerCase();
+            li.style.display = !query || text.includes(query) ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

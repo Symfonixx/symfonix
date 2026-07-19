@@ -1,0 +1,31 @@
+{
+    "menu": "Gehälter",
+    "pages": {
+        "index_title": "Gehaltsmanagement"
+    },
+    "fields": {
+        "employee": "Mitarbeiter",
+        "period": "Gehaltsmonat",
+        "base_salary": "Grundgehalt",
+        "status": "Status",
+        "paid_at": "Bezahlt bei"
+    },
+    "status": {
+        "pending": "Ausstehend",
+        "paid": "Bezahlt"
+    },
+    "actions": {
+        "add": "Gehaltsnachweis hinzufügen",
+        "record_payout": "Rekordauszahlung"
+    },
+    "messages": {
+        "created": "Gehaltsdatensatz erstellt.",
+        "paid": "Die Gehaltsauszahlung wird im Hauptbuch erfasst.",
+        "deleted": "Gehaltsdatensatz gelöscht.",
+        "confirm_delete": "Diesen Gehaltsdatensatz löschen? Wenn bereits bezahlt, wird auch der verknüpfte Hauptbucheintrag entfernt.",
+        "payout_description": "Gehaltsauszahlung: :name (:period)",
+        "no_pending": "Keine ausstehenden Gehaltsauszahlungen.",
+        "no_records": "Noch keine Gehaltsunterlagen.",
+        "period_exists": "Für diesen Mitarbeiter existiert im ausgewählten Monat bereits ein Gehaltsdatensatz."
+    }
+}

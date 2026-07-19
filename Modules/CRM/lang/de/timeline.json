@@ -1,0 +1,89 @@
+{
+    "title": "Aktivitätszeitleiste",
+    "add_activity": "Protokollaktivität",
+    "no_entries": "Noch keine Aktivitäten oder Audit-Einträge.",
+    "by": "von",
+    "system": "System",
+    "fields_changed": "Felder geändert",
+    "delete_activity": "Aktivität entfernen",
+    "activity_types": {
+        "note": "Notiz",
+        "call": "Anruf",
+        "meeting": "Treffen",
+        "task": "Aufgabe",
+        "email": "E-Mail"
+    },
+    "fields": {
+        "type": "Typ",
+        "title": "Titel",
+        "body": "Details",
+        "scheduled_at": "Geplant um",
+        "completed_at": "Abgeschlossen am"
+    },
+    "placeholders": {
+        "title": "Optionaler Kurztitel",
+        "body": "Was ist passiert? Fügen Sie Kontext für Ihr Team hinzu ..."
+    },
+    "audit": {
+        "created": ":name wurde erstellt",
+        "updated": ":name wurde aktualisiert",
+        "deleted": ":name wurde gelöscht",
+        "stage_changed": "Stufe geändert von :from zu :to",
+        "activity_logged": "Protokollierte Aktivität: :type",
+        "activity_removed": "Aktivität entfernt: :type",
+        "converted": "In Deal umgewandelt"
+    },
+    "events": {
+        "created": "Erstellt",
+        "updated": "Aktualisiert",
+        "deleted": "Gelöscht",
+        "stage_changed": "Bühne geändert",
+        "activity_logged": "Aktivität protokolliert",
+        "activity_removed": "Aktivität entfernt",
+        "converted": "Konvertiert",
+        "restored": "Restauriert"
+    },
+    "errors": {
+        "invalid_subject": "Ungültiger CRM-Betrefftyp."
+    },
+    "audit_fields": {
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "phone2": "Sekundäres Telefon",
+        "mobile": "Mobile",
+        "source": "Quelle",
+        "company_id": "Unternehmen",
+        "company_name": "Name der Firma",
+        "user_id": "Kunde",
+        "assigned_to": "Zugewiesen an",
+        "pipeline_stage_id": "Pipeline-Stufe",
+        "service_id": "Service",
+        "service_interest": "Dienstinteresse",
+        "job_title": "Berufsbezeichnung",
+        "title": "Titel",
+        "value": "Wert",
+        "currency": "Währung",
+        "probability": "Wahrscheinlichkeit",
+        "status": "Status",
+        "stage": "Bühne",
+        "expected_close_date": "Voraussichtliches Abschlussdatum",
+        "project_budget": "Projektbudget",
+        "problem_statement": "Problemstellung",
+        "description": "Beschreibung",
+        "lost_reason": "Verlorener Grund",
+        "notes": "Notizen",
+        "is_primary": "Hauptkontakt",
+        "blocked": "Blockiert",
+        "country": "Land",
+        "city": "Stadt",
+        "address": "Adresse",
+        "website": "Webseite",
+        "industry": "Industrie",
+        "activity_type": "Aktivitätstyp",
+        "amount": "Menge",
+        "billing_cycle": "Abrechnungszeitraum",
+        "renewal_at": "Verlängerungsdatum",
+        "started_at": "Startdatum"
+    }
+}

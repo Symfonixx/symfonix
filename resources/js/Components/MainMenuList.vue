@@ -138,7 +138,7 @@
         <li class="dropdown">
             <a href="#" aria-label="Change language">
                 <img
-                    :src="asset_path + `images/langs/${locale}.png`"
+                    :src="asset_path + `images/langs/${locale}.svg`"
                     width="20"
                     :alt="trans('Current language')"
                 >
@@ -152,7 +152,7 @@
                     >
                         <img
                             class="mx-1"
-                            :src="asset_path + 'images/langs/ar.png'"
+                            :src="asset_path + 'images/langs/ar.svg'"
                             width="20"
                             :alt="trans('Arabic')"
                         >
@@ -168,7 +168,7 @@
                     >
                         <img
                             class="mx-1"
-                            :src="asset_path + 'images/langs/en.png'"
+                            :src="asset_path + 'images/langs/en.svg'"
                             width="20"
                             :alt="trans('English')"
                         >
@@ -183,11 +183,26 @@
                     >
                         <img
                             class="mx-1"
-                            :src="asset_path + 'images/langs/tr.png'"
+                            :src="asset_path + 'images/langs/tr.svg'"
                             width="20"
                             :alt="trans('Turkish')"
                         >
                         {{ trans('Turkish') }}
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="#"
+                        @click.prevent="switchLocale('de')"
+                        :class="{ active: locale === 'de' }"
+                    >
+                        <img
+                            class="mx-1"
+                            :src="asset_path + 'images/langs/de.svg'"
+                            width="20"
+                            :alt="trans('German')"
+                        >
+                        {{ trans('German') }}
                     </a>
                 </li>
             </ul>

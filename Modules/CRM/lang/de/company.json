@@ -1,0 +1,80 @@
+{
+    "menu": {
+        "crm": "CRM",
+        "companies": "Unternehmen"
+    },
+    "pages": {
+        "index_title": "Unternehmen",
+        "create_title": "Neues Unternehmen hinzufügen",
+        "edit_title": "Firma bearbeiten",
+        "show_title": "Firmendetails"
+    },
+    "fields": {
+        "id": "AUSWEIS",
+        "name": "Name",
+        "activity_type": "Aktivitätstyp",
+        "select_activity_type": "Aktivitätstyp auswählen",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "customer": "Kunde",
+        "select_customer": "Kunde auswählen",
+        "country": "Land",
+        "city": "Stadt",
+        "address": "Adresse",
+        "notes": "Notizen",
+        "status": "Status"
+    },
+    "status": {
+        "active": "Aktiv",
+        "disabled": "Deaktiviert"
+    },
+    "actions": {
+        "add": "Firma hinzufügen",
+        "add_customer": "Kunde hinzufügen",
+        "back_to_list": "Zurück zu Unternehmen"
+    },
+    "search": {
+        "placeholder": "Suche in Unternehmen"
+    },
+    "sections": {
+        "basic_information": "Grundlegende Informationen",
+        "basic_information_hint": "Beginnen Sie mit den wichtigsten Unternehmensdetails und verknüpfen Sie diese mit einem Kunden.",
+        "contact_information": "Kontaktinformationen",
+        "location": "Standort",
+        "location_hint": "Anhand dieser Felder kann Ihr Team erkennen, wo das Unternehmen seinen Sitz hat.",
+        "additional_details": "Zusätzliche Details",
+        "additional_details_hint": "Fügen Sie Kontext hinzu, der Ihrem Team bei der Nachverfolgung und Unterstützung helfen kann."
+    },
+    "placeholders": {
+        "name": "Beispiel: Acme Technologies",
+        "email": "name@company.com",
+        "phone": "+1 555 123 4567",
+        "country": "Beispiel: Vereinigte Arabische Emirate",
+        "city": "Beispiel: Dubai",
+        "address": "Straße, Gebäude, Büronummer",
+        "notes": "Optionale Notizen für den internen Teamgebrauch"
+    },
+    "hints": {
+        "customer": "Wählen Sie das Kundenkonto aus, dem dieses Unternehmen gehört.",
+        "add_customer": "Fügen Sie einen neuen Kunden hinzu, wenn dieser noch nicht in der Liste ist.",
+        "status": "Deaktivierte Unternehmen bleiben gespeichert, werden jedoch aus aktiven Workflows ausgeblendet."
+    },
+    "activity_types": {
+        "technology": "Technologie",
+        "retail": "Einzelhandel",
+        "healthcare": "Gesundheitspflege",
+        "finance": "Finanzen",
+        "education": "Ausbildung",
+        "manufacturing": "Herstellung",
+        "consulting": "Beratung",
+        "other": "Andere"
+    },
+    "filters": {
+        "activity_type": "Filtern Sie nach Aktivitätstyp",
+        "all": "Alle"
+    },
+    "validation": {
+        "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut.",
+        "email_unique": "Diese E-Mail-Adresse wird bereits von einem anderen Unternehmen verwendet."
+    }
+}

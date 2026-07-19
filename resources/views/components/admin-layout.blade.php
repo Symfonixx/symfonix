@@ -418,7 +418,7 @@ Author: Hadi Hilal
 												<span
                                                     class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">
 												<img class="w-15px h-15px rounded-1 ms-2"
-                                                     src="/images/langs/{{ app()->getLocale()}}.png"
+                                                     src="/images/langs/{{ app()->getLocale()}}.svg"
                                                      alt=""/></span></span>
                                     </a>
                                     <!--begin::Menu sub-->
@@ -430,7 +430,7 @@ Author: Hadi Hilal
                                                href="{{ LaravelLocalization::getLocalizedURL('ar') }}">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1"
-                                                             src="{{asset('images/langs/ar.png')}}"
+                                                             src="{{asset('images/langs/ar.svg')}}"
                                                              alt="saudi-arabia"/>
 													</span>AR</a>
                                         </div>
@@ -442,7 +442,7 @@ Author: Hadi Hilal
                                                href="{{ LaravelLocalization::getLocalizedURL('en') }}">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1"
-                                                             src="{{asset('images/langs/en.png')}}"
+                                                             src="{{asset('images/langs/en.svg')}}"
                                                              alt="united-states"/>
 													</span>EN</a>
                                         </div>
@@ -455,9 +455,21 @@ Author: Hadi Hilal
                                         													<span
                                                                                                 class="symbol symbol-20px me-4">
                                         														<img class="rounded-1"
-                                                                                                     src="{{asset('images/langs/tr.png')}}"
+                                                                                                     src="{{asset('images/langs/tr.svg')}}"
                                                                                                      alt="turkey "/>
                                         													</span>TR</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link d-flex px-5 {{ app()->getLocale() === 'de' ? 'active' : '' }}"
+                                               rel="alternate" hreflang="de"
+                                               href="{{ LaravelLocalization::getLocalizedURL('de') }}">
+                                                <span class="symbol symbol-20px me-4">
+                                                    <img class="rounded-1"
+                                                         src="{{ asset('images/langs/de.svg') }}"
+                                                         alt="germany"/>
+                                                </span>DE</a>
                                         </div>
                                         <!--end::Menu item-->
 

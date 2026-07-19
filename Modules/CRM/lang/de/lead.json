@@ -1,0 +1,133 @@
+{
+    "menu": {
+        "leads": "Führt"
+    },
+    "pages": {
+        "index_title": "Führt",
+        "create_title": "Neuen Lead hinzufügen",
+        "edit_title": "Lead bearbeiten",
+        "show_title": "Lead-Details"
+    },
+    "fields": {
+        "details": "Details",
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "job_title": "Berufsbezeichnung",
+        "city": "Stadt",
+        "country": "Land",
+        "website": "Webseite",
+        "industry": "Branche/Tätigkeit",
+        "attachments": "Anhänge",
+        "company": "Verbundenes Unternehmen",
+        "company_name": "Firmenname (Freitext)",
+        "select_company": "Wählen Sie ein Unternehmen aus",
+        "source": "Quelle",
+        "select_source": "Quelle auswählen",
+        "service": "Service",
+        "select_service": "Dienst auswählen",
+        "service_interest": "Dienstinteresse (Text)",
+        "project_budget": "Projektbudget",
+        "problem_statement": "Problemstellung",
+        "chat_transcript": "Chat-Transkript",
+        "ip_address": "IP-Adresse",
+        "status": "Status",
+        "blocked": "Blockiert",
+        "assignee": "Zugewiesen an",
+        "select_assignee": "Wählen Sie den Beauftragten aus"
+    },
+    "sources": {
+        "organic_search": "Organische Suche",
+        "direct": "Direkt",
+        "social_media": "Soziale Medien",
+        "referral": "Verweisung",
+        "paid_ads": "Bezahlte Anzeigen",
+        "website": "Webseite",
+        "sales": "Vertriebsreichweite",
+        "manual": "Manuelle Eingabe"
+    },
+    "status": {
+        "active": "Aktiv",
+        "blocked": "Blockiert",
+        "new": "Neu",
+        "contacted": "Kontaktiert",
+        "qualified": "Qualifiziert",
+        "unqualified": "Unqualifiziert",
+        "converted": "Konvertiert",
+        "lost": "Verloren"
+    },
+    "badges": {
+        "unlinked": "Nicht verknüpft"
+    },
+    "actions": {
+        "add": "Lead hinzufügen",
+        "edit": "Lead bearbeiten",
+        "view_details": "Details anzeigen",
+        "back_to_list": "Zurück zu Leads",
+        "block": "Blei blockieren",
+        "unblock": "Blei entsperren",
+        "actions": "Aktionen"
+    },
+    "filters": {
+        "status": "Nach Status filtern",
+        "source": "Nach Quelle filtern",
+        "company": "Nach Unternehmen filtern",
+        "assignee": "Nach Beauftragtem filtern",
+        "all": "Alle"
+    },
+    "search": {
+        "placeholder": "In Leads suchen"
+    },
+    "sections": {
+        "contact_information": "Kontaktinformationen",
+        "contact_information_hint": "Grundlegende Kontaktdaten für diesen Lead.",
+        "company": "Unternehmen",
+        "company_hint": "Verknüpfen Sie mit einem bestehenden CRM-Unternehmen oder geben Sie einen Namen ein, wenn das Unternehmen noch nicht im System vorhanden ist.",
+        "lead_details": "Lead-Details",
+        "lead_details_hint": "Verfolgen Sie, woher der Lead kommt und woran er interessiert ist.",
+        "status": "Status"
+    },
+    "placeholders": {
+        "name": "Beispiel: John Smith",
+        "email": "name@example.com",
+        "phone": "Beispiel: +1 555 123 4567",
+        "company_name": "Beispiel: Acme Technologies",
+        "job_title": "Beispiel: Marketingmanager",
+        "city": "Beispiel: Damaskus",
+        "country": "Beispiel: Syrien",
+        "website": "https://example.com",
+        "industry": "Beispiel: Technologie",
+        "service_interest": "Beispiel: Benutzerdefinierte Webanwendung",
+        "project_budget": "Beispiel: 10.000 bis 25.000 US-Dollar",
+        "problem_statement": "Beschreiben Sie die Bedürfnisse oder Anfragen des Leads ..."
+    },
+    "hints": {
+        "company": "Optional. Wählen Sie ein Unternehmen aus Ihrem CRM aus, um diesen Lead zu verknüpfen.",
+        "company_name": "Verwenden Sie diese Option, wenn das Unternehmen noch nicht im CRM ist. Ausgeblendet, wenn ein Unternehmen verlinkt ist.",
+        "service_interest": "Freitext-Fallback, wenn kein Dienst aus dem Katalog ausgewählt ist.",
+        "blocked": "Blockierte Leads werden gekennzeichnet und können aus aktiven Workflows gefiltert werden.",
+        "assignee": "Vertriebsmitarbeiter, der für die Weiterverfolgung dieses Hinweises verantwortlich ist."
+    },
+    "conversion": {
+        "convert": "In Deal umwandeln",
+        "convert_customer": "In Kunde umwandeln",
+        "confirm": "Angebot erstellen",
+        "view_deal": "Angebot ansehen",
+        "converted_badge": "Konvertiert",
+        "converted_to_customer": "Lead in Kunden umgewandelt",
+        "customer_requires_company": "Um diesen Lead in einen Kunden umzuwandeln, ist ein Firmenname erforderlich.",
+        "customer_failed": "Konvertieren des Leads in einen Kunden fehlgeschlagen.",
+        "modal_title": "Lead in Deal umwandeln",
+        "modal_hint": "Dadurch wird ein neuer Deal in Ihrer Vertriebspipeline erstellt und mit diesem Lead verknüpft.",
+        "deal_title": "Deal-Titel",
+        "deal_title_placeholder": "Deal-Titel",
+        "default_title": "Angebot für :name",
+        "fallback_title": "Lead #:id",
+        "already_converted": "Dieser Lead wurde bereits in einen Deal umgewandelt.",
+        "failed": "Konvertieren des Leads in ein Geschäft fehlgeschlagen."
+    },
+    "validation": {
+        "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut.",
+        "phone": "Die Telefonnummer darf nur Ziffern und die Zeichen + - ( ) und Leerzeichen enthalten."
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "menu": {
+        "marketing": "Marketing"
+    },
+    "pages": {
+        "index_title": "Marketing",
+        "create_title": "E-Mail senden",
+        "show_title": "Kampagnendetails"
+    },
+    "actions": {
+        "compose": "E-Mail verfassen",
+        "send": "E-Mail senden",
+        "back_to_list": "Zurück zum Marketing",
+        "view": "Sicht"
+    },
+    "fields": {
+        "subject": "Thema",
+        "body": "Nachricht",
+        "recipients": "Empfänger",
+        "subscribers": "Abonnenten",
+        "contacts": "Kontakte",
+        "contact_forms": "Anfragen",
+        "custom_emails": "Benutzerdefinierte E-Mails",
+        "all_subscribers": "Alle aktiven Abonnenten",
+        "all_contacts": "Alle Kontakte mit E-Mail",
+        "all_contact_forms": "Alle Anfragen per E-Mail",
+        "select_subscribers": "Wählen Sie Abonnenten aus",
+        "select_contacts": "Wählen Sie Kontakte aus",
+        "select_contact_forms": "Wählen Sie Anfragen aus",
+        "sent_by": "Gesendet von",
+        "sent_at": "Gesendet an",
+        "recipients_count": "Empfänger",
+        "send_as_marketing": "Als Marketing-E-Mail senden",
+        "marketing_audience": "Senden an",
+        "all_audiences": "Alle",
+        "status": "Status"
+    },
+    "status": {
+        "pending": "Ausstehend",
+        "finished": "Fertig",
+        "failed": "Fehlgeschlagen"
+    },
+    "sections": {
+        "compose": "E-Mail verfassen",
+        "compose_hint": "Schreiben Sie Ihre Nachricht und wählen Sie aus, wer sie erhalten soll.",
+        "recipients": "Wählen Sie Empfänger",
+        "recipients_hint": "Wählen Sie eine oder mehrere Gruppen aus. E-Mails werden automatisch dedupliziert.",
+        "history": "Gesendete Kampagnen",
+        "send_as_marketing": "Marketing-E-Mail"
+    },
+    "placeholders": {
+        "subject": "E-Mail-Betreffzeile",
+        "body": "Schreiben Sie hier Ihre Marketingbotschaft...",
+        "custom_emails": "Geben Sie eine E-Mail ein und drücken Sie die Eingabetaste, um sie hinzuzufügen",
+        "select_subscribers": "Wählen Sie Abonnenten aus",
+        "select_contacts": "Wählen Sie Kontakte aus",
+        "select_contact_forms": "Wählen Sie Anfragen"
+    },
+    "hints": {
+        "all_subscribers": "Wird an jeden nicht blockierten Newsletter-Abonnenten versendet.",
+        "all_contacts": "Wird an jeden CRM-Kontakt gesendet, der über eine E-Mail-Adresse verfügt.",
+        "all_contact_forms": "Sendet an jede nicht blockierte Anfrage, die eine E-Mail-Adresse hat.",
+        "custom_emails": "Fügen Sie alle weiteren E-Mail-Adressen hinzu, die oben nicht aufgeführt sind. Geben Sie eine E-Mail ein und drücken Sie die Eingabetaste.",
+        "send_warning": "E-Mails werden in die Warteschlange gestellt und im Hintergrund versendet. Diese Aktion kann nicht rückgängig gemacht werden.",
+        "send_as_marketing": "Erstellen Sie aus diesen Inhalten eine Marketingkampagne und stellen Sie sie nach dem Speichern in die Warteschlange.",
+        "all_audiences": "Abonnenten, Kontakte und Anfragen mit gültigen E-Mail-Adressen."
+    },
+    "messages": {
+        "sent": "E-Mail erfolgreich an :count-Empfänger gesendet.",
+        "queued": "E-Mail für :count-Empfänger erfolgreich in die Warteschlange gestellt.",
+        "send_failed": "Die E-Mail konnte nicht gesendet werden. Bitte überprüfen Sie Ihre E-Mail-Konfiguration und versuchen Sie es erneut.",
+        "empty": "Es wurden noch keine Kampagnen gesendet."
+    },
+    "validation": {
+        "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut.",
+        "select_recipients": "Wählen Sie mindestens eine Empfängergruppe aus oder fügen Sie benutzerdefinierte E-Mails hinzu.",
+        "no_recipients": "Für die ausgewählten Empfänger wurden keine gültigen E-Mail-Adressen gefunden.",
+        "subject_required": "Der Betreff muss Text enthalten.",
+        "subject_too_long": "Der Betreff darf nicht länger als 255 Zeichen sein.",
+        "body_required": "Die Nachricht muss Text enthalten.",
+        "permission_required": "Sie sind nicht berechtigt, Marketing-E-Mails zu versenden."
+    },
+    "sources": {
+        "all_subscribers": "Alle Abonnenten",
+        "subscribers": ":count-Abonnent(en)",
+        "all_contacts": "Alle Kontakte",
+        "contacts": ":count Kontakt(e)",
+        "all_contact_forms": "Alle Anfragen",
+        "contact_forms": ":count Anfrage(n)",
+        "custom_emails": "Benutzerdefinierte E-Mails"
+    }
+}

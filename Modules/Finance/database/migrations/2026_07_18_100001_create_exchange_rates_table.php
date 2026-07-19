@@ -8,6 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('exchange_rates')) {
+            return;
+        }
+
         Schema::create('exchange_rates', function (Blueprint $table) {
             $table->id();
             $table->string('base_currency', 3);

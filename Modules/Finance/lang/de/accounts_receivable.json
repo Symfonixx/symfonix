@@ -1,0 +1,26 @@
+{
+    "menu": "Forderungen",
+    "pages": {
+        "index_title": "Alterung der Forderungen"
+    },
+    "metrics": {
+        "total_outstanding": "Insgesamt hervorragend",
+        "open_invoices": "Offene Rechnungen"
+    },
+    "buckets": {
+        "current": "Aktuell",
+        "days_1_30": "1–30 Tage",
+        "days_31_60": "31–60 Tage",
+        "days_61_90": "61–90 Tage",
+        "over_90": "90+ Tage"
+    },
+    "fields": {
+        "invoice_number": "Rechnung #",
+        "company": "Unternehmen",
+        "due_at": "Fälligkeitsdatum",
+        "days_overdue": "Tage überfällig",
+        "amount": "Menge",
+        "status": "Status"
+    },
+    "empty": "Keine offenen Rechnungen. Sämtliche Forderungen werden eingezogen."
+}

@@ -1,0 +1,132 @@
+{
+    "menu": {
+        "projects": "Projekte",
+        "statuses": "Projektstatus"
+    },
+    "pages": {
+        "index_title": "Projekte",
+        "create_title": "Neues Projekt hinzufügen",
+        "show_title": "Projektdetails",
+        "edit_title": "Projekt bearbeiten"
+    },
+    "fields": {
+        "title": "Titel",
+        "description": "Beschreibung",
+        "company": "Unternehmen",
+        "select_company": "Unternehmen auswählen",
+        "status": "Status",
+        "select_status": "Status auswählen",
+        "deal": "Verknüpfter Deal",
+        "select_deal": "Angebot auswählen (optional)",
+        "budget": "Budget",
+        "currency": "Währung",
+        "payment_status": "Zahlungsstatus",
+        "collected": "Gesammelt",
+        "invoiced": "In Rechnung gestellt",
+        "remaining": "Übrig",
+        "collection_rate": "Sammelquote",
+        "start_date": "Startdatum",
+        "due_date": "Fälligkeitsdatum",
+        "attachments": "Anhänge",
+        "employee": "Mitarbeiter",
+        "select_employee": "Mitarbeiter auswählen",
+        "role": "Rolle",
+        "started_at": "Begonnen um",
+        "ended_at": "Endete um",
+        "days_worked": "Gearbeitete Tage",
+        "daily_rate": "Tagespreis",
+        "labor_cost": "Arbeitskosten",
+        "project_expenses": "Projektkosten",
+        "total_cost": "Gesamtkosten",
+        "profit_or_loss": "Gewinn/Verlust",
+        "margin_rate": "Marge",
+        "assignment_status": "Status",
+        "notes": "Notizen",
+        "submitted_at": "Eingereicht bei"
+    },
+    "actions": {
+        "add": "Projekt hinzufügen",
+        "manage_statuses": "Status verwalten",
+        "back_to_list": "Zurück zu Projekten",
+        "back_to_project": "Zurück zum Projekt",
+        "apply_filters": "Filter anwenden",
+        "clear_filters": "Klar",
+        "add_invoice": "Rechnung hinzufügen",
+        "assign_employee": "Zuordnen",
+        "finish_work": "Beenden",
+        "log_expense": "Ausgaben protokollieren",
+        "approve_review": "Für Website genehmigen",
+        "unpublish_review": "Von der Website entfernen"
+    },
+    "search": {
+        "placeholder": "Projekte suchen"
+    },
+    "filters": {
+        "title": "Filter",
+        "all_companies": "Alle Unternehmen",
+        "all_statuses": "Alle Status"
+    },
+    "tabs": {
+        "overview": "Überblick",
+        "team": "Team",
+        "finance": "Finanzen",
+        "review": "Rezension"
+    },
+    "sections": {
+        "basic_information": "Grundlegende Informationen",
+        "collection": "Abrechnungsfortschritt",
+        "profit_and_loss": "Gewinn und Verlust",
+        "team": "Zugewiesene Mitarbeiter",
+        "expenses": "Projektkosten",
+        "invoices": "Projektrechnungen",
+        "add_invoice": "Rechnung hinzufügen",
+        "attachments": "Anhänge",
+        "client_review": "Kundenbewertung",
+        "quick_actions": "Schnelle Aktionen"
+    },
+    "review": {
+        "pending": "Ausstehende Genehmigung",
+        "approved": "Auf der Website veröffentlicht"
+    },
+    "payment_status": {
+        "unpaid": "Unbezahlt",
+        "partially_paid": "Teilweise bezahlt",
+        "fully_paid": "Vollständig bezahlt"
+    },
+    "assignment_status": {
+        "active": "Arbeiten",
+        "finished": "Fertig"
+    },
+    "hints": {
+        "deal": "Verknüpfen Sie einen offenen oder gewonnenen CRM-Deal. Angebote, die bereits mit einem anderen Projekt verknüpft sind, werden ausgeblendet.",
+        "attachments": "Laden Sie mehrere Dateien hoch (Dokumente, Archive usw.). PDF- und Bilddateien sind nicht erlaubt. Maximal 10 MB pro Datei.",
+        "profit_and_loss": "Gewinn oder Verlust = Rechnungsbetrag − (Arbeitskosten + Projektkosten).",
+        "labor_cost": "Die Arbeitskosten basieren auf dem letzten Monatsgehalt des Mitarbeiters ÷ :days Arbeitstage × Tage, die diesem Projekt zugewiesen sind.",
+        "client_review": "Nur genehmigte Bewertungen erscheinen als Testimonials auf der öffentlichen Website."
+    },
+    "placeholders": {
+        "title": "Geben Sie den Projekttitel ein",
+        "description": "Projektumfang, Ergebnisse, Notizen …",
+        "budget": "0,00",
+        "role": "Entwickler, Qualitätssicherung…"
+    },
+    "messages": {
+        "no_invoices": "Für dieses Projekt liegen noch keine Rechnungen vor.",
+        "invoice_exceeds_remaining": "Der Rechnungsbetrag übersteigt das verbleibende Budget von :remaining.",
+        "no_attachments": "Für dieses Projekt liegen noch keine Anhänge vor.",
+        "no_employees": "Diesem Projekt sind noch keine Mitarbeiter zugeordnet.",
+        "no_expenses": "Für dieses Projekt wurden noch keine Ausgaben erfasst.",
+        "employee_assigned": "Dem Projekt zugeordneter Mitarbeiter.",
+        "employee_finished": "Die Arbeit des Mitarbeiters an diesem Projekt wurde als abgeschlossen markiert.",
+        "employee_removed": "Mitarbeiterzuordnung entfernt.",
+        "employee_already_assigned": "Dieser Mitarbeiter ist dem Projekt bereits aktiv zugeordnet.",
+        "confirm_remove_employee": "Diese Mitarbeiterzuordnung entfernen?",
+        "expense_logged": "Projektaufwand, der in die Finanzabteilung gebucht wird.",
+        "expense_description": "Projektaufwand: :title",
+        "no_review": "Für dieses Projekt wurde noch keine Kundenbewertung eingereicht."
+    },
+    "validation": {
+        "attachment_pdf_not_allowed": "PDF-Dateien sind als Projektanhang nicht zulässig.",
+        "attachment_image_not_allowed": "Bilddateien sind als Projektanhänge nicht zulässig."
+    }
+}

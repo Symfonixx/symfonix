@@ -1,0 +1,59 @@
+{
+    "menu": {
+        "contacts": "Kontakte"
+    },
+    "pages": {
+        "index_title": "Kontakte",
+        "create_title": "Kontakt hinzufügen",
+        "edit_title": "Kontakt bearbeiten",
+        "show_title": "Kontaktdaten"
+    },
+    "fields": {
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "phone2": "Sekundäres Telefon",
+        "source": "Quelle",
+        "select_source": "Wählen Sie eine Quelle aus",
+        "customer": "Kunde",
+        "select_customer": "Wählen Sie einen Kunden aus",
+        "job_title": "Berufsbezeichnung",
+        "company": "Unternehmen",
+        "select_company": "Wählen Sie ein Unternehmen aus",
+        "notes": "Notizen",
+        "is_primary": "Hauptkontakt"
+    },
+    "actions": {
+        "add": "Kontakt hinzufügen",
+        "back_to_list": "Zurück zu Kontakte"
+    },
+    "search": {
+        "placeholder": "Suchen Sie in den Kontakten"
+    },
+    "sections": {
+        "basic_information": "Grundlegende Informationen",
+        "basic_information_hint": "CRM-Ansprechpartner. Der Firmenlink ist optional.",
+        "company": "Unternehmen",
+        "company_hint": "Verknüpfen Sie diese Person optional mit einem Firmenkonto.",
+        "additional": "Zusätzliche Details"
+    },
+    "placeholders": {
+        "name": "Beispiel: John Smith",
+        "email": "name@example.com",
+        "phone": "+1 555 000 0000",
+        "job_title": "Beispiel: CTO",
+        "notes": "Interne Notizen zu diesem Kontakt..."
+    },
+    "hints": {
+        "company": "Für eigenständige Kontakte, die noch nicht mit einem Unternehmen verknüpft sind, leer lassen.",
+        "is_primary": "Markieren Sie ihn als Hauptansprechpartner für das Unternehmen.",
+        "customer": "Verknüpfen Sie diesen Kontakt mit einem bestehenden Kundenkonto, falls vorhanden."
+    },
+    "validation": {
+        "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut.",
+        "email_unique": "Ein Kontakt mit dieser E-Mail-Adresse existiert bereits.",
+        "phone_unique": "Ein Kontakt mit dieser Telefonnummer existiert bereits.",
+        "phone": "Die Telefonnummer darf nur Ziffern und die Zeichen + - ( ) und Leerzeichen enthalten."
+    },
+    "fallback_name": "Unbekannter Kontakt"
+}

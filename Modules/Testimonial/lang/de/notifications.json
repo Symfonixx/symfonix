@@ -1,0 +1,10 @@
+{
+    "new_testimonial_subject": "Neues Testimonial wartet auf Genehmigung",
+    "new_testimonial_line": ":customer hat eine Bewertung für das Projekt :project abgegeben.",
+    "greeting": "Hallo :name,",
+    "view_testimonials": "Überprüfen Sie Erfahrungsberichte",
+    "pending_approval": "Ausstehende Genehmigung",
+    "dashboard": {
+        "pending_approval": "Testimonials warten auf Genehmigung"
+    }
+}

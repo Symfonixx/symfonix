@@ -1,0 +1,70 @@
+{
+    "menu": {
+        "inquiries": "Anfragen"
+    },
+    "pages": {
+        "index_title": "Anfragen",
+        "create_title": "Anfrage hinzufügen",
+        "edit_title": "Anfrage bearbeiten"
+    },
+    "fields": {
+        "name": "Name",
+        "email": "E-Mail",
+        "mobile": "Mobile",
+        "service": "Service",
+        "select_service": "Wählen Sie einen Dienst aus",
+        "subject": "Thema",
+        "message": "Nachricht",
+        "company": "Verbundenes Unternehmen",
+        "select_company": "Wählen Sie ein Unternehmen aus",
+        "ip_address": "IP-Adresse",
+        "blocked": "Blockiert"
+    },
+    "status": {
+        "active": "Aktiv",
+        "blocked": "Blockiert",
+        "converted": "Konvertiert"
+    },
+    "actions": {
+        "add": "Anfrage hinzufügen",
+        "edit": "Anfrage bearbeiten",
+        "view_details": "Details anzeigen",
+        "back_to_list": "Zurück zu Anfragen",
+        "convert_to_lead": "In Lead umwandeln",
+        "convert_to_contact": "Zu CRM-Kontakten hinzufügen"
+    },
+    "search": {
+        "placeholder": "Suchen Sie in Anfragen"
+    },
+    "sections": {
+        "contact_information": "Kontaktinformationen",
+        "contact_information_hint": "Details aus der eingehenden Anfrage.",
+        "company": "Unternehmen",
+        "company_hint": "Optional. Verknüpfen Sie diese Anfrage mit einem bestehenden Unternehmen, sofern bekannt.",
+        "message": "Nachricht",
+        "status": "Status"
+    },
+    "placeholders": {
+        "name": "Beispiel: John Smith",
+        "email": "name@example.com",
+        "mobile": "+1 555 000 0000",
+        "subject": "Beispiel: Projektanfrage",
+        "message": "Geben Sie die Anfragenachricht ein..."
+    },
+    "hints": {
+        "company": "Optional. Anfragen können ohne Verlinkung eines Unternehmens bearbeitet werden.",
+        "blocked": "Gesperrte Anfragen werden im System gekennzeichnet.",
+        "service": "Link zu einem Katalogdienst, wenn die Anfrage mit einem bekannten Angebot übereinstimmt.",
+        "subject": "Freitext-Betreff, wenn kein Katalogdienst ausgewählt ist."
+    },
+    "validation": {
+        "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut."
+    },
+    "conversion": {
+        "already_converted": "Diese Anfrage wurde bereits in einen Lead umgewandelt.",
+        "already_has_contact": "Diese Anfrage ist bereits mit einem CRM-Kontakt verknüpft.",
+        "contact_failed": "Aus dieser Anfrage konnte kein CRM-Kontakt erstellt werden.",
+        "converted_to_lead": "Anfrage in Lead umgewandelt.",
+        "converted_to_contact": "Anfrage zu CRM-Kontakten hinzugefügt."
+    }
+}

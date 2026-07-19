@@ -1,0 +1,121 @@
+{
+    "menu": {
+        "deals": "Angebote",
+        "pipeline": "Pipeline"
+    },
+    "pages": {
+        "index_title": "Angebote",
+        "kanban_title": "Vertriebspipeline",
+        "create_title": "Neues Angebot hinzufügen",
+        "edit_title": "Deal bearbeiten",
+        "show_title": "Deal-Details"
+    },
+    "fields": {
+        "title": "Titel",
+        "company": "Unternehmen",
+        "select_company": "Unternehmen auswählen",
+        "stage": "Pipeline-Stufe",
+        "select_stage": "Stufe auswählen",
+        "assignee": "Zugewiesen an",
+        "select_assignee": "Wählen Sie den Beauftragten aus",
+        "value": "Wert",
+        "currency": "Währung",
+        "probability": "Wahrscheinlichkeit (%)",
+        "expected_close_date": "Voraussichtliches Abschlussdatum",
+        "source": "Quelle",
+        "source_lead": "Quellenanleitung",
+        "description": "Beschreibung",
+        "lost_reason": "Verlorener Grund",
+        "status": "Status",
+        "notes": "Notizen",
+        "service": "Service",
+        "quantity": "Menge",
+        "unit_price": "Stückpreis",
+        "line_total": "Zeilensumme",
+        "project": "Projekt"
+    },
+    "status": {
+        "open": "Offen",
+        "won": "Won",
+        "lost": "Verloren"
+    },
+    "actions": {
+        "add": "Angebot hinzufügen",
+        "add_service": "Serviceleitung hinzufügen",
+        "remove_service": "Entfernen",
+        "back_to_list": "Zurück zu den Angeboten",
+        "list_view": "Listenansicht",
+        "kanban_view": "Pipeline-Board",
+        "move_stage": "Bühne verschieben",
+        "view_details": "Details anzeigen"
+    },
+    "search": {
+        "placeholder": "Suchen Sie in Angeboten"
+    },
+    "sections": {
+        "basic_information": "Deal-Informationen",
+        "basic_information_hint": "Details zum Kerngeschäft und Platzierung der Pipeline.",
+        "financial": "Finanzielle Details",
+        "financial_hint": "Erwarteter Wert und Abschlusszeitplan.",
+        "services": "Dienstleistungen",
+        "services_hint": "Fügen Sie diesem Angebot Katalogdienste hinzu.",
+        "linked_project": "Verknüpftes Projekt",
+        "additional_details": "Zusätzliche Details",
+        "stage_history": "Bühnengeschichte",
+        "move_stage": "Wechseln Sie zu einer anderen Bühne",
+        "ledger_reconciliation": "Hauptbuchabstimmung"
+    },
+    "ledger": {
+        "expected_revenue": "Erwarteter Umsatz",
+        "recorded_in_ledger": "Im Hauptbuch erfasst",
+        "variance": "Varianz",
+        "reconciled": "Versöhnt",
+        "not_reconciled": "Nicht versöhnt",
+        "transactions": "Einkommenstransaktionen",
+        "income_entry": "Einkommenseintrag",
+        "no_transactions": "Für diesen Deal wurden noch keine Einnahmen erfasst."
+    },
+    "placeholders": {
+        "title": "Beispiel: Website-Redesign-Projekt",
+        "source": "Beispiel: Website, Empfehlung, Kaltakquise",
+        "description": "Deal-Kontext für Ihr Team",
+        "lost_reason": "Warum wurde dieser Deal verloren?",
+        "notes": "Optionaler Hinweis zu diesem Phasenwechsel",
+        "value": "0,00",
+        "select_service": "Dienst auswählen"
+    },
+    "hints": {
+        "stage": "Durch das Verschieben von Phasen werden der Geschäftsstatus und die Aufzeichnungshistorie automatisch aktualisiert.",
+        "probability": "Lassen Sie das Feld leer, um die Standardwahrscheinlichkeit der ausgewählten Phase zu verwenden."
+    },
+    "history": {
+        "created": "Deal erstellt",
+        "moved_from": "Von :from nach :to verschoben",
+        "initial_stage": "Anfangsstadium",
+        "by": "von",
+        "no_history": "Es wurden noch keine Bühnenwechsel aufgezeichnet."
+    },
+    "kanban": {
+        "empty_column": "In dieser Phase liegen keine Deals vor",
+        "deals_count": ":count-Angebot(e)"
+    },
+    "validation": {
+        "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut."
+    },
+    "stages": {
+        "lead": "Führen",
+        "qualified": "Qualifiziert",
+        "proposal": "Vorschlag",
+        "negotiation": "Verhandlung",
+        "closed_won": "Geschlossen und gewonnen",
+        "closed_lost": "Geschlossen, verloren"
+    },
+    "notifications": {
+        "stage_changed_subject": "Deal-Phase aktualisiert: :title",
+        "stage_changed_greeting": "Pipeline-Update",
+        "stage_changed_line": "Deal „:title“ wurde von :from zu :to verschoben.",
+        "changed_by": "Geändert von: :name",
+        "company": "Firma: :name",
+        "view_deal": "Angebot ansehen"
+    }
+}

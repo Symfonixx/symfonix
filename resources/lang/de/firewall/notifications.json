@@ -1,0 +1,9 @@
+{
+    "mail": {
+        "subject": "🔥 Möglicher Angriff auf :domain",
+        "message": "Ein möglicher :middleware-Angriff auf :domain wurde von der :ip-Adresse aus erkannt. Die folgende URL ist betroffen: :url"
+    },
+    "slack": {
+        "message": "Ein möglicher Angriff auf :domain wurde erkannt."
+    }
+}
