@@ -27,17 +27,29 @@ if (config('docs.enabled')) {
 Route::get('/robots.txt', function () {
     $host = rtrim(request()->getSchemeAndHttpHost(), '/');
     $sitemapUrl = $host.'/sitemap.xml';
+    $llmsUrl = $host.'/llms.txt';
 
     $lines = [
         'User-agent: *',
-        // Allow public content, but keep private/admin areas out of the index
-        // so crawl budget is spent on pages that should rank.
+        // Locale-prefixed private areas (e.g. /en/admin, /ar/portal).
+        'Disallow: /*/admin',
+        'Disallow: /*/portal',
+        'Disallow: /*/login',
+        'Disallow: /*/register',
+        'Disallow: /*/password',
+        'Disallow: /*/email/verify',
+        'Disallow: /*/dashboard',
+        'Disallow: /*/two-factor-challenge',
+        // Non-localized / tooling paths.
         'Disallow: /admin',
+        'Disallow: /portal',
         'Disallow: /login',
         'Disallow: /register',
         'Disallow: /password',
         'Disallow: /email/verify',
         'Disallow: /dashboard',
+        'Disallow: /chatbot',
+        'Disallow: /docs',
         'Disallow: /telescope',
         'Disallow: /pulse',
         'Disallow: /storage/framework',
@@ -45,6 +57,7 @@ Route::get('/robots.txt', function () {
         'Allow: /',
         '',
         'Sitemap: '.$sitemapUrl,
+        '# LLM context: '.$llmsUrl,
         '',
     ];
 

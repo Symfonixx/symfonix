@@ -4,6 +4,7 @@ namespace Modules\Base\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Base\Models\Seo;
 use Modules\Cms\Models\Blog;
 
@@ -16,7 +17,9 @@ class RssController extends Controller
      */
     public function index()
     {
-        $locale = app()->getLocale();
+        $locale = $this->resolveLocale();
+        app()->setLocale($locale);
+
         $siteName = Seo::get('website_name', config('app.name'));
         $siteDescription = Seo::get('website_desc', '');
 
@@ -42,11 +45,12 @@ class RssController extends Controller
             }
 
             $date = $blog->updated_at ?? $blog->created_at;
+            $url = $this->localizedUrl('/blog/'.$blog->slug, $locale);
 
             return [
                 'title' => $title,
-                'link' => $this->buildUrl('/blog/'.$blog->slug),
-                'guid' => $this->buildUrl('/blog/'.$blog->slug),
+                'link' => $url,
+                'guid' => $url,
                 'pubDate' => $date ? $date->toRssString() : now()->toRssString(),
                 'description' => $description,
                 'content' => $content,
@@ -62,8 +66,8 @@ class RssController extends Controller
         $content = view('rss', [
             'siteName' => $siteName,
             'siteDescription' => $siteDescription,
-            'homeUrl' => $this->buildUrl('/'),
-            'feedUrl' => $this->buildUrl('/rss.xml'),
+            'homeUrl' => $this->localizedUrl('/', $locale),
+            'feedUrl' => $this->host().'/rss.xml',
             'language' => $locale,
             'lastBuildDate' => $lastUpdated ? $lastUpdated->toRssString() : now()->toRssString(),
             'items' => $items,
@@ -73,15 +77,75 @@ class RssController extends Controller
             ->header('Content-Type', 'application/rss+xml; charset=UTF-8');
     }
 
-    private function buildUrl(string $path): string
+    private function resolveLocale(): string
     {
-        $baseUrl = rtrim(request()->getSchemeAndHttpHost(), '/');
-        $normalizedPath = '/'.ltrim($path, '/');
+        $requested = request()->query('lang');
+        $supported = $this->supportedLocales();
 
-        if ($normalizedPath === '/') {
-            return $baseUrl.'/';
+        if (is_string($requested) && in_array($requested, $supported, true)) {
+            return $requested;
         }
 
-        return $baseUrl.$normalizedPath;
+        if (class_exists(LaravelLocalization::class)) {
+            try {
+                $default = LaravelLocalization::getDefaultLocale();
+                if (is_string($default) && $default !== '') {
+                    return $default;
+                }
+            } catch (\Throwable $e) {
+                // Fallback below.
+            }
+        }
+
+        return (string) config('app.locale', 'en');
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function supportedLocales(): array
+    {
+        if (class_exists(LaravelLocalization::class)) {
+            try {
+                $supported = LaravelLocalization::getSupportedLocales();
+                if (is_array($supported) && $supported !== []) {
+                    return array_keys($supported);
+                }
+            } catch (\Throwable $e) {
+                // Fallback below.
+            }
+        }
+
+        return ['en', 'ar', 'de', 'tr'];
+    }
+
+    private function localizedUrl(string $path, string $locale): string
+    {
+        $normalizedPath = '/'.ltrim($path, '/');
+        $absolute = $normalizedPath === '/'
+            ? $this->host().'/'
+            : $this->host().$normalizedPath;
+
+        if (class_exists(LaravelLocalization::class)) {
+            try {
+                $url = LaravelLocalization::getLocalizedURL($locale, $absolute);
+                if (is_string($url) && $url !== '') {
+                    return $url;
+                }
+            } catch (\Throwable $e) {
+                // Fallback below.
+            }
+        }
+
+        if ($normalizedPath === '/') {
+            return $this->host().'/'.$locale.'/';
+        }
+
+        return $this->host().'/'.$locale.$normalizedPath;
+    }
+
+    private function host(): string
+    {
+        return rtrim(request()->getSchemeAndHttpHost(), '/');
     }
 }

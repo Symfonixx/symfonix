@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>{{blog.title}}</title>
+        <title>{{ metaTitle }}</title>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
     </Head>
     <app-layout>
@@ -9,14 +9,17 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2>{{ trans("Blog Details") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
                                 <Link :href="route('home')"><i class="fas fa-home"></i>{{ trans("Home") }}</Link>
                             </li>
                             <li><span  :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
-                            <li>{{ trans("Blog Details") }}</li>
+                            <li>
+                                <Link :href="route('blogs.index')">{{ trans("Blogs") }}</Link>
+                            </li>
+                            <li><span  :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
+                            <li>{{ blog.title }}</li>
                         </ul>
                     </div>
                 </div>
@@ -30,7 +33,7 @@
                     <div class="col-xl-8 col-lg-7">
                         <div class="blog-details__left">
                             <div class="blog-details__img">
-                                <img :src="blog.image_link" :alt="blog.title">
+                                <img :src="blog.image_link" :alt="blog.title" loading="lazy" decoding="async">
                             </div>
                             <div class="blog-details__single-content">
 
@@ -218,6 +221,8 @@ const categories = computed(() => page.props.categories || [])
 const recentPosts = computed(() => page.props.recentPosts || [])
 const previousPost = computed(() => page.props.previousPost)
 const nextPost = computed(() => page.props.nextPost)
+const meta = computed(() => page.props.meta || {})
+const metaTitle = computed(() => meta.value.title || blog.value?.title || '')
 
 const searchQuery = ref('')
 

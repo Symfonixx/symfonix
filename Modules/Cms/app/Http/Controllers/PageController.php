@@ -5,6 +5,7 @@ namespace Modules\Cms\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Base\Support\Schema;
 use Modules\Cms\Models\Faq;
 use Modules\Cms\Models\Page;
 use Modules\Team\Models\Team;
@@ -21,17 +22,32 @@ class PageController extends Controller
             session()->put('page', $page->id);
         }
 
+        $canonical = route('page.view', ['slug' => $page->slug]);
         $meta = (new Meta)
             ->title($page->title)
             ->description($page->description)
             ->keywords($page->keywords)
             ->ogImage($page->image_link)
             ->twitterImage($page->image_link)
+            ->canonical($canonical)
             ->toArray();
+
+        $structuredData = [
+            Schema::breadcrumbs([
+                ['name' => __('Home'), 'url' => route('home')],
+                ['name' => $page->title, 'url' => $canonical],
+            ]),
+            Schema::webPage([
+                'title' => $page->title,
+                'description' => $page->description,
+                'url' => $canonical,
+            ]),
+        ];
 
         return $this->inertia('Cms::PageShow', [
             'custom_page' => $page,
             'banner' => $page->image_link,
+            'structuredData' => $structuredData,
         ], $meta);
     }
 
@@ -50,43 +66,75 @@ class PageController extends Controller
             ->get();
 
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('about-us');
         $meta = (new Meta)
             ->title(__('About Us').' | '.$siteName)
             ->description(__('Learn about our team, mission, and the technology expertise behind our solutions.'))
             ->keywords(__('about us, IT consulting, technology experts, digital transformation'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
+
+        $structuredData = [
+            Schema::breadcrumbs([
+                ['name' => __('Home'), 'url' => route('home')],
+                ['name' => __('About Us'), 'url' => $canonical],
+            ]),
+            Schema::webPage([
+                'type' => 'AboutPage',
+                'title' => __('About Us').' | '.$siteName,
+                'description' => __('Learn about our team, mission, and the technology expertise behind our solutions.'),
+                'url' => $canonical,
+            ]),
+        ];
 
         return $this->inertia('Cms::AboutUs', [
             'teams' => $teams,
             'testimonials' => $testimonials,
+            'structuredData' => $structuredData,
         ], $meta);
     }
 
     public function privacy_policy()
     {
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('privacy-policy');
         $meta = (new Meta)
             ->title(__('Privacy Policy').' | '.$siteName)
             ->description(__('Review how we collect, use, and protect your personal information.'))
             ->keywords(__('privacy policy, data protection, security, compliance'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
 
-        return $this->inertia('Cms::PrivacyPolicy', [], $meta);
+        return $this->inertia('Cms::PrivacyPolicy', [
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('Privacy Policy'), 'url' => $canonical],
+                ]),
+                Schema::webPage([
+                    'title' => __('Privacy Policy').' | '.$siteName,
+                    'description' => __('Review how we collect, use, and protect your personal information.'),
+                    'url' => $canonical,
+                ]),
+            ],
+        ], $meta);
     }
 
     public function team()
     {
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('team');
         $meta = (new Meta)
             ->title(__('Our Members').' | '.$siteName)
             ->description(__('Meet the professionals behind our technology and consulting services.'))
             ->keywords(__('team, experts, leadership, professionals'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
         $teams = Team::where('status', 'Published')
             ->latest()
@@ -95,18 +143,31 @@ class PageController extends Controller
 
         return $this->inertia('Cms::Team', [
             'teams' => $teams,
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('Our Members'), 'url' => $canonical],
+                ]),
+                Schema::webPage([
+                    'title' => __('Our Members').' | '.$siteName,
+                    'description' => __('Meet the professionals behind our technology and consulting services.'),
+                    'url' => $canonical,
+                ]),
+            ],
         ], $meta);
     }
 
     public function testimonials()
     {
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('testimonials');
         $meta = (new Meta)
             ->title(__('Testimonials').' | '.$siteName)
             ->description(__('Read what our clients say about working with our team.'))
             ->keywords(__('testimonials, reviews, client feedback, success stories'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
         $testimonials = Testimonial::published()
             ->withDisplayRelations()
@@ -115,6 +176,17 @@ class PageController extends Controller
 
         return $this->inertia('Cms::Testimonials', [
             'testimonials' => $testimonials,
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('Testimonials'), 'url' => $canonical],
+                ]),
+                Schema::webPage([
+                    'title' => __('Testimonials').' | '.$siteName,
+                    'description' => __('Read what our clients say about working with our team.'),
+                    'url' => $canonical,
+                ]),
+            ],
         ], $meta);
     }
 
@@ -135,12 +207,14 @@ class PageController extends Controller
     public function faq()
     {
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('faq');
         $meta = (new Meta)
             ->title(__('FAQs').' | '.$siteName)
             ->description(__('Find answers to common questions about our services and policies.'))
             ->keywords(__('FAQ, help center, support, common questions'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
 
         $faqs = Faq::published()->ordered()->get();
@@ -195,6 +269,18 @@ class PageController extends Controller
         return $this->inertia('Cms::Faq', [
             'faqs' => $faqs,
             'faqSchema' => $faqSchema, // Pass schema to Blade template
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('FAQs'), 'url' => $canonical],
+                ]),
+                Schema::webPage([
+                    'type' => 'FAQPage',
+                    'title' => __('FAQs').' | '.$siteName,
+                    'description' => __('Find answers to common questions about our services and policies.'),
+                    'url' => $canonical,
+                ]),
+            ],
         ], $meta);
     }
 }

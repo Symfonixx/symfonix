@@ -321,6 +321,14 @@
                                         </Link>
                                     </li>
                                     <li>
+                                        <Link :href="route('product.index')">
+                                            <span
+                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
+                                                trans('Products')
+                                            }}
+                                        </Link>
+                                    </li>
+                                    <li>
                                         <Link :href="route('use-cases.index')">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
@@ -352,14 +360,14 @@
                                 <h4 class="footer-widget-two__title">{{ trans('Pages') }}</h4>
                                 <ul class="footer-widget-two__quick-links-list list-unstyled">
 
-                                    <!--                                    <li>-->
-                                    <!--                                        <Link :href="route('team')">-->
-                                    <!--                                            <span-->
-                                    <!--                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{-->
-                                    <!--                                                trans('Our Members')-->
-                                    <!--                                            }}-->
-                                    <!--                                        </Link>-->
-                                    <!--                                    </li>-->
+                                    <li>
+                                        <Link :href="route('team')">
+                                            <span
+                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
+                                                trans('Our Members')
+                                            }}
+                                        </Link>
+                                    </li>
 
                                     <li>
                                         <Link :href="route('faq')">

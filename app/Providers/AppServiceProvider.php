@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Translation\JsonFileLoader;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Modules\Base\Support\AdminEmail;
 
@@ -26,7 +27,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
+        $this->forceHttpsInProduction();
         $this->mergeAdminEmailConfig();
+    }
+
+    private function forceHttpsInProduction(): void
+    {
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 
     private function mergeAdminEmailConfig(): void

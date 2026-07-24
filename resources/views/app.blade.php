@@ -10,8 +10,14 @@ Developed By: Hadi Hilal
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="robots" content="{{ $page['props']['meta']['robots'] ?? 'index, follow' }}"/>
-    <meta name="googlebot" content="{{ $page['props']['meta']['robots'] ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' }}"/>
+    @php
+        $robotsDirectives = $page['props']['meta']['robots'] ?? 'index, follow';
+        $googlebotDirectives = str_contains(strtolower($robotsDirectives), 'noindex')
+            ? $robotsDirectives
+            : $robotsDirectives.', max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+    @endphp
+    <meta name="robots" content="{{ $robotsDirectives }}"/>
+    <meta name="googlebot" content="{{ $googlebotDirectives }}"/>
 
     @php
         $seo = \Modules\Base\Models\Seo::pluck('value', 'key');
@@ -52,13 +58,28 @@ Developed By: Hadi Hilal
 
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ url('/rss.xml') }}">
+    <link rel="manifest" href="{{ asset('images/favicon/site.webmanifest') }}">
+
+    @php
+        use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+        $supportedLocalesMeta = LaravelLocalization::getSupportedLocales();
+        $currentLocaleCode = app()->getLocale();
+        $currentOgLocale = str_replace('-', '_', $supportedLocalesMeta[$currentLocaleCode]['regional'] ?? $currentLocaleCode);
+        $currentUrl = url()->current();
+        $supportedLocales = array_keys($supportedLocalesMeta);
+        $defaultUrl = LaravelLocalization::getLocalizedURL(LaravelLocalization::getDefaultLocale(), $currentUrl);
+    @endphp
 
     {{-- Open Graph --}}
     <meta property="og:type" content="{{ $ogType }}">
     <meta property="og:site_name" content="{{ $seo->get('website_name') }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
-    <meta property="og:locale" content="{{ str_replace('-', '_', app()->getLocale()) }}">
-    <meta property="og:locale:alternate" content="{{ app()->getLocale() === 'ar' ? 'en_US' : 'ar_AR' }}">
+    <meta property="og:locale" content="{{ $currentOgLocale }}">
+    @foreach($supportedLocalesMeta as $localeCode => $localeMeta)
+        @if($localeCode !== $currentLocaleCode)
+            <meta property="og:locale:alternate" content="{{ str_replace('-', '_', $localeMeta['regional'] ?? $localeCode) }}">
+        @endif
+    @endforeach
     <meta property="og:title" content="{{ $ogTitle }}">
     <meta property="og:description" content="{{ $ogDescription }}">
     <meta property="og:image" content="{{ $ogImageUrl }}">
@@ -78,12 +99,6 @@ Developed By: Hadi Hilal
     <meta name="twitter:image" content="{{ $twitterImageUrl }}">
     <meta name="twitter:image:alt" content="{{ $metaProps['twitter']['title'] ?? $seo->get('website_name') }}">
 
-    @php
-        use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-        $currentUrl = url()->current();
-        $supportedLocales = array_keys(LaravelLocalization::getSupportedLocales());
-        $defaultUrl = LaravelLocalization::getLocalizedURL(LaravelLocalization::getDefaultLocale(), $currentUrl);
-    @endphp
     @foreach($supportedLocales as $hreflang)
         <link rel="alternate" hreflang="{{ $hreflang }}" href="{{ LaravelLocalization::getLocalizedURL($hreflang, $currentUrl) }}"/>
     @endforeach
@@ -707,7 +722,10 @@ Developed By: Hadi Hilal
         '@id' => $siteUrl . '/#organization',
         'name' => $orgName,
         'url' => $siteUrl,
-        'logo' => $logoUrl,
+        'logo' => $logoUrl ? [
+            '@type' => 'ImageObject',
+            'url' => $logoUrl,
+        ] : null,
         'image' => $logoUrl,
         'description' => $seo->get('website_desc'),
         'email' => $settings->get('email') ?: null,
@@ -721,7 +739,34 @@ Developed By: Hadi Hilal
             'contactType' => 'customer support',
             'telephone' => $settings->get('phone') ?: null,
             'email' => $settings->get('email') ?: null,
+            'availableLanguage' => array_keys(\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getSupportedLocales()),
         ]) : null,
+        'sameAs' => ! empty($sameAs) ? $sameAs : null,
+    ], fn ($v) => ! is_null($v) && $v !== '' && $v !== []);
+
+    $professionalService = array_filter([
+        '@type' => 'ProfessionalService',
+        '@id' => $siteUrl . '/#professionalservice',
+        'name' => $orgName,
+        'url' => $siteUrl,
+        'image' => $logoUrl,
+        'description' => $seo->get('website_desc'),
+        'telephone' => $settings->get('phone') ?: null,
+        'email' => $settings->get('email') ?: null,
+        'priceRange' => $settings->get('price_range') ?: null,
+        'address' => $settings->get('address') ? [
+            '@type' => 'PostalAddress',
+            'streetAddress' => $settings->get('address'),
+        ] : null,
+        'areaServed' => 'Worldwide',
+        'knowsAbout' => [
+            'Web Development',
+            'Mobile Applications',
+            'Artificial Intelligence',
+            'Cloud Computing',
+            'IT Consulting',
+        ],
+        'parentOrganization' => ['@id' => $siteUrl . '/#organization'],
         'sameAs' => ! empty($sameAs) ? $sameAs : null,
     ], fn ($v) => ! is_null($v) && $v !== '' && $v !== []);
 
@@ -731,13 +776,21 @@ Developed By: Hadi Hilal
         'name' => $orgName,
         'url' => $siteUrl,
         'description' => $seo->get('website_desc'),
-        'inLanguage' => app()->getLocale(),
+        'inLanguage' => array_keys(\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getSupportedLocales()),
         'publisher' => ['@id' => $siteUrl . '/#organization'],
+        'potentialAction' => [
+            '@type' => 'SearchAction',
+            'target' => [
+                '@type' => 'EntryPoint',
+                'urlTemplate' => rtrim(\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL(app()->getLocale(), url('/blogs')), '/').'?search={search_term_string}',
+            ],
+            'query-input' => 'required name=search_term_string',
+        ],
     ], fn ($v) => ! is_null($v) && $v !== '');
 
     $schemaGraph = [
         '@context' => 'https://schema.org',
-        '@graph' => [$organization, $website],
+        '@graph' => [$organization, $professionalService, $website],
     ];
 @endphp
 <script type="application/ld+json">

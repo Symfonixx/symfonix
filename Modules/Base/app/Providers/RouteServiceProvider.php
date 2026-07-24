@@ -5,6 +5,7 @@ namespace Modules\Base\Providers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Modules\Base\Http\Controllers\LlmsTxtController;
 use Modules\Base\Http\Controllers\RssController;
 use Modules\Base\Http\Controllers\SitemapController;
 
@@ -51,6 +52,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware(['web'])
             ->get('/rss.xml', [RssController::class, 'index'])
             ->name('rss');
+        Route::middleware(['web'])
+            ->get('/llms.txt', [LlmsTxtController::class, 'index'])
+            ->name('llms.txt');
+        Route::middleware(['web'])
+            ->get('/llms-full.txt', [LlmsTxtController::class, 'full'])
+            ->name('llms-full.txt');
 
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),

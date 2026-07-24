@@ -128,6 +128,59 @@ class Schema
     }
 
     /**
+     * WebPage schema for marketing / CMS pages.
+     */
+    public static function webPage(array $data): array
+    {
+        return array_filter([
+            '@context' => 'https://schema.org',
+            '@type' => $data['type'] ?? 'WebPage',
+            'name' => $data['title'] ?? null,
+            'description' => self::plain($data['description'] ?? null),
+            'url' => $data['url'] ?? null,
+            'inLanguage' => $data['locale'] ?? app()->getLocale(),
+            'isPartOf' => [
+                '@type' => 'WebSite',
+                '@id' => rtrim(config('app.url') ?: url('/'), '/').'/#website',
+            ],
+            'about' => self::publisher(),
+        ], fn ($v) => ! is_null($v) && $v !== '' && $v !== []);
+    }
+
+    /**
+     * ItemList schema for catalog / index pages.
+     *
+     * @param  array<int, array{name: string, url: string}>  $items
+     */
+    public static function itemList(string $name, array $items, ?string $url = null): array
+    {
+        $elements = [];
+        $position = 1;
+
+        foreach ($items as $item) {
+            if (empty($item['name']) || empty($item['url'])) {
+                continue;
+            }
+
+            $elements[] = [
+                '@type' => 'ListItem',
+                'position' => $position++,
+                'name' => $item['name'],
+                'url' => $item['url'],
+            ];
+        }
+
+        return array_filter([
+            '@context' => 'https://schema.org',
+            '@type' => 'ItemList',
+            'name' => $name,
+            'url' => $url,
+            'numberOfItems' => count($elements),
+            'itemListElement' => $elements,
+        ], fn ($v) => ! is_null($v) && $v !== '' && $v !== []);
+    }
+
+    /**
      * Shared Organization node used as author/publisher/provider.
      */
     protected static function publisher(): array

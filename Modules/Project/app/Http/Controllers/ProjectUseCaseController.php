@@ -22,16 +22,32 @@ class ProjectUseCaseController extends Controller
         $useCases = $this->useCaseRepository->publishedPaginate(9);
 
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('use-cases.index');
         $meta = (new Meta)
             ->title(__('project::use_case.pages.website_title').' | '.$siteName)
             ->description(__('project::use_case.meta.index_description'))
             ->keywords(__('project::use_case.meta.index_keywords'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
+
+        $listItems = $useCases->getCollection()->take(20)->map(function (ProjectUseCase $item) use ($locale) {
+            return [
+                'name' => $item->getTranslation('title', $locale) ?: $item->title,
+                'url' => route('use-cases.show', ['slug' => $item->slug]),
+            ];
+        })->values()->all();
 
         return $this->inertia('Project::UseCaseIndex', [
             'useCases' => $useCases->through(fn (ProjectUseCase $item) => $this->mapUseCase($item, $locale)),
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('project::use_case.pages.website_title'), 'url' => $canonical],
+                ]),
+                Schema::itemList(__('project::use_case.pages.website_title'), $listItems, $canonical),
+            ],
         ], $meta);
     }
 

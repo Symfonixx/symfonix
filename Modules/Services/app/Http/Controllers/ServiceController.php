@@ -102,13 +102,22 @@ class ServiceController extends Controller
                 ];
             });
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('services.index');
         $meta = (new Meta)
             ->title(__('Our Services').' | '.$siteName)
             ->description(__('Discover our IT services designed to scale and modernize your business.'))
             ->keywords(__('IT services, web development, mobile apps, AI solutions, cloud services'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
+
+        $listItems = collect($services->items() ?? $services)->take(20)->map(function ($service) {
+            return [
+                'name' => is_array($service) ? ($service['title'] ?? '') : ($service->title ?? ''),
+                'url' => route('services.show', ['slug' => is_array($service) ? $service['slug'] : $service->slug]),
+            ];
+        })->filter(fn ($item) => $item['name'] !== '' && $item['url'] !== '')->values()->all();
 
         return $this->inertia('Services::ServiceIndex', [
             'services' => $services,
@@ -118,6 +127,13 @@ class ServiceController extends Controller
             'filters' => [
                 'search' => $request->search,
                 'category' => $request->category,
+            ],
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('Our Services'), 'url' => $canonical],
+                ]),
+                Schema::itemList(__('Our Services'), $listItems, $canonical),
             ],
         ], $meta);
     }

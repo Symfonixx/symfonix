@@ -100,13 +100,22 @@ class BlogController extends Controller
                 ];
             });
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('blogs.index');
         $meta = (new Meta)
             ->title(__('Blogs').' | '.$siteName)
             ->description(__('Explore our latest blogs, insights, and technology updates.'))
             ->keywords(__('blogs, news, insights, technology trends'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
+
+        $listItems = collect($blogs->items() ?? $blogs)->take(20)->map(function ($blog) {
+            return [
+                'name' => is_array($blog) ? ($blog['title'] ?? '') : ($blog->title ?? ''),
+                'url' => route('blogs.show', ['slug' => is_array($blog) ? $blog['slug'] : $blog->slug]),
+            ];
+        })->filter(fn ($item) => $item['name'] !== '' && $item['url'] !== '')->values()->all();
 
         return $this->inertia('Cms::BlogIndex', [
             'blogs' => $blogs,
@@ -115,6 +124,13 @@ class BlogController extends Controller
             'filters' => [
                 'search' => $request->search,
                 'category' => $request->category,
+            ],
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('Blogs'), 'url' => $canonical],
+                ]),
+                Schema::itemList(__('Blogs'), $listItems, $canonical),
             ],
         ], $meta);
     }

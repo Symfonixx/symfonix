@@ -1,6 +1,6 @@
 <template>
     <Head>
-        <title>{{service.title}}</title>
+        <title>{{ metaTitle }}</title>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
     </Head>
     <app-layout>
@@ -10,7 +10,6 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h2>{{ getServiceTitle(service) }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li>
@@ -97,7 +96,7 @@
                                     </li>
                                 </ul>
                             <div class="services-details__img-1 my-3" v-if="service.image_link">
-                                <img :src="service.image_link" :alt="getServiceTitle(service)">
+                                <img :src="service.image_link" :alt="getServiceTitle(service)" loading="lazy" decoding="async">
                             </div>
 
                             <div class="services-details__text-1" style="    line-height: 27px !important;">

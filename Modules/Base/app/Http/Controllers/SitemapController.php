@@ -272,7 +272,7 @@ class SitemapController extends Controller
             }
         }
 
-        return ['en', 'ar', 'tr'];
+        return ['en', 'ar', 'de', 'tr'];
     }
 
     private function buildLocalizedUrl(string $path, string $locale): string

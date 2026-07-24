@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Base\Support\Schema;
 use Modules\Base\Support\AdminEmail;
 use Modules\CRM\Models\ContactForm;
 
@@ -17,15 +18,30 @@ class ContactUsController extends Controller
     public function index()
     {
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('contact-us');
         $meta = (new Meta)
             ->title(__('Contact Us').' | '.$siteName)
             ->description(__('Contact our team for support, inquiries, or project discussions.'))
             ->keywords(__('contact, support, get in touch, customer service'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
 
-        return $this->inertia('CRM::Index', [], $meta);
+        return $this->inertia('CRM::Index', [
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('Contact Us'), 'url' => $canonical],
+                ]),
+                Schema::webPage([
+                    'type' => 'ContactPage',
+                    'title' => __('Contact Us').' | '.$siteName,
+                    'description' => __('Contact our team for support, inquiries, or project discussions.'),
+                    'url' => $canonical,
+                ]),
+            ],
+        ], $meta);
     }
 
     public function store(Request $request)

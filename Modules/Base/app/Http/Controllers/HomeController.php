@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Cache;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
+use Modules\Base\Support\Schema;
 use Modules\Cms\Models\Blog;
 use Modules\Product\Models\Product;
 use Modules\Project\Models\ProjectUseCase;
@@ -123,12 +124,14 @@ class HomeController extends Controller
         });
 
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('home');
         $meta = (new Meta)
             ->title(__('Home').' | '.$siteName)
             ->description(__('Empowering businesses with modern web, mobile, AI, and cloud solutions.'))
             ->keywords(__('IT solutions, web development, mobile apps, AI automation, cloud services'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
 
         return $this->inertia('Base::Index', [
@@ -138,6 +141,14 @@ class HomeController extends Controller
             'teams' => $teams,
             'useCases' => $useCases,
             'products' => $products,
+            'structuredData' => [
+                Schema::webPage([
+                    'type' => 'WebPage',
+                    'title' => __('Home').' | '.$siteName,
+                    'description' => __('Empowering businesses with modern web, mobile, AI, and cloud solutions.'),
+                    'url' => $canonical,
+                ]),
+            ],
         ], $meta);
     }
 

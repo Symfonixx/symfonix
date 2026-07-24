@@ -23,6 +23,15 @@ class ContentSecurityPolicy
         // Set Content-Security-Policy header
         $response->headers->set('Content-Security-Policy', $directives);
 
+        // SEO / security hygiene headers for public responses
+        $response->headers->set('X-Content-Type-Options', 'nosniff');
+        $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
+        $response->headers->set('X-Frame-Options', 'SAMEORIGIN');
+
+        if (config('app.env') === 'production') {
+            $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+        }
+
         return $response;
     }
 

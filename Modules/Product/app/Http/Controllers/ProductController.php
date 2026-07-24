@@ -22,16 +22,32 @@ class ProductController extends Controller
         $products = $this->productRepository->publishedPaginate(12);
 
         $siteName = Seo::get('website_name', config('app.name'));
+        $canonical = route('product.index');
         $meta = (new Meta)
             ->title(__('product::product.pages.catalog_title').' | '.$siteName)
             ->description(__('product::product.meta.index_description'))
             ->keywords(__('product::product.meta.index_keywords'))
             ->ogImage()
             ->twitterImage()
+            ->canonical($canonical)
             ->toArray();
+
+        $listItems = $products->getCollection()->take(20)->map(function (Product $product) use ($locale) {
+            return [
+                'name' => $product->getTranslation('name', $locale) ?: $product->name,
+                'url' => route('product.show', ['slug' => $product->slug]),
+            ];
+        })->values()->all();
 
         return $this->inertia('Product::ProductIndex', [
             'products' => $products->through(fn (Product $product) => $this->mapProduct($product, $locale)),
+            'structuredData' => [
+                Schema::breadcrumbs([
+                    ['name' => __('Home'), 'url' => route('home')],
+                    ['name' => __('product::product.pages.catalog_title'), 'url' => $canonical],
+                ]),
+                Schema::itemList(__('product::product.pages.catalog_title'), $listItems, $canonical),
+            ],
         ], $meta);
     }
 
