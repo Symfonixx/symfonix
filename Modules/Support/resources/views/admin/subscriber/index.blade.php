@@ -18,7 +18,7 @@
     </div>
 @endsection
 <x-admin-layout>
-    <x-admin.table :model="$model" search="Search In Contacts"
+    <x-admin.table :model="$model" search="Search In Subscribers"
                    :formUrl="route('admin.subscribers.deleteMulti')">
         <!--begin::Table head-->
         <thead>

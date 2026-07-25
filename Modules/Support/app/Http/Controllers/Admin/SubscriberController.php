@@ -21,7 +21,9 @@ class SubscriberController extends Controller
 
     public function index()
     {
-        $model = Subscriber::latest()->paginate(config('core.page_size'));
+        $model = Subscriber::latest()
+            ->paginate(config('core.page_size'))
+            ->withQueryString();
 
         return view('support::admin.subscriber.index', compact('model'));
     }

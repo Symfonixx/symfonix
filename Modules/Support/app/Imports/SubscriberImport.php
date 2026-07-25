@@ -2,58 +2,60 @@
 
 namespace Modules\Support\app\Imports;
 
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Modules\Support\Models\Subscriber;
 
-class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
+class SubscriberImport implements SkipsEmptyRows, ToModel, WithHeadingRow, WithValidation
 {
     public function model(array $row)
     {
         // WithHeadingRow slugifies headers: Email → email, IP Address → ip_address, etc.
-        $email = $row['email'] ?? $row['Email'] ?? null;
+        $email = trim((string) ($row['email'] ?? ''));
 
-        if (! $email) {
-            return null; // Skip rows without email
+        if ($email === '') {
+            return null;
         }
 
-        // Check if subscriber with this email already exists
         $subscriber = Subscriber::where('email', $email)->first();
 
-        $ipAddress = $row['ip_address'] ?? $row['IP Address'] ?? null;
+        $ipAddress = $row['ip_address'] ?? null;
         $ipAddress = filled($ipAddress) ? trim((string) $ipAddress) : null;
-        $lang = $row['language'] ?? $row['Language'] ?? $row['lang'] ?? 'en';
 
-        // Handle blocked field - can be Yes/No, 1/0, true/false
-        $blocked = $row['blocked'] ?? $row['Blocked'] ?? 'No';
-        $isBlocked = false;
-        if (is_string($blocked)) {
-            $blockedLower = strtolower(trim($blocked));
-            $isBlocked = in_array($blockedLower, ['yes', '1', 'true', 'y']);
-        } elseif (is_numeric($blocked)) {
-            $isBlocked = $blocked == 1;
-        } elseif (is_bool($blocked)) {
-            $isBlocked = $blocked;
-        }
+        $lang = $row['language'] ?? $row['lang'] ?? null;
+        $lang = filled($lang) ? substr(trim((string) $lang), 0, 2) : null;
+
+        $hasBlocked = array_key_exists('blocked', $row)
+            && $row['blocked'] !== null
+            && $row['blocked'] !== '';
+        $isBlocked = $hasBlocked ? $this->parseBlocked($row['blocked']) : null;
 
         if ($subscriber) {
-            // Update existing subscriber (ignore ID and Created At from import)
-            $subscriber->update([
-                'ip_address' => $ipAddress ?? $subscriber->ip_address,
-                'lang' => $lang ?? $subscriber->lang ?? 'en',
-                'blocked' => $isBlocked,
-            ]);
+            $data = [];
+            if ($ipAddress !== null) {
+                $data['ip_address'] = $ipAddress;
+            }
+            if ($lang !== null) {
+                $data['lang'] = $lang;
+            }
+            if ($isBlocked !== null) {
+                $data['blocked'] = $isBlocked;
+            }
 
-            return null; // Don't create a new model
+            if ($data !== []) {
+                $subscriber->update($data);
+            }
+
+            return null;
         }
 
-        // Create new subscriber (ignore ID and Created At from import)
         return new Subscriber([
             'email' => $email,
             'ip_address' => $ipAddress ?? '0.0.0.0',
             'lang' => $lang ?? 'en',
-            'blocked' => $isBlocked,
+            'blocked' => $isBlocked ?? false,
         ]);
     }
 
@@ -66,5 +68,22 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
             'language' => 'nullable|string|max:2',
             'blocked' => 'nullable',
         ];
+    }
+
+    private function parseBlocked(mixed $blocked): bool
+    {
+        if (is_bool($blocked)) {
+            return $blocked;
+        }
+
+        if (is_numeric($blocked)) {
+            return (int) $blocked === 1;
+        }
+
+        if (is_string($blocked)) {
+            return in_array(strtolower(trim($blocked)), ['yes', '1', 'true', 'y'], true);
+        }
+
+        return false;
     }
 }

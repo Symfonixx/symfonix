@@ -2,8 +2,10 @@
 @php
     $rowCount = null;
     if (isset($model)) {
+        // Use total() for paginators so an empty page (e.g. out-of-range) still
+        // shows pagination instead of the "no records" empty state.
         $rowCount = $model instanceof \Illuminate\Pagination\LengthAwarePaginator
-            ? $model->count()
+            ? $model->total()
             : (is_countable($model) ? count($model) : 0);
     }
     $isEmpty = $rowCount !== null && $rowCount === 0;
@@ -79,16 +81,18 @@
             </div>
         </div>
 
-        @if(isset($model) && $model instanceof \Illuminate\Pagination\LengthAwarePaginator && $model->hasPages())
+        @if(isset($model) && $model instanceof \Illuminate\Pagination\LengthAwarePaginator && $model->total() > 0)
             <div class="card-footer d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <span class="text-muted fs-7">
                     {{ __('Showing :from–:to of :total', [
-                        'from' => $model->firstItem(),
-                        'to' => $model->lastItem(),
+                        'from' => $model->firstItem() ?? 0,
+                        'to' => $model->lastItem() ?? 0,
                         'total' => $model->total(),
                     ]) }}
                 </span>
-                {!! $model->withQueryString()->links() !!}
+                @if($model->hasPages())
+                    {!! $model->withQueryString()->links() !!}
+                @endif
             </div>
         @endif
     @endif
