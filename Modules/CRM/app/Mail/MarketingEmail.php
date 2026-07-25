@@ -14,7 +14,10 @@ class MarketingEmail extends Mailable implements ShouldQueue
     public function __construct(
         public string $emailSubject,
         public string $emailBody,
-    ) {}
+        ?string $locale = null,
+    ) {
+        $this->locale($locale ?: app()->getLocale());
+    }
 
     public function build(): self
     {

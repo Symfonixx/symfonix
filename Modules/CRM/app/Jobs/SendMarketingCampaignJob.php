@@ -26,6 +26,7 @@ class SendMarketingCampaignJob implements ShouldQueue
     public function __construct(
         public int $campaignId,
         public array $recipients,
+        public string $locale = 'en',
     ) {}
 
     public function handle(): void
@@ -33,7 +34,11 @@ class SendMarketingCampaignJob implements ShouldQueue
         $campaign = MarketingCampaign::query()->findOrFail($this->campaignId);
 
         foreach ($this->recipients as $email) {
-            Mail::to($email)->queue(new MarketingEmail($campaign->subject, $campaign->body));
+            Mail::to($email)->queue(new MarketingEmail(
+                $campaign->subject,
+                $campaign->body,
+                $this->locale,
+            ));
         }
 
         $campaign->markAsFinished();

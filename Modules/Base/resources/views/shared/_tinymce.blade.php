@@ -64,10 +64,14 @@
                 },
                 @if(app()->getLocale() === 'ar')
                 language: 'ar',
+                directionality: 'rtl',
                 @endif
                 setup: function (editor) {
                     editor.on('init', function () {
                         editor.targetElm.removeAttribute('required');
+                        @if(app()->getLocale() === 'ar')
+                        editor.getBody().setAttribute('dir', 'rtl');
+                        @endif
                     });
                     editor.on('SetContent', function () {
                         cleanFontStyles(editor);

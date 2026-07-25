@@ -40,7 +40,11 @@ class MarketingEmailService
             'recipient_sources' => $this->buildRecipientSources($recipientData),
         ]);
 
-        SendMarketingCampaignJob::dispatch($campaign->id, $recipients->all());
+        SendMarketingCampaignJob::dispatch(
+            $campaign->id,
+            $recipients->all(),
+            app()->getLocale(),
+        );
 
         return $campaign;
     }
