@@ -402,9 +402,9 @@
       "_App-CdxgP1mu.js"
     ]
   },
-  "_App-!~{00D}~.js": {
+  "_App-!~{00H}~.js": {
     "file": "assets/App-qb7Y01TY.css",
-    "src": "_App-!~{00D}~.js"
+    "src": "_App-!~{00H}~.js"
   },
   "_App-CdxgP1mu.js": {
     "file": "assets/App-CdxgP1mu.js",
@@ -430,9 +430,9 @@
       "_vendor-vue-BAOtfucT.js"
     ]
   },
-  "_PortalSelect-!~{00J}~.js": {
+  "_PortalSelect-!~{00N}~.js": {
     "file": "assets/PortalSelect-Dkweyxcv.css",
-    "src": "_PortalSelect-!~{00J}~.js"
+    "src": "_PortalSelect-!~{00N}~.js"
   },
   "_PortalSelect-Cnn_4vUA.js": {
     "file": "assets/PortalSelect-Cnn_4vUA.js",
@@ -454,9 +454,9 @@
       "_usePortalTranslations-BXjue2Wo.js"
     ]
   },
-  "_ProductCard-!~{00F}~.js": {
+  "_ProductCard-!~{00J}~.js": {
     "file": "assets/ProductCard-DLp2OA_w.css",
-    "src": "_ProductCard-!~{00F}~.js"
+    "src": "_ProductCard-!~{00J}~.js"
   },
   "_ProductCard-BpQ2ZuCg.js": {
     "file": "assets/ProductCard-BpQ2ZuCg.js",
@@ -469,9 +469,9 @@
       "assets/ProductCard-DLp2OA_w.css"
     ]
   },
-  "_ServiceCardThree-!~{00C}~.js": {
+  "_ServiceCardThree-!~{00G}~.js": {
     "file": "assets/ServiceCardThree-C_ErpN_h.css",
-    "src": "_ServiceCardThree-!~{00C}~.js"
+    "src": "_ServiceCardThree-!~{00G}~.js"
   },
   "_ServiceCardThree-Tv1XEz_W.js": {
     "file": "assets/ServiceCardThree-Tv1XEz_W.js",
@@ -484,9 +484,9 @@
       "assets/ServiceCardThree-C_ErpN_h.css"
     ]
   },
-  "_UseCaseCard-!~{00E}~.js": {
+  "_UseCaseCard-!~{00I}~.js": {
     "file": "assets/UseCaseCard-UHevqih-.css",
-    "src": "_UseCaseCard-!~{00E}~.js"
+    "src": "_UseCaseCard-!~{00I}~.js"
   },
   "_UseCaseCard-sHv9Ol00.js": {
     "file": "assets/UseCaseCard-sHv9Ol00.js",
@@ -522,33 +522,79 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/js/Pages/Error.vue": {
+    "file": "assets/Error-DcwQCpMW.js",
+    "name": "Error",
+    "src": "resources/js/Pages/Error.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-vue-BAOtfucT.js",
+      "_App-CdxgP1mu.js",
+      "_vendor-ui-XNB9EfQd.js"
+    ]
+  },
+  "resources/js/Pages/Error400.vue": {
+    "file": "assets/Error400-By6qB_f9.js",
+    "name": "Error400",
+    "src": "resources/js/Pages/Error400.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/Pages/Error.vue",
+      "_vendor-vue-BAOtfucT.js",
+      "_App-CdxgP1mu.js",
+      "_vendor-ui-XNB9EfQd.js"
+    ]
+  },
+  "resources/js/Pages/Error401.vue": {
+    "file": "assets/Error401-CBMCI_73.js",
+    "name": "Error401",
+    "src": "resources/js/Pages/Error401.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/Pages/Error.vue",
+      "_vendor-vue-BAOtfucT.js",
+      "_App-CdxgP1mu.js",
+      "_vendor-ui-XNB9EfQd.js"
+    ]
+  },
+  "resources/js/Pages/Error403.vue": {
+    "file": "assets/Error403-CtTwcYXR.js",
+    "name": "Error403",
+    "src": "resources/js/Pages/Error403.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/Pages/Error.vue",
+      "_vendor-vue-BAOtfucT.js",
+      "_App-CdxgP1mu.js",
+      "_vendor-ui-XNB9EfQd.js"
+    ]
+  },
   "resources/js/Pages/Error404.vue": {
-    "file": "assets/Error404-DB6nBE8u.js",
+    "file": "assets/Error404-B6QJKjET.js",
     "name": "Error404",
     "src": "resources/js/Pages/Error404.vue",
     "isDynamicEntry": true,
     "imports": [
+      "resources/js/Pages/Error.vue",
       "_vendor-vue-BAOtfucT.js",
       "_App-CdxgP1mu.js",
       "_vendor-ui-XNB9EfQd.js"
     ]
   },
   "resources/js/Pages/Error500.vue": {
-    "file": "assets/Error500-xqN2s93B.js",
+    "file": "assets/Error500-DmwmU18W.js",
     "name": "Error500",
     "src": "resources/js/Pages/Error500.vue",
     "isDynamicEntry": true,
     "imports": [
+      "resources/js/Pages/Error.vue",
       "_vendor-vue-BAOtfucT.js",
       "_App-CdxgP1mu.js",
       "_vendor-ui-XNB9EfQd.js"
-    ],
-    "css": [
-      "assets/Error500-BJye060Z.css"
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-iLAtREPh.js",
+    "file": "assets/app-kfVJoK8j.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -587,6 +633,10 @@
       "Modules/User/resources/assets/js/Pages/Portal/Dashboard.vue",
       "Modules/User/resources/assets/js/Pages/Portal/Profile.vue",
       "Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Index.vue",
+      "resources/js/Pages/Error.vue",
+      "resources/js/Pages/Error400.vue",
+      "resources/js/Pages/Error401.vue",
+      "resources/js/Pages/Error403.vue",
       "resources/js/Pages/Error404.vue",
       "resources/js/Pages/Error500.vue"
     ]

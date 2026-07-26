@@ -71,8 +71,8 @@ class HandleInertiaRequests extends Middleware
             ], [
                 'url' => rtrim((string) config('app.url'), '/'),
                 'port' => null,
-                'defaults' => [],
-                'routes' => [],
+                'defaults' => (object) [],
+                'routes' => (object) [],
                 'location' => $request->url(),
             ]),
             'translations' => $safe(fn () => $this->getTranslations(), []),

@@ -51,6 +51,9 @@ return Application::configure(basePath: dirname(__DIR__))
 
             $status = $response->getStatusCode();
             $pages = [
+                400 => 'Error400',
+                401 => 'Error401',
+                403 => 'Error403',
                 404 => 'Error404',
                 500 => 'Error500',
                 503 => 'Error500',

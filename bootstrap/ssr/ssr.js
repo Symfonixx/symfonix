@@ -3,7 +3,7 @@ import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrInterpolate, ssrR
 import { usePage, Link, useForm, router, Head, createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
-const _sfc_main$H = {
+const _sfc_main$M = {
   __name: "HomeBlogCard",
   __ssrInlineRender: true,
   props: {
@@ -318,11 +318,11 @@ const _sfc_main$H = {
     };
   }
 };
-const _sfc_setup$H = _sfc_main$H.setup;
-_sfc_main$H.setup = (props, ctx) => {
+const _sfc_setup$M = _sfc_main$M.setup;
+_sfc_main$M.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/HomeBlogCard.vue");
-  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -331,7 +331,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$G = {
+const _sfc_main$L = {
   __name: "ServiceCardThree",
   __ssrInlineRender: true,
   props: {
@@ -484,14 +484,14 @@ const _sfc_main$G = {
     };
   }
 };
-const _sfc_setup$G = _sfc_main$G.setup;
-_sfc_main$G.setup = (props, ctx) => {
+const _sfc_setup$L = _sfc_main$L.setup;
+_sfc_main$L.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
-  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
+  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-6826fe71"]]);
-const _sfc_main$F = {
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-6826fe71"]]);
+const _sfc_main$K = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
   setup(__props) {
@@ -877,13 +877,13 @@ const _sfc_main$F = {
     };
   }
 };
-const _sfc_setup$F = _sfc_main$F.setup;
-_sfc_main$F.setup = (props, ctx) => {
+const _sfc_setup$K = _sfc_main$K.setup;
+_sfc_main$K.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuList.vue");
-  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
+  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
 };
-const _sfc_main$E = {
+const _sfc_main$J = {
   __name: "MainMenuNav",
   __ssrInlineRender: true,
   setup(__props) {
@@ -938,7 +938,7 @@ const _sfc_main$E = {
         _: 1
       }, _parent));
       _push(`</div></div><div class="main-menu-two__main-menu-box" data-v-bcca7c9f><a href="#" class="mobile-nav__toggler" aria-label="Open mobile menu" data-v-bcca7c9f><i class="fa fa-bars" data-v-bcca7c9f></i></a>`);
-      _push(ssrRenderComponent(_sfc_main$F, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$K, null, null, _parent));
       _push(`</div><div class="main-menu-two__right d-none d-md-flex align-items-center" data-v-bcca7c9f>`);
       if (!auth.value) {
         _push(`<div class="main-menu-two__btn-box" data-v-bcca7c9f>`);
@@ -965,14 +965,14 @@ const _sfc_main$E = {
     };
   }
 };
-const _sfc_setup$E = _sfc_main$E.setup;
-_sfc_main$E.setup = (props, ctx) => {
+const _sfc_setup$J = _sfc_main$J.setup;
+_sfc_main$J.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuNav.vue");
-  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
+  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
 };
-const MainMenuNav = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-bcca7c9f"]]);
-const _sfc_main$D = {
+const MainMenuNav = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-bcca7c9f"]]);
+const _sfc_main$I = {
   __name: "App",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1585,7 +1585,7 @@ const _sfc_main$D = {
         _: 1
       }, _parent));
       _push(`</div><div class="mobile-nav__container">`);
-      _push(ssrRenderComponent(_sfc_main$F, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$K, null, null, _parent));
       _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
       if (settings.value.twitter) {
         _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
@@ -1616,13 +1616,13 @@ const _sfc_main$D = {
     };
   }
 };
-const _sfc_setup$D = _sfc_main$D.setup;
-_sfc_main$D.setup = (props, ctx) => {
+const _sfc_setup$I = _sfc_main$I.setup;
+_sfc_main$I.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/App.vue");
-  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
+  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
 };
-const _sfc_main$C = {
+const _sfc_main$H = {
   __name: "UseCaseCard",
   __ssrInlineRender: true,
   props: {
@@ -1760,14 +1760,14 @@ const _sfc_main$C = {
     };
   }
 };
-const _sfc_setup$C = _sfc_main$C.setup;
-_sfc_main$C.setup = (props, ctx) => {
+const _sfc_setup$H = _sfc_main$H.setup;
+_sfc_main$H.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UseCaseCard.vue");
-  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
+  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
 };
-const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-0c9c4e06"]]);
-const _sfc_main$B = {
+const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__scopeId", "data-v-0c9c4e06"]]);
+const _sfc_main$G = {
   __name: "ProductCard",
   __ssrInlineRender: true,
   props: {
@@ -1899,21 +1899,21 @@ const _sfc_main$B = {
     };
   }
 };
-const _sfc_setup$B = _sfc_main$B.setup;
-_sfc_main$B.setup = (props, ctx) => {
+const _sfc_setup$G = _sfc_main$G.setup;
+_sfc_main$G.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
-  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
+  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
 };
-const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-80e9306c"]]);
-const __default__$h = {
+const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-80e9306c"]]);
+const __default__$g = {
   components: {
-    AppLayout: _sfc_main$D,
+    AppLayout: _sfc_main$I,
     UseCaseCard,
     ProductCard
   }
 };
-const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
+const _sfc_main$F = /* @__PURE__ */ Object.assign(__default__$g, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -2355,7 +2355,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="banner-one" data-v-8b32445e${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
@@ -2569,7 +2569,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               _push2(`</div>`);
               if (featuredPost.value) {
                 _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-8b32445e${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$H, {
+                _push2(ssrRenderComponent(_sfc_main$M, {
                   post: featuredPost.value,
                   variant: "featured",
                   locale: locale.value,
@@ -2582,7 +2582,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               }
               _push2(`</div></div><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="blog-two__right" data-v-8b32445e${_scopeId}><!--[-->`);
               ssrRenderList(sidePosts.value, (post, idx) => {
-                _push2(ssrRenderComponent(_sfc_main$H, {
+                _push2(ssrRenderComponent(_sfc_main$M, {
                   key: post.id || idx,
                   post,
                   variant: "compact",
@@ -3413,7 +3413,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                           key: 0,
                           class: "blog-two__left-content-box d-none d-md-block"
                         }, [
-                          createVNode(_sfc_main$H, {
+                          createVNode(_sfc_main$M, {
                             post: featuredPost.value,
                             variant: "featured",
                             locale: locale.value,
@@ -3426,7 +3426,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                     createVNode("div", { class: "col-xl-6" }, [
                       createVNode("div", { class: "blog-two__right" }, [
                         (openBlock(true), createBlock(Fragment, null, renderList(sidePosts.value, (post, idx) => {
-                          return openBlock(), createBlock(_sfc_main$H, {
+                          return openBlock(), createBlock(_sfc_main$M, {
                             key: post.id || idx,
                             post,
                             variant: "compact",
@@ -3693,23 +3693,23 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
     };
   }
 });
-const _sfc_setup$A = _sfc_main$A.setup;
-_sfc_main$A.setup = (props, ctx) => {
+const _sfc_setup$F = _sfc_main$F.setup;
+_sfc_main$F.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Base/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
+  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
 };
-const Index = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-8b32445e"]]);
+const Index = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__scopeId", "data-v-8b32445e"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$g = {
+const __default__$f = {
   components: {
-    AppLayout: _sfc_main$D
+    AppLayout: _sfc_main$I
   }
 };
-const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$g, {
+const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$f, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -3880,7 +3880,7 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$g, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4206,22 +4206,22 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$g, {
     };
   }
 });
-const _sfc_setup$z = _sfc_main$z.setup;
-_sfc_main$z.setup = (props, ctx) => {
+const _sfc_setup$E = _sfc_main$E.setup;
+_sfc_main$E.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/CRM/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
+  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
 };
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$z
+  default: _sfc_main$E
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$f = {
+const __default__$e = {
   components: {
-    AppLayout: _sfc_main$D
+    AppLayout: _sfc_main$I
   }
 };
-const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$f, {
+const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$e, {
   __name: "AboutUs",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4436,7 +4436,7 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$f, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("About Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5048,17 +5048,17 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$f, {
     };
   }
 });
-const _sfc_setup$y = _sfc_main$y.setup;
-_sfc_main$y.setup = (props, ctx) => {
+const _sfc_setup$D = _sfc_main$D.setup;
+_sfc_main$D.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/AboutUs.vue");
-  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
+  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
 };
 const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$y
+  default: _sfc_main$D
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$x = {
+const _sfc_main$C = {
   __name: "CtaTwo",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5091,20 +5091,20 @@ const _sfc_main$x = {
     };
   }
 };
-const _sfc_setup$x = _sfc_main$x.setup;
-_sfc_main$x.setup = (props, ctx) => {
+const _sfc_setup$C = _sfc_main$C.setup;
+_sfc_main$C.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/CtaTwo.vue");
-  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
+  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
-const __default__$e = {
+const __default__$d = {
   components: {
-    AppLayout: _sfc_main$D,
-    HomeBlogCard: _sfc_main$H,
-    CtaTwo: _sfc_main$x
+    AppLayout: _sfc_main$I,
+    HomeBlogCard: _sfc_main$M,
+    CtaTwo: _sfc_main$C
   }
 };
-const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
+const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$d, {
   __name: "BlogIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5228,7 +5228,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5252,7 +5252,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
               _push2(`<!--[-->`);
               ssrRenderList(blogs.value.data, (blog) => {
                 _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$H, {
+                _push2(ssrRenderComponent(_sfc_main$M, {
                   post: blog,
                   variant: "featured",
                   locale: locale.value,
@@ -5342,7 +5342,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -5397,7 +5397,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
                         class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
                         "data-wow-delay": "100ms"
                       }, [
-                        createVNode(_sfc_main$H, {
+                        createVNode(_sfc_main$M, {
                           post: blog,
                           variant: "featured",
                           locale: locale.value,
@@ -5473,7 +5473,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -5483,24 +5483,24 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
     };
   }
 });
-const _sfc_setup$w = _sfc_main$w.setup;
-_sfc_main$w.setup = (props, ctx) => {
+const _sfc_setup$B = _sfc_main$B.setup;
+_sfc_main$B.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogIndex.vue");
-  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
+  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
 const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$w
+  default: _sfc_main$B
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$d = {
+const __default__$c = {
   components: {
-    AppLayout: _sfc_main$D,
-    HomeBlogCard: _sfc_main$H,
-    CtaTwo: _sfc_main$x
+    AppLayout: _sfc_main$I,
+    HomeBlogCard: _sfc_main$M,
+    CtaTwo: _sfc_main$C
   }
 };
-const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
+const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$c, {
   __name: "BlogShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5566,7 +5566,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5760,7 +5760,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(`<div class="container"${_scopeId}><div class="related-blogs mt-20 mt-xs-10"${_scopeId}><h4 class="mb-5"${_scopeId}>${ssrInterpolate(trans("Related Blogs"))}:</h4><div class="row"${_scopeId}><!--[-->`);
               ssrRenderList(relatedBlogs.value, (relatedBlog) => {
                 _push2(`<div class="col-md-4 mb-30"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$H, {
+                _push2(ssrRenderComponent(_sfc_main$M, {
                   post: relatedBlog,
                   variant: "featured",
                   locale: locale.value,
@@ -5774,7 +5774,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(`<!---->`);
             }
             _push2(`</section>`);
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -6079,7 +6079,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
                           key: relatedBlog.id,
                           class: "col-md-4 mb-30"
                         }, [
-                          createVNode(_sfc_main$H, {
+                          createVNode(_sfc_main$M, {
                             post: relatedBlog,
                             variant: "featured",
                             locale: locale.value,
@@ -6092,7 +6092,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
                   ])
                 ])) : createCommentVNode("", true)
               ]),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -6102,23 +6102,23 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
     };
   }
 });
-const _sfc_setup$v = _sfc_main$v.setup;
-_sfc_main$v.setup = (props, ctx) => {
+const _sfc_setup$A = _sfc_main$A.setup;
+_sfc_main$A.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogShow.vue");
-  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
+  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
 const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$v
+  default: _sfc_main$A
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$c = {
+const __default__$b = {
   components: {
-    AppLayout: _sfc_main$D,
-    CtaTwo: _sfc_main$x
+    AppLayout: _sfc_main$I,
+    CtaTwo: _sfc_main$C
   }
 };
-const _sfc_main$u = /* @__PURE__ */ Object.assign(__default__$c, {
+const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$b, {
   __name: "Faq",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6355,7 +6355,7 @@ const _sfc_main$u = /* @__PURE__ */ Object.assign(__default__$c, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-f57d8941${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-f57d8941${_scopeId}></div><div class="container" data-v-f57d8941${_scopeId}><div class="page-header__inner" data-v-f57d8941${_scopeId}><h1 data-v-f57d8941${_scopeId}>${trans("FAQs") ?? ""}</h1><div class="thm-breadcrumb__box" data-v-f57d8941${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f57d8941${_scopeId}><li data-v-f57d8941${_scopeId}>`);
@@ -6389,7 +6389,7 @@ const _sfc_main$u = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<div class="text-center py-5" data-v-f57d8941${_scopeId}><p data-v-f57d8941${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -6483,7 +6483,7 @@ const _sfc_main$u = /* @__PURE__ */ Object.assign(__default__$c, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -6493,23 +6493,23 @@ const _sfc_main$u = /* @__PURE__ */ Object.assign(__default__$c, {
     };
   }
 });
-const _sfc_setup$u = _sfc_main$u.setup;
-_sfc_main$u.setup = (props, ctx) => {
+const _sfc_setup$z = _sfc_main$z.setup;
+_sfc_main$z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Faq.vue");
-  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
-const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-f57d8941"]]);
+const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-f57d8941"]]);
 const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Faq
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$b = {
+const __default__$a = {
   components: {
-    AppLayout: _sfc_main$D
+    AppLayout: _sfc_main$I
   }
 };
-const _sfc_main$t = /* @__PURE__ */ Object.assign(__default__$b, {
+const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$a, {
   __name: "PageShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6543,7 +6543,7 @@ const _sfc_main$t = /* @__PURE__ */ Object.assign(__default__$b, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6626,22 +6626,22 @@ const _sfc_main$t = /* @__PURE__ */ Object.assign(__default__$b, {
     };
   }
 });
-const _sfc_setup$t = _sfc_main$t.setup;
-_sfc_main$t.setup = (props, ctx) => {
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PageShow.vue");
-  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
 const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$t
+  default: _sfc_main$y
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$a = {
+const __default__$9 = {
   components: {
-    AppLayout: _sfc_main$D
+    AppLayout: _sfc_main$I
   }
 };
-const _sfc_main$s = /* @__PURE__ */ Object.assign(__default__$a, {
+const _sfc_main$x = /* @__PURE__ */ Object.assign(__default__$9, {
   __name: "PrivacyPolicy",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6763,7 +6763,7 @@ const _sfc_main$s = /* @__PURE__ */ Object.assign(__default__$a, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f;
           if (_push2) {
@@ -6950,23 +6950,23 @@ const _sfc_main$s = /* @__PURE__ */ Object.assign(__default__$a, {
     };
   }
 });
-const _sfc_setup$s = _sfc_main$s.setup;
-_sfc_main$s.setup = (props, ctx) => {
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue");
-  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-e574eeb2"]]);
+const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-e574eeb2"]]);
 const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: PrivacyPolicy
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$9 = {
+const __default__$8 = {
   components: {
-    AppLayout: _sfc_main$D
+    AppLayout: _sfc_main$I
   }
 };
-const _sfc_main$r = /* @__PURE__ */ Object.assign(__default__$9, {
+const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$8, {
   __name: "Team",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7111,7 +7111,7 @@ const _sfc_main$r = /* @__PURE__ */ Object.assign(__default__$9, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -7295,22 +7295,22 @@ const _sfc_main$r = /* @__PURE__ */ Object.assign(__default__$9, {
     };
   }
 });
-const _sfc_setup$r = _sfc_main$r.setup;
-_sfc_main$r.setup = (props, ctx) => {
+const _sfc_setup$w = _sfc_main$w.setup;
+_sfc_main$w.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Team.vue");
-  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
+  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
 const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$r
+  default: _sfc_main$w
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$8 = {
+const __default__$7 = {
   components: {
-    AppLayout: _sfc_main$D
+    AppLayout: _sfc_main$I
   }
 };
-const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$8, {
+const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$7, {
   __name: "Testimonials",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7448,7 +7448,7 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$8, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -7582,24 +7582,24 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$8, {
     };
   }
 });
-const _sfc_setup$q = _sfc_main$q.setup;
-_sfc_main$q.setup = (props, ctx) => {
+const _sfc_setup$v = _sfc_main$v.setup;
+_sfc_main$v.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Testimonials.vue");
-  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
+  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
 const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$q
+  default: _sfc_main$v
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$7 = {
+const __default__$6 = {
   components: {
-    AppLayout: _sfc_main$D,
-    CtaTwo: _sfc_main$x,
+    AppLayout: _sfc_main$I,
+    CtaTwo: _sfc_main$C,
     ProductCard
   }
 };
-const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
+const _sfc_main$u = /* @__PURE__ */ Object.assign(__default__$6, {
   __name: "ProductIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7727,7 +7727,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-ad6cf210${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-ad6cf210${_scopeId}></div><div class="container" data-v-ad6cf210${_scopeId}><div class="page-header__inner" data-v-ad6cf210${_scopeId}><h1 data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Products"))}</h1><div class="thm-breadcrumb__box" data-v-ad6cf210${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-ad6cf210${_scopeId}><li data-v-ad6cf210${_scopeId}>`);
@@ -7850,7 +7850,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -8005,7 +8005,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -8015,18 +8015,18 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
     };
   }
 });
-const _sfc_setup$p = _sfc_main$p.setup;
-_sfc_main$p.setup = (props, ctx) => {
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductIndex.vue");
-  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
-const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-ad6cf210"]]);
+const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-ad6cf210"]]);
 const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductIndex
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$o = {
+const _sfc_main$t = {
   __name: "ContactRequestModal",
   __ssrInlineRender: true,
   props: {
@@ -8159,22 +8159,22 @@ const _sfc_main$o = {
     };
   }
 };
-const _sfc_setup$o = _sfc_main$o.setup;
-_sfc_main$o.setup = (props, ctx) => {
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ContactRequestModal.vue");
-  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
-const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-b7a5a2ac"]]);
-const __default__$6 = {
+const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-b7a5a2ac"]]);
+const __default__$5 = {
   components: {
-    AppLayout: _sfc_main$D,
-    CtaTwo: _sfc_main$x,
+    AppLayout: _sfc_main$I,
+    CtaTwo: _sfc_main$C,
     ContactRequestModal,
     ProductCard
   }
 };
-const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
+const _sfc_main$s = /* @__PURE__ */ Object.assign(__default__$5, {
   __name: "ProductShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8297,7 +8297,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-85a417ae${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-85a417ae${_scopeId}></div><div class="container" data-v-85a417ae${_scopeId}><div class="page-header__inner" data-v-85a417ae${_scopeId}><h2 data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-85a417ae${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-85a417ae${_scopeId}><li data-v-85a417ae${_scopeId}>`);
@@ -8434,7 +8434,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
               "default-message": demoMessage.value,
               "submit-label": trans("Send Request")
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -8688,7 +8688,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
                 "default-message": demoMessage.value,
                 "submit-label": trans("Send Request")
               }, null, 8, ["title", "description", "default-subject", "default-message", "submit-label"]),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -8698,13 +8698,13 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
     };
   }
 });
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$s = _sfc_main$s.setup;
+_sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductShow.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
-const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-85a417ae"]]);
+const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-85a417ae"]]);
 const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductShow
@@ -8732,7 +8732,7 @@ function usePortalTranslations() {
   const ticketPriorityLabel = (priority) => t3(`ticket_priority.${priority}`);
   return { t: t3, paymentStatusLabel, invoiceStatusLabel, ticketStatusLabel, ticketPriorityLabel };
 }
-const _sfc_main$m = {
+const _sfc_main$r = {
   __name: "PortalNav",
   __ssrInlineRender: true,
   props: {
@@ -8843,13 +8843,13 @@ const _sfc_main$m = {
     };
   }
 };
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$r = _sfc_main$r.setup;
+_sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portal/PortalNav.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const _sfc_main$l = {
+const _sfc_main$q = {
   __name: "PortalShell",
   __ssrInlineRender: true,
   props: {
@@ -8933,7 +8933,7 @@ const _sfc_main$l = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header portal-page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(__props.title)}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><!--[-->`);
@@ -8977,7 +8977,7 @@ const _sfc_main$l = {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section><section class="portal-one"${_scopeId}><div class="container"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$m, { active: __props.active }, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$r, { active: __props.active }, null, _parent2, _scopeId));
             ssrRenderSlot(_ctx.$slots, "default", {}, null, _push2, _parent2, _scopeId);
             _push2(`</div></section>`);
           } else {
@@ -9027,7 +9027,7 @@ const _sfc_main$l = {
               ]),
               createVNode("section", { class: "portal-one" }, [
                 createVNode("div", { class: "container" }, [
-                  createVNode(_sfc_main$m, { active: __props.active }, null, 8, ["active"]),
+                  createVNode(_sfc_main$r, { active: __props.active }, null, 8, ["active"]),
                   renderSlot(_ctx.$slots, "default")
                 ])
               ])
@@ -9040,13 +9040,13 @@ const _sfc_main$l = {
     };
   }
 };
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$q = _sfc_main$q.setup;
+_sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portal/PortalShell.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-const _sfc_main$k = {
+const _sfc_main$p = {
   __name: "Index",
   __ssrInlineRender: true,
   props: {
@@ -9068,7 +9068,7 @@ const _sfc_main$k = {
     });
     const formatMoney = (amount, currency) => `${Number(amount).toFixed(2)} ${currency || ""}`.trim();
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$l, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$q, mergeProps({
         title: unref(t3)("projects.title"),
         subtitle: unref(t3)("projects.subtitle"),
         active: "projects",
@@ -9221,17 +9221,17 @@ const _sfc_main$k = {
     };
   }
 };
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/Portal/Projects/Index.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
 const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$k
+  default: _sfc_main$p
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$j = {
+const _sfc_main$o = {
   __name: "Show",
   __ssrInlineRender: true,
   props: {
@@ -9301,7 +9301,7 @@ const _sfc_main$j = {
     };
     return (_ctx, _push, _parent, _attrs) => {
       var _a;
-      _push(ssrRenderComponent(_sfc_main$l, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$q, mergeProps({
         title: __props.project.title,
         subtitle: (_a = __props.project.company) == null ? void 0 : _a.name,
         active: "projects",
@@ -9623,24 +9623,24 @@ const _sfc_main$j = {
     };
   }
 };
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/Portal/Projects/Show.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
 const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$j
+  default: _sfc_main$o
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$5 = {
+const __default__$4 = {
   components: {
-    AppLayout: _sfc_main$D,
-    CtaTwo: _sfc_main$x,
+    AppLayout: _sfc_main$I,
+    CtaTwo: _sfc_main$C,
     UseCaseCard
   }
 };
-const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
+const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$4, {
   __name: "UseCaseIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9764,7 +9764,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-0fe03073${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-0fe03073${_scopeId}></div><div class="container" data-v-0fe03073${_scopeId}><div class="page-header__inner" data-v-0fe03073${_scopeId}><h1 data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</h1><div class="thm-breadcrumb__box" data-v-0fe03073${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-0fe03073${_scopeId}><li data-v-0fe03073${_scopeId}>`);
@@ -9875,7 +9875,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -10006,7 +10006,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -10016,25 +10016,25 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
     };
   }
 });
-const _sfc_setup$i = _sfc_main$i.setup;
-_sfc_main$i.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue");
-  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-0fe03073"]]);
+const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-0fe03073"]]);
 const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseIndex
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$4 = {
+const __default__$3 = {
   components: {
-    AppLayout: _sfc_main$D,
-    CtaTwo: _sfc_main$x,
+    AppLayout: _sfc_main$I,
+    CtaTwo: _sfc_main$C,
     UseCaseCard
   }
 };
-const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
+const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$3, {
   __name: "UseCaseShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -10169,7 +10169,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-95493371${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-95493371${_scopeId}></div><div class="container" data-v-95493371${_scopeId}><div class="page-header__inner" data-v-95493371${_scopeId}><h2 data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-95493371${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-95493371${_scopeId}><li data-v-95493371${_scopeId}>`);
@@ -10326,7 +10326,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -10625,7 +10625,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -10635,24 +10635,24 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
     };
   }
 });
-const _sfc_setup$h = _sfc_main$h.setup;
-_sfc_main$h.setup = (props, ctx) => {
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseShow.vue");
-  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
-const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-95493371"]]);
+const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-95493371"]]);
 const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseShow
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$3 = {
+const __default__$2 = {
   components: {
-    AppLayout: _sfc_main$D,
-    CtaTwo: _sfc_main$x
+    AppLayout: _sfc_main$I,
+    CtaTwo: _sfc_main$C
   }
 };
-const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
+const _sfc_main$l = /* @__PURE__ */ Object.assign(__default__$2, {
   __name: "ServiceIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -10855,7 +10855,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-08f6db3e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-08f6db3e${_scopeId}></div><div class="container" data-v-08f6db3e${_scopeId}><div class="page-header__inner" data-v-08f6db3e${_scopeId}><h1 data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h1><div class="thm-breadcrumb__box" data-v-08f6db3e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-08f6db3e${_scopeId}><li data-v-08f6db3e${_scopeId}>`);
@@ -11017,7 +11017,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
               _push2(`</li>`);
             });
             _push2(`<!--]--></ul></div></div></div></div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -11198,7 +11198,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -11208,24 +11208,24 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
     };
   }
 });
-const _sfc_setup$g = _sfc_main$g.setup;
-_sfc_main$g.setup = (props, ctx) => {
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceIndex.vue");
-  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-08f6db3e"]]);
+const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-08f6db3e"]]);
 const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$2 = {
+const __default__$1 = {
   components: {
-    AppLayout: _sfc_main$D,
-    CtaTwo: _sfc_main$x
+    AppLayout: _sfc_main$I,
+    CtaTwo: _sfc_main$C
   }
 };
-const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
+const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$1, {
   __name: "ServiceShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -11399,7 +11399,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
@@ -11534,7 +11534,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(ssrRenderComponent(_sfc_main$x, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$C, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -11791,7 +11791,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              createVNode(_sfc_main$x)
+              createVNode(_sfc_main$C)
             ];
           }
         }),
@@ -11801,17 +11801,17 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
     };
   }
 });
-const _sfc_setup$f = _sfc_main$f.setup;
-_sfc_main$f.setup = (props, ctx) => {
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceShow.vue");
-  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
 const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$f
+  default: _sfc_main$k
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$e = {
+const _sfc_main$j = {
   __name: "PortalSelect",
   __ssrInlineRender: true,
   props: {
@@ -11878,14 +11878,14 @@ const _sfc_main$e = {
     };
   }
 };
-const _sfc_setup$e = _sfc_main$e.setup;
-_sfc_main$e.setup = (props, ctx) => {
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portal/PortalSelect.vue");
-  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
-const PortalSelect = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-2ede9016"]]);
-const _sfc_main$d = {
+const PortalSelect = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-2ede9016"]]);
+const _sfc_main$i = {
   __name: "Create",
   __ssrInlineRender: true,
   props: {
@@ -11930,7 +11930,7 @@ const _sfc_main$d = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$l, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$q, mergeProps({
         title: unref(t3)("tickets.create_title"),
         subtitle: unref(t3)("tickets.create_subtitle"),
         active: "tickets",
@@ -12120,17 +12120,17 @@ const _sfc_main$d = {
     };
   }
 };
-const _sfc_setup$d = _sfc_main$d.setup;
-_sfc_main$d.setup = (props, ctx) => {
+const _sfc_setup$i = _sfc_main$i.setup;
+_sfc_main$i.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Create.vue");
-  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
+  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
 const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$d
+  default: _sfc_main$i
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$c = {
+const _sfc_main$h = {
   __name: "Index",
   __ssrInlineRender: true,
   props: {
@@ -12196,7 +12196,7 @@ const _sfc_main$c = {
       return new Date(value).toLocaleString(locale.value);
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$l, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$q, mergeProps({
         title: unref(t3)("tickets.title"),
         subtitle: unref(t3)("tickets.subtitle"),
         active: "tickets",
@@ -12428,17 +12428,17 @@ const _sfc_main$c = {
     };
   }
 };
-const _sfc_setup$c = _sfc_main$c.setup;
-_sfc_main$c.setup = (props, ctx) => {
+const _sfc_setup$h = _sfc_main$h.setup;
+_sfc_main$h.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Index.vue");
-  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
+  return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
 const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$c
+  default: _sfc_main$h
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$b = {
+const _sfc_main$g = {
   __name: "Show",
   __ssrInlineRender: true,
   props: {
@@ -12490,7 +12490,7 @@ const _sfc_main$b = {
       return new Date(value).toLocaleString(locale.value);
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$l, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$q, mergeProps({
         title: __props.ticket.subject,
         subtitle: __props.ticket.ticket_number,
         active: "tickets",
@@ -12731,19 +12731,19 @@ const _sfc_main$b = {
     };
   }
 };
-const _sfc_setup$b = _sfc_main$b.setup;
-_sfc_main$b.setup = (props, ctx) => {
+const _sfc_setup$g = _sfc_main$g.setup;
+_sfc_main$g.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Show.vue");
-  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
+  return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
 const __vite_glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$b
+  default: _sfc_main$g
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$a = {
+const _sfc_main$f = {
   components: {
-    AppLayout: _sfc_main$D,
+    AppLayout: _sfc_main$I,
     Link,
     Head
   },
@@ -13059,20 +13059,20 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$a = _sfc_main$a.setup;
-_sfc_main$a.setup = (props, ctx) => {
+const _sfc_setup$f = _sfc_main$f.setup;
+_sfc_main$f.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue");
-  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
+  return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
-const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", _sfc_ssrRender$4], ["__scopeId", "data-v-5b68d6b8"]]);
+const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$4], ["__scopeId", "data-v-5b68d6b8"]]);
 const __vite_glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ForgotPassword
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$9 = {
+const _sfc_main$e = {
   components: {
-    AppLayout: _sfc_main$D,
+    AppLayout: _sfc_main$I,
     Link,
     Head
   },
@@ -13439,20 +13439,20 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$9 = _sfc_main$9.setup;
-_sfc_main$9.setup = (props, ctx) => {
+const _sfc_setup$e = _sfc_main$e.setup;
+_sfc_main$e.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Login.vue");
-  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
+  return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
-const Login = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["ssrRender", _sfc_ssrRender$3]]);
+const Login = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender$3]]);
 const __vite_glob_0_22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Login
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$8 = {
+const _sfc_main$d = {
   components: {
-    AppLayout: _sfc_main$D,
+    AppLayout: _sfc_main$I,
     Link,
     Head
   },
@@ -13860,20 +13860,20 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$8 = _sfc_main$8.setup;
-_sfc_main$8.setup = (props, ctx) => {
+const _sfc_setup$d = _sfc_main$d.setup;
+_sfc_main$d.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Register.vue");
-  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+  return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-const Register = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-daff4a9e"]]);
+const Register = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-daff4a9e"]]);
 const __vite_glob_0_23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Register
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$7 = {
+const _sfc_main$c = {
   components: {
-    AppLayout: _sfc_main$D,
+    AppLayout: _sfc_main$I,
     Link,
     Head
   },
@@ -14258,20 +14258,20 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$7 = _sfc_main$7.setup;
-_sfc_main$7.setup = (props, ctx) => {
+const _sfc_setup$c = _sfc_main$c.setup;
+_sfc_main$c.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue");
-  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
+  return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-f5323f04"]]);
+const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-f5323f04"]]);
 const __vite_glob_0_24 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ResetPassword
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$6 = {
+const _sfc_main$b = {
   components: {
-    AppLayout: _sfc_main$D,
+    AppLayout: _sfc_main$I,
     Head
   },
   setup() {
@@ -14509,18 +14509,18 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$6 = _sfc_main$6.setup;
-_sfc_main$6.setup = (props, ctx) => {
+const _sfc_setup$b = _sfc_main$b.setup;
+_sfc_main$b.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/TwoFactorChallenge.vue");
-  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+  return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const TwoFactorChallenge = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender]]);
+const TwoFactorChallenge = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["ssrRender", _sfc_ssrRender]]);
 const __vite_glob_0_25 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: TwoFactorChallenge
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$5 = {
+const _sfc_main$a = {
   __name: "ConfirmPassword",
   __ssrInlineRender: true,
   setup(__props) {
@@ -14568,7 +14568,7 @@ const _sfc_main$5 = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header portal-page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(unref(t3)("profile.confirm_password_title"))}</h2><p class="portal-page-header__subtitle"${_scopeId}>${ssrInterpolate(unref(t3)("profile.confirm_password_description"))}</p></div></div></section><section class="portal-one"${_scopeId}><div class="container"${_scopeId}><div class="portal-panel portal-panel--narrow"${_scopeId}><div class="portal-panel__body"${_scopeId}><form class="portal-profile-form"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="password"${_scopeId}>${ssrInterpolate(unref(t3)("profile.current_password"))} *</label><input id="password"${ssrRenderAttr("value", unref(form).password)} type="password" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.password }, "portal-input"])}" required autofocus autocomplete="current-password"${_scopeId}>`);
@@ -14664,17 +14664,17 @@ const _sfc_main$5 = {
     };
   }
 };
-const _sfc_setup$5 = _sfc_main$5.setup;
-_sfc_main$5.setup = (props, ctx) => {
+const _sfc_setup$a = _sfc_main$a.setup;
+_sfc_main$a.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/ConfirmPassword.vue");
-  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
+  return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
 const __vite_glob_0_26 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$5
+  default: _sfc_main$a
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$4 = {
+const _sfc_main$9 = {
   __name: "Dashboard",
   __ssrInlineRender: true,
   props: {
@@ -14705,7 +14705,7 @@ const _sfc_main$4 = {
     const markAllRead = () => router.post(route("portal.notifications.read-all"));
     const openNotification = (notification) => router.post(route("portal.notifications.read", notification.id));
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$l, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$q, mergeProps({
         title: unref(t3)("menu.my_dashboard"),
         subtitle: welcomeSubtitle.value,
         active: "dashboard",
@@ -14927,17 +14927,17 @@ const _sfc_main$4 = {
     };
   }
 };
-const _sfc_setup$4 = _sfc_main$4.setup;
-_sfc_main$4.setup = (props, ctx) => {
+const _sfc_setup$9 = _sfc_main$9.setup;
+_sfc_main$9.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Dashboard.vue");
-  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
+  return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
 const __vite_glob_0_27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$4
+  default: _sfc_main$9
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$3 = {
+const _sfc_main$8 = {
   __name: "Profile",
   __ssrInlineRender: true,
   props: {
@@ -15095,7 +15095,7 @@ const _sfc_main$3 = {
       loadQrCode();
     }
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$l, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$q, mergeProps({
         title: unref(t3)("profile.title"),
         subtitle: unref(t3)("profile.subtitle"),
         active: "profile",
@@ -15497,17 +15497,17 @@ const _sfc_main$3 = {
     };
   }
 };
-const _sfc_setup$3 = _sfc_main$3.setup;
-_sfc_main$3.setup = (props, ctx) => {
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Profile.vue");
-  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
 const __vite_glob_0_28 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$3
+  default: _sfc_main$8
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$2 = {
+const _sfc_main$7 = {
   __name: "Index",
   __ssrInlineRender: true,
   props: {
@@ -15532,7 +15532,7 @@ const _sfc_main$2 = {
       return "portal-badge--invoice";
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$l, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$q, mergeProps({
         title: unref(t3)("subscriptions.title"),
         subtitle: unref(t3)("subscriptions.subtitle"),
         active: "subscriptions",
@@ -15680,25 +15680,38 @@ const _sfc_main$2 = {
     };
   }
 };
-const _sfc_setup$2 = _sfc_main$2.setup;
-_sfc_main$2.setup = (props, ctx) => {
+const _sfc_setup$7 = _sfc_main$7.setup;
+_sfc_main$7.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Index.vue");
-  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+  return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
 const __vite_glob_0_29 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$2
+  default: _sfc_main$7
 }, Symbol.toStringTag, { value: "Module" }));
-const __default__$1 = {
+const __default__ = {
   components: {
-    AppLayout: _sfc_main$D
+    AppLayout: _sfc_main$I
   }
 };
-const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
-  __name: "Error404",
+const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__, {
+  __name: "SiteErrorPage",
   __ssrInlineRender: true,
+  props: {
+    status: { type: [Number, String], required: true },
+    title: { type: String, required: true },
+    heading: { type: String, required: true },
+    message: { type: String, required: true },
+    description: { type: String, default: "" },
+    keywords: { type: String, default: "" },
+    showImage: { type: Boolean, default: false },
+    showDebug: { type: Boolean, default: false },
+    secondaryHref: { type: String, default: "" },
+    secondaryLabel: { type: String, default: "" }
+  },
   setup(__props) {
+    const props = __props;
     const page = usePage();
     const trans = (key) => {
       var _a;
@@ -15708,31 +15721,28 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
         return key;
       }
     };
-    const seo = computed(() => page.props.seo || {});
     const asset_path = computed(() => page.props.asset_path || "/");
     const locale = computed(() => page.props.locale || "en");
+    const isRtl = computed(() => locale.value === "ar");
+    const seo = computed(() => page.props.seo || {});
     const meta = computed(() => page.props.meta || {});
     const siteName = computed(() => seo.value.website_name || page.props.appName || "Symfonix");
-    const metaTitle = computed(() => `${trans("404 Error")} | ${siteName.value}`);
-    const metaDescription = computed(() => {
-      return meta.value.description || trans("The page you are looking for could not be found.");
-    });
-    const metaKeywords = computed(() => {
-      return meta.value.keywords || trans("404 error, page not found, missing page");
-    });
+    const metaTitle = computed(() => `${props.title} | ${siteName.value}`);
+    const metaDescription = computed(() => meta.value.description || props.description || props.message);
+    const metaKeywords = computed(() => meta.value.keywords || props.keywords);
     const metaImage = computed(() => {
       var _a, _b, _c, _d;
       return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
-    const getHomeUrl = () => {
+    const homeUrl = computed(() => {
       try {
         return route("home");
       } catch (e2) {
         return locale.value === "en" ? "/" : `/${locale.value}`;
       }
-    };
+    });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
@@ -15833,13 +15843,12 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
+      _push(ssrRenderComponent(_sfc_main$I, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
+          var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
           if (_push2) {
-            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
-            _push2(ssrRenderComponent(unref(Link), {
-              href: getHomeUrl()
-            }, {
+            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(__props.title)}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), { href: homeUrl.value }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
@@ -15852,19 +15861,64 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(trans("404 Error"))}</li></ul></div></div></div></section><section class="error-page"${_scopeId}><div class="container"${_scopeId}><div class="error-page__inner text-center"${_scopeId}><div class="error-page__img float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/resources/error-page-img1.png")}${ssrRenderAttr("alt", trans("404 Error"))} width="620" height="420" decoding="async"${_scopeId}></div><div class="error-page__content"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Oops! Page Not Found!"))}</h2><p${_scopeId}>${ssrInterpolate(trans("The page you are looking for does not exist. It might have been moved or deleted."))}</p><div class="btn-box"${_scopeId}>`);
+            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${isRtl.value ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(__props.title)}</li></ul></div></div></div></section><section class="error-page"${_scopeId}><div class="container"${_scopeId}><div class="error-page__inner text-center"${_scopeId}>`);
+            if (__props.showImage) {
+              _push2(`<div class="error-page__img float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/resources/error-page-img1.png")}${ssrRenderAttr("alt", __props.title)} width="620" height="420" decoding="async"${_scopeId}></div>`);
+            } else {
+              _push2(`<div class="error-page__code float-bob-y" aria-hidden="true"${_scopeId}>${ssrInterpolate(__props.status)}</div>`);
+            }
+            _push2(`<div class="error-page__content"${_scopeId}><h2${_scopeId}>${ssrInterpolate(__props.heading)}</h2><p${_scopeId}>${ssrInterpolate(__props.message)}</p>`);
+            if (__props.showDebug && (((_b = (_a = unref(page)) == null ? void 0 : _a.props) == null ? void 0 : _b.error) || ((_d = (_c = unref(page)) == null ? void 0 : _c.props) == null ? void 0 : _d.trace))) {
+              _push2(`<div class="error-page__debug alert alert-danger text-start"${_scopeId}><strong${_scopeId}>Debug Error:</strong>`);
+              if ((_f = (_e = unref(page)) == null ? void 0 : _e.props) == null ? void 0 : _f.error) {
+                _push2(`<div${_scopeId}>${ssrInterpolate(unref(page).props.error)}</div>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              if ((_h = (_g = unref(page)) == null ? void 0 : _g.props) == null ? void 0 : _h.trace) {
+                _push2(`<details class="mt-3"${_scopeId}><summary${_scopeId}>Stack trace</summary><pre class="mt-2"${_scopeId}>${ssrInterpolate(unref(page).props.trace)}</pre></details>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<div class="btn-box"${_scopeId}>`);
+            if (__props.secondaryHref) {
+              _push2(ssrRenderComponent(unref(Link), {
+                class: "thm-btn error-page__btn-secondary",
+                href: __props.secondaryHref
+              }, {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
+                  if (_push3) {
+                    _push3(`${ssrInterpolate(__props.secondaryLabel)} <span class="${ssrRenderClass(`icon-${isRtl.value ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
+                  } else {
+                    return [
+                      createTextVNode(toDisplayString(__props.secondaryLabel) + " ", 1),
+                      createVNode("span", {
+                        class: `icon-${isRtl.value ? "left" : "right"}-arrow`
+                      }, null, 2)
+                    ];
+                  }
+                }),
+                _: 1
+              }, _parent2, _scopeId));
+            } else {
+              _push2(`<!---->`);
+            }
             _push2(ssrRenderComponent(unref(Link), {
               class: "thm-btn",
-              href: getHomeUrl()
+              href: homeUrl.value
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Back To Home"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
+                  _push3(`${ssrInterpolate(trans("Back To Home"))} <span class="${ssrRenderClass(`icon-${isRtl.value ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(toDisplayString(trans("Back To Home")) + " ", 1),
                     createVNode("span", {
-                      class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
+                      class: `icon-${isRtl.value ? "left" : "right"}-arrow`
                     }, null, 2)
                   ];
                 }
@@ -15881,13 +15935,11 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h1", null, toDisplayString(trans("404 Error")), 1),
+                    createVNode("h1", null, toDisplayString(__props.title), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
-                          createVNode(unref(Link), {
-                            href: getHomeUrl()
-                          }, {
+                          createVNode(unref(Link), { href: homeUrl.value }, {
                             default: withCtx(() => [
                               createVNode("i", { class: "fas fa-home" }),
                               createTextVNode(toDisplayString(trans("Home")), 1)
@@ -15897,10 +15949,10 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
                         ]),
                         createVNode("li", null, [
                           createVNode("span", {
-                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                            class: `icon-${isRtl.value ? "left" : "right"}-arrow-1`
                           }, null, 2)
                         ]),
-                        createVNode("li", null, toDisplayString(trans("404 Error")), 1)
+                        createVNode("li", null, toDisplayString(__props.title), 1)
                       ])
                     ])
                   ])
@@ -15909,27 +15961,61 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
               createVNode("section", { class: "error-page" }, [
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "error-page__inner text-center" }, [
-                    createVNode("div", { class: "error-page__img float-bob-y" }, [
+                    __props.showImage ? (openBlock(), createBlock("div", {
+                      key: 0,
+                      class: "error-page__img float-bob-y"
+                    }, [
                       createVNode("img", {
                         src: asset_path.value + "site/images/resources/error-page-img1.png",
-                        alt: trans("404 Error"),
+                        alt: __props.title,
                         width: "620",
                         height: "420",
                         decoding: "async"
                       }, null, 8, ["src", "alt"])
-                    ]),
+                    ])) : (openBlock(), createBlock("div", {
+                      key: 1,
+                      class: "error-page__code float-bob-y",
+                      "aria-hidden": "true"
+                    }, toDisplayString(__props.status), 1)),
                     createVNode("div", { class: "error-page__content" }, [
-                      createVNode("h2", null, toDisplayString(trans("Oops! Page Not Found!")), 1),
-                      createVNode("p", null, toDisplayString(trans("The page you are looking for does not exist. It might have been moved or deleted.")), 1),
+                      createVNode("h2", null, toDisplayString(__props.heading), 1),
+                      createVNode("p", null, toDisplayString(__props.message), 1),
+                      __props.showDebug && (((_j = (_i = unref(page)) == null ? void 0 : _i.props) == null ? void 0 : _j.error) || ((_l = (_k = unref(page)) == null ? void 0 : _k.props) == null ? void 0 : _l.trace)) ? (openBlock(), createBlock("div", {
+                        key: 0,
+                        class: "error-page__debug alert alert-danger text-start"
+                      }, [
+                        createVNode("strong", null, "Debug Error:"),
+                        ((_n = (_m = unref(page)) == null ? void 0 : _m.props) == null ? void 0 : _n.error) ? (openBlock(), createBlock("div", { key: 0 }, toDisplayString(unref(page).props.error), 1)) : createCommentVNode("", true),
+                        ((_p = (_o = unref(page)) == null ? void 0 : _o.props) == null ? void 0 : _p.trace) ? (openBlock(), createBlock("details", {
+                          key: 1,
+                          class: "mt-3"
+                        }, [
+                          createVNode("summary", null, "Stack trace"),
+                          createVNode("pre", { class: "mt-2" }, toDisplayString(unref(page).props.trace), 1)
+                        ])) : createCommentVNode("", true)
+                      ])) : createCommentVNode("", true),
                       createVNode("div", { class: "btn-box" }, [
+                        __props.secondaryHref ? (openBlock(), createBlock(unref(Link), {
+                          key: 0,
+                          class: "thm-btn error-page__btn-secondary",
+                          href: __props.secondaryHref
+                        }, {
+                          default: withCtx(() => [
+                            createTextVNode(toDisplayString(__props.secondaryLabel) + " ", 1),
+                            createVNode("span", {
+                              class: `icon-${isRtl.value ? "left" : "right"}-arrow`
+                            }, null, 2)
+                          ]),
+                          _: 1
+                        }, 8, ["href"])) : createCommentVNode("", true),
                         createVNode(unref(Link), {
                           class: "thm-btn",
-                          href: getHomeUrl()
+                          href: homeUrl.value
                         }, {
                           default: withCtx(() => [
                             createTextVNode(toDisplayString(trans("Back To Home")) + " ", 1),
                             createVNode("span", {
-                              class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
+                              class: `icon-${isRtl.value ? "left" : "right"}-arrow`
                             }, null, 2)
                           ]),
                           _: 1
@@ -15948,23 +16034,14 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
     };
   }
 });
-const _sfc_setup$1 = _sfc_main$1.setup;
-_sfc_main$1.setup = (props, ctx) => {
+const _sfc_setup$6 = _sfc_main$6.setup;
+_sfc_main$6.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error404.vue");
-  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/SiteErrorPage.vue");
+  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
 };
-const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: _sfc_main$1
-}, Symbol.toStringTag, { value: "Module" }));
-const __default__ = {
-  components: {
-    AppLayout: _sfc_main$D
-  }
-};
-const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
-  __name: "Error500",
+const _sfc_main$5 = {
+  __name: "Error",
   __ssrInlineRender: true,
   setup(__props) {
     const page = usePage();
@@ -15976,232 +16053,217 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         return key;
       }
     };
-    const seo = computed(() => page.props.seo || { website_name: "Sham Vision" });
+    const status = computed(() => Number(page.props.status || 500));
     const appEnv = computed(() => page.props.app_env || "production");
-    const isNonProduction = computed(() => appEnv.value !== "production");
-    const meta = computed(() => page.props.meta || {});
-    const metaTitle = computed(() => `${trans("500 Error")} | ${seo.value.website_name || ""}`.trim());
-    const metaDescription = computed(() => {
-      return meta.value.description || trans("An internal server error occurred. Please try again later.");
-    });
-    const metaKeywords = computed(() => {
-      return meta.value.keywords || trans("500 error, server error, internal error");
-    });
-    const metaImage = computed(() => {
-      var _a, _b, _c, _d;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || "";
-    });
-    const metaCanonical = computed(() => meta.value.canonical || "");
-    const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
-    const getHomeUrl = () => {
-      try {
-        return route("home");
-      } catch (e2) {
-        return "/";
+    const locale = computed(() => page.props.locale || "en");
+    const catalog = {
+      400: {
+        status: 400,
+        title: "400 Bad Request",
+        heading: "Bad Request",
+        message: "The request could not be understood or was invalid. Please check and try again.",
+        description: "The request could not be processed due to invalid input.",
+        keywords: "400 error, bad request, invalid request",
+        showImage: false,
+        showDebug: false,
+        secondary: null
+      },
+      401: {
+        status: 401,
+        title: "401 Unauthorized",
+        heading: "Authentication Required",
+        message: "You need to sign in to access this page.",
+        description: "Authentication is required to access this resource.",
+        keywords: "401 error, unauthorized, login required",
+        showImage: false,
+        showDebug: false,
+        secondary: "login"
+      },
+      403: {
+        status: 403,
+        title: "403 Forbidden",
+        heading: "Access Denied",
+        message: "You do not have permission to access this page.",
+        description: "You are not allowed to access this resource.",
+        keywords: "403 error, forbidden, access denied",
+        showImage: false,
+        showDebug: false,
+        secondary: null
+      },
+      404: {
+        status: 404,
+        title: "404 Error",
+        heading: "Oops! Page Not Found!",
+        message: "The page you are looking for does not exist. It might have been moved or deleted.",
+        description: "The page you are looking for could not be found.",
+        keywords: "404 error, page not found, missing page",
+        showImage: true,
+        showDebug: false,
+        secondary: null
+      },
+      500: {
+        status: 500,
+        title: "500 Error",
+        heading: "Internal Server Error",
+        message: "We're sorry, but something went wrong on our end. Please try again later or contact support if the problem persists.",
+        description: "An internal server error occurred. Please try again later.",
+        keywords: "500 error, server error, internal error",
+        showImage: false,
+        showDebug: true,
+        secondary: null
+      },
+      503: {
+        status: 503,
+        title: "503 Service Unavailable",
+        heading: "Service Unavailable",
+        message: "The service is temporarily unavailable. Please try again in a few moments.",
+        description: "The service is temporarily unavailable. Please try again later.",
+        keywords: "503 error, service unavailable, maintenance",
+        showImage: false,
+        showDebug: false,
+        secondary: null
       }
     };
+    const config = computed(() => {
+      const entry = catalog[status.value] || catalog[500];
+      return {
+        ...entry,
+        showDebug: entry.showDebug && appEnv.value !== "production"
+      };
+    });
+    const secondaryHref = computed(() => {
+      if (config.value.secondary !== "login") {
+        return "";
+      }
+      try {
+        return route("login");
+      } catch (e2) {
+        return locale.value === "en" ? "/login" : `/${locale.value}/login`;
+      }
+    });
+    const secondaryLabel = computed(() => {
+      return config.value.secondary === "login" ? trans("Login") : "";
+    });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<!--[-->`);
-      _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_2, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`<title data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2dfa1b1${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f2dfa1b1${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f2dfa1b1${_scopeId}>`);
-            if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-f2dfa1b1${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f2dfa1b1${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2dfa1b1${_scopeId}>`);
-            if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-f2dfa1b1${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-f2dfa1b1${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<meta property="og:type" content="website" data-v-f2dfa1b1${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f2dfa1b1${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f2dfa1b1${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2dfa1b1${_scopeId}>`);
-            if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-f2dfa1b1${_scopeId}>`);
-            } else {
-              _push2(`<!---->`);
-            }
-          } else {
-            return [
-              createVNode("title", null, toDisplayString(metaTitle.value), 1),
-              createVNode("meta", {
-                name: "description",
-                content: metaDescription.value
-              }, null, 8, ["content"]),
-              createVNode("meta", {
-                name: "keywords",
-                content: metaKeywords.value
-              }, null, 8, ["content"]),
-              createVNode("meta", {
-                name: "robots",
-                content: metaRobots.value
-              }, null, 8, ["content"]),
-              metaCanonical.value ? (openBlock(), createBlock("link", {
-                key: 0,
-                rel: "canonical",
-                href: metaCanonical.value
-              }, null, 8, ["href"])) : createCommentVNode("", true),
-              createVNode("meta", {
-                property: "og:title",
-                content: metaTitle.value
-              }, null, 8, ["content"]),
-              createVNode("meta", {
-                property: "og:description",
-                content: metaDescription.value
-              }, null, 8, ["content"]),
-              metaImage.value ? (openBlock(), createBlock("meta", {
-                key: 1,
-                property: "og:image",
-                content: metaImage.value
-              }, null, 8, ["content"])) : createCommentVNode("", true),
-              metaCanonical.value ? (openBlock(), createBlock("meta", {
-                key: 2,
-                property: "og:url",
-                content: metaCanonical.value
-              }, null, 8, ["content"])) : createCommentVNode("", true),
-              createVNode("meta", {
-                property: "og:type",
-                content: "website"
-              }),
-              createVNode("meta", {
-                name: "twitter:card",
-                content: "summary_large_image"
-              }),
-              createVNode("meta", {
-                name: "twitter:title",
-                content: metaTitle.value
-              }, null, 8, ["content"]),
-              createVNode("meta", {
-                name: "twitter:description",
-                content: metaDescription.value
-              }, null, 8, ["content"]),
-              metaImage.value ? (openBlock(), createBlock("meta", {
-                key: 3,
-                name: "twitter:image",
-                content: metaImage.value
-              }, null, 8, ["content"])) : createCommentVNode("", true)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_2, _push2, _parent2, _scopeId) => {
-          var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
-          if (_push2) {
-            _push2(`<div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg" data-v-f2dfa1b1${_scopeId}><div class="banner-home__middel-shape inner-top-shape" data-v-f2dfa1b1${_scopeId}></div></div><section class="error section-space" data-v-f2dfa1b1${_scopeId}><div class="container" data-v-f2dfa1b1${_scopeId}><div class="row" data-v-f2dfa1b1${_scopeId}><div class="col-12" data-v-f2dfa1b1${_scopeId}><div class="error__content" data-v-f2dfa1b1${_scopeId}><div class="section__title-wrapper text-center" data-v-f2dfa1b1${_scopeId}><h3 class="section__title mb-15 mb-xs-10 wow fadeIn animated" data-wow-delay=".3s" data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(trans("Internal Server Error"))}</h3><p class="mb-40 mb-sm-25 mb-xs-20 wow fadeIn animated" data-wow-delay=".5s" data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(trans("We're sorry, but something went wrong on our end. Please try again later or contact support if the problem persists."))}</p>`);
-            if (isNonProduction.value && (((_b = (_a = unref(page)) == null ? void 0 : _a.props) == null ? void 0 : _b.error) || ((_d = (_c = unref(page)) == null ? void 0 : _c.props) == null ? void 0 : _d.trace))) {
-              _push2(`<div class="alert alert-danger text-start mb-40" style="${ssrRenderStyle({ "white-space": "pre-wrap", "word-break": "break-word" })}" data-v-f2dfa1b1${_scopeId}><strong data-v-f2dfa1b1${_scopeId}>Debug Error:</strong>`);
-              if ((_f = (_e = unref(page)) == null ? void 0 : _e.props) == null ? void 0 : _f.error) {
-                _push2(`<div data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(unref(page).props.error)}</div>`);
-              } else {
-                _push2(`<!---->`);
-              }
-              if ((_h = (_g = unref(page)) == null ? void 0 : _g.props) == null ? void 0 : _h.trace) {
-                _push2(`<details class="mt-3" data-v-f2dfa1b1${_scopeId}><summary data-v-f2dfa1b1${_scopeId}>Stack trace</summary><pre class="mt-2" data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(unref(page).props.trace)}</pre></details>`);
-              } else {
-                _push2(`<!---->`);
-              }
-              _push2(`</div>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<div class="error-btn-wrap" data-v-f2dfa1b1${_scopeId}>`);
-            _push2(ssrRenderComponent(unref(Link), {
-              href: getHomeUrl(),
-              class: "error-btn wow fadeIn animated",
-              "data-wow-delay": ".7s"
-            }, {
-              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
-                if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Back To Home Page"))}`);
-                } else {
-                  return [
-                    createTextVNode(toDisplayString(trans("Back To Home Page")), 1)
-                  ];
-                }
-              }),
-              _: 1
-            }, _parent2, _scopeId));
-            _push2(`</div></div></div></div></div></div></section>`);
-          } else {
-            return [
-              createVNode("div", { class: "breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg" }, [
-                createVNode("div", { class: "banner-home__middel-shape inner-top-shape" })
-              ]),
-              createVNode("section", { class: "error section-space" }, [
-                createVNode("div", { class: "container" }, [
-                  createVNode("div", { class: "row" }, [
-                    createVNode("div", { class: "col-12" }, [
-                      createVNode("div", { class: "error__content" }, [
-                        createVNode("div", { class: "section__title-wrapper text-center" }, [
-                          createVNode("h3", {
-                            class: "section__title mb-15 mb-xs-10 wow fadeIn animated",
-                            "data-wow-delay": ".3s"
-                          }, toDisplayString(trans("Internal Server Error")), 1),
-                          createVNode("p", {
-                            class: "mb-40 mb-sm-25 mb-xs-20 wow fadeIn animated",
-                            "data-wow-delay": ".5s"
-                          }, toDisplayString(trans("We're sorry, but something went wrong on our end. Please try again later or contact support if the problem persists.")), 1),
-                          isNonProduction.value && (((_j = (_i = unref(page)) == null ? void 0 : _i.props) == null ? void 0 : _j.error) || ((_l = (_k = unref(page)) == null ? void 0 : _k.props) == null ? void 0 : _l.trace)) ? (openBlock(), createBlock("div", {
-                            key: 0,
-                            class: "alert alert-danger text-start mb-40",
-                            style: { "white-space": "pre-wrap", "word-break": "break-word" }
-                          }, [
-                            createVNode("strong", null, "Debug Error:"),
-                            ((_n = (_m = unref(page)) == null ? void 0 : _m.props) == null ? void 0 : _n.error) ? (openBlock(), createBlock("div", { key: 0 }, toDisplayString(unref(page).props.error), 1)) : createCommentVNode("", true),
-                            ((_p = (_o = unref(page)) == null ? void 0 : _o.props) == null ? void 0 : _p.trace) ? (openBlock(), createBlock("details", {
-                              key: 1,
-                              class: "mt-3"
-                            }, [
-                              createVNode("summary", null, "Stack trace"),
-                              createVNode("pre", { class: "mt-2" }, toDisplayString(unref(page).props.trace), 1)
-                            ])) : createCommentVNode("", true)
-                          ])) : createCommentVNode("", true),
-                          createVNode("div", { class: "error-btn-wrap" }, [
-                            createVNode(unref(Link), {
-                              href: getHomeUrl(),
-                              class: "error-btn wow fadeIn animated",
-                              "data-wow-delay": ".7s"
-                            }, {
-                              default: withCtx(() => [
-                                createTextVNode(toDisplayString(trans("Back To Home Page")), 1)
-                              ]),
-                              _: 1
-                            }, 8, ["href"])
-                          ])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ])
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`<!--]-->`);
+      _push(ssrRenderComponent(_sfc_main$6, mergeProps({
+        status: config.value.status,
+        title: trans(config.value.title),
+        heading: trans(config.value.heading),
+        message: trans(config.value.message),
+        description: trans(config.value.description),
+        keywords: trans(config.value.keywords),
+        "show-image": config.value.showImage,
+        "show-debug": config.value.showDebug,
+        "secondary-href": secondaryHref.value,
+        "secondary-label": secondaryLabel.value
+      }, _attrs), null, _parent));
     };
   }
-});
+};
+const _sfc_setup$5 = _sfc_main$5.setup;
+_sfc_main$5.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error.vue");
+  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
+};
+const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$5
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$4 = {
+  __name: "Error400",
+  __ssrInlineRender: true,
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(_sfc_main$5, _attrs, null, _parent));
+    };
+  }
+};
+const _sfc_setup$4 = _sfc_main$4.setup;
+_sfc_main$4.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error400.vue");
+  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
+};
+const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$4
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$3 = {
+  __name: "Error401",
+  __ssrInlineRender: true,
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(_sfc_main$5, _attrs, null, _parent));
+    };
+  }
+};
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error401.vue");
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+};
+const __vite_glob_1_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$3
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$2 = {
+  __name: "Error403",
+  __ssrInlineRender: true,
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(_sfc_main$5, _attrs, null, _parent));
+    };
+  }
+};
+const _sfc_setup$2 = _sfc_main$2.setup;
+_sfc_main$2.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error403.vue");
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+};
+const __vite_glob_1_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$2
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$1 = {
+  __name: "Error404",
+  __ssrInlineRender: true,
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(_sfc_main$5, _attrs, null, _parent));
+    };
+  }
+};
+const _sfc_setup$1 = _sfc_main$1.setup;
+_sfc_main$1.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error404.vue");
+  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
+};
+const __vite_glob_1_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: _sfc_main$1
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main = {
+  __name: "Error500",
+  __ssrInlineRender: true,
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(ssrRenderComponent(_sfc_main$5, _attrs, null, _parent));
+    };
+  }
+};
 const _sfc_setup = _sfc_main.setup;
 _sfc_main.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error500.vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
-const Error500 = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f2dfa1b1"]]);
-const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_1_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Error500
+  default: _sfc_main
 }, Symbol.toStringTag, { value: "Module" }));
 async function resolvePageComponent(path, pages) {
   for (const p2 of Array.isArray(path) ? path : [path]) {
@@ -16646,7 +16708,7 @@ createServer(
       }
       return resolvePageComponent(
         `./Pages/${name}.vue`,
-        /* @__PURE__ */ Object.assign({ "./Pages/Error404.vue": __vite_glob_1_0, "./Pages/Error500.vue": __vite_glob_1_1 })
+        /* @__PURE__ */ Object.assign({ "./Pages/Error.vue": __vite_glob_1_0, "./Pages/Error400.vue": __vite_glob_1_1, "./Pages/Error401.vue": __vite_glob_1_2, "./Pages/Error403.vue": __vite_glob_1_3, "./Pages/Error404.vue": __vite_glob_1_4, "./Pages/Error500.vue": __vite_glob_1_5 })
       );
     },
     setup({ App, props, plugin }) {
