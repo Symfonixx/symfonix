@@ -17,6 +17,8 @@ class VisitorTable extends Model
         'os',
         'browser',
         'page_title',
-        'url'
+        'url',
+        'referrer',
+        'user_agent',
     ];
 }

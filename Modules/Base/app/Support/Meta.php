@@ -11,7 +11,7 @@ class Meta
         'title' => null,
         'description' => null,
         'keywords' => null,
-        'robots' => 'index, follow',
+        'robots' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
         'canonical' => null,
         'og' => [
             'title' => null,
@@ -84,7 +84,7 @@ class Meta
         return $this;
     }
 
-    public function robots(string $value = 'index, follow'): static
+    public function robots(string $value = 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'): static
     {
         $this->data['robots'] = $value;
 

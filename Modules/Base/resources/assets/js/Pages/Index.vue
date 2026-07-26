@@ -21,7 +21,7 @@
             <div
                 class="banner-one__bg"
                 :style="{
-            backgroundImage: `url(${asset_path}images/home/banner-bg.jpg)`
+            backgroundImage: `url(${asset_path}images/home/banner-bg.webp), url(${asset_path}images/home/banner-bg.jpg)`
         }"
             ></div>
 
@@ -66,7 +66,14 @@
                              data-wow-duration="2500ms">
                             <div class="about-three__img-box">
                                 <div class="about-three__img">
-                                    <img :src="asset_path + 'images/home/about_us.jpg'" :alt="trans('About us')">
+                                    <picture>
+                                        <source :srcset="asset_path + 'images/home/about_us.webp'" type="image/webp">
+                                        <img :src="asset_path + 'images/home/about_us.jpg'"
+                                             :alt="trans('About us')"
+                                             width="636"
+                                             height="636"
+                                             decoding="async">
+                                    </picture>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +86,9 @@
                                     <span class="section-title__tagline">{{ trans('Our Tech Solutions') }}</span>
                                     <div class="section-title__tagline-shape-2"></div>
                                 </div>
-
+                                <h2 class="section-title__title title-animation">
+                                    {{ trans('Why Choose Symfonix for Web, AI, and Cloud') }}
+                                </h2>
                             </div>
 
                             <p class="about-three__text">
@@ -285,7 +294,11 @@
         <section class="why-choose-two">
             <div class="why-choose-two__shape-1 float-bob-y">
                 <img :src="asset_path + 'site/images/shapes/why-choose-two-shape-1.png'"
-                     :alt="trans('Decorative shape')">
+                     :alt="trans('Decorative shape')"
+                     width="120"
+                     height="120"
+                     loading="lazy"
+                     decoding="async">
             </div>
 
             <div class="container">
@@ -295,7 +308,15 @@
                              data-wow-delay="100ms"
                              data-wow-duration="2500ms">
                             <div class="why-choose-two__img">
-                                <img :src="asset_path + 'images/home/why_choose_us.jpg'" alt="why_choose_us">
+                                <picture>
+                                    <source :srcset="asset_path + 'images/home/why_choose_us.webp'" type="image/webp">
+                                    <img :src="asset_path + 'images/home/why_choose_us.jpg'"
+                                         :alt="trans('Why choose us')"
+                                         width="636"
+                                         height="700"
+                                         loading="lazy"
+                                         decoding="async">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -307,16 +328,8 @@
                                     <span class="section-title__tagline">{{ trans('Why Choose Us') }}</span>
                                     <div class="section-title__tagline-shape-2"></div>
                                 </div>
-                                <h2 class="section-title__title title-animation">{{
-                                        trans('Your Business with')
-                                    }}
-                                    <span v-if="locale === 'ar'">{{ trans('IT Solutions') }}</span>
-                                    <span>{{ trans('Reliable &') }}</span><br>
-
-                                    <span>{{ trans('Future-Ready') }}</span><br>
-
-                                    <span v-if="locale !== 'ar'">{{ trans('IT Solutions') }}</span>
-
+                                <h2 class="section-title__title title-animation">
+                                    {{ trans('How do we deliver reliable, future-ready IT solutions?') }}
                                 </h2>
                             </div>
                             <p class="why-choose-one__text">
@@ -409,7 +422,12 @@
                                     <div class="team-two__single">
                                         <div class="team-two__img-box">
                                             <div class="team-two__img">
-                                                <img :src="team.avatar_link" :alt="translateField(team.name)">
+                                                <img :src="team.avatar_link"
+                                                     :alt="translateField(team.name)"
+                                                     width="200"
+                                                     height="200"
+                                                     loading="lazy"
+                                                     decoding="async">
                                             </div>
                                             <div class="team-two__social">
                                                 <a v-if="team.facebook" :href="team.facebook" target="_blank">
@@ -445,7 +463,12 @@
         <section class="feature-one">
 
             <div class="feature-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/feature-one-shape-2.png'" :alt="trans('Decorative shape')">
+                <img :src="asset_path + 'site/images/shapes/feature-one-shape-2.png'"
+                     :alt="trans('Decorative shape')"
+                     width="120"
+                     height="120"
+                     loading="lazy"
+                     decoding="async">
             </div>
             <div class="container">
                 <div class="row">
@@ -453,10 +476,18 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/website.png'" :alt="trans('Web Development')">
+                                <picture>
+                                    <source :srcset="asset_path + 'images/home/website.webp'" type="image/webp">
+                                    <img :src="asset_path + 'images/home/website.png'"
+                                         :alt="trans('Web Development')"
+                                         width="80"
+                                         height="80"
+                                         loading="lazy"
+                                         decoding="async">
+                                </picture>
                             </div>
                             <h3 class="feature-one__title">
-                                <a href="#">
+                                <a :href="route('services.index')">
                                     {{ trans('Web Development') }}
                                 </a>
                             </h3>
@@ -472,11 +503,18 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/app-development.png'"
-                                     :alt="trans('Mobile Development')">
+                                <picture>
+                                    <source :srcset="asset_path + 'images/home/app-development.webp'" type="image/webp">
+                                    <img :src="asset_path + 'images/home/app-development.png'"
+                                         :alt="trans('Mobile Development')"
+                                         width="80"
+                                         height="80"
+                                         loading="lazy"
+                                         decoding="async">
+                                </picture>
                             </div>
                             <h3 class="feature-one__title">
-                                <a href="#">
+                                <a :href="route('services.index')">
                                     {{ trans('Mobile Development') }}
                                 </a>
                             </h3>
@@ -492,11 +530,18 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/microchip.png'"
-                                     :alt="trans('AI Agents & Automation')">
+                                <picture>
+                                    <source :srcset="asset_path + 'images/home/microchip.webp'" type="image/webp">
+                                    <img :src="asset_path + 'images/home/microchip.png'"
+                                         :alt="trans('AI Agents & Automation')"
+                                         width="80"
+                                         height="80"
+                                         loading="lazy"
+                                         decoding="async">
+                                </picture>
                             </div>
                             <h3 class="feature-one__title">
-                                <a href="#">
+                                <a :href="route('services.index')">
                                     {{ trans('AI Agents & Automation') }}
                                 </a>
                             </h3>
@@ -512,10 +557,18 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/cloud.png'" :alt="trans('Cloud & Infrastructure')">
+                                <picture>
+                                    <source :srcset="asset_path + 'images/home/cloud.webp'" type="image/webp">
+                                    <img :src="asset_path + 'images/home/cloud.png'"
+                                         :alt="trans('Cloud & Infrastructure')"
+                                         width="80"
+                                         height="80"
+                                         loading="lazy"
+                                         decoding="async">
+                                </picture>
                             </div>
                             <h3 class="feature-one__title">
-                                <a href="#">
+                                <a :href="route('services.index')">
                                     {{ trans('Cloud & Infrastructure') }}
                                 </a>
                             </h3>
@@ -559,7 +612,12 @@
         <section class="testimonial-one pb-5" v-if="testimonials && testimonials.length">
 
             <div class="testimonial-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'" :alt="trans('Decorative shape')">
+                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'"
+                     :alt="trans('Decorative shape')"
+                     width="120"
+                     height="120"
+                     loading="lazy"
+                     decoding="async">
             </div>
             <div class="container">
                 <div class="row">
@@ -583,7 +641,11 @@
                                         <div class="testimonial-one__img-box">
                                             <div class="testimonial-one__img">
                                                 <img :src="testimonial.avatar_link"
-                                                     :alt="translateField(testimonial.name)">
+                                                     :alt="translateField(testimonial.name)"
+                                                     width="100"
+                                                     height="100"
+                                                     loading="lazy"
+                                                     decoding="async">
                                             </div>
                                         </div>
                                         <div class="testimonial-one__content">
@@ -702,7 +764,12 @@
             </div>
 
             <div class="contact-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/contact-two-shape-1.png'" :alt="trans('Decorative shape')">
+                <img :src="asset_path + 'site/images/shapes/contact-two-shape-1.png'"
+                     :alt="trans('Decorative shape')"
+                     width="120"
+                     height="120"
+                     loading="lazy"
+                     decoding="async">
             </div>
 
             <div class="container">
@@ -943,7 +1010,7 @@ const metaImage = computed(() => {
     return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
 })
 const metaCanonical = computed(() => meta.value.canonical || '')
-const metaRobots = computed(() => meta.value.robots || 'index, follow')
+const metaRobots = computed(() => meta.value.robots || 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')
 
 const featuredPost = computed(() => posts.value?.[0] || null)
 const sidePosts = computed(() => (posts.value || []).slice(1, 5))
@@ -1038,9 +1105,26 @@ onMounted(() => {
             });
         };
 
+        const waitForTheme = (predicate, tries = 40) => new Promise((resolve) => {
+            const tick = () => {
+                if (predicate()) {
+                    resolve(true);
+                    return;
+                }
+                if (tries-- <= 0) {
+                    resolve(false);
+                    return;
+                }
+                setTimeout(tick, 150);
+            };
+            tick();
+        });
+
+        const initHomeWidgets = () => {
         // Initialize Services Owl Carousel
-        if (typeof $ !== 'undefined' && $('.services-three__carousel').length) {
+        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.services-three__carousel').length) {
             const $servicesCarousel = $('.services-three__carousel');
+            if (!$servicesCarousel.hasClass('owl-loaded')) {
             $servicesCarousel.owlCarousel({
                 loop: servicesCategories.value.length > 3,
                 margin: 30,
@@ -1060,11 +1144,13 @@ onMounted(() => {
                 applyOwlDotAriaLabels($(this));
             });
             applyOwlDotAriaLabels($servicesCarousel);
+            }
         }
 
         // Initialize Team Owl Carousel
-        if (typeof $ !== 'undefined' && $('.team-two__carousel').length && teams.value.length > 0) {
+        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.team-two__carousel').length && teams.value.length > 0) {
             const $teamCarousel = $('.team-two__carousel');
+            if (!$teamCarousel.hasClass('owl-loaded')) {
             $teamCarousel.owlCarousel({
                 loop: teams.value.length > 3,
                 margin: 30,
@@ -1084,11 +1170,13 @@ onMounted(() => {
                 applyOwlDotAriaLabels($(this));
             });
             applyOwlDotAriaLabels($teamCarousel);
+            }
         }
 
         // Initialize Testimonials Owl Carousel
-        if (typeof $ !== 'undefined' && $('.testimonial-one__carousel').length) {
+        if (typeof $ !== 'undefined' && typeof $.fn?.owlCarousel === 'function' && $('.testimonial-one__carousel').length) {
             const $testimonialCarousel = $('.testimonial-one__carousel');
+            if (!$testimonialCarousel.hasClass('owl-loaded')) {
             $testimonialCarousel.owlCarousel({
                 loop: testimonials.value.length > 1,
                 margin: 30,
@@ -1108,6 +1196,7 @@ onMounted(() => {
                 applyOwlDotAriaLabels($(this));
             });
             applyOwlDotAriaLabels($testimonialCarousel);
+            }
         }
 
         // Initialize WOW animations
@@ -1293,7 +1382,14 @@ onMounted(() => {
         } catch (e) {
             // Fail silently if the browser doesn't support required APIs
         }
+        };
 
+        waitForTheme(() => typeof window.$ !== 'undefined' && typeof window.$.fn?.owlCarousel === 'function')
+            .then((ready) => {
+                if (ready) {
+                    initHomeWidgets();
+                }
+            });
     });
 });
 

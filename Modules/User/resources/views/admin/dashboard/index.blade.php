@@ -179,6 +179,129 @@
         @endif
     </div>
 
+    {{-- Visits by month --}}
+    <div class="row g-5 g-xl-8 mb-8">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header border-0 pt-6">
+                    <h3 class="card-title fw-bold fs-4">{{ __('user::dashboard.visits_by_month') }}</h3>
+                    @can('Support Management')
+                        <div class="card-toolbar">
+                            <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
+                                {{ __('View All') }}
+                            </a>
+                        </div>
+                    @endcan
+                </div>
+                <div class="card-body pt-0">
+                    <div class="visits-month-chart-wrap">
+                        <canvas id="visitsByMonthChart" height="280"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-5 g-xl-8 mb-8">
+        {{-- Top visited pages --}}
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-0 pt-6">
+                    <h3 class="card-title fw-bold fs-4">{{ __('Top Visited Pages') }}</h3>
+                    @can('Support Management')
+                        <div class="card-toolbar">
+                            <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
+                                {{ __('View All') }}
+                            </a>
+                        </div>
+                    @endcan
+                </div>
+                <div class="card-body pt-0">
+                    @if($topVisitedPages->isEmpty())
+                        <div class="table-empty-state py-8">
+                            <div class="empty-icon"><i class="bi bi-bar-chart"></i></div>
+                            <div class="text-muted">{{ __('No visitor data yet') }}</div>
+                        </div>
+                    @else
+                        <div class="table-responsive">
+                            <table class="table table-row-dashed align-middle fs-6 gy-4 top-pages-table mb-0">
+                                <thead>
+                                <tr class="text-muted fw-bold fs-7 text-uppercase">
+                                    <th>{{ __('Page') }}</th>
+                                    <th class="text-end w-100px">{{ __('Visits') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($topVisitedPages as $topVisitedPage)
+                                    <tr>
+                                        <td>
+                                            <a href="{{ $topVisitedPage->url }}" target="_blank" title="{{ $topVisitedPage->url }}">
+                                                {{ $topVisitedPage->url }}
+                                            </a>
+                                        </td>
+                                        <td class="text-end">
+                                            <span class="badge badge-light-primary visit-count">{{ number_format($topVisitedPage->total) }}</span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        {{-- Top referrer links --}}
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-0 pt-6">
+                    <h3 class="card-title fw-bold fs-4">{{ __('user::dashboard.top_referrers') }}</h3>
+                    @can('Support Management')
+                        <div class="card-toolbar">
+                            <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
+                                {{ __('View All') }}
+                            </a>
+                        </div>
+                    @endcan
+                </div>
+                <div class="card-body pt-0">
+                    @if($topReferrers->isEmpty())
+                        <div class="table-empty-state py-8">
+                            <div class="empty-icon"><i class="bi bi-link-45deg"></i></div>
+                            <div class="text-muted">{{ __('user::dashboard.no_referrers') }}</div>
+                        </div>
+                    @else
+                        <div class="table-responsive">
+                            <table class="table table-row-dashed align-middle fs-6 gy-4 top-pages-table mb-0">
+                                <thead>
+                                <tr class="text-muted fw-bold fs-7 text-uppercase">
+                                    <th>{{ __('user::dashboard.referrer') }}</th>
+                                    <th class="text-end w-100px">{{ __('Visits') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($topReferrers as $referrer)
+                                    <tr>
+                                        <td>
+                                            <a href="{{ $referrer->referrer }}" target="_blank" rel="noopener noreferrer" title="{{ $referrer->referrer }}">
+                                                {{ $referrer->referrer }}
+                                            </a>
+                                        </td>
+                                        <td class="text-end">
+                                            <span class="badge badge-light-info visit-count">{{ number_format($referrer->total) }}</span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- Recent activity --}}
     <div class="row g-5 g-xl-8 mb-8">
         @can('CRM Management')
@@ -295,166 +418,6 @@
                             @endforeach
                         </div>
                     @endif
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row g-5 g-xl-8 mb-8">
-        {{-- Top visited pages --}}
-        <div class="col-xl-6">
-            <div class="card h-100">
-                <div class="card-header border-0 pt-6">
-                    <h3 class="card-title fw-bold fs-4">{{ __('Top Visited Pages') }}</h3>
-                    @can('Support Management')
-                        <div class="card-toolbar">
-                            <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
-                                {{ __('View All') }}
-                            </a>
-                        </div>
-                    @endcan
-                </div>
-                <div class="card-body pt-0">
-                    @if($topVisitedPages->isEmpty())
-                        <div class="table-empty-state py-8">
-                            <div class="empty-icon"><i class="bi bi-bar-chart"></i></div>
-                            <div class="text-muted">{{ __('No visitor data yet') }}</div>
-                        </div>
-                    @else
-                        <div class="table-responsive">
-                            <table class="table table-row-dashed align-middle fs-6 gy-4 top-pages-table mb-0">
-                                <thead>
-                                <tr class="text-muted fw-bold fs-7 text-uppercase">
-                                    <th>{{ __('Page') }}</th>
-                                    <th class="text-end w-100px">{{ __('Visits') }}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($topVisitedPages as $topVisitedPage)
-                                    <tr>
-                                        <td>
-                                            <a href="{{ $topVisitedPage->url }}" target="_blank" title="{{ $topVisitedPage->url }}">
-                                                {{ $topVisitedPage->url }}
-                                            </a>
-                                        </td>
-                                        <td class="text-end">
-                                            <span class="badge badge-light-primary visit-count">{{ number_format($topVisitedPage->total) }}</span>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        {{-- Quick actions --}}
-        <div class="col-xl-6">
-            <div class="card h-100">
-                <div class="card-header border-0 pt-6">
-                    <h3 class="card-title fw-bold fs-4">{{ __('Quick Actions') }}</h3>
-                </div>
-                <div class="card-body pt-0">
-                    <div class="row g-3">
-                        @can('CMS Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.blogs.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-pencil-square"></i></span>
-                                    {{ __('New Blog Post') }}
-                                </a>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.pages.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-info text-info"><i class="bi bi-file-earmark-plus"></i></span>
-                                    {{ __('New Page') }}
-                                </a>
-                            </div>
-                        @endcan
-                        @can('CRM Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.crm.dashboard') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-info text-info"><i class="bi bi-graph-up-arrow"></i></span>
-                                    {{ __('crm::dashboard.menu') }}
-                                </a>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.deals.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-success text-success"><i class="bi bi-briefcase"></i></span>
-                                    {{ __('crm::deal.actions.add') }}
-                                </a>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.companies.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-building"></i></span>
-                                    {{ __('crm::company.actions.add') }}
-                                </a>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.leads.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-person-plus"></i></span>
-                                    {{ __('crm::lead.actions.add') }}
-                                </a>
-                            </div>
-                        @endcan
-                        @can('Finance Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.finance.invoices.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-success text-success"><i class="bi bi-receipt"></i></span>
-                                    {{ __('finance::invoice.actions.create') }}
-                                </a>
-                            </div>
-                        @endcan
-                        @can('Project Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.projects.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-briefcase"></i></span>
-                                    {{ __('project::project.actions.add') }}
-                                </a>
-                            </div>
-                        @endcan
-                        @can('Product Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.products.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-box-seam"></i></span>
-                                    {{ __('product::product.actions.add') }}
-                                </a>
-                            </div>
-                        @endcan
-                        @can('Support Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.tickets.index') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-ticket-detailed"></i></span>
-                                    {{ __('support::ticket.menu.tickets') }}
-                                </a>
-                            </div>
-                        @endcan
-                        @can('Services Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.services.create') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-success text-success"><i class="bi bi-grid"></i></span>
-                                    {{ __('New Service') }}
-                                </a>
-                            </div>
-                        @endcan
-                        @can('Hr Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.employees.index') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-person-plus"></i></span>
-                                    {{ __('Manage Employees') }}
-                                </a>
-                            </div>
-                        @endcan
-                        @can('Settings Management')
-                            <div class="col-sm-6">
-                                <a href="{{ route('admin.settings.index') }}" class="quick-action-btn">
-                                    <span class="qa-icon bg-light-dark text-dark"><i class="bi bi-gear"></i></span>
-                                    {{ __('Settings') }}
-                                </a>
-                            </div>
-                        @endcan
-                    </div>
                 </div>
             </div>
         </div>
@@ -1006,4 +969,143 @@
             </div>
         </div>
     @endcan
+
+    {{-- Fixed quick actions FAB --}}
+    <div class="quick-actions-fab" tabindex="0">
+        <button type="button" class="quick-actions-fab__trigger" aria-label="{{ __('Quick Actions') }}">
+            <i class="bi bi-lightning-charge-fill"></i>
+        </button>
+        <div class="quick-actions-fab__panel">
+            <div class="quick-actions-fab__title">{{ __('Quick Actions') }}</div>
+            <div class="quick-actions-fab__list">
+                @can('CMS Management')
+                    <a href="{{ route('admin.blogs.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-pencil-square"></i></span>
+                        {{ __('New Blog Post') }}
+                    </a>
+                    <a href="{{ route('admin.pages.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-info text-info"><i class="bi bi-file-earmark-plus"></i></span>
+                        {{ __('New Page') }}
+                    </a>
+                @endcan
+                @can('CRM Management')
+                    <a href="{{ route('admin.crm.dashboard') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-info text-info"><i class="bi bi-graph-up-arrow"></i></span>
+                        {{ __('crm::dashboard.menu') }}
+                    </a>
+                    <a href="{{ route('admin.deals.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-success text-success"><i class="bi bi-briefcase"></i></span>
+                        {{ __('crm::deal.actions.add') }}
+                    </a>
+                    <a href="{{ route('admin.companies.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-building"></i></span>
+                        {{ __('crm::company.actions.add') }}
+                    </a>
+                    <a href="{{ route('admin.leads.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-person-plus"></i></span>
+                        {{ __('crm::lead.actions.add') }}
+                    </a>
+                @endcan
+                @can('Finance Management')
+                    <a href="{{ route('admin.finance.invoices.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-success text-success"><i class="bi bi-receipt"></i></span>
+                        {{ __('finance::invoice.actions.create') }}
+                    </a>
+                @endcan
+                @can('Project Management')
+                    <a href="{{ route('admin.projects.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-briefcase"></i></span>
+                        {{ __('project::project.actions.add') }}
+                    </a>
+                @endcan
+                @can('Product Management')
+                    <a href="{{ route('admin.products.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-box-seam"></i></span>
+                        {{ __('product::product.actions.add') }}
+                    </a>
+                @endcan
+                @can('Support Management')
+                    <a href="{{ route('admin.tickets.index') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-ticket-detailed"></i></span>
+                        {{ __('support::ticket.menu.tickets') }}
+                    </a>
+                @endcan
+                @can('Services Management')
+                    <a href="{{ route('admin.services.create') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-success text-success"><i class="bi bi-grid"></i></span>
+                        {{ __('New Service') }}
+                    </a>
+                @endcan
+                @can('Hr Management')
+                    <a href="{{ route('admin.employees.index') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-person-plus"></i></span>
+                        {{ __('Manage Employees') }}
+                    </a>
+                @endcan
+                @can('Settings Management')
+                    <a href="{{ route('admin.settings.index') }}" class="quick-action-btn">
+                        <span class="qa-icon bg-light-dark text-dark"><i class="bi bi-gear"></i></span>
+                        {{ __('Settings') }}
+                    </a>
+                @endcan
+            </div>
+        </div>
+    </div>
+
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+        <script>
+            (function () {
+                const visitsCtx = document.getElementById('visitsByMonthChart');
+                if (!visitsCtx) return;
+
+                const visitsData = @json($visitsByMonth);
+                const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+                const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+                const tickColor = isDark ? '#A1A5B7' : '#7E8299';
+
+                new Chart(visitsCtx, {
+                    type: 'line',
+                    data: {
+                        labels: visitsData.map(item => item.label),
+                        datasets: [{
+                            label: @json(__('Visits')),
+                            data: visitsData.map(item => item.total),
+                            borderColor: 'rgb(54, 153, 255)',
+                            backgroundColor: 'rgba(54, 153, 255, 0.12)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.35,
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                            pointBackgroundColor: 'rgb(54, 153, 255)',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: (ctx) => `${ctx.parsed.y.toLocaleString()} {{ __('Visits') }}`
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: { precision: 0, color: tickColor },
+                                grid: { color: gridColor }
+                            },
+                            x: {
+                                ticks: { color: tickColor, maxRotation: 0 },
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            })();
+        </script>
+    @endpush
 </x-admin-layout>

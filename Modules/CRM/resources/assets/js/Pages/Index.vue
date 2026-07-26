@@ -235,14 +235,15 @@ import {usePage, useForm, Link ,Head} from '@inertiajs/vue3'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
-const seo = computed(() => page.props.seo)
+const seo = computed(() => page.props.seo || {})
 const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
 const meta = computed(() => page.props.meta || {})
+const siteName = computed(() => seo.value.website_name || page.props.appName || 'Symfonix')
 
 const metaTitle = computed(() => {
-    return   `${trans("Contact Us")} | ${seo.value.website_name || ''}`.trim()
+    return meta.value.title || `${trans('Contact Us')} | ${siteName.value}`
 })
 const metaDescription = computed(() => {
     return meta.value.description

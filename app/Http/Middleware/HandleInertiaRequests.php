@@ -78,7 +78,18 @@ class HandleInertiaRequests extends Middleware
             'currency' => $safe(function () {
                 return app(\Modules\Finance\Services\CurrencyService::class)->sharePayload();
             }, ['default' => 'USD', 'display' => 'USD', 'supported' => ['USD']]),
-            'seo' => $safe(fn () => Seo::pluck('value', 'key'), ['website_name' => config('app.name', 'Sham Vision')]),
+            'seo' => $safe(function () {
+                // Resolve Spatie translations via model accessors (pluck returns raw JSON).
+                $seo = Seo::query()->get()->mapWithKeys(
+                    fn (Seo $item) => [$item->key => $item->value]
+                );
+
+                if (! $seo->get('website_name')) {
+                    $seo->put('website_name', config('app.name', 'Symfonix'));
+                }
+
+                return $seo->all();
+            }, ['website_name' => config('app.name', 'Symfonix')]),
             'meta' => $safe(function () {
                 $seo = Seo::pluck('value', 'key');
                 $settings = Settings::pluck('value', 'key');
@@ -90,7 +101,7 @@ class HandleInertiaRequests extends Middleware
                 return [
                     'title' => $title,
                     'description' => $description,
-                    'robots' => 'index, follow',
+                    'robots' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
                     'canonical' => url()->current(),
                     'og' => [
                         'title' => $title,
@@ -127,17 +138,17 @@ class HandleInertiaRequests extends Middleware
                         ->all();
                 }));
             }, []),
-            'auth' => fn () => $request->user()
+            'auth' => fn () => $safe(fn () => $request->user()
                 ? [
                     ...$request->user()->only('id', 'name', 'email', 'type', 'mobile'),
                     'avatar' => $request->user()->avatar,
                 ]
-                : null,
-            'flash' => fn () => [
-                'success' => $request->session()->get('success'),
-                'error' => $request->session()->get('error'),
-            ],
-            'portal' => fn () => $request->user()?->isCustomer()
+                : null),
+            'flash' => fn () => $safe(fn () => [
+                'success' => $request->hasSession() ? $request->session()->get('success') : null,
+                'error' => $request->hasSession() ? $request->session()->get('error') : null,
+            ], ['success' => null, 'error' => null]),
+            'portal' => fn () => $safe(fn () => $request->user()?->isCustomer()
                 ? [
                     'unread_notifications' => $request->user()->unreadNotifications()->count(),
                     'open_tickets' => Ticket::query()
@@ -146,7 +157,7 @@ class HandleInertiaRequests extends Middleware
                         ->count(),
                     'translations' => Lang::get('user::portal'),
                 ]
-                : null,
+                : null),
         ]);
 
         return $shared;

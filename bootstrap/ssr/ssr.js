@@ -96,12 +96,16 @@ const _sfc_main$H = {
         _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
-              _push2(`<img${ssrRenderAttr("src", imageSrc.value)}${ssrRenderAttr("alt", translateField(__props.post.title))}${_scopeId}>`);
+              _push2(`<img${ssrRenderAttr("src", imageSrc.value)}${ssrRenderAttr("alt", translateField(__props.post.title))} width="800" height="500" loading="lazy" decoding="async"${_scopeId}>`);
             } else {
               return [
                 createVNode("img", {
                   src: imageSrc.value,
                   alt: translateField(__props.post.title),
+                  width: "800",
+                  height: "500",
+                  loading: "lazy",
+                  decoding: "async",
                   onError: handleImageError
                 }, null, 40, ["src", "alt"])
               ];
@@ -205,12 +209,16 @@ const _sfc_main$H = {
         _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
-              _push2(`<img${ssrRenderAttr("src", imageSrc.value)}${ssrRenderAttr("alt", translateField(__props.post.title))}${_scopeId}>`);
+              _push2(`<img${ssrRenderAttr("src", imageSrc.value)}${ssrRenderAttr("alt", translateField(__props.post.title))} width="800" height="500" loading="lazy" decoding="async"${_scopeId}>`);
             } else {
               return [
                 createVNode("img", {
                   src: imageSrc.value,
                   alt: translateField(__props.post.title),
+                  width: "800",
+                  height: "500",
+                  loading: "lazy",
+                  decoding: "async",
                   onError: handleImageError
                 }, null, 40, ["src", "alt"])
               ];
@@ -415,13 +423,13 @@ const _sfc_main$G = {
       return `${text.slice(0, 75)}...`;
     });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-three__single" }, _attrs))} data-v-0bfa2789><div class="services-three__media" data-v-0bfa2789>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-three__single" }, _attrs))} data-v-6826fe71><div class="services-three__media" data-v-6826fe71>`);
       if (__props.image) {
-        _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="services-three__image" data-v-0bfa2789>`);
+        _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="services-three__image" width="640" height="420" loading="lazy" decoding="async" data-v-6826fe71>`);
       } else {
-        _push(`<div class="services-three__image-placeholder" data-v-0bfa2789><span class="icon-technical-support" data-v-0bfa2789></span></div>`);
+        _push(`<div class="services-three__image-placeholder" data-v-6826fe71><span class="icon-technical-support" data-v-6826fe71></span></div>`);
       }
-      _push(`</div><h3 class="services-three__title" data-v-0bfa2789>`);
+      _push(`</div><h3 class="services-three__title" data-v-6826fe71>`);
       _push(ssrRenderComponent(unref(Link), { href: __props.link }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -436,19 +444,19 @@ const _sfc_main$G = {
       }, _parent));
       _push(`</h3>`);
       if (shortDescription.value) {
-        _push(`<p class="services-three__text" data-v-0bfa2789>${ssrInterpolate(shortDescription.value)}</p>`);
+        _push(`<p class="services-three__text" data-v-6826fe71>${ssrInterpolate(shortDescription.value)}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (__props.readingTime) {
-        _push(`<p class="services-three__meta" data-v-0bfa2789><span class="far fa-clock mx-1" data-v-0bfa2789></span>${ssrInterpolate(__props.readingTime)} ${ssrInterpolate(__props.readingTimeLabel)}</p>`);
+        _push(`<p class="services-three__meta" data-v-6826fe71><span class="far fa-clock mx-1" data-v-6826fe71></span>${ssrInterpolate(__props.readingTime)} ${ssrInterpolate(__props.readingTimeLabel)}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (safeHighlights.value.length) {
-        _push(`<ul class="list-unstyled services-three__list" data-v-0bfa2789><!--[-->`);
+        _push(`<ul class="list-unstyled services-three__list" data-v-6826fe71><!--[-->`);
         ssrRenderList(safeHighlights.value, (item, index) => {
-          _push(`<li data-v-0bfa2789><div class="icon" data-v-0bfa2789><span class="icon-tick-inside-circle" data-v-0bfa2789></span></div><div class="text" data-v-0bfa2789><p data-v-0bfa2789>${ssrInterpolate(item)}</p></div></li>`);
+          _push(`<li data-v-6826fe71><div class="icon" data-v-6826fe71><span class="icon-tick-inside-circle" data-v-6826fe71></span></div><div class="text" data-v-6826fe71><p data-v-6826fe71>${ssrInterpolate(item)}</p></div></li>`);
         });
         _push(`<!--]--></ul>`);
       } else {
@@ -460,7 +468,7 @@ const _sfc_main$G = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`${ssrInterpolate(trans("Read More"))} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-0bfa2789${_scopeId}></span>`);
+            _push2(`${ssrInterpolate(trans("Read More"))} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-6826fe71${_scopeId}></span>`);
           } else {
             return [
               createTextVNode(toDisplayString(trans("Read More")) + " ", 1),
@@ -482,7 +490,7 @@ _sfc_main$G.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
   return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-0bfa2789"]]);
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-6826fe71"]]);
 const _sfc_main$F = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
@@ -519,6 +527,13 @@ const _sfc_main$F = {
         "menu.logout": "Logout"
       };
       return fallbacks[key] || key;
+    };
+    const safeRoute = (name, fallback = "#", params = void 0) => {
+      try {
+        return params !== void 0 ? route(name, params) : route(name);
+      } catch (e) {
+        return fallback;
+      }
     };
     const normalizePath = (path) => {
       if (!path) return "";
@@ -742,7 +757,7 @@ const _sfc_main$F = {
         _push(`<!---->`);
       }
       if (((_a = auth.value) == null ? void 0 : _a.type) === "admin") {
-        _push(`<li class="${ssrRenderClass({ active: isActive("admin.dashboard.index") })}"><a${ssrRenderAttr("href", _ctx.route("admin.dashboard.index"))}>${ssrInterpolate(trans("Dashboard"))}</a></li>`);
+        _push(`<li class="${ssrRenderClass({ active: isActive("admin.dashboard.index") })}"><a${ssrRenderAttr("href", safeRoute("admin.dashboard.index", "/admin"))}>${ssrInterpolate(trans("Dashboard"))}</a></li>`);
       } else {
         _push(`<!---->`);
       }
@@ -874,33 +889,59 @@ const _sfc_main$E = {
   setup(__props) {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
-    const settings = computed(() => page.props.settings);
-    const storage_path = computed(() => page.props.storage_path);
+    const settings = computed(() => page.props.settings || {});
+    const storage_path = computed(() => page.props.storage_path || "");
     const auth = computed(() => page.props.auth);
+    const brandName = computed(() => {
+      var _a;
+      return ((_a = page.props.seo) == null ? void 0 : _a.website_name) || page.props.appName || "Symfonix";
+    });
+    const logoSrc = computed(() => {
+      var _a;
+      const logo = (_a = settings.value) == null ? void 0 : _a.site_logo;
+      if (!logo || logo === false || logo === "false" || logo === "default.jpg") {
+        return "";
+      }
+      if (/^https?:\/\//i.test(logo) || String(logo).startsWith("//") || String(logo).startsWith("/")) {
+        return logo;
+      }
+      return `${storage_path.value}${logo}`;
+    });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<nav${ssrRenderAttrs(mergeProps({ class: "main-menu main-menu-two" }, _attrs))}><div class="main-menu-two__wrapper"><div class="main-menu-two__wrapper-inner"><div class="main-menu-two__left"><div class="main-menu-two__logo">`);
+      _push(`<nav${ssrRenderAttrs(mergeProps({ class: "main-menu main-menu-two" }, _attrs))} data-v-bcca7c9f><div class="main-menu-two__wrapper" data-v-bcca7c9f><div class="main-menu-two__wrapper-inner" data-v-bcca7c9f><div class="main-menu-two__left" data-v-bcca7c9f><div class="main-menu-two__logo" data-v-bcca7c9f>`);
       _push(ssrRenderComponent(unref(Link), {
-        href: _ctx.route("home")
+        href: _ctx.route("home"),
+        class: "main-menu-two__logo-link"
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
+            if (logoSrc.value) {
+              _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)} width="180" height="48" data-v-bcca7c9f${_scopeId}>`);
+            } else {
+              _push2(`<span class="brand-text-logo" data-v-bcca7c9f${_scopeId}>${ssrInterpolate(brandName.value)}</span>`);
+            }
           } else {
             return [
-              createVNode("img", {
-                src: storage_path.value + settings.value.site_logo,
-                alt: "logo"
-              }, null, 8, ["src"])
+              logoSrc.value ? (openBlock(), createBlock("img", {
+                key: 0,
+                src: logoSrc.value,
+                alt: brandName.value,
+                width: "180",
+                height: "48"
+              }, null, 8, ["src", "alt"])) : (openBlock(), createBlock("span", {
+                key: 1,
+                class: "brand-text-logo"
+              }, toDisplayString(brandName.value), 1))
             ];
           }
         }),
         _: 1
       }, _parent));
-      _push(`</div></div><div class="main-menu-two__main-menu-box"><a href="#" class="mobile-nav__toggler" aria-label="Open mobile menu"><i class="fa fa-bars"></i></a>`);
+      _push(`</div></div><div class="main-menu-two__main-menu-box" data-v-bcca7c9f><a href="#" class="mobile-nav__toggler" aria-label="Open mobile menu" data-v-bcca7c9f><i class="fa fa-bars" data-v-bcca7c9f></i></a>`);
       _push(ssrRenderComponent(_sfc_main$F, null, null, _parent));
-      _push(`</div><div class="main-menu-two__right d-none d-md-flex align-items-center">`);
+      _push(`</div><div class="main-menu-two__right d-none d-md-flex align-items-center" data-v-bcca7c9f>`);
       if (!auth.value) {
-        _push(`<div class="main-menu-two__btn-box">`);
+        _push(`<div class="main-menu-two__btn-box" data-v-bcca7c9f>`);
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("login"),
           class: "thm-btn"
@@ -920,7 +961,7 @@ const _sfc_main$E = {
       } else {
         _push(`<!---->`);
       }
-      _push(`<div class="main-menu-two__search-box me-3"><a href="#" class="main-menu-two__search searcher-toggler-box icon-search-interface-symbol" aria-label="Open search"></a></div><div class="main-menu-two__nav-sidebar-icon"><a class="navSidebar-button" href="#" aria-label="Open sidebar"><span class="icon-dots-menu-one"></span><span class="icon-dots-menu-two"></span><span class="icon-dots-menu-three"></span></a></div></div></div></div></nav>`);
+      _push(`<div class="main-menu-two__search-box me-3" data-v-bcca7c9f><a href="#" class="main-menu-two__search searcher-toggler-box icon-search-interface-symbol" aria-label="Open search" data-v-bcca7c9f></a></div><div class="main-menu-two__nav-sidebar-icon" data-v-bcca7c9f><a class="navSidebar-button" href="#" aria-label="Open sidebar" data-v-bcca7c9f><span class="icon-dots-menu-one" data-v-bcca7c9f></span><span class="icon-dots-menu-two" data-v-bcca7c9f></span><span class="icon-dots-menu-three" data-v-bcca7c9f></span></a></div></div></div></div></nav>`);
     };
   }
 };
@@ -930,17 +971,33 @@ _sfc_main$E.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuNav.vue");
   return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
 };
+const MainMenuNav = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-bcca7c9f"]]);
 const _sfc_main$D = {
   __name: "App",
   __ssrInlineRender: true,
   setup(__props) {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
-    const settings = computed(() => page.props.settings);
-    const storage_path = computed(() => page.props.storage_path);
+    const settings = computed(() => page.props.settings || {});
+    const storage_path = computed(() => page.props.storage_path || "");
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
-    const seo = computed(() => page.props.seo);
+    const seo = computed(() => page.props.seo || {});
+    const brandName = computed(() => {
+      var _a;
+      return ((_a = seo.value) == null ? void 0 : _a.website_name) || page.props.appName || "Symfonix";
+    });
+    const logoSrc = computed(() => {
+      var _a;
+      const logo = (_a = settings.value) == null ? void 0 : _a.site_logo;
+      if (!logo || logo === false || logo === "false" || logo === "default.jpg") {
+        return "";
+      }
+      if (/^https?:\/\//i.test(logo) || String(logo).startsWith("//") || String(logo).startsWith("/")) {
+        return logo;
+      }
+      return `${storage_path.value}${logo}`;
+    });
     computed(() => page.props.servicesList);
     const footerPages = computed(() => page.props.footerPages || []);
     const isPortalPage = computed(() => /\/portal(\/|$)/.test(page.url));
@@ -960,92 +1017,131 @@ const _sfc_main$D = {
       message: ""
     });
     onMounted(() => {
-      const unregisterNavigate = router.on("navigate", (event) => {
-        $(".mobile-nav__wrapper").removeClass("expanded");
-        $("body").removeClass("locked");
-        $("body").removeClass("search-active");
-        $(".info-group").removeClass("isActive");
+      const toggleMobileNav = (forceClose = false) => {
+        const wrapper = document.querySelector(".mobile-nav__wrapper");
+        const body = document.body;
+        if (!wrapper) return;
+        if (forceClose) {
+          wrapper.classList.remove("expanded");
+          body.classList.remove("locked");
+          return;
+        }
+        wrapper.classList.toggle("expanded");
+        body.classList.toggle("locked");
+      };
+      const onMobileNavToggleClick = (e) => {
+        var _a, _b;
+        const toggler = (_b = (_a = e.target).closest) == null ? void 0 : _b.call(_a, ".mobile-nav__toggler");
+        if (!toggler) return;
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        toggleMobileNav();
+      };
+      document.addEventListener("click", onMobileNavToggleClick, true);
+      window.__symfonixMobileNavBound = true;
+      const unregisterNavigate = router.on("navigate", () => {
+        var _a;
+        toggleMobileNav(true);
+        document.body.classList.remove("search-active");
+        (_a = document.querySelector(".info-group")) == null ? void 0 : _a.classList.remove("isActive");
+        if (typeof window.$ !== "undefined") {
+          $(".mobile-nav__wrapper").removeClass("expanded");
+          $("body").removeClass("locked");
+          $("body").removeClass("search-active");
+          $(".info-group").removeClass("isActive");
+        }
       });
       onUnmounted(() => {
+        document.removeEventListener("click", onMobileNavToggleClick, true);
         unregisterNavigate();
       });
-      if ($(".mobile-nav__toggler").length) {
-        $(".mobile-nav__toggler").off("click").on("click", function(e) {
-          e.preventDefault();
-          $(".mobile-nav__wrapper").toggleClass("expanded");
-          $("body").toggleClass("locked");
-        });
-      }
-      if ($(".navSidebar-button").length) {
-        $(".navSidebar-button").off("click").on("click", function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          $(".info-group").addClass("isActive");
-        });
-      }
-      if ($(".close-side-widget").length) {
-        $(".close-side-widget").off("click").on("click", function(e) {
-          e.preventDefault();
+      const bindHeaderInteractions = () => {
+        if (typeof window.$ === "undefined") {
+          return false;
+        }
+        if ($(".navSidebar-button").length) {
+          $(".navSidebar-button").off("click.symfonixNav").on("click.symfonixNav", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(".info-group").addClass("isActive");
+          });
+        }
+        if ($(".close-side-widget").length) {
+          $(".close-side-widget").off("click.symfonixNav").on("click.symfonixNav", function(e) {
+            e.preventDefault();
+            $(".info-group").removeClass("isActive");
+          });
+        }
+        $("body").off("click.infoGroup").on("click.infoGroup", function(e) {
           $(".info-group").removeClass("isActive");
         });
-      }
-      $("body").off("click.infoGroup").on("click.infoGroup", function(e) {
-        $(".info-group").removeClass("isActive");
-      });
-      $(".xs-sidebar-widget").off("click").on("click", function(e) {
-        e.stopPropagation();
-      });
-      if ($(".searcher-toggler-box").length) {
-        $(".searcher-toggler-box").off("click").on("click", function() {
-          $("body").addClass("search-active");
+        $(".xs-sidebar-widget").off("click.symfonixNav").on("click.symfonixNav", function(e) {
+          e.stopPropagation();
         });
-        $(".close-search").off("click").on("click", function() {
-          $("body").removeClass("search-active");
-        });
-        $(".search-popup .color-layer").off("click").on("click", function() {
-          $("body").removeClass("search-active");
-        });
-      }
-      if ($(".mobile-nav__container .main-menu__list").length) {
-        let dropdownAnchor = $(".mobile-nav__container .main-menu__list .dropdown > a");
-        dropdownAnchor.each(function() {
-          let self = $(this);
-          if (self.find('button[aria-label="dropdown toggler"]').length === 0) {
-            let toggleBtn = document.createElement("BUTTON");
-            toggleBtn.setAttribute("aria-label", "dropdown toggler");
-            toggleBtn.innerHTML = "<i class='fa fa-angle-down'></i>";
-            self.append(function() {
-              return toggleBtn;
-            });
-          }
-          self.find("button").off("click").on("click", function(e) {
-            e.preventDefault();
-            let self2 = $(this);
-            self2.toggleClass("expanded");
-            self2.parent().toggleClass("expanded");
-            self2.parent().parent().children("ul").slideToggle();
+        if ($(".searcher-toggler-box").length) {
+          $(".searcher-toggler-box").off("click.symfonixNav").on("click.symfonixNav", function() {
+            $("body").addClass("search-active");
           });
+          $(".close-search").off("click.symfonixNav").on("click.symfonixNav", function() {
+            $("body").removeClass("search-active");
+          });
+          $(".search-popup .color-layer").off("click.symfonixNav").on("click.symfonixNav", function() {
+            $("body").removeClass("search-active");
+          });
+        }
+        if ($(".mobile-nav__container .main-menu__list").length) {
+          let dropdownAnchor = $(".mobile-nav__container .main-menu__list .dropdown > a");
+          dropdownAnchor.each(function() {
+            let self = $(this);
+            if (self.find('button[aria-label="dropdown toggler"]').length === 0) {
+              let toggleBtn = document.createElement("BUTTON");
+              toggleBtn.setAttribute("aria-label", "dropdown toggler");
+              toggleBtn.innerHTML = "<i class='fa fa-angle-down'></i>";
+              self.append(function() {
+                return toggleBtn;
+              });
+            }
+            self.find("button").off("click.symfonixNav").on("click.symfonixNav", function(e) {
+              e.preventDefault();
+              let self2 = $(this);
+              self2.toggleClass("expanded");
+              self2.parent().toggleClass("expanded");
+              self2.parent().parent().children("ul").slideToggle();
+            });
+          });
+        }
+        return true;
+      };
+      if (!bindHeaderInteractions()) {
+        let tries = 40;
+        const timer = setInterval(() => {
+          if (bindHeaderInteractions() || --tries <= 0) {
+            clearInterval(timer);
+          }
+        }, 100);
+      }
+      if (typeof window.$ !== "undefined") {
+        $(window).off("scroll.appLayout").on("scroll.appLayout", function() {
+          if ($(".stricked-menu").length) {
+            var headerScrollPos = 300;
+            var stricky = $(".stricked-menu");
+            if ($(window).scrollTop() > headerScrollPos) {
+              stricky.addClass("stricky-fixed");
+            } else if ($(this).scrollTop() <= headerScrollPos) {
+              stricky.removeClass("stricky-fixed");
+            }
+          }
+          var scrollToTopBtn = ".scroll-to-top";
+          if ($(scrollToTopBtn).length) {
+            if ($(window).scrollTop() > 500) {
+              $(scrollToTopBtn).addClass("show");
+            } else {
+              $(scrollToTopBtn).removeClass("show");
+            }
+          }
         });
       }
-      $(window).off("scroll.appLayout").on("scroll.appLayout", function() {
-        if ($(".stricked-menu").length) {
-          var headerScrollPos = 300;
-          var stricky = $(".stricked-menu");
-          if ($(window).scrollTop() > headerScrollPos) {
-            stricky.addClass("stricky-fixed");
-          } else if ($(this).scrollTop() <= headerScrollPos) {
-            stricky.removeClass("stricky-fixed");
-          }
-        }
-        var scrollToTopBtn = ".scroll-to-top";
-        if ($(scrollToTopBtn).length) {
-          if ($(window).scrollTop() > 500) {
-            $(scrollToTopBtn).addClass("show");
-          } else {
-            $(scrollToTopBtn).removeClass("show");
-          }
-        }
-      });
       const toggle = document.getElementById("themeToggle");
       const root = document.documentElement;
       const savedTheme = localStorage.getItem("theme");
@@ -1086,13 +1182,21 @@ const _sfc_main$D = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
+            if (logoSrc.value) {
+              _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)}${_scopeId}>`);
+            } else {
+              _push2(`<span class="brand-text-logo"${_scopeId}>${ssrInterpolate(brandName.value)}</span>`);
+            }
           } else {
             return [
-              createVNode("img", {
-                src: storage_path.value + settings.value.site_logo,
-                alt: "logo"
-              }, null, 8, ["src"])
+              logoSrc.value ? (openBlock(), createBlock("img", {
+                key: 0,
+                src: logoSrc.value,
+                alt: brandName.value
+              }, null, 8, ["src", "alt"])) : (openBlock(), createBlock("span", {
+                key: 1,
+                class: "brand-text-logo"
+              }, toDisplayString(brandName.value), 1))
             ];
           }
         }),
@@ -1141,9 +1245,9 @@ const _sfc_main$D = {
         _push(`<!---->`);
       }
       _push(`</form></div></div></div></div></div></div></div><div class="page-wrapper"><header class="main-header-two"><div class="main-menu-two__top"><div class="main-menu-two__top-inner"><p class="main-menu-two__top-text">${ssrInterpolate(trans("We Build Technology In Perfect Harmony"))}</p><ul class="list-unstyled main-menu-two__contact-list"><li><div class="icon"><i class="icon-pin"></i></div><div class="text"><p>${ssrInterpolate(settings.value.address)}</p></div></li><li><div class="icon"><i class="icon-search-mail"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `mailto::${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li><div class="icon"><i class="icon-phone-call"></i></div><div class="text"><p><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div>`);
-      _push(ssrRenderComponent(_sfc_main$E, null, null, _parent));
+      _push(ssrRenderComponent(MainMenuNav, null, null, _parent));
       _push(`</header><div class="stricky-header stricked-menu main-menu main-menu-two"><div class="sticky-header__content">`);
-      _push(ssrRenderComponent(_sfc_main$E, null, null, _parent));
+      _push(ssrRenderComponent(MainMenuNav, null, null, _parent));
       _push(`</div></div>`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       if (!isPortalPage.value) {
@@ -1190,13 +1294,21 @@ const _sfc_main$D = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
+            if (logoSrc.value) {
+              _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)}${_scopeId}>`);
+            } else {
+              _push2(`<span class="brand-text-logo"${_scopeId}>${ssrInterpolate(brandName.value)}</span>`);
+            }
           } else {
             return [
-              createVNode("img", {
-                src: storage_path.value + settings.value.site_logo,
-                alt: "logo"
-              }, null, 8, ["src"])
+              logoSrc.value ? (openBlock(), createBlock("img", {
+                key: 0,
+                src: logoSrc.value,
+                alt: brandName.value
+              }, null, 8, ["src", "alt"])) : (openBlock(), createBlock("span", {
+                key: 1,
+                class: "brand-text-logo"
+              }, toDisplayString(brandName.value), 1))
             ];
           }
         }),
@@ -1452,13 +1564,21 @@ const _sfc_main$D = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
+            if (logoSrc.value) {
+              _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)}${_scopeId}>`);
+            } else {
+              _push2(`<span class="brand-text-logo brand-text-logo--light"${_scopeId}>${ssrInterpolate(brandName.value)}</span>`);
+            }
           } else {
             return [
-              createVNode("img", {
-                src: storage_path.value + settings.value.site_logo,
-                alt: "logo"
-              }, null, 8, ["src"])
+              logoSrc.value ? (openBlock(), createBlock("img", {
+                key: 0,
+                src: logoSrc.value,
+                alt: brandName.value
+              }, null, 8, ["src", "alt"])) : (openBlock(), createBlock("span", {
+                key: 1,
+                class: "brand-text-logo brand-text-logo--light"
+              }, toDisplayString(brandName.value), 1))
             ];
           }
         }),
@@ -1546,7 +1666,7 @@ const _sfc_main$C = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<article${ssrRenderAttrs(mergeProps({
         class: ["use-case-card", [`use-case-card--${__props.variant}`, { "use-case-card--featured": __props.item.featured }]]
-      }, _attrs))} data-v-9f66d710><div class="use-case-card__glow" aria-hidden="true" data-v-9f66d710></div><header class="use-case-card__header" data-v-9f66d710>`);
+      }, _attrs))} data-v-0c9c4e06><div class="use-case-card__glow" aria-hidden="true" data-v-0c9c4e06></div><header class="use-case-card__header" data-v-0c9c4e06>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "use-case-card__avatar",
@@ -1554,20 +1674,23 @@ const _sfc_main$C = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", __props.item.image_link)}${ssrRenderAttr("alt", __props.item.title)} loading="lazy" data-v-9f66d710${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", __props.item.image_link)}${ssrRenderAttr("alt", __props.item.title)} width="96" height="96" loading="lazy" decoding="async" data-v-0c9c4e06${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
                 src: __props.item.image_link,
                 alt: __props.item.title,
-                loading: "lazy"
+                width: "96",
+                height: "96",
+                loading: "lazy",
+                decoding: "async"
               }, null, 8, ["src", "alt"])
             ];
           }
         }),
         _: 1
       }, _parent));
-      _push(`<div class="use-case-card__identity" data-v-9f66d710><h3 class="use-case-card__title" data-v-9f66d710>`);
+      _push(`<div class="use-case-card__identity" data-v-0c9c4e06><h3 class="use-case-card__title" data-v-0c9c4e06>`);
       _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -1582,36 +1705,36 @@ const _sfc_main$C = {
       }, _parent));
       _push(`</h3>`);
       if (__props.item.client_name) {
-        _push(`<p class="use-case-card__subtitle" data-v-9f66d710>${ssrInterpolate(__props.item.client_name)}</p>`);
+        _push(`<p class="use-case-card__subtitle" data-v-0c9c4e06>${ssrInterpolate(__props.item.client_name)}</p>`);
       } else if (__props.item.category_tag) {
-        _push(`<p class="use-case-card__subtitle" data-v-9f66d710>${ssrInterpolate(__props.item.category_tag)}</p>`);
+        _push(`<p class="use-case-card__subtitle" data-v-0c9c4e06>${ssrInterpolate(__props.item.category_tag)}</p>`);
       } else {
         _push(`<!---->`);
       }
       _push(`</div></header>`);
       if (__props.item.summary && __props.variant !== "compact") {
-        _push(`<div class="use-case-card__section" data-v-9f66d710><div class="use-case-card__section-head" data-v-9f66d710><span class="use-case-card__section-icon" data-v-9f66d710><i class="fas fa-lightbulb" data-v-9f66d710></i></span><span class="use-case-card__section-label" data-v-9f66d710>${ssrInterpolate(trans("Overview"))}</span></div><p class="use-case-card__summary" data-v-9f66d710>${ssrInterpolate(truncate(__props.item.summary, __props.variant === "compact" ? 90 : 140))}</p></div>`);
+        _push(`<div class="use-case-card__section" data-v-0c9c4e06><div class="use-case-card__section-head" data-v-0c9c4e06><span class="use-case-card__section-icon" data-v-0c9c4e06><i class="fas fa-lightbulb" data-v-0c9c4e06></i></span><span class="use-case-card__section-label" data-v-0c9c4e06>${ssrInterpolate(trans("Overview"))}</span></div><p class="use-case-card__summary" data-v-0c9c4e06>${ssrInterpolate(truncate(__props.item.summary, __props.variant === "compact" ? 90 : 140))}</p></div>`);
       } else {
         _push(`<!---->`);
       }
       if (__props.item.category_tag || __props.item.technologies && __props.item.technologies.length) {
-        _push(`<div class="use-case-card__section use-case-card__section--tags" data-v-9f66d710><div class="use-case-card__section-head" data-v-9f66d710><span class="use-case-card__section-icon" data-v-9f66d710><i class="fas fa-code" data-v-9f66d710></i></span><span class="use-case-card__section-label" data-v-9f66d710>${ssrInterpolate(trans("Technologies"))}</span></div><div class="use-case-card__tags" data-v-9f66d710>`);
+        _push(`<div class="use-case-card__section use-case-card__section--tags" data-v-0c9c4e06><div class="use-case-card__section-head" data-v-0c9c4e06><span class="use-case-card__section-icon" data-v-0c9c4e06><i class="fas fa-code" data-v-0c9c4e06></i></span><span class="use-case-card__section-label" data-v-0c9c4e06>${ssrInterpolate(trans("Technologies"))}</span></div><div class="use-case-card__tags" data-v-0c9c4e06>`);
         if (__props.item.category_tag) {
-          _push(`<span class="use-case-card__tag use-case-card__tag--category" data-v-9f66d710>${ssrInterpolate(__props.item.category_tag)}</span>`);
+          _push(`<span class="use-case-card__tag use-case-card__tag--category" data-v-0c9c4e06>${ssrInterpolate(__props.item.category_tag)}</span>`);
         } else {
           _push(`<!---->`);
         }
         _push(`<!--[-->`);
         ssrRenderList((__props.item.technologies || []).slice(0, __props.variant === "compact" ? 2 : 4), (tech) => {
-          _push(`<span class="use-case-card__tag" data-v-9f66d710>${ssrInterpolate(tech)}</span>`);
+          _push(`<span class="use-case-card__tag" data-v-0c9c4e06>${ssrInterpolate(tech)}</span>`);
         });
         _push(`<!--]--></div></div>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<footer class="use-case-card__footer" data-v-9f66d710>`);
+      _push(`<footer class="use-case-card__footer" data-v-0c9c4e06>`);
       if (__props.item.completed_year) {
-        _push(`<div class="use-case-card__pill" data-v-9f66d710><i class="far fa-calendar-alt" data-v-9f66d710></i><span data-v-9f66d710>${ssrInterpolate(__props.item.completed_year)}</span></div>`);
+        _push(`<div class="use-case-card__pill" data-v-0c9c4e06><i class="far fa-calendar-alt" data-v-0c9c4e06></i><span data-v-0c9c4e06>${ssrInterpolate(__props.item.completed_year)}</span></div>`);
       } else {
         _push(`<!---->`);
       }
@@ -1621,7 +1744,7 @@ const _sfc_main$C = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-9f66d710${_scopeId}>${ssrInterpolate(trans("View Case Study"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-9f66d710${_scopeId}></span>`);
+            _push2(`<span data-v-0c9c4e06${_scopeId}>${ssrInterpolate(trans("View Case Study"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-0c9c4e06${_scopeId}></span>`);
           } else {
             return [
               createVNode("span", null, toDisplayString(trans("View Case Study")), 1),
@@ -1643,7 +1766,7 @@ _sfc_main$C.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UseCaseCard.vue");
   return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
-const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-9f66d710"]]);
+const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-0c9c4e06"]]);
 const _sfc_main$B = {
   __name: "ProductCard",
   __ssrInlineRender: true,
@@ -1688,7 +1811,7 @@ const _sfc_main$B = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<article${ssrRenderAttrs(mergeProps({
         class: ["product-card", [`product-card--${__props.variant}`, { "product-card--featured": __props.item.is_featured }]]
-      }, _attrs))} data-v-17fca12f><div class="product-card__glow" aria-hidden="true" data-v-17fca12f></div>`);
+      }, _attrs))} data-v-80e9306c><div class="product-card__glow" aria-hidden="true" data-v-80e9306c></div>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "product-card__media",
@@ -1696,9 +1819,9 @@ const _sfc_main$B = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} loading="lazy" data-v-17fca12f${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-17fca12f${_scopeId}></div>`);
+            _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} width="640" height="400" loading="lazy" decoding="async" data-v-80e9306c${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-80e9306c${_scopeId}></div>`);
             if (__props.item.is_featured) {
-              _push2(`<span class="product-card__badge" data-v-17fca12f${_scopeId}><i class="fas fa-star" data-v-17fca12f${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
+              _push2(`<span class="product-card__badge" data-v-80e9306c${_scopeId}><i class="fas fa-star" data-v-80e9306c${_scopeId}></i> ${ssrInterpolate(trans("Featured"))}</span>`);
             } else {
               _push2(`<!---->`);
             }
@@ -1707,7 +1830,10 @@ const _sfc_main$B = {
               createVNode("img", {
                 src: __props.item.main_image_link,
                 alt: __props.item.name,
-                loading: "lazy"
+                width: "640",
+                height: "400",
+                loading: "lazy",
+                decoding: "async"
               }, null, 8, ["src", "alt"]),
               createVNode("div", {
                 class: "product-card__media-overlay",
@@ -1725,13 +1851,13 @@ const _sfc_main$B = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="product-card__body" data-v-17fca12f>`);
+      _push(`<div class="product-card__body" data-v-80e9306c>`);
       if (__props.item.category) {
-        _push(`<p class="product-card__category" data-v-17fca12f>${ssrInterpolate(__props.item.category.name)}</p>`);
+        _push(`<p class="product-card__category" data-v-80e9306c>${ssrInterpolate(__props.item.category.name)}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`<h3 class="product-card__title" data-v-17fca12f>`);
+      _push(`<h3 class="product-card__title" data-v-80e9306c>`);
       _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -1746,18 +1872,18 @@ const _sfc_main$B = {
       }, _parent));
       _push(`</h3>`);
       if (__props.item.short_description && __props.variant !== "compact") {
-        _push(`<p class="product-card__summary" data-v-17fca12f>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
+        _push(`<p class="product-card__summary" data-v-80e9306c>${ssrInterpolate(truncate(__props.item.short_description, __props.variant === "compact" ? 80 : 130))}</p>`);
       } else {
         _push(`<!---->`);
       }
-      _push(`</div><footer class="product-card__footer" data-v-17fca12f>`);
+      _push(`</div><footer class="product-card__footer" data-v-80e9306c>`);
       _push(ssrRenderComponent(unref(Link), {
         href: cardUrl.value,
         class: "product-card__pill product-card__pill--cta"
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<span data-v-17fca12f${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-17fca12f${_scopeId}></span>`);
+            _push2(`<span data-v-80e9306c${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-80e9306c${_scopeId}></span>`);
           } else {
             return [
               createVNode("span", null, toDisplayString(trans("View Details")), 1),
@@ -1779,7 +1905,7 @@ _sfc_main$B.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
   return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
-const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-17fca12f"]]);
+const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-80e9306c"]]);
 const __default__$h = {
   components: {
     AppLayout: _sfc_main$D,
@@ -1818,7 +1944,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
       return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
-    const metaRobots = computed(() => meta.value.robots || "index, follow");
+    const metaRobots = computed(() => meta.value.robots || "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1");
     const featuredPost = computed(() => {
       var _a;
       return ((_a = posts.value) == null ? void 0 : _a[0]) || null;
@@ -1894,216 +2020,247 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
             $(this).attr("aria-label", `${trans("Go to slide")} ${index + 1}`);
           });
         };
-        if (typeof $ !== "undefined" && $(".services-three__carousel").length) {
-          const $servicesCarousel = $(".services-three__carousel");
-          $servicesCarousel.owlCarousel({
-            loop: servicesCategories.value.length > 3,
-            margin: 30,
-            nav: false,
-            dots: true,
-            smartSpeed: 500,
-            autoplay: true,
-            autoplayTimeout: 7e3,
-            rtl: isRTL,
-            responsive: {
-              0: { items: 1 },
-              768: { items: 2 },
-              992: { items: 3 },
-              1200: { items: 3 }
+        const waitForTheme = (predicate, tries = 40) => new Promise((resolve) => {
+          const tick = () => {
+            if (predicate()) {
+              resolve(true);
+              return;
             }
-          }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
-            applyOwlDotAriaLabels($(this));
-          });
-          applyOwlDotAriaLabels($servicesCarousel);
-        }
-        if (typeof $ !== "undefined" && $(".team-two__carousel").length && teams.value.length > 0) {
-          const $teamCarousel = $(".team-two__carousel");
-          $teamCarousel.owlCarousel({
-            loop: teams.value.length > 3,
-            margin: 30,
-            nav: false,
-            dots: true,
-            smartSpeed: 500,
-            autoplay: true,
-            autoplayTimeout: 7e3,
-            rtl: isRTL,
-            responsive: {
-              0: { items: 1 },
-              768: { items: 2 },
-              992: { items: 2 },
-              1200: { items: 3 }
+            if (tries-- <= 0) {
+              resolve(false);
+              return;
             }
-          }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
-            applyOwlDotAriaLabels($(this));
-          });
-          applyOwlDotAriaLabels($teamCarousel);
-        }
-        if (typeof $ !== "undefined" && $(".testimonial-one__carousel").length) {
-          const $testimonialCarousel = $(".testimonial-one__carousel");
-          $testimonialCarousel.owlCarousel({
-            loop: testimonials.value.length > 1,
-            margin: 30,
-            nav: false,
-            dots: true,
-            smartSpeed: 500,
-            autoplay: true,
-            autoplayTimeout: 7e3,
-            rtl: isRTL,
-            responsive: {
-              0: { items: 1 },
-              768: { items: 1 },
-              992: { items: 1 },
-              1200: { items: 1 }
-            }
-          }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
-            applyOwlDotAriaLabels($(this));
-          });
-          applyOwlDotAriaLabels($testimonialCarousel);
-        }
-        if (typeof WOW !== "undefined") {
-          new WOW().init();
-        }
-        if (typeof gsap !== "undefined" && typeof SplitText !== "undefined") {
-          const titleAnimations = document.querySelectorAll(".sec-title-animation .title-animation");
-          if (titleAnimations.length) {
-            titleAnimations.forEach((quote) => {
-              if (quote.animation) {
-                quote.animation.progress(1).kill();
-                if (quote.split) quote.split.revert();
-              }
-              if (isRTL) {
-                const text2 = quote.textContent;
-                if (/[\u0600-\u06FF]/.test(text2)) {
-                  quote.style.textTransform = "none";
-                  quote.style.fontVariant = "normal";
+            setTimeout(tick, 150);
+          };
+          tick();
+        });
+        const initHomeWidgets = () => {
+          var _a, _b, _c;
+          if (typeof $ !== "undefined" && typeof ((_a = $.fn) == null ? void 0 : _a.owlCarousel) === "function" && $(".services-three__carousel").length) {
+            const $servicesCarousel = $(".services-three__carousel");
+            if (!$servicesCarousel.hasClass("owl-loaded")) {
+              $servicesCarousel.owlCarousel({
+                loop: servicesCategories.value.length > 3,
+                margin: 30,
+                nav: false,
+                dots: true,
+                smartSpeed: 500,
+                autoplay: true,
+                autoplayTimeout: 7e3,
+                rtl: isRTL,
+                responsive: {
+                  0: { items: 1 },
+                  768: { items: 2 },
+                  992: { items: 3 },
+                  1200: { items: 3 }
                 }
-              }
-              var getclass = quote.closest(".sec-title-animation").className;
-              var animation = getclass.split("animation-");
-              if (animation[1] == "style4") return;
-              const text = quote.textContent;
-              const hasArabic = /[\u0600-\u06FF]/.test(text);
-              if (hasArabic) {
-                gsap.set(quote, {
-                  perspective: 400,
-                  opacity: 0,
-                  y: isRTL ? -50 : 50
-                });
-                quote.animation = gsap.to(quote, {
-                  scrollTrigger: {
-                    trigger: quote,
-                    start: "top 90%",
-                    toggleActions: "play none none none"
-                  },
-                  y: 0,
-                  opacity: 1,
-                  duration: 1,
-                  ease: Back.easeOut
-                });
-              } else {
-                quote.split = new SplitText(quote, {
-                  type: "lines,words,chars",
-                  linesClass: "split-line"
-                });
-                gsap.set(quote, {
-                  perspective: 400
-                });
-                const xValue = isRTL ? "-50" : "50";
-                const yValue = isRTL ? "-90%" : "90%";
-                if (animation[1] == "style1") {
-                  gsap.set(quote.split.chars, {
+              }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
+                applyOwlDotAriaLabels($(this));
+              });
+              applyOwlDotAriaLabels($servicesCarousel);
+            }
+          }
+          if (typeof $ !== "undefined" && typeof ((_b = $.fn) == null ? void 0 : _b.owlCarousel) === "function" && $(".team-two__carousel").length && teams.value.length > 0) {
+            const $teamCarousel = $(".team-two__carousel");
+            if (!$teamCarousel.hasClass("owl-loaded")) {
+              $teamCarousel.owlCarousel({
+                loop: teams.value.length > 3,
+                margin: 30,
+                nav: false,
+                dots: true,
+                smartSpeed: 500,
+                autoplay: true,
+                autoplayTimeout: 7e3,
+                rtl: isRTL,
+                responsive: {
+                  0: { items: 1 },
+                  768: { items: 2 },
+                  992: { items: 2 },
+                  1200: { items: 3 }
+                }
+              }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
+                applyOwlDotAriaLabels($(this));
+              });
+              applyOwlDotAriaLabels($teamCarousel);
+            }
+          }
+          if (typeof $ !== "undefined" && typeof ((_c = $.fn) == null ? void 0 : _c.owlCarousel) === "function" && $(".testimonial-one__carousel").length) {
+            const $testimonialCarousel = $(".testimonial-one__carousel");
+            if (!$testimonialCarousel.hasClass("owl-loaded")) {
+              $testimonialCarousel.owlCarousel({
+                loop: testimonials.value.length > 1,
+                margin: 30,
+                nav: false,
+                dots: true,
+                smartSpeed: 500,
+                autoplay: true,
+                autoplayTimeout: 7e3,
+                rtl: isRTL,
+                responsive: {
+                  0: { items: 1 },
+                  768: { items: 1 },
+                  992: { items: 1 },
+                  1200: { items: 1 }
+                }
+              }).on("initialized.owl.carousel refreshed.owl.carousel", function() {
+                applyOwlDotAriaLabels($(this));
+              });
+              applyOwlDotAriaLabels($testimonialCarousel);
+            }
+          }
+          if (typeof WOW !== "undefined") {
+            new WOW().init();
+          }
+          if (typeof gsap !== "undefined" && typeof SplitText !== "undefined") {
+            const titleAnimations = document.querySelectorAll(".sec-title-animation .title-animation");
+            if (titleAnimations.length) {
+              titleAnimations.forEach((quote) => {
+                if (quote.animation) {
+                  quote.animation.progress(1).kill();
+                  if (quote.split) quote.split.revert();
+                }
+                if (isRTL) {
+                  const text2 = quote.textContent;
+                  if (/[\u0600-\u06FF]/.test(text2)) {
+                    quote.style.textTransform = "none";
+                    quote.style.fontVariant = "normal";
+                  }
+                }
+                var getclass = quote.closest(".sec-title-animation").className;
+                var animation = getclass.split("animation-");
+                if (animation[1] == "style4") return;
+                const text = quote.textContent;
+                const hasArabic = /[\u0600-\u06FF]/.test(text);
+                if (hasArabic) {
+                  gsap.set(quote, {
+                    perspective: 400,
                     opacity: 0,
-                    y: yValue,
-                    rotateX: "-40deg"
+                    y: isRTL ? -50 : 50
+                  });
+                  quote.animation = gsap.to(quote, {
+                    scrollTrigger: {
+                      trigger: quote,
+                      start: "top 90%",
+                      toggleActions: "play none none none"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: Back.easeOut
+                  });
+                } else {
+                  quote.split = new SplitText(quote, {
+                    type: "lines,words,chars",
+                    linesClass: "split-line"
+                  });
+                  gsap.set(quote, {
+                    perspective: 400
+                  });
+                  const xValue = isRTL ? "-50" : "50";
+                  const yValue = isRTL ? "-90%" : "90%";
+                  if (animation[1] == "style1") {
+                    gsap.set(quote.split.chars, {
+                      opacity: 0,
+                      y: yValue,
+                      rotateX: "-40deg"
+                    });
+                  }
+                  if (animation[1] == "style2") {
+                    gsap.set(quote.split.chars, {
+                      opacity: 0,
+                      x: xValue
+                    });
+                  }
+                  if (animation[1] == "style3") {
+                    gsap.set(quote.split.chars, {
+                      opacity: 0
+                    });
+                  }
+                  quote.animation = gsap.to(quote.split.chars, {
+                    scrollTrigger: {
+                      trigger: quote,
+                      start: "top 90%",
+                      toggleActions: "play none none none"
+                    },
+                    x: "0",
+                    y: "0",
+                    rotateX: "0",
+                    opacity: 1,
+                    duration: 1,
+                    ease: Back.easeOut,
+                    stagger: 0.02
                   });
                 }
-                if (animation[1] == "style2") {
-                  gsap.set(quote.split.chars, {
-                    opacity: 0,
-                    x: xValue
-                  });
-                }
-                if (animation[1] == "style3") {
-                  gsap.set(quote.split.chars, {
-                    opacity: 0
-                  });
-                }
-                quote.animation = gsap.to(quote.split.chars, {
-                  scrollTrigger: {
-                    trigger: quote,
-                    start: "top 90%",
-                    toggleActions: "play none none none"
-                  },
-                  x: "0",
-                  y: "0",
-                  rotateX: "0",
-                  opacity: 1,
-                  duration: 1,
-                  ease: Back.easeOut,
-                  stagger: 0.02
-                });
-              }
+              });
+            }
+          }
+          setTimeout(() => {
+            if (typeof ScrollTrigger !== "undefined") {
+              ScrollTrigger.refresh();
+            }
+          }, 300);
+          if (typeof $ !== "undefined" && $(".marquee_mode-2").length && $.fn.marquee) {
+            $(".marquee_mode-2").marquee({
+              speed: 50,
+              gap: 50,
+              delayBeforeStart: 0,
+              direction: isRTL ? "right" : "left",
+              duplicated: true,
+              pauseOnHover: true,
+              startVisible: true
             });
           }
-        }
-        setTimeout(() => {
-          if (typeof ScrollTrigger !== "undefined") {
-            ScrollTrigger.refresh();
-          }
-        }, 300);
-        if (typeof $ !== "undefined" && $(".marquee_mode-2").length && $.fn.marquee) {
-          $(".marquee_mode-2").marquee({
-            speed: 50,
-            gap: 50,
-            delayBeforeStart: 0,
-            direction: isRTL ? "right" : "left",
-            duplicated: true,
-            pauseOnHover: true,
-            startVisible: true
-          });
-        }
-        try {
-          if (typeof window !== "undefined") {
-            const counters = document.querySelectorAll(".latest-counter__content .count");
-            const animateCount = (el) => {
-              if (!el || el.dataset.countInitialized === "1") return;
-              const rawText = el.textContent || "";
-              const target = parseInt(rawText.replace(/[^\d]/g, ""), 10);
-              if (!target || isNaN(target)) return;
-              el.dataset.countInitialized = "1";
-              const duration = 8e3;
-              const start = 0;
-              const startTime = performance.now();
-              const step = (now) => {
-                const progress = Math.min((now - startTime) / duration, 1);
-                const value = Math.floor(start + (target - start) * progress);
-                el.textContent = value.toString();
-                if (progress < 1) {
-                  requestAnimationFrame(step);
-                } else {
-                  el.textContent = target.toString();
-                }
+          try {
+            if (typeof window !== "undefined") {
+              const counters = document.querySelectorAll(".latest-counter__content .count");
+              const animateCount = (el) => {
+                if (!el || el.dataset.countInitialized === "1") return;
+                const rawText = el.textContent || "";
+                const target = parseInt(rawText.replace(/[^\d]/g, ""), 10);
+                if (!target || isNaN(target)) return;
+                el.dataset.countInitialized = "1";
+                const duration = 8e3;
+                const start = 0;
+                const startTime = performance.now();
+                const step = (now) => {
+                  const progress = Math.min((now - startTime) / duration, 1);
+                  const value = Math.floor(start + (target - start) * progress);
+                  el.textContent = value.toString();
+                  if (progress < 1) {
+                    requestAnimationFrame(step);
+                  } else {
+                    el.textContent = target.toString();
+                  }
+                };
+                requestAnimationFrame(step);
               };
-              requestAnimationFrame(step);
-            };
-            if (counters.length) {
-              if ("IntersectionObserver" in window) {
-                const observer = new IntersectionObserver((entries, obs) => {
-                  entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                      animateCount(entry.target);
-                      obs.unobserve(entry.target);
-                    }
-                  });
-                }, { threshold: 0.3 });
-                counters.forEach((el) => observer.observe(el));
-              } else {
-                counters.forEach((el) => animateCount(el));
+              if (counters.length) {
+                if ("IntersectionObserver" in window) {
+                  const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        animateCount(entry.target);
+                        obs.unobserve(entry.target);
+                      }
+                    });
+                  }, { threshold: 0.3 });
+                  counters.forEach((el) => observer.observe(el));
+                } else {
+                  counters.forEach((el) => animateCount(el));
+                }
               }
             }
+          } catch (e) {
           }
-        } catch (e) {
-        }
+        };
+        waitForTheme(() => {
+          var _a;
+          return typeof window.$ !== "undefined" && typeof ((_a = window.$.fn) == null ? void 0 : _a.owlCarousel) === "function";
+        }).then((ready) => {
+          if (ready) {
+            initHomeWidgets();
+          }
+        });
       });
     });
     return (_ctx, _push, _parent, _attrs) => {
@@ -2111,26 +2268,26 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<title data-v-24549abd${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-24549abd${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-24549abd${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-24549abd${_scopeId}>`);
+            _push2(`<title data-v-8b32445e${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-8b32445e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-8b32445e${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-8b32445e${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-24549abd${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-8b32445e${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-24549abd${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-24549abd${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-8b32445e${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-8b32445e${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-24549abd${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-8b32445e${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-24549abd${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-8b32445e${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-24549abd${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-24549abd${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-24549abd${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-24549abd${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-8b32445e${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-8b32445e${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-8b32445e${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-8b32445e${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-24549abd${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-8b32445e${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -2201,18 +2358,18 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
       _push(ssrRenderComponent(_sfc_main$D, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="banner-one" data-v-24549abd${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
-              backgroundImage: `url(${asset_path.value}images/home/banner-bg.jpg)`
-            })}" data-v-24549abd${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
+            _push2(`<section class="banner-one" data-v-8b32445e${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
+              backgroundImage: `url(${asset_path.value}images/home/banner-bg.webp), url(${asset_path.value}images/home/banner-bg.jpg)`
+            })}" data-v-8b32445e${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/shapes/banner-one-shape-bg.png)`
-            })}" data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="banner-one__inner" data-v-24549abd${_scopeId}><h1 class="banner-one__title px-4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Transform complex technical ideas into intelligent systems"))} <br data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability"))}</span></h1><div class="banner-one__btn-box mb-5" data-v-24549abd${_scopeId}>`);
+            })}" data-v-8b32445e${_scopeId}></div><div class="container" data-v-8b32445e${_scopeId}><div class="banner-one__inner" data-v-8b32445e${_scopeId}><h1 class="banner-one__title px-4" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Transform complex technical ideas into intelligent systems"))} <br data-v-8b32445e${_scopeId}><span data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability"))}</span></h1><div class="banner-one__btn-box mb-5" data-v-8b32445e${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "thm-btn contact-btn mx-2"
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-24549abd${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
+                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-8b32445e${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
                 } else {
                   return [
                     createVNode("span", {
@@ -2230,7 +2387,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-24549abd${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
+                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-8b32445e${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
                 } else {
                   return [
                     createVNode("span", {
@@ -2242,11 +2399,11 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</div></div></div></section><section class="about-three" data-v-24549abd${_scopeId}><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-24549abd${_scopeId}><div class="about-three__img-box" data-v-24549abd${_scopeId}><div class="about-three__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))} data-v-24549abd${_scopeId}></div></div></div></div><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="about-three__right" data-v-24549abd${_scopeId}><div class="section-title sec-title-animation animation-style1" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Tech Solutions"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div></div><p class="about-three__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled" data-v-24549abd${_scopeId}><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-tick-inside-circle" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h2 class="h3" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Developing Secure & Scalable Systems"))}</h2></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-tick-inside-circle" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h2 class="h3" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-tick-inside-circle" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h2 class="h3" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-tick-inside-circle" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h2 class="h3" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box" data-v-24549abd${_scopeId}><div class="about-three__btn-box" data-v-24549abd${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId}></span></a></div><div class="about-three__call-box" data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-customer-service-headset" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p data-v-24549abd${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
+            _push2(`</div></div></div></section><section class="about-three" data-v-8b32445e${_scopeId}><div class="container" data-v-8b32445e${_scopeId}><div class="row" data-v-8b32445e${_scopeId}><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-8b32445e${_scopeId}><div class="about-three__img-box" data-v-8b32445e${_scopeId}><div class="about-three__img" data-v-8b32445e${_scopeId}><picture data-v-8b32445e${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/about_us.webp")} type="image/webp" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))} width="636" height="636" decoding="async" data-v-8b32445e${_scopeId}></picture></div></div></div></div><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="about-three__right" data-v-8b32445e${_scopeId}><div class="section-title sec-title-animation animation-style1" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Our Tech Solutions"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Why Choose Symfonix for Web, AI, and Cloud"))}</h2></div><p class="about-three__text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled" data-v-8b32445e${_scopeId}><li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-tick-inside-circle" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h2 class="h3" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Developing Secure & Scalable Systems"))}</h2></div></li><li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-tick-inside-circle" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h2 class="h3" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-tick-inside-circle" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h2 class="h3" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-tick-inside-circle" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h2 class="h3" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box" data-v-8b32445e${_scopeId}><div class="about-three__btn-box" data-v-8b32445e${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId}></span></a></div><div class="about-three__call-box" data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-customer-service-headset" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><span data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p data-v-8b32445e${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-8b32445e${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
             if (servicesCategories.value && servicesCategories.value.length) {
-              _push2(`<section class="services-three" data-v-24549abd${_scopeId}><div class="container" data-v-24549abd${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel" data-v-24549abd${_scopeId}><!--[-->`);
+              _push2(`<section class="services-three" data-v-8b32445e${_scopeId}><div class="container" data-v-8b32445e${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel" data-v-8b32445e${_scopeId}><!--[-->`);
               ssrRenderList(servicesCategories.value, (servicesCategory) => {
-                _push2(`<div class="item" data-v-24549abd${_scopeId}>`);
+                _push2(`<div class="item" data-v-8b32445e${_scopeId}>`);
                 _push2(ssrRenderComponent(ServiceCardThree, {
                   title: translateField(servicesCategory.title),
                   "short-desc": translateField(servicesCategory.description),
@@ -2259,14 +2416,14 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div><div class="text-center mt-4" data-v-24549abd${_scopeId}>`);
+              _push2(`<!--]--></div><div class="text-center mt-4" data-v-8b32445e${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("services.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Services")) + " ", 1),
@@ -2283,23 +2440,23 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               _push2(`<!---->`);
             }
             if (products.value && products.value.length) {
-              _push2(`<section class="home-products products-page" data-v-24549abd${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-24549abd${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-24549abd${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-24549abd${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-24549abd${_scopeId}></div></div><div class="container position-relative" data-v-24549abd${_scopeId}><div class="section-title text-center sec-title-animation animation-style1 home-products__head" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Products"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("B2B Solutions Built for Scale"))}</h2><p class="home-products__intro" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Discover enterprise-ready platforms and services designed to grow with your business."))}</p></div><div class="home-products__grid" data-v-24549abd${_scopeId}><div class="row g-4" data-v-24549abd${_scopeId}><!--[-->`);
+              _push2(`<section class="home-products products-page" data-v-8b32445e${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-8b32445e${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-8b32445e${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-8b32445e${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-8b32445e${_scopeId}></div></div><div class="container position-relative" data-v-8b32445e${_scopeId}><div class="section-title text-center sec-title-animation animation-style1 home-products__head" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Our Products"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("B2B Solutions Built for Scale"))}</h2><p class="home-products__intro" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Discover enterprise-ready platforms and services designed to grow with your business."))}</p></div><div class="home-products__grid" data-v-8b32445e${_scopeId}><div class="row g-4" data-v-8b32445e${_scopeId}><!--[-->`);
               ssrRenderList(products.value, (product, index) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-24549abd${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-8b32445e${_scopeId}>`);
                 _push2(ssrRenderComponent(ProductCard, {
                   item: product,
                   locale: locale.value
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div></div><div class="text-center home-products__cta" data-v-24549abd${_scopeId}>`);
+              _push2(`<!--]--></div></div><div class="text-center home-products__cta" data-v-8b32445e${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("product.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Products"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Products"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Products")) + " ", 1),
@@ -2316,23 +2473,23 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               _push2(`<!---->`);
             }
             if (useCases.value && useCases.value.length) {
-              _push2(`<section class="home-case-studies use-cases-page" data-v-24549abd${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-24549abd${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-24549abd${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-24549abd${_scopeId}></div></div><div class="container position-relative" data-v-24549abd${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="home-case-studies__intro" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="use-cases-page__grid" data-v-24549abd${_scopeId}><div class="row g-4" data-v-24549abd${_scopeId}><!--[-->`);
+              _push2(`<section class="home-case-studies use-cases-page" data-v-8b32445e${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-8b32445e${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-8b32445e${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-8b32445e${_scopeId}></div></div><div class="container position-relative" data-v-8b32445e${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="home-case-studies__intro" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="use-cases-page__grid" data-v-8b32445e${_scopeId}><div class="row g-4" data-v-8b32445e${_scopeId}><!--[-->`);
               ssrRenderList(useCases.value, (item) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-24549abd${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-8b32445e${_scopeId}>`);
                 _push2(ssrRenderComponent(UseCaseCard, {
                   item,
                   locale: locale.value
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div></div><div class="text-center home-case-studies__cta" data-v-24549abd${_scopeId}>`);
+              _push2(`<!--]--></div></div><div class="text-center home-case-studies__cta" data-v-8b32445e${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("use-cases.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Case Studies"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Case Studies"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Case Studies")) + " ", 1),
@@ -2348,68 +2505,56 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="why-choose-two" data-v-24549abd${_scopeId}><div class="why-choose-two__shape-1 float-bob-y" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/why-choose-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="${ssrRenderClass(`why-choose-two__left wow ${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-24549abd${_scopeId}><div class="why-choose-two__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/why_choose_us.jpg")} alt="why_choose_us" data-v-24549abd${_scopeId}></div></div></div><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="why-choose-two__right" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Your Business with"))} `);
-            if (locale.value === "ar") {
-              _push2(`<span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`<span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Reliable &"))}</span><br data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Future-Ready"))}</span><br data-v-24549abd${_scopeId}>`);
-            if (locale.value !== "ar") {
-              _push2(`<span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("IT Solutions"))}</span>`);
-            } else {
-              _push2(`<!---->`);
-            }
-            _push2(`</h2></div><p class="why-choose-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points" data-v-24549abd${_scopeId}><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-quality" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-team" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-customer-centricity" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
+            _push2(`<section class="why-choose-two" data-v-8b32445e${_scopeId}><div class="why-choose-two__shape-1 float-bob-y" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/why-choose-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></div><div class="container" data-v-8b32445e${_scopeId}><div class="row" data-v-8b32445e${_scopeId}><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="${ssrRenderClass(`why-choose-two__left wow ${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-8b32445e${_scopeId}><div class="why-choose-two__img" data-v-8b32445e${_scopeId}><picture data-v-8b32445e${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/why_choose_us.webp")} type="image/webp" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/why_choose_us.jpg")}${ssrRenderAttr("alt", trans("Why choose us"))} width="636" height="700" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></picture></div></div></div><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="why-choose-two__right" data-v-8b32445e${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("How do we deliver reliable, future-ready IT solutions?"))}</h2></div><p class="why-choose-one__text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points" data-v-8b32445e${_scopeId}><li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-quality" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h3 class="h4" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-team" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h3 class="h4" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-customer-centricity" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h3 class="h4" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
             if (teams.value && teams.value.length > 0) {
-              _push2(`<section class="team-two d-none" data-v-24549abd${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}" data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-5" data-v-24549abd${_scopeId}><div class="team-two__left" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7" data-v-24549abd${_scopeId}><div class="team-two__right" data-v-24549abd${_scopeId}><div class="team-two__carousel owl-theme owl-carousel" data-v-24549abd${_scopeId}><!--[-->`);
+              _push2(`<section class="team-two d-none" data-v-8b32445e${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}" data-v-8b32445e${_scopeId}></div><div class="container" data-v-8b32445e${_scopeId}><div class="row" data-v-8b32445e${_scopeId}><div class="col-xl-5" data-v-8b32445e${_scopeId}><div class="team-two__left" data-v-8b32445e${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br data-v-8b32445e${_scopeId}><span data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7" data-v-8b32445e${_scopeId}><div class="team-two__right" data-v-8b32445e${_scopeId}><div class="team-two__carousel owl-theme owl-carousel" data-v-8b32445e${_scopeId}><!--[-->`);
               ssrRenderList(teams.value, (team) => {
-                _push2(`<div class="item" data-v-24549abd${_scopeId}><div class="team-two__single" data-v-24549abd${_scopeId}><div class="team-two__img-box" data-v-24549abd${_scopeId}><div class="team-two__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))} data-v-24549abd${_scopeId}></div><div class="team-two__social" data-v-24549abd${_scopeId}>`);
+                _push2(`<div class="item" data-v-8b32445e${_scopeId}><div class="team-two__single" data-v-8b32445e${_scopeId}><div class="team-two__img-box" data-v-8b32445e${_scopeId}><div class="team-two__img" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))} width="200" height="200" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></div><div class="team-two__social" data-v-8b32445e${_scopeId}>`);
                 if (team.facebook) {
-                  _push2(`<a${ssrRenderAttr("href", team.facebook)} target="_blank" data-v-24549abd${_scopeId}><span class="icon-facebook" data-v-24549abd${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.facebook)} target="_blank" data-v-8b32445e${_scopeId}><span class="icon-facebook" data-v-8b32445e${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.behance) {
-                  _push2(`<a${ssrRenderAttr("href", team.behance)} target="_blank" data-v-24549abd${_scopeId}><span class="icon-dribble" data-v-24549abd${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.behance)} target="_blank" data-v-8b32445e${_scopeId}><span class="icon-dribble" data-v-8b32445e${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.linked_in) {
-                  _push2(`<a${ssrRenderAttr("href", team.linked_in)} target="_blank" data-v-24549abd${_scopeId}><span class="icon-linkedin" data-v-24549abd${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.linked_in)} target="_blank" data-v-8b32445e${_scopeId}><span class="icon-linkedin" data-v-8b32445e${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.github) {
-                  _push2(`<a${ssrRenderAttr("href", team.github)} target="_blank" data-v-24549abd${_scopeId}><span class="icon-github" data-v-24549abd${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.github)} target="_blank" data-v-8b32445e${_scopeId}><span class="icon-github" data-v-8b32445e${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
-                _push2(`</div><div class="team-two__title-box" data-v-24549abd${_scopeId}><h3 data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(translateField(team.name))}</a></h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
+                _push2(`</div><div class="team-two__title-box" data-v-8b32445e${_scopeId}><h3 data-v-8b32445e${_scopeId}><a href="#" data-v-8b32445e${_scopeId}>${ssrInterpolate(translateField(team.name))}</a></h3><p data-v-8b32445e${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="feature-one" data-v-24549abd${_scopeId}><div class="feature-one__shape-2 float-bob-y" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-24549abd${_scopeId}><div class="feature-one__single" data-v-24549abd${_scopeId}><div class="feature-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))} data-v-24549abd${_scopeId}></div><h3 class="feature-one__title" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms" data-v-24549abd${_scopeId}><div class="feature-one__single" data-v-24549abd${_scopeId}><div class="feature-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))} data-v-24549abd${_scopeId}></div><h3 class="feature-one__title" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms" data-v-24549abd${_scopeId}><div class="feature-one__single" data-v-24549abd${_scopeId}><div class="feature-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))} data-v-24549abd${_scopeId}></div><h3 class="feature-one__title" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms" data-v-24549abd${_scopeId}><div class="feature-one__single" data-v-24549abd${_scopeId}><div class="feature-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))} data-v-24549abd${_scopeId}></div><h3 class="feature-one__title" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one" data-v-24549abd${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}" data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="cta-one__inner" data-v-24549abd${_scopeId}><h3 class="cta-one__title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Let the Symfonix experts review your technical idea"))}</h3><div class="cta-one__contact-info" data-v-24549abd${_scopeId}><div class="cta-one__contact-icon" data-v-24549abd${_scopeId}><span class="icon-customer-service-headset" data-v-24549abd${_scopeId}></span></div><div class="cta-one__contact-details" data-v-24549abd${_scopeId}><p data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Book your free consultation"))}</p><h4 data-v-24549abd${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
+            _push2(`<section class="feature-one" data-v-8b32445e${_scopeId}><div class="feature-one__shape-2 float-bob-y" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></div><div class="container" data-v-8b32445e${_scopeId}><div class="row" data-v-8b32445e${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-8b32445e${_scopeId}><div class="feature-one__single" data-v-8b32445e${_scopeId}><div class="feature-one__img" data-v-8b32445e${_scopeId}><picture data-v-8b32445e${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/website.webp")} type="image/webp" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))} width="80" height="80" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></picture></div><h3 class="feature-one__title" data-v-8b32445e${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms" data-v-8b32445e${_scopeId}><div class="feature-one__single" data-v-8b32445e${_scopeId}><div class="feature-one__img" data-v-8b32445e${_scopeId}><picture data-v-8b32445e${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/app-development.webp")} type="image/webp" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))} width="80" height="80" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></picture></div><h3 class="feature-one__title" data-v-8b32445e${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms" data-v-8b32445e${_scopeId}><div class="feature-one__single" data-v-8b32445e${_scopeId}><div class="feature-one__img" data-v-8b32445e${_scopeId}><picture data-v-8b32445e${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/microchip.webp")} type="image/webp" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))} width="80" height="80" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></picture></div><h3 class="feature-one__title" data-v-8b32445e${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms" data-v-8b32445e${_scopeId}><div class="feature-one__single" data-v-8b32445e${_scopeId}><div class="feature-one__img" data-v-8b32445e${_scopeId}><picture data-v-8b32445e${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/cloud.webp")} type="image/webp" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))} width="80" height="80" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></picture></div><h3 class="feature-one__title" data-v-8b32445e${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one" data-v-8b32445e${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}" data-v-8b32445e${_scopeId}></div><div class="container" data-v-8b32445e${_scopeId}><div class="cta-one__inner" data-v-8b32445e${_scopeId}><h3 class="cta-one__title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Let the Symfonix experts review your technical idea"))}</h3><div class="cta-one__contact-info" data-v-8b32445e${_scopeId}><div class="cta-one__contact-icon" data-v-8b32445e${_scopeId}><span class="icon-customer-service-headset" data-v-8b32445e${_scopeId}></span></div><div class="cta-one__contact-details" data-v-8b32445e${_scopeId}><p data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Book your free consultation"))}</p><h4 data-v-8b32445e${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-8b32445e${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
             if (testimonials.value && testimonials.value.length) {
-              _push2(`<section class="testimonial-one pb-5" data-v-24549abd${_scopeId}><div class="testimonial-one__shape-2 float-bob-y" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-3" data-v-24549abd${_scopeId}></div><div class="col-xl-9" data-v-24549abd${_scopeId}><div class="testimonial-one__content-box" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel" data-v-24549abd${_scopeId}><!--[-->`);
+              _push2(`<section class="testimonial-one pb-5" data-v-8b32445e${_scopeId}><div class="testimonial-one__shape-2 float-bob-y" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></div><div class="container" data-v-8b32445e${_scopeId}><div class="row" data-v-8b32445e${_scopeId}><div class="col-xl-3" data-v-8b32445e${_scopeId}></div><div class="col-xl-9" data-v-8b32445e${_scopeId}><div class="testimonial-one__content-box" data-v-8b32445e${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel" data-v-8b32445e${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="item" data-v-24549abd${_scopeId}><div class="testimonial-one__single" data-v-24549abd${_scopeId}><div class="testimonial-one__img-box" data-v-24549abd${_scopeId}><div class="testimonial-one__img" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))} data-v-24549abd${_scopeId}></div></div><div class="testimonial-one__content" data-v-24549abd${_scopeId}><p class="testimonial-one__text" data-v-24549abd${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom" data-v-24549abd${_scopeId}><div class="testimonial-one__quote-and-client-info" data-v-24549abd${_scopeId}><div class="testimonial-one__quote" data-v-24549abd${_scopeId}><span class="icon-left" data-v-24549abd${_scopeId}></span></div><div class="testimonial-one__client-info" data-v-24549abd${_scopeId}><p class="testimonial-one__client-sub-title" data-v-24549abd${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name" data-v-24549abd${_scopeId}><a href="#" data-v-24549abd${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
+                _push2(`<div class="item" data-v-8b32445e${_scopeId}><div class="testimonial-one__single" data-v-8b32445e${_scopeId}><div class="testimonial-one__img-box" data-v-8b32445e${_scopeId}><div class="testimonial-one__img" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))} width="100" height="100" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></div></div><div class="testimonial-one__content" data-v-8b32445e${_scopeId}><p class="testimonial-one__text" data-v-8b32445e${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom" data-v-8b32445e${_scopeId}><div class="testimonial-one__quote-and-client-info" data-v-8b32445e${_scopeId}><div class="testimonial-one__quote" data-v-8b32445e${_scopeId}><span class="icon-left" data-v-8b32445e${_scopeId}></span></div><div class="testimonial-one__client-info" data-v-8b32445e${_scopeId}><p class="testimonial-one__client-sub-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name" data-v-8b32445e${_scopeId}><a href="#" data-v-8b32445e${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
             if (posts.value && posts.value.length) {
-              _push2(`<section class="blog-two blog-three" data-v-24549abd${_scopeId}><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="${ssrRenderClass(`blog-two__left wow fadeIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style1" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Explore Our Latest Blogs for Expert Insights"))}</h2></div><p class="blog-two-text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry"))}</p><div class="blog-two__top-btn-box" data-v-24549abd${_scopeId}>`);
+              _push2(`<section class="blog-two blog-three" data-v-8b32445e${_scopeId}><div class="container" data-v-8b32445e${_scopeId}><div class="row" data-v-8b32445e${_scopeId}><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="${ssrRenderClass(`blog-two__left wow fadeIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-v-8b32445e${_scopeId}><div class="section-title text-left sec-title-animation animation-style1" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Explore Our Latest Blogs for Expert Insights"))}</h2></div><p class="blog-two-text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry"))}</p><div class="blog-two__top-btn-box" data-v-8b32445e${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("blogs.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-24549abd${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Blogs")) + " ", 1),
@@ -2423,7 +2568,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               }, _parent2, _scopeId));
               _push2(`</div>`);
               if (featuredPost.value) {
-                _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-24549abd${_scopeId}>`);
+                _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-8b32445e${_scopeId}>`);
                 _push2(ssrRenderComponent(_sfc_main$H, {
                   post: featuredPost.value,
                   variant: "featured",
@@ -2435,7 +2580,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               } else {
                 _push2(`<!---->`);
               }
-              _push2(`</div></div><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="blog-two__right" data-v-24549abd${_scopeId}><!--[-->`);
+              _push2(`</div></div><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="blog-two__right" data-v-8b32445e${_scopeId}><!--[-->`);
               ssrRenderList(sidePosts.value, (post, idx) => {
                 _push2(ssrRenderComponent(_sfc_main$H, {
                   key: post.id || idx,
@@ -2452,72 +2597,72 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="contact-two" data-v-24549abd${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2" data-v-24549abd${_scopeId}><div class="contact-two__sliding-text-item" data-v-24549abd${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-24549abd${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-24549abd${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y" data-v-24549abd${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} data-v-24549abd${_scopeId}></div><div class="container" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="contact-two__left" data-v-24549abd${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-24549abd${_scopeId}><div class="section-title__tagline-box" data-v-24549abd${_scopeId}><div class="section-title__tagline-shape-1" data-v-24549abd${_scopeId}></div><span class="section-title__tagline" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2" data-v-24549abd${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled" data-v-24549abd${_scopeId}>`);
+            _push2(`<section class="contact-two" data-v-8b32445e${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2" data-v-8b32445e${_scopeId}><div class="contact-two__sliding-text-item" data-v-8b32445e${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-8b32445e${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-8b32445e${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y" data-v-8b32445e${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" data-v-8b32445e${_scopeId}></div><div class="container" data-v-8b32445e${_scopeId}><div class="row" data-v-8b32445e${_scopeId}><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="contact-two__left" data-v-8b32445e${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-8b32445e${_scopeId}><div class="section-title__tagline-box" data-v-8b32445e${_scopeId}><div class="section-title__tagline-shape-1" data-v-8b32445e${_scopeId}></div><span class="section-title__tagline" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2" data-v-8b32445e${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled" data-v-8b32445e${_scopeId}>`);
             if (settings.value.email) {
-              _push2(`<li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-mail" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p data-v-24549abd${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)} data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
+              _push2(`<li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-mail" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h3 class="h4" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p data-v-8b32445e${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)} data-v-8b32445e${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
             if (settings.value.phone) {
-              _push2(`<li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-phone-call" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p data-v-24549abd${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
+              _push2(`<li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-phone-call" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h3 class="h4" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p data-v-8b32445e${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-8b32445e${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
             if (settings.value.address) {
-              _push2(`<li data-v-24549abd${_scopeId}><div class="icon" data-v-24549abd${_scopeId}><span class="icon-pin" data-v-24549abd${_scopeId}></span></div><div class="content" data-v-24549abd${_scopeId}><h3 class="h4" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p data-v-24549abd${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
+              _push2(`<li data-v-8b32445e${_scopeId}><div class="icon" data-v-8b32445e${_scopeId}><span class="icon-pin" data-v-8b32445e${_scopeId}></span></div><div class="content" data-v-8b32445e${_scopeId}><h3 class="h4" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p data-v-8b32445e${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</ul></div></div><div class="col-xl-6" data-v-24549abd${_scopeId}><div class="${ssrRenderClass(`contact-two__right wow slideIn${locale.value === "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-24549abd${_scopeId}><form class="contact-form-validated contact-one__form" data-v-24549abd${_scopeId}><div class="row" data-v-24549abd${_scopeId}><div class="col-xl-6 col-lg-6" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h3><div class="contact-one__input-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-user-1" data-v-24549abd${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-24549abd${_scopeId}></div>`);
+            _push2(`</ul></div></div><div class="col-xl-6" data-v-8b32445e${_scopeId}><div class="${ssrRenderClass(`contact-two__right wow slideIn${locale.value === "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-8b32445e${_scopeId}><form class="contact-form-validated contact-one__form" data-v-8b32445e${_scopeId}><div class="row" data-v-8b32445e${_scopeId}><div class="col-xl-6 col-lg-6" data-v-8b32445e${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h3><div class="contact-one__input-box" data-v-8b32445e${_scopeId}><div class="contact-one__input-icon" data-v-8b32445e${_scopeId}><span class="icon-user-1" data-v-8b32445e${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-8b32445e${_scopeId}></div>`);
             if (unref(contactForm).errors.name) {
-              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8b32445e${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><div class="contact-one__input-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-email" data-v-24549abd${_scopeId}></span></div><input type="email" name="email"${ssrRenderAttr("value", unref(contactForm).email)}${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}" required data-v-24549abd${_scopeId}>`);
+            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-8b32445e${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><div class="contact-one__input-box" data-v-8b32445e${_scopeId}><div class="contact-one__input-icon" data-v-8b32445e${_scopeId}><span class="icon-email" data-v-8b32445e${_scopeId}></span></div><input type="email" name="email"${ssrRenderAttr("value", unref(contactForm).email)}${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}" required data-v-8b32445e${_scopeId}>`);
             if (unref(contactForm).errors.email) {
-              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8b32445e${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="col-xl-6 col-lg-6" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h3><div class="contact-one__input-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-phone-call" data-v-24549abd${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-24549abd${_scopeId}></div>`);
+            _push2(`</div></div><div class="col-xl-6 col-lg-6" data-v-8b32445e${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h3><div class="contact-one__input-box" data-v-8b32445e${_scopeId}><div class="contact-one__input-icon" data-v-8b32445e${_scopeId}><span class="icon-phone-call" data-v-8b32445e${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-8b32445e${_scopeId}></div>`);
             if (unref(contactForm).errors.mobile) {
-              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8b32445e${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Subject"))}</h3><div class="contact-one__input-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-edit" data-v-24549abd${_scopeId}></span></div><input type="text" name="subject"${ssrRenderAttr("value", unref(contactForm).subject)}${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}" required data-v-24549abd${_scopeId}>`);
+            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-8b32445e${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Subject"))}</h3><div class="contact-one__input-box" data-v-8b32445e${_scopeId}><div class="contact-one__input-icon" data-v-8b32445e${_scopeId}><span class="icon-edit" data-v-8b32445e${_scopeId}></span></div><input type="text" name="subject"${ssrRenderAttr("value", unref(contactForm).subject)}${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}" required data-v-8b32445e${_scopeId}>`);
             if (unref(contactForm).errors.subject) {
-              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8b32445e${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div></div><div class="col-xl-12" data-v-24549abd${_scopeId}><h3 class="h4 contact-one__input-title" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Message"))}</h3><div class="contact-one__input-box text-message-box" data-v-24549abd${_scopeId}><div class="contact-one__input-icon" data-v-24549abd${_scopeId}><span class="icon-edit" data-v-24549abd${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
+            _push2(`</div></div></div><div class="col-xl-12" data-v-8b32445e${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Message"))}</h3><div class="contact-one__input-box text-message-box" data-v-8b32445e${_scopeId}><div class="contact-one__input-icon" data-v-8b32445e${_scopeId}><span class="icon-edit" data-v-8b32445e${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-8b32445e${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
             if (unref(contactForm).errors.message) {
-              _push2(`<div class="text-danger mt-1 small" data-v-24549abd${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8b32445e${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="contact-one__btn-box" data-v-24549abd${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}" data-v-24549abd${_scopeId}>`);
+            _push2(`<div class="contact-one__btn-box" data-v-8b32445e${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}" data-v-8b32445e${_scopeId}>`);
             if (unref(contactForm).processing) {
-              _push2(`<span data-v-24549abd${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-24549abd${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
+              _push2(`<span data-v-8b32445e${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-8b32445e${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
             } else {
-              _push2(`<span data-v-24549abd${_scopeId}><span data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}" data-v-24549abd${_scopeId}></i></span>`);
+              _push2(`<span data-v-8b32445e${_scopeId}><span data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}" data-v-8b32445e${_scopeId}></i></span>`);
             }
             _push2(`</button></div></div>`);
             if (contactSubmitSuccess.value) {
-              _push2(`<div class="col-12 mt-3" data-v-24549abd${_scopeId}><div class="alert alert-success" data-v-24549abd${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
+              _push2(`<div class="col-12 mt-3" data-v-8b32445e${_scopeId}><div class="alert alert-success" data-v-8b32445e${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</form><div class="result" data-v-24549abd${_scopeId}></div></div></div></div></div></section>`);
+            _push2(`</form><div class="result" data-v-8b32445e${_scopeId}></div></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "banner-one" }, [
                 createVNode("div", {
                   class: "banner-one__bg",
                   style: {
-                    backgroundImage: `url(${asset_path.value}images/home/banner-bg.jpg)`
+                    backgroundImage: `url(${asset_path.value}images/home/banner-bg.webp), url(${asset_path.value}images/home/banner-bg.jpg)`
                   }
                 }, null, 4),
                 createVNode("div", {
@@ -2573,10 +2718,19 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                       }, [
                         createVNode("div", { class: "about-three__img-box" }, [
                           createVNode("div", { class: "about-three__img" }, [
-                            createVNode("img", {
-                              src: asset_path.value + "images/home/about_us.jpg",
-                              alt: trans("About us")
-                            }, null, 8, ["src", "alt"])
+                            createVNode("picture", null, [
+                              createVNode("source", {
+                                srcset: asset_path.value + "images/home/about_us.webp",
+                                type: "image/webp"
+                              }, null, 8, ["srcset"]),
+                              createVNode("img", {
+                                src: asset_path.value + "images/home/about_us.jpg",
+                                alt: trans("About us"),
+                                width: "636",
+                                height: "636",
+                                decoding: "async"
+                              }, null, 8, ["src", "alt"])
+                            ])
                           ])
                         ])
                       ], 2)
@@ -2588,7 +2742,8 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                             createVNode("div", { class: "section-title__tagline-shape-1" }),
                             createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Our Tech Solutions")), 1),
                             createVNode("div", { class: "section-title__tagline-shape-2" })
-                          ])
+                          ]),
+                          createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("Why Choose Symfonix for Web, AI, and Cloud")), 1)
                         ]),
                         createVNode("p", { class: "about-three__text" }, toDisplayString(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape.")), 1),
                         createVNode("ul", { class: "about-three__points list-unstyled" }, [
@@ -2819,7 +2974,11 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 createVNode("div", { class: "why-choose-two__shape-1 float-bob-y" }, [
                   createVNode("img", {
                     src: asset_path.value + "site/images/shapes/why-choose-two-shape-1.png",
-                    alt: trans("Decorative shape")
+                    alt: trans("Decorative shape"),
+                    width: "120",
+                    height: "120",
+                    loading: "lazy",
+                    decoding: "async"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -2831,10 +2990,20 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                         "data-wow-duration": "2500ms"
                       }, [
                         createVNode("div", { class: "why-choose-two__img" }, [
-                          createVNode("img", {
-                            src: asset_path.value + "images/home/why_choose_us.jpg",
-                            alt: "why_choose_us"
-                          }, null, 8, ["src"])
+                          createVNode("picture", null, [
+                            createVNode("source", {
+                              srcset: asset_path.value + "images/home/why_choose_us.webp",
+                              type: "image/webp"
+                            }, null, 8, ["srcset"]),
+                            createVNode("img", {
+                              src: asset_path.value + "images/home/why_choose_us.jpg",
+                              alt: trans("Why choose us"),
+                              width: "636",
+                              height: "700",
+                              loading: "lazy",
+                              decoding: "async"
+                            }, null, 8, ["src", "alt"])
+                          ])
                         ])
                       ], 2)
                     ]),
@@ -2846,15 +3015,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                             createVNode("span", { class: "section-title__tagline" }, toDisplayString(trans("Why Choose Us")), 1),
                             createVNode("div", { class: "section-title__tagline-shape-2" })
                           ]),
-                          createVNode("h2", { class: "section-title__title title-animation" }, [
-                            createTextVNode(toDisplayString(trans("Your Business with")) + " ", 1),
-                            locale.value === "ar" ? (openBlock(), createBlock("span", { key: 0 }, toDisplayString(trans("IT Solutions")), 1)) : createCommentVNode("", true),
-                            createVNode("span", null, toDisplayString(trans("Reliable &")), 1),
-                            createVNode("br"),
-                            createVNode("span", null, toDisplayString(trans("Future-Ready")), 1),
-                            createVNode("br"),
-                            locale.value !== "ar" ? (openBlock(), createBlock("span", { key: 1 }, toDisplayString(trans("IT Solutions")), 1)) : createCommentVNode("", true)
-                          ])
+                          createVNode("h2", { class: "section-title__title title-animation" }, toDisplayString(trans("How do we deliver reliable, future-ready IT solutions?")), 1)
                         ]),
                         createVNode("p", { class: "why-choose-one__text" }, toDisplayString(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success.")), 1),
                         createVNode("ul", { class: "list-unstyled why-choose-two__points" }, [
@@ -2933,7 +3094,11 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                                   createVNode("div", { class: "team-two__img" }, [
                                     createVNode("img", {
                                       src: team.avatar_link,
-                                      alt: translateField(team.name)
+                                      alt: translateField(team.name),
+                                      width: "200",
+                                      height: "200",
+                                      loading: "lazy",
+                                      decoding: "async"
                                     }, null, 8, ["src", "alt"])
                                   ]),
                                   createVNode("div", { class: "team-two__social" }, [
@@ -2986,7 +3151,11 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 createVNode("div", { class: "feature-one__shape-2 float-bob-y" }, [
                   createVNode("img", {
                     src: asset_path.value + "site/images/shapes/feature-one-shape-2.png",
-                    alt: trans("Decorative shape")
+                    alt: trans("Decorative shape"),
+                    width: "120",
+                    height: "120",
+                    loading: "lazy",
+                    decoding: "async"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -2997,13 +3166,25 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                     }, [
                       createVNode("div", { class: "feature-one__single" }, [
                         createVNode("div", { class: "feature-one__img" }, [
-                          createVNode("img", {
-                            src: asset_path.value + "images/home/website.png",
-                            alt: trans("Web Development")
-                          }, null, 8, ["src", "alt"])
+                          createVNode("picture", null, [
+                            createVNode("source", {
+                              srcset: asset_path.value + "images/home/website.webp",
+                              type: "image/webp"
+                            }, null, 8, ["srcset"]),
+                            createVNode("img", {
+                              src: asset_path.value + "images/home/website.png",
+                              alt: trans("Web Development"),
+                              width: "80",
+                              height: "80",
+                              loading: "lazy",
+                              decoding: "async"
+                            }, null, 8, ["src", "alt"])
+                          ])
                         ]),
                         createVNode("h3", { class: "feature-one__title" }, [
-                          createVNode("a", { href: "#" }, toDisplayString(trans("Web Development")), 1)
+                          createVNode("a", {
+                            href: _ctx.route("services.index")
+                          }, toDisplayString(trans("Web Development")), 9, ["href"])
                         ]),
                         createVNode("p", { class: "feature-one__text" }, toDisplayString(trans("Custom web solutions built with cutting-edge technology to drive your business forward.")), 1)
                       ])
@@ -3014,13 +3195,25 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                     }, [
                       createVNode("div", { class: "feature-one__single" }, [
                         createVNode("div", { class: "feature-one__img" }, [
-                          createVNode("img", {
-                            src: asset_path.value + "images/home/app-development.png",
-                            alt: trans("Mobile Development")
-                          }, null, 8, ["src", "alt"])
+                          createVNode("picture", null, [
+                            createVNode("source", {
+                              srcset: asset_path.value + "images/home/app-development.webp",
+                              type: "image/webp"
+                            }, null, 8, ["srcset"]),
+                            createVNode("img", {
+                              src: asset_path.value + "images/home/app-development.png",
+                              alt: trans("Mobile Development"),
+                              width: "80",
+                              height: "80",
+                              loading: "lazy",
+                              decoding: "async"
+                            }, null, 8, ["src", "alt"])
+                          ])
                         ]),
                         createVNode("h3", { class: "feature-one__title" }, [
-                          createVNode("a", { href: "#" }, toDisplayString(trans("Mobile Development")), 1)
+                          createVNode("a", {
+                            href: _ctx.route("services.index")
+                          }, toDisplayString(trans("Mobile Development")), 9, ["href"])
                         ]),
                         createVNode("p", { class: "feature-one__text" }, toDisplayString(trans("Native and cross-platform mobile applications that deliver exceptional user experiences.")), 1)
                       ])
@@ -3031,13 +3224,25 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                     }, [
                       createVNode("div", { class: "feature-one__single" }, [
                         createVNode("div", { class: "feature-one__img" }, [
-                          createVNode("img", {
-                            src: asset_path.value + "images/home/microchip.png",
-                            alt: trans("AI Agents & Automation")
-                          }, null, 8, ["src", "alt"])
+                          createVNode("picture", null, [
+                            createVNode("source", {
+                              srcset: asset_path.value + "images/home/microchip.webp",
+                              type: "image/webp"
+                            }, null, 8, ["srcset"]),
+                            createVNode("img", {
+                              src: asset_path.value + "images/home/microchip.png",
+                              alt: trans("AI Agents & Automation"),
+                              width: "80",
+                              height: "80",
+                              loading: "lazy",
+                              decoding: "async"
+                            }, null, 8, ["src", "alt"])
+                          ])
                         ]),
                         createVNode("h3", { class: "feature-one__title" }, [
-                          createVNode("a", { href: "#" }, toDisplayString(trans("AI Agents & Automation")), 1)
+                          createVNode("a", {
+                            href: _ctx.route("services.index")
+                          }, toDisplayString(trans("AI Agents & Automation")), 9, ["href"])
                         ]),
                         createVNode("p", { class: "feature-one__text" }, toDisplayString(trans("Intelligent automation solutions powered by AI to streamline your business processes.")), 1)
                       ])
@@ -3048,13 +3253,25 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                     }, [
                       createVNode("div", { class: "feature-one__single" }, [
                         createVNode("div", { class: "feature-one__img" }, [
-                          createVNode("img", {
-                            src: asset_path.value + "images/home/cloud.png",
-                            alt: trans("Cloud & Infrastructure")
-                          }, null, 8, ["src", "alt"])
+                          createVNode("picture", null, [
+                            createVNode("source", {
+                              srcset: asset_path.value + "images/home/cloud.webp",
+                              type: "image/webp"
+                            }, null, 8, ["srcset"]),
+                            createVNode("img", {
+                              src: asset_path.value + "images/home/cloud.png",
+                              alt: trans("Cloud & Infrastructure"),
+                              width: "80",
+                              height: "80",
+                              loading: "lazy",
+                              decoding: "async"
+                            }, null, 8, ["src", "alt"])
+                          ])
                         ]),
                         createVNode("h3", { class: "feature-one__title" }, [
-                          createVNode("a", { href: "#" }, toDisplayString(trans("Cloud & Infrastructure")), 1)
+                          createVNode("a", {
+                            href: _ctx.route("services.index")
+                          }, toDisplayString(trans("Cloud & Infrastructure")), 9, ["href"])
                         ]),
                         createVNode("p", { class: "feature-one__text" }, toDisplayString(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation.")), 1)
                       ])
@@ -3094,7 +3311,11 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 createVNode("div", { class: "testimonial-one__shape-2 float-bob-y" }, [
                   createVNode("img", {
                     src: asset_path.value + "images/shapes/testimonial-one-shape-2.png",
-                    alt: trans("Decorative shape")
+                    alt: trans("Decorative shape"),
+                    width: "120",
+                    height: "120",
+                    loading: "lazy",
+                    decoding: "async"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -3121,7 +3342,11 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                                   createVNode("div", { class: "testimonial-one__img" }, [
                                     createVNode("img", {
                                       src: testimonial.avatar_link,
-                                      alt: translateField(testimonial.name)
+                                      alt: translateField(testimonial.name),
+                                      width: "100",
+                                      height: "100",
+                                      loading: "lazy",
+                                      decoding: "async"
                                     }, null, 8, ["src", "alt"])
                                   ])
                                 ]),
@@ -3241,7 +3466,11 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 createVNode("div", { class: "contact-two__shape-1 float-bob-y" }, [
                   createVNode("img", {
                     src: asset_path.value + "site/images/shapes/contact-two-shape-1.png",
-                    alt: trans("Decorative shape")
+                    alt: trans("Decorative shape"),
+                    width: "120",
+                    height: "120",
+                    loading: "lazy",
+                    decoding: "async"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -3470,7 +3699,7 @@ _sfc_main$A.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Base/resources/assets/js/Pages/Index.vue");
   return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
-const Index = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-24549abd"]]);
+const Index = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-8b32445e"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index
@@ -3486,13 +3715,14 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$g, {
   setup(__props) {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
-    const seo = computed(() => page.props.seo);
+    const seo = computed(() => page.props.seo || {});
     const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const meta = computed(() => page.props.meta || {});
+    const siteName = computed(() => seo.value.website_name || page.props.appName || "Symfonix");
     const metaTitle = computed(() => {
-      return `${trans("Contact Us")} | ${seo.value.website_name || ""}`.trim();
+      return meta.value.title || `${trans("Contact Us")} | ${siteName.value}`;
     });
     const metaDescription = computed(() => {
       return meta.value.description || trans("Contact our team for support, inquiries, or project discussions.") || seo.value.website_desc || "";
@@ -4880,14 +5110,15 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
   setup(__props) {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
-    const seo = computed(() => page.props.seo);
+    const seo = computed(() => page.props.seo || {});
     const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const blogs = computed(() => page.props.blogs);
     const meta = computed(() => page.props.meta || {});
+    const siteName = computed(() => seo.value.website_name || page.props.appName || "Symfonix");
     const metaTitle = computed(() => {
-      return `${trans("Blogs")} | ${seo.value.website_name || ""}`.trim();
+      return meta.value.title || `${trans("Blogs")} | ${siteName.value}`;
     });
     const metaDescription = computed(() => {
       return meta.value.description || trans("Explore our latest blogs, insights, and technology updates.") || seo.value.website_desc || "";
@@ -15477,9 +15708,12 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
         return key;
       }
     };
-    const seo = computed(() => page.props.seo || { website_name: "Sham Vision" });
+    const seo = computed(() => page.props.seo || {});
+    const asset_path = computed(() => page.props.asset_path || "/");
+    const locale = computed(() => page.props.locale || "en");
     const meta = computed(() => page.props.meta || {});
-    const metaTitle = computed(() => `${trans("404 Error")} | ${seo.value.website_name || ""}`.trim());
+    const siteName = computed(() => seo.value.website_name || page.props.appName || "Symfonix");
+    const metaTitle = computed(() => `${trans("404 Error")} | ${siteName.value}`);
     const metaDescription = computed(() => {
       return meta.value.description || trans("The page you are looking for could not be found.");
     });
@@ -15496,7 +15730,7 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
       try {
         return route("home");
       } catch (e) {
-        return "/";
+        return locale.value === "en" ? "/" : `/${locale.value}`;
       }
     };
     return (_ctx, _push, _parent, _attrs) => {
@@ -15504,31 +15738,39 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<title data-v-417e1791${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-417e1791${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-417e1791${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-417e1791${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/error.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-417e1791${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)}${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-417e1791${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-417e1791${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)}${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-417e1791${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)}${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-417e1791${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)}${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-417e1791${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-417e1791${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-417e1791${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-417e1791${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website"${_scopeId}><meta name="twitter:card" content="summary_large_image"${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)}${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-417e1791${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)}${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
           } else {
             return [
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/page-header.css"
+              }, null, 8, ["href"]),
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/error.css"
+              }, null, 8, ["href"]),
               createVNode("title", null, toDisplayString(metaTitle.value), 1),
               createVNode("meta", {
                 name: "description",
@@ -15594,13 +15836,13 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
       _push(ssrRenderComponent(_sfc_main$D, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-417e1791${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ "background-image": "url(assets/images/backgrounds/page-header-bg.jpg)" })}" data-v-417e1791${_scopeId}></div><div class="container" data-v-417e1791${_scopeId}><div class="page-header__inner" data-v-417e1791${_scopeId}><h2 data-v-417e1791${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h2><div class="thm-breadcrumb__box" data-v-417e1791${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-417e1791${_scopeId}><li data-v-417e1791${_scopeId}>`);
+            _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: getHomeUrl()
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-417e1791${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -15610,19 +15852,19 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-417e1791${_scopeId}><span class="icon-right-arrow-1" data-v-417e1791${_scopeId}></span></li><li data-v-417e1791${_scopeId}>${ssrInterpolate(trans("404 Error"))}</li></ul></div></div></div></section><section class="error-page" data-v-417e1791${_scopeId}><div class="container" data-v-417e1791${_scopeId}><div class="error-page__inner text-center" data-v-417e1791${_scopeId}><div class="error-page__img float-bob-y" data-v-417e1791${_scopeId}></div><div class="error-page__content" data-v-417e1791${_scopeId}><h2 data-v-417e1791${_scopeId}>${ssrInterpolate(trans("Oops! Page Not Found!"))}</h2><p data-v-417e1791${_scopeId}>${ssrInterpolate(trans("The page you are looking for does not exist. It might have been moved or deleted."))}</p><div class="btn-box" data-v-417e1791${_scopeId}>`);
+            _push2(`</li><li${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate(trans("404 Error"))}</li></ul></div></div></div></section><section class="error-page"${_scopeId}><div class="container"${_scopeId}><div class="error-page__inner text-center"${_scopeId}><div class="error-page__img float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/resources/error-page-img1.png")}${ssrRenderAttr("alt", trans("404 Error"))} width="620" height="420" decoding="async"${_scopeId}></div><div class="error-page__content"${_scopeId}><h2${_scopeId}>${ssrInterpolate(trans("Oops! Page Not Found!"))}</h2><p${_scopeId}>${ssrInterpolate(trans("The page you are looking for does not exist. It might have been moved or deleted."))}</p><div class="btn-box"${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               class: "thm-btn",
               href: getHomeUrl()
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Back To Home"))} <span class="${ssrRenderClass(`icon-${_ctx.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-417e1791${_scopeId2}></span>`);
+                  _push3(`${ssrInterpolate(trans("Back To Home"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(toDisplayString(trans("Back To Home")) + " ", 1),
                     createVNode("span", {
-                      class: `icon-${_ctx.locale === "ar" ? "left" : "right"}-arrow `
+                      class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
                     }, null, 2)
                   ];
                 }
@@ -15635,11 +15877,11 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
               createVNode("section", { class: "page-header" }, [
                 createVNode("div", {
                   class: "page-header__bg",
-                  style: { "background-image": "url(assets/images/backgrounds/page-header-bg.jpg)" }
-                }),
+                  style: { backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` }
+                }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(trans("404 Error")), 1),
+                    createVNode("h1", null, toDisplayString(trans("404 Error")), 1),
                     createVNode("div", { class: "thm-breadcrumb__box" }, [
                       createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
                         createVNode("li", null, [
@@ -15654,7 +15896,9 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
                           }, 8, ["href"])
                         ]),
                         createVNode("li", null, [
-                          createVNode("span", { class: "icon-right-arrow-1" })
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
                         ]),
                         createVNode("li", null, toDisplayString(trans("404 Error")), 1)
                       ])
@@ -15665,7 +15909,15 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
               createVNode("section", { class: "error-page" }, [
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "error-page__inner text-center" }, [
-                    createVNode("div", { class: "error-page__img float-bob-y" }),
+                    createVNode("div", { class: "error-page__img float-bob-y" }, [
+                      createVNode("img", {
+                        src: asset_path.value + "site/images/resources/error-page-img1.png",
+                        alt: trans("404 Error"),
+                        width: "620",
+                        height: "420",
+                        decoding: "async"
+                      }, null, 8, ["src", "alt"])
+                    ]),
                     createVNode("div", { class: "error-page__content" }, [
                       createVNode("h2", null, toDisplayString(trans("Oops! Page Not Found!")), 1),
                       createVNode("p", null, toDisplayString(trans("The page you are looking for does not exist. It might have been moved or deleted.")), 1),
@@ -15677,7 +15929,7 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
                           default: withCtx(() => [
                             createTextVNode(toDisplayString(trans("Back To Home")) + " ", 1),
                             createVNode("span", {
-                              class: `icon-${_ctx.locale === "ar" ? "left" : "right"}-arrow `
+                              class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
                             }, null, 2)
                           ]),
                           _: 1
@@ -15702,10 +15954,9 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error404.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const Error404 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-417e1791"]]);
 const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Error404
+  default: _sfc_main$1
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__ = {
   components: {

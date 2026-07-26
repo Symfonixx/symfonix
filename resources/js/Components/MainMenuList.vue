@@ -67,7 +67,7 @@
         </li>
 
         <li v-if="auth?.type === 'admin'" :class="{ active: isActive('admin.dashboard.index') }">
-            <a :href="route('admin.dashboard.index')">
+            <a :href="safeRoute('admin.dashboard.index', '/admin')">
                 {{ trans('Dashboard') }}
             </a>
         </li>
@@ -245,6 +245,14 @@ const portalLabel = (key) => {
     }
 
     return fallbacks[key] || key
+}
+
+const safeRoute = (name, fallback = '#', params = undefined) => {
+    try {
+        return params !== undefined ? route(name, params) : route(name)
+    } catch (e) {
+        return fallback
+    }
 }
 
 const normalizePath = (path) => {

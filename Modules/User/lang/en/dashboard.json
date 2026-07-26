@@ -9,6 +9,10 @@
     "no_contacts": "No contact messages yet.",
     "no_leads": "No leads yet.",
     "no_notifications": "No notifications yet.",
+    "visits_by_month": "Visits by Month",
+    "top_referrers": "Referrer Links",
+    "referrer": "Referrer",
+    "no_referrers": "No referrer data yet.",
     "finance": {
         "title": "Finance Overview",
         "revenue_this_month": "Revenue This Month",

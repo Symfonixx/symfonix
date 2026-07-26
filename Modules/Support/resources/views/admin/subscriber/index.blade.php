@@ -91,15 +91,19 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
+                            <a href="{{ route('admin.subscribers.importSample') }}" class="btn btn-sm btn-light-primary">
+                                <i class="bi bi-download"></i> {{ __('Download Sample File') }}
+                            </a>
+                        </div>
+                        <div class="mb-3">
                             <label for="file" class="form-label">{{ __('Select Excel File') }}</label>
                             <input type="file" class="form-control" id="file" name="file" accept=".xlsx,.xls,.csv" required>
                             <div class="form-text">{{ __('Accepted formats: .xlsx, .xls, .csv (Max: 10MB)') }}</div>
                         </div>
                         <div class="alert alert-info">
-                            <strong>{{ __('Excel Format (matches export format):') }}</strong><br>
-                            <strong>{{ __('Required:') }}</strong> Email<br>
+                            <strong>{{ __('Excel Format:') }}</strong><br>
+                            <strong>{{ __('Required:') }}</strong> Email (first column)<br>
                             <strong>{{ __('Optional:') }}</strong> IP Address, Language, Blocked<br>
-                            <strong>{{ __('Ignored:') }}</strong> ID, Created At (will be auto-generated)<br>
                             <small>{{ __('Note: If email already exists, the subscriber will be updated instead of creating a duplicate.') }}</small>
                             <br><br>
                             <strong>{{ __('Example format:') }}</strong><br>

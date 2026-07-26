@@ -9,6 +9,10 @@
     "no_contacts": "Henüz iletişim mesajı yok.",
     "no_leads": "Henüz potansiyel müşteri yok.",
     "no_notifications": "Henüz bildirim yok.",
+    "visits_by_month": "Aylık Ziyaretler",
+    "top_referrers": "Yönlendiren Bağlantılar",
+    "referrer": "Yönlendiren",
+    "no_referrers": "Henüz yönlendiren verisi yok.",
     "finance": {
         "title": "Finans Özeti",
         "revenue_this_month": "Bu Ayki Gelir",

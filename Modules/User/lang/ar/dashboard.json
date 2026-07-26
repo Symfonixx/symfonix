@@ -9,6 +9,10 @@
     "no_contacts": "لا توجد رسائل تواصل بعد.",
     "no_leads": "لا يوجد عملاء محتملون بعد.",
     "no_notifications": "لا توجد إشعارات بعد.",
+    "visits_by_month": "الزيارات حسب الشهر",
+    "top_referrers": "روابط الإحالة",
+    "referrer": "المُحيل",
+    "no_referrers": "لا توجد بيانات إحالة بعد.",
     "finance": {
         "title": "نظرة عامة على المالية",
         "revenue_this_month": "إيرادات هذا الشهر",

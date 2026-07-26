@@ -1,53 +1,80 @@
+@php
+    $locale = app()->getLocale() ?: 'en';
+    $homeUrl = url($locale === 'en' ? '/' : '/'.$locale);
+    $isRtl = $locale === 'ar';
+@endphp
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ $locale }}" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
-    <title>Page Not Found</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            color: #333;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem 3rem;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        p {
-            margin: 0.25rem 0;
-        }
-        a {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.5rem 1.25rem;
-            border-radius: 999px;
-            background: #0d6efd;
-            color: #fff;
-            text-decoration: none;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#2189ca">
+    <title>404 Error | {{ config('app.name', 'Symfonix') }}</title>
+    <link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('site/css/font-awesome-all.css') }}">
+    <link rel="stylesheet" href="{{ asset('site/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/error.css') }}">
+    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}">
+    @if ($isRtl)
+        <link rel="stylesheet" href="{{ asset('site/css/rtl.css') }}">
+    @endif
 </head>
 <body>
-    <main class="container">
-        <h1>404</h1>
-        <p>The page you are looking for could not be found.</p>
-        <p>Please check the URL or return to the homepage.</p>
-        <a href="{{ url('/') }}">Go Home</a>
-    </main>
+    <div class="page-wrapper" style="padding-top: 0;">
+        <section class="page-header" style="padding-top: 140px;">
+            <div
+                class="page-header__bg"
+                style="background-image: url({{ asset('images/contact-header-bg.jpg') }});"
+            ></div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <h1>404 Error</h1>
+                    <div class="thm-breadcrumb__box">
+                        <ul class="thm-breadcrumb list-unstyled">
+                            <li>
+                                <a href="{{ $homeUrl }}">
+                                    <i class="fas fa-home"></i>Home
+                                </a>
+                            </li>
+                            <li>
+                                <span class="icon-{{ $isRtl ? 'left' : 'right' }}-arrow-1"></span>
+                            </li>
+                            <li>404 Error</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="error-page">
+            <div class="container">
+                <div class="error-page__inner text-center">
+                    <div class="error-page__img float-bob-y">
+                        <img
+                            src="{{ asset('site/images/resources/error-page-img1.png') }}"
+                            alt="404 Error"
+                            width="620"
+                            height="420"
+                            decoding="async"
+                        >
+                    </div>
+                    <div class="error-page__content">
+                        <h2>Oops! Page Not Found!</h2>
+                        <p>The page you are looking for does not exist. It might have been moved or deleted.</p>
+                        <div class="btn-box">
+                            <a class="thm-btn" href="{{ $homeUrl }}">
+                                Back To Home
+                                <span class="icon-{{ $isRtl ? 'left' : 'right' }}-arrow"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
-
-
-

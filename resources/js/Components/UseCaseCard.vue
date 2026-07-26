@@ -7,7 +7,7 @@
 
         <header class="use-case-card__header">
             <Link :href="cardUrl" class="use-case-card__avatar" :aria-label="item.title">
-                <img :src="item.image_link" :alt="item.title" loading="lazy">
+                <img :src="item.image_link" :alt="item.title" width="96" height="96" loading="lazy" decoding="async">
             </Link>
             <div class="use-case-card__identity">
                 <h3 class="use-case-card__title">

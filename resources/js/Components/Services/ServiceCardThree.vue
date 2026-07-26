@@ -1,7 +1,7 @@
 <template>
     <div class="services-three__single">
         <div class="services-three__media">
-            <img v-if="image" :src="image" :alt="title" class="services-three__image">
+            <img v-if="image" :src="image" :alt="title" class="services-three__image" width="640" height="420" loading="lazy" decoding="async">
             <div v-else class="services-three__image-placeholder">
                 <span class="icon-technical-support"></span>
             </div>

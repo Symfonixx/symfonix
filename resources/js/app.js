@@ -5,6 +5,10 @@ import {createApp, h} from 'vue';
 import {createInertiaApp} from '@inertiajs/vue3';
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
 
+// Claim mobile-nav toggle before theme script.js binds (prevents open/close flicker).
+if (typeof window !== 'undefined') {
+    window.__symfonixMobileNavBound = true;
+}
 
 createInertiaApp({
     resolve: (name) => {
@@ -25,5 +29,10 @@ createInertiaApp({
         const vue = createApp({render: () => h(App, props)})
             .use(plugin).mixin({methods: {route}})
             .mount(el);
+
+        // Hide server-rendered GEO crawl fallback once the SPA has hydrated.
+        document.getElementById('geo-crawl-fallback')?.classList.add('is-hydrated');
+
+        return vue;
     },
 });

@@ -29,8 +29,7 @@ Route::get('/robots.txt', function () {
     $sitemapUrl = $host.'/sitemap.xml';
     $llmsUrl = $host.'/llms.txt';
 
-    $lines = [
-        'User-agent: *',
+    $privateDisallows = [
         // Locale-prefixed private areas (e.g. /en/admin, /ar/portal).
         'Disallow: /*/admin',
         'Disallow: /*/portal',
@@ -55,11 +54,40 @@ Route::get('/robots.txt', function () {
         'Disallow: /storage/framework',
         'Disallow: /*?*replytocom=',
         'Allow: /',
-        '',
-        'Sitemap: '.$sitemapUrl,
-        '# LLM context: '.$llmsUrl,
+    ];
+
+    // Explicitly allow major AI / LLM crawlers (GEO readiness).
+    $aiAgents = [
+        'GPTBot',
+        'ChatGPT-User',
+        'OAI-SearchBot',
+        'ClaudeBot',
+        'anthropic-ai',
+        'PerplexityBot',
+        'Google-Extended',
+        'GoogleOther',
+        'Amazonbot',
+        'Bytespider',
+        'CCBot',
+        'meta-externalagent',
+        'Applebot-Extended',
+    ];
+
+    $lines = [
+        'User-agent: *',
+        ...$privateDisallows,
         '',
     ];
+
+    foreach ($aiAgents as $agent) {
+        $lines[] = 'User-agent: '.$agent;
+        $lines[] = 'Allow: /';
+        $lines[] = '';
+    }
+
+    $lines[] = 'Sitemap: '.$sitemapUrl;
+    $lines[] = '# LLM context: '.$llmsUrl;
+    $lines[] = '';
 
     return response(
         implode("\n", $lines),
@@ -67,3 +95,26 @@ Route::get('/robots.txt', function () {
         ['Content-Type' => 'text/plain; charset=UTF-8']
     );
 });
+
+Route::get('/.well-known/security.txt', function () {
+    $host = rtrim(request()->getSchemeAndHttpHost(), '/');
+    $email = \Modules\Base\Models\Settings::get('email') ?: 'hello@symfonix.io';
+    $expires = now()->addYear()->toIso8601String();
+
+    $lines = [
+        'Contact: mailto:'.$email,
+        'Expires: '.$expires,
+        'Canonical: '.$host.'/.well-known/security.txt',
+        'Preferred-Languages: en, ar, tr, de',
+        'Policy: '.$host.'/llms.txt',
+    ];
+
+    return response(
+        implode("\n", $lines)."\n",
+        200,
+        [
+            'Content-Type' => 'text/plain; charset=UTF-8',
+            'Cache-Control' => 'public, max-age=86400',
+        ]
+    );
+})->name('security.txt');

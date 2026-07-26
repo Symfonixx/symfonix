@@ -2,7 +2,7 @@
     <div v-if="variant === 'featured'" class="blog-two__single">
         <div class="blog-two__img">
             <Link :href="postUrl">
-                <img :src="imageSrc" :alt="translateField(post.title)" @error="handleImageError">
+                <img :src="imageSrc" :alt="translateField(post.title)" width="800" height="500" loading="lazy" decoding="async" @error="handleImageError">
             </Link>
             <div class="blog-two__tags"  >
                 <span >{{ translateField(post.category.name) }}</span>
@@ -52,7 +52,7 @@
     >
         <div class="blog-two__img-two">
             <Link :href="postUrl">
-                <img :src="imageSrc" :alt="translateField(post.title)" @error="handleImageError">
+                <img :src="imageSrc" :alt="translateField(post.title)" width="800" height="500" loading="lazy" decoding="async" @error="handleImageError">
             </Link>
         </div>
         <div class="blog-two__content-two">

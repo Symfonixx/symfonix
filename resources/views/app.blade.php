@@ -11,13 +11,22 @@ Developed By: Hadi Hilal
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @php
-        $robotsDirectives = $page['props']['meta']['robots'] ?? 'index, follow';
-        $googlebotDirectives = str_contains(strtolower($robotsDirectives), 'noindex')
-            ? $robotsDirectives
-            : $robotsDirectives.', max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+        $robotsDirectives = $page['props']['meta']['robots'] ?? 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
+        $robotsLower = strtolower($robotsDirectives);
+        if (! str_contains($robotsLower, 'noindex')) {
+            if (! str_contains($robotsLower, 'max-snippet')) {
+                $robotsDirectives .= ', max-snippet:-1';
+            }
+            if (! str_contains($robotsLower, 'max-image-preview')) {
+                $robotsDirectives .= ', max-image-preview:large';
+            }
+            if (! str_contains($robotsLower, 'max-video-preview')) {
+                $robotsDirectives .= ', max-video-preview:-1';
+            }
+        }
     @endphp
     <meta name="robots" content="{{ $robotsDirectives }}"/>
-    <meta name="googlebot" content="{{ $googlebotDirectives }}"/>
+    <meta name="googlebot" content="{{ $robotsDirectives }}"/>
 
     @php
         $seo = \Modules\Base\Models\Seo::pluck('value', 'key');
@@ -58,6 +67,7 @@ Developed By: Hadi Hilal
 
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ url('/rss.xml') }}">
+    <link rel="alternate" type="text/plain" title="LLM context" href="{{ url('/llms.txt') }}">
     <link rel="manifest" href="{{ asset('images/favicon/site.webmanifest') }}">
 
     @php
@@ -109,12 +119,21 @@ Developed By: Hadi Hilal
     <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.ico') }}"/>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}"/>
 
+    <link rel="preload" as="image" href="{{ asset('images/home/banner-bg.webp') }}" type="image/webp" fetchpriority="high">
+
+    {{-- jQuery before Vite so header menu bindings always have $ available --}}
+    <script src="{{ asset('site/js/jquery-3.6.0.min.js') }}"></script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
+    {{-- Slim font request: common weights only (full variable italic axis is huge) --}}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+          rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    </noscript>
 
     @routes
     @inertiaHead
@@ -163,11 +182,10 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
-
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}"/>
 
     <!-- template styles -->
     <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
-
     <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
     <style>
 
@@ -484,11 +502,12 @@ Developed By: Hadi Hilal
 
 
     @if(app()->getLocale() === "ar")
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{asset('site/css/rtl.css')}}">
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
+              rel="stylesheet" media="print" onload="this.media='all'">
+        <noscript>
+            <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+        </noscript>
+        <link rel="stylesheet" href="{{ asset('site/css/rtl.css') }}" media="print" onload="this.media='all'">
         <style>
             #symfonixbot-container {
                 font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
@@ -498,6 +517,35 @@ Developed By: Hadi Hilal
     {!! $settings->get('header_scripts') !!}
 </head>
 <body class="custom-cursor">
+<style>
+    /* Hide crawl fallback when Inertia SSR already filled #app */
+    #main-content:has(#app:not(:empty)) ~ #geo-crawl-fallback {
+        display: none !important;
+    }
+    #geo-crawl-fallback {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+    }
+    #geo-crawl-fallback.is-hydrated {
+        display: none !important;
+    }
+    #geo-crawl-fallback nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+    #geo-crawl-fallback a { color: #2189ca; }
+
+    /* Show desktop nav earlier — theme default only kicks in at 1200px */
+    @media (min-width: 992px) {
+        .main-menu .main-menu__list,
+        .stricky-header .main-menu__list {
+            display: flex !important;
+        }
+        .main-menu .mobile-nav__toggler {
+            display: none !important;
+        }
+    }
+</style>
 
 <div class="custom-cursor__cursor"></div>
 <div class="custom-cursor__cursor-two"></div>
@@ -507,9 +555,50 @@ Developed By: Hadi Hilal
     @inertia
 </main>
 
+{{-- Static crawlable content for bots/auditors that do not execute JS (Inertia is client-rendered). --}}
+@if(($page['component'] ?? null) === 'Base::Index')
+<div id="geo-crawl-fallback">
+    <nav aria-label="Primary">
+        <ul>
+            <li><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
+            <li><a href="{{ route('about-us') }}">{{ __('About Us') }}</a></li>
+            <li><a href="{{ route('services.index') }}">{{ __('Our Services') }}</a></li>
+            <li><a href="{{ route('product.index') }}">{{ __('Products') }}</a></li>
+            <li><a href="{{ route('use-cases.index') }}">{{ __('Case Studies') }}</a></li>
+            <li><a href="{{ route('blogs.index') }}">{{ __('Blogs') }}</a></li>
+            <li><a href="{{ route('contact-us') }}">{{ __('Contact Us') }}</a></li>
+        </ul>
+    </nav>
+
+    <h1>{{ __('Transform complex technical ideas into intelligent systems') }}</h1>
+    <p>{{ __('Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability') }}</p>
+
+    <h2>{{ __('What We Do') }} — {{ __('Core Services') }}</h2>
+    <p>{{ __("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape.") }}</p>
+    <ul>
+        <li><a href="{{ route('services.index') }}">{{ __('Our Services') }}</a></li>
+        <li><a href="{{ route('product.index') }}">{{ __('Products') }}</a></li>
+        <li><a href="{{ route('about-us') }}">{{ __('About Us') }}</a></li>
+    </ul>
+
+    <h2>{{ __('How We\'ve Empowered Businesses with Innovative Tech Solutions') }}</h2>
+    <p>{{ __('Explore our success stories and real-world solutions we\'ve delivered for businesses.') }}</p>
+    <p><a href="{{ route('use-cases.index') }}">{{ __('Case Studies') }}</a>
+        · <a href="{{ route('blogs.index') }}">{{ __('Blogs') }}</a>
+        · <a href="{{ route('contact-us') }}">{{ __('Book your free consultation') }}</a></p>
+
+    <h2>{{ __('Why Choose Symfonix for Web, AI, and Cloud') }}</h2>
+    <p>{{ $seo->get('website_desc') ?: __('Empowering businesses with modern web, mobile, AI, and cloud solutions.') }}</p>
+</div>
+@endif
+
+<noscript>
+    <p>{{ __('Enable JavaScript for the full interactive experience. Key pages are linked above.') }}</p>
+</noscript>
+
 <div id="symfonixbot-launcher-wrap" aria-label="Symfonix Bot launcher">
     <div id="symfonixbot-launcher" aria-label="{{ __('chat.launcher.open') }}">
-        <img src="{{ asset('images/robot.png') }}" alt="{{ __('chat.launcher.title') }}">
+        <img src="{{ asset('images/robot.png') }}" alt="{{ __('chat.launcher.title') }}" width="40" height="40" loading="lazy" decoding="async">
     </div>
     <div id="symfonixbot-launcher-hint" class="fade-in">{{ __('chat.launcher.ask_me') }}</div>
 </div>
@@ -530,20 +619,15 @@ Developed By: Hadi Hilal
     <span class="scroll-to-top__text"> {{__('Go Back Top')}}</span>
 </a>
 
-
-<script src="{{ asset('site/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('site/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('site/js/jquery.appear.min.js') }}"></script>
 <script src="{{ asset('site/js/wow.js') }}"></script>
 <script src="{{ asset('site/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('site/js/marquee.min.js') }}"></script>
-
 <script src="{{ asset('site/js/gsap/gsap.js') }}"></script>
 <script src="{{ asset('site/js/gsap/ScrollTrigger.js') }}"></script>
 <script src="{{ asset('site/js/gsap/SplitText.js') }}"></script>
-
-
-<!-- template js -->
+<script>window.__symfonixMobileNavBound = true;</script>
 <script src="{{ asset('site/js/script.js') }}"></script>
 <script>
     (function () {
@@ -559,6 +643,10 @@ Developed By: Hadi Hilal
         const sendBtn = document.getElementById('symfonixbot-send');
         const hintEl = document.getElementById('symfonixbot-launcher-hint');
 
+        if (!launcher || !container) {
+            return;
+        }
+
         function toggleChat(open) {
             const shouldOpen = open !== undefined ? open : container.classList.contains('symfonixbot-hidden');
             container.classList.toggle('symfonixbot-hidden', !shouldOpen);
@@ -571,13 +659,13 @@ Developed By: Hadi Hilal
         }
 
         function appendMessage(from, html) {
-            const wrap = document.createElement('div');
-            wrap.className = 'symfonixbot-message ' + (from === 'user' ? 'symfonixbot-message-user' : '');
+            const wrapMsg = document.createElement('div');
+            wrapMsg.className = 'symfonixbot-message ' + (from === 'user' ? 'symfonixbot-message-user' : '');
             const bubble = document.createElement('div');
             bubble.className = 'symfonixbot-bubble ' + (from === 'user' ? 'symfonixbot-bubble-user' : 'symfonixbot-bubble-bot');
             bubble.innerHTML = html;
-            wrap.appendChild(bubble);
-            messagesEl.appendChild(wrap);
+            wrapMsg.appendChild(bubble);
+            messagesEl.appendChild(wrapMsg);
             messagesEl.scrollTop = messagesEl.scrollHeight;
         }
 
@@ -717,6 +805,17 @@ Developed By: Hadi Hilal
         $settings->get('github'),
     ], fn ($v) => is_string($v) && str_starts_with($v, 'http')));
 
+    $knowsAbout = [
+        'Web Development',
+        'Mobile Applications',
+        'Artificial Intelligence',
+        'Business Automation',
+        'Cloud Computing',
+        'IT Consulting',
+        'Software Engineering',
+        'Digital Transformation',
+    ];
+
     $organization = array_filter([
         '@type' => 'Organization',
         '@id' => $siteUrl . '/#organization',
@@ -730,6 +829,7 @@ Developed By: Hadi Hilal
         'description' => $seo->get('website_desc'),
         'email' => $settings->get('email') ?: null,
         'telephone' => $settings->get('phone') ?: null,
+        'knowsAbout' => $knowsAbout,
         'address' => $settings->get('address') ? [
             '@type' => 'PostalAddress',
             'streetAddress' => $settings->get('address'),
@@ -742,6 +842,32 @@ Developed By: Hadi Hilal
             'availableLanguage' => array_keys(\Mcamara\LaravelLocalization\Facades\LaravelLocalization::getSupportedLocales()),
         ]) : null,
         'sameAs' => ! empty($sameAs) ? $sameAs : null,
+        'makesOffer' => [
+            [
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'Web Development',
+                    'url' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL(app()->getLocale(), url('/services')),
+                ],
+            ],
+            [
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'AI & Automation',
+                    'url' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL(app()->getLocale(), url('/services')),
+                ],
+            ],
+            [
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => 'Cloud Solutions',
+                    'url' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::getLocalizedURL(app()->getLocale(), url('/services')),
+                ],
+            ],
+        ],
     ], fn ($v) => ! is_null($v) && $v !== '' && $v !== []);
 
     $professionalService = array_filter([
@@ -759,12 +885,28 @@ Developed By: Hadi Hilal
             'streetAddress' => $settings->get('address'),
         ] : null,
         'areaServed' => 'Worldwide',
-        'knowsAbout' => [
-            'Web Development',
-            'Mobile Applications',
-            'Artificial Intelligence',
-            'Cloud Computing',
-            'IT Consulting',
+        'knowsAbout' => $knowsAbout,
+        'hasOfferCatalog' => [
+            '@type' => 'OfferCatalog',
+            'name' => 'IT Services',
+            'itemListElement' => [
+                [
+                    '@type' => 'OfferCatalog',
+                    'name' => 'Web Development',
+                ],
+                [
+                    '@type' => 'OfferCatalog',
+                    'name' => 'Mobile Applications',
+                ],
+                [
+                    '@type' => 'OfferCatalog',
+                    'name' => 'AI Automation',
+                ],
+                [
+                    '@type' => 'OfferCatalog',
+                    'name' => 'Cloud Computing',
+                ],
+            ],
         ],
         'parentOrganization' => ['@id' => $siteUrl . '/#organization'],
         'sameAs' => ! empty($sameAs) ? $sameAs : null,
@@ -804,7 +946,7 @@ Developed By: Hadi Hilal
     @elseif(session('status'))
     toastr.info('{{ session('status') }}');
     @endif
-    @if ($errors->any())
+    @if (isset($errors) && $errors->any())
     @foreach ($errors->all() as $error)
     toastr.error('{{ $error }}');
     @endforeach

@@ -1,0 +1,60 @@
+/*--------------------------------------------------------------
+# Error Page
+--------------------------------------------------------------*/
+.error-page {
+    position: relative;
+    display: block;
+    padding: 112px 0 120px;
+    z-index: 1;
+}
+
+.error-page__inner {
+    position: relative;
+    display: block;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.error-page__img {
+    position: relative;
+    display: block;
+}
+
+.error-page__img img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.error-page__content {
+    position: relative;
+    display: block;
+    margin-top: 31px;
+}
+
+.error-page__content h2 {
+    font-size: 50px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--techguru-white);
+    margin: 0 0 18px;
+}
+
+.error-page__content p {
+    font-size: 18px;
+    line-height: 30px;
+    color: var(--techguru-gray);
+    margin: 0;
+}
+
+.error-page__content .btn-box {
+    position: relative;
+    display: block;
+    margin-top: 42px;
+}
+
+.error-page__content .thm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

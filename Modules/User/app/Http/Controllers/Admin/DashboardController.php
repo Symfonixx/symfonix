@@ -39,7 +39,9 @@ class DashboardController extends Controller
                 ->distinct('ip')->count('ip'),
         ];
 
-        $topVisitedPages = Visitor::topVisitedPages();
+        $topVisitedPages = Visitor::topVisitedPages(10);
+        $topReferrers = Visitor::topReferrers(10);
+        $visitsByMonth = Visitor::visitsByMonth(12);
         $stats = [
             'blogs' => Blog::count(),
             'leads' => Lead::count(),
@@ -192,6 +194,8 @@ class DashboardController extends Controller
             'stats',
             'visitorsStats',
             'topVisitedPages',
+            'topReferrers',
+            'visitsByMonth',
             'crmStats',
             'ticketStats',
             'recentTickets',

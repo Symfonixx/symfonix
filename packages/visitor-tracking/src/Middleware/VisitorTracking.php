@@ -50,6 +50,8 @@ class VisitorTracking
             'browser' => $this->detectBrowser($userAgent),
             'page_title' => $pageTitle,
             'url' => $request->fullUrl(),
+            'referrer' => $request->headers->get('referer') ?: null,
+            'user_agent' => $userAgent,
         ]);
 
         return $response;

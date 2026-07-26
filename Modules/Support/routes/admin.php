@@ -23,6 +23,7 @@ Route::middleware('can:Support Management')->group(function () {
     // Subscriber routes
     Route::delete('subscribers', [SubscriberController::class, 'deleteMulti'])->name('subscribers.deleteMulti');
     Route::get('subscribers/export', [SubscriberController::class, 'export'])->name('subscribers.export');
+    Route::get('subscribers/import-sample', [SubscriberController::class, 'downloadSample'])->name('subscribers.importSample');
     Route::post('subscribers/import', [SubscriberController::class, 'import'])->name('subscribers.import');
     Route::get('subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
 

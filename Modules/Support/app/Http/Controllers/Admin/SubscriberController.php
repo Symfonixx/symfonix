@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
 use Modules\Support\app\Exports\SubscriberExport;
+use Modules\Support\app\Exports\SubscriberImportSampleExport;
 use Modules\Support\app\Imports\SubscriberImport;
 use Modules\Support\Models\Subscriber;
 
@@ -31,6 +32,11 @@ class SubscriberController extends Controller
     public function export()
     {
         return Excel::download(new SubscriberExport, 'subscribers_'.date('Y-m-d_His').'.xlsx');
+    }
+
+    public function downloadSample()
+    {
+        return Excel::download(new SubscriberImportSampleExport, 'subscribers_import_sample.xlsx');
     }
 
     public function import(Request $request): RedirectResponse

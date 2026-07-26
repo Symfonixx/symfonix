@@ -12,7 +12,9 @@
                     <div class="sidebar-info-contents">
                         <div class="content-inner">
                             <div class="logo">
-                                <Link :href="route('home')"><img :src="storage_path + settings.site_logo" alt="logo"/>
+                                <Link :href="route('home')">
+                                    <img v-if="logoSrc" :src="logoSrc" :alt="brandName"/>
+                                    <span v-else class="brand-text-logo">{{ brandName }}</span>
                                 </Link>
                             </div>
                             <div class="content-box">
@@ -247,8 +249,10 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <div class="site-footer-two__about">
                                 <div class="site-footer-two__logo">
-                                    <Link :href="route('home')"><img :src="storage_path + settings.site_logo"
-                                                                     alt="logo"></Link>
+                                    <Link :href="route('home')">
+                                        <img v-if="logoSrc" :src="logoSrc" :alt="brandName">
+                                        <span v-else class="brand-text-logo">{{ brandName }}</span>
+                                    </Link>
                                     <p class="mt-2">{{ seo.main_title }}</p>
                                 </div>
 
@@ -490,7 +494,8 @@
 
             <div class="logo-box">
                 <Link :href="route('home')" aria-label="logo image">
-                    <img :src="storage_path + settings.site_logo" alt="logo">
+                    <img v-if="logoSrc" :src="logoSrc" :alt="brandName">
+                    <span v-else class="brand-text-logo brand-text-logo--light">{{ brandName }}</span>
                 </Link>
             </div>
             <!-- /.logo-box -->
@@ -596,11 +601,22 @@ import MainMenuNav from '@/Components/MainMenuNav.vue'
 const page = usePage()
 
 const trans = (key) => page.props.translations[key] || key;
-const settings = computed(() => page.props.settings)
-const storage_path = computed(() => page.props.storage_path)
+const settings = computed(() => page.props.settings || {})
+const storage_path = computed(() => page.props.storage_path || '')
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale)
-const seo = computed(() => page.props.seo)
+const seo = computed(() => page.props.seo || {})
+const brandName = computed(() => seo.value?.website_name || page.props.appName || 'Symfonix')
+const logoSrc = computed(() => {
+    const logo = settings.value?.site_logo
+    if (!logo || logo === false || logo === 'false' || logo === 'default.jpg') {
+        return ''
+    }
+    if (/^https?:\/\//i.test(logo) || String(logo).startsWith('//') || String(logo).startsWith('/')) {
+        return logo
+    }
+    return `${storage_path.value}${logo}`
+})
 const servicesList = computed(() => page.props.servicesList)
 const footerPages = computed(() => page.props.footerPages || [])
 const isPortalPage = computed(() => /\/portal(\/|$)/.test(page.url))
@@ -719,29 +735,57 @@ const handleSubscribeSubmit = () => {
 };
 
 onMounted(() => {
-    const unregisterNavigate = router.on('navigate', (event) => {
-        $(".mobile-nav__wrapper").removeClass("expanded");
-        $("body").removeClass("locked");
-        $("body").removeClass("search-active");
-        $(".info-group").removeClass("isActive");
+    // Single owner for mobile nav toggle — capture phase stops theme/jQuery double-toggles.
+    const toggleMobileNav = (forceClose = false) => {
+        const wrapper = document.querySelector('.mobile-nav__wrapper')
+        const body = document.body
+        if (!wrapper) return
+        if (forceClose) {
+            wrapper.classList.remove('expanded')
+            body.classList.remove('locked')
+            return
+        }
+        wrapper.classList.toggle('expanded')
+        body.classList.toggle('locked')
+    }
+
+    const onMobileNavToggleClick = (e) => {
+        const toggler = e.target.closest?.('.mobile-nav__toggler')
+        if (!toggler) return
+        e.preventDefault()
+        e.stopPropagation()
+        e.stopImmediatePropagation()
+        toggleMobileNav()
+    }
+
+    document.addEventListener('click', onMobileNavToggleClick, true)
+    window.__symfonixMobileNavBound = true
+
+    const unregisterNavigate = router.on('navigate', () => {
+        toggleMobileNav(true)
+        document.body.classList.remove('search-active')
+        document.querySelector('.info-group')?.classList.remove('isActive')
+        if (typeof window.$ !== 'undefined') {
+            $(".mobile-nav__wrapper").removeClass("expanded");
+            $("body").removeClass("locked");
+            $("body").removeClass("search-active");
+            $(".info-group").removeClass("isActive");
+        }
     });
 
     onUnmounted(() => {
+        document.removeEventListener('click', onMobileNavToggleClick, true)
         unregisterNavigate();
     });
 
-    // Mobile Nav Toggler
-    if ($(".mobile-nav__toggler").length) {
-        $(".mobile-nav__toggler").off("click").on("click", function (e) {
-            e.preventDefault();
-            $(".mobile-nav__wrapper").toggleClass("expanded");
-            $("body").toggleClass("locked");
-        });
-    }
+    const bindHeaderInteractions = () => {
+        if (typeof window.$ === 'undefined') {
+            return false;
+        }
 
     // Sidebar Toggler
     if ($(".navSidebar-button").length) {
-        $(".navSidebar-button").off("click").on("click", function (e) {
+        $(".navSidebar-button").off("click.symfonixNav").on("click.symfonixNav", function (e) {
             e.preventDefault();
             e.stopPropagation();
             $(".info-group").addClass("isActive");
@@ -749,7 +793,7 @@ onMounted(() => {
     }
 
     if ($(".close-side-widget").length) {
-        $(".close-side-widget").off("click").on("click", function (e) {
+        $(".close-side-widget").off("click.symfonixNav").on("click.symfonixNav", function (e) {
             e.preventDefault();
             $(".info-group").removeClass("isActive");
         });
@@ -759,19 +803,19 @@ onMounted(() => {
         $(".info-group").removeClass("isActive");
     });
 
-    $(".xs-sidebar-widget").off("click").on("click", function (e) {
+    $(".xs-sidebar-widget").off("click.symfonixNav").on("click.symfonixNav", function (e) {
         e.stopPropagation();
     });
 
     // Header Search
     if ($('.searcher-toggler-box').length) {
-        $('.searcher-toggler-box').off('click').on('click', function () {
+        $('.searcher-toggler-box').off('click.symfonixNav').on('click.symfonixNav', function () {
             $('body').addClass('search-active');
         });
-        $('.close-search').off('click').on('click', function () {
+        $('.close-search').off('click.symfonixNav').on('click.symfonixNav', function () {
             $('body').removeClass('search-active');
         });
-        $('.search-popup .color-layer').off('click').on('click', function () {
+        $('.search-popup .color-layer').off('click.symfonixNav').on('click.symfonixNav', function () {
             $('body').removeClass('search-active');
         });
     }
@@ -788,7 +832,7 @@ onMounted(() => {
                     return toggleBtn;
                 });
             }
-            self.find("button").off("click").on("click", function (e) {
+            self.find("button").off("click.symfonixNav").on("click.symfonixNav", function (e) {
                 e.preventDefault();
                 let self = $(this);
                 self.toggleClass("expanded");
@@ -798,27 +842,41 @@ onMounted(() => {
         });
     }
 
-    // Sticky Menu and Scroll to Top
-    $(window).off("scroll.appLayout").on("scroll.appLayout", function () {
-        if ($(".stricked-menu").length) {
-            var headerScrollPos = 300;
-            var stricky = $(".stricked-menu");
-            if ($(window).scrollTop() > headerScrollPos) {
-                stricky.addClass("stricky-fixed");
-            } else if ($(this).scrollTop() <= headerScrollPos) {
-                stricky.removeClass("stricky-fixed");
-            }
-        }
+        return true;
+    };
 
-        var scrollToTopBtn = ".scroll-to-top";
-        if ($(scrollToTopBtn).length) {
-            if ($(window).scrollTop() > 500) {
-                $(scrollToTopBtn).addClass("show");
-            } else {
-                $(scrollToTopBtn).removeClass("show");
+    if (!bindHeaderInteractions()) {
+        let tries = 40;
+        const timer = setInterval(() => {
+            if (bindHeaderInteractions() || --tries <= 0) {
+                clearInterval(timer);
             }
-        }
-    });
+        }, 100);
+    }
+
+    // Sticky Menu and Scroll to Top
+    if (typeof window.$ !== 'undefined') {
+        $(window).off("scroll.appLayout").on("scroll.appLayout", function () {
+            if ($(".stricked-menu").length) {
+                var headerScrollPos = 300;
+                var stricky = $(".stricked-menu");
+                if ($(window).scrollTop() > headerScrollPos) {
+                    stricky.addClass("stricky-fixed");
+                } else if ($(this).scrollTop() <= headerScrollPos) {
+                    stricky.removeClass("stricky-fixed");
+                }
+            }
+
+            var scrollToTopBtn = ".scroll-to-top";
+            if ($(scrollToTopBtn).length) {
+                if ($(window).scrollTop() > 500) {
+                    $(scrollToTopBtn).addClass("show");
+                } else {
+                    $(scrollToTopBtn).removeClass("show");
+                }
+            }
+        });
+    }
 
     // Theme Toggle
     const toggle = document.getElementById('themeToggle');
@@ -864,4 +922,34 @@ const getPageUrl = (pageItem) => {
 
 
 </script>
+
+<style>
+.brand-text-logo {
+    display: inline-block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #fff;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.brand-text-logo--light {
+    color: #fff;
+}
+
+.main-menu-two__logo img,
+.mobile-nav__content .logo-box img,
+.site-footer-two__logo img {
+    max-height: 48px;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+/* Ensure Vue-rendered mobile drawer links stay visible */
+.mobile-nav__content .main-menu__list {
+    display: block !important;
+}
+</style>
 

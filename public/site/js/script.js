@@ -887,15 +887,21 @@
   }
 
 
+  // Do not clone menus when Vue/Inertia already rendered them — innerHTML
+  // clones strip Inertia <Link> handlers and force full page refreshes.
   if ($(".main-menu__list").length && $(".mobile-nav__container").length) {
-    let navContent = document.querySelector(".main-menu__list").outerHTML;
     let mobileNavContainer = document.querySelector(".mobile-nav__container");
-    mobileNavContainer.innerHTML = navContent;
+    if (mobileNavContainer && !mobileNavContainer.querySelector(".main-menu__list")) {
+      let navContent = document.querySelector(".main-menu__list").outerHTML;
+      mobileNavContainer.innerHTML = navContent;
+    }
   }
   if ($(".sticky-header__content").length) {
-    let navContent = document.querySelector(".main-menu").innerHTML;
-    let mobileNavContainer = document.querySelector(".sticky-header__content");
-    mobileNavContainer.innerHTML = navContent;
+    let stickyContent = document.querySelector(".sticky-header__content");
+    if (stickyContent && !stickyContent.querySelector(".main-menu__list, .main-menu-two__wrapper")) {
+      let navContent = document.querySelector(".main-menu").innerHTML;
+      stickyContent.innerHTML = navContent;
+    }
   }
 
   if ($(".mobile-nav__container .main-menu__list").length) {
@@ -920,7 +926,8 @@
     });
   }
 
-  if ($(".mobile-nav__toggler").length) {
+  // Skip when Vue/Inertia already owns the mobile nav toggle (avoids open/close flicker).
+  if ($(".mobile-nav__toggler").length && !window.__symfonixMobileNavBound) {
     $(".mobile-nav__toggler").on("click", function (e) {
       e.preventDefault();
       $(".mobile-nav__wrapper").toggleClass("expanded");

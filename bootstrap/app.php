@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Middleware\ContentSecurityPolicy;
+use App\Http\Middleware\ForceCanonicalHost;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\TrackAdminEvents;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\Response;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -26,6 +29,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         ]);
 
+        $middleware->web(prepend: [
+            ForceCanonicalHost::class,
+        ]);
+
         $middleware->web(append: [
             ContentSecurityPolicy::class,
             HandleInertiaRequests::class,
@@ -36,6 +43,41 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
+
+        $exceptions->respond(function (Response $response, \Throwable $exception, Request $request) {
+            if ($request->expectsJson() || $request->is('api/*')) {
+                return $response;
+            }
+
+            $status = $response->getStatusCode();
+            $pages = [
+                404 => 'Error404',
+                500 => 'Error500',
+                503 => 'Error500',
+            ];
+
+            if (! isset($pages[$status])) {
+                return $response;
+            }
+
+            // Keep Laravel's detailed exception page for server errors in local/testing.
+            if (in_array($status, [500, 503], true) && app()->environment(['local', 'testing'])) {
+                return $response;
+            }
+
+            // Unmatched routes never hit the web middleware stack, so shared Inertia
+            // props (settings, translations, asset_path, etc.) must be registered here.
+            $inertia = app(HandleInertiaRequests::class);
+            Inertia::setRootView($inertia->rootView($request));
+            Inertia::version(fn () => $inertia->version($request));
+            Inertia::share($inertia->share($request));
+
+            return Inertia::render($pages[$status], [
+                'status' => $status,
+            ])
+                ->toResponse($request)
+                ->setStatusCode($status);
+        });
     })
 
     ->create();

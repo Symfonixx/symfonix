@@ -6,7 +6,7 @@
         <div class="product-card__glow" aria-hidden="true"></div>
 
         <Link :href="cardUrl" class="product-card__media" :aria-label="item.name">
-            <img :src="item.main_image_link" :alt="item.name" loading="lazy">
+            <img :src="item.main_image_link" :alt="item.name" width="640" height="400" loading="lazy" decoding="async">
             <div class="product-card__media-overlay" aria-hidden="true"></div>
             <span v-if="item.is_featured" class="product-card__badge">
                 <i class="fas fa-star"></i>

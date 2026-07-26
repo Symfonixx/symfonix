@@ -4,8 +4,15 @@
             <div class="main-menu-two__wrapper-inner">
                 <div class="main-menu-two__left">
                     <div class="main-menu-two__logo">
-                        <Link :href="route('home')">
-                            <img :src="storage_path + settings.site_logo" alt="logo">
+                        <Link :href="route('home')" class="main-menu-two__logo-link">
+                            <img
+                                v-if="logoSrc"
+                                :src="logoSrc"
+                                :alt="brandName"
+                                width="180"
+                                height="48"
+                            >
+                            <span v-else class="brand-text-logo">{{ brandName }}</span>
                         </Link>
                     </div>
                 </div>
@@ -48,7 +55,36 @@ import MainMenuList from '@/Components/MainMenuList.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key
-const settings = computed(() => page.props.settings)
-const storage_path = computed(() => page.props.storage_path)
+const settings = computed(() => page.props.settings || {})
+const storage_path = computed(() => page.props.storage_path || '')
 const auth = computed(() => page.props.auth)
+const brandName = computed(() => page.props.seo?.website_name || page.props.appName || 'Symfonix')
+const logoSrc = computed(() => {
+    const logo = settings.value?.site_logo
+    if (!logo || logo === false || logo === 'false' || logo === 'default.jpg') {
+        return ''
+    }
+    if (/^https?:\/\//i.test(logo) || String(logo).startsWith('//') || String(logo).startsWith('/')) {
+        return logo
+    }
+    return `${storage_path.value}${logo}`
+})
 </script>
+
+<style scoped>
+.main-menu-two__logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.brand-text-logo {
+    display: inline-block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #fff;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+</style>
