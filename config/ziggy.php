@@ -7,12 +7,17 @@ return [
     | Ziggy route blacklist
     |--------------------------------------------------------------------------
     |
-    | Exclude only heavy tooling routes. Keep admin/portal/auth routes so the
-    | header menu can call route() without throwing for logged-in users.
+    | Keep the public SPA route map small. Admin/API/tooling routes are not
+    | needed in the frontend Ziggy payload (and should not be dumped in HTML).
     |
     */
 
     'except' => [
+        'admin.*',
+        'api.*',
+        'crm.*',
+        'finance.*',
+        'storage.*',
         'debugbar.*',
         'telescope.*',
         'pulse',

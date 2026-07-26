@@ -121,22 +121,7 @@ Developed By: Hadi Hilal
 
     <link rel="preload" as="image" href="{{ asset('images/home/banner-bg.webp') }}" type="image/webp" fetchpriority="high">
 
-    {{--
-      Avoid @routes: Ziggy's static $generated can emit MergeScript without defining Ziggy
-      (ReferenceError on production). Routes come from Inertia shared props + app.js.
-    --}}
-    @php
-        $ziggyBoot = $page['props']['ziggy'] ?? [
-            'url' => rtrim((string) config('app.url'), '/'),
-            'port' => null,
-            'defaults' => (object) [],
-            'routes' => (object) [],
-            'location' => url()->current(),
-        ];
-    @endphp
-    <script>
-        window.Ziggy = {!! json_encode($ziggyBoot, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!};
-    </script>
+    {{-- Ziggy routes are shared via Inertia props and installed in app.js — do not dump them here. --}}
 
     {{-- jQuery before Vite so header menu bindings always have $ available --}}
     <script src="{{ asset('site/js/jquery-3.6.0.min.js') }}"></script>
