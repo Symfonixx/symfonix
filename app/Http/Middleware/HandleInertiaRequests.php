@@ -13,6 +13,7 @@ use Modules\Base\Models\Settings;
 use Modules\Cms\Models\Page;
 use Modules\Services\Models\ServiceCategory;
 use Modules\Support\Models\Ticket;
+use Tighten\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -64,6 +65,16 @@ class HandleInertiaRequests extends Middleware
             'locale' => $safe(fn () => App::currentLocale() ?: 'en', 'en'),
             'app_env' => $safe(fn () => config('app.env'), 'production'),
             'app_debug' => $safe(fn () => config('app.debug'), false),
+            'ziggy' => $safe(fn () => [
+                ...(new Ziggy)->toArray(),
+                'location' => $request->url(),
+            ], [
+                'url' => rtrim((string) config('app.url'), '/'),
+                'port' => null,
+                'defaults' => [],
+                'routes' => [],
+                'location' => $request->url(),
+            ]),
             'translations' => $safe(fn () => $this->getTranslations(), []),
             'settings' => $safe(function () {
                 $hidden = [

@@ -1,4 +1,4 @@
-import { useSSRContext, computed, mergeProps, unref, withCtx, createVNode, createTextVNode, toDisplayString, openBlock, createBlock, createCommentVNode, ref, onMounted, onUnmounted, nextTick, Fragment, renderList, withModifiers, withDirectives, vModelText, watch, vShow, renderSlot, reactive, resolveComponent, vModelCheckbox, createSSRApp, h } from "vue";
+import { useSSRContext, computed, mergeProps, unref, withCtx, createVNode, createTextVNode, toDisplayString, openBlock, createBlock, createCommentVNode, ref, onMounted, onUnmounted, nextTick, Fragment, renderList, withModifiers, withDirectives, vModelText, watch, vShow, renderSlot, reactive, resolveComponent, vModelCheckbox, createSSRApp, h as h$1 } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrInterpolate, ssrRenderClass, ssrRenderList, ssrIncludeBooleanAttr, ssrRenderSlot, ssrRenderStyle, ssrLooseContain } from "vue/server-renderer";
 import { usePage, Link, useForm, router, Head, createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
@@ -53,7 +53,7 @@ const _sfc_main$H = {
       }
       try {
         return route("blogs.show", props.post.slug);
-      } catch (e) {
+      } catch (e2) {
         return "#";
       }
     });
@@ -94,7 +94,7 @@ const _sfc_main$H = {
       if (__props.variant === "featured") {
         _push(`<div${ssrRenderAttrs(mergeProps({ class: "blog-two__single" }, _attrs))}><div class="blog-two__img">`);
         _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<img${ssrRenderAttr("src", imageSrc.value)}${ssrRenderAttr("alt", translateField(__props.post.title))} width="800" height="500" loading="lazy" decoding="async"${_scopeId}>`);
             } else {
@@ -117,7 +117,7 @@ const _sfc_main$H = {
         if (__props.post.created_at) {
           _push(`<li>`);
           _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-            default: withCtx((_, _push2, _parent2, _scopeId) => {
+            default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-calendar-alt"${_scopeId}></span>${ssrInterpolate(__props.post.created_at)}`);
               } else {
@@ -136,7 +136,7 @@ const _sfc_main$H = {
         if (__props.post.comments_count) {
           _push(`<li>`);
           _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-            default: withCtx((_, _push2, _parent2, _scopeId) => {
+            default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-comments"${_scopeId}></span>${ssrInterpolate(__props.post.comments_count)} ${ssrInterpolate(trans("Comments"))}`);
               } else {
@@ -152,7 +152,7 @@ const _sfc_main$H = {
         } else if (__props.showReadingTime && __props.post.reading_time) {
           _push(`<li>`);
           _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-            default: withCtx((_, _push2, _parent2, _scopeId) => {
+            default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-clock"${_scopeId}></span>${ssrInterpolate(__props.post.reading_time)} ${ssrInterpolate(trans("min read"))}`);
               } else {
@@ -170,7 +170,7 @@ const _sfc_main$H = {
         }
         _push(`</ul><h3 class="blog-two__title">`);
         _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`${ssrInterpolate(truncate(translateField(__props.post.title), 60))}`);
             } else {
@@ -186,7 +186,7 @@ const _sfc_main$H = {
           href: postUrl.value,
           class: "thm-btn"
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`${ssrInterpolate(trans("Read More"))} <span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span>`);
             } else {
@@ -207,7 +207,7 @@ const _sfc_main$H = {
           "data-wow-delay": __props.animationDelay
         }, _attrs))}><div class="blog-two__img-two">`);
         _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<img${ssrRenderAttr("src", imageSrc.value)}${ssrRenderAttr("alt", translateField(__props.post.title))} width="800" height="500" loading="lazy" decoding="async"${_scopeId}>`);
             } else {
@@ -228,7 +228,7 @@ const _sfc_main$H = {
         }, _parent));
         _push(`</div><div class="blog-two__content-two"><div class="blog-two__tags-two"><span>${ssrInterpolate(translateField(__props.post.category.name))}</span></div><h3 class="blog-two__title-two">`);
         _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`${ssrInterpolate(truncate(translateField(__props.post.title), 60))}`);
             } else {
@@ -243,7 +243,7 @@ const _sfc_main$H = {
         if (__props.post.created_at) {
           _push(`<li>`);
           _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-            default: withCtx((_, _push2, _parent2, _scopeId) => {
+            default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-calendar-alt"${_scopeId}></span>${ssrInterpolate(__props.post.created_at)}`);
               } else {
@@ -262,7 +262,7 @@ const _sfc_main$H = {
         if (__props.post.comments_count) {
           _push(`<li>`);
           _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-            default: withCtx((_, _push2, _parent2, _scopeId) => {
+            default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-comments"${_scopeId}></span>${ssrInterpolate(__props.post.comments_count)} ${ssrInterpolate(trans("Comments"))}`);
               } else {
@@ -278,7 +278,7 @@ const _sfc_main$H = {
         } else if (__props.showReadingTime && __props.post.reading_time) {
           _push(`<li>`);
           _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
-            default: withCtx((_, _push2, _parent2, _scopeId) => {
+            default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-clock"${_scopeId}></span>${ssrInterpolate(__props.post.reading_time)} ${ssrInterpolate(trans("min read"))}`);
               } else {
@@ -299,7 +299,7 @@ const _sfc_main$H = {
           href: postUrl.value,
           class: "thm-btn"
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`${ssrInterpolate(trans("Read More"))} <span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span>`);
             } else {
@@ -363,7 +363,7 @@ const _sfc_main$G = {
       }
       try {
         return JSON.parse(trimmed);
-      } catch (e) {
+      } catch (e2) {
         try {
           return JSON.parse(trimmed.replace(/'/g, '"'));
         } catch (err) {
@@ -431,7 +431,7 @@ const _sfc_main$G = {
       }
       _push(`</div><h3 class="services-three__title" data-v-6826fe71>`);
       _push(ssrRenderComponent(unref(Link), { href: __props.link }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(__props.title)}`);
           } else {
@@ -466,7 +466,7 @@ const _sfc_main$G = {
         href: __props.link,
         class: "services-three__btn"
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Read More"))} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-6826fe71${_scopeId}></span>`);
           } else {
@@ -531,7 +531,7 @@ const _sfc_main$F = {
     const safeRoute = (name, fallback = "#", params = void 0) => {
       try {
         return params !== void 0 ? route(name, params) : route(name);
-      } catch (e) {
+      } catch (e2) {
         return fallback;
       }
     };
@@ -545,7 +545,7 @@ const _sfc_main$F = {
       if (!url) return "";
       try {
         return new URL(url, window.location.origin).pathname;
-      } catch (e) {
+      } catch (e2) {
         return url;
       }
     };
@@ -566,7 +566,7 @@ const _sfc_main$F = {
         if (routeNames.some((name) => route().current(name))) {
           return true;
         }
-      } catch (e) {
+      } catch (e2) {
       }
       if (!prefixes.length) {
         return false;
@@ -586,7 +586,7 @@ const _sfc_main$F = {
       if (!pageItem || !pageItem.slug) return false;
       try {
         return isCurrentUrl(route("page.view", pageItem.slug));
-      } catch (e) {
+      } catch (e2) {
         return false;
       }
     };
@@ -596,7 +596,7 @@ const _sfc_main$F = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("home")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Home"))}`);
           } else {
@@ -611,7 +611,7 @@ const _sfc_main$F = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("about-us")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("About Us"))}`);
           } else {
@@ -626,7 +626,7 @@ const _sfc_main$F = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("services.index")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Our Services"))}`);
           } else {
@@ -641,7 +641,7 @@ const _sfc_main$F = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("use-cases.index")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Case Studies"))}`);
           } else {
@@ -656,7 +656,7 @@ const _sfc_main$F = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("product.index")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Products"))}`);
           } else {
@@ -671,7 +671,7 @@ const _sfc_main$F = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("blogs.index")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Blogs"))}`);
           } else {
@@ -689,7 +689,7 @@ const _sfc_main$F = {
       _push(ssrRenderComponent(unref(Link), {
         href: headerPages.value.length ? _ctx.route("page.view", headerPages.value[0].slug) : "#"
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Pages"))}`);
           } else {
@@ -706,7 +706,7 @@ const _sfc_main$F = {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("page.view", page2.slug)
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`${ssrInterpolate(page2.title[locale.value])}`);
             } else {
@@ -723,7 +723,7 @@ const _sfc_main$F = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("contact-us")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Contact Us"))}`);
           } else {
@@ -740,7 +740,7 @@ const _sfc_main$F = {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("login")
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<i class="fas fa-sign-in-alt mx-1"${_scopeId}></i> ${ssrInterpolate(trans("Login"))}`);
             } else {
@@ -766,7 +766,7 @@ const _sfc_main$F = {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("portal.dashboard")
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<i class="fas fa-th-large mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.my_dashboard"))}`);
             } else {
@@ -782,7 +782,7 @@ const _sfc_main$F = {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("portal.projects.index")
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<i class="fas fa-folder-open mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.projects"))} `);
               if (unreadCount.value) {
@@ -807,7 +807,7 @@ const _sfc_main$F = {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("portal.subscriptions.index")
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<i class="fas fa-sync-alt mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.subscriptions"))}`);
             } else {
@@ -823,7 +823,7 @@ const _sfc_main$F = {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("portal.tickets.index")
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<i class="fas fa-life-ring mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.tickets"))}`);
             } else {
@@ -839,7 +839,7 @@ const _sfc_main$F = {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("portal.profile.index")
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<i class="fas fa-user-cog mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.profile"))}`);
             } else {
@@ -857,7 +857,7 @@ const _sfc_main$F = {
           method: "post",
           as: "a"
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<i class="fas fa-sign-out-alt mx-1"${_scopeId}></i> ${ssrInterpolate(portalLabel("menu.logout"))}`);
             } else {
@@ -913,7 +913,7 @@ const _sfc_main$E = {
         href: _ctx.route("home"),
         class: "main-menu-two__logo-link"
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             if (logoSrc.value) {
               _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)} width="180" height="48" data-v-bcca7c9f${_scopeId}>`);
@@ -946,7 +946,7 @@ const _sfc_main$E = {
           href: _ctx.route("login"),
           class: "thm-btn"
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`${ssrInterpolate(trans("Login"))}`);
             } else {
@@ -1029,13 +1029,13 @@ const _sfc_main$D = {
         wrapper.classList.toggle("expanded");
         body.classList.toggle("locked");
       };
-      const onMobileNavToggleClick = (e) => {
+      const onMobileNavToggleClick = (e2) => {
         var _a, _b;
-        const toggler = (_b = (_a = e.target).closest) == null ? void 0 : _b.call(_a, ".mobile-nav__toggler");
+        const toggler = (_b = (_a = e2.target).closest) == null ? void 0 : _b.call(_a, ".mobile-nav__toggler");
         if (!toggler) return;
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
+        e2.preventDefault();
+        e2.stopPropagation();
+        e2.stopImmediatePropagation();
         toggleMobileNav();
       };
       document.addEventListener("click", onMobileNavToggleClick, true);
@@ -1061,23 +1061,23 @@ const _sfc_main$D = {
           return false;
         }
         if ($(".navSidebar-button").length) {
-          $(".navSidebar-button").off("click.symfonixNav").on("click.symfonixNav", function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+          $(".navSidebar-button").off("click.symfonixNav").on("click.symfonixNav", function(e2) {
+            e2.preventDefault();
+            e2.stopPropagation();
             $(".info-group").addClass("isActive");
           });
         }
         if ($(".close-side-widget").length) {
-          $(".close-side-widget").off("click.symfonixNav").on("click.symfonixNav", function(e) {
-            e.preventDefault();
+          $(".close-side-widget").off("click.symfonixNav").on("click.symfonixNav", function(e2) {
+            e2.preventDefault();
             $(".info-group").removeClass("isActive");
           });
         }
-        $("body").off("click.infoGroup").on("click.infoGroup", function(e) {
+        $("body").off("click.infoGroup").on("click.infoGroup", function(e2) {
           $(".info-group").removeClass("isActive");
         });
-        $(".xs-sidebar-widget").off("click.symfonixNav").on("click.symfonixNav", function(e) {
-          e.stopPropagation();
+        $(".xs-sidebar-widget").off("click.symfonixNav").on("click.symfonixNav", function(e2) {
+          e2.stopPropagation();
         });
         if ($(".searcher-toggler-box").length) {
           $(".searcher-toggler-box").off("click.symfonixNav").on("click.symfonixNav", function() {
@@ -1102,8 +1102,8 @@ const _sfc_main$D = {
                 return toggleBtn;
               });
             }
-            self.find("button").off("click.symfonixNav").on("click.symfonixNav", function(e) {
-              e.preventDefault();
+            self.find("button").off("click.symfonixNav").on("click.symfonixNav", function(e2) {
+              e2.preventDefault();
               let self2 = $(this);
               self2.toggleClass("expanded");
               self2.parent().toggleClass("expanded");
@@ -1171,7 +1171,7 @@ const _sfc_main$D = {
       }
       try {
         return route("page.view", pageItem.slug);
-      } catch (e) {
+      } catch (e2) {
         return `#`;
       }
     };
@@ -1180,7 +1180,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("home")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             if (logoSrc.value) {
               _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)}${_scopeId}>`);
@@ -1267,7 +1267,7 @@ const _sfc_main$D = {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("privacy-policy")
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`${ssrInterpolate(trans("By subscribing, you accept our privacy policy"))}`);
             } else {
@@ -1292,7 +1292,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("home")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             if (logoSrc.value) {
               _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)}${_scopeId}>`);
@@ -1318,7 +1318,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("home")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Home"))}`);
           } else {
@@ -1336,7 +1336,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("about-us")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("About Us"))}`);
           } else {
@@ -1354,7 +1354,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("services.index")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Our Services"))}`);
           } else {
@@ -1372,7 +1372,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("product.index")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Products"))}`);
           } else {
@@ -1390,7 +1390,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("use-cases.index")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Case Studies"))}`);
           } else {
@@ -1408,7 +1408,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("blogs.index")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Blogs"))}`);
           } else {
@@ -1426,7 +1426,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("contact-us")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Contact Us"))}`);
           } else {
@@ -1444,7 +1444,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("team")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Our Members"))}`);
           } else {
@@ -1462,7 +1462,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("faq")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("FAQs"))}`);
           } else {
@@ -1480,7 +1480,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("testimonials")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(trans("Testimonials"))}`);
           } else {
@@ -1500,7 +1500,7 @@ const _sfc_main$D = {
         _push(ssrRenderComponent(unref(Link), {
           href: getPageUrl(pageItem)
         }, {
-          default: withCtx((_, _push2, _parent2, _scopeId) => {
+          default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               _push2(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}"${_scopeId}></span>${ssrInterpolate(getTranslatableTitle(pageItem))}`);
             } else {
@@ -1520,7 +1520,7 @@ const _sfc_main$D = {
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("home")
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(seo.value.website_name)}`);
           } else {
@@ -1562,7 +1562,7 @@ const _sfc_main$D = {
         href: _ctx.route("home"),
         "aria-label": "logo image"
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             if (logoSrc.value) {
               _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)}${_scopeId}>`);
@@ -1672,7 +1672,7 @@ const _sfc_main$C = {
         class: "use-case-card__avatar",
         "aria-label": __props.item.title
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<img${ssrRenderAttr("src", __props.item.image_link)}${ssrRenderAttr("alt", __props.item.title)} width="96" height="96" loading="lazy" decoding="async" data-v-0c9c4e06${_scopeId}>`);
           } else {
@@ -1692,7 +1692,7 @@ const _sfc_main$C = {
       }, _parent));
       _push(`<div class="use-case-card__identity" data-v-0c9c4e06><h3 class="use-case-card__title" data-v-0c9c4e06>`);
       _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(__props.item.title)}`);
           } else {
@@ -1742,7 +1742,7 @@ const _sfc_main$C = {
         href: cardUrl.value,
         class: "use-case-card__pill use-case-card__pill--cta"
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span data-v-0c9c4e06${_scopeId}>${ssrInterpolate(trans("View Case Study"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-0c9c4e06${_scopeId}></span>`);
           } else {
@@ -1817,7 +1817,7 @@ const _sfc_main$B = {
         class: "product-card__media",
         "aria-label": __props.item.name
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<img${ssrRenderAttr("src", __props.item.main_image_link)}${ssrRenderAttr("alt", __props.item.name)} width="640" height="400" loading="lazy" decoding="async" data-v-80e9306c${_scopeId}><div class="product-card__media-overlay" aria-hidden="true" data-v-80e9306c${_scopeId}></div>`);
             if (__props.item.is_featured) {
@@ -1859,7 +1859,7 @@ const _sfc_main$B = {
       }
       _push(`<h3 class="product-card__title" data-v-80e9306c>`);
       _push(ssrRenderComponent(unref(Link), { href: cardUrl.value }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(__props.item.name)}`);
           } else {
@@ -1881,7 +1881,7 @@ const _sfc_main$B = {
         href: cardUrl.value,
         class: "product-card__pill product-card__pill--cta"
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<span data-v-80e9306c${_scopeId}>${ssrInterpolate(trans("View Details"))}</span><span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow`)}" data-v-80e9306c${_scopeId}></span>`);
           } else {
@@ -2250,7 +2250,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 }
               }
             }
-          } catch (e) {
+          } catch (e2) {
           }
         };
         waitForTheme(() => {
@@ -2266,7 +2266,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<title data-v-8b32445e${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-8b32445e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-8b32445e${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-8b32445e${_scopeId}>`);
             if (metaCanonical.value) {
@@ -2356,7 +2356,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="banner-one" data-v-8b32445e${_scopeId}><div class="banner-one__bg" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/home/banner-bg.webp), url(${asset_path.value}images/home/banner-bg.jpg)`
@@ -2367,7 +2367,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               href: _ctx.route("contact-us"),
               class: "thm-btn contact-btn mx-2"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-8b32445e${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
                 } else {
@@ -2385,7 +2385,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
               href: _ctx.route("services.index"),
               class: "thm-btn"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-8b32445e${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
                 } else {
@@ -2421,7 +2421,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 href: _ctx.route("services.index"),
                 class: "thm-btn"
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId2}></span>`);
                   } else {
@@ -2454,7 +2454,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 href: _ctx.route("product.index"),
                 class: "thm-btn"
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`${ssrInterpolate(trans("View All Products"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId2}></span>`);
                   } else {
@@ -2487,7 +2487,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 href: _ctx.route("use-cases.index"),
                 class: "thm-btn"
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`${ssrInterpolate(trans("View All Case Studies"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId2}></span>`);
                   } else {
@@ -2552,7 +2552,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$h, {
                 href: _ctx.route("blogs.index"),
                 class: "thm-btn"
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8b32445e${_scopeId2}></span>`);
                   } else {
@@ -3787,7 +3787,7 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$g, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
             if (metaCanonical.value) {
@@ -3881,13 +3881,13 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$g, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -4343,7 +4343,7 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$f, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
             if (metaCanonical.value) {
@@ -4437,14 +4437,14 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$f, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("About Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
@@ -4508,7 +4508,7 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$f, {
                 href: _ctx.route("contact-us"),
                 class: "thm-btn"
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${isRtl.value ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
                   } else {
@@ -5073,7 +5073,7 @@ const _sfc_main$x = {
         href: _ctx.route("contact-us"),
         class: "thm-btn"
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`${ssrInterpolate(trans("Book your free consultation"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId}></span>`);
           } else {
@@ -5135,7 +5135,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
             if (metaCanonical.value) {
@@ -5229,13 +5229,13 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -5273,7 +5273,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
                   href: blogs.value.prev_page_url,
                   "aria-label": "prev"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`<span class="icon-left-arrow-1"${_scopeId2}></span>`);
                     } else {
@@ -5296,7 +5296,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
-                    default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                       if (_push3) {
                         _push3(`${ssrInterpolate(link.label)}`);
                       } else {
@@ -5320,7 +5320,7 @@ const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$e, {
                   href: blogs.value.next_page_url,
                   "aria-label": "Next"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId2}></span>`);
                     } else {
@@ -5551,7 +5551,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}>`);
           } else {
@@ -5567,13 +5567,13 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -5589,7 +5589,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("blogs.index")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(trans("Blogs"))}`);
                 } else {
@@ -5604,7 +5604,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("blogs.show", blog.value.slug)
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<span class="far fa-calendar-alt"${_scopeId2}></span>${ssrInterpolate(blog.value.created_at_formatted)}`);
                 } else {
@@ -5618,7 +5618,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
             }, _parent2, _scopeId));
             _push2(`</li><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), null, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<span class="far fa-clock"${_scopeId2}></span>${ssrInterpolate(blog.value.reading_time)} ${ssrInterpolate(trans("min read"))}`);
                 } else {
@@ -5634,7 +5634,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("blogs.show", blog.value.slug)
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(blog.value.title)}`);
                 } else {
@@ -5653,7 +5653,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
                 _push2(ssrRenderComponent(unref(Link), {
                   href: _ctx.route("blogs.index", { search: keyword.trim() })
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`${ssrInterpolate(keyword.trim())}`);
                     } else {
@@ -5677,7 +5677,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
                 _push2(ssrRenderComponent(unref(Link), {
                   href: _ctx.route("blogs.show", previousPost.value.slug)
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`${ssrInterpolate(trans("Prev Blog"))}`);
                     } else {
@@ -5697,7 +5697,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
                 _push2(ssrRenderComponent(unref(Link), {
                   href: _ctx.route("blogs.show", nextPost.value.slug)
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`${ssrInterpolate(trans("Next Blog"))}`);
                     } else {
@@ -5722,7 +5722,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("blogs.index", { category: category.slug })
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`${ssrInterpolate(category.name)} <span${_scopeId2}>(${ssrInterpolate(category.blogs_count)})</span>`);
                   } else {
@@ -5742,7 +5742,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("blogs.show", recentPost.slug)
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`${ssrInterpolate(recentPost.title)}`);
                   } else {
@@ -6258,7 +6258,7 @@ const _sfc_main$u = /* @__PURE__ */ Object.assign(__default__$c, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-f57d8941${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/faq.css")} data-v-f57d8941${_scopeId}><title data-v-f57d8941${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f57d8941${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f57d8941${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f57d8941${_scopeId}>`);
             if (metaCanonical.value) {
@@ -6356,14 +6356,14 @@ const _sfc_main$u = /* @__PURE__ */ Object.assign(__default__$c, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-f57d8941${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-f57d8941${_scopeId}></div><div class="container" data-v-f57d8941${_scopeId}><div class="page-header__inner" data-v-f57d8941${_scopeId}><h1 data-v-f57d8941${_scopeId}>${trans("FAQs") ?? ""}</h1><div class="thm-breadcrumb__box" data-v-f57d8941${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f57d8941${_scopeId}><li data-v-f57d8941${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`<i class="fas fa-home" data-v-f57d8941${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
@@ -6528,7 +6528,7 @@ const _sfc_main$t = /* @__PURE__ */ Object.assign(__default__$b, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}>`);
           } else {
@@ -6544,14 +6544,14 @@ const _sfc_main$t = /* @__PURE__ */ Object.assign(__default__$b, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
@@ -6670,7 +6670,7 @@ const _sfc_main$s = /* @__PURE__ */ Object.assign(__default__$a, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-e574eeb2${_scopeId}><title data-v-e574eeb2${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-e574eeb2${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-e574eeb2${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-e574eeb2${_scopeId}>`);
             if (metaCanonical.value) {
@@ -6764,7 +6764,7 @@ const _sfc_main$s = /* @__PURE__ */ Object.assign(__default__$a, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f;
           if (_push2) {
             _push2(`<section class="page-header" data-v-e574eeb2${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-e574eeb2${_scopeId}></div><div class="container" data-v-e574eeb2${_scopeId}><div class="page-header__inner" data-v-e574eeb2${_scopeId}><h1 data-v-e574eeb2${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</h1><div class="thm-breadcrumb__box" data-v-e574eeb2${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-e574eeb2${_scopeId}><li data-v-e574eeb2${_scopeId}>`);
@@ -6772,7 +6772,7 @@ const _sfc_main$s = /* @__PURE__ */ Object.assign(__default__$a, {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`<i class="fas fa-home" data-v-e574eeb2${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
@@ -7018,7 +7018,7 @@ const _sfc_main$r = /* @__PURE__ */ Object.assign(__default__$9, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
             if (metaCanonical.value) {
@@ -7112,14 +7112,14 @@ const _sfc_main$r = /* @__PURE__ */ Object.assign(__default__$9, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
@@ -7355,7 +7355,7 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$8, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
             if (metaCanonical.value) {
@@ -7449,14 +7449,14 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$8, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             if (typeof _ctx.route !== "undefined") {
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("home")
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                   } else {
@@ -7613,7 +7613,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
     const meta = computed(() => page.props.meta || {});
     const featuredCount = computed(() => {
       var _a;
-      return ((_a = products.value.data) == null ? void 0 : _a.filter((p) => p.is_featured).length) || 0;
+      return ((_a = products.value.data) == null ? void 0 : _a.filter((p2) => p2.is_featured).length) || 0;
     });
     const metaTitle = computed(() => meta.value.title || `${trans("Products")} | ${seo.value.website_name || ""}`.trim());
     const metaDescription = computed(() => meta.value.description || trans("Browse our B2B product catalog.") || seo.value.website_desc || "");
@@ -7634,7 +7634,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-ad6cf210${_scopeId}><title data-v-ad6cf210${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-ad6cf210${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-ad6cf210${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-ad6cf210${_scopeId}>`);
             if (metaCanonical.value) {
@@ -7728,13 +7728,13 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-ad6cf210${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-ad6cf210${_scopeId}></div><div class="container" data-v-ad6cf210${_scopeId}><div class="page-header__inner" data-v-ad6cf210${_scopeId}><h1 data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Products"))}</h1><div class="thm-breadcrumb__box" data-v-ad6cf210${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-ad6cf210${_scopeId}><li data-v-ad6cf210${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home" data-v-ad6cf210${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -7781,7 +7781,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
                   href: products.value.prev_page_url,
                   "aria-label": "Previous"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`<span class="icon-left-arrow-1" data-v-ad6cf210${_scopeId2}></span>`);
                     } else {
@@ -7804,7 +7804,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
-                    default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                       if (_push3) {
                         _push3(`${ssrInterpolate(link.label)}`);
                       } else {
@@ -7828,7 +7828,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$7, {
                   href: products.value.next_page_url,
                   "aria-label": "Next"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-ad6cf210${_scopeId2}></span>`);
                     } else {
@@ -8225,7 +8225,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-85a417ae${_scopeId}><title data-v-85a417ae${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-85a417ae${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-85a417ae${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-85a417ae${_scopeId}><meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-85a417ae${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-85a417ae${_scopeId}>`);
             if (metaImage.value) {
@@ -8298,13 +8298,13 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-85a417ae${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-85a417ae${_scopeId}></div><div class="container" data-v-85a417ae${_scopeId}><div class="page-header__inner" data-v-85a417ae${_scopeId}><h2 data-v-85a417ae${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-85a417ae${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-85a417ae${_scopeId}><li data-v-85a417ae${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home" data-v-85a417ae${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -8320,7 +8320,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("product.index")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(trans("Products"))}`);
                 } else {
@@ -8336,7 +8336,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
               href: _ctx.route("product.index"),
               class: "product-detail__thumb"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<img${ssrRenderAttr("src", product.value.main_image_link)}${ssrRenderAttr("alt", product.value.name)} data-v-85a417ae${_scopeId2}>`);
                 } else {
@@ -8395,7 +8395,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$6, {
               href: _ctx.route("contact-us"),
               class: "product-detail__pill"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-85a417ae${_scopeId2}></span>`);
                 } else {
@@ -8711,7 +8711,7 @@ const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 function usePortalTranslations() {
   const page = usePage();
-  const t = (key, replacements = {}) => {
+  const t3 = (key, replacements = {}) => {
     var _a;
     const parts = key.split(".");
     let value = (_a = page.props.portal) == null ? void 0 : _a.translations;
@@ -8726,11 +8726,11 @@ function usePortalTranslations() {
       value
     );
   };
-  const paymentStatusLabel = (status) => t(`payment_status.${status}`);
-  const invoiceStatusLabel = (status) => t(`invoice_status.${status}`);
-  const ticketStatusLabel = (status) => t(`ticket_status.${status}`);
-  const ticketPriorityLabel = (priority) => t(`ticket_priority.${priority}`);
-  return { t, paymentStatusLabel, invoiceStatusLabel, ticketStatusLabel, ticketPriorityLabel };
+  const paymentStatusLabel = (status) => t3(`payment_status.${status}`);
+  const invoiceStatusLabel = (status) => t3(`invoice_status.${status}`);
+  const ticketStatusLabel = (status) => t3(`ticket_status.${status}`);
+  const ticketPriorityLabel = (priority) => t3(`ticket_priority.${priority}`);
+  return { t: t3, paymentStatusLabel, invoiceStatusLabel, ticketStatusLabel, ticketPriorityLabel };
 }
 const _sfc_main$m = {
   __name: "PortalNav",
@@ -8740,7 +8740,7 @@ const _sfc_main$m = {
   },
   setup(__props) {
     const page = usePage();
-    const { t } = usePortalTranslations();
+    const { t: t3 } = usePortalTranslations();
     const openTicketsCount = computed(() => {
       var _a;
       return ((_a = page.props.portal) == null ? void 0 : _a.open_tickets) || 0;
@@ -8754,13 +8754,13 @@ const _sfc_main$m = {
         href: _ctx.route("portal.dashboard"),
         class: ["portal-tabs__link", { "portal-tabs__link--active": __props.active === "dashboard" }]
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<i class="fas fa-th-large"${_scopeId}></i> ${ssrInterpolate(unref(t)("menu.my_dashboard"))}`);
+            _push2(`<i class="fas fa-th-large"${_scopeId}></i> ${ssrInterpolate(unref(t3)("menu.my_dashboard"))}`);
           } else {
             return [
               createVNode("i", { class: "fas fa-th-large" }),
-              createTextVNode(" " + toDisplayString(unref(t)("menu.my_dashboard")), 1)
+              createTextVNode(" " + toDisplayString(unref(t3)("menu.my_dashboard")), 1)
             ];
           }
         }),
@@ -8770,13 +8770,13 @@ const _sfc_main$m = {
         href: _ctx.route("portal.projects.index"),
         class: ["portal-tabs__link", { "portal-tabs__link--active": __props.active === "projects" }]
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t)("menu.projects"))}`);
+            _push2(`<i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t3)("menu.projects"))}`);
           } else {
             return [
               createVNode("i", { class: "fas fa-folder-open" }),
-              createTextVNode(" " + toDisplayString(unref(t)("menu.projects")), 1)
+              createTextVNode(" " + toDisplayString(unref(t3)("menu.projects")), 1)
             ];
           }
         }),
@@ -8786,13 +8786,13 @@ const _sfc_main$m = {
         href: _ctx.route("portal.subscriptions.index"),
         class: ["portal-tabs__link", { "portal-tabs__link--active": __props.active === "subscriptions" }]
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<i class="fas fa-sync-alt"${_scopeId}></i> ${ssrInterpolate(unref(t)("menu.subscriptions"))}`);
+            _push2(`<i class="fas fa-sync-alt"${_scopeId}></i> ${ssrInterpolate(unref(t3)("menu.subscriptions"))}`);
           } else {
             return [
               createVNode("i", { class: "fas fa-sync-alt" }),
-              createTextVNode(" " + toDisplayString(unref(t)("menu.subscriptions")), 1)
+              createTextVNode(" " + toDisplayString(unref(t3)("menu.subscriptions")), 1)
             ];
           }
         }),
@@ -8802,9 +8802,9 @@ const _sfc_main$m = {
         href: _ctx.route("portal.tickets.index"),
         class: ["portal-tabs__link", { "portal-tabs__link--active": __props.active === "tickets" }]
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<i class="fas fa-life-ring"${_scopeId}></i> ${ssrInterpolate(unref(t)("menu.tickets"))} `);
+            _push2(`<i class="fas fa-life-ring"${_scopeId}></i> ${ssrInterpolate(unref(t3)("menu.tickets"))} `);
             if (openTicketsCount.value) {
               _push2(`<span class="portal-tabs__badge"${_scopeId}>${ssrInterpolate(openTicketsCount.value)}</span>`);
             } else {
@@ -8813,7 +8813,7 @@ const _sfc_main$m = {
           } else {
             return [
               createVNode("i", { class: "fas fa-life-ring" }),
-              createTextVNode(" " + toDisplayString(unref(t)("menu.tickets")) + " ", 1),
+              createTextVNode(" " + toDisplayString(unref(t3)("menu.tickets")) + " ", 1),
               openTicketsCount.value ? (openBlock(), createBlock("span", {
                 key: 0,
                 class: "portal-tabs__badge"
@@ -8827,13 +8827,13 @@ const _sfc_main$m = {
         href: _ctx.route("portal.profile.index"),
         class: ["portal-tabs__link", { "portal-tabs__link--active": __props.active === "profile" }]
       }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<i class="fas fa-user-cog"${_scopeId}></i> ${ssrInterpolate(unref(t)("menu.profile"))}`);
+            _push2(`<i class="fas fa-user-cog"${_scopeId}></i> ${ssrInterpolate(unref(t3)("menu.profile"))}`);
           } else {
             return [
               createVNode("i", { class: "fas fa-user-cog" }),
-              createTextVNode(" " + toDisplayString(unref(t)("menu.profile")), 1)
+              createTextVNode(" " + toDisplayString(unref(t3)("menu.profile")), 1)
             ];
           }
         }),
@@ -8906,7 +8906,7 @@ const _sfc_main$l = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/portal.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(pageTitle.value)}</title><meta name="description"${ssrRenderAttr("content", pageDescription.value)}${_scopeId}><meta name="robots" content="noindex, nofollow"${_scopeId}>`);
           } else {
@@ -8934,7 +8934,7 @@ const _sfc_main$l = {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header portal-page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(__props.title)}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><!--[-->`);
             ssrRenderList(flatBreadcrumbs.value, (item) => {
@@ -8945,7 +8945,7 @@ const _sfc_main$l = {
                 _push2(ssrRenderComponent(unref(Link), {
                   href: item.href
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       if (item.home) {
                         _push3(`<i class="fas fa-home"${_scopeId2}></i>`);
@@ -9056,34 +9056,34 @@ const _sfc_main$k = {
   setup(__props) {
     const props = __props;
     const page = usePage();
-    const { t, paymentStatusLabel } = usePortalTranslations();
+    const { t: t3, paymentStatusLabel } = usePortalTranslations();
     const locale = computed(() => page.props.locale);
     const metaTitle = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.title) || t("pages.projects_title");
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t3("pages.projects_title");
     });
     const metaDescription = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.projects_description");
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t3("pages.projects_description");
     });
     const formatMoney = (amount, currency) => `${Number(amount).toFixed(2)} ${currency || ""}`.trim();
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(_sfc_main$l, mergeProps({
-        title: unref(t)("projects.title"),
-        subtitle: unref(t)("projects.subtitle"),
+        title: unref(t3)("projects.title"),
+        subtitle: unref(t3)("projects.subtitle"),
         active: "projects",
         breadcrumbs: [
-          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
-          { label: unref(t)("projects.title") }
+          { label: unref(t3)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t3)("projects.title") }
         ],
         "meta-title": metaTitle.value,
         "meta-description": metaDescription.value
       }, _attrs), {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b;
           if (_push2) {
             if (__props.projects.data.length === 0) {
-              _push2(`<div class="portal-panel"${_scopeId}><div class="portal-empty"${_scopeId}><i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t)("projects.no_projects"))}</div></div>`);
+              _push2(`<div class="portal-panel"${_scopeId}><div class="portal-empty"${_scopeId}><i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t3)("projects.no_projects"))}</div></div>`);
             } else {
               _push2(`<div class="row g-4"${_scopeId}><!--[-->`);
               ssrRenderList(__props.projects.data, (project) => {
@@ -9094,17 +9094,17 @@ const _sfc_main$k = {
                 } else {
                   _push2(`<!---->`);
                 }
-                _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.payment_status"))}</span><strong${_scopeId}>${ssrInterpolate(unref(paymentStatusLabel)(project.payment_status))}</strong></div><div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.remaining"))}</span><strong${_scopeId}>${ssrInterpolate(formatMoney(project.collection.remaining, project.collection.currency))}</strong></div><div class="mb-3"${_scopeId}><div class="portal-progress"${_scopeId}><div class="portal-progress__bar" style="${ssrRenderStyle({ width: `${project.collection.collection_rate}%` })}"${_scopeId}></div></div></div><div class="portal-project-card__footer"${_scopeId}>`);
+                _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("fields.payment_status"))}</span><strong${_scopeId}>${ssrInterpolate(unref(paymentStatusLabel)(project.payment_status))}</strong></div><div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("fields.remaining"))}</span><strong${_scopeId}>${ssrInterpolate(formatMoney(project.collection.remaining, project.collection.currency))}</strong></div><div class="mb-3"${_scopeId}><div class="portal-progress"${_scopeId}><div class="portal-progress__bar" style="${ssrRenderStyle({ width: `${project.collection.collection_rate}%` })}"${_scopeId}></div></div></div><div class="portal-project-card__footer"${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: _ctx.route("portal.projects.show", project.id),
                   class: "thm-btn w-100 text-center"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`${ssrInterpolate(unref(t)("projects.view_details"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
+                      _push3(`${ssrInterpolate(unref(t3)("projects.view_details"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
                     } else {
                       return [
-                        createTextVNode(toDisplayString(unref(t)("projects.view_details")) + " ", 1),
+                        createTextVNode(toDisplayString(unref(t3)("projects.view_details")) + " ", 1),
                         createVNode("span", {
                           class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
                         }, null, 2)
@@ -9138,7 +9138,7 @@ const _sfc_main$k = {
               }, [
                 createVNode("div", { class: "portal-empty" }, [
                   createVNode("i", { class: "fas fa-folder-open" }),
-                  createTextVNode(" " + toDisplayString(unref(t)("projects.no_projects")), 1)
+                  createTextVNode(" " + toDisplayString(unref(t3)("projects.no_projects")), 1)
                 ])
               ])) : (openBlock(), createBlock("div", {
                 key: 1,
@@ -9166,11 +9166,11 @@ const _sfc_main$k = {
                         createTextVNode(toDisplayString(project.company.name), 1)
                       ])) : createCommentVNode("", true),
                       createVNode("div", { class: "portal-project-card__meta" }, [
-                        createVNode("span", null, toDisplayString(unref(t)("fields.payment_status")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("fields.payment_status")), 1),
                         createVNode("strong", null, toDisplayString(unref(paymentStatusLabel)(project.payment_status)), 1)
                       ]),
                       createVNode("div", { class: "portal-project-card__meta" }, [
-                        createVNode("span", null, toDisplayString(unref(t)("fields.remaining")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("fields.remaining")), 1),
                         createVNode("strong", null, toDisplayString(formatMoney(project.collection.remaining, project.collection.currency)), 1)
                       ]),
                       createVNode("div", { class: "mb-3" }, [
@@ -9187,7 +9187,7 @@ const _sfc_main$k = {
                           class: "thm-btn w-100 text-center"
                         }, {
                           default: withCtx(() => [
-                            createTextVNode(toDisplayString(unref(t)("projects.view_details")) + " ", 1),
+                            createTextVNode(toDisplayString(unref(t3)("projects.view_details")) + " ", 1),
                             createVNode("span", {
                               class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
                             }, null, 2)
@@ -9242,7 +9242,7 @@ const _sfc_main$j = {
   setup(__props) {
     const props = __props;
     const page = usePage();
-    const { t, paymentStatusLabel, invoiceStatusLabel } = usePortalTranslations();
+    const { t: t3, paymentStatusLabel, invoiceStatusLabel } = usePortalTranslations();
     const reviewForm = useForm({
       quote: ""
     });
@@ -9266,7 +9266,7 @@ const _sfc_main$j = {
     });
     const metaDescription = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.project_show_description");
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t3("pages.project_show_description");
     });
     const collection = computed(() => props.project.collection ?? {
       budget: 0,
@@ -9306,40 +9306,40 @@ const _sfc_main$j = {
         subtitle: (_a = __props.project.company) == null ? void 0 : _a.name,
         active: "projects",
         breadcrumbs: [
-          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
-          { label: unref(t)("projects.title"), href: _ctx.route("portal.projects.index") },
+          { label: unref(t3)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t3)("projects.title"), href: _ctx.route("portal.projects.index") },
           { label: __props.project.title }
         ],
         "meta-title": metaTitle.value,
         "meta-description": metaDescription.value
       }, _attrs), {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a2, _b, _c, _d;
           if (_push2) {
-            _push2(`<div class="portal-grid portal-grid--show"${_scopeId}><div${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.details"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-details"${_scopeId}><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.status"))}</div><div class="portal-details__value"${_scopeId}><span class="portal-badge" style="${ssrRenderStyle(statusBadgeStyle.value)}"${_scopeId}>${ssrInterpolate(((_a2 = __props.project.status) == null ? void 0 : _a2.name) || "—")}</span></div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.payment_status"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(unref(paymentStatusLabel)(__props.project.payment_status))}</div></div>`);
+            _push2(`<div class="portal-grid portal-grid--show"${_scopeId}><div${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("projects.details"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-details"${_scopeId}><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.status"))}</div><div class="portal-details__value"${_scopeId}><span class="portal-badge" style="${ssrRenderStyle(statusBadgeStyle.value)}"${_scopeId}>${ssrInterpolate(((_a2 = __props.project.status) == null ? void 0 : _a2.name) || "—")}</span></div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.payment_status"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(unref(paymentStatusLabel)(__props.project.payment_status))}</div></div>`);
             if ((_b = __props.project.company) == null ? void 0 : _b.name) {
-              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.company"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.company.name)}</div></div>`);
+              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.company"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.company.name)}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (__props.project.start_date) {
-              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.start_date"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.start_date)}</div></div>`);
+              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.start_date"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.start_date)}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (__props.project.due_date) {
-              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.due_date"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.due_date)}</div></div>`);
+              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.due_date"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.due_date)}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (__props.project.description) {
-              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.description"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.description)}</div></div>`);
+              _push2(`<div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.description"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.project.description)}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
             _push2(`</div></div></div>`);
             if (attachments.value.length) {
-              _push2(`<div class="portal-panel" style="${ssrRenderStyle({ "margin-top": "24px" })}"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.attachments"))}</h2></div><div class="portal-panel__body"${_scopeId}><ul class="list-unstyled mb-0"${_scopeId}><!--[-->`);
+              _push2(`<div class="portal-panel" style="${ssrRenderStyle({ "margin-top": "24px" })}"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("projects.attachments"))}</h2></div><div class="portal-panel__body"${_scopeId}><ul class="list-unstyled mb-0"${_scopeId}><!--[-->`);
               ssrRenderList(attachments.value, (attachment, index) => {
                 _push2(`<li class="mb-2"${_scopeId}><a${ssrRenderAttr("href", attachment.url)} target="_blank" class="portal-panel__action"${_scopeId}><i class="fas fa-paperclip"${_scopeId}></i>${ssrInterpolate(attachment.name)}</a></li>`);
               });
@@ -9348,37 +9348,37 @@ const _sfc_main$j = {
               _push2(`<!---->`);
             }
             if (__props.project.is_completed) {
-              _push2(`<div class="portal-panel" style="${ssrRenderStyle({ "margin-top": "24px" })}"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.review_title"))}</h2></div><div class="portal-panel__body"${_scopeId}>`);
+              _push2(`<div class="portal-panel" style="${ssrRenderStyle({ "margin-top": "24px" })}"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("projects.review_title"))}</h2></div><div class="portal-panel__body"${_scopeId}>`);
               if (__props.project.review) {
-                _push2(`<div class="portal-details"${_scopeId}><p class="mb-2"${_scopeId}>${ssrInterpolate(unref(t)("projects.review_submitted_hint"))}</p><div class="bg-light p-3 rounded"${_scopeId}>“${ssrInterpolate(reviewQuote.value)}”</div>`);
+                _push2(`<div class="portal-details"${_scopeId}><p class="mb-2"${_scopeId}>${ssrInterpolate(unref(t3)("projects.review_submitted_hint"))}</p><div class="bg-light p-3 rounded"${_scopeId}>“${ssrInterpolate(reviewQuote.value)}”</div>`);
                 if (__props.project.review.status) {
-                  _push2(`<span class="${ssrRenderClass([__props.project.review.status === "Published" ? "portal-badge--paid" : "portal-badge--invoice", "portal-badge mt-3"])}"${_scopeId}>${ssrInterpolate(__props.project.review.status === "Published" ? unref(t)("projects.review_status_published") : unref(t)("projects.review_status_pending"))}</span>`);
+                  _push2(`<span class="${ssrRenderClass([__props.project.review.status === "Published" ? "portal-badge--paid" : "portal-badge--invoice", "portal-badge mt-3"])}"${_scopeId}>${ssrInterpolate(__props.project.review.status === "Published" ? unref(t3)("projects.review_status_published") : unref(t3)("projects.review_status_pending"))}</span>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 _push2(`</div>`);
               } else if (__props.project.can_review) {
-                _push2(`<form${_scopeId}><p class="mb-3"${_scopeId}>${ssrInterpolate(unref(t)("projects.review_prompt"))}</p><textarea class="form-control" rows="4"${ssrRenderAttr("placeholder", unref(t)("projects.review_placeholder"))} required minlength="10" maxlength="2000"${_scopeId}>${ssrInterpolate(unref(reviewForm).quote)}</textarea>`);
+                _push2(`<form${_scopeId}><p class="mb-3"${_scopeId}>${ssrInterpolate(unref(t3)("projects.review_prompt"))}</p><textarea class="form-control" rows="4"${ssrRenderAttr("placeholder", unref(t3)("projects.review_placeholder"))} required minlength="10" maxlength="2000"${_scopeId}>${ssrInterpolate(unref(reviewForm).quote)}</textarea>`);
                 if (unref(reviewForm).errors.quote) {
                   _push2(`<p class="text-danger mt-2 mb-0"${_scopeId}>${ssrInterpolate(unref(reviewForm).errors.quote)}</p>`);
                 } else {
                   _push2(`<!---->`);
                 }
-                _push2(`<button type="submit" class="thm-btn mt-3"${ssrIncludeBooleanAttr(unref(reviewForm).processing) ? " disabled" : ""} style="${ssrRenderStyle({ "padding": "10px 20px", "font-size": "14px" })}"${_scopeId}>${ssrInterpolate(unref(t)("projects.submit_review"))}</button></form>`);
+                _push2(`<button type="submit" class="thm-btn mt-3"${ssrIncludeBooleanAttr(unref(reviewForm).processing) ? " disabled" : ""} style="${ssrRenderStyle({ "padding": "10px 20px", "font-size": "14px" })}"${_scopeId}>${ssrInterpolate(unref(t3)("projects.submit_review"))}</button></form>`);
               } else {
-                _push2(`<div class="portal-empty"${_scopeId}>${ssrInterpolate(unref(t)("projects.review_unavailable"))}</div>`);
+                _push2(`<div class="portal-empty"${_scopeId}>${ssrInterpolate(unref(t3)("projects.review_unavailable"))}</div>`);
               }
               _push2(`</div></div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-grid__stack"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.billing"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-billing-grid"${_scopeId}><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.budget"))}</div><div class="portal-billing-item__value"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.budget, collection.value.currency))}</div></div><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.invoiced"))}</div><div class="portal-billing-item__value"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.invoiced, collection.value.currency))}</div></div><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.remaining"))}</div><div class="portal-billing-item__value portal-billing-item__value--accent"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.remaining, collection.value.currency))}</div></div></div><div${_scopeId}><div class="d-flex justify-content-between mb-2"${_scopeId}><span class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.collection_rate"))}</span><span class="portal-details__value"${_scopeId}>${ssrInterpolate(collection.value.collection_rate)}%</span></div><div class="portal-progress" style="${ssrRenderStyle({ "height": "10px" })}"${_scopeId}><div class="portal-progress__bar" style="${ssrRenderStyle({ width: `${collection.value.collection_rate}%` })}"${_scopeId}></div></div></div></div></div><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.invoices"))}</h2></div><div class="portal-panel__body"${_scopeId}>`);
+            _push2(`</div><div class="portal-grid__stack"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("projects.billing"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-billing-grid"${_scopeId}><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.budget"))}</div><div class="portal-billing-item__value"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.budget, collection.value.currency))}</div></div><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.invoiced"))}</div><div class="portal-billing-item__value"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.invoiced, collection.value.currency))}</div></div><div class="portal-billing-item"${_scopeId}><div class="portal-billing-item__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.remaining"))}</div><div class="portal-billing-item__value portal-billing-item__value--accent"${_scopeId}>${ssrInterpolate(formatMoney(collection.value.remaining, collection.value.currency))}</div></div></div><div${_scopeId}><div class="d-flex justify-content-between mb-2"${_scopeId}><span class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.collection_rate"))}</span><span class="portal-details__value"${_scopeId}>${ssrInterpolate(collection.value.collection_rate)}%</span></div><div class="portal-progress" style="${ssrRenderStyle({ "height": "10px" })}"${_scopeId}><div class="portal-progress__bar" style="${ssrRenderStyle({ width: `${collection.value.collection_rate}%` })}"${_scopeId}></div></div></div></div></div><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("projects.invoices"))}</h2></div><div class="portal-panel__body"${_scopeId}>`);
             if (invoiceList.value.length === 0) {
-              _push2(`<div class="portal-empty"${_scopeId}><span class="portal-empty__icon"${_scopeId}><i class="fas fa-file-alt"${_scopeId}></i></span> ${ssrInterpolate(unref(t)("projects.no_invoices"))}</div>`);
+              _push2(`<div class="portal-empty"${_scopeId}><span class="portal-empty__icon"${_scopeId}><i class="fas fa-file-alt"${_scopeId}></i></span> ${ssrInterpolate(unref(t3)("projects.no_invoices"))}</div>`);
             } else {
               _push2(`<div class="portal-invoice-list"${_scopeId}><!--[-->`);
               ssrRenderList(invoiceList.value, (invoice) => {
-                _push2(`<article class="portal-invoice-card"${_scopeId}><div class="portal-invoice-card__top"${_scopeId}><div${_scopeId}><div class="portal-invoice-card__number"${_scopeId}>${ssrInterpolate(invoice.invoice_number)}</div><span class="${ssrRenderClass([invoiceBadgeClass(invoice.status), "portal-badge mt-2"])}"${_scopeId}>${ssrInterpolate(unref(invoiceStatusLabel)(invoice.status))}</span></div><div class="portal-invoice-card__total"${_scopeId}>${ssrInterpolate(formatMoney(invoice.total, invoice.currency))}</div></div><div class="portal-invoice-card__meta"${_scopeId}><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.issued_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.issued_at || "—")}</strong></div><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.due_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.due_at || "—")}</strong></div><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.paid_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.paid_at || "—")}</strong></div></div><a${ssrRenderAttr("href", invoice.pdf_url)} class="portal-panel__action" target="_blank" rel="noopener"${_scopeId}><i class="fas fa-download"${_scopeId}></i> ${ssrInterpolate(unref(t)("projects.download_pdf"))}</a></article>`);
+                _push2(`<article class="portal-invoice-card"${_scopeId}><div class="portal-invoice-card__top"${_scopeId}><div${_scopeId}><div class="portal-invoice-card__number"${_scopeId}>${ssrInterpolate(invoice.invoice_number)}</div><span class="${ssrRenderClass([invoiceBadgeClass(invoice.status), "portal-badge mt-2"])}"${_scopeId}>${ssrInterpolate(unref(invoiceStatusLabel)(invoice.status))}</span></div><div class="portal-invoice-card__total"${_scopeId}>${ssrInterpolate(formatMoney(invoice.total, invoice.currency))}</div></div><div class="portal-invoice-card__meta"${_scopeId}><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("fields.issued_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.issued_at || "—")}</strong></div><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("fields.due_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.due_at || "—")}</strong></div><div class="portal-invoice-card__meta-item"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("fields.paid_at"))}</span><strong${_scopeId}>${ssrInterpolate(invoice.paid_at || "—")}</strong></div></div><a${ssrRenderAttr("href", invoice.pdf_url)} class="portal-panel__action" target="_blank" rel="noopener"${_scopeId}><i class="fas fa-download"${_scopeId}></i> ${ssrInterpolate(unref(t3)("projects.download_pdf"))}</a></article>`);
               });
               _push2(`<!--]--></div>`);
             }
@@ -9389,12 +9389,12 @@ const _sfc_main$j = {
                 createVNode("div", null, [
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.details")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("projects.details")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       createVNode("div", { class: "portal-details" }, [
                         createVNode("div", { class: "portal-details__row" }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.status")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.status")), 1),
                           createVNode("div", { class: "portal-details__value" }, [
                             createVNode("span", {
                               class: "portal-badge",
@@ -9403,35 +9403,35 @@ const _sfc_main$j = {
                           ])
                         ]),
                         createVNode("div", { class: "portal-details__row" }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.payment_status")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.payment_status")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(unref(paymentStatusLabel)(__props.project.payment_status)), 1)
                         ]),
                         ((_d = __props.project.company) == null ? void 0 : _d.name) ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "portal-details__row"
                         }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.company")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.company")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.project.company.name), 1)
                         ])) : createCommentVNode("", true),
                         __props.project.start_date ? (openBlock(), createBlock("div", {
                           key: 1,
                           class: "portal-details__row"
                         }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.start_date")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.start_date")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.project.start_date), 1)
                         ])) : createCommentVNode("", true),
                         __props.project.due_date ? (openBlock(), createBlock("div", {
                           key: 2,
                           class: "portal-details__row"
                         }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.due_date")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.due_date")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.project.due_date), 1)
                         ])) : createCommentVNode("", true),
                         __props.project.description ? (openBlock(), createBlock("div", {
                           key: 3,
                           class: "portal-details__row"
                         }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.description")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.description")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.project.description), 1)
                         ])) : createCommentVNode("", true)
                       ])
@@ -9443,7 +9443,7 @@ const _sfc_main$j = {
                     style: { "margin-top": "24px" }
                   }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.attachments")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("projects.attachments")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       createVNode("ul", { class: "list-unstyled mb-0" }, [
@@ -9471,29 +9471,29 @@ const _sfc_main$j = {
                     style: { "margin-top": "24px" }
                   }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.review_title")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("projects.review_title")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       __props.project.review ? (openBlock(), createBlock("div", {
                         key: 0,
                         class: "portal-details"
                       }, [
-                        createVNode("p", { class: "mb-2" }, toDisplayString(unref(t)("projects.review_submitted_hint")), 1),
+                        createVNode("p", { class: "mb-2" }, toDisplayString(unref(t3)("projects.review_submitted_hint")), 1),
                         createVNode("div", { class: "bg-light p-3 rounded" }, "“" + toDisplayString(reviewQuote.value) + "”", 1),
                         __props.project.review.status ? (openBlock(), createBlock("span", {
                           key: 0,
                           class: ["portal-badge mt-3", __props.project.review.status === "Published" ? "portal-badge--paid" : "portal-badge--invoice"]
-                        }, toDisplayString(__props.project.review.status === "Published" ? unref(t)("projects.review_status_published") : unref(t)("projects.review_status_pending")), 3)) : createCommentVNode("", true)
+                        }, toDisplayString(__props.project.review.status === "Published" ? unref(t3)("projects.review_status_published") : unref(t3)("projects.review_status_pending")), 3)) : createCommentVNode("", true)
                       ])) : __props.project.can_review ? (openBlock(), createBlock("form", {
                         key: 1,
                         onSubmit: withModifiers(submitReview, ["prevent"])
                       }, [
-                        createVNode("p", { class: "mb-3" }, toDisplayString(unref(t)("projects.review_prompt")), 1),
+                        createVNode("p", { class: "mb-3" }, toDisplayString(unref(t3)("projects.review_prompt")), 1),
                         withDirectives(createVNode("textarea", {
                           "onUpdate:modelValue": ($event) => unref(reviewForm).quote = $event,
                           class: "form-control",
                           rows: "4",
-                          placeholder: unref(t)("projects.review_placeholder"),
+                          placeholder: unref(t3)("projects.review_placeholder"),
                           required: "",
                           minlength: "10",
                           maxlength: "2000"
@@ -9509,37 +9509,37 @@ const _sfc_main$j = {
                           class: "thm-btn mt-3",
                           disabled: unref(reviewForm).processing,
                           style: { "padding": "10px 20px", "font-size": "14px" }
-                        }, toDisplayString(unref(t)("projects.submit_review")), 9, ["disabled"])
+                        }, toDisplayString(unref(t3)("projects.submit_review")), 9, ["disabled"])
                       ], 32)) : (openBlock(), createBlock("div", {
                         key: 2,
                         class: "portal-empty"
-                      }, toDisplayString(unref(t)("projects.review_unavailable")), 1))
+                      }, toDisplayString(unref(t3)("projects.review_unavailable")), 1))
                     ])
                   ])) : createCommentVNode("", true)
                 ]),
                 createVNode("div", { class: "portal-grid__stack" }, [
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.billing")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("projects.billing")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       createVNode("div", { class: "portal-billing-grid" }, [
                         createVNode("div", { class: "portal-billing-item" }, [
-                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t)("fields.budget")), 1),
+                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t3)("fields.budget")), 1),
                           createVNode("div", { class: "portal-billing-item__value" }, toDisplayString(formatMoney(collection.value.budget, collection.value.currency)), 1)
                         ]),
                         createVNode("div", { class: "portal-billing-item" }, [
-                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t)("fields.invoiced")), 1),
+                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t3)("fields.invoiced")), 1),
                           createVNode("div", { class: "portal-billing-item__value" }, toDisplayString(formatMoney(collection.value.invoiced, collection.value.currency)), 1)
                         ]),
                         createVNode("div", { class: "portal-billing-item" }, [
-                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t)("fields.remaining")), 1),
+                          createVNode("div", { class: "portal-billing-item__label" }, toDisplayString(unref(t3)("fields.remaining")), 1),
                           createVNode("div", { class: "portal-billing-item__value portal-billing-item__value--accent" }, toDisplayString(formatMoney(collection.value.remaining, collection.value.currency)), 1)
                         ])
                       ]),
                       createVNode("div", null, [
                         createVNode("div", { class: "d-flex justify-content-between mb-2" }, [
-                          createVNode("span", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.collection_rate")), 1),
+                          createVNode("span", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.collection_rate")), 1),
                           createVNode("span", { class: "portal-details__value" }, toDisplayString(collection.value.collection_rate) + "%", 1)
                         ]),
                         createVNode("div", {
@@ -9556,7 +9556,7 @@ const _sfc_main$j = {
                   ]),
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.invoices")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("projects.invoices")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       invoiceList.value.length === 0 ? (openBlock(), createBlock("div", {
@@ -9566,7 +9566,7 @@ const _sfc_main$j = {
                         createVNode("span", { class: "portal-empty__icon" }, [
                           createVNode("i", { class: "fas fa-file-alt" })
                         ]),
-                        createTextVNode(" " + toDisplayString(unref(t)("projects.no_invoices")), 1)
+                        createTextVNode(" " + toDisplayString(unref(t3)("projects.no_invoices")), 1)
                       ])) : (openBlock(), createBlock("div", {
                         key: 1,
                         class: "portal-invoice-list"
@@ -9587,15 +9587,15 @@ const _sfc_main$j = {
                             ]),
                             createVNode("div", { class: "portal-invoice-card__meta" }, [
                               createVNode("div", { class: "portal-invoice-card__meta-item" }, [
-                                createVNode("span", null, toDisplayString(unref(t)("fields.issued_at")), 1),
+                                createVNode("span", null, toDisplayString(unref(t3)("fields.issued_at")), 1),
                                 createVNode("strong", null, toDisplayString(invoice.issued_at || "—"), 1)
                               ]),
                               createVNode("div", { class: "portal-invoice-card__meta-item" }, [
-                                createVNode("span", null, toDisplayString(unref(t)("fields.due_at")), 1),
+                                createVNode("span", null, toDisplayString(unref(t3)("fields.due_at")), 1),
                                 createVNode("strong", null, toDisplayString(invoice.due_at || "—"), 1)
                               ]),
                               createVNode("div", { class: "portal-invoice-card__meta-item" }, [
-                                createVNode("span", null, toDisplayString(unref(t)("fields.paid_at")), 1),
+                                createVNode("span", null, toDisplayString(unref(t3)("fields.paid_at")), 1),
                                 createVNode("strong", null, toDisplayString(invoice.paid_at || "—"), 1)
                               ])
                             ]),
@@ -9606,7 +9606,7 @@ const _sfc_main$j = {
                               rel: "noopener"
                             }, [
                               createVNode("i", { class: "fas fa-download" }),
-                              createTextVNode(" " + toDisplayString(unref(t)("projects.download_pdf")), 1)
+                              createTextVNode(" " + toDisplayString(unref(t3)("projects.download_pdf")), 1)
                             ], 8, ["href"])
                           ]);
                         }), 128))
@@ -9671,7 +9671,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-0fe03073${_scopeId}><title data-v-0fe03073${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-0fe03073${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-0fe03073${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-0fe03073${_scopeId}>`);
             if (metaCanonical.value) {
@@ -9765,13 +9765,13 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-0fe03073${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-0fe03073${_scopeId}></div><div class="container" data-v-0fe03073${_scopeId}><div class="page-header__inner" data-v-0fe03073${_scopeId}><h1 data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</h1><div class="thm-breadcrumb__box" data-v-0fe03073${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-0fe03073${_scopeId}><li data-v-0fe03073${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home" data-v-0fe03073${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -9806,7 +9806,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
                   href: useCases.value.prev_page_url,
                   "aria-label": "Previous"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`<span class="icon-left-arrow-1" data-v-0fe03073${_scopeId2}></span>`);
                     } else {
@@ -9829,7 +9829,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
-                    default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                       if (_push3) {
                         _push3(`${ssrInterpolate(link.label)}`);
                       } else {
@@ -9853,7 +9853,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$5, {
                   href: useCases.value.next_page_url,
                   "aria-label": "Next"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-0fe03073${_scopeId2}></span>`);
                     } else {
@@ -10076,7 +10076,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-95493371${_scopeId}><title data-v-95493371${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-95493371${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-95493371${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-95493371${_scopeId}>`);
             if (metaCanonical.value) {
@@ -10170,13 +10170,13 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-95493371${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-95493371${_scopeId}></div><div class="container" data-v-95493371${_scopeId}><div class="page-header__inner" data-v-95493371${_scopeId}><h2 data-v-95493371${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-95493371${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-95493371${_scopeId}><li data-v-95493371${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home" data-v-95493371${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -10192,7 +10192,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("use-cases.index")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(trans("Case Studies"))}`);
                 } else {
@@ -10208,7 +10208,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
               href: _ctx.route("use-cases.index"),
               class: "use-case-detail__avatar"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<img${ssrRenderAttr("src", useCase.value.image_link)}${ssrRenderAttr("alt", useCase.value.title)} data-v-95493371${_scopeId2}>`);
                 } else {
@@ -10235,7 +10235,7 @@ const _sfc_main$h = /* @__PURE__ */ Object.assign(__default__$4, {
               href: _ctx.route("contact-us"),
               class: "use-case-detail__pill use-case-detail__pill--cta"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(trans("Get in Touch"))} <span class="icon-right-up" data-v-95493371${_scopeId2}></span>`);
                 } else {
@@ -10703,7 +10703,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
       }
       try {
         return route("services.show", service.slug);
-      } catch (e) {
+      } catch (e2) {
         return "#";
       }
     };
@@ -10724,7 +10724,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
       if (typeof rawKeywords === "string") {
         try {
           parsed = JSON.parse(rawKeywords);
-        } catch (e) {
+        } catch (e2) {
           parsed = rawKeywords;
         }
       }
@@ -10762,7 +10762,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-08f6db3e${_scopeId}><title data-v-08f6db3e${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-08f6db3e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-08f6db3e${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-08f6db3e${_scopeId}>`);
             if (metaCanonical.value) {
@@ -10856,13 +10856,13 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-08f6db3e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-08f6db3e${_scopeId}></div><div class="container" data-v-08f6db3e${_scopeId}><div class="page-header__inner" data-v-08f6db3e${_scopeId}><h1 data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h1><div class="thm-breadcrumb__box" data-v-08f6db3e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-08f6db3e${_scopeId}><li data-v-08f6db3e${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home" data-v-08f6db3e${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -10906,7 +10906,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
                   href: services.value.prev_page_url,
                   "aria-label": "prev"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`<span class="icon-left-arrow-1" data-v-08f6db3e${_scopeId2}></span>`);
                     } else {
@@ -10929,7 +10929,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
-                    default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                    default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                       if (_push3) {
                         _push3(`${ssrInterpolate(link.label)}`);
                       } else {
@@ -10953,7 +10953,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
                   href: services.value.next_page_url,
                   "aria-label": "Next"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
                       _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-08f6db3e${_scopeId2}></span>`);
                     } else {
@@ -10979,7 +10979,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
               href: _ctx.route("services.index"),
               class: { "active": !filters.value.category }
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(` (${ssrInterpolate(totalServicesCount.value)}) ${ssrInterpolate(trans("All Services"))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-08f6db3e${_scopeId2}></span>`);
                 } else {
@@ -11000,7 +11000,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$3, {
                 href: _ctx.route("services.index", { category: category.slug }),
                 class: { "active": filters.value.category === category.slug }
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(` (${ssrInterpolate(category.services_count || 0)}) ${ssrInterpolate(getCategoryName(category))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-08f6db3e${_scopeId2}></span>`);
                   } else {
@@ -11271,7 +11271,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
       }
       try {
         return route("services.show", serviceItem.slug);
-      } catch (e) {
+      } catch (e2) {
         return "#";
       }
     };
@@ -11294,7 +11294,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
         if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
           try {
             parsed = JSON.parse(trimmed);
-          } catch (e) {
+          } catch (e2) {
             try {
               parsed = JSON.parse(trimmed.replace(/'/g, '"'));
             } catch (err) {
@@ -11384,7 +11384,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}>`);
           } else {
@@ -11400,14 +11400,14 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
             _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -11423,7 +11423,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("services.index")
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(trans("Our Services"))}`);
                 } else {
@@ -11439,7 +11439,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
               href: _ctx.route("services.index"),
               class: { "active": !((_b = (_a = service.value) == null ? void 0 : _a.category) == null ? void 0 : _b.slug) }
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(` (${ssrInterpolate(totalServicesCount.value)}) ${ssrInterpolate(trans("All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-2`)}"${_scopeId2}></span>`);
                 } else {
@@ -11461,7 +11461,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
                 href: _ctx.route("services.index", { category: category.slug }),
                 class: { "active": ((_b2 = (_a2 = service.value) == null ? void 0 : _a2.category) == null ? void 0 : _b2.slug) === category.slug }
               }, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(` (${ssrInterpolate(category.services_count || 0)}) ${ssrInterpolate(getCategoryName(category))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-2`)}"${_scopeId2}></span>`);
                   } else {
@@ -11481,7 +11481,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$2, {
             if (service.value.reading_time) {
               _push2(`<ul class="blog-details__meta list-unstyled"${_scopeId}><li${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), null, {
-                default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
                     _push3(`<span class="far fa-clock"${_scopeId2}></span>${ssrInterpolate(service.value.reading_time)} ${ssrInterpolate(trans("min read"))}`);
                   } else {
@@ -11896,14 +11896,14 @@ const _sfc_main$d = {
   setup(__props) {
     const props = __props;
     usePage();
-    const { t, ticketPriorityLabel } = usePortalTranslations();
+    const { t: t3, ticketPriorityLabel } = usePortalTranslations();
     const metaTitle = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.title) || t("tickets.create_title");
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t3("tickets.create_title");
     });
     const metaDescription = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.tickets_description");
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t3("pages.tickets_description");
     });
     const categoryOptions = computed(() => props.categories.map((category) => ({
       value: category.id,
@@ -11931,32 +11931,32 @@ const _sfc_main$d = {
     };
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(_sfc_main$l, mergeProps({
-        title: unref(t)("tickets.create_title"),
-        subtitle: unref(t)("tickets.create_subtitle"),
+        title: unref(t3)("tickets.create_title"),
+        subtitle: unref(t3)("tickets.create_subtitle"),
         active: "tickets",
         breadcrumbs: [
-          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
-          { label: unref(t)("tickets.title"), href: _ctx.route("portal.tickets.index") },
-          { label: unref(t)("tickets.create_title") }
+          { label: unref(t3)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t3)("tickets.title"), href: _ctx.route("portal.tickets.index") },
+          { label: unref(t3)("tickets.create_title") }
         ],
         "meta-title": metaTitle.value,
         "meta-description": metaDescription.value
       }, _attrs), {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="portal-panel portal-panel--allow-overflow"${_scopeId}><div class="portal-panel__body"${_scopeId}><form class="portal-ticket-form"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="subject"${_scopeId}>${ssrInterpolate(unref(t)("fields.subject"))} *</label><input id="subject"${ssrRenderAttr("value", unref(form).subject)} type="text" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.subject }, "portal-input"])}" required${_scopeId}>`);
+            _push2(`<div class="portal-panel portal-panel--allow-overflow"${_scopeId}><div class="portal-panel__body"${_scopeId}><form class="portal-ticket-form"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="subject"${_scopeId}>${ssrInterpolate(unref(t3)("fields.subject"))} *</label><input id="subject"${ssrRenderAttr("value", unref(form).subject)} type="text" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.subject }, "portal-input"])}" required${_scopeId}>`);
             if (unref(form).errors.subject) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(form).errors.subject)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-form-row"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="ticket_category_id"${_scopeId}>${ssrInterpolate(unref(t)("fields.category"))} *</label>`);
+            _push2(`</div><div class="portal-form-row"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="ticket_category_id"${_scopeId}>${ssrInterpolate(unref(t3)("fields.category"))} *</label>`);
             _push2(ssrRenderComponent(PortalSelect, {
               id: "ticket_category_id",
               modelValue: unref(form).ticket_category_id,
               "onUpdate:modelValue": ($event) => unref(form).ticket_category_id = $event,
               options: categoryOptions.value,
-              placeholder: unref(t)("tickets.select_category"),
+              placeholder: unref(t3)("tickets.select_category"),
               "has-error": !!unref(form).errors.ticket_category_id
             }, null, _parent2, _scopeId));
             if (unref(form).errors.ticket_category_id) {
@@ -11964,13 +11964,13 @@ const _sfc_main$d = {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="priority"${_scopeId}>${ssrInterpolate(unref(t)("fields.priority"))} *</label>`);
+            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="priority"${_scopeId}>${ssrInterpolate(unref(t3)("fields.priority"))} *</label>`);
             _push2(ssrRenderComponent(PortalSelect, {
               id: "priority",
               modelValue: unref(form).priority,
               "onUpdate:modelValue": ($event) => unref(form).priority = $event,
               options: priorityOptions.value,
-              placeholder: unref(t)("tickets.select_priority"),
+              placeholder: unref(t3)("tickets.select_priority"),
               "has-error": !!unref(form).errors.priority
             }, null, _parent2, _scopeId));
             if (unref(form).errors.priority) {
@@ -11978,13 +11978,13 @@ const _sfc_main$d = {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="portal-form-group"${_scopeId}><label for="description"${_scopeId}>${ssrInterpolate(unref(t)("fields.description"))} *</label><textarea id="description" rows="6" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.description }, "portal-input"])}" required${_scopeId}>${ssrInterpolate(unref(form).description)}</textarea>`);
+            _push2(`</div></div><div class="portal-form-group"${_scopeId}><label for="description"${_scopeId}>${ssrInterpolate(unref(t3)("fields.description"))} *</label><textarea id="description" rows="6" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.description }, "portal-input"])}" required${_scopeId}>${ssrInterpolate(unref(form).description)}</textarea>`);
             if (unref(form).errors.description) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(form).errors.description)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="attachment"${_scopeId}>${ssrInterpolate(unref(t)("projects.attachments"))}</label><input id="attachment" type="file" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.attachment }, "portal-input"])}"${_scopeId}><p class="portal-form-hint"${_scopeId}>${ssrInterpolate(unref(t)("tickets.attachment_hint"))}</p>`);
+            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="attachment"${_scopeId}>${ssrInterpolate(unref(t3)("projects.attachments"))}</label><input id="attachment" type="file" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.attachment }, "portal-input"])}"${_scopeId}><p class="portal-form-hint"${_scopeId}>${ssrInterpolate(unref(t3)("tickets.attachment_hint"))}</p>`);
             if (unref(form).errors.attachment) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(form).errors.attachment)}</p>`);
             } else {
@@ -11995,18 +11995,18 @@ const _sfc_main$d = {
               href: _ctx.route("portal.tickets.index"),
               class: "portal-panel__action"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(unref(t)("tickets.back_to_tickets"))}`);
+                  _push3(`${ssrInterpolate(unref(t3)("tickets.back_to_tickets"))}`);
                 } else {
                   return [
-                    createTextVNode(toDisplayString(unref(t)("tickets.back_to_tickets")), 1)
+                    createTextVNode(toDisplayString(unref(t3)("tickets.back_to_tickets")), 1)
                   ];
                 }
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`<button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(form).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t)("tickets.submit_ticket"))}</button></div></form></div></div>`);
+            _push2(`<button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(form).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t3)("tickets.submit_ticket"))}</button></div></form></div></div>`);
           } else {
             return [
               createVNode("div", { class: "portal-panel portal-panel--allow-overflow" }, [
@@ -12016,7 +12016,7 @@ const _sfc_main$d = {
                     onSubmit: withModifiers(submit, ["prevent"])
                   }, [
                     createVNode("div", { class: "portal-form-group" }, [
-                      createVNode("label", { for: "subject" }, toDisplayString(unref(t)("fields.subject")) + " *", 1),
+                      createVNode("label", { for: "subject" }, toDisplayString(unref(t3)("fields.subject")) + " *", 1),
                       withDirectives(createVNode("input", {
                         id: "subject",
                         "onUpdate:modelValue": ($event) => unref(form).subject = $event,
@@ -12033,13 +12033,13 @@ const _sfc_main$d = {
                     ]),
                     createVNode("div", { class: "portal-form-row" }, [
                       createVNode("div", { class: "portal-form-group" }, [
-                        createVNode("label", { for: "ticket_category_id" }, toDisplayString(unref(t)("fields.category")) + " *", 1),
+                        createVNode("label", { for: "ticket_category_id" }, toDisplayString(unref(t3)("fields.category")) + " *", 1),
                         createVNode(PortalSelect, {
                           id: "ticket_category_id",
                           modelValue: unref(form).ticket_category_id,
                           "onUpdate:modelValue": ($event) => unref(form).ticket_category_id = $event,
                           options: categoryOptions.value,
-                          placeholder: unref(t)("tickets.select_category"),
+                          placeholder: unref(t3)("tickets.select_category"),
                           "has-error": !!unref(form).errors.ticket_category_id
                         }, null, 8, ["modelValue", "onUpdate:modelValue", "options", "placeholder", "has-error"]),
                         unref(form).errors.ticket_category_id ? (openBlock(), createBlock("p", {
@@ -12048,13 +12048,13 @@ const _sfc_main$d = {
                         }, toDisplayString(unref(form).errors.ticket_category_id), 1)) : createCommentVNode("", true)
                       ]),
                       createVNode("div", { class: "portal-form-group" }, [
-                        createVNode("label", { for: "priority" }, toDisplayString(unref(t)("fields.priority")) + " *", 1),
+                        createVNode("label", { for: "priority" }, toDisplayString(unref(t3)("fields.priority")) + " *", 1),
                         createVNode(PortalSelect, {
                           id: "priority",
                           modelValue: unref(form).priority,
                           "onUpdate:modelValue": ($event) => unref(form).priority = $event,
                           options: priorityOptions.value,
-                          placeholder: unref(t)("tickets.select_priority"),
+                          placeholder: unref(t3)("tickets.select_priority"),
                           "has-error": !!unref(form).errors.priority
                         }, null, 8, ["modelValue", "onUpdate:modelValue", "options", "placeholder", "has-error"]),
                         unref(form).errors.priority ? (openBlock(), createBlock("p", {
@@ -12064,7 +12064,7 @@ const _sfc_main$d = {
                       ])
                     ]),
                     createVNode("div", { class: "portal-form-group" }, [
-                      createVNode("label", { for: "description" }, toDisplayString(unref(t)("fields.description")) + " *", 1),
+                      createVNode("label", { for: "description" }, toDisplayString(unref(t3)("fields.description")) + " *", 1),
                       withDirectives(createVNode("textarea", {
                         id: "description",
                         "onUpdate:modelValue": ($event) => unref(form).description = $event,
@@ -12080,14 +12080,14 @@ const _sfc_main$d = {
                       }, toDisplayString(unref(form).errors.description), 1)) : createCommentVNode("", true)
                     ]),
                     createVNode("div", { class: "portal-form-group" }, [
-                      createVNode("label", { for: "attachment" }, toDisplayString(unref(t)("projects.attachments")), 1),
+                      createVNode("label", { for: "attachment" }, toDisplayString(unref(t3)("projects.attachments")), 1),
                       createVNode("input", {
                         id: "attachment",
                         type: "file",
                         class: ["portal-input", { "portal-input--error": unref(form).errors.attachment }],
                         onChange: onFileChange
                       }, null, 34),
-                      createVNode("p", { class: "portal-form-hint" }, toDisplayString(unref(t)("tickets.attachment_hint")), 1),
+                      createVNode("p", { class: "portal-form-hint" }, toDisplayString(unref(t3)("tickets.attachment_hint")), 1),
                       unref(form).errors.attachment ? (openBlock(), createBlock("p", {
                         key: 0,
                         class: "portal-form-error"
@@ -12099,7 +12099,7 @@ const _sfc_main$d = {
                         class: "portal-panel__action"
                       }, {
                         default: withCtx(() => [
-                          createTextVNode(toDisplayString(unref(t)("tickets.back_to_tickets")), 1)
+                          createTextVNode(toDisplayString(unref(t3)("tickets.back_to_tickets")), 1)
                         ]),
                         _: 1
                       }, 8, ["href"]),
@@ -12107,7 +12107,7 @@ const _sfc_main$d = {
                         type: "submit",
                         class: "thm-btn",
                         disabled: unref(form).processing
-                      }, toDisplayString(unref(t)("tickets.submit_ticket")), 9, ["disabled"])
+                      }, toDisplayString(unref(t3)("tickets.submit_ticket")), 9, ["disabled"])
                     ])
                   ], 32)
                 ])
@@ -12143,15 +12143,15 @@ const _sfc_main$c = {
   setup(__props) {
     const props = __props;
     const page = usePage();
-    const { t, ticketStatusLabel, ticketPriorityLabel } = usePortalTranslations();
+    const { t: t3, ticketStatusLabel, ticketPriorityLabel } = usePortalTranslations();
     const locale = computed(() => page.props.locale);
     const metaTitle = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.title) || t("pages.tickets_title");
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t3("pages.tickets_title");
     });
     const metaDescription = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.tickets_description");
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t3("pages.tickets_description");
     });
     const filterForm = reactive({
       status: props.filters.status || "",
@@ -12167,8 +12167,8 @@ const _sfc_main$c = {
       label: ticketPriorityLabel(priority)
     })));
     const sortOptions = computed(() => [
-      { value: "newest", label: t("tickets.sort_newest") },
-      { value: "oldest", label: t("tickets.sort_oldest") }
+      { value: "newest", label: t3("tickets.sort_newest") },
+      { value: "oldest", label: t3("tickets.sort_oldest") }
     ]);
     const applyFilters = () => {
       router.get(route("portal.tickets.index"), {
@@ -12197,51 +12197,51 @@ const _sfc_main$c = {
     };
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(_sfc_main$l, mergeProps({
-        title: unref(t)("tickets.title"),
-        subtitle: unref(t)("tickets.subtitle"),
+        title: unref(t3)("tickets.title"),
+        subtitle: unref(t3)("tickets.subtitle"),
         active: "tickets",
         breadcrumbs: [
-          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
-          { label: unref(t)("tickets.title") }
+          { label: unref(t3)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t3)("tickets.title") }
         ],
         "meta-title": metaTitle.value,
         "meta-description": metaDescription.value
       }, _attrs), {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b;
           if (_push2) {
-            _push2(`<div class="portal-panel portal-panel--allow-overflow mb-4"${_scopeId}><div class="portal-panel__body"${_scopeId}><div class="portal-ticket-toolbar"${_scopeId}><form class="portal-ticket-filters"${_scopeId}><div class="portal-ticket-filters__group"${_scopeId}><label${_scopeId}>${ssrInterpolate(unref(t)("tickets.filter_status"))}</label>`);
+            _push2(`<div class="portal-panel portal-panel--allow-overflow mb-4"${_scopeId}><div class="portal-panel__body"${_scopeId}><div class="portal-ticket-toolbar"${_scopeId}><form class="portal-ticket-filters"${_scopeId}><div class="portal-ticket-filters__group"${_scopeId}><label${_scopeId}>${ssrInterpolate(unref(t3)("tickets.filter_status"))}</label>`);
             _push2(ssrRenderComponent(PortalSelect, {
               modelValue: filterForm.status,
               "onUpdate:modelValue": ($event) => filterForm.status = $event,
               options: statusOptions.value,
-              placeholder: unref(t)("tickets.all_statuses")
+              placeholder: unref(t3)("tickets.all_statuses")
             }, null, _parent2, _scopeId));
-            _push2(`</div><div class="portal-ticket-filters__group"${_scopeId}><label${_scopeId}>${ssrInterpolate(unref(t)("tickets.filter_priority"))}</label>`);
+            _push2(`</div><div class="portal-ticket-filters__group"${_scopeId}><label${_scopeId}>${ssrInterpolate(unref(t3)("tickets.filter_priority"))}</label>`);
             _push2(ssrRenderComponent(PortalSelect, {
               modelValue: filterForm.priority,
               "onUpdate:modelValue": ($event) => filterForm.priority = $event,
               options: priorityOptions.value,
-              placeholder: unref(t)("tickets.all_priorities")
+              placeholder: unref(t3)("tickets.all_priorities")
             }, null, _parent2, _scopeId));
-            _push2(`</div><div class="portal-ticket-filters__group"${_scopeId}><label${_scopeId}>${ssrInterpolate(unref(t)("tickets.sort_newest"))}</label>`);
+            _push2(`</div><div class="portal-ticket-filters__group"${_scopeId}><label${_scopeId}>${ssrInterpolate(unref(t3)("tickets.sort_newest"))}</label>`);
             _push2(ssrRenderComponent(PortalSelect, {
               modelValue: filterForm.sort,
               "onUpdate:modelValue": ($event) => filterForm.sort = $event,
               options: sortOptions.value
             }, null, _parent2, _scopeId));
-            _push2(`</div><div class="portal-ticket-filters__actions"${_scopeId}><button type="submit" class="thm-btn"${_scopeId}>${ssrInterpolate(unref(t)("tickets.apply_filters"))}</button><button type="button" class="portal-panel__action"${_scopeId}>${ssrInterpolate(unref(t)("tickets.clear_filters"))}</button></div></form>`);
+            _push2(`</div><div class="portal-ticket-filters__actions"${_scopeId}><button type="submit" class="thm-btn"${_scopeId}>${ssrInterpolate(unref(t3)("tickets.apply_filters"))}</button><button type="button" class="portal-panel__action"${_scopeId}>${ssrInterpolate(unref(t3)("tickets.clear_filters"))}</button></div></form>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("portal.tickets.create"),
               class: "thm-btn"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-plus me-1"${_scopeId2}></i>${ssrInterpolate(unref(t)("tickets.new_ticket"))}`);
+                  _push3(`<i class="fas fa-plus me-1"${_scopeId2}></i>${ssrInterpolate(unref(t3)("tickets.new_ticket"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-plus me-1" }),
-                    createTextVNode(toDisplayString(unref(t)("tickets.new_ticket")), 1)
+                    createTextVNode(toDisplayString(unref(t3)("tickets.new_ticket")), 1)
                   ];
                 }
               }),
@@ -12249,21 +12249,21 @@ const _sfc_main$c = {
             }, _parent2, _scopeId));
             _push2(`</div></div></div>`);
             if (__props.tickets.data.length === 0) {
-              _push2(`<div class="portal-panel"${_scopeId}><div class="portal-empty"${_scopeId}><i class="fas fa-life-ring portal-empty__icon"${_scopeId}></i> ${ssrInterpolate(unref(t)("tickets.no_tickets"))}</div></div>`);
+              _push2(`<div class="portal-panel"${_scopeId}><div class="portal-empty"${_scopeId}><i class="fas fa-life-ring portal-empty__icon"${_scopeId}></i> ${ssrInterpolate(unref(t3)("tickets.no_tickets"))}</div></div>`);
             } else {
               _push2(`<div class="portal-ticket-list"${_scopeId}><!--[-->`);
               ssrRenderList(__props.tickets.data, (ticket) => {
-                _push2(`<article class="portal-ticket-card"${_scopeId}><div class="portal-ticket-card__top"${_scopeId}><div${_scopeId}><div class="portal-ticket-card__number"${_scopeId}>${ssrInterpolate(ticket.ticket_number)}</div><h3 class="portal-ticket-card__title"${_scopeId}>${ssrInterpolate(ticket.subject)}</h3></div><span class="${ssrRenderClass([statusBadgeClass(ticket.status), "portal-badge"])}"${_scopeId}>${ssrInterpolate(unref(ticketStatusLabel)(ticket.status))}</span></div><div class="portal-ticket-card__meta"${_scopeId}><div${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.category"))}</span><strong${_scopeId}>${ssrInterpolate(ticket.category || "—")}</strong></div><div${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.priority"))}</span><strong${_scopeId}>${ssrInterpolate(unref(ticketPriorityLabel)(ticket.priority))}</strong></div><div${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("fields.status"))}</span><strong${_scopeId}>${ssrInterpolate(formatDate(ticket.created_at))}</strong></div></div><div class="portal-ticket-card__footer"${_scopeId}>`);
+                _push2(`<article class="portal-ticket-card"${_scopeId}><div class="portal-ticket-card__top"${_scopeId}><div${_scopeId}><div class="portal-ticket-card__number"${_scopeId}>${ssrInterpolate(ticket.ticket_number)}</div><h3 class="portal-ticket-card__title"${_scopeId}>${ssrInterpolate(ticket.subject)}</h3></div><span class="${ssrRenderClass([statusBadgeClass(ticket.status), "portal-badge"])}"${_scopeId}>${ssrInterpolate(unref(ticketStatusLabel)(ticket.status))}</span></div><div class="portal-ticket-card__meta"${_scopeId}><div${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("fields.category"))}</span><strong${_scopeId}>${ssrInterpolate(ticket.category || "—")}</strong></div><div${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("fields.priority"))}</span><strong${_scopeId}>${ssrInterpolate(unref(ticketPriorityLabel)(ticket.priority))}</strong></div><div${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("fields.status"))}</span><strong${_scopeId}>${ssrInterpolate(formatDate(ticket.created_at))}</strong></div></div><div class="portal-ticket-card__footer"${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: _ctx.route("portal.tickets.show", ticket.id),
                   class: "thm-btn w-100 text-center"
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`${ssrInterpolate(unref(t)("tickets.view_ticket"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
+                      _push3(`${ssrInterpolate(unref(t3)("tickets.view_ticket"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
                     } else {
                       return [
-                        createTextVNode(toDisplayString(unref(t)("tickets.view_ticket")) + " ", 1),
+                        createTextVNode(toDisplayString(unref(t3)("tickets.view_ticket")) + " ", 1),
                         createVNode("span", {
                           class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
                         }, null, 2)
@@ -12299,25 +12299,25 @@ const _sfc_main$c = {
                       onSubmit: withModifiers(applyFilters, ["prevent"])
                     }, [
                       createVNode("div", { class: "portal-ticket-filters__group" }, [
-                        createVNode("label", null, toDisplayString(unref(t)("tickets.filter_status")), 1),
+                        createVNode("label", null, toDisplayString(unref(t3)("tickets.filter_status")), 1),
                         createVNode(PortalSelect, {
                           modelValue: filterForm.status,
                           "onUpdate:modelValue": ($event) => filterForm.status = $event,
                           options: statusOptions.value,
-                          placeholder: unref(t)("tickets.all_statuses")
+                          placeholder: unref(t3)("tickets.all_statuses")
                         }, null, 8, ["modelValue", "onUpdate:modelValue", "options", "placeholder"])
                       ]),
                       createVNode("div", { class: "portal-ticket-filters__group" }, [
-                        createVNode("label", null, toDisplayString(unref(t)("tickets.filter_priority")), 1),
+                        createVNode("label", null, toDisplayString(unref(t3)("tickets.filter_priority")), 1),
                         createVNode(PortalSelect, {
                           modelValue: filterForm.priority,
                           "onUpdate:modelValue": ($event) => filterForm.priority = $event,
                           options: priorityOptions.value,
-                          placeholder: unref(t)("tickets.all_priorities")
+                          placeholder: unref(t3)("tickets.all_priorities")
                         }, null, 8, ["modelValue", "onUpdate:modelValue", "options", "placeholder"])
                       ]),
                       createVNode("div", { class: "portal-ticket-filters__group" }, [
-                        createVNode("label", null, toDisplayString(unref(t)("tickets.sort_newest")), 1),
+                        createVNode("label", null, toDisplayString(unref(t3)("tickets.sort_newest")), 1),
                         createVNode(PortalSelect, {
                           modelValue: filterForm.sort,
                           "onUpdate:modelValue": ($event) => filterForm.sort = $event,
@@ -12328,12 +12328,12 @@ const _sfc_main$c = {
                         createVNode("button", {
                           type: "submit",
                           class: "thm-btn"
-                        }, toDisplayString(unref(t)("tickets.apply_filters")), 1),
+                        }, toDisplayString(unref(t3)("tickets.apply_filters")), 1),
                         createVNode("button", {
                           type: "button",
                           class: "portal-panel__action",
                           onClick: clearFilters
-                        }, toDisplayString(unref(t)("tickets.clear_filters")), 1)
+                        }, toDisplayString(unref(t3)("tickets.clear_filters")), 1)
                       ])
                     ], 32),
                     createVNode(unref(Link), {
@@ -12342,7 +12342,7 @@ const _sfc_main$c = {
                     }, {
                       default: withCtx(() => [
                         createVNode("i", { class: "fas fa-plus me-1" }),
-                        createTextVNode(toDisplayString(unref(t)("tickets.new_ticket")), 1)
+                        createTextVNode(toDisplayString(unref(t3)("tickets.new_ticket")), 1)
                       ]),
                       _: 1
                     }, 8, ["href"])
@@ -12355,7 +12355,7 @@ const _sfc_main$c = {
               }, [
                 createVNode("div", { class: "portal-empty" }, [
                   createVNode("i", { class: "fas fa-life-ring portal-empty__icon" }),
-                  createTextVNode(" " + toDisplayString(unref(t)("tickets.no_tickets")), 1)
+                  createTextVNode(" " + toDisplayString(unref(t3)("tickets.no_tickets")), 1)
                 ])
               ])) : (openBlock(), createBlock("div", {
                 key: 1,
@@ -12377,15 +12377,15 @@ const _sfc_main$c = {
                     ]),
                     createVNode("div", { class: "portal-ticket-card__meta" }, [
                       createVNode("div", null, [
-                        createVNode("span", null, toDisplayString(unref(t)("fields.category")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("fields.category")), 1),
                         createVNode("strong", null, toDisplayString(ticket.category || "—"), 1)
                       ]),
                       createVNode("div", null, [
-                        createVNode("span", null, toDisplayString(unref(t)("fields.priority")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("fields.priority")), 1),
                         createVNode("strong", null, toDisplayString(unref(ticketPriorityLabel)(ticket.priority)), 1)
                       ]),
                       createVNode("div", null, [
-                        createVNode("span", null, toDisplayString(unref(t)("fields.status")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("fields.status")), 1),
                         createVNode("strong", null, toDisplayString(formatDate(ticket.created_at)), 1)
                       ])
                     ]),
@@ -12395,7 +12395,7 @@ const _sfc_main$c = {
                         class: "thm-btn w-100 text-center"
                       }, {
                         default: withCtx(() => [
-                          createTextVNode(toDisplayString(unref(t)("tickets.view_ticket")) + " ", 1),
+                          createTextVNode(toDisplayString(unref(t3)("tickets.view_ticket")) + " ", 1),
                           createVNode("span", {
                             class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow`
                           }, null, 2)
@@ -12448,7 +12448,7 @@ const _sfc_main$b = {
   setup(__props) {
     const props = __props;
     const page = usePage();
-    const { t, ticketStatusLabel, ticketPriorityLabel } = usePortalTranslations();
+    const { t: t3, ticketStatusLabel, ticketPriorityLabel } = usePortalTranslations();
     const locale = computed(() => page.props.locale);
     const metaTitle = computed(() => {
       var _a;
@@ -12456,7 +12456,7 @@ const _sfc_main$b = {
     });
     const metaDescription = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.ticket_show_description");
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t3("pages.ticket_show_description");
     });
     const replyForm = useForm({
       body: "",
@@ -12473,7 +12473,7 @@ const _sfc_main$b = {
       });
     };
     const closeTicket = () => {
-      if (!window.confirm(t("tickets.close_confirm"))) {
+      if (!window.confirm(t3("tickets.close_confirm"))) {
         return;
       }
       router.post(route("portal.tickets.close", props.ticket.id), {}, {
@@ -12495,40 +12495,40 @@ const _sfc_main$b = {
         subtitle: __props.ticket.ticket_number,
         active: "tickets",
         breadcrumbs: [
-          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
-          { label: unref(t)("tickets.title"), href: _ctx.route("portal.tickets.index") },
+          { label: unref(t3)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t3)("tickets.title"), href: _ctx.route("portal.tickets.index") },
           { label: __props.ticket.ticket_number }
         ],
         "meta-title": metaTitle.value,
         "meta-description": metaDescription.value
       }, _attrs), {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("portal.tickets.index"),
               class: "portal-back"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="${ssrRenderClass(`fas fa-arrow-${locale.value === "ar" ? "right" : "left"}`)}"${_scopeId2}></i> ${ssrInterpolate(unref(t)("tickets.back_to_tickets"))}`);
+                  _push3(`<i class="${ssrRenderClass(`fas fa-arrow-${locale.value === "ar" ? "right" : "left"}`)}"${_scopeId2}></i> ${ssrInterpolate(unref(t3)("tickets.back_to_tickets"))}`);
                 } else {
                   return [
                     createVNode("i", {
                       class: `fas fa-arrow-${locale.value === "ar" ? "right" : "left"}`
                     }, null, 2),
-                    createTextVNode(" " + toDisplayString(unref(t)("tickets.back_to_tickets")), 1)
+                    createTextVNode(" " + toDisplayString(unref(t3)("tickets.back_to_tickets")), 1)
                   ];
                 }
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`<div class="portal-grid portal-grid--show"${_scopeId}><div${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("projects.details"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-details"${_scopeId}><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.ticket_number"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.ticket.ticket_number)}</div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.status"))}</div><div class="portal-details__value"${_scopeId}><span class="${ssrRenderClass([statusBadgeClass(__props.ticket.status), "portal-badge"])}"${_scopeId}>${ssrInterpolate(unref(ticketStatusLabel)(__props.ticket.status))}</span></div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.priority"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(unref(ticketPriorityLabel)(__props.ticket.priority))}</div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.category"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.ticket.category || "—")}</div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t)("fields.created_at"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(formatDate(__props.ticket.created_at))}</div></div></div></div></div>`);
+            _push2(`<div class="portal-grid portal-grid--show"${_scopeId}><div${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("projects.details"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-details"${_scopeId}><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.ticket_number"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.ticket.ticket_number)}</div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.status"))}</div><div class="portal-details__value"${_scopeId}><span class="${ssrRenderClass([statusBadgeClass(__props.ticket.status), "portal-badge"])}"${_scopeId}>${ssrInterpolate(unref(ticketStatusLabel)(__props.ticket.status))}</span></div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.priority"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(unref(ticketPriorityLabel)(__props.ticket.priority))}</div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.category"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(__props.ticket.category || "—")}</div></div><div class="portal-details__row"${_scopeId}><div class="portal-details__label"${_scopeId}>${ssrInterpolate(unref(t3)("fields.created_at"))}</div><div class="portal-details__value"${_scopeId}>${ssrInterpolate(formatDate(__props.ticket.created_at))}</div></div></div></div></div>`);
             if (__props.ticket.can_reply) {
-              _push2(`<div class="portal-panel" style="${ssrRenderStyle({ "margin-top": "24px" })}"${_scopeId}><div class="portal-panel__body"${_scopeId}><button type="button" class="portal-panel__action text-danger"${_scopeId}><i class="fas fa-times-circle me-1"${_scopeId}></i>${ssrInterpolate(unref(t)("tickets.close_ticket"))}</button></div></div>`);
+              _push2(`<div class="portal-panel" style="${ssrRenderStyle({ "margin-top": "24px" })}"${_scopeId}><div class="portal-panel__body"${_scopeId}><button type="button" class="portal-panel__action text-danger"${_scopeId}><i class="fas fa-times-circle me-1"${_scopeId}></i>${ssrInterpolate(unref(t3)("tickets.close_ticket"))}</button></div></div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-grid__stack"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("tickets.conversation"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-ticket-thread"${_scopeId}><div class="portal-ticket-message portal-ticket-message--customer"${_scopeId}><div class="portal-ticket-message__header"${_scopeId}><strong${_scopeId}>${ssrInterpolate(unref(t)("tickets.original_message"))}</strong><span${_scopeId}>${ssrInterpolate(formatDate(__props.ticket.created_at))}</span></div><div class="portal-ticket-message__body"${_scopeId}>${ssrInterpolate(__props.ticket.description)}</div>`);
+            _push2(`</div><div class="portal-grid__stack"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("tickets.conversation"))}</h2></div><div class="portal-panel__body"${_scopeId}><div class="portal-ticket-thread"${_scopeId}><div class="portal-ticket-message portal-ticket-message--customer"${_scopeId}><div class="portal-ticket-message__header"${_scopeId}><strong${_scopeId}>${ssrInterpolate(unref(t3)("tickets.original_message"))}</strong><span${_scopeId}>${ssrInterpolate(formatDate(__props.ticket.created_at))}</span></div><div class="portal-ticket-message__body"${_scopeId}>${ssrInterpolate(__props.ticket.description)}</div>`);
             if (__props.ticket.attachment) {
               _push2(`<a${ssrRenderAttr("href", __props.ticket.attachment.url)} target="_blank" class="portal-ticket-message__attachment"${_scopeId}><i class="fas fa-paperclip"${_scopeId}></i>${ssrInterpolate(__props.ticket.attachment.name)}</a>`);
             } else {
@@ -12546,7 +12546,7 @@ const _sfc_main$b = {
             });
             _push2(`<!--]--></div>`);
             if (__props.ticket.can_reply) {
-              _push2(`<div class="portal-ticket-reply"${_scopeId}><form${_scopeId}><div class="portal-form-group"${_scopeId}><label for="reply"${_scopeId}>${ssrInterpolate(unref(t)("tickets.send_reply"))}</label><textarea id="reply" rows="4"${ssrRenderAttr("placeholder", unref(t)("tickets.reply_placeholder"))} class="${ssrRenderClass([{ "portal-input--error": unref(replyForm).errors.body }, "portal-input"])}" required${_scopeId}>${ssrInterpolate(unref(replyForm).body)}</textarea>`);
+              _push2(`<div class="portal-ticket-reply"${_scopeId}><form${_scopeId}><div class="portal-form-group"${_scopeId}><label for="reply"${_scopeId}>${ssrInterpolate(unref(t3)("tickets.send_reply"))}</label><textarea id="reply" rows="4"${ssrRenderAttr("placeholder", unref(t3)("tickets.reply_placeholder"))} class="${ssrRenderClass([{ "portal-input--error": unref(replyForm).errors.body }, "portal-input"])}" required${_scopeId}>${ssrInterpolate(unref(replyForm).body)}</textarea>`);
               if (unref(replyForm).errors.body) {
                 _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(replyForm).errors.body)}</p>`);
               } else {
@@ -12558,9 +12558,9 @@ const _sfc_main$b = {
               } else {
                 _push2(`<!---->`);
               }
-              _push2(`</div><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(replyForm).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t)("tickets.send_reply"))}</button></form></div>`);
+              _push2(`</div><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(replyForm).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t3)("tickets.send_reply"))}</button></form></div>`);
             } else {
-              _push2(`<div class="portal-empty portal-empty--compact"${_scopeId}>${ssrInterpolate(unref(t)("tickets.ticket_closed"))}</div>`);
+              _push2(`<div class="portal-empty portal-empty--compact"${_scopeId}>${ssrInterpolate(unref(t3)("tickets.ticket_closed"))}</div>`);
             }
             _push2(`</div></div></div></div>`);
           } else {
@@ -12573,7 +12573,7 @@ const _sfc_main$b = {
                   createVNode("i", {
                     class: `fas fa-arrow-${locale.value === "ar" ? "right" : "left"}`
                   }, null, 2),
-                  createTextVNode(" " + toDisplayString(unref(t)("tickets.back_to_tickets")), 1)
+                  createTextVNode(" " + toDisplayString(unref(t3)("tickets.back_to_tickets")), 1)
                 ]),
                 _: 1
               }, 8, ["href"]),
@@ -12581,16 +12581,16 @@ const _sfc_main$b = {
                 createVNode("div", null, [
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("projects.details")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("projects.details")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       createVNode("div", { class: "portal-details" }, [
                         createVNode("div", { class: "portal-details__row" }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.ticket_number")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.ticket_number")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.ticket.ticket_number), 1)
                         ]),
                         createVNode("div", { class: "portal-details__row" }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.status")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.status")), 1),
                           createVNode("div", { class: "portal-details__value" }, [
                             createVNode("span", {
                               class: ["portal-badge", statusBadgeClass(__props.ticket.status)]
@@ -12598,15 +12598,15 @@ const _sfc_main$b = {
                           ])
                         ]),
                         createVNode("div", { class: "portal-details__row" }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.priority")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.priority")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(unref(ticketPriorityLabel)(__props.ticket.priority)), 1)
                         ]),
                         createVNode("div", { class: "portal-details__row" }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.category")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.category")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(__props.ticket.category || "—"), 1)
                         ]),
                         createVNode("div", { class: "portal-details__row" }, [
-                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t)("fields.created_at")), 1),
+                          createVNode("div", { class: "portal-details__label" }, toDisplayString(unref(t3)("fields.created_at")), 1),
                           createVNode("div", { class: "portal-details__value" }, toDisplayString(formatDate(__props.ticket.created_at)), 1)
                         ])
                       ])
@@ -12624,7 +12624,7 @@ const _sfc_main$b = {
                         onClick: closeTicket
                       }, [
                         createVNode("i", { class: "fas fa-times-circle me-1" }),
-                        createTextVNode(toDisplayString(unref(t)("tickets.close_ticket")), 1)
+                        createTextVNode(toDisplayString(unref(t3)("tickets.close_ticket")), 1)
                       ])
                     ])
                   ])) : createCommentVNode("", true)
@@ -12632,13 +12632,13 @@ const _sfc_main$b = {
                 createVNode("div", { class: "portal-grid__stack" }, [
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("tickets.conversation")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("tickets.conversation")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       createVNode("div", { class: "portal-ticket-thread" }, [
                         createVNode("div", { class: "portal-ticket-message portal-ticket-message--customer" }, [
                           createVNode("div", { class: "portal-ticket-message__header" }, [
-                            createVNode("strong", null, toDisplayString(unref(t)("tickets.original_message")), 1),
+                            createVNode("strong", null, toDisplayString(unref(t3)("tickets.original_message")), 1),
                             createVNode("span", null, toDisplayString(formatDate(__props.ticket.created_at)), 1)
                           ]),
                           createVNode("div", { class: "portal-ticket-message__body" }, toDisplayString(__props.ticket.description), 1),
@@ -12682,13 +12682,13 @@ const _sfc_main$b = {
                           onSubmit: withModifiers(submitReply, ["prevent"])
                         }, [
                           createVNode("div", { class: "portal-form-group" }, [
-                            createVNode("label", { for: "reply" }, toDisplayString(unref(t)("tickets.send_reply")), 1),
+                            createVNode("label", { for: "reply" }, toDisplayString(unref(t3)("tickets.send_reply")), 1),
                             withDirectives(createVNode("textarea", {
                               id: "reply",
                               "onUpdate:modelValue": ($event) => unref(replyForm).body = $event,
                               rows: "4",
                               class: ["portal-input", { "portal-input--error": unref(replyForm).errors.body }],
-                              placeholder: unref(t)("tickets.reply_placeholder"),
+                              placeholder: unref(t3)("tickets.reply_placeholder"),
                               required: ""
                             }, null, 10, ["onUpdate:modelValue", "placeholder"]), [
                               [vModelText, unref(replyForm).body]
@@ -12713,12 +12713,12 @@ const _sfc_main$b = {
                             type: "submit",
                             class: "thm-btn",
                             disabled: unref(replyForm).processing
-                          }, toDisplayString(unref(t)("tickets.send_reply")), 9, ["disabled"])
+                          }, toDisplayString(unref(t3)("tickets.send_reply")), 9, ["disabled"])
                         ], 32)
                       ])) : (openBlock(), createBlock("div", {
                         key: 1,
                         class: "portal-empty portal-empty--compact"
-                      }, toDisplayString(unref(t)("tickets.ticket_closed")), 1))
+                      }, toDisplayString(unref(t3)("tickets.ticket_closed")), 1))
                     ])
                   ])
                 ])
@@ -12762,7 +12762,7 @@ const _sfc_main$a = {
       var _a;
       try {
         return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-      } catch (e) {
+      } catch (e2) {
         return key;
       }
     };
@@ -12804,7 +12804,7 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-5b68d6b8${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-5b68d6b8${_scopeId}><title data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-5b68d6b8${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-5b68d6b8${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-5b68d6b8${_scopeId}>`);
         if ($setup.metaCanonical) {
@@ -12902,7 +12902,7 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
   _push(ssrRenderComponent(_component_app_layout, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<section class="page-header" data-v-5b68d6b8${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-5b68d6b8${_scopeId}></div><div class="container" data-v-5b68d6b8${_scopeId}><div class="page-header__inner" data-v-5b68d6b8${_scopeId}><h2 data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</h2><div class="thm-breadcrumb__box" data-v-5b68d6b8${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-5b68d6b8${_scopeId}><li data-v-5b68d6b8${_scopeId}><a href="/" data-v-5b68d6b8${_scopeId}><i class="fas fa-home" data-v-5b68d6b8${_scopeId}></i> ${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-5b68d6b8${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-5b68d6b8${_scopeId}></span></li><li data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-5b68d6b8${_scopeId}><div class="container" data-v-5b68d6b8${_scopeId}><div class="login-one__form" data-v-5b68d6b8${_scopeId}><div class="inner-title text-center" data-v-5b68d6b8${_scopeId}><h2 data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Reset Your Password"))}</h2></div>`);
         if ($setup.flash.success) {
@@ -12931,7 +12931,7 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
-          default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+          default: withCtx((_3, _push3, _parent3, _scopeId2) => {
             if (_push3) {
               _push3(`${ssrInterpolate($setup.trans("Back to Login"))}`);
             } else {
@@ -13090,7 +13090,7 @@ const _sfc_main$9 = {
       var _a;
       try {
         return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-      } catch (e) {
+      } catch (e2) {
         return key;
       }
     };
@@ -13133,7 +13133,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)}${_scopeId}>`);
         if ($setup.metaCanonical) {
@@ -13231,7 +13231,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
   _push(ssrRenderComponent(_component_app_layout, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}><a href="/"${_scopeId}><i class="fas fa-home"${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</li></ul></div></div></div></section><section class="login-one"${_scopeId}><div class="container"${_scopeId}><div class="login-one__form"${_scopeId}><div class="inner-title text-center"${_scopeId}><h2${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2></div><form id="login-one__form" name="Login-one_form" action="#" method="post"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-12"${_scopeId}><div class="form-group"${_scopeId}><div class="input-box"${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required=""${_scopeId}></div>`);
         if ($props.errors.email) {
@@ -13255,7 +13255,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("password.request")
         }, {
-          default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+          default: withCtx((_3, _push3, _parent3, _scopeId2) => {
             if (_push3) {
               _push3(`${ssrInterpolate($setup.trans("Forgot Password"))}`);
             } else {
@@ -13270,7 +13270,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("register")
         }, {
-          default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+          default: withCtx((_3, _push3, _parent3, _scopeId2) => {
             if (_push3) {
               _push3(`${ssrInterpolate($setup.trans("Create A New Account"))}`);
             } else {
@@ -13470,7 +13470,7 @@ const _sfc_main$8 = {
       var _a;
       try {
         return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-      } catch (e) {
+      } catch (e2) {
         return key;
       }
     };
@@ -13515,7 +13515,7 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-daff4a9e${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-daff4a9e${_scopeId}><title data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-daff4a9e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-daff4a9e${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-daff4a9e${_scopeId}>`);
         if ($setup.metaCanonical) {
@@ -13613,7 +13613,7 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
   _push(ssrRenderComponent(_component_app_layout, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<section class="page-header" data-v-daff4a9e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-daff4a9e${_scopeId}></div><div class="container" data-v-daff4a9e${_scopeId}><div class="page-header__inner" data-v-daff4a9e${_scopeId}><h2 data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2><div class="thm-breadcrumb__box" data-v-daff4a9e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-daff4a9e${_scopeId}><li data-v-daff4a9e${_scopeId}><a href="/" data-v-daff4a9e${_scopeId}><i class="fas fa-home" data-v-daff4a9e${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-daff4a9e${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-daff4a9e${_scopeId}></span></li><li data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</li></ul></div></div></div></section><section class="sign-up-one" data-v-daff4a9e${_scopeId}><div class="container" data-v-daff4a9e${_scopeId}><div class="sign-up-one__form" data-v-daff4a9e${_scopeId}><div class="inner-title text-center" data-v-daff4a9e${_scopeId}><h2 data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2></div><form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" data-v-daff4a9e${_scopeId}><div class="row" data-v-daff4a9e${_scopeId}><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formName"${ssrRenderAttr("value", $setup.form.name)} type="text" name="form_name"${ssrRenderAttr("placeholder", $setup.trans("Name"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
         if ($props.errors.name) {
@@ -13655,7 +13655,7 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
-          default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+          default: withCtx((_3, _push3, _parent3, _scopeId2) => {
             if (_push3) {
               _push3(`${ssrInterpolate($setup.trans("Login"))}`);
             } else {
@@ -13892,7 +13892,7 @@ const _sfc_main$7 = {
       var _a;
       try {
         return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-      } catch (e) {
+      } catch (e2) {
         return key;
       }
     };
@@ -13938,7 +13938,7 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-f5323f04${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-f5323f04${_scopeId}><title data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-f5323f04${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-f5323f04${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-f5323f04${_scopeId}>`);
         if ($setup.metaCanonical) {
@@ -14036,7 +14036,7 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
     _: 1
   }, _parent));
   _push(ssrRenderComponent(_component_app_layout, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<section class="page-header" data-v-f5323f04${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-f5323f04${_scopeId}></div><div class="container" data-v-f5323f04${_scopeId}><div class="page-header__inner" data-v-f5323f04${_scopeId}><h2 data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</h2><div class="thm-breadcrumb__box" data-v-f5323f04${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f5323f04${_scopeId}><li data-v-f5323f04${_scopeId}><a href="/" data-v-f5323f04${_scopeId}><i class="fas fa-home" data-v-f5323f04${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-f5323f04${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f5323f04${_scopeId}></span></li><li data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-f5323f04${_scopeId}><div class="container" data-v-f5323f04${_scopeId}><div class="login-one__form" data-v-f5323f04${_scopeId}><div class="inner-title text-center" data-v-f5323f04${_scopeId}><h2 data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Set New Password"))}</h2></div>`);
         if ($setup.flash.success) {
@@ -14077,7 +14077,7 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
-          default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+          default: withCtx((_3, _push3, _parent3, _scopeId2) => {
             if (_push3) {
               _push3(`${ssrInterpolate($setup.trans("Back to Login"))}`);
             } else {
@@ -14285,7 +14285,7 @@ const _sfc_main$6 = {
       var _a;
       try {
         return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-      } catch (e) {
+      } catch (e2) {
         return key;
       }
     };
@@ -14326,7 +14326,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   const _component_app_layout = resolveComponent("app-layout");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)}${_scopeId}><meta name="robots" content="noindex, nofollow"${_scopeId}>`);
       } else {
@@ -14354,7 +14354,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
     _: 1
   }, _parent));
   _push(ssrRenderComponent(_component_app_layout, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
+    default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate($setup.trans("Two-Factor Authentication"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}><a href="/"${_scopeId}><i class="fas fa-home"${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate($setup.trans("Two-Factor Authentication"))}</li></ul></div></div></div></section><section class="login-one"${_scopeId}><div class="container"${_scopeId}><div class="login-one__form"${_scopeId}><div class="inner-title text-center"${_scopeId}><h2${_scopeId}>${ssrInterpolate($setup.trans("Two-Factor Authentication"))}</h2><p class="mt-3 mb-0"${_scopeId}>${ssrInterpolate($setup.trans("Please confirm access to your account by entering the authentication code provided by your authenticator application."))}</p></div><form class="mt-4"${_scopeId}><div class="row"${_scopeId}>`);
         if (!$setup.useRecoveryCode) {
@@ -14525,11 +14525,11 @@ const _sfc_main$5 = {
   __ssrInlineRender: true,
   setup(__props) {
     const page = usePage();
-    const { t } = usePortalTranslations();
+    const { t: t3 } = usePortalTranslations();
     const asset_path = computed(() => page.props.asset_path || "");
     const seo = computed(() => page.props.seo || {});
-    const metaTitle = computed(() => `${t("profile.confirm_password_title")} | ${seo.value.website_name || ""}`.trim());
-    const metaDescription = computed(() => t("profile.confirm_password_description"));
+    const metaTitle = computed(() => `${t3("profile.confirm_password_title")} | ${seo.value.website_name || ""}`.trim());
+    const metaDescription = computed(() => t3("profile.confirm_password_description"));
     const form = useForm({
       password: ""
     });
@@ -14541,7 +14541,7 @@ const _sfc_main$5 = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/portal.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="robots" content="noindex, nofollow"${_scopeId}>`);
           } else {
@@ -14569,9 +14569,9 @@ const _sfc_main$5 = {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header portal-page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(unref(t)("profile.confirm_password_title"))}</h2><p class="portal-page-header__subtitle"${_scopeId}>${ssrInterpolate(unref(t)("profile.confirm_password_description"))}</p></div></div></section><section class="portal-one"${_scopeId}><div class="container"${_scopeId}><div class="portal-panel portal-panel--narrow"${_scopeId}><div class="portal-panel__body"${_scopeId}><form class="portal-profile-form"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="password"${_scopeId}>${ssrInterpolate(unref(t)("profile.current_password"))} *</label><input id="password"${ssrRenderAttr("value", unref(form).password)} type="password" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.password }, "portal-input"])}" required autofocus autocomplete="current-password"${_scopeId}>`);
+            _push2(`<section class="page-header portal-page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate(unref(t3)("profile.confirm_password_title"))}</h2><p class="portal-page-header__subtitle"${_scopeId}>${ssrInterpolate(unref(t3)("profile.confirm_password_description"))}</p></div></div></section><section class="portal-one"${_scopeId}><div class="container"${_scopeId}><div class="portal-panel portal-panel--narrow"${_scopeId}><div class="portal-panel__body"${_scopeId}><form class="portal-profile-form"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="password"${_scopeId}>${ssrInterpolate(unref(t3)("profile.current_password"))} *</label><input id="password"${ssrRenderAttr("value", unref(form).password)} type="password" class="${ssrRenderClass([{ "portal-input--error": unref(form).errors.password }, "portal-input"])}" required autofocus autocomplete="current-password"${_scopeId}>`);
             if (unref(form).errors.password) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(form).errors.password)}</p>`);
             } else {
@@ -14582,18 +14582,18 @@ const _sfc_main$5 = {
               href: _ctx.route("portal.profile.index"),
               class: "portal-panel__action"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(unref(t)("profile.back_to_profile"))}`);
+                  _push3(`${ssrInterpolate(unref(t3)("profile.back_to_profile"))}`);
                 } else {
                   return [
-                    createTextVNode(toDisplayString(unref(t)("profile.back_to_profile")), 1)
+                    createTextVNode(toDisplayString(unref(t3)("profile.back_to_profile")), 1)
                   ];
                 }
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`<button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(form).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t)("profile.confirm_password_button"))}</button></div></form></div></div></div></section>`);
+            _push2(`<button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(form).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t3)("profile.confirm_password_button"))}</button></div></form></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "page-header portal-page-header" }, [
@@ -14603,8 +14603,8 @@ const _sfc_main$5 = {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "page-header__inner" }, [
-                    createVNode("h2", null, toDisplayString(unref(t)("profile.confirm_password_title")), 1),
-                    createVNode("p", { class: "portal-page-header__subtitle" }, toDisplayString(unref(t)("profile.confirm_password_description")), 1)
+                    createVNode("h2", null, toDisplayString(unref(t3)("profile.confirm_password_title")), 1),
+                    createVNode("p", { class: "portal-page-header__subtitle" }, toDisplayString(unref(t3)("profile.confirm_password_description")), 1)
                   ])
                 ])
               ]),
@@ -14617,7 +14617,7 @@ const _sfc_main$5 = {
                         onSubmit: withModifiers(submit, ["prevent"])
                       }, [
                         createVNode("div", { class: "portal-form-group" }, [
-                          createVNode("label", { for: "password" }, toDisplayString(unref(t)("profile.current_password")) + " *", 1),
+                          createVNode("label", { for: "password" }, toDisplayString(unref(t3)("profile.current_password")) + " *", 1),
                           withDirectives(createVNode("input", {
                             id: "password",
                             "onUpdate:modelValue": ($event) => unref(form).password = $event,
@@ -14640,7 +14640,7 @@ const _sfc_main$5 = {
                             class: "portal-panel__action"
                           }, {
                             default: withCtx(() => [
-                              createTextVNode(toDisplayString(unref(t)("profile.back_to_profile")), 1)
+                              createTextVNode(toDisplayString(unref(t3)("profile.back_to_profile")), 1)
                             ]),
                             _: 1
                           }, 8, ["href"]),
@@ -14648,7 +14648,7 @@ const _sfc_main$5 = {
                             type: "submit",
                             class: "thm-btn",
                             disabled: unref(form).processing
-                          }, toDisplayString(unref(t)("profile.confirm_password_button")), 9, ["disabled"])
+                          }, toDisplayString(unref(t3)("profile.confirm_password_button")), 9, ["disabled"])
                         ])
                       ], 32)
                     ])
@@ -14686,46 +14686,46 @@ const _sfc_main$4 = {
   setup(__props) {
     const props = __props;
     const page = usePage();
-    const { t } = usePortalTranslations();
+    const { t: t3 } = usePortalTranslations();
     const locale = computed(() => page.props.locale);
     const auth = computed(() => page.props.auth);
     const metaTitle = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.title) || t("pages.dashboard_title");
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t3("pages.dashboard_title");
     });
     const metaDescription = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.dashboard_description");
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t3("pages.dashboard_description");
     });
     const welcomeSubtitle = computed(() => {
       var _a;
-      return `${t("dashboard.welcome", { name: (_a = auth.value) == null ? void 0 : _a.name })} — ${t("dashboard.subtitle")}`;
+      return `${t3("dashboard.welcome", { name: (_a = auth.value) == null ? void 0 : _a.name })} — ${t3("dashboard.subtitle")}`;
     });
     const formatMoney = (amount, currency) => `${Number(amount).toFixed(2)} ${currency || ""}`.trim();
     const markAllRead = () => router.post(route("portal.notifications.read-all"));
     const openNotification = (notification) => router.post(route("portal.notifications.read", notification.id));
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(_sfc_main$l, mergeProps({
-        title: unref(t)("menu.my_dashboard"),
+        title: unref(t3)("menu.my_dashboard"),
         subtitle: welcomeSubtitle.value,
         active: "dashboard",
-        breadcrumbs: [{ label: unref(t)("menu.my_dashboard") }],
+        breadcrumbs: [{ label: unref(t3)("menu.my_dashboard") }],
         "meta-title": metaTitle.value,
         "meta-description": metaDescription.value
       }, _attrs), {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="portal-stats"${_scopeId}><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-briefcase"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t)("dashboard.total_projects"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.total_projects)}</span></div><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-spinner"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t)("dashboard.active_projects"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.active_projects)}</span></div><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-bell"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t)("menu.notifications"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.unread_notifications)}</span></div></div><div class="row g-4"${_scopeId}><div class="col-lg-7"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("dashboard.recent_projects"))}</h2>`);
+            _push2(`<div class="portal-stats"${_scopeId}><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-briefcase"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t3)("dashboard.total_projects"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.total_projects)}</span></div><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-spinner"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t3)("dashboard.active_projects"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.active_projects)}</span></div><div class="portal-stat"${_scopeId}><span class="portal-stat__icon"${_scopeId}><i class="fas fa-bell"${_scopeId}></i></span><span class="portal-stat__label"${_scopeId}>${ssrInterpolate(unref(t3)("menu.notifications"))}</span><span class="portal-stat__value"${_scopeId}>${ssrInterpolate(__props.stats.unread_notifications)}</span></div></div><div class="row g-4"${_scopeId}><div class="col-lg-7"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("dashboard.recent_projects"))}</h2>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("portal.projects.index"),
               class: "portal-panel__action"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(unref(t)("dashboard.view_all_projects"))} <i class="${ssrRenderClass(`fas fa-arrow-${locale.value === "ar" ? "left" : "right"}`)}"${_scopeId2}></i>`);
+                  _push3(`${ssrInterpolate(unref(t3)("dashboard.view_all_projects"))} <i class="${ssrRenderClass(`fas fa-arrow-${locale.value === "ar" ? "left" : "right"}`)}"${_scopeId2}></i>`);
                 } else {
                   return [
-                    createTextVNode(toDisplayString(unref(t)("dashboard.view_all_projects")) + " ", 1),
+                    createTextVNode(toDisplayString(unref(t3)("dashboard.view_all_projects")) + " ", 1),
                     createVNode("i", {
                       class: `fas fa-arrow-${locale.value === "ar" ? "left" : "right"}`
                     }, null, 2)
@@ -14736,9 +14736,9 @@ const _sfc_main$4 = {
             }, _parent2, _scopeId));
             _push2(`</div><div class="portal-panel__body"${_scopeId}>`);
             if (__props.projects.length === 0) {
-              _push2(`<div class="portal-empty"${_scopeId}><i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t)("dashboard.no_projects"))}</div>`);
+              _push2(`<div class="portal-empty"${_scopeId}><i class="fas fa-folder-open"${_scopeId}></i> ${ssrInterpolate(unref(t3)("dashboard.no_projects"))}</div>`);
             } else {
-              _push2(`<div class="portal-table-wrap"${_scopeId}><table class="portal-table"${_scopeId}><thead${_scopeId}><tr${_scopeId}><th${_scopeId}>${ssrInterpolate(unref(t)("fields.status"))}</th><th${_scopeId}>${ssrInterpolate(unref(t)("projects.title"))}</th><th${_scopeId}>${ssrInterpolate(unref(t)("fields.remaining"))}</th><th${_scopeId}></th></tr></thead><tbody${_scopeId}><!--[-->`);
+              _push2(`<div class="portal-table-wrap"${_scopeId}><table class="portal-table"${_scopeId}><thead${_scopeId}><tr${_scopeId}><th${_scopeId}>${ssrInterpolate(unref(t3)("fields.status"))}</th><th${_scopeId}>${ssrInterpolate(unref(t3)("projects.title"))}</th><th${_scopeId}>${ssrInterpolate(unref(t3)("fields.remaining"))}</th><th${_scopeId}></th></tr></thead><tbody${_scopeId}><!--[-->`);
               ssrRenderList(__props.projects, (project) => {
                 var _a, _b, _c;
                 _push2(`<tr${_scopeId}><td${_scopeId}><span class="portal-badge" style="${ssrRenderStyle({ backgroundColor: (((_a = project.status) == null ? void 0 : _a.color_code) || "#6c757d") + "33", color: ((_b = project.status) == null ? void 0 : _b.color_code) || "#C5C8CD" })}"${_scopeId}>${ssrInterpolate((_c = project.status) == null ? void 0 : _c.name)}</span></td><td${_scopeId}>${ssrInterpolate(project.title)}</td><td${_scopeId}>${ssrInterpolate(formatMoney(project.collection.remaining, project.collection.currency))}</td><td class="text-end"${_scopeId}>`);
@@ -14747,12 +14747,12 @@ const _sfc_main$4 = {
                   class: "thm-btn",
                   style: { "padding": "10px 20px", "font-size": "14px" }
                 }, {
-                  default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+                  default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`${ssrInterpolate(unref(t)("projects.view_details"))}`);
+                      _push3(`${ssrInterpolate(unref(t3)("projects.view_details"))}`);
                     } else {
                       return [
-                        createTextVNode(toDisplayString(unref(t)("projects.view_details")), 1)
+                        createTextVNode(toDisplayString(unref(t3)("projects.view_details")), 1)
                       ];
                     }
                   }),
@@ -14762,15 +14762,15 @@ const _sfc_main$4 = {
               });
               _push2(`<!--]--></tbody></table></div>`);
             }
-            _push2(`</div></div></div><div class="col-lg-5"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("dashboard.recent_notifications"))}</h2>`);
+            _push2(`</div></div></div><div class="col-lg-5"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("dashboard.recent_notifications"))}</h2>`);
             if (__props.notifications.length) {
-              _push2(`<button type="button" class="portal-link-muted"${_scopeId}>${ssrInterpolate(unref(t)("notifications.mark_all_read"))}</button>`);
+              _push2(`<button type="button" class="portal-link-muted"${_scopeId}>${ssrInterpolate(unref(t3)("notifications.mark_all_read"))}</button>`);
             } else {
               _push2(`<!---->`);
             }
             _push2(`</div><div class="portal-panel__body"${_scopeId}>`);
             if (__props.notifications.length === 0) {
-              _push2(`<div class="portal-empty"${_scopeId}><i class="fas fa-bell-slash"${_scopeId}></i> ${ssrInterpolate(unref(t)("dashboard.no_notifications"))}</div>`);
+              _push2(`<div class="portal-empty"${_scopeId}><i class="fas fa-bell-slash"${_scopeId}></i> ${ssrInterpolate(unref(t3)("dashboard.no_notifications"))}</div>`);
             } else {
               _push2(`<div class="portal-notifications"${_scopeId}><!--[-->`);
               ssrRenderList(__props.notifications, (notification) => {
@@ -14786,21 +14786,21 @@ const _sfc_main$4 = {
                   createVNode("span", { class: "portal-stat__icon" }, [
                     createVNode("i", { class: "fas fa-briefcase" })
                   ]),
-                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t)("dashboard.total_projects")), 1),
+                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t3)("dashboard.total_projects")), 1),
                   createVNode("span", { class: "portal-stat__value" }, toDisplayString(__props.stats.total_projects), 1)
                 ]),
                 createVNode("div", { class: "portal-stat" }, [
                   createVNode("span", { class: "portal-stat__icon" }, [
                     createVNode("i", { class: "fas fa-spinner" })
                   ]),
-                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t)("dashboard.active_projects")), 1),
+                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t3)("dashboard.active_projects")), 1),
                   createVNode("span", { class: "portal-stat__value" }, toDisplayString(__props.stats.active_projects), 1)
                 ]),
                 createVNode("div", { class: "portal-stat" }, [
                   createVNode("span", { class: "portal-stat__icon" }, [
                     createVNode("i", { class: "fas fa-bell" })
                   ]),
-                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t)("menu.notifications")), 1),
+                  createVNode("span", { class: "portal-stat__label" }, toDisplayString(unref(t3)("menu.notifications")), 1),
                   createVNode("span", { class: "portal-stat__value" }, toDisplayString(__props.stats.unread_notifications), 1)
                 ])
               ]),
@@ -14808,13 +14808,13 @@ const _sfc_main$4 = {
                 createVNode("div", { class: "col-lg-7" }, [
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("dashboard.recent_projects")), 1),
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("dashboard.recent_projects")), 1),
                       createVNode(unref(Link), {
                         href: _ctx.route("portal.projects.index"),
                         class: "portal-panel__action"
                       }, {
                         default: withCtx(() => [
-                          createTextVNode(toDisplayString(unref(t)("dashboard.view_all_projects")) + " ", 1),
+                          createTextVNode(toDisplayString(unref(t3)("dashboard.view_all_projects")) + " ", 1),
                           createVNode("i", {
                             class: `fas fa-arrow-${locale.value === "ar" ? "left" : "right"}`
                           }, null, 2)
@@ -14828,7 +14828,7 @@ const _sfc_main$4 = {
                         class: "portal-empty"
                       }, [
                         createVNode("i", { class: "fas fa-folder-open" }),
-                        createTextVNode(" " + toDisplayString(unref(t)("dashboard.no_projects")), 1)
+                        createTextVNode(" " + toDisplayString(unref(t3)("dashboard.no_projects")), 1)
                       ])) : (openBlock(), createBlock("div", {
                         key: 1,
                         class: "portal-table-wrap"
@@ -14836,9 +14836,9 @@ const _sfc_main$4 = {
                         createVNode("table", { class: "portal-table" }, [
                           createVNode("thead", null, [
                             createVNode("tr", null, [
-                              createVNode("th", null, toDisplayString(unref(t)("fields.status")), 1),
-                              createVNode("th", null, toDisplayString(unref(t)("projects.title")), 1),
-                              createVNode("th", null, toDisplayString(unref(t)("fields.remaining")), 1),
+                              createVNode("th", null, toDisplayString(unref(t3)("fields.status")), 1),
+                              createVNode("th", null, toDisplayString(unref(t3)("projects.title")), 1),
+                              createVNode("th", null, toDisplayString(unref(t3)("fields.remaining")), 1),
                               createVNode("th")
                             ])
                           ]),
@@ -14863,7 +14863,7 @@ const _sfc_main$4 = {
                                     style: { "padding": "10px 20px", "font-size": "14px" }
                                   }, {
                                     default: withCtx(() => [
-                                      createTextVNode(toDisplayString(unref(t)("projects.view_details")), 1)
+                                      createTextVNode(toDisplayString(unref(t3)("projects.view_details")), 1)
                                     ]),
                                     _: 1
                                   }, 8, ["href"])
@@ -14879,13 +14879,13 @@ const _sfc_main$4 = {
                 createVNode("div", { class: "col-lg-5" }, [
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("dashboard.recent_notifications")), 1),
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("dashboard.recent_notifications")), 1),
                       __props.notifications.length ? (openBlock(), createBlock("button", {
                         key: 0,
                         type: "button",
                         class: "portal-link-muted",
                         onClick: markAllRead
-                      }, toDisplayString(unref(t)("notifications.mark_all_read")), 1)) : createCommentVNode("", true)
+                      }, toDisplayString(unref(t3)("notifications.mark_all_read")), 1)) : createCommentVNode("", true)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       __props.notifications.length === 0 ? (openBlock(), createBlock("div", {
@@ -14893,7 +14893,7 @@ const _sfc_main$4 = {
                         class: "portal-empty"
                       }, [
                         createVNode("i", { class: "fas fa-bell-slash" }),
-                        createTextVNode(" " + toDisplayString(unref(t)("dashboard.no_notifications")), 1)
+                        createTextVNode(" " + toDisplayString(unref(t3)("dashboard.no_notifications")), 1)
                       ])) : (openBlock(), createBlock("div", {
                         key: 1,
                         class: "portal-notifications"
@@ -14949,15 +14949,15 @@ const _sfc_main$3 = {
   setup(__props) {
     const props = __props;
     const page = usePage();
-    const { t } = usePortalTranslations();
+    const { t: t3 } = usePortalTranslations();
     const flash = computed(() => page.props.flash || {});
     const metaTitle = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.title) || t("pages.profile_title");
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t3("pages.profile_title");
     });
     const metaDescription = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.profile_description");
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t3("pages.profile_description");
     });
     const avatarPreview = ref(null);
     const twoFactorLoading = ref(false);
@@ -15018,7 +15018,7 @@ const _sfc_main$3 = {
         const data = await response.json();
         qrSvg.value = data.svg || "";
       } catch (error) {
-        twoFactorError.value = t("profile.two_factor_error");
+        twoFactorError.value = t3("profile.two_factor_error");
       } finally {
         twoFactorLoading.value = false;
       }
@@ -15037,7 +15037,7 @@ const _sfc_main$3 = {
         const data = await response.json();
         recoveryCodes.value = data.recoveryCodes || [];
       } catch (error) {
-        twoFactorError.value = t("profile.two_factor_error");
+        twoFactorError.value = t3("profile.two_factor_error");
       } finally {
         twoFactorLoading.value = false;
       }
@@ -15051,12 +15051,12 @@ const _sfc_main$3 = {
           twoFactorLoading.value = false;
         },
         onError: () => {
-          twoFactorError.value = t("profile.two_factor_error");
+          twoFactorError.value = t3("profile.two_factor_error");
         }
       });
     };
     const disableTwoFactor = () => {
-      if (!window.confirm(t("profile.disable_confirm"))) {
+      if (!window.confirm(t3("profile.disable_confirm"))) {
         return;
       }
       twoFactorLoading.value = true;
@@ -15070,7 +15070,7 @@ const _sfc_main$3 = {
           twoFactorCode.value = "";
         },
         onError: () => {
-          twoFactorError.value = t("profile.two_factor_error");
+          twoFactorError.value = t3("profile.two_factor_error");
         }
       });
     };
@@ -15087,7 +15087,7 @@ const _sfc_main$3 = {
           twoFactorLoading.value = false;
         },
         onError: () => {
-          twoFactorError.value = t("profile.confirm_code_error");
+          twoFactorError.value = t3("profile.confirm_code_error");
         }
       });
     };
@@ -15096,26 +15096,26 @@ const _sfc_main$3 = {
     }
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(_sfc_main$l, mergeProps({
-        title: unref(t)("profile.title"),
-        subtitle: unref(t)("profile.subtitle"),
+        title: unref(t3)("profile.title"),
+        subtitle: unref(t3)("profile.subtitle"),
         active: "profile",
         breadcrumbs: [
-          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
-          { label: unref(t)("profile.title") }
+          { label: unref(t3)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t3)("profile.title") }
         ],
         "meta-title": metaTitle.value,
         "meta-description": metaDescription.value
       }, _attrs), {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             if (flash.value.success) {
               _push2(`<div class="portal-alert portal-alert--success" role="alert"${_scopeId}><i class="fas fa-check-circle"${_scopeId}></i> ${ssrInterpolate(flash.value.success)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="row g-4"${_scopeId}><div class="col-lg-6"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("profile.information"))}</h2></div><div class="portal-panel__body"${_scopeId}><form class="portal-profile-form"${_scopeId}><div class="portal-profile-avatar"${_scopeId}><div class="portal-profile-avatar__preview"${_scopeId}><img${ssrRenderAttr("src", avatarPreview.value || __props.user.avatar)}${ssrRenderAttr("alt", unref(t)("profile.avatar"))}${_scopeId}></div><div class="portal-profile-avatar__actions"${_scopeId}><label class="portal-profile-avatar__upload thm-btn thm-btn--sm"${_scopeId}><i class="fas fa-camera"${_scopeId}></i> ${ssrInterpolate(unref(t)("profile.change_photo"))} <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" class="d-none"${_scopeId}></label>`);
+            _push2(`<div class="row g-4"${_scopeId}><div class="col-lg-6"${_scopeId}><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("profile.information"))}</h2></div><div class="portal-panel__body"${_scopeId}><form class="portal-profile-form"${_scopeId}><div class="portal-profile-avatar"${_scopeId}><div class="portal-profile-avatar__preview"${_scopeId}><img${ssrRenderAttr("src", avatarPreview.value || __props.user.avatar)}${ssrRenderAttr("alt", unref(t3)("profile.avatar"))}${_scopeId}></div><div class="portal-profile-avatar__actions"${_scopeId}><label class="portal-profile-avatar__upload thm-btn thm-btn--sm"${_scopeId}><i class="fas fa-camera"${_scopeId}></i> ${ssrInterpolate(unref(t3)("profile.change_photo"))} <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" class="d-none"${_scopeId}></label>`);
             if (avatarPreview.value) {
-              _push2(`<button type="button" class="portal-panel__action"${_scopeId}>${ssrInterpolate(unref(t)("profile.remove_photo"))}</button>`);
+              _push2(`<button type="button" class="portal-panel__action"${_scopeId}>${ssrInterpolate(unref(t3)("profile.remove_photo"))}</button>`);
             } else {
               _push2(`<!---->`);
             }
@@ -15125,48 +15125,48 @@ const _sfc_main$3 = {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="profile-name"${_scopeId}>${ssrInterpolate(unref(t)("profile.name"))} *</label><input id="profile-name"${ssrRenderAttr("value", unref(profileForm).name)} type="text" class="${ssrRenderClass([{ "portal-input--error": unref(profileForm).errors.name }, "portal-input"])}" required${_scopeId}>`);
+            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="profile-name"${_scopeId}>${ssrInterpolate(unref(t3)("profile.name"))} *</label><input id="profile-name"${ssrRenderAttr("value", unref(profileForm).name)} type="text" class="${ssrRenderClass([{ "portal-input--error": unref(profileForm).errors.name }, "portal-input"])}" required${_scopeId}>`);
             if (unref(profileForm).errors.name) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(profileForm).errors.name)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="profile-email"${_scopeId}>${ssrInterpolate(unref(t)("profile.email"))} *</label><input id="profile-email"${ssrRenderAttr("value", unref(profileForm).email)} type="email" class="${ssrRenderClass([{ "portal-input--error": unref(profileForm).errors.email }, "portal-input"])}" required${_scopeId}>`);
+            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="profile-email"${_scopeId}>${ssrInterpolate(unref(t3)("profile.email"))} *</label><input id="profile-email"${ssrRenderAttr("value", unref(profileForm).email)} type="email" class="${ssrRenderClass([{ "portal-input--error": unref(profileForm).errors.email }, "portal-input"])}" required${_scopeId}>`);
             if (unref(profileForm).errors.email) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(profileForm).errors.email)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="profile-mobile"${_scopeId}>${ssrInterpolate(unref(t)("profile.mobile"))}</label><input id="profile-mobile"${ssrRenderAttr("value", unref(profileForm).mobile)} type="text" class="${ssrRenderClass([{ "portal-input--error": unref(profileForm).errors.mobile }, "portal-input"])}"${_scopeId}>`);
+            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="profile-mobile"${_scopeId}>${ssrInterpolate(unref(t3)("profile.mobile"))}</label><input id="profile-mobile"${ssrRenderAttr("value", unref(profileForm).mobile)} type="text" class="${ssrRenderClass([{ "portal-input--error": unref(profileForm).errors.mobile }, "portal-input"])}"${_scopeId}>`);
             if (unref(profileForm).errors.mobile) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(profileForm).errors.mobile)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-profile-form__actions"${_scopeId}><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(profileForm).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t)("profile.save_changes"))}</button></div></form></div></div></div><div class="col-lg-6"${_scopeId}><div class="portal-panel mb-4"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("profile.change_password"))}</h2></div><div class="portal-panel__body"${_scopeId}><form class="portal-profile-form"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="current-password"${_scopeId}>${ssrInterpolate(unref(t)("profile.current_password"))} *</label><input id="current-password"${ssrRenderAttr("value", unref(passwordForm).current_password)} type="password" class="${ssrRenderClass([{ "portal-input--error": unref(passwordForm).errors.current_password }, "portal-input"])}" required autocomplete="current-password"${_scopeId}>`);
+            _push2(`</div><div class="portal-profile-form__actions"${_scopeId}><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(profileForm).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t3)("profile.save_changes"))}</button></div></form></div></div></div><div class="col-lg-6"${_scopeId}><div class="portal-panel mb-4"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("profile.change_password"))}</h2></div><div class="portal-panel__body"${_scopeId}><form class="portal-profile-form"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="current-password"${_scopeId}>${ssrInterpolate(unref(t3)("profile.current_password"))} *</label><input id="current-password"${ssrRenderAttr("value", unref(passwordForm).current_password)} type="password" class="${ssrRenderClass([{ "portal-input--error": unref(passwordForm).errors.current_password }, "portal-input"])}" required autocomplete="current-password"${_scopeId}>`);
             if (unref(passwordForm).errors.current_password) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(passwordForm).errors.current_password)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="new-password"${_scopeId}>${ssrInterpolate(unref(t)("profile.new_password"))} *</label><input id="new-password"${ssrRenderAttr("value", unref(passwordForm).password)} type="password" class="${ssrRenderClass([{ "portal-input--error": unref(passwordForm).errors.password }, "portal-input"])}" required autocomplete="new-password"${_scopeId}>`);
+            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="new-password"${_scopeId}>${ssrInterpolate(unref(t3)("profile.new_password"))} *</label><input id="new-password"${ssrRenderAttr("value", unref(passwordForm).password)} type="password" class="${ssrRenderClass([{ "portal-input--error": unref(passwordForm).errors.password }, "portal-input"])}" required autocomplete="new-password"${_scopeId}>`);
             if (unref(passwordForm).errors.password) {
               _push2(`<p class="portal-form-error"${_scopeId}>${ssrInterpolate(unref(passwordForm).errors.password)}</p>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="confirm-password"${_scopeId}>${ssrInterpolate(unref(t)("profile.confirm_password"))} *</label><input id="confirm-password"${ssrRenderAttr("value", unref(passwordForm).password_confirmation)} type="password" class="portal-input" required autocomplete="new-password"${_scopeId}></div><div class="portal-profile-form__actions"${_scopeId}><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(passwordForm).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t)("profile.update_password"))}</button></div></form></div></div><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t)("profile.two_factor"))}</h2></div><div class="portal-panel__body"${_scopeId}><p class="portal-profile-2fa__text"${_scopeId}>${ssrInterpolate(unref(t)("profile.two_factor_description"))}</p>`);
+            _push2(`</div><div class="portal-form-group"${_scopeId}><label for="confirm-password"${_scopeId}>${ssrInterpolate(unref(t3)("profile.confirm_password"))} *</label><input id="confirm-password"${ssrRenderAttr("value", unref(passwordForm).password_confirmation)} type="password" class="portal-input" required autocomplete="new-password"${_scopeId}></div><div class="portal-profile-form__actions"${_scopeId}><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(passwordForm).processing) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t3)("profile.update_password"))}</button></div></form></div></div><div class="portal-panel"${_scopeId}><div class="portal-panel__header"${_scopeId}><h2 class="portal-panel__title"${_scopeId}>${ssrInterpolate(unref(t3)("profile.two_factor"))}</h2></div><div class="portal-panel__body"${_scopeId}><p class="portal-profile-2fa__text"${_scopeId}>${ssrInterpolate(unref(t3)("profile.two_factor_description"))}</p>`);
             if (__props.twoFactorEnabled) {
-              _push2(`<div class="portal-profile-2fa__status"${_scopeId}><span class="portal-badge portal-badge--paid"${_scopeId}>${ssrInterpolate(unref(t)("profile.two_factor_enabled"))}</span></div>`);
+              _push2(`<div class="portal-profile-2fa__status"${_scopeId}><span class="portal-badge portal-badge--paid"${_scopeId}>${ssrInterpolate(unref(t3)("profile.two_factor_enabled"))}</span></div>`);
             } else if (__props.twoFactorPending) {
-              _push2(`<div class="portal-profile-2fa__status"${_scopeId}><span class="portal-badge portal-badge--invoice"${_scopeId}>${ssrInterpolate(unref(t)("profile.two_factor_pending"))}</span></div>`);
+              _push2(`<div class="portal-profile-2fa__status"${_scopeId}><span class="portal-badge portal-badge--invoice"${_scopeId}>${ssrInterpolate(unref(t3)("profile.two_factor_pending"))}</span></div>`);
             } else {
               _push2(`<!---->`);
             }
             if (__props.twoFactorEnabled || __props.twoFactorPending) {
-              _push2(`<div class="portal-profile-2fa__tools"${_scopeId}><button type="button" class="portal-panel__action"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}><i class="fas fa-qrcode"${_scopeId}></i> ${ssrInterpolate(unref(t)("profile.show_qr"))}</button>`);
+              _push2(`<div class="portal-profile-2fa__tools"${_scopeId}><button type="button" class="portal-panel__action"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}><i class="fas fa-qrcode"${_scopeId}></i> ${ssrInterpolate(unref(t3)("profile.show_qr"))}</button>`);
               if (__props.twoFactorEnabled) {
-                _push2(`<button type="button" class="portal-panel__action"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}><i class="fas fa-key"${_scopeId}></i> ${ssrInterpolate(unref(t)("profile.show_recovery_codes"))}</button>`);
+                _push2(`<button type="button" class="portal-panel__action"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}><i class="fas fa-key"${_scopeId}></i> ${ssrInterpolate(unref(t3)("profile.show_recovery_codes"))}</button>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -15180,7 +15180,7 @@ const _sfc_main$3 = {
               _push2(`<!---->`);
             }
             if (recoveryCodes.value.length) {
-              _push2(`<div class="portal-profile-2fa__codes"${_scopeId}><p class="portal-form-hint"${_scopeId}>${ssrInterpolate(unref(t)("profile.recovery_codes_hint"))}</p><ul${_scopeId}><!--[-->`);
+              _push2(`<div class="portal-profile-2fa__codes"${_scopeId}><p class="portal-form-hint"${_scopeId}>${ssrInterpolate(unref(t3)("profile.recovery_codes_hint"))}</p><ul${_scopeId}><!--[-->`);
               ssrRenderList(recoveryCodes.value, (code) => {
                 _push2(`<li${_scopeId}><code${_scopeId}>${ssrInterpolate(code)}</code></li>`);
               });
@@ -15189,7 +15189,7 @@ const _sfc_main$3 = {
               _push2(`<!---->`);
             }
             if (__props.twoFactorPending) {
-              _push2(`<form class="portal-profile-2fa__confirm"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="two-factor-code"${_scopeId}>${ssrInterpolate(unref(t)("profile.confirm_code"))} *</label><input id="two-factor-code"${ssrRenderAttr("value", twoFactorCode.value)} type="text" inputmode="numeric" maxlength="6" class="portal-input"${ssrRenderAttr("placeholder", unref(t)("profile.confirm_code_placeholder"))} required${_scopeId}></div><button type="submit" class="thm-btn thm-btn--sm"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t)("profile.confirm_two_factor"))}</button></form>`);
+              _push2(`<form class="portal-profile-2fa__confirm"${_scopeId}><div class="portal-form-group"${_scopeId}><label for="two-factor-code"${_scopeId}>${ssrInterpolate(unref(t3)("profile.confirm_code"))} *</label><input id="two-factor-code"${ssrRenderAttr("value", twoFactorCode.value)} type="text" inputmode="numeric" maxlength="6" class="portal-input"${ssrRenderAttr("placeholder", unref(t3)("profile.confirm_code_placeholder"))} required${_scopeId}></div><button type="submit" class="thm-btn thm-btn--sm"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t3)("profile.confirm_two_factor"))}</button></form>`);
             } else {
               _push2(`<!---->`);
             }
@@ -15200,9 +15200,9 @@ const _sfc_main$3 = {
             }
             _push2(`<div class="portal-profile-2fa__actions"${_scopeId}>`);
             if (__props.twoFactorEnabled || __props.twoFactorPending) {
-              _push2(`<button type="button" class="portal-profile-2fa__disable"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t)("profile.disable_two_factor"))}</button>`);
+              _push2(`<button type="button" class="portal-profile-2fa__disable"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t3)("profile.disable_two_factor"))}</button>`);
             } else {
-              _push2(`<button type="button" class="thm-btn"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t)("profile.enable_two_factor"))}</button>`);
+              _push2(`<button type="button" class="thm-btn"${ssrIncludeBooleanAttr(twoFactorLoading.value) ? " disabled" : ""}${_scopeId}>${ssrInterpolate(unref(t3)("profile.enable_two_factor"))}</button>`);
             }
             _push2(`</div></div></div></div></div>`);
           } else {
@@ -15219,7 +15219,7 @@ const _sfc_main$3 = {
                 createVNode("div", { class: "col-lg-6" }, [
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("profile.information")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("profile.information")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       createVNode("form", {
@@ -15230,13 +15230,13 @@ const _sfc_main$3 = {
                           createVNode("div", { class: "portal-profile-avatar__preview" }, [
                             createVNode("img", {
                               src: avatarPreview.value || __props.user.avatar,
-                              alt: unref(t)("profile.avatar")
+                              alt: unref(t3)("profile.avatar")
                             }, null, 8, ["src", "alt"])
                           ]),
                           createVNode("div", { class: "portal-profile-avatar__actions" }, [
                             createVNode("label", { class: "portal-profile-avatar__upload thm-btn thm-btn--sm" }, [
                               createVNode("i", { class: "fas fa-camera" }),
-                              createTextVNode(" " + toDisplayString(unref(t)("profile.change_photo")) + " ", 1),
+                              createTextVNode(" " + toDisplayString(unref(t3)("profile.change_photo")) + " ", 1),
                               createVNode("input", {
                                 type: "file",
                                 accept: "image/jpeg,image/png,image/jpg,image/webp",
@@ -15249,7 +15249,7 @@ const _sfc_main$3 = {
                               type: "button",
                               class: "portal-panel__action",
                               onClick: clearAvatar
-                            }, toDisplayString(unref(t)("profile.remove_photo")), 1)) : createCommentVNode("", true)
+                            }, toDisplayString(unref(t3)("profile.remove_photo")), 1)) : createCommentVNode("", true)
                           ]),
                           unref(profileForm).errors.avatar ? (openBlock(), createBlock("p", {
                             key: 0,
@@ -15257,7 +15257,7 @@ const _sfc_main$3 = {
                           }, toDisplayString(unref(profileForm).errors.avatar), 1)) : createCommentVNode("", true)
                         ]),
                         createVNode("div", { class: "portal-form-group" }, [
-                          createVNode("label", { for: "profile-name" }, toDisplayString(unref(t)("profile.name")) + " *", 1),
+                          createVNode("label", { for: "profile-name" }, toDisplayString(unref(t3)("profile.name")) + " *", 1),
                           withDirectives(createVNode("input", {
                             id: "profile-name",
                             "onUpdate:modelValue": ($event) => unref(profileForm).name = $event,
@@ -15273,7 +15273,7 @@ const _sfc_main$3 = {
                           }, toDisplayString(unref(profileForm).errors.name), 1)) : createCommentVNode("", true)
                         ]),
                         createVNode("div", { class: "portal-form-group" }, [
-                          createVNode("label", { for: "profile-email" }, toDisplayString(unref(t)("profile.email")) + " *", 1),
+                          createVNode("label", { for: "profile-email" }, toDisplayString(unref(t3)("profile.email")) + " *", 1),
                           withDirectives(createVNode("input", {
                             id: "profile-email",
                             "onUpdate:modelValue": ($event) => unref(profileForm).email = $event,
@@ -15289,7 +15289,7 @@ const _sfc_main$3 = {
                           }, toDisplayString(unref(profileForm).errors.email), 1)) : createCommentVNode("", true)
                         ]),
                         createVNode("div", { class: "portal-form-group" }, [
-                          createVNode("label", { for: "profile-mobile" }, toDisplayString(unref(t)("profile.mobile")), 1),
+                          createVNode("label", { for: "profile-mobile" }, toDisplayString(unref(t3)("profile.mobile")), 1),
                           withDirectives(createVNode("input", {
                             id: "profile-mobile",
                             "onUpdate:modelValue": ($event) => unref(profileForm).mobile = $event,
@@ -15308,7 +15308,7 @@ const _sfc_main$3 = {
                             type: "submit",
                             class: "thm-btn",
                             disabled: unref(profileForm).processing
-                          }, toDisplayString(unref(t)("profile.save_changes")), 9, ["disabled"])
+                          }, toDisplayString(unref(t3)("profile.save_changes")), 9, ["disabled"])
                         ])
                       ], 32)
                     ])
@@ -15317,7 +15317,7 @@ const _sfc_main$3 = {
                 createVNode("div", { class: "col-lg-6" }, [
                   createVNode("div", { class: "portal-panel mb-4" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("profile.change_password")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("profile.change_password")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
                       createVNode("form", {
@@ -15325,7 +15325,7 @@ const _sfc_main$3 = {
                         onSubmit: withModifiers(submitPassword, ["prevent"])
                       }, [
                         createVNode("div", { class: "portal-form-group" }, [
-                          createVNode("label", { for: "current-password" }, toDisplayString(unref(t)("profile.current_password")) + " *", 1),
+                          createVNode("label", { for: "current-password" }, toDisplayString(unref(t3)("profile.current_password")) + " *", 1),
                           withDirectives(createVNode("input", {
                             id: "current-password",
                             "onUpdate:modelValue": ($event) => unref(passwordForm).current_password = $event,
@@ -15342,7 +15342,7 @@ const _sfc_main$3 = {
                           }, toDisplayString(unref(passwordForm).errors.current_password), 1)) : createCommentVNode("", true)
                         ]),
                         createVNode("div", { class: "portal-form-group" }, [
-                          createVNode("label", { for: "new-password" }, toDisplayString(unref(t)("profile.new_password")) + " *", 1),
+                          createVNode("label", { for: "new-password" }, toDisplayString(unref(t3)("profile.new_password")) + " *", 1),
                           withDirectives(createVNode("input", {
                             id: "new-password",
                             "onUpdate:modelValue": ($event) => unref(passwordForm).password = $event,
@@ -15359,7 +15359,7 @@ const _sfc_main$3 = {
                           }, toDisplayString(unref(passwordForm).errors.password), 1)) : createCommentVNode("", true)
                         ]),
                         createVNode("div", { class: "portal-form-group" }, [
-                          createVNode("label", { for: "confirm-password" }, toDisplayString(unref(t)("profile.confirm_password")) + " *", 1),
+                          createVNode("label", { for: "confirm-password" }, toDisplayString(unref(t3)("profile.confirm_password")) + " *", 1),
                           withDirectives(createVNode("input", {
                             id: "confirm-password",
                             "onUpdate:modelValue": ($event) => unref(passwordForm).password_confirmation = $event,
@@ -15376,27 +15376,27 @@ const _sfc_main$3 = {
                             type: "submit",
                             class: "thm-btn",
                             disabled: unref(passwordForm).processing
-                          }, toDisplayString(unref(t)("profile.update_password")), 9, ["disabled"])
+                          }, toDisplayString(unref(t3)("profile.update_password")), 9, ["disabled"])
                         ])
                       ], 32)
                     ])
                   ]),
                   createVNode("div", { class: "portal-panel" }, [
                     createVNode("div", { class: "portal-panel__header" }, [
-                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t)("profile.two_factor")), 1)
+                      createVNode("h2", { class: "portal-panel__title" }, toDisplayString(unref(t3)("profile.two_factor")), 1)
                     ]),
                     createVNode("div", { class: "portal-panel__body" }, [
-                      createVNode("p", { class: "portal-profile-2fa__text" }, toDisplayString(unref(t)("profile.two_factor_description")), 1),
+                      createVNode("p", { class: "portal-profile-2fa__text" }, toDisplayString(unref(t3)("profile.two_factor_description")), 1),
                       __props.twoFactorEnabled ? (openBlock(), createBlock("div", {
                         key: 0,
                         class: "portal-profile-2fa__status"
                       }, [
-                        createVNode("span", { class: "portal-badge portal-badge--paid" }, toDisplayString(unref(t)("profile.two_factor_enabled")), 1)
+                        createVNode("span", { class: "portal-badge portal-badge--paid" }, toDisplayString(unref(t3)("profile.two_factor_enabled")), 1)
                       ])) : __props.twoFactorPending ? (openBlock(), createBlock("div", {
                         key: 1,
                         class: "portal-profile-2fa__status"
                       }, [
-                        createVNode("span", { class: "portal-badge portal-badge--invoice" }, toDisplayString(unref(t)("profile.two_factor_pending")), 1)
+                        createVNode("span", { class: "portal-badge portal-badge--invoice" }, toDisplayString(unref(t3)("profile.two_factor_pending")), 1)
                       ])) : createCommentVNode("", true),
                       __props.twoFactorEnabled || __props.twoFactorPending ? (openBlock(), createBlock("div", {
                         key: 2,
@@ -15409,7 +15409,7 @@ const _sfc_main$3 = {
                           onClick: loadQrCode
                         }, [
                           createVNode("i", { class: "fas fa-qrcode" }),
-                          createTextVNode(" " + toDisplayString(unref(t)("profile.show_qr")), 1)
+                          createTextVNode(" " + toDisplayString(unref(t3)("profile.show_qr")), 1)
                         ], 8, ["disabled"]),
                         __props.twoFactorEnabled ? (openBlock(), createBlock("button", {
                           key: 0,
@@ -15419,7 +15419,7 @@ const _sfc_main$3 = {
                           onClick: loadRecoveryCodes
                         }, [
                           createVNode("i", { class: "fas fa-key" }),
-                          createTextVNode(" " + toDisplayString(unref(t)("profile.show_recovery_codes")), 1)
+                          createTextVNode(" " + toDisplayString(unref(t3)("profile.show_recovery_codes")), 1)
                         ], 8, ["disabled"])) : createCommentVNode("", true)
                       ])) : createCommentVNode("", true),
                       qrSvg.value ? (openBlock(), createBlock("div", {
@@ -15431,7 +15431,7 @@ const _sfc_main$3 = {
                         key: 4,
                         class: "portal-profile-2fa__codes"
                       }, [
-                        createVNode("p", { class: "portal-form-hint" }, toDisplayString(unref(t)("profile.recovery_codes_hint")), 1),
+                        createVNode("p", { class: "portal-form-hint" }, toDisplayString(unref(t3)("profile.recovery_codes_hint")), 1),
                         createVNode("ul", null, [
                           (openBlock(true), createBlock(Fragment, null, renderList(recoveryCodes.value, (code) => {
                             return openBlock(), createBlock("li", { key: code }, [
@@ -15446,7 +15446,7 @@ const _sfc_main$3 = {
                         onSubmit: withModifiers(confirmTwoFactor, ["prevent"])
                       }, [
                         createVNode("div", { class: "portal-form-group" }, [
-                          createVNode("label", { for: "two-factor-code" }, toDisplayString(unref(t)("profile.confirm_code")) + " *", 1),
+                          createVNode("label", { for: "two-factor-code" }, toDisplayString(unref(t3)("profile.confirm_code")) + " *", 1),
                           withDirectives(createVNode("input", {
                             id: "two-factor-code",
                             "onUpdate:modelValue": ($event) => twoFactorCode.value = $event,
@@ -15454,7 +15454,7 @@ const _sfc_main$3 = {
                             inputmode: "numeric",
                             maxlength: "6",
                             class: "portal-input",
-                            placeholder: unref(t)("profile.confirm_code_placeholder"),
+                            placeholder: unref(t3)("profile.confirm_code_placeholder"),
                             required: ""
                           }, null, 8, ["onUpdate:modelValue", "placeholder"]), [
                             [vModelText, twoFactorCode.value]
@@ -15464,7 +15464,7 @@ const _sfc_main$3 = {
                           type: "submit",
                           class: "thm-btn thm-btn--sm",
                           disabled: twoFactorLoading.value
-                        }, toDisplayString(unref(t)("profile.confirm_two_factor")), 9, ["disabled"])
+                        }, toDisplayString(unref(t3)("profile.confirm_two_factor")), 9, ["disabled"])
                       ], 32)) : createCommentVNode("", true),
                       twoFactorError.value ? (openBlock(), createBlock("p", {
                         key: 6,
@@ -15477,13 +15477,13 @@ const _sfc_main$3 = {
                           class: "portal-profile-2fa__disable",
                           disabled: twoFactorLoading.value,
                           onClick: disableTwoFactor
-                        }, toDisplayString(unref(t)("profile.disable_two_factor")), 9, ["disabled"])) : (openBlock(), createBlock("button", {
+                        }, toDisplayString(unref(t3)("profile.disable_two_factor")), 9, ["disabled"])) : (openBlock(), createBlock("button", {
                           key: 1,
                           type: "button",
                           class: "thm-btn",
                           disabled: twoFactorLoading.value,
                           onClick: enableTwoFactor
-                        }, toDisplayString(unref(t)("profile.enable_two_factor")), 9, ["disabled"]))
+                        }, toDisplayString(unref(t3)("profile.enable_two_factor")), 9, ["disabled"]))
                       ])
                     ])
                   ])
@@ -15516,14 +15516,14 @@ const _sfc_main$2 = {
   },
   setup(__props) {
     const props = __props;
-    const { t } = usePortalTranslations();
+    const { t: t3 } = usePortalTranslations();
     const metaTitle = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.title) || t("pages.subscriptions_title");
+      return ((_a = props.meta) == null ? void 0 : _a.title) || t3("pages.subscriptions_title");
     });
     const metaDescription = computed(() => {
       var _a;
-      return ((_a = props.meta) == null ? void 0 : _a.description) || t("pages.subscriptions_description");
+      return ((_a = props.meta) == null ? void 0 : _a.description) || t3("pages.subscriptions_description");
     });
     const formatMoney = (amount, currency) => `${Number(amount ?? 0).toFixed(2)} ${currency || ""}`.trim();
     const subscriptionBadgeClass = (status) => {
@@ -15533,21 +15533,21 @@ const _sfc_main$2 = {
     };
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(_sfc_main$l, mergeProps({
-        title: unref(t)("subscriptions.title"),
-        subtitle: unref(t)("subscriptions.subtitle"),
+        title: unref(t3)("subscriptions.title"),
+        subtitle: unref(t3)("subscriptions.subtitle"),
         active: "subscriptions",
         breadcrumbs: [
-          { label: unref(t)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
-          { label: unref(t)("subscriptions.title") }
+          { label: unref(t3)("menu.my_dashboard"), href: _ctx.route("portal.dashboard") },
+          { label: unref(t3)("subscriptions.title") }
         ],
         "meta-title": metaTitle.value,
         "meta-description": metaDescription.value
       }, _attrs), {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b;
           if (_push2) {
             if (__props.subscriptions.data.length === 0) {
-              _push2(`<div class="portal-panel"${_scopeId}><div class="portal-empty"${_scopeId}><i class="fas fa-sync-alt"${_scopeId}></i> ${ssrInterpolate(unref(t)("subscriptions.no_subscriptions"))}</div></div>`);
+              _push2(`<div class="portal-panel"${_scopeId}><div class="portal-empty"${_scopeId}><i class="fas fa-sync-alt"${_scopeId}></i> ${ssrInterpolate(unref(t3)("subscriptions.no_subscriptions"))}</div></div>`);
             } else {
               _push2(`<div class="row g-4"${_scopeId}><!--[-->`);
               ssrRenderList(__props.subscriptions.data, (subscription) => {
@@ -15558,19 +15558,19 @@ const _sfc_main$2 = {
                 } else {
                   _push2(`<!---->`);
                 }
-                _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.amount"))}</span><strong${_scopeId}>${ssrInterpolate(formatMoney(subscription.amount, subscription.currency))}</strong></div><div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.billing_cycle"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.billing_cycle_label)}</strong></div>`);
+                _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("subscriptions.amount"))}</span><strong${_scopeId}>${ssrInterpolate(formatMoney(subscription.amount, subscription.currency))}</strong></div><div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("subscriptions.billing_cycle"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.billing_cycle_label)}</strong></div>`);
                 if (subscription.renewal_at) {
-                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.renewal_at"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.renewal_at)}</strong></div>`);
+                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("subscriptions.renewal_at"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.renewal_at)}</strong></div>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (subscription.service_name) {
-                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.service"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.service_name)}</strong></div>`);
+                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("subscriptions.service"))}</span><strong${_scopeId}>${ssrInterpolate(subscription.service_name)}</strong></div>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (subscription.auto_renew) {
-                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.auto_renew"))}</span><strong${_scopeId}>${ssrInterpolate(unref(t)("subscriptions.auto_renew_enabled"))}</strong></div>`);
+                  _push2(`<div class="portal-project-card__meta"${_scopeId}><span${_scopeId}>${ssrInterpolate(unref(t3)("subscriptions.auto_renew"))}</span><strong${_scopeId}>${ssrInterpolate(unref(t3)("subscriptions.auto_renew_enabled"))}</strong></div>`);
                 } else {
                   _push2(`<!---->`);
                 }
@@ -15599,7 +15599,7 @@ const _sfc_main$2 = {
               }, [
                 createVNode("div", { class: "portal-empty" }, [
                   createVNode("i", { class: "fas fa-sync-alt" }),
-                  createTextVNode(" " + toDisplayString(unref(t)("subscriptions.no_subscriptions")), 1)
+                  createTextVNode(" " + toDisplayString(unref(t3)("subscriptions.no_subscriptions")), 1)
                 ])
               ])) : (openBlock(), createBlock("div", {
                 key: 1,
@@ -15626,33 +15626,33 @@ const _sfc_main$2 = {
                         createTextVNode(toDisplayString(subscription.company.name), 1)
                       ])) : createCommentVNode("", true),
                       createVNode("div", { class: "portal-project-card__meta" }, [
-                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.amount")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("subscriptions.amount")), 1),
                         createVNode("strong", null, toDisplayString(formatMoney(subscription.amount, subscription.currency)), 1)
                       ]),
                       createVNode("div", { class: "portal-project-card__meta" }, [
-                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.billing_cycle")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("subscriptions.billing_cycle")), 1),
                         createVNode("strong", null, toDisplayString(subscription.billing_cycle_label), 1)
                       ]),
                       subscription.renewal_at ? (openBlock(), createBlock("div", {
                         key: 1,
                         class: "portal-project-card__meta"
                       }, [
-                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.renewal_at")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("subscriptions.renewal_at")), 1),
                         createVNode("strong", null, toDisplayString(subscription.renewal_at), 1)
                       ])) : createCommentVNode("", true),
                       subscription.service_name ? (openBlock(), createBlock("div", {
                         key: 2,
                         class: "portal-project-card__meta"
                       }, [
-                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.service")), 1),
+                        createVNode("span", null, toDisplayString(unref(t3)("subscriptions.service")), 1),
                         createVNode("strong", null, toDisplayString(subscription.service_name), 1)
                       ])) : createCommentVNode("", true),
                       subscription.auto_renew ? (openBlock(), createBlock("div", {
                         key: 3,
                         class: "portal-project-card__meta"
                       }, [
-                        createVNode("span", null, toDisplayString(unref(t)("subscriptions.auto_renew")), 1),
-                        createVNode("strong", null, toDisplayString(unref(t)("subscriptions.auto_renew_enabled")), 1)
+                        createVNode("span", null, toDisplayString(unref(t3)("subscriptions.auto_renew")), 1),
+                        createVNode("strong", null, toDisplayString(unref(t3)("subscriptions.auto_renew_enabled")), 1)
                       ])) : createCommentVNode("", true)
                     ])
                   ]);
@@ -15704,7 +15704,7 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
       var _a;
       try {
         return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-      } catch (e) {
+      } catch (e2) {
         return key;
       }
     };
@@ -15729,14 +15729,14 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
     const getHomeUrl = () => {
       try {
         return route("home");
-      } catch (e) {
+      } catch (e2) {
         return locale.value === "en" ? "/" : `/${locale.value}`;
       }
     };
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/error.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)}${_scopeId}>`);
             if (metaCanonical.value) {
@@ -15834,13 +15834,13 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: getHomeUrl()
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`<i class="fas fa-home"${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
@@ -15857,7 +15857,7 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
               class: "thm-btn",
               href: getHomeUrl()
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(trans("Back To Home"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}"${_scopeId2}></span>`);
                 } else {
@@ -15972,7 +15972,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
       var _a;
       try {
         return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-      } catch (e) {
+      } catch (e2) {
         return key;
       }
     };
@@ -15996,14 +15996,14 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
     const getHomeUrl = () => {
       try {
         return route("home");
-      } catch (e) {
+      } catch (e2) {
         return "/";
       }
     };
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<title data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2dfa1b1${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f2dfa1b1${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f2dfa1b1${_scopeId}>`);
             if (metaCanonical.value) {
@@ -16093,7 +16093,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         _: 1
       }, _parent));
       _push(ssrRenderComponent(_sfc_main$D, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
           if (_push2) {
             _push2(`<div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg" data-v-f2dfa1b1${_scopeId}><div class="banner-home__middel-shape inner-top-shape" data-v-f2dfa1b1${_scopeId}></div></div><section class="error section-space" data-v-f2dfa1b1${_scopeId}><div class="container" data-v-f2dfa1b1${_scopeId}><div class="row" data-v-f2dfa1b1${_scopeId}><div class="col-12" data-v-f2dfa1b1${_scopeId}><div class="error__content" data-v-f2dfa1b1${_scopeId}><div class="section__title-wrapper text-center" data-v-f2dfa1b1${_scopeId}><h3 class="section__title mb-15 mb-xs-10 wow fadeIn animated" data-wow-delay=".3s" data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(trans("Internal Server Error"))}</h3><p class="mb-40 mb-sm-25 mb-xs-20 wow fadeIn animated" data-wow-delay=".5s" data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(trans("We're sorry, but something went wrong on our end. Please try again later or contact support if the problem persists."))}</p>`);
@@ -16119,7 +16119,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
               class: "error-btn wow fadeIn animated",
               "data-wow-delay": ".7s"
             }, {
-              default: withCtx((_2, _push3, _parent3, _scopeId2) => {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
                   _push3(`${ssrInterpolate(trans("Back To Home Page"))}`);
                 } else {
@@ -16204,8 +16204,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   default: Error500
 }, Symbol.toStringTag, { value: "Module" }));
 async function resolvePageComponent(path, pages) {
-  for (const p of Array.isArray(path) ? path : [path]) {
-    const page = pages[p];
+  for (const p2 of Array.isArray(path) ? path : [path]) {
+    const page = pages[p2];
     if (typeof page === "undefined") {
       continue;
     }
@@ -16213,6 +16213,394 @@ async function resolvePageComponent(path, pages) {
   }
   throw new Error(`Page not found: ${path}`);
 }
+function t() {
+  return t = Object.assign ? Object.assign.bind() : function(t3) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var o2 = arguments[e2];
+      for (var n2 in o2) ({}).hasOwnProperty.call(o2, n2) && (t3[n2] = o2[n2]);
+    }
+    return t3;
+  }, t.apply(null, arguments);
+}
+const e = String.prototype.replace, o = /%20/g, n = { RFC1738: function(t3) {
+  return e.call(t3, o, "+");
+}, RFC3986: function(t3) {
+  return String(t3);
+} };
+var r = "RFC3986";
+const i = Object.prototype.hasOwnProperty, s = Array.isArray, u = /* @__PURE__ */ new WeakMap();
+var l = function(t3, e2) {
+  return u.set(t3, e2), t3;
+};
+function c(t3) {
+  return u.has(t3);
+}
+var a = function(t3) {
+  return u.get(t3);
+}, f = function(t3, e2) {
+  u.set(t3, e2);
+};
+const p = function() {
+  const t3 = [];
+  for (let e2 = 0; e2 < 256; ++e2) t3.push("%" + ((e2 < 16 ? "0" : "") + e2.toString(16)).toUpperCase());
+  return t3;
+}(), y = function(t3, e2) {
+  const o2 = e2 && e2.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
+  for (let e3 = 0; e3 < t3.length; ++e3) void 0 !== t3[e3] && (o2[e3] = t3[e3]);
+  return o2;
+}, d = function t2(e2, o2, n2) {
+  if (!o2) return e2;
+  if ("object" != typeof o2) {
+    if (s(e2)) e2.push(o2);
+    else {
+      if (!e2 || "object" != typeof e2) return [e2, o2];
+      if (c(e2)) {
+        var r2 = a(e2) + 1;
+        e2[r2] = o2, f(e2, r2);
+      } else (n2 && (n2.plainObjects || n2.allowPrototypes) || !i.call(Object.prototype, o2)) && (e2[o2] = true);
+    }
+    return e2;
+  }
+  if (!e2 || "object" != typeof e2) {
+    if (c(o2)) {
+      for (var u2 = Object.keys(o2), p2 = n2 && n2.plainObjects ? { __proto__: null, 0: e2 } : { 0: e2 }, d2 = 0; d2 < u2.length; d2++) p2[parseInt(u2[d2], 10) + 1] = o2[u2[d2]];
+      return l(p2, a(o2) + 1);
+    }
+    return [e2].concat(o2);
+  }
+  let h2 = e2;
+  return s(e2) && !s(o2) && (h2 = y(e2, n2)), s(e2) && s(o2) ? (o2.forEach(function(o3, r3) {
+    if (i.call(e2, r3)) {
+      const i2 = e2[r3];
+      i2 && "object" == typeof i2 && o3 && "object" == typeof o3 ? e2[r3] = t2(i2, o3, n2) : e2.push(o3);
+    } else e2[r3] = o3;
+  }), e2) : Object.keys(o2).reduce(function(e3, r3) {
+    const s2 = o2[r3];
+    return e3[r3] = i.call(e3, r3) ? t2(e3[r3], s2, n2) : s2, e3;
+  }, h2);
+}, h = 1024, b = function(t3, e2, o2, n2) {
+  if (c(t3)) {
+    var r2 = a(t3) + 1;
+    return t3[r2] = e2, f(t3, r2), t3;
+  }
+  var i2 = [].concat(t3, e2);
+  return i2.length > o2 ? l(y(i2, { plainObjects: n2 }), i2.length - 1) : i2;
+}, m = function(t3, e2) {
+  if (s(t3)) {
+    const o2 = [];
+    for (let n2 = 0; n2 < t3.length; n2 += 1) o2.push(e2(t3[n2]));
+    return o2;
+  }
+  return e2(t3);
+}, g = Object.prototype.hasOwnProperty, w = { brackets: function(t3) {
+  return t3 + "[]";
+}, comma: "comma", indices: function(t3, e2) {
+  return t3 + "[" + e2 + "]";
+}, repeat: function(t3) {
+  return t3;
+} }, v = Array.isArray, j = Array.prototype.push, $$1 = function(t3, e2) {
+  j.apply(t3, v(e2) ? e2 : [e2]);
+}, E = Date.prototype.toISOString, O = { addQueryPrefix: false, allowDots: false, allowEmptyArrays: false, arrayFormat: "indices", charset: "utf-8", charsetSentinel: false, delimiter: "&", encode: true, encodeDotInKeys: false, encoder: function(t3, e2, o2, n2, r2) {
+  if (0 === t3.length) return t3;
+  let i2 = t3;
+  if ("symbol" == typeof t3 ? i2 = Symbol.prototype.toString.call(t3) : "string" != typeof t3 && (i2 = String(t3)), "iso-8859-1" === o2) return escape(i2).replace(/%u[0-9a-f]{4}/gi, function(t4) {
+    return "%26%23" + parseInt(t4.slice(2), 16) + "%3B";
+  });
+  let s2 = "";
+  for (let t4 = 0; t4 < i2.length; t4 += h) {
+    const e3 = i2.length >= h ? i2.slice(t4, t4 + h) : i2, o3 = [];
+    for (let t5 = 0; t5 < e3.length; ++t5) {
+      let n3 = e3.charCodeAt(t5);
+      45 === n3 || 46 === n3 || 95 === n3 || 126 === n3 || n3 >= 48 && n3 <= 57 || n3 >= 65 && n3 <= 90 || n3 >= 97 && n3 <= 122 || "RFC1738" === r2 && (40 === n3 || 41 === n3) ? o3[o3.length] = e3.charAt(t5) : n3 < 128 ? o3[o3.length] = p[n3] : n3 < 2048 ? o3[o3.length] = p[192 | n3 >> 6] + p[128 | 63 & n3] : n3 < 55296 || n3 >= 57344 ? o3[o3.length] = p[224 | n3 >> 12] + p[128 | n3 >> 6 & 63] + p[128 | 63 & n3] : (t5 += 1, n3 = 65536 + ((1023 & n3) << 10 | 1023 & e3.charCodeAt(t5)), o3[o3.length] = p[240 | n3 >> 18] + p[128 | n3 >> 12 & 63] + p[128 | n3 >> 6 & 63] + p[128 | 63 & n3]);
+    }
+    s2 += o3.join("");
+  }
+  return s2;
+}, encodeValuesOnly: false, format: r, formatter: n[r], indices: false, serializeDate: function(t3) {
+  return E.call(t3);
+}, skipNulls: false, strictNullHandling: false }, T = {}, R = function(t3, e2, o2, n2, r2, i2, s2, u2, l2, c2, a2, f2, p2, y2, d2, h2, b2, g2) {
+  let w2 = t3, j2 = g2, E2 = 0, _2 = false;
+  for (; void 0 !== (j2 = j2.get(T)) && !_2; ) {
+    const e3 = j2.get(t3);
+    if (E2 += 1, void 0 !== e3) {
+      if (e3 === E2) throw new RangeError("Cyclic object value");
+      _2 = true;
+    }
+    void 0 === j2.get(T) && (E2 = 0);
+  }
+  if ("function" == typeof c2 ? w2 = c2(e2, w2) : w2 instanceof Date ? w2 = p2(w2) : "comma" === o2 && v(w2) && (w2 = m(w2, function(t4) {
+    return t4 instanceof Date ? p2(t4) : t4;
+  })), null === w2) {
+    if (i2) return l2 && !h2 ? l2(e2, O.encoder, b2, "key", y2) : e2;
+    w2 = "";
+  }
+  if ("string" == typeof (I2 = w2) || "number" == typeof I2 || "boolean" == typeof I2 || "symbol" == typeof I2 || "bigint" == typeof I2 || function(t4) {
+    return !(!t4 || "object" != typeof t4 || !(t4.constructor && t4.constructor.isBuffer && t4.constructor.isBuffer(t4)));
+  }(w2)) return l2 ? [d2(h2 ? e2 : l2(e2, O.encoder, b2, "key", y2)) + "=" + d2(l2(w2, O.encoder, b2, "value", y2))] : [d2(e2) + "=" + d2(String(w2))];
+  var I2;
+  const S2 = [];
+  if (void 0 === w2) return S2;
+  let A2;
+  if ("comma" === o2 && v(w2)) h2 && l2 && (w2 = m(w2, l2)), A2 = [{ value: w2.length > 0 ? w2.join(",") || null : void 0 }];
+  else if (v(c2)) A2 = c2;
+  else {
+    const t4 = Object.keys(w2);
+    A2 = a2 ? t4.sort(a2) : t4;
+  }
+  const D2 = u2 ? e2.replace(/\./g, "%2E") : e2, k2 = n2 && v(w2) && 1 === w2.length ? D2 + "[]" : D2;
+  if (r2 && v(w2) && 0 === w2.length) return k2 + "[]";
+  for (let e3 = 0; e3 < A2.length; ++e3) {
+    const m2 = A2[e3], j3 = "object" == typeof m2 && void 0 !== m2.value ? m2.value : w2[m2];
+    if (s2 && null === j3) continue;
+    const O2 = f2 && u2 ? m2.replace(/\./g, "%2E") : m2, _3 = v(w2) ? "function" == typeof o2 ? o2(k2, O2) : k2 : k2 + (f2 ? "." + O2 : "[" + O2 + "]");
+    g2.set(t3, E2);
+    const I3 = /* @__PURE__ */ new WeakMap();
+    I3.set(T, g2), $$1(S2, R(j3, _3, o2, n2, r2, i2, s2, u2, "comma" === o2 && h2 && v(w2) ? null : l2, c2, a2, f2, p2, y2, d2, h2, b2, I3));
+  }
+  return S2;
+}, _ = Object.prototype.hasOwnProperty, I = Array.isArray, S = { allowDots: false, allowEmptyArrays: false, allowPrototypes: false, allowSparse: false, arrayLimit: 20, charset: "utf-8", charsetSentinel: false, comma: false, decodeDotInKeys: false, decoder: function(t3, e2, o2) {
+  const n2 = t3.replace(/\+/g, " ");
+  if ("iso-8859-1" === o2) return n2.replace(/%[0-9a-f]{2}/gi, unescape);
+  try {
+    return decodeURIComponent(n2);
+  } catch (t4) {
+    return n2;
+  }
+}, delimiter: "&", depth: 5, duplicates: "combine", ignoreQueryPrefix: false, interpretNumericEntities: false, parameterLimit: 1e3, parseArrays: true, plainObjects: false, strictNullHandling: false }, A = function(t3) {
+  return t3.replace(/&#(\d+);/g, function(t4, e2) {
+    return String.fromCharCode(parseInt(e2, 10));
+  });
+}, D = function(t3, e2) {
+  return t3 && "string" == typeof t3 && e2.comma && t3.indexOf(",") > -1 ? t3.split(",") : t3;
+}, k = function(t3, e2, o2, n2) {
+  if (!t3) return;
+  const r2 = o2.allowDots ? t3.replace(/\.([^.[]+)/g, "[$1]") : t3, i2 = /(\[[^[\]]*])/g;
+  let s2 = o2.depth > 0 && /(\[[^[\]]*])/.exec(r2);
+  const u2 = s2 ? r2.slice(0, s2.index) : r2, l2 = [];
+  if (u2) {
+    if (!o2.plainObjects && _.call(Object.prototype, u2) && !o2.allowPrototypes) return;
+    l2.push(u2);
+  }
+  let a2 = 0;
+  for (; o2.depth > 0 && null !== (s2 = i2.exec(r2)) && a2 < o2.depth; ) {
+    if (a2 += 1, !o2.plainObjects && _.call(Object.prototype, s2[1].slice(1, -1)) && !o2.allowPrototypes) return;
+    l2.push(s2[1]);
+  }
+  return s2 && l2.push("[" + r2.slice(s2.index) + "]"), function(t4, e3, o3, n3) {
+    let r3 = n3 ? e3 : D(e3, o3);
+    for (let e4 = t4.length - 1; e4 >= 0; --e4) {
+      let n4;
+      const i3 = t4[e4];
+      if ("[]" === i3 && o3.parseArrays) n4 = c(r3) ? r3 : o3.allowEmptyArrays && ("" === r3 || o3.strictNullHandling && null === r3) ? [] : b([], r3, o3.arrayLimit, o3.plainObjects);
+      else {
+        n4 = o3.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
+        const t5 = "[" === i3.charAt(0) && "]" === i3.charAt(i3.length - 1) ? i3.slice(1, -1) : i3, e5 = o3.decodeDotInKeys ? t5.replace(/%2E/g, ".") : t5, s3 = parseInt(e5, 10);
+        o3.parseArrays || "" !== e5 ? !isNaN(s3) && i3 !== e5 && String(s3) === e5 && s3 >= 0 && o3.parseArrays && s3 <= o3.arrayLimit ? (n4 = [], n4[s3] = r3) : "__proto__" !== e5 && (n4[e5] = r3) : n4 = { 0: r3 };
+      }
+      r3 = n4;
+    }
+    return r3;
+  }(l2, e2, o2, n2);
+};
+function N(t3, e2) {
+  const o2 = /* @__PURE__ */ function(t4) {
+    return S;
+  }();
+  if ("" === t3 || null == t3) return o2.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
+  const n2 = "string" == typeof t3 ? function(t4, e3) {
+    const o3 = { __proto__: null }, n3 = (e3.ignoreQueryPrefix ? t4.replace(/^\?/, "") : t4).split(e3.delimiter, Infinity === e3.parameterLimit ? void 0 : e3.parameterLimit);
+    let r3, i3 = -1, s2 = e3.charset;
+    if (e3.charsetSentinel) for (r3 = 0; r3 < n3.length; ++r3) 0 === n3[r3].indexOf("utf8=") && ("utf8=%E2%9C%93" === n3[r3] ? s2 = "utf-8" : "utf8=%26%2310003%3B" === n3[r3] && (s2 = "iso-8859-1"), i3 = r3, r3 = n3.length);
+    for (r3 = 0; r3 < n3.length; ++r3) {
+      if (r3 === i3) continue;
+      const t5 = n3[r3], u2 = t5.indexOf("]="), l2 = -1 === u2 ? t5.indexOf("=") : u2 + 1;
+      let c2, a2;
+      -1 === l2 ? (c2 = e3.decoder(t5, S.decoder, s2, "key"), a2 = e3.strictNullHandling ? null : "") : (c2 = e3.decoder(t5.slice(0, l2), S.decoder, s2, "key"), a2 = m(D(t5.slice(l2 + 1), e3), function(t6) {
+        return e3.decoder(t6, S.decoder, s2, "value");
+      })), a2 && e3.interpretNumericEntities && "iso-8859-1" === s2 && (a2 = A(a2)), t5.indexOf("[]=") > -1 && (a2 = I(a2) ? [a2] : a2);
+      const f2 = _.call(o3, c2);
+      f2 && "combine" === e3.duplicates ? o3[c2] = b(o3[c2], a2, e3.arrayLimit, e3.plainObjects) : f2 && "last" !== e3.duplicates || (o3[c2] = a2);
+    }
+    return o3;
+  }(t3, o2) : t3;
+  let r2 = o2.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
+  const i2 = Object.keys(n2);
+  for (let e3 = 0; e3 < i2.length; ++e3) {
+    const s2 = i2[e3], u2 = k(s2, n2[s2], o2, "string" == typeof t3);
+    r2 = d(r2, u2, o2);
+  }
+  return true === o2.allowSparse ? r2 : function(t4) {
+    const e3 = [{ obj: { o: t4 }, prop: "o" }], o3 = [];
+    for (let t5 = 0; t5 < e3.length; ++t5) {
+      const n3 = e3[t5], r3 = n3.obj[n3.prop], i3 = Object.keys(r3);
+      for (let t6 = 0; t6 < i3.length; ++t6) {
+        const n4 = i3[t6], s2 = r3[n4];
+        "object" == typeof s2 && null !== s2 && -1 === o3.indexOf(s2) && (e3.push({ obj: r3, prop: n4 }), o3.push(s2));
+      }
+    }
+    return function(t5) {
+      for (; t5.length > 1; ) {
+        const e4 = t5.pop(), o4 = e4.obj[e4.prop];
+        if (s(o4)) {
+          const t6 = [];
+          for (let e5 = 0; e5 < o4.length; ++e5) void 0 !== o4[e5] && t6.push(o4[e5]);
+          e4.obj[e4.prop] = t6;
+        }
+      }
+    }(e3), t4;
+  }(r2);
+}
+class x {
+  constructor(t3, e2, o2) {
+    var n2, r2;
+    this.name = t3, this.definition = e2, this.bindings = null != (n2 = e2.bindings) ? n2 : {}, this.wheres = null != (r2 = e2.wheres) ? r2 : {}, this.config = o2;
+  }
+  get template() {
+    const t3 = `${this.origin}/${this.definition.uri}`.replace(/\/+$/, "");
+    return "" === t3 ? "/" : t3;
+  }
+  get origin() {
+    return this.config.absolute ? this.definition.domain ? `${this.config.url.match(/^\w+:\/\//)[0]}${this.definition.domain}${this.config.port ? `:${this.config.port}` : ""}` : this.config.url : "";
+  }
+  get parameterSegments() {
+    var t3, e2;
+    return null != (t3 = null == (e2 = this.template.match(/{[^}?]+\??}/g)) ? void 0 : e2.map((t4) => ({ name: t4.replace(/{|\??}/g, ""), required: !/\?}$/.test(t4) }))) ? t3 : [];
+  }
+  matchesUrl(t3) {
+    var e2;
+    if (!this.definition.methods.includes("GET")) return false;
+    const o2 = this.template.replace(/[.*+$()[\]]/g, "\\$&").replace(/(\/?){([^}?]*)(\??)}/g, (t4, e3, o3, n3) => {
+      var r3;
+      const i3 = `(?<${o3}>${(null == (r3 = this.wheres[o3]) ? void 0 : r3.replace(/(^\^)|(\$$)/g, "")) || "[^/?]+"})`;
+      return n3 ? `(${e3}${i3})?` : `${e3}${i3}`;
+    }).replace(/^\w+:\/\//, ""), [n2, r2] = t3.replace(/^\w+:\/\//, "").split("?"), i2 = null != (e2 = new RegExp(`^${o2}/?$`).exec(n2)) ? e2 : new RegExp(`^${o2}/?$`).exec(decodeURI(n2));
+    if (i2) {
+      for (const t4 in i2.groups) i2.groups[t4] = "string" == typeof i2.groups[t4] ? decodeURIComponent(i2.groups[t4]) : i2.groups[t4];
+      return { params: i2.groups, query: N(r2) };
+    }
+    return false;
+  }
+  compile(t3) {
+    return this.parameterSegments.length ? this.template.replace(/{([^}?]+)(\??)}/g, (e2, o2, n2) => {
+      var r2, i2;
+      if (!n2 && [null, void 0].includes(t3[o2])) throw new Error(`Ziggy error: '${o2}' parameter is required for route '${this.name}'.`);
+      if (this.wheres[o2] && !new RegExp(`^${n2 ? `(${this.wheres[o2]})?` : this.wheres[o2]}$`).test(null != (i2 = t3[o2]) ? i2 : "")) throw new Error(`Ziggy error: '${o2}' parameter '${t3[o2]}' does not match required format '${this.wheres[o2]}' for route '${this.name}'.`);
+      return encodeURI(null != (r2 = t3[o2]) ? r2 : "").replace(/%7C/g, "|").replace(/%25/g, "%").replace(/\$/g, "%24");
+    }).replace(this.config.absolute ? /(\.[^/]+?)(\/\/)/ : /(^)(\/\/)/, "$1/").replace(/\/+$/, "") : this.template;
+  }
+}
+class C extends String {
+  constructor(e2, o2, n2 = true, r2) {
+    if (super(), this.t = null != r2 ? r2 : "undefined" != typeof Ziggy ? Ziggy : null == globalThis ? void 0 : globalThis.Ziggy, !this.t && "undefined" != typeof document && document.getElementById("ziggy-routes-json") && (globalThis.Ziggy = JSON.parse(document.getElementById("ziggy-routes-json").textContent), this.t = globalThis.Ziggy), this.t = t({}, this.t, { absolute: n2 }), e2) {
+      if (!this.t.routes[e2]) throw new Error(`Ziggy error: route '${e2}' is not in the route list.`);
+      this.i = new x(e2, this.t.routes[e2], this.t), this.u = this.l(o2);
+    }
+  }
+  toString() {
+    const e2 = Object.keys(this.u).filter((t3) => !this.i.parameterSegments.some(({ name: e3 }) => e3 === t3)).filter((t3) => "_query" !== t3).reduce((e3, o2) => t({}, e3, { [o2]: this.u[o2] }), {});
+    return this.i.compile(this.u) + function(t3, e3) {
+      let o2 = t3;
+      const i2 = function(t4) {
+        if (!t4) return O;
+        if (void 0 !== t4.allowEmptyArrays && "boolean" != typeof t4.allowEmptyArrays) throw new TypeError("`allowEmptyArrays` option can only be `true` or `false`, when provided");
+        if (void 0 !== t4.encodeDotInKeys && "boolean" != typeof t4.encodeDotInKeys) throw new TypeError("`encodeDotInKeys` option can only be `true` or `false`, when provided");
+        if (null != t4.encoder && "function" != typeof t4.encoder) throw new TypeError("Encoder has to be a function.");
+        const e4 = t4.charset || O.charset;
+        if (void 0 !== t4.charset && "utf-8" !== t4.charset && "iso-8859-1" !== t4.charset) throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined");
+        let o3 = r;
+        if (void 0 !== t4.format) {
+          if (!g.call(n, t4.format)) throw new TypeError("Unknown format option provided.");
+          o3 = t4.format;
+        }
+        const i3 = n[o3];
+        let s3, u3 = O.filter;
+        if (("function" == typeof t4.filter || v(t4.filter)) && (u3 = t4.filter), s3 = t4.arrayFormat in w ? t4.arrayFormat : "indices" in t4 ? t4.indices ? "indices" : "repeat" : O.arrayFormat, "commaRoundTrip" in t4 && "boolean" != typeof t4.commaRoundTrip) throw new TypeError("`commaRoundTrip` must be a boolean, or absent");
+        return { addQueryPrefix: "boolean" == typeof t4.addQueryPrefix ? t4.addQueryPrefix : O.addQueryPrefix, allowDots: void 0 === t4.allowDots ? true === t4.encodeDotInKeys || O.allowDots : !!t4.allowDots, allowEmptyArrays: "boolean" == typeof t4.allowEmptyArrays ? !!t4.allowEmptyArrays : O.allowEmptyArrays, arrayFormat: s3, charset: e4, charsetSentinel: "boolean" == typeof t4.charsetSentinel ? t4.charsetSentinel : O.charsetSentinel, commaRoundTrip: t4.commaRoundTrip, delimiter: void 0 === t4.delimiter ? O.delimiter : t4.delimiter, encode: "boolean" == typeof t4.encode ? t4.encode : O.encode, encodeDotInKeys: "boolean" == typeof t4.encodeDotInKeys ? t4.encodeDotInKeys : O.encodeDotInKeys, encoder: "function" == typeof t4.encoder ? t4.encoder : O.encoder, encodeValuesOnly: "boolean" == typeof t4.encodeValuesOnly ? t4.encodeValuesOnly : O.encodeValuesOnly, filter: u3, format: o3, formatter: i3, serializeDate: "function" == typeof t4.serializeDate ? t4.serializeDate : O.serializeDate, skipNulls: "boolean" == typeof t4.skipNulls ? t4.skipNulls : O.skipNulls, sort: "function" == typeof t4.sort ? t4.sort : null, strictNullHandling: "boolean" == typeof t4.strictNullHandling ? t4.strictNullHandling : O.strictNullHandling };
+      }(e3);
+      let s2, u2;
+      "function" == typeof i2.filter ? (u2 = i2.filter, o2 = u2("", o2)) : v(i2.filter) && (u2 = i2.filter, s2 = u2);
+      const l2 = [];
+      if ("object" != typeof o2 || null === o2) return "";
+      const c2 = w[i2.arrayFormat], a2 = "comma" === c2 && i2.commaRoundTrip;
+      s2 || (s2 = Object.keys(o2)), i2.sort && s2.sort(i2.sort);
+      const f2 = /* @__PURE__ */ new WeakMap();
+      for (let t4 = 0; t4 < s2.length; ++t4) {
+        const e4 = s2[t4];
+        i2.skipNulls && null === o2[e4] || $$1(l2, R(o2[e4], e4, c2, a2, i2.allowEmptyArrays, i2.strictNullHandling, i2.skipNulls, i2.encodeDotInKeys, i2.encode ? i2.encoder : null, i2.filter, i2.sort, i2.allowDots, i2.serializeDate, i2.format, i2.formatter, i2.encodeValuesOnly, i2.charset, f2));
+      }
+      const p2 = l2.join(i2.delimiter);
+      let y2 = true === i2.addQueryPrefix ? "?" : "";
+      return i2.charsetSentinel && (y2 += "iso-8859-1" === i2.charset ? "utf8=%26%2310003%3B&" : "utf8=%E2%9C%93&"), p2.length > 0 ? y2 + p2 : "";
+    }(t({}, e2, this.u._query), { addQueryPrefix: true, arrayFormat: "indices", encodeValuesOnly: true, skipNulls: true, encoder: (t3, e3) => "boolean" == typeof t3 ? Number(t3) : e3(t3) });
+  }
+  p(e2) {
+    e2 ? this.t.absolute && e2.startsWith("/") && (e2 = this.h().host + e2) : e2 = this.m();
+    let o2 = {};
+    const [n2, r2] = Object.entries(this.t.routes).find(([t3, n3]) => o2 = new x(t3, n3, this.t).matchesUrl(e2)) || [void 0, void 0];
+    return t({ name: n2 }, o2, { route: r2 });
+  }
+  m() {
+    const { host: t3, pathname: e2, search: o2 } = this.h();
+    return (this.t.absolute ? t3 + e2 : e2.replace(this.t.url.replace(/^\w*:\/\/[^/]+/, ""), "").replace(/^\/+/, "/")) + o2;
+  }
+  current(e2, o2) {
+    const { name: n2, params: r2, query: i2, route: s2 } = this.p();
+    if (!e2) return n2;
+    const u2 = new RegExp(`^${e2.replace(/\./g, "\\.").replace(/\*/g, ".*")}$`).test(n2);
+    if ([null, void 0].includes(o2) || !u2) return u2;
+    const l2 = new x(n2, s2, this.t);
+    o2 = this.l(o2, l2);
+    const c2 = t({}, r2, i2);
+    if (Object.values(o2).every((t3) => !t3) && !Object.values(c2).some((t3) => void 0 !== t3)) return true;
+    const a2 = (t3, e3) => Object.entries(t3).every(([t4, o3]) => Array.isArray(o3) && Array.isArray(e3[t4]) ? o3.every((o4) => e3[t4].includes(o4) || e3[t4].includes(decodeURIComponent(o4))) : "object" == typeof o3 && "object" == typeof e3[t4] && null !== o3 && null !== e3[t4] ? a2(o3, e3[t4]) : e3[t4] == o3 || e3[t4] == decodeURIComponent(o3));
+    return a2(o2, c2);
+  }
+  h() {
+    var t3, e2, o2, n2, r2, i2;
+    const { host: s2 = "", pathname: u2 = "", search: l2 = "" } = "undefined" != typeof window ? window.location : {};
+    return { host: null != (t3 = null == (e2 = this.t.location) ? void 0 : e2.host) ? t3 : s2, pathname: null != (o2 = null == (n2 = this.t.location) ? void 0 : n2.pathname) ? o2 : u2, search: null != (r2 = null == (i2 = this.t.location) ? void 0 : i2.search) ? r2 : l2 };
+  }
+  get params() {
+    const { params: e2, query: o2 } = this.p();
+    return t({}, e2, o2);
+  }
+  get routeParams() {
+    return this.p().params;
+  }
+  get queryParams() {
+    return this.p().query;
+  }
+  has(t3) {
+    return this.t.routes.hasOwnProperty(t3);
+  }
+  l(e2 = {}, o2 = this.i) {
+    null != e2 || (e2 = {}), e2 = ["string", "number"].includes(typeof e2) ? [e2] : e2;
+    const n2 = o2.parameterSegments.filter(({ name: t3 }) => !this.t.defaults[t3]);
+    return Array.isArray(e2) ? e2 = e2.reduce((e3, o3, r2) => t({}, e3, n2[r2] ? { [n2[r2].name]: o3 } : "object" == typeof o3 ? o3 : { [o3]: "" }), {}) : 1 !== n2.length || e2.hasOwnProperty(n2[0].name) || !e2.hasOwnProperty(Object.values(o2.bindings)[0]) && !e2.hasOwnProperty("id") || (e2 = { [n2[0].name]: e2 }), t({}, this.v(o2), this.j(e2, o2));
+  }
+  v(e2) {
+    return e2.parameterSegments.filter(({ name: t3 }) => this.t.defaults[t3]).reduce((e3, { name: o2 }, n2) => t({}, e3, { [o2]: this.t.defaults[o2] }), {});
+  }
+  j(e2, { bindings: o2, parameterSegments: n2 }) {
+    return Object.entries(e2).reduce((e3, [r2, i2]) => {
+      if (!i2 || "object" != typeof i2 || Array.isArray(i2) || !n2.some(({ name: t3 }) => t3 === r2)) return t({}, e3, { [r2]: i2 });
+      const s2 = i2.hasOwnProperty(o2[r2]) ? o2[r2] : i2.hasOwnProperty("id") ? "id" : void 0;
+      if (void 0 === s2) throw new Error(`Ziggy error: object passed as '${r2}' parameter is missing route model binding key '${o2[r2]}'.`);
+      return t({}, e3, { [r2]: i2[s2] });
+    }, {});
+  }
+  valueOf() {
+    return this.toString();
+  }
+}
+function P(t3, e2, o2, n2) {
+  const r2 = new C(t3, e2, o2, n2);
+  return t3 ? r2.toString() : r2;
+}
+const U = { install(t3, e2) {
+  const o2 = (t4, o3, n2, r2 = e2) => P(t4, o3, n2, r2);
+  parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
+} };
 createServer(
   (page) => createInertiaApp({
     page,
@@ -16262,9 +16650,15 @@ createServer(
       );
     },
     setup({ App, props, plugin }) {
+      var _a, _b, _c;
+      const ziggyProps = ((_b = (_a = props.initialPage) == null ? void 0 : _a.props) == null ? void 0 : _b.ziggy) || ((_c = page.props) == null ? void 0 : _c.ziggy) || {};
+      const ziggyConfig = {
+        ...ziggyProps,
+        location: new URL(ziggyProps.location || "http://localhost")
+      };
       return createSSRApp({
-        render: () => h(App, props)
-      }).use(plugin);
+        render: () => h$1(App, props)
+      }).use(plugin).use(U, ziggyConfig);
     }
   })
 );

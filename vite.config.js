@@ -23,6 +23,7 @@ export default defineConfig(async ({ mode }) => {
         resolve: {
             alias: {
                 '@': path.resolve(__dirname, 'resources/js'),
+                'ziggy-js': path.resolve(__dirname, 'vendor/tightenco/ziggy'),
             },
         },
         build: {

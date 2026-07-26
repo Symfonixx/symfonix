@@ -121,6 +121,12 @@ Developed By: Hadi Hilal
 
     <link rel="preload" as="image" href="{{ asset('images/home/banner-bg.webp') }}" type="image/webp" fetchpriority="high">
 
+    {{-- Ziggy before Vite modules so window.route / Ziggy exist when the SPA boots --}}
+    @routes
+    <script>
+        window.Ziggy = typeof Ziggy !== 'undefined' ? Ziggy : (window.Ziggy || { url: '', port: null, defaults: {}, routes: {} });
+    </script>
+
     {{-- jQuery before Vite so header menu bindings always have $ available --}}
     <script src="{{ asset('site/js/jquery-3.6.0.min.js') }}"></script>
 
@@ -135,9 +141,7 @@ Developed By: Hadi Hilal
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     </noscript>
 
-    @routes
     @inertiaHead
-
     {{-- FAQ Schema (server-side for SEO) --}}
     @if(isset($page['props']['faqSchema']) && !empty($page['props']['faqSchema']))
         <script type="application/ld+json">
