@@ -58,7 +58,7 @@
                             <header class="product-detail__header">
                                 <div class="product-detail__identity">
                                     <Link :href="route('product.index')" class="product-detail__thumb">
-                                        <img :src="product.main_image_link" :alt="product.name">
+                                        <img :src="product.main_image_link" :alt="product.name" loading="lazy" decoding="async">
                                     </Link>
                                     <div class="product-detail__intro">
                                         <p v-if="product.category" class="product-detail__category">
@@ -108,7 +108,7 @@
                             </div>
 
                             <div class="product-detail__hero">
-                                <img :src="product.main_image_link" :alt="product.name">
+                                <img :src="product.main_image_link" :alt="product.name" loading="lazy" decoding="async">
                             </div>
 
                             <div v-if="product.short_description" class="product-detail__section">

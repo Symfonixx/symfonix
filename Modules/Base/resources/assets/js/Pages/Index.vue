@@ -18,12 +18,15 @@
     <app-layout>
         <!--Banner One Start -->
         <section class="banner-one">
-            <div
-                class="banner-one__bg"
-                :style="{
-            backgroundImage: `url(${asset_path}images/home/banner-bg.webp), url(${asset_path}images/home/banner-bg.jpg)`
-        }"
-            ></div>
+            <div class="banner-one__bg" aria-hidden="true">
+                <img :src="asset_path + 'images/home/banner-bg.webp'"
+                     alt=""
+                     width="1920"
+                     height="1080"
+                     loading="lazy"
+                     decoding="async"
+                     class="banner-one__bg-img">
+            </div>
 
             <div
                 class="banner-one__shape-bg float-bob-y"
@@ -72,6 +75,7 @@
                                              :alt="trans('About us')"
                                              width="636"
                                              height="636"
+                                             loading="lazy"
                                              decoding="async">
                                     </picture>
                                 </div>

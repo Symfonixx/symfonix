@@ -2,6 +2,7 @@
 
 namespace Modules\Base\Http\Controllers;
 
+use DOMDocument;
 use Illuminate\Routing\Controller;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Cms\Models\Blog;
@@ -9,16 +10,24 @@ use Modules\Cms\Models\Page;
 use Modules\Product\Models\Product;
 use Modules\Project\Models\ProjectUseCase;
 use Modules\Services\Models\Service;
+use Symfony\Component\HttpFoundation\Response;
 
 class SitemapController extends Controller
 {
+    private const SITEMAP_NS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
+
+    private const XHTML_NS = 'http://www.w3.org/1999/xhtml';
     /**
      * Generate a dynamic XML sitemap.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): Response
     {
+        if (app()->bound('debugbar')) {
+            app('debugbar')->disable();
+        }
+
         $entries = [];
 
         // Home page
@@ -63,7 +72,7 @@ class SitemapController extends Controller
             'lastmod' => now()->toAtomString(),
             'changefreq' => 'monthly',
             'priority' => '0.6',
-                ];
+        ];
         $entries[] = [
             'path' => '/faq',
             'lastmod' => now()->toAtomString(),
@@ -191,10 +200,66 @@ class SitemapController extends Controller
 
         $urls = $this->expandLocalizedUrls($entries);
 
-        $content = view('sitemap', ['urls' => $urls])->render();
+        $response = response($this->buildXml($urls), Response::HTTP_OK);
+        // text/xml is the Sitemap protocol preference; nosniff stops browsers
+        // from reinterpreting this as HTML (which hides tags and concatenates text).
+        $response->headers->set('Content-Type', 'text/xml; charset=UTF-8');
+        $response->headers->set('Cache-Control', 'public, max-age=3600');
+        $response->headers->set('X-Content-Type-Options', 'nosniff');
 
-        return response($content, 200)
-            ->header('Content-Type', 'application/xml; charset=UTF-8');
+        return $response;
+    }
+
+    /**
+     * @param  array<int, array{loc: string, lastmod?: string|null, changefreq?: string|null, priority?: string|null, alternates?: array<int, array{hreflang: string, href: string}>}>  $urls
+     */
+    private function buildXml(array $urls): string
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->formatOutput = true;
+
+        $urlset = $dom->createElementNS(self::SITEMAP_NS, 'urlset');
+        $urlset->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xhtml', self::XHTML_NS);
+        $dom->appendChild($urlset);
+
+        foreach ($urls as $url) {
+            $urlNode = $dom->createElementNS(self::SITEMAP_NS, 'url');
+            $urlset->appendChild($urlNode);
+
+            $urlNode->appendChild($this->domTextElement($dom, self::SITEMAP_NS, 'loc', $url['loc']));
+
+            if (! empty($url['lastmod'])) {
+                $urlNode->appendChild($this->domTextElement($dom, self::SITEMAP_NS, 'lastmod', $url['lastmod']));
+            }
+
+            if (! empty($url['changefreq'])) {
+                $urlNode->appendChild($this->domTextElement($dom, self::SITEMAP_NS, 'changefreq', $url['changefreq']));
+            }
+
+            if (! empty($url['priority'])) {
+                $urlNode->appendChild($this->domTextElement($dom, self::SITEMAP_NS, 'priority', $url['priority']));
+            }
+
+            foreach ($url['alternates'] ?? [] as $alternate) {
+                $link = $dom->createElementNS(self::XHTML_NS, 'xhtml:link');
+                $link->setAttribute('rel', 'alternate');
+                $link->setAttribute('hreflang', $alternate['hreflang']);
+                $link->setAttribute('href', $alternate['href']);
+                $urlNode->appendChild($link);
+            }
+        }
+
+        $xml = $dom->saveXML();
+
+        return is_string($xml) ? $xml : '';
+    }
+
+    private function domTextElement(DOMDocument $dom, string $namespace, string $name, string $value): \DOMElement
+    {
+        $element = $dom->createElementNS($namespace, $name);
+        $element->appendChild($dom->createTextNode($value));
+
+        return $element;
     }
 
     private function buildUrl(string $path): string
@@ -291,7 +356,9 @@ class SitemapController extends Controller
         $localePrefix = '/'.trim($locale, '/');
         if ($normalizedPath === '/') {
             return $baseUrl.$localePrefix.'/';
-        }return $baseUrl.$localePrefix.$normalizedPath;
+        }
+
+        return $baseUrl.$localePrefix.$normalizedPath;
     }
 }
 

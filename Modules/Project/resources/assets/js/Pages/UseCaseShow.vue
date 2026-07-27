@@ -60,7 +60,7 @@
                     <header class="use-case-detail__header">
                         <div class="use-case-detail__identity">
                             <Link :href="route('use-cases.index')" class="use-case-detail__avatar">
-                                <img :src="useCase.image_link" :alt="useCase.title">
+                                <img :src="useCase.image_link" :alt="useCase.title" loading="lazy" decoding="async">
                             </Link>
                             <div class="use-case-detail__intro">
                                 <h1 class="use-case-detail__title">{{ useCase.title }}</h1>
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="use-case-detail__hero">
-                        <img :src="useCase.image_link" :alt="useCase.title">
+                        <img :src="useCase.image_link" :alt="useCase.title" loading="lazy" decoding="async">
                     </div>
 
                     <div v-if="useCase.summary" class="use-case-detail__section">

@@ -68,6 +68,7 @@ Developed By: Hadi Hilal
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ url('/rss.xml') }}">
     <link rel="alternate" type="text/plain" title="LLM context" href="{{ url('/llms.txt') }}">
+    <link rel="author" type="text/plain" href="{{ url('/humans.txt') }}">
     <link rel="manifest" href="{{ asset('images/favicon/site.webmanifest') }}">
 
     @php
@@ -118,8 +119,6 @@ Developed By: Hadi Hilal
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon/favicon.svg') }}"/>
     <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.ico') }}"/>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}"/>
-
-    <link rel="preload" as="image" href="{{ asset('images/home/banner-bg.webp') }}" type="image/webp" fetchpriority="high">
 
     {{-- Ziggy routes are shared via Inertia props and installed in app.js — do not dump them here. --}}
 

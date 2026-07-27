@@ -96,6 +96,44 @@ Route::get('/robots.txt', function () {
     );
 });
 
+Route::get('/.well-known/mta-sts.txt', function () {
+    $host = strtolower(request()->getHost());
+
+    if (! str_starts_with($host, 'mta-sts.')) {
+        abort(404);
+    }
+
+    $mode = config('mta-sts.mode', 'enforce');
+    $maxAge = (int) config('mta-sts.max_age', 86400);
+    $mxHosts = config('mta-sts.mx', ['mail.symfonix.io']);
+
+    if ($mode !== 'enforce' && $mode !== 'testing') {
+        $mode = 'enforce';
+    }
+
+    $lines = [
+        'version: STSv1',
+        'mode: '.$mode,
+    ];
+
+    foreach ($mxHosts as $mx) {
+        if ($mx !== '') {
+            $lines[] = 'mx: '.$mx;
+        }
+    }
+
+    $lines[] = 'max_age: '.$maxAge;
+
+    return response(
+        implode("\n", $lines)."\n",
+        200,
+        [
+            'Content-Type' => 'text/plain; charset=UTF-8',
+            'Cache-Control' => 'public, max-age='.$maxAge,
+        ]
+    );
+})->name('mta-sts.txt');
+
 Route::get('/.well-known/security.txt', function () {
     $host = rtrim(request()->getSchemeAndHttpHost(), '/');
     $email = \Modules\Base\Models\Settings::get('email') ?: 'hello@symfonix.io';

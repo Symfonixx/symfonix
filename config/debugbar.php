@@ -19,6 +19,18 @@ return [
     'except' => [
         'telescope*',
         'horizon*',
+        'sitemap.xml',
+        '*/sitemap.xml',
+        'rss.xml',
+        '*/rss.xml',
+        'llms.txt',
+        '*/llms.txt',
+        'llms-full.txt',
+        '*/llms-full.txt',
+        'robots.txt',
+        '*/robots.txt',
+        'humans.txt',
+        '*/humans.txt',
     ],
 
     /*

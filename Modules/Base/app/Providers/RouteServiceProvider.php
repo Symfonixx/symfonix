@@ -2,9 +2,13 @@
 
 namespace Modules\Base\Providers;
 
+use App\Http\Middleware\ContentSecurityPolicy;
+use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Middleware\TrackAdminEvents;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Modules\Base\Http\Controllers\HumansTxtController;
 use Modules\Base\Http\Controllers\LlmsTxtController;
 use Modules\Base\Http\Controllers\RssController;
 use Modules\Base\Http\Controllers\SitemapController;
@@ -46,18 +50,32 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes(): void
     {
         $name = $this->name;
+        $seoMiddlewareExclusions = [
+            HandleInertiaRequests::class,
+            ContentSecurityPolicy::class,
+            TrackAdminEvents::class,
+        ];
+
         Route::middleware(['web'])
             ->get('/sitemap.xml', [SitemapController::class, 'index'])
-            ->name('sitemap');
+            ->name('sitemap')
+            ->withoutMiddleware($seoMiddlewareExclusions);
         Route::middleware(['web'])
             ->get('/rss.xml', [RssController::class, 'index'])
-            ->name('rss');
+            ->name('rss')
+            ->withoutMiddleware($seoMiddlewareExclusions);
+        Route::middleware(['web'])
+            ->get('/humans.txt', [HumansTxtController::class, 'index'])
+            ->name('humans.txt')
+            ->withoutMiddleware($seoMiddlewareExclusions);
         Route::middleware(['web'])
             ->get('/llms.txt', [LlmsTxtController::class, 'index'])
-            ->name('llms.txt');
+            ->name('llms.txt')
+            ->withoutMiddleware($seoMiddlewareExclusions);
         Route::middleware(['web'])
             ->get('/llms-full.txt', [LlmsTxtController::class, 'full'])
-            ->name('llms-full.txt');
+            ->name('llms-full.txt')
+            ->withoutMiddleware($seoMiddlewareExclusions);
 
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
