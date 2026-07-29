@@ -629,8 +629,8 @@ h6 {
 
 }
 .blog-two__content-two {
-    padding-left: unset;
-    padding-right: 75px;
+    padding-left: 10px;
+    padding-right: 4px;
 }
 .mobile-nav__close {
     right: unset;

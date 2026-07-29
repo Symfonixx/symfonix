@@ -18,6 +18,8 @@
         "select_status": "Status auswählen",
         "deal": "Verknüpfter Deal",
         "select_deal": "Angebot auswählen (optional)",
+        "services": "Services",
+        "select_services": "Dienste auswählen",
         "budget": "Budget",
         "currency": "Währung",
         "payment_status": "Zahlungsstatus",
@@ -99,6 +101,7 @@
     },
     "hints": {
         "deal": "Verknüpfen Sie einen offenen oder gewonnenen CRM-Deal. Angebote, die bereits mit einem anderen Projekt verknüpft sind, werden ausgeblendet.",
+        "services": "Wählen Sie einen oder mehrere Katalogdienste aus, die in diesem Projekt erbracht werden.",
         "attachments": "Laden Sie mehrere Dateien hoch (Dokumente, Archive usw.). PDF- und Bilddateien sind nicht erlaubt. Maximal 10 MB pro Datei.",
         "profit_and_loss": "Gewinn oder Verlust = Rechnungsbetrag − (Arbeitskosten + Projektkosten).",
         "labor_cost": "Die Arbeitskosten basieren auf dem letzten Monatsgehalt des Mitarbeiters ÷ :days Arbeitstage × Tage, die diesem Projekt zugewiesen sind.",

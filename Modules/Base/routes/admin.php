@@ -19,6 +19,8 @@ Route::middleware('can:Settings Management')->group(function () {
 
     Route::get('backups', [BackupController::class, 'index'])->name('backups.index');
     Route::post('backups', [BackupController::class, 'store'])->name('backups.store');
+    Route::post('backups/import', [BackupController::class, 'import'])->name('backups.import');
+    Route::post('backups/{filename}/restore', [BackupController::class, 'restore'])->name('backups.restore');
     Route::get('backups/{filename}/download', [BackupController::class, 'download'])->name('backups.download');
     Route::delete('backups/{filename}', [BackupController::class, 'destroy'])->name('backups.destroy');
 });

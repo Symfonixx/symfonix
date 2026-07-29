@@ -859,32 +859,9 @@
 
 
 
-  function dynamicCurrentMenuClass(selector) {
-    let FileName = window.location.href.split("/").reverse()[0];
-
-    selector.find("li").each(function () {
-      let anchor = $(this).find("a");
-      if ($(anchor).attr("href") == FileName) {
-        $(this).addClass("current");
-      }
-    });
-    // if any li has .current elmnt add class
-    selector.children("li").each(function () {
-      if ($(this).find(".current").length) {
-        $(this).addClass("current");
-      }
-    });
-    // if no file name return
-    if ("" == FileName) {
-      selector.find("li").eq(0).addClass("current");
-    }
-  }
-
-  if ($(".main-menu__list").length) {
-    // dynamic current class
-    let mainNavUL = $(".main-menu__list");
-    dynamicCurrentMenuClass(mainNavUL);
-  }
+  // Vue/Inertia MainMenuList owns the .current class via page.url matching.
+  // The old theme helper compared bare path segments to absolute hrefs and
+  // incorrectly forced the first item (Home) active on many pages.
 
 
   // Do not clone menus when Vue/Inertia already rendered them — innerHTML

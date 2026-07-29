@@ -2,7 +2,9 @@
 
 namespace Modules\Base\Services;
 
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -85,7 +87,11 @@ class BackupService
                     'filename' => $filename,
                     'path' => $path,
                     'size' => $disk->size($path),
-                    'type' => str_contains($filename, '_auto_') ? 'auto' : 'manual',
+                    'type' => match (true) {
+                        str_contains($filename, '_auto_') => 'auto',
+                        str_contains($filename, '_import_') => 'import',
+                        default => 'manual',
+                    },
                     'created_at' => $disk->lastModified($path),
                 ];
             })
@@ -115,6 +121,82 @@ class BackupService
 
         if ($disk->exists($relativePath)) {
             $disk->delete($relativePath);
+        }
+    }
+
+    /**
+     * Restore database and public storage from an uploaded backup ZIP
+     * (same format produced by create()).
+     *
+     * @return array{filename: string, path: string, size: int}
+     */
+    public function import(UploadedFile $file): array
+    {
+        $disk = Storage::disk(self::DISK);
+        $disk->makeDirectory(self::DIRECTORY);
+
+        $timestamp = now()->format('Y-m-d_H-i-s');
+        $original = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeBase = Str::slug($original) ?: 'import';
+        $filename = "backup_import_{$safeBase}_{$timestamp}.zip";
+        $relativePath = self::DIRECTORY.'/'.$filename;
+
+        $stored = $file->storeAs(self::DIRECTORY, $filename, self::DISK);
+        if (! $stored) {
+            throw new RuntimeException('Unable to store uploaded backup.');
+        }
+
+        try {
+            $this->restoreFromPath($disk->path($relativePath));
+        } catch (Throwable $e) {
+            $disk->delete($relativePath);
+            throw $e;
+        }
+
+        return [
+            'filename' => $filename,
+            'path' => $relativePath,
+            'size' => $disk->size($relativePath),
+        ];
+    }
+
+    /**
+     * Restore database and public storage from an existing backup ZIP on disk.
+     */
+    public function restore(string $filename): void
+    {
+        $this->restoreFromPath($this->absolutePath($filename));
+    }
+
+    public function restoreFromPath(string $absoluteZipPath): void
+    {
+        if (! File::exists($absoluteZipPath)) {
+            throw new RuntimeException('Backup file not found.');
+        }
+
+        $tempDir = storage_path('app/private/backups/tmp_restore_'.Str::random(12));
+        File::ensureDirectoryExists($tempDir);
+
+        try {
+            $this->extractBackupArchive($absoluteZipPath, $tempDir);
+
+            $sqlPath = $tempDir.'/database.sql';
+            if (! File::exists($sqlPath) || File::size($sqlPath) === 0) {
+                throw new RuntimeException('Backup archive is missing database.sql.');
+            }
+
+            $this->importDatabase($sqlPath);
+            $this->restorePublicStorage($tempDir);
+
+            try {
+                Artisan::call('cache:clear');
+                Artisan::call('view:clear');
+                cache()->forget('settings');
+            } catch (Throwable) {
+                // Cache clear is best-effort after a successful restore.
+            }
+        } finally {
+            File::deleteDirectory($tempDir);
         }
     }
 
@@ -305,6 +387,210 @@ class BackupService
         foreach ($files as $file) {
             $relative = 'storage/public/'.$file->getRelativePathname();
             $zip->addFile($file->getPathname(), str_replace('\\', '/', $relative));
+        }
+    }
+
+    protected function extractBackupArchive(string $absoluteZipPath, string $tempDir): void
+    {
+        $zip = new ZipArchive;
+        if ($zip->open($absoluteZipPath) !== true) {
+            throw new RuntimeException('Unable to open backup archive.');
+        }
+
+        try {
+            for ($i = 0; $i < $zip->numFiles; $i++) {
+                $name = $zip->getNameIndex($i);
+                if ($name === false) {
+                    continue;
+                }
+
+                $normalized = str_replace('\\', '/', $name);
+                if ($normalized === '' || str_ends_with($normalized, '/')) {
+                    continue;
+                }
+
+                if (str_contains($normalized, '..') || str_starts_with($normalized, '/')) {
+                    throw new RuntimeException('Backup archive contains an unsafe path.');
+                }
+
+                $allowed = $normalized === 'database.sql'
+                    || $normalized === 'manifest.json'
+                    || str_starts_with($normalized, 'storage/public/');
+
+                if (! $allowed) {
+                    continue;
+                }
+
+                $target = $tempDir.'/'.$normalized;
+                File::ensureDirectoryExists(dirname($target));
+
+                $stream = $zip->getStream($name);
+                if ($stream === false) {
+                    throw new RuntimeException('Unable to read a file from the backup archive.');
+                }
+
+                $out = fopen($target, 'wb');
+                if ($out === false) {
+                    fclose($stream);
+                    throw new RuntimeException('Unable to extract backup archive.');
+                }
+
+                stream_copy_to_stream($stream, $out);
+                fclose($stream);
+                fclose($out);
+            }
+        } finally {
+            $zip->close();
+        }
+    }
+
+    protected function importDatabase(string $sqlPath): void
+    {
+        $connection = config('database.default');
+        $config = config("database.connections.{$connection}");
+        $driver = $config['driver'] ?? '';
+
+        if (! in_array($driver, ['mysql', 'mariadb'], true)) {
+            throw new RuntimeException('Automatic SQL restore currently supports MySQL/MariaDB only.');
+        }
+
+        if ($this->importWithMysqlClient($config, $sqlPath)) {
+            DB::purge($connection);
+            DB::reconnect($connection);
+
+            return;
+        }
+
+        $this->importWithPhp($connection, $sqlPath);
+    }
+
+    protected function importWithMysqlClient(array $config, string $sqlPath): bool
+    {
+        $mysql = $this->findMysqlClient();
+        if (! $mysql) {
+            return false;
+        }
+
+        $host = $config['host'] ?? '127.0.0.1';
+        $port = (string) ($config['port'] ?? 3306);
+        $user = $config['username'] ?? '';
+        $database = $config['database'] ?? '';
+        $password = $config['password'] ?? '';
+
+        $command = [
+            $mysql,
+            '--host='.$host,
+            '--port='.$port,
+            '--user='.$user,
+            $database,
+        ];
+
+        if ($password !== '') {
+            array_splice($command, 4, 0, ['--password='.$password]);
+        }
+
+        $descriptors = [
+            0 => ['file', $sqlPath, 'r'],
+            1 => ['pipe', 'w'],
+            2 => ['pipe', 'w'],
+        ];
+
+        $process = proc_open($command, $descriptors, $pipes, null, null, ['bypass_shell' => true]);
+        if (! is_resource($process)) {
+            return false;
+        }
+
+        stream_get_contents($pipes[1]);
+        $stderr = stream_get_contents($pipes[2]);
+        fclose($pipes[1]);
+        fclose($pipes[2]);
+
+        $exitCode = proc_close($process);
+
+        if ($exitCode !== 0) {
+            throw new RuntimeException(
+                'Database restore failed'.($stderr ? ': '.trim($stderr) : '.')
+            );
+        }
+
+        return true;
+    }
+
+    protected function findMysqlClient(): ?string
+    {
+        $candidates = [
+            'mysql',
+            'C:\\xampp\\mysql\\bin\\mysql.exe',
+            'C:\\laragon\\bin\\mysql\\mysql-8.0.30-winx64\\bin\\mysql.exe',
+            '/usr/bin/mysql',
+            '/usr/local/bin/mysql',
+            '/opt/homebrew/bin/mysql',
+        ];
+
+        foreach ($candidates as $candidate) {
+            if ($candidate === 'mysql') {
+                $which = stripos(PHP_OS, 'WIN') === 0 ? 'where mysql' : 'command -v mysql';
+                $path = trim((string) shell_exec($which));
+                if ($path !== '' && File::exists(explode(PHP_EOL, $path)[0])) {
+                    return explode(PHP_EOL, $path)[0];
+                }
+
+                continue;
+            }
+
+            if (File::exists($candidate)) {
+                return $candidate;
+            }
+        }
+
+        return null;
+    }
+
+    protected function importWithPhp(string $connection, string $sqlPath): void
+    {
+        $sql = File::get($sqlPath);
+        if ($sql === false || trim($sql) === '') {
+            throw new RuntimeException('Backup SQL file is empty.');
+        }
+
+        DB::connection($connection)->statement('SET FOREIGN_KEY_CHECKS=0');
+
+        try {
+            DB::connection($connection)->unprepared($sql);
+        } catch (Throwable $e) {
+            throw new RuntimeException('Database restore failed: '.$e->getMessage(), 0, $e);
+        } finally {
+            try {
+                DB::connection($connection)->statement('SET FOREIGN_KEY_CHECKS=1');
+            } catch (Throwable) {
+                // ignore
+            }
+        }
+
+        DB::purge($connection);
+        DB::reconnect($connection);
+    }
+
+    protected function restorePublicStorage(string $tempDir): void
+    {
+        $sourceRoot = $tempDir.'/storage/public';
+        if (! File::isDirectory($sourceRoot)) {
+            return;
+        }
+
+        $publicRoot = storage_path('app/public');
+        File::ensureDirectoryExists($publicRoot);
+
+        $files = File::allFiles($sourceRoot);
+        foreach ($files as $file) {
+            $relative = str_replace('\\', '/', $file->getRelativePathname());
+            if (str_contains($relative, '..')) {
+                throw new RuntimeException('Backup storage path is unsafe.');
+            }
+
+            $target = $publicRoot.DIRECTORY_SEPARATOR.str_replace('/', DIRECTORY_SEPARATOR, $relative);
+            File::ensureDirectoryExists(dirname($target));
+            File::copy($file->getPathname(), $target);
         }
     }
 

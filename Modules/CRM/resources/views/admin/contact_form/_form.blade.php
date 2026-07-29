@@ -63,21 +63,26 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
-        <label for="service_id" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::contact_form.fields.service') }}</label>
+        <label for="service_ids" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::contact_form.fields.services') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <select id="service_id" class="form-select form-select-solid @error('service_id') is-invalid @enderror"
+        <?php
+            $selectedServiceIds = collect(old('service_ids', $contactData?->serviceIds() ?? []))
+                ->filter(fn ($id) => filled($id))
+                ->map(fn ($id) => (int) $id)
+                ->all();
+        ?>
+        <select id="service_ids" class="form-select form-select-solid @error('service_ids') is-invalid @enderror"
                 data-control="select2" data-placeholder="{{ __('crm::contact_form.fields.select_service') }}"
-                data-allow-clear="true" name="service_id">
-            <option value=""></option>
+                name="service_ids[]" multiple>
             @foreach(($services ?? collect()) as $service)
-                <option value="{{ $service->id }}" @selected((int) old('service_id', $contactData?->service_id) === $service->id)>
+                <option value="{{ $service->id }}" @selected(in_array((int) $service->id, $selectedServiceIds, true))>
                     {{ $service->getTranslation('title', app()->getLocale()) }}
                 </option>
             @endforeach
         </select>
-        <div class="form-text">{{ __('crm::contact_form.hints.service') }}</div>
-        @error('service_id')
+        <div class="form-text">{{ __('crm::contact_form.hints.services') }}</div>
+        @error('service_ids')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>

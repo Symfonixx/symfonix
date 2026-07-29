@@ -32,6 +32,24 @@ class ContactForm extends Model
         return $this->belongsTo(\Modules\Services\Models\Service::class);
     }
 
+    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(\Modules\Services\Models\Service::class, 'contact_form_service')
+            ->withTimestamps();
+    }
+
+    /** Service ids from the pivot, falling back to the legacy single column. */
+    public function serviceIds(): array
+    {
+        $ids = $this->services->pluck('id')->map(fn ($id) => (int) $id)->all();
+
+        if ($ids === [] && $this->service_id) {
+            $ids = [(int) $this->service_id];
+        }
+
+        return $ids;
+    }
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);

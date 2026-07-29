@@ -13,6 +13,7 @@ use Modules\User\Http\Controllers\Portal\ProfileController;
 Route::middleware(['auth', 'is_customer'])->prefix('portal')->name('portal.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/subscriptions', [PortalSubscriptionController::class, 'index'])->name('subscriptions.index');
+    Route::get('/subscriptions/{subscription}', [PortalSubscriptionController::class, 'show'])->name('subscriptions.show');
     Route::get('/projects', [PortalProjectController::class, 'index'])->name('projects.index');
     Route::get('/projects/{project}', [PortalProjectController::class, 'show'])->name('projects.show');
     Route::post('/projects/{project}/review', [PortalProjectReviewController::class, 'store'])->name('projects.review');

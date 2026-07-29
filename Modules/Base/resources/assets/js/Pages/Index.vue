@@ -646,8 +646,8 @@
                                             <div class="testimonial-one__img">
                                                 <img :src="testimonial.avatar_link"
                                                      :alt="translateField(testimonial.name)"
-                                                     width="100"
-                                                     height="100"
+                                                     width="180"
+                                                     height="180"
                                                      loading="lazy"
                                                      decoding="async">
                                             </div>

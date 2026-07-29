@@ -1,6 +1,6 @@
 @php
     $locale = app()->getLocale() ?: 'en';
-    $homeUrl = url($locale === 'en' ? '/' : '/'.$locale);
+    $homeUrl = url('/'.$locale);
     $isRtl = $locale === 'ar';
     $status = $status ?? 500;
     $title = $title ?? 'Error';
@@ -11,7 +11,7 @@
     try {
         $loginUrl = route('login');
     } catch (\Throwable $e) {
-        $loginUrl = url(($locale === 'en' ? '' : '/'.$locale).'/login');
+        $loginUrl = url('/'.$locale.'/login');
     }
 @endphp
 <!DOCTYPE html>

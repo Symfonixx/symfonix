@@ -8,7 +8,11 @@
         "profile": "Mein Profil",
         "notifications": "Benachrichtigungen",
         "logout": "Abmelden",
-        "my_dashboard": "Mein Dashboard"
+        "my_dashboard": "Mein Dashboard",
+        "navigation": "Menü",
+        "open_menu": "Menü öffnen",
+        "close_menu": "Menü schließen",
+        "back_to_site": "Zur Website"
     },
     "pages": {
         "dashboard_title": "Kundenportal",
@@ -64,12 +68,19 @@
         "title": "Abonnements",
         "subtitle": "Alle mit Ihrem Konto verknüpften Abonnements.",
         "no_subscriptions": "Keine Abonnements gefunden.",
-        "amount": "Menge",
+        "view_details": "Details anzeigen",
+        "details": "Abonnementdetails",
+        "invoices": "Rechnungen",
+        "no_invoices": "Noch keine Rechnungen für dieses Abonnement.",
+        "download_pdf": "PDF herunterladen",
+        "amount": "Betrag",
         "billing_cycle": "Abrechnungszeitraum",
+        "starts_at": "Startdatum",
+        "ends_at": "Enddatum",
         "renewal_at": "Nächste Erneuerung",
         "service": "Service",
         "auto_renew": "Automatische Verlängerung",
-        "auto_renew_enabled": "Ermöglicht"
+        "auto_renew_enabled": "Aktiviert"
     },
     "tickets": {
         "title": "Support-Tickets",

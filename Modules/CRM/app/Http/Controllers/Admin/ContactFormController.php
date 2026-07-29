@@ -29,7 +29,7 @@ class ContactFormController extends Controller
     public function index(): View
     {
         $model = ContactForm::query()
-            ->with(['company:id,name', 'service:id,title', 'lead:id,name', 'crmContact:id,name'])
+            ->with(['company:id,name', 'service:id,title', 'services:services.id,title', 'lead:id,name', 'crmContact:id,name'])
             ->latest()
             ->paginate(config('core.page_size'));
 
@@ -43,11 +43,13 @@ class ContactFormController extends Controller
 
     public function store(StoreContactFormRequest $request): RedirectResponse
     {
-        ContactForm::create([
+        $contactForm = ContactForm::create([
             ...$request->validated(),
             'ip_address' => $request->ip(),
             'blocked' => false,
         ]);
+
+        $contactForm->services()->sync($this->serviceIds($request->input('service_ids', [])));
 
         session()->flushMessage(true);
 
@@ -56,6 +58,8 @@ class ContactFormController extends Controller
 
     public function edit(ContactForm $contactForm): View
     {
+        $contactForm->loadMissing('services:services.id');
+
         return view('crm::admin.contact_form.edit', array_merge(
             ['contact' => $contactForm],
             $this->formData()
@@ -65,6 +69,7 @@ class ContactFormController extends Controller
     public function update(UpdateContactFormRequest $request, ContactForm $contactForm): RedirectResponse
     {
         $contactForm->update($request->validated());
+        $contactForm->services()->sync($this->serviceIds($request->input('service_ids', [])));
 
         session()->flushMessage(true);
 
@@ -96,6 +101,16 @@ class ContactFormController extends Controller
         $contact = $this->convertToContactAction->execute($contactForm);
 
         return redirect()->route('admin.contacts.show', $contact);
+    }
+
+    private function serviceIds(array $serviceIds): array
+    {
+        return collect($serviceIds)
+            ->filter(fn ($id) => filled($id))
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->values()
+            ->all();
     }
 
     private function formData(): array

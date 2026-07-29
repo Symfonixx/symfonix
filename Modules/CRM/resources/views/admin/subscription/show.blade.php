@@ -46,9 +46,15 @@
                 </div>
             </div>
             <div class="row mb-6">
-                <div class="col-md-3 fw-bold">{{ __('crm::subscription.fields.service') }}</div>
+                <div class="col-md-3 fw-bold">{{ __('crm::subscription.fields.services') }}</div>
                 <div class="col-md-9">
-                    @if($subscription->service)
+                    @if($subscription->services->isNotEmpty())
+                        @foreach($subscription->services as $service)
+                            <a href="{{ route('admin.services.edit', $service->id) }}" class="badge badge-light-primary me-1 mb-1 text-hover-primary">
+                                {{ $service->getTranslation('title', app()->getLocale()) }}
+                            </a>
+                        @endforeach
+                    @elseif($subscription->service)
                         <a href="{{ route('admin.services.edit', $subscription->service_id) }}" class="text-hover-primary">
                             {{ $subscription->service->getTranslation('title', app()->getLocale()) }}
                         </a>
@@ -84,6 +90,72 @@
             <div class="row mb-0">
                 <div class="col-md-3 fw-bold">{{ __('crm::subscription.fields.notes') }}</div>
                 <div class="col-md-9">{{ $subscription->notes ?: __('N/A') }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-6">
+        <div class="card-header">
+            <h3 class="card-title">{{ __('crm::subscription.sections.invoices') }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-row-dashed align-middle gs-0 gy-4">
+                    <thead>
+                    <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                        <th>{{ __('finance::invoice.fields.invoice_number') }}</th>
+                        <th>{{ __('finance::invoice.fields.total') }}</th>
+                        <th>{{ __('finance::invoice.fields.status') }}</th>
+                        <th>{{ __('finance::invoice.fields.issued_at') }}</th>
+                        <th>{{ __('finance::invoice.fields.due_at') }}</th>
+                        <th class="text-end"></th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-gray-600 fw-semibold">
+                    @forelse($subscription->invoices as $invoice)
+                        <tr>
+                            <td>
+                                <a href="{{ route('admin.finance.invoices.show', $invoice) }}" class="text-hover-primary fw-bold">
+                                    {{ $invoice->invoice_number }}
+                                </a>
+                            </td>
+                            <td>{{ number_format($invoice->total, 2) }} {{ $invoice->currency }}</td>
+                            <td>
+                                @php
+                                    $invoiceColor = match($invoice->status) {
+                                        'paid' => 'success',
+                                        'overdue' => 'danger',
+                                        'sent' => 'primary',
+                                        'void' => 'secondary',
+                                        default => 'warning',
+                                    };
+                                @endphp
+                                <span class="badge badge-light-{{ $invoiceColor }}">
+                                    {{ __('finance::invoice.status.'.$invoice->status) }}
+                                </span>
+                            </td>
+                            <td>{{ $invoice->issued_at?->format('Y-m-d') }}</td>
+                            <td>{{ $invoice->due_at?->format('Y-m-d') ?: '—' }}</td>
+                            <td class="text-end">
+                                <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}"
+                                   class="btn btn-sm btn-light-primary"
+                                   title="{{ __('finance::invoice.actions.download_pdf') }}">
+                                    <i class="bi bi-file-pdf me-1"></i>{{ __('finance::invoice.actions.download_pdf') }}
+                                </a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-muted text-center py-10">
+                                <div class="mb-3">
+                                    <i class="bi bi-receipt fs-2x text-gray-400"></i>
+                                </div>
+                                {{ __('crm::subscription.empty.invoices') }}
+                            </td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

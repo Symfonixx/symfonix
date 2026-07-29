@@ -44,6 +44,19 @@ class LeadService
         }
     }
 
+    public function syncServices(Lead $lead, array $serviceIds): void
+    {
+        $ids = collect($serviceIds)
+            ->filter(fn ($id) => filled($id))
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->values()
+            ->all();
+
+        $lead->services()->sync($ids);
+        $lead->update(['service_id' => $ids[0] ?? null]);
+    }
+
     public function create(LeadData $data): ?Lead
     {
         $lead = $this->repository->create($data);

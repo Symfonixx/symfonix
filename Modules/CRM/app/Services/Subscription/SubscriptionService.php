@@ -5,6 +5,7 @@ namespace Modules\CRM\Services\Subscription;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Log;
 use Modules\CRM\DTOs\Subscription\SubscriptionData;
+use Modules\CRM\Events\SubscriptionCreated;
 use Modules\CRM\Models\Subscription;
 use Modules\CRM\Repositories\Subscription\SubscriptionRepository;
 use Modules\CRM\Support\AuditLogger;
@@ -37,6 +38,8 @@ class SubscriptionService
                 'company_id' => $subscription->company_id,
                 'actor_id' => auth()->id(),
             ]);
+
+            SubscriptionCreated::dispatch($subscription);
         }
 
         return $subscription;

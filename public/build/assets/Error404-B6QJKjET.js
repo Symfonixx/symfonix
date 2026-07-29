@@ -1,1 +1,0 @@
-import r from"./Error-DcwQCpMW.js";import{x as o,e as t}from"./vendor-vue-BAOtfucT.js";import"./App-CdxgP1mu.js";import"./vendor-ui-XNB9EfQd.js";const n={__name:"Error404",setup(e){return(_,a)=>(t(),o(r))}};export{n as default};

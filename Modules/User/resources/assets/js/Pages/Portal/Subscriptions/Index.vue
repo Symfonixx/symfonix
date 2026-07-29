@@ -51,6 +51,13 @@
                         <span>{{ t('subscriptions.auto_renew') }}</span>
                         <strong>{{ t('subscriptions.auto_renew_enabled') }}</strong>
                     </div>
+
+                    <div class="portal-project-card__footer">
+                        <Link :href="route('portal.subscriptions.show', subscription.id)" class="thm-btn w-100 text-center">
+                            {{ t('subscriptions.view_details') }}
+                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow`"></span>
+                        </Link>
+                    </div>
                 </article>
             </div>
         </div>
@@ -70,7 +77,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import PortalShell from '@/Components/Portal/PortalShell.vue';
 import { usePortalTranslations } from '@/Composables/usePortalTranslations';
 
@@ -79,7 +86,9 @@ const props = defineProps({
     meta: { type: Object, default: () => ({}) },
 });
 
+const page = usePage();
 const { t } = usePortalTranslations();
+const locale = computed(() => page.props.locale);
 const metaTitle = computed(() => props.meta?.title || t('pages.subscriptions_title'));
 const metaDescription = computed(() => props.meta?.description || t('pages.subscriptions_description'));
 

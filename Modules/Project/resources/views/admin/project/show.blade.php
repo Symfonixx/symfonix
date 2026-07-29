@@ -92,6 +92,16 @@
                                 </a>
                             </span>
                         @endif
+                        @if($project->services->isNotEmpty())
+                            <span class="d-flex align-items-center flex-wrap gap-1">
+                                <i class="bi bi-grid me-1"></i>
+                                @foreach($project->services as $service)
+                                    <span class="badge badge-light-primary">
+                                        {{ $service->getTranslation('title', app()->getLocale()) }}
+                                    </span>
+                                @endforeach
+                            </span>
+                        @endif
                     </div>
                 </div>
             </div>

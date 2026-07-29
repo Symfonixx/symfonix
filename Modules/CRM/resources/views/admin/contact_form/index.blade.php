@@ -85,7 +85,13 @@
                 </td>
 
                 <td>
-                    @if($contact->service)
+                    @if($contact->services->isNotEmpty())
+                        @foreach($contact->services as $service)
+                            <span class="badge badge-light-primary me-1 mb-1">
+                                {{ $service->getTranslation('title', app()->getLocale()) }}
+                            </span>
+                        @endforeach
+                    @elseif($contact->service)
                         {{ $contact->service->getTranslation('title', app()->getLocale()) }}
                     @else
                         {{ $contact->subject ?: __('N/A') }}
@@ -189,9 +195,15 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <strong>{{ __('crm::contact_form.fields.service') }}:</strong>
+                                <strong>{{ __('crm::contact_form.fields.services') }}:</strong>
                                 <p>
-                                    @if($contact->service)
+                                    @if($contact->services->isNotEmpty())
+                                        @foreach($contact->services as $service)
+                                            <span class="badge badge-light-primary me-1 mb-1">
+                                                {{ $service->getTranslation('title', app()->getLocale()) }}
+                                            </span>
+                                        @endforeach
+                                    @elseif($contact->service)
                                         {{ $contact->service->getTranslation('title', app()->getLocale()) }}
                                     @else
                                         {{ __('N/A') }}

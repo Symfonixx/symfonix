@@ -1,96 +1,169 @@
 /*--------------------------------------------------------------
-# Customer Portal
+# Customer Portal — Panel shell
 --------------------------------------------------------------*/
-.portal-one {
-    position: relative;
-    display: block;
-    background-color: var(--techguru-black);
-    padding: 10px 0 100px;
-    z-index: 2;
-    margin-top: -30px;
+:root {
+    --portal-sidebar-width: 280px;
+    --portal-topbar-min-height: 88px;
+    --portal-surface: #12151c;
+    --portal-surface-2: #161a23;
+    --portal-border: rgba(var(--techguru-white-rgb), 0.08);
 }
 
-.portal-one::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 320px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(var(--techguru-base-rgb), 0.12) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: -1;
+body.portal-nav-locked {
+    overflow: hidden;
 }
 
-.portal-page-header {
-    padding: 200px 0 75px;
+body.portal-panel-active {
+    background: var(--techguru-black, #0b0d12);
 }
 
-.portal-page-header .page-header__inner {
-    position: relative;
-    z-index: 2;
+body.portal-panel-active .page-wrapper,
+body.portal-panel-active #app {
+    min-height: 100vh;
+    background: transparent;
 }
 
-.portal-page-header .page-header__inner h1,
-.portal-page-header .page-header__inner h2 {
-    margin-bottom: 15px;
-    font-size: 48px;
-    line-height: 1.15;
-    text-transform: capitalize;
-}
-
-.portal-page-header__subtitle {
-    color: var(--techguru-gray);
-    font-size: 18px;
-    line-height: 28px;
-    max-width: 640px;
-    margin: 15px 0 0;
-}
-
-.portal-page-header .thm-breadcrumb__box {
-    display: inline-block;
-}
-
-.portal-page-header .thm-breadcrumb li {
-    vertical-align: middle;
-}
-
-/* Tabs */
-.portal-tabs {
+.portal-app {
+    --portal-bg: var(--techguru-black, #0b0d12);
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 40px;
-    padding: 8px;
-    border-radius: 14px;
-    background: rgba(var(--techguru-white-rgb), 0.04);
-    border: 1px solid rgba(var(--techguru-white-rgb), 0.08);
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 0% 0%, rgba(var(--techguru-base-rgb), 0.1) 0%, transparent 42%),
+        var(--portal-bg);
+    color: var(--techguru-white);
 }
 
-.portal-tabs__link {
+.portal-app__overlay {
+    display: none;
+}
+
+.portal-sidebar {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+    width: var(--portal-sidebar-width);
+    background: var(--portal-surface);
+    border-inline-end: 1px solid var(--portal-border);
+    padding: 20px 16px;
+    transform: translateX(0);
+    transition: transform 0.28s ease;
+}
+
+html[dir="rtl"] .portal-sidebar {
+    transform: translateX(0);
+}
+
+.portal-sidebar__brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 8px 20px;
+    border-bottom: 1px solid var(--portal-border);
+    margin-bottom: 20px;
+}
+
+.portal-sidebar__logo {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
+    min-width: 0;
+    max-width: 180px;
+}
+
+.portal-sidebar__logo img {
+    max-height: 36px;
+    width: auto;
+    object-fit: contain;
+}
+
+.portal-sidebar__logo-text {
+    color: var(--techguru-white);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.portal-sidebar__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--portal-border);
     border-radius: 10px;
+    background: transparent;
+    color: var(--techguru-gray);
+    cursor: pointer;
+}
+
+.portal-sidebar__close:hover {
+    color: var(--techguru-white);
+    border-color: rgba(var(--techguru-base-rgb), 0.45);
+}
+
+.portal-sidebar__label {
+    margin: 0 12px 10px;
+    color: rgba(var(--techguru-gray-rgb), 0.85);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.portal-sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    overflow-y: auto;
+    padding-inline: 4px;
+}
+
+.portal-sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
     color: var(--techguru-gray);
     font-size: 15px;
     font-weight: 500;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
-.portal-tabs__link:hover {
+.portal-sidebar__link:hover {
     color: var(--techguru-white);
-    background: rgba(var(--techguru-white-rgb), 0.06);
+    background: rgba(var(--techguru-white-rgb), 0.05);
 }
 
-.portal-tabs__link--active {
+.portal-sidebar__link--active {
     color: var(--techguru-white);
-    background: linear-gradient(135deg, var(--techguru-base) 0%, rgba(var(--techguru-base-rgb), 0.75) 100%);
-    box-shadow: 0 8px 24px rgba(var(--techguru-base-rgb), 0.25);
+    background: linear-gradient(135deg, rgba(var(--techguru-base-rgb), 0.95) 0%, rgba(var(--techguru-base-rgb), 0.65) 100%);
+    box-shadow: 0 8px 22px rgba(var(--techguru-base-rgb), 0.22);
 }
 
-.portal-tabs__badge {
+.portal-sidebar__link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.portal-sidebar__link-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.portal-sidebar__badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -103,6 +176,316 @@
     font-size: 11px;
     font-weight: 700;
     line-height: 1;
+}
+
+.portal-sidebar__footer {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--portal-border);
+    display: grid;
+    gap: 10px;
+}
+
+.portal-sidebar__user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 6px;
+    min-width: 0;
+}
+
+.portal-sidebar__avatar,
+.portal-topbar__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(var(--techguru-base-rgb), 0.18);
+    color: var(--techguru-base);
+    border: 1px solid rgba(var(--techguru-base-rgb), 0.35);
+}
+
+.portal-sidebar__avatar img,
+.portal-topbar__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portal-sidebar__user-meta {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+}
+
+.portal-sidebar__user-meta strong {
+    color: var(--techguru-white);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.portal-sidebar__user-meta span {
+    color: var(--techguru-gray);
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.portal-sidebar__logout,
+.portal-sidebar__site-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--portal-border);
+    background: transparent;
+    color: var(--techguru-gray);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: start;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.portal-sidebar__logout:hover {
+    color: #ff8a95;
+    border-color: rgba(255, 107, 122, 0.35);
+    background: rgba(220, 53, 69, 0.08);
+}
+
+.portal-sidebar__site-link:hover {
+    color: var(--techguru-white);
+    border-color: rgba(var(--techguru-base-rgb), 0.4);
+    background: rgba(var(--techguru-base-rgb), 0.08);
+}
+
+.portal-app__main {
+    flex: 1;
+    min-width: 0;
+    margin-inline-start: var(--portal-sidebar-width);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.portal-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 28px 18px;
+    background: rgba(11, 13, 18, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--portal-border);
+}
+
+.portal-topbar__start {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    min-width: 0;
+}
+
+.portal-topbar__menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin-top: 2px;
+    border-radius: 12px;
+    border: 1px solid var(--portal-border);
+    background: rgba(var(--techguru-white-rgb), 0.03);
+    color: var(--techguru-white);
+    cursor: pointer;
+}
+
+.portal-topbar__menu:hover {
+    border-color: rgba(var(--techguru-base-rgb), 0.45);
+    color: var(--techguru-base);
+}
+
+.portal-topbar__titles {
+    min-width: 0;
+}
+
+.portal-topbar__crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-topbar__crumbs li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--techguru-gray);
+    font-size: 13px;
+}
+
+.portal-topbar__crumbs a {
+    color: var(--techguru-gray);
+    text-decoration: none;
+}
+
+.portal-topbar__crumbs a:hover {
+    color: var(--techguru-base);
+}
+
+.portal-topbar__crumbs [aria-current="page"] {
+    color: rgba(var(--techguru-white-rgb), 0.78);
+}
+
+.portal-topbar__sep {
+    opacity: 0.45;
+}
+
+.portal-topbar__title {
+    margin: 0;
+    color: var(--techguru-white);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.portal-topbar__subtitle {
+    margin: 8px 0 0;
+    color: var(--techguru-gray);
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 720px;
+}
+
+.portal-topbar__end {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    padding-top: 4px;
+}
+
+.portal-topbar__user {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 999px;
+    border: 1px solid var(--portal-border);
+    background: rgba(var(--techguru-white-rgb), 0.03);
+    color: var(--techguru-white);
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.portal-topbar__user:hover {
+    border-color: rgba(var(--techguru-base-rgb), 0.4);
+    background: rgba(var(--techguru-base-rgb), 0.08);
+}
+
+.portal-topbar__avatar {
+    width: 34px;
+    height: 34px;
+}
+
+.portal-topbar__user-name {
+    font-size: 14px;
+    font-weight: 500;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.portal-app__content {
+    flex: 1;
+    padding: 28px;
+}
+
+/* Legacy wrappers (non-panel portal pages) */
+.portal-one {
+    position: relative;
+    display: block;
+    background-color: var(--techguru-black);
+    padding: 40px 0 100px;
+    z-index: 2;
+}
+
+.portal-page-header {
+    padding: 160px 0 60px;
+}
+
+.portal-page-header__subtitle {
+    color: var(--techguru-gray);
+    font-size: 18px;
+    line-height: 28px;
+    max-width: 640px;
+    margin: 15px 0 0;
+}
+
+@media (max-width: 991.98px) {
+    .portal-sidebar {
+        transform: translateX(-105%);
+        box-shadow: 16px 0 40px rgba(0, 0, 0, 0.35);
+    }
+
+    html[dir="rtl"] .portal-sidebar {
+        transform: translateX(105%);
+        box-shadow: -16px 0 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .portal-sidebar--open {
+        transform: translateX(0) !important;
+    }
+
+    .portal-app__overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1035;
+        background: rgba(0, 0, 0, 0.55);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+    }
+
+    .portal-app__overlay--visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .portal-app__main {
+        margin-inline-start: 0;
+    }
+
+    .portal-topbar {
+        padding: 16px 18px;
+    }
+
+    .portal-topbar__title {
+        font-size: 22px;
+    }
+
+    .portal-app__content {
+        padding: 18px 16px 32px;
+    }
 }
 
 /* Stats */
@@ -799,6 +1182,12 @@
     background: rgba(var(--techguru-white-rgb), 0.04);
     color: var(--techguru-white);
     font-size: 15px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.portal-input::placeholder {
+    color: var(--techguru-gray);
 }
 
 .portal-input:focus {
@@ -808,6 +1197,21 @@
 
 .portal-input--error {
     border-color: #f1416c;
+}
+
+.portal-review-quote {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(var(--techguru-white-rgb), 0.12);
+    background: rgba(var(--techguru-white-rgb), 0.04);
+    color: var(--techguru-white);
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: italic;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
 .portal-select {

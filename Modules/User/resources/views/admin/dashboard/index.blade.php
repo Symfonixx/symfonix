@@ -558,6 +558,11 @@
                                                 </td>
                                                 <td>{{ $invoice->created_at->diffForHumans() }}</td>
                                                 <td class="text-end">
+                                                    <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}"
+                                                       class="btn btn-sm btn-light-primary me-1"
+                                                       title="{{ __('finance::invoice.actions.download_pdf') }}">
+                                                        <i class="bi bi-file-pdf"></i>
+                                                    </a>
                                                     <a href="{{ route('admin.finance.invoices.show', $invoice) }}" class="btn btn-sm btn-light-primary">
                                                         {{ __('View') }}
                                                     </a>

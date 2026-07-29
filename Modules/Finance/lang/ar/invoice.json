@@ -52,6 +52,7 @@
         "confirm_delete": "حذف هذه الفاتورة نهائياً؟ سيتم أيضاً حذف القيود المحاسبية المرتبطة.",
         "deal_invoice_failed": "تعذر إنشاء فاتورة لهذه الصفقة.",
         "subscription_renewal_note": "تجديد اشتراك: :name (:date)",
+        "subscription_initial_note": "اشتراك جديد: :name (يبدأ في :date)",
         "deal_invoice_note": "فاتورة للصفقة: :title",
         "product_sale_invoice_note": "بيع منتج: :product (×:quantity)",
         "payment_description": "فاتورة :number — :company"

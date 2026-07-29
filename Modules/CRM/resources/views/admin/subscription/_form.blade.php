@@ -47,16 +47,18 @@
         <label for="service_ids" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::subscription.fields.services') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        @php
-            $selectedServiceIds = old('service_ids', $subscriptionData?->relationLoaded('services')
-                ? $subscriptionData->services->pluck('id')->all()
-                : array_filter([$subscriptionData?->service_id]));
-            $selectedServiceIds = collect($selectedServiceIds)
+        <?php
+            $selectedServiceIds = collect(old(
+                'service_ids',
+                $subscriptionData?->relationLoaded('services')
+                    ? $subscriptionData->services->pluck('id')->all()
+                    : array_filter([$subscriptionData?->service_id])
+            ))
                 ->flatten()
                 ->filter(fn ($id) => filled($id))
                 ->map(fn ($id) => (int) $id)
                 ->all();
-        @endphp
+        ?>
         <select id="service_ids" class="form-select form-select-solid @error('service_ids') is-invalid @enderror"
                 data-control="select2" data-placeholder="{{ __('crm::subscription.fields.select_service') }}"
                 name="service_ids[]" multiple>

@@ -55,7 +55,8 @@
         "billing_hint": "Amount, cycle, and renewal schedule.",
         "dates": "Dates",
         "dates_hint": "Start, end, and next renewal dates.",
-        "company_subscriptions": "Subscriptions"
+        "company_subscriptions": "Subscriptions",
+        "invoices": "Invoices"
     },
     "placeholders": {
         "name": "Example: Premium Support Plan",
@@ -70,7 +71,8 @@
         "services": "Select one or more catalog services for this subscription."
     },
     "empty": {
-        "company": "No subscriptions for this company yet."
+        "company": "No subscriptions for this company yet.",
+        "invoices": "No invoices for this subscription yet."
     },
     "validation": {
         "fix_errors": "Please fix the following errors and try again."

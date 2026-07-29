@@ -54,7 +54,8 @@
         "billing_hint": "Tutar, döngü ve yenileme takvimi.",
         "dates": "Tarihler",
         "dates_hint": "Başlangıç, bitiş ve sonraki yenileme tarihleri.",
-        "company_subscriptions": "Abonelikler"
+        "company_subscriptions": "Abonelikler",
+        "invoices": "Faturalar"
     },
     "placeholders": {
         "name": "Örnek: Premium Destek Planı",
@@ -68,7 +69,8 @@
         "service": "Bu aboneliği isteğe bağlı olarak katalog hizmetine bağlayın."
     },
     "empty": {
-        "company": "Bu şirket için henüz abonelik yok."
+        "company": "Bu şirket için henüz abonelik yok.",
+        "invoices": "Bu abonelik için henüz fatura yok."
     },
     "validation": {
         "fix_errors": "Lütfen aşağıdaki hataları düzeltin ve tekrar deneyin."

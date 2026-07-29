@@ -52,6 +52,7 @@
         "confirm_delete": "Bu faturayı kalıcı olarak silmek istiyor musunuz? İlgili muhasebe kayıtları da kaldırılacak.",
         "deal_invoice_failed": "Bu anlaşma için fatura oluşturulamadı.",
         "subscription_renewal_note": "Abonelik yenileme: :name (:date)",
+        "subscription_initial_note": "Yeni abonelik: :name (:date tarihinden itibaren)",
         "deal_invoice_note": "Anlaşma faturası: :title",
         "product_sale_invoice_note": "Ürün satışı: :product (×:quantity)",
         "payment_description": "Fatura :number — :company"

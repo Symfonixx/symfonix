@@ -13,6 +13,7 @@
         "mobile": "Mobile",
         "service": "Service",
         "select_service": "Select a service",
+        "services": "Services",
         "subject": "Subject",
         "message": "Message",
         "company": "Linked Company",
@@ -55,6 +56,7 @@
         "company": "Optional. Inquiries can be processed without linking a company.",
         "blocked": "Blocked inquiries are flagged in the system.",
         "service": "Link to a catalog service when the inquiry matches a known offering.",
+        "services": "Select one or more catalog services that match the inquiry.",
         "subject": "Free-text subject when no catalog service is selected."
     },
     "validation": {

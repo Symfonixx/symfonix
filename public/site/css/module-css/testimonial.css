@@ -81,7 +81,8 @@
 .testimonial-one__img-box {
     position: relative;
     display: block;
-    width: 280px;
+    width: 200px;
+    flex-shrink: 0;
     overflow: hidden;
     padding: 10px;
     border-radius: 40px;
@@ -115,9 +116,18 @@
 .testimonial-one__img {
     position: relative;
     display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 32px;
 }
 
 .testimonial-one__img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     border-radius: 32px;
 }
 

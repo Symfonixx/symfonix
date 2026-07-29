@@ -20,6 +20,8 @@ class StoreProjectRequest extends FormRequest
             'company_id' => ['required', 'integer', 'exists:companies,id'],
             'project_status_id' => ['required', 'integer', 'exists:project_statuses,id'],
             'deal_id' => ['nullable', 'integer', 'exists:deals,id', 'unique:projects,deal_id'],
+            'service_ids' => ['nullable', 'array'],
+            'service_ids.*' => ['integer', 'exists:services,id'],
             'budget' => ['nullable', 'numeric', 'min:0'],
             'currency' => ['nullable', 'string', 'size:3'],
             'start_date' => ['nullable', 'date'],

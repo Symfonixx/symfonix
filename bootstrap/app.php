@@ -4,10 +4,14 @@ use App\Http\Middleware\ContentSecurityPolicy;
 use App\Http\Middleware\ForceCanonicalHost;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\TrackAdminEvents;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Inertia\Inertia;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -68,8 +72,23 @@ return Application::configure(basePath: dirname(__DIR__))
                 return $response;
             }
 
-            // Unmatched routes never hit the web middleware stack, so shared Inertia
-            // props (settings, translations, asset_path, etc.) must be registered here.
+            // Unmatched routes never hit the web middleware stack, so hydrate the
+            // session/cookies here before sharing Inertia props (auth, settings, etc.).
+            if (! $request->hasSession()) {
+                $pipeline = array_reduce(
+                    array_reverse([
+                        EncryptCookies::class,
+                        AddQueuedCookiesToResponse::class,
+                        StartSession::class,
+                        ShareErrorsFromSession::class,
+                    ]),
+                    fn ($next, $middleware) => fn ($req) => app($middleware)->handle($req, $next),
+                    fn ($req) => response('')
+                );
+
+                $pipeline($request);
+            }
+
             $inertia = app(HandleInertiaRequests::class);
             Inertia::setRootView($inertia->rootView($request));
             Inertia::version(fn () => $inertia->version($request));

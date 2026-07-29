@@ -55,7 +55,8 @@
         "billing_hint": "Betrag, Zyklus und Erneuerungsplan.",
         "dates": "Termine",
         "dates_hint": "Start-, End- und nächste Verlängerungstermine.",
-        "company_subscriptions": "Abonnements"
+        "company_subscriptions": "Abonnements",
+        "invoices": "Rechnungen"
     },
     "placeholders": {
         "name": "Beispiel: Premium-Supportplan",
@@ -70,7 +71,8 @@
         "services": "Wählen Sie einen oder mehrere Katalogdienste für dieses Abonnement aus."
     },
     "empty": {
-        "company": "Noch keine Abonnements für dieses Unternehmen."
+        "company": "Noch keine Abonnements für dieses Unternehmen.",
+        "invoices": "Noch keine Rechnungen für dieses Abonnement."
     },
     "validation": {
         "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut."

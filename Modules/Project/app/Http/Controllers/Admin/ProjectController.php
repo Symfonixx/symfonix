@@ -70,6 +70,7 @@ class ProjectController extends Controller
         $project = $this->createProjectAction->execute($data);
 
         if ($project) {
+            $this->projectService->syncServices($project, $request->input('service_ids', []));
             $this->projectService->storeAttachments($project, $request->file('attachments', []));
         }
 
@@ -84,6 +85,7 @@ class ProjectController extends Controller
             'company',
             'status',
             'deal',
+            'services:services.id,title',
             'testimonial.customer:id,name,email,img',
             'invoices' => fn ($q) => $q->with('company:id,name'),
             'assignments.employee',
@@ -100,6 +102,8 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
+        $project->loadMissing('services:services.id');
+
         return view('project::admin.project.edit', array_merge([
             'project' => $project,
         ], $this->formData($project)));
@@ -186,6 +190,7 @@ class ProjectController extends Controller
         $updated = $this->updateProjectAction->execute($project, $data);
 
         if ($updated) {
+            $this->projectService->syncServices($updated, $request->input('service_ids', []));
             $this->projectService->storeAttachments($updated, $request->file('attachments', []));
         }
 
@@ -217,6 +222,10 @@ class ProjectController extends Controller
             'companies' => $this->companies(),
             'statuses' => $this->statusRepository->allOrdered(),
             'deals' => $this->deals($project),
+            'services' => \Modules\Services\Models\Service::query()
+                ->select(['id', 'title'])
+                ->orderBy('title')
+                ->get(),
             'defaultStatusId' => $this->statusRepository->allOrdered()->first()?->id,
         ];
     }

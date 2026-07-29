@@ -30,7 +30,7 @@ class LeadConversionService
         }
 
         return DB::transaction(function () use ($lead, $options) {
-            $lead->loadMissing(['company', 'service']);
+            $lead->loadMissing(['company', 'service', 'services:services.id,title']);
 
             $this->companyProvisioner->provisionFromLead($lead);
             $this->contactService->findOrCreateFromLead($lead->fresh());
@@ -65,6 +65,15 @@ class LeadConversionService
 
             $deal->update(['lead_id' => $lead->id]);
 
+            // Carry the lead's services onto the deal as line items.
+            $leadServiceIds = $lead->serviceIds();
+            if ($leadServiceIds !== []) {
+                $this->dealService->syncServices($deal, array_map(
+                    fn (int $serviceId) => ['service_id' => $serviceId, 'quantity' => 1, 'unit_price' => 0],
+                    $leadServiceIds
+                ));
+            }
+
             $lead->update([
                 'deal_id' => $deal->id,
                 'converted_at' => now(),
@@ -84,6 +93,12 @@ class LeadConversionService
     {
         if ($lead->service_interest) {
             return $lead->service_interest;
+        }
+
+        if ($lead->services->isNotEmpty()) {
+            return $lead->services
+                ->map(fn ($service) => $service->getTranslation('title', app()->getLocale()))
+                ->implode(', ');
         }
 
         if ($lead->service) {

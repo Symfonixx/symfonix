@@ -76,7 +76,7 @@
                     <div class="portal-panel__body">
                         <div v-if="project.review" class="portal-details">
                             <p class="mb-2">{{ t('projects.review_submitted_hint') }}</p>
-                            <div class="bg-light p-3 rounded">“{{ reviewQuote }}”</div>
+                            <div class="portal-review-quote">“{{ reviewQuote }}”</div>
                             <span
                                 v-if="project.review.status"
                                 class="portal-badge mt-3"
@@ -91,14 +91,14 @@
                             <p class="mb-3">{{ t('projects.review_prompt') }}</p>
                             <textarea
                                 v-model="reviewForm.quote"
-                                class="form-control"
+                                class="portal-input"
                                 rows="4"
                                 :placeholder="t('projects.review_placeholder')"
                                 required
                                 minlength="10"
                                 maxlength="2000"
                             ></textarea>
-                            <p v-if="reviewForm.errors.quote" class="text-danger mt-2 mb-0">{{ reviewForm.errors.quote }}</p>
+                            <p v-if="reviewForm.errors.quote" class="portal-form-error mt-2 mb-0">{{ reviewForm.errors.quote }}</p>
                             <button type="submit" class="thm-btn mt-3" :disabled="reviewForm.processing" style="padding: 10px 20px; font-size: 14px;">
                                 {{ t('projects.submit_review') }}
                             </button>

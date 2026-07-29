@@ -54,6 +54,7 @@
         "confirm_delete": "Delete this invoice permanently? Related ledger entries will also be removed.",
         "deal_invoice_failed": "Could not generate invoice for this deal.",
         "subscription_renewal_note": "Subscription renewal: :name (:date)",
+        "subscription_initial_note": "New subscription: :name (starting :date)",
         "deal_invoice_note": "Invoice for deal: :title",
         "project_invoice_note": "Invoice for project: :title",
         "product_sale_invoice_note": "Product sale: :product (×:quantity)",

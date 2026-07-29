@@ -5,9 +5,11 @@ namespace Modules\CRM\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\CRM\Concerns\HasCrmTimeline;
 use Modules\CRM\Filters\Subscription\SubscriptionFilter;
+use Modules\Finance\Models\Invoice;
 use Modules\Services\Models\Service;
 
 class Subscription extends Model
@@ -102,5 +104,10 @@ class Subscription extends Model
     {
         return $this->belongsToMany(Service::class, 'subscription_service')
             ->withTimestamps();
+    }
+
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class)->latest('issued_at');
     }
 }

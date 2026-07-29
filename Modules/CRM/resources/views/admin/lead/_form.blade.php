@@ -223,19 +223,26 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
-        <label for="service_id" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.service') }}</label>
+        <label for="service_ids" class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.services') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <select id="service_id" class="form-select form-select-solid @error('service_id') is-invalid @enderror"
-                data-control="select2" data-placeholder="{{ __('crm::lead.fields.select_service') }}" name="service_id">
-            <option value="">{{ __('crm::lead.fields.select_service') }}</option>
+        <?php
+            $selectedServiceIds = collect(old('service_ids', $leadData?->serviceIds() ?? []))
+                ->filter(fn ($id) => filled($id))
+                ->map(fn ($id) => (int) $id)
+                ->all();
+        ?>
+        <select id="service_ids" class="form-select form-select-solid @error('service_ids') is-invalid @enderror"
+                data-control="select2" data-placeholder="{{ __('crm::lead.fields.select_services') }}"
+                name="service_ids[]" multiple>
             @foreach(($services ?? collect()) as $service)
-                <option value="{{ $service->id }}" @selected((int) old('service_id', $leadData?->service_id) === $service->id)>
+                <option value="{{ $service->id }}" @selected(in_array((int) $service->id, $selectedServiceIds, true))>
                     {{ $service->getTranslation('title', app()->getLocale()) }}
                 </option>
             @endforeach
         </select>
-        @error('service_id')
+        <div class="form-text">{{ __('crm::lead.hints.services') }}</div>
+        @error('service_ids')
         <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>

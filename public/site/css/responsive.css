@@ -74,6 +74,12 @@
         margin-left: -50px;
     }
 
+    .blog-two__img-two {
+        flex-basis: 180px;
+        width: 180px;
+        max-width: 180px;
+    }
+
     .blog-two__meta-two li + li {
         margin-left: 16px;
     }
@@ -1414,6 +1420,10 @@
         align-items: baseline;
     }
 
+    .testimonial-one__img-box {
+        width: 160px;
+    }
+
     .testimonial-one__trustpilot-box {
         margin-top: 30px;
     }
@@ -1756,12 +1766,13 @@
     }
 
     .blog-two__content {
-        padding-left: 50px;
+        padding-left: 0;
     }
 
     .blog-two__single-two {
         flex-direction: column;
-        align-items: baseline;
+        align-items: stretch;
+        flex-wrap: wrap;
     }
 
     .blog-two__user-two {
@@ -1769,8 +1780,9 @@
     }
 
     .blog-two__content-two {
-        padding-left: 50px;
-        margin-top: 20px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 12px;
     }
 
     .blog-two__meta-two li + li {

@@ -23,7 +23,9 @@ class ContactFormConversionService
         }
 
         return DB::transaction(function () use ($form) {
-            $form->loadMissing('company:id,name');
+            $form->loadMissing(['company:id,name', 'services:services.id']);
+
+            $serviceIds = $form->serviceIds();
 
             $lead = Lead::create([
                 'name' => $form->name,
@@ -33,10 +35,12 @@ class ContactFormConversionService
                 'company_name' => $form->company?->name,
                 'source' => Lead::SOURCE_WEBSITE,
                 'problem_statement' => $form->message,
-                'service_id' => $form->service_id,
-                'service_interest' => $form->service_id ? null : $form->subject,
+                'service_id' => $serviceIds[0] ?? null,
+                'service_interest' => $serviceIds !== [] ? null : $form->subject,
                 'ip_address' => $form->ip_address,
             ]);
+
+            $lead->services()->sync($serviceIds);
 
             $contact = $this->findOrCreateContact($form);
 

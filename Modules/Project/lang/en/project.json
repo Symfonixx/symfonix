@@ -18,6 +18,8 @@
         "select_status": "Select status",
         "deal": "Linked Deal",
         "select_deal": "Select deal (optional)",
+        "services": "Services",
+        "select_services": "Select services",
         "budget": "Budget",
         "currency": "Currency",
         "payment_status": "Payment Status",
@@ -99,6 +101,7 @@
     },
     "hints": {
         "deal": "Link an open or won CRM deal. Deals already linked to another project are hidden.",
+        "services": "Select one or more catalog services delivered in this project.",
         "attachments": "Upload multiple files (documents, archives, etc.). PDF and image files are not allowed. Max 10 MB per file.",
         "profit_and_loss": "Profit or loss = invoiced amount − (labor cost + project expenses).",
         "labor_cost": "Labor cost uses the employee’s latest monthly salary ÷ :days working days × days assigned to this project.",

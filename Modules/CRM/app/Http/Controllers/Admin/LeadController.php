@@ -63,6 +63,7 @@ class LeadController extends Controller
         $lead = $this->createLeadAction->execute($data);
 
         if ($lead) {
+            $this->leadService->syncServices($lead, $request->input('service_ids', []));
             $this->leadService->storeAttachments($lead, $request->file('attachments', []));
         }
 
@@ -74,6 +75,7 @@ class LeadController extends Controller
         $lead->loadMissing([
             'company:id,name,email,phone',
             'service:id,title',
+            'services:services.id,title',
             'assignee:id,name',
             'deal:id,title,pipeline_stage_id',
             'deal.pipelineStage:id,name,color',
@@ -88,6 +90,8 @@ class LeadController extends Controller
 
     public function edit(Lead $lead): View
     {
+        $lead->loadMissing('services:services.id');
+
         return view('crm::admin.lead.edit', array_merge(['lead' => $lead], $this->formData()));
     }
 
@@ -97,6 +101,7 @@ class LeadController extends Controller
         $updated = $this->updateLeadAction->execute($lead, $data);
 
         if ($updated) {
+            $this->leadService->syncServices($updated, $request->input('service_ids', []));
             $this->leadService->storeAttachments($updated, $request->file('attachments', []));
         }
 

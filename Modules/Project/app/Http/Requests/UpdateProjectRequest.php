@@ -28,6 +28,8 @@ class UpdateProjectRequest extends FormRequest
                 'exists:deals,id',
                 Rule::unique('projects', 'deal_id')->ignore($projectId),
             ],
+            'service_ids' => ['nullable', 'array'],
+            'service_ids.*' => ['integer', 'exists:services,id'],
             'budget' => ['nullable', 'numeric', 'min:0'],
             'currency' => ['nullable', 'string', 'size:3'],
             'start_date' => ['nullable', 'date'],

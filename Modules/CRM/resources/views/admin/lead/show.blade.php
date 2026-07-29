@@ -106,9 +106,15 @@
                 <div class="row g-6">
                     <div class="col-md-4">
                         <div class="border border-dashed border-gray-300 rounded p-5 h-100">
-                            <div class="text-muted fs-7 mb-1">{{ __('crm::lead.fields.service_interest') }}</div>
+                            <div class="text-muted fs-7 mb-1">{{ __('crm::lead.fields.services') }}</div>
                             <div class="fw-semibold text-gray-800">
-                                @if($lead->service)
+                                @if($lead->services->isNotEmpty())
+                                    @foreach($lead->services as $service)
+                                        <span class="badge badge-light-primary me-1 mb-1">
+                                            {{ $service->getTranslation('title', app()->getLocale()) }}
+                                        </span>
+                                    @endforeach
+                                @elseif($lead->service)
                                     {{ $lead->service->getTranslation('title', app()->getLocale()) }}
                                 @else
                                     {{ $lead->service_interest ?? __('N/A') }}

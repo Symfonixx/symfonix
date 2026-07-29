@@ -65,6 +65,7 @@ class SubscriptionController extends Controller
             'company:id,name,email,phone,status',
             'service:id,title',
             'services:id,title',
+            'invoices',
             'crmActivities.user:id,name',
             'crmAuditLogs.user:id,name',
         ]);

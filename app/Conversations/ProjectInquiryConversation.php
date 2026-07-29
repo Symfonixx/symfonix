@@ -322,6 +322,10 @@ class ProjectInquiryConversation extends Conversation
             'ip_address' => request()->ip(),
         ]);
 
+        if ($this->selectedServiceId) {
+            $lead->services()->sync([$this->selectedServiceId]);
+        }
+
         $this->notifyAdmin($lead);
         $this->reply(__('chat.lead.thank_you'));
     }

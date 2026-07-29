@@ -8,7 +8,11 @@
         "profile": "ملفي الشخصي",
         "notifications": "الإشعارات",
         "logout": "تسجيل الخروج",
-        "my_dashboard": "لوحة التحكم"
+        "my_dashboard": "لوحة التحكم",
+        "navigation": "القائمة",
+        "open_menu": "فتح القائمة",
+        "close_menu": "إغلاق القائمة",
+        "back_to_site": "العودة للموقع"
     },
     "pages": {
         "dashboard_title": "بوابة العميل",
@@ -64,8 +68,15 @@
         "title": "الاشتراكات",
         "subtitle": "جميع الاشتراكات المرتبطة بحسابك.",
         "no_subscriptions": "لم يتم العثور على اشتراكات.",
+        "view_details": "عرض التفاصيل",
+        "details": "تفاصيل الاشتراك",
+        "invoices": "الفواتير",
+        "no_invoices": "لا توجد فواتير لهذا الاشتراك بعد.",
+        "download_pdf": "تحميل PDF",
         "amount": "المبلغ",
         "billing_cycle": "دورة الفوترة",
+        "starts_at": "تاريخ البدء",
+        "ends_at": "تاريخ الانتهاء",
         "renewal_at": "التجديد القادم",
         "service": "الخدمة",
         "auto_renew": "تجديد تلقائي",

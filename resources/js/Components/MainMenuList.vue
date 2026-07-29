@@ -1,11 +1,11 @@
 <template>
     <ul class="main-menu__list">
-        <li :class="{ current: isActive('home') }">
+        <li :class="{ current: isActive('home', { exact: ['/'] }) }">
             <Link :href="route('home')">
                 {{ trans('Home') }}
             </Link>
         </li>
-        <li :class="{ current: isActive('about-us') }">
+        <li :class="{ current: isActive('about-us', { prefixes: ['/about-us'] }) }">
             <Link :href="route('about-us')">
                 {{ trans('About Us') }}
             </Link>
@@ -49,7 +49,7 @@
             </ul>
         </li>
 
-        <li :class="{ current: isActive('contact-us') }">
+        <li :class="{ current: isActive('contact-us', { prefixes: ['/contact-us'] }) }">
             <Link :href="route('contact-us')">
                 {{ trans('Contact Us') }}
             </Link>
@@ -58,16 +58,19 @@
         <li
             v-if="!auth"
             class="d-md-none"
-            :class="{ current: isActive('login') }"
+            :class="{ current: isActive('login', { prefixes: ['/login'] }) }"
         >
-            <Link :href="route('login')">
+            <Link :href="loginUrl">
                 <i class="fas fa-sign-in-alt mx-1"></i>
                 {{ trans('Login') }}
             </Link>
         </li>
 
-        <li v-if="auth?.type === 'admin'" :class="{ active: isActive('admin.dashboard.index') }">
-            <a :href="safeRoute('admin.dashboard.index', '/admin')">
+        <li
+            v-if="auth?.type === 'admin'"
+            :class="{ active: isActive('admin.dashboard.index', { prefixes: ['/admin'] }) }"
+        >
+            <a :href="adminDashboardUrl">
                 {{ trans('Dashboard') }}
             </a>
         </li>
@@ -247,13 +250,31 @@ const portalLabel = (key) => {
     return fallbacks[key] || key
 }
 
-const safeRoute = (name, fallback = '#', params = undefined) => {
+const localizedPath = (path = '') => {
+    const normalized = path.startsWith('/') ? path : `/${path}`
+    const localePrefix = locale.value ? `/${locale.value}` : ''
+
+    if (!localePrefix) {
+        return normalized === '/' ? '/' : normalized
+    }
+
+    if (normalized === '/') {
+        return localePrefix
+    }
+
+    return `${localePrefix}${normalized}`
+}
+
+const safeRoute = (name, fallbackPath = '/', params = undefined) => {
     try {
         return params !== undefined ? route(name, params) : route(name)
     } catch (e) {
-        return fallback
+        return localizedPath(fallbackPath)
     }
 }
+
+const loginUrl = computed(() => safeRoute('login', '/login'))
+const adminDashboardUrl = computed(() => localizedPath('/admin/dashboard'))
 
 const normalizePath = (path) => {
     if (!path) return ''
@@ -285,21 +306,31 @@ const expandPrefixes = (prefixes = []) => {
 const isActive = (routeName, options = {}) => {
     const routeNames = Array.isArray(routeName) ? routeName : [routeName]
     const prefixes = expandPrefixes(options.prefixes || [])
-    try {
-        if (routeNames.some((name) => route().current(name))) {
-            return true
-        }
-    } catch (e) {
-        // Fall back to path matching when Ziggy isn't available
-    }
-    if (!prefixes.length) {
-        return false
-    }
+    const exactPaths = expandPrefixes(options.exact || [])
     const currentPath = normalizePath(page.url)
-    return prefixes.some((prefix) => {
+    const hasPathOptions = exactPaths.length > 0 || prefixes.length > 0
+
+    // Prefer Inertia page.url — Ziggy location can stay on the first page across SPA visits.
+    if (exactPaths.some((path) => currentPath === normalizePath(path))) {
+        return true
+    }
+
+    if (prefixes.some((prefix) => {
         const normalized = normalizePath(prefix)
         return currentPath === normalized || currentPath.startsWith(`${normalized}/`)
-    })
+    })) {
+        return true
+    }
+
+    if (hasPathOptions) {
+        return false
+    }
+
+    try {
+        return routeNames.some((name) => route().current(name))
+    } catch (e) {
+        return false
+    }
 }
 
 const isCurrentUrl = (targetUrl) => {
@@ -342,3 +373,15 @@ const switchLocale = (newLocale) => {
     window.location.href = newPath + queryString + hash
 }
 </script>
+
+<style scoped>
+.main-menu__list a:focus,
+.main-menu__list a:active {
+    outline: none;
+}
+
+.main-menu__list a:focus-visible {
+    outline: 2px solid var(--techguru-base, #5CB0E9);
+    outline-offset: 4px;
+}
+</style>

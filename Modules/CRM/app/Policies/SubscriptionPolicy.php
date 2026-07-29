@@ -9,11 +9,19 @@ class SubscriptionPolicy
 {
     public function viewAny(User $user): bool
     {
+        if ($user->isCustomer()) {
+            return true;
+        }
+
         return $user->can('CRM Management');
     }
 
     public function view(User $user, Subscription $subscription): bool
     {
+        if ($user->isCustomer() && in_array($subscription->company_id, $user->companyIds(), true)) {
+            return true;
+        }
+
         return $user->can('CRM Management');
     }
 

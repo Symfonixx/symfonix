@@ -76,6 +76,40 @@
         </div>
     </div>
 
+    <div class="card mb-8">
+        <div class="card-header border-0 pt-6">
+            <div class="card-title">
+                <h2 class="fw-bold mb-0">{{ __('base::backup.import_title') }}</h2>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <p class="text-muted fs-7 mb-5">{{ __('base::backup.import_hint') }}</p>
+            <form method="POST"
+                  action="{{ route('admin.backups.import') }}"
+                  enctype="multipart/form-data"
+                  onsubmit="return confirm(@js(__('base::backup.confirm_import')))">
+                @csrf
+                <div class="d-flex flex-column flex-md-row align-items-md-end gap-4">
+                    <div class="flex-grow-1">
+                        <label class="form-label" for="backup_file">{{ __('base::backup.backup_file') }}</label>
+                        <input type="file"
+                               id="backup_file"
+                               name="backup_file"
+                               class="form-control @error('backup_file') is-invalid @enderror"
+                               accept=".zip,application/zip"
+                               required>
+                        @error('backup_file')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-upload me-1"></i>{{ __('base::backup.import_restore') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-header border-0 pt-6">
             <div class="card-title">
@@ -91,7 +125,7 @@
                         <th class="min-w-100px">{{ __('base::backup.type') }}</th>
                         <th class="min-w-100px">{{ __('base::backup.size') }}</th>
                         <th class="min-w-150px">{{ __('base::backup.created_at') }}</th>
-                        <th class="text-end min-w-150px">{{ __('Actions') }}</th>
+                        <th class="text-end min-w-200px">{{ __('Actions') }}</th>
                     </tr>
                     </thead>
                     <tbody class="text-gray-600 fw-semibold">
@@ -101,6 +135,8 @@
                             <td>
                                 @if($backup['type'] === 'auto')
                                     <span class="badge badge-light-info">{{ __('base::backup.type_auto') }}</span>
+                                @elseif($backup['type'] === 'import')
+                                    <span class="badge badge-light-warning">{{ __('base::backup.type_import') }}</span>
                                 @else
                                     <span class="badge badge-light-primary">{{ __('base::backup.type_manual') }}</span>
                                 @endif
@@ -108,8 +144,18 @@
                             <td>{{ number_format($backup['size'] / 1024, 1) }} KB</td>
                             <td>{{ \Illuminate\Support\Carbon::createFromTimestamp($backup['created_at'])->format('Y-m-d H:i') }}</td>
                             <td class="text-end">
+                                <form method="POST"
+                                      action="{{ route('admin.backups.restore', $backup['filename']) }}"
+                                      class="d-inline"
+                                      onsubmit="return confirm(@js(__('base::backup.confirm_restore')))">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-light-warning me-2" title="{{ __('base::backup.restore') }}">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </button>
+                                </form>
                                 <a href="{{ route('admin.backups.download', $backup['filename']) }}"
-                                   class="btn btn-sm btn-light-primary me-2">
+                                   class="btn btn-sm btn-light-primary me-2"
+                                   title="{{ __('Download') }}">
                                     <i class="bi bi-download"></i>
                                 </a>
                                 <form method="POST"

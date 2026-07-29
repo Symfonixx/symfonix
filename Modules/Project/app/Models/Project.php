@@ -86,6 +86,12 @@ class Project extends Model
         return $this->belongsTo(Deal::class);
     }
 
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(\Modules\Services\Models\Service::class, 'project_service')
+            ->withTimestamps();
+    }
+
     public function useCases(): HasMany
     {
         return $this->hasMany(ProjectUseCase::class);
@@ -173,7 +179,7 @@ class Project extends Model
         $currency = strtoupper((string) ($deal->currency
             ?? app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency()));
 
-        return static::create([
+        $project = static::create([
             'title' => $deal->title,
             'description' => $deal->description,
             'company_id' => $deal->company_id,
@@ -186,5 +192,9 @@ class Project extends Model
             'start_date' => now()->toDateString(),
             'due_date' => $deal->expected_close_date,
         ]);
+
+        $project->services()->sync($deal->services()->pluck('services.id')->all());
+
+        return $project;
     }
 }

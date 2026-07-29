@@ -26,6 +26,8 @@
         "select_source": "Quelle auswählen",
         "service": "Service",
         "select_service": "Dienst auswählen",
+        "services": "Services",
+        "select_services": "Dienste auswählen",
         "service_interest": "Dienstinteresse (Text)",
         "project_budget": "Projektbudget",
         "problem_statement": "Problemstellung",
@@ -105,6 +107,7 @@
         "company": "Optional. Wählen Sie ein Unternehmen aus Ihrem CRM aus, um diesen Lead zu verknüpfen.",
         "company_name": "Verwenden Sie diese Option, wenn das Unternehmen noch nicht im CRM ist. Ausgeblendet, wenn ein Unternehmen verlinkt ist.",
         "service_interest": "Freitext-Fallback, wenn kein Dienst aus dem Katalog ausgewählt ist.",
+        "services": "Wählen Sie einen oder mehrere Katalogdienste aus, an denen dieser Lead interessiert ist.",
         "blocked": "Blockierte Leads werden gekennzeichnet und können aus aktiven Workflows gefiltert werden.",
         "assignee": "Vertriebsmitarbeiter, der für die Weiterverfolgung dieses Hinweises verantwortlich ist."
     },

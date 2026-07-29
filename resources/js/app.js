@@ -2,7 +2,7 @@ import 'bootstrap';
 import 'toastr';
 
 import {createApp, h} from 'vue';
-import {createInertiaApp} from '@inertiajs/vue3';
+import {createInertiaApp, router} from '@inertiajs/vue3';
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
 import {route as ziggyRoute, ZiggyVue} from '../../vendor/tightenco/ziggy';
 
@@ -24,6 +24,18 @@ function installZiggy(app, pageProps) {
         ziggyRoute(name, params, absolute, config);
 
     app.use(ZiggyVue, ziggyConfig);
+
+    // Keep Ziggy's location in sync across Inertia visits so route().current() stays accurate.
+    router.on('navigate', (event) => {
+        const nextUrl = event?.detail?.page?.url
+            ? new URL(event.detail.page.url, window.location.origin).href
+            : window.location.href;
+        const location = new URL(nextUrl);
+        ziggyConfig.location = location;
+        if (window.Ziggy) {
+            window.Ziggy.location = location;
+        }
+    });
 
     return ziggyConfig;
 }

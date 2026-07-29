@@ -126,7 +126,7 @@
 
 
     <div class="page-wrapper">
-        <header class="main-header-two">
+        <header v-if="!isPortalPage" class="main-header-two">
             <div class="main-menu-two__top">
                 <div class="main-menu-two__top-inner">
                     <p class="main-menu-two__top-text">{{ trans('We Build Technology In Perfect Harmony') }}</p>
@@ -162,7 +162,7 @@
             <MainMenuNav/>
         </header>
 
-        <div class="stricky-header stricked-menu main-menu main-menu-two">
+        <div v-if="!isPortalPage" class="stricky-header stricked-menu main-menu main-menu-two">
             <div class="sticky-header__content">
                 <MainMenuNav/>
             </div><!-- /.sticky-header__content -->
@@ -242,7 +242,7 @@
 
 
         <!--Site Footer Two Start-->
-        <footer class="site-footer-two">
+        <footer v-if="!isPortalPage" class="site-footer-two">
             <div class="site-footer-two__top">
                 <div class="container">
                     <div class="row">

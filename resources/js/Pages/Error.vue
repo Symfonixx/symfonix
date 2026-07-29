@@ -115,7 +115,7 @@ const secondaryHref = computed(() => {
     try {
         return route('login')
     } catch (e) {
-        return locale.value === 'en' ? '/login' : `/${locale.value}/login`
+        return `/${locale.value}/login`
     }
 })
 

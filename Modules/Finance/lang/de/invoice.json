@@ -54,6 +54,7 @@
         "confirm_delete": "Diese Rechnung dauerhaft löschen? Zugehörige Hauptbucheinträge werden ebenfalls entfernt.",
         "deal_invoice_failed": "Für diesen Deal konnte keine Rechnung erstellt werden.",
         "subscription_renewal_note": "Abonnementverlängerung: :name (:date)",
+        "subscription_initial_note": "Neues Abonnement: :name (ab :date)",
         "deal_invoice_note": "Rechnung für Geschäft: :title",
         "project_invoice_note": "Rechnung für Projekt: :title",
         "product_sale_invoice_note": "Produktverkauf: :product (×:quantity)",

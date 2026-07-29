@@ -20,6 +20,8 @@
         "select_source": "Kaynak seçin",
         "service": "Hizmet",
         "select_service": "Hizmet seçin",
+        "services": "Hizmetler",
+        "select_services": "Hizmetleri seçin",
         "service_interest": "Hizmet İlgisi (metin)",
         "project_budget": "Proje Bütçesi",
         "problem_statement": "Problem Tanımı",
@@ -80,6 +82,7 @@
         "company": "İsteğe bağlı. Bu potansiyel müşteriyi bağlamak için CRM'den bir şirket seçin.",
         "company_name": "Şirket henüz CRM'de yoksa kullanın. Bir şirket bağlandığında gizlenir.",
         "service_interest": "Katalogdan hizmet seçilmediğinde serbest metin.",
+        "services": "Bu müşteri adayının ilgilendiği bir veya daha fazla katalog hizmeti seçin.",
         "blocked": "Engellenen potansiyel müşteriler işaretlenir ve aktif iş akışlarından filtrelenebilir.",
         "assignee": "Bu potansiyel müşteriyi takip eden satış temsilcisi."
     },

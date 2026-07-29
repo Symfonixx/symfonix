@@ -141,7 +141,7 @@ const homeUrl = computed(() => {
     try {
         return route('home')
     } catch (e) {
-        return locale.value === 'en' ? '/' : `/${locale.value}`
+        return `/${locale.value}`
     }
 })
 </script>

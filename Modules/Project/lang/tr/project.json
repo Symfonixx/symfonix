@@ -18,6 +18,8 @@
         "select_status": "Durum seçin",
         "deal": "Bağlı Anlaşma",
         "select_deal": "Anlaşma seçin (isteğe bağlı)",
+        "services": "Hizmetler",
+        "select_services": "Hizmetleri seçin",
         "budget": "Bütçe",
         "payment_status": "Ödeme Durumu",
         "collected": "Tahsil Edilen",
@@ -98,6 +100,7 @@
     },
     "hints": {
         "deal": "Açık veya kazanılmış bir CRM anlaşması bağlayın. Başka bir projeye bağlı anlaşmalar gizlenir.",
+        "services": "Bu projede sunulan bir veya daha fazla katalog hizmeti seçin.",
         "attachments": "Birden fazla dosya yükleyin (belgeler, arşivler vb.). PDF ve görsel dosyalarına izin verilmez. Dosya başına en fazla 10 MB.",
         "profit_and_loss": "Kar veya zarar = faturalanan tutar − (işgücü maliyeti + proje giderleri).",
         "labor_cost": "İşgücü maliyeti, çalışanın son aylık maaşının :days iş gününe bölümü × projedeki gün sayısıdır.",

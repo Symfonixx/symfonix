@@ -1,48 +1,77 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/portal.css'" />
         <title>{{ pageTitle }}</title>
         <meta name="description" :content="pageDescription">
         <meta name="robots" content="noindex, nofollow">
     </Head>
 
-    <app-layout>
-        <section class="page-header portal-page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/backgrounds/login-bg.jpg)` }"></div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <h2>{{ title }}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li v-for="item in flatBreadcrumbs" :key="item.key">
-                                <span v-if="item.type === 'separator'" :class="arrowClass"></span>
-                                <Link v-else-if="item.type === 'link'" :href="item.href">
-                                    <i v-if="item.home" class="fas fa-home"></i>{{ item.label }}
-                                </Link>
-                                <template v-else>{{ item.label }}</template>
-                            </li>
-                        </ul>
-                    </div>
-                    <p v-if="subtitle" class="portal-page-header__subtitle">{{ subtitle }}</p>
-                </div>
-            </div>
-        </section>
+    <div class="portal-app" :class="{ 'portal-app--nav-open': navOpen }">
+        <div
+            class="portal-app__overlay"
+            :class="{ 'portal-app__overlay--visible': navOpen }"
+            @click="navOpen = false"
+        ></div>
 
-        <section class="portal-one">
-            <div class="container">
-                <portal-nav :active="active" />
+        <portal-nav
+            :active="active"
+            :open="navOpen"
+            @close="navOpen = false"
+        />
+
+        <div class="portal-app__main">
+            <header class="portal-topbar">
+                <div class="portal-topbar__start">
+                    <button
+                        type="button"
+                        class="portal-topbar__menu d-lg-none"
+                        :aria-label="t('menu.open_menu')"
+                        :aria-expanded="navOpen"
+                        @click="navOpen = true"
+                    >
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="portal-topbar__titles">
+                        <nav class="portal-topbar__crumbs" aria-label="Breadcrumb">
+                            <ol>
+                                <li v-for="item in flatBreadcrumbs" :key="item.key">
+                                    <span v-if="item.type === 'separator'" class="portal-topbar__sep" aria-hidden="true">/</span>
+                                    <Link v-else-if="item.type === 'link'" :href="item.href">{{ item.label }}</Link>
+                                    <span v-else aria-current="page">{{ item.label }}</span>
+                                </li>
+                            </ol>
+                        </nav>
+                        <h1 class="portal-topbar__title">{{ title }}</h1>
+                        <p v-if="subtitle" class="portal-topbar__subtitle">{{ subtitle }}</p>
+                    </div>
+                </div>
+                <div class="portal-topbar__end">
+                    <Link
+                        :href="route('portal.profile.index')"
+                        class="portal-topbar__user"
+                        :title="auth?.name"
+                    >
+                        <span class="portal-topbar__avatar">
+                            <img v-if="auth?.avatar" :src="auth.avatar" :alt="auth?.name || ''">
+                            <i v-else class="fas fa-user"></i>
+                        </span>
+                        <span class="portal-topbar__user-name d-none d-md-inline">{{ auth?.name }}</span>
+                    </Link>
+                </div>
+            </header>
+
+            <div class="portal-app__content">
                 <slot />
             </div>
-        </section>
-    </app-layout>
+        </div>
+    </div>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { Head, Link, usePage } from '@inertiajs/vue3';
-import AppLayout from '@/Layouts/App.vue';
 import PortalNav from '@/Components/Portal/PortalNav.vue';
+import { usePortalTranslations } from '@/Composables/usePortalTranslations';
 
 const props = defineProps({
     title: { type: String, required: true },
@@ -54,22 +83,22 @@ const props = defineProps({
 });
 
 const page = usePage();
-const locale = computed(() => page.props.locale);
+const { t } = usePortalTranslations();
+const navOpen = ref(false);
+
 const asset_path = computed(() => page.props.asset_path || '');
 const seo = computed(() => page.props.seo || {});
+const auth = computed(() => page.props.auth);
 
-const homeLabels = { en: 'Home', ar: 'الرئيسية', tr: 'Ana Sayfa' };
-const homeLabel = computed(() => homeLabels[locale.value] || homeLabels.en);
-const arrowClass = computed(() => `icon-${locale.value === 'ar' ? 'left' : 'right'}-arrow-1`);
+const portalHomeLabel = computed(() => t('menu.dashboard'));
 
 const flatBreadcrumbs = computed(() => {
     const items = [
         {
-            key: 'home',
+            key: 'portal',
             type: 'link',
-            label: homeLabel.value,
-            href: route('home'),
-            home: true,
+            label: portalHomeLabel.value,
+            href: route('portal.dashboard'),
         },
     ];
 
@@ -100,4 +129,21 @@ const pageTitle = computed(() => {
     return `${title} | ${seo.value.website_name || ''}`.trim();
 });
 const pageDescription = computed(() => props.metaDescription || props.subtitle || '');
+
+watch(navOpen, (open) => {
+    document.body.classList.toggle('portal-nav-locked', open);
+});
+
+watch(() => page.url, () => {
+    navOpen.value = false;
+});
+
+onMounted(() => {
+    document.body.classList.add('portal-panel-active');
+});
+
+onUnmounted(() => {
+    document.body.classList.remove('portal-nav-locked');
+    document.body.classList.remove('portal-panel-active');
+});
 </script>

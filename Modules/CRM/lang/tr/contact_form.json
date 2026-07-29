@@ -13,6 +13,7 @@
         "mobile": "Telefon",
         "service": "Hizmet",
         "select_service": "Hizmet seçin",
+        "services": "Hizmetler",
         "subject": "Konu",
         "message": "Mesaj",
         "company": "Bağlı Şirket",
@@ -55,6 +56,7 @@
         "company": "İsteğe bağlı. Talepler şirket olmadan işlenebilir.",
         "blocked": "Engellenen talepler sistemde işaretlenir.",
         "service": "Talep bilinen bir hizmetle eşleşiyorsa katalog hizmetine bağlayın.",
+        "services": "Talebe uyan bir veya daha fazla katalog hizmeti seçin.",
         "subject": "Katalog hizmeti seçilmediğinde serbest metin konu."
     },
     "validation": {

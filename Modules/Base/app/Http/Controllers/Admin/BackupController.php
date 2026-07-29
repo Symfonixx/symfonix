@@ -41,6 +41,38 @@ class BackupController extends Controller
         return back();
     }
 
+    public function import(Request $request)
+    {
+        $request->validate([
+            'backup_file' => ['required', 'file', 'mimes:zip', 'max:512000'],
+        ], [], [
+            'backup_file' => __('base::backup.backup_file'),
+        ]);
+
+        try {
+            $this->backupService->import($request->file('backup_file'));
+            session()->flushMessage(true, __('base::backup.imported'));
+        } catch (Throwable $e) {
+            $msg = config('app.debug') ? $e->getMessage() : __('base::backup.import_failed');
+            session()->flushMessage(false, $msg, $e);
+        }
+
+        return back();
+    }
+
+    public function restore(string $filename)
+    {
+        try {
+            $this->backupService->restore($filename);
+            session()->flushMessage(true, __('base::backup.restored'));
+        } catch (Throwable $e) {
+            $msg = config('app.debug') ? $e->getMessage() : __('base::backup.restore_failed');
+            session()->flushMessage(false, $msg, $e);
+        }
+
+        return back();
+    }
+
     public function download(string $filename): BinaryFileResponse
     {
         $path = $this->backupService->absolutePath($filename);

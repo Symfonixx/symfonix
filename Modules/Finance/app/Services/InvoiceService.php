@@ -99,6 +99,73 @@ class InvoiceService
         return $this->markAsSent($this->createManual($data));
     }
 
+    public function billInitialSubscription(Subscription $subscription): ?Invoice
+    {
+        if (
+            (float) $subscription->amount <= 0
+            || $subscription->status !== Subscription::STATUS_ACTIVE
+        ) {
+            return null;
+        }
+
+        $billingDate = $subscription->starts_at?->toDateString() ?? now()->toDateString();
+
+        if (SubscriptionBilling::query()
+            ->where('subscription_id', $subscription->id)
+            ->whereDate('billing_date', $billingDate)
+            ->exists()
+        ) {
+            return null;
+        }
+
+        $subscription->loadMissing(['company', 'service']);
+
+        $invoice = DB::transaction(function () use ($subscription, $billingDate) {
+            $amount = (float) $subscription->amount;
+            $issuedAt = now()->toDateString();
+            $paymentTerms = (int) config('finance.invoice_payment_terms_days', 30);
+
+            $invoice = Invoice::query()->create([
+                'invoice_number' => $this->generateInvoiceNumber(),
+                'company_id' => $subscription->company_id,
+                'subscription_id' => $subscription->id,
+                'status' => Invoice::STATUS_SENT,
+                'subtotal' => $amount,
+                'tax_amount' => 0,
+                'total' => $amount,
+                'currency' => $subscription->currency ?? $this->currencyService->defaultCurrency(),
+                'issued_at' => $issuedAt,
+                'due_at' => Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
+                'notes' => __('finance::invoice.messages.subscription_initial_note', [
+                    'name' => $subscription->name,
+                    'date' => $billingDate,
+                ]),
+            ]);
+
+            InvoiceLine::query()->create([
+                'invoice_id' => $invoice->id,
+                'service_id' => $subscription->service_id,
+                'description' => $subscription->name,
+                'quantity' => 1,
+                'unit_price' => $amount,
+                'amount' => $amount,
+                'sort_order' => 0,
+            ]);
+
+            SubscriptionBilling::query()->create([
+                'subscription_id' => $subscription->id,
+                'billing_date' => $billingDate,
+                'invoice_id' => $invoice->id,
+            ]);
+
+            return $invoice->load('lines', 'company');
+        });
+
+        InvoiceSentToCustomer::dispatch($invoice->fresh(['company', 'project']));
+
+        return $invoice;
+    }
+
     public function billSubscriptionRenewal(Subscription $subscription): ?Invoice
     {
         if (

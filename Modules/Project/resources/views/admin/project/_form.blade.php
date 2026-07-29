@@ -113,6 +113,33 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
+        <label for="service_ids" class="fs-6 fw-bold mt-2 mb-3">{{ __('project::project.fields.services') }}</label>
+    </div>
+    <div class="col-xl-9 fv-row">
+        <?php
+            $selectedServiceIds = collect(old('service_ids', $projectData?->services?->pluck('id')->all() ?? []))
+                ->filter(fn ($id) => filled($id))
+                ->map(fn ($id) => (int) $id)
+                ->all();
+        ?>
+        <select id="service_ids" class="form-select form-select-solid @error('service_ids') is-invalid @enderror"
+                data-control="select2" data-placeholder="{{ __('project::project.fields.select_services') }}"
+                name="service_ids[]" multiple>
+            @foreach(($services ?? collect()) as $service)
+                <option value="{{ $service->id }}" @selected(in_array((int) $service->id, $selectedServiceIds, true))>
+                    {{ $service->getTranslation('title', app()->getLocale()) }}
+                </option>
+            @endforeach
+        </select>
+        <div class="form-text">{{ __('project::project.hints.services') }}</div>
+        @error('service_ids')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
         <div class="fs-6 fw-bold mt-2 mb-3">{{ __('project::project.fields.budget') }}</div>
     </div>
     <div class="col-xl-9 fv-row">

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Legacy bare /admin URL (Ziggy excludes admin.* so old links used this) → locale dashboard.
+Route::redirect('/admin', '/en/admin/dashboard');
+
 Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle'])->name('botman.handle');
 
 // Optional page that can host the widget iframe (used by frameEndpoint if desired).

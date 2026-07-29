@@ -26,6 +26,8 @@
         "select_source": "Select source",
         "service": "Service",
         "select_service": "Select service",
+        "services": "Services",
+        "select_services": "Select services",
         "service_interest": "Service Interest (text)",
         "project_budget": "Project Budget",
         "problem_statement": "Problem Statement",
@@ -105,6 +107,7 @@
         "company": "Optional. Select a company from your CRM to link this lead.",
         "company_name": "Use when the company is not yet in CRM. Hidden when a company is linked.",
         "service_interest": "Free-text fallback when no service is selected from the catalog.",
+        "services": "Select one or more catalog services this lead is interested in.",
         "blocked": "Blocked leads are flagged and can be filtered from active workflows.",
         "assignee": "Sales rep responsible for following up on this lead."
     },

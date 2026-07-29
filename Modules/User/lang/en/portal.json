@@ -8,7 +8,11 @@
         "profile": "My Profile",
         "notifications": "Notifications",
         "logout": "Logout",
-        "my_dashboard": "My Dashboard"
+        "my_dashboard": "My Dashboard",
+        "navigation": "Menu",
+        "open_menu": "Open menu",
+        "close_menu": "Close menu",
+        "back_to_site": "Back to website"
     },
     "pages": {
         "dashboard_title": "Customer Portal",
@@ -64,8 +68,15 @@
         "title": "Subscriptions",
         "subtitle": "All subscriptions linked to your account.",
         "no_subscriptions": "No subscriptions found.",
+        "view_details": "View Details",
+        "details": "Subscription Details",
+        "invoices": "Invoices",
+        "no_invoices": "No invoices for this subscription yet.",
+        "download_pdf": "Download PDF",
         "amount": "Amount",
         "billing_cycle": "Billing Cycle",
+        "starts_at": "Start Date",
+        "ends_at": "End Date",
         "renewal_at": "Next Renewal",
         "service": "Service",
         "auto_renew": "Auto Renew",

@@ -46,6 +46,18 @@ class ProjectService
         }
     }
 
+    public function syncServices(Project $project, array $serviceIds): void
+    {
+        $ids = collect($serviceIds)
+            ->filter(fn ($id) => filled($id))
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->values()
+            ->all();
+
+        $project->services()->sync($ids);
+    }
+
     public function create(ProjectData $data): ?Project
     {
         $project = $this->repository->create($data);

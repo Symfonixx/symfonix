@@ -13,6 +13,7 @@
         "mobile": "Mobile",
         "service": "Service",
         "select_service": "Wählen Sie einen Dienst aus",
+        "services": "Services",
         "subject": "Thema",
         "message": "Nachricht",
         "company": "Verbundenes Unternehmen",
@@ -55,6 +56,7 @@
         "company": "Optional. Anfragen können ohne Verlinkung eines Unternehmens bearbeitet werden.",
         "blocked": "Gesperrte Anfragen werden im System gekennzeichnet.",
         "service": "Link zu einem Katalogdienst, wenn die Anfrage mit einem bekannten Angebot übereinstimmt.",
+        "services": "Wählen Sie einen oder mehrere Katalogdienste aus, die zur Anfrage passen.",
         "subject": "Freitext-Betreff, wenn kein Katalogdienst ausgewählt ist."
     },
     "validation": {

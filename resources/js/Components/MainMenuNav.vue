@@ -22,7 +22,7 @@
                 </div>
                 <div class="main-menu-two__right d-none d-md-flex align-items-center">
                     <div v-if="!auth" class="main-menu-two__btn-box">
-                        <Link :href="route('login')" class="thm-btn">
+                        <Link :href="loginUrl" class="thm-btn">
                             {{ trans('Login') }}
                         </Link>
                     </div>
@@ -58,7 +58,15 @@ const trans = (key) => page.props.translations[key] || key
 const settings = computed(() => page.props.settings || {})
 const storage_path = computed(() => page.props.storage_path || '')
 const auth = computed(() => page.props.auth)
+const locale = computed(() => page.props.locale || 'en')
 const brandName = computed(() => page.props.seo?.website_name || page.props.appName || 'Symfonix')
+const loginUrl = computed(() => {
+    try {
+        return route('login')
+    } catch (e) {
+        return `/${locale.value}/login`
+    }
+})
 const logoSrc = computed(() => {
     const logo = settings.value?.site_logo
     if (!logo || logo === false || logo === 'false' || logo === 'default.jpg') {

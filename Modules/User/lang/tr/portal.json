@@ -8,7 +8,11 @@
         "profile": "Profilim",
         "notifications": "Bildirimler",
         "logout": "Çıkış Yap",
-        "my_dashboard": "Panelim"
+        "my_dashboard": "Panelim",
+        "navigation": "Menü",
+        "open_menu": "Menüyü aç",
+        "close_menu": "Menüyü kapat",
+        "back_to_site": "Siteye dön"
     },
     "pages": {
         "dashboard_title": "Müşteri Portalı",
@@ -64,8 +68,15 @@
         "title": "Abonelikler",
         "subtitle": "Hesabınıza bağlı tüm abonelikler.",
         "no_subscriptions": "Abonelik bulunamadı.",
+        "view_details": "Detayları Görüntüle",
+        "details": "Abonelik Detayları",
+        "invoices": "Faturalar",
+        "no_invoices": "Bu abonelik için henüz fatura yok.",
+        "download_pdf": "PDF İndir",
         "amount": "Tutar",
         "billing_cycle": "Faturalama Döngüsü",
+        "starts_at": "Başlangıç Tarihi",
+        "ends_at": "Bitiş Tarihi",
         "renewal_at": "Sonraki Yenileme",
         "service": "Hizmet",
         "auto_renew": "Otomatik Yenileme",

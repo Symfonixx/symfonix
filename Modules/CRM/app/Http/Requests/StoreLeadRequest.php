@@ -26,6 +26,8 @@ class StoreLeadRequest extends FormRequest
             'status' => ['nullable', Rule::in(Lead::STATUSES)],
             'project_budget' => ['nullable', 'string', 'max:255'],
             'service_id' => ['nullable', 'integer', 'exists:services,id'],
+            'service_ids' => ['nullable', 'array'],
+            'service_ids.*' => ['integer', 'exists:services,id'],
             'service_interest' => ['nullable', 'string', 'max:255'],
             'problem_statement' => ['nullable', 'string'],
             'attachments' => ['nullable', 'array'],
@@ -53,6 +55,8 @@ class StoreLeadRequest extends FormRequest
             'assigned_to' => $this->filled('assigned_to') ? $this->input('assigned_to') : null,
             'status' => $this->input('status') ?: Lead::STATUS_NEW,
             'blocked' => $this->boolean('blocked'),
+            // Legacy single column mirrors the first selected service.
+            'service_id' => $this->input('service_ids.0') ?: ($this->input('service_id') ?: null),
         ]);
     }
 }

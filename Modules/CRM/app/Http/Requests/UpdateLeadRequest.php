@@ -26,6 +26,8 @@ class UpdateLeadRequest extends FormRequest
             'status' => ['nullable', Rule::in(Lead::STATUSES)],
             'project_budget' => ['nullable', 'string', 'max:255'],
             'service_id' => ['nullable', 'integer', 'exists:services,id'],
+            'service_ids' => ['nullable', 'array'],
+            'service_ids.*' => ['integer', 'exists:services,id'],
             'service_interest' => ['nullable', 'string', 'max:255'],
             'problem_statement' => ['nullable', 'string'],
             'attachments' => ['nullable', 'array'],
@@ -52,6 +54,8 @@ class UpdateLeadRequest extends FormRequest
             'company_id' => $this->filled('company_id') ? $this->input('company_id') : null,
             'assigned_to' => $this->filled('assigned_to') ? $this->input('assigned_to') : null,
             'blocked' => $this->boolean('blocked'),
+            // Legacy single column mirrors the first selected service.
+            'service_id' => $this->input('service_ids.0') ?: null,
         ]);
     }
 }
