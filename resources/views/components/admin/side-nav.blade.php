@@ -255,7 +255,7 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['roles']) || isset($active['admins']) || isset($active['employees']) || isset($active['leaves']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['roles']) || isset($active['admins']) || isset($active['employees']) || isset($active['leaves']) || isset($active['job_positions']) || isset($active['job_applications']) ? 'show' : '' }}">
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['employees']) ? 'active' : '' }}"
                    href="{{ route('admin.employees.index') }}">
@@ -282,6 +282,20 @@
                    href="{{ route('admin.leaves.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">{{ __('Leave Management') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['job_positions']) ? 'active' : '' }}"
+                   href="{{ route('admin.job-positions.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('Job Positions') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['job_applications']) ? 'active' : '' }}"
+                   href="{{ route('admin.job-applications.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('Job Applications') }}</span>
                 </a>
             </div>
         </div>

@@ -16,6 +16,7 @@ class UserDatabaseSeeder extends Seeder
             EmployeeScenarioSeeder::class,
             AdminScenarioSeeder::class,
             LeaveScenarioSeeder::class,
+            RecruitmentScenarioSeeder::class,
         ]);
     }
 }

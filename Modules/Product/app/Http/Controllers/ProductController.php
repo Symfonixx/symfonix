@@ -95,7 +95,13 @@ class ProductController extends Controller
                 'description' => $product->seoDescription($locale) ?: $product->getTranslation('short_description', $locale),
                 'image' => $product->main_image_link,
                 'url' => $canonical,
+                'sku' => $product->sku,
                 'category' => $product->category?->getTranslation('name', $locale),
+                'price' => $product->price,
+                'currency' => $product->currency ?: 'USD',
+                'availability' => $product->status === Product::STATUS_ACTIVE
+                    ? 'https://schema.org/InStock'
+                    : 'https://schema.org/OutOfStock',
                 'locale' => $locale,
             ]),
         ];
@@ -116,6 +122,9 @@ class ProductController extends Controller
             'short_description' => $product->getTranslation('short_description', $locale),
             'main_image_link' => $product->main_image_link,
             'is_featured' => $product->is_featured,
+            'price' => $product->price,
+            'currency' => $product->currency ?: 'USD',
+            'billing_type' => $product->billing_type,
             'category' => $product->category ? [
                 'id' => $product->category->id,
                 'name' => $product->category->getTranslation('name', $locale),
@@ -125,6 +134,7 @@ class ProductController extends Controller
 
         if ($detailed) {
             $data['description'] = $product->getTranslation('description', $locale);
+            $data['sku'] = $product->sku;
             $data['seo_title'] = $product->seoTitle($locale);
             $data['seo_description'] = $product->seoDescription($locale);
         }

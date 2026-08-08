@@ -96,6 +96,8 @@ class Schema
 
     /**
      * Product schema for product detail pages.
+     *
+     * Google Product rich results require offers, review, or aggregateRating.
      */
     public static function product(array $data): array
     {
@@ -114,14 +116,16 @@ class Schema
             ],
         ], fn ($v) => ! is_null($v) && $v !== '' && $v !== []);
 
-        if (! empty($data['price'])) {
+        // Price "0" must still emit offers — empty() would incorrectly skip it.
+        if (array_key_exists('price', $data) && $data['price'] !== null && $data['price'] !== '') {
             $product['offers'] = array_filter([
                 '@type' => 'Offer',
-                'price' => (string) $data['price'],
+                'price' => number_format((float) $data['price'], 2, '.', ''),
                 'priceCurrency' => $data['currency'] ?? 'USD',
                 'availability' => $data['availability'] ?? 'https://schema.org/InStock',
                 'url' => $data['url'] ?? null,
-            ]);
+                'seller' => self::publisher(),
+            ], fn ($v) => ! is_null($v) && $v !== '' && $v !== []);
         }
 
         return $product;

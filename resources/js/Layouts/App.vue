@@ -356,6 +356,14 @@
                                             }}
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link :href="route('jobs.index')">
+                                            <span
+                                                :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
+                                                trans('Careers')
+                                            }}
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

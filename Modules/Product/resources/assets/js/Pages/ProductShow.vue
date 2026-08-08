@@ -65,6 +65,10 @@
                                             {{ product.category.name }}
                                         </p>
                                         <h1 class="product-detail__title">{{ product.name }}</h1>
+                                        <p v-if="formattedPrice" class="product-detail__price">
+                                            <span class="product-detail__price-amount">{{ formattedPrice }}</span>
+                                            <span v-if="billingLabel" class="product-detail__price-billing">{{ billingLabel }}</span>
+                                        </p>
                                         <p v-if="product.short_description" class="product-detail__subtitle">
                                             {{ product.short_description }}
                                         </p>
@@ -199,6 +203,35 @@ const metaDescription = computed(() => meta.value.description || product.value.s
 const metaKeywords = computed(() => meta.value.keywords || '')
 const metaImage = computed(() => meta.value?.og?.image || product.value.main_image_link || '')
 const metaRobots = computed(() => meta.value.robots || 'index, follow')
+
+const formattedPrice = computed(() => {
+    const raw = product.value.price
+    if (raw === null || raw === undefined || raw === '') {
+        return ''
+    }
+
+    const amount = Number(raw).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    })
+
+    return `${amount} ${product.value.currency || 'USD'}`
+})
+
+const billingLabel = computed(() => {
+    const type = product.value.billing_type
+    if (!type || type === 'one_time') {
+        return ''
+    }
+
+    const labels = {
+        monthly: trans('/mo'),
+        quarterly: trans('/quarter'),
+        yearly: trans('/yr'),
+    }
+
+    return labels[type] || ''
+})
 
 const demoSubject = computed(() => `${trans('Live Demo Request')}: ${product.value.name || ''}`.trim())
 const demoMessage = computed(() => {
@@ -376,6 +409,27 @@ export default {
     font-weight: 700;
     color: #fff;
     line-height: 1.3;
+}
+
+.product-detail__price {
+    margin: 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.product-detail__price-amount {
+    font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+    font-weight: 700;
+    color: var(--product-accent, #2189ca);
+    letter-spacing: 0.01em;
+}
+
+.product-detail__price-billing {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .product-detail__subtitle {

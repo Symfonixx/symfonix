@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\User\Http\Controllers\JobController;
 use Modules\CRM\Http\Controllers\Portal\SubscriptionController as PortalSubscriptionController;
 use Modules\Finance\Http\Controllers\Portal\InvoiceController as PortalInvoiceController;
 use Modules\Project\Http\Controllers\Portal\ProjectController as PortalProjectController;
@@ -9,6 +10,10 @@ use Modules\Testimonial\Http\Controllers\Portal\ProjectReviewController as Porta
 use Modules\User\Http\Controllers\Portal\DashboardController;
 use Modules\User\Http\Controllers\Portal\NotificationController;
 use Modules\User\Http\Controllers\Portal\ProfileController;
+
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+Route::get('/jobs/{position}', [JobController::class, 'show'])->name('jobs.show');
+Route::post('/jobs/{position}/apply', [JobController::class, 'store'])->name('jobs.apply');
 
 Route::middleware(['auth', 'is_customer'])->prefix('portal')->name('portal.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

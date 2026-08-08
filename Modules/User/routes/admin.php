@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Modules\User\Http\Controllers\Admin\AdminController;
 use Modules\User\Http\Controllers\Admin\DashboardController;
+use Modules\User\Http\Controllers\Admin\JobApplicationController;
+use Modules\User\Http\Controllers\Admin\JobPositionController;
 use Modules\User\Http\Controllers\Admin\LeaveController;
 use Modules\User\Http\Controllers\Admin\NotificationController;
 use Modules\User\Http\Controllers\Admin\ProfileController;
@@ -40,6 +42,9 @@ Route::middleware(['can:Hr Management'])
         Route::resource('leaves', LeaveController::class)
             ->parameters(['leaves' => 'leaveRequest'])
             ->except('create', 'edit', 'show');
+
+        Route::resource('job-positions', JobPositionController::class)->except('show');
+        Route::resource('job-applications', JobApplicationController::class)->only(['index', 'show', 'update']);
     });
 
 Route::middleware(['can:Sales Management'])
