@@ -34,6 +34,32 @@
 
 <div class="row mb-8">
     <div class="col-xl-3">
+        <label for="location" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('Location') }}</label>
+    </div>
+    <div class="col-xl-9">
+        <input id="location" name="location" type="text" required maxlength="255"
+               class="form-control form-control-solid @error('location') is-invalid @enderror"
+               value="{{ old('location', $position?->location) }}"/>
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <label for="employment_type" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('Employment Type') }}</label>
+    </div>
+    <div class="col-xl-9">
+        <select id="employment_type" name="employment_type" class="form-select form-select-solid @error('employment_type') is-invalid @enderror" required>
+            @foreach(\Modules\User\Models\JobPosition::EMPLOYMENT_TYPES as $employmentType)
+                <option value="{{ $employmentType }}" @selected(old('employment_type', $position?->employment_type ?? 'full_time') === $employmentType)>
+                    {{ __((string) str($employmentType)->replace('_', ' ')->title()) }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
         <label for="posted_at" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('Posting Date') }}</label>
     </div>
     <div class="col-xl-9">

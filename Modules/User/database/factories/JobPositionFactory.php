@@ -14,6 +14,8 @@ class JobPositionFactory extends Factory
         return [
             'title' => fake()->randomElement(['Backend Developer', 'Product Designer', 'DevOps Engineer', 'Project Manager']),
             'department' => fake()->randomElement(['Engineering', 'Product', 'Operations', 'Sales']),
+            'location' => fake()->city().', '.fake()->country(),
+            'employment_type' => fake()->randomElement(JobPosition::EMPLOYMENT_TYPES),
             'description' => fake()->paragraphs(3, true),
             'requirements' => fake()->paragraphs(2, true),
             'status' => JobPosition::STATUS_ACTIVE,

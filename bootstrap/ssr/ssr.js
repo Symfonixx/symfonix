@@ -14707,12 +14707,13 @@ const _sfc_main$d = {
       return ((_a = page.props.meta) == null ? void 0 : _a.title) || `${trans("Careers")} | ${((_b = page.props.seo) == null ? void 0 : _b.website_name) || page.props.appName}`;
     });
     const formatDate = (value) => new Intl.DateTimeFormat(locale.value, { year: "numeric", month: "long", day: "numeric" }).format(/* @__PURE__ */ new Date(`${value}T00:00:00`));
+    const formatEmploymentType = (value) => trans(String(value || "").replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase()));
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), { title: metaTitle.value }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-2ec767e1${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-d7e10297${_scopeId}>`);
           } else {
             return [
               createVNode("link", {
@@ -14727,13 +14728,13 @@ const _sfc_main$d = {
       _push(ssrRenderComponent(_sfc_main$L, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-2ec767e1${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-2ec767e1${_scopeId}></div><div class="container" data-v-2ec767e1${_scopeId}><div class="page-header__inner" data-v-2ec767e1${_scopeId}><h1 data-v-2ec767e1${_scopeId}>${ssrInterpolate(trans("Careers"))}</h1><div class="thm-breadcrumb__box" data-v-2ec767e1${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-2ec767e1${_scopeId}><li data-v-2ec767e1${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-d7e10297${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-d7e10297${_scopeId}></div><div class="container" data-v-d7e10297${_scopeId}><div class="page-header__inner" data-v-d7e10297${_scopeId}><h1 data-v-d7e10297${_scopeId}>${ssrInterpolate(trans("Careers"))}</h1><div class="thm-breadcrumb__box" data-v-d7e10297${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d7e10297${_scopeId}><li data-v-d7e10297${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-2ec767e1${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-d7e10297${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -14743,16 +14744,16 @@ const _sfc_main$d = {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-2ec767e1${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-2ec767e1${_scopeId}></span></li><li data-v-2ec767e1${_scopeId}>${ssrInterpolate(trans("Careers"))}</li></ul></div></div></div></section><section class="jobs-page py-5" data-v-2ec767e1${_scopeId}><div class="container" data-v-2ec767e1${_scopeId}><div class="text-center mb-5" data-v-2ec767e1${_scopeId}><h2 data-v-2ec767e1${_scopeId}>${ssrInterpolate(trans("Join Our Team"))}</h2><p data-v-2ec767e1${_scopeId}>${ssrInterpolate(trans("Explore current opportunities and help us build technology in perfect harmony."))}</p></div><div class="row g-4" data-v-2ec767e1${_scopeId}><!--[-->`);
+            _push2(`</li><li data-v-d7e10297${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-d7e10297${_scopeId}></span></li><li data-v-d7e10297${_scopeId}>${ssrInterpolate(trans("Careers"))}</li></ul></div></div></div></section><section class="jobs-page py-5" data-v-d7e10297${_scopeId}><div class="container" data-v-d7e10297${_scopeId}><div class="text-center mb-5" data-v-d7e10297${_scopeId}><h2 data-v-d7e10297${_scopeId}>${ssrInterpolate(trans("Join Our Team"))}</h2><p data-v-d7e10297${_scopeId}>${ssrInterpolate(trans("Explore current opportunities and help us build technology in perfect harmony."))}</p></div><div class="row g-4" data-v-d7e10297${_scopeId}><!--[-->`);
             ssrRenderList(__props.positions.data, (position) => {
-              _push2(`<div class="col-lg-4 col-md-6" data-v-2ec767e1${_scopeId}><article class="job-card h-100" data-v-2ec767e1${_scopeId}><span class="job-card__department" data-v-2ec767e1${_scopeId}>${ssrInterpolate(position.department)}</span><h3 data-v-2ec767e1${_scopeId}>${ssrInterpolate(position.title)}</h3><p class="text-muted" data-v-2ec767e1${_scopeId}>${ssrInterpolate(trans("Posted"))}: ${ssrInterpolate(formatDate(position.posted_at))}</p>`);
+              _push2(`<div class="col-lg-4 col-md-6" data-v-d7e10297${_scopeId}><article class="job-card h-100" data-v-d7e10297${_scopeId}><span class="job-card__department" data-v-d7e10297${_scopeId}>${ssrInterpolate(position.department)}</span><h3 data-v-d7e10297${_scopeId}>${ssrInterpolate(position.title)}</h3><p class="job-card__meta" data-v-d7e10297${_scopeId}><span data-v-d7e10297${_scopeId}><i class="fas fa-map-marker-alt" data-v-d7e10297${_scopeId}></i>${ssrInterpolate(position.location)}</span><span data-v-d7e10297${_scopeId}><i class="fas fa-briefcase" data-v-d7e10297${_scopeId}></i>${ssrInterpolate(formatEmploymentType(position.employment_type))}</span></p><p class="text-muted" data-v-d7e10297${_scopeId}>${ssrInterpolate(trans("Posted"))}: ${ssrInterpolate(formatDate(position.posted_at))}</p>`);
               _push2(ssrRenderComponent(unref(Link), {
-                href: _ctx.route("jobs.show", position.id),
+                href: _ctx.route("jobs.show", position.slug),
                 class: "thm-btn"
               }, {
                 default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View & Apply"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-2ec767e1${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View & Apply"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-d7e10297${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View & Apply")) + " ", 1),
@@ -14768,7 +14769,7 @@ const _sfc_main$d = {
             });
             _push2(`<!--]-->`);
             if (__props.positions.data.length === 0) {
-              _push2(`<div class="col-12 text-center py-5" data-v-2ec767e1${_scopeId}><p class="text-muted" data-v-2ec767e1${_scopeId}>${ssrInterpolate(trans("There are no open positions at the moment. Please check back soon."))}</p></div>`);
+              _push2(`<div class="col-12 text-center py-5" data-v-d7e10297${_scopeId}><p class="text-muted" data-v-d7e10297${_scopeId}>${ssrInterpolate(trans("There are no open positions at the moment. Please check back soon."))}</p></div>`);
             } else {
               _push2(`<!---->`);
             }
@@ -14822,9 +14823,19 @@ const _sfc_main$d = {
                         createVNode("article", { class: "job-card h-100" }, [
                           createVNode("span", { class: "job-card__department" }, toDisplayString(position.department), 1),
                           createVNode("h3", null, toDisplayString(position.title), 1),
+                          createVNode("p", { class: "job-card__meta" }, [
+                            createVNode("span", null, [
+                              createVNode("i", { class: "fas fa-map-marker-alt" }),
+                              createTextVNode(toDisplayString(position.location), 1)
+                            ]),
+                            createVNode("span", null, [
+                              createVNode("i", { class: "fas fa-briefcase" }),
+                              createTextVNode(toDisplayString(formatEmploymentType(position.employment_type)), 1)
+                            ])
+                          ]),
                           createVNode("p", { class: "text-muted" }, toDisplayString(trans("Posted")) + ": " + toDisplayString(formatDate(position.posted_at)), 1),
                           createVNode(unref(Link), {
-                            href: _ctx.route("jobs.show", position.id),
+                            href: _ctx.route("jobs.show", position.slug),
                             class: "thm-btn"
                           }, {
                             default: withCtx(() => [
@@ -14862,7 +14873,7 @@ _sfc_main$d.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Jobs/Index.vue");
   return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
-const Index = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-2ec767e1"]]);
+const Index = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-d7e10297"]]);
 const __vite_glob_0_26 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index
@@ -14884,7 +14895,8 @@ const _sfc_main$c = {
     });
     const form = useForm({ full_name: "", email: "", phone: "", expected_salary: "", motivation: "", cover_letter: "", resume: null });
     const formatDate = (value) => new Intl.DateTimeFormat(locale.value, { year: "numeric", month: "long", day: "numeric" }).format(/* @__PURE__ */ new Date(`${value}T00:00:00`));
-    const submit = () => form.post(route("jobs.apply", props.position.id), {
+    const formatEmploymentType = (value) => trans(String(value || "").replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase()));
+    const submit = () => form.post(route("jobs.apply", props.position.slug), {
       forceFormData: true,
       preserveScroll: true,
       onSuccess: () => {
@@ -14900,7 +14912,7 @@ const _sfc_main$c = {
       _push(ssrRenderComponent(unref(Head), { title: metaTitle.value }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-61126f16${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-e00ffd2b${_scopeId}>`);
           } else {
             return [
               createVNode("link", {
@@ -14915,13 +14927,13 @@ const _sfc_main$c = {
       _push(ssrRenderComponent(_sfc_main$L, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-61126f16${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-61126f16${_scopeId}></div><div class="container" data-v-61126f16${_scopeId}><div class="page-header__inner" data-v-61126f16${_scopeId}><h1 data-v-61126f16${_scopeId}>${ssrInterpolate(__props.position.title)}</h1><div class="thm-breadcrumb__box" data-v-61126f16${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-61126f16${_scopeId}><li data-v-61126f16${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-e00ffd2b${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-e00ffd2b${_scopeId}></div><div class="container" data-v-e00ffd2b${_scopeId}><div class="page-header__inner" data-v-e00ffd2b${_scopeId}><h1 data-v-e00ffd2b${_scopeId}>${ssrInterpolate(__props.position.title)}</h1><div class="thm-breadcrumb__box" data-v-e00ffd2b${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-e00ffd2b${_scopeId}><li data-v-e00ffd2b${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-61126f16${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-e00ffd2b${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -14931,7 +14943,7 @@ const _sfc_main$c = {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-61126f16${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-61126f16${_scopeId}></span></li><li data-v-61126f16${_scopeId}>`);
+            _push2(`</li><li data-v-e00ffd2b${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-e00ffd2b${_scopeId}></span></li><li data-v-e00ffd2b${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("jobs.index")
             }, {
@@ -14946,19 +14958,19 @@ const _sfc_main$c = {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-61126f16${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-61126f16${_scopeId}></span></li><li data-v-61126f16${_scopeId}>${ssrInterpolate(__props.position.title)}</li></ul></div></div></div></section><section class="job-detail py-5" data-v-61126f16${_scopeId}><div class="container" data-v-61126f16${_scopeId}><div class="row g-5" data-v-61126f16${_scopeId}><div class="col-lg-7" data-v-61126f16${_scopeId}><span class="job-department" data-v-61126f16${_scopeId}>${ssrInterpolate(__props.position.department)}</span><h2 class="mt-2" data-v-61126f16${_scopeId}>${ssrInterpolate(__props.position.title)}</h2><p class="text-muted" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Posted"))}: ${ssrInterpolate(formatDate(__props.position.posted_at))}</p><div class="job-content" data-v-61126f16${_scopeId}><h3 data-v-61126f16${_scopeId}>${ssrInterpolate(trans("About the role"))}</h3><div class="job-rich-content" data-v-61126f16${_scopeId}>${__props.position.description ?? ""}</div>`);
+            _push2(`</li><li data-v-e00ffd2b${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-e00ffd2b${_scopeId}></span></li><li data-v-e00ffd2b${_scopeId}>${ssrInterpolate(__props.position.title)}</li></ul></div></div></div></section><section class="job-detail py-5" data-v-e00ffd2b${_scopeId}><div class="container" data-v-e00ffd2b${_scopeId}><div class="row g-5" data-v-e00ffd2b${_scopeId}><div class="col-lg-7" data-v-e00ffd2b${_scopeId}><span class="job-department" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(__props.position.department)}</span><h2 class="mt-2" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(__props.position.title)}</h2><div class="job-meta mb-3" data-v-e00ffd2b${_scopeId}><span data-v-e00ffd2b${_scopeId}><i class="fas fa-map-marker-alt" data-v-e00ffd2b${_scopeId}></i>${ssrInterpolate(__props.position.location)}</span><span data-v-e00ffd2b${_scopeId}><i class="fas fa-briefcase" data-v-e00ffd2b${_scopeId}></i>${ssrInterpolate(formatEmploymentType(__props.position.employment_type))}</span></div><p class="text-muted" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Posted"))}: ${ssrInterpolate(formatDate(__props.position.posted_at))}</p><div class="job-content" data-v-e00ffd2b${_scopeId}><h3 data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("About the role"))}</h3><div class="job-rich-content" data-v-e00ffd2b${_scopeId}>${__props.position.description ?? ""}</div>`);
             if (__props.position.requirements) {
-              _push2(`<!--[--><h3 data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Requirements"))}</h3><div class="job-rich-content" data-v-61126f16${_scopeId}>${__props.position.requirements ?? ""}</div><!--]-->`);
+              _push2(`<!--[--><h3 data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Requirements"))}</h3><div class="job-rich-content" data-v-e00ffd2b${_scopeId}>${__props.position.requirements ?? ""}</div><!--]-->`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="col-lg-5" data-v-61126f16${_scopeId}><form class="job-form" data-v-61126f16${_scopeId}><h3 class="job-form__title" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Apply for this role"))}</h3>`);
+            _push2(`</div></div><div class="col-lg-5" data-v-e00ffd2b${_scopeId}><form class="job-form" data-v-e00ffd2b${_scopeId}><h3 class="job-form__title" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Apply for this role"))}</h3>`);
             if (success.value) {
-              _push2(`<div class="alert alert-success" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Your application has been submitted successfully."))}</div>`);
+              _push2(`<div class="alert alert-success" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Your application has been submitted successfully."))}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="mb-3" data-v-61126f16${_scopeId}><label for="full_name" class="form-label" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Full Name"))} <span class="required-mark" data-v-61126f16${_scopeId}>*</span></label><input id="full_name"${ssrRenderAttr("value", unref(form).full_name)} type="text" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.full_name }, "form-control"])}" required data-v-61126f16${_scopeId}><div class="invalid-feedback" data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).errors.full_name)}</div></div><div class="mb-3" data-v-61126f16${_scopeId}><label for="email" class="form-label" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Email"))} <span class="required-mark" data-v-61126f16${_scopeId}>*</span></label><input id="email"${ssrRenderAttr("value", unref(form).email)} type="email" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.email }, "form-control"])}" required data-v-61126f16${_scopeId}><div class="invalid-feedback" data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).errors.email)}</div></div><div class="mb-3" data-v-61126f16${_scopeId}><label for="phone" class="form-label" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Phone"))} <span class="required-mark" data-v-61126f16${_scopeId}>*</span></label><input id="phone"${ssrRenderAttr("value", unref(form).phone)} type="tel" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.phone }, "form-control"])}" required data-v-61126f16${_scopeId}><div class="invalid-feedback" data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).errors.phone)}</div></div><div class="mb-3" data-v-61126f16${_scopeId}><label for="expected_salary" class="form-label" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Expected Salary"))}</label><div class="input-group" data-v-61126f16${_scopeId}><input id="expected_salary"${ssrRenderAttr("value", unref(form).expected_salary)} type="number" min="0" step="0.01" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.expected_salary }, "form-control"])}" data-v-61126f16${_scopeId}><span class="input-group-text" data-v-61126f16${_scopeId}>USD</span></div><div class="invalid-feedback" data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).errors.expected_salary)}</div></div><div class="mb-3" data-v-61126f16${_scopeId}><label for="motivation" class="form-label" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Why do you want to work with us?"))} <span class="required-mark" data-v-61126f16${_scopeId}>*</span></label><textarea id="motivation" rows="4" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.motivation }, "form-control"])}" required data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).motivation)}</textarea><div class="invalid-feedback" data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).errors.motivation)}</div></div><div class="mb-3" data-v-61126f16${_scopeId}><label for="cover_letter" class="form-label" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Cover Letter"))}</label><textarea id="cover_letter" rows="5" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.cover_letter }, "form-control"])}" data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).cover_letter)}</textarea><div class="invalid-feedback" data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).errors.cover_letter)}</div></div><div class="mb-4" data-v-61126f16${_scopeId}><label for="resume" class="form-label" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Resume / CV"))} <span class="required-mark" data-v-61126f16${_scopeId}>*</span></label><input id="resume" type="file" accept=".pdf,.doc,.docx" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.resume }, "form-control"])}" required data-v-61126f16${_scopeId}><div class="form-text" data-v-61126f16${_scopeId}>${ssrInterpolate(trans("Accepted file types: PDF, DOC, DOCX. Maximum size: 5 MB."))}</div><div class="invalid-feedback" data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).errors.resume)}</div></div><button class="thm-btn" type="submit"${ssrIncludeBooleanAttr(unref(form).processing) ? " disabled" : ""} data-v-61126f16${_scopeId}>${ssrInterpolate(unref(form).processing ? trans("Submitting...") : trans("Submit Application"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-61126f16${_scopeId}></span></button></form></div></div></div></section>`);
+            _push2(`<div class="mb-3" data-v-e00ffd2b${_scopeId}><label for="full_name" class="form-label" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Full Name"))} <span class="required-mark" data-v-e00ffd2b${_scopeId}>*</span></label><input id="full_name"${ssrRenderAttr("value", unref(form).full_name)} type="text" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.full_name }, "form-control"])}" required data-v-e00ffd2b${_scopeId}><div class="invalid-feedback" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).errors.full_name)}</div></div><div class="mb-3" data-v-e00ffd2b${_scopeId}><label for="email" class="form-label" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Email"))} <span class="required-mark" data-v-e00ffd2b${_scopeId}>*</span></label><input id="email"${ssrRenderAttr("value", unref(form).email)} type="email" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.email }, "form-control"])}" required data-v-e00ffd2b${_scopeId}><div class="invalid-feedback" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).errors.email)}</div></div><div class="mb-3" data-v-e00ffd2b${_scopeId}><label for="phone" class="form-label" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Phone"))} <span class="required-mark" data-v-e00ffd2b${_scopeId}>*</span></label><input id="phone"${ssrRenderAttr("value", unref(form).phone)} type="tel" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.phone }, "form-control"])}" required data-v-e00ffd2b${_scopeId}><div class="invalid-feedback" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).errors.phone)}</div></div><div class="mb-3" data-v-e00ffd2b${_scopeId}><label for="expected_salary" class="form-label" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Expected Salary"))}</label><div class="input-group" data-v-e00ffd2b${_scopeId}><input id="expected_salary"${ssrRenderAttr("value", unref(form).expected_salary)} type="number" min="0" step="0.01" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.expected_salary }, "form-control"])}" data-v-e00ffd2b${_scopeId}><span class="input-group-text" data-v-e00ffd2b${_scopeId}>USD</span></div><div class="invalid-feedback" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).errors.expected_salary)}</div></div><div class="mb-3" data-v-e00ffd2b${_scopeId}><label for="motivation" class="form-label" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Why do you want to work with us?"))} <span class="required-mark" data-v-e00ffd2b${_scopeId}>*</span></label><textarea id="motivation" rows="4" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.motivation }, "form-control"])}" required data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).motivation)}</textarea><div class="invalid-feedback" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).errors.motivation)}</div></div><div class="mb-3" data-v-e00ffd2b${_scopeId}><label for="cover_letter" class="form-label" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Cover Letter"))}</label><textarea id="cover_letter" rows="5" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.cover_letter }, "form-control"])}" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).cover_letter)}</textarea><div class="invalid-feedback" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).errors.cover_letter)}</div></div><div class="mb-4" data-v-e00ffd2b${_scopeId}><label for="resume" class="form-label" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Resume / CV"))} <span class="required-mark" data-v-e00ffd2b${_scopeId}>*</span></label><input id="resume" type="file" accept=".pdf,.doc,.docx" class="${ssrRenderClass([{ "is-invalid": unref(form).errors.resume }, "form-control"])}" required data-v-e00ffd2b${_scopeId}><div class="form-text" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(trans("Accepted file types: PDF, DOC, DOCX. Maximum size: 5 MB."))}</div><div class="invalid-feedback" data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).errors.resume)}</div></div><button class="thm-btn" type="submit"${ssrIncludeBooleanAttr(unref(form).processing) ? " disabled" : ""} data-v-e00ffd2b${_scopeId}>${ssrInterpolate(unref(form).processing ? trans("Submitting...") : trans("Submit Application"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow`)}" data-v-e00ffd2b${_scopeId}></span></button></form></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -15014,6 +15026,16 @@ const _sfc_main$c = {
                     createVNode("div", { class: "col-lg-7" }, [
                       createVNode("span", { class: "job-department" }, toDisplayString(__props.position.department), 1),
                       createVNode("h2", { class: "mt-2" }, toDisplayString(__props.position.title), 1),
+                      createVNode("div", { class: "job-meta mb-3" }, [
+                        createVNode("span", null, [
+                          createVNode("i", { class: "fas fa-map-marker-alt" }),
+                          createTextVNode(toDisplayString(__props.position.location), 1)
+                        ]),
+                        createVNode("span", null, [
+                          createVNode("i", { class: "fas fa-briefcase" }),
+                          createTextVNode(toDisplayString(formatEmploymentType(__props.position.employment_type)), 1)
+                        ])
+                      ]),
                       createVNode("p", { class: "text-muted" }, toDisplayString(trans("Posted")) + ": " + toDisplayString(formatDate(__props.position.posted_at)), 1),
                       createVNode("div", { class: "job-content" }, [
                         createVNode("h3", null, toDisplayString(trans("About the role")), 1),
@@ -15200,7 +15222,7 @@ _sfc_main$c.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Jobs/Show.vue");
   return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
-const Show = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-61126f16"]]);
+const Show = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-e00ffd2b"]]);
 const __vite_glob_0_27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Show

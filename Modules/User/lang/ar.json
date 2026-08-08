@@ -192,5 +192,12 @@
     "Resume / CV": "السيرة الذاتية",
     "Accepted file types: PDF, DOC, DOCX. Maximum size: 5 MB.": "أنواع الملفات المقبولة: PDF وDOC وDOCX. الحد الأقصى للحجم: 5 ميجابايت.",
     "Submitting...": "جارٍ التقديم...",
-    "Submit Application": "إرسال طلب التقديم"
+    "Submit Application": "إرسال طلب التقديم",
+    "Location": "الموقع",
+    "Employment Type": "نوع الدوام",
+    "Full Time": "دوام كامل",
+    "Part Time": "دوام جزئي",
+    "Contract": "عقد",
+    "Internship": "تدريب",
+    "Remote": "عن بُعد"
 }

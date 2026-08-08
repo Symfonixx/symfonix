@@ -47,6 +47,8 @@
         <tr class="text-start text-muted fw-bold fs-7 gs-0">
             <th>{{ __('Position') }}</th>
             <th>{{ __('Department') }}</th>
+            <th>{{ __('Location') }}</th>
+            <th>{{ __('Employment Type') }}</th>
             <th>{{ __('Posting Date') }}</th>
             <th>{{ __('Applications') }}</th>
             <th>{{ __('Status') }}</th>
@@ -58,6 +60,8 @@
             <tr>
                 <td>{{ $position->title }}</td>
                 <td>{{ $position->department }}</td>
+                <td>{{ $position->location ?: __('N/A') }}</td>
+                <td>{{ __((string) str($position->employment_type)->replace('_', ' ')->title()) }}</td>
                 <td>{{ $position->posted_at->format('Y-m-d') }}</td>
                 <td>{{ $position->applications_count }}</td>
                 <td><span class="badge badge-light-{{ $position->status === 'active' ? 'success' : 'secondary' }}">{{ ucfirst($position->status) }}</span></td>
@@ -71,7 +75,7 @@
                 </td>
             </tr>
         @empty
-            <tr><td colspan="6" class="text-center text-muted py-10">{{ __('No job positions found.') }}</td></tr>
+            <tr><td colspan="8" class="text-center text-muted py-10">{{ __('No job positions found.') }}</td></tr>
         @endforelse
         </tbody>
     </x-admin.table>

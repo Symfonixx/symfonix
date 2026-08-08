@@ -83,8 +83,11 @@ class JobController extends Controller
     {
         $data = [
             'id' => $position->id,
+            'slug' => $position->slug,
             'title' => $position->title,
             'department' => $position->department,
+            'location' => $position->location,
+            'employment_type' => $position->employment_type,
             'posted_at' => $position->posted_at->toDateString(),
         ];
 

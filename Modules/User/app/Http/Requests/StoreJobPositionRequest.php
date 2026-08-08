@@ -18,6 +18,8 @@ class StoreJobPositionRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'department' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+            'employment_type' => ['required', Rule::in(JobPosition::EMPLOYMENT_TYPES)],
             'description' => ['required', 'string'],
             'requirements' => ['nullable', 'string'],
             'status' => ['required', Rule::in([JobPosition::STATUS_ACTIVE, JobPosition::STATUS_CLOSED])],

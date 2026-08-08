@@ -27,6 +27,10 @@
                     <div class="col-lg-7">
                         <span class="job-department">{{ position.department }}</span>
                         <h2 class="mt-2">{{ position.title }}</h2>
+                        <div class="job-meta mb-3">
+                            <span><i class="fas fa-map-marker-alt"></i>{{ position.location }}</span>
+                            <span><i class="fas fa-briefcase"></i>{{ formatEmploymentType(position.employment_type) }}</span>
+                        </div>
                         <p class="text-muted">{{ trans('Posted') }}: {{ formatDate(position.posted_at) }}</p>
                         <div class="job-content">
                             <h3>{{ trans('About the role') }}</h3>
@@ -107,7 +111,8 @@ const metaTitle = computed(() => page.props.meta?.title || `${props.position.tit
 const form = useForm({full_name: '', email: '', phone: '', expected_salary: '', motivation: '', cover_letter: '', resume: null})
 
 const formatDate = (value) => new Intl.DateTimeFormat(locale.value, {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(`${value}T00:00:00`))
-const submit = () => form.post(route('jobs.apply', props.position.id), {
+const formatEmploymentType = (value) => trans(String(value || '').replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()))
+const submit = () => form.post(route('jobs.apply', props.position.slug), {
     forceFormData: true,
     preserveScroll: true,
     onSuccess: () => { success.value = true; form.reset() },
@@ -124,6 +129,8 @@ const submit = () => form.post(route('jobs.apply', props.position.id), {
 .job-detail :deep(.form-text) { color: #aab8d1 !important; }
 .job-content h3 { margin-top: 2rem; font-size: 1.3rem; }
 .job-department { color: var(--techguru-base, #5cb0e9); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; }
+.job-meta { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; color: #d3dded; }
+.job-meta span { display: inline-flex; align-items: center; gap: .45rem; }
 .job-form { background: #17233d; border: 1px solid #2a3c60; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 24px rgba(0, 0, 0, .2); }
 .job-form__title { margin-bottom: 2rem; }
 .required-mark { color: #ef4444; font-weight: 700; }

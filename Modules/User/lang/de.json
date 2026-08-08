@@ -192,5 +192,12 @@
     "Resume / CV": "Lebenslauf",
     "Accepted file types: PDF, DOC, DOCX. Maximum size: 5 MB.": "Akzeptierte Dateitypen: PDF, DOC, DOCX. Maximale Größe: 5 MB.",
     "Submitting...": "Wird eingereicht...",
-    "Submit Application": "Bewerbung einreichen"
+    "Submit Application": "Bewerbung einreichen",
+    "Location": "Standort",
+    "Employment Type": "Beschäftigungsart",
+    "Full Time": "Vollzeit",
+    "Part Time": "Teilzeit",
+    "Contract": "Vertrag",
+    "Internship": "Praktikum",
+    "Remote": "Remote"
 }

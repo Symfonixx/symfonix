@@ -192,6 +192,13 @@
     "Resume / CV": "Özgeçmiş / CV",
     "Accepted file types: PDF, DOC, DOCX. Maximum size: 5 MB.": "Kabul edilen dosya türleri: PDF, DOC, DOCX. Maksimum boyut: 5 MB.",
     "Submitting...": "Gönderiliyor...",
-    "Submit Application": "Başvuruyu Gönder"
+    "Submit Application": "Başvuruyu Gönder",
+    "Location": "Konum",
+    "Employment Type": "Çalışma Türü",
+    "Full Time": "Tam Zamanlı",
+    "Part Time": "Yarı Zamanlı",
+    "Contract": "Sözleşmeli",
+    "Internship": "Staj",
+    "Remote": "Uzaktan"
 }
 
