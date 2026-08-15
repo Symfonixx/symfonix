@@ -199,6 +199,9 @@
     "Part Time": "Yarı Zamanlı",
     "Contract": "Sözleşmeli",
     "Internship": "Staj",
-    "Remote": "Uzaktan"
+    "Remote": "Uzaktan",
+    "These credentials do not match our records.": "Bu kimlik bilgileri kayıtlarımızla eşleşmiyor.",
+    "The provided password is incorrect.": "Girilen parola yanlış.",
+    "Too many login attempts. Please try again in :seconds seconds.": "Çok fazla giriş denemesi. Lütfen :seconds saniye sonra tekrar deneyin."
 }
 

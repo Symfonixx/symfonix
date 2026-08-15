@@ -199,5 +199,8 @@
     "Part Time": "Teilzeit",
     "Contract": "Vertrag",
     "Internship": "Praktikum",
-    "Remote": "Remote"
+    "Remote": "Remote",
+    "These credentials do not match our records.": "Diese Zugangsdaten stimmen nicht mit unseren Daten überein.",
+    "The provided password is incorrect.": "Das eingegebene Passwort ist falsch.",
+    "Too many login attempts. Please try again in :seconds seconds.": "Zu viele Anmeldeversuche. Bitte versuchen Sie es in :seconds Sekunden erneut."
 }

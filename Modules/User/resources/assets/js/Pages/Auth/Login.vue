@@ -56,7 +56,7 @@
                                             :disabled="form.processing"
                                             required="">
                                     </div>
-                                    <div v-if="errors.email" class="text-danger mt-1 small">{{ errors.email }}</div>
+                                    <div v-if="errors.email" class="text-danger mt-1 small">{{ formatError(errors.email) }}</div>
                                 </div>
                             </div>
                             <div class="col-xl-12">
@@ -71,7 +71,7 @@
                                             :disabled="form.processing"
                                             required="">
                                     </div>
-                                    <div v-if="errors.password" class="text-danger mt-1 small">{{ errors.password }}</div>
+                                    <div v-if="errors.password" class="text-danger mt-1 small">{{ formatError(errors.password) }}</div>
                                 </div>
                             </div>
 
@@ -149,6 +149,20 @@ export default {
             }
         };
 
+        const formatError = (error) => {
+            if (!error) {
+                return error;
+            }
+
+            const authErrors = {
+                'auth.failed': trans('These credentials do not match our records.'),
+                'auth.password': trans('The provided password is incorrect.'),
+                'auth.throttle': trans('Too many login attempts. Please try again in :seconds seconds.'),
+            };
+
+            return authErrors[error] || trans(error) || error;
+        };
+
         const metaTitle = computed(() => `${trans("Login")} | ${seo.value.website_name || ''}`.trim())
         const metaDescription = computed(() => {
             return meta.value.description || trans('Log in to manage your account and services.')
@@ -173,6 +187,7 @@ export default {
             seo,
             locale,
             trans,
+            formatError,
             asset_path,
             metaTitle,
             metaDescription,

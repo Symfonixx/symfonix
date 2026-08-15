@@ -199,5 +199,8 @@
     "Part Time": "دوام جزئي",
     "Contract": "عقد",
     "Internship": "تدريب",
-    "Remote": "عن بُعد"
+    "Remote": "عن بُعد",
+    "These credentials do not match our records.": "بيانات الاعتماد هذه غير متطابقة مع البيانات المسجلة لدينا.",
+    "The provided password is incorrect.": "كلمة المرور المقدمة غير صحيحة.",
+    "Too many login attempts. Please try again in :seconds seconds.": "عدد كبير جداً من محاولات الدخول. يرجى المحاولة مرة أخرى بعد :seconds ثانية."
 }
