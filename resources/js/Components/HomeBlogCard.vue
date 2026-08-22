@@ -12,17 +12,17 @@
 
             <ul class="blog-two__meta list-unstyled">
                 <li v-if="post.created_at">
-                    <Link :href="postUrl">
+                    <Link :href="postUrl" :aria-label="`${readMoreLabel} — ${post.created_at}`">
                         <span class="far fa-calendar-alt"></span>{{ post.created_at }}
                     </Link>
                 </li>
                 <li v-if="post.comments_count">
-                    <Link :href="postUrl">
+                    <Link :href="postUrl" :aria-label="`${readMoreLabel} — ${post.comments_count} ${trans('Comments')}`">
                         <span class="far fa-comments"></span>{{ post.comments_count }} {{ trans('Comments') }}
                     </Link>
                 </li>
                 <li v-else-if="showReadingTime && post.reading_time">
-                    <Link :href="postUrl">
+                    <Link :href="postUrl" :aria-label="`${readMoreLabel} — ${post.reading_time} ${trans('min read')}`">
                         <span class="far fa-clock"></span>{{ post.reading_time }} {{ trans('min read') }}
                     </Link>
                 </li>
@@ -37,8 +37,8 @@
                 {{ truncate(translateField(post.description) , 160) }}
             </p>
             <div class="blog-two__btn-box">
-                <Link :href="postUrl" class="thm-btn">
-                    {{ trans('Read More') }}
+                <Link :href="postUrl" class="thm-btn" :aria-label="readMoreLabel">
+                    {{ readMoreLabel }}
                     <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
                 </Link>
             </div>
@@ -67,25 +67,25 @@
             </h3>
             <ul class="blog-two__meta-two list-unstyled">
                 <li v-if="post.created_at">
-                    <Link :href="postUrl">
+                    <Link :href="postUrl" :aria-label="`${readMoreLabel} — ${post.created_at}`">
                         <span class="far fa-calendar-alt"></span>{{ post.created_at }}
                     </Link>
                 </li>
                 <li v-if="post.comments_count">
-                    <Link :href="postUrl">
+                    <Link :href="postUrl" :aria-label="`${readMoreLabel} — ${post.comments_count} ${trans('Comments')}`">
                         <span class="far fa-comments"></span>{{ post.comments_count }} {{ trans('Comments') }}
                     </Link>
                 </li>
                 <li v-else-if="showReadingTime && post.reading_time">
-                    <Link :href="postUrl">
+                    <Link :href="postUrl" :aria-label="`${readMoreLabel} — ${post.reading_time} ${trans('min read')}`">
                         <span class="far fa-clock"></span>{{ post.reading_time }} {{ trans('min read') }}
                     </Link>
                 </li>
 
             </ul>
             <div class="blog-two__btn-box-two">
-                <Link :href="postUrl" class="thm-btn">
-                    {{ trans('Read More') }}
+                <Link :href="postUrl" class="thm-btn" :aria-label="readMoreLabel">
+                    {{ readMoreLabel }}
                     <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
                 </Link>
             </div>
@@ -151,16 +151,19 @@ const imageSrc = computed(() => {
     const link = props.post?.image_link || ''
     // Use fallback if no image or if it's a blank placeholder
     if (!link || link.includes('/images/blank.png') || link.includes('blank.png')) {
-        return `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.jpg`
+        return `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.webp`
     }
     return link
 })
 
 const handleImageError = (event) => {
     // If image fails to load, use fallback
-    const fallbackSrc = `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.jpg`
-    if (event.target.src !== fallbackSrc && !event.target.src.includes('blog-2-')) {
-        event.target.src = fallbackSrc
+    const webpFallback = `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.webp`
+    const jpgFallback = `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.jpg`
+    if (!event.target.src.includes('blog-2-')) {
+        event.target.src = webpFallback
+    } else if (event.target.src.endsWith('.webp')) {
+        event.target.src = jpgFallback
     }
 }
 
@@ -187,4 +190,12 @@ const truncate = (text, length) => {
     if (!text) return ''
     return text.length > length ? text.substring(0, length) + '...' : text
 }
+
+const readMoreLabel = computed(() => {
+    const title = translateField(props.post?.title)
+    if (!title) {
+        return trans('Read article')
+    }
+    return `${trans('Read article')}: ${truncate(title, 50)}`
+})
 </script>

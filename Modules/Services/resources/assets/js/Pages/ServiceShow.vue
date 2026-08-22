@@ -131,7 +131,6 @@
                             :highlights="getServiceHighlights(relatedService)"
                             :link="getServiceUrl(relatedService)"
                             :image="relatedService.image_link"
-                            :button-label="trans('Read More')"
                             :is-rtl="locale === 'ar'"
                             :reading-time="relatedService.reading_time"
                             :reading-time-label="trans('min read')"
@@ -146,7 +145,13 @@
         <section class="testimonial-one" v-if="testimonials && testimonials.length">
 
             <div class="testimonial-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'" :alt="trans('Decorative shape')">
+                <img :src="asset_path + 'images/shapes/testimonial-one-shape-2.png'"
+                     :alt="trans('Decorative shape')"
+                     width="120"
+                     height="120"
+                     loading="lazy"
+                     decoding="async"
+                     aria-hidden="true">
             </div>
             <div class="container">
                 <div class="row">
@@ -186,7 +191,7 @@
                                                             {{ translateField(testimonial.position) }}
                                                         </p>
                                                         <h3 class="testimonial-one__client-name">
-                                                            <a href="#">{{ translateField(testimonial.name) }}</a>
+                                                            {{ translateField(testimonial.name) }}
                                                         </h3>
                                                     </div>
                                                 </div>

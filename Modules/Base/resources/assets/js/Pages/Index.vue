@@ -23,7 +23,7 @@
                      alt=""
                      width="1920"
                      height="1080"
-                     loading="lazy"
+                     fetchpriority="high"
                      decoding="async"
                      class="banner-one__bg-img">
             </div>
@@ -70,11 +70,11 @@
                             <div class="about-three__img-box">
                                 <div class="about-three__img">
                                     <picture>
-                                        <source :srcset="asset_path + 'images/home/about_us.webp'" type="image/webp">
+                                        <source :srcset="asset_path + 'images/home/about_us-640.webp'" type="image/webp">
                                         <img :src="asset_path + 'images/home/about_us.jpg'"
                                              :alt="trans('About us')"
-                                             width="636"
-                                             height="636"
+                                             width="640"
+                                             height="640"
                                              loading="lazy"
                                              decoding="async">
                                     </picture>
@@ -190,7 +190,6 @@
                             :highlights="getCategoryHighlights(servicesCategory)"
                             :link="route('services.index', { category: servicesCategory.slug })"
                             :image="servicesCategory.image_link"
-                            :button-label="trans('Read More')"
                             :is-rtl="locale === 'ar'"
                         />
                     </div>
@@ -302,7 +301,8 @@
                      width="120"
                      height="120"
                      loading="lazy"
-                     decoding="async">
+                     decoding="async"
+                     aria-hidden="true">
             </div>
 
             <div class="container">
@@ -313,11 +313,11 @@
                              data-wow-duration="2500ms">
                             <div class="why-choose-two__img">
                                 <picture>
-                                    <source :srcset="asset_path + 'images/home/why_choose_us.webp'" type="image/webp">
+                                    <source :srcset="asset_path + 'images/home/why_choose_us-640.webp'" type="image/webp">
                                     <img :src="asset_path + 'images/home/why_choose_us.jpg'"
                                          :alt="trans('Why choose us')"
-                                         width="636"
-                                         height="700"
+                                         width="640"
+                                         height="640"
                                          loading="lazy"
                                          decoding="async">
                                 </picture>
@@ -434,21 +434,21 @@
                                                      decoding="async">
                                             </div>
                                             <div class="team-two__social">
-                                                <a v-if="team.facebook" :href="team.facebook" target="_blank">
+                                                <a v-if="team.facebook" :href="team.facebook" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} Facebook`">
                                                     <span class="icon-facebook"></span>
                                                 </a>
-                                                <a v-if="team.behance" :href="team.behance" target="_blank">
+                                                <a v-if="team.behance" :href="team.behance" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} Behance`">
                                                     <span class="icon-dribble"></span>
                                                 </a>
-                                                <a v-if="team.linked_in" :href="team.linked_in" target="_blank">
+                                                <a v-if="team.linked_in" :href="team.linked_in" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} LinkedIn`">
                                                     <span class="icon-linkedin"></span>
                                                 </a>
-                                                <a v-if="team.github" :href="team.github" target="_blank">
+                                                <a v-if="team.github" :href="team.github" target="_blank" rel="noopener noreferrer" :aria-label="`${translateField(team.name)} GitHub`">
                                                     <span class="icon-github"></span>
                                                 </a>
                                             </div>
                                             <div class="team-two__title-box">
-                                                <h3><a href="#">{{ translateField(team.name) }}</a></h3>
+                                                <h3><span>{{ translateField(team.name) }}</span></h3>
                                                 <p>{{ translateField(team.position) }}</p>
                                             </div>
                                         </div>
@@ -467,12 +467,13 @@
         <section class="feature-one">
 
             <div class="feature-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/feature-one-shape-2.png'"
+                <img :src="asset_path + 'site/images/shapes/feature-one-shape-2.webp'"
                      :alt="trans('Decorative shape')"
                      width="120"
                      height="120"
                      loading="lazy"
-                     decoding="async">
+                     decoding="async"
+                     aria-hidden="true">
             </div>
             <div class="container">
                 <div class="row">
@@ -591,7 +592,7 @@
         <!--CTA One Start -->
         <section class="cta-one">
             <div class="cta-one__shape-bg float-bob-y"
-                 :style="{ backgroundImage: `url(${asset_path}site/images/shapes/cta-one-shape-bg.png)` }">
+                 :style="{ backgroundImage: `url(${asset_path}site/images/shapes/cta-one-shape-bg.webp)` }">
             </div>
             <div class="container">
                 <div class="cta-one__inner">
@@ -621,7 +622,8 @@
                      width="120"
                      height="120"
                      loading="lazy"
-                     decoding="async">
+                     decoding="async"
+                     aria-hidden="true">
             </div>
             <div class="container">
                 <div class="row">
@@ -667,7 +669,7 @@
                                                             {{ translateField(testimonial.position) }}
                                                         </p>
                                                         <h3 class="testimonial-one__client-name">
-                                                            <a href="#">{{ translateField(testimonial.name) }}</a>
+                                                            {{ translateField(testimonial.name) }}
                                                         </h3>
                                                     </div>
                                                 </div>
@@ -768,12 +770,13 @@
             </div>
 
             <div class="contact-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/contact-two-shape-1.png'"
+                <img :src="asset_path + 'site/images/shapes/contact-two-shape-1.webp'"
                      :alt="trans('Decorative shape')"
                      width="120"
                      height="120"
                      loading="lazy"
-                     decoding="async">
+                     decoding="async"
+                     aria-hidden="true">
             </div>
 
             <div class="container">

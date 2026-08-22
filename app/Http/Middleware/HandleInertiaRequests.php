@@ -106,7 +106,10 @@ class HandleInertiaRequests extends Middleware
                 $settings = Settings::pluck('value', 'key');
 
                 $title = $seo->get('website_name');
-                $description = $seo->get('website_desc');
+                $description = trim((string) ($seo->get('website_desc') ?? ''));
+                if ($description === '') {
+                    $description = 'Empowering businesses with modern web, mobile, AI, and cloud solutions.';
+                }
                 $metaImg = $settings->get('meta_img');
 
                 return [
@@ -156,7 +159,7 @@ class HandleInertiaRequests extends Middleware
                 ]
                 : null),
             'flash' => fn () => $safe(fn () => [
-                'success' => $request->hasSession() ? $request->session()->get('success') : null,
+                'success' => $request->hasSession() ? ($request->session()->get('success') ?? $request->session()->get('status')) : null,
                 'error' => $request->hasSession() ? $request->session()->get('error') : null,
             ], ['success' => null, 'error' => null]),
             'portal' => fn () => $safe(fn () => $request->user()?->isCustomer()

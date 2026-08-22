@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="team-one__title-box">
-                                    <h3><a href="#">{{ translateField(team.name) }}</a></h3>
+                                    <h3><span>{{ translateField(team.name) }}</span></h3>
                                     <p>{{ translateField(team.position) }}</p>
                                 </div>
                             </div>

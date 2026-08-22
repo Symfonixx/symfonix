@@ -11,6 +11,7 @@
     "import_hint": "Laden Sie eine von diesem System erstellte Backup-ZIP hoch (database.sql + öffentlicher Speicher). Dadurch werden die aktuelle Datenbank überschrieben und gespeicherte Dateien wiederhergestellt.",
     "import_restore": "Hochladen & Wiederherstellen",
     "backup_file": "Backup-ZIP-Datei",
+    "upload_too_large": "Die hochgeladene Datei überschreitet die maximale Uploadgröße des Servers.",
     "imported": "Backup erfolgreich importiert und wiederhergestellt.",
     "import_failed": "Backup konnte nicht importiert und wiederhergestellt werden.",
     "confirm_import": "Dadurch werden die aktuelle Datenbank überschrieben und Speicherdateien aus dem hochgeladenen Backup wiederhergestellt. Fortfahren?",

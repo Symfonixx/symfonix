@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="testimonial-two__client-content">
                                     <h4 class="testimonial-two__client-name">
-                                        <a href="#">{{ translateField(testimonial.name) }}</a>
+                                        <span>{{ translateField(testimonial.name) }}</span>
                                     </h4>
                                     <p class="testimonial-two__sub-title">
                                         {{ translateField(testimonial.position) }}

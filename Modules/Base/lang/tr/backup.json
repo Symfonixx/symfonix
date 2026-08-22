@@ -11,6 +11,7 @@
     "import_hint": "Bu sistem tarafından oluşturulan bir yedek ZIP yükleyin (database.sql + genel depolama). Bu, mevcut veritabanının üzerine yazacak ve saklanan dosyaları geri yükleyecektir.",
     "import_restore": "Yükle & Geri Yükle",
     "backup_file": "Yedek ZIP dosyası",
+    "upload_too_large": "Yüklenen dosya, sunucunun izin verdiği maksimum yükleme boyutunu aşıyor.",
     "imported": "Yedek başarıyla içe aktarıldı ve geri yüklendi.",
     "import_failed": "Yedek içe aktarılamadı ve geri yüklenemedi.",
     "confirm_import": "Bu işlem mevcut veritabanının üzerine yazacak ve yüklenen yedekten depolama dosyalarını geri yükleyecektir. Devam edilsin mi?",

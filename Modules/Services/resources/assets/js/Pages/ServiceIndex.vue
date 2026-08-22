@@ -75,7 +75,6 @@
                                             :highlights="getServiceHighlights(serviceItem)"
                                             :link="getServiceUrl(serviceItem)"
                                             :image="serviceItem.image_link"
-                                            :button-label="trans('Read More')"
                                             :is-rtl="locale === 'ar'"
                                             :reading-time="serviceItem.reading_time"
                                             :reading-time-label="trans('min read')"

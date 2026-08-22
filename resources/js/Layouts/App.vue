@@ -6,14 +6,14 @@
         <div class="xs-sidebar-widget">
             <div class="sidebar-widget-container">
                 <div class="widget-heading">
-                    <a href="#" class="close-side-widget">X</a>
+                    <a href="#" class="close-side-widget" :aria-label="trans('Close sidebar')" @click.prevent>{{ trans('Close') }}</a>
                 </div>
                 <div class="sidebar-textwidget">
                     <div class="sidebar-info-contents">
                         <div class="content-inner">
                             <div class="logo">
-                                <Link :href="route('home')">
-                                    <img v-if="logoSrc" :src="logoSrc" :alt="brandName"/>
+                                <Link :href="route('home')" :aria-label="trans('Symfonix home page')">
+                                    <img v-if="logoSrc" :src="logoSrc" :alt="brandName" width="160" height="48" decoding="async"/>
                                     <span v-else class="brand-text-logo">{{ brandName }}</span>
                                 </Link>
                             </div>
@@ -175,11 +175,21 @@
         <section v-if="!isPortalPage" class="newsletter-two">
             <div class="newsletter-two__shape-1">
                 <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-1.png'"
-                     :alt="trans('Newsletter decoration')">
+                     :alt="trans('Newsletter decoration')"
+                     width="80"
+                     height="80"
+                     loading="lazy"
+                     decoding="async"
+                     aria-hidden="true">
             </div>
             <div class="newsletter-two__shape-2 float-bob-x">
                 <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-2.png'"
-                     :alt="trans('Newsletter decoration')">
+                     :alt="trans('Newsletter decoration')"
+                     width="80"
+                     height="80"
+                     loading="lazy"
+                     decoding="async"
+                     aria-hidden="true">
             </div>
             <div class="container">
                 <div class="newsletter-two__inner">
@@ -249,8 +259,8 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <div class="site-footer-two__about">
                                 <div class="site-footer-two__logo">
-                                    <Link :href="route('home')">
-                                        <img v-if="logoSrc" :src="logoSrc" :alt="brandName">
+                                    <Link :href="route('home')" :aria-label="trans('Symfonix home page')">
+                                        <img v-if="logoSrc" :src="logoSrc" :alt="brandName" width="180" height="48" decoding="async">
                                         <span v-else class="brand-text-logo">{{ brandName }}</span>
                                     </Link>
                                     <p class="mt-2">{{ seo.main_title }}</p>
@@ -438,7 +448,7 @@
                                             :href="settings.twitter"
                                             target="_blank"
                                             rel="noopener"
-                                            aria-label="twitter"
+                                            :aria-label="`${trans('Follow Us')} on X (Twitter)`"
                                         >
                                             <span class="fab fa-twitter"></span>
                                         </a>
@@ -448,7 +458,7 @@
                                             :href="settings.facebook"
                                             target="_blank"
                                             rel="noopener"
-                                            aria-label="Facebook"
+                                            :aria-label="`${trans('Follow Us')} on Facebook`"
                                         >
                                             <span class="icon-facebook"></span>
                                         </a>
@@ -457,7 +467,7 @@
                                             :href="settings.instagram"
                                             target="_blank"
                                             rel="noopener"
-                                            aria-label="Instagram"
+                                            :aria-label="`${trans('Follow Us')} on Instagram`"
                                         >
                                             <span class="fab fa-instagram"></span>
                                         </a>
@@ -466,7 +476,7 @@
                                             :href="settings.linkedin"
                                             target="_blank"
                                             rel="noopener"
-                                            aria-label="LinkedIn"
+                                            :aria-label="`${trans('Follow Us')} on LinkedIn`"
                                         >
                                             <span class="icon-linkedin"></span>
                                         </a>
@@ -476,7 +486,7 @@
                                             :href="settings.github"
                                             target="_blank"
                                             rel="noopener"
-                                            aria-label="GitHub"
+                                            :aria-label="`${trans('Follow Us')} on GitHub`"
                                         >
                                             <span class="fab fa-github"></span>
                                         </a>

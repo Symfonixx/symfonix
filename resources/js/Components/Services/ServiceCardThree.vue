@@ -23,8 +23,8 @@
                 </div>
             </li>
         </ul>
-        <Link :href="link" class="services-three__btn">
-            {{ trans('Read More') }}
+        <Link :href="link" class="services-three__btn" :aria-label="buttonText">
+            {{ buttonText }}
             <span :class="`icon-${isRtl ? 'left' : 'right'}-arrow-1`"></span>
         </Link>
     </div>
@@ -107,14 +107,14 @@ const safeHighlights = computed(() => {
 })
 
 const buttonText = computed(() => {
+    const labelTitle = String(props.title || '').trim()
+    if (labelTitle) {
+        return `Explore ${labelTitle} services`
+    }
     if (props.buttonLabel && props.buttonLabel !== 'Read More') {
         return props.buttonLabel
     }
-    const labelTitle = String(props.title || '').trim()
-    if (!labelTitle) {
-        return 'Read More'
-    }
-    return `Read More about ${labelTitle}`
+    return 'Explore our services'
 })
 
 const shortDescription = computed(() => {

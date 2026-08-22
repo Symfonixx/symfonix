@@ -35,9 +35,27 @@ Developed By: Hadi Hilal
     <meta name="author" content="{{ $seo->get('website_name') }}">
     <meta name="theme-color" content="#2189ca"/>
 
+    {{-- Early connections for third-party fonts (before any CSS/JS) --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    @php
+        $defaultMetaDescription = 'Empowering businesses with modern web, mobile, AI, and cloud solutions.';
+        $pageMetaDescription = trim((string) ($page['props']['meta']['description'] ?? ''));
+        $seoMetaDescription = trim((string) ($seo->get('website_desc') ?? ''));
+        $resolvedMetaDescription = $pageMetaDescription !== ''
+            ? $pageMetaDescription
+            : ($seoMetaDescription !== '' ? $seoMetaDescription : $defaultMetaDescription);
+        $resolvedMetaKeywords = $page['props']['meta']['keywords']
+            ?? $seo->get('website_keywords')
+            ?? 'IT solutions, web development, mobile apps, AI automation, cloud services';
+    @endphp
+
     <title inertia>{{ $page['props']['meta']['title'] ?? $seo->get('website_name') }}</title>
-    <meta name="description" content="{{ $page['props']['meta']['description'] ?? $seo->get('website_desc') }}">
-    <meta name="keywords" content="{{ $page['props']['meta']['keywords'] ?? $seo->get('website_keywords') }}">
+    <meta name="description" content="{{ $resolvedMetaDescription }}">
+    <meta name="keywords" content="{{ $resolvedMetaKeywords }}">
 
     @php
         $metaProps = $page['props']['meta'] ?? [];
@@ -57,12 +75,15 @@ Developed By: Hadi Hilal
         $ogImageUrl = $resolveImage($ogImagePath);
         $twitterImageUrl = $resolveImage($twitterImagePath);
         $ogTitle = $metaProps['og']['title'] ?? $seo->get('website_name');
-        $ogDescription = $metaProps['og']['description'] ?? $seo->get('website_desc');
+        $ogDescriptionRaw = trim((string) ($metaProps['og']['description'] ?? $seo->get('website_desc') ?? ''));
+        $ogDescription = $ogDescriptionRaw !== '' ? $ogDescriptionRaw : $resolvedMetaDescription;
         $canonicalUrl = $metaProps['canonical'] ?? url()->current();
         $ogType = $metaProps['og']['type'] ?? 'website';
         $twitterHandle = $settings->get('twitter')
             ? '@'.ltrim(\Illuminate\Support\Str::of($settings->get('twitter'))->afterLast('/')->trim(), '@')
             : null;
+        $twitterDescriptionRaw = trim((string) ($metaProps['twitter']['description'] ?? $seo->get('website_desc') ?? ''));
+        $twitterDescription = $twitterDescriptionRaw !== '' ? $twitterDescriptionRaw : $resolvedMetaDescription;
     @endphp
 
     <link rel="canonical" href="{{ $canonicalUrl }}">
@@ -106,7 +127,7 @@ Developed By: Hadi Hilal
     @endif
     <meta name="twitter:url" content="{{ $canonicalUrl }}">
     <meta name="twitter:title" content="{{ $metaProps['twitter']['title'] ?? $seo->get('website_name') }}">
-    <meta name="twitter:description" content="{{ $metaProps['twitter']['description'] ?? $seo->get('website_desc') }}">
+    <meta name="twitter:description" content="{{ $twitterDescription }}">
     <meta name="twitter:image" content="{{ $twitterImageUrl }}">
     <meta name="twitter:image:alt" content="{{ $metaProps['twitter']['title'] ?? $seo->get('website_name') }}">
 
@@ -120,6 +141,10 @@ Developed By: Hadi Hilal
     <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.ico') }}"/>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}"/>
 
+    @if(($page['component'] ?? null) === 'Base::Index')
+        <link rel="preload" as="image" href="{{ asset('images/home/banner-bg.webp') }}" type="image/webp" fetchpriority="high">
+    @endif
+
     {{-- Ziggy routes are shared via Inertia props and installed in app.js — do not dump them here. --}}
 
     {{-- jQuery before Vite so header menu bindings always have $ available --}}
@@ -127,8 +152,6 @@ Developed By: Hadi Hilal
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {{-- Slim font request: common weights only (full variable italic axis is huge) --}}
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet" media="print" onload="this.media='all'">
@@ -137,6 +160,7 @@ Developed By: Hadi Hilal
     </noscript>
 
     @inertiaHead
+
     {{-- FAQ Schema (server-side for SEO) --}}
     @if(isset($page['props']['faqSchema']) && !empty($page['props']['faqSchema']))
         <script type="application/ld+json">
@@ -155,39 +179,55 @@ Developed By: Hadi Hilal
         @endforeach
     @endif
 
+    {{-- Critical above-the-fold CSS (sync) --}}
     <link rel="stylesheet" href="{{ asset('site/css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/font-awesome-all.css') }}"/>
-
     <link rel="stylesheet" href="{{ asset('site/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}"/>
-
     <link rel="stylesheet" href="{{ asset('site/css/module-css/banner.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/slider.css') }}"/>
     <link rel="stylesheet" href="{{ asset('site/css/module-css/footer.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}"/>
-
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/testimonial.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}"/>
-
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}"/>
-
-    <!-- template styles -->
     <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
-    <style>
 
+    {{-- Non-critical CSS: deferred until after first paint --}}
+    <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/slider.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/testimonial.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/owl.carousel.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/owl.theme.default.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/slider.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/services.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/sliding-text.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/about.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/process.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/contact.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/testimonial.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/newsletter.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/team.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/blog.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/why-choose.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}"/>
+    </noscript>
+    <style>
         #symfonixbot-launcher-wrap {
             position: fixed;
             bottom: 60px;
@@ -497,6 +537,17 @@ Developed By: Hadi Hilal
         .content > *, .blog-details__text > *, .services-details__text-1 > * {
             line-height: 2.5rem !important;
         }
+
+        /* Improve tap targets flagged by Lighthouse */
+        .site-footer-two__social-box-inner a,
+        .mobile-nav__social a,
+        .scroll-to-top {
+            min-width: 44px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 
 
@@ -613,21 +664,21 @@ Developed By: Hadi Hilal
     </div>
 </div>
 
-<a href="#" data-target="html" class="scroll-to-target scroll-to-top d-none d-lg-flex">
+<a href="#main-content" data-target="html" class="scroll-to-target scroll-to-top d-none d-lg-flex" aria-label="{{ __('Scroll back to top of page') }}">
     <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
     <span class="scroll-to-top__text"> {{__('Go Back Top')}}</span>
 </a>
 
-<script src="{{ asset('site/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('site/js/jquery.appear.min.js') }}"></script>
-<script src="{{ asset('site/js/wow.js') }}"></script>
-<script src="{{ asset('site/js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('site/js/marquee.min.js') }}"></script>
-<script src="{{ asset('site/js/gsap/gsap.js') }}"></script>
-<script src="{{ asset('site/js/gsap/ScrollTrigger.js') }}"></script>
-<script src="{{ asset('site/js/gsap/SplitText.js') }}"></script>
+<script src="{{ asset('site/js/bootstrap.bundle.min.js') }}" defer></script>
+<script src="{{ asset('site/js/jquery.appear.min.js') }}" defer></script>
+<script src="{{ asset('site/js/wow.js') }}" defer></script>
+<script src="{{ asset('site/js/owl.carousel.min.js') }}" defer></script>
+<script src="{{ asset('site/js/marquee.min.js') }}" defer></script>
+<script src="{{ asset('site/js/gsap/gsap.js') }}" defer></script>
+<script src="{{ asset('site/js/gsap/ScrollTrigger.js') }}" defer></script>
+<script src="{{ asset('site/js/gsap/SplitText.js') }}" defer></script>
 <script>window.__symfonixMobileNavBound = true;</script>
-<script src="{{ asset('site/js/script.js') }}"></script>
+<script src="{{ asset('site/js/script.js') }}" defer></script>
 <script>
     (function () {
         const endpoint = '{{ route('botman.handle') }}?locale={{ app()->getLocale() }}';

@@ -2,7 +2,7 @@
     <div class="blog-one__single">
         <div class="blog-one__img">
             <Link :href="postUrl">
-                <img :src="blog.image_link" :alt="blog.title" @error="handleImageError">
+                <img :src="blog.image_link" :alt="blog.title" width="800" height="500" loading="lazy" decoding="async" @error="handleImageError">
             </Link>
             <div v-if="showCategory && blog.category" class="blog-one__tags">
                 <span>{{ blog.category.name }}</span>
@@ -20,8 +20,8 @@
             <h3 class="blog-one__title"><Link :href="postUrl">{{ blog.title }}</Link></h3>
             <p v-if="showDescription" class="blog-one__text">{{ blog.description }}</p>
             <div v-if="showReadMore" class="blog-one__btn-box">
-                <Link :href="postUrl" class="thm-btn">
-                    {{ trans("Read More") }}
+                <Link :href="postUrl" class="thm-btn" :aria-label="readMoreLabel">
+                    {{ readMoreLabel }}
                     <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
                 </Link>
             </div>
@@ -105,12 +105,23 @@ const commentsCount = computed(() => {
     return 0
 })
 
+const readMoreLabel = computed(() => {
+    const title = String(props.blog?.title || '').trim()
+    if (!title) {
+        return trans('Read article')
+    }
+    return `${trans('Read article')}: ${title.length > 50 ? title.substring(0, 50) + '...' : title}`
+})
+
 const handleImageError = (event) => {
     // If image fails to load, use fallback
     const assetPath = page.props.asset_path || ''
-    const fallbackSrc = `${assetPath}site/images/blog/blog-2-1.jpg`
-    if (event.target.src !== fallbackSrc && !event.target.src.includes('blog-2-')) {
-        event.target.src = fallbackSrc
+    const webpFallback = `${assetPath}site/images/blog/blog-2-1.webp`
+    const jpgFallback = `${assetPath}site/images/blog/blog-2-1.jpg`
+    if (!event.target.src.includes('blog-2-')) {
+        event.target.src = webpFallback
+    } else if (event.target.src.endsWith('.webp')) {
+        event.target.src = jpgFallback
     }
 }
 </script>

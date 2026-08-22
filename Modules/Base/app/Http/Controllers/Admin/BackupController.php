@@ -45,7 +45,9 @@ class BackupController extends Controller
     {
         $request->validate([
             'backup_file' => ['required', 'file', 'mimes:zip', 'max:512000'],
-        ], [], [
+        ], [
+            'backup_file.uploaded' => __('base::backup.upload_too_large'),
+        ], [
             'backup_file' => __('base::backup.backup_file'),
         ]);
 

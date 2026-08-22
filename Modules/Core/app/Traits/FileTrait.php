@@ -39,7 +39,7 @@ trait FileTrait
         }
 
         // Process and upload image
-        $image = Image::read($file);
+        $image = Image::decode($file);
         if ($width) {
             $image->resize($width);
         }
