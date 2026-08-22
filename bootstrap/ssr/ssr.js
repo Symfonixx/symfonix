@@ -61,14 +61,17 @@ const _sfc_main$P = {
       var _a;
       const link = ((_a = props.post) == null ? void 0 : _a.image_link) || "";
       if (!link || link.includes("/images/blank.png") || link.includes("blank.png")) {
-        return `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.jpg`;
+        return `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.webp`;
       }
       return link;
     });
     const handleImageError = (event) => {
-      const fallbackSrc = `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.jpg`;
-      if (event.target.src !== fallbackSrc && !event.target.src.includes("blog-2-")) {
-        event.target.src = fallbackSrc;
+      const webpFallback = `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.webp`;
+      const jpgFallback = `${props.assetPath}site/images/blog/blog-2-${props.imageFallbackIndex}.jpg`;
+      if (!event.target.src.includes("blog-2-")) {
+        event.target.src = webpFallback;
+      } else if (event.target.src.endsWith(".webp")) {
+        event.target.src = jpgFallback;
       }
     };
     const translateField = (value) => {
@@ -90,6 +93,14 @@ const _sfc_main$P = {
       if (!text) return "";
       return text.length > length ? text.substring(0, length) + "..." : text;
     };
+    const readMoreLabel = computed(() => {
+      var _a;
+      const title = translateField((_a = props.post) == null ? void 0 : _a.title);
+      if (!title) {
+        return trans("Read article");
+      }
+      return `${trans("Read article")}: ${truncate(title, 50)}`;
+    });
     return (_ctx, _push, _parent, _attrs) => {
       if (__props.variant === "featured") {
         _push(`<div${ssrRenderAttrs(mergeProps({ class: "blog-two__single" }, _attrs))}><div class="blog-two__img">`);
@@ -116,7 +127,10 @@ const _sfc_main$P = {
         _push(`<div class="blog-two__tags"><span>${ssrInterpolate(translateField(__props.post.category.name))}</span></div></div><div class="blog-two__content"><ul class="blog-two__meta list-unstyled">`);
         if (__props.post.created_at) {
           _push(`<li>`);
-          _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
+          _push(ssrRenderComponent(unref(Link), {
+            href: postUrl.value,
+            "aria-label": `${readMoreLabel.value} — ${__props.post.created_at}`
+          }, {
             default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-calendar-alt"${_scopeId}></span>${ssrInterpolate(__props.post.created_at)}`);
@@ -135,7 +149,10 @@ const _sfc_main$P = {
         }
         if (__props.post.comments_count) {
           _push(`<li>`);
-          _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
+          _push(ssrRenderComponent(unref(Link), {
+            href: postUrl.value,
+            "aria-label": `${readMoreLabel.value} — ${__props.post.comments_count} ${trans("Comments")}`
+          }, {
             default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-comments"${_scopeId}></span>${ssrInterpolate(__props.post.comments_count)} ${ssrInterpolate(trans("Comments"))}`);
@@ -151,7 +168,10 @@ const _sfc_main$P = {
           _push(`</li>`);
         } else if (__props.showReadingTime && __props.post.reading_time) {
           _push(`<li>`);
-          _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
+          _push(ssrRenderComponent(unref(Link), {
+            href: postUrl.value,
+            "aria-label": `${readMoreLabel.value} — ${__props.post.reading_time} ${trans("min read")}`
+          }, {
             default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-clock"${_scopeId}></span>${ssrInterpolate(__props.post.reading_time)} ${ssrInterpolate(trans("min read"))}`);
@@ -184,14 +204,15 @@ const _sfc_main$P = {
         _push(`</h3><p class="blog-two__text">${ssrInterpolate(truncate(translateField(__props.post.description), 160))}</p><div class="blog-two__btn-box">`);
         _push(ssrRenderComponent(unref(Link), {
           href: postUrl.value,
-          class: "thm-btn"
+          class: "thm-btn",
+          "aria-label": readMoreLabel.value
         }, {
           default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
-              _push2(`${ssrInterpolate(trans("Read More"))} <span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span>`);
+              _push2(`${ssrInterpolate(readMoreLabel.value)} <span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span>`);
             } else {
               return [
-                createTextVNode(toDisplayString(trans("Read More")) + " ", 1),
+                createTextVNode(toDisplayString(readMoreLabel.value) + " ", 1),
                 createVNode("span", {
                   class: `icon-${__props.locale === "ar" ? "left" : "right"}-arrow `
                 }, null, 2)
@@ -242,7 +263,10 @@ const _sfc_main$P = {
         _push(`</h3><ul class="blog-two__meta-two list-unstyled">`);
         if (__props.post.created_at) {
           _push(`<li>`);
-          _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
+          _push(ssrRenderComponent(unref(Link), {
+            href: postUrl.value,
+            "aria-label": `${readMoreLabel.value} — ${__props.post.created_at}`
+          }, {
             default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-calendar-alt"${_scopeId}></span>${ssrInterpolate(__props.post.created_at)}`);
@@ -261,7 +285,10 @@ const _sfc_main$P = {
         }
         if (__props.post.comments_count) {
           _push(`<li>`);
-          _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
+          _push(ssrRenderComponent(unref(Link), {
+            href: postUrl.value,
+            "aria-label": `${readMoreLabel.value} — ${__props.post.comments_count} ${trans("Comments")}`
+          }, {
             default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-comments"${_scopeId}></span>${ssrInterpolate(__props.post.comments_count)} ${ssrInterpolate(trans("Comments"))}`);
@@ -277,7 +304,10 @@ const _sfc_main$P = {
           _push(`</li>`);
         } else if (__props.showReadingTime && __props.post.reading_time) {
           _push(`<li>`);
-          _push(ssrRenderComponent(unref(Link), { href: postUrl.value }, {
+          _push(ssrRenderComponent(unref(Link), {
+            href: postUrl.value,
+            "aria-label": `${readMoreLabel.value} — ${__props.post.reading_time} ${trans("min read")}`
+          }, {
             default: withCtx((_2, _push2, _parent2, _scopeId) => {
               if (_push2) {
                 _push2(`<span class="far fa-clock"${_scopeId}></span>${ssrInterpolate(__props.post.reading_time)} ${ssrInterpolate(trans("min read"))}`);
@@ -297,14 +327,15 @@ const _sfc_main$P = {
         _push(`</ul><div class="blog-two__btn-box-two">`);
         _push(ssrRenderComponent(unref(Link), {
           href: postUrl.value,
-          class: "thm-btn"
+          class: "thm-btn",
+          "aria-label": readMoreLabel.value
         }, {
           default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
-              _push2(`${ssrInterpolate(trans("Read More"))} <span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span>`);
+              _push2(`${ssrInterpolate(readMoreLabel.value)} <span class="${ssrRenderClass(`icon-${__props.locale === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span>`);
             } else {
               return [
-                createTextVNode(toDisplayString(trans("Read More")) + " ", 1),
+                createTextVNode(toDisplayString(readMoreLabel.value) + " ", 1),
                 createVNode("span", {
                   class: `icon-${__props.locale === "ar" ? "left" : "right"}-arrow `
                 }, null, 2)
@@ -347,11 +378,7 @@ const _sfc_main$O = {
     readingTimeLabel: { type: String, default: "min read" }
   },
   setup(__props) {
-    const page = usePage();
-    const trans = (key) => {
-      var _a;
-      return ((_a = page.props.translations) == null ? void 0 : _a[key]) || key;
-    };
+    usePage();
     const props = __props;
     const parseMaybeJson = (value) => {
       if (typeof value !== "string") {
@@ -401,15 +428,15 @@ const _sfc_main$O = {
       const normalized = normalizeHighlights(props.highlights);
       return normalized.slice(0, 3);
     });
-    computed(() => {
+    const buttonText = computed(() => {
+      const labelTitle = String(props.title || "").trim();
+      if (labelTitle) {
+        return `Explore ${labelTitle} services`;
+      }
       if (props.buttonLabel && props.buttonLabel !== "Read More") {
         return props.buttonLabel;
       }
-      const labelTitle = String(props.title || "").trim();
-      if (!labelTitle) {
-        return "Read More";
-      }
-      return `Read More about ${labelTitle}`;
+      return "Explore our services";
     });
     const shortDescription = computed(() => {
       const source = props.description;
@@ -423,13 +450,13 @@ const _sfc_main$O = {
       return `${text.slice(0, 75)}...`;
     });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-three__single" }, _attrs))} data-v-6826fe71><div class="services-three__media" data-v-6826fe71>`);
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-three__single" }, _attrs))} data-v-037ec78e><div class="services-three__media" data-v-037ec78e>`);
       if (__props.image) {
-        _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="services-three__image" width="640" height="420" loading="lazy" decoding="async" data-v-6826fe71>`);
+        _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="services-three__image" width="640" height="420" loading="lazy" decoding="async" data-v-037ec78e>`);
       } else {
-        _push(`<div class="services-three__image-placeholder" data-v-6826fe71><span class="icon-technical-support" data-v-6826fe71></span></div>`);
+        _push(`<div class="services-three__image-placeholder" data-v-037ec78e><span class="icon-technical-support" data-v-037ec78e></span></div>`);
       }
-      _push(`</div><h3 class="services-three__title" data-v-6826fe71>`);
+      _push(`</div><h3 class="services-three__title" data-v-037ec78e>`);
       _push(ssrRenderComponent(unref(Link), { href: __props.link }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
@@ -444,19 +471,19 @@ const _sfc_main$O = {
       }, _parent));
       _push(`</h3>`);
       if (shortDescription.value) {
-        _push(`<p class="services-three__text" data-v-6826fe71>${ssrInterpolate(shortDescription.value)}</p>`);
+        _push(`<p class="services-three__text" data-v-037ec78e>${ssrInterpolate(shortDescription.value)}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (__props.readingTime) {
-        _push(`<p class="services-three__meta" data-v-6826fe71><span class="far fa-clock mx-1" data-v-6826fe71></span>${ssrInterpolate(__props.readingTime)} ${ssrInterpolate(__props.readingTimeLabel)}</p>`);
+        _push(`<p class="services-three__meta" data-v-037ec78e><span class="far fa-clock mx-1" data-v-037ec78e></span>${ssrInterpolate(__props.readingTime)} ${ssrInterpolate(__props.readingTimeLabel)}</p>`);
       } else {
         _push(`<!---->`);
       }
       if (safeHighlights.value.length) {
-        _push(`<ul class="list-unstyled services-three__list" data-v-6826fe71><!--[-->`);
+        _push(`<ul class="list-unstyled services-three__list" data-v-037ec78e><!--[-->`);
         ssrRenderList(safeHighlights.value, (item, index) => {
-          _push(`<li data-v-6826fe71><div class="icon" data-v-6826fe71><span class="icon-tick-inside-circle" data-v-6826fe71></span></div><div class="text" data-v-6826fe71><p data-v-6826fe71>${ssrInterpolate(item)}</p></div></li>`);
+          _push(`<li data-v-037ec78e><div class="icon" data-v-037ec78e><span class="icon-tick-inside-circle" data-v-037ec78e></span></div><div class="text" data-v-037ec78e><p data-v-037ec78e>${ssrInterpolate(item)}</p></div></li>`);
         });
         _push(`<!--]--></ul>`);
       } else {
@@ -464,14 +491,15 @@ const _sfc_main$O = {
       }
       _push(ssrRenderComponent(unref(Link), {
         href: __props.link,
-        class: "services-three__btn"
+        class: "services-three__btn",
+        "aria-label": buttonText.value
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`${ssrInterpolate(trans("Read More"))} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-6826fe71${_scopeId}></span>`);
+            _push2(`${ssrInterpolate(buttonText.value)} <span class="${ssrRenderClass(`icon-${__props.isRtl ? "left" : "right"}-arrow-1`)}" data-v-037ec78e${_scopeId}></span>`);
           } else {
             return [
-              createTextVNode(toDisplayString(trans("Read More")) + " ", 1),
+              createTextVNode(toDisplayString(buttonText.value) + " ", 1),
               createVNode("span", {
                 class: `icon-${__props.isRtl ? "left" : "right"}-arrow-1`
               }, null, 2)
@@ -490,7 +518,7 @@ _sfc_main$O.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
   return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-6826fe71"]]);
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-037ec78e"]]);
 const _sfc_main$N = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
@@ -1202,14 +1230,15 @@ const _sfc_main$L = {
       }
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<!--[--><div class="xs-sidebar-group info-group info-sidebar"><div class="xs-overlay xs-bg-black"></div><div class="xs-sidebar-widget"><div class="sidebar-widget-container"><div class="widget-heading"><a href="#" class="close-side-widget">X</a></div><div class="sidebar-textwidget"><div class="sidebar-info-contents"><div class="content-inner"><div class="logo">`);
+      _push(`<!--[--><div class="xs-sidebar-group info-group info-sidebar"><div class="xs-overlay xs-bg-black"></div><div class="xs-sidebar-widget"><div class="sidebar-widget-container"><div class="widget-heading"><a href="#" class="close-side-widget"${ssrRenderAttr("aria-label", trans("Close sidebar"))}>${ssrInterpolate(trans("Close"))}</a></div><div class="sidebar-textwidget"><div class="sidebar-info-contents"><div class="content-inner"><div class="logo">`);
       _push(ssrRenderComponent(unref(Link), {
-        href: _ctx.route("home")
+        href: _ctx.route("home"),
+        "aria-label": trans("Symfonix home page")
       }, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             if (logoSrc.value) {
-              _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)}${_scopeId}>`);
+              _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)} width="160" height="48" decoding="async"${_scopeId}>`);
             } else {
               _push2(`<span class="brand-text-logo"${_scopeId}>${ssrInterpolate(brandName.value)}</span>`);
             }
@@ -1218,7 +1247,10 @@ const _sfc_main$L = {
               logoSrc.value ? (openBlock(), createBlock("img", {
                 key: 0,
                 src: logoSrc.value,
-                alt: brandName.value
+                alt: brandName.value,
+                width: "160",
+                height: "48",
+                decoding: "async"
               }, null, 8, ["src", "alt"])) : (openBlock(), createBlock("span", {
                 key: 1,
                 class: "brand-text-logo"
@@ -1287,7 +1319,7 @@ const _sfc_main$L = {
       }
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       if (!isPortalPage.value) {
-        _push(`<section class="newsletter-two"><div class="newsletter-two__shape-1"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-1.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="newsletter-two__shape-2 float-bob-x"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-2.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="container"><div class="newsletter-two__inner"><div class="newsletter-two__left"><h2 class="newsletter-two__title">${ssrInterpolate(trans("Subscribe to Our Newsletter"))}</h2><p class="newsletter-two__text">${ssrInterpolate(trans("Engineering insights, product updates, and practical tech lessons—delivered occasionally, not daily"))}</p></div><div class="newsletter-two__right"><form class="newsletter-two__form"><div class="newsletter-two__input"><input type="email" name="email"${ssrRenderAttr("value", unref(subscribeForm).email)}${ssrRenderAttr("placeholder", trans("Enter your email address"))}${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""} required="">`);
+        _push(`<section class="newsletter-two"><div class="newsletter-two__shape-1"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-1.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))} width="80" height="80" loading="lazy" decoding="async" aria-hidden="true"></div><div class="newsletter-two__shape-2 float-bob-x"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-2.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))} width="80" height="80" loading="lazy" decoding="async" aria-hidden="true"></div><div class="container"><div class="newsletter-two__inner"><div class="newsletter-two__left"><h2 class="newsletter-two__title">${ssrInterpolate(trans("Subscribe to Our Newsletter"))}</h2><p class="newsletter-two__text">${ssrInterpolate(trans("Engineering insights, product updates, and practical tech lessons—delivered occasionally, not daily"))}</p></div><div class="newsletter-two__right"><form class="newsletter-two__form"><div class="newsletter-two__input"><input type="email" name="email"${ssrRenderAttr("value", unref(subscribeForm).email)}${ssrRenderAttr("placeholder", trans("Enter your email address"))}${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""} required="">`);
         if (unref(subscribeForm).errors.email) {
           _push(`<div class="text-danger mt-1 small">${ssrInterpolate(unref(subscribeForm).errors.email)}</div>`);
         } else {
@@ -1327,12 +1359,13 @@ const _sfc_main$L = {
       if (!isPortalPage.value) {
         _push(`<footer class="site-footer-two"><div class="site-footer-two__top"><div class="container"><div class="row"><div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"><div class="site-footer-two__about"><div class="site-footer-two__logo">`);
         _push(ssrRenderComponent(unref(Link), {
-          href: _ctx.route("home")
+          href: _ctx.route("home"),
+          "aria-label": trans("Symfonix home page")
         }, {
           default: withCtx((_2, _push2, _parent2, _scopeId) => {
             if (_push2) {
               if (logoSrc.value) {
-                _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)}${_scopeId}>`);
+                _push2(`<img${ssrRenderAttr("src", logoSrc.value)}${ssrRenderAttr("alt", brandName.value)} width="180" height="48" decoding="async"${_scopeId}>`);
               } else {
                 _push2(`<span class="brand-text-logo"${_scopeId}>${ssrInterpolate(brandName.value)}</span>`);
               }
@@ -1341,7 +1374,10 @@ const _sfc_main$L = {
                 logoSrc.value ? (openBlock(), createBlock("img", {
                   key: 0,
                   src: logoSrc.value,
-                  alt: brandName.value
+                  alt: brandName.value,
+                  width: "180",
+                  height: "48",
+                  decoding: "async"
                 }, null, 8, ["src", "alt"])) : (openBlock(), createBlock("span", {
                   key: 1,
                   class: "brand-text-logo"
@@ -1588,27 +1624,27 @@ const _sfc_main$L = {
         }, _parent));
         _push(`</p></div><div class="site-footer-two__social-box"><h3 class="h4 site-footer-two__social-title">${ssrInterpolate(trans("Follow Us"))}:</h3><div class="site-footer-two__social-box-inner">`);
         if (settings.value.twitter) {
-          _push(`<a${ssrRenderAttr("href", settings.value.twitter)} target="_blank" rel="noopener" aria-label="twitter"><span class="fab fa-twitter"></span></a>`);
+          _push(`<a${ssrRenderAttr("href", settings.value.twitter)} target="_blank" rel="noopener"${ssrRenderAttr("aria-label", `${trans("Follow Us")} on X (Twitter)`)}><span class="fab fa-twitter"></span></a>`);
         } else {
           _push(`<!---->`);
         }
         if (settings.value.facebook) {
-          _push(`<a${ssrRenderAttr("href", settings.value.facebook)} target="_blank" rel="noopener" aria-label="Facebook"><span class="icon-facebook"></span></a>`);
+          _push(`<a${ssrRenderAttr("href", settings.value.facebook)} target="_blank" rel="noopener"${ssrRenderAttr("aria-label", `${trans("Follow Us")} on Facebook`)}><span class="icon-facebook"></span></a>`);
         } else {
           _push(`<!---->`);
         }
         if (settings.value.instagram) {
-          _push(`<a${ssrRenderAttr("href", settings.value.instagram)} target="_blank" rel="noopener" aria-label="Instagram"><span class="fab fa-instagram"></span></a>`);
+          _push(`<a${ssrRenderAttr("href", settings.value.instagram)} target="_blank" rel="noopener"${ssrRenderAttr("aria-label", `${trans("Follow Us")} on Instagram`)}><span class="fab fa-instagram"></span></a>`);
         } else {
           _push(`<!---->`);
         }
         if (settings.value.linkedin) {
-          _push(`<a${ssrRenderAttr("href", settings.value.linkedin)} target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon-linkedin"></span></a>`);
+          _push(`<a${ssrRenderAttr("href", settings.value.linkedin)} target="_blank" rel="noopener"${ssrRenderAttr("aria-label", `${trans("Follow Us")} on LinkedIn`)}><span class="icon-linkedin"></span></a>`);
         } else {
           _push(`<!---->`);
         }
         if (settings.value.github) {
-          _push(`<a${ssrRenderAttr("href", settings.value.github)} target="_blank" rel="noopener" aria-label="GitHub"><span class="fab fa-github"></span></a>`);
+          _push(`<a${ssrRenderAttr("href", settings.value.github)} target="_blank" rel="noopener"${ssrRenderAttr("aria-label", `${trans("Follow Us")} on GitHub`)}><span class="fab fa-github"></span></a>`);
         } else {
           _push(`<!---->`);
         }
@@ -2327,26 +2363,26 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<title data-v-bda21390${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-bda21390${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-bda21390${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-bda21390${_scopeId}>`);
+            _push2(`<title data-v-8a1e51ef${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-8a1e51ef${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-8a1e51ef${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-8a1e51ef${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-bda21390${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-8a1e51ef${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-bda21390${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-bda21390${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-8a1e51ef${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-8a1e51ef${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-bda21390${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-8a1e51ef${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-bda21390${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-8a1e51ef${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-bda21390${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-bda21390${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-bda21390${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-bda21390${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-8a1e51ef${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-8a1e51ef${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-8a1e51ef${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-8a1e51ef${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-bda21390${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-8a1e51ef${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -2417,16 +2453,16 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
       _push(ssrRenderComponent(_sfc_main$L, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="banner-one" data-v-bda21390${_scopeId}><div class="banner-one__bg" aria-hidden="true" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/banner-bg.webp")} alt="" width="1920" height="1080" loading="lazy" decoding="async" class="banner-one__bg-img" data-v-bda21390${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
+            _push2(`<section class="banner-one" data-v-8a1e51ef${_scopeId}><div class="banner-one__bg" aria-hidden="true" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/banner-bg.webp")} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" class="banner-one__bg-img" data-v-8a1e51ef${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/shapes/banner-one-shape-bg.png)`
-            })}" data-v-bda21390${_scopeId}></div><div class="container" data-v-bda21390${_scopeId}><div class="banner-one__inner" data-v-bda21390${_scopeId}><h1 class="banner-one__title px-4" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Transform complex technical ideas into intelligent systems"))} <br data-v-bda21390${_scopeId}><span data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability"))}</span></h1><div class="banner-one__btn-box mb-5" data-v-bda21390${_scopeId}>`);
+            })}" data-v-8a1e51ef${_scopeId}></div><div class="container" data-v-8a1e51ef${_scopeId}><div class="banner-one__inner" data-v-8a1e51ef${_scopeId}><h1 class="banner-one__title px-4" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Transform complex technical ideas into intelligent systems"))} <br data-v-8a1e51ef${_scopeId}><span data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Help companies build practical technology solutions in Web, AI, automation, and cloud computing — designed for growth and sustainability"))}</span></h1><div class="banner-one__btn-box mb-5" data-v-8a1e51ef${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "thm-btn contact-btn mx-2"
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-bda21390${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
+                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-message ms-2" : "icon-message me-2")}" data-v-8a1e51ef${_scopeId2}></span> ${ssrInterpolate(trans("Book your free consultation"))}`);
                 } else {
                   return [
                     createVNode("span", {
@@ -2444,7 +2480,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-bda21390${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
+                  _push3(`<span class="${ssrRenderClass(locale.value === "ar" ? "icon-search ms-2" : "icon-search me-2")}" data-v-8a1e51ef${_scopeId2}></span> ${ssrInterpolate(trans("Explore Our Services"))}`);
                 } else {
                   return [
                     createVNode("span", {
@@ -2456,11 +2492,11 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</div></div></div></section><section class="about-three" data-v-bda21390${_scopeId}><div class="container" data-v-bda21390${_scopeId}><div class="row" data-v-bda21390${_scopeId}><div class="col-xl-6" data-v-bda21390${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-bda21390${_scopeId}><div class="about-three__img-box" data-v-bda21390${_scopeId}><div class="about-three__img" data-v-bda21390${_scopeId}><picture data-v-bda21390${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/about_us.webp")} type="image/webp" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))} width="636" height="636" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></picture></div></div></div></div><div class="col-xl-6" data-v-bda21390${_scopeId}><div class="about-three__right" data-v-bda21390${_scopeId}><div class="section-title sec-title-animation animation-style1" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Our Tech Solutions"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Why Choose Symfonix for Web, AI, and Cloud"))}</h2></div><p class="about-three__text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled" data-v-bda21390${_scopeId}><li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-tick-inside-circle" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h2 class="h3" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Developing Secure & Scalable Systems"))}</h2></div></li><li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-tick-inside-circle" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h2 class="h3" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-tick-inside-circle" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h2 class="h3" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-tick-inside-circle" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h2 class="h3" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box" data-v-bda21390${_scopeId}><div class="about-three__btn-box" data-v-bda21390${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-bda21390${_scopeId}></span></a></div><div class="about-three__call-box" data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-customer-service-headset" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><span data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p data-v-bda21390${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-bda21390${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
+            _push2(`</div></div></div></section><section class="about-three" data-v-8a1e51ef${_scopeId}><div class="container" data-v-8a1e51ef${_scopeId}><div class="row" data-v-8a1e51ef${_scopeId}><div class="col-xl-6" data-v-8a1e51ef${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-8a1e51ef${_scopeId}><div class="about-three__img-box" data-v-8a1e51ef${_scopeId}><div class="about-three__img" data-v-8a1e51ef${_scopeId}><picture data-v-8a1e51ef${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/about_us-640.webp")} type="image/webp" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))} width="640" height="640" loading="lazy" decoding="async" data-v-8a1e51ef${_scopeId}></picture></div></div></div></div><div class="col-xl-6" data-v-8a1e51ef${_scopeId}><div class="about-three__right" data-v-8a1e51ef${_scopeId}><div class="section-title sec-title-animation animation-style1" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Our Tech Solutions"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Why Choose Symfonix for Web, AI, and Cloud"))}</h2></div><p class="about-three__text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled" data-v-8a1e51ef${_scopeId}><li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-tick-inside-circle" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h2 class="h3" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Developing Secure & Scalable Systems"))}</h2></div></li><li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-tick-inside-circle" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h2 class="h3" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2></div></li><li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-tick-inside-circle" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h2 class="h3" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2></div></li><li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-tick-inside-circle" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h2 class="h3" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</h2></div></li></ul><div class="about-three__btn-and-call-box" data-v-8a1e51ef${_scopeId}><div class="about-three__btn-box" data-v-8a1e51ef${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8a1e51ef${_scopeId}></span></a></div><div class="about-three__call-box" data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-customer-service-headset" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><span data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p data-v-8a1e51ef${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-8a1e51ef${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
             if (servicesCategories.value && servicesCategories.value.length) {
-              _push2(`<section class="services-three" data-v-bda21390${_scopeId}><div class="container" data-v-bda21390${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel" data-v-bda21390${_scopeId}><!--[-->`);
+              _push2(`<section class="services-three" data-v-8a1e51ef${_scopeId}><div class="container" data-v-8a1e51ef${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel" data-v-8a1e51ef${_scopeId}><!--[-->`);
               ssrRenderList(servicesCategories.value, (servicesCategory) => {
-                _push2(`<div class="item" data-v-bda21390${_scopeId}>`);
+                _push2(`<div class="item" data-v-8a1e51ef${_scopeId}>`);
                 _push2(ssrRenderComponent(ServiceCardThree, {
                   title: translateField(servicesCategory.title),
                   "short-desc": translateField(servicesCategory.description),
@@ -2468,19 +2504,18 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                   highlights: getCategoryHighlights(servicesCategory),
                   link: _ctx.route("services.index", { category: servicesCategory.slug }),
                   image: servicesCategory.image_link,
-                  "button-label": trans("Read More"),
                   "is-rtl": locale.value === "ar"
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div><div class="text-center mt-4" data-v-bda21390${_scopeId}>`);
+              _push2(`<!--]--></div><div class="text-center mt-4" data-v-8a1e51ef${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("services.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-bda21390${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Services"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8a1e51ef${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Services")) + " ", 1),
@@ -2497,23 +2532,23 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               _push2(`<!---->`);
             }
             if (products.value && products.value.length) {
-              _push2(`<section class="home-products products-page" data-v-bda21390${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-bda21390${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-bda21390${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-bda21390${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-bda21390${_scopeId}></div></div><div class="container position-relative" data-v-bda21390${_scopeId}><div class="section-title text-center sec-title-animation animation-style1 home-products__head" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Our Products"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("B2B Solutions Built for Scale"))}</h2><p class="home-products__intro" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Discover enterprise-ready platforms and services designed to grow with your business."))}</p></div><div class="home-products__grid" data-v-bda21390${_scopeId}><div class="row g-4" data-v-bda21390${_scopeId}><!--[-->`);
+              _push2(`<section class="home-products products-page" data-v-8a1e51ef${_scopeId}><div class="products-page__bg" aria-hidden="true" data-v-8a1e51ef${_scopeId}><div class="products-page__orb products-page__orb--one" data-v-8a1e51ef${_scopeId}></div><div class="products-page__orb products-page__orb--two" data-v-8a1e51ef${_scopeId}></div><div class="products-page__orb products-page__orb--three" data-v-8a1e51ef${_scopeId}></div></div><div class="container position-relative" data-v-8a1e51ef${_scopeId}><div class="section-title text-center sec-title-animation animation-style1 home-products__head" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Our Products"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("B2B Solutions Built for Scale"))}</h2><p class="home-products__intro" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Discover enterprise-ready platforms and services designed to grow with your business."))}</p></div><div class="home-products__grid" data-v-8a1e51ef${_scopeId}><div class="row g-4" data-v-8a1e51ef${_scopeId}><!--[-->`);
               ssrRenderList(products.value, (product, index) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-bda21390${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"${ssrRenderAttr("data-wow-delay", `${(index % 3 + 1) * 100}ms`)} data-v-8a1e51ef${_scopeId}>`);
                 _push2(ssrRenderComponent(ProductCard, {
                   item: product,
                   locale: locale.value
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div></div><div class="text-center home-products__cta" data-v-bda21390${_scopeId}>`);
+              _push2(`<!--]--></div></div><div class="text-center home-products__cta" data-v-8a1e51ef${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("product.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Products"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-bda21390${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Products"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8a1e51ef${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Products")) + " ", 1),
@@ -2530,23 +2565,23 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               _push2(`<!---->`);
             }
             if (useCases.value && useCases.value.length) {
-              _push2(`<section class="home-case-studies use-cases-page" data-v-bda21390${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-bda21390${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-bda21390${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-bda21390${_scopeId}></div></div><div class="container position-relative" data-v-bda21390${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="home-case-studies__intro" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="use-cases-page__grid" data-v-bda21390${_scopeId}><div class="row g-4" data-v-bda21390${_scopeId}><!--[-->`);
+              _push2(`<section class="home-case-studies use-cases-page" data-v-8a1e51ef${_scopeId}><div class="use-cases-page__bg" aria-hidden="true" data-v-8a1e51ef${_scopeId}><div class="use-cases-page__orb use-cases-page__orb--one" data-v-8a1e51ef${_scopeId}></div><div class="use-cases-page__orb use-cases-page__orb--two" data-v-8a1e51ef${_scopeId}></div></div><div class="container position-relative" data-v-8a1e51ef${_scopeId}><div class="section-title text-center sec-title-animation animation-style1" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("How We've Empowered Businesses with Innovative Tech Solutions"))}</h2><p class="home-case-studies__intro" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Explore our success stories and real-world solutions we've delivered for businesses."))}</p></div><div class="use-cases-page__grid" data-v-8a1e51ef${_scopeId}><div class="row g-4" data-v-8a1e51ef${_scopeId}><!--[-->`);
               ssrRenderList(useCases.value, (item) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-bda21390${_scopeId}>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-8a1e51ef${_scopeId}>`);
                 _push2(ssrRenderComponent(UseCaseCard, {
                   item,
                   locale: locale.value
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div></div><div class="text-center home-case-studies__cta" data-v-bda21390${_scopeId}>`);
+              _push2(`<!--]--></div></div><div class="text-center home-case-studies__cta" data-v-8a1e51ef${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("use-cases.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Case Studies"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-bda21390${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Case Studies"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8a1e51ef${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Case Studies")) + " ", 1),
@@ -2562,56 +2597,56 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="why-choose-two" data-v-bda21390${_scopeId}><div class="why-choose-two__shape-1 float-bob-y" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/why-choose-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></div><div class="container" data-v-bda21390${_scopeId}><div class="row" data-v-bda21390${_scopeId}><div class="col-xl-6" data-v-bda21390${_scopeId}><div class="${ssrRenderClass(`why-choose-two__left wow ${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-bda21390${_scopeId}><div class="why-choose-two__img" data-v-bda21390${_scopeId}><picture data-v-bda21390${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/why_choose_us.webp")} type="image/webp" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/why_choose_us.jpg")}${ssrRenderAttr("alt", trans("Why choose us"))} width="636" height="700" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></picture></div></div></div><div class="col-xl-6" data-v-bda21390${_scopeId}><div class="why-choose-two__right" data-v-bda21390${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("How do we deliver reliable, future-ready IT solutions?"))}</h2></div><p class="why-choose-one__text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points" data-v-bda21390${_scopeId}><li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-quality" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h3 class="h4" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p data-v-bda21390${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-team" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h3 class="h4" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-customer-centricity" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h3 class="h4" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
+            _push2(`<section class="why-choose-two" data-v-8a1e51ef${_scopeId}><div class="why-choose-two__shape-1 float-bob-y" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/why-choose-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" aria-hidden="true" data-v-8a1e51ef${_scopeId}></div><div class="container" data-v-8a1e51ef${_scopeId}><div class="row" data-v-8a1e51ef${_scopeId}><div class="col-xl-6" data-v-8a1e51ef${_scopeId}><div class="${ssrRenderClass(`why-choose-two__left wow ${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-8a1e51ef${_scopeId}><div class="why-choose-two__img" data-v-8a1e51ef${_scopeId}><picture data-v-8a1e51ef${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/why_choose_us-640.webp")} type="image/webp" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/why_choose_us.jpg")}${ssrRenderAttr("alt", trans("Why choose us"))} width="640" height="640" loading="lazy" decoding="async" data-v-8a1e51ef${_scopeId}></picture></div></div></div><div class="col-xl-6" data-v-8a1e51ef${_scopeId}><div class="why-choose-two__right" data-v-8a1e51ef${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Why Choose Us"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("How do we deliver reliable, future-ready IT solutions?"))}</h2></div><p class="why-choose-one__text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that consistently exceed expectations. Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p><ul class="list-unstyled why-choose-two__points" data-v-8a1e51ef${_scopeId}><li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-quality" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h3 class="h4" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Unmatched Quality"))}</h3><p data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("We deliver exceptional products and services that exceed expectations every time."))}</p></div></li><li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-team" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h3 class="h4" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Trusted Expertise"))}</h3><p data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Backed by years of experience and a proven track record, we are your reliable partner for success."))}</p></div></li><li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-customer-centricity" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h3 class="h4" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("User-Centric Approach"))}</h3><p data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first."))}</p></div></li></ul></div></div></div></div></section>`);
             if (teams.value && teams.value.length > 0) {
-              _push2(`<section class="team-two d-none" data-v-bda21390${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}" data-v-bda21390${_scopeId}></div><div class="container" data-v-bda21390${_scopeId}><div class="row" data-v-bda21390${_scopeId}><div class="col-xl-5" data-v-bda21390${_scopeId}><div class="team-two__left" data-v-bda21390${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br data-v-bda21390${_scopeId}><span data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7" data-v-bda21390${_scopeId}><div class="team-two__right" data-v-bda21390${_scopeId}><div class="team-two__carousel owl-theme owl-carousel" data-v-bda21390${_scopeId}><!--[-->`);
+              _push2(`<section class="team-two d-none" data-v-8a1e51ef${_scopeId}><div class="team-two__bg-shape float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/shapes/team-two-bg-shape.png)` })}" data-v-8a1e51ef${_scopeId}></div><div class="container" data-v-8a1e51ef${_scopeId}><div class="row" data-v-8a1e51ef${_scopeId}><div class="col-xl-5" data-v-8a1e51ef${_scopeId}><div class="team-two__left" data-v-8a1e51ef${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Our Members"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Meet Our Team."))} <span data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Get to"))}</span><br data-v-8a1e51ef${_scopeId}><span data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Know the Talented"))}</span> ${ssrInterpolate(trans("Minds Behind Our Team"))}</h2></div><p class="team-two__text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way."))}</p></div></div><div class="col-xl-7" data-v-8a1e51ef${_scopeId}><div class="team-two__right" data-v-8a1e51ef${_scopeId}><div class="team-two__carousel owl-theme owl-carousel" data-v-8a1e51ef${_scopeId}><!--[-->`);
               ssrRenderList(teams.value, (team) => {
-                _push2(`<div class="item" data-v-bda21390${_scopeId}><div class="team-two__single" data-v-bda21390${_scopeId}><div class="team-two__img-box" data-v-bda21390${_scopeId}><div class="team-two__img" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))} width="200" height="200" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></div><div class="team-two__social" data-v-bda21390${_scopeId}>`);
+                _push2(`<div class="item" data-v-8a1e51ef${_scopeId}><div class="team-two__single" data-v-8a1e51ef${_scopeId}><div class="team-two__img-box" data-v-8a1e51ef${_scopeId}><div class="team-two__img" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", team.avatar_link)}${ssrRenderAttr("alt", translateField(team.name))} width="200" height="200" loading="lazy" decoding="async" data-v-8a1e51ef${_scopeId}></div><div class="team-two__social" data-v-8a1e51ef${_scopeId}>`);
                 if (team.facebook) {
-                  _push2(`<a${ssrRenderAttr("href", team.facebook)} target="_blank" data-v-bda21390${_scopeId}><span class="icon-facebook" data-v-bda21390${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.facebook)} target="_blank" rel="noopener noreferrer"${ssrRenderAttr("aria-label", `${translateField(team.name)} Facebook`)} data-v-8a1e51ef${_scopeId}><span class="icon-facebook" data-v-8a1e51ef${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.behance) {
-                  _push2(`<a${ssrRenderAttr("href", team.behance)} target="_blank" data-v-bda21390${_scopeId}><span class="icon-dribble" data-v-bda21390${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.behance)} target="_blank" rel="noopener noreferrer"${ssrRenderAttr("aria-label", `${translateField(team.name)} Behance`)} data-v-8a1e51ef${_scopeId}><span class="icon-dribble" data-v-8a1e51ef${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.linked_in) {
-                  _push2(`<a${ssrRenderAttr("href", team.linked_in)} target="_blank" data-v-bda21390${_scopeId}><span class="icon-linkedin" data-v-bda21390${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.linked_in)} target="_blank" rel="noopener noreferrer"${ssrRenderAttr("aria-label", `${translateField(team.name)} LinkedIn`)} data-v-8a1e51ef${_scopeId}><span class="icon-linkedin" data-v-8a1e51ef${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
                 if (team.github) {
-                  _push2(`<a${ssrRenderAttr("href", team.github)} target="_blank" data-v-bda21390${_scopeId}><span class="icon-github" data-v-bda21390${_scopeId}></span></a>`);
+                  _push2(`<a${ssrRenderAttr("href", team.github)} target="_blank" rel="noopener noreferrer"${ssrRenderAttr("aria-label", `${translateField(team.name)} GitHub`)} data-v-8a1e51ef${_scopeId}><span class="icon-github" data-v-8a1e51ef${_scopeId}></span></a>`);
                 } else {
                   _push2(`<!---->`);
                 }
-                _push2(`</div><div class="team-two__title-box" data-v-bda21390${_scopeId}><h3 data-v-bda21390${_scopeId}><a href="#" data-v-bda21390${_scopeId}>${ssrInterpolate(translateField(team.name))}</a></h3><p data-v-bda21390${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
+                _push2(`</div><div class="team-two__title-box" data-v-8a1e51ef${_scopeId}><h3 data-v-8a1e51ef${_scopeId}><span data-v-8a1e51ef${_scopeId}>${ssrInterpolate(translateField(team.name))}</span></h3><p data-v-8a1e51ef${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="feature-one" data-v-bda21390${_scopeId}><div class="feature-one__shape-2 float-bob-y" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></div><div class="container" data-v-bda21390${_scopeId}><div class="row" data-v-bda21390${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-bda21390${_scopeId}><div class="feature-one__single" data-v-bda21390${_scopeId}><div class="feature-one__img" data-v-bda21390${_scopeId}><picture data-v-bda21390${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/website.webp")} type="image/webp" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))} width="80" height="80" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></picture></div><h3 class="feature-one__title" data-v-bda21390${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms" data-v-bda21390${_scopeId}><div class="feature-one__single" data-v-bda21390${_scopeId}><div class="feature-one__img" data-v-bda21390${_scopeId}><picture data-v-bda21390${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/app-development.webp")} type="image/webp" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))} width="80" height="80" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></picture></div><h3 class="feature-one__title" data-v-bda21390${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms" data-v-bda21390${_scopeId}><div class="feature-one__single" data-v-bda21390${_scopeId}><div class="feature-one__img" data-v-bda21390${_scopeId}><picture data-v-bda21390${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/microchip.webp")} type="image/webp" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))} width="80" height="80" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></picture></div><h3 class="feature-one__title" data-v-bda21390${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-bda21390${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms" data-v-bda21390${_scopeId}><div class="feature-one__single" data-v-bda21390${_scopeId}><div class="feature-one__img" data-v-bda21390${_scopeId}><picture data-v-bda21390${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/cloud.webp")} type="image/webp" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))} width="80" height="80" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></picture></div><h3 class="feature-one__title" data-v-bda21390${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one" data-v-bda21390${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}" data-v-bda21390${_scopeId}></div><div class="container" data-v-bda21390${_scopeId}><div class="cta-one__inner" data-v-bda21390${_scopeId}><h3 class="cta-one__title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Let the Symfonix experts review your technical idea"))}</h3><div class="cta-one__contact-info" data-v-bda21390${_scopeId}><div class="cta-one__contact-icon" data-v-bda21390${_scopeId}><span class="icon-customer-service-headset" data-v-bda21390${_scopeId}></span></div><div class="cta-one__contact-details" data-v-bda21390${_scopeId}><p data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Book your free consultation"))}</p><h4 data-v-bda21390${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-bda21390${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
+            _push2(`<section class="feature-one" data-v-8a1e51ef${_scopeId}><div class="feature-one__shape-2 float-bob-y" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.webp")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" aria-hidden="true" data-v-8a1e51ef${_scopeId}></div><div class="container" data-v-8a1e51ef${_scopeId}><div class="row" data-v-8a1e51ef${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms" data-v-8a1e51ef${_scopeId}><div class="feature-one__single" data-v-8a1e51ef${_scopeId}><div class="feature-one__img" data-v-8a1e51ef${_scopeId}><picture data-v-8a1e51ef${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/website.webp")} type="image/webp" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))} width="80" height="80" loading="lazy" decoding="async" data-v-8a1e51ef${_scopeId}></picture></div><h3 class="feature-one__title" data-v-8a1e51ef${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms" data-v-8a1e51ef${_scopeId}><div class="feature-one__single" data-v-8a1e51ef${_scopeId}><div class="feature-one__img" data-v-8a1e51ef${_scopeId}><picture data-v-8a1e51ef${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/app-development.webp")} type="image/webp" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))} width="80" height="80" loading="lazy" decoding="async" data-v-8a1e51ef${_scopeId}></picture></div><h3 class="feature-one__title" data-v-8a1e51ef${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms" data-v-8a1e51ef${_scopeId}><div class="feature-one__single" data-v-8a1e51ef${_scopeId}><div class="feature-one__img" data-v-8a1e51ef${_scopeId}><picture data-v-8a1e51ef${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/microchip.webp")} type="image/webp" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))} width="80" height="80" loading="lazy" decoding="async" data-v-8a1e51ef${_scopeId}></picture></div><h3 class="feature-one__title" data-v-8a1e51ef${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms" data-v-8a1e51ef${_scopeId}><div class="feature-one__single" data-v-8a1e51ef${_scopeId}><div class="feature-one__img" data-v-8a1e51ef${_scopeId}><picture data-v-8a1e51ef${_scopeId}><source${ssrRenderAttr("srcset", asset_path.value + "images/home/cloud.webp")} type="image/webp" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))} width="80" height="80" loading="lazy" decoding="async" data-v-8a1e51ef${_scopeId}></picture></div><h3 class="feature-one__title" data-v-8a1e51ef${_scopeId}><a${ssrRenderAttr("href", _ctx.route("services.index"))} data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one" data-v-8a1e51ef${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.webp)` })}" data-v-8a1e51ef${_scopeId}></div><div class="container" data-v-8a1e51ef${_scopeId}><div class="cta-one__inner" data-v-8a1e51ef${_scopeId}><h3 class="cta-one__title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Let the Symfonix experts review your technical idea"))}</h3><div class="cta-one__contact-info" data-v-8a1e51ef${_scopeId}><div class="cta-one__contact-icon" data-v-8a1e51ef${_scopeId}><span class="icon-customer-service-headset" data-v-8a1e51ef${_scopeId}></span></div><div class="cta-one__contact-details" data-v-8a1e51ef${_scopeId}><p data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Book your free consultation"))}</p><h4 data-v-8a1e51ef${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-8a1e51ef${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
             if (testimonials.value && testimonials.value.length) {
-              _push2(`<section class="testimonial-one pb-5" data-v-bda21390${_scopeId}><div class="testimonial-one__shape-2 float-bob-y" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></div><div class="container" data-v-bda21390${_scopeId}><div class="row" data-v-bda21390${_scopeId}><div class="col-xl-3" data-v-bda21390${_scopeId}></div><div class="col-xl-9" data-v-bda21390${_scopeId}><div class="testimonial-one__content-box" data-v-bda21390${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel" data-v-bda21390${_scopeId}><!--[-->`);
+              _push2(`<section class="testimonial-one pb-5" data-v-8a1e51ef${_scopeId}><div class="testimonial-one__shape-2 float-bob-y" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" aria-hidden="true" data-v-8a1e51ef${_scopeId}></div><div class="container" data-v-8a1e51ef${_scopeId}><div class="row" data-v-8a1e51ef${_scopeId}><div class="col-xl-3" data-v-8a1e51ef${_scopeId}></div><div class="col-xl-9" data-v-8a1e51ef${_scopeId}><div class="testimonial-one__content-box" data-v-8a1e51ef${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel" data-v-8a1e51ef${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="item" data-v-bda21390${_scopeId}><div class="testimonial-one__single" data-v-bda21390${_scopeId}><div class="testimonial-one__img-box" data-v-bda21390${_scopeId}><div class="testimonial-one__img" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))} width="180" height="180" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></div></div><div class="testimonial-one__content" data-v-bda21390${_scopeId}><p class="testimonial-one__text" data-v-bda21390${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom" data-v-bda21390${_scopeId}><div class="testimonial-one__quote-and-client-info" data-v-bda21390${_scopeId}><div class="testimonial-one__quote" data-v-bda21390${_scopeId}><span class="icon-left" data-v-bda21390${_scopeId}></span></div><div class="testimonial-one__client-info" data-v-bda21390${_scopeId}><p class="testimonial-one__client-sub-title" data-v-bda21390${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name" data-v-bda21390${_scopeId}><a href="#" data-v-bda21390${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
+                _push2(`<div class="item" data-v-8a1e51ef${_scopeId}><div class="testimonial-one__single" data-v-8a1e51ef${_scopeId}><div class="testimonial-one__img-box" data-v-8a1e51ef${_scopeId}><div class="testimonial-one__img" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))} width="180" height="180" loading="lazy" decoding="async" data-v-8a1e51ef${_scopeId}></div></div><div class="testimonial-one__content" data-v-8a1e51ef${_scopeId}><p class="testimonial-one__text" data-v-8a1e51ef${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom" data-v-8a1e51ef${_scopeId}><div class="testimonial-one__quote-and-client-info" data-v-8a1e51ef${_scopeId}><div class="testimonial-one__quote" data-v-8a1e51ef${_scopeId}><span class="icon-left" data-v-8a1e51ef${_scopeId}></span></div><div class="testimonial-one__client-info" data-v-8a1e51ef${_scopeId}><p class="testimonial-one__client-sub-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</h3></div></div></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
               _push2(`<!---->`);
             }
             if (posts.value && posts.value.length) {
-              _push2(`<section class="blog-two blog-three" data-v-bda21390${_scopeId}><div class="container" data-v-bda21390${_scopeId}><div class="row" data-v-bda21390${_scopeId}><div class="col-xl-6" data-v-bda21390${_scopeId}><div class="${ssrRenderClass(`blog-two__left wow fadeIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-v-bda21390${_scopeId}><div class="section-title text-left sec-title-animation animation-style1" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Explore Our Latest Blogs for Expert Insights"))}</h2></div><p class="blog-two-text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry"))}</p><div class="blog-two__top-btn-box" data-v-bda21390${_scopeId}>`);
+              _push2(`<section class="blog-two blog-three" data-v-8a1e51ef${_scopeId}><div class="container" data-v-8a1e51ef${_scopeId}><div class="row" data-v-8a1e51ef${_scopeId}><div class="col-xl-6" data-v-8a1e51ef${_scopeId}><div class="${ssrRenderClass(`blog-two__left wow fadeIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-v-8a1e51ef${_scopeId}><div class="section-title text-left sec-title-animation animation-style1" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Explore Our Latest Blogs for Expert Insights"))}</h2></div><p class="blog-two-text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Dive into our collection of blogs where we share expert insights, helpful tips, and the latest trends in the industry"))}</p><div class="blog-two__top-btn-box" data-v-8a1e51ef${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("blogs.index"),
                 class: "thm-btn"
               }, {
                 default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-bda21390${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(trans("View All Blogs"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}" data-v-8a1e51ef${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(trans("View All Blogs")) + " ", 1),
@@ -2625,7 +2660,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               }, _parent2, _scopeId));
               _push2(`</div>`);
               if (featuredPost.value) {
-                _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-bda21390${_scopeId}>`);
+                _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-8a1e51ef${_scopeId}>`);
                 _push2(ssrRenderComponent(_sfc_main$P, {
                   post: featuredPost.value,
                   variant: "featured",
@@ -2637,7 +2672,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               } else {
                 _push2(`<!---->`);
               }
-              _push2(`</div></div><div class="col-xl-6" data-v-bda21390${_scopeId}><div class="blog-two__right" data-v-bda21390${_scopeId}><!--[-->`);
+              _push2(`</div></div><div class="col-xl-6" data-v-8a1e51ef${_scopeId}><div class="blog-two__right" data-v-8a1e51ef${_scopeId}><!--[-->`);
               ssrRenderList(sidePosts.value, (post, idx) => {
                 _push2(ssrRenderComponent(_sfc_main$P, {
                   key: post.id || idx,
@@ -2654,65 +2689,65 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="contact-two" data-v-bda21390${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2" data-v-bda21390${_scopeId}><div class="contact-two__sliding-text-item" data-v-bda21390${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-bda21390${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-bda21390${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y" data-v-bda21390${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" data-v-bda21390${_scopeId}></div><div class="container" data-v-bda21390${_scopeId}><div class="row" data-v-bda21390${_scopeId}><div class="col-xl-6" data-v-bda21390${_scopeId}><div class="contact-two__left" data-v-bda21390${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-bda21390${_scopeId}><div class="section-title__tagline-box" data-v-bda21390${_scopeId}><div class="section-title__tagline-shape-1" data-v-bda21390${_scopeId}></div><span class="section-title__tagline" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2" data-v-bda21390${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled" data-v-bda21390${_scopeId}>`);
+            _push2(`<section class="contact-two" data-v-8a1e51ef${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2" data-v-8a1e51ef${_scopeId}><div class="contact-two__sliding-text-item" data-v-8a1e51ef${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-8a1e51ef${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item" data-v-8a1e51ef${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__shape-1 float-bob-y" data-v-8a1e51ef${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.webp")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" aria-hidden="true" data-v-8a1e51ef${_scopeId}></div><div class="container" data-v-8a1e51ef${_scopeId}><div class="row" data-v-8a1e51ef${_scopeId}><div class="col-xl-6" data-v-8a1e51ef${_scopeId}><div class="contact-two__left" data-v-8a1e51ef${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-box" data-v-8a1e51ef${_scopeId}><div class="section-title__tagline-shape-1" data-v-8a1e51ef${_scopeId}></div><span class="section-title__tagline" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2" data-v-8a1e51ef${_scopeId}></div></div><h2 class="section-title__title title-animation" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled" data-v-8a1e51ef${_scopeId}>`);
             if (settings.value.email) {
-              _push2(`<li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-mail" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h3 class="h4" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p data-v-bda21390${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)} data-v-bda21390${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
+              _push2(`<li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-mail" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h3 class="h4" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p data-v-8a1e51ef${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)} data-v-8a1e51ef${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
             if (settings.value.phone) {
-              _push2(`<li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-phone-call" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h3 class="h4" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p data-v-bda21390${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-bda21390${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
+              _push2(`<li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-phone-call" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h3 class="h4" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p data-v-8a1e51ef${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)} data-v-8a1e51ef${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
             if (settings.value.address) {
-              _push2(`<li data-v-bda21390${_scopeId}><div class="icon" data-v-bda21390${_scopeId}><span class="icon-pin" data-v-bda21390${_scopeId}></span></div><div class="content" data-v-bda21390${_scopeId}><h3 class="h4" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p data-v-bda21390${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
+              _push2(`<li data-v-8a1e51ef${_scopeId}><div class="icon" data-v-8a1e51ef${_scopeId}><span class="icon-pin" data-v-8a1e51ef${_scopeId}></span></div><div class="content" data-v-8a1e51ef${_scopeId}><h3 class="h4" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p data-v-8a1e51ef${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</ul></div></div><div class="col-xl-6" data-v-bda21390${_scopeId}><div class="${ssrRenderClass(`contact-two__right wow slideIn${locale.value === "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-bda21390${_scopeId}><form class="contact-form-validated contact-one__form" data-v-bda21390${_scopeId}><div class="row" data-v-bda21390${_scopeId}><div class="col-xl-6 col-lg-6" data-v-bda21390${_scopeId}><h3 class="h4 contact-one__input-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h3><div class="contact-one__input-box" data-v-bda21390${_scopeId}><div class="contact-one__input-icon" data-v-bda21390${_scopeId}><span class="icon-user-1" data-v-bda21390${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-bda21390${_scopeId}></div>`);
+            _push2(`</ul></div></div><div class="col-xl-6" data-v-8a1e51ef${_scopeId}><div class="${ssrRenderClass(`contact-two__right wow slideIn${locale.value === "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms" data-v-8a1e51ef${_scopeId}><form class="contact-form-validated contact-one__form" data-v-8a1e51ef${_scopeId}><div class="row" data-v-8a1e51ef${_scopeId}><div class="col-xl-6 col-lg-6" data-v-8a1e51ef${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Full Name"))}</h3><div class="contact-one__input-box" data-v-8a1e51ef${_scopeId}><div class="contact-one__input-icon" data-v-8a1e51ef${_scopeId}><span class="icon-user-1" data-v-8a1e51ef${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).name)} type="text" name="name"${ssrRenderAttr("placeholder", trans("Full Name"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.name })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-8a1e51ef${_scopeId}></div>`);
             if (unref(contactForm).errors.name) {
-              _push2(`<div class="text-danger mt-1 small" data-v-bda21390${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(unref(contactForm).errors.name)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-bda21390${_scopeId}><h3 class="h4 contact-one__input-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><div class="contact-one__input-box" data-v-bda21390${_scopeId}><div class="contact-one__input-icon" data-v-bda21390${_scopeId}><span class="icon-email" data-v-bda21390${_scopeId}></span></div><input type="email" name="email"${ssrRenderAttr("value", unref(contactForm).email)}${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}" required data-v-bda21390${_scopeId}>`);
+            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-8a1e51ef${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><div class="contact-one__input-box" data-v-8a1e51ef${_scopeId}><div class="contact-one__input-icon" data-v-8a1e51ef${_scopeId}><span class="icon-email" data-v-8a1e51ef${_scopeId}></span></div><input type="email" name="email"${ssrRenderAttr("value", unref(contactForm).email)}${ssrRenderAttr("placeholder", trans("Email"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.email })}" required data-v-8a1e51ef${_scopeId}>`);
             if (unref(contactForm).errors.email) {
-              _push2(`<div class="text-danger mt-1 small" data-v-bda21390${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(unref(contactForm).errors.email)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div><div class="col-xl-6 col-lg-6" data-v-bda21390${_scopeId}><h3 class="h4 contact-one__input-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h3><div class="contact-one__input-box" data-v-bda21390${_scopeId}><div class="contact-one__input-icon" data-v-bda21390${_scopeId}><span class="icon-phone-call" data-v-bda21390${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-bda21390${_scopeId}></div>`);
+            _push2(`</div></div><div class="col-xl-6 col-lg-6" data-v-8a1e51ef${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Phone Number"))}</h3><div class="contact-one__input-box" data-v-8a1e51ef${_scopeId}><div class="contact-one__input-icon" data-v-8a1e51ef${_scopeId}><span class="icon-phone-call" data-v-8a1e51ef${_scopeId}></span></div><input${ssrRenderAttr("value", unref(contactForm).mobile)} type="text" name="mobile"${ssrRenderAttr("placeholder", trans("Phone Number"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.mobile })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-8a1e51ef${_scopeId}></div>`);
             if (unref(contactForm).errors.mobile) {
-              _push2(`<div class="text-danger mt-1 small" data-v-bda21390${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(unref(contactForm).errors.mobile)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-bda21390${_scopeId}><h3 class="h4 contact-one__input-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Subject"))}</h3><div class="contact-one__input-box" data-v-bda21390${_scopeId}><div class="contact-one__input-icon" data-v-bda21390${_scopeId}><span class="icon-edit" data-v-bda21390${_scopeId}></span></div><input type="text" name="subject"${ssrRenderAttr("value", unref(contactForm).subject)}${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}" required data-v-bda21390${_scopeId}>`);
+            _push2(`</div><div class="col-xl-6 col-lg-6" data-v-8a1e51ef${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Subject"))}</h3><div class="contact-one__input-box" data-v-8a1e51ef${_scopeId}><div class="contact-one__input-icon" data-v-8a1e51ef${_scopeId}><span class="icon-edit" data-v-8a1e51ef${_scopeId}></span></div><input type="text" name="subject"${ssrRenderAttr("value", unref(contactForm).subject)}${ssrRenderAttr("placeholder", trans("Subject"))}${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass({ "error": unref(contactForm).errors.subject })}" required data-v-8a1e51ef${_scopeId}>`);
             if (unref(contactForm).errors.subject) {
-              _push2(`<div class="text-danger mt-1 small" data-v-bda21390${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(unref(contactForm).errors.subject)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div></div></div><div class="col-xl-12" data-v-bda21390${_scopeId}><h3 class="h4 contact-one__input-title" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Message"))}</h3><div class="contact-one__input-box text-message-box" data-v-bda21390${_scopeId}><div class="contact-one__input-icon" data-v-bda21390${_scopeId}><span class="icon-edit" data-v-bda21390${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-bda21390${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
+            _push2(`</div></div></div><div class="col-xl-12" data-v-8a1e51ef${_scopeId}><h3 class="h4 contact-one__input-title" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Message"))}</h3><div class="contact-one__input-box text-message-box" data-v-8a1e51ef${_scopeId}><div class="contact-one__input-icon" data-v-8a1e51ef${_scopeId}><span class="icon-edit" data-v-8a1e51ef${_scopeId}></span></div><textarea name="message"${ssrRenderAttr("placeholder", trans("Write your message"))} class="${ssrRenderClass({ "error": unref(contactForm).errors.message })}"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} required data-v-8a1e51ef${_scopeId}>${ssrInterpolate(unref(contactForm).message)}</textarea></div>`);
             if (unref(contactForm).errors.message) {
-              _push2(`<div class="text-danger mt-1 small" data-v-bda21390${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
+              _push2(`<div class="text-danger mt-1 small" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(unref(contactForm).errors.message)}</div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="contact-one__btn-box" data-v-bda21390${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}" data-v-bda21390${_scopeId}>`);
+            _push2(`<div class="contact-one__btn-box" data-v-8a1e51ef${_scopeId}><button type="submit"${ssrIncludeBooleanAttr(unref(contactForm).processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": unref(contactForm).processing }, "thm-btn"])}" data-v-8a1e51ef${_scopeId}>`);
             if (unref(contactForm).processing) {
-              _push2(`<span data-v-bda21390${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-bda21390${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
+              _push2(`<span data-v-8a1e51ef${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-8a1e51ef${_scopeId}></i>${ssrInterpolate(trans("Sending..."))}</span>`);
             } else {
-              _push2(`<span data-v-bda21390${_scopeId}><span data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}" data-v-bda21390${_scopeId}></i></span>`);
+              _push2(`<span data-v-8a1e51ef${_scopeId}><span data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Submit"))}</span> <i class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow mx-1`)}" data-v-8a1e51ef${_scopeId}></i></span>`);
             }
             _push2(`</button></div></div>`);
             if (contactSubmitSuccess.value) {
-              _push2(`<div class="col-12 mt-3" data-v-bda21390${_scopeId}><div class="alert alert-success" data-v-bda21390${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
+              _push2(`<div class="col-12 mt-3" data-v-8a1e51ef${_scopeId}><div class="alert alert-success" data-v-8a1e51ef${_scopeId}>${ssrInterpolate(trans("Thank you for contacting us! We will get back to you soon."))}</div></div>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</form><div class="result" data-v-bda21390${_scopeId}></div></div></div></div></div></section>`);
+            _push2(`</form><div class="result" data-v-8a1e51ef${_scopeId}></div></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "banner-one" }, [
@@ -2725,7 +2760,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                     alt: "",
                     width: "1920",
                     height: "1080",
-                    loading: "lazy",
+                    fetchpriority: "high",
                     decoding: "async",
                     class: "banner-one__bg-img"
                   }, null, 8, ["src"])
@@ -2785,14 +2820,14 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                           createVNode("div", { class: "about-three__img" }, [
                             createVNode("picture", null, [
                               createVNode("source", {
-                                srcset: asset_path.value + "images/home/about_us.webp",
+                                srcset: asset_path.value + "images/home/about_us-640.webp",
                                 type: "image/webp"
                               }, null, 8, ["srcset"]),
                               createVNode("img", {
                                 src: asset_path.value + "images/home/about_us.jpg",
                                 alt: trans("About us"),
-                                width: "636",
-                                height: "636",
+                                width: "640",
+                                height: "640",
                                 loading: "lazy",
                                 decoding: "async"
                               }, null, 8, ["src", "alt"])
@@ -2907,9 +2942,8 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                           highlights: getCategoryHighlights(servicesCategory),
                           link: _ctx.route("services.index", { category: servicesCategory.slug }),
                           image: servicesCategory.image_link,
-                          "button-label": trans("Read More"),
                           "is-rtl": locale.value === "ar"
-                        }, null, 8, ["title", "short-desc", "description", "highlights", "link", "image", "button-label", "is-rtl"])
+                        }, null, 8, ["title", "short-desc", "description", "highlights", "link", "image", "is-rtl"])
                       ]);
                     }), 128))
                   ]),
@@ -3044,7 +3078,8 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                     width: "120",
                     height: "120",
                     loading: "lazy",
-                    decoding: "async"
+                    decoding: "async",
+                    "aria-hidden": "true"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -3058,14 +3093,14 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                         createVNode("div", { class: "why-choose-two__img" }, [
                           createVNode("picture", null, [
                             createVNode("source", {
-                              srcset: asset_path.value + "images/home/why_choose_us.webp",
+                              srcset: asset_path.value + "images/home/why_choose_us-640.webp",
                               type: "image/webp"
                             }, null, 8, ["srcset"]),
                             createVNode("img", {
                               src: asset_path.value + "images/home/why_choose_us.jpg",
                               alt: trans("Why choose us"),
-                              width: "636",
-                              height: "700",
+                              width: "640",
+                              height: "640",
                               loading: "lazy",
                               decoding: "async"
                             }, null, 8, ["src", "alt"])
@@ -3171,35 +3206,43 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                                     team.facebook ? (openBlock(), createBlock("a", {
                                       key: 0,
                                       href: team.facebook,
-                                      target: "_blank"
+                                      target: "_blank",
+                                      rel: "noopener noreferrer",
+                                      "aria-label": `${translateField(team.name)} Facebook`
                                     }, [
                                       createVNode("span", { class: "icon-facebook" })
-                                    ], 8, ["href"])) : createCommentVNode("", true),
+                                    ], 8, ["href", "aria-label"])) : createCommentVNode("", true),
                                     team.behance ? (openBlock(), createBlock("a", {
                                       key: 1,
                                       href: team.behance,
-                                      target: "_blank"
+                                      target: "_blank",
+                                      rel: "noopener noreferrer",
+                                      "aria-label": `${translateField(team.name)} Behance`
                                     }, [
                                       createVNode("span", { class: "icon-dribble" })
-                                    ], 8, ["href"])) : createCommentVNode("", true),
+                                    ], 8, ["href", "aria-label"])) : createCommentVNode("", true),
                                     team.linked_in ? (openBlock(), createBlock("a", {
                                       key: 2,
                                       href: team.linked_in,
-                                      target: "_blank"
+                                      target: "_blank",
+                                      rel: "noopener noreferrer",
+                                      "aria-label": `${translateField(team.name)} LinkedIn`
                                     }, [
                                       createVNode("span", { class: "icon-linkedin" })
-                                    ], 8, ["href"])) : createCommentVNode("", true),
+                                    ], 8, ["href", "aria-label"])) : createCommentVNode("", true),
                                     team.github ? (openBlock(), createBlock("a", {
                                       key: 3,
                                       href: team.github,
-                                      target: "_blank"
+                                      target: "_blank",
+                                      rel: "noopener noreferrer",
+                                      "aria-label": `${translateField(team.name)} GitHub`
                                     }, [
                                       createVNode("span", { class: "icon-github" })
-                                    ], 8, ["href"])) : createCommentVNode("", true)
+                                    ], 8, ["href", "aria-label"])) : createCommentVNode("", true)
                                   ]),
                                   createVNode("div", { class: "team-two__title-box" }, [
                                     createVNode("h3", null, [
-                                      createVNode("a", { href: "#" }, toDisplayString(translateField(team.name)), 1)
+                                      createVNode("span", null, toDisplayString(translateField(team.name)), 1)
                                     ]),
                                     createVNode("p", null, toDisplayString(translateField(team.position)), 1)
                                   ])
@@ -3216,12 +3259,13 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               createVNode("section", { class: "feature-one" }, [
                 createVNode("div", { class: "feature-one__shape-2 float-bob-y" }, [
                   createVNode("img", {
-                    src: asset_path.value + "site/images/shapes/feature-one-shape-2.png",
+                    src: asset_path.value + "site/images/shapes/feature-one-shape-2.webp",
                     alt: trans("Decorative shape"),
                     width: "120",
                     height: "120",
                     loading: "lazy",
-                    decoding: "async"
+                    decoding: "async",
+                    "aria-hidden": "true"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -3348,7 +3392,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               createVNode("section", { class: "cta-one" }, [
                 createVNode("div", {
                   class: "cta-one__shape-bg float-bob-y",
-                  style: { backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` }
+                  style: { backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.webp)` }
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "cta-one__inner" }, [
@@ -3381,7 +3425,8 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                     width: "120",
                     height: "120",
                     loading: "lazy",
-                    decoding: "async"
+                    decoding: "async",
+                    "aria-hidden": "true"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -3425,9 +3470,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                                       ]),
                                       createVNode("div", { class: "testimonial-one__client-info" }, [
                                         createVNode("p", { class: "testimonial-one__client-sub-title" }, toDisplayString(translateField(testimonial.position)), 1),
-                                        createVNode("h3", { class: "testimonial-one__client-name" }, [
-                                          createVNode("a", { href: "#" }, toDisplayString(translateField(testimonial.name)), 1)
-                                        ])
+                                        createVNode("h3", { class: "testimonial-one__client-name" }, toDisplayString(translateField(testimonial.name)), 1)
                                       ])
                                     ])
                                   ])
@@ -3531,12 +3574,13 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                 ]),
                 createVNode("div", { class: "contact-two__shape-1 float-bob-y" }, [
                   createVNode("img", {
-                    src: asset_path.value + "site/images/shapes/contact-two-shape-1.png",
+                    src: asset_path.value + "site/images/shapes/contact-two-shape-1.webp",
                     alt: trans("Decorative shape"),
                     width: "120",
                     height: "120",
                     loading: "lazy",
-                    decoding: "async"
+                    decoding: "async",
+                    "aria-hidden": "true"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -3765,7 +3809,7 @@ _sfc_main$I.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Base/resources/assets/js/Pages/Index.vue");
   return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
 };
-const Index$1 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-bda21390"]]);
+const Index$1 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-8a1e51ef"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index$1
@@ -7226,7 +7270,7 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$8, {
                 } else {
                   _push2(`<!---->`);
                 }
-                _push2(`</div></div></div><div class="team-one__title-box"${_scopeId}><h3${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(translateField(team.name))}</a></h3><p${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
+                _push2(`</div></div></div><div class="team-one__title-box"${_scopeId}><h3${_scopeId}><span${_scopeId}>${ssrInterpolate(translateField(team.name))}</span></h3><p${_scopeId}>${ssrInterpolate(translateField(team.position))}</p></div></div></div></div>`);
               });
               _push2(`<!--]--></div>`);
             } else {
@@ -7336,7 +7380,7 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$8, {
                             ]),
                             createVNode("div", { class: "team-one__title-box" }, [
                               createVNode("h3", null, [
-                                createVNode("a", { href: "#" }, toDisplayString(translateField(team.name)), 1)
+                                createVNode("span", null, toDisplayString(translateField(team.name)), 1)
                               ]),
                               createVNode("p", null, toDisplayString(translateField(team.position)), 1)
                             ])
@@ -7541,7 +7585,7 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$7, {
             if (testimonials.value && testimonials.value.length > 0) {
               _push2(`<div class="row"${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="col-xl-4 col-lg-6 col-md-6"${_scopeId}><div class="testimonial-two__single"${_scopeId}><div class="testimonial-two__single-inner"${_scopeId}><div class="testimonial-two__star"${_scopeId}><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span></div><p class="testimonial-two__text"${_scopeId}>${ssrInterpolate(translateField(testimonial.quote))}</p></div><div class="testimonial-two__client-info"${_scopeId}><div class="testimonial-two__client-img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div><div class="testimonial-two__client-content"${_scopeId}><h4 class="testimonial-two__client-name"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h4><p class="testimonial-two__sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p></div></div><div class="testimonial-two__quote"${_scopeId}><span class="icon-right-quote"${_scopeId}></span></div></div></div>`);
+                _push2(`<div class="col-xl-4 col-lg-6 col-md-6"${_scopeId}><div class="testimonial-two__single"${_scopeId}><div class="testimonial-two__single-inner"${_scopeId}><div class="testimonial-two__star"${_scopeId}><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span><span class="icon-pointed-star"${_scopeId}></span></div><p class="testimonial-two__text"${_scopeId}>${ssrInterpolate(translateField(testimonial.quote))}</p></div><div class="testimonial-two__client-info"${_scopeId}><div class="testimonial-two__client-img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div><div class="testimonial-two__client-content"${_scopeId}><h4 class="testimonial-two__client-name"${_scopeId}><span${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</span></h4><p class="testimonial-two__sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p></div></div><div class="testimonial-two__quote"${_scopeId}><span class="icon-right-quote"${_scopeId}></span></div></div></div>`);
               });
               _push2(`<!--]--></div>`);
             } else {
@@ -7620,7 +7664,7 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$7, {
                             ]),
                             createVNode("div", { class: "testimonial-two__client-content" }, [
                               createVNode("h4", { class: "testimonial-two__client-name" }, [
-                                createVNode("a", { href: "#" }, toDisplayString(translateField(testimonial.name)), 1)
+                                createVNode("span", null, toDisplayString(translateField(testimonial.name)), 1)
                               ]),
                               createVNode("p", { class: "testimonial-two__sub-title" }, toDisplayString(translateField(testimonial.position)), 1)
                             ])
@@ -10937,26 +10981,26 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-08f6db3e${_scopeId}><title data-v-08f6db3e${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-08f6db3e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-08f6db3e${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-08f6db3e${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-aa581980${_scopeId}><title data-v-aa581980${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-aa581980${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-aa581980${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-aa581980${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-08f6db3e${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-aa581980${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-08f6db3e${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-08f6db3e${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-aa581980${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-aa581980${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-08f6db3e${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-aa581980${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-08f6db3e${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-aa581980${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-08f6db3e${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-08f6db3e${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-08f6db3e${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-08f6db3e${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-aa581980${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-aa581980${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-aa581980${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-aa581980${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-08f6db3e${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-aa581980${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -11031,13 +11075,13 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
       _push(ssrRenderComponent(_sfc_main$L, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="page-header" data-v-08f6db3e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-08f6db3e${_scopeId}></div><div class="container" data-v-08f6db3e${_scopeId}><div class="page-header__inner" data-v-08f6db3e${_scopeId}><h1 data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h1><div class="thm-breadcrumb__box" data-v-08f6db3e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-08f6db3e${_scopeId}><li data-v-08f6db3e${_scopeId}>`);
+            _push2(`<div class="page-header" data-v-aa581980${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-aa581980${_scopeId}></div><div class="container" data-v-aa581980${_scopeId}><div class="page-header__inner" data-v-aa581980${_scopeId}><h1 data-v-aa581980${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h1><div class="thm-breadcrumb__box" data-v-aa581980${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-aa581980${_scopeId}><li data-v-aa581980${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-08f6db3e${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-aa581980${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -11047,9 +11091,9 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-08f6db3e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-08f6db3e${_scopeId}></span></li><li data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</li></ul></div></div></div></div><section class="services-two" data-v-08f6db3e${_scopeId}><div class="container" data-v-08f6db3e${_scopeId}><div class="services-two__top" data-v-08f6db3e${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-08f6db3e${_scopeId}><div class="section-title__tagline-box" data-v-08f6db3e${_scopeId}><div class="section-title__tagline-shape-1" data-v-08f6db3e${_scopeId}></div><span class="section-title__tagline" data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span></div><h2 class="section-title__title title-animation" data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Scale Your Business Smarter with Next-Gen IT Solutions"))} <span data-v-08f6db3e${_scopeId}></span></h2></div></div><div class="services-two__bottom" data-v-08f6db3e${_scopeId}><div class="row" data-v-08f6db3e${_scopeId}><div class="col-xl-8" data-v-08f6db3e${_scopeId}><div class="services-two__services-list" data-v-08f6db3e${_scopeId}><div class="row" data-v-08f6db3e${_scopeId}><!--[-->`);
+            _push2(`</li><li data-v-aa581980${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-aa581980${_scopeId}></span></li><li data-v-aa581980${_scopeId}>${ssrInterpolate(trans("Our Services"))}</li></ul></div></div></div></div><section class="services-two" data-v-aa581980${_scopeId}><div class="container" data-v-aa581980${_scopeId}><div class="services-two__top" data-v-aa581980${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-aa581980${_scopeId}><div class="section-title__tagline-box" data-v-aa581980${_scopeId}><div class="section-title__tagline-shape-1" data-v-aa581980${_scopeId}></div><span class="section-title__tagline" data-v-aa581980${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span></div><h2 class="section-title__title title-animation" data-v-aa581980${_scopeId}>${ssrInterpolate(trans("Scale Your Business Smarter with Next-Gen IT Solutions"))} <span data-v-aa581980${_scopeId}></span></h2></div></div><div class="services-two__bottom" data-v-aa581980${_scopeId}><div class="row" data-v-aa581980${_scopeId}><div class="col-xl-8" data-v-aa581980${_scopeId}><div class="services-two__services-list" data-v-aa581980${_scopeId}><div class="row" data-v-aa581980${_scopeId}><!--[-->`);
             ssrRenderList(services.value.data, (serviceItem) => {
-              _push2(`<div class="col-xl-6 col-lg-6 col-md-6 mb-4" data-v-08f6db3e${_scopeId}>`);
+              _push2(`<div class="col-xl-6 col-lg-6 col-md-6 mb-4" data-v-aa581980${_scopeId}>`);
               _push2(ssrRenderComponent(ServiceCardThree, {
                 title: getServiceTitle(serviceItem),
                 "short-desc": serviceItem.short_desc,
@@ -11057,7 +11101,6 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
                 highlights: getServiceHighlights(serviceItem),
                 link: getServiceUrl(serviceItem),
                 image: serviceItem.image_link,
-                "button-label": trans("Read More"),
                 "is-rtl": locale.value === "ar",
                 "reading-time": serviceItem.reading_time,
                 "reading-time-label": trans("min read")
@@ -11066,22 +11109,22 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
             });
             _push2(`<!--]--></div>`);
             if (!services.value.data.length) {
-              _push2(`<div class="text-center py-5" data-v-08f6db3e${_scopeId}><h3 class="text-muted" data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("No services found"))}</h3></div>`);
+              _push2(`<div class="text-center py-5" data-v-aa581980${_scopeId}><h3 class="text-muted" data-v-aa581980${_scopeId}>${ssrInterpolate(trans("No services found"))}</h3></div>`);
             } else {
               _push2(`<!---->`);
             }
             _push2(`</div>`);
             if (services.value.last_page > 1) {
-              _push2(`<div class="blog-page__pagination services-pagination" data-v-08f6db3e${_scopeId}><ul class="pg-pagination list-unstyled" data-v-08f6db3e${_scopeId}>`);
+              _push2(`<div class="blog-page__pagination services-pagination" data-v-aa581980${_scopeId}><ul class="pg-pagination list-unstyled" data-v-aa581980${_scopeId}>`);
               if (services.value.prev_page_url) {
-                _push2(`<li class="prev" data-v-08f6db3e${_scopeId}>`);
+                _push2(`<li class="prev" data-v-aa581980${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: services.value.prev_page_url,
                   "aria-label": "prev"
                 }, {
                   default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="icon-left-arrow-1" data-v-08f6db3e${_scopeId2}></span>`);
+                      _push3(`<span class="icon-left-arrow-1" data-v-aa581980${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", { class: "icon-left-arrow-1" })
@@ -11098,7 +11141,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
               ssrRenderList(services.value.links, (link, linkIndex) => {
                 _push2(`<!--[-->`);
                 if (link.url && linkIndex > 0 && linkIndex < services.value.links.length - 1) {
-                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-08f6db3e${_scopeId}>`);
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-aa581980${_scopeId}>`);
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
@@ -11121,14 +11164,14 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
               });
               _push2(`<!--]-->`);
               if (services.value.next_page_url) {
-                _push2(`<li class="next" data-v-08f6db3e${_scopeId}>`);
+                _push2(`<li class="next" data-v-aa581980${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: services.value.next_page_url,
                   "aria-label": "Next"
                 }, {
                   default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-08f6db3e${_scopeId2}></span>`);
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-aa581980${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", {
@@ -11147,14 +11190,14 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-4" data-v-08f6db3e${_scopeId}><div class="services-index__sidebar" data-v-08f6db3e${_scopeId}><div class="services-details__services-list-box" data-v-08f6db3e${_scopeId}><h3 class="services-details__services-list-title" data-v-08f6db3e${_scopeId}>${ssrInterpolate(trans("Service Categories"))}</h3><ul class="services-details__services-list list-unstyled" data-v-08f6db3e${_scopeId}><li data-v-08f6db3e${_scopeId}>`);
+            _push2(`</div><div class="col-xl-4" data-v-aa581980${_scopeId}><div class="services-index__sidebar" data-v-aa581980${_scopeId}><div class="services-details__services-list-box" data-v-aa581980${_scopeId}><h3 class="services-details__services-list-title" data-v-aa581980${_scopeId}>${ssrInterpolate(trans("Service Categories"))}</h3><ul class="services-details__services-list list-unstyled" data-v-aa581980${_scopeId}><li data-v-aa581980${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("services.index"),
               class: { "active": !filters.value.category }
             }, {
               default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(` (${ssrInterpolate(totalServicesCount.value)}) ${ssrInterpolate(trans("All Services"))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-08f6db3e${_scopeId2}></span>`);
+                  _push3(` (${ssrInterpolate(totalServicesCount.value)}) ${ssrInterpolate(trans("All Services"))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-aa581980${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(" (" + toDisplayString(totalServicesCount.value) + ") " + toDisplayString(trans("All Services")) + " ", 1),
@@ -11168,14 +11211,14 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
             }, _parent2, _scopeId));
             _push2(`</li><!--[-->`);
             ssrRenderList(categories.value, (category) => {
-              _push2(`<li data-v-08f6db3e${_scopeId}>`);
+              _push2(`<li data-v-aa581980${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("services.index", { category: category.slug }),
                 class: { "active": filters.value.category === category.slug }
               }, {
                 default: withCtx((_3, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(` (${ssrInterpolate(category.services_count || 0)}) ${ssrInterpolate(getCategoryName(category))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-08f6db3e${_scopeId2}></span>`);
+                    _push3(` (${ssrInterpolate(category.services_count || 0)}) ${ssrInterpolate(getCategoryName(category))} <span class="${ssrRenderClass(locale.value === "ar" ? "icon-left-arrow-2" : "icon-right-arrow-2")}" data-v-aa581980${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(" (" + toDisplayString(category.services_count || 0) + ") " + toDisplayString(getCategoryName(category)) + " ", 1),
@@ -11256,11 +11299,10 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
                                   highlights: getServiceHighlights(serviceItem),
                                   link: getServiceUrl(serviceItem),
                                   image: serviceItem.image_link,
-                                  "button-label": trans("Read More"),
                                   "is-rtl": locale.value === "ar",
                                   "reading-time": serviceItem.reading_time,
                                   "reading-time-label": trans("min read")
-                                }, null, 8, ["title", "short-desc", "description", "highlights", "link", "image", "button-label", "is-rtl", "reading-time", "reading-time-label"])
+                                }, null, 8, ["title", "short-desc", "description", "highlights", "link", "image", "is-rtl", "reading-time", "reading-time-label"])
                               ]);
                             }), 128))
                           ]),
@@ -11387,7 +11429,7 @@ _sfc_main$o.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceIndex.vue");
   return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
-const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-08f6db3e"]]);
+const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-aa581980"]]);
 const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
@@ -11687,7 +11729,6 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
                   highlights: getServiceHighlights(relatedService),
                   link: getServiceUrl(relatedService),
                   image: relatedService.image_link,
-                  "button-label": trans("Read More"),
                   "is-rtl": locale.value === "ar",
                   "reading-time": relatedService.reading_time,
                   "reading-time-label": trans("min read")
@@ -11699,9 +11740,9 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
               _push2(`<!---->`);
             }
             if (testimonials.value && testimonials.value.length) {
-              _push2(`<section class="testimonial-one"${_scopeId}><div class="testimonial-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3"${_scopeId}></div><div class="col-xl-9"${_scopeId}><div class="testimonial-one__content-box"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
+              _push2(`<section class="testimonial-one"${_scopeId}><div class="testimonial-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/shapes/testimonial-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))} width="120" height="120" loading="lazy" decoding="async" aria-hidden="true"${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3"${_scopeId}></div><div class="col-xl-9"${_scopeId}><div class="testimonial-one__content-box"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("What Our Clients Say"))}</h2></div><div class="testimonial-one__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
-                _push2(`<div class="item"${_scopeId}><div class="testimonial-one__single"${_scopeId}><div class="testimonial-one__img-box"${_scopeId}><div class="testimonial-one__img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div></div><div class="testimonial-one__content"${_scopeId}><p class="testimonial-one__text"${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom"${_scopeId}><div class="testimonial-one__quote-and-client-info"${_scopeId}><div class="testimonial-one__quote"${_scopeId}><span class="icon-left"${_scopeId}></span></div><div class="testimonial-one__client-info"${_scopeId}><p class="testimonial-one__client-sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</a></h3></div></div></div></div></div></div>`);
+                _push2(`<div class="item"${_scopeId}><div class="testimonial-one__single"${_scopeId}><div class="testimonial-one__img-box"${_scopeId}><div class="testimonial-one__img"${_scopeId}><img${ssrRenderAttr("src", testimonial.avatar_link)}${ssrRenderAttr("alt", translateField(testimonial.name))}${_scopeId}></div></div><div class="testimonial-one__content"${_scopeId}><p class="testimonial-one__text"${_scopeId}> “${ssrInterpolate(translateField(testimonial.quote))}” </p><div class="testimonial-one__bottom"${_scopeId}><div class="testimonial-one__quote-and-client-info"${_scopeId}><div class="testimonial-one__quote"${_scopeId}><span class="icon-left"${_scopeId}></span></div><div class="testimonial-one__client-info"${_scopeId}><p class="testimonial-one__client-sub-title"${_scopeId}>${ssrInterpolate(translateField(testimonial.position))}</p><h3 class="testimonial-one__client-name"${_scopeId}>${ssrInterpolate(translateField(testimonial.name))}</h3></div></div></div></div></div></div>`);
               });
               _push2(`<!--]--></div></div></div></div></div></section>`);
             } else {
@@ -11891,11 +11932,10 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
                           highlights: getServiceHighlights(relatedService),
                           link: getServiceUrl(relatedService),
                           image: relatedService.image_link,
-                          "button-label": trans("Read More"),
                           "is-rtl": locale.value === "ar",
                           "reading-time": relatedService.reading_time,
                           "reading-time-label": trans("min read")
-                        }, null, 8, ["title", "short-desc", "description", "highlights", "link", "image", "button-label", "is-rtl", "reading-time", "reading-time-label"])
+                        }, null, 8, ["title", "short-desc", "description", "highlights", "link", "image", "is-rtl", "reading-time", "reading-time-label"])
                       ]);
                     }), 128))
                   ])
@@ -11908,7 +11948,12 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
                 createVNode("div", { class: "testimonial-one__shape-2 float-bob-y" }, [
                   createVNode("img", {
                     src: asset_path.value + "images/shapes/testimonial-one-shape-2.png",
-                    alt: trans("Decorative shape")
+                    alt: trans("Decorative shape"),
+                    width: "120",
+                    height: "120",
+                    loading: "lazy",
+                    decoding: "async",
+                    "aria-hidden": "true"
                   }, null, 8, ["src", "alt"])
                 ]),
                 createVNode("div", { class: "container" }, [
@@ -11948,9 +11993,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
                                       ]),
                                       createVNode("div", { class: "testimonial-one__client-info" }, [
                                         createVNode("p", { class: "testimonial-one__client-sub-title" }, toDisplayString(translateField(testimonial.position)), 1),
-                                        createVNode("h3", { class: "testimonial-one__client-name" }, [
-                                          createVNode("a", { href: "#" }, toDisplayString(translateField(testimonial.name)), 1)
-                                        ])
+                                        createVNode("h3", { class: "testimonial-one__client-name" }, toDisplayString(translateField(testimonial.name)), 1)
                                       ])
                                     ])
                                   ])
@@ -13258,6 +13301,7 @@ const _sfc_main$h = {
     const seo = computed(() => page.props.seo);
     const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
+    const flash = computed(() => page.props.flash || {});
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
       var _a;
@@ -13266,6 +13310,17 @@ const _sfc_main$h = {
       } catch (e2) {
         return key;
       }
+    };
+    const formatError = (error) => {
+      if (!error) {
+        return error;
+      }
+      const authErrors = {
+        "auth.failed": trans("These credentials do not match our records."),
+        "auth.password": trans("The provided password is incorrect."),
+        "auth.throttle": trans("Too many login attempts. Please try again in :seconds seconds.")
+      };
+      return authErrors[error] || trans(error) || error;
     };
     const metaTitle = computed(() => `${trans("Login")} | ${seo.value.website_name || ""}`.trim());
     const metaDescription = computed(() => {
@@ -13290,7 +13345,9 @@ const _sfc_main$h = {
       seo,
       locale,
       trans,
+      formatError,
       asset_path,
+      flash,
       metaTitle,
       metaDescription,
       metaKeywords,
@@ -13308,26 +13365,26 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")}${_scopeId}><title${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)}${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)}${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)}${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-cc55ccad${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-cc55ccad${_scopeId}><title data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-cc55ccad${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-cc55ccad${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-cc55ccad${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)}${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-cc55ccad${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)}${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)}${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-cc55ccad${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-cc55ccad${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)}${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-cc55ccad${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)}${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-cc55ccad${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website"${_scopeId}><meta name="twitter:card" content="summary_large_image"${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)}${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)}${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-cc55ccad${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-cc55ccad${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-cc55ccad${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-cc55ccad${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)}${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-cc55ccad${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
@@ -13406,25 +13463,36 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h2${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}><a href="/"${_scopeId}><i class="fas fa-home"${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}"${_scopeId}></span></li><li${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</li></ul></div></div></div></section><section class="login-one"${_scopeId}><div class="container"${_scopeId}><div class="login-one__form"${_scopeId}><div class="inner-title text-center"${_scopeId}><h2${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2></div><form id="login-one__form" name="Login-one_form" action="#" method="post"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-12"${_scopeId}><div class="form-group"${_scopeId}><div class="input-box"${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required=""${_scopeId}></div>`);
+        _push2(`<section class="page-header" data-v-cc55ccad${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-cc55ccad${_scopeId}></div><div class="container" data-v-cc55ccad${_scopeId}><div class="page-header__inner" data-v-cc55ccad${_scopeId}><h2 data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2><div class="thm-breadcrumb__box" data-v-cc55ccad${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-cc55ccad${_scopeId}><li data-v-cc55ccad${_scopeId}><a href="/" data-v-cc55ccad${_scopeId}><i class="fas fa-home" data-v-cc55ccad${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-cc55ccad${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-cc55ccad${_scopeId}></span></li><li data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</li></ul></div></div></div></section><section class="login-one" data-v-cc55ccad${_scopeId}><div class="container" data-v-cc55ccad${_scopeId}><div class="login-one__form" data-v-cc55ccad${_scopeId}><div class="inner-title text-center" data-v-cc55ccad${_scopeId}><h2 data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2></div>`);
+        if ($setup.flash.success) {
+          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+        if ($setup.flash.error) {
+          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+        _push2(`<form id="login-one__form" name="Login-one_form" action="#" method="post" data-v-cc55ccad${_scopeId}><div class="row" data-v-cc55ccad${_scopeId}><div class="col-xl-12" data-v-cc55ccad${_scopeId}><div class="form-group" data-v-cc55ccad${_scopeId}><div class="input-box" data-v-cc55ccad${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-cc55ccad${_scopeId}></div>`);
         if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.formatError($props.errors.email))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12"${_scopeId}><div class="form-group"${_scopeId}><div class="input-box"${_scopeId}><input id="formPassword"${ssrRenderAttr("value", $setup.form.password)} type="password" name="form_password"${ssrRenderAttr("placeholder", $setup.trans("Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required=""${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-cc55ccad${_scopeId}><div class="form-group" data-v-cc55ccad${_scopeId}><div class="input-box" data-v-cc55ccad${_scopeId}><input id="formPassword"${ssrRenderAttr("value", $setup.form.password)} type="password" name="form_password"${ssrRenderAttr("placeholder", $setup.trans("Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-cc55ccad${_scopeId}></div>`);
         if ($props.errors.password) {
-          _push2(`<div class="text-danger mt-1 small"${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.formatError($props.errors.password))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12"${_scopeId}><div class="form-group"${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}"${_scopeId}>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-cc55ccad${_scopeId}><div class="form-group" data-v-cc55ccad${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-cc55ccad${_scopeId}>`);
         if ($setup.form.processing) {
-          _push2(`<span${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2"${_scopeId}></i>${ssrInterpolate($setup.trans("Signing In..."))}</span>`);
+          _push2(`<span data-v-cc55ccad${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-cc55ccad${_scopeId}></i>${ssrInterpolate($setup.trans("Signing In..."))}</span>`);
         } else {
-          _push2(`<span${_scopeId}>${ssrInterpolate($setup.trans("Login"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span></span>`);
+          _push2(`<span data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("Login"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-cc55ccad${_scopeId}></span></span>`);
         }
-        _push2(`</button></div></div><div class="remember-forget"${_scopeId}><div class="checked-box1"${_scopeId}><input id="saveinfo"${ssrIncludeBooleanAttr(Array.isArray($setup.form.remember) ? ssrLooseContain($setup.form.remember, null) : $setup.form.remember) ? " checked" : ""} type="checkbox" name="saveMyInfo" checked=""${_scopeId}><label for="saveinfo"${_scopeId}><span${_scopeId}></span> ${ssrInterpolate($setup.trans("Remember Me"))}</label></div><div class="forget"${_scopeId}>`);
+        _push2(`</button></div></div><div class="remember-forget" data-v-cc55ccad${_scopeId}><div class="checked-box1" data-v-cc55ccad${_scopeId}><input id="saveinfo"${ssrIncludeBooleanAttr(Array.isArray($setup.form.remember) ? ssrLooseContain($setup.form.remember, null) : $setup.form.remember) ? " checked" : ""} type="checkbox" name="saveMyInfo" checked="" data-v-cc55ccad${_scopeId}><label for="saveinfo" data-v-cc55ccad${_scopeId}><span data-v-cc55ccad${_scopeId}></span> ${ssrInterpolate($setup.trans("Remember Me"))}</label></div><div class="forget" data-v-cc55ccad${_scopeId}>`);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("password.request")
         }, {
@@ -13439,7 +13507,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
           }),
           _: 1
         }, _parent2, _scopeId));
-        _push2(`</div></div><div class="create-account text-center"${_scopeId}><p${_scopeId}>${ssrInterpolate($setup.trans("I Don't Have Account!"))} `);
+        _push2(`</div></div><div class="create-account text-center" data-v-cc55ccad${_scopeId}><p data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("I Don't Have Account!"))} `);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("register")
         }, {
@@ -13490,6 +13558,16 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                 createVNode("div", { class: "inner-title text-center" }, [
                   createVNode("h2", null, toDisplayString($setup.trans("Login")), 1)
                 ]),
+                $setup.flash.success ? (openBlock(), createBlock("div", {
+                  key: 0,
+                  class: "flash-message flash-message--success",
+                  role: "alert"
+                }, toDisplayString($setup.flash.success), 1)) : createCommentVNode("", true),
+                $setup.flash.error ? (openBlock(), createBlock("div", {
+                  key: 1,
+                  class: "flash-message flash-message--error",
+                  role: "alert"
+                }, toDisplayString($setup.flash.error), 1)) : createCommentVNode("", true),
                 createVNode("form", {
                   id: "login-one__form",
                   name: "Login-one_form",
@@ -13516,7 +13594,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                         $props.errors.email ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
-                        }, toDisplayString($props.errors.email), 1)) : createCommentVNode("", true)
+                        }, toDisplayString($setup.formatError($props.errors.email)), 1)) : createCommentVNode("", true)
                       ])
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
@@ -13537,7 +13615,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                         $props.errors.password ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
-                        }, toDisplayString($props.errors.password), 1)) : createCommentVNode("", true)
+                        }, toDisplayString($setup.formatError($props.errors.password)), 1)) : createCommentVNode("", true)
                       ])
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
@@ -13618,7 +13696,7 @@ _sfc_main$h.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Login.vue");
   return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
-const Login = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$3]]);
+const Login = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-cc55ccad"]]);
 const __vite_glob_0_22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Login
@@ -13638,6 +13716,7 @@ const _sfc_main$g = {
     const seo = computed(() => page.props.seo);
     const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path);
+    const flash = computed(() => page.props.flash || {});
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
       var _a;
@@ -13673,6 +13752,7 @@ const _sfc_main$g = {
       trans,
       locale,
       asset_path,
+      flash,
       metaTitle,
       metaDescription,
       metaKeywords,
@@ -13690,26 +13770,26 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-daff4a9e${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-daff4a9e${_scopeId}><title data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-daff4a9e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-daff4a9e${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-daff4a9e${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-166d8071${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-166d8071${_scopeId}><title data-v-166d8071${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-166d8071${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-166d8071${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-166d8071${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-daff4a9e${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-166d8071${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-daff4a9e${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-daff4a9e${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-166d8071${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-166d8071${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-daff4a9e${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-166d8071${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-daff4a9e${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-166d8071${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website" data-v-daff4a9e${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-daff4a9e${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-daff4a9e${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-daff4a9e${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-166d8071${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-166d8071${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-166d8071${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-166d8071${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-daff4a9e${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-166d8071${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
@@ -13788,43 +13868,54 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header" data-v-daff4a9e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-daff4a9e${_scopeId}></div><div class="container" data-v-daff4a9e${_scopeId}><div class="page-header__inner" data-v-daff4a9e${_scopeId}><h2 data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2><div class="thm-breadcrumb__box" data-v-daff4a9e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-daff4a9e${_scopeId}><li data-v-daff4a9e${_scopeId}><a href="/" data-v-daff4a9e${_scopeId}><i class="fas fa-home" data-v-daff4a9e${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-daff4a9e${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-daff4a9e${_scopeId}></span></li><li data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</li></ul></div></div></div></section><section class="sign-up-one" data-v-daff4a9e${_scopeId}><div class="container" data-v-daff4a9e${_scopeId}><div class="sign-up-one__form" data-v-daff4a9e${_scopeId}><div class="inner-title text-center" data-v-daff4a9e${_scopeId}><h2 data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2></div><form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" data-v-daff4a9e${_scopeId}><div class="row" data-v-daff4a9e${_scopeId}><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formName"${ssrRenderAttr("value", $setup.form.name)} type="text" name="form_name"${ssrRenderAttr("placeholder", $setup.trans("Name"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
+        _push2(`<section class="page-header" data-v-166d8071${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-166d8071${_scopeId}></div><div class="container" data-v-166d8071${_scopeId}><div class="page-header__inner" data-v-166d8071${_scopeId}><h2 data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2><div class="thm-breadcrumb__box" data-v-166d8071${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-166d8071${_scopeId}><li data-v-166d8071${_scopeId}><a href="/" data-v-166d8071${_scopeId}><i class="fas fa-home" data-v-166d8071${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-166d8071${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-166d8071${_scopeId}></span></li><li data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</li></ul></div></div></div></section><section class="sign-up-one" data-v-166d8071${_scopeId}><div class="container" data-v-166d8071${_scopeId}><div class="sign-up-one__form" data-v-166d8071${_scopeId}><div class="inner-title text-center" data-v-166d8071${_scopeId}><h2 data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2></div>`);
+        if ($setup.flash.success) {
+          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-166d8071${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+        if ($setup.flash.error) {
+          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-166d8071${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
+        } else {
+          _push2(`<!---->`);
+        }
+        _push2(`<form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" data-v-166d8071${_scopeId}><div class="row" data-v-166d8071${_scopeId}><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formName"${ssrRenderAttr("value", $setup.form.name)} type="text" name="form_name"${ssrRenderAttr("placeholder", $setup.trans("Name"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
         if ($props.errors.name) {
-          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.name)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.name)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
         if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formPhone"${ssrRenderAttr("value", $setup.form.mobile)} type="text" name="form_phone"${ssrRenderAttr("placeholder", $setup.trans("Phone"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formPhone"${ssrRenderAttr("value", $setup.form.mobile)} type="text" name="form_phone"${ssrRenderAttr("placeholder", $setup.trans("Phone"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
         if ($props.errors.mobile) {
-          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.mobile)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.mobile)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formPassword"${ssrRenderAttr("value", $setup.form.password)} type="password" name="form_password"${ssrRenderAttr("placeholder", $setup.trans("Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formPassword"${ssrRenderAttr("value", $setup.form.password)} type="password" name="form_password"${ssrRenderAttr("placeholder", $setup.trans("Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
         if ($props.errors.password) {
-          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formPasswordConfirm"${ssrRenderAttr("value", $setup.form.password_confirmation)} type="password" name="password_confirmation"${ssrRenderAttr("placeholder", $setup.trans("Confirm Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formPasswordConfirm"${ssrRenderAttr("value", $setup.form.password_confirmation)} type="password" name="password_confirmation"${ssrRenderAttr("placeholder", $setup.trans("Confirm Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
         if ($props.errors.password_confirmation) {
-          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-daff4a9e${_scopeId}>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-166d8071${_scopeId}>`);
         if ($setup.form.processing) {
-          _push2(`<span data-v-daff4a9e${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-daff4a9e${_scopeId}></i>${ssrInterpolate($setup.trans("Registering..."))}</span>`);
+          _push2(`<span data-v-166d8071${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-166d8071${_scopeId}></i>${ssrInterpolate($setup.trans("Registering..."))}</span>`);
         } else {
-          _push2(`<span data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-daff4a9e${_scopeId}></span></span>`);
+          _push2(`<span data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Register"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-166d8071${_scopeId}></span></span>`);
         }
-        _push2(`</button></div></div></div><div class="create-account text-center" data-v-daff4a9e${_scopeId}><p data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Already Have An Account?"))} `);
+        _push2(`</button></div></div></div><div class="create-account text-center" data-v-166d8071${_scopeId}><p data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Already Have An Account?"))} `);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
@@ -13875,6 +13966,16 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                 createVNode("div", { class: "inner-title text-center" }, [
                   createVNode("h2", null, toDisplayString($setup.trans("Register")), 1)
                 ]),
+                $setup.flash.success ? (openBlock(), createBlock("div", {
+                  key: 0,
+                  class: "flash-message flash-message--success",
+                  role: "alert"
+                }, toDisplayString($setup.flash.success), 1)) : createCommentVNode("", true),
+                $setup.flash.error ? (openBlock(), createBlock("div", {
+                  key: 1,
+                  class: "flash-message flash-message--error",
+                  role: "alert"
+                }, toDisplayString($setup.flash.error), 1)) : createCommentVNode("", true),
                 createVNode("form", {
                   id: "sign-up-one__form",
                   name: "sign-up-one_form",
@@ -14039,7 +14140,7 @@ _sfc_main$g.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Register.vue");
   return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const Register = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-daff4a9e"]]);
+const Register = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-166d8071"]]);
 const __vite_glob_0_23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Register
