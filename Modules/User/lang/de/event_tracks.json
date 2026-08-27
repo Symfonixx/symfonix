@@ -11,6 +11,8 @@
         "customers": "Kunde",
         "employees": "Mitarbeiter",
         "leaves": "Urlaubsantrag",
+        "job-positions": "Stelle",
+        "job-applications": "Bewerbung",
         "roles": "Rolle",
         "leads": "Führen",
         "deals": "Handeln",

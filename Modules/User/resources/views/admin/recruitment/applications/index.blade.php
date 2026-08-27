@@ -29,7 +29,7 @@
                     <select name="status" class="form-select">
                         <option value="">{{ __('All Statuses') }}</option>
                         @foreach($statuses as $status)
-                            <option value="{{ $status }}" @selected(($filters['status'] ?? '') === $status)>{{ ucfirst($status) }}</option>
+                            <option value="{{ $status }}" @selected(($filters['status'] ?? '') === $status)>{{ __(ucfirst($status)) }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -62,7 +62,7 @@
                 <td>{{ $application->position->title }}</td>
                 <td>{{ $application->candidate->expected_salary ? number_format((float) $application->candidate->expected_salary, 2) : __('N/A') }}</td>
                 <td>{{ $application->submitted_at->format('Y-m-d H:i') }}</td>
-                <td><span class="badge badge-light-primary">{{ ucfirst($application->status) }}</span></td>
+                <td><span class="badge badge-light-primary">{{ __(ucfirst($application->status)) }}</span></td>
                 <td class="text-end">
                     <a href="{{ route('admin.job-applications.show', $application) }}" class="btn btn-sm btn-light-primary" title="{{ __('View') }}">
                         <i class="bi bi-eye"></i>

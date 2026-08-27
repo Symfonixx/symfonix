@@ -11,6 +11,8 @@
         "customers": "Customer",
         "employees": "Employee",
         "leaves": "Leave Request",
+        "job-positions": "Job Position",
+        "job-applications": "Job Application",
         "roles": "Role",
         "leads": "Lead",
         "deals": "Deal",

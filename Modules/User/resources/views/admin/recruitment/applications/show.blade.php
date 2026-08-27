@@ -75,7 +75,7 @@
                         <label for="status" class="form-label">{{ __('Hiring Status') }}</label>
                         <select id="status" name="status" class="form-select @error('status') is-invalid @enderror">
                             @foreach($statuses as $status)
-                                <option value="{{ $status }}" @selected(old('status', $jobApplication->status) === $status)>{{ ucfirst($status) }}</option>
+                                <option value="{{ $status }}" @selected(old('status', $jobApplication->status) === $status)>{{ __(ucfirst($status)) }}</option>
                             @endforeach
                         </select>
                         @error('status')<div class="invalid-feedback">{{ $message }}</div>@enderror
