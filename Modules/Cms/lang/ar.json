@@ -354,5 +354,22 @@
     "Write unique descriptions for each major page.": "اكتب أوصافًا فريدة لكل صفحة رئيسية.",
     "Your Page Title": "عنوان صفحتك",
     "Meta description preview": "معاينة وصف الميتا",
-    "Your meta description will appear here. Write a compelling summary to improve click-through rates.": "سيظهر وصف الميتا هنا. اكتب ملخصًا جذابًا لتحسين نسبة النقر."
+    "Your meta description will appear here. Write a compelling summary to improve click-through rates.": "سيظهر وصف الميتا هنا. اكتب ملخصًا جذابًا لتحسين نسبة النقر.",
+    "Our Clients": "عملاؤنا",
+    "Add New Client": "إضافة عميل جديد",
+    "Edit Client": "تعديل العميل",
+    "Search In Clients": "البحث في العملاء",
+    "Company Name": "اسم الشركة",
+    "Logo": "الشعار",
+    "URL": "الرابط",
+    "Client Details": "تفاصيل العميل",
+    "Manage client logos shown on the homepage and About Us page.": "إدارة شعارات العملاء المعروضة في الصفحة الرئيسية وصفحة من نحن.",
+    "Add a client logo and company name for the website.": "أضف شعار العميل واسم الشركة للموقع.",
+    "Upload the logo, set the company name, optional URL, and publish status.": "ارفع الشعار، واضبط اسم الشركة والرابط الاختياري وحالة النشر.",
+    "Update the logo, company name, URL, and publish status.": "حدّث الشعار واسم الشركة والرابط وحالة النشر.",
+    "Update client details and publishing options.": "حدّث تفاصيل العميل وخيارات النشر.",
+    "Optional. Leave empty if the client has no public website.": "اختياري. اتركه فارغًا إذا لم يكن لدى العميل موقع عام.",
+    "Change logo": "تغيير الشعار",
+    "Trusted by businesses": "موثوق من قِبل الشركات",
+    "we partner with": "التي نتعاون معها"
 }

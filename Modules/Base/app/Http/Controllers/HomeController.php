@@ -8,6 +8,7 @@ use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
 use Modules\Base\Support\Schema;
 use Modules\Cms\Models\Blog;
+use Modules\Cms\Models\Client;
 use Modules\Product\Models\Product;
 use Modules\Project\Models\ProjectUseCase;
 use Modules\Services\Models\ServiceCategory;
@@ -123,6 +124,18 @@ class HomeController extends Controller
             ];
         });
 
+        $clients = Client::published()
+            ->ordered()
+            ->get()
+            ->map(function (Client $client) use ($locale) {
+                return [
+                    'id' => $client->id,
+                    'name' => $client->getTranslation('name', $locale),
+                    'logo_link' => $client->logo_link,
+                    'url' => $client->url,
+                ];
+            });
+
         $siteName = Seo::get('website_name', config('app.name'));
         $canonical = route('home');
         $meta = (new Meta)
@@ -141,6 +154,7 @@ class HomeController extends Controller
             'teams' => $teams,
             'useCases' => $useCases,
             'products' => $products,
+            'clients' => $clients,
             'structuredData' => [
                 Schema::webPage([
                     'type' => 'WebPage',

@@ -1,7 +1,7 @@
 {
   "\u0000plugin-vue:export-helper": [],
   "Modules/Base/resources/assets/js/Pages/Index.vue": [],
-  "Modules/Base/resources/assets/js/Pages/Index.vue?vue&type=style&index=0&scoped=8a1e51ef&lang.css": [],
+  "Modules/Base/resources/assets/js/Pages/Index.vue?vue&type=style&index=0&scoped=8d917627&lang.css": [],
   "Modules/CRM/resources/assets/js/Pages/Index.vue": [],
   "Modules/Cms/resources/assets/js/Pages/AboutUs.vue": [],
   "Modules/Cms/resources/assets/js/Pages/BlogIndex.vue": [],
@@ -48,6 +48,7 @@
   "Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Index.vue": [],
   "Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Show.vue": [],
   "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [],
+  "resources/js/Components/ClientsSection.vue": [],
   "resources/js/Components/ContactRequestModal.vue": [],
   "resources/js/Components/ContactRequestModal.vue?vue&type=style&index=0&scoped=b7a5a2ac&lang.css": [],
   "resources/js/Components/CtaTwo.vue": [],

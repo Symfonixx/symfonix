@@ -308,7 +308,7 @@
 
 @canany(['CMS Management', 'Testimonials Management', 'Team Management'])
     <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['cms']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['faqs']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']) ? 'here show' : '' }}">
+         class="menu-item menu-accordion {{ isset($active['cms']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['faqs']) || isset($active['clients']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']) ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-intersect"></i></span>
             <span class="menu-title">{{ __('CMS') }}</span>
@@ -316,7 +316,7 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['faqs']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['faqs']) || isset($active['clients']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']) ? 'show' : '' }}">
             @can('CMS Management')
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['pages']) ? 'active' : '' }}"
@@ -344,6 +344,13 @@
                    href="{{ route('admin.faqs.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">{{ __('FAQs') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['clients']) ? 'active' : '' }}"
+                   href="{{ route('admin.clients.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('Our Clients') }}</span>
                 </a>
             </div>
             <div class="menu-item">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Cms\Http\Controllers\Admin\BlogCategoryController;
 use Modules\Cms\Http\Controllers\Admin\BlogController;
+use Modules\Cms\Http\Controllers\Admin\ClientController;
 use Modules\Cms\Http\Controllers\Admin\FaqController;
 use Modules\Cms\Http\Controllers\Admin\PageController;
 
@@ -19,4 +20,7 @@ Route::middleware('can:CMS Management')->group(function () {
 
     Route::delete('faqs/deleteMulti', [FaqController::class, 'deleteMulti'])->name('faqs.deleteMulti');
     Route::resource('faqs', FaqController::class)->except(['destroy', 'show']);
+
+    Route::delete('clients/deleteMulti', [ClientController::class, 'deleteMulti'])->name('clients.deleteMulti');
+    Route::resource('clients', ClientController::class)->except(['destroy', 'show']);
 });

@@ -6,6 +6,7 @@ public/site/images/*
 /public/storage
 /storage/*.key
 /storage/pail
+/storage/framework/*
 /vendor
 composer.lock
 .env

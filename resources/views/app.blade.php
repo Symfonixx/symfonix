@@ -207,6 +207,7 @@ Developed By: Hadi Hilal
     <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('site/css/module-css/clients.css') }}" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('site/css/custom-animate.css') }}"/>
@@ -226,6 +227,7 @@ Developed By: Hadi Hilal
         <link rel="stylesheet" href="{{ asset('site/css/module-css/feature.css') }}"/>
         <link rel="stylesheet" href="{{ asset('site/css/module-css/cta.css') }}"/>
         <link rel="stylesheet" href="{{ asset('site/css/module-css/page-header.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('site/css/module-css/clients.css') }}"/>
     </noscript>
     <style>
         #symfonixbot-launcher-wrap {

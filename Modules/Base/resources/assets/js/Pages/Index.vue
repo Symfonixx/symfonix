@@ -975,6 +975,8 @@
             </div>
         </section>
         <!-- Contact Two End -->
+
+        <ClientsSection :clients="clients" />
     </app-layout>
 </template>
 
@@ -983,6 +985,7 @@ import {computed, onMounted, nextTick, ref} from 'vue'
 import {usePage, useForm, Link, Head} from '@inertiajs/vue3'
 import HomeBlogCard from '@/Components/HomeBlogCard.vue'
 import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
+import ClientsSection from '@/Components/ClientsSection.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
@@ -996,6 +999,7 @@ const testimonials = computed(() => page.props.testimonials || [])
 const teams = computed(() => page.props.teams || [])
 const useCases = computed(() => page.props.useCases || [])
 const products = computed(() => page.props.products || [])
+const clients = computed(() => page.props.clients || [])
 const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => {

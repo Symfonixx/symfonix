@@ -354,5 +354,22 @@
     "Write unique descriptions for each major page.": "Her önemli sayfa için benzersiz açıklamalar yazın.",
     "Your Page Title": "Sayfa Başlığınız",
     "Meta description preview": "Meta açıklama önizlemesi",
-    "Your meta description will appear here. Write a compelling summary to improve click-through rates.": "Meta açıklamanız burada görünecek. Tıklama oranını artırmak için etkileyici bir özet yazın."
+    "Your meta description will appear here. Write a compelling summary to improve click-through rates.": "Meta açıklamanız burada görünecek. Tıklama oranını artırmak için etkileyici bir özet yazın.",
+    "Our Clients": "Müşterilerimiz",
+    "Add New Client": "Yeni Müşteri Ekle",
+    "Edit Client": "Müşteriyi Düzenle",
+    "Search In Clients": "Müşterilerde Ara",
+    "Company Name": "Şirket Adı",
+    "Logo": "Logo",
+    "URL": "URL",
+    "Client Details": "Müşteri Detayları",
+    "Manage client logos shown on the homepage and About Us page.": "Ana sayfada ve Hakkımızda sayfasında gösterilen müşteri logolarını yönetin.",
+    "Add a client logo and company name for the website.": "Web sitesi için bir müşteri logosu ve şirket adı ekleyin.",
+    "Upload the logo, set the company name, optional URL, and publish status.": "Logoyu yükleyin, şirket adını, isteğe bağlı URL'yi ve yayın durumunu ayarlayın.",
+    "Update the logo, company name, URL, and publish status.": "Logoyu, şirket adını, URL'yi ve yayın durumunu güncelleyin.",
+    "Update client details and publishing options.": "Müşteri ayrıntılarını ve yayınlama seçeneklerini güncelleyin.",
+    "Optional. Leave empty if the client has no public website.": "İsteğe bağlı. Müşterinin genel bir web sitesi yoksa boş bırakın.",
+    "Change logo": "Logoyu değiştir",
+    "Trusted by businesses": "Güvenen işletmeler",
+    "we partner with": "birlikte çalıştığımız"
 }

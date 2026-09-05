@@ -59,6 +59,8 @@ class CompanyProvisionerService
 
     private function resolveCustomerUser(Lead $lead, string $companyName): User
     {
+        $mobile = $this->normalizeMobile($lead->phone);
+
         if ($lead->email) {
             $existing = User::query()
                 ->where('email', $lead->email)
@@ -68,23 +70,42 @@ class CompanyProvisionerService
             if ($existing) {
                 return $existing;
             }
+        }
 
-            if (User::query()->where('email', $lead->email)->exists()) {
-                return User::create([
-                    'name' => $lead->name ?: $companyName,
-                    'email' => $this->generatePlaceholderEmail($lead),
-                    'password' => bcrypt(Str::random(32)),
-                    'type' => User::TYPE_CUSTOMER,
-                ]);
+        if ($mobile) {
+            $existing = User::query()
+                ->where('mobile', $mobile)
+                ->customers()
+                ->first();
+
+            if ($existing) {
+                return $existing;
             }
+
+            if (User::query()->where('mobile', $mobile)->exists()) {
+                $mobile = null;
+            }
+        }
+
+        $email = $lead->email;
+        if (! $email || User::query()->where('email', $email)->exists()) {
+            $email = $this->generatePlaceholderEmail($lead);
         }
 
         return User::create([
             'name' => $lead->name ?: $companyName,
-            'email' => $lead->email ?: $this->generatePlaceholderEmail($lead),
+            'email' => $email,
+            'mobile' => $mobile,
             'password' => bcrypt(Str::random(32)),
             'type' => User::TYPE_CUSTOMER,
         ]);
+    }
+
+    private function normalizeMobile(?string $phone): ?string
+    {
+        $mobile = preg_replace('/\D/', '', (string) $phone);
+
+        return $mobile !== '' ? $mobile : null;
     }
 
     private function generatePlaceholderEmail(Lead $lead): string

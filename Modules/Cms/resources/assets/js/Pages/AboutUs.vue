@@ -488,12 +488,15 @@
             </div>
         </section>
         <!-- Testimonial One End -->
+
+        <ClientsSection :clients="clients" />
     </app-layout>
 </template>
 
 <script setup>
 import {computed, onMounted, nextTick} from 'vue'
 import {Link, usePage, Head} from '@inertiajs/vue3'
+import ClientsSection from '@/Components/ClientsSection.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
@@ -504,6 +507,7 @@ const locale = computed(() => page.props.locale || 'en')
 const isRtl = computed(() => locale.value === 'ar')
 const teams = computed(() => page.props.teams || [])
 const testimonials = computed(() => page.props.testimonials || [])
+const clients = computed(() => page.props.clients || [])
 const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => {

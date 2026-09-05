@@ -8,6 +8,8 @@ use Modules\Cms\Repositories\Blog\BlogModelRepository;
 use Modules\Cms\Repositories\Blog\BlogRepository;
 use Modules\Cms\Repositories\BlogCategory\BlogCategoryModelRepository;
 use Modules\Cms\Repositories\BlogCategory\BlogCategoryRepository;
+use Modules\Cms\Repositories\Client\ClientModelRepository;
+use Modules\Cms\Repositories\Client\ClientRepository;
 use Modules\Cms\Repositories\Faq\FaqModelRepository;
 use Modules\Cms\Repositories\Faq\FaqRepository;
 use Modules\Cms\Repositories\Page\PageModelRepository;
@@ -118,6 +120,7 @@ class CmsServiceProvider extends ServiceProvider
         $this->app->bind(BlogRepository::class, BlogModelRepository::class);
         $this->app->bind(BlogCategoryRepository::class, BlogCategoryModelRepository::class);
         $this->app->bind(FaqRepository::class, FaqModelRepository::class);
+        $this->app->bind(ClientRepository::class, ClientModelRepository::class);
     }
 
     /**

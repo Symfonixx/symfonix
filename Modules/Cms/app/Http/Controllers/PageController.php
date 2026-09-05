@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
 use Modules\Base\Support\Schema;
+use Modules\Cms\Models\Client;
 use Modules\Cms\Models\Faq;
 use Modules\Cms\Models\Page;
 use Modules\Team\Models\Team;
@@ -53,6 +54,8 @@ class PageController extends Controller
 
     public function about_us()
     {
+        $locale = app()->getLocale();
+
         $teams = Team::where('status', 'Published')
             ->latest()
             ->take(10)
@@ -64,6 +67,18 @@ class PageController extends Controller
             ->latest()
             ->take(10)
             ->get();
+
+        $clients = Client::published()
+            ->ordered()
+            ->get()
+            ->map(function (Client $client) use ($locale) {
+                return [
+                    'id' => $client->id,
+                    'name' => $client->getTranslation('name', $locale),
+                    'logo_link' => $client->logo_link,
+                    'url' => $client->url,
+                ];
+            });
 
         $siteName = Seo::get('website_name', config('app.name'));
         $canonical = route('about-us');
@@ -92,6 +107,7 @@ class PageController extends Controller
         return $this->inertia('Cms::AboutUs', [
             'teams' => $teams,
             'testimonials' => $testimonials,
+            'clients' => $clients,
             'structuredData' => $structuredData,
         ], $meta);
     }
