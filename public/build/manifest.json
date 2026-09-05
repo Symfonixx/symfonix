@@ -1,6 +1,6 @@
 {
   "Modules/Base/resources/assets/js/Pages/Index.vue": {
-    "file": "assets/Index-BSdFsTuS.js",
+    "file": "assets/Index-DgLxFjXA.js",
     "name": "Index",
     "src": "Modules/Base/resources/assets/js/Pages/Index.vue",
     "isDynamicEntry": true,
@@ -16,7 +16,7 @@
       "_vendor-ui-XNB9EfQd.js"
     ],
     "css": [
-      "assets/Index-BioGnhWZ.css"
+      "assets/Index-BYgeGn67.css"
     ]
   },
   "Modules/CRM/resources/assets/js/Pages/Index.vue": {
@@ -655,7 +655,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CGCKUCCF.js",
+    "file": "assets/app-DC3TWeF-.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

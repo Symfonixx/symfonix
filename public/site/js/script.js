@@ -1050,10 +1050,11 @@
       const text = quote.textContent;
       const hasArabic = /[\u0600-\u06FF]/.test(text);
 
-      // For Arabic text, don't split at all - animate the whole element to preserve connections
-      // For non-Arabic, use chars for character-by-character animation
-      if (hasArabic) {
-        // For Arabic: No splitting, just animate the whole element
+      // Skip SplitText char splitting on RTL pages (and for Arabic text).
+      // SplitText reverses char/word nodes under direction:rtl, which garbles
+      // Latin fallback strings that lack an Arabic translation.
+      if (isRTL || hasArabic) {
+        // No character splitting — animate the whole element
         gsap.set(quote, {
           perspective: 400,
           opacity: 0,
