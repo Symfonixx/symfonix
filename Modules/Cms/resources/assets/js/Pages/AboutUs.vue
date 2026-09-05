@@ -406,7 +406,7 @@
      <!--CTA One Start -->
         <section class="cta-one">
             <div class="cta-one__shape-bg float-bob-y"
-                 :style="{ backgroundImage: `url(${asset_path}site/images/shapes/cta-one-shape-bg.png)` }">
+                 :style="{ backgroundImage: `url(${asset_path}images/shapes/cta-one-shape-bg.png)` }">
             </div>
             <div class="container">
                 <div class="cta-one__inner">

@@ -3,10 +3,10 @@
     <section class="cta-two">
         <div class="cta-two__bg-color">
             <div class="cta-two__shape-1 img-bounce">
-                <img :src="asset_path + 'site/images/shapes/cta-two-shape-1.png'" alt="">
+                <img :src="asset_path + 'images/shapes/cta-two-shape-1.png'" alt="">
             </div>
             <div class="cta-two__shape-2 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/cta-two-shape-2.png'" alt="">
+                <img :src="asset_path + 'images/shapes/cta-two-shape-2.png'" alt="">
             </div>
         </div>
         <div class="container">

@@ -174,7 +174,7 @@
         <!-- Newsletter Two Start -->
         <section v-if="!isPortalPage" class="newsletter-two">
             <div class="newsletter-two__shape-1">
-                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-1.png'"
+                <img :src="asset_path + 'images/shapes/newsletter-two-shape-1.png'"
                      :alt="trans('Newsletter decoration')"
                      width="80"
                      height="80"
@@ -183,7 +183,7 @@
                      aria-hidden="true">
             </div>
             <div class="newsletter-two__shape-2 float-bob-x">
-                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-2.png'"
+                <img :src="asset_path + 'images/shapes/newsletter-two-shape-2.png'"
                      :alt="trans('Newsletter decoration')"
                      width="80"
                      height="80"

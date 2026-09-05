@@ -296,7 +296,7 @@
         <!--Why Choose Two Start -->
         <section class="why-choose-two">
             <div class="why-choose-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/why-choose-two-shape-1.png'"
+                <img :src="asset_path + 'images/shapes/why-choose-two-shape-1.png'"
                      :alt="trans('Decorative shape')"
                      width="120"
                      height="120"
@@ -467,7 +467,7 @@
         <section class="feature-one">
 
             <div class="feature-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/feature-one-shape-2.webp'"
+                <img :src="asset_path + 'images/shapes/feature-one-shape-2.png'"
                      :alt="trans('Decorative shape')"
                      width="120"
                      height="120"
@@ -592,7 +592,7 @@
         <!--CTA One Start -->
         <section class="cta-one">
             <div class="cta-one__shape-bg float-bob-y"
-                 :style="{ backgroundImage: `url(${asset_path}site/images/shapes/cta-one-shape-bg.webp)` }">
+                 :style="{ backgroundImage: `url(${asset_path}images/shapes/cta-one-shape-bg.png)` }">
             </div>
             <div class="container">
                 <div class="cta-one__inner">
@@ -770,7 +770,7 @@
             </div>
 
             <div class="contact-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/contact-two-shape-1.webp'"
+                <img :src="asset_path + 'images/shapes/contact-two-shape-1.png'"
                      :alt="trans('Decorative shape')"
                      width="120"
                      height="120"

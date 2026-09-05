@@ -39,7 +39,7 @@
         <!-- Contact One Start -->
         <section class="contact-one">
             <div class="contact-one__bg-shape"
-                 :style="{ backgroundImage: `url(${asset_path}site/images/shapes/contact-one-bg-shape.png)`}">
+                 :style="{ backgroundImage: `url(${asset_path}images/shapes/contact-one-bg-shape.png)`}">
 
             </div>
             <div class="container">
