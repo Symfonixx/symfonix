@@ -99,6 +99,11 @@ class Deal extends Model
         return $this->hasOne(\Modules\Project\Models\Project::class);
     }
 
+    public function quotes(): HasMany
+    {
+        return $this->hasMany(Quote::class)->latest();
+    }
+
     public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(\Modules\Services\Models\Service::class, 'deal_service')

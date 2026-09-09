@@ -20,7 +20,7 @@
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card :title="__('crm::lead.pages.edit_title')" :formUrl="route('admin.leads.update', $lead)">
+    <x-admin.create-card :title="__('crm::lead.pages.edit_title')" :formUrl="route('admin.leads.update', $lead)" :cancelUrl="route('admin.leads.index')" icon="pencil-square" color="primary">
         @method('PUT')
         @include('crm::admin.lead._form', ['lead' => $lead])
     </x-admin.create-card>

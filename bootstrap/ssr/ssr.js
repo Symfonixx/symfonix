@@ -3,7 +3,7 @@ import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrInterpolate, ssrR
 import { usePage, Link, useForm, router, Head, createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
-const _sfc_main$Q = {
+const _sfc_main$R = {
   __name: "HomeBlogCard",
   __ssrInlineRender: true,
   props: {
@@ -349,11 +349,11 @@ const _sfc_main$Q = {
     };
   }
 };
-const _sfc_setup$Q = _sfc_main$Q.setup;
-_sfc_main$Q.setup = (props, ctx) => {
+const _sfc_setup$R = _sfc_main$R.setup;
+_sfc_main$R.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/HomeBlogCard.vue");
-  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
+  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -362,7 +362,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$P = {
+const _sfc_main$Q = {
   __name: "ServiceCardThree",
   __ssrInlineRender: true,
   props: {
@@ -512,14 +512,14 @@ const _sfc_main$P = {
     };
   }
 };
-const _sfc_setup$P = _sfc_main$P.setup;
-_sfc_main$P.setup = (props, ctx) => {
+const _sfc_setup$Q = _sfc_main$Q.setup;
+_sfc_main$Q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
-  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
+  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["__scopeId", "data-v-037ec78e"]]);
-const _sfc_main$O = {
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__scopeId", "data-v-037ec78e"]]);
+const _sfc_main$P = {
   __name: "ClientsSection",
   __ssrInlineRender: true,
   props: {
@@ -658,13 +658,13 @@ const _sfc_main$O = {
     };
   }
 };
-const _sfc_setup$O = _sfc_main$O.setup;
-_sfc_main$O.setup = (props, ctx) => {
+const _sfc_setup$P = _sfc_main$P.setup;
+_sfc_main$P.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ClientsSection.vue");
-  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
+  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
 };
-const _sfc_main$N = {
+const _sfc_main$O = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1067,14 +1067,14 @@ const _sfc_main$N = {
     };
   }
 };
-const _sfc_setup$N = _sfc_main$N.setup;
-_sfc_main$N.setup = (props, ctx) => {
+const _sfc_setup$O = _sfc_main$O.setup;
+_sfc_main$O.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuList.vue");
-  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
+  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
 };
-const MainMenuList = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-5241990c"]]);
-const _sfc_main$M = {
+const MainMenuList = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-5241990c"]]);
+const _sfc_main$N = {
   __name: "MainMenuNav",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1164,14 +1164,14 @@ const _sfc_main$M = {
     };
   }
 };
-const _sfc_setup$M = _sfc_main$M.setup;
-_sfc_main$M.setup = (props, ctx) => {
+const _sfc_setup$N = _sfc_main$N.setup;
+_sfc_main$N.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuNav.vue");
-  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
+  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
 };
-const MainMenuNav = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__scopeId", "data-v-9e81ffc4"]]);
-const _sfc_main$L = {
+const MainMenuNav = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-9e81ffc4"]]);
+const _sfc_main$M = {
   __name: "App",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1856,13 +1856,13 @@ const _sfc_main$L = {
     };
   }
 };
-const _sfc_setup$L = _sfc_main$L.setup;
-_sfc_main$L.setup = (props, ctx) => {
+const _sfc_setup$M = _sfc_main$M.setup;
+_sfc_main$M.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/App.vue");
-  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
+  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
 };
-const _sfc_main$K = {
+const _sfc_main$L = {
   __name: "UseCaseCard",
   __ssrInlineRender: true,
   props: {
@@ -2000,14 +2000,14 @@ const _sfc_main$K = {
     };
   }
 };
-const _sfc_setup$K = _sfc_main$K.setup;
-_sfc_main$K.setup = (props, ctx) => {
+const _sfc_setup$L = _sfc_main$L.setup;
+_sfc_main$L.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UseCaseCard.vue");
-  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
+  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
 };
-const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-0c9c4e06"]]);
-const _sfc_main$J = {
+const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-0c9c4e06"]]);
+const _sfc_main$K = {
   __name: "ProductCard",
   __ssrInlineRender: true,
   props: {
@@ -2139,21 +2139,21 @@ const _sfc_main$J = {
     };
   }
 };
-const _sfc_setup$J = _sfc_main$J.setup;
-_sfc_main$J.setup = (props, ctx) => {
+const _sfc_setup$K = _sfc_main$K.setup;
+_sfc_main$K.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
-  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
+  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
 };
-const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-80e9306c"]]);
+const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-80e9306c"]]);
 const __default__$g = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     UseCaseCard,
     ProductCard
   }
 };
-const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
+const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -2596,7 +2596,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="banner-one" data-v-b0eebbec${_scopeId}><div class="banner-one__bg" aria-hidden="true" data-v-b0eebbec${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/banner-bg.webp")} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" class="banner-one__bg-img" data-v-b0eebbec${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
@@ -2807,7 +2807,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               _push2(`</div>`);
               if (featuredPost.value) {
                 _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-b0eebbec${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$Q, {
+                _push2(ssrRenderComponent(_sfc_main$R, {
                   post: featuredPost.value,
                   variant: "featured",
                   locale: locale.value,
@@ -2820,7 +2820,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               }
               _push2(`</div></div><div class="col-xl-6" data-v-b0eebbec${_scopeId}><div class="blog-two__right" data-v-b0eebbec${_scopeId}><!--[-->`);
               ssrRenderList(sidePosts.value, (post, idx) => {
-                _push2(ssrRenderComponent(_sfc_main$Q, {
+                _push2(ssrRenderComponent(_sfc_main$R, {
                   key: post.id || idx,
                   post,
                   variant: "compact",
@@ -2894,7 +2894,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
               _push2(`<!---->`);
             }
             _push2(`</form><div class="result" data-v-b0eebbec${_scopeId}></div></div></div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$O, { clients: clients.value }, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$P, { clients: clients.value }, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "banner-one" }, [
@@ -3669,7 +3669,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                           key: 0,
                           class: "blog-two__left-content-box d-none d-md-block"
                         }, [
-                          createVNode(_sfc_main$Q, {
+                          createVNode(_sfc_main$R, {
                             post: featuredPost.value,
                             variant: "featured",
                             locale: locale.value,
@@ -3682,7 +3682,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                     createVNode("div", { class: "col-xl-6" }, [
                       createVNode("div", { class: "blog-two__right" }, [
                         (openBlock(true), createBlock(Fragment, null, renderList(sidePosts.value, (post, idx) => {
-                          return openBlock(), createBlock(_sfc_main$Q, {
+                          return openBlock(), createBlock(_sfc_main$R, {
                             key: post.id || idx,
                             post,
                             variant: "compact",
@@ -3941,7 +3941,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$O, { clients: clients.value }, null, 8, ["clients"])
+              createVNode(_sfc_main$P, { clients: clients.value }, null, 8, ["clients"])
             ];
           }
         }),
@@ -3951,23 +3951,23 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$g, {
     };
   }
 });
-const _sfc_setup$I = _sfc_main$I.setup;
-_sfc_main$I.setup = (props, ctx) => {
+const _sfc_setup$J = _sfc_main$J.setup;
+_sfc_main$J.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Base/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
+  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
 };
-const Index$1 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-b0eebbec"]]);
+const Index$1 = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-b0eebbec"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index$1
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$f = {
   components: {
-    AppLayout: _sfc_main$L
+    AppLayout: _sfc_main$M
   }
 };
-const _sfc_main$H = /* @__PURE__ */ Object.assign(__default__$f, {
+const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$f, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4138,7 +4138,7 @@ const _sfc_main$H = /* @__PURE__ */ Object.assign(__default__$f, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4464,19 +4464,526 @@ const _sfc_main$H = /* @__PURE__ */ Object.assign(__default__$f, {
     };
   }
 });
-const _sfc_setup$H = _sfc_main$H.setup;
-_sfc_main$H.setup = (props, ctx) => {
+const _sfc_setup$I = _sfc_main$I.setup;
+_sfc_main$I.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/CRM/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
 };
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$H
+  default: _sfc_main$I
+}, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$H = {
+  __name: "QuoteShow",
+  __ssrInlineRender: true,
+  props: {
+    quote: { type: Object, required: true },
+    branding: { type: Object, required: true },
+    urls: { type: Object, required: true },
+    labels: { type: Object, required: true },
+    viewer: { type: Object, default: () => ({}) },
+    meta: { type: Object, default: () => ({}) }
+  },
+  setup(__props) {
+    var _a, _b, _c, _d;
+    const props = __props;
+    const page = usePage();
+    const locale = computed(() => page.props.locale || "en");
+    const asset_path = computed(() => page.props.asset_path || "/");
+    const flashSuccess = computed(() => {
+      var _a2;
+      return ((_a2 = page.props.flash) == null ? void 0 : _a2.success) || null;
+    });
+    const metaTitle = computed(() => {
+      var _a2;
+      return ((_a2 = props.meta) == null ? void 0 : _a2.title) || props.labels.title;
+    });
+    const metaDescription = computed(() => {
+      var _a2;
+      return ((_a2 = props.meta) == null ? void 0 : _a2.description) || props.labels.subtitle;
+    });
+    const statusBanner = computed(() => {
+      if (props.quote.status === "expired") return props.labels.expired;
+      if (props.quote.status === "accepted") return props.labels.accepted;
+      if (props.quote.status === "rejected") return props.labels.rejected;
+      if (props.quote.status === "void") return props.labels.void;
+      return null;
+    });
+    const statusBannerClass = computed(() => {
+      if (props.quote.status === "accepted") return "alert-success";
+      if (props.quote.status === "rejected" || props.quote.status === "void" || props.quote.status === "expired") {
+        return "alert-warning";
+      }
+      return "alert-info";
+    });
+    const acceptForm = useForm({
+      responder_name: ((_a = props.viewer) == null ? void 0 : _a.name) || "",
+      responder_email: ((_b = props.viewer) == null ? void 0 : _b.email) || "",
+      response_note: ""
+    });
+    const rejectForm = useForm({
+      responder_name: ((_c = props.viewer) == null ? void 0 : _c.name) || "",
+      responder_email: ((_d = props.viewer) == null ? void 0 : _d.email) || "",
+      response_note: ""
+    });
+    function formatMoney(value) {
+      return Number(value || 0).toLocaleString(void 0, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+    function submitAccept() {
+      acceptForm.post(props.urls.accept, { preserveScroll: true });
+    }
+    function submitReject() {
+      rejectForm.post(props.urls.reject, { preserveScroll: true });
+    }
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[-->`);
+      _push(ssrRenderComponent(unref(Head), null, {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-920e9e46${_scopeId}><title data-v-920e9e46${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-920e9e46${_scopeId}><meta name="robots" content="noindex,nofollow" data-v-920e9e46${_scopeId}><meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-920e9e46${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-920e9e46${_scopeId}>`);
+          } else {
+            return [
+              createVNode("link", {
+                rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/page-header.css"
+              }, null, 8, ["href"]),
+              createVNode("title", null, toDisplayString(metaTitle.value), 1),
+              createVNode("meta", {
+                name: "description",
+                content: metaDescription.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                name: "robots",
+                content: "noindex,nofollow"
+              }),
+              createVNode("meta", {
+                property: "og:title",
+                content: metaTitle.value
+              }, null, 8, ["content"]),
+              createVNode("meta", {
+                property: "og:description",
+                content: metaDescription.value
+              }, null, 8, ["content"])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(ssrRenderComponent(_sfc_main$M, null, {
+        default: withCtx((_2, _push2, _parent2, _scopeId) => {
+          var _a2, _b2, _c2, _d2, _e, _f;
+          if (_push2) {
+            _push2(`<section class="page-header" data-v-920e9e46${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}" data-v-920e9e46${_scopeId}></div><div class="container" data-v-920e9e46${_scopeId}><div class="page-header__inner" data-v-920e9e46${_scopeId}><h1 data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.title)}</h1><div class="thm-breadcrumb__box" data-v-920e9e46${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-920e9e46${_scopeId}><li data-v-920e9e46${_scopeId}>`);
+            _push2(ssrRenderComponent(unref(Link), {
+              href: _ctx.route("home")
+            }, {
+              default: withCtx((_3, _push3, _parent3, _scopeId2) => {
+                if (_push3) {
+                  _push3(`<i class="fas fa-home" data-v-920e9e46${_scopeId2}></i>${ssrInterpolate(_ctx.trans("Home"))}`);
+                } else {
+                  return [
+                    createVNode("i", { class: "fas fa-home" }),
+                    createTextVNode(toDisplayString(_ctx.trans("Home")), 1)
+                  ];
+                }
+              }),
+              _: 1
+            }, _parent2, _scopeId));
+            _push2(`</li><li data-v-920e9e46${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-920e9e46${_scopeId}></span></li><li data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.quote.quote_number)}</li></ul></div></div></div></section><section class="quote-show" data-v-920e9e46${_scopeId}><div class="container" data-v-920e9e46${_scopeId}><div class="row justify-content-center" data-v-920e9e46${_scopeId}><div class="col-xl-10" data-v-920e9e46${_scopeId}><div class="quote-show__card" data-v-920e9e46${_scopeId}><div class="quote-show__header" data-v-920e9e46${_scopeId}><div data-v-920e9e46${_scopeId}>`);
+            if (__props.branding.logo_url) {
+              _push2(`<img${ssrRenderAttr("src", __props.branding.logo_url)}${ssrRenderAttr("alt", __props.branding.name)} class="quote-show__logo mb-3" data-v-920e9e46${_scopeId}>`);
+            } else {
+              _push2(`<h3 class="quote-show__brand mb-2" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.branding.name)}</h3>`);
+            }
+            _push2(`<div class="quote-show__muted" data-v-920e9e46${_scopeId}>`);
+            if (__props.branding.phone) {
+              _push2(`<div data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.branding.phone)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (__props.branding.email) {
+              _push2(`<div data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.branding.email)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (__props.branding.address) {
+              _push2(`<div data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.branding.address)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div><div class="quote-show__meta text-md-end" data-v-920e9e46${_scopeId}><div class="quote-show__number" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.quote.quote_number)}</div><span class="quote-show__badge" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.status)}</span><div class="quote-show__total" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(__props.quote.total))} ${ssrInterpolate(__props.quote.currency)}</div><a${ssrRenderAttr("href", __props.urls.pdf)} class="thm-btn quote-show__pdf-btn" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.download_pdf)}</a></div></div><div class="row mb-4" data-v-920e9e46${_scopeId}><div class="col-md-6" data-v-920e9e46${_scopeId}><div class="quote-show__label" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.quote_to)}</div><div class="quote-show__value" data-v-920e9e46${_scopeId}>${ssrInterpolate((_a2 = __props.quote.company) == null ? void 0 : _a2.name)}</div>`);
+            if ((_b2 = __props.quote.company) == null ? void 0 : _b2.email) {
+              _push2(`<div class="quote-show__muted" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.quote.company.email)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if ((_c2 = __props.quote.deal) == null ? void 0 : _c2.title) {
+              _push2(`<div class="quote-show__muted" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.quote.deal.title)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div><div class="col-md-6 text-md-end" data-v-920e9e46${_scopeId}><div data-v-920e9e46${_scopeId}><span class="quote-show__muted" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.issued_at)}:</span><span class="quote-show__value" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.quote.issued_at)}</span></div>`);
+            if (__props.quote.expires_at) {
+              _push2(`<div data-v-920e9e46${_scopeId}><span class="quote-show__muted" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.expires_at)}:</span><span class="quote-show__value" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.quote.expires_at)}</span></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div>`);
+            if (flashSuccess.value) {
+              _push2(`<div class="alert alert-success" role="alert" data-v-920e9e46${_scopeId}>${ssrInterpolate(flashSuccess.value)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (statusBanner.value) {
+              _push2(`<div class="${ssrRenderClass([statusBannerClass.value, "alert"])}" role="alert" data-v-920e9e46${_scopeId}>${ssrInterpolate(statusBanner.value)}</div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`<div class="table-responsive mb-4" data-v-920e9e46${_scopeId}><table class="quote-show__table" data-v-920e9e46${_scopeId}><thead data-v-920e9e46${_scopeId}><tr data-v-920e9e46${_scopeId}><th data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.description)}</th><th class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.quantity)}</th><th class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.unit_price)}</th><th class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.discount)}</th><th class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.tax)}</th><th class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.amount)}</th></tr></thead><tbody data-v-920e9e46${_scopeId}><!--[-->`);
+            ssrRenderList(__props.quote.lines, (line, index) => {
+              _push2(`<tr data-v-920e9e46${_scopeId}><td data-v-920e9e46${_scopeId}>${ssrInterpolate(line.description)}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(line.quantity)}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(line.unit_price))}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(line.discount_amount))}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(line.tax_amount))}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(line.amount))}</td></tr>`);
+            });
+            _push2(`<!--]--></tbody><tfoot data-v-920e9e46${_scopeId}><tr data-v-920e9e46${_scopeId}><td colspan="5" class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.subtotal)}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(__props.quote.subtotal))} ${ssrInterpolate(__props.quote.currency)}</td></tr><tr data-v-920e9e46${_scopeId}><td colspan="5" class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.discount)}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(__props.quote.discount_amount))}</td></tr><tr data-v-920e9e46${_scopeId}><td colspan="5" class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.tax)}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(__props.quote.tax_amount))}</td></tr><tr class="quote-show__grand" data-v-920e9e46${_scopeId}><td colspan="5" class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.total)}</td><td class="text-end" data-v-920e9e46${_scopeId}>${ssrInterpolate(formatMoney(__props.quote.total))} ${ssrInterpolate(__props.quote.currency)}</td></tr></tfoot></table></div>`);
+            if (__props.quote.terms) {
+              _push2(`<div class="mb-4" data-v-920e9e46${_scopeId}><h5 class="quote-show__section-title" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.terms)}</h5><p class="quote-show__muted" style="${ssrRenderStyle({ "white-space": "pre-wrap" })}" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.quote.terms)}</p></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (__props.branding.sign_url) {
+              _push2(`<div class="text-center mb-5" data-v-920e9e46${_scopeId}><div class="quote-show__label mb-2" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.company_sign)}</div><img${ssrRenderAttr("src", __props.branding.sign_url)}${ssrRenderAttr("alt", __props.branding.name)} class="quote-show__sign" data-v-920e9e46${_scopeId}></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            if (__props.quote.can_respond) {
+              _push2(`<div class="row g-4" data-v-920e9e46${_scopeId}><div class="col-md-6" data-v-920e9e46${_scopeId}><div class="quote-show__panel h-100" data-v-920e9e46${_scopeId}><h4 class="quote-show__section-title" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.accept_title)}</h4><form data-v-920e9e46${_scopeId}><div class="mb-3" data-v-920e9e46${_scopeId}><label class="quote-show__label form-label" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.your_name)}</label><input${ssrRenderAttr("value", unref(acceptForm).responder_name)} type="text" class="quote-show__input" required data-v-920e9e46${_scopeId}>`);
+              if (unref(acceptForm).errors.responder_name) {
+                _push2(`<div class="text-danger small mt-1" data-v-920e9e46${_scopeId}>${ssrInterpolate(unref(acceptForm).errors.responder_name)}</div>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</div><div class="mb-3" data-v-920e9e46${_scopeId}><label class="quote-show__label form-label" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.your_email)}</label><input${ssrRenderAttr("value", unref(acceptForm).responder_email)} type="email" class="quote-show__input" data-v-920e9e46${_scopeId}></div><div class="mb-3" data-v-920e9e46${_scopeId}><label class="quote-show__label form-label" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.optional_note)}</label><textarea rows="3" class="quote-show__input" data-v-920e9e46${_scopeId}>${ssrInterpolate(unref(acceptForm).response_note)}</textarea></div><button type="submit" class="thm-btn"${ssrIncludeBooleanAttr(unref(acceptForm).processing) ? " disabled" : ""} data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.confirm_accept)}</button></form></div></div><div class="col-md-6" data-v-920e9e46${_scopeId}><div class="quote-show__panel h-100" data-v-920e9e46${_scopeId}><h4 class="quote-show__section-title" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.reject_title)}</h4><form data-v-920e9e46${_scopeId}><div class="mb-3" data-v-920e9e46${_scopeId}><label class="quote-show__label form-label" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.your_name)}</label><input${ssrRenderAttr("value", unref(rejectForm).responder_name)} type="text" class="quote-show__input" required data-v-920e9e46${_scopeId}>`);
+              if (unref(rejectForm).errors.responder_name) {
+                _push2(`<div class="text-danger small mt-1" data-v-920e9e46${_scopeId}>${ssrInterpolate(unref(rejectForm).errors.responder_name)}</div>`);
+              } else {
+                _push2(`<!---->`);
+              }
+              _push2(`</div><div class="mb-3" data-v-920e9e46${_scopeId}><label class="quote-show__label form-label" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.your_email)}</label><input${ssrRenderAttr("value", unref(rejectForm).responder_email)} type="email" class="quote-show__input" data-v-920e9e46${_scopeId}></div><div class="mb-3" data-v-920e9e46${_scopeId}><label class="quote-show__label form-label" data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.optional_note)}</label><textarea rows="3" class="quote-show__input" data-v-920e9e46${_scopeId}>${ssrInterpolate(unref(rejectForm).response_note)}</textarea></div><button type="submit" class="btn btn-outline-danger"${ssrIncludeBooleanAttr(unref(rejectForm).processing) ? " disabled" : ""} data-v-920e9e46${_scopeId}>${ssrInterpolate(__props.labels.confirm_reject)}</button></form></div></div></div>`);
+            } else {
+              _push2(`<!---->`);
+            }
+            _push2(`</div></div></div></div></section>`);
+          } else {
+            return [
+              createVNode("section", { class: "page-header" }, [
+                createVNode("div", {
+                  class: "page-header__bg",
+                  style: { backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` }
+                }, null, 4),
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "page-header__inner" }, [
+                    createVNode("h1", null, toDisplayString(__props.labels.title), 1),
+                    createVNode("div", { class: "thm-breadcrumb__box" }, [
+                      createVNode("ul", { class: "thm-breadcrumb list-unstyled" }, [
+                        createVNode("li", null, [
+                          createVNode(unref(Link), {
+                            href: _ctx.route("home")
+                          }, {
+                            default: withCtx(() => [
+                              createVNode("i", { class: "fas fa-home" }),
+                              createTextVNode(toDisplayString(_ctx.trans("Home")), 1)
+                            ]),
+                            _: 1
+                          }, 8, ["href"])
+                        ]),
+                        createVNode("li", null, [
+                          createVNode("span", {
+                            class: `icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`
+                          }, null, 2)
+                        ]),
+                        createVNode("li", null, toDisplayString(__props.quote.quote_number), 1)
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              createVNode("section", { class: "quote-show" }, [
+                createVNode("div", { class: "container" }, [
+                  createVNode("div", { class: "row justify-content-center" }, [
+                    createVNode("div", { class: "col-xl-10" }, [
+                      createVNode("div", { class: "quote-show__card" }, [
+                        createVNode("div", { class: "quote-show__header" }, [
+                          createVNode("div", null, [
+                            __props.branding.logo_url ? (openBlock(), createBlock("img", {
+                              key: 0,
+                              src: __props.branding.logo_url,
+                              alt: __props.branding.name,
+                              class: "quote-show__logo mb-3"
+                            }, null, 8, ["src", "alt"])) : (openBlock(), createBlock("h3", {
+                              key: 1,
+                              class: "quote-show__brand mb-2"
+                            }, toDisplayString(__props.branding.name), 1)),
+                            createVNode("div", { class: "quote-show__muted" }, [
+                              __props.branding.phone ? (openBlock(), createBlock("div", { key: 0 }, toDisplayString(__props.branding.phone), 1)) : createCommentVNode("", true),
+                              __props.branding.email ? (openBlock(), createBlock("div", { key: 1 }, toDisplayString(__props.branding.email), 1)) : createCommentVNode("", true),
+                              __props.branding.address ? (openBlock(), createBlock("div", { key: 2 }, toDisplayString(__props.branding.address), 1)) : createCommentVNode("", true)
+                            ])
+                          ]),
+                          createVNode("div", { class: "quote-show__meta text-md-end" }, [
+                            createVNode("div", { class: "quote-show__number" }, toDisplayString(__props.quote.quote_number), 1),
+                            createVNode("span", { class: "quote-show__badge" }, toDisplayString(__props.labels.status), 1),
+                            createVNode("div", { class: "quote-show__total" }, toDisplayString(formatMoney(__props.quote.total)) + " " + toDisplayString(__props.quote.currency), 1),
+                            createVNode("a", {
+                              href: __props.urls.pdf,
+                              class: "thm-btn quote-show__pdf-btn"
+                            }, toDisplayString(__props.labels.download_pdf), 9, ["href"])
+                          ])
+                        ]),
+                        createVNode("div", { class: "row mb-4" }, [
+                          createVNode("div", { class: "col-md-6" }, [
+                            createVNode("div", { class: "quote-show__label" }, toDisplayString(__props.labels.quote_to), 1),
+                            createVNode("div", { class: "quote-show__value" }, toDisplayString((_d2 = __props.quote.company) == null ? void 0 : _d2.name), 1),
+                            ((_e = __props.quote.company) == null ? void 0 : _e.email) ? (openBlock(), createBlock("div", {
+                              key: 0,
+                              class: "quote-show__muted"
+                            }, toDisplayString(__props.quote.company.email), 1)) : createCommentVNode("", true),
+                            ((_f = __props.quote.deal) == null ? void 0 : _f.title) ? (openBlock(), createBlock("div", {
+                              key: 1,
+                              class: "quote-show__muted"
+                            }, toDisplayString(__props.quote.deal.title), 1)) : createCommentVNode("", true)
+                          ]),
+                          createVNode("div", { class: "col-md-6 text-md-end" }, [
+                            createVNode("div", null, [
+                              createVNode("span", { class: "quote-show__muted" }, toDisplayString(__props.labels.issued_at) + ":", 1),
+                              createVNode("span", { class: "quote-show__value" }, toDisplayString(__props.quote.issued_at), 1)
+                            ]),
+                            __props.quote.expires_at ? (openBlock(), createBlock("div", { key: 0 }, [
+                              createVNode("span", { class: "quote-show__muted" }, toDisplayString(__props.labels.expires_at) + ":", 1),
+                              createVNode("span", { class: "quote-show__value" }, toDisplayString(__props.quote.expires_at), 1)
+                            ])) : createCommentVNode("", true)
+                          ])
+                        ]),
+                        flashSuccess.value ? (openBlock(), createBlock("div", {
+                          key: 0,
+                          class: "alert alert-success",
+                          role: "alert"
+                        }, toDisplayString(flashSuccess.value), 1)) : createCommentVNode("", true),
+                        statusBanner.value ? (openBlock(), createBlock("div", {
+                          key: 1,
+                          class: ["alert", statusBannerClass.value],
+                          role: "alert"
+                        }, toDisplayString(statusBanner.value), 3)) : createCommentVNode("", true),
+                        createVNode("div", { class: "table-responsive mb-4" }, [
+                          createVNode("table", { class: "quote-show__table" }, [
+                            createVNode("thead", null, [
+                              createVNode("tr", null, [
+                                createVNode("th", null, toDisplayString(__props.labels.description), 1),
+                                createVNode("th", { class: "text-end" }, toDisplayString(__props.labels.quantity), 1),
+                                createVNode("th", { class: "text-end" }, toDisplayString(__props.labels.unit_price), 1),
+                                createVNode("th", { class: "text-end" }, toDisplayString(__props.labels.discount), 1),
+                                createVNode("th", { class: "text-end" }, toDisplayString(__props.labels.tax), 1),
+                                createVNode("th", { class: "text-end" }, toDisplayString(__props.labels.amount), 1)
+                              ])
+                            ]),
+                            createVNode("tbody", null, [
+                              (openBlock(true), createBlock(Fragment, null, renderList(__props.quote.lines, (line, index) => {
+                                return openBlock(), createBlock("tr", { key: index }, [
+                                  createVNode("td", null, toDisplayString(line.description), 1),
+                                  createVNode("td", { class: "text-end" }, toDisplayString(line.quantity), 1),
+                                  createVNode("td", { class: "text-end" }, toDisplayString(formatMoney(line.unit_price)), 1),
+                                  createVNode("td", { class: "text-end" }, toDisplayString(formatMoney(line.discount_amount)), 1),
+                                  createVNode("td", { class: "text-end" }, toDisplayString(formatMoney(line.tax_amount)), 1),
+                                  createVNode("td", { class: "text-end" }, toDisplayString(formatMoney(line.amount)), 1)
+                                ]);
+                              }), 128))
+                            ]),
+                            createVNode("tfoot", null, [
+                              createVNode("tr", null, [
+                                createVNode("td", {
+                                  colspan: "5",
+                                  class: "text-end"
+                                }, toDisplayString(__props.labels.subtotal), 1),
+                                createVNode("td", { class: "text-end" }, toDisplayString(formatMoney(__props.quote.subtotal)) + " " + toDisplayString(__props.quote.currency), 1)
+                              ]),
+                              createVNode("tr", null, [
+                                createVNode("td", {
+                                  colspan: "5",
+                                  class: "text-end"
+                                }, toDisplayString(__props.labels.discount), 1),
+                                createVNode("td", { class: "text-end" }, toDisplayString(formatMoney(__props.quote.discount_amount)), 1)
+                              ]),
+                              createVNode("tr", null, [
+                                createVNode("td", {
+                                  colspan: "5",
+                                  class: "text-end"
+                                }, toDisplayString(__props.labels.tax), 1),
+                                createVNode("td", { class: "text-end" }, toDisplayString(formatMoney(__props.quote.tax_amount)), 1)
+                              ]),
+                              createVNode("tr", { class: "quote-show__grand" }, [
+                                createVNode("td", {
+                                  colspan: "5",
+                                  class: "text-end"
+                                }, toDisplayString(__props.labels.total), 1),
+                                createVNode("td", { class: "text-end" }, toDisplayString(formatMoney(__props.quote.total)) + " " + toDisplayString(__props.quote.currency), 1)
+                              ])
+                            ])
+                          ])
+                        ]),
+                        __props.quote.terms ? (openBlock(), createBlock("div", {
+                          key: 2,
+                          class: "mb-4"
+                        }, [
+                          createVNode("h5", { class: "quote-show__section-title" }, toDisplayString(__props.labels.terms), 1),
+                          createVNode("p", {
+                            class: "quote-show__muted",
+                            style: { "white-space": "pre-wrap" }
+                          }, toDisplayString(__props.quote.terms), 1)
+                        ])) : createCommentVNode("", true),
+                        __props.branding.sign_url ? (openBlock(), createBlock("div", {
+                          key: 3,
+                          class: "text-center mb-5"
+                        }, [
+                          createVNode("div", { class: "quote-show__label mb-2" }, toDisplayString(__props.labels.company_sign), 1),
+                          createVNode("img", {
+                            src: __props.branding.sign_url,
+                            alt: __props.branding.name,
+                            class: "quote-show__sign"
+                          }, null, 8, ["src", "alt"])
+                        ])) : createCommentVNode("", true),
+                        __props.quote.can_respond ? (openBlock(), createBlock("div", {
+                          key: 4,
+                          class: "row g-4"
+                        }, [
+                          createVNode("div", { class: "col-md-6" }, [
+                            createVNode("div", { class: "quote-show__panel h-100" }, [
+                              createVNode("h4", { class: "quote-show__section-title" }, toDisplayString(__props.labels.accept_title), 1),
+                              createVNode("form", {
+                                onSubmit: withModifiers(submitAccept, ["prevent"])
+                              }, [
+                                createVNode("div", { class: "mb-3" }, [
+                                  createVNode("label", { class: "quote-show__label form-label" }, toDisplayString(__props.labels.your_name), 1),
+                                  withDirectives(createVNode("input", {
+                                    "onUpdate:modelValue": ($event) => unref(acceptForm).responder_name = $event,
+                                    type: "text",
+                                    class: "quote-show__input",
+                                    required: ""
+                                  }, null, 8, ["onUpdate:modelValue"]), [
+                                    [vModelText, unref(acceptForm).responder_name]
+                                  ]),
+                                  unref(acceptForm).errors.responder_name ? (openBlock(), createBlock("div", {
+                                    key: 0,
+                                    class: "text-danger small mt-1"
+                                  }, toDisplayString(unref(acceptForm).errors.responder_name), 1)) : createCommentVNode("", true)
+                                ]),
+                                createVNode("div", { class: "mb-3" }, [
+                                  createVNode("label", { class: "quote-show__label form-label" }, toDisplayString(__props.labels.your_email), 1),
+                                  withDirectives(createVNode("input", {
+                                    "onUpdate:modelValue": ($event) => unref(acceptForm).responder_email = $event,
+                                    type: "email",
+                                    class: "quote-show__input"
+                                  }, null, 8, ["onUpdate:modelValue"]), [
+                                    [vModelText, unref(acceptForm).responder_email]
+                                  ])
+                                ]),
+                                createVNode("div", { class: "mb-3" }, [
+                                  createVNode("label", { class: "quote-show__label form-label" }, toDisplayString(__props.labels.optional_note), 1),
+                                  withDirectives(createVNode("textarea", {
+                                    "onUpdate:modelValue": ($event) => unref(acceptForm).response_note = $event,
+                                    rows: "3",
+                                    class: "quote-show__input"
+                                  }, null, 8, ["onUpdate:modelValue"]), [
+                                    [vModelText, unref(acceptForm).response_note]
+                                  ])
+                                ]),
+                                createVNode("button", {
+                                  type: "submit",
+                                  class: "thm-btn",
+                                  disabled: unref(acceptForm).processing
+                                }, toDisplayString(__props.labels.confirm_accept), 9, ["disabled"])
+                              ], 32)
+                            ])
+                          ]),
+                          createVNode("div", { class: "col-md-6" }, [
+                            createVNode("div", { class: "quote-show__panel h-100" }, [
+                              createVNode("h4", { class: "quote-show__section-title" }, toDisplayString(__props.labels.reject_title), 1),
+                              createVNode("form", {
+                                onSubmit: withModifiers(submitReject, ["prevent"])
+                              }, [
+                                createVNode("div", { class: "mb-3" }, [
+                                  createVNode("label", { class: "quote-show__label form-label" }, toDisplayString(__props.labels.your_name), 1),
+                                  withDirectives(createVNode("input", {
+                                    "onUpdate:modelValue": ($event) => unref(rejectForm).responder_name = $event,
+                                    type: "text",
+                                    class: "quote-show__input",
+                                    required: ""
+                                  }, null, 8, ["onUpdate:modelValue"]), [
+                                    [vModelText, unref(rejectForm).responder_name]
+                                  ]),
+                                  unref(rejectForm).errors.responder_name ? (openBlock(), createBlock("div", {
+                                    key: 0,
+                                    class: "text-danger small mt-1"
+                                  }, toDisplayString(unref(rejectForm).errors.responder_name), 1)) : createCommentVNode("", true)
+                                ]),
+                                createVNode("div", { class: "mb-3" }, [
+                                  createVNode("label", { class: "quote-show__label form-label" }, toDisplayString(__props.labels.your_email), 1),
+                                  withDirectives(createVNode("input", {
+                                    "onUpdate:modelValue": ($event) => unref(rejectForm).responder_email = $event,
+                                    type: "email",
+                                    class: "quote-show__input"
+                                  }, null, 8, ["onUpdate:modelValue"]), [
+                                    [vModelText, unref(rejectForm).responder_email]
+                                  ])
+                                ]),
+                                createVNode("div", { class: "mb-3" }, [
+                                  createVNode("label", { class: "quote-show__label form-label" }, toDisplayString(__props.labels.optional_note), 1),
+                                  withDirectives(createVNode("textarea", {
+                                    "onUpdate:modelValue": ($event) => unref(rejectForm).response_note = $event,
+                                    rows: "3",
+                                    class: "quote-show__input"
+                                  }, null, 8, ["onUpdate:modelValue"]), [
+                                    [vModelText, unref(rejectForm).response_note]
+                                  ])
+                                ]),
+                                createVNode("button", {
+                                  type: "submit",
+                                  class: "btn btn-outline-danger",
+                                  disabled: unref(rejectForm).processing
+                                }, toDisplayString(__props.labels.confirm_reject), 9, ["disabled"])
+                              ], 32)
+                            ])
+                          ])
+                        ])) : createCommentVNode("", true)
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<!--]-->`);
+    };
+  }
+};
+const _sfc_setup$H = _sfc_main$H.setup;
+_sfc_main$H.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/CRM/resources/assets/js/Pages/QuoteShow.vue");
+  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+};
+const QuoteShow = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__scopeId", "data-v-920e9e46"]]);
+const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: QuoteShow
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$e = {
   components: {
-    AppLayout: _sfc_main$L
+    AppLayout: _sfc_main$M
   }
 };
 const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
@@ -4695,7 +5202,7 @@ const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("About Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4794,7 +5301,7 @@ const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(ssrRenderComponent(_sfc_main$O, { clients: clients.value }, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$P, { clients: clients.value }, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -5299,7 +5806,7 @@ const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              createVNode(_sfc_main$O, { clients: clients.value }, null, 8, ["clients"])
+              createVNode(_sfc_main$P, { clients: clients.value }, null, 8, ["clients"])
             ];
           }
         }),
@@ -5315,7 +5822,7 @@ _sfc_main$G.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/AboutUs.vue");
   return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
 };
-const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$G
 }, Symbol.toStringTag, { value: "Module" }));
@@ -5360,8 +5867,8 @@ _sfc_main$F.setup = (props, ctx) => {
 };
 const __default__$d = {
   components: {
-    AppLayout: _sfc_main$L,
-    HomeBlogCard: _sfc_main$Q,
+    AppLayout: _sfc_main$M,
+    HomeBlogCard: _sfc_main$R,
     CtaTwo: _sfc_main$F
   }
 };
@@ -5489,7 +5996,7 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5513,7 +6020,7 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(`<!--[-->`);
               ssrRenderList(blogs.value.data, (blog) => {
                 _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$Q, {
+                _push2(ssrRenderComponent(_sfc_main$R, {
                   post: blog,
                   variant: "featured",
                   locale: locale.value,
@@ -5658,7 +6165,7 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
                         class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
                         "data-wow-delay": "100ms"
                       }, [
-                        createVNode(_sfc_main$Q, {
+                        createVNode(_sfc_main$R, {
                           post: blog,
                           variant: "featured",
                           locale: locale.value,
@@ -5750,14 +6257,14 @@ _sfc_main$E.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogIndex.vue");
   return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
 };
-const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$E
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$c = {
   components: {
-    AppLayout: _sfc_main$L,
-    HomeBlogCard: _sfc_main$Q,
+    AppLayout: _sfc_main$M,
+    HomeBlogCard: _sfc_main$R,
     CtaTwo: _sfc_main$F
   }
 };
@@ -5827,7 +6334,7 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6021,7 +6528,7 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<div class="container"${_scopeId}><div class="related-blogs mt-20 mt-xs-10"${_scopeId}><h4 class="mb-5"${_scopeId}>${ssrInterpolate(trans("Related Blogs"))}:</h4><div class="row"${_scopeId}><!--[-->`);
               ssrRenderList(relatedBlogs.value, (relatedBlog) => {
                 _push2(`<div class="col-md-4 mb-30"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$Q, {
+                _push2(ssrRenderComponent(_sfc_main$R, {
                   post: relatedBlog,
                   variant: "featured",
                   locale: locale.value,
@@ -6340,7 +6847,7 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
                           key: relatedBlog.id,
                           class: "col-md-4 mb-30"
                         }, [
-                          createVNode(_sfc_main$Q, {
+                          createVNode(_sfc_main$R, {
                             post: relatedBlog,
                             variant: "featured",
                             locale: locale.value,
@@ -6369,13 +6876,13 @@ _sfc_main$D.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogShow.vue");
   return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
 };
-const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$D
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$b = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     CtaTwo: _sfc_main$F
   }
 };
@@ -6616,7 +7123,7 @@ const _sfc_main$C = /* @__PURE__ */ Object.assign(__default__$b, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-f57d8941${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-f57d8941${_scopeId}></div><div class="container" data-v-f57d8941${_scopeId}><div class="page-header__inner" data-v-f57d8941${_scopeId}><h1 data-v-f57d8941${_scopeId}>${trans("FAQs") ?? ""}</h1><div class="thm-breadcrumb__box" data-v-f57d8941${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f57d8941${_scopeId}><li data-v-f57d8941${_scopeId}>`);
@@ -6761,13 +7268,13 @@ _sfc_main$C.setup = (props, ctx) => {
   return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
 const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-f57d8941"]]);
-const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Faq
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$a = {
   components: {
-    AppLayout: _sfc_main$L
+    AppLayout: _sfc_main$M
   }
 };
 const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$a, {
@@ -6804,7 +7311,7 @@ const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$a, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6893,13 +7400,13 @@ _sfc_main$B.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PageShow.vue");
   return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
-const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$B
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$9 = {
   components: {
-    AppLayout: _sfc_main$L
+    AppLayout: _sfc_main$M
   }
 };
 const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$9, {
@@ -7024,7 +7531,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$9, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f;
           if (_push2) {
@@ -7218,13 +7725,13 @@ _sfc_main$A.setup = (props, ctx) => {
   return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
 const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-e574eeb2"]]);
-const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: PrivacyPolicy
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$8 = {
   components: {
-    AppLayout: _sfc_main$L
+    AppLayout: _sfc_main$M
   }
 };
 const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$8, {
@@ -7372,7 +7879,7 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$8, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -7562,13 +8069,13 @@ _sfc_main$z.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Team.vue");
   return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
-const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$z
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$7 = {
   components: {
-    AppLayout: _sfc_main$L
+    AppLayout: _sfc_main$M
   }
 };
 const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$7, {
@@ -7709,7 +8216,7 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$7, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -7849,13 +8356,13 @@ _sfc_main$y.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Testimonials.vue");
   return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
-const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$y
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$6 = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     CtaTwo: _sfc_main$F,
     ProductCard
   }
@@ -7988,7 +8495,7 @@ const _sfc_main$x = /* @__PURE__ */ Object.assign(__default__$6, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-ad6cf210${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-ad6cf210${_scopeId}></div><div class="container" data-v-ad6cf210${_scopeId}><div class="page-header__inner" data-v-ad6cf210${_scopeId}><h1 data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Products"))}</h1><div class="thm-breadcrumb__box" data-v-ad6cf210${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-ad6cf210${_scopeId}><li data-v-ad6cf210${_scopeId}>`);
@@ -8283,7 +8790,7 @@ _sfc_main$x.setup = (props, ctx) => {
   return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
 const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-ad6cf210"]]);
-const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductIndex
 }, Symbol.toStringTag, { value: "Module" }));
@@ -8429,7 +8936,7 @@ _sfc_main$w.setup = (props, ctx) => {
 const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-b7a5a2ac"]]);
 const __default__$5 = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     CtaTwo: _sfc_main$F,
     ContactRequestModal,
     ProductCard
@@ -8581,7 +9088,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$5, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-d44a9bac${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-d44a9bac${_scopeId}></div><div class="container" data-v-d44a9bac${_scopeId}><div class="page-header__inner" data-v-d44a9bac${_scopeId}><h2 data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-d44a9bac${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d44a9bac${_scopeId}><li data-v-d44a9bac${_scopeId}>`);
@@ -9016,7 +9523,7 @@ _sfc_main$v.setup = (props, ctx) => {
   return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
 const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-d44a9bac"]]);
-const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductShow
 }, Symbol.toStringTag, { value: "Module" }));
@@ -9589,7 +10096,7 @@ _sfc_main$s.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/Portal/Projects/Index.vue");
   return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
-const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$s
 }, Symbol.toStringTag, { value: "Module" }));
@@ -9991,13 +10498,13 @@ _sfc_main$r.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/Portal/Projects/Show.vue");
   return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$r
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$4 = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     CtaTwo: _sfc_main$F,
     UseCaseCard
   }
@@ -10126,7 +10633,7 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$4, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-0fe03073${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-0fe03073${_scopeId}></div><div class="container" data-v-0fe03073${_scopeId}><div class="page-header__inner" data-v-0fe03073${_scopeId}><h1 data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</h1><div class="thm-breadcrumb__box" data-v-0fe03073${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-0fe03073${_scopeId}><li data-v-0fe03073${_scopeId}>`);
@@ -10385,13 +10892,13 @@ _sfc_main$q.setup = (props, ctx) => {
   return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
 const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-0fe03073"]]);
-const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseIndex
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$3 = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     CtaTwo: _sfc_main$F,
     UseCaseCard
   }
@@ -10531,7 +11038,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$3, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-d996bdeb${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-d996bdeb${_scopeId}></div><div class="container" data-v-d996bdeb${_scopeId}><div class="page-header__inner" data-v-d996bdeb${_scopeId}><h2 data-v-d996bdeb${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-d996bdeb${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d996bdeb${_scopeId}><li data-v-d996bdeb${_scopeId}>`);
@@ -11010,13 +11517,13 @@ _sfc_main$p.setup = (props, ctx) => {
   return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
 const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-d996bdeb"]]);
-const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseShow
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$2 = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     CtaTwo: _sfc_main$F
   }
 };
@@ -11223,7 +11730,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-aa581980${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-aa581980${_scopeId}></div><div class="container" data-v-aa581980${_scopeId}><div class="page-header__inner" data-v-aa581980${_scopeId}><h1 data-v-aa581980${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h1><div class="thm-breadcrumb__box" data-v-aa581980${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-aa581980${_scopeId}><li data-v-aa581980${_scopeId}>`);
@@ -11581,13 +12088,13 @@ _sfc_main$o.setup = (props, ctx) => {
   return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
 const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-aa581980"]]);
-const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$1 = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     CtaTwo: _sfc_main$F
   }
 };
@@ -11765,7 +12272,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
@@ -12174,7 +12681,7 @@ _sfc_main$n.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceShow.vue");
   return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$n
 }, Symbol.toStringTag, { value: "Module" }));
@@ -12493,7 +13000,7 @@ _sfc_main$l.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Create.vue");
   return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
-const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$l
 }, Symbol.toStringTag, { value: "Module" }));
@@ -12801,7 +13308,7 @@ _sfc_main$k.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Index.vue");
   return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
-const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$k
 }, Symbol.toStringTag, { value: "Module" }));
@@ -13104,13 +13611,13 @@ _sfc_main$j.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Show.vue");
   return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
-const __vite_glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$j
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$i = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     Link,
     Head
   },
@@ -13433,13 +13940,13 @@ _sfc_main$i.setup = (props, ctx) => {
   return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
 };
 const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$4], ["__scopeId", "data-v-5b68d6b8"]]);
-const __vite_glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ForgotPassword
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$h = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     Link,
     Head
   },
@@ -13848,13 +14355,13 @@ _sfc_main$h.setup = (props, ctx) => {
   return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
 const Login = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-cc55ccad"]]);
-const __vite_glob_0_22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Login
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$g = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     Link,
     Head
   },
@@ -14292,13 +14799,13 @@ _sfc_main$g.setup = (props, ctx) => {
   return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
 const Register = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-166d8071"]]);
-const __vite_glob_0_23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_24 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Register
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$f = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     Link,
     Head
   },
@@ -14690,13 +15197,13 @@ _sfc_main$f.setup = (props, ctx) => {
   return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
 const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-f5323f04"]]);
-const __vite_glob_0_24 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_25 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ResetPassword
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$e = {
   components: {
-    AppLayout: _sfc_main$L,
+    AppLayout: _sfc_main$M,
     Head
   },
   setup() {
@@ -14941,7 +15448,7 @@ _sfc_main$e.setup = (props, ctx) => {
   return _sfc_setup$e ? _sfc_setup$e(props, ctx) : void 0;
 };
 const TwoFactorChallenge = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["ssrRender", _sfc_ssrRender]]);
-const __vite_glob_0_25 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_26 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: TwoFactorChallenge
 }, Symbol.toStringTag, { value: "Module" }));
@@ -14977,7 +15484,7 @@ const _sfc_main$d = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-d7e10297${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-d7e10297${_scopeId}></div><div class="container" data-v-d7e10297${_scopeId}><div class="page-header__inner" data-v-d7e10297${_scopeId}><h1 data-v-d7e10297${_scopeId}>${ssrInterpolate(trans("Careers"))}</h1><div class="thm-breadcrumb__box" data-v-d7e10297${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d7e10297${_scopeId}><li data-v-d7e10297${_scopeId}>`);
@@ -15126,7 +15633,7 @@ _sfc_main$d.setup = (props, ctx) => {
   return _sfc_setup$d ? _sfc_setup$d(props, ctx) : void 0;
 };
 const Index = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-d7e10297"]]);
-const __vite_glob_0_26 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index
 }, Symbol.toStringTag, { value: "Module" }));
@@ -15176,7 +15683,7 @@ const _sfc_main$c = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-e00ffd2b${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-e00ffd2b${_scopeId}></div><div class="container" data-v-e00ffd2b${_scopeId}><div class="page-header__inner" data-v-e00ffd2b${_scopeId}><h1 data-v-e00ffd2b${_scopeId}>${ssrInterpolate(__props.position.title)}</h1><div class="thm-breadcrumb__box" data-v-e00ffd2b${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-e00ffd2b${_scopeId}><li data-v-e00ffd2b${_scopeId}>`);
@@ -15475,7 +15982,7 @@ _sfc_main$c.setup = (props, ctx) => {
   return _sfc_setup$c ? _sfc_setup$c(props, ctx) : void 0;
 };
 const Show = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-e00ffd2b"]]);
-const __vite_glob_0_27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_28 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Show
 }, Symbol.toStringTag, { value: "Module" }));
@@ -15592,7 +16099,7 @@ _sfc_main$b.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/ConfirmPassword.vue");
   return _sfc_setup$b ? _sfc_setup$b(props, ctx) : void 0;
 };
-const __vite_glob_0_28 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_29 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$b
 }, Symbol.toStringTag, { value: "Module" }));
@@ -15855,7 +16362,7 @@ _sfc_main$a.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Dashboard.vue");
   return _sfc_setup$a ? _sfc_setup$a(props, ctx) : void 0;
 };
-const __vite_glob_0_29 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_30 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$a
 }, Symbol.toStringTag, { value: "Module" }));
@@ -16425,7 +16932,7 @@ _sfc_main$9.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Profile.vue");
   return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
-const __vite_glob_0_30 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_31 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$9
 }, Symbol.toStringTag, { value: "Module" }));
@@ -16643,7 +17150,7 @@ _sfc_main$8.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Index.vue");
   return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
-const __vite_glob_0_31 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_32 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$8
 }, Symbol.toStringTag, { value: "Module" }));
@@ -16891,13 +17398,13 @@ _sfc_main$7.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Show.vue");
   return _sfc_setup$7 ? _sfc_setup$7(props, ctx) : void 0;
 };
-const __vite_glob_0_32 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const __vite_glob_0_33 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: _sfc_main$7
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__ = {
   components: {
-    AppLayout: _sfc_main$L
+    AppLayout: _sfc_main$M
   }
 };
 const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__, {
@@ -17048,7 +17555,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$L, null, {
+      _push(ssrRenderComponent(_sfc_main$M, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
           if (_push2) {
@@ -17880,37 +18387,38 @@ createServer(
           /* @__PURE__ */ Object.assign({
             "../../Modules/Base/resources/assets/js/Pages/Index.vue": __vite_glob_0_0,
             "../../Modules/CRM/resources/assets/js/Pages/Index.vue": __vite_glob_0_1,
-            "../../Modules/Cms/resources/assets/js/Pages/AboutUs.vue": __vite_glob_0_2,
-            "../../Modules/Cms/resources/assets/js/Pages/BlogIndex.vue": __vite_glob_0_3,
-            "../../Modules/Cms/resources/assets/js/Pages/BlogShow.vue": __vite_glob_0_4,
-            "../../Modules/Cms/resources/assets/js/Pages/Faq.vue": __vite_glob_0_5,
-            "../../Modules/Cms/resources/assets/js/Pages/PageShow.vue": __vite_glob_0_6,
-            "../../Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue": __vite_glob_0_7,
-            "../../Modules/Cms/resources/assets/js/Pages/Team.vue": __vite_glob_0_8,
-            "../../Modules/Cms/resources/assets/js/Pages/Testimonials.vue": __vite_glob_0_9,
-            "../../Modules/Product/resources/assets/js/Pages/ProductIndex.vue": __vite_glob_0_10,
-            "../../Modules/Product/resources/assets/js/Pages/ProductShow.vue": __vite_glob_0_11,
-            "../../Modules/Project/resources/assets/js/Pages/Portal/Projects/Index.vue": __vite_glob_0_12,
-            "../../Modules/Project/resources/assets/js/Pages/Portal/Projects/Show.vue": __vite_glob_0_13,
-            "../../Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue": __vite_glob_0_14,
-            "../../Modules/Project/resources/assets/js/Pages/UseCaseShow.vue": __vite_glob_0_15,
-            "../../Modules/Services/resources/assets/js/Pages/ServiceIndex.vue": __vite_glob_0_16,
-            "../../Modules/Services/resources/assets/js/Pages/ServiceShow.vue": __vite_glob_0_17,
-            "../../Modules/Support/resources/assets/js/Pages/Portal/Tickets/Create.vue": __vite_glob_0_18,
-            "../../Modules/Support/resources/assets/js/Pages/Portal/Tickets/Index.vue": __vite_glob_0_19,
-            "../../Modules/Support/resources/assets/js/Pages/Portal/Tickets/Show.vue": __vite_glob_0_20,
-            "../../Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": __vite_glob_0_21,
-            "../../Modules/User/resources/assets/js/Pages/Auth/Login.vue": __vite_glob_0_22,
-            "../../Modules/User/resources/assets/js/Pages/Auth/Register.vue": __vite_glob_0_23,
-            "../../Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": __vite_glob_0_24,
-            "../../Modules/User/resources/assets/js/Pages/Auth/TwoFactorChallenge.vue": __vite_glob_0_25,
-            "../../Modules/User/resources/assets/js/Pages/Jobs/Index.vue": __vite_glob_0_26,
-            "../../Modules/User/resources/assets/js/Pages/Jobs/Show.vue": __vite_glob_0_27,
-            "../../Modules/User/resources/assets/js/Pages/Portal/ConfirmPassword.vue": __vite_glob_0_28,
-            "../../Modules/User/resources/assets/js/Pages/Portal/Dashboard.vue": __vite_glob_0_29,
-            "../../Modules/User/resources/assets/js/Pages/Portal/Profile.vue": __vite_glob_0_30,
-            "../../Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Index.vue": __vite_glob_0_31,
-            "../../Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Show.vue": __vite_glob_0_32
+            "../../Modules/CRM/resources/assets/js/Pages/QuoteShow.vue": __vite_glob_0_2,
+            "../../Modules/Cms/resources/assets/js/Pages/AboutUs.vue": __vite_glob_0_3,
+            "../../Modules/Cms/resources/assets/js/Pages/BlogIndex.vue": __vite_glob_0_4,
+            "../../Modules/Cms/resources/assets/js/Pages/BlogShow.vue": __vite_glob_0_5,
+            "../../Modules/Cms/resources/assets/js/Pages/Faq.vue": __vite_glob_0_6,
+            "../../Modules/Cms/resources/assets/js/Pages/PageShow.vue": __vite_glob_0_7,
+            "../../Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue": __vite_glob_0_8,
+            "../../Modules/Cms/resources/assets/js/Pages/Team.vue": __vite_glob_0_9,
+            "../../Modules/Cms/resources/assets/js/Pages/Testimonials.vue": __vite_glob_0_10,
+            "../../Modules/Product/resources/assets/js/Pages/ProductIndex.vue": __vite_glob_0_11,
+            "../../Modules/Product/resources/assets/js/Pages/ProductShow.vue": __vite_glob_0_12,
+            "../../Modules/Project/resources/assets/js/Pages/Portal/Projects/Index.vue": __vite_glob_0_13,
+            "../../Modules/Project/resources/assets/js/Pages/Portal/Projects/Show.vue": __vite_glob_0_14,
+            "../../Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue": __vite_glob_0_15,
+            "../../Modules/Project/resources/assets/js/Pages/UseCaseShow.vue": __vite_glob_0_16,
+            "../../Modules/Services/resources/assets/js/Pages/ServiceIndex.vue": __vite_glob_0_17,
+            "../../Modules/Services/resources/assets/js/Pages/ServiceShow.vue": __vite_glob_0_18,
+            "../../Modules/Support/resources/assets/js/Pages/Portal/Tickets/Create.vue": __vite_glob_0_19,
+            "../../Modules/Support/resources/assets/js/Pages/Portal/Tickets/Index.vue": __vite_glob_0_20,
+            "../../Modules/Support/resources/assets/js/Pages/Portal/Tickets/Show.vue": __vite_glob_0_21,
+            "../../Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": __vite_glob_0_22,
+            "../../Modules/User/resources/assets/js/Pages/Auth/Login.vue": __vite_glob_0_23,
+            "../../Modules/User/resources/assets/js/Pages/Auth/Register.vue": __vite_glob_0_24,
+            "../../Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": __vite_glob_0_25,
+            "../../Modules/User/resources/assets/js/Pages/Auth/TwoFactorChallenge.vue": __vite_glob_0_26,
+            "../../Modules/User/resources/assets/js/Pages/Jobs/Index.vue": __vite_glob_0_27,
+            "../../Modules/User/resources/assets/js/Pages/Jobs/Show.vue": __vite_glob_0_28,
+            "../../Modules/User/resources/assets/js/Pages/Portal/ConfirmPassword.vue": __vite_glob_0_29,
+            "../../Modules/User/resources/assets/js/Pages/Portal/Dashboard.vue": __vite_glob_0_30,
+            "../../Modules/User/resources/assets/js/Pages/Portal/Profile.vue": __vite_glob_0_31,
+            "../../Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Index.vue": __vite_glob_0_32,
+            "../../Modules/User/resources/assets/js/Pages/Portal/Subscriptions/Show.vue": __vite_glob_0_33
           })
         );
       }

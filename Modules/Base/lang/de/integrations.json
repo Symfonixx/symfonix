@@ -1,0 +1,45 @@
+{
+    "title": "APIs & Integrationen",
+    "page_description": "E-Mail-Zustellung und WhatsApp-Business-API-Anmeldedaten für das Admin-Panel konfigurieren.",
+    "form_description": "Gespeicherte Werte überschreiben .env. Leere Felder nutzen den .env-Fallback. Leere Geheimfelder behalten den aktuellen Wert.",
+    "tabs": {
+        "email": "E-Mail",
+        "whatsapp": "WhatsApp"
+    },
+    "status": {
+        "email": "E-Mail-API",
+        "whatsapp": "WhatsApp-API",
+        "system": "Systemeinstellungen",
+        "system_link": "Systemkonfigurationen öffnen",
+        "configured": "Konfiguriert",
+        "missing": "Nicht konfiguriert"
+    },
+    "email": {
+        "title": "E-Mail / SMTP",
+        "description": "Ausgehender Mail-Transport. Leere Felder verwenden den passenden MAIL_*-Wert aus .env.",
+        "mailer": "Mailer",
+        "mailer_hint": "SMTP wird für Produktion empfohlen. Log schreibt Nachrichten in das Anwendungsprotokoll.",
+        "host": "SMTP-Host",
+        "port": "SMTP-Port",
+        "username": "SMTP-Benutzername",
+        "password": "SMTP-Passwort",
+        "password_hint": "Leer lassen, um das aktuelle Passwort (Datenbank oder .env) beizubehalten.",
+        "encryption": "Verschlüsselung",
+        "encryption_hint": "Üblicherweise TLS auf Port 587 oder SSL auf Port 465.",
+        "from_address": "Absenderadresse",
+        "from_name": "Absendername",
+        "env_hint": "Leer lassen, um den als Platzhalter angezeigten .env-Wert zu verwenden."
+    },
+    "whatsapp": {
+        "title": "WhatsApp Business API",
+        "description": "Meta Cloud API-Anmeldedaten zum Senden von WhatsApp-Nachrichten. Leere Felder fallen auf WHATSAPP_* in .env zurück.",
+        "api_token": "Zugriffstoken",
+        "api_token_hint": "Systembenutzertoken. Leer lassen, um das aktuelle Token zu behalten.",
+        "phone_number_id": "Telefonnummer-ID",
+        "business_account_id": "Business-Konto-ID",
+        "api_version": "API-Version",
+        "webhook_verify_token": "Webhook-Verify-Token",
+        "webhook_verify_token_hint": "Optional. Zur Verifizierung von Meta-Webhooks. Leer lassen, um den aktuellen Wert zu behalten.",
+        "env_hint": "Leer lassen, um den als Platzhalter angezeigten .env-Wert zu verwenden."
+    }
+}

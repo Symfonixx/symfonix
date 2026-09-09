@@ -10,16 +10,16 @@
     <x-admin.breadcrumb :pageTitle="__('crm::lead.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.leads.create') }}">
-            {{ __('crm::lead.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::lead.actions.add') }}
         </a>
     </div>
 @endsection
 
 <x-admin-layout>
-    <div class="card mb-5">
+    <div class="card sx-filter-bar mb-5">
         <div class="card-body py-5">
             <form method="GET" action="{{ route('admin.leads.index') }}" class="row g-4 align-items-end">
-                <div class="col-md-3">
+                <div class="col-md-4 col-xl-2">
                     <label class="form-label">{{ __('crm::lead.filters.status') }}</label>
                     <select name="status" class="form-select form-select-solid" data-control="select2">
                         <option value="">{{ __('crm::lead.filters.all') }}</option>
@@ -30,7 +30,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4 col-xl-2">
                     <label class="form-label">{{ __('crm::lead.filters.source') }}</label>
                     <select name="source" class="form-select form-select-solid" data-control="select2">
                         <option value="">{{ __('crm::lead.filters.all') }}</option>
@@ -41,7 +41,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4 col-xl-2">
                     <label class="form-label">{{ __('crm::lead.filters.company') }}</label>
                     <select name="company_id" class="form-select form-select-solid" data-control="select2">
                         <option value="">{{ __('crm::lead.filters.all') }}</option>
@@ -52,7 +52,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4 col-xl-2">
                     <label class="form-label">{{ __('crm::lead.filters.assignee') }}</label>
                     <select name="assigned_to" class="form-select form-select-solid" data-control="select2">
                         <option value="">{{ __('crm::lead.filters.all') }}</option>
@@ -63,11 +63,48 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-12 d-flex gap-2">
-                    <button type="submit" class="btn btn-primary btn-sm">{{ __('Filter') }}</button>
-                    <a href="{{ route('admin.leads.index') }}" class="btn btn-light btn-sm">{{ __('Reset') }}</a>
+                <div class="col-md-4 col-xl-2">
+                    <label class="form-label">{{ __('crm::lead.filters.tags') }}</label>
+                    <select name="tag_id" class="form-select form-select-solid" data-control="select2">
+                        <option value="">{{ __('crm::lead.filters.all') }}</option>
+                        @foreach(($tags ?? collect()) as $tag)
+                            <option value="{{ $tag->id }}" @selected((int) ($filters['tag_id'] ?? 0) === $tag->id)>
+                                {{ $tag->display_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4 col-xl-2 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm flex-grow-1">
+                        <i class="bi bi-funnel me-1"></i>{{ __('Filter') }}
+                    </button>
+                    <a href="{{ route('admin.leads.index') }}" class="btn btn-light btn-sm">
+                        <i class="bi bi-arrow-counterclockwise me-1"></i>{{ __('Reset') }}
+                    </a>
                 </div>
             </form>
+
+            @if(($tags ?? collect())->isNotEmpty())
+                <div class="separator my-5"></div>
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <span class="text-muted fs-7 fw-semibold me-1">{{ __('crm::lead.fields.tags') }}:</span>
+                    <a href="{{ route('admin.leads.index', collect($filters)->except('tag_id')->filter()->all()) }}"
+                       class="badge {{ empty($filters['tag_id']) ? 'badge-primary' : 'badge-light' }} cursor-pointer text-decoration-none px-3 py-2">
+                        {{ __('crm::lead.filters.all') }}
+                    </a>
+                    @foreach($tags as $tag)
+                        @php
+                            $isActiveTag = (int) ($filters['tag_id'] ?? 0) === (int) $tag->id;
+                            $chipFilters = collect($filters)->filter()->all();
+                            $chipFilters['tag_id'] = $tag->id;
+                        @endphp
+                        <a href="{{ route('admin.leads.index', $chipFilters) }}"
+                           class="badge {{ $isActiveTag ? 'badge-' . $tag->color : 'badge-light-' . $tag->color }} cursor-pointer text-decoration-none px-3 py-2">
+                            <i class="bi bi-tag-fill me-1"></i>{{ $tag->display_name }}
+                        </a>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 
@@ -83,6 +120,7 @@
             </th>
             <th>{{ __('crm::lead.fields.name') }}</th>
             <th>{{ __('crm::lead.fields.status') }}</th>
+            <th>{{ __('crm::lead.fields.tags') }}</th>
             <th>{{ __('crm::lead.fields.phone') }}</th>
             <th>{{ __('crm::lead.fields.company') }}</th>
             <th>{{ __('crm::lead.fields.assignee') }}</th>
@@ -99,13 +137,18 @@
                     </div>
                 </td>
                 <td>
-                    <div class="d-flex flex-column">
-                        <a href="{{ route('admin.leads.show', $lead) }}" class="text-gray-800 mb-1 fw-semibold text-hover-primary">
-                            {{ $lead->name ?? __('N/A') }}
-                        </a>
-                        @if($lead->email)
-                            <a class="text-hover-primary text-gray-500 fs-7" href="mailto:{{ $lead->email }}">{{ $lead->email }}</a>
-                        @endif
+                    <div class="d-flex align-items-center">
+                        <span class="sx-table-avatar bg-light-info text-info me-3">
+                            {{ strtoupper(substr($lead->name ?? 'L', 0, 1)) }}
+                        </span>
+                        <div class="d-flex flex-column">
+                            <a href="{{ route('admin.leads.show', $lead) }}" class="text-gray-800 mb-1 fw-semibold text-hover-primary">
+                                {{ $lead->name ?? __('N/A') }}
+                            </a>
+                            @if($lead->email)
+                                <a class="text-hover-primary text-gray-500 fs-7" href="mailto:{{ $lead->email }}">{{ $lead->email }}</a>
+                            @endif
+                        </div>
                     </div>
                 </td>
                 <td>
@@ -115,6 +158,12 @@
                     @if($lead->blocked)
                         <span class="badge badge-light-danger ms-1">{{ __('crm::lead.status.blocked') }}</span>
                     @endif
+                </td>
+                <td>
+                    @include('crm::admin.partials.lead-tags', [
+                        'tags' => $lead->tags,
+                        'empty' => '—',
+                    ])
                 </td>
                 <td>{{ $lead->phone ?: __('N/A') }}</td>
                 <td>

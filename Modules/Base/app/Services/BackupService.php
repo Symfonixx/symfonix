@@ -136,8 +136,8 @@ class BackupService
         $disk->makeDirectory(self::DIRECTORY);
 
         $timestamp = now()->format('Y-m-d_H-i-s');
-        $original = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        $safeBase = Str::slug($original) ?: 'import';
+        $original = pathinfo((string) $file->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeBase = Str::slug((string) $original) ?: 'import';
         $filename = "backup_import_{$safeBase}_{$timestamp}.zip";
         $relativePath = self::DIRECTORY.'/'.$filename;
 
@@ -173,6 +173,10 @@ class BackupService
         if (! File::exists($absoluteZipPath)) {
             throw new RuntimeException('Backup file not found.');
         }
+
+        // Debugbar tries to pretty-print every query; a full SQL dump makes
+        // its formatter call preg_replace() with null and crash the request.
+        $this->disableDebugbarForRestore();
 
         $tempDir = storage_path('app/private/backups/tmp_restore_'.Str::random(12));
         File::ensureDirectoryExists($tempDir);
@@ -553,15 +557,23 @@ class BackupService
             throw new RuntimeException('Backup SQL file is empty.');
         }
 
-        DB::connection($connection)->statement('SET FOREIGN_KEY_CHECKS=0');
+        // Use PDO directly so the multi-megabyte dump is not recorded as a
+        // single QueryExecuted event (Debugbar cannot format that safely).
+        $pdo = DB::connection($connection)->getPdo();
 
         try {
-            DB::connection($connection)->unprepared($sql);
+            $pdo->exec('SET FOREIGN_KEY_CHECKS=0');
+            if ($pdo->exec($sql) === false) {
+                $error = $pdo->errorInfo();
+                throw new RuntimeException('Database restore failed: '.($error[2] ?? 'unknown PDO error'));
+            }
+        } catch (RuntimeException $e) {
+            throw $e;
         } catch (Throwable $e) {
             throw new RuntimeException('Database restore failed: '.$e->getMessage(), 0, $e);
         } finally {
             try {
-                DB::connection($connection)->statement('SET FOREIGN_KEY_CHECKS=1');
+                $pdo->exec('SET FOREIGN_KEY_CHECKS=1');
             } catch (Throwable) {
                 // ignore
             }
@@ -569,6 +581,19 @@ class BackupService
 
         DB::purge($connection);
         DB::reconnect($connection);
+    }
+
+    protected function disableDebugbarForRestore(): void
+    {
+        if (! app()->bound('debugbar')) {
+            return;
+        }
+
+        try {
+            app('debugbar')->disable();
+        } catch (Throwable) {
+            // Debugbar is optional; restore must not depend on it.
+        }
     }
 
     protected function restorePublicStorage(string $tempDir): void

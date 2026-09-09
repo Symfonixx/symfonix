@@ -16,13 +16,10 @@
         @if($search || $title)
             <div class="card-title">
                 @if($search)
-                    <div class="search-wrapper d-flex align-items-center position-relative my-1">
-                        <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
-                            <span class="path1"></span>
-                            <span class="path2"></span>
-                        </i>
+                    <div class="search-wrapper sx-table-search d-flex align-items-center position-relative my-1">
+                        <i class="bi bi-search fs-4 position-absolute ms-5 text-primary"></i>
                         <input type="text" data-kt-data-table-filter="search"
-                               class="form-control form-control-solid w-250px ps-12"
+                               class="form-control form-control-solid w-250px ps-12 border-0 bg-transparent"
                                placeholder="{{ __($search) }}"/>
                         <span class="search-clear" data-search-clear title="{{ __('Clear') }}">
                             <i class="bi bi-x-lg"></i>
@@ -45,7 +42,8 @@
                         <span class="me-2" data-kt-comp-table-toolbar="selected_count"></span>{{ __('Selected') }}
                     </div>
                     <button type="button" class="btn btn-danger"
-                            data-kt-comp-table-toolbar="delete_selected">{{ __('Delete Selected') }}
+                            data-kt-comp-table-toolbar="delete_selected">
+                        <i class="bi bi-trash me-1"></i>{{ __('Delete Selected') }}
                     </button>
                 </div>
             </div>
@@ -74,7 +72,7 @@
 
         <div class="card-body pt-0">
             <div class="table-responsive">
-                <table class="table align-middle table-row-dashed fs-6 gy-5 {{ $class ?? '' }}"
+                <table class="table align-middle table-row-dashed table-hover fs-6 gy-5 {{ $class ?? '' }}"
                        @if(isset($dataTable)) id="dataTable" @endif>
                     {{ $slot }}
                 </table>

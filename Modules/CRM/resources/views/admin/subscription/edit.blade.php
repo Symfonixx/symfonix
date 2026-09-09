@@ -17,7 +17,7 @@
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card :title="__('crm::subscription.pages.edit_title')" :formUrl="route('admin.subscriptions.update', $subscription->id)">
+    <x-admin.create-card :title="__('crm::subscription.pages.edit_title')" :formUrl="route('admin.subscriptions.update', $subscription->id)" :cancelUrl="route('admin.subscriptions.index')" icon="arrow-repeat" color="success">
         @method('PUT')
         @include('crm::admin.subscription._form', ['subscription' => $subscription])
     </x-admin.create-card>

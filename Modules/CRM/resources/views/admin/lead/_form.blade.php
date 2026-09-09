@@ -146,7 +146,7 @@
                 data-control="select2" data-placeholder="{{ __('crm::lead.fields.select_company') }}" name="company_id">
             <option value="">{{ __('crm::lead.fields.select_company') }}</option>
             @foreach(($companies ?? collect()) as $company)
-                <option value="{{ $company->id }}" @selected((int) old('company_id', $leadData?->company_id) === $company->id)>
+                <option value="{{ $company->id }}" @selected((int) old('company_id', $leadData?->company_id ?? request('company_id')) === $company->id)>
                     {{ $company->name }}
                 </option>
             @endforeach
@@ -247,6 +247,154 @@
         @enderror
     </div>
 </div>
+
+<div class="row mb-8">
+    <div class="col-xl-3">
+        <div class="fs-6 fw-bold mt-2 mb-3">{{ __('crm::lead.fields.tags') }}</div>
+    </div>
+    <div class="col-xl-9 fv-row">
+        @php($selectedTagIds = collect(old('tag_ids', $leadData?->tagIds() ?? []))->filter(fn ($id) => filled($id))->map(fn ($id) => (int) $id)->all())
+        @php($availableTags = $tags ?? collect())
+
+        @if($availableTags->isEmpty())
+            <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-4">
+                <i class="bi bi-tags fs-2 text-warning me-3"></i>
+                <div class="d-flex flex-stack flex-grow-1 flex-wrap gap-2">
+                    <div class="fw-semibold">
+                        <div class="fs-6 text-gray-700">{{ __('crm::lead.hints.no_tags') }}</div>
+                    </div>
+                    @can('CRM Management')
+                        <a href="{{ route('admin.crm.lead-tags.create') }}" class="btn btn-sm btn-warning">
+                            {{ __('crm::lead.actions.manage_tags') }}
+                        </a>
+                    @endcan
+                </div>
+            </div>
+        @else
+            <div class="d-flex flex-wrap gap-2" id="lead-tag-picker">
+                @foreach($availableTags as $tag)
+                    @php($isSelected = in_array((int) $tag->id, $selectedTagIds, true))
+                    <input type="checkbox"
+                           class="btn-check lead-tag-input"
+                           name="tag_ids[]"
+                           id="lead_tag_{{ $tag->id }}"
+                           value="{{ $tag->id }}"
+                           autocomplete="off"
+                           @checked($isSelected)>
+                    <label for="lead_tag_{{ $tag->id }}"
+                           class="btn btn-sm lead-tag-chip border {{ $isSelected ? 'btn-' . $tag->color : 'btn-light-' . $tag->color }} @error('tag_ids') border-danger @enderror"
+                           data-color="{{ $tag->color }}">
+                        <i class="bi bi-tag-fill me-1"></i>{{ $tag->display_name }}
+                    </label>
+                @endforeach
+            </div>
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-3">
+                <div class="form-text mb-0">{{ __('crm::lead.hints.tags') }}</div>
+                @can('CRM Management')
+                    <a href="{{ route('admin.crm.lead-tags.index') }}" class="fs-7 text-primary text-hover-primary">
+                        <i class="bi bi-gear me-1"></i>{{ __('crm::lead.actions.manage_tags') }}
+                    </a>
+                @endcan
+            </div>
+        @endif
+
+        @error('tag_ids')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+        @error('tag_ids.*')
+        <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+    </div>
+</div>
+
+@php($availableCustomFields = $customFields ?? collect())
+@if($availableCustomFields->isNotEmpty())
+    <div class="separator my-10"></div>
+
+    <div class="mb-10">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <div>
+                <h4 class="fw-bold mb-2">{{ __('crm::lead.sections.custom_fields') }}</h4>
+                <p class="text-muted mb-0">{{ __('crm::lead.sections.custom_fields_hint') }}</p>
+            </div>
+            @can('CRM Management')
+                <a href="{{ route('admin.crm.custom-fields.index') }}" class="fs-7 text-primary text-hover-primary">
+                    <i class="bi bi-gear me-1"></i>{{ __('crm::lead.actions.manage_custom_fields') }}
+                </a>
+            @endcan
+        </div>
+    </div>
+
+    @foreach($availableCustomFields as $customField)
+        @php($fieldName = 'custom_fields[' . $customField->key . ']')
+        @php($fieldId = 'custom_field_' . $customField->key)
+        @php($oldValue = old('custom_fields.' . $customField->key, $leadData?->customFieldValue($customField->key)))
+
+        <div class="row mb-8">
+            <div class="col-xl-3">
+                <label for="{{ $fieldId }}" class="fs-6 fw-bold mt-2 mb-3 {{ $customField->is_required ? 'required' : '' }}">
+                    {{ $customField->display_label }}
+                </label>
+            </div>
+            <div class="col-xl-9 fv-row">
+                @if($customField->type === \Modules\CRM\Models\LeadCustomField::TYPE_TEXTAREA)
+                    <textarea id="{{ $fieldId }}"
+                              name="{{ $fieldName }}"
+                              rows="3"
+                              class="form-control form-control-solid @error('custom_fields.' . $customField->key) is-invalid @enderror"
+                              {{ $customField->is_required ? 'required' : '' }}>{{ $oldValue }}</textarea>
+                @elseif($customField->type === \Modules\CRM\Models\LeadCustomField::TYPE_NUMBER)
+                    <input id="{{ $fieldId }}"
+                           type="number"
+                           name="{{ $fieldName }}"
+                           value="{{ $oldValue }}"
+                           class="form-control form-control-solid @error('custom_fields.' . $customField->key) is-invalid @enderror"
+                           {{ $customField->is_required ? 'required' : '' }}/>
+                @elseif($customField->type === \Modules\CRM\Models\LeadCustomField::TYPE_DATE)
+                    <input id="{{ $fieldId }}"
+                           type="date"
+                           name="{{ $fieldName }}"
+                           value="{{ $oldValue }}"
+                           class="form-control form-control-solid @error('custom_fields.' . $customField->key) is-invalid @enderror"
+                           {{ $customField->is_required ? 'required' : '' }}/>
+                @elseif($customField->type === \Modules\CRM\Models\LeadCustomField::TYPE_SELECT)
+                    <select id="{{ $fieldId }}"
+                            name="{{ $fieldName }}"
+                            class="form-select form-select-solid @error('custom_fields.' . $customField->key) is-invalid @enderror"
+                            data-control="select2"
+                            {{ $customField->is_required ? 'required' : '' }}>
+                        <option value="">{{ __('crm::lead.fields.select_option') }}</option>
+                        @foreach(($customField->options ?? []) as $option)
+                            <option value="{{ $option }}" @selected((string) $oldValue === (string) $option)>{{ $option }}</option>
+                        @endforeach
+                    </select>
+                @elseif($customField->type === \Modules\CRM\Models\LeadCustomField::TYPE_CHECKBOX)
+                    <div class="form-check form-switch form-check-custom form-check-solid mt-2">
+                        <input class="form-check-input @error('custom_fields.' . $customField->key) is-invalid @enderror"
+                               type="checkbox"
+                               name="{{ $fieldName }}"
+                               value="1"
+                               id="{{ $fieldId }}"
+                               @checked(old('custom_fields.' . $customField->key, $leadData?->customFieldValue($customField->key)))>
+                        <label class="form-check-label" for="{{ $fieldId }}">{{ __('Yes') }}</label>
+                    </div>
+                @else
+                    <input id="{{ $fieldId }}"
+                           type="text"
+                           name="{{ $fieldName }}"
+                           value="{{ $oldValue }}"
+                           class="form-control form-control-solid @error('custom_fields.' . $customField->key) is-invalid @enderror"
+                           maxlength="255"
+                           {{ $customField->is_required ? 'required' : '' }}/>
+                @endif
+
+                @error('custom_fields.' . $customField->key)
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
+    @endforeach
+@endif
 
 <div class="row mb-8">
     <div class="col-xl-3">
@@ -383,6 +531,17 @@
 
         companySelect?.addEventListener('change', toggleCompanyName);
         toggleCompanyName();
+
+        document.querySelectorAll('.lead-tag-input').forEach(function (input) {
+            input.addEventListener('change', function () {
+                const label = document.querySelector('label[for="' + input.id + '"]');
+                if (!label) return;
+
+                const color = label.getAttribute('data-color') || 'primary';
+                label.classList.remove('btn-' + color, 'btn-light-' + color);
+                label.classList.add(input.checked ? 'btn-' + color : 'btn-light-' + color);
+            });
+        });
     })();
 </script>
 @endpush

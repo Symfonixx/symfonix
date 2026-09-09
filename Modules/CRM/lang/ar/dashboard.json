@@ -1,7 +1,7 @@
 {
-    "menu": "التحليلات",
-    "title": "تحليلات ومقاييس CRM",
-    "subtitle": "رؤى فورية للعملاء المحتملين وخط المبيعات وأداء الفريق.",
+    "menu": "لوحة التحكم",
+    "title": "لوحة تحكم CRM",
+    "subtitle": "صورة كاملة عن العملاء وخط المبيعات والمبيعات وأداء الفريق.",
     "filters": {
         "period": "الفترة الزمنية",
         "assignee": "مندوب المبيعات",
@@ -18,13 +18,47 @@
         }
     },
     "metrics": {
+        "total_customers": "إجمالي العملاء",
+        "new_customers": "العملاء الجدد",
+        "new_leads": "Leads الجديدة",
         "total_leads": "إجمالي العملاء المحتملين",
+        "leads_in_progress": "Leads قيد المتابعة",
+        "active_customers": "العملاء النشطين",
+        "lost_customers": "العملاء المفقودين",
+        "total_sales": "إجمالي المبيعات",
+        "sales_this_month": "مبيعات هذا الشهر",
         "conversion_rate": "معدل التحويل",
-        "pipeline_value": "قيمة خط المبيعات",
-        "won_deals": "الصفقات المكسوبة",
+        "pipeline_value": "قيمة الـ Pipeline",
+        "won_deals": "الصفقات الرابحة",
+        "lost_deals": "الصفقات الخاسرة",
+        "avg_deal_value": "متوسط قيمة الصفقة",
+        "avg_close_time": "متوسط وقت إغلاق الصفقة",
+        "outstanding_invoices": "الفواتير المستحقة",
+        "overdue_amounts": "المبالغ المتأخرة",
         "vs_previous": "مقارنة بالفترة السابقة",
         "leads_converted": ":converted من :total تم تحويلهم",
-        "won_value": ":count صفقة · :value"
+        "won_value": ":count صفقة · :value",
+        "lost_value": ":count صفقة · :value",
+        "invoice_count": ":count فاتورة",
+        "days": ":value يوم"
+    },
+    "widgets": {
+        "top_customers": "العملاء الأكثر شراءً",
+        "top_customers_hint": "ترتيب العملاء حسب قيمة الصفقات الرابحة.",
+        "top_customers_empty": "لا توجد صفقات رابحة لترتيب العملاء بعد.",
+        "customer": "العميل",
+        "deals": "الصفقات",
+        "value": "القيمة"
+    },
+    "customize": {
+        "button": "تخصيص",
+        "title": "تخصيص لوحة التحكم",
+        "hint": "فعّل أو أخفِ الودجات. اسحب البطاقات على اللوحة لإعادة الترتيب.",
+        "save": "حفظ التخطيط",
+        "saved": "تم حفظ تخطيط اللوحة.",
+        "reset": "إعادة الافتراضي",
+        "visible": "ظاهر",
+        "drag_hint": "اسحب لإعادة الترتيب"
     },
     "charts": {
         "pipeline_funnel": "قمع خط المبيعات",
@@ -49,7 +83,7 @@
         "unknown": "أخرى"
     },
     "leaderboard": {
-        "title": "أداء الفريق",
+        "title": "أداء المبيعات",
         "subtitle": "أداء الإغلاق المكسوب للفترة المحددة.",
         "rep": "مندوب المبيعات",
         "closed_deals": "صفقات مغلقة",
@@ -59,11 +93,20 @@
         "empty": "لا توجد صفقات مغلقة في هذه الفترة."
     },
     "activity": {
-        "title": "النشاط الأخير",
-        "subtitle": "آخر أحداث التدقيق والأنشطة المسجلة.",
+        "title": "سجل نشاط العملاء",
+        "subtitle": "المكالمات والبريد والاجتماعات والملاحظات وتحديثات الصفقات في خط زمني واحد.",
         "empty": "لا يوجد نشاط حديث.",
         "logged": "تسجيل :type: :title",
-        "fallback": "حدث CRM مسجل"
+        "fallback": "حدث CRM مسجل",
+        "view": "عرض التفاصيل"
     },
-    "unknown_rep": "غير معروف"
+    "actions": {
+        "log_call": "تسجيل مكالمة",
+        "new_deal": "صفقة جديدة",
+        "add_contact": "إضافة جهة اتصال",
+        "new_lead": "عميل محتمل جديد",
+        "new_quote": "عرض سعر جديد"
+    },
+    "unknown_rep": "غير معروف",
+    "unknown_customer": "عميل غير معروف"
 }

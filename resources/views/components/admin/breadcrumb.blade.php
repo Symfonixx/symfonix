@@ -32,7 +32,7 @@
                 </li>
                 @if(!$loop->last)
                     <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                        <span class="bullet bg-primary opacity-25 w-5px h-2px"></span>
                     </li>
                 @endif
             @endforeach

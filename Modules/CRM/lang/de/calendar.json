@@ -1,0 +1,47 @@
+{
+    "menu": "Kalender",
+    "pages": {
+        "index_title": "CRM-Kalender"
+    },
+    "subtitle": "Alle geplanten Aktivitäten, Lead-Aktivitäten, Deal-Abschlussdaten, Angebotsabläufe, Verlängerungen und Projektfristen.",
+    "filters": {
+        "title": "Termine anzeigen",
+        "all": "Alle"
+    },
+    "categories": {
+        "activities": "Aktivitäten",
+        "leads": "Lead-Aktivitäten",
+        "deals": "Deals",
+        "quotes": "Angebote",
+        "subscriptions": "Abonnements",
+        "projects": "Projekte"
+    },
+    "event_types": {
+        "expected_close": "Erwarteter Abschluss",
+        "quote_expiry": "Angebot läuft ab",
+        "renewal": "Verlängerung",
+        "project_start": "Projektstart",
+        "project_due": "Projektfälligkeit"
+    },
+    "status": {
+        "scheduled": "Geplant",
+        "completed": "Abgeschlossen",
+        "open": "Offen",
+        "logged": "Erfasst"
+    },
+    "modal": {
+        "title": "Termindetails",
+        "category": "Kategorie",
+        "type": "Typ",
+        "status": "Status",
+        "when": "Wann",
+        "owner": "Verantwortlich",
+        "description": "Details",
+        "open": "Datensatz öffnen",
+        "close": "Schließen"
+    },
+    "empty": "Keine Termine in diesem Zeitraum.",
+    "legend": {
+        "title": "Legende"
+    }
+}

@@ -16,6 +16,7 @@ class DealIndexRequest extends FormRequest
             'pipeline_stage_id' => ['nullable', 'integer', Rule::exists('pipeline_stages', 'id')],
             'company_id' => ['nullable', 'integer', Rule::exists('companies', 'id')],
             'assigned_to' => ['nullable', 'integer', Rule::exists('employees', 'id')],
+            'tag_id' => ['nullable', 'integer', Rule::exists('lead_tags', 'id')],
             'with_trashed' => ['nullable', 'boolean'],
             'view' => ['nullable', Rule::in(['list', 'kanban'])],
         ];

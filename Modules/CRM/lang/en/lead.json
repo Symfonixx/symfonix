@@ -36,7 +36,10 @@
         "status": "Status",
         "blocked": "Blocked",
         "assignee": "Assigned To",
-        "select_assignee": "Select assignee"
+        "select_assignee": "Select assignee",
+        "tags": "Tags",
+        "select_tags": "Select tags",
+        "select_option": "Select an option"
     },
     "sources": {
         "organic_search": "Organic Search",
@@ -68,13 +71,18 @@
         "back_to_list": "Back to Leads",
         "block": "Block Lead",
         "unblock": "Unblock Lead",
-        "actions": "Actions"
+        "actions": "Actions",
+        "manage_tags": "Manage tags",
+        "edit_tags": "Edit tags",
+        "manage_custom_fields": "Manage custom fields",
+        "edit_custom_fields": "Edit custom fields"
     },
     "filters": {
         "status": "Filter by status",
         "source": "Filter by source",
         "company": "Filter by company",
         "assignee": "Filter by assignee",
+        "tags": "Filter by tag",
         "all": "All"
     },
     "search": {
@@ -87,6 +95,8 @@
         "company_hint": "Link to an existing CRM company, or enter a name if the company is not in the system yet.",
         "lead_details": "Lead Details",
         "lead_details_hint": "Track where the lead came from and what they are interested in.",
+        "custom_fields": "Custom Fields",
+        "custom_fields_hint": "Additional fields defined in CRM settings for this lead.",
         "status": "Status"
     },
     "placeholders": {
@@ -108,6 +118,9 @@
         "company_name": "Use when the company is not yet in CRM. Hidden when a company is linked.",
         "service_interest": "Free-text fallback when no service is selected from the catalog.",
         "services": "Select one or more catalog services this lead is interested in.",
+        "tags": "Assign tags such as Warm or Cold to classify this lead.",
+        "no_tags": "No lead tags yet. Create tags first to classify leads.",
+        "no_tags_assigned": "No tags assigned to this lead yet.",
         "blocked": "Blocked leads are flagged and can be filtered from active workflows.",
         "assignee": "Sales rep responsible for following up on this lead."
     },

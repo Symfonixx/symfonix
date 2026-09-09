@@ -6,6 +6,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Log;
 use Modules\CRM\DTOs\Lead\LeadData;
 use Modules\CRM\Models\Lead;
+use Modules\CRM\Models\LeadCustomField;
 use Modules\CRM\Repositories\Lead\LeadRepository;
 use Modules\CRM\Support\AuditLogger;
 
@@ -55,6 +56,42 @@ class LeadService
 
         $lead->services()->sync($ids);
         $lead->update(['service_id' => $ids[0] ?? null]);
+    }
+
+    public function syncTags(Lead $lead, array $tagIds): void
+    {
+        $ids = collect($tagIds)
+            ->filter(fn ($id) => filled($id))
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->values()
+            ->all();
+
+        $lead->tags()->sync($ids);
+    }
+
+    public function syncCustomFields(Lead $lead, array $values): void
+    {
+        $fields = LeadCustomField::query()->active()->ordered()->get();
+        $existing = $lead->custom_fields ?? [];
+
+        foreach ($fields as $field) {
+            $raw = $values[$field->key] ?? null;
+
+            if ($field->type === LeadCustomField::TYPE_CHECKBOX) {
+                $existing[$field->key] = filter_var($raw, FILTER_VALIDATE_BOOLEAN);
+                continue;
+            }
+
+            if ($raw === null || $raw === '') {
+                unset($existing[$field->key]);
+                continue;
+            }
+
+            $existing[$field->key] = is_scalar($raw) ? (string) $raw : $raw;
+        }
+
+        $lead->update(['custom_fields' => $existing === [] ? null : $existing]);
     }
 
     public function create(LeadData $data): ?Lead

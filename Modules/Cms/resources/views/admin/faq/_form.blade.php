@@ -15,7 +15,7 @@
 @endif
 
 <div class="row g-6">
-    <div class="col-xl-7">
+    <div class="col-xl-8">
         <x-admin.settings-section
             icon="bi-question-circle"
             title="FAQ Content"
@@ -42,7 +42,7 @@
         </x-admin.settings-section>
     </div>
 
-    <div class="col-xl-5">
+    <div class="col-xl-4">
         <div class="seo-preview-panel">
             <div class="card mb-6">
                 <div class="card-header border-0 pt-6">

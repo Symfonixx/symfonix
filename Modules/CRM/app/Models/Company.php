@@ -99,4 +99,9 @@ class Company extends Model
     {
         return $this->hasMany(Project::class);
     }
+
+    public function quotes(): HasMany
+    {
+        return $this->hasMany(Quote::class)->latest();
+    }
 }

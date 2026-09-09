@@ -5,6 +5,7 @@
         $breadcrumbItems = [
             ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
             ['label' => __('CRM'), 'url' => route('admin.crm.dashboard')],
+            ['label' => __('crm::settings.menu')],
             ['label' => __('crm::sales_target.menu')],
         ];
     @endphp

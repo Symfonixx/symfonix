@@ -17,7 +17,7 @@
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card :title="__('crm::lead.pages.create_title')" :formUrl="route('admin.leads.store')">
+    <x-admin.create-card :title="__('crm::lead.pages.create_title')" :formUrl="route('admin.leads.store')" :cancelUrl="route('admin.leads.index')" icon="person-plus" color="info">
         @include('crm::admin.lead._form')
     </x-admin.create-card>
 </x-admin-layout>

@@ -1,4 +1,4 @@
-@include('base::shared._tinymce', ['selector' => '#tinymce'])
+@include('base::shared._tinymce', ['selector' => '#tinymce', 'height' => 560])
 
 @push('scripts')
 <script>

@@ -17,7 +17,12 @@ class DealModelRepository implements DealRepository
     {
         return Deal::query()
             ->visibleTo()
-            ->with(['company:id,name', 'pipelineStage:id,name,color', 'assignee:id,name'])
+            ->with([
+                'company:id,name',
+                'pipelineStage:id,name,color',
+                'assignee:id,name',
+                'lead.tags',
+            ])
             ->filter($filters)
             ->latest()
             ->paginate($perPage);
@@ -31,7 +36,7 @@ class DealModelRepository implements DealRepository
             ->with(['deals' => function ($query) use ($filters) {
                 $query
                     ->visibleTo()
-                    ->with(['company:id,name', 'assignee:id,name'])
+                    ->with(['company:id,name', 'assignee:id,name', 'lead.tags'])
                     ->filter($filters)
                     ->latest();
             }])

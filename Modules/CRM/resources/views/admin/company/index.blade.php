@@ -10,13 +10,13 @@
     <x-admin.breadcrumb :pageTitle="__('crm::company.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.companies.create') }}">
-            {{ __('crm::company.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::company.actions.add') }}
         </a>
     </div>
 @endsection
 
 <x-admin-layout>
-    <div class="card mb-5">
+    <div class="card sx-filter-bar mb-5">
         <div class="card-body py-5">
             <form method="GET" action="{{ route('admin.companies.index') }}" class="row g-4 align-items-end">
                 <div class="col-md-4">
@@ -39,8 +39,12 @@
                     </select>
                 </div>
                 <div class="col-md-4 d-flex gap-2">
-                    <button type="submit" class="btn btn-primary btn-sm">{{ __('Filter') }}</button>
-                    <a href="{{ route('admin.companies.index') }}" class="btn btn-light btn-sm">{{ __('Reset') }}</a>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="bi bi-funnel me-1"></i>{{ __('Filter') }}
+                    </button>
+                    <a href="{{ route('admin.companies.index') }}" class="btn btn-light btn-sm">
+                        <i class="bi bi-arrow-counterclockwise me-1"></i>{{ __('Reset') }}
+                    </a>
                 </div>
             </form>
         </div>
@@ -75,7 +79,16 @@
                         <input class="form-check-input" type="checkbox" name="ids[]" value="{{ $company->id }}"/>
                     </div>
                 </td>
-                <td>{{ $company->name }}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span class="sx-table-avatar bg-light-warning text-warning me-3">
+                            <i class="bi bi-building"></i>
+                        </span>
+                        <a href="{{ route('admin.companies.show', $company->id) }}" class="text-gray-800 fw-semibold text-hover-primary">
+                            {{ $company->name }}
+                        </a>
+                    </div>
+                </td>
                 <td>
                     @if($company->activity_type)
                         {{ __('crm::company.activity_types.' . $company->activity_type) }}
@@ -101,10 +114,7 @@
                     </a>
                     <a href="{{ route('admin.companies.edit', $company->id) }}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                        <i class="ki-duotone ki-message-edit fs-1">
-                            <span class="path1"></span>
-                            <span class="path2"></span>
-                        </i>
+                        <i class="bi bi-pencil fs-5"></i>
                     </a>
                     <form class="d-inline" method="POST" action="{{ route('admin.companies.destroy', $company->id) }}" data-confirm-delete>
                         @csrf

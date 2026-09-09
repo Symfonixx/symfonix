@@ -6,7 +6,9 @@
         ['label' => __('Job Applications'), 'url' => route('admin.job-applications.index')],
         ['label' => $jobApplication->candidate->full_name],
     ]"/>
-    <a href="{{ route('admin.job-applications.index') }}" class="btn btn-sm btn-light">{{ __('Back to List') }}</a>
+    <a href="{{ route('admin.job-applications.index') }}" class="btn btn-sm btn-light">
+        <i class="bi bi-arrow-left me-1"></i>{{ __('Back to List') }}
+    </a>
 @endsection
 
 <x-admin-layout>

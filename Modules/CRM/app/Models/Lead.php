@@ -2,11 +2,12 @@
 
 namespace Modules\CRM\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\CRM\Concerns\HasCrmTimeline;
 use Modules\CRM\Filters\Lead\LeadFilter;
-use Illuminate\Database\Eloquent\Builder;
 use Modules\Services\Models\Service;
 use Modules\User\Models\Employee;
 
@@ -110,6 +111,7 @@ class Lead extends Model
         'problem_statement',
         'chat_transcript',
         'meta',
+        'custom_fields',
         'attachments',
         'botman_user_id',
         'botman_driver',
@@ -123,9 +125,15 @@ class Lead extends Model
         return $this->belongsTo(Service::class);
     }
 
-    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, 'lead_service')
+            ->withTimestamps();
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(LeadTag::class, 'lead_lead_tag')
             ->withTimestamps();
     }
 
@@ -139,6 +147,11 @@ class Lead extends Model
         }
 
         return $ids;
+    }
+
+    public function tagIds(): array
+    {
+        return $this->tags->pluck('id')->map(fn ($id) => (int) $id)->all();
     }
 
     public function company(): BelongsTo
@@ -165,8 +178,14 @@ class Lead extends Model
         'service_matches' => 'array',
         'chat_transcript' => 'array',
         'meta' => 'array',
+        'custom_fields' => 'array',
         'attachments' => 'array',
         'blocked' => 'boolean',
         'converted_at' => 'datetime',
     ];
+
+    public function customFieldValue(string $key, mixed $default = null): mixed
+    {
+        return ($this->custom_fields ?? [])[$key] ?? $default;
+    }
 }

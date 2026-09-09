@@ -17,7 +17,7 @@
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card :title="__('crm::deal.pages.create_title')" :formUrl="route('admin.deals.store')">
+    <x-admin.create-card :title="__('crm::deal.pages.create_title')" :formUrl="route('admin.deals.store')" :cancelUrl="route('admin.deals.index')" icon="briefcase" color="success">
         @include('crm::admin.deal._form')
     </x-admin.create-card>
 </x-admin-layout>

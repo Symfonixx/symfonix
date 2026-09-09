@@ -14,7 +14,7 @@ class LeadModelRepository implements LeadRepository
     public function paginate(array $filters = [], int $perPage = 15): LengthAwarePaginator
     {
         return Lead::query()
-            ->with(['company:id,name', 'service:id,title', 'assignee:id,name'])
+            ->with(['company:id,name', 'service:id,title', 'assignee:id,name', 'tags'])
             ->filter($filters)
             ->latest()
             ->paginate($perPage);

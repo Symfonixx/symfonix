@@ -36,7 +36,10 @@
         "status": "Status",
         "blocked": "Blockiert",
         "assignee": "Zugewiesen an",
-        "select_assignee": "Wählen Sie den Beauftragten aus"
+        "select_assignee": "Wählen Sie den Beauftragten aus",
+        "tags": "Tags",
+        "select_tags": "Tags auswählen",
+        "select_option": "Option auswählen"
     },
     "sources": {
         "organic_search": "Organische Suche",
@@ -68,13 +71,18 @@
         "back_to_list": "Zurück zu Leads",
         "block": "Blei blockieren",
         "unblock": "Blei entsperren",
-        "actions": "Aktionen"
+        "actions": "Aktionen",
+        "manage_tags": "Tags verwalten",
+        "edit_tags": "Tags bearbeiten",
+        "manage_custom_fields": "Benutzerdefinierte Felder verwalten",
+        "edit_custom_fields": "Benutzerdefinierte Felder bearbeiten"
     },
     "filters": {
         "status": "Nach Status filtern",
         "source": "Nach Quelle filtern",
         "company": "Nach Unternehmen filtern",
         "assignee": "Nach Beauftragtem filtern",
+        "tags": "Nach Tag filtern",
         "all": "Alle"
     },
     "search": {
@@ -87,6 +95,8 @@
         "company_hint": "Verknüpfen Sie mit einem bestehenden CRM-Unternehmen oder geben Sie einen Namen ein, wenn das Unternehmen noch nicht im System vorhanden ist.",
         "lead_details": "Lead-Details",
         "lead_details_hint": "Verfolgen Sie, woher der Lead kommt und woran er interessiert ist.",
+        "custom_fields": "Benutzerdefinierte Felder",
+        "custom_fields_hint": "Zusätzliche Felder aus den CRM-Einstellungen für diesen Lead.",
         "status": "Status"
     },
     "placeholders": {
@@ -108,6 +118,9 @@
         "company_name": "Verwenden Sie diese Option, wenn das Unternehmen noch nicht im CRM ist. Ausgeblendet, wenn ein Unternehmen verlinkt ist.",
         "service_interest": "Freitext-Fallback, wenn kein Dienst aus dem Katalog ausgewählt ist.",
         "services": "Wählen Sie einen oder mehrere Katalogdienste aus, an denen dieser Lead interessiert ist.",
+        "tags": "Weisen Sie Tags wie Warm oder Kalt zu, um diesen Lead zu klassifizieren.",
+        "no_tags": "Noch keine Lead-Tags. Erstellen Sie zuerst Tags, um Leads zu klassifizieren.",
+        "no_tags_assigned": "Diesem Lead sind noch keine Tags zugewiesen.",
         "blocked": "Blockierte Leads werden gekennzeichnet und können aus aktiven Workflows gefiltert werden.",
         "assignee": "Vertriebsmitarbeiter, der für die Weiterverfolgung dieses Hinweises verantwortlich ist."
     },

@@ -17,7 +17,7 @@
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card :title="__('crm::deal.pages.edit_title')" :formUrl="route('admin.deals.update', $deal->id)">
+    <x-admin.create-card :title="__('crm::deal.pages.edit_title')" :formUrl="route('admin.deals.update', $deal->id)" :cancelUrl="route('admin.deals.index')" icon="briefcase" color="success">
         @method('PUT')
         @include('crm::admin.deal._form', ['deal' => $deal])
     </x-admin.create-card>

@@ -1,0 +1,35 @@
+{
+    "menu": "Benutzerdefinierte Felder",
+    "pages": {
+        "index_title": "Benutzerdefinierte Felder",
+        "create_title": "Benutzerdefiniertes Feld hinzufügen",
+        "edit_title": "Benutzerdefiniertes Feld bearbeiten"
+    },
+    "fields": {
+        "label": "Bezeichnung",
+        "label_en": "Bezeichnung (Englisch)",
+        "label_ar": "Bezeichnung (Arabisch)",
+        "label_de": "Bezeichnung (Deutsch)",
+        "label_tr": "Bezeichnung (Türkisch)",
+        "key": "Schlüssel",
+        "type": "Typ",
+        "options": "Optionen",
+        "options_hint": "Eine Option pro Zeile. Wird für Select-Felder verwendet.",
+        "is_required": "Pflichtfeld",
+        "sort_order": "Sortierreihenfolge"
+    },
+    "types": {
+        "text": "Text",
+        "textarea": "Textarea",
+        "number": "Zahl",
+        "date": "Datum",
+        "select": "Auswahl",
+        "checkbox": "Checkbox"
+    },
+    "actions": {
+        "add": "Feld hinzufügen"
+    },
+    "hints": {
+        "key_locked": "Der Feldschlüssel wird automatisch erzeugt und bleibt stabil, damit bestehende Lead-Werte verknüpft bleiben."
+    }
+}

@@ -30,7 +30,10 @@
         "status": "Durum",
         "blocked": "Engellenmiş",
         "assignee": "Atanan Kişi",
-        "select_assignee": "Kişi seçin"
+        "select_assignee": "Kişi seçin",
+        "tags": "Etiketler",
+        "select_tags": "Etiket seçin",
+        "select_option": "Bir seçenek seçin"
     },
     "sources": {
         "organic_search": "Organik Arama",
@@ -55,7 +58,19 @@
         "view_details": "Detayları Görüntüle",
         "back_to_list": "Listeye Dön",
         "block": "Engelle",
-        "unblock": "Engeli Kaldır"
+        "unblock": "Engeli Kaldır",
+        "manage_tags": "Etiketleri yönet",
+        "edit_tags": "Etiketleri düzenle",
+        "manage_custom_fields": "Özel alanları yönet",
+        "edit_custom_fields": "Özel alanları düzenle"
+    },
+    "filters": {
+        "status": "Duruma göre filtrele",
+        "source": "Kaynağa göre filtrele",
+        "company": "Şirkete göre filtrele",
+        "assignee": "Atanana göre filtrele",
+        "tags": "Etikete göre filtrele",
+        "all": "Tümü"
     },
     "search": {
         "placeholder": "Potansiyel müşterilerde ara"
@@ -67,6 +82,8 @@
         "company_hint": "Mevcut bir CRM şirketine bağlayın veya şirket henüz sistemde yoksa adını girin.",
         "lead_details": "Potansiyel Müşteri Detayları",
         "lead_details_hint": "Potansiyel müşterinin nereden geldiğini ve neyle ilgilendiğini takip edin.",
+        "custom_fields": "Özel Alanlar",
+        "custom_fields_hint": "CRM ayarlarında tanımlanan ek alanlar.",
         "status": "Durum"
     },
     "placeholders": {
@@ -83,6 +100,9 @@
         "company_name": "Şirket henüz CRM'de yoksa kullanın. Bir şirket bağlandığında gizlenir.",
         "service_interest": "Katalogdan hizmet seçilmediğinde serbest metin.",
         "services": "Bu müşteri adayının ilgilendiği bir veya daha fazla katalog hizmeti seçin.",
+        "tags": "Bu potansiyel müşteriyi sınıflandırmak için Ilık veya Soğuk gibi etiketler atayın.",
+        "no_tags": "Henüz etiket yok. Potansiyel müşterileri sınıflandırmak için önce etiket oluşturun.",
+        "no_tags_assigned": "Bu potansiyel müşteriye henüz etiket atanmadı.",
         "blocked": "Engellenen potansiyel müşteriler işaretlenir ve aktif iş akışlarından filtrelenebilir.",
         "assignee": "Bu potansiyel müşteriyi takip eden satış temsilcisi."
     },

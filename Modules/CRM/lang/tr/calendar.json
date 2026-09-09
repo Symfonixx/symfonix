@@ -1,0 +1,47 @@
+{
+    "menu": "Takvim",
+    "pages": {
+        "index_title": "CRM Takvimi"
+    },
+    "subtitle": "Tüm planlanmış aktiviteler, potansiyel müşteri aktiviteleri, anlaşma kapanış tarihleri, teklif süreleri, yenilemeler ve proje son tarihleri.",
+    "filters": {
+        "title": "Programları göster",
+        "all": "Tümü"
+    },
+    "categories": {
+        "activities": "Aktiviteler",
+        "leads": "Potansiyel müşteri aktiviteleri",
+        "deals": "Anlaşmalar",
+        "quotes": "Teklifler",
+        "subscriptions": "Abonelikler",
+        "projects": "Projeler"
+    },
+    "event_types": {
+        "expected_close": "Beklenen kapanış",
+        "quote_expiry": "Teklif son tarihi",
+        "renewal": "Yenileme",
+        "project_start": "Proje başlangıcı",
+        "project_due": "Proje bitiş tarihi"
+    },
+    "status": {
+        "scheduled": "Planlandı",
+        "completed": "Tamamlandı",
+        "open": "Açık",
+        "logged": "Kaydedildi"
+    },
+    "modal": {
+        "title": "Program detayları",
+        "category": "Kategori",
+        "type": "Tür",
+        "status": "Durum",
+        "when": "Zaman",
+        "owner": "Sorumlu",
+        "description": "Detaylar",
+        "open": "Kaydı aç",
+        "close": "Kapat"
+    },
+    "empty": "Bu dönemde program yok.",
+    "legend": {
+        "title": "Gösterge"
+    }
+}

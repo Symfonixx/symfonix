@@ -1,7 +1,7 @@
 {
-    "menu": "Analitik",
-    "title": "CRM Analitik ve Metrikler",
-    "subtitle": "Potansiyel müşteriler, satış hattı ve ekip performansına anlık içgörüler.",
+    "menu": "Gösterge Paneli",
+    "title": "CRM Gösterge Paneli",
+    "subtitle": "Müşteriler, satış hattı, satışlar ve ekip performansına tam bakış.",
     "filters": {
         "period": "Tarih Aralığı",
         "assignee": "Satış Temsilcisi",
@@ -18,13 +18,47 @@
         }
     },
     "metrics": {
+        "total_customers": "Toplam Müşteri",
+        "new_customers": "Yeni Müşteriler",
+        "new_leads": "Yeni Potansiyeller",
         "total_leads": "Toplam Potansiyel Müşteri",
+        "leads_in_progress": "Takipteki Potansiyeller",
+        "active_customers": "Aktif Müşteriler",
+        "lost_customers": "Kayıp Müşteriler",
+        "total_sales": "Toplam Satış",
+        "sales_this_month": "Bu Ayın Satışları",
         "conversion_rate": "Dönüşüm Oranı",
         "pipeline_value": "Hatt Değeri",
         "won_deals": "Kazanılan Anlaşmalar",
+        "lost_deals": "Kaybedilen Anlaşmalar",
+        "avg_deal_value": "Ortalama Anlaşma Değeri",
+        "avg_close_time": "Ort. Kapanış Süresi",
+        "outstanding_invoices": "Açık Faturalar",
+        "overdue_amounts": "Gecikmiş Tutarlar",
         "vs_previous": "önceki döneme göre",
         "leads_converted": ":total içinden :converted dönüştürüldü",
-        "won_value": ":count anlaşma · :value"
+        "won_value": ":count anlaşma · :value",
+        "lost_value": ":count anlaşma · :value",
+        "invoice_count": ":count fatura",
+        "days": ":value gün"
+    },
+    "widgets": {
+        "top_customers": "En Çok Satın Alan Müşteriler",
+        "top_customers_hint": "Kazanılan anlaşma değerine göre müşteriler.",
+        "top_customers_empty": "Sıralama için henüz kazanılan anlaşma yok.",
+        "customer": "Müşteri",
+        "deals": "Anlaşmalar",
+        "value": "Değer"
+    },
+    "customize": {
+        "button": "Özelleştir",
+        "title": "Paneli Özelleştir",
+        "hint": "Widget'ları açın veya kapatın. Sıralamak için kartları sürükleyin.",
+        "save": "Düzeni Kaydet",
+        "saved": "Panel düzeni kaydedildi.",
+        "reset": "Varsayılana Sıfırla",
+        "visible": "Görünür",
+        "drag_hint": "Sıralamak için sürükleyin"
     },
     "charts": {
         "pipeline_funnel": "Satış Hattı Hunisi",
@@ -49,7 +83,7 @@
         "unknown": "Diğer"
     },
     "leaderboard": {
-        "title": "Ekip Performansı",
+        "title": "Satış Performansı",
         "subtitle": "Seçilen dönem için kazanılan anlaşmalar.",
         "rep": "Satış Temsilcisi",
         "closed_deals": "Kapanan Anlaşmalar",
@@ -59,11 +93,20 @@
         "empty": "Bu dönem için kapanan anlaşma yok."
     },
     "activity": {
-        "title": "Son CRM Aktivitesi",
-        "subtitle": "Son denetim olayları ve kayıtlı aktiviteler.",
+        "title": "Müşteri Aktivite Akışı",
+        "subtitle": "Aramalar, e-postalar, toplantılar, notlar ve anlaşma güncellemeleri tek bir zaman çizelgesinde.",
         "empty": "Gösterilecek son aktivite yok.",
         "logged": ":type kaydedildi: :title",
-        "fallback": "CRM olayı kaydedildi"
+        "fallback": "CRM olayı kaydedildi",
+        "view": "Detayları gör"
     },
-    "unknown_rep": "Bilinmiyor"
+    "actions": {
+        "log_call": "Arama Kaydet",
+        "new_deal": "Yeni Anlaşma",
+        "add_contact": "Kişi Ekle",
+        "new_lead": "Yeni Potansiyel",
+        "new_quote": "Yeni Teklif"
+    },
+    "unknown_rep": "Bilinmiyor",
+    "unknown_customer": "Bilinmeyen müşteri"
 }

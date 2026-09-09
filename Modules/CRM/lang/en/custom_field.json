@@ -1,0 +1,35 @@
+{
+    "menu": "Custom Fields",
+    "pages": {
+        "index_title": "Custom Fields",
+        "create_title": "Add Custom Field",
+        "edit_title": "Edit Custom Field"
+    },
+    "fields": {
+        "label": "Label",
+        "label_en": "Label (English)",
+        "label_ar": "Label (Arabic)",
+        "label_de": "Label (German)",
+        "label_tr": "Label (Turkish)",
+        "key": "Key",
+        "type": "Type",
+        "options": "Options",
+        "options_hint": "One option per line. Used for select fields.",
+        "is_required": "Required",
+        "sort_order": "Sort Order"
+    },
+    "types": {
+        "text": "Text",
+        "textarea": "Textarea",
+        "number": "Number",
+        "date": "Date",
+        "select": "Select",
+        "checkbox": "Checkbox"
+    },
+    "actions": {
+        "add": "Add Field"
+    },
+    "hints": {
+        "key_locked": "The field key is generated automatically and stays stable so existing lead values remain linked."
+    }
+}

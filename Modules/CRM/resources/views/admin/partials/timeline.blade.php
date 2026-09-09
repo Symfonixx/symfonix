@@ -5,7 +5,12 @@
 
 <div class="card mt-6">
     <div class="card-header align-items-center">
-        <h3 class="card-title">{{ __('crm::timeline.title') }}</h3>
+        <h3 class="card-title">
+            <span class="sx-form-icon bg-light-info text-info me-3">
+                <i class="bi bi-clock-history"></i>
+            </span>
+            {{ __('crm::timeline.title') }}
+        </h3>
     </div>
     <div class="card-body">
         @can('CRM Management')
@@ -13,7 +18,9 @@
                 @csrf
                 <input type="hidden" name="subject_type" value="{{ $subjectType }}"/>
                 <input type="hidden" name="subject_id" value="{{ $subject->getKey() }}"/>
-                <h5 class="fw-bold mb-4">{{ __('crm::timeline.add_activity') }}</h5>
+                <h5 class="fw-bold mb-4">
+                    <i class="bi bi-plus-circle me-1 text-primary"></i>{{ __('crm::timeline.add_activity') }}
+                </h5>
                 <div class="row g-4">
                     <div class="col-md-3">
                         <label class="form-label required">{{ __('crm::timeline.fields.type') }}</label>
@@ -46,6 +53,7 @@
             </form>
         @endcan
 
+        <div class="crm-timeline">
         @forelse($timeline as $entry)
             @php
                 $item = $entry['item'];
@@ -70,13 +78,13 @@
                     default => 'secondary',
                 };
             @endphp
-            <div class="d-flex align-items-start mb-6 pb-6 border-bottom border-gray-200">
-                <div class="symbol symbol-40px me-4">
-                    <span class="symbol-label bg-light-{{ $badgeColor }}">
-                        <i class="bi bi-{{ $icon }} text-{{ $badgeColor }}"></i>
+            <div class="crm-timeline-item">
+                <div class="crm-timeline-rail">
+                    <span class="crm-timeline-dot bg-light-{{ $badgeColor }} text-{{ $badgeColor }}">
+                        <i class="bi bi-{{ $icon }}"></i>
                     </span>
                 </div>
-                <div class="flex-grow-1">
+                <div class="crm-timeline-card">
                     <div class="d-flex justify-content-between align-items-start gap-3">
                         <div>
                             @if($isActivity)
@@ -142,7 +150,13 @@
                 </div>
             </div>
         @empty
-            <p class="text-muted mb-0">{{ __('crm::timeline.no_entries') }}</p>
+            <div class="text-center py-8">
+                <span class="crm-empty-icon bg-light-primary text-primary mb-3">
+                    <i class="bi bi-clock-history fs-2"></i>
+                </span>
+                <p class="text-muted mb-0">{{ __('crm::timeline.no_entries') }}</p>
+            </div>
         @endforelse
+        </div>
     </div>
 </div>

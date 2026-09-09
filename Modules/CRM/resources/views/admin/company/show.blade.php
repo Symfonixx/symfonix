@@ -9,9 +9,48 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::company.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
+    <div class="d-flex align-items-center gap-2 gap-lg-3">
+        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.companies.index') }}">
+            <i class="bi bi-arrow-left me-1"></i>{{ __('crm::company.actions.back_to_list') }}
+        </a>
+        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.companies.edit', $company) }}">
+            <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
+        </a>
+    </div>
 @endsection
 
 <x-admin-layout>
+    <div class="card sx-show-hero mb-8">
+        <div class="card-body p-6 p-lg-8">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-5">
+                <div class="d-flex align-items-center gap-4">
+                    <span class="sx-avatar"><i class="bi bi-building"></i></span>
+                    <div>
+                        <h2 class="text-white fw-bold mb-2">{{ $company->name }}</h2>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="badge badge-light-{{ $company->status === 'active' ? 'success' : 'danger' }}">
+                                {{ __('crm::company.status.'.$company->status) }}
+                            </span>
+                            @if($company->email)
+                                <a href="mailto:{{ $company->email }}" class="text-white opacity-75 fs-7">
+                                    <i class="bi bi-envelope me-1"></i>{{ $company->email }}
+                                </a>
+                            @endif
+                            @if($company->phone)
+                                <a href="tel:{{ $company->phone }}" class="text-white opacity-75 fs-7">
+                                    <i class="bi bi-telephone me-1"></i>{{ $company->phone }}
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}" class="btn btn-light btn-sm">
+                    <i class="bi bi-person-plus me-1"></i>{{ __('crm::contact.actions.add') }}
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-body">
             <div class="row mb-6">
@@ -117,6 +156,66 @@
 
     <div class="card mt-6">
         <div class="card-header align-items-center">
+            <h3 class="card-title">{{ __('crm::lead.menu.leads') }}</h3>
+            <div class="card-toolbar">
+                <a href="{{ route('admin.leads.create', ['company_id' => $company->id]) }}"
+                   class="btn btn-sm btn-primary">
+                    <i class="bi bi-plus-lg me-1"></i>{{ __('crm::lead.actions.add') }}
+                </a>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            @if($company->leads->isNotEmpty())
+                <div class="table-responsive">
+                    <table class="table table-row-bordered align-middle gy-4 mb-0">
+                        <thead>
+                        <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                            <th>{{ __('crm::lead.fields.name') }}</th>
+                            <th>{{ __('crm::lead.fields.status') }}</th>
+                            <th>{{ __('crm::lead.fields.tags') }}</th>
+                            <th>{{ __('crm::lead.fields.email') }}</th>
+                            <th class="text-end"></th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-gray-600 fw-semibold">
+                        @foreach($company->leads as $lead)
+                            <tr>
+                                <td>
+                                    <a href="{{ route('admin.leads.show', $lead) }}" class="text-hover-primary text-gray-800">
+                                        {{ $lead->name ?? __('N/A') }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="badge badge-light-{{ \Modules\CRM\Models\Lead::statusBadgeColor($lead->status) }}">
+                                        {{ __('crm::lead.status.' . ($lead->status ?? 'new')) }}
+                                    </span>
+                                </td>
+                                <td>
+                                    @include('crm::admin.partials.lead-tags', [
+                                        'tags' => $lead->tags,
+                                        'empty' => '—',
+                                    ])
+                                </td>
+                                <td>{{ $lead->email ?: __('N/A') }}</td>
+                                <td class="text-end">
+                                    <a href="{{ route('admin.leads.show', $lead) }}"
+                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm">
+                                        <i class="bi bi-eye fs-5"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @else
+                <div class="text-center text-muted py-10">{{ __('N/A') }}</div>
+            @endif
+        </div>
+    </div>
+
+    <div class="card mt-6">
+        <div class="card-header align-items-center">
             <h3 class="card-title">{{ __('crm::deal.menu.deals') }}</h3>
             <div class="card-toolbar">
                 <a href="{{ route('admin.deals.create', ['company_id' => $company->id]) }}"
@@ -133,6 +232,7 @@
                         <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                             <th>{{ __('crm::deal.fields.title') }}</th>
                             <th>{{ __('crm::deal.fields.stage') }}</th>
+                            <th>{{ __('crm::lead.fields.tags') }}</th>
                             <th>{{ __('crm::deal.fields.value') }}</th>
                             <th>{{ __('crm::deal.fields.status') }}</th>
                             <th class="text-end"></th>
@@ -150,6 +250,12 @@
                                     @else
                                         {{ __('N/A') }}
                                     @endif
+                                </td>
+                                <td>
+                                    @include('crm::admin.partials.lead-tags', [
+                                        'tags' => $deal->lead?->tags ?? collect(),
+                                        'empty' => '—',
+                                    ])
                                 </td>
                                 <td>{{ $deal->value ? number_format($deal->value, 2).' '.$deal->currency : __('N/A') }}</td>
                                 <td>{{ __('crm::deal.status.'.$deal->status) }}</td>
@@ -176,7 +282,7 @@
                 <h3 class="card-title">{{ __('crm::contact_form.menu.inquiries') }}</h3>
                 <div class="card-toolbar">
                     <a href="{{ route('admin.contact_forms.index') }}" class="btn btn-sm btn-light-primary">
-                        {{ __('crm::contact_form.actions.back_to_list') }}
+                        <i class="bi bi-arrow-left me-1"></i>{{ __('crm::contact_form.actions.back_to_list') }}
                     </a>
                 </div>
             </div>

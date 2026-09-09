@@ -24,6 +24,8 @@
 
             tinymce.init({
                 selector: selector,
+                width: '100%',
+                min_height: {{ (int) $editorHeight }},
                 height: {{ (int) $editorHeight }},
                 menubar: false,
                 branding: false,

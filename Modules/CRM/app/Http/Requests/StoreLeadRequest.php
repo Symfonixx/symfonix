@@ -5,12 +5,13 @@ namespace Modules\CRM\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\CRM\Models\Lead;
+use Modules\CRM\Models\LeadCustomField;
 
 class StoreLeadRequest extends FormRequest
 {
     public function rules(): array
     {
-        return [
+        return array_merge([
             'name' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50', 'regex:/^[0-9+\-\s()]+$/'],
@@ -28,12 +29,14 @@ class StoreLeadRequest extends FormRequest
             'service_id' => ['nullable', 'integer', 'exists:services,id'],
             'service_ids' => ['nullable', 'array'],
             'service_ids.*' => ['integer', 'exists:services,id'],
+            'tag_ids' => ['nullable', 'array'],
+            'tag_ids.*' => ['integer', 'exists:lead_tags,id'],
             'service_interest' => ['nullable', 'string', 'max:255'],
             'problem_statement' => ['nullable', 'string'],
             'attachments' => ['nullable', 'array'],
             'attachments.*' => ['file', 'max:10240'],
             'blocked' => ['sometimes', 'boolean'],
-        ];
+        ], LeadCustomField::leadValidationRules());
     }
 
     public function authorize(): bool
@@ -50,11 +53,19 @@ class StoreLeadRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
+        $customFields = $this->input('custom_fields', []);
+
+        foreach (LeadCustomField::query()->active()->where('type', LeadCustomField::TYPE_CHECKBOX)->get() as $field) {
+            $customFields[$field->key] = $this->boolean('custom_fields.'.$field->key);
+        }
+
         $this->merge([
             'company_id' => $this->filled('company_id') ? $this->input('company_id') : null,
             'assigned_to' => $this->filled('assigned_to') ? $this->input('assigned_to') : null,
             'status' => $this->input('status') ?: Lead::STATUS_NEW,
             'blocked' => $this->boolean('blocked'),
+            'tag_ids' => $this->input('tag_ids', []),
+            'custom_fields' => $customFields,
             // Legacy single column mirrors the first selected service.
             'service_id' => $this->input('service_ids.0') ?: ($this->input('service_id') ?: null),
         ]);

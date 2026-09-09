@@ -15,7 +15,7 @@
 @endif
 
 <div class="row g-6">
-    <div class="col-xl-7">
+    <div class="col-xl-8">
         <x-admin.settings-section
             icon="bi-file-earmark-richtext"
             title='Page Content'
@@ -89,7 +89,7 @@
         </x-admin.settings-section>
     </div>
 
-    <div class="col-xl-5">
+    <div class="col-xl-4">
         <div class="seo-preview-panel">
             @include('cms::admin.shared._image-aside', [
                 'currentImage' => $pageData?->image_link ?? null,

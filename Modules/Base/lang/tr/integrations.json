@@ -1,0 +1,45 @@
+{
+    "title": "API’ler ve Entegrasyonlar",
+    "page_description": "Yönetim panelinde kullanılan e-posta gönderimi ve WhatsApp Business API kimlik bilgilerini yapılandırın.",
+    "form_description": "Buraya kaydedilen değerler .env değerlerini geçersiz kılar. Boş alanlar .env yedeğini kullanır. Boş bırakılan gizli alanlar mevcut değeri korur.",
+    "tabs": {
+        "email": "E-posta",
+        "whatsapp": "WhatsApp"
+    },
+    "status": {
+        "email": "E-posta API",
+        "whatsapp": "WhatsApp API",
+        "system": "Sistem ayarları",
+        "system_link": "Sistem Yapılandırmalarını aç",
+        "configured": "Yapılandırıldı",
+        "missing": "Yapılandırılmadı"
+    },
+    "email": {
+        "title": "E-posta / SMTP",
+        "description": "Giden posta aktarımı. Burada boş bırakılan alanlar .env içindeki ilgili MAIL_* değerini kullanır.",
+        "mailer": "Posta sağlayıcı",
+        "mailer_hint": "Üretim için SMTP önerilir. Log, mesajları uygulama günlüğüne yazar.",
+        "host": "SMTP Sunucusu",
+        "port": "SMTP Portu",
+        "username": "SMTP Kullanıcı adı",
+        "password": "SMTP Şifresi",
+        "password_hint": "Mevcut şifreyi (veritabanı veya .env) korumak için boş bırakın.",
+        "encryption": "Şifreleme",
+        "encryption_hint": "Genellikle 587 portunda TLS veya 465 portunda SSL.",
+        "from_address": "Gönderen Adresi",
+        "from_name": "Gönderen Adı",
+        "env_hint": ".env yer tutucusunu kullanmak için boş bırakın."
+    },
+    "whatsapp": {
+        "title": "WhatsApp Business API",
+        "description": "WhatsApp mesajları göndermek için Meta Cloud API kimlik bilgileri. Boş alanlar .env içindeki WHATSAPP_* değerlerine düşer.",
+        "api_token": "Erişim Jetonu",
+        "api_token_hint": "Sistem kullanıcı jetonu. Mevcut jetonu korumak için boş bırakın.",
+        "phone_number_id": "Telefon Numarası ID",
+        "business_account_id": "İşletme Hesabı ID",
+        "api_version": "API Sürümü",
+        "webhook_verify_token": "Webhook Doğrulama Jetonu",
+        "webhook_verify_token_hint": "İsteğe bağlı. Meta webhook doğrulaması için. Mevcut değeri korumak için boş bırakın.",
+        "env_hint": ".env yer tutucusunu kullanmak için boş bırakın."
+    }
+}

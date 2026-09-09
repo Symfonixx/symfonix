@@ -86,8 +86,8 @@ trait FileTrait
      */
     private function generateFilename(UploadedFile $file, ?string $name = null): string
     {
-        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        $sanitizedOriginalName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $originalName);
+        $originalName = pathinfo((string) $file->getClientOriginalName(), PATHINFO_FILENAME);
+        $sanitizedOriginalName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', (string) $originalName);
         $hash = md5($sanitizedOriginalName.time());
 
         return ($name ? $name.'-'.time() : $hash).'.'.$file->getClientOriginalExtension();

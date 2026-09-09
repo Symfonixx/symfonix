@@ -13,6 +13,7 @@ class SalesTargetController extends Controller
         private readonly SalesTargetService $salesTargetService,
     ) {
         $this->setActive('crm');
+        $this->setActive('crm_settings');
         $this->setActive('crm_sales_targets');
     }
 

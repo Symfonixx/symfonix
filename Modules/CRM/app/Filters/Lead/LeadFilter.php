@@ -36,6 +36,11 @@ class LeadFilter
             $query->where('assigned_to', (int) $filters['assigned_to']);
         }
 
+        if (! empty($filters['tag_id'])) {
+            $tagId = (int) $filters['tag_id'];
+            $query->whereHas('tags', fn (Builder $builder) => $builder->where('lead_tags.id', $tagId));
+        }
+
         return $query;
     }
 }

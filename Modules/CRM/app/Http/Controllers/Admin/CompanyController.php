@@ -60,7 +60,11 @@ class CompanyController extends Controller
         $company->loadMissing([
             'user:id,name,email',
             'contacts' => fn ($query) => $query->latest(),
-            'deals' => fn ($query) => $query->with('pipelineStage:id,name,color')->latest()->limit(20),
+            'leads' => fn ($query) => $query->with('tags')->latest()->limit(20),
+            'deals' => fn ($query) => $query
+                ->with(['pipelineStage:id,name,color', 'lead.tags'])
+                ->latest()
+                ->limit(20),
             'contactForms' => fn ($query) => $query->latest()->limit(10),
             'subscriptions' => fn ($query) => $query->latest(),
             'crmActivities.user:id,name',

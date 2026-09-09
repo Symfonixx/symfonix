@@ -31,6 +31,10 @@ return [
         '*/robots.txt',
         'humans.txt',
         '*/humans.txt',
+        '*/admin/backups/import',
+        '*/admin/backups/*/restore',
+        'admin/backups/import',
+        'admin/backups/*/restore',
     ],
 
     /*

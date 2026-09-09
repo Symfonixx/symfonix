@@ -10,7 +10,7 @@
     <x-admin.breadcrumb :pageTitle="__('crm::contact.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.contacts.create') }}">
-            {{ __('crm::contact.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
         </a>
     </div>
 @endsection
@@ -43,10 +43,19 @@
                     </div>
                 </td>
                 <td>
-                    {{ $contact->name }}
-                    @if($contact->is_primary)
-                        <span class="badge badge-light-primary ms-1">{{ __('crm::contact.fields.is_primary') }}</span>
-                    @endif
+                    <div class="d-flex align-items-center">
+                        <span class="sx-table-avatar bg-light-primary text-primary me-3">
+                            {{ strtoupper(substr($contact->name ?? 'C', 0, 1)) }}
+                        </span>
+                        <div>
+                            <a href="{{ route('admin.contacts.show', $contact) }}" class="text-gray-800 fw-semibold text-hover-primary">
+                                {{ $contact->name }}
+                            </a>
+                            @if($contact->is_primary)
+                                <span class="badge badge-light-primary ms-1">{{ __('crm::contact.fields.is_primary') }}</span>
+                            @endif
+                        </div>
+                    </div>
                 </td>
                 <td>{{ $contact->email ?: __('N/A') }}</td>
                 <td>{{ $contact->phone ?: __('N/A') }}</td>

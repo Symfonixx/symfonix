@@ -278,6 +278,15 @@
                         icon="bi-envelope-check"
                         :hint="__('base::system.admin_notifications.email_hint')"
                     />
+                    <div class="row mb-2">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-8">
+                            <a href="{{ route('admin.integrations.index') }}" class="btn btn-light-primary">
+                                <i class="bi bi-plug me-1"></i>
+                                {{ __('base::integrations.title') }}
+                            </a>
+                        </div>
+                    </div>
                 </x-admin.settings-section>
             </div>
 

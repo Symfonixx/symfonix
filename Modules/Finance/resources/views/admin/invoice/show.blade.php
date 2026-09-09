@@ -17,6 +17,9 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="$invoice->invoice_number" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex gap-2">
+        <a href="{{ route('admin.finance.invoices.index') }}" class="btn btn-sm btn-light-primary">
+            <i class="bi bi-arrow-left me-1"></i>{{ __('Back to List') }}
+        </a>
         <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}" class="btn btn-sm btn-light-primary">
             <i class="bi bi-file-pdf me-1"></i>{{ __('finance::invoice.actions.download_pdf') }}
         </a>

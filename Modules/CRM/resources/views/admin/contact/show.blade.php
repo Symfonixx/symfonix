@@ -10,13 +10,54 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::contact.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.contacts.edit', $contact) }}">
+        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.contacts.index') }}">
+            <i class="bi bi-arrow-left me-1"></i>{{ __('crm::contact.actions.back_to_list') }}
+        </a>
+        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.contacts.edit', $contact) }}">
             <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
         </a>
     </div>
 @endsection
 
 <x-admin-layout>
+    <div class="card sx-show-hero mb-8">
+        <div class="card-body p-6 p-lg-8">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-5">
+                <div class="d-flex align-items-center gap-4">
+                    <span class="sx-avatar">{{ strtoupper(substr($contact->name ?? 'C', 0, 1)) }}</span>
+                    <div>
+                        <h2 class="text-white fw-bold mb-2">{{ $contact->name }}</h2>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            @if($contact->job_title)
+                                <span class="text-white opacity-75 fs-7">{{ $contact->job_title }}</span>
+                            @endif
+                            @if($contact->is_primary)
+                                <span class="badge badge-light-primary">{{ __('crm::contact.fields.is_primary') }}</span>
+                            @endif
+                            @if($contact->company)
+                                <a href="{{ route('admin.companies.show', $contact->company) }}" class="text-white opacity-75 fs-7">
+                                    <i class="bi bi-building me-1"></i>{{ $contact->company->name }}
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    @if($contact->email)
+                        <a href="mailto:{{ $contact->email }}" class="btn btn-light btn-sm">
+                            <i class="bi bi-envelope me-1"></i>{{ $contact->email }}
+                        </a>
+                    @endif
+                    @if($contact->phone)
+                        <a href="tel:{{ $contact->phone }}" class="btn btn-light btn-sm">
+                            <i class="bi bi-telephone me-1"></i>{{ $contact->phone }}
+                        </a>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-body">
             <div class="row mb-6">

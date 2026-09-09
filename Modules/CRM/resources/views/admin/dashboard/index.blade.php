@@ -1,107 +1,46 @@
+@php
+    $breadcrumbItems = [
+        ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
+        ['label' => __('CRM'), 'url' => route('admin.companies.index')],
+        ['label' => __('crm::dashboard.menu')],
+    ];
+    $f = $analytics['filters'];
+    $visibleWidgets = collect($layout)->where('visible', true)->sortBy('order')->values();
+    $layoutStateForJs = collect($layout)->map(function ($w) {
+        return [
+            'id' => $w['id'],
+            'visible' => (bool) $w['visible'],
+            'order' => (int) $w['order'],
+        ];
+    })->values()->all();
+@endphp
+
 @section('title', __('crm::dashboard.title'))
 
-@section('css')
-<style>
-    .crm-dash-hero {
-        background: linear-gradient(135deg, #1e1e2d 0%, #3f4254 55%, #1b2559 100%);
-        border-radius: 1rem;
-        color: #fff;
-    }
-    .crm-metric-card {
-        border: 0;
-        border-radius: 1rem;
-        box-shadow: 0 0.5rem 1.5rem rgba(24, 28, 50, 0.06);
-        transition: transform .2s ease, box-shadow .2s ease;
-        height: 100%;
-    }
-    .crm-metric-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0.75rem 2rem rgba(24, 28, 50, 0.1);
-    }
-    .crm-metric-icon {
-        width: 3rem;
-        height: 3rem;
-        border-radius: .85rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.35rem;
-    }
-    .crm-trend-up { color: #50cd89; }
-    .crm-trend-down { color: #f1416c; }
-    .crm-funnel-row + .crm-funnel-row { margin-top: 1rem; }
-    .crm-funnel-bar {
-        height: .65rem;
-        border-radius: 999px;
-        background: #f1f1f4;
-        overflow: hidden;
-    }
-    .crm-funnel-bar > span {
-        display: block;
-        height: 100%;
-        border-radius: 999px;
-        transition: width .6s ease;
-    }
-    .crm-channel-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        padding: .85rem 0;
-        border-bottom: 1px dashed #eff2f5;
-    }
-    .crm-channel-item:last-child { border-bottom: 0; }
-    .crm-activity-item {
-        display: flex;
-        gap: .85rem;
-        padding: .85rem 0;
-        border-bottom: 1px solid #eff2f5;
-    }
-    .crm-activity-item:last-child { border-bottom: 0; }
-    .crm-activity-icon {
-        width: 2.25rem;
-        height: 2.25rem;
-        border-radius: .65rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-    .crm-filter-card {
-        border: 1px solid #eff2f5;
-        border-radius: 1rem;
-        background: #fff;
-    }
-    .crm-progress-thin {
-        height: .45rem;
-        border-radius: 999px;
-    }
-</style>
-@endsection
-
 @section('toolbar')
-    @php
-        $breadcrumbItems = [
-            ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
-            ['label' => __('CRM'), 'url' => route('admin.companies.index')],
-            ['label' => __('crm::dashboard.menu')],
-        ];
-        $f = $analytics['filters'];
-        $s = $analytics['summary'];
-        $currency = $s['pipeline_value']['currency'] ?? 'USD';
-    @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::dashboard.title')" :breadcrumbItems="$breadcrumbItems"/>
 @endsection
 
 <x-admin-layout>
     <div class="crm-dash-hero p-6 p-lg-8 mb-8">
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-4">
-            <div>
-                <h2 class="text-white fw-bold fs-2 mb-2">{{ __('crm::dashboard.title') }}</h2>
-                <p class="text-white opacity-75 mb-0">{{ __('crm::dashboard.subtitle') }}</p>
+        <div class="row g-6 align-items-center">
+            <div class="col-xl-6">
+                <span class="badge badge-light-primary mb-3">
+                    <i class="bi bi-graph-up me-1"></i>{{ __('crm::dashboard.menu') }}
+                </span>
+                <h2 class="text-white fw-bold fs-2x mb-2">{{ __('crm::dashboard.title') }}</h2>
+                <p class="text-white opacity-75 mb-4">{{ __('crm::dashboard.subtitle') }}</p>
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                    <span class="crm-hero-chip">
+                        <i class="bi bi-calendar3 me-2"></i>{{ $f['date_from'] }} — {{ $f['date_to'] }}
+                    </span>
+                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="offcanvas" data-bs-target="#crmDashboardCustomize">
+                        <i class="bi bi-sliders me-1"></i>{{ __('crm::dashboard.customize.button') }}
+                    </button>
+                </div>
             </div>
-            <div class="text-white opacity-75 fs-7">
-                {{ $f['date_from'] }} — {{ $f['date_to'] }}
+            <div class="col-xl-6">
+                @include('crm::admin.dashboard.widgets._quick_actions')
             </div>
         </div>
     </div>
@@ -109,7 +48,9 @@
     <div class="crm-filter-card card card-body mb-8">
         <form method="GET" action="{{ route('admin.crm.dashboard') }}" class="row g-4 align-items-end">
             <div class="col-md-3">
-                <label class="form-label fw-semibold">{{ __('crm::dashboard.filters.period') }}</label>
+                <label class="form-label fw-semibold">
+                    <i class="bi bi-calendar3 text-primary me-1"></i>{{ __('crm::dashboard.filters.period') }}
+                </label>
                 <select name="period" id="crm-period" class="form-select form-select-solid" data-control="select2">
                     @foreach(__('crm::dashboard.filters.periods') as $key => $label)
                         <option value="{{ $key }}" @selected(($f['period'] ?? 'this_month') === $key)>{{ $label }}</option>
@@ -125,7 +66,9 @@
                 <input type="date" name="date_to" value="{{ $f['date_to'] ?? '' }}" class="form-control form-control-solid"/>
             </div>
             <div class="col-md-3">
-                <label class="form-label fw-semibold">{{ __('crm::dashboard.filters.assignee') }}</label>
+                <label class="form-label fw-semibold">
+                    <i class="bi bi-person-badge text-info me-1"></i>{{ __('crm::dashboard.filters.assignee') }}
+                </label>
                 <select name="assigned_to" class="form-select form-select-solid" data-control="select2">
                     <option value="">{{ __('crm::dashboard.filters.all_reps') }}</option>
                     @foreach($analytics['assignees'] as $assignee)
@@ -143,284 +86,269 @@
         </form>
     </div>
 
-    @php
-        $metricCards = [
-            [
-                'title' => __('crm::dashboard.metrics.total_leads'),
-                'value' => number_format($s['total_leads']['value']),
-                'trend' => $s['total_leads']['trend'],
-                'icon' => 'person-lines-fill',
-                'color' => 'primary',
-                'hint' => null,
-            ],
-            [
-                'title' => __('crm::dashboard.metrics.conversion_rate'),
-                'value' => $s['conversion_rate']['value'].'%',
-                'trend' => $s['conversion_rate']['trend'],
-                'icon' => 'graph-up-arrow',
-                'color' => 'success',
-                'hint' => __('crm::dashboard.metrics.leads_converted', [
-                    'converted' => $s['conversion_rate']['converted'],
-                    'total' => $s['conversion_rate']['total'],
-                ]),
-            ],
-            [
-                'title' => __('crm::dashboard.metrics.pipeline_value'),
-                'value' => number_format($s['pipeline_value']['value'], 0).' '.$currency,
-                'trend' => $s['pipeline_value']['trend'],
-                'icon' => 'cash-stack',
-                'color' => 'warning',
-                'hint' => null,
-            ],
-            [
-                'title' => __('crm::dashboard.metrics.won_deals'),
-                'value' => number_format($s['won_deals']['count']),
-                'trend' => $s['won_deals']['trend'],
-                'icon' => 'trophy',
-                'color' => 'info',
-                'hint' => __('crm::dashboard.metrics.won_value', [
-                    'count' => $s['won_deals']['count'],
-                    'value' => number_format($s['won_deals']['value'], 0).' '.$currency,
-                ]),
-            ],
-        ];
-    @endphp
-
-    <div class="row g-5 g-xl-8 mb-8">
-        @foreach($metricCards as $card)
-            @php
-                $trend = $card['trend'];
-                $trendUp = $trend >= 0;
-            @endphp
-            <div class="col-sm-6 col-xl-3">
-                <div class="card crm-metric-card">
-                    <div class="card-body p-6">
-                        <div class="d-flex align-items-start justify-content-between mb-4">
-                            <div class="crm-metric-icon bg-light-{{ $card['color'] }} text-{{ $card['color'] }}">
-                                <i class="bi bi-{{ $card['icon'] }}"></i>
-                            </div>
-                            <span class="fw-semibold fs-7 {{ $trendUp ? 'crm-trend-up' : 'crm-trend-down' }}">
-                                <i class="bi bi-arrow-{{ $trendUp ? 'up' : 'down' }}-short"></i>
-                                {{ ($trendUp ? '+' : '').$trend }}%
-                            </span>
-                        </div>
-                        <div class="fs-2hx fw-bold text-gray-900 lh-1 mb-2">{{ $card['value'] }}</div>
-                        <div class="text-gray-600 fw-semibold mb-1">{{ $card['title'] }}</div>
-                        <div class="text-muted fs-8">{{ $card['hint'] ?: __('crm::dashboard.metrics.vs_previous') }}</div>
-                    </div>
-                </div>
-            </div>
+    <div id="crm-widget-grid" class="row g-5 g-xl-8 mb-8">
+        @foreach($visibleWidgets as $widget)
+            @if($widget['type'] === 'metric')
+                @include('crm::admin.dashboard.widgets._metric', ['widget' => $widget, 'analytics' => $analytics])
+            @elseif($widget['id'] === 'top_customers')
+                @include('crm::admin.dashboard.widgets._top_customers', ['widget' => $widget, 'analytics' => $analytics])
+            @elseif($widget['id'] === 'sales_performance')
+                @include('crm::admin.dashboard.widgets._sales_performance', ['widget' => $widget, 'analytics' => $analytics])
+            @elseif($widget['id'] === 'pipeline_funnel')
+                @include('crm::admin.dashboard.widgets._pipeline_funnel', ['widget' => $widget, 'analytics' => $analytics])
+            @elseif($widget['id'] === 'lead_channels')
+                @include('crm::admin.dashboard.widgets._lead_channels', ['widget' => $widget, 'analytics' => $analytics])
+            @elseif($widget['id'] === 'recent_activity')
+                @include('crm::admin.dashboard.widgets._recent_activity', ['widget' => $widget, 'analytics' => $analytics])
+            @endif
         @endforeach
     </div>
 
-    <div class="row g-5 g-xl-8 mb-8">
-        <div class="col-xl-8">
-            <div class="card h-100">
-                <div class="card-header border-0 pt-6">
-                    <h3 class="card-title fw-bold">{{ __('crm::dashboard.charts.pipeline_funnel') }}</h3>
-                    <span class="text-muted fs-7">{{ __('crm::dashboard.charts.pipeline_hint') }}</span>
-                </div>
-                <div class="card-body pt-2">
-                    <div class="row g-6">
-                        <div class="col-lg-7">
-                            @forelse($analytics['pipeline_funnel'] as $stage)
-                                <div class="crm-funnel-row">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <div class="fw-semibold text-gray-800">
-                                            <span class="badge badge-light-{{ $stage['color'] }} me-2">&nbsp;</span>
-                                            {{ $stage['name'] }}
-                                        </div>
-                                        <div class="text-muted fs-7">
-                                            <span class="fw-bold text-gray-800">{{ $stage['count'] }}</span>
-                                            @if($stage['value'] > 0)
-                                                · {{ number_format($stage['value'], 0) }} {{ $currency }}
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="crm-funnel-bar">
-                                        <span class="bg-{{ $stage['color'] }}" style="width: {{ max($stage['percentage'], 4) }}%"></span>
-                                    </div>
-                                </div>
-                            @empty
-                                <p class="text-muted mb-0">{{ __('No data available') }}</p>
-                            @endforelse
-                        </div>
-                        <div class="col-lg-5">
-                            <canvas id="crmPipelineChart" height="280"></canvas>
-                        </div>
-                    </div>
-                </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="crmDashboardCustomize">
+        <div class="offcanvas-header border-bottom">
+            <div>
+                <h3 class="fw-bold mb-1">{{ __('crm::dashboard.customize.title') }}</h3>
+                <div class="text-muted fs-7">{{ __('crm::dashboard.customize.hint') }}</div>
             </div>
+            <button type="button" class="btn btn-sm btn-icon btn-active-light-primary" data-bs-dismiss="offcanvas">
+                <i class="bi bi-x-lg"></i>
+            </button>
         </div>
-        <div class="col-xl-4">
-            <div class="card h-100">
-                <div class="card-header border-0 pt-6">
-                    <h3 class="card-title fw-bold">{{ __('crm::dashboard.charts.lead_channels') }}</h3>
-                    <span class="text-muted fs-7">{{ __('crm::dashboard.charts.lead_channels_hint') }}</span>
-                </div>
-                <div class="card-body pt-2">
-                    <canvas id="crmChannelsChart" height="220" class="mb-6"></canvas>
-                    @forelse($analytics['lead_channels'] as $channel)
-                        <div class="crm-channel-item">
-                            <div>
-                                <div class="fw-semibold text-gray-800">{{ $channel['label'] }}</div>
-                                <div class="text-muted fs-8">{{ $channel['count'] }} {{ __('crm::dashboard.charts.leads') }}</div>
-                            </div>
-                            <div class="text-end">
-                                <div class="fw-bold text-gray-900">{{ $channel['percentage'] }}%</div>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-muted mb-0">{{ __('No data available') }}</p>
-                    @endforelse
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row g-5 g-xl-8">
-        <div class="col-xl-7">
-            <div class="card h-100">
-                <div class="card-header border-0 pt-6">
-                    <h3 class="card-title fw-bold">{{ __('crm::dashboard.leaderboard.title') }}</h3>
-                    <span class="text-muted fs-7">{{ __('crm::dashboard.leaderboard.subtitle') }}</span>
-                </div>
-                <div class="card-body pt-0">
-                    <div class="table-responsive">
-                        <table class="table table-row-dashed align-middle gy-4 mb-0">
-                            <thead>
-                            <tr class="text-start text-muted fw-bold fs-7 text-uppercase">
-                                <th>{{ __('crm::dashboard.leaderboard.rep') }}</th>
-                                <th>{{ __('crm::dashboard.leaderboard.closed_deals') }}</th>
-                                <th>{{ __('crm::dashboard.leaderboard.closed_value') }}</th>
-                                <th>{{ __('crm::dashboard.leaderboard.target') }}</th>
-                                <th>{{ __('crm::dashboard.leaderboard.achievement') }}</th>
-                            </tr>
-                            </thead>
-                            <tbody class="text-gray-700 fw-semibold">
-                            @forelse($analytics['team_leaderboard'] as $rep)
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-3">
-                                            <span class="symbol symbol-35px symbol-circle bg-light-primary text-primary fw-bold">
-                                                {{ strtoupper(substr($rep['name'], 0, 1)) }}
-                                            </span>
-                                            <span>{{ $rep['name'] }}</span>
-                                        </div>
-                                    </td>
-                                    <td>{{ $rep['closed_deals'] }}</td>
-                                    <td>{{ number_format($rep['closed_value'], 0) }} {{ $currency }}</td>
-                                    <td>{{ $rep['target'] }}</td>
-                                    <td style="min-width: 140px;">
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="progress flex-grow-1 crm-progress-thin bg-light">
-                                                <div class="progress-bar bg-success" style="width: {{ $rep['achievement'] }}%"></div>
-                                            </div>
-                                            <span class="fs-7 fw-bold">{{ $rep['achievement'] }}%</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5" class="text-center text-muted py-10">
-                                        {{ __('crm::dashboard.leaderboard.empty') }}
-                                    </td>
-                                </tr>
-                            @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-5">
-            <div class="card h-100">
-                <div class="card-header border-0 pt-6">
-                    <h3 class="card-title fw-bold">{{ __('crm::dashboard.activity.title') }}</h3>
-                    <span class="text-muted fs-7">{{ __('crm::dashboard.activity.subtitle') }}</span>
-                </div>
-                <div class="card-body pt-0">
-                    @forelse($analytics['recent_activity'] as $activity)
-                        <div class="crm-activity-item">
-                            <span class="crm-activity-icon bg-light-{{ $activity['color'] }} text-{{ $activity['color'] }}">
-                                <i class="bi bi-{{ $activity['icon'] }}"></i>
+        <div class="offcanvas-body d-flex flex-column p-0">
+            <div id="crm-widget-toggles" class="flex-grow-1 overflow-auto px-5 py-4">
+                @foreach($layout as $widget)
+                    @php
+                        $label = $widget['type'] === 'metric'
+                            ? __('crm::dashboard.metrics.'.$widget['id'])
+                            : match ($widget['id']) {
+                                'top_customers' => __('crm::dashboard.widgets.top_customers'),
+                                'sales_performance' => __('crm::dashboard.leaderboard.title'),
+                                'pipeline_funnel' => __('crm::dashboard.charts.pipeline_funnel'),
+                                'lead_channels' => __('crm::dashboard.charts.lead_channels'),
+                                'recent_activity' => __('crm::dashboard.activity.title'),
+                                default => $widget['id'],
+                            };
+                    @endphp
+                    <div class="crm-widget-toggle-item" data-widget-id="{{ $widget['id'] }}">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="crm-metric-icon bg-light-{{ $widget['color'] }} text-{{ $widget['color'] }}" style="width:2.25rem;height:2.25rem;font-size:1rem;">
+                                <i class="bi bi-{{ $widget['icon'] }}"></i>
                             </span>
-                            <div class="flex-grow-1">
-                                <div class="fw-semibold text-gray-800">{{ $activity['message'] }}</div>
-                                <div class="text-muted fs-8">
-                                    {{ $activity['user'] }} · {{ $activity['occurred_at']->diffForHumans() }}
-                                </div>
-                            </div>
+                            <span class="fw-semibold text-gray-800">{{ $label }}</span>
                         </div>
-                    @empty
-                        <p class="text-muted mb-0 py-6 text-center">{{ __('crm::dashboard.activity.empty') }}</p>
-                    @endforelse
-                </div>
+                        <div class="form-check form-switch form-check-custom form-check-solid">
+                            <input class="form-check-input crm-widget-visible" type="checkbox" value="1"
+                                   data-widget-id="{{ $widget['id'] }}"
+                                   @checked($widget['visible']) />
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="border-top p-5 d-flex gap-3">
+                <button type="button" class="btn btn-light flex-grow-1" id="crm-layout-reset">
+                    {{ __('crm::dashboard.customize.reset') }}
+                </button>
+                <button type="button" class="btn btn-primary flex-grow-1" id="crm-layout-save">
+                    {{ __('crm::dashboard.customize.save') }}
+                </button>
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+        <script>
+            document.getElementById('crm-period')?.addEventListener('change', function () {
+                document.querySelectorAll('.custom-range').forEach(el => {
+                    el.classList.toggle('d-none', this.value !== 'custom');
+                });
+            });
+
+            const layoutUrl = @json(route('admin.crm.dashboard.layout'));
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+                || @json(csrf_token());
+            const savedMessage = @json(__('crm::dashboard.customize.saved'));
+            let layoutState = @json($layoutStateForJs);
+
+            function toast(message, type = 'success') {
+                if (typeof toastr !== 'undefined') {
+                    toastr[type](message);
+                    return;
+                }
+                if (window.Swal) {
+                    Swal.fire({ text: message, icon: type === 'success' ? 'success' : 'error', timer: 1800, showConfirmButton: false });
+                    return;
+                }
+                alert(message);
+            }
+
+            function collectLayoutFromDom() {
+                const orderIds = [...document.querySelectorAll('#crm-widget-grid .crm-widget')].map(el => el.dataset.widgetId);
+                const visibility = {};
+                document.querySelectorAll('.crm-widget-visible').forEach(input => {
+                    visibility[input.dataset.widgetId] = !!input.checked;
+                });
+
+                const ordered = [];
+                const seen = new Set();
+
+                orderIds.forEach(id => {
+                    ordered.push({ id, visible: visibility[id] !== false, order: ordered.length });
+                    seen.add(id);
+                });
+
+                layoutState.forEach(item => {
+                    if (seen.has(item.id)) return;
+                    ordered.push({
+                        id: item.id,
+                        visible: visibility[item.id] ?? !!item.visible,
+                        order: ordered.length,
+                    });
+                });
+
+                return ordered;
+            }
+
+            async function saveLayout(payload, { reload = false, reset = false } = {}) {
+                const body = reset ? { reset: true } : { widgets: payload };
+                const response = await fetch(layoutUrl, {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                    body: JSON.stringify(body),
+                });
+
+                let data = {};
+                try {
+                    data = await response.json();
+                } catch (e) {
+                    data = {};
+                }
+
+                if (!response.ok) {
+                    const firstError = data.errors ? Object.values(data.errors).flat()[0] : null;
+                    toast(firstError || data.message || 'Unable to save layout', 'error');
+                    return false;
+                }
+
+                layoutState = (data.layout || []).map((item, index) => ({
+                    id: item.id,
+                    visible: !!item.visible,
+                    order: index,
+                }));
+                toast(data.message || savedMessage);
+
+                if (reload) {
+                    window.location.reload();
+                }
+
+                return true;
+            }
+
+            const grid = document.getElementById('crm-widget-grid');
+            if (grid && window.Sortable) {
+                Sortable.create(grid, {
+                    animation: 150,
+                    handle: '.crm-drag-handle',
+                    draggable: '.crm-widget',
+                    ghostClass: 'sortable-ghost',
+                    onEnd() {
+                        saveLayout(collectLayoutFromDom());
+                    },
+                });
+            }
+
+            document.getElementById('crm-layout-save')?.addEventListener('click', () => {
+                saveLayout(collectLayoutFromDom(), { reload: true });
+            });
+
+            document.getElementById('crm-layout-reset')?.addEventListener('click', () => {
+                saveLayout(layoutState, { reload: true, reset: true });
+            });
+
+            const chartColors = @json($analytics['chart_colors']);
+            const funnelData = @json($analytics['pipeline_funnel']);
+            const channelData = @json($analytics['lead_channels']);
+            const tooltipTheme = {
+                backgroundColor: '#1e1e2d',
+                titleColor: '#fff',
+                bodyColor: '#a1a5b7',
+                padding: 12,
+                cornerRadius: 10,
+                displayColors: true,
+                boxPadding: 4,
+            };
+
+            function markChartUnavailable(canvas) {
+                const box = canvas?.closest('.crm-chart-box');
+                if (!box) return;
+                box.innerHTML = '<div class="text-muted fs-7 text-center d-flex align-items-center justify-content-center h-100">{{ __('No data available') }}</div>';
+            }
+
+            if (typeof Chart === 'undefined') {
+                document.querySelectorAll('#crmPipelineChart, #crmChannelsChart').forEach(markChartUnavailable);
+            } else {
+                const pipelineCtx = document.getElementById('crmPipelineChart');
+                if (pipelineCtx && funnelData.length) {
+                    new Chart(pipelineCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: funnelData.map(item => item.name),
+                            datasets: [{
+                                label: @json(__('crm::dashboard.charts.deals')),
+                                data: funnelData.map(item => item.count),
+                                backgroundColor: chartColors,
+                                borderRadius: 10,
+                                maxBarThickness: 36,
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: tooltipTheme,
+                            },
+                            scales: {
+                                y: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: 'rgba(0,0,0,0.04)' } },
+                                x: { grid: { display: false } }
+                            }
+                        }
+                    });
+                }
+
+                const channelsCtx = document.getElementById('crmChannelsChart');
+                if (channelsCtx && channelData.length) {
+                    new Chart(channelsCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: channelData.map(item => item.label),
+                            datasets: [{
+                                data: channelData.map(item => item.count),
+                                backgroundColor: chartColors,
+                                borderWidth: 4,
+                                borderColor: '#fff',
+                                hoverOffset: 6,
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '72%',
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: tooltipTheme,
+                            }
+                        }
+                    });
+                }
+            }
+        </script>
+    @endpush
 </x-admin-layout>
-
-@section('js')
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<script>
-    document.getElementById('crm-period')?.addEventListener('change', function () {
-        document.querySelectorAll('.custom-range').forEach(el => {
-            el.classList.toggle('d-none', this.value !== 'custom');
-        });
-    });
-
-    const chartColors = @json($analytics['chart_colors']);
-    const funnelData = @json($analytics['pipeline_funnel']);
-    const channelData = @json($analytics['lead_channels']);
-
-    const pipelineCtx = document.getElementById('crmPipelineChart');
-    if (pipelineCtx && funnelData.length) {
-        new Chart(pipelineCtx, {
-            type: 'bar',
-            data: {
-                labels: funnelData.map(item => item.name),
-                datasets: [{
-                    label: @json(__('crm::dashboard.charts.deals')),
-                    data: funnelData.map(item => item.count),
-                    backgroundColor: chartColors,
-                    borderRadius: 8,
-                    maxBarThickness: 36,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { beginAtZero: true, ticks: { precision: 0 } },
-                    x: { grid: { display: false } }
-                }
-            }
-        });
-    }
-
-    const channelsCtx = document.getElementById('crmChannelsChart');
-    if (channelsCtx && channelData.length) {
-        new Chart(channelsCtx, {
-            type: 'doughnut',
-            data: {
-                labels: channelData.map(item => item.label),
-                datasets: [{
-                    data: channelData.map(item => item.count),
-                    backgroundColor: chartColors,
-                    borderWidth: 0,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '68%',
-                plugins: {
-                    legend: { position: 'bottom', labels: { boxWidth: 12, padding: 14 } }
-                }
-            }
-        });
-    }
-</script>
-@endsection

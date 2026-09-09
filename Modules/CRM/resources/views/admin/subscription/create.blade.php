@@ -17,7 +17,7 @@
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card :title="__('crm::subscription.pages.create_title')" :formUrl="route('admin.subscriptions.store')">
+    <x-admin.create-card :title="__('crm::subscription.pages.create_title')" :formUrl="route('admin.subscriptions.store')" :cancelUrl="route('admin.subscriptions.index')" icon="arrow-repeat" color="success">
         @include('crm::admin.subscription._form')
     </x-admin.create-card>
 </x-admin-layout>

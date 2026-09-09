@@ -1,7 +1,7 @@
 {
-    "menu": "Analytics",
-    "title": "CRM Analytics & Metrics",
-    "subtitle": "Real-time insights across leads, pipeline, and team performance.",
+    "menu": "Dashboard",
+    "title": "CRM Dashboard",
+    "subtitle": "A complete view of customers, pipeline, sales, and team performance.",
     "filters": {
         "period": "Date Range",
         "assignee": "Sales Rep",
@@ -18,13 +18,47 @@
         }
     },
     "metrics": {
+        "total_customers": "Total Customers",
+        "new_customers": "New Customers",
+        "new_leads": "New Leads",
         "total_leads": "Total Leads",
+        "leads_in_progress": "Leads In Progress",
+        "active_customers": "Active Customers",
+        "lost_customers": "Lost Customers",
+        "total_sales": "Total Sales",
+        "sales_this_month": "Sales This Month",
         "conversion_rate": "Conversion Rate",
         "pipeline_value": "Pipeline Value",
         "won_deals": "Won Deals",
+        "lost_deals": "Lost Deals",
+        "avg_deal_value": "Avg Deal Value",
+        "avg_close_time": "Avg Close Time",
+        "outstanding_invoices": "Outstanding Invoices",
+        "overdue_amounts": "Overdue Amounts",
         "vs_previous": "vs previous period",
         "leads_converted": ":converted of :total leads converted",
-        "won_value": ":count deals · :value"
+        "won_value": ":count deals · :value",
+        "lost_value": ":count deals · :value",
+        "invoice_count": ":count invoices",
+        "days": ":value days"
+    },
+    "widgets": {
+        "top_customers": "Top Customers",
+        "top_customers_hint": "Customers ranked by closed-won deal value.",
+        "top_customers_empty": "No won deals to rank customers yet.",
+        "customer": "Customer",
+        "deals": "Deals",
+        "value": "Value"
+    },
+    "customize": {
+        "button": "Customize",
+        "title": "Customize Dashboard",
+        "hint": "Toggle widgets on or off. Drag cards on the dashboard to reorder.",
+        "save": "Save Layout",
+        "saved": "Dashboard layout saved.",
+        "reset": "Reset to Default",
+        "visible": "Visible",
+        "drag_hint": "Drag to reorder"
     },
     "charts": {
         "pipeline_funnel": "Sales Pipeline Funnel",
@@ -49,7 +83,7 @@
         "unknown": "Other"
     },
     "leaderboard": {
-        "title": "Team Performance",
+        "title": "Sales Performance",
         "subtitle": "Closed-won performance for the selected period.",
         "rep": "Sales Rep",
         "closed_deals": "Closed Deals",
@@ -59,11 +93,20 @@
         "empty": "No closed deals recorded for this period."
     },
     "activity": {
-        "title": "Recent CRM Activity",
-        "subtitle": "Latest audit events and logged activities.",
+        "title": "Customer Activity Feed",
+        "subtitle": "Calls, emails, meetings, notes, and deal updates in one timeline.",
         "empty": "No recent activity to display.",
         "logged": "Logged :type: :title",
-        "fallback": "CRM event recorded"
+        "fallback": "CRM event recorded",
+        "view": "View details"
     },
-    "unknown_rep": "Unknown"
+    "actions": {
+        "log_call": "Log Call",
+        "new_deal": "New Deal",
+        "add_contact": "Add Contact",
+        "new_lead": "New Lead",
+        "new_quote": "New Quote"
+    },
+    "unknown_rep": "Unknown",
+    "unknown_customer": "Unknown customer"
 }

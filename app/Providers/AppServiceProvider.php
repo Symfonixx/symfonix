@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Modules\Base\Support\AdminEmail;
+use Modules\Base\Support\MailConfig;
+use Modules\Base\Support\WhatsAppConfig;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
         $this->forceHttpsInProduction();
         $this->mergeAdminEmailConfig();
+        $this->mergeIntegrationConfigs();
     }
 
     private function forceHttpsInProduction(): void
@@ -54,6 +57,20 @@ class AppServiceProvider extends ServiceProvider
                 'services.admin_email' => $adminEmail,
                 'services.leads.admin_email' => $adminEmail,
             ]);
+        } catch (\Throwable) {
+            //
+        }
+    }
+
+    private function mergeIntegrationConfigs(): void
+    {
+        try {
+            if (! Schema::hasTable('settings')) {
+                return;
+            }
+
+            MailConfig::mergeIntoConfig();
+            WhatsAppConfig::mergeIntoConfig();
         } catch (\Throwable) {
             //
         }

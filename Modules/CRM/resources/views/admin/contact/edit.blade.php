@@ -17,7 +17,7 @@
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card :title="__('crm::contact.pages.edit_title')" :formUrl="route('admin.contacts.update', $contact->id)">
+    <x-admin.create-card :title="__('crm::contact.pages.edit_title')" :formUrl="route('admin.contacts.update', $contact->id)" :cancelUrl="route('admin.contacts.index')" icon="person-badge" color="primary">
         @method('PUT')
         @include('crm::admin.contact._form', ['contact' => $contact])
     </x-admin.create-card>

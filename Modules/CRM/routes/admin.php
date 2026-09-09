@@ -2,20 +2,41 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\CRM\Http\Controllers\Admin\ActivityController;
+use Modules\CRM\Http\Controllers\Admin\CalendarController;
 use Modules\CRM\Http\Controllers\Admin\CompanyController;
 use Modules\CRM\Http\Controllers\Admin\ContactController;
 use Modules\CRM\Http\Controllers\Admin\ContactFormController;
 use Modules\CRM\Http\Controllers\Admin\CrmDashboardController;
 use Modules\CRM\Http\Controllers\Admin\DealController;
 use Modules\CRM\Http\Controllers\Admin\LeadController;
+use Modules\CRM\Http\Controllers\Admin\LeadCustomFieldController;
+use Modules\CRM\Http\Controllers\Admin\LeadTagController;
 use Modules\CRM\Http\Controllers\Admin\MarketingController;
+use Modules\CRM\Http\Controllers\Admin\QuoteController;
 use Modules\CRM\Http\Controllers\Admin\SalesTargetController;
 use Modules\CRM\Http\Controllers\Admin\SubscriptionController;
 
 Route::middleware(['can:CRM Management'])->group(function () {
     Route::get('crm/dashboard', [CrmDashboardController::class, 'index'])->name('crm.dashboard');
+    Route::match(['put', 'post'], 'crm/dashboard/layout', [CrmDashboardController::class, 'updateLayout'])->name('crm.dashboard.layout');
+    Route::get('crm/calendar', [CalendarController::class, 'index'])->name('crm.calendar');
+    Route::get('crm/calendar/events', [CalendarController::class, 'events'])->name('crm.calendar.events');
     Route::get('crm/sales-targets', [SalesTargetController::class, 'index'])->name('crm.sales-targets.index');
     Route::put('crm/sales-targets', [SalesTargetController::class, 'update'])->name('crm.sales-targets.update');
+
+    Route::get('crm/lead-tags', [LeadTagController::class, 'index'])->name('crm.lead-tags.index');
+    Route::get('crm/lead-tags/create', [LeadTagController::class, 'create'])->name('crm.lead-tags.create');
+    Route::post('crm/lead-tags', [LeadTagController::class, 'store'])->name('crm.lead-tags.store');
+    Route::get('crm/lead-tags/{leadTag}/edit', [LeadTagController::class, 'edit'])->name('crm.lead-tags.edit');
+    Route::put('crm/lead-tags/{leadTag}', [LeadTagController::class, 'update'])->name('crm.lead-tags.update');
+    Route::delete('crm/lead-tags/{leadTag}', [LeadTagController::class, 'destroy'])->name('crm.lead-tags.destroy');
+
+    Route::get('crm/custom-fields', [LeadCustomFieldController::class, 'index'])->name('crm.custom-fields.index');
+    Route::get('crm/custom-fields/create', [LeadCustomFieldController::class, 'create'])->name('crm.custom-fields.create');
+    Route::post('crm/custom-fields', [LeadCustomFieldController::class, 'store'])->name('crm.custom-fields.store');
+    Route::get('crm/custom-fields/{leadCustomField}/edit', [LeadCustomFieldController::class, 'edit'])->name('crm.custom-fields.edit');
+    Route::put('crm/custom-fields/{leadCustomField}', [LeadCustomFieldController::class, 'update'])->name('crm.custom-fields.update');
+    Route::delete('crm/custom-fields/{leadCustomField}', [LeadCustomFieldController::class, 'destroy'])->name('crm.custom-fields.destroy');
 
     Route::get('crm/marketing', [MarketingController::class, 'index'])->name('crm.marketing.index');
     Route::get('crm/marketing/create', [MarketingController::class, 'create'])->name('crm.marketing.create');
@@ -31,6 +52,12 @@ Route::middleware(['can:CRM Management'])->group(function () {
     Route::delete('deals/deleteMulti', [DealController::class, 'deleteMulti'])->name('deals.deleteMulti');
     Route::patch('deals/{deal}/stage', [DealController::class, 'moveStage'])->name('deals.moveStage');
     Route::resource('deals', DealController::class);
+
+    Route::post('quotes/from-deal/{deal}', [QuoteController::class, 'createFromDeal'])->name('quotes.from-deal');
+    Route::post('quotes/{quote}/sent', [QuoteController::class, 'markSent'])->name('quotes.sent');
+    Route::post('quotes/{quote}/void', [QuoteController::class, 'void'])->name('quotes.void');
+    Route::get('quotes/{quote}/pdf', [QuoteController::class, 'downloadPdf'])->name('quotes.pdf');
+    Route::resource('quotes', QuoteController::class);
 
     Route::delete('subscriptions/deleteMulti', [SubscriptionController::class, 'deleteMulti'])->name('subscriptions.deleteMulti');
     Route::resource('subscriptions', SubscriptionController::class);

@@ -1,0 +1,35 @@
+{
+    "menu": "Özel Alanlar",
+    "pages": {
+        "index_title": "Özel Alanlar",
+        "create_title": "Özel Alan Ekle",
+        "edit_title": "Özel Alanı Düzenle"
+    },
+    "fields": {
+        "label": "Etiket",
+        "label_en": "Etiket (İngilizce)",
+        "label_ar": "Etiket (Arapça)",
+        "label_de": "Etiket (Almanca)",
+        "label_tr": "Etiket (Türkçe)",
+        "key": "Anahtar",
+        "type": "Tür",
+        "options": "Seçenekler",
+        "options_hint": "Her satıra bir seçenek. Select alanları için kullanılır.",
+        "is_required": "Zorunlu",
+        "sort_order": "Sıra"
+    },
+    "types": {
+        "text": "Metin",
+        "textarea": "Uzun metin",
+        "number": "Sayı",
+        "date": "Tarih",
+        "select": "Seçim",
+        "checkbox": "Onay kutusu"
+    },
+    "actions": {
+        "add": "Alan Ekle"
+    },
+    "hints": {
+        "key_locked": "Alan anahtarı otomatik oluşturulur ve mevcut lead değerleri bağlı kalsın diye sabit kalır."
+    }
+}

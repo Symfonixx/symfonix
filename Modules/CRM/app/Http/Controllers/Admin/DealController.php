@@ -42,6 +42,8 @@ use Modules\CRM\Models\Company;
 
 use Modules\CRM\Models\Deal;
 
+use Modules\CRM\Models\LeadTag;
+
 use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
 
 use Modules\Services\Models\Service;
@@ -97,13 +99,12 @@ class DealController extends Controller
 
 
         if ($view === 'kanban') {
+            $this->setActive('pipeline');
 
             $stages = $this->listDealsKanbanAction->execute($filters);
+            $tags = LeadTag::query()->active()->ordered()->get();
 
-
-
-            return view('crm::admin.deal.kanban', compact('stages', 'filters'));
-
+            return view('crm::admin.deal.kanban', compact('stages', 'filters', 'tags'));
         }
 
 
@@ -111,11 +112,11 @@ class DealController extends Controller
         $model = $this->listDealsAction->execute($filters);
 
         $stages = $this->stageRepository->allActive();
+        $tags = LeadTag::query()->active()->ordered()->get();
 
 
 
-        return view('crm::admin.deal.index', compact('model', 'stages', 'filters'));
-
+        return view('crm::admin.deal.index', compact('model', 'stages', 'filters', 'tags'));
     }
 
 
@@ -160,9 +161,13 @@ class DealController extends Controller
 
             'lead:id,name,email',
 
+            'lead.tags',
+
             'services:id,title',
 
             'project:id,title,deal_id',
+
+            'quotes:id,quote_number,status,total,currency,deal_id,created_at',
 
             'stageHistories.fromStage:id,name,color',
 

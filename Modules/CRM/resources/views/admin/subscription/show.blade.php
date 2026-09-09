@@ -17,6 +17,9 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::subscription.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
+        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.subscriptions.index') }}">
+            <i class="bi bi-arrow-left me-1"></i>{{ __('crm::subscription.actions.back_to_list') }}
+        </a>
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.companies.show', $subscription->company_id) }}">
             <i class="bi bi-building me-1"></i>{{ $subscription->company?->name }}
         </a>
@@ -27,14 +30,38 @@
 @endsection
 
 <x-admin-layout>
+    <div class="card sx-show-hero mb-8">
+        <div class="card-body p-6 p-lg-8">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-5">
+                <div class="d-flex align-items-center gap-4">
+                    <span class="sx-avatar"><i class="bi bi-arrow-repeat"></i></span>
+                    <div>
+                        <h2 class="text-white fw-bold mb-2">{{ $subscription->name }}</h2>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="badge badge-light-{{ $statusColor }}">
+                                {{ __('crm::subscription.status.'.$subscription->status) }}
+                            </span>
+                            @if($subscription->company)
+                                <span class="text-white opacity-75 fs-7">
+                                    <i class="bi bi-building me-1"></i>{{ $subscription->company->name }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <div class="text-white opacity-75 fs-7 mb-1">{{ __('crm::subscription.fields.amount') }}</div>
+                    <div class="text-white fw-bold fs-2x">
+                        {{ number_format($subscription->amount, 2) }} {{ $subscription->currency }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">{{ $subscription->name }}</h3>
-            <div class="card-toolbar">
-                <span class="badge badge-light-{{ $statusColor }}">
-                    {{ __('crm::subscription.status.'.$subscription->status) }}
-                </span>
-            </div>
+            <h3 class="card-title">{{ __('crm::subscription.pages.show_title') }}</h3>
         </div>
         <div class="card-body">
             <div class="row mb-6">

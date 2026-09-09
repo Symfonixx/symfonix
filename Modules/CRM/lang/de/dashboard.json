@@ -1,7 +1,7 @@
 {
-    "menu": "Analytik",
-    "title": "CRM-Analysen und -Metriken",
-    "subtitle": "Echtzeit-Einblicke in Leads, Pipeline und Teamleistung.",
+    "menu": "Dashboard",
+    "title": "CRM-Dashboard",
+    "subtitle": "Vollständiger Überblick über Kunden, Pipeline, Umsatz und Teamleistung.",
     "filters": {
         "period": "Datumsbereich",
         "assignee": "Vertriebsmitarbeiter",
@@ -18,21 +18,55 @@
         }
     },
     "metrics": {
-        "total_leads": "Gesamtzahl der Leads",
+        "total_customers": "Kunden gesamt",
+        "new_customers": "Neue Kunden",
+        "new_leads": "Neue Leads",
+        "total_leads": "Leads gesamt",
+        "leads_in_progress": "Leads in Bearbeitung",
+        "active_customers": "Aktive Kunden",
+        "lost_customers": "Verlorene Kunden",
+        "total_sales": "Gesamtumsatz",
+        "sales_this_month": "Umsatz diesen Monat",
         "conversion_rate": "Conversion-Rate",
         "pipeline_value": "Pipeline-Wert",
-        "won_deals": "Gewonnene Angebote",
+        "won_deals": "Gewonnene Deals",
+        "lost_deals": "Verlorene Deals",
+        "avg_deal_value": "Durchschn. Dealwert",
+        "avg_close_time": "Durchschn. Abschlusszeit",
+        "outstanding_invoices": "Offene Rechnungen",
+        "overdue_amounts": "Überfällige Beträge",
         "vs_previous": "im Vergleich zur Vorperiode",
-        "leads_converted": ":converted von :total führt konvertiert",
-        "won_value": ":count-Angebote · :value"
+        "leads_converted": ":converted von :total Leads konvertiert",
+        "won_value": ":count Deals · :value",
+        "lost_value": ":count Deals · :value",
+        "invoice_count": ":count Rechnungen",
+        "days": ":value Tage"
+    },
+    "widgets": {
+        "top_customers": "Top-Kunden",
+        "top_customers_hint": "Kunden nach gewonnenem Dealwert.",
+        "top_customers_empty": "Noch keine gewonnenen Deals zum Ranking.",
+        "customer": "Kunde",
+        "deals": "Deals",
+        "value": "Wert"
+    },
+    "customize": {
+        "button": "Anpassen",
+        "title": "Dashboard anpassen",
+        "hint": "Widgets ein- oder ausblenden. Ziehen Sie Karten zum Neuordnen.",
+        "save": "Layout speichern",
+        "saved": "Dashboard-Layout gespeichert.",
+        "reset": "Standard wiederherstellen",
+        "visible": "Sichtbar",
+        "drag_hint": "Zum Neuordnen ziehen"
     },
     "charts": {
         "pipeline_funnel": "Sales-Pipeline-Trichter",
         "pipeline_hint": "Aktuelle Verteilung von Leads und Deals über Pipeline-Stufen.",
         "lead_channels": "Kanäle zur Lead-Akquise",
         "lead_channels_hint": "Woher Ihre Leads im ausgewählten Zeitraum stammen.",
-        "deals": "Angebote",
-        "leads": "führt"
+        "deals": "Deals",
+        "leads": "Leads"
     },
     "funnel": {
         "unconverted_leads": "Nicht konvertierte Leads"
@@ -49,21 +83,30 @@
         "unknown": "Andere"
     },
     "leaderboard": {
-        "title": "Teamleistung",
+        "title": "Verkaufsleistung",
         "subtitle": "Geschlossen-gewonnene Leistung für den ausgewählten Zeitraum.",
         "rep": "Vertriebsmitarbeiter",
-        "closed_deals": "Geschlossene Angebote",
+        "closed_deals": "Geschlossene Deals",
         "closed_value": "Geschlossener Wert",
         "target": "Ziel",
         "achievement": "Leistung",
         "empty": "Für diesen Zeitraum wurden keine abgeschlossenen Geschäfte erfasst."
     },
     "activity": {
-        "title": "Letzte CRM-Aktivität",
-        "subtitle": "Neueste Audit-Ereignisse und protokollierte Aktivitäten.",
+        "title": "Kundenaktivitäten",
+        "subtitle": "Anrufe, E-Mails, Meetings, Notizen und Deal-Updates in einer Zeitleiste.",
         "empty": "Keine aktuelle Aktivität zum Anzeigen.",
         "logged": "Protokolliert :type: :title",
-        "fallback": "CRM-Ereignis aufgezeichnet"
+        "fallback": "CRM-Ereignis aufgezeichnet",
+        "view": "Details ansehen"
     },
-    "unknown_rep": "Unbekannt"
+    "actions": {
+        "log_call": "Anruf protokollieren",
+        "new_deal": "Neuer Deal",
+        "add_contact": "Kontakt hinzufügen",
+        "new_lead": "Neuer Lead",
+        "new_quote": "Neues Angebot"
+    },
+    "unknown_rep": "Unbekannt",
+    "unknown_customer": "Unbekannter Kunde"
 }

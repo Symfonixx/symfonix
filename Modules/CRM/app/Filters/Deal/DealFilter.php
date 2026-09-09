@@ -35,6 +35,11 @@ class DealFilter
             $query->where('assigned_to', $filters['assigned_to']);
         }
 
+        if (! empty($filters['tag_id'])) {
+            $tagId = (int) $filters['tag_id'];
+            $query->whereHas('lead.tags', fn (Builder $builder) => $builder->where('lead_tags.id', $tagId));
+        }
+
         if (filter_var($filters['with_trashed'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
             $query->withTrashed();
         }

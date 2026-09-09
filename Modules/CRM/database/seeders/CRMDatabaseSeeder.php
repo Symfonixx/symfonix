@@ -10,6 +10,8 @@ class CRMDatabaseSeeder extends Seeder
     {
         $this->call([
             PipelineStageSeeder::class,
+            LeadTagSeeder::class,
+            LeadCustomFieldSeeder::class,
         ]);
     }
 }

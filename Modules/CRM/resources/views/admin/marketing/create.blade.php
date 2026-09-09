@@ -49,10 +49,15 @@
 <x-admin-layout>
     <div class="card settings-form-card">
         <div class="card-header border-0 pt-6">
-            <div class="card-title flex-column align-items-start">
+        <div class="card-title d-flex align-items-center gap-3">
+            <span class="sx-form-icon bg-light-info text-info">
+                <i class="bi bi-megaphone"></i>
+            </span>
+            <div>
                 <h2 class="fw-bold mb-1">{{ __('crm::marketing.pages.create_title') }}</h2>
                 <span class="text-muted fs-7 fw-semibold">{{ __('crm::marketing.sections.compose_hint') }}</span>
             </div>
+        </div>
         </div>
         <form method="POST" action="{{ route('admin.crm.marketing.store') }}">
             @csrf
@@ -65,10 +70,10 @@
                 </span>
                 <div class="d-flex gap-2">
                     <a href="{{ route('admin.crm.marketing.index') }}" class="btn btn-light btn-active-light-primary">
-                        {{ __('Discard') }}
+                        <i class="bi bi-x-lg me-1"></i>{{ __('Discard') }}
                     </a>
                     <button type="submit" class="btn btn-primary">
-                        {{ __('crm::marketing.actions.send') }} <i class="bi bi-send ms-1"></i>
+                        <i class="bi bi-send me-1"></i>{{ __('crm::marketing.actions.send') }}
                     </button>
                 </div>
             </div>

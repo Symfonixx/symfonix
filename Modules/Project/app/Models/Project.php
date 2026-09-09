@@ -86,6 +86,11 @@ class Project extends Model
         return $this->belongsTo(Deal::class);
     }
 
+    public function quote(): HasOne
+    {
+        return $this->hasOne(\Modules\CRM\Models\Quote::class);
+    }
+
     public function services(): BelongsToMany
     {
         return $this->belongsToMany(\Modules\Services\Models\Service::class, 'project_service')

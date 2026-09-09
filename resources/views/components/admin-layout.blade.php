@@ -130,22 +130,25 @@ Author: Hadi Hilal
                         <div
                             class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
                             id="kt_app_header_menu" data-kt-menu="true">
-                            <!--begin:Menu item-->
-                            <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                 {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-end"' : 'data-kt-menu-placement="bottom-start"' }}
-                                 class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
-                                <!--begin:Menu link-->
-                                <span class="menu-link">
-                                    <span class="menu-title">
-                                       Symfonix
-                                    </span>
-                                    <span class="menu-arrow d-lg-none"></span>
-                                </span>
-                                <!--end:Menu link-->
-                                <!--begin:Menu sub-->
-                                <!--end:Menu sub-->
+                            <div class="sx-header-chips my-3 my-lg-0">
+                                @can('CRM Management')
+                                    <a href="{{ route('admin.crm.dashboard') }}" class="sx-header-chip">
+                                        <i class="bi bi-graph-up text-info"></i>{{ __('CRM Analytics') }}
+                                    </a>
+                                    <a href="{{ route('admin.leads.create') }}" class="sx-header-chip">
+                                        <i class="bi bi-person-plus text-primary"></i>{{ __('crm::lead.actions.add') }}
+                                    </a>
+                                    <a href="{{ route('admin.deals.create') }}" class="sx-header-chip">
+                                        <i class="bi bi-briefcase text-success"></i>{{ __('crm::deal.actions.add') }}
+                                    </a>
+                                    <a href="{{ route('admin.deals.index', ['view' => 'kanban']) }}" class="sx-header-chip">
+                                        <i class="bi bi-kanban text-warning"></i>{{ __('crm::deal.menu.pipeline') }}
+                                    </a>
+                                    <a href="{{ route('admin.crm.calendar') }}" class="sx-header-chip">
+                                        <i class="bi bi-calendar-check text-danger"></i>{{ __('Activities') }}
+                                    </a>
+                                @endcan
                             </div>
-                            <!--end:Menu item-->
                         </div>
                         <!--end::Menu-->
                     </div>
@@ -154,25 +157,20 @@ Author: Hadi Hilal
                     <div class="app-navbar flex-shrink-0">
                         <!--begin::Notifications-->
                         <div class="app-navbar-item ms-1 ms-md-3">
-                            <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px position-relative"
+                            <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary sx-header-btn position-relative"
                                  data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                  data-kt-menu-attach="parent"
                                  {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}>
-                                <i class="ki-duotone ki-notification-status fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
+                                <i class="bi bi-bell fs-3"></i>
                                 @if($unreadNotificationCount > 0)
                                     <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
                                 @endif
                             </div>
                             <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px"
                                  data-kt-menu="true">
-                                <div class="d-flex flex-column bgi-no-repeat rounded-top bg-primary">
+                                <div class="d-flex flex-column bgi-no-repeat sx-dropdown-head">
                                     <h3 class="text-white fw-semibold px-9 py-6 mb-0">
-                                        {{ __('Notifications') }}
+                                        <i class="bi bi-bell me-2"></i>{{ __('Notifications') }}
                                         @if($unreadNotificationCount > 0)
                                             <span class="fs-8 opacity-75 ps-3">{{ $unreadNotificationCount }} {{ __('new') }}</span>
                                         @endif
@@ -211,11 +209,7 @@ Author: Hadi Hilal
                                     </div>
                                 @else
                                     <div class="px-5 py-8 text-center text-muted">
-                                        <i class="ki-duotone ki-notification-bing fs-3x text-gray-400 mb-4">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                            <span class="path3"></span>
-                                        </i>
+                                        <i class="bi bi-bell fs-2x text-gray-400 mb-4 d-block"></i>
                                         <div class="fw-semibold fs-6">{{ __('No notifications yet') }}</div>
                                         <div class="fs-7">{{ __('You will see updates here when they arrive.') }}</div>
                                     </div>
@@ -227,24 +221,20 @@ Author: Hadi Hilal
                         <!--begin::Messages-->
                         @can('CRM Management')
                             <div class="app-navbar-item ms-1 ms-md-3">
-                                <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-35px h-35px position-relative"
+                                <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary sx-header-btn position-relative"
                                      data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                      data-kt-menu-attach="parent"
                                      {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}>
-                                    <i class="ki-duotone ki-message-text-2 fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                    </i>
+                                    <i class="bi bi-inbox fs-3"></i>
                                     @if($unreadMessageCount > 0)
                                         <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
                                     @endif
                                 </div>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px"
                                      data-kt-menu="true">
-                                    <div class="d-flex flex-column bgi-no-repeat rounded-top bg-primary">
+                                    <div class="d-flex flex-column bgi-no-repeat sx-dropdown-head">
                                         <h3 class="text-white fw-semibold px-9 py-6 mb-0">
-                                            {{ __('Messages') }}
+                                            <i class="bi bi-inbox me-2"></i>{{ __('Messages') }}
                                             @if($unreadMessageCount > 0)
                                                 <span class="fs-8 opacity-75 ps-3">{{ $unreadMessageCount }} {{ __('new') }}</span>
                                             @endif
@@ -272,10 +262,7 @@ Author: Hadi Hilal
                                         </div>
                                     @else
                                         <div class="px-5 py-8 text-center text-muted">
-                                            <i class="ki-duotone ki-sms fs-3x text-gray-400 mb-4">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
+                                            <i class="bi bi-inbox fs-2x text-gray-400 mb-4 d-block"></i>
                                             <div class="fw-semibold fs-6">{{ __('No messages yet') }}</div>
                                         </div>
                                     @endif
@@ -283,10 +270,7 @@ Author: Hadi Hilal
                                         <a href="{{ route('admin.contact_forms.index') }}"
                                            class="btn btn-color-gray-600 btn-active-color-primary">
                                             {{ __('View All Messages') }}
-                                            <i class="ki-duotone ki-arrow-right fs-5">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
+                                            <i class="bi bi-arrow-{{ app()->getLocale() === 'ar' ? 'left' : 'right' }} ms-1"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -297,11 +281,18 @@ Author: Hadi Hilal
                         <!--begin::User menu-->
                         <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
                             <!--begin::Menu wrapper-->
-                            <div class="cursor-pointer symbol symbol-35px"
+                            <div class="cursor-pointer sx-header-user"
                                  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                                 {{ app()->getLocale() === "ar" ?'data-kt-menu-placement="bottom-end"' : 'data-kt-menu-placement="bottom-start"'   }}
                             >
-                                <img src="{{$user->avatar}}" alt="user avatar"/>
+                                <div class="symbol symbol-35px">
+                                    <img src="{{$user->avatar}}" alt="user avatar"/>
+                                </div>
+                                <div class="d-none d-md-flex flex-column pe-2">
+                                    <span class="fw-bold text-gray-800 fs-7 lh-1 mb-1">{{ $user->name }}</span>
+                                    <span class="text-muted fs-8 lh-1">{{ __($user->type) }}</span>
+                                </div>
+                                <i class="bi bi-chevron-down text-muted fs-8 d-none d-md-inline pe-1"></i>
                             </div>
                             <!--begin::User account menu-->
                             <div
@@ -334,7 +325,7 @@ Author: Hadi Hilal
 
                                 <div class="menu-item px-5">
                                     <a href="{{ route('admin.profile.index') }}" class="menu-link px-5">
-                                        {{__('My Profile')}}
+                                        <i class="bi bi-person me-2 text-primary"></i>{{__('My Profile')}}
                                     </a>
                                 </div>
 
@@ -344,7 +335,8 @@ Author: Hadi Hilal
                                      {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="left-start"' : 'data-kt-menu-placement="right-start"' }}
                                      data-kt-menu-offset="-15px, 0">
                                     <a href="#" class="menu-link px-5">
-												<span class="menu-title position-relative">{{__('Mode')}}
+                                        <i class="bi bi-circle-half me-2 text-warning"></i>
+                                        <span class="menu-title position-relative">{{__('Mode')}}
 												<span class="ms-5 position-absolute translate-middle-y top-50 end-0">
 													<i class="ki-duotone ki-night-day theme-light-show fs-2">
 														<span class="path1"></span>
@@ -414,7 +406,8 @@ Author: Hadi Hilal
                                      {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="left-start" ' : 'data-kt-menu-placement="right-start"'  }}
                                      data-kt-menu-offset="-15px, 0">
                                     <a href="#" class="menu-link px-5">
-												<span class="menu-title position-relative">{{__('Language')}}
+                                        <i class="bi bi-globe me-2 text-info"></i>
+                                        <span class="menu-title position-relative">{{__('Language')}}
 												<span
                                                     class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">
 												<img class="w-15px h-15px rounded-1 ms-2"
@@ -486,7 +479,9 @@ Author: Hadi Hilal
                                     </form>
                                     <a href="#"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                       class="menu-link px-5">{{__('Sign Out')}}</a>
+                                       class="menu-link px-5 text-danger">
+                                        <i class="bi bi-box-arrow-right me-2"></i>{{__('Sign Out')}}
+                                    </a>
                                 </div>
                                 <!--end::Menu item-->
                             </div>
@@ -496,22 +491,62 @@ Author: Hadi Hilal
                         <!--end::User menu-->
                         <!--begin::Display currency-->
                         @isset($currencyContext)
+                            @php
+                                $currencySymbols = [
+                                    'USD' => '$',
+                                    'EUR' => '€',
+                                    'GBP' => '£',
+                                    'TRY' => '₺',
+                                ];
+                                $displayCurrency = $currencyContext['display'];
+                            @endphp
                             <div class="app-navbar-item ms-1 ms-md-3">
-                                <form method="POST" action="{{ route('admin.display-currency.update') }}" class="d-flex align-items-center">
+                                <form method="POST" action="{{ route('admin.display-currency.update') }}" class="sx-currency-form">
                                     @csrf
-                                    <select
-                                        name="currency"
-                                        class="form-select form-select-solid form-select-sm w-auto"
-                                        onchange="this.form.submit()"
+                                    <button
+                                        type="button"
+                                        class="sx-currency-trigger"
+                                        data-kt-menu-trigger="click"
+                                        data-kt-menu-attach="parent"
+                                        {{ app()->getLocale() === 'ar' ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}
+                                        data-kt-menu-offset="0, 8"
                                         title="{{ __('Display Currency') }}"
                                         aria-label="{{ __('Display Currency') }}"
+                                        aria-haspopup="true"
                                     >
+                                        <span class="sx-currency-symbol" aria-hidden="true">{{ $currencySymbols[$displayCurrency] ?? $displayCurrency }}</span>
+                                        <span class="sx-currency-code">{{ $displayCurrency }}</span>
+                                        <i class="bi bi-chevron-down sx-currency-caret"></i>
+                                    </button>
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-3 fs-6 w-225px sx-currency-menu"
+                                         data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <div class="menu-content text-muted fw-semibold fs-8 text-uppercase pb-2">
+                                                {{ __('Display Currency') }}
+                                            </div>
+                                        </div>
                                         @foreach($currencyContext['supported'] as $code)
-                                            <option value="{{ $code }}" @selected($currencyContext['display'] === $code)>
-                                                {{ $code }}
-                                            </option>
+                                            @php $isActiveCurrency = $displayCurrency === $code; @endphp
+                                            <div class="menu-item px-3">
+                                                <button
+                                                    type="submit"
+                                                    name="currency"
+                                                    value="{{ $code }}"
+                                                    class="menu-link px-3 py-2 sx-currency-option{{ $isActiveCurrency ? ' active' : '' }}"
+                                                    @if($isActiveCurrency) aria-current="true" @endif
+                                                >
+                                                    <span class="sx-currency-option-symbol">{{ $currencySymbols[$code] ?? $code }}</span>
+                                                    <span class="sx-currency-option-copy">
+                                                        <span class="sx-currency-option-name">{{ __('base::system.currency.names.'.$code) }}</span>
+                                                        <span class="sx-currency-option-code">{{ $code }}</span>
+                                                    </span>
+                                                    @if($isActiveCurrency)
+                                                        <i class="bi bi-check2 sx-currency-option-check"></i>
+                                                    @endif
+                                                </button>
+                                            </div>
                                         @endforeach
-                                    </select>
+                                    </div>
                                 </form>
                             </div>
                         @endisset
@@ -585,7 +620,10 @@ Author: Hadi Hilal
                             <!--begin::Menu-->
                             <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6"
                                  id="kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
-                                <x-admin.side-nav :pending-testimonial-count="$pendingTestimonialCount ?? 0"></x-admin.side-nav>
+                                <x-admin.side-nav
+                                    :pending-testimonial-count="$pendingTestimonialCount ?? 0"
+                                    :nav-counts="$navCounts ?? []"
+                                ></x-admin.side-nav>
                             </div>
                             <!--end::Menu-->
                         </div>
@@ -622,27 +660,22 @@ Author: Hadi Hilal
                 <!--end::Content wrapper-->
                 <!--begin::Footer-->
                 <div id="kt_app_footer" class="app-footer">
-                    <!--begin::Footer container-->
-                    <div
-                        class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
-                        <!--begin::Copyright-->
-                        <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted fw-bold me-1">{{__('All rights are reserved')}} 2026 ©</span>
+                    <div class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-4">
+                        <div class="text-gray-600 order-2 order-md-1 fs-7">
+                            <span class="fw-semibold me-1">{{__('All rights are reserved')}} 2026 ©</span>
                             <a href="https://www.linkedin.com/in/hadi-hilal" target="_blank"
-                               class="text-gray-700 text-hover-primary">{{__('Developed By Hadi Hilal')}} </a>
+                               class="fw-bold text-gray-800 text-hover-primary">{{__('Developed By Hadi Hilal')}}</a>
                         </div>
-                        <!--end::Copyright-->
-                        <!--begin::Menu-->
-                        <ul class="menu menu-gray-700 menu-hover-primary fw-bold order-1">
-                            <li class="menu-item">
-                                <a href="{{route('home')}}" target="_blank">
-                                    {{__("Go To Website")}} <i class="bi bi-arrow-up-{{app()->getLocale() == 'ar' ? 'left':'right'}} mx-1 fa-2x"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <!--end::Menu-->
+                        <div class="d-flex align-items-center gap-2 order-1 mb-3 mb-md-0">
+                            <a href="{{ route('admin.dashboard.index') }}" class="sx-footer-link">
+                                <i class="bi bi-speedometer2"></i>{{ __('Dashboard') }}
+                            </a>
+                            <a href="{{ route('home') }}" target="_blank" class="sx-footer-link">
+                                {{ __('Go To Website') }}
+                                <i class="bi bi-box-arrow-up-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }}"></i>
+                            </a>
+                        </div>
                     </div>
-                    <!--end::Footer container-->
                 </div>
                 <!--end::Footer-->
             </main>

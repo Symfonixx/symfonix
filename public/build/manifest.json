@@ -31,6 +31,21 @@
       "__plugin-vue_export-helper-DlAUqK2U.js"
     ]
   },
+  "Modules/CRM/resources/assets/js/Pages/QuoteShow.vue": {
+    "file": "assets/QuoteShow-CP0-cB0g.js",
+    "name": "QuoteShow",
+    "src": "Modules/CRM/resources/assets/js/Pages/QuoteShow.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-vue-EJP4ocE0.js",
+      "_App-BaG-8JYg.js",
+      "__plugin-vue_export-helper-DlAUqK2U.js",
+      "_vendor-ui-XNB9EfQd.js"
+    ],
+    "css": [
+      "assets/QuoteShow-II7v49zP.css"
+    ]
+  },
   "Modules/Cms/resources/assets/js/Pages/AboutUs.vue": {
     "file": "assets/AboutUs-B_8JM-0h.js",
     "name": "AboutUs",
@@ -454,9 +469,9 @@
       "_vendor-ui-XNB9EfQd.js"
     ]
   },
-  "_App-!~{00L}~.js": {
+  "_App-!~{00M}~.js": {
     "file": "assets/App-D97dTcPi.css",
-    "src": "_App-!~{00L}~.js"
+    "src": "_App-!~{00M}~.js"
   },
   "_App-BaG-8JYg.js": {
     "file": "assets/App-BaG-8JYg.js",
@@ -490,9 +505,9 @@
       "_vendor-vue-EJP4ocE0.js"
     ]
   },
-  "_PortalSelect-!~{00R}~.js": {
+  "_PortalSelect-!~{00S}~.js": {
     "file": "assets/PortalSelect-Dkweyxcv.css",
-    "src": "_PortalSelect-!~{00R}~.js"
+    "src": "_PortalSelect-!~{00S}~.js"
   },
   "_PortalSelect-1LpeVhxs.js": {
     "file": "assets/PortalSelect-1LpeVhxs.js",
@@ -512,9 +527,9 @@
       "_vendor-vue-EJP4ocE0.js"
     ]
   },
-  "_ProductCard-!~{00N}~.js": {
+  "_ProductCard-!~{00O}~.js": {
     "file": "assets/ProductCard-DLp2OA_w.css",
-    "src": "_ProductCard-!~{00N}~.js"
+    "src": "_ProductCard-!~{00O}~.js"
   },
   "_ProductCard-SGCXKvMT.js": {
     "file": "assets/ProductCard-SGCXKvMT.js",
@@ -527,9 +542,9 @@
       "assets/ProductCard-DLp2OA_w.css"
     ]
   },
-  "_ServiceCardThree-!~{00J}~.js": {
+  "_ServiceCardThree-!~{00K}~.js": {
     "file": "assets/ServiceCardThree-DJ27cpRA.css",
-    "src": "_ServiceCardThree-!~{00J}~.js"
+    "src": "_ServiceCardThree-!~{00K}~.js"
   },
   "_ServiceCardThree-Cae-6PWL.js": {
     "file": "assets/ServiceCardThree-Cae-6PWL.js",
@@ -542,9 +557,9 @@
       "assets/ServiceCardThree-DJ27cpRA.css"
     ]
   },
-  "_UseCaseCard-!~{00M}~.js": {
+  "_UseCaseCard-!~{00N}~.js": {
     "file": "assets/UseCaseCard-UHevqih-.css",
-    "src": "_UseCaseCard-!~{00M}~.js"
+    "src": "_UseCaseCard-!~{00N}~.js"
   },
   "_UseCaseCard-CUfQ6tl0.js": {
     "file": "assets/UseCaseCard-CUfQ6tl0.js",
@@ -655,7 +670,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-Z0XlbANJ.js",
+    "file": "assets/app-BWNswIlp.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -666,6 +681,7 @@
     "dynamicImports": [
       "Modules/Base/resources/assets/js/Pages/Index.vue",
       "Modules/CRM/resources/assets/js/Pages/Index.vue",
+      "Modules/CRM/resources/assets/js/Pages/QuoteShow.vue",
       "Modules/Cms/resources/assets/js/Pages/AboutUs.vue",
       "Modules/Cms/resources/assets/js/Pages/BlogIndex.vue",
       "Modules/Cms/resources/assets/js/Pages/BlogShow.vue",

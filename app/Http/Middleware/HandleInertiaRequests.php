@@ -80,6 +80,9 @@ class HandleInertiaRequests extends Middleware
                 $hidden = [
                     \Modules\Finance\Services\CurrencyService::SETTINGS_FIXER_API_KEY,
                     'fixer_api_key',
+                    'mail_password',
+                    'whatsapp_api_token',
+                    'whatsapp_webhook_verify_token',
                 ];
 
                 return Settings::pluck('value', 'key')

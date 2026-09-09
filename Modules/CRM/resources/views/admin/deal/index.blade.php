@@ -13,12 +13,37 @@
             <i class="bi bi-kanban me-1"></i>{{ __('crm::deal.actions.kanban_view') }}
         </a>
         <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.deals.create') }}">
-            {{ __('crm::deal.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
         </a>
     </div>
 @endsection
 
 <x-admin-layout>
+    @if(($tags ?? collect())->isNotEmpty())
+        <div class="card sx-filter-bar mb-5">
+            <div class="card-body py-4">
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <span class="text-muted fs-7 fw-semibold me-1">{{ __('crm::lead.fields.tags') }}:</span>
+                    <a href="{{ route('admin.deals.index', collect($filters ?? [])->except('tag_id')->filter()->all()) }}"
+                       class="badge {{ empty($filters['tag_id']) ? 'badge-primary' : 'badge-light' }} text-decoration-none px-3 py-2">
+                        {{ __('crm::lead.filters.all') }}
+                    </a>
+                    @foreach($tags as $tag)
+                        @php
+                            $isActiveTag = (int) ($filters['tag_id'] ?? 0) === (int) $tag->id;
+                            $chipFilters = collect($filters ?? [])->filter()->all();
+                            $chipFilters['tag_id'] = $tag->id;
+                        @endphp
+                        <a href="{{ route('admin.deals.index', $chipFilters) }}"
+                           class="badge {{ $isActiveTag ? 'badge-' . $tag->color : 'badge-light-' . $tag->color }} text-decoration-none px-3 py-2">
+                            <i class="bi bi-tag-fill me-1"></i>{{ $tag->display_name }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
+
     <x-admin.table :model="$model" :search="__('crm::deal.search.placeholder')" :formUrl="route('admin.deals.deleteMulti')">
         <thead>
         <tr class="text-start text-muted fw-bold fs-7 gs-0">
@@ -30,6 +55,7 @@
             </th>
             <th>{{ __('crm::deal.fields.title') }}</th>
             <th>{{ __('crm::deal.fields.company') }}</th>
+            <th>{{ __('crm::lead.fields.tags') }}</th>
             <th>{{ __('crm::deal.fields.stage') }}</th>
             <th>{{ __('crm::deal.fields.assignee') }}</th>
             <th>{{ __('crm::deal.fields.value') }}</th>
@@ -47,8 +73,23 @@
                         <input class="form-check-input" type="checkbox" name="ids[]" value="{{ $deal->id }}"/>
                     </div>
                 </td>
-                <td>{{ $deal->title }}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span class="sx-table-avatar bg-light-success text-success me-3">
+                            <i class="bi bi-briefcase"></i>
+                        </span>
+                        <a href="{{ route('admin.deals.show', $deal->id) }}" class="text-gray-800 fw-semibold text-hover-primary">
+                            {{ $deal->title }}
+                        </a>
+                    </div>
+                </td>
                 <td>{{ $deal->company?->name ?: __('N/A') }}</td>
+                <td>
+                    @include('crm::admin.partials.lead-tags', [
+                        'tags' => $deal->lead?->tags ?? collect(),
+                        'empty' => '—',
+                    ])
+                </td>
                 <td>
                     <span class="badge badge-light-{{ $deal->pipelineStage?->color ?? 'primary' }}">
                         {{ $deal->pipelineStage?->display_name ?: __('N/A') }}
@@ -83,10 +124,7 @@
                     </a>
                     <a href="{{ route('admin.deals.edit', $deal->id) }}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                        <i class="ki-duotone ki-message-edit fs-1">
-                            <span class="path1"></span>
-                            <span class="path2"></span>
-                        </i>
+                        <i class="bi bi-pencil fs-5"></i>
                     </a>
                     <form class="d-inline" method="POST" action="{{ route('admin.deals.destroy', $deal->id) }}" data-confirm-delete>
                         @csrf

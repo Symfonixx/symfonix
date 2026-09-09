@@ -21,6 +21,7 @@ class LeadIndexRequest extends FormRequest
             'source' => ['nullable', Rule::in(Lead::SOURCES)],
             'company_id' => ['nullable', 'integer', 'exists:companies,id'],
             'assigned_to' => ['nullable', 'integer', 'exists:employees,id'],
+            'tag_id' => ['nullable', 'integer', 'exists:lead_tags,id'],
         ];
     }
 }

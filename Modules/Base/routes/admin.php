@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Base\Http\Controllers\Admin\BackupController;
 use Modules\Base\Http\Controllers\Admin\FileManager;
+use Modules\Base\Http\Controllers\Admin\IntegrationsController;
 use Modules\Base\Http\Controllers\Admin\LogController;
 use Modules\Base\Http\Controllers\Admin\SeoController;
 use Modules\Base\Http\Controllers\Admin\SettingsController;
@@ -15,6 +16,8 @@ Route::middleware('can:Settings Management')->group(function () {
     Route::get('system-configurations', [SystemConfigurationController::class, 'index'])->name('system-configurations.index');
     Route::post('system-configurations', [SystemConfigurationController::class, 'store'])->name('system-configurations.store');
     Route::post('system-configurations/fetch-rates', [SystemConfigurationController::class, 'fetchRates'])->name('system-configurations.fetch-rates');
+    Route::get('integrations', [IntegrationsController::class, 'index'])->name('integrations.index');
+    Route::post('integrations', [IntegrationsController::class, 'store'])->name('integrations.store');
     Route::resource('seo', SeoController::class)->only(['index', 'store']);
 
     Route::get('backups', [BackupController::class, 'index'])->name('backups.index');

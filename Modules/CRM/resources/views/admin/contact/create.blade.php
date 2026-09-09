@@ -17,7 +17,7 @@
 @endsection
 
 <x-admin-layout>
-    <x-admin.create-card :title="__('crm::contact.pages.create_title')" :formUrl="route('admin.contacts.store')">
+    <x-admin.create-card :title="__('crm::contact.pages.create_title')" :formUrl="route('admin.contacts.store')" :cancelUrl="route('admin.contacts.index')" icon="person-badge" color="primary">
         @include('crm::admin.contact._form')
     </x-admin.create-card>
 </x-admin-layout>

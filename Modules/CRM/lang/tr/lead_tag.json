@@ -1,0 +1,31 @@
+{
+    "menu": "Potansiyel Müşteri Etiketleri",
+    "pages": {
+        "index_title": "Potansiyel Müşteri Etiketleri",
+        "create_title": "Etiket Ekle",
+        "edit_title": "Etiketi Düzenle"
+    },
+    "fields": {
+        "name": "Ad",
+        "name_en": "Ad (İngilizce)",
+        "name_ar": "Ad (Arapça)",
+        "name_de": "Ad (Almanca)",
+        "name_tr": "Ad (Türkçe)",
+        "color": "Renk",
+        "sort_order": "Sıra",
+        "preview": "Önizleme"
+    },
+    "colors": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "success": "Success",
+        "danger": "Danger",
+        "warning": "Warning",
+        "info": "Info",
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "actions": {
+        "add": "Etiket Ekle"
+    }
+}

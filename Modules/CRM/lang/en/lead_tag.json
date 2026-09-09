@@ -1,0 +1,31 @@
+{
+    "menu": "Lead Tags",
+    "pages": {
+        "index_title": "Lead Tags",
+        "create_title": "Add Lead Tag",
+        "edit_title": "Edit Lead Tag"
+    },
+    "fields": {
+        "name": "Name",
+        "name_en": "Name (English)",
+        "name_ar": "Name (Arabic)",
+        "name_de": "Name (German)",
+        "name_tr": "Name (Turkish)",
+        "color": "Color",
+        "sort_order": "Sort Order",
+        "preview": "Preview"
+    },
+    "colors": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "success": "Success",
+        "danger": "Danger",
+        "warning": "Warning",
+        "info": "Info",
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "actions": {
+        "add": "Add Tag"
+    }
+}

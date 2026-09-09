@@ -1,0 +1,47 @@
+{
+    "menu": "Calendar",
+    "pages": {
+        "index_title": "CRM Calendar"
+    },
+    "subtitle": "All scheduled activities, lead activities, deal close dates, quote expiries, renewals, and project deadlines.",
+    "filters": {
+        "title": "Show schedules",
+        "all": "All"
+    },
+    "categories": {
+        "activities": "Activities",
+        "leads": "Lead activities",
+        "deals": "Deals",
+        "quotes": "Quotes",
+        "subscriptions": "Subscriptions",
+        "projects": "Projects"
+    },
+    "event_types": {
+        "expected_close": "Expected close",
+        "quote_expiry": "Quote expires",
+        "renewal": "Renewal",
+        "project_start": "Project start",
+        "project_due": "Project due"
+    },
+    "status": {
+        "scheduled": "Scheduled",
+        "completed": "Completed",
+        "open": "Open",
+        "logged": "Logged"
+    },
+    "modal": {
+        "title": "Schedule details",
+        "category": "Category",
+        "type": "Type",
+        "status": "Status",
+        "when": "When",
+        "owner": "Owner",
+        "description": "Details",
+        "open": "Open record",
+        "close": "Close"
+    },
+    "empty": "No schedules in this period.",
+    "legend": {
+        "title": "Legend"
+    }
+}

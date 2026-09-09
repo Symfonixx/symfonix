@@ -22,6 +22,8 @@ use Modules\CRM\Http\Requests\StoreLeadRequest;
 use Modules\CRM\Http\Requests\UpdateLeadRequest;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Lead;
+use Modules\CRM\Models\LeadCustomField;
+use Modules\CRM\Models\LeadTag;
 use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
 use Modules\CRM\Services\Lead\LeadService;
 use Modules\Services\Models\Service;
@@ -54,7 +56,7 @@ class LeadController extends Controller
 
     public function create(): View
     {
-        return view('crm::admin.lead.create', $this->formData());
+        return view('crm::admin.lead.create', $this->formData(null));
     }
 
     public function store(StoreLeadRequest $request): RedirectResponse
@@ -64,6 +66,8 @@ class LeadController extends Controller
 
         if ($lead) {
             $this->leadService->syncServices($lead, $request->input('service_ids', []));
+            $this->leadService->syncTags($lead, $request->input('tag_ids', []));
+            $this->leadService->syncCustomFields($lead, $request->input('custom_fields', []));
             $this->leadService->storeAttachments($lead, $request->file('attachments', []));
         }
 
@@ -76,6 +80,7 @@ class LeadController extends Controller
             'company:id,name,email,phone',
             'service:id,title',
             'services:services.id,title',
+            'tags',
             'assignee:id,name',
             'deal:id,title,pipeline_stage_id',
             'deal.pipelineStage:id,name,color',
@@ -84,15 +89,16 @@ class LeadController extends Controller
         ]);
 
         $stages = $this->stageRepository->allActive();
+        $customFields = LeadCustomField::query()->ordered()->get();
 
-        return view('crm::admin.lead.show', compact('lead', 'stages'));
+        return view('crm::admin.lead.show', compact('lead', 'stages', 'customFields'));
     }
 
     public function edit(Lead $lead): View
     {
-        $lead->loadMissing('services:services.id');
+        $lead->loadMissing(['services:services.id', 'tags']);
 
-        return view('crm::admin.lead.edit', array_merge(['lead' => $lead], $this->formData()));
+        return view('crm::admin.lead.edit', array_merge(['lead' => $lead], $this->formData($lead)));
     }
 
     public function update(UpdateLeadRequest $request, Lead $lead): RedirectResponse
@@ -102,6 +108,8 @@ class LeadController extends Controller
 
         if ($updated) {
             $this->leadService->syncServices($updated, $request->input('service_ids', []));
+            $this->leadService->syncTags($updated, $request->input('tag_ids', []));
+            $this->leadService->syncCustomFields($updated, $request->input('custom_fields', []));
             $this->leadService->storeAttachments($updated, $request->file('attachments', []));
         }
 
@@ -150,11 +158,24 @@ class LeadController extends Controller
         return redirect()->route('admin.companies.show', $company);
     }
 
-    private function formData(): array
+    private function formData(?Lead $lead = null): array
     {
+        $assignedTagIds = $lead?->tags->pluck('id')->all() ?? [];
+
         return [
             'companies' => Company::query()->select(['id', 'name'])->orderBy('name')->get(),
             'services' => Service::query()->select(['id', 'title'])->orderBy('title')->get(),
+            'tags' => LeadTag::query()
+                ->ordered()
+                ->where(function ($query) use ($assignedTagIds) {
+                    $query->where('is_active', true);
+
+                    if ($assignedTagIds !== []) {
+                        $query->orWhereIn('id', $assignedTagIds);
+                    }
+                })
+                ->get(),
+            'customFields' => LeadCustomField::query()->active()->ordered()->get(),
             'assignees' => EmployeeAccess::assignableQuery()
                 ->select(['id', 'name', 'email'])
                 ->get(),
@@ -165,6 +186,7 @@ class LeadController extends Controller
     {
         return [
             'companies' => Company::query()->select(['id', 'name'])->orderBy('name')->get(),
+            'tags' => LeadTag::query()->active()->ordered()->get(),
             'assignees' => EmployeeAccess::assignableQuery()
                 ->select(['id', 'name'])
                 ->get(),

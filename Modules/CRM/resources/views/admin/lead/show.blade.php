@@ -20,28 +20,52 @@
 @endsection
 
 <x-admin-layout>
-    <div class="card">
-        <div class="card-header border-0 pt-6">
-            <div class="card-title">
-                <h3 class="fw-bold m-0">{{ $lead->name ?? __('crm::lead.pages.show_title') }}</h3>
-            </div>
-            <div class="card-toolbar gap-2">
-                @if($lead->source)
-                    <span class="badge badge-light-{{ \Modules\CRM\Models\Lead::sourceBadgeColor($lead->source) }} fs-7">
-                        {{ __('crm::lead.sources.' . $lead->source) }}
-                    </span>
-                @endif
-                <span class="badge badge-light-{{ $lead->blocked ? 'danger' : 'success' }} fs-7">
-                    {{ $lead->blocked ? __('crm::lead.status.blocked') : __('crm::lead.status.active') }}
-                </span>
-                @if($lead->deal_id)
-                    <span class="badge badge-light-info fs-7">
-                        {{ __('crm::lead.conversion.converted_badge') }}
-                    </span>
-                @endif
+    <div class="card sx-show-hero mb-8">
+        <div class="card-body p-6 p-lg-8">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-5">
+                <div class="d-flex align-items-center gap-4">
+                    <span class="sx-avatar">{{ strtoupper(substr($lead->name ?? 'L', 0, 1)) }}</span>
+                    <div>
+                        <h2 class="text-white fw-bold mb-2">{{ $lead->name ?? __('crm::lead.pages.show_title') }}</h2>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            @if($lead->source)
+                                <span class="badge badge-light-{{ \Modules\CRM\Models\Lead::sourceBadgeColor($lead->source) }}">
+                                    {{ __('crm::lead.sources.' . $lead->source) }}
+                                </span>
+                            @endif
+                            <span class="badge badge-light-{{ \Modules\CRM\Models\Lead::statusBadgeColor($lead->status) }}">
+                                {{ __('crm::lead.status.' . ($lead->status ?? 'new')) }}
+                            </span>
+                            <span class="badge badge-light-{{ $lead->blocked ? 'danger' : 'success' }}">
+                                {{ $lead->blocked ? __('crm::lead.status.blocked') : __('crm::lead.status.active') }}
+                            </span>
+                            @if($lead->deal_id)
+                                <span class="badge badge-light-info">{{ __('crm::lead.conversion.converted_badge') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    @if($lead->email)
+                        <a href="mailto:{{ $lead->email }}" class="btn btn-light btn-sm">
+                            <i class="bi bi-envelope me-1"></i>{{ $lead->email }}
+                        </a>
+                    @endif
+                    @if($lead->phone)
+                        <a href="tel:{{ $lead->phone }}" class="btn btn-light btn-sm">
+                            <i class="bi bi-telephone me-1"></i>{{ $lead->phone }}
+                        </a>
+                    @endif
+                    <a class="btn btn-primary btn-sm" href="{{ route('admin.leads.edit', $lead) }}">
+                        <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit') }}
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="card-body pt-0">
+    </div>
+
+    <div class="card">
+        <div class="card-body pt-8">
             <div class="mb-10">
                 <h4 class="fw-bold mb-4">{{ __('crm::lead.sections.contact_information') }}</h4>
                 <div class="row g-6">
@@ -100,6 +124,47 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mb-10">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+                    <h4 class="fw-bold mb-0">{{ __('crm::lead.fields.tags') }}</h4>
+                    <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-sm btn-light-primary">
+                        <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit_tags') }}
+                    </a>
+                </div>
+                <div class="border border-dashed border-gray-300 rounded p-5">
+                    @include('crm::admin.partials.lead-tags', [
+                        'tags' => $lead->tags,
+                        'solid' => true,
+                        'class' => 'fs-7 me-2 mb-2 px-4 py-2',
+                        'empty' => __('crm::lead.hints.no_tags_assigned'),
+                    ])
+                </div>
+            </div>
+
+            @php($visibleCustomFields = ($customFields ?? collect())->filter(fn ($field) => $field->is_active || filled($lead->customFieldValue($field->key))))
+            @if($visibleCustomFields->isNotEmpty())
+                <div class="mb-10">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+                        <h4 class="fw-bold mb-0">{{ __('crm::lead.sections.custom_fields') }}</h4>
+                        <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-sm btn-light-primary">
+                            <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit_custom_fields') }}
+                        </a>
+                    </div>
+                    <div class="row g-6">
+                        @foreach($visibleCustomFields as $customField)
+                            <div class="col-md-6">
+                                <div class="border border-dashed border-gray-300 rounded p-5 h-100">
+                                    <div class="text-muted fs-7 mb-1">{{ $customField->display_label }}</div>
+                                    <div class="fw-semibold text-gray-800">
+                                        {{ $customField->formatValue($lead->customFieldValue($customField->key)) ?: __('N/A') }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
 
             <div class="mb-10">
                 <h4 class="fw-bold mb-4">{{ __('crm::lead.sections.lead_details') }}</h4>
@@ -169,6 +234,9 @@
             @endif
 
             <div class="d-flex gap-2 flex-wrap">
+                <a href="{{ route('admin.leads.index') }}" class="btn btn-light">
+                    <i class="bi bi-arrow-left me-1"></i>{{ __('crm::lead.actions.back_to_list') }}
+                </a>
                 @if($lead->deal_id)
                     <a href="{{ route('admin.deals.show', $lead->deal_id) }}" class="btn btn-success">
                         <i class="bi bi-briefcase me-1"></i>{{ __('crm::lead.conversion.view_deal') }}
@@ -186,9 +254,6 @@
                         <i class="bi bi-arrow-right-circle me-1"></i>{{ __('crm::lead.conversion.convert') }}
                     </button>
                 @endif
-                <a href="{{ route('admin.leads.index') }}" class="btn btn-light">
-                    {{ __('crm::lead.actions.back_to_list') }}
-                </a>
                 <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-primary">
                     <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit') }}
                 </a>

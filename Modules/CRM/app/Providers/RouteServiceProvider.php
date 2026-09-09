@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
         $this->mapWebRoutes();
         $this->mapAdminRoutes();
+        $this->mapPublicQuoteRoutes();
     }
 
     /**
@@ -63,5 +64,14 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(module_path($name, '/routes/admin.php'));
 
         });
+    }
+
+    /**
+     * Public quote share links without locale prefix: /quote/{uuid}
+     */
+    protected function mapPublicQuoteRoutes(): void
+    {
+        Route::middleware(['web'])
+            ->group(module_path($this->name, '/routes/public.php'));
     }
 }
