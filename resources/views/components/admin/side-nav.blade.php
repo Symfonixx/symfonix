@@ -22,6 +22,31 @@
 @endphp
 
 <div class="menu-section-label">{{ __('Overview') }}</div>
+<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ $overviewHere ? 'here show' : '' }}">
+    <span class="menu-link">
+        <span class="menu-icon"><i class="bi bi-grid-1x2-fill text-primary"></i></span>
+        <span class="menu-title">{{ __('Overview') }}</span>
+        <span class="menu-arrow"></span>
+    </span>
+    <div class="menu-sub menu-sub-accordion {{ $overviewHere ? 'show' : '' }}">
+        <div class="menu-item">
+            <a class="menu-link {{ isset($active['dashboard']) ? 'active' : '' }}"
+               href="{{ route('admin.dashboard.index') }}">
+                <span class="menu-icon menu-icon-sm"><i class="bi bi-speedometer2 text-primary"></i></span>
+                <span class="menu-title">{{ __('Dashboard') }}</span>
+            </a>
+        </div>
+        @can('CRM Management')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['crm_dashboard']) ? 'active' : '' }}"
+                   href="{{ route('admin.crm.dashboard') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-graph-up-arrow text-info"></i></span>
+                    <span class="menu-title">{{ __('CRM Analytics') }}</span>
+                </a>
+            </div>
+        @endcan
+    </div>
+</div>
 
 @canany(['CMS Management', 'Testimonials Management', 'Team Management'])
     <div data-kt-menu-trigger="click"
@@ -129,31 +154,6 @@
     </div>
 @endcan
 
-<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ $overviewHere ? 'here show' : '' }}">
-    <span class="menu-link">
-        <span class="menu-icon"><i class="bi bi-grid-1x2-fill text-primary"></i></span>
-        <span class="menu-title">{{ __('Overview') }}</span>
-        <span class="menu-arrow"></span>
-    </span>
-    <div class="menu-sub menu-sub-accordion {{ $overviewHere ? 'show' : '' }}">
-        <div class="menu-item">
-            <a class="menu-link {{ isset($active['dashboard']) ? 'active' : '' }}"
-               href="{{ route('admin.dashboard.index') }}">
-                <span class="menu-icon menu-icon-sm"><i class="bi bi-speedometer2 text-primary"></i></span>
-                <span class="menu-title">{{ __('Dashboard') }}</span>
-            </a>
-        </div>
-        @can('CRM Management')
-            <div class="menu-item">
-                <a class="menu-link {{ isset($active['crm_dashboard']) ? 'active' : '' }}"
-                   href="{{ route('admin.crm.dashboard') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-graph-up-arrow text-info"></i></span>
-                    <span class="menu-title">{{ __('CRM Analytics') }}</span>
-                </a>
-            </div>
-        @endcan
-    </div>
-</div>
 
 @canany(['CRM Management', 'Sales Management'])
     <div class="menu-section-label">{{ __('Relationship Management') }}</div>
@@ -517,13 +517,7 @@
         </span>
         <div class="menu-sub menu-sub-accordion {{ $systemHere ? 'show' : '' }}">
             @can('CRM Management')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['crm_sales_targets']) ? 'active' : '' }}"
-                       href="{{ route('admin.crm.sales-targets.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-bar-chart-line text-success"></i></span>
-                        <span class="menu-title">{{ __('Reports') }}</span>
-                    </a>
-                </div>
+
                 <div data-kt-menu-trigger="click"
                      class="menu-item menu-accordion {{ $crmSettingsHere ? 'here show' : '' }}">
                     <span class="menu-link">
