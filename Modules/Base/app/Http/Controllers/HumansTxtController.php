@@ -4,6 +4,7 @@ namespace Modules\Base\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Collection;
 use Modules\Base\Models\Seo;
 use Modules\Base\Models\Settings;
 use Modules\Team\Models\Team;
@@ -71,7 +72,7 @@ class HumansTxtController extends Controller
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, Team>
+     * @return Collection<int, Team>
      */
     private function publishedTeamMembers()
     {
@@ -81,7 +82,7 @@ class HumansTxtController extends Controller
             }
 
             return Team::query()
-                ->where('status', 'Published')
+                ->published()
                 ->orderBy('id')
                 ->get();
         } catch (\Throwable $e) {

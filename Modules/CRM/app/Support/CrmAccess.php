@@ -10,12 +10,12 @@ class CrmAccess
 {
     public static function canViewAllDeals(User $user): bool
     {
-        return $user->type === User::TYPE_ADMIN || $user->can('CRM View All');
+        return $user->can('sales.deals.view_all');
     }
 
-    public static function canAccessDeal(User $user, ?int $assignedToEmployeeId): bool
+    public static function canAccessDeal(User $user, ?int $assignedToEmployeeId, string $permission = 'sales.deals.view'): bool
     {
-        if (! $user->can('CRM Management')) {
+        if (! $user->can($permission)) {
             return false;
         }
 

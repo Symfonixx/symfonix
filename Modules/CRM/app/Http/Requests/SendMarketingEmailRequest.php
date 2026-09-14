@@ -9,7 +9,7 @@ class SendMarketingEmailRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('marketing.email.send') ?? false;
     }
 
     public function rules(): array

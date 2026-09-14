@@ -55,4 +55,13 @@ return [
         'webhook_verify_token' => env('WHATSAPP_WEBHOOK_VERIFY_TOKEN'),
     ],
 
+    'fingerprint' => [
+        'enabled' => env('FINGERPRINT_ENABLED', false),
+        'host' => env('FINGERPRINT_HOST'),
+        'port' => (int) env('FINGERPRINT_PORT', 4370),
+        'comm_key' => (int) env('FINGERPRINT_COMM_KEY', 0),
+        'timeout' => (float) env('FINGERPRINT_TIMEOUT', 10),
+        'name_encoding' => env('FINGERPRINT_NAME_ENCODING', 'UTF-8'),
+    ],
+
 ];

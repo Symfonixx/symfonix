@@ -1,6 +1,6 @@
 # Symfonix
 
-Symfonix is a modular Laravel business platform for agencies and service companies. It combines a multilingual public website, admin panel, CRM, project delivery, finance, HR, support, and product catalog in one codebase.
+Symfonix is a modular Laravel business platform for agencies and service companies. It combines a multilingual public website, admin panel, CRM, project delivery, finance, tax, HR, support, reporting, and product catalog in one codebase.
 
 Built on **Laravel 13** with **nwidart/laravel-modules**, **Spatie Permission**, **Inertia + Vue 3**, **Livewire**, and the **Metronic** admin theme.
 
@@ -11,26 +11,28 @@ Built on **Laravel 13** with **nwidart/laravel-modules**, **Spatie Permission**,
 | Backend | PHP 8.3+, Laravel 13, modular architecture |
 | Admin UI | Metronic, Bootstrap 5, Blade, Inertia/Vue, Livewire |
 | Auth | Laravel Fortify (including 2FA) |
-| Roles | Spatie Laravel Permission |
+| Roles | Spatie Laravel Permission (granular catalog: `group.tab.action`) |
 | i18n | English, Arabic, German, Turkish (`mcamara/laravel-localization`) |
 | Frontend build | Vite, Vue 3, Tailwind (where used) |
-| Extras | BotMan chatbot, visitor tracking, DomPDF, Excel export, Telescope, Pulse |
+| Extras | BotMan chatbot, visitor tracking, DomPDF, Excel export, Telescope, Pulse, WhatsApp Cloud API, ZKTeco fingerprint attendance |
 
 ## Modules
 
 | Module | Purpose |
 |--------|---------|
 | **Core** | `app:install` command, shared services, helpers |
-| **Base** | Settings, countries, branches, SEO |
-| **User** | Users, employees, roles & permissions |
-| **Cms** | Pages, blog, FAQs |
+| **Base** | Settings, countries, branches, SEO, integrations, backups, `humans.txt` |
+| **User** | Users, employees, roles & permissions, leave, fingerprint attendance, client portal |
+| **Cms** | Pages, blog, FAQs, client logos |
 | **Services** | Service categories and offerings |
-| **CRM** | Leads, deals, companies, contacts, pipeline, subscriptions, activities, sales targets, marketing campaigns, client portal |
+| **CRM** | Leads, deals, companies, contacts, pipeline, quotes, subscriptions, activities, sales targets, email/WhatsApp marketing, sales forecasts, customizable dashboard |
 | **Project** | Projects, statuses, use cases |
 | **Product** | Product catalog and sales |
-| **Finance** | Multi-currency transactions, invoices, journal entries, salaries, commissions, expenses, and exchange-rate synchronization |
+| **Finance** | Multi-currency ledger, invoices, accounts receivable, journal entries, salaries, commissions, expenses, product sales, exchange-rate sync |
+| **Tax** | Tax rates, output/input tax ledger, filing reports |
+| **Reporting** | Cross-department Finance, Sales, Marketing, Operations, and Employee reports with CSV/PDF export |
 | **Support** | Tickets, subscribers, visitors |
-| **Team** | Team members |
+| **Team** | Public team member profiles |
 | **Testimonial** | Client testimonials |
 | **SearchEngine** | Search keyword tracking |
 
@@ -61,7 +63,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Configure the finance currency context and Fixer integration:
+Configure finance currency context and Fixer integration:
 
 ```env
 FINANCE_DEFAULT_CURRENCY=USD
@@ -71,6 +73,28 @@ FIXER_BASE_URL=https://data.fixer.io/api
 ```
 
 The default currency is the accounting base currency. Individual transactions, invoices, projects, deals, subscriptions, and products may use any configured supported currency. Administrators can set the default currency and Fixer key under **System Configurations → Finance**; database settings override the matching environment values. Each user can select a display currency from the admin header without changing stored transaction currencies.
+
+Optional integrations (database values under **APIs & Integrations** and **System Configurations** override `.env`):
+
+```env
+# Built-in documentation site at /docs
+DOCS_ENABLED=true
+
+# WhatsApp Cloud API (Meta). Prefer APIs & Integrations → WhatsApp.
+WHATSAPP_API_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_BUSINESS_ACCOUNT_ID=
+WHATSAPP_API_VERSION=v21.0
+WHATSAPP_WEBHOOK_VERIFY_TOKEN=
+
+# ZKTeco fingerprint terminal. Prefer System Configurations → Fingerprint.
+FINGERPRINT_ENABLED=false
+FINGERPRINT_HOST=
+FINGERPRINT_PORT=4370
+FINGERPRINT_COMM_KEY=0
+FINGERPRINT_TIMEOUT=10
+FINGERPRINT_NAME_ENCODING=UTF-8
+```
 
 ### 2. Install dependencies
 
@@ -107,9 +131,9 @@ Default credentials (if options are omitted): `admin@symfonix.com` / `password`.
 php artisan serve
 ```
 
-Visit `/admin` and sign in with the credentials shown after install.
+Visit `/admin` and sign in with the credentials shown after install. Built-in HTML documentation is served at `/docs` when `DOCS_ENABLED=true`.
 
-For queued work (marketing emails, notifications, etc.):
+For queued work (marketing emails, WhatsApp campaigns, notifications, exchange-rate fetches):
 
 ```bash
 php artisan queue:work
@@ -120,12 +144,22 @@ php artisan queue:work
 1. Runs migrations (`migrate`, or `migrate:fresh` with `--fresh`)
 2. Generates `APP_KEY` if missing
 3. Seeds countries from `Modules/Core/database/db.sql`
-4. Creates all application permissions
-5. Seeds default CRM pipeline stages (Lead → Closed Won/Lost)
-6. Seeds support ticket categories
-7. Seeds currency settings and baseline USD/EUR/GBP/TRY exchange rates
-8. Creates the **Admin** role with every permission
-9. Creates the admin user and assigns the Admin role
+4. Synchronizes the granular permission catalog (`group.tab.action`)
+5. Seeds practical role scenarios (HR Manager, Sales Manager, Finance Manager, Project Manager, Operations Manager)
+6. Seeds default CRM pipeline stages (Lead → Closed Won/Lost)
+7. Seeds support ticket categories
+8. Seeds currency settings and baseline USD/EUR/GBP/TRY exchange rates
+9. Creates the **Admin** role with every permission
+10. Creates the admin user and assigns the Admin role
+
+## CRM highlights
+
+- **Pipeline & deals** — Kanban stages, activity timeline, assignee scoping (`sales.deals.view_all` to see every deal).
+- **Quotes** — line-item proposals with tax/discount, PDF download, and a public accept/reject link for customers.
+- **Marketing** — queued email campaigns plus Meta WhatsApp template campaigns with recipient deduplication and delivery logs.
+- **Sales forecasts** — probability-weighted pipeline projections by stage, rep, and expected close date.
+- **Dashboard** — filterable analytics with a user-customizable widget layout.
+- **Client portal** — customers can view assigned quotes and related records.
 
 ## Multi-currency operations
 
@@ -146,26 +180,32 @@ Rates are refreshed hourly by the Laravel scheduler. Free Fixer plans are EUR-ba
 
 > **Production warning:** The seeded rates are approximate. If no Fixer key or stored rate is available, the application can fall back to a `1.0` rate; this is useful for setup/demo data but is not financially accurate. Configure and monitor rate synchronization before posting production transactions. Do not change the default currency after postings exist without a controlled data migration, because historical base amounts retain the original accounting base.
 
+## Tax
+
+The Tax module stores inclusive/exclusive rates (optionally per region), applies them on invoice and product-sale lines, and posts **output tax** (collected) and **input tax** (paid on expenses) to a ledger. Filing reports summarize net tax payable for a date range.
+
+## Reporting
+
+The Reporting hub exposes Finance, Sales, Marketing, Operations, and Employee analytics with period filters and CSV/PDF export. Marketing reports include WhatsApp delivery rates; operations reports include ticket SLA and fingerprint attendance.
+
 ## Permissions
 
-Permissions are managed through `php artisan app:install` on fresh setups, not via migrations. Available permissions:
+Permissions are managed through `php artisan app:install` on fresh setups (and remapped from legacy names such as `CRM Management` when roles already exist). The catalog uses `group.tab.action` keys, for example:
 
-- Settings Management
-- CMS Management
-- Support Management
-- Hr Management
-- App Monitoring
-- Logs Management
-- CRM Management / CRM View All
-- Sales Management
-- Project Management
-- Finance Management
-- Services Management
-- Product Management
-- Testimonials Management
-- Team Management
+| Group | Example keys |
+|-------|----------------|
+| Overview | `overview.dashboard.view`, `overview.crm_analytics.view` |
+| CMS | `cms.pages.*`, `cms.blogs.*`, `cms.clients.*` |
+| CRM | `crm.leads.*`, `crm.companies.*`, `crm.activities.*` |
+| Sales | `sales.deals.view_all`, `sales.quotes.*`, `sales.forecasts.view` |
+| Marketing | `marketing.email.send`, `marketing.whatsapp.send`, `marketing.whatsapp_templates.*` |
+| Finance | `finance.invoices.*`, `finance.ar.view`, `finance.salaries.*` |
+| Tax | `tax.rates.*`, `tax.ledger.view`, `tax.filing.export` |
+| Reporting | `reporting.finance.view`, `reporting.sales.export` |
+| HR | `hr.employees.*`, `hr.fingerprint.manage`, `hr.roles.*` |
+| Settings | `settings.system.*`, `settings.integrations.*`, `settings.backups.*` |
 
-Assign permissions to roles in the admin panel under User management.
+Assign permissions to roles in the admin panel under **User Management → Roles**. Install seeds **Admin** plus the scenario roles listed above. Extra actions include `send`, `export`, `approve`, `view_all`, `manage`, `reply`, and `restore`.
 
 ## Development
 
@@ -179,6 +219,12 @@ npm run dev
 # Queue worker
 php artisan queue:work
 
+# Backend tests
+php artisan test
+
+# Playwright E2E (requires a running app and E2E_* env vars — see tests/README.md)
+npm run test:e2e
+
 # Clear caches
 php artisan optimize:clear
 ```
@@ -188,6 +234,7 @@ php artisan optimize:clear
 - **Telescope** — `php artisan telescope:install` (debugging)
 - **Pulse** — performance monitoring (tables created by migration)
 - **Chatbot** — BotMan web widget (optional Ollama integration)
+- **Docs** — static HTML at `/docs` (`DOCS_ENABLED=false` to disable)
 
 ## Deployment notes
 
@@ -198,8 +245,10 @@ For production:
 3. Run `npm ci && npm run build`
 4. Run `php artisan app:install` on a fresh database, or `php artisan migrate --force` on an existing one
 5. Run `php artisan config:cache`, `php artisan route:cache`, `php artisan view:cache`
-6. Configure a queue worker and scheduler (`php artisan schedule:run` via cron); the scheduler refreshes exchange rates hourly
+6. Configure a queue worker and scheduler (`php artisan schedule:run` via cron); the scheduler refreshes exchange rates hourly; WhatsApp and email campaigns require the worker
 7. Configure a valid Fixer key and monitor the last successful fetch under **System Configurations → Finance**
+8. Set WhatsApp Cloud API credentials under **APIs & Integrations** if you send template campaigns
+9. Set `DOCS_ENABLED=false` if you do not want to expose `/docs`
 
 ## Key packages
 
@@ -214,6 +263,7 @@ For production:
 - [Laravel Fortify](https://laravel.com/docs/fortify) — authentication with 2FA support
 - [BotMan](https://botman.io) — website chatbot
 - [maatwebsite/excel](https://github.com/SpartnerNL/Laravel-Excel) — import/export
+- [WhatsApp Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api) — template campaigns
 
 ## License
 

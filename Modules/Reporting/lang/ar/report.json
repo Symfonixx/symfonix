@@ -1,0 +1,117 @@
+{
+    "menu": {
+        "reports": "التقارير",
+        "finance": "تقارير المالية",
+        "sales": "تقارير المبيعات",
+        "marketing": "تقارير التسويق",
+        "operations": "تقارير IT / العمليات",
+        "employee": "تقارير الموظفين"
+    },
+    "departments": {
+        "finance": "المالية",
+        "sales": "المبيعات",
+        "marketing": "التسويق",
+        "operations": "IT / العمليات",
+        "employee": "الموظف"
+    },
+    "pages": {
+        "finance_title": "تقارير المالية",
+        "sales_title": "تقارير المبيعات",
+        "marketing_title": "تقارير التسويق",
+        "operations_title": "تقارير IT / العمليات",
+        "employee_title": "تقارير الموظفين",
+        "employee_profile_title": "الملف التحليلي للموظف"
+    },
+    "subtitle": "تحليلات متعددة الأقسام مع تصفية ديناميكية وتصدير",
+    "filters": {
+        "period": "الفترة",
+        "date_from": "من",
+        "date_to": "إلى",
+        "assignee": "مندوب المبيعات",
+        "employee": "الموظف",
+        "all_reps": "جميع المندوبين",
+        "all_employees": "كل الموظفين",
+        "apply": "تطبيق الفلاتر",
+        "periods": {
+            "today": "اليوم",
+            "last_7_days": "آخر 7 أيام",
+            "this_month": "هذا الشهر",
+            "last_month": "الشهر الماضي",
+            "this_quarter": "هذا الربع",
+            "this_year": "هذا العام",
+            "custom": "نطاق مخصص"
+        }
+    },
+    "actions": {
+        "export_csv": "تصدير CSV",
+        "export_pdf": "تصدير PDF"
+    },
+    "kpis": {
+        "revenue": "الإيرادات",
+        "expenses": "المصروفات",
+        "profit": "صافي الربح",
+        "accounts_receivable": "الذمم المدينة",
+        "accounts_payable": "الذمم الدائنة",
+        "net_tax": "صافي الضريبة المستحقة",
+        "pipeline_value": "قيمة خط الأنابيب",
+        "won_deals": "قيمة الصفقات المكسوبة",
+        "won_count": "الصفقات المكسوبة",
+        "conversion_rate": "معدل التحويل",
+        "avg_deal_value": "متوسط قيمة الصفقة",
+        "email_campaigns": "حملات البريد",
+        "whatsapp_campaigns": "حملات واتساب",
+        "total_recipients": "إجمالي المستلمين",
+        "whatsapp_delivery_rate": "معدل تسليم واتساب",
+        "new_leads": "عملاء محتملون جدد",
+        "open_tickets": "تذاكر مفتوحة",
+        "resolved_tickets": "تذاكر محلولة",
+        "avg_resolution_hours": "متوسط الحل (ساعات)",
+        "attendance_rate": "معدل الحضور",
+        "active_projects": "مشاريع نشطة",
+        "attendance_days": "أيام الحضور",
+        "attendance_events": "سجلات البصمة",
+        "projects_assigned": "المشاريع المسندة",
+        "projects_completed": "المشاريع المكتملة",
+        "utilization_rate": "معدل الاستغلال",
+        "salary_paid_total": "إجمالي الرواتب المدفوعة",
+        "salary_pending_total": "الرواتب المعلقة"
+    },
+    "sections": {
+        "monthly_trend": "اتجاه الإيرادات والمصروفات",
+        "expense_breakdown": "تفصيل المصروفات",
+        "ar_aging": "أعمار الذمم المدينة",
+        "tax_summary": "ملخص الضرائب",
+        "pipeline_funnel": "قمع خط الأنابيب",
+        "won_lost_trend": "اتجاه المكسوب vs الخاسر",
+        "rep_performance": "أداء المندوبين",
+        "stage_breakdown": "خط الأنابيب حسب المرحلة",
+        "campaign_volume": "حجم الحملات",
+        "lead_sources": "مصادر العملاء المحتملين",
+        "whatsapp_delivery": "تسليم واتساب",
+        "conversion_by_source": "التحويل حسب المصدر",
+        "ticket_status": "حالة التذاكر",
+        "ticket_by_category": "التذاكر حسب الفئة",
+        "ticket_trend": "اتجاه التذاكر",
+        "project_status": "حالة المشاريع",
+        "attendance_daily": "الحضور اليومي",
+        "attendance_trend": "اتجاه الحضور",
+        "punch_types": "توزيع أنواع البصمة",
+        "employee_project_performance": "أداء الموظف بالمشاريع",
+        "salary_trend": "اتجاه الرواتب"
+    },
+    "ar": {
+        "current": "حالي",
+        "days_1_30": "1–30 يوم",
+        "days_31_60": "31–60 يوم",
+        "days_61_90": "61–90 يوم",
+        "over_90": "أكثر من 90 يوم"
+    },
+    "employee": {
+        "last_attendance": "آخر حضور",
+        "active_assignments": "المهام النشطة"
+    },
+    "uncategorized": "غير مصنف",
+    "unassigned": "غير معين",
+    "vs_previous": "مقارنة بالفترة السابقة",
+    "no_data": "لا توجد بيانات للفترة المحددة"
+}

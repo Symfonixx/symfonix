@@ -1,0 +1,53 @@
+{
+    "title": "Fingerprint Sync",
+    "page_description": "Enroll employees on the ZKTeco device and sync attendance logs into Symfonix.",
+    "search_logs": "Search attendance logs",
+    "empty_logs": "No attendance logs synced yet.",
+    "processing": "Processing...",
+    "operation_failed": "Operation failed",
+    "connection_failed": "Connection request failed",
+    "confirm_yes": "Yes, continue",
+    "confirm_no": "No, Cancel",
+    "recent_attendance": "Recent Fingerprint Attendance",
+    "not_configured": {
+        "title": "Fingerprint machine is not configured",
+        "description": "Set the device IP and port under System Configurations → Fingerprint, then return here to sync employees and attendance.",
+        "link": "Open fingerprint settings"
+    },
+    "status": {
+        "enrolled": "Fingerprint Enrolled",
+        "pending": "Fingerprint Pending",
+        "not_enrolled": "Fingerprint Not Enrolled",
+        "enrolled_short": "Enrolled",
+        "pending_short": "Pending"
+    },
+    "stats": {
+        "enrolled": "Enrolled employees",
+        "logs": "Attendance logs",
+        "last_sync": "Last sync",
+        "never": "Never",
+        "mapping_hint": "Device user_id is mapped to internal employee_id."
+    },
+    "columns": {
+        "device_user_id": "Device User ID",
+        "punch": "Punch",
+        "verify": "Verify Mode",
+        "recorded_at": "Recorded At",
+        "synced_at": "Synced"
+    },
+    "actions": {
+        "test_connection": "Test connection",
+        "enroll_all": "Sync all employees",
+        "sync_attendance": "Sync attendance",
+        "enroll": "Enroll on device"
+    },
+    "confirm": {
+        "enroll_all": "Enroll all active employees on the fingerprint machine?"
+    },
+    "messages": {
+        "connection_ok": "Connected to fingerprint machine.",
+        "enroll_done": "Employee enrolled on device.",
+        "enroll_all_done": "Employee sync completed.",
+        "sync_done": "Attendance sync completed."
+    }
+}

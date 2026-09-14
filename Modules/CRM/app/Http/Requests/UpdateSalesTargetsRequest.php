@@ -8,7 +8,7 @@ class UpdateSalesTargetsRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('crm.sales_targets.edit') ?? false;
     }
 
     public function rules(): array

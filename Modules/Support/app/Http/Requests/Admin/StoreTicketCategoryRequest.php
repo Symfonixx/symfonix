@@ -8,7 +8,7 @@ class StoreTicketCategoryRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Support Management') ?? false;
+        return $this->user()?->can('support.ticket_categories.create') ?? false;
     }
 
     public function rules(): array

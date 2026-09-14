@@ -9,11 +9,11 @@ class CrmActivityPolicy
 {
     public function create(User $user): bool
     {
-        return $user->can('CRM Management');
+        return $user->can('crm.activities.create');
     }
 
     public function delete(User $user, CrmActivity $activity): bool
     {
-        return $user->can('CRM Management');
+        return $user->can('crm.activities.delete');
     }
 }

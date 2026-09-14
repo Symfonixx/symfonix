@@ -1,0 +1,35 @@
+{
+    "pages": {
+        "index_title": "Tax Rates",
+        "create_title": "Create Tax Rate",
+        "edit_title": "Edit Tax Rate"
+    },
+    "fields": {
+        "name": "Name",
+        "percentage": "Percentage",
+        "type": "Type",
+        "region_code": "Region Code",
+        "status": "Status",
+        "is_default": "Default Rate",
+        "ledger_entries_count": "Ledger Entries",
+        "none": "No tax"
+    },
+    "types": {
+        "inclusive": "Inclusive",
+        "exclusive": "Exclusive"
+    },
+    "statuses": {
+        "active": "Active",
+        "inactive": "Inactive"
+    },
+    "actions": {
+        "add": "Add Tax Rate"
+    },
+    "hints": {
+        "region_code": "ISO region or country code (e.g. US, EU, SA). Leave empty for global.",
+        "is_default": "Used automatically for subscriptions and invoices when no rate is selected."
+    },
+    "errors": {
+        "in_use": "This tax rate cannot be deleted because it has ledger entries."
+    }
+}

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallAppCommand;
 use Modules\Core\Console\SeedDummyDataCommand;
+use Modules\Core\Services\GoogleTranslationService;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class CoreServiceProvider extends ServiceProvider
@@ -81,6 +82,8 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->singleton(GoogleTranslationService::class);
+
         $this->app->register(EventServiceProvider::class);
         $this->app->register(MacroServiceProvider::class);
     }

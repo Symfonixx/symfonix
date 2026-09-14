@@ -13,9 +13,11 @@
         pageDescription='Manage blog posts, categories, and publishing status.'
     />
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold  btn-primary" href="{{route('admin.blogs.create')}}">
-            {{__('Add New Blog')}} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="cms.blogs.create">
+            <a class="btn btn-sm fw-bold  btn-primary" href="{{route('admin.blogs.create')}}">
+                {{__('Add New Blog')}} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 @section('js')

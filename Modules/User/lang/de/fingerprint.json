@@ -1,0 +1,53 @@
+{
+    "title": "Fingerabdruck-Sync",
+    "page_description": "Mitarbeiter auf dem ZKTeco-Gerät registrieren und Anwesenheitsprotokolle nach Symfonix synchronisieren.",
+    "search_logs": "Anwesenheitsprotokolle durchsuchen",
+    "empty_logs": "Noch keine Anwesenheitsprotokolle synchronisiert.",
+    "processing": "Wird verarbeitet...",
+    "operation_failed": "Vorgang fehlgeschlagen",
+    "connection_failed": "Verbindungsanfrage fehlgeschlagen",
+    "confirm_yes": "Ja, fortfahren",
+    "confirm_no": "Nein, Abbrechen",
+    "recent_attendance": "Aktuelle Fingerabdruck-Anwesenheit",
+    "not_configured": {
+        "title": "Fingerabdruckgerät ist nicht konfiguriert",
+        "description": "Legen Sie IP und Port unter Systemkonfigurationen → Fingerabdruck fest und kehren Sie hierher zurück, um Mitarbeiter und Anwesenheit zu synchronisieren.",
+        "link": "Fingerabdruck-Einstellungen öffnen"
+    },
+    "status": {
+        "enrolled": "Fingerabdruck registriert",
+        "pending": "Fingerabdruck ausstehend",
+        "not_enrolled": "Fingerabdruck nicht registriert",
+        "enrolled_short": "Registriert",
+        "pending_short": "Ausstehend"
+    },
+    "stats": {
+        "enrolled": "Registrierte Mitarbeiter",
+        "logs": "Anwesenheitsprotokolle",
+        "last_sync": "Letzte Synchronisation",
+        "never": "Nie",
+        "mapping_hint": "Die Geräte-user_id wird der internen employee_id zugeordnet."
+    },
+    "columns": {
+        "device_user_id": "Geräte-Benutzer-ID",
+        "punch": "Stempelung",
+        "verify": "Prüfmodus",
+        "recorded_at": "Erfasst am",
+        "synced_at": "Synchronisiert"
+    },
+    "actions": {
+        "test_connection": "Verbindung testen",
+        "enroll_all": "Alle Mitarbeiter synchronisieren",
+        "sync_attendance": "Anwesenheit synchronisieren",
+        "enroll": "Am Gerät registrieren"
+    },
+    "confirm": {
+        "enroll_all": "Alle aktiven Mitarbeiter auf dem Fingerabdruckgerät registrieren?"
+    },
+    "messages": {
+        "connection_ok": "Mit dem Fingerabdruckgerät verbunden.",
+        "enroll_done": "Mitarbeiter am Gerät registriert.",
+        "enroll_all_done": "Mitarbeiter-Synchronisation abgeschlossen.",
+        "sync_done": "Anwesenheitssynchronisation abgeschlossen."
+    }
+}

@@ -75,7 +75,7 @@ class BlogController extends Controller
         });
 
         $categories = BlogCategory::withCount(['blogs' => function ($q) {
-            $q->where('status', 'Published');
+            $q->published();
         }])->get()->map(function ($category) {
             return [
                 'id' => $category->id,
@@ -159,7 +159,7 @@ class BlogController extends Controller
 
         // If not enough related blogs, get recent ones
         if ($relatedBlogs->count() < 3) {
-            $additionalBlogs = Blog::where('status', 'Published')
+            $additionalBlogs = Blog::query()->published()
                 ->where('id', '!=', $blog->id)
                 ->whereNotIn('id', $relatedBlogs->pluck('id'))
                 ->latest()
@@ -170,7 +170,7 @@ class BlogController extends Controller
 
         // Categories for sidebar
         $categories = BlogCategory::withCount(['blogs' => function ($q) {
-            $q->where('status', 'Published');
+            $q->published();
         }])->get()->map(function ($category) {
             return [
                 'id' => $category->id,
@@ -181,7 +181,7 @@ class BlogController extends Controller
         });
 
         // Recent posts for sidebar
-        $recentPosts = Blog::where('status', 'Published')
+        $recentPosts = Blog::query()->published()
             ->where('id', '!=', $blog->id)
             ->latest()
             ->limit(3)
@@ -197,12 +197,12 @@ class BlogController extends Controller
             });
 
         // Previous and next posts
-        $previousPost = Blog::where('status', 'Published')
+        $previousPost = Blog::query()->published()
             ->where('id', '<', $blog->id)
             ->latest('id')
             ->first();
 
-        $nextPost = Blog::where('status', 'Published')
+        $nextPost = Blog::query()->published()
             ->where('id', '>', $blog->id)
             ->oldest('id')
             ->first();

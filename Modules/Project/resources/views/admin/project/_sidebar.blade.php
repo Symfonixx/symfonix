@@ -97,9 +97,10 @@
 
 @php
     $canUpdateProject = auth()->user()?->can('update', $project);
-    $canManageFinance = auth()->user()?->can('Finance Management');
+    $canManageFinance = auth()->user()?->can('finance.invoices.create');
+    $canLogExpense = auth()->user()?->can('project.projects.edit');
 @endphp
-@if($canUpdateProject || $canManageFinance)
+@if($canUpdateProject || $canManageFinance || $canLogExpense)
     <div class="card">
         <div class="card-header border-0 pt-6">
             <h3 class="card-title fw-bold">{{ __('project::project.sections.quick_actions') }}</h3>
@@ -110,15 +111,15 @@
                     <i class="bi bi-person-plus me-2"></i>{{ __('project::project.actions.assign_employee') }}
                 </button>
             @endif
-            @if($canManageFinance)
+            @if($canLogExpense)
                 <button type="button" class="btn btn-light-danger" data-bs-toggle="modal" data-bs-target="#logExpenseModal">
                     <i class="bi bi-cash-stack me-2"></i>{{ __('project::project.actions.log_expense') }}
                 </button>
-                @if(isset($collectionSummary) && $collectionSummary['remaining'] > 0)
-                    <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addInvoiceModal">
-                        <i class="bi bi-receipt me-2"></i>{{ __('project::project.actions.add_invoice') }}
-                    </button>
-                @endif
+            @endif
+            @if($canManageFinance && isset($collectionSummary) && $collectionSummary['remaining'] > 0)
+                <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addInvoiceModal">
+                    <i class="bi bi-receipt me-2"></i>{{ __('project::project.actions.add_invoice') }}
+                </button>
             @endif
             @if($canUpdateProject)
                 <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-light">

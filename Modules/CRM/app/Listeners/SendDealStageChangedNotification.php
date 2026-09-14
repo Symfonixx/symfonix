@@ -26,7 +26,7 @@ class SendDealStageChangedNotification
             }
         }
 
-        $managers = User::permission('CRM View All')
+        $managers = User::permission('sales.deals.view_all')
             ->get()
             ->reject(fn (User $user) => $user->id === $event->changedBy?->id)
             ->reject(fn (User $user) => $recipients->contains('id', $user->id));

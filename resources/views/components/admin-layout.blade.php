@@ -131,19 +131,27 @@ Author: Hadi Hilal
                             class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
                             id="kt_app_header_menu" data-kt-menu="true">
                             <div class="sx-header-chips my-3 my-lg-0">
-                                @can('CRM Management')
+                                @can('overview.crm_analytics.view')
                                     <a href="{{ route('admin.crm.dashboard') }}" class="sx-header-chip">
                                         <i class="bi bi-graph-up text-info"></i>{{ __('CRM Analytics') }}
                                     </a>
+                                @endcan
+                                @can('crm.leads.create')
                                     <a href="{{ route('admin.leads.create') }}" class="sx-header-chip">
                                         <i class="bi bi-person-plus text-primary"></i>{{ __('crm::lead.actions.add') }}
                                     </a>
+                                @endcan
+                                @can('sales.deals.create')
                                     <a href="{{ route('admin.deals.create') }}" class="sx-header-chip">
                                         <i class="bi bi-briefcase text-success"></i>{{ __('crm::deal.actions.add') }}
                                     </a>
+                                @endcan
+                                @can('sales.pipeline.view')
                                     <a href="{{ route('admin.deals.index', ['view' => 'kanban']) }}" class="sx-header-chip">
                                         <i class="bi bi-kanban text-warning"></i>{{ __('crm::deal.menu.pipeline') }}
                                     </a>
+                                @endcan
+                                @can('crm.activities.view')
                                     <a href="{{ route('admin.crm.calendar') }}" class="sx-header-chip">
                                         <i class="bi bi-calendar-check text-danger"></i>{{ __('Activities') }}
                                     </a>
@@ -219,7 +227,7 @@ Author: Hadi Hilal
                         <!--end::Notifications-->
 
                         <!--begin::Messages-->
-                        @can('CRM Management')
+                        @can('crm.inquiries.view')
                             <div class="app-navbar-item ms-1 ms-md-3">
                                 <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary sx-header-btn position-relative"
                                      data-kt-menu-trigger="{default: 'click', lg: 'hover'}"

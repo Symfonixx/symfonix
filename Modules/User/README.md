@@ -1,13 +1,11 @@
 # User Module
 
-The **User** module manages all user-related functionality, including authentication, authorization, user profiles, and
-permissions.
-It encapsulates the logic for handling users and their roles within the application.
+Identity, HR, and access control.
 
 **Contents:**
 
-- User models and repositories
-- Authentication and authorization
-- User profile management
-- Role and permission handling
-- User-related services 
+- Users, employees, admins
+- Granular permission catalog (`group.tab.action`) and role scenarios
+- Leave, job positions, and applications
+- ZKTeco fingerprint enrollment and attendance sync
+- Employee and customer portals

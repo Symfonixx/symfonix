@@ -5,7 +5,8 @@
     },
     "metrics": {
         "total_outstanding": "Toplam Açık Bakiye",
-        "open_invoices": "Açık Faturalar"
+        "open_invoices": "Açık Faturalar",
+        "open_projects": "Faturalanmamış Projeler"
     },
     "buckets": {
         "current": "Güncel",
@@ -16,11 +17,14 @@
     },
     "fields": {
         "invoice_number": "Fatura No",
+        "project": "Proje",
         "company": "Şirket",
         "due_at": "Vade Tarihi",
         "days_overdue": "Gecikme Günü",
         "amount": "Tutar",
+        "remaining": "Kalan",
         "status": "Durum"
     },
-    "empty": "Açık fatura yok."
+    "empty_invoices": "Açık fatura yok.",
+    "empty_projects": "Faturalanmamış bütçesi olan proje yok."
 }

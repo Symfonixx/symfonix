@@ -125,7 +125,8 @@
         "confirm_remove_employee": "Bu çalışan ataması kaldırılsın mı?",
         "expense_logged": "Proje gideri finansa işlendi.",
         "expense_description": "Proje gideri: :title",
-        "no_review": "Bu proje için henüz müşteri değerlendirmesi gönderilmedi."
+        "no_review": "Bu proje için henüz müşteri değerlendirmesi gönderilmedi.",
+        "status_updated": "Proje durumu güncellendi."
     },
     "validation": {
         "attachment_pdf_not_allowed": "PDF dosyaları proje eki olarak kabul edilmez.",

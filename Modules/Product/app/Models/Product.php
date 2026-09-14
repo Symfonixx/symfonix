@@ -7,23 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use Modules\Product\Enums\ProductBillingType;
+use Modules\Product\Enums\ProductStatus;
+use Modules\Tax\Models\TaxRate;
 use Spatie\Translatable\HasTranslations;
 
 class Product extends Model
 {
     use HasTranslations;
 
-    public const STATUS_ACTIVE = 'active';
+    public const STATUS_ACTIVE = ProductStatus::ACTIVE->value;
 
-    public const STATUS_ARCHIVED = 'archived';
+    public const STATUS_ARCHIVED = ProductStatus::ARCHIVED->value;
 
-    public const BILLING_ONE_TIME = 'one_time';
+    public const BILLING_ONE_TIME = ProductBillingType::ONE_TIME->value;
 
-    public const BILLING_MONTHLY = 'monthly';
+    public const BILLING_MONTHLY = ProductBillingType::MONTHLY->value;
 
-    public const BILLING_QUARTERLY = 'quarterly';
+    public const BILLING_QUARTERLY = ProductBillingType::QUARTERLY->value;
 
-    public const BILLING_YEARLY = 'yearly';
+    public const BILLING_YEARLY = ProductBillingType::YEARLY->value;
 
     public array $translatable = [
         'name',
@@ -48,6 +51,7 @@ class Product extends Model
         'seo_keywords',
         'price',
         'currency',
+        'tax_rate_id',
         'billing_type',
         'status',
         'is_featured',
@@ -222,6 +226,11 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
+    }
+
+    public function taxRate(): BelongsTo
+    {
+        return $this->belongsTo(TaxRate::class);
     }
 
     public function sales(): HasMany

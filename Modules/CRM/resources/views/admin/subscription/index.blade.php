@@ -13,9 +13,11 @@
            href="{{ route('admin.subscriptions.index', ['renewing_soon' => 1]) }}">
             <i class="bi bi-calendar-event me-1"></i>{{ __('crm::subscription.actions.renewing_soon') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.subscriptions.create') }}">
-            {{ __('crm::subscription.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="sales.subscriptions.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.subscriptions.create') }}">
+                {{ __('crm::subscription.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 

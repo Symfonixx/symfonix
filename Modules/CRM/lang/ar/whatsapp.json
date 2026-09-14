@@ -1,0 +1,159 @@
+{
+    "actions": {
+        "compose": "إنشاء رسالة واتساب",
+        "send_campaign": "إرسال الحملة",
+        "manage_templates": "إدارة القوالب",
+        "add_template": "إضافة قالب",
+        "create_template": "إنشاء قالب",
+        "previous": "السابق",
+        "next": "التالي",
+        "open_integrations": "فتح التكاملات"
+    },
+    "pages": {
+        "create_title": "إرسال حملة واتساب",
+        "show_title": "تفاصيل حملة واتساب",
+        "templates_title": "قوالب واتساب",
+        "create_template_title": "إنشاء قالب واتساب",
+        "edit_template_title": "تعديل قالب واتساب"
+    },
+    "steps": {
+        "recipients": "المستلمون",
+        "template": "القالب",
+        "parameters": "المتغيرات",
+        "preview": "معاينة وإرسال"
+    },
+    "sections": {
+        "compose_hint": "اختر المستلمين والقالب المعتمد واملأ المتغيرات ثم أرسل.",
+        "recipients": "اختر المستلمين",
+        "recipients_hint": "اختر العملاء المحتملين أو الصفقات أو جهات الاتصال أو أضف أرقاماً مخصصة.",
+        "template": "اختر القالب",
+        "template_hint": "اختر قالب واتساب معتمد من Meta.",
+        "parameters": "متغيرات القالب",
+        "parameters_hint": "املأ المتغيرات الديناميكية المطلوبة.",
+        "preview": "معاينة الرسالة",
+        "preview_hint": "راجع الرسالة قبل الإرسال.",
+        "header": "الرأس",
+        "body": "المحتوى",
+        "buttons": "الأزرار",
+        "template_form_hint": "عرّف قالب واتساب مطابقاً لموافقة Meta.",
+        "message_logs": "سجل التسليم"
+    },
+    "fields": {
+        "template": "القالب",
+        "template_name": "اسم القالب",
+        "name": "اسم القالب",
+        "language": "رمز اللغة",
+        "category": "الفئة",
+        "header_type": "نوع الرأس",
+        "header_content": "محتوى الرأس",
+        "body": "نص المحتوى",
+        "footer": "التذييل",
+        "buttons": "الأزرار",
+        "button_type": "نوع الزر",
+        "button_text": "نص الزر",
+        "button_url": "الرابط / الهاتف",
+        "meta_template_id": "معرف قالب Meta",
+        "is_active": "نشط",
+        "variables": "المتغيرات",
+        "variable": "متغير",
+        "leads": "العملاء المحتملون",
+        "contacts": "جهات الاتصال",
+        "deals": "الصفقات",
+        "contact_forms": "الاستفسارات",
+        "all_leads": "جميع العملاء المحتملين بأرقام هاتف",
+        "all_contacts": "جميع جهات الاتصال بأرقام هاتف",
+        "all_deals": "جميع الصفقات بأرقام هاتف",
+        "all_contact_forms": "جميع الاستفسارات بأرقام جوال",
+        "select_leads": "اختر العملاء المحتملين",
+        "select_contacts": "اختر جهات الاتصال",
+        "select_deals": "اختر الصفقات",
+        "select_contact_forms": "اختر الاستفسارات",
+        "custom_phones": "أرقام هاتف مخصصة",
+        "phone": "الهاتف",
+        "recipient_type": "نوع المستلم",
+        "sent_at": "أُرسل في",
+        "error": "خطأ"
+    },
+    "categories": {
+        "MARKETING": "تسويق",
+        "UTILITY": "خدمات",
+        "AUTHENTICATION": "مصادقة"
+    },
+    "header_types": {
+        "none": "بدون",
+        "text": "نص",
+        "image": "صورة",
+        "video": "فيديو",
+        "document": "مستند"
+    },
+    "template_status": {
+        "approved": "معتمد",
+        "pending": "قيد المراجعة",
+        "rejected": "مرفوض",
+        "draft": "مسودة"
+    },
+    "status": {
+        "pending": "قيد الانتظار",
+        "sending": "جاري الإرسال",
+        "finished": "مكتمل",
+        "failed": "فشل"
+    },
+    "log_status": {
+        "pending": "قيد الانتظار",
+        "sent": "مُرسل",
+        "failed": "فشل"
+    },
+    "recipient_types": {
+        "lead": "عميل محتمل",
+        "contact": "جهة اتصال",
+        "deal": "صفقة",
+        "contact_form": "استفسار",
+        "custom": "مخصص"
+    },
+    "placeholders": {
+        "template_name": "مثال: seasonal_offer",
+        "select_template": "اختر قالباً معتمداً",
+        "body": "مرحباً {{1}}، لدينا عرض خاص: {{2}}",
+        "footer": "رد STOP لإلغاء الاشتراك",
+        "header_content": "نص أو رابط وسائط",
+        "meta_template_id": "معرف قالب Meta اختياري",
+        "select_leads": "اختر العملاء المحتملين",
+        "select_contacts": "اختر جهات الاتصال",
+        "select_deals": "اختر الصفقات",
+        "select_contact_forms": "اختر الاستفسارات",
+        "custom_phones": "اكتب رقم هاتف واضغط Enter",
+        "variable_value": "القيمة لـ"
+    },
+    "hints": {
+        "template_name": "أحرف صغيرة وأرقام وشرطات سفلية فقط.",
+        "body_variables": "استخدم {{1}} و {{2}} للمتغيرات الديناميكية.",
+        "header_content": "للرأس النصي أدخل النص. للوسائط أدخل رابطاً عاماً.",
+        "all_leads": "يرسل لكل عميل محتمل غير محظور لديه هاتف.",
+        "all_contacts": "يرسل لكل جهة اتصال لديها رقم هاتف.",
+        "all_deals": "يستخدم هاتف العميل المحتمل أو الشركة المرتبطة بالصفقة.",
+        "custom_phones": "استخدم الصيغة الدولية (مثال: +966501234567).",
+        "select_template_first": "اختر قالباً في الخطوة السابقة.",
+        "no_variables": "هذا القالب لا يحتوي على متغيرات.",
+        "send_warning": "تُرسل الرسائل في الخلفية عبر WhatsApp Business API.",
+        "configure_whatsapp": "واتساب غير مهيأ. أعد إعداد بيانات API في",
+        "manage_templates": "تحتاج قالباً جديداً؟"
+    },
+    "messages": {
+        "queued": "تمت جدولة حملة واتساب لـ :count مستلم.",
+        "send_failed": "فشل إرسال حملة واتساب.",
+        "not_configured": "WhatsApp Business API غير مهيأ.",
+        "empty": "لم تُرسل حملات واتساب بعد.",
+        "no_templates": "لا توجد قوالب واتساب.",
+        "template_created": "تم إنشاء القالب بنجاح.",
+        "template_updated": "تم تحديث القالب بنجاح.",
+        "template_deleted": "تم حذف القالب بنجاح.",
+        "template_in_use": "لا يمكن حذف القالب لأنه مستخدم في حملات.",
+        "confirm_delete": "هل أنت متأكد من حذف هذا القالب؟"
+    },
+    "validation": {
+        "select_recipients": "اختر مجموعة مستلمين واحدة على الأقل أو أضف أرقاماً.",
+        "no_recipients": "لم يُعثر على أرقام هاتف صالحة.",
+        "template_not_sendable": "القالب غير معتمد أو غير نشط.",
+        "parameter_required": "المتغير {{num}} مطلوب."
+    }
+}

@@ -9,9 +9,11 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('finance::invoice.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.finance.invoices.create') }}">
-        {{ __('finance::invoice.actions.create') }} <i class="bi bi-plus-lg ms-1"></i>
-    </a>
+    <x-can perform="finance.invoices.create">
+        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.finance.invoices.create') }}">
+            {{ __('finance::invoice.actions.create') }} <i class="bi bi-plus-lg ms-1"></i>
+        </a>
+    </x-can>
 @endsection
 
 <x-admin-layout>

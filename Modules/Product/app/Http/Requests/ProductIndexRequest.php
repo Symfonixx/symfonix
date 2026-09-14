@@ -10,7 +10,7 @@ class ProductIndexRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Product Management') ?? false;
+        return $this->user()?->can('product.catalog.view') ?? false;
     }
 
     public function rules(): array

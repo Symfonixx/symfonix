@@ -12,9 +12,11 @@
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.deals.index', ['view' => 'kanban']) }}">
             <i class="bi bi-kanban me-1"></i>{{ __('crm::deal.actions.kanban_view') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.deals.create') }}">
-            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
-        </a>
+        <x-can perform="sales.deals.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.deals.create') }}">
+                <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
+            </a>
+        </x-can>
     </div>
 @endsection
 

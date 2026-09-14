@@ -5,14 +5,18 @@ namespace Modules\CRM\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\CRM\Concerns\HasCampaignStatus;
+use Modules\CRM\Enums\MarketingCampaignStatus;
 
 class MarketingCampaign extends Model
 {
-    public const STATUS_PENDING = 'pending';
+    use HasCampaignStatus;
 
-    public const STATUS_FINISHED = 'finished';
+    public const STATUS_PENDING = MarketingCampaignStatus::PENDING->value;
 
-    public const STATUS_FAILED = 'failed';
+    public const STATUS_FINISHED = MarketingCampaignStatus::FINISHED->value;
+
+    public const STATUS_FAILED = MarketingCampaignStatus::FAILED->value;
 
     protected $fillable = [
         'user_id',

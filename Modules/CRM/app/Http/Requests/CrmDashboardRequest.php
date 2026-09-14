@@ -21,6 +21,6 @@ class CrmDashboardRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('overview.crm_analytics.view') ?? false;
     }
 }

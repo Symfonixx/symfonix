@@ -8,7 +8,7 @@ class StoreTicketReplyRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Support Management') ?? false;
+        return $this->user()?->can('support.tickets.reply') ?? false;
     }
 
     public function rules(): array

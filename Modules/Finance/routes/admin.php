@@ -11,7 +11,7 @@ use Modules\Finance\Http\Controllers\Admin\InvoiceController;
 use Modules\Finance\Http\Controllers\Admin\ProductSaleController;
 use Modules\Finance\Http\Controllers\Admin\SalaryController;
 
-Route::middleware(['can:Finance Management'])->prefix('finance')->name('finance.')->group(function () {
+Route::prefix('finance')->name('finance.')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('daily-log', [DailyLogController::class, 'index'])->name('daily-log');
     Route::get('accounts-receivable', [AccountsReceivableController::class, 'index'])->name('accounts-receivable');

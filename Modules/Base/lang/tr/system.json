@@ -1,7 +1,15 @@
 {
     "title": "Sistem Yapılandırmaları",
-    "page_description": "Dahili şirket bilgileri ve yönetici bildirim ayarları.",
-    "form_description": "Faturalar ve yönetici bildirim e-postası için şirket bilgilerini yapılandırın.",
+    "page_description": "Dahili şirket bilgileri, para birimi, API kimlik bilgileri ve yönetici bildirim ayarları.",
+    "form_description": "Faturalar, varsayılan çoklu para birimi, API anahtarları ve yönetici bildirim e-postası için şirket bilgilerini yapılandırın.",
+    "tabs": {
+        "branding": "Marka",
+        "company": "Şirket",
+        "finance": "Finans",
+        "notifications": "Bildirimler",
+        "backup": "Yedekleme",
+        "fingerprint": "Parmak İzi"
+    },
     "company_details": {
         "title": "Şirket Bilgileri",
         "description": "Faturalarda kullanılır. Boş bırakılırsa web sitesi iletişim ayarlarına geri döner.",
@@ -9,7 +17,31 @@
         "email": "Şirket E-postası",
         "address": "Şirket Adresi",
         "sign_image": "Şirket İmza Görseli",
-        "sign_image_hint": "Bu faturada gösterilecektir."
+        "sign_image_hint": "Faturalarda yetkili imza olarak görünür."
+    },
+    "currency": {
+        "title": "Varsayılan Para Birimi",
+        "description": "Defterler, bütçeler ve döviz kuru anlık görüntüleri için kullanılan sistem genelindeki temel para birimi.",
+        "default": "Varsayılan Para Birimi",
+        "default_hint": "Yeni işlemler ve bütçeler varsayılan olarak bu para birimini kullanır. Döviz kurları buna göre alınır.",
+        "names": {
+            "USD": "ABD Doları",
+            "EUR": "Euro",
+            "GBP": "İngiliz Sterlini",
+            "TRY": "Türk Lirası"
+        }
+    },
+    "api_configs": {
+        "title": "Döviz Kuru API",
+        "description": "Çok para birimli muhasebe için canlı döviz kurlarını yenilemek üzere kullanılan kimlik bilgileri.",
+        "fixer_api_key": "Fixer.io API Anahtarı",
+        "fixer_api_key_hint": "Canlı döviz kurlarını almak için kullanılır. Gizli tutun — genel siteyle paylaşılmaz.",
+        "fetch_rates": "Kurları şimdi al",
+        "key_configured": "API anahtarı yapılandırıldı",
+        "key_missing": "API anahtarı ayarlanmadı",
+        "rates_updated": "Kurlar son güncellendi",
+        "rates_never": "Henüz kur alınmadı",
+        "status_title": "FX durumu"
     },
     "admin_notifications": {
         "title": "Yönetici Bildirimleri",
@@ -34,6 +66,36 @@
         "interval_days": "Yedekleme Aralığı (Gün)",
         "interval_days_hint": "Her N günde bir otomatik yedek oluştur (1–365).",
         "last_run": "Son Otomatik Yedek",
-        "manage_link": "Yedekleri yönet"
+        "manage_link": "Yedekleri yönet",
+        "status_on": "Otomatik yedekleme açık",
+        "status_off": "Otomatik yedekleme kapalı",
+        "never_run": "Henüz çalıştırılmadı"
+    },
+    "fingerprint": {
+        "title": "Parmak İzi Cihazı",
+        "description": "ZKTeco cihazına TCP/IP ile bağlanın. Symfonix çalışan kimlikleri kayıt ve devam senkronu için cihaz kullanıcı kimlikleriyle eşleştirilir.",
+        "status_title": "Entegrasyon",
+        "enabled_on": "Etkin",
+        "enabled_off": "Devre dışı",
+        "connection_title": "Cihaz",
+        "connection_ready": "Ana bilgisayar yapılandırıldı",
+        "connection_missing": "Ana bilgisayar ayarlanmadı",
+        "last_sync": "Son devam senkronu",
+        "never_synced": "Hiç senkronize edilmedi",
+        "enabled": "Parmak İzi Cihazını Etkinleştir",
+        "enabled_label": "Parmak izi entegrasyonunu kullan",
+        "enabled_hint": "Devre dışı bırakıldığında HR senkron işlemleri engellenir.",
+        "host": "Cihaz IP / Host",
+        "host_hint": "ZKTeco terminalinin LAN IP adresi.",
+        "port": "Port",
+        "port_hint": "Varsayılan ZKTeco TCP portu 4370.",
+        "comm_key": "İletişim Anahtarı",
+        "comm_key_hint": "Sayısal cihaz iletişim şifresi (ayarlanmadıysa 0).",
+        "timeout": "Bağlantı Zaman Aşımı (saniye)",
+        "timeout_hint": "Cihaz işlemleri için soket zaman aşımı (3–60 saniye).",
+        "name_encoding": "Ad Kodlaması",
+        "name_encoding_hint": "Çalışan adları için cihaz kod sayfası (UTF-8, Arapça için Windows-1256).",
+        "test_connection": "Bağlantıyı test et",
+        "manage_sync": "HR senkronunu aç"
     }
 }

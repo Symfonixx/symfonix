@@ -126,7 +126,8 @@
         "confirm_remove_employee": "Remove this employee assignment?",
         "expense_logged": "Project expense posted to finance.",
         "expense_description": "Project expense: :title",
-        "no_review": "No client review submitted for this project yet."
+        "no_review": "No client review submitted for this project yet.",
+        "status_updated": "Project status updated."
     },
     "validation": {
         "attachment_pdf_not_allowed": "PDF files are not allowed as project attachments.",

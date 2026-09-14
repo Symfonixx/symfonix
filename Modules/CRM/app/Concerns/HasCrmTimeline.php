@@ -22,11 +22,11 @@ trait HasCrmTimeline
     public function crmTimeline(int $limit = 50): Collection
     {
         $activities = $this->relationLoaded('crmActivities')
-            ? $this->crmActivities
+            ? $this->crmActivities->take($limit)
             : $this->crmActivities()->with('user:id,name')->limit($limit)->get();
 
         $audits = $this->relationLoaded('crmAuditLogs')
-            ? $this->crmAuditLogs
+            ? $this->crmAuditLogs->take($limit)
             : $this->crmAuditLogs()->with('user:id,name')->limit($limit)->get();
 
         return $activities->map(fn (CrmActivity $item) => [

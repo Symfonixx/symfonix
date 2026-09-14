@@ -1,0 +1,53 @@
+{
+    "title": "Parmak İzi Senkronu",
+    "page_description": "Çalışanları ZKTeco cihazına kaydedin ve devam kayıtlarını Symfonix'e senkronize edin.",
+    "search_logs": "Devam kayıtlarında ara",
+    "empty_logs": "Henüz senkronize edilmiş devam kaydı yok.",
+    "processing": "İşleniyor...",
+    "operation_failed": "İşlem başarısız",
+    "connection_failed": "Bağlantı isteği başarısız",
+    "confirm_yes": "Evet, devam et",
+    "confirm_no": "Hayır, İptal",
+    "recent_attendance": "Son Parmak İzi Devamı",
+    "not_configured": {
+        "title": "Parmak izi cihazı yapılandırılmadı",
+        "description": "Sistem Yapılandırmaları → Parmak İzi altında cihaz IP ve portunu ayarlayın, ardından çalışanları ve devamı senkronize etmek için buraya dönün.",
+        "link": "Parmak izi ayarlarını aç"
+    },
+    "status": {
+        "enrolled": "Parmak izi kayıtlı",
+        "pending": "Parmak izi bekliyor",
+        "not_enrolled": "Parmak izi kayıtlı değil",
+        "enrolled_short": "Kayıtlı",
+        "pending_short": "Beklemede"
+    },
+    "stats": {
+        "enrolled": "Kayıtlı çalışanlar",
+        "logs": "Devam kayıtları",
+        "last_sync": "Son senkron",
+        "never": "Hiç",
+        "mapping_hint": "Cihaz user_id değeri dahili employee_id ile eşleştirilir."
+    },
+    "columns": {
+        "device_user_id": "Cihaz Kullanıcı ID",
+        "punch": "Parmak izi",
+        "verify": "Doğrulama Modu",
+        "recorded_at": "Kayıt Zamanı",
+        "synced_at": "Senkronize"
+    },
+    "actions": {
+        "test_connection": "Bağlantıyı test et",
+        "enroll_all": "Tüm çalışanları senkronize et",
+        "sync_attendance": "Devamı senkronize et",
+        "enroll": "Cihaza kaydet"
+    },
+    "confirm": {
+        "enroll_all": "Tüm aktif çalışanlar parmak izi cihazına kaydedilsin mi?"
+    },
+    "messages": {
+        "connection_ok": "Parmak izi cihazına bağlanıldı.",
+        "enroll_done": "Çalışan cihaza kaydedildi.",
+        "enroll_all_done": "Çalışan senkronu tamamlandı.",
+        "sync_done": "Devam senkronu tamamlandı."
+    }
+}

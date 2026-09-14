@@ -8,7 +8,7 @@ class StoreProjectStatusRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Project Management') ?? false;
+        return $this->user()?->can('project.statuses.create') ?? false;
     }
 
     public function rules(): array

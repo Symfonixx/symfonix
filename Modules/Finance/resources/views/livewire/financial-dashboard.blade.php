@@ -90,14 +90,12 @@
                 <label class="form-label fw-semibold" for="finance-month-filter">
                     {{ __('finance::finance.filters.months') }}
                 </label>
-                <div wire:ignore>
+                <div wire:ignore.self id="finance-month-filter-wrap">
                     <select
                         id="finance-month-filter"
                         class="form-select form-select-solid"
                         multiple
-                        data-control="select2"
                         data-placeholder="{{ __('finance::finance.filters.months_placeholder') }}"
-                        data-close-on-select="false"
                     >
                         @foreach($availableMonths as $month)
                             <option value="{{ $month['key'] }}" @selected(in_array($month['key'], $selectedMonths, true))>

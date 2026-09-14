@@ -4,13 +4,14 @@ namespace Modules\Product\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Modules\CRM\Services\Marketing\ContentMarketingEmailSender;
 use Modules\Product\Http\Requests\ProductIndexRequest;
 use Modules\Product\Http\Requests\StoreProductRequest;
 use Modules\Product\Http\Requests\UpdateProductRequest;
 use Modules\Product\Models\Product;
 use Modules\Product\Repositories\ProductCategoryRepository;
 use Modules\Product\Repositories\ProductRepository;
-use Modules\CRM\Services\Marketing\ContentMarketingEmailSender;
+use Modules\Tax\Services\TaxRate\TaxRateService;
 
 class ProductController extends Controller
 {
@@ -101,6 +102,7 @@ class ProductController extends Controller
     {
         return [
             'categories' => $this->categoryRepository->allOrdered(),
+            'taxRates' => app(TaxRateService::class)->activeOptions(),
         ];
     }
 }

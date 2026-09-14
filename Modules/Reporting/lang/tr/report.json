@@ -1,0 +1,117 @@
+{
+    "menu": {
+        "reports": "Raporlar",
+        "finance": "Finans Raporları",
+        "sales": "Satış Raporları",
+        "marketing": "Pazarlama Raporları",
+        "operations": "BT / Operasyon Raporları",
+        "employee": "Personel Raporları"
+    },
+    "departments": {
+        "finance": "Finans",
+        "sales": "Satış",
+        "marketing": "Pazarlama",
+        "operations": "BT / Operasyon",
+        "employee": "Personel"
+    },
+    "pages": {
+        "finance_title": "Finans Raporları",
+        "sales_title": "Satış Raporları",
+        "marketing_title": "Pazarlama Raporları",
+        "operations_title": "BT / Operasyon Raporları",
+        "employee_title": "Personel Raporları",
+        "employee_profile_title": "Personel Performans Profili"
+    },
+    "subtitle": "Dinamik filtreleme ve dışa aktarma ile departmanlar arası analiz",
+    "filters": {
+        "period": "Dönem",
+        "date_from": "Başlangıç",
+        "date_to": "Bitiş",
+        "assignee": "Satış Temsilcisi",
+        "employee": "Personel",
+        "all_reps": "Tüm Temsilciler",
+        "all_employees": "Tüm Personeller",
+        "apply": "Filtreleri Uygula",
+        "periods": {
+            "today": "Bugün",
+            "last_7_days": "Son 7 Gün",
+            "this_month": "Bu Ay",
+            "last_month": "Geçen Ay",
+            "this_quarter": "Bu Çeyrek",
+            "this_year": "Bu Yıl",
+            "custom": "Özel Aralık"
+        }
+    },
+    "actions": {
+        "export_csv": "CSV Dışa Aktar",
+        "export_pdf": "PDF Dışa Aktar"
+    },
+    "kpis": {
+        "revenue": "Gelir",
+        "expenses": "Giderler",
+        "profit": "Net Kâr",
+        "accounts_receivable": "Alacaklar",
+        "accounts_payable": "Borçlar",
+        "net_tax": "Net Vergi Borcu",
+        "pipeline_value": "Pipeline Değeri",
+        "won_deals": "Kazanılan Anlaşma Değeri",
+        "won_count": "Kazanılan Anlaşmalar",
+        "conversion_rate": "Dönüşüm Oranı",
+        "avg_deal_value": "Ort. Anlaşma Değeri",
+        "email_campaigns": "E-posta Kampanyaları",
+        "whatsapp_campaigns": "WhatsApp Kampanyaları",
+        "total_recipients": "Toplam Alıcı",
+        "whatsapp_delivery_rate": "WhatsApp Teslim Oranı",
+        "new_leads": "Yeni Potansiyel Müşteriler",
+        "open_tickets": "Açık Talepler",
+        "resolved_tickets": "Çözülen Talepler",
+        "avg_resolution_hours": "Ort. Çözüm (saat)",
+        "attendance_rate": "Devam Oranı",
+        "active_projects": "Aktif Projeler",
+        "attendance_days": "Devam Günleri",
+        "attendance_events": "Parmak İzi Kayıtları",
+        "projects_assigned": "Atanan Projeler",
+        "projects_completed": "Tamamlanan Projeler",
+        "utilization_rate": "Kullanım Oranı",
+        "salary_paid_total": "Toplam Ödenen Maaş",
+        "salary_pending_total": "Bekleyen Maaş"
+    },
+    "sections": {
+        "monthly_trend": "Gelir & Gider Trendi",
+        "expense_breakdown": "Gider Dağılımı",
+        "ar_aging": "Alacak Yaşlandırma",
+        "tax_summary": "Vergi Özeti",
+        "pipeline_funnel": "Pipeline Hunisi",
+        "won_lost_trend": "Kazanılan vs Kaybedilen",
+        "rep_performance": "Temsilci Performansı",
+        "stage_breakdown": "Aşamaya Göre Pipeline",
+        "campaign_volume": "Kampanya Hacmi",
+        "lead_sources": "Potansiyel Kaynakları",
+        "whatsapp_delivery": "WhatsApp Teslimat",
+        "conversion_by_source": "Kaynağa Göre Dönüşüm",
+        "ticket_status": "Talep Durumu",
+        "ticket_by_category": "Kategoriye Göre Talepler",
+        "ticket_trend": "Talep Trendi",
+        "project_status": "Proje Durumu",
+        "attendance_daily": "Günlük Devam",
+        "attendance_trend": "Devam Trendi",
+        "punch_types": "Parmak İzi Tür Dağılımı",
+        "employee_project_performance": "Personel Proje Performansı",
+        "salary_trend": "Maaş Trendi"
+    },
+    "ar": {
+        "current": "Güncel",
+        "days_1_30": "1–30 Gün",
+        "days_31_60": "31–60 Gün",
+        "days_61_90": "61–90 Gün",
+        "over_90": "90+ Gün"
+    },
+    "employee": {
+        "last_attendance": "Son Devam",
+        "active_assignments": "Aktif Atamalar"
+    },
+    "uncategorized": "Kategorisiz",
+    "unassigned": "Atanmamış",
+    "vs_previous": "önceki döneme göre",
+    "no_data": "Seçilen dönem için veri yok"
+}

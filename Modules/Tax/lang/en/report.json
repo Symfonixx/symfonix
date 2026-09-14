@@ -1,0 +1,26 @@
+{
+    "pages": {
+        "filing_title": "Tax Filing Report"
+    },
+    "fields": {
+        "from": "From Date",
+        "to": "To Date",
+        "tax_rate": "Tax Rate",
+        "company": "Company",
+        "output_tax": "Output Tax Collected",
+        "input_tax": "Input Tax Paid",
+        "net_tax_payable": "Net Tax Payable",
+        "all_rates": "All Rates",
+        "all_companies": "All Companies"
+    },
+    "actions": {
+        "generate": "Generate Report",
+        "export_csv": "Export CSV"
+    },
+    "sections": {
+        "summary": "Summary",
+        "by_rate": "Breakdown by Tax Rate",
+        "entries": "Ledger Entries"
+    },
+    "unassigned_rate": "Unassigned Rate"
+}

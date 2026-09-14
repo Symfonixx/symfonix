@@ -3,6 +3,7 @@
 namespace Modules\CRM\Services\Dashboard;
 
 use App\Models\User;
+use Illuminate\Support\Collection;
 use Modules\CRM\Models\CrmDashboardLayout;
 
 class DashboardLayoutService
@@ -33,8 +34,9 @@ class DashboardLayoutService
             ['id' => 'overdue_amounts', 'type' => 'metric', 'span' => 'col-sm-6 col-xl-3', 'icon' => 'exclamation-triangle', 'color' => 'danger'],
             ['id' => 'top_customers', 'type' => 'table', 'span' => 'col-xl-6', 'icon' => 'star', 'color' => 'primary'],
             ['id' => 'sales_performance', 'type' => 'table', 'span' => 'col-xl-6', 'icon' => 'people', 'color' => 'success'],
-            ['id' => 'pipeline_funnel', 'type' => 'chart', 'span' => 'col-xl-8', 'icon' => 'funnel', 'color' => 'info'],
-            ['id' => 'lead_channels', 'type' => 'chart', 'span' => 'col-xl-4', 'icon' => 'diagram-3', 'color' => 'warning'],
+            ['id' => 'pipeline_funnel', 'type' => 'chart', 'span' => 'col-xl-12', 'icon' => 'funnel', 'color' => 'info'],
+            ['id' => 'open_leads_by_stages', 'type' => 'chart', 'span' => 'col-xl-6', 'icon' => 'filter-circle', 'color' => 'success'],
+            ['id' => 'lead_channels', 'type' => 'chart', 'span' => 'col-xl-6', 'icon' => 'diagram-3', 'color' => 'warning'],
             ['id' => 'recent_activity', 'type' => 'list', 'span' => 'col-xl-12', 'icon' => 'activity', 'color' => 'secondary'],
         ];
 
@@ -84,15 +86,10 @@ class DashboardLayoutService
             $seen[$id] = true;
         }
 
-        foreach ($catalog as $id => $def) {
-            if (isset($seen[$id])) {
-                continue;
-            }
-            $def['order'] = count($merged);
-            $merged[] = $def;
-        }
+        $merged = $this->insertMissingCatalogWidgets($merged, $seen, $catalog);
+        $merged = $this->ensureWidgetOrder($merged, 'open_leads_by_stages', 'lead_channels');
 
-        return $merged;
+        return $this->reindexWidgets($merged);
     }
 
     /**
@@ -119,16 +116,32 @@ class DashboardLayoutService
             ];
         }
 
-        foreach ($catalog->keys() as $id) {
-            if (collect($normalized)->contains(fn ($w) => $w['id'] === $id)) {
-                continue;
-            }
-            $normalized[] = [
-                'id' => $id,
-                'visible' => true,
-                'order' => count($normalized),
-            ];
-        }
+        $seen = collect($normalized)->pluck('id')->flip()->all();
+        $normalized = collect($this->insertMissingCatalogWidgets(
+            collect($normalized)->map(fn (array $item) => [
+                ...$catalog->get($item['id']),
+                'visible' => $item['visible'],
+            ])->values()->all(),
+            $seen,
+            $catalog,
+        ))->map(fn (array $widget) => [
+            'id' => $widget['id'],
+            'visible' => $widget['visible'],
+        ])->all();
+
+        $normalized = collect($this->ensureWidgetOrder(
+            collect($normalized)->map(fn (array $item, int $index) => [
+                ...$catalog->get($item['id']),
+                'visible' => $item['visible'],
+                'order' => $index,
+            ])->values()->all(),
+            'open_leads_by_stages',
+            'lead_channels',
+        ))->map(fn (array $widget, int $index) => [
+            'id' => $widget['id'],
+            'visible' => $widget['visible'],
+            'order' => $index,
+        ])->all();
 
         CrmDashboardLayout::query()->updateOrCreate(
             ['user_id' => $user->id],
@@ -151,5 +164,78 @@ class DashboardLayoutService
     public function knownIds(): array
     {
         return collect($this->catalog())->pluck('id')->all();
+    }
+
+    /**
+     * @param  list<array{id: string, type: string, span: string, visible: bool, order: int, icon: string, color: string}>  $merged
+     * @param  array<string, true>  $seen
+     * @param  Collection<string, array{id: string, type: string, span: string, visible: bool, order: int, icon: string, color: string}>  $catalog
+     * @return list<array{id: string, type: string, span: string, visible: bool, order: int, icon: string, color: string}>
+     */
+    private function insertMissingCatalogWidgets(array $merged, array $seen, $catalog): array
+    {
+        $catalogOrder = $catalog->values()->pluck('id')->flip();
+
+        foreach ($catalog as $def) {
+            if (isset($seen[$def['id']])) {
+                continue;
+            }
+
+            $targetIndex = $catalogOrder->get($def['id'], count($merged));
+            $insertAt = 0;
+
+            foreach ($merged as $index => $widget) {
+                $widgetIndex = $catalogOrder->get($widget['id'], PHP_INT_MAX);
+                if ($widgetIndex < $targetIndex) {
+                    $insertAt = $index + 1;
+                }
+            }
+
+            array_splice($merged, $insertAt, 0, [$def]);
+            $seen[$def['id']] = true;
+        }
+
+        return $merged;
+    }
+
+    /**
+     * @param  list<array{id: string, type: string, span: string, visible: bool, order: int, icon: string, color: string}>  $widgets
+     * @return list<array{id: string, type: string, span: string, visible: bool, order: int, icon: string, color: string}>
+     */
+    private function ensureWidgetOrder(array $widgets, string $beforeId, string $afterId): array
+    {
+        $beforeIndex = collect($widgets)->search(fn (array $widget) => $widget['id'] === $beforeId);
+        $afterIndex = collect($widgets)->search(fn (array $widget) => $widget['id'] === $afterId);
+
+        if ($beforeIndex === false || $afterIndex === false || $beforeIndex < $afterIndex) {
+            return $widgets;
+        }
+
+        $before = $widgets[$beforeIndex];
+        array_splice($widgets, $beforeIndex, 1);
+        $afterIndex = collect($widgets)->search(fn (array $widget) => $widget['id'] === $afterId);
+
+        if ($afterIndex === false) {
+            $widgets[] = $before;
+
+            return $widgets;
+        }
+
+        array_splice($widgets, $afterIndex, 0, [$before]);
+
+        return $widgets;
+    }
+
+    /**
+     * @param  list<array{id: string, type: string, span: string, visible: bool, order: int, icon: string, color: string}>  $widgets
+     * @return list<array{id: string, type: string, span: string, visible: bool, order: int, icon: string, color: string}>
+     */
+    private function reindexWidgets(array $widgets): array
+    {
+        return collect($widgets)->values()->map(function (array $widget, int $index) {
+            $widget['order'] = $index;
+
+            return $widget;
+        })->all();
     }
 }

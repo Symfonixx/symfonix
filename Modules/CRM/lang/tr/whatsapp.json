@@ -1,0 +1,159 @@
+{
+    "actions": {
+        "compose": "WhatsApp Mesajı Oluştur",
+        "send_campaign": "Kampanyayı Gönder",
+        "manage_templates": "Şablonları Yönet",
+        "add_template": "Şablon Ekle",
+        "create_template": "Şablon Oluştur",
+        "previous": "Önceki",
+        "next": "Sonraki",
+        "open_integrations": "Entegrasyonları Aç"
+    },
+    "pages": {
+        "create_title": "WhatsApp Kampanyası Gönder",
+        "show_title": "WhatsApp Kampanya Detayları",
+        "templates_title": "WhatsApp Şablonları",
+        "create_template_title": "WhatsApp Şablonu Oluştur",
+        "edit_template_title": "WhatsApp Şablonunu Düzenle"
+    },
+    "steps": {
+        "recipients": "Alıcılar",
+        "template": "Şablon",
+        "parameters": "Parametreler",
+        "preview": "Önizleme ve Gönder"
+    },
+    "sections": {
+        "compose_hint": "Alıcıları seçin, onaylı şablonu seçin, değişkenleri doldurun ve gönderin.",
+        "recipients": "Alıcıları Seç",
+        "recipients_hint": "Potansiyel müşteriler, anlaşmalar, kişiler veya özel telefon numaraları seçin.",
+        "template": "Şablon Seç",
+        "template_hint": "Onaylı bir Meta WhatsApp şablonu seçin.",
+        "parameters": "Şablon Parametreleri",
+        "parameters_hint": "Şablonun gerektirdiği dinamik değişkenleri doldurun.",
+        "preview": "Mesaj Önizlemesi",
+        "preview_hint": "Göndermeden önce mesajı inceleyin.",
+        "header": "Başlık",
+        "body": "Gövde",
+        "buttons": "Düğmeler",
+        "template_form_hint": "Meta WhatsApp şablonunuzu tanımlayın.",
+        "message_logs": "Teslimat Günlüğü"
+    },
+    "fields": {
+        "template": "Şablon",
+        "template_name": "Şablon Adı",
+        "name": "Şablon Adı",
+        "language": "Dil Kodu",
+        "category": "Kategori",
+        "header_type": "Başlık Türü",
+        "header_content": "Başlık İçeriği",
+        "body": "Metin",
+        "footer": "Alt Bilgi",
+        "buttons": "Düğmeler",
+        "button_type": "Düğme Türü",
+        "button_text": "Düğme Etiketi",
+        "button_url": "URL / Telefon",
+        "meta_template_id": "Meta Şablon ID",
+        "is_active": "Aktif",
+        "variables": "Değişkenler",
+        "variable": "Değişken",
+        "leads": "Potansiyel Müşteriler",
+        "contacts": "Kişiler",
+        "deals": "Anlaşmalar",
+        "contact_forms": "Talepler",
+        "all_leads": "Telefonu olan tüm potansiyel müşteriler",
+        "all_contacts": "Telefonu olan tüm kişiler",
+        "all_deals": "Telefonu olan tüm anlaşmalar",
+        "all_contact_forms": "Cep telefonu olan tüm talepler",
+        "select_leads": "Potansiyel müşteri seç",
+        "select_contacts": "Kişi seç",
+        "select_deals": "Anlaşma seç",
+        "select_contact_forms": "Talep seç",
+        "custom_phones": "Özel Telefon Numaraları",
+        "phone": "Telefon",
+        "recipient_type": "Alıcı Türü",
+        "sent_at": "Gönderildi",
+        "error": "Hata"
+    },
+    "categories": {
+        "MARKETING": "Pazarlama",
+        "UTILITY": "Hizmet",
+        "AUTHENTICATION": "Kimlik Doğrulama"
+    },
+    "header_types": {
+        "none": "Yok",
+        "text": "Metin",
+        "image": "Görsel",
+        "video": "Video",
+        "document": "Belge"
+    },
+    "template_status": {
+        "approved": "Onaylı",
+        "pending": "İncelemede",
+        "rejected": "Reddedildi",
+        "draft": "Taslak"
+    },
+    "status": {
+        "pending": "Beklemede",
+        "sending": "Gönderiliyor",
+        "finished": "Tamamlandı",
+        "failed": "Başarısız"
+    },
+    "log_status": {
+        "pending": "Beklemede",
+        "sent": "Gönderildi",
+        "failed": "Başarısız"
+    },
+    "recipient_types": {
+        "lead": "Potansiyel Müşteri",
+        "contact": "Kişi",
+        "deal": "Anlaşma",
+        "contact_form": "Talep",
+        "custom": "Özel"
+    },
+    "placeholders": {
+        "template_name": "örn. seasonal_offer",
+        "select_template": "Onaylı şablon seç",
+        "body": "Merhaba {{1}}, özel teklifimiz: {{2}}",
+        "footer": "Abonelikten çıkmak için STOP yazın",
+        "header_content": "Metin veya medya URL'si",
+        "meta_template_id": "İsteğe bağlı Meta şablon ID",
+        "select_leads": "Potansiyel müşteri seç",
+        "select_contacts": "Kişi seç",
+        "select_deals": "Anlaşma seç",
+        "select_contact_forms": "Talep seç",
+        "custom_phones": "Telefon numarası yazın ve Enter'a basın",
+        "variable_value": "Değer"
+    },
+    "hints": {
+        "template_name": "Yalnızca küçük harf, rakam ve alt çizgi.",
+        "body_variables": "Dinamik değişkenler için {{1}}, {{2}} kullanın.",
+        "header_content": "Metin başlıkları için metin girin. Medya için genel URL.",
+        "all_leads": "Telefonu olan engellenmemiş tüm potansiyel müşterilere gönderir.",
+        "all_contacts": "Telefonu olan tüm kişilere gönderir.",
+        "all_deals": "Anlaşmanın bağlı potansiyel müşteri veya şirket telefonunu kullanır.",
+        "custom_phones": "Uluslararası format kullanın (örn. +905551234567).",
+        "select_template_first": "Önceki adımda bir şablon seçin.",
+        "no_variables": "Bu şablonda dinamik değişken yok.",
+        "send_warning": "Mesajlar WhatsApp Business API üzerinden arka planda gönderilir.",
+        "configure_whatsapp": "WhatsApp yapılandırılmamış. API bilgilerini ayarlayın:",
+        "manage_templates": "Yeni şablon mu gerekiyor?"
+    },
+    "messages": {
+        "queued": "WhatsApp kampanyası :count alıcı için kuyruğa alındı.",
+        "send_failed": "WhatsApp kampanyası gönderilemedi.",
+        "not_configured": "WhatsApp Business API yapılandırılmamış.",
+        "empty": "Henüz WhatsApp kampanyası gönderilmedi.",
+        "no_templates": "WhatsApp şablonu bulunamadı.",
+        "template_created": "WhatsApp şablonu başarıyla oluşturuldu.",
+        "template_updated": "WhatsApp şablonu başarıyla güncellendi.",
+        "template_deleted": "WhatsApp şablonu başarıyla silindi.",
+        "template_in_use": "Şablon mevcut kampanyalarda kullanıldığı için silinemez.",
+        "confirm_delete": "Bu şablonu silmek istediğinizden emin misiniz?"
+    },
+    "validation": {
+        "select_recipients": "En az bir alıcı grubu veya telefon numarası seçin.",
+        "no_recipients": "Geçerli telefon numarası bulunamadı.",
+        "template_not_sendable": "Seçilen şablon onaylı veya aktif değil.",
+        "parameter_required": "{{num}} parametresi zorunludur."
+    }
+}

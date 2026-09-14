@@ -1,4 +1,4 @@
-@can('CRM Management')
+@can('marketing.email.send')
     <div class="separator my-10"></div>
 
     <div class="card card-bordered mb-0">

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Cms\Enums\CmsStatus;
 use Modules\Project\Models\Project;
 use Spatie\Translatable\HasTranslations;
 
@@ -40,7 +41,7 @@ class Testimonial extends Model
 
     public function scopePublished(Builder $query): Builder
     {
-        return $query->where('status', 'Published');
+        return $query->where('status', CmsStatus::PUBLISHED->value);
     }
 
     public function scopeWithDisplayRelations(Builder $query): Builder

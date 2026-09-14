@@ -4,7 +4,7 @@
             <h4 class="fw-bold text-gray-900 mb-1">{{ __('project::project.sections.invoices') }}</h4>
             <p class="text-muted fs-7 mb-0">{{ __('project::project.sections.collection') }}</p>
         </div>
-        @can('Finance Management')
+        @can('finance.invoices.create')
             @if(isset($collectionSummary) && $collectionSummary['remaining'] > 0)
                 <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addInvoiceModal">
                     <i class="bi bi-receipt me-1"></i>{{ __('project::project.actions.add_invoice') }}
@@ -78,7 +78,7 @@
         <div>
             <h4 class="fw-bold text-gray-900 mb-1">{{ __('project::project.sections.expenses') }}</h4>
         </div>
-        @can('Finance Management')
+        @can('project.projects.edit')
             <button type="button" class="btn btn-sm btn-light-danger" data-bs-toggle="modal" data-bs-target="#logExpenseModal">
                 <i class="bi bi-cash-stack me-1"></i>{{ __('project::project.actions.log_expense') }}
             </button>

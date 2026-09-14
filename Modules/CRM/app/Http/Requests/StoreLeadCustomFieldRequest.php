@@ -10,7 +10,7 @@ class StoreLeadCustomFieldRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('crm.custom_fields.create') ?? false;
     }
 
     public function rules(): array

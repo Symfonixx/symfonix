@@ -5,7 +5,8 @@
     },
     "metrics": {
         "total_outstanding": "Insgesamt hervorragend",
-        "open_invoices": "Offene Rechnungen"
+        "open_invoices": "Offene Rechnungen",
+        "open_projects": "Nicht fakturierte Projekte"
     },
     "buckets": {
         "current": "Aktuell",
@@ -16,11 +17,14 @@
     },
     "fields": {
         "invoice_number": "Rechnung #",
+        "project": "Projekt",
         "company": "Unternehmen",
         "due_at": "Fälligkeitsdatum",
         "days_overdue": "Tage überfällig",
         "amount": "Menge",
+        "remaining": "Verbleibend",
         "status": "Status"
     },
-    "empty": "Keine offenen Rechnungen. Sämtliche Forderungen werden eingezogen."
+    "empty_invoices": "Keine offenen Rechnungen.",
+    "empty_projects": "Keine Projekte mit nicht fakturiertem Budget."
 }

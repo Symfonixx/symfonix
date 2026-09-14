@@ -2,16 +2,25 @@
 
 namespace Modules\User\Providers;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Base\Support\FingerprintConfig;
 use Modules\User\app\Repositories\Employee\EmployeeModelRepository;
 use Modules\User\app\Repositories\Employee\EmployeeRepository;
 use Modules\User\app\Repositories\Leave\LeaveModelRepository;
 use Modules\User\app\Repositories\Leave\LeaveRepository;
 use Modules\User\app\Repositories\User\UserModelRepository;
 use Modules\User\app\Repositories\User\UserRepository;
+use Modules\User\Console\SyncFingerprintAttendanceCommand;
+use Modules\User\Console\SyncPermissionsCommand;
 use Modules\User\Repositories\Role\RoleModelRepository;
 use Modules\User\Repositories\Role\RoleRepository;
+use Modules\User\Services\Fingerprint\FingerprintAttendanceSyncService;
+use Modules\User\Services\Fingerprint\FingerprintConnectionService;
+use Modules\User\Services\Fingerprint\FingerprintDeviceFactory;
+use Modules\User\Services\Fingerprint\FingerprintEnrollmentService;
+use Modules\User\Support\PermissionCatalog;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class UserServiceProvider extends ServiceProvider
@@ -32,7 +41,28 @@ class UserServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        $this->registerPermissionDirectives();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+    }
+
+    protected function registerPermissionDirectives(): void
+    {
+        $helpers = module_path($this->name, 'app/Helpers/permissions.php');
+        if (is_file($helpers)) {
+            require_once $helpers;
+        }
+
+        Blade::if('canTab', function (string|array $tab) {
+            $user = auth()->user();
+
+            return $user?->canany(PermissionCatalog::keysFor($tab)) ?? false;
+        });
+
+        Blade::if('canSection', function (string $section) {
+            $user = auth()->user();
+
+            return $user?->canany(PermissionCatalog::keysForSection($section)) ?? false;
+        });
     }
 
     /**
@@ -40,7 +70,10 @@ class UserServiceProvider extends ServiceProvider
      */
     protected function registerCommands(): void
     {
-        // $this->commands([]);
+        $this->commands([
+            SyncFingerprintAttendanceCommand::class,
+            SyncPermissionsCommand::class,
+        ]);
     }
 
     /**
@@ -48,10 +81,13 @@ class UserServiceProvider extends ServiceProvider
      */
     protected function registerCommandSchedules(): void
     {
-        // $this->app->booted(function () {
-        //     $schedule = $this->app->make(Schedule::class);
-        //     $schedule->command('inspire')->hourly();
-        // });
+        $this->app->booted(function () {
+            $schedule = $this->app->make(Schedule::class);
+            $schedule->command('user:sync-fingerprint-attendance')
+                ->everyFifteenMinutes()
+                ->withoutOverlapping()
+                ->when(fn () => FingerprintConfig::isConfigured());
+        });
     }
 
     /**
@@ -119,6 +155,11 @@ class UserServiceProvider extends ServiceProvider
         $this->app->bind(UserRepository::class, UserModelRepository::class);
         $this->app->bind(EmployeeRepository::class, EmployeeModelRepository::class);
         $this->app->bind(LeaveRepository::class, LeaveModelRepository::class);
+
+        $this->app->singleton(FingerprintDeviceFactory::class);
+        $this->app->singleton(FingerprintConnectionService::class);
+        $this->app->singleton(FingerprintEnrollmentService::class);
+        $this->app->singleton(FingerprintAttendanceSyncService::class);
     }
 
     /**

@@ -3,12 +3,14 @@
 namespace Modules\CRM\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Modules\CRM\Actions\Marketing\SendMarketingEmailAction;
 use Modules\CRM\Http\Requests\SendMarketingEmailRequest;
 use Modules\CRM\Models\Contact;
 use Modules\CRM\Models\ContactForm;
 use Modules\CRM\Models\MarketingCampaign;
+use Modules\CRM\Models\WhatsAppCampaign;
 use Modules\Support\Models\Subscriber;
 
 class MarketingController extends Controller
@@ -20,14 +22,33 @@ class MarketingController extends Controller
         $this->setActive('marketing');
     }
 
-    public function index()
+    public function index(): View|RedirectResponse
     {
-        $model = MarketingCampaign::query()
-            ->with('user:id,name')
-            ->latest()
-            ->paginate(config('core.page_size'));
+        $channel = request('channel', 'email');
+        $user = auth()->user();
 
-        return view('crm::admin.marketing.index', compact('model'));
+        if ($channel === 'whatsapp') {
+            abort_unless($user?->can('marketing.whatsapp.view'), 403);
+            $model = WhatsAppCampaign::query()
+                ->with(['user:id,name', 'template:id,name,language'])
+                ->latest()
+                ->paginate(config('core.page_size'))
+                ->appends(['channel' => 'whatsapp']);
+        } else {
+            if (! $user?->can('marketing.email.view') && $user?->can('marketing.whatsapp.view')) {
+                return redirect()->route('admin.crm.marketing.index', ['channel' => 'whatsapp']);
+            }
+
+            abort_unless($user?->can('marketing.email.view'), 403);
+            $channel = 'email';
+            $model = MarketingCampaign::query()
+                ->with('user:id,name')
+                ->latest()
+                ->paginate(config('core.page_size'))
+                ->appends(['channel' => 'email']);
+        }
+
+        return view('crm::admin.marketing.index', compact('model', 'channel'));
     }
 
     public function create()

@@ -11,9 +11,11 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Roles')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
+        @can('hr.roles.delete')
         <a class="btn btn-sm btn-danger fw-bold" href="{{route('admin.roles.delete_role' , $role->id)}}">
             {{__('Delete Role')}}
         </a>
+        @endcan
     </div>
 
 @endsection
@@ -196,13 +198,40 @@
                             }))
                         }))
                     })(), (() => {
-                        const t = e.querySelector("#kt_roles_select_all"),
-                            n = e.querySelectorAll('[type="checkbox"]');
-                        t.addEventListener("change", (t => {
-                            n.forEach((e => {
-                                e.checked = t.target.checked
-                            }))
-                        }))
+                        const t = e.querySelector(".js-permission-select-all"),
+                            boxes = e.querySelectorAll(".js-permission-box"),
+                            sections = e.querySelectorAll(".js-permission-section");
+                        const syncSections = () => {
+                            sections.forEach((section) => {
+                                const key = section.getAttribute("data-section");
+                                const related = e.querySelectorAll('.js-permission-box[data-section="' + key + '"]');
+                                section.checked = related.length > 0 && Array.from(related).every((box) => box.checked);
+                            });
+                            if (t) {
+                                t.checked = boxes.length > 0 && Array.from(boxes).every((box) => box.checked);
+                            }
+                        };
+                        if (t) {
+                            t.addEventListener("change", (event) => {
+                                boxes.forEach((box) => {
+                                    box.checked = event.target.checked;
+                                });
+                                sections.forEach((section) => {
+                                    section.checked = event.target.checked;
+                                });
+                            });
+                        }
+                        sections.forEach((section) => {
+                            section.addEventListener("change", (event) => {
+                                const key = section.getAttribute("data-section");
+                                e.querySelectorAll('.js-permission-box[data-section="' + key + '"]').forEach((box) => {
+                                    box.checked = event.target.checked;
+                                });
+                                syncSections();
+                            });
+                        });
+                        boxes.forEach((box) => box.addEventListener("change", syncSections));
+                        syncSections();
                     })()
                 }
             }
@@ -317,10 +346,24 @@
                 <div class="card-body pt-0">
                     <!--begin::Permissions-->
                     <div class="d-flex flex-column text-gray-600">
-                        @foreach($role->permissions as $permission)
-                            <div class="d-flex align-items-center py-2">
-                                <span class="bullet bg-primary me-3"></span>{{__($permission->name)}}
-                            </div>
+                        @php
+                            $assignedNames = $role->permissions->pluck('name');
+                        @endphp
+                        @foreach($groups as $group)
+                            @php
+                                $groupKeys = collect($group['tabs'])->flatMap(function ($tab) {
+                                    return collect($tab['actions'])->map(fn ($action) => $tab['key'].'.'.$action);
+                                });
+                                $assignedInGroup = $assignedNames->intersect($groupKeys);
+                            @endphp
+                            @if($assignedInGroup->isNotEmpty())
+                                <div class="fw-bold text-gray-800 mt-3 mb-1">{{ \Modules\User\Support\PermissionCatalog::groupLabel($group['key']) }}</div>
+                                @foreach($assignedInGroup as $permissionName)
+                                    <div class="d-flex align-items-center py-1 fs-7">
+                                        <span class="bullet bg-primary me-3"></span>{{ $permissionName }}
+                                    </div>
+                                @endforeach
+                            @endif
                         @endforeach
                     </div>
                     <!--end::Permissions-->
@@ -329,8 +372,10 @@
 
                 <!--begin::Card footer-->
                 <div class="card-footer pt-0">
+                    @can('hr.roles.edit')
                     <button type="button" class="btn btn-light btn-active-primary" data-bs-toggle="modal"
                             data-bs-target="#kt_modal_update_role">{{__('Edit Role')}}</button>
+                    @endcan
                 </div>
                 <!--end::Card footer-->
 
@@ -340,7 +385,7 @@
             <!--begin::Modal - Update role-->
             <div class="modal fade" id="kt_modal_update_role" tabindex="-1" aria-hidden="true">
                 <!--begin::Modal dialog-->
-                <div class="modal-dialog modal-dialog-centered mw-750px">
+                <div class="modal-dialog modal-dialog-centered mw-950px">
                     <!--begin::Modal content-->
                     <div class="modal-content">
                         <!--begin::Modal header-->
@@ -399,63 +444,12 @@
                                     <!--end::Input group-->
                                     <!--begin::Permissions-->
                                     <div class="fv-row">
-                                        <!--begin::Label-->
-                                        <label class="fs-5 fw-bolder form-label mb-2">{{__('Role Permissions')}}</label>
-                                        <!--end::Label-->
-                                        <!--begin::Table wrapper-->
-                                        <div class="table-responsive">
-                                            <!--begin::Table-->
-                                            <table class="table align-middle table-row-dashed fs-6 gy-5">
-                                                <!--begin::Table body-->
-                                                <tbody class="text-gray-600 fw-bold">
-                                                <!--begin::Table row-->
-                                                <tr>
-                                                    <td class="text-gray-800">{{__('Administrator Access')}}
-                                                        <i class="fas fa-exclamation-circle ms-1 fs-7"
-                                                           data-bs-toggle="tooltip"
-                                                           title="Allows a full access to the system"></i></td>
-                                                    <td>
-                                                        <!--begin::Checkbox-->
-                                                        <label
-                                                            class="form-check form-check-sm form-check-custom form-check-solid me-9">
-                                                            <input class="form-check-input" type="checkbox" value=""
-                                                                   id="kt_roles_select_all"/>
-                                                            <span class="form-check-label"
-                                                                  for="kt_roles_select_all">{{__('Select All')}}</span>
-                                                        </label>
-                                                        <!--end::Checkbox-->
-                                                    </td>
-                                                </tr>
-                                                @foreach($permissions as $permission)
-                                                    <tr>
-                                                        <!--begin::Label-->
-                                                        <td class="text-gray-800">{{__($permission->name)}}</td>
-                                                        <!--end::Label-->
-                                                        <!--begin::Options-->
-                                                        <td>
-                                                            <!--begin::Wrapper-->
-                                                            <div class="d-flex">
-                                                                <!--begin::Checkbox-->
-                                                                <label
-                                                                    class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                           name="permissions[]"
-                                                                           @checked(in_array($permission->id, $role->permissions->pluck('id')->toArray(), true))
-                                                                           value="{{ $permission->name }}"/>
-                                                                </label>
-                                                                <!--end::Checkbox-->
-                                                            </div>
-                                                            <!--end::Wrapper-->
-                                                        </td>
-                                                        <!--end::Options-->
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
-                                            <!--end::Table-->
-                                        </div>
-                                        <!--end::Table wrapper-->
+                                        <label class="fs-5 fw-bolder form-label mb-2">{{ __('user::permissions.ui.role_permissions') }}</label>
+                                        @include('user::admin.role._permissions_matrix', [
+                                            'groups' => $groups,
+                                            'assigned' => $role->permissions->pluck('name'),
+                                            'selectAllId' => 'kt_roles_update_select_all',
+                                        ])
                                     </div>
                                     <!--end::Permissions-->
                                 </div>

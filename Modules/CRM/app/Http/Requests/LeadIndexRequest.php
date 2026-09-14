@@ -5,12 +5,13 @@ namespace Modules\CRM\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\CRM\Models\Lead;
+use Modules\User\Support\PermissionCatalog;
 
 class LeadIndexRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 
     public function rules(): array

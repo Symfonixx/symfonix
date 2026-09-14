@@ -1,0 +1,28 @@
+{
+    "name": "hadi/tax",
+    "description": "Tax Management module for Symfonix",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Tax\\": "app/",
+            "Modules\\Tax\\Database\\Factories\\": "database/factories/",
+            "Modules\\Tax\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Tax\\Tests\\": "tests/"
+        }
+    }
+}

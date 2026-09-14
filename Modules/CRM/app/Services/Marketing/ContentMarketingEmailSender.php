@@ -28,7 +28,7 @@ class ContentMarketingEmailSender
     public function shouldSend(Request $request): bool
     {
         return $request->boolean('send_as_marketing')
-            && $request->user()?->can('CRM Management');
+            && $request->user()?->can('marketing.email.send');
     }
 
     /**
@@ -40,7 +40,7 @@ class ContentMarketingEmailSender
             return;
         }
 
-        if (! $request->user()?->can('CRM Management')) {
+        if (! $request->user()?->can('marketing.email.send')) {
             throw ValidationException::withMessages([
                 'send_as_marketing' => __('crm::marketing.validation.permission_required'),
             ]);

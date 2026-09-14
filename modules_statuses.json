@@ -11,5 +11,7 @@
     "CRM": true,
     "Project": true,
     "Finance": true,
-    "Product": true
+    "Product": true,
+    "Tax": true,
+    "Reporting": true
 }

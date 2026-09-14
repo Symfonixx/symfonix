@@ -63,6 +63,8 @@
     "charts": {
         "pipeline_funnel": "Sales Pipeline Funnel",
         "pipeline_hint": "Current distribution of leads and deals across pipeline stages.",
+        "open_leads_by_stages": "Open Leads By Stages",
+        "open_leads_by_stages_hint": "Active leads currently in your sales funnel.",
         "lead_channels": "Lead Acquisition Channels",
         "lead_channels_hint": "Where your leads originated in the selected period.",
         "deals": "deals",

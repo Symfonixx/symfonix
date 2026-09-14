@@ -3,13 +3,12 @@
 namespace Modules\Finance\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreExpenseCategoryRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Finance Management') ?? false;
+        return $this->user()?->can('finance.expense_categories.create') ?? false;
     }
 
     public function rules(): array

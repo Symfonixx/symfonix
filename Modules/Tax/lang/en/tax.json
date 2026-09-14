@@ -1,0 +1,9 @@
+{
+    "menu": {
+        "tax": "Tax Management",
+        "tax_rates": "Tax Rates",
+        "ledger": "Tax Ledger",
+        "reports": "Tax Reports",
+        "filing_report": "Filing Report"
+    }
+}

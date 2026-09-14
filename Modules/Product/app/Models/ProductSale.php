@@ -10,6 +10,7 @@ use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
 use Modules\Finance\Models\Invoice;
 use Modules\Finance\Models\JournalEntry;
+use Modules\Tax\Models\TaxRate;
 
 class ProductSale extends Model
 {
@@ -21,6 +22,8 @@ class ProductSale extends Model
         'user_id',
         'quantity',
         'unit_price',
+        'tax_rate_id',
+        'tax_amount',
         'total_amount',
         'currency',
         'notes',
@@ -32,6 +35,7 @@ class ProductSale extends Model
         return [
             'quantity' => 'integer',
             'unit_price' => 'decimal:2',
+            'tax_amount' => 'decimal:2',
             'total_amount' => 'decimal:2',
             'sold_at' => 'date',
         ];
@@ -40,6 +44,11 @@ class ProductSale extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function taxRate(): BelongsTo
+    {
+        return $this->belongsTo(TaxRate::class);
     }
 
     public function company(): BelongsTo

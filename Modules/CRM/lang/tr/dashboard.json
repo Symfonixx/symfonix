@@ -63,6 +63,8 @@
     "charts": {
         "pipeline_funnel": "Satış Hattı Hunisi",
         "pipeline_hint": "Aşamalara göre potansiyel müşteri ve anlaşma dağılımı.",
+        "open_leads_by_stages": "Aşamalara Göre Açık Potansiyel Müşteriler",
+        "open_leads_by_stages_hint": "Satış huninizdeki aktif potansiyel müşteriler.",
         "lead_channels": "Potansiyel Müşteri Kaynakları",
         "lead_channels_hint": "Seçilen dönemdeki lead kaynakları.",
         "deals": "anlaşma",

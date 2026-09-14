@@ -9,7 +9,7 @@ class StoreEmployeeRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Hr Management') ?? false;
+        return $this->user()?->can('hr.employees.create') ?? false;
     }
 
     public function rules(): array

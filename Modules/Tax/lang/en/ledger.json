@@ -1,0 +1,30 @@
+{
+    "pages": {
+        "index_title": "Tax Ledger"
+    },
+    "fields": {
+        "date": "Date",
+        "direction": "Direction",
+        "tax_rate": "Tax Rate",
+        "amount": "Amount",
+        "company": "Company",
+        "project": "Project",
+        "subscription": "Subscription",
+        "description": "Description"
+    },
+    "directions": {
+        "output": "Output Tax (Collected)",
+        "input": "Input Tax (Paid)"
+    },
+    "filters": {
+        "from": "From",
+        "to": "To",
+        "direction": "Direction",
+        "all": "All Directions"
+    },
+    "descriptions": {
+        "invoice": "Output tax on invoice :number",
+        "invoice_line": "Output tax on invoice :number — :line",
+        "expense": "Input tax on expense"
+    }
+}

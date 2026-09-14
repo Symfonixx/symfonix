@@ -1,0 +1,159 @@
+{
+    "actions": {
+        "compose": "Compose WhatsApp Message",
+        "send_campaign": "Send Campaign",
+        "manage_templates": "Manage Templates",
+        "add_template": "Add Template",
+        "create_template": "Create Template",
+        "previous": "Previous",
+        "next": "Next",
+        "open_integrations": "Open Integrations"
+    },
+    "pages": {
+        "create_title": "Send WhatsApp Campaign",
+        "show_title": "WhatsApp Campaign Details",
+        "templates_title": "WhatsApp Templates",
+        "create_template_title": "Create WhatsApp Template",
+        "edit_template_title": "Edit WhatsApp Template"
+    },
+    "steps": {
+        "recipients": "Recipients",
+        "template": "Template",
+        "parameters": "Parameters",
+        "preview": "Preview & Send"
+    },
+    "sections": {
+        "compose_hint": "Select recipients, choose an approved template, fill in variables, and send.",
+        "recipients": "Choose Recipients",
+        "recipients_hint": "Select leads, deals, contacts, or add custom phone numbers. Numbers are deduplicated automatically.",
+        "template": "Select Template",
+        "template_hint": "Choose an approved Meta WhatsApp template for this campaign.",
+        "parameters": "Template Parameters",
+        "parameters_hint": "Fill in the dynamic variables required by the selected template.",
+        "preview": "Message Preview",
+        "preview_hint": "Review the rendered message before sending.",
+        "header": "Header",
+        "body": "Body",
+        "buttons": "Buttons",
+        "template_form_hint": "Define a Meta WhatsApp template matching your Business Account approval.",
+        "message_logs": "Delivery Log"
+    },
+    "fields": {
+        "template": "Template",
+        "template_name": "Template Name",
+        "name": "Template Name",
+        "language": "Language Code",
+        "category": "Category",
+        "header_type": "Header Type",
+        "header_content": "Header Content",
+        "body": "Body Text",
+        "footer": "Footer",
+        "buttons": "Buttons",
+        "button_type": "Button Type",
+        "button_text": "Button Label",
+        "button_url": "URL / Phone",
+        "meta_template_id": "Meta Template ID",
+        "is_active": "Active",
+        "variables": "Variables",
+        "variable": "Variable",
+        "leads": "Leads",
+        "contacts": "Contacts",
+        "deals": "Deals",
+        "contact_forms": "Inquiries",
+        "all_leads": "All leads with phone numbers",
+        "all_contacts": "All contacts with phone numbers",
+        "all_deals": "All deals with phone numbers",
+        "all_contact_forms": "All inquiries with mobile numbers",
+        "select_leads": "Select leads",
+        "select_contacts": "Select contacts",
+        "select_deals": "Select deals",
+        "select_contact_forms": "Select inquiries",
+        "custom_phones": "Custom Phone Numbers",
+        "phone": "Phone",
+        "recipient_type": "Recipient Type",
+        "sent_at": "Sent At",
+        "error": "Error"
+    },
+    "categories": {
+        "MARKETING": "Marketing",
+        "UTILITY": "Utility",
+        "AUTHENTICATION": "Authentication"
+    },
+    "header_types": {
+        "none": "None",
+        "text": "Text",
+        "image": "Image",
+        "video": "Video",
+        "document": "Document"
+    },
+    "template_status": {
+        "approved": "Approved",
+        "pending": "Pending Review",
+        "rejected": "Rejected",
+        "draft": "Draft"
+    },
+    "status": {
+        "pending": "Pending",
+        "sending": "Sending",
+        "finished": "Finished",
+        "failed": "Failed"
+    },
+    "log_status": {
+        "pending": "Pending",
+        "sent": "Sent",
+        "failed": "Failed"
+    },
+    "recipient_types": {
+        "lead": "Lead",
+        "contact": "Contact",
+        "deal": "Deal",
+        "contact_form": "Inquiry",
+        "custom": "Custom"
+    },
+    "placeholders": {
+        "template_name": "e.g. seasonal_offer",
+        "select_template": "Choose an approved template",
+        "body": "Hello {{1}}, we have a special offer: {{2}}",
+        "footer": "Reply STOP to unsubscribe",
+        "header_content": "Text or media URL",
+        "meta_template_id": "Optional Meta template ID",
+        "select_leads": "Choose leads",
+        "select_contacts": "Choose contacts",
+        "select_deals": "Choose deals",
+        "select_contact_forms": "Choose inquiries",
+        "custom_phones": "Type a phone number and press Enter",
+        "variable_value": "Value for"
+    },
+    "hints": {
+        "template_name": "Lowercase letters, numbers, and underscores only. Must match your Meta template name.",
+        "body_variables": "Use {{1}}, {{2}}, etc. for dynamic variables. These will generate form inputs when composing.",
+        "header_content": "For text headers, enter the text. For media headers, enter the public URL.",
+        "all_leads": "Sends to every non-blocked lead with a phone number.",
+        "all_contacts": "Sends to every contact with a phone or secondary phone.",
+        "all_deals": "Uses the linked lead or company phone for each deal.",
+        "custom_phones": "Add phone numbers in international format (e.g. +1234567890).",
+        "select_template_first": "Select a template in the previous step to configure parameters.",
+        "no_variables": "This template has no dynamic variables.",
+        "send_warning": "Messages are queued and sent in the background via the WhatsApp Business API.",
+        "configure_whatsapp": "WhatsApp is not configured. Set up your API credentials in",
+        "manage_templates": "Need a new template?"
+    },
+    "messages": {
+        "queued": "WhatsApp campaign queued for :count recipient(s).",
+        "send_failed": "Failed to send the WhatsApp campaign. Please check your configuration and try again.",
+        "not_configured": "WhatsApp Business API is not configured.",
+        "empty": "No WhatsApp campaigns sent yet.",
+        "no_templates": "No WhatsApp templates found. Create one to start sending campaigns.",
+        "template_created": "WhatsApp template created successfully.",
+        "template_updated": "WhatsApp template updated successfully.",
+        "template_deleted": "WhatsApp template deleted successfully.",
+        "template_in_use": "This template cannot be deleted because it is used by existing campaigns.",
+        "confirm_delete": "Are you sure you want to delete this template?"
+    },
+    "validation": {
+        "select_recipients": "Select at least one recipient group or add custom phone numbers.",
+        "no_recipients": "No valid phone numbers were found for the selected recipients.",
+        "template_not_sendable": "The selected template is not approved or active.",
+        "parameter_required": "Parameter {{num}} is required."
+    }
+}

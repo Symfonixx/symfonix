@@ -10,9 +10,11 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::lead_tag.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{ route('admin.crm.lead-tags.create') }}" class="btn btn-sm fw-bold btn-primary">
-            {{ __('crm::lead_tag.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="crm.lead_tags.create">
+            <a href="{{ route('admin.crm.lead-tags.create') }}" class="btn btn-sm fw-bold btn-primary">
+                {{ __('crm::lead_tag.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 

@@ -176,7 +176,7 @@ class PublicQuoteController extends Controller
             abort(403);
         }
 
-        if ($user->isAdmin() && $user->can('CRM Management')) {
+        if ($user->isAdmin() && $user->can('sales.quotes.view')) {
             return;
         }
 

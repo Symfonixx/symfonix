@@ -4,7 +4,9 @@ namespace MonishRoy\VisitorTracking\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Schema;
 use MonishRoy\VisitorTracking\Models\VisitorTable;
 
 class VisitorTracking
@@ -32,7 +34,7 @@ class VisitorTracking
 
         $pageTitle = null;
         if (
-            $response instanceof \Illuminate\Http\Response &&
+            $response instanceof Response &&
             str_contains($response->headers->get('Content-Type'), 'text/html')
         ) {
             $content = $response->getContent();
@@ -40,7 +42,7 @@ class VisitorTracking
             $pageTitle = $matches[1] ?? null;
         }
 
-        VisitorTable::create([
+        $payload = [
             'ip' => $ip,
             'country' => $location['country'] ?? null,
             'region' => $location['region'] ?? null,
@@ -50,13 +52,20 @@ class VisitorTracking
             'browser' => $this->detectBrowser($userAgent),
             'page_title' => $pageTitle,
             'url' => $request->fullUrl(),
-            'referrer' => $request->headers->get('referer') ?: null,
-            'user_agent' => $userAgent,
-        ]);
+        ];
+
+        if (Schema::hasColumn('visitors', 'referrer')) {
+            $payload['referrer'] = $request->headers->get('referer') ?: null;
+        }
+
+        if (Schema::hasColumn('visitors', 'user_agent')) {
+            $payload['user_agent'] = $userAgent;
+        }
+
+        VisitorTable::create($payload);
 
         return $response;
     }
-
 
     protected function detectDevice($userAgent): string
     {

@@ -5,6 +5,7 @@ namespace Modules\CRM\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\CRM\Models\Subscription;
+use Modules\User\Support\PermissionCatalog;
 
 class SubscriptionIndexRequest extends FormRequest
 {
@@ -23,6 +24,6 @@ class SubscriptionIndexRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 }

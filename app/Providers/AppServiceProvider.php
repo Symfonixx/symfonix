@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Translation\JsonFileLoader;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Modules\Base\Support\AdminEmail;
+use Modules\Base\Support\FingerprintConfig;
 use Modules\Base\Support\MailConfig;
 use Modules\Base\Support\WhatsAppConfig;
 
@@ -32,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
         $this->forceHttpsInProduction();
         $this->mergeAdminEmailConfig();
         $this->mergeIntegrationConfigs();
+
+        Gate::define('viewPulse', fn ($user) => $user->can('system.monitoring.view'));
     }
 
     private function forceHttpsInProduction(): void
@@ -71,6 +75,7 @@ class AppServiceProvider extends ServiceProvider
 
             MailConfig::mergeIntoConfig();
             WhatsAppConfig::mergeIntoConfig();
+            FingerprintConfig::mergeIntoConfig();
         } catch (\Throwable) {
             //
         }

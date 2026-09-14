@@ -167,6 +167,21 @@
                 @enderror
             </div>
         </div>
+        <div class="row g-6 mt-2">
+            <div class="col-md-12">
+                <label for="tax_rate_id" class="form-label">{{ __('tax::tax_rate.fields.name') }}</label>
+                <x-tax::tax-rate-select
+                    name="tax_rate_id"
+                    id="tax_rate_id"
+                    :selected="$projectData?->tax_rate_id"
+                    :tax-rates="$taxRates ?? []"
+                />
+                <div class="form-text">{{ __('tax::tax_rate.hints.is_default') }}</div>
+                @error('tax_rate_id')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
     </div>
 </div>
 

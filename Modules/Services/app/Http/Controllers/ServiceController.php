@@ -76,7 +76,7 @@ class ServiceController extends Controller
         });
 
         $categories = ServiceCategory::withCount(['services' => function ($q) {
-            $q->where('status', 'Published');
+            $q->published();
         }])->get()->map(function ($category) {
             return [
                 'id' => $category->id,
@@ -175,7 +175,7 @@ class ServiceController extends Controller
 
         // Categories for sidebar
         $categories = ServiceCategory::withCount(['services' => function ($q) {
-            $q->where('status', 'Published');
+            $q->published();
         }])->get()->map(function ($category) {
             return [
                 'id' => $category->id,

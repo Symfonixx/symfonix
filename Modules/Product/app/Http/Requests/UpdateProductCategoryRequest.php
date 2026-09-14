@@ -9,7 +9,7 @@ class UpdateProductCategoryRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Product Management') ?? false;
+        return $this->user()?->can('product.categories.edit') ?? false;
     }
 
     public function rules(): array

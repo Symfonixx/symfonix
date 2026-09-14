@@ -8,7 +8,7 @@ class StoreProductCategoryRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Product Management') ?? false;
+        return $this->user()?->can('product.categories.create') ?? false;
     }
 
     public function rules(): array

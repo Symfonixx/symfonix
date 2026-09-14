@@ -1,0 +1,39 @@
+{
+    "menu": "Umsatzprognosen",
+    "title": "Umsatzprognosen",
+    "subtitle": "Prognostizieren Sie Umsätze aus offenen Deals anhand von Stagewahrscheinlichkeiten und erwarteten Abschlussdaten.",
+    "filters": {
+        "from": "Abschlussdatum von",
+        "to": "Abschlussdatum bis",
+        "rep": "Vertriebsmitarbeiter",
+        "all_reps": "Alle Mitarbeiter",
+        "stage": "Pipeline-Phase",
+        "all_stages": "Alle Phasen",
+        "apply": "Filter anwenden"
+    },
+    "metrics": {
+        "total_pipeline": "Gesamte Pipeline",
+        "total_pipeline_hint": "Summe aller offenen Deal-Werte im gewählten Zeitraum.",
+        "forecasted_revenue": "Prognostizierter Umsatz",
+        "forecasted_revenue_hint": "Deal-Wert multipliziert mit Gewinnwahrscheinlichkeit, aggregiert über die Pipeline.",
+        "best_case": "Best Case",
+        "best_case_hint": "Voller Wert hochkonfidenter Deals mit ≥75 % Gewinnwahrscheinlichkeit.",
+        "worst_case": "Worst Case",
+        "worst_case_hint": "Gewichteter Wert niedrigkonfidenter Deals unter 75 % Gewinnwahrscheinlichkeit."
+    },
+    "charts": {
+        "pipeline_comparison": "Gewichtete vs. ungewichtete Pipeline",
+        "pipeline_comparison_hint": "Vergleichen Sie den rohen Pipeline-Wert mit gewichteten Prognosen nach Phase.",
+        "monthly_predictions": "Monatliche Umsatzprognosen",
+        "monthly_predictions_hint": "Erwarteter Umsatz gruppiert nach Deal-Abschlussdatum.",
+        "stage_table": "Phasenübersicht",
+        "unweighted": "Ungewichtet",
+        "weighted": "Gewichtet"
+    },
+    "table": {
+        "stage": "Phase",
+        "deals": "Deals",
+        "unweighted": "Ungewichtet",
+        "weighted": "Gewichtet"
+    }
+}

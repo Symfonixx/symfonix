@@ -91,6 +91,20 @@
                 </select>
             </div>
         </div>
+        <div class="row g-4 mt-2">
+            <div class="col-md-12">
+                <label for="product_tax_rate_id" class="form-label">{{ __('tax::tax_rate.fields.name') }}</label>
+                <x-tax::tax-rate-select
+                    name="tax_rate_id"
+                    id="product_tax_rate_id"
+                    :selected="$productData?->tax_rate_id"
+                    :tax-rates="$taxRates ?? []"
+                />
+                @error('tax_rate_id')
+                <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+                @enderror
+            </div>
+        </div>
     </div>
 </div>
 

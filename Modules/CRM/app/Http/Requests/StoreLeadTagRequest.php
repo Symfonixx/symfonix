@@ -10,7 +10,7 @@ class StoreLeadTagRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('crm.lead_tags.create') ?? false;
     }
 
     public function rules(): array

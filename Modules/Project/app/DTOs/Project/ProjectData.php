@@ -35,6 +35,9 @@ class ProjectData extends Data
         #[Nullable, StringType, Max(3)]
         public ?string $currency,
 
+        #[Nullable]
+        public ?int $tax_rate_id,
+
         #[Nullable, Date]
         public ?string $start_date,
 
@@ -56,6 +59,7 @@ class ProjectData extends Data
             deal_id: isset($payload['deal_id']) ? (int) $payload['deal_id'] : null,
             budget: isset($payload['budget']) ? (float) $payload['budget'] : null,
             currency: $currency,
+            tax_rate_id: isset($payload['tax_rate_id']) ? (int) $payload['tax_rate_id'] : null,
             start_date: $payload['start_date'] ?? null,
             due_date: $payload['due_date'] ?? null,
         );

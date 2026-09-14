@@ -1,12 +1,9 @@
 # Core Module
 
-The **Core** module contains essential services, helpers, and configurations that are fundamental to the operation of
-the entire application.
-It acts as the backbone, providing utilities and traits used by other modules.
+Application bootstrap: install command, shared helpers, and traits used by other modules.
 
 **Contents:**
 
+- `php artisan app:install` (migrations, permissions, role scenarios, pipeline/ticket/currency seeds, admin user)
 - Core services and providers
 - Application-wide helpers and traits
-- Configuration files
-- Event and route providers 

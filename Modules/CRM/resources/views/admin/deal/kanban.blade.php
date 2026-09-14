@@ -13,9 +13,11 @@
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.deals.index') }}">
             <i class="bi bi-list-ul me-1"></i>{{ __('crm::deal.actions.list_view') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.deals.create') }}">
-            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
-        </a>
+        <x-can perform="sales.deals.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.deals.create') }}">
+                <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
+            </a>
+        </x-can>
     </div>
 @endsection
 
@@ -132,9 +134,11 @@
                                 {{ __('crm::deal.kanban.empty_column') }}
                             </div>
                         @endforelse
-                        <a href="{{ route('admin.deals.create') }}" class="btn btn-sm btn-light-{{ $stage->color }}">
-                            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
-                        </a>
+                        <x-can perform="sales.deals.create">
+                            <a href="{{ route('admin.deals.create') }}" class="btn btn-sm btn-light-{{ $stage->color }}">
+                                <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
+                            </a>
+                        </x-can>
                     </div>
                 </div>
             </div>

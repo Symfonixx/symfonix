@@ -126,7 +126,8 @@
         "confirm_remove_employee": "Diese Mitarbeiterzuordnung entfernen?",
         "expense_logged": "Projektaufwand, der in die Finanzabteilung gebucht wird.",
         "expense_description": "Projektaufwand: :title",
-        "no_review": "Für dieses Projekt wurde noch keine Kundenbewertung eingereicht."
+        "no_review": "Für dieses Projekt wurde noch keine Kundenbewertung eingereicht.",
+        "status_updated": "Projektstatus aktualisiert."
     },
     "validation": {
         "attachment_pdf_not_allowed": "PDF-Dateien sind als Projektanhang nicht zulässig.",

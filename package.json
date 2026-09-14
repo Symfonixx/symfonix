@@ -5,9 +5,12 @@
         "dev": "vite",
         "build": "vite build && vite build --ssr",
         "build:ssr": "vite build --ssr",
-        "build:client": "vite build"
+        "build:client": "vite build",
+        "test:e2e": "playwright test",
+        "test:e2e:headed": "playwright test --headed"
     },
     "devDependencies": {
+        "@playwright/test": "^1.56.1",
         "@vitejs/plugin-vue": "^5.2.0",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",

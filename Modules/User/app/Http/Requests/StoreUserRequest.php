@@ -3,7 +3,6 @@
 namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreUserRequest extends FormRequest
 {
@@ -30,7 +29,7 @@ class StoreUserRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return $this->user()?->can('Sales Management') ?? false;
+        return $this->user()?->can('sales.customers.create') ?? false;
     }
 
     protected function prepareForValidation(): void

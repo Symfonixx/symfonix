@@ -6,23 +6,33 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\CRM\Concerns\HasCrmTimeline;
+use Modules\CRM\Enums\DealStatus;
 use Modules\CRM\Filters\Deal\DealFilter;
 use Modules\CRM\Support\CrmAccess;
+use Modules\Project\Models\Project;
+use Modules\Services\Models\Service;
 use Modules\User\Models\Employee;
 
 class Deal extends Model
 {
     use HasCrmTimeline, SoftDeletes;
 
-    public const STATUS_OPEN = 'open';
+    public const STATUS_OPEN = DealStatus::OPEN->value;
 
-    public const STATUS_WON = 'won';
+    public const STATUS_WON = DealStatus::WON->value;
 
-    public const STATUS_LOST = 'lost';
+    public const STATUS_LOST = DealStatus::LOST->value;
+
+    public const STATUSES = [
+        self::STATUS_OPEN,
+        self::STATUS_WON,
+        self::STATUS_LOST,
+    ];
 
     protected $fillable = [
         'title',
@@ -96,7 +106,7 @@ class Deal extends Model
 
     public function project(): HasOne
     {
-        return $this->hasOne(\Modules\Project\Models\Project::class);
+        return $this->hasOne(Project::class);
     }
 
     public function quotes(): HasMany
@@ -104,9 +114,9 @@ class Deal extends Model
         return $this->hasMany(Quote::class)->latest();
     }
 
-    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function services(): BelongsToMany
     {
-        return $this->belongsToMany(\Modules\Services\Models\Service::class, 'deal_service')
+        return $this->belongsToMany(Service::class, 'deal_service')
             ->withPivot(['quantity', 'unit_price'])
             ->withTimestamps();
     }

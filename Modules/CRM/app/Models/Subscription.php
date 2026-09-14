@@ -5,9 +5,12 @@ namespace Modules\CRM\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\CRM\Concerns\HasCrmTimeline;
+use Modules\CRM\Enums\SubscriptionBillingCycle;
+use Modules\CRM\Enums\SubscriptionStatus;
 use Modules\CRM\Filters\Subscription\SubscriptionFilter;
 use Modules\Finance\Models\Invoice;
 use Modules\Services\Models\Service;
@@ -16,23 +19,23 @@ class Subscription extends Model
 {
     use HasCrmTimeline, SoftDeletes;
 
-    public const STATUS_ACTIVE = 'active';
+    public const STATUS_ACTIVE = SubscriptionStatus::ACTIVE->value;
 
-    public const STATUS_TRIAL = 'trial';
+    public const STATUS_TRIAL = SubscriptionStatus::TRIAL->value;
 
-    public const STATUS_PAUSED = 'paused';
+    public const STATUS_PAUSED = SubscriptionStatus::PAUSED->value;
 
-    public const STATUS_CANCELLED = 'cancelled';
+    public const STATUS_CANCELLED = SubscriptionStatus::CANCELLED->value;
 
-    public const STATUS_EXPIRED = 'expired';
+    public const STATUS_EXPIRED = SubscriptionStatus::EXPIRED->value;
 
-    public const BILLING_MONTHLY = 'monthly';
+    public const BILLING_MONTHLY = SubscriptionBillingCycle::MONTHLY->value;
 
-    public const BILLING_QUARTERLY = 'quarterly';
+    public const BILLING_QUARTERLY = SubscriptionBillingCycle::QUARTERLY->value;
 
-    public const BILLING_YEARLY = 'yearly';
+    public const BILLING_YEARLY = SubscriptionBillingCycle::YEARLY->value;
 
-    public const BILLING_ONE_TIME = 'one_time';
+    public const BILLING_ONE_TIME = SubscriptionBillingCycle::ONE_TIME->value;
 
     public const BILLING_CYCLES = [
         self::BILLING_MONTHLY,
@@ -100,7 +103,7 @@ class Subscription extends Model
         return $this->belongsTo(Service::class);
     }
 
-    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class, 'subscription_service')
             ->withTimestamps();

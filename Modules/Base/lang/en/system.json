@@ -7,7 +7,8 @@
         "company": "Company",
         "finance": "Finance",
         "notifications": "Notifications",
-        "backup": "Backup"
+        "backup": "Backup",
+        "fingerprint": "Fingerprint"
     },
     "company_details": {
         "title": "Company Details",
@@ -69,5 +70,32 @@
         "status_on": "Automatic backups are on",
         "status_off": "Automatic backups are off",
         "never_run": "Not run yet"
+    },
+    "fingerprint": {
+        "title": "Fingerprint Machine",
+        "description": "Connect to a ZKTeco device over TCP/IP. Employee IDs in Symfonix are mapped to device user IDs for enrollment and attendance sync.",
+        "status_title": "Integration",
+        "enabled_on": "Enabled",
+        "enabled_off": "Disabled",
+        "connection_title": "Device",
+        "connection_ready": "Host configured",
+        "connection_missing": "Host not set",
+        "last_sync": "Last attendance sync",
+        "never_synced": "Never synced",
+        "enabled": "Enable Fingerprint Machine",
+        "enabled_label": "Use fingerprint machine integration",
+        "enabled_hint": "When disabled, HR sync actions are blocked.",
+        "host": "Device IP / Host",
+        "host_hint": "LAN IP address of the ZKTeco fingerprint terminal.",
+        "port": "Port",
+        "port_hint": "Default ZKTeco TCP port is 4370.",
+        "comm_key": "Communication Key",
+        "comm_key_hint": "Numeric device comm password (0 if unset on the device).",
+        "timeout": "Connection Timeout (seconds)",
+        "timeout_hint": "Socket timeout for device operations (3–60 seconds).",
+        "name_encoding": "Name Encoding",
+        "name_encoding_hint": "Device codepage for employee names (UTF-8, Windows-1256 for Arabic, etc.).",
+        "test_connection": "Test connection",
+        "manage_sync": "Open HR sync"
     }
 }

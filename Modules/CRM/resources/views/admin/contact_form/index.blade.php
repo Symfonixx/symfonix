@@ -9,9 +9,11 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::contact_form.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{ route('admin.contact_forms.create') }}" class="btn btn-sm fw-bold btn-primary">
-            {{ __('crm::contact_form.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="crm.inquiries.create">
+            <a href="{{ route('admin.contact_forms.create') }}" class="btn btn-sm fw-bold btn-primary">
+                {{ __('crm::contact_form.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
         <a href="{{ route('admin.contact_forms.export') }}" class="btn btn-sm btn-light-primary">
             <i class="bi bi-file-earmark-excel"></i> {{ __('Export to Excel') }}
         </a>

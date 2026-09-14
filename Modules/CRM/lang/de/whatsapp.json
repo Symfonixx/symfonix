@@ -1,0 +1,159 @@
+{
+    "actions": {
+        "compose": "WhatsApp-Nachricht verfassen",
+        "send_campaign": "Kampagne senden",
+        "manage_templates": "Vorlagen verwalten",
+        "add_template": "Vorlage hinzufügen",
+        "create_template": "Vorlage erstellen",
+        "previous": "Zurück",
+        "next": "Weiter",
+        "open_integrations": "Integrationen öffnen"
+    },
+    "pages": {
+        "create_title": "WhatsApp-Kampagne senden",
+        "show_title": "WhatsApp-Kampagnendetails",
+        "templates_title": "WhatsApp-Vorlagen",
+        "create_template_title": "WhatsApp-Vorlage erstellen",
+        "edit_template_title": "WhatsApp-Vorlage bearbeiten"
+    },
+    "steps": {
+        "recipients": "Empfänger",
+        "template": "Vorlage",
+        "parameters": "Parameter",
+        "preview": "Vorschau & Senden"
+    },
+    "sections": {
+        "compose_hint": "Empfänger wählen, genehmigte Vorlage auswählen, Variablen ausfüllen und senden.",
+        "recipients": "Empfänger wählen",
+        "recipients_hint": "Leads, Deals, Kontakte oder eigene Telefonnummern auswählen.",
+        "template": "Vorlage wählen",
+        "template_hint": "Wählen Sie eine genehmigte Meta-WhatsApp-Vorlage.",
+        "parameters": "Vorlagenparameter",
+        "parameters_hint": "Dynamische Variablen der Vorlage ausfüllen.",
+        "preview": "Nachrichtenvorschau",
+        "preview_hint": "Nachricht vor dem Senden prüfen.",
+        "header": "Kopfzeile",
+        "body": "Text",
+        "buttons": "Schaltflächen",
+        "template_form_hint": "Meta-WhatsApp-Vorlage definieren.",
+        "message_logs": "Zustellprotokoll"
+    },
+    "fields": {
+        "template": "Vorlage",
+        "template_name": "Vorlagenname",
+        "name": "Vorlagenname",
+        "language": "Sprachcode",
+        "category": "Kategorie",
+        "header_type": "Kopfzeilentyp",
+        "header_content": "Kopfzeileninhalt",
+        "body": "Text",
+        "footer": "Fußzeile",
+        "buttons": "Schaltflächen",
+        "button_type": "Schaltflächentyp",
+        "button_text": "Beschriftung",
+        "button_url": "URL / Telefon",
+        "meta_template_id": "Meta-Vorlagen-ID",
+        "is_active": "Aktiv",
+        "variables": "Variablen",
+        "variable": "Variable",
+        "leads": "Leads",
+        "contacts": "Kontakte",
+        "deals": "Deals",
+        "contact_forms": "Anfragen",
+        "all_leads": "Alle Leads mit Telefonnummer",
+        "all_contacts": "Alle Kontakte mit Telefonnummer",
+        "all_deals": "Alle Deals mit Telefonnummer",
+        "all_contact_forms": "Alle Anfragen mit Mobilnummer",
+        "select_leads": "Leads wählen",
+        "select_contacts": "Kontakte wählen",
+        "select_deals": "Deals wählen",
+        "select_contact_forms": "Anfragen wählen",
+        "custom_phones": "Eigene Telefonnummern",
+        "phone": "Telefon",
+        "recipient_type": "Empfängertyp",
+        "sent_at": "Gesendet am",
+        "error": "Fehler"
+    },
+    "categories": {
+        "MARKETING": "Marketing",
+        "UTILITY": "Dienstprogramm",
+        "AUTHENTICATION": "Authentifizierung"
+    },
+    "header_types": {
+        "none": "Keine",
+        "text": "Text",
+        "image": "Bild",
+        "video": "Video",
+        "document": "Dokument"
+    },
+    "template_status": {
+        "approved": "Genehmigt",
+        "pending": "Ausstehend",
+        "rejected": "Abgelehnt",
+        "draft": "Entwurf"
+    },
+    "status": {
+        "pending": "Ausstehend",
+        "sending": "Wird gesendet",
+        "finished": "Abgeschlossen",
+        "failed": "Fehlgeschlagen"
+    },
+    "log_status": {
+        "pending": "Ausstehend",
+        "sent": "Gesendet",
+        "failed": "Fehlgeschlagen"
+    },
+    "recipient_types": {
+        "lead": "Lead",
+        "contact": "Kontakt",
+        "deal": "Deal",
+        "contact_form": "Anfrage",
+        "custom": "Benutzerdefiniert"
+    },
+    "placeholders": {
+        "template_name": "z.B. seasonal_offer",
+        "select_template": "Genehmigte Vorlage wählen",
+        "body": "Hallo {{1}}, wir haben ein Angebot: {{2}}",
+        "footer": "STOP zum Abbestellen",
+        "header_content": "Text oder Medien-URL",
+        "meta_template_id": "Optionale Meta-Vorlagen-ID",
+        "select_leads": "Leads wählen",
+        "select_contacts": "Kontakte wählen",
+        "select_deals": "Deals wählen",
+        "select_contact_forms": "Anfragen wählen",
+        "custom_phones": "Telefonnummer eingeben und Enter drücken",
+        "variable_value": "Wert für"
+    },
+    "hints": {
+        "template_name": "Nur Kleinbuchstaben, Zahlen und Unterstriche.",
+        "body_variables": "Verwenden Sie {{1}}, {{2}} usw. für dynamische Variablen.",
+        "header_content": "Für Text-Kopfzeilen Text eingeben. Für Medien eine öffentliche URL.",
+        "all_leads": "Sendet an alle nicht blockierten Leads mit Telefonnummer.",
+        "all_contacts": "Sendet an alle Kontakte mit Telefonnummer.",
+        "all_deals": "Verwendet Lead- oder Firmen-Telefonnummer des Deals.",
+        "custom_phones": "Internationales Format verwenden (z.B. +49123456789).",
+        "select_template_first": "Vorlage im vorherigen Schritt wählen.",
+        "no_variables": "Diese Vorlage hat keine dynamischen Variablen.",
+        "send_warning": "Nachrichten werden im Hintergrund über die WhatsApp Business API gesendet.",
+        "configure_whatsapp": "WhatsApp ist nicht konfiguriert. API-Zugangsdaten einrichten in",
+        "manage_templates": "Neue Vorlage benötigt?"
+    },
+    "messages": {
+        "queued": "WhatsApp-Kampagne für :count Empfänger in Warteschlange.",
+        "send_failed": "WhatsApp-Kampagne konnte nicht gesendet werden.",
+        "not_configured": "WhatsApp Business API ist nicht konfiguriert.",
+        "empty": "Noch keine WhatsApp-Kampagnen gesendet.",
+        "no_templates": "Keine WhatsApp-Vorlagen gefunden.",
+        "template_created": "WhatsApp-Vorlage erfolgreich erstellt.",
+        "template_updated": "WhatsApp-Vorlage erfolgreich aktualisiert.",
+        "template_deleted": "WhatsApp-Vorlage erfolgreich gelöscht.",
+        "template_in_use": "Vorlage wird von Kampagnen verwendet und kann nicht gelöscht werden.",
+        "confirm_delete": "Vorlage wirklich löschen?"
+    },
+    "validation": {
+        "select_recipients": "Mindestens eine Empfängergruppe oder Telefonnummern wählen.",
+        "no_recipients": "Keine gültigen Telefonnummern gefunden.",
+        "template_not_sendable": "Vorlage ist nicht genehmigt oder aktiv.",
+        "parameter_required": "Parameter {{num}} ist erforderlich."
+    }
+}

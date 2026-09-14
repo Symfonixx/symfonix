@@ -11,26 +11,30 @@
     <x-admin.breadcrumb :pageTitle="__('finance::finance.pages.dashboard_title')" :breadcrumbItems="$breadcrumbItems"/>
 @endsection
 
-<x-admin-layout>
-  <livewire:finance.financial-dashboard />
-</x-admin-layout>
-
 @section('js')
 <script>
     (function () {
-        const initFinanceMonthSelect = () => {
+        const getComponent = () => {
             const select = document.getElementById('finance-month-filter');
-            if (!select || typeof $ === 'undefined' || !$.fn.select2) {
-                return;
+            if (!select) {
+                return null;
             }
 
-            const $select = $(select);
             const root = select.closest('[wire\\:id]');
-            const component = root ? Livewire.find(root.getAttribute('wire:id')) : null;
 
-            if (!component) {
-                return;
+            return root ? Livewire.find(root.getAttribute('wire:id')) : null;
+        };
+
+        const initFinanceMonthSelect = () => {
+            const jQuery = window.jQuery;
+            const select = document.getElementById('finance-month-filter');
+            const component = getComponent();
+
+            if (!select || !jQuery?.fn?.select2 || !component) {
+                return false;
             }
+
+            const $select = jQuery(select);
 
             if ($select.hasClass('select2-hidden-accessible')) {
                 $select.off('change.financeMonths');
@@ -47,29 +51,45 @@
             $select.val(component.get('selectedMonths') || []).trigger('change.select2');
 
             $select.on('change.financeMonths', function () {
-                component.set('selectedMonths', $(this).val() || []);
+                component.set('selectedMonths', jQuery(this).val() || []);
             });
+
+            return true;
         };
 
         const clearFinanceMonthSelect = () => {
+            const jQuery = window.jQuery;
             const select = document.getElementById('finance-month-filter');
-            if (!select || typeof $ === 'undefined') {
+
+            if (!select || !jQuery) {
                 return;
             }
 
-            $(select).val(null).trigger('change.select2');
+            jQuery(select).val(null).trigger('change.select2');
         };
 
-        const setupFinanceMonthFilter = () => {
-            initFinanceMonthSelect();
+        const bootFinanceMonthSelect = (attempt = 0) => {
+            if (initFinanceMonthSelect() || attempt >= 40) {
+                return;
+            }
+
+            setTimeout(() => bootFinanceMonthSelect(attempt + 1), 50);
+        };
+
+        const setupFinanceMonthSelect = () => {
+            bootFinanceMonthSelect();
             Livewire.on('finance-month-filter-cleared', clearFinanceMonthSelect);
         };
 
         if (window.Livewire) {
-            setupFinanceMonthFilter();
+            setupFinanceMonthSelect();
+        } else {
+            document.addEventListener('livewire:initialized', setupFinanceMonthSelect);
         }
-
-        document.addEventListener('livewire:initialized', setupFinanceMonthFilter);
     })();
 </script>
 @endsection
+
+<x-admin-layout>
+  <livewire:finance.financial-dashboard />
+</x-admin-layout>

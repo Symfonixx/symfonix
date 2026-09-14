@@ -13,9 +13,11 @@
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('use-cases.index') }}" target="_blank">
             <i class="bi bi-box-arrow-up-right me-1"></i>{{ __('project::use_case.actions.view_on_site') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.project-use-cases.create') }}">
-            {{ __('project::use_case.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="project.use_cases.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.project-use-cases.create') }}">
+                {{ __('project::use_case.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 

@@ -125,7 +125,8 @@
         "confirm_remove_employee": "هل تريد إزالة تعيين هذا الموظف؟",
         "expense_logged": "تم ترحيل مصروف المشروع إلى المالية.",
         "expense_description": "مصروف المشروع: :title",
-        "no_review": "لم يُرسل العميل تقييماً لهذا المشروع بعد."
+        "no_review": "لم يُرسل العميل تقييماً لهذا المشروع بعد.",
+        "status_updated": "تم تحديث حالة المشروع."
     },
     "validation": {
         "attachment_pdf_not_allowed": "ملفات PDF غير مسموحة كمرفقات للمشروع.",

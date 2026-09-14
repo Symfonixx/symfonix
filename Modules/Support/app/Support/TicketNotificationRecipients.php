@@ -13,7 +13,7 @@ class TicketNotificationRecipients
      */
     public static function supportAdmins(?User $except = null): Collection
     {
-        return User::permission('Support Management')
+        return User::permission('support.tickets.view')
             ->when($except, fn ($query) => $query->where('id', '!=', $except->id))
             ->get();
     }

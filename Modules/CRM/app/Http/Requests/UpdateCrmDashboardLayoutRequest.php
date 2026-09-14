@@ -23,7 +23,7 @@ class UpdateCrmDashboardLayoutRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('overview.crm_analytics.edit') ?? false;
     }
 
     protected function prepareForValidation(): void

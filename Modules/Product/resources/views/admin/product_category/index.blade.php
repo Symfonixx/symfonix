@@ -13,9 +13,11 @@
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.products.index') }}">
             <i class="bi bi-arrow-left me-1"></i>{{ __('product::category.actions.back_to_products') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.product-categories.create') }}">
-            {{ __('product::category.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="product.categories.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.product-categories.create') }}">
+                {{ __('product::category.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 

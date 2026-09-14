@@ -63,6 +63,8 @@
     "charts": {
         "pipeline_funnel": "Sales-Pipeline-Trichter",
         "pipeline_hint": "Aktuelle Verteilung von Leads und Deals über Pipeline-Stufen.",
+        "open_leads_by_stages": "Offene Leads nach Stufen",
+        "open_leads_by_stages_hint": "Aktive Leads, die sich derzeit in Ihrer Sales-Pipeline befinden.",
         "lead_channels": "Kanäle zur Lead-Akquise",
         "lead_channels_hint": "Woher Ihre Leads im ausgewählten Zeitraum stammen.",
         "deals": "Deals",

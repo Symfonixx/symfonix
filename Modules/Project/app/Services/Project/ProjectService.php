@@ -108,6 +108,34 @@ class ProjectService
         return $updated;
     }
 
+    public function updateStatus(Project $project, int $statusId): Project
+    {
+        $project->loadMissing('status');
+        $previousStatusId = $project->project_status_id;
+
+        if ($previousStatusId === $statusId) {
+            return $project;
+        }
+
+        $fromStatus = $project->status;
+        $project->update(['project_status_id' => $statusId]);
+        $project->load('status');
+        $toStatus = $project->status;
+
+        if ($toStatus instanceof ProjectStatus) {
+            ProjectStatusChanged::dispatch($project, $fromStatus, $toStatus);
+        }
+
+        Log::info('Project status changed', [
+            'project_id' => $project->id,
+            'from_status_id' => $previousStatusId,
+            'to_status_id' => $project->project_status_id,
+            'actor_id' => auth()->id(),
+        ]);
+
+        return $project;
+    }
+
     public function delete(Project $project): ?bool
     {
         $this->deleteAttachments($project);

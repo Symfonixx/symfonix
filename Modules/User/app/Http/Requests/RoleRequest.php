@@ -3,25 +3,26 @@
 namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Modules\User\Support\PermissionCatalog;
 
 class RoleRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
         return [
             'role_name' => 'required|string|min:2',
             'permissions' => 'required|array',
+            'permissions.*' => ['string', Rule::in(PermissionCatalog::allKeys())],
         ];
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return true;
+        $permission = $this->isMethod('PUT') || $this->isMethod('PATCH')
+            ? 'hr.roles.edit'
+            : 'hr.roles.create';
+
+        return $this->user()?->can($permission) ?? false;
     }
 }

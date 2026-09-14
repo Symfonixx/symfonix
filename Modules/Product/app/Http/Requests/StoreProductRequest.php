@@ -5,13 +5,14 @@ namespace Modules\Product\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\CRM\Services\Marketing\ContentMarketingEmailSender;
-use Modules\Product\Models\Product;
+use Modules\Product\Enums\ProductBillingType;
+use Modules\Product\Enums\ProductStatus;
 
 class StoreProductRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Product Management') ?? false;
+        return $this->user()?->can('product.catalog.create') ?? false;
     }
 
     public function rules(): array
@@ -30,13 +31,9 @@ class StoreProductRequest extends FormRequest
             'seo_keywords' => ['nullable', 'string', 'max:255'],
             'price' => ['required', 'numeric', 'min:0'],
             'currency' => ['required', 'string', 'size:3'],
-            'billing_type' => ['required', Rule::in([
-                Product::BILLING_ONE_TIME,
-                Product::BILLING_MONTHLY,
-                Product::BILLING_QUARTERLY,
-                Product::BILLING_YEARLY,
-            ])],
-            'status' => ['required', Rule::in([Product::STATUS_ACTIVE, Product::STATUS_ARCHIVED])],
+            'tax_rate_id' => ['nullable', 'integer', 'exists:tax_rates,id'],
+            'billing_type' => ['required', Rule::in(ProductBillingType::values())],
+            'status' => ['required', Rule::in(ProductStatus::values())],
             'is_featured' => ['nullable', 'boolean'],
             'is_published' => ['nullable', 'boolean'],
             'auto_translate' => ['nullable', 'boolean'],
@@ -61,7 +58,7 @@ class StoreProductRequest extends FormRequest
                 return;
             }
 
-            if (! $this->user()?->can('CRM Management')) {
+            if (! $this->user()?->can('marketing.email.send')) {
                 $validator->errors()->add('send_as_marketing', __('crm::marketing.validation.permission_required'));
             }
         });

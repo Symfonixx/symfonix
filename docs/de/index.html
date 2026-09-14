@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dokumentation der Symfonix Suite — die modulare All-in-one-Plattform für CRM, Personalwesen, Finanzen, CMS und integrierte Geschäftsabläufe.">
+  <meta name="description" content="Dokumentation der Symfonix Suite — die modulare All-in-one-Plattform für CRM, Personalwesen, Finanzen, Steuern, Berichte, CMS und integrierte Geschäftsabläufe.">
   <title>Symfonix Suite — Dokumentation</title>
   <link rel="alternate" hreflang="en" href="../index.html">
   <link rel="alternate" hreflang="ar" href="../ar/index.html">
@@ -94,7 +94,10 @@
               <li><a href="#hr">Personalwesen</a></li>
               <li><a href="#finance">Finanzen</a></li>
               <li><a href="#currency-setup">Mehrwährungssystem einrichten</a></li>
+              <li><a href="#tax">Steuern</a></li>
+              <li><a href="#reporting">Berichte</a></li>
               <li><a href="#cms">Content-Management</a></li>
+              <li><a href="#integrations">APIs &amp; Integrationen</a></li>
             </ul>
           </div>
 
@@ -106,6 +109,7 @@
               <li><a href="#installation">Installation</a></li>
               <li><a href="#module-deployment">Modulbereitstellung</a></li>
               <li><a href="#permissions">Berechtigungen &amp; Rollen</a></li>
+              <li><a href="#testing">Tests</a></li>
               <li><a href="#production">Produktivbereitstellung</a></li>
             </ul>
           </div>
@@ -122,7 +126,7 @@
           <span class="hero-badge">Unternehmensplattform · v1.0</span>
           <h1 id="hero-title">Eine Plattform. Alle Unternehmensfunktionen.</h1>
           <p class="hero-lead">
-            Symfonix Suite ist eine modulare All-in-one-Plattform für die Unternehmensverwaltung. Sie vereint CRM, Personalwesen, Finanzen, CMS und zentrale betriebliche Abläufe in einem einzigen leistungsstarken Ökosystem und beseitigt damit die Integrationsprobleme fragmentierter SaaS-Werkzeuge.
+            Symfonix Suite ist eine modulare All-in-one-Plattform für die Unternehmensverwaltung. Sie vereint CRM, Personalwesen, Finanzen, Steuern, Berichte, CMS und zentrale betriebliche Abläufe in einem einzigen leistungsstarken Ökosystem und beseitigt damit die Integrationsprobleme fragmentierter SaaS-Werkzeuge.
           </p>
           <div class="hero-actions">
             <a href="#getting-started" class="btn btn-primary">Jetzt starten</a>
@@ -131,7 +135,7 @@
           </div>
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-value">13+</div>
+              <div class="stat-value">15</div>
               <div class="stat-label">Geschäftsmodule</div>
             </div>
             <div class="stat-item">
@@ -270,6 +274,8 @@
               <span class="arch-chip">CRM</span>
               <span class="arch-chip">HR / User</span>
               <span class="arch-chip">Finance</span>
+              <span class="arch-chip">Tax</span>
+              <span class="arch-chip">Reporting</span>
               <span class="arch-chip">CMS</span>
               <span class="arch-chip">Project</span>
               <span class="arch-chip">Product</span>
@@ -301,7 +307,7 @@
         <section class="doc-section" id="core-engine">
           <h3>Die Core Engine</h3>
           <p>
-            Die Module <strong>Core</strong> und <strong>Base</strong> bilden die System-Engine. Core stellt den Installationsbefehl (<code>php artisan app:install</code>), gemeinsame Hilfsfunktionen und die Bootstrap-Logik bereit. Base verwaltet globale Einstellungen, Länder, Niederlassungen, SEO-Konfiguration und die Integration des Dateimanagers.
+            Die Module <strong>Core</strong> und <strong>Base</strong> bilden die System-Engine. Core stellt den Installationsbefehl (<code>php artisan app:install</code>), gemeinsame Hilfsfunktionen und die Bootstrap-Logik bereit. Base verwaltet globale Einstellungen, Länder, Niederlassungen, SEO, Backups, den Dateimanager, <code>/humans.txt</code> sowie <strong>APIs &amp; Integrationen</strong> (SMTP und WhatsApp Cloud API). Unter Systemkonfigurationen liegen außerdem Fixer-Zugangsdaten und die ZKTeco-Fingerabdruckgeräte.
           </p>
           <p>Zu den zentralen Aufgaben der Core Engine gehören:</p>
           <ol>
@@ -390,22 +396,32 @@
                 <tr>
                   <td><strong>CRM</strong></td>
                   <td>Vertrieb &amp; Beziehungen</td>
-                  <td>Leads, Abschlüsse, Unternehmen, Pipeline-Phasen, Abonnements, Aktivitäten, Marketing</td>
+                  <td>Leads, Abschlüsse, Unternehmen, Angebote, Pipeline, Abonnements, Aktivitäten, E-Mail-/WhatsApp-Marketing, Prognosen, Dashboard</td>
                 </tr>
                 <tr>
                   <td><strong>User</strong></td>
                   <td>Personalwesen &amp; Zugriff</td>
-                  <td>Benutzer, Mitarbeitende, Rollen, Berechtigungen, Portal-Dashboard</td>
+                  <td>Benutzer, Mitarbeitende, Rollen, Urlaub, Fingerabdruck-Anwesenheit, Kundenportal</td>
                 </tr>
                 <tr>
                   <td><strong>Finance</strong></td>
                   <td>Buchhaltung</td>
-                  <td>Mehrwährungstransaktionen, Gehälter, Provisionen, Ausgaben, Buchungssätze, Rechnungen</td>
+                  <td>Mehrwährungsbuch, Rechnungen, Debitoren, Gehälter, Provisionen, Ausgaben, Buchungssätze</td>
+                </tr>
+                <tr>
+                  <td><strong>Tax</strong></td>
+                  <td>Compliance</td>
+                  <td>Steuersätze, Vor-/Umsatzsteuer-Ledger, Meldungsberichte</td>
+                </tr>
+                <tr>
+                  <td><strong>Reporting</strong></td>
+                  <td>Analytik</td>
+                  <td>Finanz-, Vertriebs-, Marketing-, Betriebs- und Mitarbeiterberichte mit CSV-/PDF-Export</td>
                 </tr>
                 <tr>
                   <td><strong>Cms</strong></td>
                   <td>Inhalte</td>
-                  <td>Seiten, Blogbeiträge, häufig gestellte Fragen, übersetzbare Inhalte</td>
+                  <td>Seiten, Blogbeiträge, häufig gestellte Fragen, Kundenlogos, übersetzbare Inhalte</td>
                 </tr>
                 <tr>
                   <td><strong>Product</strong></td>
@@ -441,12 +457,16 @@
 
             <h4>Zentrale Oberflächen</h4>
             <ul>
-              <li><strong>Lead-Management</strong> — eingehende Leads mit benutzerdefinierten Feldern und Quellenzuordnung erfassen, qualifizieren und konvertieren.</li>
-              <li><strong>Vertriebspipeline</strong> — Pipeline im Kanban-Stil mit konfigurierbaren Phasen (Standard: Lead → Qualifiziert → Angebot → Verhandlung → Gewonnen/Verloren). Phasenwechsel per Drag-and-drop mit Aktivitätsprotokollierung.</li>
-              <li><strong>Unternehmensdaten</strong> — B2B-Kundenverwaltung mit verknüpften Kontakten, Abschlüssen, Projekten und Abonnementhistorie.</li>
+              <li><strong>Lead-Management</strong> — eingehende Leads mit benutzerdefinierten Feldern, Tags und Quellenzuordnung erfassen, qualifizieren und konvertieren.</li>
+              <li><strong>Vertriebspipeline</strong> — Pipeline im Kanban-Stil mit konfigurierbaren Phasen (Standard: Lead → Qualifiziert → Angebot → Verhandlung → Gewonnen/Verloren). Phasenwechsel per Drag-and-drop mit Aktivitätsprotokollierung. Zugewiesene sehen nur eigene Abschlüsse, sofern sie nicht <code>sales.deals.view_all</code> haben.</li>
+              <li><strong>Angebote / Quotes</strong> — Positionen mit Steuer und Rabatt, PDF-Download, Erstellen aus einem Abschluss und öffentlicher Link zum Annehmen oder Ablehnen.</li>
+              <li><strong>Unternehmensdaten</strong> — B2B-Kundenverwaltung mit verknüpften Kontakten, Abschlüssen, Projekten, Angeboten und Abonnementhistorie.</li>
               <li><strong>Aktivitäten &amp; Aufgaben</strong> — Anrufe, Besprechungen und Nachfassaktionen planen und Leads, Abschlüssen oder Unternehmen zuordnen.</li>
               <li><strong>Abonnements</strong> — wiederkehrende Dienstleistungsverträge mit Verlängerungsverfolgung und Finance-Integration für die Rechnungsstellung verwalten.</li>
-              <li><strong>Marketing</strong> — Kampagnenverfolgung und Kontaktformularverwaltung zur Gewinnung eingehender Leads.</li>
+              <li><strong>E-Mail-Marketing</strong> — eingereihte Kampagnen an Abonnenten, Kontakte, Anfragen oder benutzerdefinierte Adressen mit automatischer Deduplizierung.</li>
+              <li><strong>WhatsApp-Marketing</strong> — Meta-Cloud-API-Vorlagenkampagnen an Leads, Kontakte, Abschlüsse, Anfragen oder eigene Nummern. Versand über die Queue, Zustellung je Empfänger protokolliert.</li>
+              <li><strong>Verkaufsprognosen</strong> — wahrscheinlichkeitgewichtete Pipeline-Projektionen nach Phase, Vertriebsmitarbeitenden und erwartetem Abschlussdatum.</li>
+              <li><strong>CRM-Dashboard</strong> — filterbare KPIs, Trichter, Bestenliste und Aktivitätsfeed. Widgets lassen sich ein- und ausblenden sowie umordnen.</li>
               <li><strong>Vertriebsziele</strong> — Team- und Einzelquoten festlegen und anhand der Pipeline-Leistung überwachen.</li>
             </ul>
 
@@ -458,7 +478,7 @@
             <div class="callout callout--tip">
               <span class="callout-icon" aria-hidden="true">💡</span>
               <div class="callout-content">
-                <p>CRM-Berechtigungen sind granular: <code>CRM Management</code> gewährt Vollzugriff, <code>CRM View All</code> dagegen eine schreibgeschützte Sicht auf alle Pipelines — hilfreich für Führungskräfte und funktionsübergreifende Teams.</p>
+                <p>CRM-Zugriff ist granular. Typische Schlüssel: <code>crm.leads.*</code>, <code>sales.deals.view_all</code>, <code>sales.quotes.*</code>, <code>marketing.whatsapp.send</code>, <code>sales.forecasts.view</code>. Legacy-Namen wie <code>CRM Management</code> werden bei der Installation umgeschrieben.</p>
               </div>
             </div>
           </div>
@@ -479,10 +499,12 @@
             <h4>Zentrale Oberflächen</h4>
             <ul>
               <li><strong>Mitarbeiterprofile</strong> — umfassende, mit Benutzerkonten verknüpfte Personaldaten einschließlich Kontaktdaten, Abteilungszuordnung und Beschäftigungsstatus.</li>
-              <li><strong>Rollenbasierte Zugriffskontrolle</strong> — unterstützt durch Spatie Laravel Permission, mit vordefinierten Rollen (Admin) und der Möglichkeit, in der Administration eigene Rollen zu erstellen.</li>
-              <li><strong>Berechtigungsmatrix</strong> — fein abgestufte Berechtigungen je Modul (<code>CRM Management</code>, <code>Hr Management</code>, <code>Finance Management</code> usw.), die jeder Rolle zugewiesen werden können.</li>
-              <li><strong>Portal-Dashboard</strong> — mitarbeiterorientiertes Self-Service-Portal für den Zugriff auf zugewiesene Ressourcen und persönliche Dashboards.</li>
-              <li><strong>Integration des Team-Moduls</strong> — öffentliche Teamprofile für die Unternehmenswebsite, die gemeinsam mit internen Personaldaten verwaltet werden.</li>
+              <li><strong>Rollenbasierte Zugriffskontrolle</strong> — Spatie Laravel Permission mit Katalog <code>group.tab.action</code>. Die Installation legt <strong>Admin</strong> sowie Szenario-Rollen an: HR Manager, Sales Manager, Finance Manager, Project Manager, Operations Manager.</li>
+              <li><strong>Berechtigungsmatrix</strong> — Aktionen je Ressource (view, create, edit, delete sowie send, export, approve, view_all, manage, reply, restore) unter <strong>Benutzerverwaltung → Rollen</strong>.</li>
+              <li><strong>Fingerabdruck-Anwesenheit</strong> — optionale ZKTeco-TCP/IP-Anbindung. Mitarbeiter-IDs entsprechen Geräte-User-IDs. Konfiguration unter <strong>Systemkonfigurationen → Fingerprint</strong>.</li>
+              <li><strong>Urlaub &amp; Recruiting</strong> — Urlaubsanträge, Stellen und Bewerbungen.</li>
+              <li><strong>Portal-Dashboard</strong> — Self-Service für Mitarbeitende sowie ein Kundenportal für Angebote.</li>
+              <li><strong>Integration des Team-Moduls</strong> — öffentliche Teamprofile, die auch in <code>/humans.txt</code> erscheinen.</li>
             </ul>
 
             <h4>Brücke zwischen HR und Finance</h4>
@@ -508,10 +530,12 @@
             <ul>
               <li><strong>Transaktionen</strong> — Echtzeitbuch mit Einnahmen und Ausgaben, Kategorisierung, Filtern und einem Livewire-Dashboard-Widget für die heutigen Transaktionen.</li>
               <li><strong>Buchungssätze</strong> — Unterstützung der doppelten Buchführung für Organisationen mit formalen Buchhaltungsanforderungen.</li>
+              <li><strong>Rechnungen</strong> — aus Abschlüssen erzeugen, PDF, Status gesendet/bezahlt/storniert, Steuerpositionen und Kundenbenachrichtigungen.</li>
+              <li><strong>Debitoren</strong> — offene und überfällige Rechnungen für Dashboard und Berichte.</li>
               <li><strong>Gehälter</strong> — Verwaltung wiederkehrender Lohn- und Gehaltszahlungen, verknüpft mit Personaldaten im User-Modul.</li>
               <li><strong>Provisionen</strong> — Verfolgung von Vertriebsprovisionen, verknüpft mit CRM-Abschlüssen und Vertriebszielen.</li>
-              <li><strong>Ausgaben</strong> — Erfassung betrieblicher Ausgaben mit anpassbaren Ausgabenkategorien.</li>
-              <li><strong>Produktverkäufe</strong> — Umsatzerfassung aus Verkäufen des Product-Katalogs, eingebunden in den umfassenderen Vertriebsprozess für korrekte Berichte.</li>
+              <li><strong>Ausgaben</strong> — Erfassung betrieblicher Ausgaben mit anpassbaren Kategorien und Vorsteuer.</li>
+              <li><strong>Produktverkäufe</strong> — Umsatzerfassung aus Verkäufen des Product-Katalogs.</li>
               <li><strong>Rechnungsbenachrichtigungen</strong> — automatische Kundenbenachrichtigungen beim Versand von Rechnungen über Laravel-Event-Listener.</li>
               <li><strong>Währungskontext</strong> — getrennte Basiswährung der Buchhaltung, Transaktionswährung und sitzungsbezogene Anzeigewährung mit Wechselkurssnapshots zum Buchungszeitpunkt.</li>
             </ul>
@@ -563,6 +587,44 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
           </div>
         </section>
 
+        <section class="doc-section" id="tax">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Compliance</span>
+              <span class="tag tag--neutral">Ledger &amp; Meldung</span>
+            </div>
+            <h3>Steuern</h3>
+            <p>
+              Das Tax-Modul speichert inklusive oder exklusive Sätze (optional je Region), wendet sie auf Rechnungs- und Produktverkaufspositionen an und bucht erhobene <strong>Umsatzsteuer</strong> sowie gezahlte <strong>Vorsteuer</strong> in ein eigenes Ledger. Meldungsberichte fassen die Nettosteuer für einen Zeitraum zusammen und können exportiert werden.
+            </p>
+            <ul>
+              <li><strong>Steuersätze</strong> — Prozentsatz, inklusive/exklusiv, optionaler ISO-Regionscode, Standardsatz für Rechnungen und Abonnements.</li>
+              <li><strong>Steuer-Ledger</strong> — chronologische Ein- und Ausgangseinträge zu Rechnungen, Positionen und Ausgaben.</li>
+              <li><strong>Meldungsbericht</strong> — Periodensumme erhobener versus gezahlter Steuer.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="reporting">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Analytik</span>
+              <span class="tag tag--neutral">CSV- / PDF-Export</span>
+            </div>
+            <h3>Berichte</h3>
+            <p>
+              Das Reporting-Hub liefert abteilungsübergreifende Analysen mit gemeinsamen Zeitraumfiltern und CSV-/PDF-Export. Jede Abteilung hat eigene Berechtigungen (<code>reporting.finance.view</code>, <code>reporting.sales.export</code> usw.).
+            </p>
+            <ul>
+              <li><strong>Finanzen</strong> — Umsatz, Ausgaben, Gewinn, Debitorenalterung, Steuerübersicht.</li>
+              <li><strong>Vertrieb</strong> — Pipeline-Trichter, Gewinn-/Verlusttrend, Mitarbeiterleistung.</li>
+              <li><strong>Marketing</strong> — E-Mail- und WhatsApp-Kampagnenvolumen, Zustellrate, Lead-Quellen.</li>
+              <li><strong>Betrieb</strong> — Tickets, Projekte, Fingerabdruck-Anwesenheit.</li>
+              <li><strong>Mitarbeitende</strong> — Auslastung, zugewiesene Projekte, Gehaltstrend, Einzelprofil.</li>
+            </ul>
+          </div>
+        </section>
+
         <!-- CMS -->
         <section class="doc-section" id="cms">
           <div class="module-block">
@@ -580,6 +642,7 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
               <li><strong>Seiten</strong> — statische Seiten wie Über uns, Leistungen und Kontakt mit Slug-basiertem Routing und übersetzbaren Inhaltsfeldern erstellen und verwalten.</li>
               <li><strong>Blog</strong> — Beiträge mit Kategorien, geschätzter Lesezeit, Titelbildern und SEO-Metadaten veröffentlichen.</li>
               <li><strong>Häufig gestellte Fragen</strong> — strukturierte Verwaltung häufig gestellter Fragen für Support- und Marketingseiten.</li>
+              <li><strong>Unsere Kunden</strong> — Logo-Einträge für die öffentliche Website.</li>
               <li><strong>SEO-Einstellungen</strong> — globale und seitenspezifische SEO-Konfiguration über die SEO-Oberfläche des Base-Moduls, einschließlich Meta-Titeln, Beschreibungen und Open-Graph-Tags.</li>
               <li><strong>Leistungspräsentation</strong> — das Services-Modul erweitert die CMS-Funktionen um Leistungskategorien und Angebotsseiten für Agenturen und Beratungsunternehmen.</li>
             </ul>
@@ -588,6 +651,42 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
             <p>
               Inhalte können über <code>mcamara/laravel-localization</code> und Spatie Translatable in Englisch, Arabisch, Türkisch und Deutsch übersetzt werden. Das Theme der öffentlichen Website unterstützt für arabische Sprachversionen von Haus aus ein Rechts-nach-links-Layout.
             </p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="integrations">
+          <h3>APIs &amp; Integrationen</h3>
+          <p>
+            In der Administration gespeicherte Zugangsdaten überschreiben <code>.env</code>. Leere Felder behalten den Umgebungs-Fallback. Leere Geheimnisfelder behalten den gespeicherten Wert.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Integration</th><th>Konfiguration</th><th>Hinweise</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SMTP / ausgehende E-Mail</td>
+                  <td><strong>APIs &amp; Integrationen → E-Mail</strong></td>
+                  <td>Für Marketing, Rechnungen und Benachrichtigungen. Kampagnen laufen über den Queue-Worker.</td>
+                </tr>
+                <tr>
+                  <td>WhatsApp Cloud API</td>
+                  <td><strong>APIs &amp; Integrationen → WhatsApp</strong></td>
+                  <td>Zugriffstoken und Phone-Number-ID. Vorlagen müssen in Meta genehmigt sein. Standard-Graph-Version: <code>v21.0</code>.</td>
+                </tr>
+                <tr>
+                  <td>Fixer-Wechselkurse</td>
+                  <td><strong>Systemkonfigurationen → Finanzen</strong></td>
+                  <td>Siehe <a href="#currency-setup">Mehrwährungssystem einrichten</a>.</td>
+                </tr>
+                <tr>
+                  <td>ZKTeco-Fingerabdruck</td>
+                  <td><strong>Systemkonfigurationen → Fingerprint</strong></td>
+                  <td>TCP-Port standardmäßig <code>4370</code>. Mitarbeiter-IDs entsprechen Geräte-User-IDs.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -665,7 +764,9 @@ DB_PASSWORD=
 FINANCE_DEFAULT_CURRENCY=USD
 FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
 FIXER_API_KEY=
-FIXER_BASE_URL=https://data.fixer.io/api</code></pre>
+FIXER_BASE_URL=https://data.fixer.io/api
+
+DOCS_ENABLED=true</code></pre>
             </li>
             <li>
               <h4>Abhängigkeiten installieren</h4>
@@ -771,37 +872,46 @@ php artisan queue:work</code></pre>
         <section class="doc-section" id="permissions">
           <h3>Berechtigungen &amp; Rollen</h3>
           <p>
-            Symfonix Suite verwendet <a href="https://github.com/spatie/laravel-permission" target="_blank" rel="noopener noreferrer">Spatie Laravel Permission</a> zur Autorisierung. Berechtigungen werden während <code>app:install</code> erstellt und über die Administrationsoberfläche Rollen zugewiesen.
+            Symfonix Suite verwendet <a href="https://github.com/spatie/laravel-permission" target="_blank" rel="noopener noreferrer">Spatie Laravel Permission</a> zur Autorisierung. Berechtigungen entstehen bei <code>app:install</code> aus einem Katalog von <code>group.tab.action</code>-Schlüsseln (Legacy-Namen wie <code>CRM Management</code> werden auf bestehende Rollen umgeschrieben). Zuweisung unter <strong>Benutzerverwaltung → Rollen</strong>.
           </p>
 
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>Berechtigung</th>
-                  <th>Modul</th>
+                  <th>Gruppe</th>
+                  <th>Beispielschlüssel</th>
                   <th>Umfang</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Settings Management</td><td>Base</td><td>Globale Einstellungen, Niederlassungen, SEO</td></tr>
-                <tr><td>CMS Management</td><td>Cms</td><td>Seiten, Blog, häufig gestellte Fragen</td></tr>
-                <tr><td>Hr Management</td><td>User</td><td>Mitarbeitende, Benutzerkonten</td></tr>
-                <tr><td>CRM Management</td><td>CRM</td><td>Vollständiger Lese- und Schreibzugriff auf das CRM</td></tr>
-                <tr><td>CRM View All</td><td>CRM</td><td>Schreibgeschützter Zugriff auf alle Pipelines</td></tr>
-                <tr><td>Finance Management</td><td>Finance</td><td>Transaktionen, Gehälter, Ausgaben</td></tr>
-                <tr><td>Project Management</td><td>Project</td><td>Projekte und Nachverfolgung der Leistungserbringung</td></tr>
-                <tr><td>Product Management</td><td>Product</td><td>Katalog und Kategorien</td></tr>
-                <tr><td>Services Management</td><td>Services</td><td>Dienstleistungsangebote</td></tr>
-                <tr><td>Support Management</td><td>Support</td><td>Tickets und Abonnenten</td></tr>
-                <tr><td>Sales Management</td><td>CRM / Product</td><td>Vertriebsprozesse</td></tr>
-                <tr><td>App Monitoring</td><td>Core</td><td>Zugriff auf Telescope und Pulse</td></tr>
-                <tr><td>Logs Management</td><td>Base</td><td>Anzeige der Anwendungsprotokolle</td></tr>
+                <tr><td>Overview</td><td><code>overview.dashboard.view</code>, <code>overview.crm_analytics.edit</code></td><td>Admin-Start und CRM-Dashboard-Layout</td></tr>
+                <tr><td>CMS</td><td><code>cms.pages.*</code>, <code>cms.blogs.*</code>, <code>cms.clients.*</code></td><td>Seiten, Blog, FAQ, Kundenlogos, Dateimanager</td></tr>
+                <tr><td>CRM</td><td><code>crm.leads.*</code>, <code>crm.companies.*</code>, <code>crm.activities.*</code></td><td>Leads, Kontakte, Unternehmen, Anfragen, Tags</td></tr>
+                <tr><td>Sales</td><td><code>sales.deals.view_all</code>, <code>sales.quotes.*</code>, <code>sales.forecasts.view</code></td><td>Pipeline, Abschlüsse, Angebote, Abonnements</td></tr>
+                <tr><td>Marketing</td><td><code>marketing.email.send</code>, <code>marketing.whatsapp.send</code></td><td>E-Mail- und WhatsApp-Kampagnen sowie Vorlagen</td></tr>
+                <tr><td>Finance</td><td><code>finance.invoices.*</code>, <code>finance.ar.view</code></td><td>Rechnungen, Debitoren, Gehälter, Provisionen, Ausgaben</td></tr>
+                <tr><td>Tax</td><td><code>tax.rates.*</code>, <code>tax.ledger.view</code>, <code>tax.filing.export</code></td><td>Sätze, Ledger, Meldungsbericht</td></tr>
+                <tr><td>Reporting</td><td><code>reporting.finance.view</code>, <code>reporting.sales.export</code></td><td>Abteilungsberichte und Exporte</td></tr>
+                <tr><td>HR</td><td><code>hr.employees.*</code>, <code>hr.fingerprint.manage</code>, <code>hr.roles.*</code></td><td>Personal, Rollen, Urlaub, Fingerabdruck-Sync</td></tr>
+                <tr><td>Settings</td><td><code>settings.system.*</code>, <code>settings.integrations.*</code></td><td>System, APIs, SEO, Backups</td></tr>
               </tbody>
             </table>
           </div>
 
-          <p>Weisen Sie Rollen in der Administrationsoberfläche unter <strong>Benutzerverwaltung → Rollen</strong> Berechtigungen zu. Die Standardrolle <strong>Admin</strong> erhält bei einer Neuinstallation alle Berechtigungen.</p>
+          <p>Die Rolle <strong>Admin</strong> erhält alle Katalogschlüssel. Zusätzlich werden HR Manager, Sales Manager, Finance Manager, Project Manager und Operations Manager angelegt. Extra-Aktionen: <code>send</code>, <code>export</code>, <code>approve</code>, <code>view_all</code>, <code>manage</code>, <code>reply</code>, <code>restore</code>.</p>
+        </section>
+
+        <section class="doc-section" id="testing">
+          <h3>Tests</h3>
+          <p>
+            Backend-Tests liegen unter <code>tests/Unit</code> und <code>tests/Feature</code> (Finanzen/Steuern, WhatsApp-Marketing, Prognosen, Fingerabdruck, RBAC). Browser-Abdeckung ist Playwright unter <code>tests/e2e</code>. Siehe <code>tests/README.md</code>.
+          </p>
+          <span class="code-label">Terminal</span>
+          <pre><code>php artisan test
+
+# Playwright (laufende App + E2E_BASE_URL, E2E_ADMIN_EMAIL, E2E_ADMIN_PASSWORD)
+npm run test:e2e</code></pre>
         </section>
 
         <section class="doc-section" id="production">
@@ -834,7 +944,7 @@ php artisan view:cache</code></pre>
             </li>
             <li>
               <h4>Hintergrunddienste konfigurieren</h4>
-              <p>Richten Sie über cron einen Queue-Worker und den Scheduler ein. Der Scheduler aktualisiert die Wechselkurse stündlich synchron; manuell eingereihte Abrufe benötigen den Worker.</p>
+              <p>Richten Sie über cron einen Queue-Worker und den Scheduler ein. Der Scheduler aktualisiert die Wechselkurse stündlich synchron. Eingereihte WhatsApp-Kampagnen, Marketing-E-Mails und manuelle Kursabrufe benötigen den Worker.</p>
               <span class="code-label">crontab</span>
               <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
             </li>
@@ -843,7 +953,7 @@ php artisan view:cache</code></pre>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>Checkliste für den Produktivbetrieb:</strong> Stellen Sie sicher, dass <code>APP_DEBUG=false</code> gesetzt ist, beschränken Sie bei Bedarf den Zugriff auf <code>/admin</code>, aktivieren Sie die Zwei-Faktor-Authentifizierung, übertragen Sie <code>.env</code> niemals in die Versionsverwaltung, konfigurieren Sie einen gültigen Fixer-Schlüssel und überwachen Sie den letzten erfolgreichen Kursabruf unter <strong>Systemkonfigurationen → Finanzen</strong>. Gespeicherte Kurse werden nicht automatisch wegen ihres Alters abgelehnt.</p>
+              <p><strong>Checkliste für den Produktivbetrieb:</strong> Stellen Sie sicher, dass <code>APP_DEBUG=false</code> gesetzt ist, beschränken Sie bei Bedarf den Zugriff auf <code>/admin</code>, aktivieren Sie die Zwei-Faktor-Authentifizierung, übertragen Sie <code>.env</code> niemals in die Versionsverwaltung, konfigurieren Sie einen gültigen Fixer-Schlüssel und überwachen Sie den letzten erfolgreichen Kursabruf unter <strong>Systemkonfigurationen → Finanzen</strong>. Gespeicherte Kurse werden nicht automatisch wegen ihres Alters abgelehnt. WhatsApp-Zugangsdaten unter <strong>APIs &amp; Integrationen</strong> setzen. <code>DOCS_ENABLED=false</code>, wenn <code>/docs</code> nicht öffentlich sein soll.</p>
             </div>
           </div>
         </section>

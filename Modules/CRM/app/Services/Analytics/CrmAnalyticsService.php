@@ -12,8 +12,10 @@ use Modules\CRM\Models\CrmAuditLog;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\Lead;
 use Modules\CRM\Models\PipelineStage;
+use Modules\CRM\Services\SalesTarget\SalesTargetService;
 use Modules\CRM\Support\CrmSubjectResolver;
 use Modules\CRM\Support\DateRangeResolver;
+use Modules\Finance\Models\Invoice;
 use Modules\User\Models\Employee;
 
 class CrmAnalyticsService
@@ -36,6 +38,7 @@ class CrmAnalyticsService
             $assigneeId,
         );
         $pipelineFunnel = $this->pipelineFunnel($assigneeId);
+        $openLeadsByStages = $this->openLeadsByStages($assigneeId);
         $leadChannels = $this->leadChannels($range, $assigneeId);
         $teamLeaderboard = $this->teamLeaderboard($range, $assigneeId);
         $recentActivity = $this->recentActivity($assigneeId);
@@ -51,15 +54,16 @@ class CrmAnalyticsService
             ],
             'summary' => $summary,
             'pipeline_funnel' => $pipelineFunnel,
+            'open_leads_by_stages' => $openLeadsByStages,
             'lead_channels' => $leadChannels,
             'team_leaderboard' => $teamLeaderboard,
             'recent_activity' => $recentActivity,
             'top_customers' => $topCustomers,
-            'widgets' => $this->widgetDataMap($summary, $pipelineFunnel, $leadChannels, $teamLeaderboard, $recentActivity, $topCustomers),
+            'widgets' => $this->widgetDataMap($summary, $pipelineFunnel, $openLeadsByStages, $leadChannels, $teamLeaderboard, $recentActivity, $topCustomers),
             'assignees' => $this->assignees(),
-            'chart_colors' => [
+            'chart_colors' => config('reporting.chart_colors', config('crm.chart_colors', [
                 '#3E97FF', '#50CD89', '#FFC700', '#7239EA', '#F1416C', '#181C32', '#A1A5B7',
-            ],
+            ])),
             'currency' => $currency,
         ];
     }
@@ -67,6 +71,7 @@ class CrmAnalyticsService
     private function widgetDataMap(
         array $summary,
         array $pipelineFunnel,
+        array $openLeadsByStages,
         array $leadChannels,
         array $teamLeaderboard,
         array $recentActivity,
@@ -74,6 +79,7 @@ class CrmAnalyticsService
     ): array {
         return array_merge($summary, [
             'pipeline_funnel' => $pipelineFunnel,
+            'open_leads_by_stages' => $openLeadsByStages,
             'lead_channels' => $leadChannels,
             'sales_performance' => $teamLeaderboard,
             'recent_activity' => $recentActivity,
@@ -83,114 +89,40 @@ class CrmAnalyticsService
 
     private function summaryMetrics(array $range, ?int $assigneeId, string $currency): array
     {
-        $totalCustomers = Company::query()->count();
-        $previousCustomers = Company::query()
-            ->where('created_at', '<=', $range['previous_end'])
-            ->count();
-
-        $newCustomers = Company::query()
-            ->whereBetween('created_at', [$range['start'], $range['end']])
-            ->count();
-        $previousNewCustomers = Company::query()
-            ->whereBetween('created_at', [$range['previous_start'], $range['previous_end']])
-            ->count();
-
-        $activeCustomers = Company::query()->where('status', Company::STATUS_ACTIVE)->count();
-        $lostCustomers = Company::query()->where('status', Company::STATUS_DISABLED)->count();
-
-        $currentLeads = $this->leadsQuery($assigneeId)
-            ->whereBetween('created_at', [$range['start'], $range['end']])
-            ->count();
-        $previousLeads = $this->leadsQuery($assigneeId)
-            ->whereBetween('created_at', [$range['previous_start'], $range['previous_end']])
-            ->count();
-
-        $leadsInProgress = $this->leadsQuery($assigneeId)
-            ->whereIn('status', self::IN_PROGRESS_LEAD_STATUSES)
-            ->count();
-
-        $totalLeadsAll = $this->leadsQuery($assigneeId)->count();
-        $convertedToWon = $this->leadsQuery($assigneeId)
-            ->whereNotNull('deal_id')
-            ->whereHas('deal', fn ($q) => $q->where('status', Deal::STATUS_WON))
-            ->count();
-
-        $conversionRate = $totalLeadsAll > 0
-            ? round(($convertedToWon / $totalLeadsAll) * 100, 1)
-            : 0;
-
-        $previousConverted = $this->leadsQuery($assigneeId)
-            ->whereNotNull('deal_id')
-            ->whereHas('deal', fn ($q) => $q
-                ->where('status', Deal::STATUS_WON)
-                ->whereBetween('won_at', [$range['previous_start'], $range['previous_end']]))
-            ->count();
-
-        $currentConverted = $this->leadsQuery($assigneeId)
-            ->whereNotNull('deal_id')
-            ->whereHas('deal', fn ($q) => $q
-                ->where('status', Deal::STATUS_WON)
-                ->whereBetween('won_at', [$range['start'], $range['end']]))
-            ->count();
-
-        $pipelineValue = (float) $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_OPEN)
-            ->sum('value');
-
-        $previousPipelineValue = (float) $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_OPEN)
-            ->where('created_at', '<=', $range['previous_end'])
-            ->sum('value');
-
-        $wonDealsQuery = $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_WON)
-            ->whereBetween('won_at', [$range['start'], $range['end']]);
-
-        $wonDealsCount = (clone $wonDealsQuery)->count();
-        $wonDealsValue = (float) (clone $wonDealsQuery)->sum('value');
-
-        $previousWonCount = $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_WON)
-            ->whereBetween('won_at', [$range['previous_start'], $range['previous_end']])
-            ->count();
-
-        $lostDealsQuery = $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_LOST)
-            ->whereBetween('lost_at', [$range['start'], $range['end']]);
-
-        $lostDealsCount = (clone $lostDealsQuery)->count();
-        $lostDealsValue = (float) (clone $lostDealsQuery)->sum('value');
-
-        $previousLostCount = $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_LOST)
-            ->whereBetween('lost_at', [$range['previous_start'], $range['previous_end']])
-            ->count();
-
-        $totalSales = (float) $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_WON)
-            ->sum('value');
-
-        $monthStart = Carbon::now()->startOfMonth();
-        $monthEnd = Carbon::now()->endOfMonth();
-        $salesThisMonth = (float) $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_WON)
-            ->whereBetween('won_at', [$monthStart, $monthEnd])
-            ->sum('value');
-
-        $previousMonthStart = Carbon::now()->subMonth()->startOfMonth();
-        $previousMonthEnd = Carbon::now()->subMonth()->endOfMonth();
-        $previousSalesThisMonth = (float) $this->dealsQuery($assigneeId)
-            ->where('status', Deal::STATUS_WON)
-            ->whereBetween('won_at', [$previousMonthStart, $previousMonthEnd])
-            ->sum('value');
-
-        $avgDealValue = $wonDealsCount > 0
-            ? round($wonDealsValue / $wonDealsCount, 2)
-            : 0.0;
-
-        $avgCloseTime = $this->averageCloseDays($range, $assigneeId);
-
+        $companies = $this->companyMetricValues($range);
+        $leads = $this->leadMetricValues($range, $assigneeId);
+        $deals = $this->dealMetricValues($range, $assigneeId);
         $invoiceMetrics = $this->invoiceMetrics($currency);
+
+        $totalCustomers = $companies['total'];
+        $previousCustomers = $companies['previous_total'];
+        $newCustomers = $companies['new'];
+        $previousNewCustomers = $companies['previous_new'];
+        $activeCustomers = $companies['active'];
+        $lostCustomers = $companies['lost'];
+
+        $currentLeads = $leads['current'];
+        $previousLeads = $leads['previous'];
+        $leadsInProgress = $leads['in_progress'];
+        $totalLeadsAll = $leads['total'];
+        $convertedToWon = $leads['converted'];
+        $conversionRate = $leads['conversion_rate'];
+        $previousConverted = $leads['previous_converted'];
+        $currentConverted = $leads['current_converted'];
+
+        $pipelineValue = $deals['pipeline'];
+        $previousPipelineValue = $deals['previous_pipeline'];
+        $wonDealsCount = $deals['won_count'];
+        $wonDealsValue = $deals['won_value'];
+        $previousWonCount = $deals['previous_won_count'];
+        $lostDealsCount = $deals['lost_count'];
+        $lostDealsValue = $deals['lost_value'];
+        $previousLostCount = $deals['previous_lost_count'];
+        $totalSales = $deals['total_sales'];
+        $salesThisMonth = $deals['sales_this_month'];
+        $previousSalesThisMonth = $deals['previous_sales_this_month'];
+        $avgDealValue = $deals['avg_deal_value'];
+        $avgCloseTime = $deals['avg_close_time'];
 
         return [
             'total_customers' => [
@@ -206,7 +138,7 @@ class CrmAnalyticsService
                 'trend' => $this->trend($currentLeads, $previousLeads),
             ],
             'total_leads' => [
-                'value' => $currentLeads,
+                'value' => $totalLeadsAll,
                 'trend' => $this->trend($currentLeads, $previousLeads),
             ],
             'leads_in_progress' => [
@@ -270,6 +202,146 @@ class CrmAnalyticsService
         ];
     }
 
+    /**
+     * @return array{total: int, previous_total: int, new: int, previous_new: int, active: int, lost: int}
+     */
+    private function companyMetricValues(array $range): array
+    {
+        return [
+            'total' => Company::query()->count(),
+            'previous_total' => Company::query()->where('created_at', '<=', $range['previous_end'])->count(),
+            'new' => Company::query()->whereBetween('created_at', [$range['start'], $range['end']])->count(),
+            'previous_new' => Company::query()
+                ->whereBetween('created_at', [$range['previous_start'], $range['previous_end']])
+                ->count(),
+            'active' => Company::query()->where('status', Company::STATUS_ACTIVE)->count(),
+            'lost' => Company::query()->where('status', Company::STATUS_DISABLED)->count(),
+        ];
+    }
+
+    /**
+     * @return array{
+     *     current: int,
+     *     previous: int,
+     *     in_progress: int,
+     *     total: int,
+     *     converted: int,
+     *     conversion_rate: float,
+     *     previous_converted: int,
+     *     current_converted: int
+     * }
+     */
+    private function leadMetricValues(array $range, ?int $assigneeId): array
+    {
+        $current = $this->leadsQuery($assigneeId)
+            ->whereBetween('created_at', [$range['start'], $range['end']])
+            ->count();
+        $previous = $this->leadsQuery($assigneeId)
+            ->whereBetween('created_at', [$range['previous_start'], $range['previous_end']])
+            ->count();
+        $total = $this->leadsQuery($assigneeId)->count();
+        $converted = $this->leadsQuery($assigneeId)
+            ->whereNotNull('deal_id')
+            ->whereHas('deal', fn ($q) => $q->where('status', Deal::STATUS_WON))
+            ->count();
+
+        return [
+            'current' => $current,
+            'previous' => $previous,
+            'in_progress' => $this->leadsQuery($assigneeId)
+                ->whereIn('status', self::IN_PROGRESS_LEAD_STATUSES)
+                ->count(),
+            'total' => $total,
+            'converted' => $converted,
+            'conversion_rate' => $total > 0 ? round(($converted / $total) * 100, 1) : 0.0,
+            'previous_converted' => $this->leadsQuery($assigneeId)
+                ->whereNotNull('deal_id')
+                ->whereHas('deal', fn ($q) => $q
+                    ->where('status', Deal::STATUS_WON)
+                    ->whereBetween('won_at', [$range['previous_start'], $range['previous_end']]))
+                ->count(),
+            'current_converted' => $this->leadsQuery($assigneeId)
+                ->whereNotNull('deal_id')
+                ->whereHas('deal', fn ($q) => $q
+                    ->where('status', Deal::STATUS_WON)
+                    ->whereBetween('won_at', [$range['start'], $range['end']]))
+                ->count(),
+        ];
+    }
+
+    /**
+     * @return array{
+     *     pipeline: float,
+     *     previous_pipeline: float,
+     *     won_count: int,
+     *     won_value: float,
+     *     previous_won_count: int,
+     *     lost_count: int,
+     *     lost_value: float,
+     *     previous_lost_count: int,
+     *     total_sales: float,
+     *     sales_this_month: float,
+     *     previous_sales_this_month: float,
+     *     avg_deal_value: float,
+     *     avg_close_time: float
+     * }
+     */
+    private function dealMetricValues(array $range, ?int $assigneeId): array
+    {
+        $won = $this->dealsQuery($assigneeId)
+            ->where('status', Deal::STATUS_WON)
+            ->whereBetween('won_at', [$range['start'], $range['end']])
+            ->selectRaw('COUNT(*) as count, COALESCE(SUM(value), 0) as value')
+            ->first();
+
+        $lost = $this->dealsQuery($assigneeId)
+            ->where('status', Deal::STATUS_LOST)
+            ->whereBetween('lost_at', [$range['start'], $range['end']])
+            ->selectRaw('COUNT(*) as count, COALESCE(SUM(value), 0) as value')
+            ->first();
+
+        $wonCount = (int) ($won->count ?? 0);
+        $wonValue = (float) ($won->value ?? 0);
+
+        return [
+            'pipeline' => (float) $this->dealsQuery($assigneeId)
+                ->where('status', Deal::STATUS_OPEN)
+                ->sum('value'),
+            'previous_pipeline' => (float) $this->dealsQuery($assigneeId)
+                ->where('status', Deal::STATUS_OPEN)
+                ->where('created_at', '<=', $range['previous_end'])
+                ->sum('value'),
+            'won_count' => $wonCount,
+            'won_value' => $wonValue,
+            'previous_won_count' => $this->dealsQuery($assigneeId)
+                ->where('status', Deal::STATUS_WON)
+                ->whereBetween('won_at', [$range['previous_start'], $range['previous_end']])
+                ->count(),
+            'lost_count' => (int) ($lost->count ?? 0),
+            'lost_value' => (float) ($lost->value ?? 0),
+            'previous_lost_count' => $this->dealsQuery($assigneeId)
+                ->where('status', Deal::STATUS_LOST)
+                ->whereBetween('lost_at', [$range['previous_start'], $range['previous_end']])
+                ->count(),
+            'total_sales' => (float) $this->dealsQuery($assigneeId)
+                ->where('status', Deal::STATUS_WON)
+                ->sum('value'),
+            'sales_this_month' => (float) $this->dealsQuery($assigneeId)
+                ->where('status', Deal::STATUS_WON)
+                ->whereBetween('won_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
+                ->sum('value'),
+            'previous_sales_this_month' => (float) $this->dealsQuery($assigneeId)
+                ->where('status', Deal::STATUS_WON)
+                ->whereBetween('won_at', [
+                    Carbon::now()->subMonth()->startOfMonth(),
+                    Carbon::now()->subMonth()->endOfMonth(),
+                ])
+                ->sum('value'),
+            'avg_deal_value' => $wonCount > 0 ? round($wonValue / $wonCount, 2) : 0.0,
+            'avg_close_time' => $this->averageCloseDays($range, $assigneeId),
+        ];
+    }
+
     private function averageCloseDays(array $range, ?int $assigneeId): float
     {
         $driver = DB::connection()->getDriverName();
@@ -293,36 +365,25 @@ class CrmAnalyticsService
         return $avg !== null ? round((float) $avg, 1) : 0.0;
     }
 
+    /**
+     * @return array{outstanding: array<string, mixed>, overdue: array<string, mixed>}
+     */
     private function invoiceMetrics(string $currency): array
     {
-        $empty = [
-            'outstanding' => [
-                'count' => 0,
-                'value' => 0.0,
-                'trend' => 0,
-                'currency' => $currency,
-            ],
-            'overdue' => [
-                'value' => 0.0,
-                'count' => 0,
-                'trend' => 0,
-                'currency' => $currency,
-            ],
-        ];
+        $outstanding = Invoice::query()
+            ->open()
+            ->selectRaw('COUNT(*) as count, COALESCE(SUM(total), 0) as value')
+            ->first();
 
-        if (! class_exists(\Modules\Finance\Models\Invoice::class)) {
-            return $empty;
-        }
+        $overdue = Invoice::query()
+            ->where('status', Invoice::STATUS_OVERDUE)
+            ->selectRaw('COUNT(*) as count, COALESCE(SUM(total), 0) as value')
+            ->first();
 
-        $invoiceClass = \Modules\Finance\Models\Invoice::class;
-
-        $outstandingQuery = $invoiceClass::query()->open();
-        $outstandingCount = (clone $outstandingQuery)->count();
-        $outstandingValue = (float) (clone $outstandingQuery)->sum('total');
-
-        $overdueQuery = $invoiceClass::query()->where('status', $invoiceClass::STATUS_OVERDUE);
-        $overdueCount = (clone $overdueQuery)->count();
-        $overdueValue = (float) (clone $overdueQuery)->sum('total');
+        $outstandingCount = (int) ($outstanding->count ?? 0);
+        $outstandingValue = (float) ($outstanding->value ?? 0);
+        $overdueCount = (int) ($overdue->count ?? 0);
+        $overdueValue = (float) ($overdue->value ?? 0);
 
         return [
             'outstanding' => [
@@ -371,10 +432,15 @@ class CrmAnalyticsService
         $unconvertedLeads = $this->leadsQuery($assigneeId)->whereNull('deal_id')->count();
         $maxCount = max($maxCount, $unconvertedLeads);
 
-        $stageStats = $stages->map(function (PipelineStage $stage) use ($assigneeId, &$maxCount) {
-            $query = $this->dealsQuery($assigneeId)->where('pipeline_stage_id', $stage->id);
-            $count = (clone $query)->count();
-            $value = (float) (clone $query)->sum('value');
+        $aggregates = $this->dealsQuery($assigneeId)
+            ->selectRaw('pipeline_stage_id, COUNT(*) as count, COALESCE(SUM(value), 0) as value')
+            ->groupBy('pipeline_stage_id')
+            ->get()
+            ->keyBy('pipeline_stage_id');
+
+        $stageStats = $stages->map(function (PipelineStage $stage) use ($aggregates, &$maxCount) {
+            $row = $aggregates->get($stage->id);
+            $count = (int) ($row->count ?? 0);
             $maxCount = max($maxCount, $count);
 
             return [
@@ -382,7 +448,7 @@ class CrmAnalyticsService
                 'name' => $stage->name,
                 'color' => $stage->color,
                 'count' => $count,
-                'value' => $value,
+                'value' => (float) ($row->value ?? 0),
                 'is_won' => $stage->is_won,
                 'is_lost' => $stage->is_lost,
             ];
@@ -405,6 +471,29 @@ class CrmAnalyticsService
 
             return $row;
         })->values()->all();
+    }
+
+    private function openLeadsByStages(?int $assigneeId): array
+    {
+        $counts = $this->leadsQuery($assigneeId)
+            ->whereIn('status', self::IN_PROGRESS_LEAD_STATUSES)
+            ->select('status', DB::raw('COUNT(*) as total'))
+            ->groupBy('status')
+            ->pluck('total', 'status');
+
+        $colors = ['#B8EBEB', '#8FD9D9', '#66C7C7'];
+
+        return collect(self::IN_PROGRESS_LEAD_STATUSES)
+            ->values()
+            ->map(function (string $status, int $index) use ($counts, $colors) {
+                return [
+                    'status' => $status,
+                    'name' => __('crm::lead.status.'.$status),
+                    'count' => (int) ($counts[$status] ?? 0),
+                    'color' => $colors[$index] ?? $colors[array_key_last($colors)],
+                ];
+            })
+            ->all();
     }
 
     private function leadChannels(array $range, ?int $assigneeId): array
@@ -443,7 +532,7 @@ class CrmAnalyticsService
             ->get();
 
         $employeeIds = $rows->pluck('assigned_to')->map(fn ($id) => (int) $id)->all();
-        $targets = app(\Modules\CRM\Services\SalesTarget\SalesTargetService::class)->targetsForEmployees($employeeIds);
+        $targets = app(SalesTargetService::class)->targetsForEmployees($employeeIds);
 
         $employees = Employee::query()
             ->whereIn('id', $employeeIds)
@@ -467,10 +556,6 @@ class CrmAnalyticsService
 
     private function recentActivity(?int $assigneeId): array
     {
-        $dealIds = $assigneeId
-            ? $this->dealsQuery($assigneeId)->pluck('id')
-            : null;
-
         $auditQuery = CrmAuditLog::query()
             ->with('user:id,name')
             ->latest('created_at')
@@ -481,7 +566,9 @@ class CrmAnalyticsService
             ->latest()
             ->limit(20);
 
-        if ($assigneeId && $dealIds && $dealIds->isNotEmpty()) {
+        if ($assigneeId) {
+            $dealIds = $this->dealsQuery($assigneeId)->select('id');
+
             $auditQuery->where(function ($q) use ($dealIds) {
                 $q->where('subject_type', Deal::class)->whereIn('subject_id', $dealIds);
             });
@@ -602,10 +689,10 @@ class CrmAnalyticsService
     private function activityIcon(string $type): string
     {
         return match ($type) {
-            'call' => 'telephone',
-            'meeting' => 'people',
-            'task' => 'check2-square',
-            'email' => 'envelope',
+            CrmActivity::TYPE_CALL => 'telephone',
+            CrmActivity::TYPE_MEETING => 'people',
+            CrmActivity::TYPE_TASK => 'check2-square',
+            CrmActivity::TYPE_EMAIL => 'envelope',
             default => 'journal-text',
         };
     }
@@ -613,11 +700,11 @@ class CrmAnalyticsService
     private function activityColor(string $type): string
     {
         return match ($type) {
-            'call' => 'success',
-            'meeting' => 'warning',
-            'task' => 'primary',
-            'email' => 'info',
-            'note' => 'secondary',
+            CrmActivity::TYPE_CALL => 'success',
+            CrmActivity::TYPE_MEETING => 'warning',
+            CrmActivity::TYPE_TASK => 'primary',
+            CrmActivity::TYPE_EMAIL => 'info',
+            CrmActivity::TYPE_NOTE => 'secondary',
             default => 'primary',
         };
     }

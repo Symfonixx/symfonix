@@ -2,10 +2,10 @@
 
 namespace Modules\CRM\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\CRM\Models\Deal;
+use Modules\User\Support\PermissionCatalog;
 
 class StoreDealRequest extends FormRequest
 {
@@ -23,7 +23,7 @@ class StoreDealRequest extends FormRequest
             'source' => ['nullable', 'string', 'max:100'],
             'description' => ['nullable', 'string'],
             'lost_reason' => ['nullable', 'string'],
-            'status' => ['required', Rule::in([Deal::STATUS_OPEN, Deal::STATUS_WON, Deal::STATUS_LOST])],
+            'status' => ['required', Rule::in(Deal::STATUSES)],
             'services' => ['nullable', 'array'],
             'services.*.service_id' => ['nullable', 'integer', 'exists:services,id'],
             'services.*.quantity' => ['nullable', 'integer', 'min:1'],
@@ -33,6 +33,6 @@ class StoreDealRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 }

@@ -5,7 +5,8 @@
     },
     "metrics": {
         "total_outstanding": "إجمالي المستحق",
-        "open_invoices": "الفواتير المفتوحة"
+        "open_invoices": "الفواتير المفتوحة",
+        "open_projects": "مشاريع غير مفوترة"
     },
     "buckets": {
         "current": "حالي",
@@ -16,11 +17,14 @@
     },
     "fields": {
         "invoice_number": "رقم الفاتورة",
+        "project": "المشروع",
         "company": "الشركة",
         "due_at": "تاريخ الاستحقاق",
         "days_overdue": "أيام التأخير",
         "amount": "المبلغ",
+        "remaining": "المتبقي",
         "status": "الحالة"
     },
-    "empty": "لا توجد فواتير مفتوحة."
+    "empty_invoices": "لا توجد فواتير مفتوحة.",
+    "empty_projects": "لا توجد مشاريع بميزانية غير مفوترة."
 }

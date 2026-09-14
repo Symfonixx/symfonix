@@ -13,9 +13,11 @@
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.finance.dashboard') }}">
             <i class="bi bi-arrow-left me-1"></i>{{ __('finance::expense_category.actions.back_to_dashboard') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.finance.expense-categories.create') }}">
-            {{ __('finance::expense_category.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="finance.expense_categories.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.finance.expense-categories.create') }}">
+                {{ __('finance::expense_category.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 

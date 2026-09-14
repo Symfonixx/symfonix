@@ -9,9 +9,11 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::quote.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.quotes.create') }}">
-        <i class="bi bi-plus-lg me-1"></i>{{ __('crm::quote.actions.create') }}
-    </a>
+    <x-can perform="sales.quotes.create">
+        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.quotes.create') }}">
+            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::quote.actions.create') }}
+        </a>
+    </x-can>
 @endsection
 
 <x-admin-layout>

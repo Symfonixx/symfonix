@@ -2,7 +2,6 @@
 
 namespace Modules\CRM\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -21,6 +20,6 @@ class ConvertLeadToDealRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('crm.leads.edit') ?? false;
     }
 }

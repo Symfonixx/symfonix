@@ -8,23 +8,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Modules\CRM\Enums\QuoteStatus;
 use Modules\Project\Models\Project;
 
 class Quote extends Model
 {
     use SoftDeletes;
 
-    public const STATUS_DRAFT = 'draft';
+    public const STATUS_DRAFT = QuoteStatus::DRAFT->value;
 
-    public const STATUS_SENT = 'sent';
+    public const STATUS_SENT = QuoteStatus::SENT->value;
 
-    public const STATUS_ACCEPTED = 'accepted';
+    public const STATUS_ACCEPTED = QuoteStatus::ACCEPTED->value;
 
-    public const STATUS_REJECTED = 'rejected';
+    public const STATUS_REJECTED = QuoteStatus::REJECTED->value;
 
-    public const STATUS_EXPIRED = 'expired';
+    public const STATUS_EXPIRED = QuoteStatus::EXPIRED->value;
 
-    public const STATUS_VOID = 'void';
+    public const STATUS_VOID = QuoteStatus::VOID->value;
 
     public const STATUSES = [
         self::STATUS_DRAFT,

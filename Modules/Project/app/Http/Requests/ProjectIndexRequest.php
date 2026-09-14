@@ -8,7 +8,7 @@ class ProjectIndexRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Project Management') ?? false;
+        return $this->user()?->can('project.projects.view') ?? false;
     }
 
     public function rules(): array

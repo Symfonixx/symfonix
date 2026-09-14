@@ -1104,6 +1104,70 @@
     transition: width 0.6s ease;
 }
 
+.crm-open-leads-funnel {
+    display: flex;
+    flex-direction: column;
+}
+
+.crm-open-leads-funnel__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(7rem, 42%);
+    align-items: stretch;
+    min-height: 4.75rem;
+    border-bottom: 1px solid var(--bs-gray-200);
+}
+
+.crm-open-leads-funnel__row:last-child {
+    border-bottom: 0;
+}
+
+.crm-open-leads-funnel__meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.85rem 0;
+}
+
+.crm-open-leads-funnel__count {
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--bs-gray-900);
+}
+
+.crm-open-leads-funnel__name {
+    font-size: 0.875rem;
+    color: var(--bs-gray-600);
+    margin-top: 0.1rem;
+}
+
+.crm-open-leads-funnel__track {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0;
+}
+
+.crm-open-leads-funnel__seg {
+    flex: 1;
+    background: var(--seg-color);
+    transition: opacity 0.2s ease;
+}
+
+.crm-open-leads-funnel__seg--first {
+    width: 100%;
+    clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+}
+
+.crm-open-leads-funnel__seg--rest {
+    width: 72%;
+    max-width: 72%;
+}
+
+.crm-open-leads-funnel__seg:hover {
+    opacity: 0.88;
+}
+
 .crm-channel-item {
     display: flex;
     align-items: center;

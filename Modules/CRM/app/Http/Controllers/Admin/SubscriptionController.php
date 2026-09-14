@@ -66,8 +66,8 @@ class SubscriptionController extends Controller
             'service:id,title',
             'services:id,title',
             'invoices',
-            'crmActivities.user:id,name',
-            'crmAuditLogs.user:id,name',
+            'crmActivities' => fn ($q) => $q->with('user:id,name')->latest()->limit(50),
+            'crmAuditLogs' => fn ($q) => $q->with('user:id,name')->latest('created_at')->limit(50),
         ]);
 
         return view('crm::admin.subscription.show', compact('subscription'));

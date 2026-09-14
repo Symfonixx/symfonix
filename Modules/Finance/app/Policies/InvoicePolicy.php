@@ -9,7 +9,7 @@ class InvoicePolicy
 {
     public function viewAny(User $user): bool
     {
-        return $user->can('Finance Management');
+        return $user->can('finance.invoices.view');
     }
 
     public function view(User $user, Invoice $invoice): bool
@@ -18,22 +18,22 @@ class InvoicePolicy
             return true;
         }
 
-        return $user->can('Finance Management');
+        return $user->can('finance.invoices.view');
     }
 
     public function create(User $user): bool
     {
-        return $user->can('Finance Management');
+        return $user->can('finance.invoices.create');
     }
 
     public function update(User $user, Invoice $invoice): bool
     {
-        return $user->can('Finance Management');
+        return $user->can('finance.invoices.edit');
     }
 
     public function delete(User $user, Invoice $invoice): bool
     {
-        return $user->can('Finance Management');
+        return $user->can('finance.invoices.delete');
     }
 
     private function customerCanView(User $user, Invoice $invoice): bool

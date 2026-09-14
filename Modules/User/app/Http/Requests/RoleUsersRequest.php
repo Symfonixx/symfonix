@@ -22,6 +22,6 @@ class RoleUsersRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()?->can('hr.roles.edit') ?? false;
     }
 }

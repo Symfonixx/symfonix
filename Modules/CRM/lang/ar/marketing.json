@@ -13,6 +13,14 @@
         "back_to_list": "العودة إلى التسويق",
         "view": "عرض"
     },
+    "tabs": {
+        "emails": "رسائل البريد",
+        "whatsapp": "رسائل واتساب"
+    },
+    "channels": {
+        "email": "بريد",
+        "whatsapp": "واتساب"
+    },
     "fields": {
         "subject": "الموضوع",
         "body": "الرسالة",
@@ -33,7 +41,8 @@
         "send_as_marketing": "إرسال كبريد تسويقي",
         "marketing_audience": "الإرسال إلى",
         "all_audiences": "الجميع",
-        "status": "الحالة"
+        "status": "الحالة",
+        "channel": "القناة"
     },
     "status": {
         "pending": "قيد الانتظار",

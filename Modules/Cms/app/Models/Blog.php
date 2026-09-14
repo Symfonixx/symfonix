@@ -2,8 +2,11 @@
 
 namespace Modules\Cms\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
+use Modules\Cms\Enums\CmsStatus;
 use Spatie\Translatable\HasTranslations;
 
 class Blog extends Model
@@ -16,17 +19,17 @@ class Blog extends Model
 
     protected $fillable = ['title', 'slug', 'category_id', 'description', 'content', 'image', 'status', 'keywords', 'featured', 'visits'];
 
-    public function scopeFeatured($q)
+    public function scopeFeatured(Builder $q): Builder
     {
-        $q->where('status', 'Published')->where('featured', 1);
+        return $q->where('status', CmsStatus::PUBLISHED->value)->where('featured', 1);
     }
 
-    public function scopePublished($q)
+    public function scopePublished(Builder $q): Builder
     {
-        $q->where('status', 'Published');
+        return $q->where('status', CmsStatus::PUBLISHED->value);
     }
 
-    public function getImageLinkAttribute()
+    public function getImageLinkAttribute(): string
     {
         if ($this->attributes['image']) {
             $imagePath = $this->attributes['image'];
@@ -44,7 +47,7 @@ class Blog extends Model
         return $path;
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class, 'category_id');
     }

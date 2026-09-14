@@ -16,6 +16,9 @@ use Modules\Finance\Models\InvoiceLine;
 use Modules\Finance\Models\SubscriptionBilling;
 use Modules\Product\Models\ProductSale;
 use Modules\Project\Models\Project;
+use Modules\Tax\Models\TaxRate;
+use Modules\Tax\Services\TaxCalculationService;
+use Modules\Tax\Services\TaxLedgerService;
 use Symfony\Component\HttpFoundation\Response;
 
 class InvoiceService
@@ -24,6 +27,8 @@ class InvoiceService
         private readonly FinanceService $financeService,
         private readonly SubscriptionService $subscriptionService,
         private readonly CurrencyService $currencyService,
+        private readonly TaxCalculationService $taxCalculationService,
+        private readonly TaxLedgerService $taxLedgerService,
     ) {}
 
     public function paginate(array $filters = []): LengthAwarePaginator
@@ -47,9 +52,19 @@ class InvoiceService
     {
         return DB::transaction(function () use ($data) {
             $lines = $data['lines'] ?? [];
-            $subtotal = $this->sumLineAmounts($lines);
-            $taxAmount = (float) ($data['tax_amount'] ?? 0);
-            $total = round($subtotal + $taxAmount, 2);
+            $headerTaxRate = ! empty($data['tax_rate_id'])
+                ? TaxRate::query()->active()->find((int) $data['tax_rate_id'])
+                : null;
+
+            $calculated = $this->taxCalculationService->calculateDocument($lines, $headerTaxRate);
+            $lines = $calculated['lines'];
+            $subtotal = $calculated['subtotal'];
+            $taxAmount = $calculated['tax_amount'] > 0
+                ? $calculated['tax_amount']
+                : (float) ($data['tax_amount'] ?? 0);
+            $total = $calculated['tax_amount'] > 0
+                ? $calculated['total']
+                : round($subtotal + $taxAmount, 2);
             $issuedAt = $data['issued_at'] ?? now()->toDateString();
             $paymentTerms = (int) config('finance.invoice_payment_terms_days', 30);
 
@@ -85,6 +100,17 @@ class InvoiceService
         $data['company_id'] = $project->company_id;
         $data['project_id'] = $project->id;
         $data['deal_id'] = $data['deal_id'] ?? $project->deal_id;
+
+        if ($project->tax_rate_id) {
+            $data['tax_rate_id'] = $data['tax_rate_id'] ?? $project->tax_rate_id;
+            $data['lines'] = collect($data['lines'] ?? [])->map(function (array $line) use ($data, $project) {
+                if (empty($line['tax_rate_id'])) {
+                    $line['tax_rate_id'] = $data['tax_rate_id'] ?? $project->tax_rate_id;
+                }
+
+                return $line;
+            })->all();
+        }
 
         if (! isset($data['currency'])) {
             $data['currency'] = $project->currency
@@ -122,6 +148,8 @@ class InvoiceService
 
         $invoice = DB::transaction(function () use ($subscription, $billingDate) {
             $amount = (float) $subscription->amount;
+            $defaultRate = TaxRate::resolveDefault();
+            $lineAmounts = $this->taxCalculationService->calculateLine(1, $amount, $defaultRate);
             $issuedAt = now()->toDateString();
             $paymentTerms = (int) config('finance.invoice_payment_terms_days', 30);
 
@@ -130,9 +158,9 @@ class InvoiceService
                 'company_id' => $subscription->company_id,
                 'subscription_id' => $subscription->id,
                 'status' => Invoice::STATUS_SENT,
-                'subtotal' => $amount,
-                'tax_amount' => 0,
-                'total' => $amount,
+                'subtotal' => $lineAmounts['subtotal'],
+                'tax_amount' => $lineAmounts['tax_amount'],
+                'total' => $lineAmounts['amount'],
                 'currency' => $subscription->currency ?? $this->currencyService->defaultCurrency(),
                 'issued_at' => $issuedAt,
                 'due_at' => Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
@@ -148,7 +176,10 @@ class InvoiceService
                 'description' => $subscription->name,
                 'quantity' => 1,
                 'unit_price' => $amount,
-                'amount' => $amount,
+                'tax_rate_id' => $defaultRate?->id,
+                'tax_percent' => $lineAmounts['tax_percent'],
+                'tax_amount' => $lineAmounts['tax_amount'],
+                'amount' => $lineAmounts['amount'],
                 'sort_order' => 0,
             ]);
 
@@ -161,7 +192,7 @@ class InvoiceService
             return $invoice->load('lines', 'company');
         });
 
-        InvoiceSentToCustomer::dispatch($invoice->fresh(['company', 'project']));
+        InvoiceSentToCustomer::dispatch($invoice->fresh(['company', 'project', 'subscription']));
 
         return $invoice;
     }
@@ -199,6 +230,8 @@ class InvoiceService
 
         $invoice = DB::transaction(function () use ($subscription, $billingDate) {
             $amount = (float) $subscription->amount;
+            $defaultRate = TaxRate::resolveDefault();
+            $lineAmounts = $this->taxCalculationService->calculateLine(1, $amount, $defaultRate);
             $issuedAt = $billingDate;
             $paymentTerms = (int) config('finance.invoice_payment_terms_days', 30);
 
@@ -207,9 +240,9 @@ class InvoiceService
                 'company_id' => $subscription->company_id,
                 'subscription_id' => $subscription->id,
                 'status' => Invoice::STATUS_SENT,
-                'subtotal' => $amount,
-                'tax_amount' => 0,
-                'total' => $amount,
+                'subtotal' => $lineAmounts['subtotal'],
+                'tax_amount' => $lineAmounts['tax_amount'],
+                'total' => $lineAmounts['amount'],
                 'currency' => $subscription->currency ?? $this->currencyService->defaultCurrency(),
                 'issued_at' => $issuedAt,
                 'due_at' => Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
@@ -225,7 +258,10 @@ class InvoiceService
                 'description' => $subscription->name,
                 'quantity' => 1,
                 'unit_price' => $amount,
-                'amount' => $amount,
+                'tax_rate_id' => $defaultRate?->id,
+                'tax_percent' => $lineAmounts['tax_percent'],
+                'tax_amount' => $lineAmounts['tax_amount'],
+                'amount' => $lineAmounts['amount'],
                 'sort_order' => 0,
             ]);
 
@@ -240,7 +276,7 @@ class InvoiceService
             return $invoice->load('lines', 'company');
         });
 
-        InvoiceSentToCustomer::dispatch($invoice->fresh(['company', 'project']));
+        InvoiceSentToCustomer::dispatch($invoice->fresh(['company', 'project', 'subscription']));
 
         return $invoice;
     }
@@ -323,14 +359,21 @@ class InvoiceService
         $invoice = DB::transaction(function () use ($sale) {
             $issuedAt = $sale->sold_at?->toDateString() ?? now()->toDateString();
             $paymentTerms = (int) config('finance.invoice_payment_terms_days', 30);
-            $amount = (float) $sale->total_amount;
+            $taxAmount = (float) $sale->tax_amount;
+            $total = (float) $sale->total_amount;
+            $subtotal = round($total - $taxAmount, 2);
+
+            $sale->loadMissing('taxRate');
 
             $lines = [[
                 'product_id' => $sale->product_id,
                 'description' => $sale->product->name,
                 'quantity' => $sale->quantity,
                 'unit_price' => (float) $sale->unit_price,
-                'amount' => $amount,
+                'tax_rate_id' => $sale->tax_rate_id,
+                'tax_percent' => $sale->taxRate ? (float) $sale->taxRate->percentage : 0,
+                'tax_amount' => $taxAmount,
+                'amount' => $total,
                 'sort_order' => 0,
             ]];
 
@@ -339,9 +382,9 @@ class InvoiceService
                 'company_id' => $sale->company_id,
                 'deal_id' => $sale->deal_id,
                 'status' => Invoice::STATUS_SENT,
-                'subtotal' => $amount,
-                'tax_amount' => 0,
-                'total' => $amount,
+                'subtotal' => $subtotal,
+                'tax_amount' => $taxAmount,
+                'total' => $total,
                 'currency' => $sale->currency ?? $this->currencyService->defaultCurrency(),
                 'issued_at' => $issuedAt,
                 'due_at' => Carbon::parse($issuedAt)->addDays($paymentTerms)->toDateString(),
@@ -414,6 +457,8 @@ class InvoiceService
         $projectId = $invoice->project_id;
 
         $invoice->update(['status' => Invoice::STATUS_VOID]);
+
+        $this->taxLedgerService->reverseForSource(Invoice::class, $invoice->id);
 
         if ($projectId) {
             $this->financeService->updateProjectPaymentStatus($projectId);
@@ -503,24 +548,34 @@ class InvoiceService
     {
         $invoice->lines()->delete();
 
-        foreach ($lines as $index => $line) {
+        if ($lines === []) {
+            return;
+        }
+
+        $now = now();
+        InvoiceLine::query()->insert(array_map(function (array $line, int $index) use ($invoice, $now) {
             $quantity = (int) ($line['quantity'] ?? 1);
             $unitPrice = (float) ($line['unit_price'] ?? 0);
             $amount = array_key_exists('amount', $line)
                 ? (float) $line['amount']
                 : round($quantity * $unitPrice, 2);
 
-            InvoiceLine::query()->create([
+            return [
                 'invoice_id' => $invoice->id,
                 'service_id' => $line['service_id'] ?? null,
                 'product_id' => $line['product_id'] ?? null,
                 'description' => $line['description'],
                 'quantity' => $quantity,
                 'unit_price' => $unitPrice,
+                'tax_rate_id' => $line['tax_rate_id'] ?? null,
+                'tax_percent' => (float) ($line['tax_percent'] ?? 0),
+                'tax_amount' => (float) ($line['tax_amount'] ?? 0),
                 'amount' => $amount,
                 'sort_order' => $line['sort_order'] ?? $index,
-            ]);
-        }
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }, $lines, array_keys($lines)));
     }
 
     private function sumLineAmounts(array $lines): float

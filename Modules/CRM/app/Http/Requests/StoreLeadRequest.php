@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\CRM\Models\Lead;
 use Modules\CRM\Models\LeadCustomField;
+use Modules\User\Support\PermissionCatalog;
 
 class StoreLeadRequest extends FormRequest
 {
@@ -41,7 +42,7 @@ class StoreLeadRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 
     public function messages(): array
@@ -53,21 +54,30 @@ class StoreLeadRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
+        $this->mergeLeadPayload(defaultStatus: true);
+    }
+
+    protected function mergeLeadPayload(bool $defaultStatus = false): void
+    {
         $customFields = $this->input('custom_fields', []);
 
         foreach (LeadCustomField::query()->active()->where('type', LeadCustomField::TYPE_CHECKBOX)->get() as $field) {
             $customFields[$field->key] = $this->boolean('custom_fields.'.$field->key);
         }
 
-        $this->merge([
+        $payload = [
             'company_id' => $this->filled('company_id') ? $this->input('company_id') : null,
             'assigned_to' => $this->filled('assigned_to') ? $this->input('assigned_to') : null,
-            'status' => $this->input('status') ?: Lead::STATUS_NEW,
             'blocked' => $this->boolean('blocked'),
             'tag_ids' => $this->input('tag_ids', []),
             'custom_fields' => $customFields,
-            // Legacy single column mirrors the first selected service.
             'service_id' => $this->input('service_ids.0') ?: ($this->input('service_id') ?: null),
-        ]);
+        ];
+
+        if ($defaultStatus) {
+            $payload['status'] = $this->input('status') ?: Lead::STATUS_NEW;
+        }
+
+        $this->merge($payload);
     }
 }

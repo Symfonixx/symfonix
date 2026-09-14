@@ -21,7 +21,8 @@
             "Modules\\User\\Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/auth.php"
+            "app/Helpers/auth.php",
+            "app/Helpers/permissions.php"
         ]
     },
     "autoload-dev": {

@@ -2,7 +2,9 @@
 
 namespace Modules\Cms\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Cms\Enums\CmsStatus;
 use Spatie\Translatable\HasTranslations;
 
 class Page extends Model
@@ -28,17 +30,17 @@ class Page extends Model
         'visits',
     ];
 
-    public function scopeFeatured($q)
+    public function scopeFeatured(Builder $q): Builder
     {
-        $q->where('status', 'Published')->where('featured', 1);
+        return $q->where('status', CmsStatus::PUBLISHED->value)->where('featured', 1);
     }
 
-    public function scopePublished($q)
+    public function scopePublished(Builder $q): Builder
     {
-        $q->where('status', 'Published');
+        return $q->where('status', CmsStatus::PUBLISHED->value);
     }
 
-    public function getImageLinkAttribute()
+    public function getImageLinkAttribute(): string
     {
         if ($this->attributes['image']) {
             $path = asset('storage/'.$this->attributes['image']);

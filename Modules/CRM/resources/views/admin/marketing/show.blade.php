@@ -53,11 +53,7 @@
                 <h2 class="fw-bold mb-1">{!! $campaign->subject !!}</h2>
                 @php
                     $status = $campaign->status ?? 'pending';
-                    $statusBadge = match ($status) {
-                        'finished' => 'badge-light-success',
-                        'failed' => 'badge-light-danger',
-                        default => 'badge-light-warning',
-                    };
+                    $statusBadge = $campaign::statusBadgeClass($status);
                 @endphp
                 <span class="text-muted fs-7">
                     <span class="badge {{ $statusBadge }} me-1">{{ __('crm::marketing.status.'.$status) }}</span>

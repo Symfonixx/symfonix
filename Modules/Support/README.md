@@ -1,11 +1,9 @@
 # Support Module
 
-The **Support** module offers auxiliary features and utilities that enhance the application's capabilities.
-It may include additional helpers, traits, or integrations that support the main business logic.
+Customer care: tickets, newsletter subscribers, and visitor analytics.
 
 **Contents:**
 
-- Support services and helpers
-- Utility traits
-- Integration points
-- Additional resources 
+- Support tickets and categories
+- Newsletter subscribers
+- Visitor tracking integration

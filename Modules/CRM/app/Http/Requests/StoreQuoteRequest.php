@@ -10,7 +10,7 @@ class StoreQuoteRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('sales.quotes.create') ?? false;
     }
 
     protected function prepareForValidation(): void

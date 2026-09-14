@@ -96,6 +96,8 @@
                 @include('crm::admin.dashboard.widgets._sales_performance', ['widget' => $widget, 'analytics' => $analytics])
             @elseif($widget['id'] === 'pipeline_funnel')
                 @include('crm::admin.dashboard.widgets._pipeline_funnel', ['widget' => $widget, 'analytics' => $analytics])
+            @elseif($widget['id'] === 'open_leads_by_stages')
+                @include('crm::admin.dashboard.widgets._open_leads_by_stages', ['widget' => $widget, 'analytics' => $analytics])
             @elseif($widget['id'] === 'lead_channels')
                 @include('crm::admin.dashboard.widgets._lead_channels', ['widget' => $widget, 'analytics' => $analytics])
             @elseif($widget['id'] === 'recent_activity')
@@ -124,6 +126,7 @@
                                 'top_customers' => __('crm::dashboard.widgets.top_customers'),
                                 'sales_performance' => __('crm::dashboard.leaderboard.title'),
                                 'pipeline_funnel' => __('crm::dashboard.charts.pipeline_funnel'),
+                                'open_leads_by_stages' => __('crm::dashboard.charts.open_leads_by_stages'),
                                 'lead_channels' => __('crm::dashboard.charts.lead_channels'),
                                 'recent_activity' => __('crm::dashboard.activity.title'),
                                 default => $widget['id'],

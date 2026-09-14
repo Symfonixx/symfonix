@@ -12,6 +12,6 @@ class TestimonialNotificationRecipients
      */
     public static function testimonialAdmins(): Collection
     {
-        return User::permission('Testimonials Management')->get();
+        return User::permission('cms.testimonials.view')->get();
     }
 }

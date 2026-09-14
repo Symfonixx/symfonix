@@ -9,9 +9,11 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('support::ticket.category.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{ route('admin.ticket_categories.create') }}" class="btn btn-sm fw-bold btn-primary">
-            {{ __('support::ticket.category.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="support.ticket_categories.create">
+            <a href="{{ route('admin.ticket_categories.create') }}" class="btn btn-sm fw-bold btn-primary">
+                {{ __('support::ticket.category.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 

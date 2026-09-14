@@ -9,10 +9,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
+use Modules\CRM\Models\Quote;
 use Modules\Finance\Models\Invoice;
 use Modules\Finance\Models\JournalEntry;
+use Modules\Finance\Services\CurrencyService;
+use Modules\Services\Models\Service;
+use Modules\Tax\Models\TaxRate;
 use Modules\Testimonial\Models\Testimonial;
 use Modules\User\Models\Employee;
 
@@ -32,6 +37,7 @@ class Project extends Model
         'deal_id',
         'budget',
         'currency',
+        'tax_rate_id',
         'budget_exchange_rate',
         'payment_status',
         'start_date',
@@ -81,6 +87,11 @@ class Project extends Model
         return $this->belongsTo(Company::class);
     }
 
+    public function taxRate(): BelongsTo
+    {
+        return $this->belongsTo(TaxRate::class);
+    }
+
     public function deal(): BelongsTo
     {
         return $this->belongsTo(Deal::class);
@@ -88,12 +99,12 @@ class Project extends Model
 
     public function quote(): HasOne
     {
-        return $this->hasOne(\Modules\CRM\Models\Quote::class);
+        return $this->hasOne(Quote::class);
     }
 
     public function services(): BelongsToMany
     {
-        return $this->belongsToMany(\Modules\Services\Models\Service::class, 'project_service')
+        return $this->belongsToMany(Service::class, 'project_service')
             ->withTimestamps();
     }
 
@@ -150,13 +161,13 @@ class Project extends Model
         return ! $this->testimonial()->exists();
     }
 
-    public function journalEntries(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function journalEntries(): MorphMany
     {
         return $this->morphMany(JournalEntry::class, 'reference');
     }
 
     /** @deprecated Use journalEntries() */
-    public function transactions(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function transactions(): MorphMany
     {
         return $this->journalEntries();
     }
@@ -182,7 +193,7 @@ class Project extends Model
         }
 
         $currency = strtoupper((string) ($deal->currency
-            ?? app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency()));
+            ?? app(CurrencyService::class)->defaultCurrency()));
 
         $project = static::create([
             'title' => $deal->title,
@@ -192,7 +203,7 @@ class Project extends Model
             'deal_id' => $deal->id,
             'budget' => $deal->value,
             'currency' => $currency,
-            'budget_exchange_rate' => app(\Modules\Finance\Services\CurrencyService::class)
+            'budget_exchange_rate' => app(CurrencyService::class)
                 ->snapshotRateToBase($currency),
             'start_date' => now()->toDateString(),
             'due_date' => $deal->expected_close_date,

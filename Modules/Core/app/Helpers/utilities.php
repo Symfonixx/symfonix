@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Log;
+use Modules\Core\Services\GoogleTranslationService;
 use Stichoza\GoogleTranslate\Exceptions\LargeTextException;
 use Stichoza\GoogleTranslate\Exceptions\RateLimitException;
 use Stichoza\GoogleTranslate\Exceptions\TranslationRequestException;
-use Stichoza\GoogleTranslate\GoogleTranslate;
 
 if (! function_exists('autoGoogleTranslator')) {
     /**
@@ -12,11 +12,9 @@ if (! function_exists('autoGoogleTranslator')) {
      * @throws RateLimitException
      * @throws TranslationRequestException
      */
-    function autoGoogleTranslator(string $targetLang, string $content)
+    function autoGoogleTranslator(string $targetLang, string $content): string
     {
-        $translator = new GoogleTranslate;
-
-        return $translator->setTarget($targetLang)->translate($content);
+        return app(GoogleTranslationService::class)->translate($targetLang, $content);
     }
 
 }
@@ -79,8 +77,11 @@ if (! function_exists('buildFieldTranslations')) {
 
                 try {
                     $translations[$lang] = autoGoogleTranslator($lang, $value);
-                } catch (Exception $e) {
-                    Log::error($e->getMessage());
+                } catch (Throwable $e) {
+                    Log::warning('Auto-translate failed, keeping existing or source value.', [
+                        'locale' => $lang,
+                        'error' => $e->getMessage(),
+                    ]);
                     $translations[$lang] = $existing[$lang] ?? $value;
                 }
             }

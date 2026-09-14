@@ -5,9 +5,11 @@
         ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
         ['label' => __('Job Positions')],
     ]"/>
-    <a href="{{ route('admin.job-positions.create') }}" class="btn btn-sm fw-bold btn-primary">
-        {{ __('Add Job Position') }} <i class="bi bi-plus-lg mx-1"></i>
-    </a>
+    <x-can perform="hr.job_positions.create">
+        <a href="{{ route('admin.job-positions.create') }}" class="btn btn-sm fw-bold btn-primary">
+            {{ __('Add Job Position') }} <i class="bi bi-plus-lg mx-1"></i>
+        </a>
+    </x-can>
 @endsection
 
 <x-admin-layout>

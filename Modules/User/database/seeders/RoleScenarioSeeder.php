@@ -3,6 +3,7 @@
 namespace Modules\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\User\Support\PermissionCatalog;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
@@ -17,26 +18,27 @@ class RoleScenarioSeeder extends Seeder
         app(PermissionRegistrar::class)->forgetCachedPermissions();
 
         $roles = [
-            'HR Manager' => [
-                'Hr Management',
-            ],
-            'Sales Manager' => [
+            'HR Manager' => PermissionCatalog::keysForLegacyRole(['Hr Management']),
+            'Sales Manager' => PermissionCatalog::keysForLegacyRole([
                 'CRM Management',
                 'CRM View All',
                 'Sales Management',
-            ],
-            'Finance Manager' => [
+                'Reporting Management',
+            ]),
+            'Finance Manager' => PermissionCatalog::keysForLegacyRole([
                 'Finance Management',
-            ],
-            'Project Manager' => [
-                'Project Management',
-            ],
-            'Operations Manager' => [
+                'Tax Management',
+                'Reporting Management',
+            ]),
+            'Project Manager' => PermissionCatalog::keysForLegacyRole(['Project Management']),
+            'Operations Manager' => PermissionCatalog::keysForLegacyRole([
                 'Hr Management',
                 'CRM Management',
                 'Project Management',
                 'Finance Management',
-            ],
+                'Tax Management',
+                'Reporting Management',
+            ]),
         ];
 
         foreach ($roles as $roleName => $permissions) {

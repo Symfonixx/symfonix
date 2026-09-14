@@ -67,8 +67,8 @@ class CompanyController extends Controller
                 ->limit(20),
             'contactForms' => fn ($query) => $query->latest()->limit(10),
             'subscriptions' => fn ($query) => $query->latest(),
-            'crmActivities.user:id,name',
-            'crmAuditLogs.user:id,name',
+            'crmActivities' => fn ($q) => $q->with('user:id,name')->latest()->limit(50),
+            'crmAuditLogs' => fn ($q) => $q->with('user:id,name')->latest('created_at')->limit(50),
         ]);
 
         return view('crm::admin.company.show', compact('company'));

@@ -13,7 +13,7 @@ class TicketPolicy
             return true;
         }
 
-        return $user->can('Support Management');
+        return $user->can('support.tickets.view');
     }
 
     public function view(User $user, Ticket $ticket): bool
@@ -22,7 +22,7 @@ class TicketPolicy
             return $ticket->user_id === $user->id;
         }
 
-        return $user->can('Support Management');
+        return $user->can('support.tickets.view');
     }
 
     public function create(User $user): bool
@@ -40,7 +40,7 @@ class TicketPolicy
             return $ticket->user_id === $user->id;
         }
 
-        return $user->can('Support Management');
+        return $user->can('support.tickets.reply');
     }
 
     public function close(User $user, Ticket $ticket): bool
@@ -53,11 +53,11 @@ class TicketPolicy
             return $ticket->user_id === $user->id;
         }
 
-        return $user->can('Support Management');
+        return $user->can('support.tickets.edit');
     }
 
     public function update(User $user, Ticket $ticket): bool
     {
-        return $user->can('Support Management');
+        return $user->can('support.tickets.edit');
     }
 }

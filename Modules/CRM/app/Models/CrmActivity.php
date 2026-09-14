@@ -6,18 +6,19 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Modules\CRM\Enums\CrmActivityType;
 
 class CrmActivity extends Model
 {
-    public const TYPE_NOTE = 'note';
+    public const TYPE_NOTE = CrmActivityType::NOTE->value;
 
-    public const TYPE_CALL = 'call';
+    public const TYPE_CALL = CrmActivityType::CALL->value;
 
-    public const TYPE_MEETING = 'meeting';
+    public const TYPE_MEETING = CrmActivityType::MEETING->value;
 
-    public const TYPE_TASK = 'task';
+    public const TYPE_TASK = CrmActivityType::TASK->value;
 
-    public const TYPE_EMAIL = 'email';
+    public const TYPE_EMAIL = CrmActivityType::EMAIL->value;
 
     public const TYPES = [
         self::TYPE_NOTE,

@@ -6,24 +6,26 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Support\Enums\TicketPriority;
+use Modules\Support\Enums\TicketStatus;
 
 class Ticket extends Model
 {
-    public const STATUS_OPEN = 'open';
+    public const STATUS_OPEN = TicketStatus::OPEN->value;
 
-    public const STATUS_IN_PROGRESS = 'in_progress';
+    public const STATUS_IN_PROGRESS = TicketStatus::IN_PROGRESS->value;
 
-    public const STATUS_RESOLVED = 'resolved';
+    public const STATUS_RESOLVED = TicketStatus::RESOLVED->value;
 
-    public const STATUS_CLOSED = 'closed';
+    public const STATUS_CLOSED = TicketStatus::CLOSED->value;
 
-    public const PRIORITY_LOW = 'low';
+    public const PRIORITY_LOW = TicketPriority::LOW->value;
 
-    public const PRIORITY_MEDIUM = 'medium';
+    public const PRIORITY_MEDIUM = TicketPriority::MEDIUM->value;
 
-    public const PRIORITY_HIGH = 'high';
+    public const PRIORITY_HIGH = TicketPriority::HIGH->value;
 
-    public const PRIORITY_URGENT = 'urgent';
+    public const PRIORITY_URGENT = TicketPriority::URGENT->value;
 
     protected $fillable = [
         'ticket_number',
@@ -68,7 +70,7 @@ class Ticket extends Model
 
     public function isClosed(): bool
     {
-        return in_array($this->status, [self::STATUS_RESOLVED, self::STATUS_CLOSED], true);
+        return in_array($this->status, TicketStatus::closedValues(), true);
     }
 
     public function canCustomerReply(): bool
@@ -78,21 +80,11 @@ class Ticket extends Model
 
     public static function statuses(): array
     {
-        return [
-            self::STATUS_OPEN,
-            self::STATUS_IN_PROGRESS,
-            self::STATUS_RESOLVED,
-            self::STATUS_CLOSED,
-        ];
+        return TicketStatus::values();
     }
 
     public static function priorities(): array
     {
-        return [
-            self::PRIORITY_LOW,
-            self::PRIORITY_MEDIUM,
-            self::PRIORITY_HIGH,
-            self::PRIORITY_URGENT,
-        ];
+        return TicketPriority::values();
     }
 }

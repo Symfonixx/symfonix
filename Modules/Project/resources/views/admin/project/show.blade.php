@@ -52,11 +52,7 @@
                 <div class="flex-grow-1">
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
                         <h1 class="fs-2 fw-bold text-gray-900 mb-0">{{ $project->title }}</h1>
-                        @if($project->status)
-                            <span class="badge" style="background-color: {{ $project->status->color_code }}; color: #fff;">
-                                {{ $project->status->name }}
-                            </span>
-                        @endif
+                        @include('project::admin.project._status_dropdown', ['project' => $project, 'statuses' => $statuses])
                         <span class="badge badge-light-{{ $paymentColor }}">
                             {{ __('project::project.payment_status.'.$project->payment_status) }}
                         </span>

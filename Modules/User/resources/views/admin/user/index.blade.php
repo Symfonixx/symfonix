@@ -9,9 +9,11 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Customers')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold  btn-primary" data-bs-toggle="modal" data-bs-target="#create_modal">
-            {{__('Add New Customer')}} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="sales.customers.create">
+            <a class="btn btn-sm fw-bold  btn-primary" data-bs-toggle="modal" data-bs-target="#create_modal">
+                {{__('Add New Customer')}} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
         <div class="modal fade" tabindex="-1" id="create_modal">
             @include('user::admin.user._create_model')
         </div>

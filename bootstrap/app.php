@@ -3,6 +3,8 @@
 use App\Http\Middleware\ContentSecurityPolicy;
 use App\Http\Middleware\ForceCanonicalHost;
 use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsCustomer;
 use App\Http\Middleware\TrackAdminEvents;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -13,6 +15,12 @@ use Illuminate\Http\Request;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Inertia\Inertia;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath;
+use Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect;
+use Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect;
+use Modules\User\Http\Middleware\EnsureCatalogPermission;
 use Symfony\Component\HttpFoundation\Response;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -23,14 +31,15 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'is_admin' => \App\Http\Middleware\IsAdmin::class,
-            'is_customer' => \App\Http\Middleware\IsCustomer::class,
+            'is_admin' => IsAdmin::class,
+            'is_customer' => IsCustomer::class,
+            'catalog.permission' => EnsureCatalogPermission::class,
             /**** localS ****/
-            'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
-            'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-            'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
-            'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
-            'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
+            'localize' => LaravelLocalizationRoutes::class,
+            'localizationRedirect' => LaravelLocalizationRedirectFilter::class,
+            'localeSessionRedirect' => LocaleSessionRedirect::class,
+            'localeCookieRedirect' => LocaleCookieRedirect::class,
+            'localeViewPath' => LaravelLocalizationViewPath::class,
         ]);
 
         $middleware->web(prepend: [
@@ -48,7 +57,7 @@ return Application::configure(basePath: dirname(__DIR__))
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
 
-        $exceptions->respond(function (Response $response, \Throwable $exception, Request $request) {
+        $exceptions->respond(function (Response $response, Throwable $exception, Request $request) {
             if ($request->expectsJson() || $request->is('api/*')) {
                 return $response;
             }
@@ -62,6 +71,16 @@ return Application::configure(basePath: dirname(__DIR__))
                 500 => 'Error500',
                 503 => 'Error500',
             ];
+
+            if ($status === 403
+                && ! $request->expectsJson()
+                && ! $request->is('api/*')
+                && $request->user()?->isAdmin()
+            ) {
+                return redirect()
+                    ->route('admin.dashboard.index')
+                    ->with('error', __('user::permissions.ui.forbidden_redirect'));
+            }
 
             if (! isset($pages[$status])) {
                 return $response;

@@ -13,7 +13,7 @@ class ProjectPolicy
             return true;
         }
 
-        return $user->can('Project Management');
+        return $user->can('project.projects.view');
     }
 
     public function view(User $user, Project $project): bool
@@ -22,22 +22,22 @@ class ProjectPolicy
             return true;
         }
 
-        return $user->can('Project Management');
+        return $user->can('project.projects.view');
     }
 
     public function create(User $user): bool
     {
-        return $user->can('Project Management');
+        return $user->can('project.projects.create');
     }
 
     public function update(User $user, Project $project): bool
     {
-        return $user->can('Project Management');
+        return $user->can('project.projects.edit');
     }
 
     public function delete(User $user, Project $project): bool
     {
-        return $user->can('Project Management');
+        return $user->can('project.projects.delete');
     }
 
     private function ownsProject(User $user, Project $project): bool

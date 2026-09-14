@@ -13,6 +13,14 @@
         "back_to_list": "Pazarlamaya Dön",
         "view": "Görüntüle"
     },
+    "tabs": {
+        "emails": "E-postalar",
+        "whatsapp": "WhatsApp Mesajları"
+    },
+    "channels": {
+        "email": "E-posta",
+        "whatsapp": "WhatsApp"
+    },
     "fields": {
         "subject": "Konu",
         "body": "Mesaj",
@@ -33,7 +41,8 @@
         "send_as_marketing": "Pazarlama e-postası olarak gönder",
         "marketing_audience": "Gönderilecek kişiler",
         "all_audiences": "Herkes",
-        "status": "Durum"
+        "status": "Durum",
+        "channel": "Kanal"
     },
     "status": {
         "pending": "Beklemede",

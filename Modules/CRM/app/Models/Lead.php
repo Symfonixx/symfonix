@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\CRM\Concerns\HasCrmTimeline;
+use Modules\CRM\Enums\LeadSource;
+use Modules\CRM\Enums\LeadStatus;
 use Modules\CRM\Filters\Lead\LeadFilter;
 use Modules\Services\Models\Service;
 use Modules\User\Models\Employee;
@@ -15,21 +17,21 @@ class Lead extends Model
 {
     use HasCrmTimeline;
 
-    public const SOURCE_ORGANIC_SEARCH = 'organic_search';
+    public const SOURCE_ORGANIC_SEARCH = LeadSource::ORGANIC_SEARCH->value;
 
-    public const SOURCE_DIRECT = 'direct';
+    public const SOURCE_DIRECT = LeadSource::DIRECT->value;
 
-    public const SOURCE_SOCIAL_MEDIA = 'social_media';
+    public const SOURCE_SOCIAL_MEDIA = LeadSource::SOCIAL_MEDIA->value;
 
-    public const SOURCE_REFERRAL = 'referral';
+    public const SOURCE_REFERRAL = LeadSource::REFERRAL->value;
 
-    public const SOURCE_PAID_ADS = 'paid_ads';
+    public const SOURCE_PAID_ADS = LeadSource::PAID_ADS->value;
 
-    public const SOURCE_WEBSITE = 'website';
+    public const SOURCE_WEBSITE = LeadSource::WEBSITE->value;
 
-    public const SOURCE_SALES = 'sales';
+    public const SOURCE_SALES = LeadSource::SALES->value;
 
-    public const SOURCE_MANUAL = 'manual';
+    public const SOURCE_MANUAL = LeadSource::MANUAL->value;
 
     public const SOURCES = [
         self::SOURCE_ORGANIC_SEARCH,
@@ -42,17 +44,17 @@ class Lead extends Model
         self::SOURCE_MANUAL,
     ];
 
-    public const STATUS_NEW = 'new';
+    public const STATUS_NEW = LeadStatus::NEW->value;
 
-    public const STATUS_CONTACTED = 'contacted';
+    public const STATUS_CONTACTED = LeadStatus::CONTACTED->value;
 
-    public const STATUS_QUALIFIED = 'qualified';
+    public const STATUS_QUALIFIED = LeadStatus::QUALIFIED->value;
 
-    public const STATUS_UNQUALIFIED = 'unqualified';
+    public const STATUS_UNQUALIFIED = LeadStatus::UNQUALIFIED->value;
 
-    public const STATUS_CONVERTED = 'converted';
+    public const STATUS_CONVERTED = LeadStatus::CONVERTED->value;
 
-    public const STATUS_LOST = 'lost';
+    public const STATUS_LOST = LeadStatus::LOST->value;
 
     public const STATUSES = [
         self::STATUS_NEW,
@@ -140,6 +142,8 @@ class Lead extends Model
     /** Service ids from the pivot, falling back to the legacy single column. */
     public function serviceIds(): array
     {
+        $this->loadMissing('services');
+
         $ids = $this->services->pluck('id')->map(fn ($id) => (int) $id)->all();
 
         if ($ids === [] && $this->service_id) {
@@ -151,6 +155,8 @@ class Lead extends Model
 
     public function tagIds(): array
     {
+        $this->loadMissing('tags');
+
         return $this->tags->pluck('id')->map(fn ($id) => (int) $id)->all();
     }
 

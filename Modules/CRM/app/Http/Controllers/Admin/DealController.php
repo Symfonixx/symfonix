@@ -1,61 +1,33 @@
 <?php
 
-
-
 namespace Modules\CRM\Http\Controllers\Admin;
 
-
-
 use App\Http\Controllers\Controller;
-
 use Illuminate\Database\Eloquent\Collection;
-
 use Illuminate\Http\RedirectResponse;
-
 use Modules\Core\Http\Requests\DeleteMultiRequest;
-
 use Modules\CRM\Actions\Deal\BulkDeleteDealsAction;
-
 use Modules\CRM\Actions\Deal\CreateDealAction;
-
 use Modules\CRM\Actions\Deal\DeleteDealAction;
-
 use Modules\CRM\Actions\Deal\ListDealsAction;
-
 use Modules\CRM\Actions\Deal\ListDealsKanbanAction;
-
 use Modules\CRM\Actions\Deal\MoveDealStageAction;
-
 use Modules\CRM\Actions\Deal\UpdateDealAction;
-
 use Modules\CRM\DTOs\Deal\DealData;
-
 use Modules\CRM\Http\Requests\DealIndexRequest;
-
 use Modules\CRM\Http\Requests\MoveDealStageRequest;
-
 use Modules\CRM\Http\Requests\StoreDealRequest;
-
 use Modules\CRM\Http\Requests\UpdateDealRequest;
-
 use Modules\CRM\Models\Company;
-
 use Modules\CRM\Models\Deal;
-
 use Modules\CRM\Models\LeadTag;
-
 use Modules\CRM\Repositories\PipelineStage\PipelineStageRepository;
-
+use Modules\Finance\Services\FinanceService;
 use Modules\Services\Models\Service;
-
 use Modules\User\Support\EmployeeAccess;
 
-
-
 class DealController extends Controller
-
 {
-
     public function __construct(
 
         private readonly ListDealsAction $listDealsAction,
@@ -74,7 +46,7 @@ class DealController extends Controller
 
         private readonly PipelineStageRepository $stageRepository,
 
-        private readonly \Modules\Finance\Services\FinanceService $financeService,
+        private readonly FinanceService $financeService,
 
     ) {
 
@@ -86,17 +58,12 @@ class DealController extends Controller
 
     }
 
-
-
     public function index(DealIndexRequest $request)
-
     {
 
         $filters = $request->validated();
 
         $view = $filters['view'] ?? 'list';
-
-
 
         if ($view === 'kanban') {
             $this->setActive('pipeline');
@@ -107,48 +74,33 @@ class DealController extends Controller
             return view('crm::admin.deal.kanban', compact('stages', 'filters', 'tags'));
         }
 
-
-
         $model = $this->listDealsAction->execute($filters);
 
         $stages = $this->stageRepository->allActive();
         $tags = LeadTag::query()->active()->ordered()->get();
 
-
-
         return view('crm::admin.deal.index', compact('model', 'stages', 'filters', 'tags'));
     }
 
-
-
     public function create()
-
     {
 
         return view('crm::admin.deal.create', $this->formData());
 
     }
 
-
-
     public function store(StoreDealRequest $request): RedirectResponse
-
     {
 
         $data = DealData::fromRequest($request->validated());
 
         $this->createDealAction->execute($data, $request->input('services', []));
 
-
-
         return redirect()->route('admin.deals.index');
 
     }
 
-
-
     public function show(Deal $deal)
-
     {
 
         $deal->loadMissing([
@@ -175,17 +127,13 @@ class DealController extends Controller
 
             'stageHistories.changedBy:id,name',
 
-            'crmActivities.user:id,name',
+            'crmActivities' => fn ($q) => $q->with('user:id,name')->latest()->limit(50),
 
-            'crmAuditLogs.user:id,name',
+            'crmAuditLogs' => fn ($q) => $q->with('user:id,name')->latest('created_at')->limit(50),
 
         ]);
 
-
-
         $stages = $this->stageRepository->allActive();
-
-
 
         $ledgerSummary = $deal->status === Deal::STATUS_WON
 
@@ -193,79 +141,52 @@ class DealController extends Controller
 
             : null;
 
-
-
         return view('crm::admin.deal.show', compact('deal', 'stages', 'ledgerSummary'));
 
     }
 
-
-
     public function edit(Deal $deal)
-
     {
 
         $deal->loadMissing('services:id,title');
-
-
 
         return view('crm::admin.deal.edit', array_merge(['deal' => $deal], $this->formData($deal)));
 
     }
 
-
-
     public function update(UpdateDealRequest $request, Deal $deal): RedirectResponse
-
     {
 
         $data = DealData::fromRequest($request->validated());
 
         $this->updateDealAction->execute($deal, $data, $request->input('services', []));
 
-
-
         return redirect()->route('admin.deals.index');
 
     }
 
-
-
     public function destroy(Deal $deal): RedirectResponse
-
     {
 
         $this->deleteDealAction->execute($deal);
 
-
-
         return redirect()->route('admin.deals.index');
 
     }
 
-
-
     public function deleteMulti(DeleteMultiRequest $request): RedirectResponse
-
     {
 
         $this->bulkDeleteDealsAction->execute($request->input('ids', []));
-
-
 
         return back();
 
     }
 
-
-
     public function moveStage(MoveDealStageRequest $request, Deal $deal): RedirectResponse
-
     {
 
         $this->authorize('update', $deal);
-
-
 
         $validated = $request->validated();
 
@@ -279,16 +200,11 @@ class DealController extends Controller
 
         );
 
-
-
         return back();
 
     }
 
-
-
     private function formData(?Deal $deal = null): array
-
     {
 
         return [
@@ -317,15 +233,10 @@ class DealController extends Controller
 
     }
 
-
-
     private function dealServiceLines(?Deal $deal = null): array
-
     {
 
         $lines = old('services');
-
-
 
         if ($lines === null && $deal?->relationLoaded('services')) {
 
@@ -341,16 +252,11 @@ class DealController extends Controller
 
         }
 
-
-
         return $lines ?: [['service_id' => '', 'quantity' => 1, 'unit_price' => '']];
 
     }
 
-
-
     private function assignees(): Collection
-
     {
 
         return EmployeeAccess::assignableQuery()
@@ -360,6 +266,4 @@ class DealController extends Controller
             ->get();
 
     }
-
 }
-

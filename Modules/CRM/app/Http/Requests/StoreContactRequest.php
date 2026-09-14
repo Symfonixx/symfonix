@@ -6,12 +6,13 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\CRM\Models\Contact;
+use Modules\User\Support\PermissionCatalog;
 
 class StoreContactRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 
     public function rules(): array

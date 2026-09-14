@@ -9,9 +9,11 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Service Categories')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.service_categories.create') }}">
-            {{__('Add New Service Category')}} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="services.categories.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.service_categories.create') }}">
+                {{__('Add New Service Category')}} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 @section('js')

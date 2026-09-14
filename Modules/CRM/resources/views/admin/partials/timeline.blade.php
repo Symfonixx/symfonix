@@ -13,7 +13,7 @@
         </h3>
     </div>
     <div class="card-body">
-        @can('CRM Management')
+        @can('crm.activities.create')
             <form method="POST" action="{{ route('admin.activities.store') }}" class="mb-8 border border-dashed rounded p-5">
                 @csrf
                 <input type="hidden" name="subject_type" value="{{ $subjectType }}"/>
@@ -102,7 +102,7 @@
                             @endif
                         </div>
                         @if($isActivity)
-                            @can('CRM Management')
+                            @can('crm.activities.delete')
                                 <form method="POST" action="{{ route('admin.activities.destroy', $item) }}">
                                     @csrf
                                     @method('DELETE')

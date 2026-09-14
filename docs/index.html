@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Symfonix Suite documentation — the all-in-one modular business management platform for CRM, HR, Finance, CMS, and integrated business operations.">
+  <meta name="description" content="Symfonix Suite documentation — the all-in-one modular business management platform for CRM, HR, Finance, Tax, Reporting, CMS, and integrated business operations.">
   <title>Symfonix Suite — Documentation</title>
   <link rel="alternate" hreflang="en" href="./index.html">
   <link rel="alternate" hreflang="ar" href="./ar/index.html">
@@ -94,7 +94,10 @@
               <li><a href="#hr">Human Resources</a></li>
               <li><a href="#finance">Finance</a></li>
               <li><a href="#currency-setup">Multi-currency Setup</a></li>
+              <li><a href="#tax">Tax</a></li>
+              <li><a href="#reporting">Reporting</a></li>
               <li><a href="#cms">Content Management</a></li>
+              <li><a href="#integrations">APIs &amp; Integrations</a></li>
             </ul>
           </div>
 
@@ -106,6 +109,7 @@
               <li><a href="#installation">Installation</a></li>
               <li><a href="#module-deployment">Module Deployment</a></li>
               <li><a href="#permissions">Permissions &amp; Roles</a></li>
+              <li><a href="#testing">Testing</a></li>
               <li><a href="#production">Production Deployment</a></li>
             </ul>
           </div>
@@ -122,7 +126,7 @@
           <span class="hero-badge">Enterprise Platform · v1.0</span>
           <h1 id="hero-title">One platform. Every business function.</h1>
           <p class="hero-lead">
-            Symfonix Suite is an all-in-one modular business management platform that unifies CRM, HR, Finance, CMS, and core operational workflows into a single, high-performance ecosystem — eliminating the integration friction of fragmented SaaS tools.
+            Symfonix Suite is an all-in-one modular business management platform that unifies CRM, HR, Finance, Tax, Reporting, CMS, and core operational workflows into a single, high-performance ecosystem — eliminating the integration friction of fragmented SaaS tools.
           </p>
           <div class="hero-actions">
             <a href="#getting-started" class="btn btn-primary">Get started</a>
@@ -131,7 +135,7 @@
           </div>
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-value">13+</div>
+              <div class="stat-value">15</div>
               <div class="stat-label">Business modules</div>
             </div>
             <div class="stat-item">
@@ -173,7 +177,7 @@
             <article class="card">
               <div class="card-icon" aria-hidden="true">🧩</div>
               <h3>Modular by Design</h3>
-              <p>Activate CRM, HR, Finance, CMS, and other business modules independently. Each module is decoupled yet deeply integrated at the data layer.</p>
+              <p>Activate CRM, HR, Finance, Tax, Reporting, CMS, and other business modules independently. Each module is decoupled yet deeply integrated at the data layer.</p>
             </article>
             <article class="card">
               <div class="card-icon" aria-hidden="true">⚡</div>
@@ -270,6 +274,8 @@
               <span class="arch-chip">CRM</span>
               <span class="arch-chip">HR / User</span>
               <span class="arch-chip">Finance</span>
+              <span class="arch-chip">Tax</span>
+              <span class="arch-chip">Reporting</span>
               <span class="arch-chip">CMS</span>
               <span class="arch-chip">Project</span>
               <span class="arch-chip">Product</span>
@@ -301,7 +307,7 @@
         <section class="doc-section" id="core-engine">
           <h3>The Core Engine</h3>
           <p>
-            The <strong>Core</strong> and <strong>Base</strong> modules form the system engine. Core provides the installation command (<code>php artisan app:install</code>), shared helpers, and bootstrap logic. Base handles global settings, countries, branches, SEO configuration, and the file manager integration.
+            The <strong>Core</strong> and <strong>Base</strong> modules form the system engine. Core provides the installation command (<code>php artisan app:install</code>), shared helpers, and bootstrap logic. Base handles global settings, countries, branches, SEO, backups, the file manager, <code>/humans.txt</code>, and the <strong>APIs &amp; Integrations</strong> screen (SMTP and WhatsApp Cloud API). System Configurations also cover finance FX credentials and ZKTeco fingerprint device settings.
           </p>
           <p>Key responsibilities of the core engine include:</p>
           <ol>
@@ -363,7 +369,7 @@
           </p>
           <ul>
             <li><strong>Inertia.js</strong> delivers SPA-like navigation without the complexity of a separate frontend API layer.</li>
-            <li><strong>Eager loading &amp; repository patterns</strong> in high-traffic modules (CRM, Finance) prevent N+1 query problems.</li>
+            <li><strong>Eager loading, query indexes, and repository patterns</strong> in high-traffic modules (CRM, Finance, Reporting) prevent N+1 query problems on lists, campaigns, and dashboards.</li>
             <li><strong>Redis</strong> (optional) accelerates session storage, cache, and queue processing for background jobs like invoice PDF generation and notification dispatch.</li>
             <li><strong>Laravel Pulse</strong> provides production performance monitoring when enabled.</li>
             <li><strong>Asset pipeline</strong> via Vite ensures optimized, cache-busted frontend bundles.</li>
@@ -390,22 +396,32 @@
                 <tr>
                   <td><strong>CRM</strong></td>
                   <td>Sales &amp; relationships</td>
-                  <td>Leads, deals, companies, pipeline stages, subscriptions, activities, marketing</td>
+                  <td>Leads, deals, companies, quotes, pipeline, subscriptions, activities, email/WhatsApp marketing, forecasts, dashboard</td>
                 </tr>
                 <tr>
                   <td><strong>User</strong></td>
                   <td>HR &amp; access</td>
-                  <td>Users, employees, roles, permissions, portal dashboard</td>
+                  <td>Users, employees, roles, leave, fingerprint attendance, client portal</td>
                 </tr>
                 <tr>
                   <td><strong>Finance</strong></td>
                   <td>Accounting</td>
-                  <td>Multi-currency transactions, salaries, commissions, expenses, journal entries, invoices</td>
+                  <td>Multi-currency ledger, invoices, accounts receivable, salaries, commissions, expenses, journal entries</td>
+                </tr>
+                <tr>
+                  <td><strong>Tax</strong></td>
+                  <td>Compliance</td>
+                  <td>Tax rates, output/input tax ledger, filing reports</td>
+                </tr>
+                <tr>
+                  <td><strong>Reporting</strong></td>
+                  <td>Analytics</td>
+                  <td>Finance, Sales, Marketing, Operations, and Employee reports with CSV/PDF export</td>
                 </tr>
                 <tr>
                   <td><strong>Cms</strong></td>
                   <td>Content</td>
-                  <td>Pages, blog posts, FAQs, translatable content</td>
+                  <td>Pages, blog posts, FAQs, client logos, translatable content</td>
                 </tr>
                 <tr>
                   <td><strong>Product</strong></td>
@@ -441,12 +457,16 @@
 
             <h4>Key Interfaces</h4>
             <ul>
-              <li><strong>Lead Management</strong> — capture, qualify, and convert inbound leads with custom fields and source attribution.</li>
-              <li><strong>Deal Pipeline</strong> — Kanban-style pipeline with configurable stages (default: Lead → Qualified → Proposal → Negotiation → Closed Won/Lost). Drag-and-drop stage transitions with activity logging.</li>
-              <li><strong>Company Records</strong> — B2B account management with linked contacts, deals, projects, and subscription history.</li>
+              <li><strong>Lead Management</strong> — capture, qualify, and convert inbound leads with custom fields, tags, and source attribution.</li>
+              <li><strong>Deal Pipeline</strong> — Kanban-style pipeline with configurable stages (default: Lead → Qualified → Proposal → Negotiation → Closed Won/Lost). Drag-and-drop stage transitions with activity logging. Assignees see their own deals unless they have <code>sales.deals.view_all</code>.</li>
+              <li><strong>Quotes / Proposals</strong> — line-item quotes with tax and discount, PDF download, create-from-deal, and a public customer link to accept or reject.</li>
+              <li><strong>Company Records</strong> — B2B account management with linked contacts, deals, projects, quotes, and subscription history.</li>
               <li><strong>Activities &amp; Tasks</strong> — schedule calls, meetings, and follow-ups tied to leads, deals, or companies.</li>
               <li><strong>Subscriptions</strong> — manage recurring service contracts with renewal tracking and Finance integration for invoicing.</li>
-              <li><strong>Marketing</strong> — campaign tracking and contact form management for inbound lead generation.</li>
+              <li><strong>Email marketing</strong> — queued campaigns to subscribers, contacts, inquiries, or custom addresses, with automatic email deduplication.</li>
+              <li><strong>WhatsApp marketing</strong> — Meta Cloud API template campaigns to leads, contacts, deals, inquiries, or custom numbers. Messages are queued; delivery is logged per recipient.</li>
+              <li><strong>Sales Forecasts</strong> — probability-weighted pipeline projections by stage, sales rep, and expected close date (best case / worst case).</li>
+              <li><strong>CRM Dashboard</strong> — filterable KPIs, funnel, leaderboard, and activity feed. Users can show, hide, and reorder widgets.</li>
               <li><strong>Sales Targets</strong> — set and monitor team and individual sales quotas against pipeline performance.</li>
             </ul>
 
@@ -458,7 +478,7 @@
             <div class="callout callout--tip">
               <span class="callout-icon" aria-hidden="true">💡</span>
               <div class="callout-content">
-                <p>CRM permissions are granular: <code>CRM Management</code> for full access and <code>CRM View All</code> for read-only visibility across all pipelines — useful for executives and cross-functional teams.</p>
+                <p>CRM access is granular. Typical keys include <code>crm.leads.*</code>, <code>sales.deals.view_all</code>, <code>sales.quotes.*</code>, <code>marketing.whatsapp.send</code>, and <code>sales.forecasts.view</code>. Legacy names such as <code>CRM Management</code> are remapped on install.</p>
               </div>
             </div>
           </div>
@@ -479,10 +499,12 @@
             <h4>Key Interfaces</h4>
             <ul>
               <li><strong>Employee Profiles</strong> — comprehensive employee records linked to user accounts, including contact details, department assignment, and employment status.</li>
-              <li><strong>Role-Based Access Control</strong> — powered by Spatie Laravel Permission, with predefined roles (Admin) and custom role creation in the admin panel.</li>
-              <li><strong>Permission Matrix</strong> — fine-grained permissions per module (CRM Management, Hr Management, Finance Management, etc.) assignable to any role.</li>
-              <li><strong>Portal Dashboard</strong> — employee-facing portal for self-service access to assigned resources and personal dashboards.</li>
-              <li><strong>Team Module Integration</strong> — public-facing team member profiles for the company website, managed alongside internal HR records.</li>
+              <li><strong>Role-Based Access Control</strong> — powered by Spatie Laravel Permission with a <code>group.tab.action</code> catalog. Install seeds <strong>Admin</strong> plus scenario roles: HR Manager, Sales Manager, Finance Manager, Project Manager, and Operations Manager.</li>
+              <li><strong>Permission Matrix</strong> — per-resource actions (view, create, edit, delete, plus send, export, approve, view_all, manage, reply, restore) assigned in <strong>User Management → Roles</strong>.</li>
+              <li><strong>Fingerprint attendance</strong> — optional ZKTeco TCP/IP integration. Employee IDs map to device user IDs for enrollment and punch sync. Configure under <strong>System Configurations → Fingerprint</strong>.</li>
+              <li><strong>Leave &amp; hiring</strong> — leave requests, job positions, and job applications.</li>
+              <li><strong>Portal Dashboard</strong> — employee-facing portal plus a customer portal for quotes and related records.</li>
+              <li><strong>Team Module Integration</strong> — public-facing team member profiles for the company website, also listed in <code>/humans.txt</code>.</li>
             </ul>
 
             <h4>HR ↔ Finance Bridge</h4>
@@ -508,9 +530,11 @@
             <ul>
               <li><strong>Transactions</strong> — real-time ledger of income and expenses with categorization, filtering, and today's-transactions dashboard widget (Livewire).</li>
               <li><strong>Journal Entries</strong> — double-entry bookkeeping support for organizations requiring formal accounting practices.</li>
+              <li><strong>Invoices</strong> — create from deals, PDF download, sent/paid/void lifecycle, tax lines, and customer notifications.</li>
+              <li><strong>Accounts Receivable</strong> — outstanding and overdue invoice tracking for the finance dashboard and reports.</li>
               <li><strong>Salaries</strong> — recurring payroll management tied to employee records in the User module.</li>
               <li><strong>Commissions</strong> — sales commission tracking linked to CRM deal closures and sales targets.</li>
-              <li><strong>Expenses</strong> — operational expense logging with customizable expense categories.</li>
+              <li><strong>Expenses</strong> — operational expense logging with customizable expense categories and input-tax capture.</li>
               <li><strong>Product Sales</strong> — revenue recording from Product catalog sales, connected to the broader commercial workflow for accurate reporting.</li>
               <li><strong>Invoice Notifications</strong> — automated customer notifications when invoices are sent, via Laravel event listeners.</li>
               <li><strong>Currency Context</strong> — separate accounting-base, transaction, and per-session display currencies with posting-time exchange-rate snapshots.</li>
@@ -563,6 +587,46 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
           </div>
         </section>
 
+        <section class="doc-section" id="tax">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Compliance</span>
+              <span class="tag tag--neutral">Ledger &amp; Filing</span>
+            </div>
+            <h3>Tax</h3>
+            <p>
+              The Tax module stores inclusive or exclusive rates (optionally scoped by region), applies them on invoice and product-sale lines, and posts collected <strong>output tax</strong> and paid <strong>input tax</strong> to a dedicated ledger. Filing reports summarize net tax payable for a date range and can be exported.
+            </p>
+            <h4>Key Interfaces</h4>
+            <ul>
+              <li><strong>Tax Rates</strong> — percentage, inclusive/exclusive type, optional ISO region code, default rate for invoices and subscriptions.</li>
+              <li><strong>Tax Ledger</strong> — chronological output and input entries linked to invoices, lines, and expenses.</li>
+              <li><strong>Filing Report</strong> — period summary of tax collected versus tax paid.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="reporting">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Analytics</span>
+              <span class="tag tag--neutral">CSV / PDF Export</span>
+            </div>
+            <h3>Reporting</h3>
+            <p>
+              The Reporting hub provides cross-department analytics with shared period filters and CSV/PDF export. Each department has its own permission (<code>reporting.finance.view</code>, <code>reporting.sales.export</code>, and so on).
+            </p>
+            <h4>Departments</h4>
+            <ul>
+              <li><strong>Finance</strong> — revenue, expenses, profit, AR aging, tax summary.</li>
+              <li><strong>Sales</strong> — pipeline funnel, won/lost trend, rep performance.</li>
+              <li><strong>Marketing</strong> — email and WhatsApp campaign volume, delivery rate, lead sources.</li>
+              <li><strong>Operations</strong> — tickets, projects, fingerprint attendance.</li>
+              <li><strong>Employee</strong> — utilization, assigned projects, salary trend, per-employee profile.</li>
+            </ul>
+          </div>
+        </section>
+
         <!-- CMS -->
         <section class="doc-section" id="cms">
           <div class="module-block">
@@ -580,6 +644,7 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
               <li><strong>Pages</strong> — create and manage static pages (About, Services, Contact) with slug-based routing and translatable content fields.</li>
               <li><strong>Blog</strong> — publish articles with categories, read-time estimation, featured images, and SEO metadata.</li>
               <li><strong>FAQs</strong> — structured frequently-asked-questions management for support and marketing pages.</li>
+              <li><strong>Our Clients</strong> — logo/showcase entries for the public site.</li>
               <li><strong>SEO Settings</strong> — global and per-page SEO configuration managed through the Base module's SEO interface, including meta titles, descriptions, and Open Graph tags.</li>
               <li><strong>Services Showcase</strong> — the Services module extends CMS capabilities with service categories and offering pages for agencies and consultancies.</li>
             </ul>
@@ -589,6 +654,55 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
               Content is translatable across English, Arabic, Turkish, and German via <code>mcamara/laravel-localization</code> and Spatie Translatable. RTL layout support is built into the public site theme for Arabic locales.
             </p>
           </div>
+        </section>
+
+        <section class="doc-section" id="integrations">
+          <h3>APIs &amp; Integrations</h3>
+          <p>
+            Credentials saved in the admin panel override <code>.env</code>. Leave a field empty to keep using the environment fallback. Secret fields left blank keep the current stored value.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Integration</th><th>Where to configure</th><th>Notes</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SMTP / outbound mail</td>
+                  <td><strong>APIs &amp; Integrations → Email</strong></td>
+                  <td>Required for marketing emails, invoices, and notifications. Campaigns run on the queue worker.</td>
+                </tr>
+                <tr>
+                  <td>WhatsApp Cloud API</td>
+                  <td><strong>APIs &amp; Integrations → WhatsApp</strong></td>
+                  <td>Needs an access token and phone number ID. Templates must be approved in Meta before sending. Default Graph version is <code>v21.0</code>.</td>
+                </tr>
+                <tr>
+                  <td>Fixer exchange rates</td>
+                  <td><strong>System Configurations → Finance</strong></td>
+                  <td>See <a href="#currency-setup">Multi-currency Setup</a>.</td>
+                </tr>
+                <tr>
+                  <td>ZKTeco fingerprint</td>
+                  <td><strong>System Configurations → Fingerprint</strong></td>
+                  <td>TCP port defaults to <code>4370</code>. Employee IDs map to device user IDs. Test connection before enabling HR sync.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <span class="code-label">.env fallbacks</span>
+          <pre><code>WHATSAPP_API_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_BUSINESS_ACCOUNT_ID=
+WHATSAPP_API_VERSION=v21.0
+WHATSAPP_WEBHOOK_VERIFY_TOKEN=
+
+FINGERPRINT_ENABLED=false
+FINGERPRINT_HOST=
+FINGERPRINT_PORT=4370
+FINGERPRINT_COMM_KEY=0
+FINGERPRINT_TIMEOUT=10
+FINGERPRINT_NAME_ENCODING=UTF-8</code></pre>
         </section>
 
         <!-- 4. Getting Started -->
@@ -665,7 +779,9 @@ DB_PASSWORD=
 FINANCE_DEFAULT_CURRENCY=USD
 FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
 FIXER_API_KEY=
-FIXER_BASE_URL=https://data.fixer.io/api</code></pre>
+FIXER_BASE_URL=https://data.fixer.io/api
+
+DOCS_ENABLED=true</code></pre>
             </li>
             <li>
               <h4>Install dependencies</h4>
@@ -676,7 +792,7 @@ npm install && npm run build</code></pre>
             </li>
             <li>
               <h4>Run the install command</h4>
-              <p>The <code>app:install</code> artisan command handles the full bootstrap — migrations, seed data, permissions, CRM pipeline stages, baseline currency settings and rates, and admin user creation:</p>
+              <p>The <code>app:install</code> artisan command handles the full bootstrap — migrations, seed data, the granular permission catalog, scenario roles, CRM pipeline stages, baseline currency settings and rates, and admin user creation:</p>
               <span class="code-label">Terminal</span>
               <pre><code>php artisan app:install</code></pre>
               <p>Custom admin credentials:</p>
@@ -691,14 +807,14 @@ npm install && npm run build</code></pre>
               <h4>Start the application</h4>
               <span class="code-label">Terminal</span>
               <pre><code>php artisan serve</code></pre>
-              <p>Visit <code>/admin</code> and sign in with the credentials displayed after installation.</p>
+              <p>Visit <code>/admin</code> and sign in with the credentials displayed after installation. Documentation is available at <code>/docs</code> when <code>DOCS_ENABLED=true</code>.</p>
             </li>
           </ol>
 
           <div class="callout callout--tip">
             <span class="callout-icon" aria-hidden="true">💡</span>
             <div class="callout-content">
-              <p>The install command generates <code>APP_KEY</code>, runs all module migrations, seeds countries and baseline currency rates, creates application permissions, seeds default CRM pipeline stages, and assigns the Admin role with full permissions.</p>
+              <p>The install command generates <code>APP_KEY</code>, runs all module migrations, seeds countries and baseline currency rates, synchronizes permissions, seeds HR/Sales/Finance/Project/Operations role scenarios, seeds default CRM pipeline stages, and assigns the Admin role with full permissions.</p>
             </div>
           </div>
         </section>
@@ -771,37 +887,46 @@ php artisan queue:work</code></pre>
         <section class="doc-section" id="permissions">
           <h3>Permissions &amp; Roles</h3>
           <p>
-            Symfonix Suite uses <a href="https://github.com/spatie/laravel-permission" target="_blank" rel="noopener noreferrer">Spatie Laravel Permission</a> for authorization. Permissions are created during <code>app:install</code> and assigned to roles through the admin panel.
+            Symfonix Suite uses <a href="https://github.com/spatie/laravel-permission" target="_blank" rel="noopener noreferrer">Spatie Laravel Permission</a> for authorization. Permissions are created during <code>app:install</code> from a catalog of <code>group.tab.action</code> keys (legacy names such as <code>CRM Management</code> are remapped onto existing roles). Assign them in the admin panel under <strong>User Management → Roles</strong>.
           </p>
 
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>Permission</th>
-                  <th>Module</th>
+                  <th>Group</th>
+                  <th>Example keys</th>
                   <th>Scope</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Settings Management</td><td>Base</td><td>Global settings, branches, SEO</td></tr>
-                <tr><td>CMS Management</td><td>Cms</td><td>Pages, blog, FAQs</td></tr>
-                <tr><td>Hr Management</td><td>User</td><td>Employees, user accounts</td></tr>
-                <tr><td>CRM Management</td><td>CRM</td><td>Full CRM read/write access</td></tr>
-                <tr><td>CRM View All</td><td>CRM</td><td>Read-only across all pipelines</td></tr>
-                <tr><td>Finance Management</td><td>Finance</td><td>Transactions, salaries, expenses</td></tr>
-                <tr><td>Project Management</td><td>Project</td><td>Projects and delivery tracking</td></tr>
-                <tr><td>Product Management</td><td>Product</td><td>Catalog and categories</td></tr>
-                <tr><td>Services Management</td><td>Services</td><td>Service offerings</td></tr>
-                <tr><td>Support Management</td><td>Support</td><td>Tickets and subscribers</td></tr>
-                <tr><td>Sales Management</td><td>CRM / Product</td><td>Sales operations</td></tr>
-                <tr><td>App Monitoring</td><td>Core</td><td>Telescope, Pulse access</td></tr>
-                <tr><td>Logs Management</td><td>Base</td><td>Application log viewer</td></tr>
+                <tr><td>Overview</td><td><code>overview.dashboard.view</code>, <code>overview.crm_analytics.edit</code></td><td>Admin home and CRM dashboard layout</td></tr>
+                <tr><td>CMS</td><td><code>cms.pages.*</code>, <code>cms.blogs.*</code>, <code>cms.clients.*</code></td><td>Pages, blog, FAQs, client logos, file manager</td></tr>
+                <tr><td>CRM</td><td><code>crm.leads.*</code>, <code>crm.companies.*</code>, <code>crm.activities.*</code></td><td>Leads, contacts, companies, inquiries, tags</td></tr>
+                <tr><td>Sales</td><td><code>sales.deals.view_all</code>, <code>sales.quotes.*</code>, <code>sales.forecasts.view</code></td><td>Pipeline, deals, quotes, subscriptions</td></tr>
+                <tr><td>Marketing</td><td><code>marketing.email.send</code>, <code>marketing.whatsapp.send</code></td><td>Email and WhatsApp campaigns and templates</td></tr>
+                <tr><td>Finance</td><td><code>finance.invoices.*</code>, <code>finance.ar.view</code></td><td>Invoices, AR, salaries, commissions, expenses</td></tr>
+                <tr><td>Tax</td><td><code>tax.rates.*</code>, <code>tax.ledger.view</code>, <code>tax.filing.export</code></td><td>Rates, ledger, filing report</td></tr>
+                <tr><td>Reporting</td><td><code>reporting.finance.view</code>, <code>reporting.sales.export</code></td><td>Department reports and exports</td></tr>
+                <tr><td>HR</td><td><code>hr.employees.*</code>, <code>hr.fingerprint.manage</code>, <code>hr.roles.*</code></td><td>Staff, roles, leave, fingerprint sync</td></tr>
+                <tr><td>Settings</td><td><code>settings.system.*</code>, <code>settings.integrations.*</code></td><td>System config, APIs, SEO, backups</td></tr>
               </tbody>
             </table>
           </div>
 
-          <p>Assign permissions to roles in the admin panel under <strong>User Management → Roles</strong>. The default <strong>Admin</strong> role receives all permissions on fresh install.</p>
+          <p>The default <strong>Admin</strong> role receives every catalog key. Install also seeds HR Manager, Sales Manager, Finance Manager, Project Manager, and Operations Manager. Extra actions include <code>send</code>, <code>export</code>, <code>approve</code>, <code>view_all</code>, <code>manage</code>, <code>reply</code>, and <code>restore</code>.</p>
+        </section>
+
+        <section class="doc-section" id="testing">
+          <h3>Testing</h3>
+          <p>
+            Backend tests live under <code>tests/Unit</code> and <code>tests/Feature</code> (finance/tax, WhatsApp marketing, sales forecasts, fingerprint, RBAC). Browser coverage is Playwright under <code>tests/e2e</code>. See <code>tests/README.md</code>.
+          </p>
+          <span class="code-label">Terminal</span>
+          <pre><code>php artisan test
+
+# Playwright (running app + E2E_BASE_URL, E2E_ADMIN_EMAIL, E2E_ADMIN_PASSWORD)
+npm run test:e2e</code></pre>
         </section>
 
         <section class="doc-section" id="production">
@@ -834,7 +959,7 @@ php artisan view:cache</code></pre>
             </li>
             <li>
               <h4>Configure background services</h4>
-              <p>Set up a queue worker and scheduler via cron. The scheduler performs a synchronous exchange-rate refresh every hour; queued manual fetches require the worker.</p>
+              <p>Set up a queue worker and scheduler via cron. The scheduler performs a synchronous exchange-rate refresh every hour. Queued WhatsApp campaigns, marketing emails, and manual rate fetches require the worker.</p>
               <span class="code-label">crontab</span>
               <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
             </li>
@@ -843,7 +968,7 @@ php artisan view:cache</code></pre>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>Production checklist:</strong> Ensure <code>APP_DEBUG=false</code>, restrict <code>/admin</code> access if needed, enable two-factor authentication, never commit <code>.env</code>, configure a valid Fixer key, and monitor the last successful rate fetch under <strong>System Configurations → Finance</strong>. Stored rates have no automatic staleness rejection.</p>
+              <p><strong>Production checklist:</strong> Ensure <code>APP_DEBUG=false</code>, restrict <code>/admin</code> access if needed, enable two-factor authentication, never commit <code>.env</code>, configure a valid Fixer key, and monitor the last successful rate fetch under <strong>System Configurations → Finance</strong>. Stored rates have no automatic staleness rejection. Set WhatsApp credentials under <strong>APIs &amp; Integrations</strong> before sending campaigns. Set <code>DOCS_ENABLED=false</code> if you do not want to expose <code>/docs</code>.</p>
             </div>
           </div>
         </section>

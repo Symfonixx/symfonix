@@ -89,11 +89,7 @@
                 </div>
             </div>
 
-            @include('cms::admin.shared._editor', [
-                'value' => old('content', $blogData?->content),
-            ])
-
-            <div class="row mb-0 mt-6">
+            <div class="row mb-6">
                 <div class="col-lg-4">
                     <label class="settings-field-label" for="kt_tagify_1">
                         <i class="bi bi-tags text-primary me-1"></i>{{ __('Keywords') }}
@@ -105,6 +101,10 @@
                            value="{{ old('keywords', $blogData?->keywords ?? 'Blog,') }}"/>
                 </div>
             </div>
+
+            @include('cms::admin.shared._editor', [
+                'value' => old('content', $blogData?->content),
+            ])
         </x-admin.settings-section>
     </div>
 

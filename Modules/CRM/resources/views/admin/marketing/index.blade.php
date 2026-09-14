@@ -6,12 +6,25 @@
             ['label' => __('Dashboard'), 'url' => route('admin.dashboard.index')],
             ['label' => __('crm::marketing.pages.index_title')],
         ];
+        $activeChannel = $channel ?? 'email';
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::marketing.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.crm.marketing.create') }}">
-            {{ __('crm::marketing.actions.compose') }} <i class="bi bi-envelope-plus mx-1"></i>
-        </a>
+        <x-can perform="marketing.email.send">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.crm.marketing.create') }}">
+                {{ __('crm::marketing.actions.compose') }} <i class="bi bi-envelope-plus mx-1"></i>
+            </a>
+        </x-can>
+        <x-can perform="marketing.whatsapp.send">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.crm.marketing.whatsapp.create') }}">
+                {{ __('crm::whatsapp.actions.compose') }} <i class="bi bi-whatsapp mx-1"></i>
+            </a>
+        </x-can>
+        <x-can perform="marketing.whatsapp_templates.view">
+            <a class="btn btn-sm fw-bold btn-light-success" href="{{ route('admin.crm.marketing.whatsapp-templates.index') }}">
+                {{ __('crm::whatsapp.actions.manage_templates') }} <i class="bi bi-file-earmark-text mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 
@@ -23,60 +36,29 @@
             </div>
         </div>
         <div class="card-body pt-0">
-            @if($model->isEmpty())
-                <div class="text-center text-muted py-10">
-                    <i class="bi bi-envelope fs-2x d-block mb-3"></i>
-                    {{ __('crm::marketing.messages.empty') }}
-                </div>
+            <ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x mb-8 fs-6 fw-semibold" role="tablist">
+                @can('marketing.email.view')
+                    <li class="nav-item">
+                        <a class="nav-link {{ $activeChannel === 'email' ? 'active' : '' }}"
+                           href="{{ route('admin.crm.marketing.index', ['channel' => 'email']) }}">
+                            <i class="bi bi-envelope me-2"></i>{{ __('crm::marketing.tabs.emails') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('marketing.whatsapp.view')
+                    <li class="nav-item">
+                        <a class="nav-link {{ $activeChannel === 'whatsapp' ? 'active' : '' }}"
+                           href="{{ route('admin.crm.marketing.index', ['channel' => 'whatsapp']) }}">
+                            <i class="bi bi-whatsapp me-2"></i>{{ __('crm::marketing.tabs.whatsapp') }}
+                        </a>
+                    </li>
+                @endcan
+            </ul>
+
+            @if($activeChannel === 'whatsapp')
+                @include('crm::admin.marketing._whatsapp_campaigns_table')
             @else
-                <div class="table-responsive">
-                    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-                        <thead>
-                        <tr class="text-start text-muted fw-bold fs-7 gs-0">
-                            <th>{{ __('crm::marketing.fields.subject') }}</th>
-                            <th>{{ __('crm::marketing.fields.status') }}</th>
-                            <th>{{ __('crm::marketing.fields.recipients_count') }}</th>
-                            <th>{{ __('crm::marketing.fields.sent_by') }}</th>
-                            <th>{{ __('crm::marketing.fields.sent_at') }}</th>
-                            <th class="text-end"></th>
-                        </tr>
-                        </thead>
-                        <tbody class="text-gray-600 fw-semibold">
-                        @foreach($model as $campaign)
-                            @php
-                                $status = $campaign->status ?? 'pending';
-                                $statusBadge = match ($status) {
-                                    'finished' => 'badge-light-success',
-                                    'failed' => 'badge-light-danger',
-                                    default => 'badge-light-warning',
-                                };
-                            @endphp
-                            <tr>
-                                <td>{{ Str::limit(strip_tags($campaign->subject), 80) }}</td>
-                                <td>
-                                    <span class="badge {{ $statusBadge }}">
-                                        {{ __('crm::marketing.status.'.$status) }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-light-primary">{{ $campaign->recipients_count }}</span>
-                                </td>
-                                <td>{{ $campaign->user?->name ?? '—' }}</td>
-                                <td>{{ $campaign->created_at?->format('Y-m-d H:i') }}</td>
-                                <td class="text-end">
-                                    <a href="{{ route('admin.crm.marketing.show', $campaign) }}"
-                                       class="btn btn-sm btn-light btn-active-light-primary">
-                                        {{ __('crm::marketing.actions.view') }}
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt-5">
-                    {{ $model->links() }}
-                </div>
+                @include('crm::admin.marketing._email_campaigns_table')
             @endif
         </div>
     </div>

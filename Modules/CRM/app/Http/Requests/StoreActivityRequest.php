@@ -24,6 +24,6 @@ class StoreActivityRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return $this->user()?->can('CRM Management') ?? false;
+        return $this->user()?->can('crm.activities.create') ?? false;
     }
 }

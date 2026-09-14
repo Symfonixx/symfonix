@@ -2,7 +2,9 @@
 
 namespace Modules\Team\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Cms\Enums\CmsStatus;
 use Spatie\Translatable\HasTranslations;
 
 class Team extends Model
@@ -17,7 +19,12 @@ class Team extends Model
         'name', 'position', 'linked_in', 'facebook', 'github', 'behance', 'resume', 'key_skills', 'avatar', 'status',
     ];
 
-    public function getAvatarLinkAttribute()
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query->where('status', CmsStatus::PUBLISHED->value);
+    }
+
+    public function getAvatarLinkAttribute(): string
     {
         if ($this->attributes['avatar']) {
             $path = asset('storage/'.$this->attributes['avatar']);
@@ -28,7 +35,7 @@ class Team extends Model
         return $path;
     }
 
-    public function getResumeLinkAttribute()
+    public function getResumeLinkAttribute(): ?string
     {
         if (isset($this->attributes['resume']) && $this->attributes['resume']) {
             return asset('storage/'.$this->attributes['resume']);

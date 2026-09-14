@@ -3,6 +3,7 @@
 namespace Modules\Core\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Modules\User\Support\PermissionCatalog;
 
 class DeleteMultiRequest extends FormRequest
 {
@@ -21,6 +22,6 @@ class DeleteMultiRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Modules\CRM\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\CRM\Models\CrmActivity;
 
@@ -39,13 +39,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('api')->prefix('api')->name('api.')->group(module_path($this->name, '/routes/api.php'));
     }
 
-
-     protected function mapWebRoutes(): void
+    protected function mapWebRoutes(): void
     {
         $name = $this->name;
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'visitor_tracking']
+            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'visitor_tracking'],
         ], static function () use ($name) {
             Route::middleware(['web'])->group(module_path($name, '/routes/web.php'));
         });
@@ -56,11 +55,11 @@ class RouteServiceProvider extends ServiceProvider
         $name = $this->name;
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
         ], static function () use ($name) {
             Route::prefix('admin')
                 ->name('admin.')
-                ->middleware(['web', 'auth', 'is_admin'])
+                ->middleware(['web', 'auth', 'is_admin', 'catalog.permission'])
                 ->group(module_path($name, '/routes/admin.php'));
 
         });

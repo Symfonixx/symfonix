@@ -339,7 +339,7 @@
                             @endif
                         </div>
 
-                        @can('Finance Management')
+                        @can('finance.invoices.create')
                             @if($deal->status === 'won' && $deal->company_id)
                                 <form method="POST" action="{{ route('admin.finance.invoices.from-deal', $deal) }}" class="mb-5">
                                     @csrf

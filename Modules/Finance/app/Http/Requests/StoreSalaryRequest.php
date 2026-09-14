@@ -11,7 +11,7 @@ class StoreSalaryRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Finance Management') ?? false;
+        return $this->user()?->can('finance.salaries.create') ?? false;
     }
 
     protected function prepareForValidation(): void

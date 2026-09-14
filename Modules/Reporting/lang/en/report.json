@@ -1,0 +1,118 @@
+{
+    "menu": {
+        "reports": "Reports",
+        "finance": "Finance Reports",
+        "sales": "Sales Reports",
+        "marketing": "Marketing Reports",
+        "operations": "IT / Operations Reports",
+        "employee": "Employee Reports"
+    },
+    "departments": {
+        "finance": "Finance",
+        "sales": "Sales",
+        "marketing": "Marketing",
+        "operations": "IT / Operations",
+        "employee": "Employee"
+    },
+    "pages": {
+        "finance_title": "Finance Reports",
+        "sales_title": "Sales Reports",
+        "marketing_title": "Marketing Reports",
+        "operations_title": "IT / Operations Reports",
+        "employee_title": "Employee Reports",
+        "employee_profile_title": "Employee Performance Profile"
+    },
+    "subtitle": "Cross-department analytics with dynamic filtering and export",
+    "filters": {
+        "period": "Period",
+        "date_from": "From",
+        "date_to": "To",
+        "assignee": "Sales Rep",
+        "employee": "Employee",
+        "all_reps": "All Reps",
+        "all_employees": "All Employees",
+        "apply": "Apply Filters",
+        "periods": {
+            "today": "Today",
+            "last_7_days": "Last 7 Days",
+            "this_month": "This Month",
+            "last_month": "Last Month",
+            "this_quarter": "This Quarter",
+            "this_year": "This Year",
+            "custom": "Custom Range"
+        }
+    },
+    "actions": {
+        "export_csv": "Export CSV",
+        "export_pdf": "Export PDF"
+    },
+    "kpis": {
+        "revenue": "Revenue",
+        "expenses": "Expenses",
+        "profit": "Net Profit",
+        "accounts_receivable": "Accounts Receivable",
+        "accounts_payable": "Accounts Payable",
+        "net_tax": "Net Tax Payable",
+        "pipeline_value": "Pipeline Value",
+        "won_deals": "Won Deal Value",
+        "won_count": "Deals Won",
+        "conversion_rate": "Conversion Rate",
+        "avg_deal_value": "Avg Deal Value",
+        "email_campaigns": "Email Campaigns",
+        "whatsapp_campaigns": "WhatsApp Campaigns",
+        "total_recipients": "Total Recipients",
+        "whatsapp_delivery_rate": "WhatsApp Delivery Rate",
+        "new_leads": "New Leads",
+        "open_tickets": "Open Tickets",
+        "resolved_tickets": "Resolved Tickets",
+        "avg_resolution_hours": "Avg Resolution (hrs)",
+        "attendance_rate": "Attendance Rate",
+        "active_projects": "Active Projects",
+        "attendance_days": "Attendance Days",
+        "attendance_events": "Fingerprint Events",
+        "projects_assigned": "Assigned Projects",
+        "projects_completed": "Completed Projects",
+        "utilization_rate": "Utilization Rate"
+        ,
+        "salary_paid_total": "Total Paid Salary",
+        "salary_pending_total": "Pending Salary"
+    },
+    "sections": {
+        "monthly_trend": "Revenue & Expense Trend",
+        "expense_breakdown": "Expense Breakdown",
+        "ar_aging": "AR Aging",
+        "tax_summary": "Tax Summary",
+        "pipeline_funnel": "Pipeline Funnel",
+        "won_lost_trend": "Won vs Lost Trend",
+        "rep_performance": "Rep Performance",
+        "stage_breakdown": "Pipeline by Stage",
+        "campaign_volume": "Campaign Volume",
+        "lead_sources": "Lead Sources",
+        "whatsapp_delivery": "WhatsApp Delivery",
+        "conversion_by_source": "Conversion by Source",
+        "ticket_status": "Ticket Status",
+        "ticket_by_category": "Tickets by Category",
+        "ticket_trend": "Ticket Trend",
+        "project_status": "Project Status",
+        "attendance_daily": "Daily Attendance",
+        "attendance_trend": "Attendance Trend",
+        "punch_types": "Punch Type Distribution",
+        "employee_project_performance": "Employee Project Performance",
+        "salary_trend": "Salary Trend"
+    },
+    "ar": {
+        "current": "Current",
+        "days_1_30": "1–30 Days",
+        "days_31_60": "31–60 Days",
+        "days_61_90": "61–90 Days",
+        "over_90": "Over 90 Days"
+    },
+    "employee": {
+        "last_attendance": "Last Attendance",
+        "active_assignments": "Active Assignments"
+    },
+    "uncategorized": "Uncategorized",
+    "unassigned": "Unassigned",
+    "vs_previous": "vs previous period",
+    "no_data": "No data for the selected period"
+}

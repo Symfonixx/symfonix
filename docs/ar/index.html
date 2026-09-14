@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="توثيق Symfonix Suite — منصة موحدة لإدارة الأعمال تجمع CRM والموارد البشرية والمالية وإدارة المحتوى ضمن نظام معياري عالي الأداء.">
+  <meta name="description" content="توثيق Symfonix Suite — منصة موحدة لإدارة الأعمال تجمع CRM والموارد البشرية والمالية والضرائب والتقارير وإدارة المحتوى ضمن نظام معياري عالي الأداء.">
   <title>Symfonix Suite — التوثيق</title>
   <link rel="alternate" hreflang="en" href="../index.html">
   <link rel="alternate" hreflang="ar" href="./index.html">
@@ -89,7 +89,10 @@
               <li><a href="#hr">الموارد البشرية</a></li>
               <li><a href="#finance">المالية</a></li>
               <li><a href="#currency-setup">إعداد العملات المتعددة</a></li>
+              <li><a href="#tax">الضرائب</a></li>
+              <li><a href="#reporting">التقارير</a></li>
               <li><a href="#cms">إدارة المحتوى</a></li>
+              <li><a href="#integrations">واجهات البرمجة والتكاملات</a></li>
             </ul>
           </div>
 
@@ -101,6 +104,7 @@
               <li><a href="#installation">التثبيت</a></li>
               <li><a href="#module-deployment">نشر الوحدات</a></li>
               <li><a href="#permissions">الصلاحيات والأدوار</a></li>
+              <li><a href="#testing">الاختبارات</a></li>
               <li><a href="#production">بيئة الإنتاج</a></li>
             </ul>
           </div>
@@ -114,7 +118,7 @@
           <span class="hero-badge">منصة مؤسسية · v1.0</span>
           <h1 id="hero-title">منصة واحدة لكل وظائف الأعمال.</h1>
           <p class="hero-lead">
-            Symfonix Suite منصة موحدة لإدارة الأعمال تجمع CRM والموارد البشرية والمالية وإدارة المحتوى وسير العمل التشغيلي ضمن نظام معياري عالي الأداء، لتقليل تعقيد الأدوات المتفرقة والتكاملات الهشة.
+            Symfonix Suite منصة موحدة لإدارة الأعمال تجمع CRM والموارد البشرية والمالية والضرائب والتقارير وإدارة المحتوى وسير العمل التشغيلي ضمن نظام معياري عالي الأداء، لتقليل تعقيد الأدوات المتفرقة والتكاملات الهشة.
           </p>
           <div class="hero-actions">
             <a href="#getting-started" class="btn btn-primary">ابدأ الآن</a>
@@ -123,7 +127,7 @@
           </div>
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-value">13+</div>
+              <div class="stat-value">15</div>
               <div class="stat-label">وحدة أعمال</div>
             </div>
             <div class="stat-item">
@@ -252,6 +256,8 @@
               <span class="arch-chip">CRM</span>
               <span class="arch-chip">HR / User</span>
               <span class="arch-chip">Finance</span>
+              <span class="arch-chip">Tax</span>
+              <span class="arch-chip">Reporting</span>
               <span class="arch-chip">CMS</span>
               <span class="arch-chip">Project</span>
               <span class="arch-chip">Product</span>
@@ -283,7 +289,7 @@
         <section class="doc-section" id="core-engine">
           <h3>المحرك الأساسي</h3>
           <p>
-            تشكل وحدتا <strong>Core</strong> و<strong>Base</strong> العمود الفقري للمنصة. تتولى Core أوامر التثبيت والخدمات المشتركة، بينما تدير Base الإعدادات العامة والفروع والدول وتهيئة SEO ودمج مدير الملفات.
+            تشكل وحدتا <strong>Core</strong> و<strong>Base</strong> العمود الفقري للمنصة. تتولى Core أوامر التثبيت والخدمات المشتركة، بينما تدير Base الإعدادات العامة والفروع والدول وSEO والنسخ الاحتياطي و<code>/humans.txt</code> وشاشة <strong>واجهات البرمجة والتكاملات</strong> (SMTP وWhatsApp Cloud API). تتضمن إعدادات النظام أيضًا Fixer وجهاز بصمة ZKTeco.
           </p>
           <ol>
             <li><strong>إدارة دورة حياة الوحدات</strong> من التفعيل والتعطيل إلى الترحيل.</li>
@@ -363,10 +369,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>CRM</strong></td><td>المبيعات والعلاقات</td><td>العملاء المحتملون، الصفقات، الشركات، مراحل البيع، الاشتراكات، الأنشطة</td></tr>
-                <tr><td><strong>User</strong></td><td>الموارد البشرية والوصول</td><td>المستخدمون، الموظفون، الأدوار، الصلاحيات، لوحة البوابة</td></tr>
-                <tr><td><strong>Finance</strong></td><td>المحاسبة</td><td>المعاملات متعددة العملات، الرواتب، العمولات، المصروفات، القيود والفواتير</td></tr>
-                <tr><td><strong>Cms</strong></td><td>المحتوى</td><td>الصفحات، المقالات، الأسئلة الشائعة، المحتوى متعدد اللغات</td></tr>
+                <tr><td><strong>CRM</strong></td><td>المبيعات والعلاقات</td><td>العملاء المحتملون، الصفقات، الشركات، عروض الأسعار، خط المبيعات، الاشتراكات، التسويق عبر البريد وواتساب، التوقعات، لوحة التحكم</td></tr>
+                <tr><td><strong>User</strong></td><td>الموارد البشرية والوصول</td><td>المستخدمون، الموظفون، الأدوار، الإجازات، بصمة الحضور، بوابة العملاء</td></tr>
+                <tr><td><strong>Finance</strong></td><td>المحاسبة</td><td>دفتر متعدد العملات، الفواتير، الذمم المدينة، الرواتب، العمولات، المصروفات</td></tr>
+                <tr><td><strong>Tax</strong></td><td>الامتثال</td><td>معدلات الضريبة، دفتر ضريبة المخرجات/المدخلات، تقارير الإقرار</td></tr>
+                <tr><td><strong>Reporting</strong></td><td>التحليلات</td><td>تقارير المالية والمبيعات والتسويق والعمليات والموظفين مع تصدير CSV/PDF</td></tr>
+                <tr><td><strong>Cms</strong></td><td>المحتوى</td><td>الصفحات، المقالات، الأسئلة الشائعة، شعارات العملاء، المحتوى متعدد اللغات</td></tr>
                 <tr><td><strong>Product</strong></td><td>الكتالوج</td><td>الأصناف والفئات وتكامل المبيعات</td></tr>
                 <tr><td><strong>Project</strong></td><td>التنفيذ</td><td>المشاريع والحالات وحالات الاستخدام ومتابعة التسليم</td></tr>
                 <tr><td><strong>Support</strong></td><td>الدعم</td><td>التذاكر والمشتركين والشكاوى</td></tr>
@@ -384,11 +392,15 @@
             <h3>CRM وخطوط المبيعات</h3>
             <p>وحدة CRM هي محرك الإيرادات في المنصة، وتغطي الرحلة من أول تواصل وحتى إغلاق الصفقة مع تتبع الأنشطة والاشتراكات.</p>
             <ul>
-              <li><strong>إدارة العملاء المحتملين</strong> مع حقول مخصصة وتتبع المصادر.</li>
-              <li><strong>لوحة خط المبيعات</strong> بمراحل قابلة للتخصيص وتحريك مرئي للصفقات.</li>
-              <li><strong>سجلات الشركات</strong> تربط الشركات بالصفقات والمشاريع وجهات الاتصال.</li>
+              <li><strong>إدارة العملاء المحتملين</strong> مع حقول مخصصة ووسوم وتتبع المصادر.</li>
+              <li><strong>لوحة خط المبيعات</strong> بمراحل قابلة للتخصيص. يرى المكلَّف صفقاته ما لم يملك <code>sales.deals.view_all</code>.</li>
+              <li><strong>عروض الأسعار</strong> ببنود وضريبة وخصم، وتنزيل PDF، ورابط عام للقبول أو الرفض.</li>
+              <li><strong>سجلات الشركات</strong> تربط الشركات بالصفقات والمشاريع وجهات الاتصال والاشتراكات.</li>
               <li><strong>الأنشطة والمهام</strong> للمكالمات والاجتماعات والمتابعات.</li>
               <li><strong>الاشتراكات</strong> للعقود المتكررة والتجديد والفوترة.</li>
+              <li><strong>التسويق عبر البريد وواتساب</strong> بحملات في الطابور وقوالب ميتا وسجل تسليم.</li>
+              <li><strong>توقعات المبيعات</strong> مرجّحة باحتمال الفوز حسب المرحلة والمندوب وتاريخ الإغلاق المتوقع.</li>
+              <li><strong>لوحة CRM قابلة للتخصيص</strong>.</li>
             </ul>
             <p>تدفقات المراحل مبنية بشكل يتيح للوحدات الأخرى الاستماع للأحداث، مثل إنشاء مشروع بعد إغلاق صفقة ناجحة.</p>
           </div>
@@ -404,9 +416,10 @@
             <p>توفر وحدة User أساس الموارد البشرية والهوية الرقمية داخل المنصة من خلال الربط بين حسابات المستخدمين وملفات الموظفين والأدوار والصلاحيات.</p>
             <ul>
               <li><strong>ملفات الموظفين</strong> بمعلومات الاتصال والحالة الوظيفية والبنية التنظيمية.</li>
-              <li><strong>الصلاحيات المعتمدة على الأدوار</strong> عبر Spatie Laravel Permission.</li>
-              <li><strong>مصفوفة صلاحيات دقيقة</strong> لكل وحدة من وحدات المنصة.</li>
-              <li><strong>بوابة الموظف</strong> للوصول إلى الموارد ولوحات المعلومات الشخصية.</li>
+              <li><strong>صلاحيات دقيقة</strong> بمفاتيح <code>group.tab.action</code> وأدوار سيناريو (مدير الموارد البشرية، المبيعات، المالية، المشاريع، العمليات).</li>
+              <li><strong>بصمة الحضور</strong> عبر جهاز ZKTeco (إعدادات النظام ← البصمة).</li>
+              <li><strong>الإجازات والتوظيف</strong>.</li>
+              <li><strong>بوابة الموظف</strong> وبوابة العميل لعروض الأسعار.</li>
             </ul>
           </div>
         </section>
@@ -422,6 +435,7 @@
             <ul>
               <li><strong>المعاملات</strong> مع تصنيف وفلاتر ولوحات يومية.</li>
               <li><strong>القيود اليومية</strong> لدعم الممارسات المحاسبية الرسمية.</li>
+              <li><strong>الفواتير والذمم المدينة</strong>.</li>
               <li><strong>الرواتب</strong> مرتبطة مباشرة بملفات الموظفين.</li>
               <li><strong>العمولات</strong> على أساس الصفقات وأهداف المبيعات.</li>
               <li><strong>الإشعارات والفواتير</strong> عبر Listeners منفصلة للحفاظ على الترابط الضعيف.</li>
@@ -462,6 +476,28 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
           </div>
         </section>
 
+        <section class="doc-section" id="tax">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">الامتثال</span>
+              <span class="tag tag--neutral">الدفتر والإقرار</span>
+            </div>
+            <h3>الضرائب</h3>
+            <p>تخزّن وحدة Tax معدلات شاملة أو غير شاملة (اختياريًا حسب المنطقة)، وتطبّقها على بنود الفواتير ومبيعات المنتجات، وتسجّل <strong>ضريبة المخرجات</strong> المحصّلة و<strong>ضريبة المدخلات</strong> المدفوعة على المصروفات في دفتر مستقل. تقارير الإقرار تلخّص صافي الضريبة للفترة.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="reporting">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">التحليلات</span>
+              <span class="tag tag--neutral">CSV / PDF</span>
+            </div>
+            <h3>التقارير</h3>
+            <p>يوفر مركز Reporting تحليلات المالية والمبيعات والتسويق والعمليات والموظفين مع فلاتر الفترة وتصدير CSV/PDF. تشمل تقارير التسويق معدل تسليم واتساب، وتشمل تقارير العمليات تذاكر الدعم وحضور البصمة.</p>
+          </div>
+        </section>
+
         <section class="doc-section" id="cms">
           <div class="module-block">
             <div class="module-meta">
@@ -469,14 +505,26 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
               <span class="tag tag--neutral">متعدد اللغات</span>
             </div>
             <h3>إدارة المحتوى</h3>
-            <p>تشغل وحدة CMS الموقع العام إلى جانب لوحة الإدارة، وتوفر نظامًا متكاملًا لإدارة الصفحات والمقالات والأسئلة الشائعة وإعدادات SEO.</p>
+            <p>تشغل وحدة CMS الموقع العام إلى جانب لوحة الإدارة، وتوفر نظامًا متكاملًا لإدارة الصفحات والمقالات والأسئلة الشائعة وشعارات العملاء وإعدادات SEO.</p>
             <ul>
               <li><strong>الصفحات الثابتة</strong> مع Slugs ومحتوى مترجم.</li>
               <li><strong>المدونة</strong> مع تصنيفات وصور وبيانات SEO.</li>
               <li><strong>الأسئلة الشائعة</strong> بطريقة منظمة وقابلة للإدارة.</li>
+              <li><strong>عملاؤنا</strong> لشعارات الموقع العام.</li>
               <li><strong>دعم اللغات</strong> للإنجليزية والعربية والتركية والألمانية مع دعم RTL للعربية.</li>
             </ul>
           </div>
+        </section>
+
+        <section class="doc-section" id="integrations">
+          <h3>واجهات البرمجة والتكاملات</h3>
+          <p>القيم المحفوظة في لوحة الإدارة تتجاوز <code>.env</code>. الحقول الفارغة تستخدم قيمة البيئة.</p>
+          <ul>
+            <li><strong>SMTP</strong> — واجهات البرمجة ← البريد (الحملات والإشعارات تحتاج عامل الطابور).</li>
+            <li><strong>WhatsApp Cloud API</strong> — رمز الوصول ومعرّف رقم الهاتف؛ قوالب معتمدة في ميتا. إصدار Graph الافتراضي <code>v21.0</code>.</li>
+            <li><strong>Fixer</strong> — إعدادات النظام ← المالية.</li>
+            <li><strong>بصمة ZKTeco</strong> — إعدادات النظام ← البصمة (منفذ TCP <code>4370</code>).</li>
+          </ul>
         </section>
 
         <section class="doc-section" id="getting-started">
@@ -521,7 +569,9 @@ DB_PASSWORD=
 FINANCE_DEFAULT_CURRENCY=USD
 FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
 FIXER_API_KEY=
-FIXER_BASE_URL=https://data.fixer.io/api</code></pre>
+FIXER_BASE_URL=https://data.fixer.io/api
+
+DOCS_ENABLED=true</code></pre>
             </li>
             <li>
               <h4>تثبيت الاعتمادات</h4>
@@ -555,7 +605,14 @@ php artisan module:migrate Finance</code></pre>
 
         <section class="doc-section" id="permissions">
           <h3>الصلاحيات والأدوار</h3>
-          <p>تعتمد المنصة على <code>Spatie Laravel Permission</code> لإنشاء الأدوار وإسناد الصلاحيات الدقيقة لكل وحدة أثناء التثبيت ومن خلال لوحة الإدارة.</p>
+          <p>تعتمد المنصة على <code>Spatie Laravel Permission</code>. تُنشأ الصلاحيات عند <code>app:install</code> من كتالوج <code>group.tab.action</code> (وتُعاد مقابلة الأسماء القديمة إلى الأدوار الحالية). أمثلة: <code>sales.quotes.create</code>، <code>marketing.whatsapp.send</code>، <code>tax.rates.view</code>، <code>reporting.finance.export</code>، <code>hr.fingerprint.manage</code>. يضيف التثبيت أدوار Admin ومدير الموارد البشرية والمبيعات والمالية والمشاريع والعمليات.</p>
+        </section>
+
+        <section class="doc-section" id="testing">
+          <h3>الاختبارات</h3>
+          <p>اختبارات الوحدة والتكامل في <code>tests/</code>. لتغطية Playwright راجع <code>tests/README.md</code>.</p>
+          <pre><code>php artisan test
+npm run test:e2e</code></pre>
         </section>
 
         <section class="doc-section" id="production">
@@ -583,14 +640,14 @@ npm ci && npm run build</code></pre>
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache</code></pre>
-              <p>شغّل عامل الطابور وجدولة Laravel. تقوم الجدولة بتحديث أسعار الصرف كل ساعة، بينما تحتاج التحديثات اليدوية غير المتزامنة إلى عامل الطابور.</p>
+              <p>شغّل عامل الطابور وجدولة Laravel. تقوم الجدولة بتحديث أسعار الصرف كل ساعة. حملات واتساب والبريد والتحديثات اليدوية تحتاج عامل الطابور.</p>
               <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
             </li>
           </ol>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>مراجعة الإنتاج:</strong> عطّل وضع التصحيح، وفعّل المصادقة الثنائية، ولا تضف ملف <code>.env</code> إلى Git. اضبط مفتاح Fixer صالحًا وراقب آخر جلب ناجح من <strong>إعدادات النظام ← المالية</strong> لأن الأسعار المخزنة لا تُرفض تلقائيًا عند تقادمها.</p>
+              <p><strong>مراجعة الإنتاج:</strong> عطّل وضع التصحيح، وفعّل المصادقة الثنائية، ولا تضف ملف <code>.env</code> إلى Git. اضبط مفتاح Fixer صالحًا وراقب آخر جلب ناجح من <strong>إعدادات النظام ← المالية</strong> لأن الأسعار المخزنة لا تُرفض تلقائيًا عند تقادمها. عيّن بيانات واتساب من <strong>واجهات البرمجة والتكاملات</strong>. اضبط <code>DOCS_ENABLED=false</code> إذا لم ترد إظهار <code>/docs</code>.</p>
             </div>
           </div>
         </section>

@@ -98,7 +98,7 @@
     @endforeach
 @endcan
 
-@can('Finance Management')
+@can('project.projects.edit')
     {{-- Log expense --}}
     <div class="modal fade" id="logExpenseModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -141,6 +141,16 @@
                             </select>
                             @error('expense_category_id') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                         </div>
+                        <div class="mb-5">
+                            <label class="form-label" for="expense_tax_rate_id">{{ __('tax::tax_rate.fields.name') }}</label>
+                            <x-tax::tax-rate-select
+                                name="tax_rate_id"
+                                id="expense_tax_rate_id"
+                                :selected="old('tax_rate_id', $project->tax_rate_id)"
+                                :tax-rates="$taxRates ?? []"
+                            />
+                            @error('tax_rate_id') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                        </div>
                         <div class="row g-5">
                             <div class="col-md-6">
                                 <label class="form-label required" for="expense_date">{{ __('finance::finance.fields.date') }}</label>
@@ -166,7 +176,9 @@
             </div>
         </div>
     </div>
+@endcan
 
+@can('finance.invoices.create')
     @if(isset($collectionSummary) && $collectionSummary['remaining'] > 0)
         {{-- Add invoice --}}
         <div class="modal fade" id="addInvoiceModal" tabindex="-1" aria-hidden="true">
@@ -210,9 +222,13 @@
                                            value="{{ old('due_at') }}">
                                 </div>
                                 <div class="col-md-3">
-                                    <label class="form-label">{{ __('finance::invoice.fields.tax') }}</label>
-                                    <input type="number" step="0.01" min="0" name="tax_amount"
-                                           class="form-control form-control-solid" value="{{ old('tax_amount', 0) }}">
+                                    <label class="form-label">{{ __('tax::tax_rate.fields.name') }}</label>
+                                    <x-tax::tax-rate-select
+                                        name="tax_rate_id"
+                                        id="invoice_tax_rate_id"
+                                        :selected="old('tax_rate_id', $project->tax_rate_id)"
+                                        :tax-rates="$taxRates ?? []"
+                                    />
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">{{ __('finance::invoice.fields.notes') }}</label>
@@ -223,10 +239,18 @@
                             <h5 class="fw-bold mb-4">{{ __('finance::invoice.fields.line_items') }}</h5>
                             @error('lines')<div class="text-danger fs-7 mb-3">{{ $message }}</div>@enderror
                             <div id="project-line-items">
-                                @php $oldLines = old('lines', [['description' => $project->title, 'quantity' => 1, 'unit_price' => $collectionSummary['remaining']]]); @endphp
+                                @php
+                                    $oldLines = old('lines', [[
+                                        'description' => $project->title,
+                                        'quantity' => 1,
+                                        'unit_price' => $collectionSummary['remaining'],
+                                        'tax_rate_id' => $project->tax_rate_id,
+                                    ]]);
+                                    $projectTaxRates = $taxRates ?? [];
+                                @endphp
                                 @foreach($oldLines as $index => $line)
                                     <div class="row g-3 mb-3 line-row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <input type="text" name="lines[{{ $index }}][description]"
                                                    class="form-control form-control-solid"
                                                    placeholder="{{ __('finance::invoice.fields.description') }}"
@@ -234,15 +258,28 @@
                                         </div>
                                         <div class="col-md-2">
                                             <input type="number" min="1" name="lines[{{ $index }}][quantity]"
-                                                   class="form-control form-control-solid"
+                                                   class="form-control form-control-solid line-qty"
                                                    value="{{ $line['quantity'] ?? 1 }}" required>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <input type="number" step="0.01" min="0" name="lines[{{ $index }}][unit_price]"
-                                                   class="form-control form-control-solid"
+                                                   class="form-control form-control-solid line-price"
                                                    placeholder="0.00" value="{{ $line['unit_price'] ?? '' }}" required>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
+                                            <select name="lines[{{ $index }}][tax_rate_id]" class="form-select form-select-solid line-tax-rate">
+                                                <option value="">{{ __('tax::tax_rate.fields.none') }}</option>
+                                                @foreach($projectTaxRates as $rate)
+                                                    <option value="{{ $rate->id }}"
+                                                            data-percentage="{{ $rate->percentage }}"
+                                                            data-type="{{ $rate->type }}"
+                                                            @selected((int) ($line['tax_rate_id'] ?? $project->tax_rate_id) === $rate->id)>
+                                                        {{ $rate->name }} ({{ number_format((float) $rate->percentage, 2) }}%)
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-1">
                                             @if($index > 0)
                                                 <button type="button" class="btn btn-light-danger w-100 remove-line">&times;</button>
                                             @endif
@@ -250,6 +287,7 @@
                                     </div>
                                 @endforeach
                             </div>
+                            <div class="text-end text-muted fs-7 mb-3" id="project-invoice-totals"></div>
                             <button type="button" class="btn btn-light-primary btn-sm" id="project-add-line">
                                 <i class="bi bi-plus-lg me-1"></i>{{ __('finance::invoice.actions.add_line') }}
                             </button>
@@ -268,36 +306,108 @@
 @endcan
 
 @push('scripts')
+    @php
+        $projectTaxRateOptions = collect($taxRates ?? [])->map(static fn ($rate) => [
+            'id' => $rate->id,
+            'name' => $rate->name,
+            'percentage' => $rate->percentage,
+            'type' => $rate->type,
+        ])->values();
+    @endphp
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let lineIndex = document.querySelectorAll('#project-line-items .line-row').length;
             const container = document.getElementById('project-line-items');
+            const defaultTaxRateId = @json(old('tax_rate_id', $project->tax_rate_id));
+            const taxRateOptions = @json($projectTaxRateOptions);
+
+            function buildTaxOptions(selectedId) {
+                let html = `<option value="">{{ __('tax::tax_rate.fields.none') }}</option>`;
+                taxRateOptions.forEach(function (rate) {
+                    const selected = String(selectedId || defaultTaxRateId) === String(rate.id) ? 'selected' : '';
+                    html += `<option value="${rate.id}" data-percentage="${rate.percentage}" data-type="${rate.type}" ${selected}>${rate.name} (${parseFloat(rate.percentage).toFixed(2)}%)</option>`;
+                });
+                return html;
+            }
+
+            function calcLineTotal(qty, price, rateEl) {
+                const base = qty * price;
+                if (!rateEl || !rateEl.value) return base;
+                const pct = parseFloat(rateEl.selectedOptions[0]?.dataset.percentage || 0);
+                const type = rateEl.selectedOptions[0]?.dataset.type || 'exclusive';
+                if (type === 'inclusive') return base;
+                return base + (base * pct / 100);
+            }
+
+            function updateProjectInvoiceTotals() {
+                const totalsEl = document.getElementById('project-invoice-totals');
+                if (!totalsEl || !container) return;
+                let subtotal = 0, tax = 0, total = 0;
+                container.querySelectorAll('.line-row').forEach(function (row) {
+                    const qty = parseFloat(row.querySelector('.line-qty')?.value || 0);
+                    const price = parseFloat(row.querySelector('.line-price')?.value || 0);
+                    const rateEl = row.querySelector('.line-tax-rate');
+                    const base = qty * price;
+                    subtotal += base;
+                    if (rateEl?.value) {
+                        const pct = parseFloat(rateEl.selectedOptions[0]?.dataset.percentage || 0);
+                        const type = rateEl.selectedOptions[0]?.dataset.type || 'exclusive';
+                        if (type === 'inclusive') {
+                            const lineTax = base * (pct / (100 + pct));
+                            tax += lineTax;
+                            total += base;
+                        } else {
+                            const lineTax = base * (pct / 100);
+                            tax += lineTax;
+                            total += base + lineTax;
+                        }
+                    } else {
+                        total += base;
+                    }
+                });
+                totalsEl.textContent = `{{ __('finance::invoice.fields.subtotal') }}: ${subtotal.toFixed(2)} | {{ __('tax::report.fields.output_tax') }}: ${tax.toFixed(2)} | {{ __('finance::invoice.fields.total') }}: ${total.toFixed(2)}`;
+            }
 
             document.getElementById('project-add-line')?.addEventListener('click', function () {
                 const row = document.createElement('div');
                 row.className = 'row g-3 mb-3 line-row';
                 row.innerHTML = `
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <input type="text" name="lines[${lineIndex}][description]" class="form-control form-control-solid" required>
                     </div>
                     <div class="col-md-2">
-                        <input type="number" min="1" name="lines[${lineIndex}][quantity]" class="form-control form-control-solid" value="1" required>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="number" step="0.01" min="0" name="lines[${lineIndex}][unit_price]" class="form-control form-control-solid" required>
+                        <input type="number" min="1" name="lines[${lineIndex}][quantity]" class="form-control form-control-solid line-qty" value="1" required>
                     </div>
                     <div class="col-md-2">
+                        <input type="number" step="0.01" min="0" name="lines[${lineIndex}][unit_price]" class="form-control form-control-solid line-price" required>
+                    </div>
+                    <div class="col-md-3">
+                        <select name="lines[${lineIndex}][tax_rate_id]" class="form-select form-select-solid line-tax-rate">${buildTaxOptions(defaultTaxRateId)}</select>
+                    </div>
+                    <div class="col-md-1">
                         <button type="button" class="btn btn-light-danger w-100 remove-line">&times;</button>
                     </div>`;
                 container.appendChild(row);
                 lineIndex++;
+                updateProjectInvoiceTotals();
             });
 
             container?.addEventListener('click', function (e) {
                 if (e.target.classList.contains('remove-line')) {
                     e.target.closest('.line-row')?.remove();
+                    updateProjectInvoiceTotals();
                 }
             });
+
+            container?.addEventListener('input', updateProjectInvoiceTotals);
+            container?.addEventListener('change', updateProjectInvoiceTotals);
+            document.getElementById('invoice_tax_rate_id')?.addEventListener('change', function () {
+                container.querySelectorAll('.line-tax-rate').forEach(function (el) {
+                    if (!el.value) el.value = this.value;
+                }.bind(this));
+                updateProjectInvoiceTotals();
+            });
+            updateProjectInvoiceTotals();
 
             @if($errors->hasAny(['employee_id', 'started_at']))
                 const assignModal = document.getElementById('assignEmployeeModal');

@@ -241,7 +241,7 @@
                     <a href="{{ route('admin.deals.show', $lead->deal_id) }}" class="btn btn-success">
                         <i class="bi bi-briefcase me-1"></i>{{ __('crm::lead.conversion.view_deal') }}
                     </a>
-                @elseif(auth()->user()?->can('CRM Management'))
+                @elseif(auth()->user()?->can('crm.leads.edit'))
                     @if($lead->company_name || $lead->company_id)
                         <form method="POST" action="{{ route('admin.leads.convertCustomer', $lead) }}" class="d-inline">
                             @csrf
@@ -283,7 +283,7 @@
         </div>
     </div>
 
-    @if(!$lead->deal_id && auth()->user()?->can('CRM Management'))
+    @if(!$lead->deal_id && auth()->user()?->can('crm.leads.edit'))
         <div class="modal fade" id="convertLeadModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">

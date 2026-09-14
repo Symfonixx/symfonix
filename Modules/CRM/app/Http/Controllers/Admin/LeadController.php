@@ -84,8 +84,8 @@ class LeadController extends Controller
             'assignee:id,name',
             'deal:id,title,pipeline_stage_id',
             'deal.pipelineStage:id,name,color',
-            'crmActivities.user:id,name',
-            'crmAuditLogs.user:id,name',
+            'crmActivities' => fn ($q) => $q->with('user:id,name')->latest()->limit(50),
+            'crmAuditLogs' => fn ($q) => $q->with('user:id,name')->latest('created_at')->limit(50),
         ]);
 
         $stages = $this->stageRepository->allActive();

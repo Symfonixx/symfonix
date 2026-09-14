@@ -1,0 +1,39 @@
+{
+    "menu": "Satış Tahminleri",
+    "title": "Satış Tahminleri",
+    "subtitle": "Aşama kazanma olasılıkları ve beklenen kapanış tarihlerine göre açık anlaşmalardan gelir projeksiyonu.",
+    "filters": {
+        "from": "Kapanış Tarihi Başlangıç",
+        "to": "Kapanış Tarihi Bitiş",
+        "rep": "Satış Temsilcisi",
+        "all_reps": "Tüm Temsilciler",
+        "stage": "Pipeline Aşaması",
+        "all_stages": "Tüm Aşamalar",
+        "apply": "Filtreleri Uygula"
+    },
+    "metrics": {
+        "total_pipeline": "Toplam Pipeline",
+        "total_pipeline_hint": "Seçilen aralıktaki tüm açık anlaşma değerlerinin toplamı.",
+        "forecasted_revenue": "Tahmini Gelir",
+        "forecasted_revenue_hint": "Anlaşma değeri kazanma olasılığı ile çarpılarak pipeline genelinde toplanır.",
+        "best_case": "En İyi Senaryo",
+        "best_case_hint": "%75 ve üzeri kazanma olasılığına sahip yüksek güvenilir anlaşmaların tam değeri.",
+        "worst_case": "En Kötü Senaryo",
+        "worst_case_hint": "%75 altı düşük güvenilir anlaşmaların ağırlıklı değeri."
+    },
+    "charts": {
+        "pipeline_comparison": "Ağırlıklı vs. Ağırlıksız Pipeline",
+        "pipeline_comparison_hint": "Ham pipeline değerini aşamaya göre olasılık ağırlıklı projeksiyonlarla karşılaştırın.",
+        "monthly_predictions": "Aylık Gelir Tahminleri",
+        "monthly_predictions_hint": "Anlaşma kapanış tarihine göre gruplanmış beklenen gelir.",
+        "stage_table": "Aşama Dağılımı",
+        "unweighted": "Ağırlıksız",
+        "weighted": "Ağırlıklı"
+    },
+    "table": {
+        "stage": "Aşama",
+        "deals": "Anlaşmalar",
+        "unweighted": "Ağırlıksız",
+        "weighted": "Ağırlıklı"
+    }
+}

@@ -6,7 +6,7 @@ use Modules\Support\app\Http\Controllers\Admin\TicketCategoryController;
 use Modules\Support\app\Http\Controllers\Admin\TicketController;
 use Modules\Support\app\Http\Controllers\Admin\VisitorController;
 
-Route::middleware('can:Support Management')->group(function () {
+Route::group([], function () {
     // Ticket routes
     Route::get('tickets', [TicketController::class, 'index'])->name('tickets.index');
     Route::get('tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');

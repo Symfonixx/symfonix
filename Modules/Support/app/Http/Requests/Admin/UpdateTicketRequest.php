@@ -10,7 +10,7 @@ class UpdateTicketRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Support Management') ?? false;
+        return $this->user()?->can('support.tickets.edit') ?? false;
     }
 
     public function rules(): array

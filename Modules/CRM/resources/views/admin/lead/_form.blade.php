@@ -263,7 +263,7 @@
                     <div class="fw-semibold">
                         <div class="fs-6 text-gray-700">{{ __('crm::lead.hints.no_tags') }}</div>
                     </div>
-                    @can('CRM Management')
+                    @can('crm.lead_tags.create')
                         <a href="{{ route('admin.crm.lead-tags.create') }}" class="btn btn-sm btn-warning">
                             {{ __('crm::lead.actions.manage_tags') }}
                         </a>
@@ -290,7 +290,7 @@
             </div>
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-3">
                 <div class="form-text mb-0">{{ __('crm::lead.hints.tags') }}</div>
-                @can('CRM Management')
+                @can('crm.lead_tags.view')
                     <a href="{{ route('admin.crm.lead-tags.index') }}" class="fs-7 text-primary text-hover-primary">
                         <i class="bi bi-gear me-1"></i>{{ __('crm::lead.actions.manage_tags') }}
                     </a>
@@ -317,7 +317,7 @@
                 <h4 class="fw-bold mb-2">{{ __('crm::lead.sections.custom_fields') }}</h4>
                 <p class="text-muted mb-0">{{ __('crm::lead.sections.custom_fields_hint') }}</p>
             </div>
-            @can('CRM Management')
+            @can('crm.custom_fields.view')
                 <a href="{{ route('admin.crm.custom-fields.index') }}" class="fs-7 text-primary text-hover-primary">
                     <i class="bi bi-gear me-1"></i>{{ __('crm::lead.actions.manage_custom_fields') }}
                 </a>

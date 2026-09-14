@@ -5,6 +5,7 @@ namespace Modules\CRM\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\CRM\Models\Deal;
+use Modules\User\Support\PermissionCatalog;
 
 class DealIndexRequest extends FormRequest
 {
@@ -24,6 +25,6 @@ class DealIndexRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 }

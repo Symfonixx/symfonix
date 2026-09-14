@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Modules\Base\Models\Settings;
+use Modules\User\Services\PermissionSync;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -21,27 +23,6 @@ class InstallAppCommand extends Command
                             {--fresh : Drop all tables and reinstall}';
 
     protected $description = 'Install Symfonix: migrate database, seed reference data, permissions, and create the admin user.';
-
-    /**
-     * @var list<string>
-     */
-    private const PERMISSIONS = [
-        'Settings Management',
-        'CMS Management',
-        'Support Management',
-        'Hr Management',
-        'App Monitoring',
-        'Logs Management',
-        'CRM Management',
-        'CRM View All',
-        'Sales Management',
-        'Project Management',
-        'Finance Management',
-        'Services Management',
-        'Product Management',
-        'Testimonials Management',
-        'Team Management',
-    ];
 
     public function handle(): int
     {
@@ -66,8 +47,11 @@ class InstallAppCommand extends Command
             return self::FAILURE;
         }
 
-        $this->seedPermissions();
-        $this->components->info('Permissions seeded.');
+        $this->seedPermissions((bool) $this->option('fresh'));
+        $this->components->info('Permissions synchronized.');
+
+        $this->seedRoleScenarios();
+        $this->components->info('Role scenarios seeded.');
 
         $this->seedPipelineStages();
         $this->components->info('CRM pipeline stages seeded.');
@@ -100,7 +84,7 @@ class InstallAppCommand extends Command
         $this->components->info('Symfonix installed successfully.');
         $this->line("  Email:    {$user->email}");
         $this->line("  Password: {$this->option('password')}");
-        $this->line('  Default currency: '.(\Modules\Base\Models\Settings::get('default_currency') ?: config('finance.default_currency', 'USD')));
+        $this->line('  Default currency: '.(Settings::get('default_currency') ?: config('finance.default_currency', 'USD')));
         $this->newLine();
 
         return self::SUCCESS;
@@ -128,14 +112,17 @@ class InstallAppCommand extends Command
         return true;
     }
 
-    private function seedPermissions(): void
+    private function seedPermissions(bool $pruneUnknown): void
     {
-        foreach (self::PERMISSIONS as $permission) {
-            Permission::query()->firstOrCreate([
-                'name' => $permission,
-                'guard_name' => 'web',
-            ]);
-        }
+        app(PermissionSync::class)->sync(pruneUnknown: $pruneUnknown);
+    }
+
+    private function seedRoleScenarios(): void
+    {
+        Artisan::call('db:seed', [
+            '--class' => 'Modules\\User\\Database\\Seeders\\RoleScenarioSeeder',
+            '--force' => true,
+        ]);
     }
 
     private function seedPipelineStages(): void

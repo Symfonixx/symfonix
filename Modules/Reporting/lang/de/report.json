@@ -1,0 +1,117 @@
+{
+    "menu": {
+        "reports": "Berichte",
+        "finance": "Finanzberichte",
+        "sales": "Vertriebsberichte",
+        "marketing": "Marketingberichte",
+        "operations": "IT / Betriebsberichte",
+        "employee": "Mitarbeiterberichte"
+    },
+    "departments": {
+        "finance": "Finanzen",
+        "sales": "Vertrieb",
+        "marketing": "Marketing",
+        "operations": "IT / Betrieb",
+        "employee": "Mitarbeiter"
+    },
+    "pages": {
+        "finance_title": "Finanzberichte",
+        "sales_title": "Vertriebsberichte",
+        "marketing_title": "Marketingberichte",
+        "operations_title": "IT / Betriebsberichte",
+        "employee_title": "Mitarbeiterberichte",
+        "employee_profile_title": "Mitarbeiter-Leistungsprofil"
+    },
+    "subtitle": "Abteilungsübergreifende Analysen mit dynamischer Filterung und Export",
+    "filters": {
+        "period": "Zeitraum",
+        "date_from": "Von",
+        "date_to": "Bis",
+        "assignee": "Vertriebsmitarbeiter",
+        "employee": "Mitarbeiter",
+        "all_reps": "Alle Mitarbeiter",
+        "all_employees": "Alle Mitarbeiter",
+        "apply": "Filter anwenden",
+        "periods": {
+            "today": "Heute",
+            "last_7_days": "Letzte 7 Tage",
+            "this_month": "Dieser Monat",
+            "last_month": "Letzter Monat",
+            "this_quarter": "Dieses Quartal",
+            "this_year": "Dieses Jahr",
+            "custom": "Benutzerdefiniert"
+        }
+    },
+    "actions": {
+        "export_csv": "CSV exportieren",
+        "export_pdf": "PDF exportieren"
+    },
+    "kpis": {
+        "revenue": "Umsatz",
+        "expenses": "Ausgaben",
+        "profit": "Nettogewinn",
+        "accounts_receivable": "Forderungen",
+        "accounts_payable": "Verbindlichkeiten",
+        "net_tax": "Netto-Steuerschuld",
+        "pipeline_value": "Pipeline-Wert",
+        "won_deals": "Gewonnener Deal-Wert",
+        "won_count": "Gewonnene Deals",
+        "conversion_rate": "Conversion-Rate",
+        "avg_deal_value": "Durchschn. Deal-Wert",
+        "email_campaigns": "E-Mail-Kampagnen",
+        "whatsapp_campaigns": "WhatsApp-Kampagnen",
+        "total_recipients": "Empfänger gesamt",
+        "whatsapp_delivery_rate": "WhatsApp-Zustellrate",
+        "new_leads": "Neue Leads",
+        "open_tickets": "Offene Tickets",
+        "resolved_tickets": "Gelöste Tickets",
+        "avg_resolution_hours": "Durchschn. Lösung (Std.)",
+        "attendance_rate": "Anwesenheitsrate",
+        "active_projects": "Aktive Projekte",
+        "attendance_days": "Anwesenheitstage",
+        "attendance_events": "Fingerabdruck-Ereignisse",
+        "projects_assigned": "Zugewiesene Projekte",
+        "projects_completed": "Abgeschlossene Projekte",
+        "utilization_rate": "Auslastungsrate",
+        "salary_paid_total": "Gesamt bezahltes Gehalt",
+        "salary_pending_total": "Ausstehendes Gehalt"
+    },
+    "sections": {
+        "monthly_trend": "Umsatz- & Ausgabentrend",
+        "expense_breakdown": "Ausgabenaufschlüsselung",
+        "ar_aging": "Forderungsalter",
+        "tax_summary": "Steuerübersicht",
+        "pipeline_funnel": "Pipeline-Trichter",
+        "won_lost_trend": "Gewonnen vs. Verloren",
+        "rep_performance": "Vertriebsleistung",
+        "stage_breakdown": "Pipeline nach Phase",
+        "campaign_volume": "Kampagnenvolumen",
+        "lead_sources": "Lead-Quellen",
+        "whatsapp_delivery": "WhatsApp-Zustellung",
+        "conversion_by_source": "Conversion nach Quelle",
+        "ticket_status": "Ticket-Status",
+        "ticket_by_category": "Tickets nach Kategorie",
+        "ticket_trend": "Ticket-Trend",
+        "project_status": "Projektstatus",
+        "attendance_daily": "Tägliche Anwesenheit",
+        "attendance_trend": "Anwesenheitstrend",
+        "punch_types": "Verteilung der Stempeltypen",
+        "employee_project_performance": "Projektleistung der Mitarbeiter",
+        "salary_trend": "Gehaltsentwicklung"
+    },
+    "ar": {
+        "current": "Aktuell",
+        "days_1_30": "1–30 Tage",
+        "days_31_60": "31–60 Tage",
+        "days_61_90": "61–90 Tage",
+        "over_90": "Über 90 Tage"
+    },
+    "employee": {
+        "last_attendance": "Letzte Anwesenheit",
+        "active_assignments": "Aktive Zuweisungen"
+    },
+    "uncategorized": "Nicht kategorisiert",
+    "unassigned": "Nicht zugewiesen",
+    "vs_previous": "vs. Vorperiode",
+    "no_data": "Keine Daten für den gewählten Zeitraum"
+}

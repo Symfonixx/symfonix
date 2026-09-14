@@ -1,0 +1,39 @@
+{
+    "menu": "Sales Forecasts",
+    "title": "Sales Forecasts",
+    "subtitle": "Project revenue from open deals using stage win probabilities and expected close dates.",
+    "filters": {
+        "from": "Close Date From",
+        "to": "Close Date To",
+        "rep": "Sales Rep",
+        "all_reps": "All Reps",
+        "stage": "Pipeline Stage",
+        "all_stages": "All Stages",
+        "apply": "Apply Filters"
+    },
+    "metrics": {
+        "total_pipeline": "Total Pipeline",
+        "total_pipeline_hint": "Sum of all open deal values in the selected range.",
+        "forecasted_revenue": "Forecasted Revenue",
+        "forecasted_revenue_hint": "Deal value multiplied by win probability, aggregated across the pipeline.",
+        "best_case": "Best Case",
+        "best_case_hint": "Full value of high-confidence deals at 75%+ win probability.",
+        "worst_case": "Worst Case",
+        "worst_case_hint": "Weighted value of lower-confidence deals below 75% probability."
+    },
+    "charts": {
+        "pipeline_comparison": "Weighted vs. Unweighted Pipeline",
+        "pipeline_comparison_hint": "Compare raw pipeline value against probability-weighted projections by stage.",
+        "monthly_predictions": "Monthly Revenue Predictions",
+        "monthly_predictions_hint": "Expected revenue grouped by deal close date.",
+        "stage_table": "Stage Breakdown",
+        "unweighted": "Unweighted",
+        "weighted": "Weighted"
+    },
+    "table": {
+        "stage": "Stage",
+        "deals": "Deals",
+        "unweighted": "Unweighted",
+        "weighted": "Weighted"
+    }
+}

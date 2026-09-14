@@ -20,6 +20,8 @@
         $selectedCurrency = old('data.default_currency', $defaultCurrency);
         $backupEnabled = old('data.auto_backup_enabled', $settings->get('auto_backup_enabled', '0')) == '1';
         $backupLastRun = $settings->get('auto_backup_last_run');
+        $fingerprintEnabled = old('data.fingerprint_enabled', $settings->get('fingerprint_enabled', '0')) == '1';
+        $fingerprintLastSync = $settings->get('fingerprint_last_sync_at');
         $currencyNames = [
             'USD' => __('base::system.currency.names.USD'),
             'EUR' => __('base::system.currency.names.EUR'),
@@ -53,6 +55,11 @@
             <li class="nav-item">
                 <a class="nav-link text-nowrap" data-bs-toggle="tab" href="#tab-sys-notifications">
                     <i class="bi bi-envelope-at me-2"></i>{{ __('base::system.tabs.notifications') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-nowrap" data-bs-toggle="tab" href="#tab-sys-fingerprint">
+                    <i class="bi bi-fingerprint me-2"></i>{{ __('base::system.tabs.fingerprint') }}
                 </a>
             </li>
             <li class="nav-item">
@@ -285,6 +292,143 @@
                                 <i class="bi bi-plug me-1"></i>
                                 {{ __('base::integrations.title') }}
                             </a>
+                        </div>
+                    </div>
+                </x-admin.settings-section>
+            </div>
+
+            {{-- Fingerprint --}}
+            <div class="tab-pane fade" id="tab-sys-fingerprint">
+                <div class="sys-status-grid mb-8">
+                    <div class="sys-status-card {{ $fingerprintEnabled ? 'is-ok' : 'is-muted' }}">
+                        <div class="sys-status-icon">
+                            <i class="bi {{ $fingerprintEnabled ? 'bi-fingerprint' : 'bi-fingerprint' }}"></i>
+                        </div>
+                        <div>
+                            <div class="sys-status-label">{{ __('base::system.fingerprint.status_title') }}</div>
+                            <div class="sys-status-value">
+                                {{ $fingerprintEnabled ? __('base::system.fingerprint.enabled_on') : __('base::system.fingerprint.enabled_off') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sys-status-card {{ $fingerprintConfigured ? 'is-ok' : 'is-warn' }}">
+                        <div class="sys-status-icon">
+                            <i class="bi {{ $fingerprintConfigured ? 'bi-hdd-network' : 'bi-hdd-network-fill' }}"></i>
+                        </div>
+                        <div>
+                            <div class="sys-status-label">{{ __('base::system.fingerprint.connection_title') }}</div>
+                            <div class="sys-status-value">
+                                {{ $fingerprintConfigured ? __('base::system.fingerprint.connection_ready') : __('base::system.fingerprint.connection_missing') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sys-status-card {{ $fingerprintLastSync ? 'is-ok' : 'is-muted' }}">
+                        <div class="sys-status-icon">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <div>
+                            <div class="sys-status-label">{{ __('base::system.fingerprint.last_sync') }}</div>
+                            <div class="sys-status-value">
+                                @if($fingerprintLastSync)
+                                    {{ \Illuminate\Support\Carbon::parse($fingerprintLastSync)->diffForHumans() }}
+                                @else
+                                    {{ __('base::system.fingerprint.never_synced') }}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <x-admin.settings-section
+                    icon="bi-fingerprint"
+                    :title="__('base::system.fingerprint.title')"
+                    :description="__('base::system.fingerprint.description')"
+                >
+                    <div class="row mb-6 settings-field">
+                        <div class="col-lg-4">
+                            <label class="settings-field-label" for="field-fingerprint-enabled">
+                                <i class="bi bi-toggle-on text-primary me-1"></i>
+                                {{ __('base::system.fingerprint.enabled') }}
+                            </label>
+                            <div class="settings-field-hint">{{ __('base::system.fingerprint.enabled_hint') }}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="hidden" name="data[fingerprint_enabled]" value="0">
+                            <div class="form-check form-switch form-check-custom form-check-solid mt-2">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="field-fingerprint-enabled"
+                                    name="data[fingerprint_enabled]"
+                                    value="1"
+                                    @checked($fingerprintEnabled)
+                                />
+                                <label class="form-check-label" for="field-fingerprint-enabled">
+                                    {{ __('base::system.fingerprint.enabled_label') }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <x-admin.settings-field
+                        :label="__('base::system.fingerprint.host')"
+                        name="data[fingerprint_host]"
+                        :value="$settings->get('fingerprint_host')"
+                        placeholder="192.168.1.201"
+                        icon="bi-hdd-network"
+                        :hint="__('base::system.fingerprint.host_hint')"
+                    />
+                    <x-admin.settings-field
+                        :label="__('base::system.fingerprint.port')"
+                        name="data[fingerprint_port]"
+                        type="number"
+                        :value="$settings->get('fingerprint_port', '4370')"
+                        placeholder="4370"
+                        icon="bi-ethernet"
+                        :hint="__('base::system.fingerprint.port_hint')"
+                    />
+                    <x-admin.settings-field
+                        :label="__('base::system.fingerprint.comm_key')"
+                        name="data[fingerprint_comm_key]"
+                        type="number"
+                        :value="$settings->get('fingerprint_comm_key', '0')"
+                        placeholder="0"
+                        icon="bi-key"
+                        :hint="__('base::system.fingerprint.comm_key_hint')"
+                    />
+                    <x-admin.settings-field
+                        :label="__('base::system.fingerprint.timeout')"
+                        name="data[fingerprint_timeout]"
+                        type="number"
+                        :value="$settings->get('fingerprint_timeout', '10')"
+                        placeholder="10"
+                        icon="bi-hourglass-split"
+                        :hint="__('base::system.fingerprint.timeout_hint')"
+                    />
+                    <x-admin.settings-field
+                        :label="__('base::system.fingerprint.name_encoding')"
+                        name="data[fingerprint_name_encoding]"
+                        :value="$settings->get('fingerprint_name_encoding', 'UTF-8')"
+                        placeholder="UTF-8"
+                        icon="bi-translate"
+                        :hint="__('base::system.fingerprint.name_encoding_hint')"
+                    />
+                    <div class="row mb-2">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-8 d-flex gap-2 flex-wrap">
+                            <button
+                                type="submit"
+                                formaction="{{ route('admin.system-configurations.test-fingerprint') }}"
+                                class="btn btn-light-primary"
+                            >
+                                <i class="bi bi-plug me-1"></i>
+                                {{ __('base::system.fingerprint.test_connection') }}
+                            </button>
+                            @can('settings.system.edit')
+                                <a href="{{ route('admin.fingerprint.index') }}" class="btn btn-light-info">
+                                    <i class="bi bi-people me-1"></i>
+                                    {{ __('base::system.fingerprint.manage_sync') }}
+                                </a>
+                            @endcan
                         </div>
                     </div>
                 </x-admin.settings-section>

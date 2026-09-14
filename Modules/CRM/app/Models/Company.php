@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\CRM\Concerns\HasCrmTimeline;
+use Modules\CRM\Enums\CompanyActivityType;
+use Modules\CRM\Enums\CompanyStatus;
 use Modules\CRM\Filters\Company\CompanyFilter;
 use Modules\Project\Models\Project;
 
@@ -16,25 +18,25 @@ class Company extends Model
 {
     use HasCrmTimeline, SoftDeletes;
 
-    public const STATUS_ACTIVE = 'active';
+    public const STATUS_ACTIVE = CompanyStatus::ACTIVE->value;
 
-    public const STATUS_DISABLED = 'disabled';
+    public const STATUS_DISABLED = CompanyStatus::DISABLED->value;
 
-    public const ACTIVITY_TECHNOLOGY = 'technology';
+    public const ACTIVITY_TECHNOLOGY = CompanyActivityType::TECHNOLOGY->value;
 
-    public const ACTIVITY_RETAIL = 'retail';
+    public const ACTIVITY_RETAIL = CompanyActivityType::RETAIL->value;
 
-    public const ACTIVITY_HEALTHCARE = 'healthcare';
+    public const ACTIVITY_HEALTHCARE = CompanyActivityType::HEALTHCARE->value;
 
-    public const ACTIVITY_FINANCE = 'finance';
+    public const ACTIVITY_FINANCE = CompanyActivityType::FINANCE->value;
 
-    public const ACTIVITY_EDUCATION = 'education';
+    public const ACTIVITY_EDUCATION = CompanyActivityType::EDUCATION->value;
 
-    public const ACTIVITY_MANUFACTURING = 'manufacturing';
+    public const ACTIVITY_MANUFACTURING = CompanyActivityType::MANUFACTURING->value;
 
-    public const ACTIVITY_CONSULTING = 'consulting';
+    public const ACTIVITY_CONSULTING = CompanyActivityType::CONSULTING->value;
 
-    public const ACTIVITY_OTHER = 'other';
+    public const ACTIVITY_OTHER = CompanyActivityType::OTHER->value;
 
     public const ACTIVITY_TYPES = [
         self::ACTIVITY_TECHNOLOGY,

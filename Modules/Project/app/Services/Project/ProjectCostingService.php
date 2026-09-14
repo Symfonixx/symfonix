@@ -5,6 +5,7 @@ namespace Modules\Project\Services\Project;
 use Illuminate\Support\Collection;
 use Modules\Finance\Models\JournalEntry;
 use Modules\Finance\Models\Salary;
+use Modules\Finance\Services\CurrencyService;
 use Modules\Finance\Services\FinanceService;
 use Modules\Project\Models\Project;
 use Modules\Project\Models\ProjectEmployee;
@@ -33,13 +34,31 @@ class ProjectCostingService
 
     public function latestBaseSalary(int $employeeId): float
     {
-        $salary = Salary::query()
-            ->where('employee_id', $employeeId)
+        return $this->latestBaseSalaries([$employeeId])[$employeeId] ?? 0.0;
+    }
+
+    /**
+     * @param  list<int>  $employeeIds
+     * @return array<int, float>
+     */
+    public function latestBaseSalaries(array $employeeIds): array
+    {
+        $employeeIds = array_values(array_unique(array_filter($employeeIds)));
+
+        if ($employeeIds === []) {
+            return [];
+        }
+
+        return Salary::query()
+            ->whereIn('employee_id', $employeeIds)
             ->orderByDesc('period')
             ->orderByDesc('id')
-            ->value('base_salary');
-
-        return round((float) ($salary ?? 0), 2);
+            ->get(['employee_id', 'base_salary'])
+            ->unique('employee_id')
+            ->mapWithKeys(fn (Salary $salary) => [
+                (int) $salary->employee_id => round((float) $salary->base_salary, 2),
+            ])
+            ->all();
     }
 
     public function laborCostForAssignment(ProjectEmployee $assignment): float
@@ -67,11 +86,15 @@ class ProjectCostingService
     {
         $project->loadMissing(['assignments.employee']);
 
+        $salaries = $this->latestBaseSalaries(
+            $project->assignments->pluck('employee_id')->map(fn ($id) => (int) $id)->unique()->all()
+        );
+
         $assignments = $project->assignments
             ->sortByDesc(fn (ProjectEmployee $row) => $row->started_at?->timestamp ?? 0)
             ->values()
-            ->map(function (ProjectEmployee $assignment) {
-                $baseSalary = $this->latestBaseSalary((int) $assignment->employee_id);
+            ->map(function (ProjectEmployee $assignment) use ($salaries) {
+                $baseSalary = $salaries[(int) $assignment->employee_id] ?? 0.0;
                 $dailyRate = $baseSalary > 0
                     ? round($baseSalary / $this->workingDaysPerMonth(), 2)
                     : 0.0;
@@ -145,7 +168,7 @@ class ProjectCostingService
         $profitOrLoss = round($invoiced - $totalCost, 2);
         $currency = $project->currency
             ?? $project->deal?->currency
-            ?? app(\Modules\Finance\Services\CurrencyService::class)->defaultCurrency();
+            ?? app(CurrencyService::class)->defaultCurrency();
 
         return [
             'currency' => $currency,

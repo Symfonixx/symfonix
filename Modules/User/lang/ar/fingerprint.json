@@ -1,0 +1,53 @@
+{
+    "title": "مزامنة البصمة",
+    "page_description": "سجّل الموظفين على جهاز ZKTeco وزامن سجلات الحضور إلى Symfonix.",
+    "search_logs": "البحث في سجلات الحضور",
+    "empty_logs": "لم تتم مزامنة أي سجلات حضور بعد.",
+    "processing": "جاري المعالجة...",
+    "operation_failed": "فشلت العملية",
+    "connection_failed": "فشل طلب الاتصال",
+    "confirm_yes": "نعم، متابعة",
+    "confirm_no": "لا، إلغاء",
+    "recent_attendance": "أحدث سجلات حضور البصمة",
+    "not_configured": {
+        "title": "جهاز البصمة غير مُعدّ",
+        "description": "اضبط عنوان IP والمنفذ من إعدادات النظام ← البصمة، ثم عد إلى هنا لمزامنة الموظفين والحضور.",
+        "link": "فتح إعدادات البصمة"
+    },
+    "status": {
+        "enrolled": "مسجّل بالبصمة",
+        "pending": "بانتظار تسجيل البصمة",
+        "not_enrolled": "غير مسجّل بالبصمة",
+        "enrolled_short": "مسجّل",
+        "pending_short": "قيد الانتظار"
+    },
+    "stats": {
+        "enrolled": "الموظفون المسجّلون",
+        "logs": "سجلات الحضور",
+        "last_sync": "آخر مزامنة",
+        "never": "لم تتم بعد",
+        "mapping_hint": "يتم ربط user_id على الجهاز بـ employee_id الداخلي."
+    },
+    "columns": {
+        "device_user_id": "معرف المستخدم على الجهاز",
+        "punch": "البصمة",
+        "verify": "وضع التحقق",
+        "recorded_at": "وقت التسجيل",
+        "synced_at": "تمت المزامنة"
+    },
+    "actions": {
+        "test_connection": "اختبار الاتصال",
+        "enroll_all": "مزامنة جميع الموظفين",
+        "sync_attendance": "مزامنة الحضور",
+        "enroll": "التسجيل على الجهاز"
+    },
+    "confirm": {
+        "enroll_all": "هل تريد تسجيل جميع الموظفين النشطين على جهاز البصمة؟"
+    },
+    "messages": {
+        "connection_ok": "تم الاتصال بجهاز البصمة.",
+        "enroll_done": "تم تسجيل الموظف على الجهاز.",
+        "enroll_all_done": "اكتملت مزامنة الموظفين.",
+        "sync_done": "اكتملت مزامنة الحضور."
+    }
+}

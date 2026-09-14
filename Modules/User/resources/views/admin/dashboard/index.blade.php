@@ -22,10 +22,12 @@
                 <a href="{{ route('home') }}" target="_blank" class="btn btn-sm btn-light fw-semibold">
                     <i class="bi bi-box-arrow-up-right me-1"></i>{{ __('View Website') }}
                 </a>
-                @can('CRM Management')
+                @canany(['crm.leads.view', 'crm.companies.view', 'sales.deals.view'])
                     <a href="{{ route('admin.crm.dashboard') }}" class="btn btn-sm btn-light fw-semibold text-info">
                         <i class="bi bi-graph-up me-1"></i>{{ __('crm::dashboard.menu') }}
                     </a>
+                @endcanany
+                @can('crm.inquiries.view')
                     <a href="{{ route('admin.contact_forms.index') }}" class="btn btn-sm btn-light fw-semibold text-primary">
                         <i class="bi bi-envelope me-1"></i>{{ __('Messages') }}
                         @if(($stats['contacts'] ?? 0) > 0)
@@ -33,7 +35,7 @@
                         @endif
                     </a>
                 @endcan
-                @can('Support Management')
+                @can('support.tickets.view')
                     <a href="{{ route('admin.tickets.index') }}" class="btn btn-sm btn-light fw-semibold text-warning">
                         <i class="bi bi-ticket-detailed me-1"></i>{{ __('support::ticket.menu.tickets') }}
                         @if(($ticketStats['open'] ?? 0) > 0)
@@ -41,12 +43,12 @@
                         @endif
                     </a>
                 @endcan
-                @can('Finance Management')
+                @can('finance.dashboard.view')
                     <a href="{{ route('admin.finance.dashboard') }}" class="btn btn-sm btn-light fw-semibold text-success">
                         <i class="bi bi-currency-dollar me-1"></i>{{ __('finance::finance.menu.finance') }}
                     </a>
                 @endcan
-                @can('Testimonials Management')
+                @can('cms.testimonials.view')
                     <a href="{{ route('admin.testimonials.index') }}" class="btn btn-sm btn-light fw-semibold text-primary">
                         <i class="bi bi-chat-quote me-1"></i>{{ __('Testimonials') }}
                         @if(($testimonialStats['pending_approval'] ?? 0) > 0)
@@ -99,7 +101,7 @@
                 </div>
             </div>
         </div>
-        @can('Sales Management')
+        @can('sales.customers.view')
         <div class="col-sm-6 col-xl-3">
             <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
                 <div class="stat-icon bg-light-warning text-warning">
@@ -113,7 +115,7 @@
             </div>
         </div>
         @endcan
-        @can('Support Management')
+        @can('support.tickets.view')
         <div class="col-sm-6 col-xl-3">
             <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
                 <div class="stat-icon bg-light-warning text-warning">
@@ -127,7 +129,7 @@
             </div>
         </div>
         @endcan
-        @can('Testimonials Management')
+        @can('cms.testimonials.view')
         <div class="col-sm-6 col-xl-3">
             <div class="stat-card card card-body d-flex flex-row align-items-center gap-4 p-5">
                 <div class="stat-icon bg-light-warning text-warning">
@@ -185,7 +187,7 @@
             <div class="card">
                 <div class="card-header border-0 pt-6">
                     <h3 class="card-title fw-bold fs-4">{{ __('user::dashboard.visits_by_month') }}</h3>
-                    @can('Support Management')
+                    @can('support.visitors.view')
                         <div class="card-toolbar">
                             <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
                                 {{ __('View All') }}
@@ -208,7 +210,7 @@
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
                     <h3 class="card-title fw-bold fs-4">{{ __('Top Visited Pages') }}</h3>
-                    @can('Support Management')
+                    @can('support.visitors.view')
                         <div class="card-toolbar">
                             <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
                                 {{ __('View All') }}
@@ -257,7 +259,7 @@
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
                     <h3 class="card-title fw-bold fs-4">{{ __('user::dashboard.top_referrers') }}</h3>
-                    @can('Support Management')
+                    @can('support.visitors.view')
                         <div class="card-toolbar">
                             <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
                                 {{ __('View All') }}
@@ -304,7 +306,7 @@
 
     {{-- Recent activity --}}
     <div class="row g-5 g-xl-8 mb-8">
-        @can('CRM Management')
+        @can('crm.inquiries.view')
         <div class="col-xl-4">
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
@@ -337,7 +339,7 @@
         </div>
         @endcan
 
-        @can('CRM Management')
+        @can('crm.leads.view')
         <div class="col-xl-4">
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
@@ -377,7 +379,7 @@
         </div>
         @endcan
 
-        <div class="col-xl-{{ auth()->user()?->can('CRM Management') ? '4' : '12' }}">
+        <div class="col-xl-{{ auth()->user()?->canAny(['crm.inquiries.view', 'crm.leads.view']) ? '4' : '12' }}">
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
                     <h3 class="card-title fw-bold fs-5">{{ __('user::dashboard.recent_notifications') }}</h3>
@@ -423,7 +425,7 @@
         </div>
     </div>
 
-    @can('CRM Management')
+    @canany(['crm.leads.view', 'crm.companies.view', 'sales.deals.view'])
         @if(!empty($crmStats))
             <div class="row g-5 g-xl-8 mb-8">
                 <div class="col-12">
@@ -473,9 +475,9 @@
                 </div>
             </div>
         @endif
-    @endcan
+    @endcanany
 
-    @can('Finance Management')
+    @can('finance.dashboard.view')
         @if(!empty($financeStats))
             <div class="row g-5 g-xl-8 mb-8">
                 <div class="col-12">
@@ -580,7 +582,7 @@
         @endif
     @endcan
 
-    @can('Project Management')
+    @can('project.projects.view')
         @if(!empty($projectStats))
             <div class="row g-5 g-xl-8 mb-8">
                 <div class="col-12">
@@ -674,7 +676,7 @@
         @endif
     @endcan
 
-    @can('Product Management')
+    @can('product.catalog.view')
         @if(!empty($productStats))
             <div class="row g-5 g-xl-8 mb-8">
                 <div class="col-12">
@@ -761,7 +763,7 @@
         @endif
     @endcan
 
-    @can('Support Management')
+    @can('support.tickets.view')
         @if(!empty($ticketStats))
             <div class="row g-5 g-xl-8 mb-8">
                 <div class="col-12">
@@ -871,6 +873,7 @@
 
     {{-- Content & Users stats --}}
     <div class="row g-5 g-xl-8">
+        @canany(['cms.pages.view', 'cms.blogs.view', 'services.catalog.view', 'crm.leads.view'])
         <div class="col-xl-6">
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
@@ -878,19 +881,23 @@
                 </div>
                 <div class="card-body pt-0">
                     <div class="row g-4">
+                        @can('cms.pages.view')
                         <div class="col-6">
                             <a href="{{ route('admin.pages.index') }}" class="d-block p-5 rounded bg-light-warning text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-warning">{{ $stats['pages'] ?? 0 }}</div>
                                 <div class="fw-semibold text-gray-700">{{ __('Pages') }}</div>
                             </a>
                         </div>
+                        @endcan
+                        @can('cms.blogs.view')
                         <div class="col-6">
                             <a href="{{ route('admin.blogs.index') }}" class="d-block p-5 rounded bg-light-primary text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-primary">{{ $stats['blogs'] ?? 0 }}</div>
                                 <div class="fw-semibold text-gray-700">{{ __('Blogs') }}</div>
                             </a>
                         </div>
-                        @can('Services Management')
+                        @endcan
+                        @can('services.catalog.view')
                         <div class="col-6">
                             <a href="{{ route('admin.services.index') }}" class="d-block p-5 rounded bg-light-success text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-success">{{ $stats['services'] ?? 0 }}</div>
@@ -898,17 +905,21 @@
                             </a>
                         </div>
                         @endcan
+                        @can('crm.leads.view')
                         <div class="col-6">
                             <a href="{{ route('admin.leads.index') }}" class="d-block p-5 rounded bg-light-danger text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-danger">{{ $stats['leads'] ?? 0 }}</div>
                                 <div class="fw-semibold text-gray-700">{{ __('Leads') }}</div>
                             </a>
                         </div>
+                        @endcan
                     </div>
                 </div>
             </div>
         </div>
+        @endcanany
 
+        @canany(['hr.employees.view', 'sales.customers.view', 'support.subscribers.view', 'crm.inquiries.view', 'support.tickets.view'])
         <div class="col-xl-6">
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
@@ -916,13 +927,15 @@
                 </div>
                 <div class="card-body pt-0">
                     <div class="row g-4">
+                        @can('hr.employees.view')
                         <div class="col-6">
                             <a href="{{ route('admin.employees.index') }}" class="d-block p-5 rounded bg-light-warning text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-warning">{{ $stats['employees'] ?? 0 }}</div>
                                 <div class="fw-semibold text-gray-700">{{ __('Employees') }}</div>
                             </a>
                         </div>
-                        @can('Sales Management')
+                        @endcan
+                        @can('sales.customers.view')
                         <div class="col-6">
                             <a href="{{ route('admin.customers.index') }}" class="d-block p-5 rounded bg-light-primary text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-primary">{{ $stats['customers'] ?? 0 }}</div>
@@ -930,19 +943,23 @@
                             </a>
                         </div>
                         @endcan
+                        @can('support.subscribers.view')
                         <div class="col-6">
                             <a href="{{ route('admin.subscribers.index') }}" class="d-block p-5 rounded bg-light-danger text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-danger">{{ $stats['subscribers'] ?? 0 }}</div>
                                 <div class="fw-semibold text-gray-700">{{ __('Newsletter Subscribers') }}</div>
                             </a>
                         </div>
+                        @endcan
+                        @can('crm.inquiries.view')
                         <div class="col-6">
                             <a href="{{ route('admin.contact_forms.index') }}" class="d-block p-5 rounded bg-light-success text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-success">{{ $stats['contacts'] ?? 0 }}</div>
                                 <div class="fw-semibold text-gray-700">{{ __('Contacts') }}</div>
                             </a>
                         </div>
-                        @can('Support Management')
+                        @endcan
+                        @can('support.tickets.view')
                         <div class="col-6">
                             <a href="{{ route('admin.tickets.index') }}" class="d-block p-5 rounded bg-light-warning text-decoration-none h-100">
                                 <div class="fs-2hx fw-bold text-warning">{{ $ticketStats['open'] ?? 0 }}</div>
@@ -954,9 +971,10 @@
                 </div>
             </div>
         </div>
+        @endcanany
     </div>
 
-    @can('App Monitoring')
+    @can('system.monitoring.view')
         <div class="row g-5 g-xl-8 mt-2">
             <div class="col-sm-6 col-xl-3">
                 <a href="/{{ config('telescope.path') }}" target="_blank"
@@ -983,71 +1001,79 @@
         <div class="quick-actions-fab__panel">
             <div class="quick-actions-fab__title">{{ __('Quick Actions') }}</div>
             <div class="quick-actions-fab__list">
-                @can('CMS Management')
+                @can('cms.blogs.create')
                     <a href="{{ route('admin.blogs.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-pencil-square"></i></span>
                         {{ __('New Blog Post') }}
                     </a>
+                @endcan
+                @can('cms.pages.create')
                     <a href="{{ route('admin.pages.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-info text-info"><i class="bi bi-file-earmark-plus"></i></span>
                         {{ __('New Page') }}
                     </a>
                 @endcan
-                @can('CRM Management')
+                @can('overview.crm_analytics.view')
                     <a href="{{ route('admin.crm.dashboard') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-info text-info"><i class="bi bi-graph-up-arrow"></i></span>
                         {{ __('crm::dashboard.menu') }}
                     </a>
+                @endcan
+                @can('sales.deals.create')
                     <a href="{{ route('admin.deals.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-success text-success"><i class="bi bi-briefcase"></i></span>
                         {{ __('crm::deal.actions.add') }}
                     </a>
+                @endcan
+                @can('crm.companies.create')
                     <a href="{{ route('admin.companies.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-building"></i></span>
                         {{ __('crm::company.actions.add') }}
                     </a>
+                @endcan
+                @can('crm.leads.create')
                     <a href="{{ route('admin.leads.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-person-plus"></i></span>
                         {{ __('crm::lead.actions.add') }}
                     </a>
                 @endcan
-                @can('Finance Management')
+                @can('finance.invoices.create')
                     <a href="{{ route('admin.finance.invoices.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-success text-success"><i class="bi bi-receipt"></i></span>
                         {{ __('finance::invoice.actions.create') }}
                     </a>
                 @endcan
-                @can('Project Management')
+                @can('project.projects.create')
                     <a href="{{ route('admin.projects.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-briefcase"></i></span>
                         {{ __('project::project.actions.add') }}
                     </a>
                 @endcan
-                @can('Product Management')
+                @can('product.catalog.create')
                     <a href="{{ route('admin.products.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-box-seam"></i></span>
                         {{ __('product::product.actions.add') }}
                     </a>
                 @endcan
-                @can('Support Management')
+                @can('support.tickets.view')
                     <a href="{{ route('admin.tickets.index') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-ticket-detailed"></i></span>
                         {{ __('support::ticket.menu.tickets') }}
                     </a>
                 @endcan
-                @can('Services Management')
+                @can('services.catalog.create')
                     <a href="{{ route('admin.services.create') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-success text-success"><i class="bi bi-grid"></i></span>
                         {{ __('New Service') }}
                     </a>
                 @endcan
-                @can('Hr Management')
+                @can('hr.employees.view')
                     <a href="{{ route('admin.employees.index') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-person-plus"></i></span>
                         {{ __('Manage Employees') }}
                     </a>
                 @endcan
-                @can('Settings Management')
+                @can('settings.website.view')
                     <a href="{{ route('admin.settings.index') }}" class="quick-action-btn">
                         <span class="qa-icon bg-light-dark text-dark"><i class="bi bi-gear"></i></span>
                         {{ __('Settings') }}

@@ -55,7 +55,7 @@ class HomeController extends Controller
             ->take(10)
             ->get();
 
-        $teams = Team::where('status', 'Published')
+        $teams = Team::query()->published()
             ->latest()
             ->take(10)
             ->inRandomOrder()

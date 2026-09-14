@@ -14,6 +14,7 @@ class SalesTargetService
 
         return Employee::query()
             ->assignable()
+            ->with('crmSalesTarget:id,employee_id,deals_target,value_target')
             ->select(['id', 'name', 'email'])
             ->get()
             ->map(function (Employee $employee) use ($defaultDeals) {

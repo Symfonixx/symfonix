@@ -27,7 +27,7 @@
             </div>
 
             <div class="d-flex flex-wrap gap-2">
-                @can('Testimonials Management')
+                @can('cms.testimonials.view')
                     @if($review->status !== 'Published')
                         <form action="{{ route('admin.testimonials.approve', $review) }}" method="POST">
                             @csrf

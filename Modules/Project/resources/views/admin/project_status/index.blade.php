@@ -13,9 +13,11 @@
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.projects.index') }}">
             <i class="bi bi-arrow-left me-1"></i>{{ __('project::status.actions.back_to_projects') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.project-statuses.create') }}">
-            {{ __('project::status.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="project.statuses.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.project-statuses.create') }}">
+                {{ __('project::status.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 

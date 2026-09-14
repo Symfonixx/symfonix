@@ -12,6 +12,7 @@
 @endsection
 
 <x-admin-layout>
+    <x-can perform="finance.salaries.create">
     <div class="card mb-6">
         <div class="card-header border-0 pt-6">
             <h3 class="card-title fw-bold">{{ __('finance::salary.actions.add') }}</h3>
@@ -51,6 +52,7 @@
             </form>
         </div>
     </div>
+    </x-can>
 
     <div class="card">
         <div class="card-header border-0 pt-6">

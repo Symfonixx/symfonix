@@ -13,7 +13,7 @@ class SubscriptionPolicy
             return true;
         }
 
-        return $user->can('CRM Management');
+        return $user->can('sales.subscriptions.view');
     }
 
     public function view(User $user, Subscription $subscription): bool
@@ -22,21 +22,21 @@ class SubscriptionPolicy
             return true;
         }
 
-        return $user->can('CRM Management');
+        return $user->can('sales.subscriptions.view');
     }
 
     public function create(User $user): bool
     {
-        return $user->can('CRM Management');
+        return $user->can('sales.subscriptions.create');
     }
 
     public function update(User $user, Subscription $subscription): bool
     {
-        return $user->can('CRM Management');
+        return $user->can('sales.subscriptions.edit');
     }
 
     public function delete(User $user, Subscription $subscription): bool
     {
-        return $user->can('CRM Management');
+        return $user->can('sales.subscriptions.delete');
     }
 }

@@ -8,7 +8,7 @@ class StoreProjectExpenseRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Finance Management') ?? false;
+        return $this->user()?->can('project.projects.edit') ?? false;
     }
 
     public function rules(): array
@@ -17,6 +17,7 @@ class StoreProjectExpenseRequest extends FormRequest
             'amount' => ['required', 'numeric', 'min:0.01'],
             'currency' => ['required', 'string', 'size:3'],
             'expense_category_id' => ['required', 'integer', 'exists:expense_categories,id'],
+            'tax_rate_id' => ['nullable', 'integer', 'exists:tax_rates,id'],
             'description' => ['nullable', 'string', 'max:1000'],
             'transaction_date' => ['required', 'date'],
         ];

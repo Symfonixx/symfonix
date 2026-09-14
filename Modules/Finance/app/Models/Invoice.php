@@ -10,20 +10,21 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\Subscription;
+use Modules\Finance\Enums\InvoiceStatus;
 use Modules\Product\Models\ProductSale;
 use Modules\Project\Models\Project;
 
 class Invoice extends Model
 {
-    public const STATUS_DRAFT = 'draft';
+    public const STATUS_DRAFT = InvoiceStatus::DRAFT->value;
 
-    public const STATUS_SENT = 'sent';
+    public const STATUS_SENT = InvoiceStatus::SENT->value;
 
-    public const STATUS_PAID = 'paid';
+    public const STATUS_PAID = InvoiceStatus::PAID->value;
 
-    public const STATUS_OVERDUE = 'overdue';
+    public const STATUS_OVERDUE = InvoiceStatus::OVERDUE->value;
 
-    public const STATUS_VOID = 'void';
+    public const STATUS_VOID = InvoiceStatus::VOID->value;
 
     public const OPEN_STATUSES = [
         self::STATUS_SENT,
@@ -97,11 +98,5 @@ class Invoice extends Model
     public function journalEntries(): MorphMany
     {
         return $this->morphMany(JournalEntry::class, 'reference');
-    }
-
-    /** @deprecated Use journalEntries() */
-    public function transactions(): MorphMany
-    {
-        return $this->journalEntries();
     }
 }

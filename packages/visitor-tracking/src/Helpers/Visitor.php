@@ -2,8 +2,9 @@
 
 namespace MonishRoy\VisitorTracking\Helpers;
 
-use MonishRoy\VisitorTracking\Models\VisitorTable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use MonishRoy\VisitorTracking\Models\VisitorTable;
 
 class Visitor
 {
@@ -28,6 +29,10 @@ class Visitor
 
     public static function topReferrers(int $limit = 10)
     {
+        if (! Schema::hasColumn('visitors', 'referrer')) {
+            return collect();
+        }
+
         $appHost = parse_url(config('app.url'), PHP_URL_HOST);
 
         return VisitorTable::select('referrer', DB::raw('count(*) as total'))

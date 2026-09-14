@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Symfonix Suite dokümantasyonu — CRM, İK, Finans ve CMS modüllerini tek bir yüksek performanslı iş platformunda birleştiren bütünleşik sistem.">
+  <meta name="description" content="Symfonix Suite dokümantasyonu — CRM, İK, Finans, Vergi, Raporlama ve CMS modüllerini tek bir yüksek performanslı iş platformunda birleştiren bütünleşik sistem.">
   <title>Symfonix Suite — Dokümantasyon</title>
   <link rel="alternate" hreflang="en" href="../index.html">
   <link rel="alternate" hreflang="ar" href="../ar/index.html">
@@ -89,7 +89,10 @@
               <li><a href="#hr">İnsan Kaynakları</a></li>
               <li><a href="#finance">Finans</a></li>
               <li><a href="#currency-setup">Çoklu Para Birimi</a></li>
+              <li><a href="#tax">Vergi</a></li>
+              <li><a href="#reporting">Raporlar</a></li>
               <li><a href="#cms">İçerik Yönetimi</a></li>
+              <li><a href="#integrations">API ve Entegrasyonlar</a></li>
             </ul>
           </div>
 
@@ -101,6 +104,7 @@
               <li><a href="#installation">Kurulum</a></li>
               <li><a href="#module-deployment">Modül Dağıtımı</a></li>
               <li><a href="#permissions">Yetkiler ve Roller</a></li>
+              <li><a href="#testing">Testler</a></li>
               <li><a href="#production">Prodüksiyon</a></li>
             </ul>
           </div>
@@ -114,7 +118,7 @@
           <span class="hero-badge">Kurumsal Platform · v1.0</span>
           <h1 id="hero-title">Tüm iş fonksiyonları için tek platform.</h1>
           <p class="hero-lead">
-            Symfonix Suite; CRM, İK, Finans, CMS ve temel operasyonel süreçleri tek bir yüksek performanslı, modüler iş yönetim platformunda birleştirerek parçalı SaaS yapılarından doğan entegrasyon yükünü ortadan kaldırır.
+            Symfonix Suite; CRM, İK, Finans, Vergi, Raporlama, CMS ve temel operasyonel süreçleri tek bir yüksek performanslı, modüler iş yönetim platformunda birleştirerek parçalı SaaS yapılarından doğan entegrasyon yükünü ortadan kaldırır.
           </p>
           <div class="hero-actions">
             <a href="#getting-started" class="btn btn-primary">Hemen başla</a>
@@ -123,7 +127,7 @@
           </div>
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-value">13+</div>
+              <div class="stat-value">15</div>
               <div class="stat-label">İş modülü</div>
             </div>
             <div class="stat-item">
@@ -252,6 +256,8 @@
               <span class="arch-chip">CRM</span>
               <span class="arch-chip">HR / User</span>
               <span class="arch-chip">Finance</span>
+              <span class="arch-chip">Tax</span>
+              <span class="arch-chip">Reporting</span>
               <span class="arch-chip">CMS</span>
               <span class="arch-chip">Project</span>
               <span class="arch-chip">Product</span>
@@ -283,7 +289,7 @@
         <section class="doc-section" id="core-engine">
           <h3>Çekirdek Motor</h3>
           <p>
-            <strong>Core</strong> ve <strong>Base</strong> modülleri platformun omurgasını oluşturur. Core kurulum komutlarını ve ortak servisleri sunarken, Base genel ayarları, ülkeleri, şubeleri ve SEO yapılandırmasını yönetir.
+            <strong>Core</strong> ve <strong>Base</strong> modülleri platformun omurgasını oluşturur. Core kurulum komutlarını ve ortak servisleri sunarken, Base genel ayarları, ülkeleri, şubeleri, SEO, yedekleme, <code>/humans.txt</code> ve <strong>API ve Entegrasyonlar</strong> (SMTP, WhatsApp Cloud API) ekranını yönetir. Sistem Yapılandırmaları ayrıca Fixer ve ZKTeco parmak izi ayarlarını içerir.
           </p>
           <ol>
             <li><strong>Modül yaşam döngüsü</strong> — etkinleştirme, devre dışı bırakma ve migration işlemleri.</li>
@@ -347,10 +353,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>CRM</strong></td><td>Satış ve ilişkiler</td><td>Lead, deal, company, pipeline, subscription, activity</td></tr>
-                <tr><td><strong>User</strong></td><td>İK ve erişim</td><td>Kullanıcılar, çalışanlar, roller, izinler, portal paneli</td></tr>
-                <tr><td><strong>Finance</strong></td><td>Muhasebe</td><td>Çoklu para birimli işlemler, maaşlar, komisyonlar, giderler, yevmiye kayıtları ve faturalar</td></tr>
-                <tr><td><strong>Cms</strong></td><td>İçerik</td><td>Sayfalar, blog, SSS, çok dilli içerik</td></tr>
+                <tr><td><strong>CRM</strong></td><td>Satış ve ilişkiler</td><td>Lead, deal, şirket, teklif, pipeline, abonelik, e-posta/WhatsApp pazarlama, tahminler, pano</td></tr>
+                <tr><td><strong>User</strong></td><td>İK ve erişim</td><td>Kullanıcılar, çalışanlar, roller, izinler, parmak izi yoklama, müşteri portalı</td></tr>
+                <tr><td><strong>Finance</strong></td><td>Muhasebe</td><td>Çoklu para birimli defter, faturalar, alacaklar, maaşlar, komisyonlar, giderler</td></tr>
+                <tr><td><strong>Tax</strong></td><td>Uyumluluk</td><td>Vergi oranları, çıktı/girdi vergi defteri, beyan raporları</td></tr>
+                <tr><td><strong>Reporting</strong></td><td>Analitik</td><td>Finans, satış, pazarlama, operasyon ve çalışan raporları (CSV/PDF)</td></tr>
+                <tr><td><strong>Cms</strong></td><td>İçerik</td><td>Sayfalar, blog, SSS, müşteri logoları, çok dilli içerik</td></tr>
                 <tr><td><strong>Product</strong></td><td>Katalog</td><td>Ürün kategorileri, katalog öğeleri, satış entegrasyonu</td></tr>
                 <tr><td><strong>Project</strong></td><td>Teslimat</td><td>Projeler, durumlar, use case kayıtları</td></tr>
                 <tr><td><strong>Support</strong></td><td>Destek</td><td>Ticket, aboneler ve şikayet yönetimi</td></tr>
@@ -368,11 +376,15 @@
             <h3>CRM ve Pipeline</h3>
             <p>CRM modülü ilk temastan anlaşma kapanışına kadar tüm gelir yaşam döngüsünü yönetir.</p>
             <ul>
-              <li><strong>Lead yönetimi</strong> ve kaynak takibi</li>
-              <li><strong>Kanban pipeline</strong> ile görsel aşama yönetimi</li>
-              <li><strong>Şirket kayıtları</strong> ile kontak, deal ve proje ilişkileri</li>
+              <li><strong>Lead yönetimi</strong>, özel alanlar, etiketler ve kaynak takibi</li>
+              <li><strong>Kanban pipeline</strong> ve <code>sales.deals.view_all</code> ile tüm fırsatları görme</li>
+              <li><strong>Teklifler</strong> — kalem, vergi/iskonto, PDF ve müşterinin kabul/ret ettiği genel bağlantı</li>
+              <li><strong>Şirket kayıtları</strong> ile kontak, deal, proje ve abonelik ilişkileri</li>
               <li><strong>Aktivite ve görevler</strong> ile satış koordinasyonu</li>
               <li><strong>Abonelikler</strong> ile tekrar eden hizmet sözleşmeleri</li>
+              <li><strong>E-posta ve WhatsApp pazarlama</strong> — kuyruklu kampanyalar, şablonlar ve teslimat günlüğü</li>
+              <li><strong>Satış tahminleri</strong> — aşama kazanma olasılığına göre ağırlıklı ciro</li>
+              <li><strong>Özelleştirilebilir CRM panosu</strong></li>
             </ul>
           </div>
         </section>
@@ -387,9 +399,10 @@
             <p>User modülü çalışan kayıtları, kullanıcı hesapları, roller ve izinler arasında köprü kurar.</p>
             <ul>
               <li><strong>Çalışan profilleri</strong> ve organizasyonel bilgiler</li>
-              <li><strong>Rol tabanlı erişim kontrolü</strong></li>
-              <li><strong>İzin matrisi</strong> ile modül bazlı yetkilendirme</li>
-              <li><strong>Portal paneli</strong> ile personel öz-servis deneyimi</li>
+              <li><strong>Granüler RBAC</strong> (<code>group.tab.action</code>) ve senaryo rolleri (İK, Satış, Finans, Proje, Operasyon yöneticisi)</li>
+              <li><strong>Parmak izi yoklama</strong> — ZKTeco TCP/IP (Sistem Yapılandırmaları → Fingerprint)</li>
+              <li><strong>İzin ve işe alım</strong></li>
+              <li><strong>Portal paneli</strong> ve müşteri teklif portalı</li>
             </ul>
           </div>
         </section>
@@ -405,6 +418,7 @@
             <ul>
               <li><strong>Gelir/gider kayıtları</strong> ve filtreleme</li>
               <li><strong>Journal entry</strong> desteği</li>
+              <li><strong>Faturalar ve alacaklar</strong> (AR)</li>
               <li><strong>Maaş yönetimi</strong> ve çalışan bağlantısı</li>
               <li><strong>Komisyon hesaplama</strong> ve satış hedefleri</li>
               <li><strong>Fatura bildirimleri</strong> için event/listener tabanlı akış</li>
@@ -445,6 +459,30 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
           </div>
         </section>
 
+        </section>
+
+        <section class="doc-section" id="tax">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Uyumluluk</span>
+              <span class="tag tag--neutral">Defter ve Beyan</span>
+            </div>
+            <h3>Vergi</h3>
+            <p>Tax modülü dahil/hariç oranları (isteğe bağlı bölge kodu), fatura ve ürün satışı satırlarına uygular; tahsil edilen <strong>çıktı vergisi</strong> ile giderlerdeki <strong>girdi vergisini</strong> deftere yazar. Beyan raporları net vergiyi dönem bazında özetler.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="reporting">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Analitik</span>
+              <span class="tag tag--neutral">CSV / PDF</span>
+            </div>
+            <h3>Raporlar</h3>
+            <p>Reporting hub’ı Finans, Satış, Pazarlama, Operasyon ve Çalışan analitiğini ortak dönem filtreleri ve CSV/PDF dışa aktarma ile sunar. Pazarlama raporları WhatsApp teslimat oranını, operasyon raporları bilet SLA ve parmak izi yoklamayı içerir.</p>
+          </div>
+        </section>
+
         <section class="doc-section" id="cms">
           <div class="module-block">
             <div class="module-meta">
@@ -452,14 +490,26 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
               <span class="tag tag--neutral">Çok Dilli</span>
             </div>
             <h3>İçerik Yönetimi</h3>
-            <p>CMS modülü kamuya açık web sitesini ve içerik yönetim deneyimini besler; sayfalar, blog yazıları ve SSS kayıtlarını yönetir.</p>
+            <p>CMS modülü kamuya açık web sitesini ve içerik yönetim deneyimini besler; sayfalar, blog yazıları, SSS ve müşteri logolarını yönetir.</p>
             <ul>
               <li><strong>Statik sayfalar</strong> ve slug bazlı yönlendirme</li>
               <li><strong>Blog yönetimi</strong> ve SEO metadataları</li>
               <li><strong>SSS yönetimi</strong> ve bilgi tabanı yapıları</li>
+              <li><strong>Müşteri logoları</strong></li>
               <li><strong>Yerelleştirme</strong> ile İngilizce, Arapça, Türkçe ve Almanca içerik desteği</li>
             </ul>
           </div>
+        </section>
+
+        <section class="doc-section" id="integrations">
+          <h3>API ve Entegrasyonlar</h3>
+          <p>Yönetim panelinde kaydedilen kimlik bilgileri <code>.env</code> değerlerini geçersiz kılar. Boş alanlar ortam yedeğini kullanır.</p>
+          <ul>
+            <li><strong>SMTP</strong> — APIs &amp; Integrations → E-posta (pazarlama ve bildirimler kuyruk işçisi gerektirir).</li>
+            <li><strong>WhatsApp Cloud API</strong> — erişim jetonu ve Phone Number ID; Meta’da onaylı şablonlar. Varsayılan Graph sürümü <code>v21.0</code>.</li>
+            <li><strong>Fixer</strong> — Sistem Yapılandırmaları → Finans.</li>
+            <li><strong>ZKTeco parmak izi</strong> — Sistem Yapılandırmaları → Fingerprint (TCP <code>4370</code>).</li>
+          </ul>
         </section>
 
         <section class="doc-section" id="getting-started">
@@ -503,7 +553,9 @@ DB_PASSWORD=
 FINANCE_DEFAULT_CURRENCY=USD
 FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
 FIXER_API_KEY=
-FIXER_BASE_URL=https://data.fixer.io/api</code></pre>
+FIXER_BASE_URL=https://data.fixer.io/api
+
+DOCS_ENABLED=true</code></pre>
             </li>
             <li>
               <h4>Bağımlılıkları yükle</h4>
@@ -537,7 +589,14 @@ php artisan module:migrate Finance</code></pre>
 
         <section class="doc-section" id="permissions">
           <h3>Yetkiler ve Roller</h3>
-          <p>Platform, rol ve izin yönetimi için <code>Spatie Laravel Permission</code> kullanır. İzinler kurulum sırasında oluşturulur ve yönetim panelinden rollere atanır.</p>
+          <p>Platform, rol ve izin yönetimi için <code>Spatie Laravel Permission</code> kullanır. İzinler kurulumda <code>group.tab.action</code> kataloğundan oluşturulur (eski adlar mevcut rollere eşlenir) ve yönetim panelinden rollere atanır. Örnekler: <code>sales.quotes.create</code>, <code>marketing.whatsapp.send</code>, <code>tax.rates.view</code>, <code>reporting.finance.export</code>, <code>hr.fingerprint.manage</code>. Kurulum Admin ile birlikte İK, Satış, Finans, Proje ve Operasyon yöneticisi senaryo rollerini ekler.</p>
+        </section>
+
+        <section class="doc-section" id="testing">
+          <h3>Testler</h3>
+          <p>Birim ve özellik testleri <code>tests/</code> altındadır. Playwright E2E için <code>tests/README.md</code> dosyasına bakın.</p>
+          <pre><code>php artisan test
+npm run test:e2e</code></pre>
         </section>
 
         <section class="doc-section" id="production">
@@ -565,14 +624,14 @@ npm ci && npm run build</code></pre>
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache</code></pre>
-              <p>Kuyruk worker'ını ve Laravel scheduler'ını çalıştırın. Scheduler kurları saatlik olarak yeniler; asenkron manuel güncellemeler worker gerektirir.</p>
+              <p>Kuyruk worker'ını ve Laravel scheduler'ını çalıştırın. Scheduler kurları saatlik olarak yeniler. WhatsApp ve e-posta kampanyaları ile asenkron güncellemeler worker gerektirir.</p>
               <pre><code>* * * * * cd /path-to-symfonix && php artisan schedule:run >> /dev/null 2>&1</code></pre>
             </li>
           </ol>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>Prodüksiyon kontrolü:</strong> <code>APP_DEBUG=false</code> olmalı, iki faktörlü doğrulama etkinleştirilmeli ve <code>.env</code> sürüm kontrolüne eklenmemelidir. Geçerli bir Fixer anahtarı yapılandırın ve kayıtlı kurlar eskidiğinde otomatik reddedilmediği için <strong>Sistem Yapılandırmaları → Finans</strong> ekranındaki son başarılı güncellemeyi izleyin.</p>
+              <p><strong>Prodüksiyon kontrolü:</strong> <code>APP_DEBUG=false</code> olmalı, iki faktörlü doğrulama etkinleştirilmeli ve <code>.env</code> sürüm kontrolüne eklenmemelidir. Geçerli bir Fixer anahtarı yapılandırın ve kayıtlı kurlar eskidiğinde otomatik reddedilmediği için <strong>Sistem Yapılandırmaları → Finans</strong> ekranındaki son başarılı güncellemeyi izleyin. WhatsApp kimlik bilgilerini <strong>API ve Entegrasyonlar</strong> altında ayarlayın. <code>/docs</code> açık olmasın istiyorsanız <code>DOCS_ENABLED=false</code> kullanın.</p>
             </div>
           </div>
         </section>

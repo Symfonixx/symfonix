@@ -5,7 +5,8 @@
     },
     "metrics": {
         "total_outstanding": "Total Outstanding",
-        "open_invoices": "Open Invoices"
+        "open_invoices": "Open Invoices",
+        "open_projects": "Uninvoiced Projects"
     },
     "buckets": {
         "current": "Current",
@@ -16,11 +17,14 @@
     },
     "fields": {
         "invoice_number": "Invoice #",
+        "project": "Project",
         "company": "Company",
         "due_at": "Due Date",
         "days_overdue": "Days Overdue",
         "amount": "Amount",
+        "remaining": "Remaining",
         "status": "Status"
     },
-    "empty": "No open invoices. All receivables are collected."
+    "empty_invoices": "No open invoices.",
+    "empty_projects": "No projects with uninvoiced budget."
 }

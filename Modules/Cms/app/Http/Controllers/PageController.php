@@ -56,7 +56,7 @@ class PageController extends Controller
     {
         $locale = app()->getLocale();
 
-        $teams = Team::where('status', 'Published')
+        $teams = Team::query()->published()
             ->latest()
             ->take(10)
             ->inRandomOrder()
@@ -152,7 +152,7 @@ class PageController extends Controller
             ->twitterImage()
             ->canonical($canonical)
             ->toArray();
-        $teams = Team::where('status', 'Published')
+        $teams = Team::query()->published()
             ->latest()
             ->inRandomOrder()
             ->get();
@@ -244,7 +244,7 @@ class PageController extends Controller
                 $question = $faq->getTranslation('question', $locale)
                     ?: $faq->getTranslation('question', 'en')
                     ?: (is_array($faq->question) ? ($faq->question[$locale] ?? $faq->question['en'] ?? reset($faq->question)) : $faq->question);
-                
+
                 $answer = $faq->getTranslation('answer', $locale)
                     ?: $faq->getTranslation('answer', 'en')
                     ?: (is_array($faq->answer) ? ($faq->answer[$locale] ?? $faq->answer['en'] ?? reset($faq->answer)) : $faq->answer);
@@ -268,8 +268,8 @@ class PageController extends Controller
                     'name' => trim($question),
                     'acceptedAnswer' => [
                         '@type' => 'Answer',
-                        'text' => $answerText
-                    ]
+                        'text' => $answerText,
+                    ],
                 ];
             })->filter()->values();
 
@@ -277,7 +277,7 @@ class PageController extends Controller
                 $faqSchema = [
                     '@context' => 'https://schema.org',
                     '@type' => 'FAQPage',
-                    'mainEntity' => $mainEntity->toArray()
+                    'mainEntity' => $mainEntity->toArray(),
                 ];
             }
         }

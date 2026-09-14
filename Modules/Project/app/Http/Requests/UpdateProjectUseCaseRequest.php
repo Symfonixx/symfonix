@@ -9,7 +9,7 @@ class UpdateProjectUseCaseRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Project Management') ?? false;
+        return $this->user()?->can('project.use_cases.edit') ?? false;
     }
 
     public function rules(): array

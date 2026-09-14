@@ -13,6 +13,14 @@
         "back_to_list": "Back to Marketing",
         "view": "View"
     },
+    "tabs": {
+        "emails": "Emails",
+        "whatsapp": "WhatsApp Messages"
+    },
+    "channels": {
+        "email": "Email",
+        "whatsapp": "WhatsApp"
+    },
     "fields": {
         "subject": "Subject",
         "body": "Message",
@@ -33,7 +41,8 @@
         "send_as_marketing": "Send as marketing email",
         "marketing_audience": "Send to",
         "all_audiences": "Everyone",
-        "status": "Status"
+        "status": "Status",
+        "channel": "Channel"
     },
     "status": {
         "pending": "Pending",

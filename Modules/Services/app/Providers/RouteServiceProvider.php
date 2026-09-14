@@ -60,7 +60,7 @@ class RouteServiceProvider extends ServiceProvider
         ], static function () use ($name) {
             Route::prefix('admin')
                 ->name('admin.')
-                ->middleware(['web', 'auth', 'is_admin'])
+                ->middleware(['web', 'auth', 'is_admin', 'catalog.permission'])
                 ->group(module_path($name, '/routes/admin.php'));
 
         });

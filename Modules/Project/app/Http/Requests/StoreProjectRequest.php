@@ -9,7 +9,7 @@ class StoreProjectRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Project Management') ?? false;
+        return $this->user()?->can('project.projects.create') ?? false;
     }
 
     public function rules(): array
@@ -24,6 +24,7 @@ class StoreProjectRequest extends FormRequest
             'service_ids.*' => ['integer', 'exists:services,id'],
             'budget' => ['nullable', 'numeric', 'min:0'],
             'currency' => ['nullable', 'string', 'size:3'],
+            'tax_rate_id' => ['nullable', 'integer', 'exists:tax_rates,id'],
             'start_date' => ['nullable', 'date'],
             'due_date' => ['nullable', 'date', 'after_or_equal:start_date'],
             'attachments' => ['nullable', 'array'],

@@ -2,7 +2,6 @@
 
 namespace Modules\Testimonial\Repositories;
 
-use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Modules\Cms\Enums\CmsStatus;
@@ -57,8 +56,11 @@ class TestimonialRepository
         foreach (otherLangs() as $lang) {
             try {
                 $transQuote[$lang] = autoGoogleTranslator($lang, $quote);
-            } catch (Exception $e) {
-                Log::error($e->getMessage());
+            } catch (\Throwable $e) {
+                Log::warning('Auto-translate failed for testimonial quote.', [
+                    'locale' => $lang,
+                    'error' => $e->getMessage(),
+                ]);
                 $transQuote[$lang] = $quote;
             }
         }

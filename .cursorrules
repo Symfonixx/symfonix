@@ -1,15 +1,15 @@
 ### Project Overview
-Symfonix is a modular Laravel 13 business management platform for agencies, combining a multilingual public CMS, CRM, project management, multi-currency finance, client portal, HR, and support ticketing.
+Symfonix is a modular Laravel 13 business management platform for agencies, combining a multilingual public CMS, CRM (quotes, WhatsApp/email marketing, forecasts), project management, multi-currency finance, tax, reporting, client portal, HR (including fingerprint attendance), and support ticketing.
 
 ### Tech Stack
 - **Backend:** PHP 8.3+, Laravel 13, `nwidart/laravel-modules`
 - **Frontend:** Blade, Inertia.js + Vue 3, Livewire 4, Tailwind CSS, Bootstrap 5 (Metronic theme), Vite
 - **Database & State:** MySQL 8+ / MariaDB, Redis, Spatie Permission, Spatie Laravel Data, Spatie Translatable
-- **Auth & Packages:** Fortify (2FA), DomPDF, BotMan, Telescope, Pulse, Localization (`mcamara`)
+- **Auth & Packages:** Fortify (2FA), DomPDF, BotMan, Telescope, Pulse, Localization (`mcamara`), WhatsApp Cloud API, ZKTeco fingerprint
 
 ### Directory Map
 - `app/` — Global HTTP middleware, base console commands, framework bootstrap
-- `Modules/` — Modular domains (`CRM`, `Finance`, `Project`, `User`, `Base`, `Cms`, `Product`, `Support`, `Team`, `Testimonial`, `SearchEngine`)
+- `Modules/` — Modular domains (`CRM`, `Finance`, `Tax`, `Reporting`, `Project`, `User`, `Base`, `Cms`, `Product`, `Support`, `Team`, `Testimonial`, `SearchEngine`)
   - `Modules/<Module>/app/Http/Controllers/` — Admin & API route controllers
   - `Modules/<Module>/app/Models/` — Eloquent models with relations & scopes
   - `Modules/<Module>/app/Repositories/` — Data access & query abstraction
@@ -30,7 +30,7 @@ Symfonix is a modular Laravel 13 business management platform for agencies, comb
   - **Multilingual:** Use `mcamara/laravel-localization` routes and Spatie Translatable models.
 
 ### Key Commands
-- **Tests:** `php artisan test` or `./vendor/bin/phpunit`
+- **Tests:** `php artisan test` or `./vendor/bin/phpunit`; Playwright E2E via `npm run test:e2e` (see `tests/README.md`)
 - **Code Style:** `./vendor/bin/pint`
 - **Migrations:** `php artisan migrate` or `php artisan module:migrate <Module>`
 - **Module Generator / Seed:** `php artisan module:seed <Module>` | `php artisan app:install`

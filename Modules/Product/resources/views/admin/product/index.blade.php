@@ -12,9 +12,11 @@
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.product-categories.index') }}">
             <i class="bi bi-tags me-1"></i>{{ __('product::category.actions.manage_categories') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.products.create') }}">
-            {{ __('product::product.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="product.catalog.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.products.create') }}">
+                {{ __('product::product.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 

@@ -12,6 +12,7 @@ use Modules\Finance\Services\FinanceService;
 use Modules\Finance\Services\InvoiceService;
 use Modules\Product\Models\ProductSale;
 use Modules\Product\Repositories\ProductRepository;
+use Modules\Tax\Services\TaxRate\TaxRateService;
 
 class ProductSaleController extends Controller
 {
@@ -19,6 +20,7 @@ class ProductSaleController extends Controller
         private readonly FinanceService $financeService,
         private readonly InvoiceService $invoiceService,
         private readonly ProductRepository $productRepository,
+        private readonly TaxRateService $taxRateService,
     ) {
         $this->setActive('finance_product_sales');
     }
@@ -32,11 +34,12 @@ class ProductSaleController extends Controller
             ->latest('sold_at')
             ->paginate((int) config('core.page_size', 15));
 
-        $products = $this->productRepository->activeProducts();
+        $products = $this->productRepository->activeProducts()->load('taxRate:id,name,percentage,type');
         $companies = Company::query()->orderBy('name')->get(['id', 'name']);
         $users = User::query()->orderBy('name')->get(['id', 'name']);
+        $taxRates = $this->taxRateService->activeOptions();
 
-        return view('finance::admin.product_sale.index', compact('sales', 'products', 'companies', 'users'));
+        return view('finance::admin.product_sale.index', compact('sales', 'products', 'companies', 'users', 'taxRates'));
     }
 
     public function store(StoreProductSaleRequest $request): RedirectResponse

@@ -1,0 +1,11 @@
+{
+    "name": "Reporting",
+    "alias": "reporting",
+    "description": "Multi-department reporting hub with Finance, Sales, Marketing, and Operations analytics",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Reporting\\Providers\\ReportingServiceProvider"
+    ],
+    "files": []
+}

@@ -13,9 +13,11 @@
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.project-statuses.index') }}">
             <i class="bi bi-palette me-1"></i>{{ __('project::project.actions.manage_statuses') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.projects.create') }}">
-            {{ __('project::project.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
-        </a>
+        <x-can perform="project.projects.create">
+            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.projects.create') }}">
+                {{ __('project::project.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
+            </a>
+        </x-can>
     </div>
 @endsection
 
@@ -117,13 +119,7 @@
                     </div>
                 </td>
                 <td>
-                    @if($project->status)
-                        <span class="badge" style="background-color: {{ $project->status->color_code }}; color: #fff;">
-                            {{ $project->status->name }}
-                        </span>
-                    @else
-                        <span class="text-muted">{{ __('N/A') }}</span>
-                    @endif
+                    @include('project::admin.project._status_dropdown', ['project' => $project, 'statuses' => $statuses])
                 </td>
                 <td>
                     @if($project->budget !== null)

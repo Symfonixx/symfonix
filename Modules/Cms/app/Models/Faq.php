@@ -2,7 +2,9 @@
 
 namespace Modules\Cms\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Cms\Enums\CmsStatus;
 use Spatie\Translatable\HasTranslations;
 
 class Faq extends Model
@@ -13,13 +15,13 @@ class Faq extends Model
 
     protected $fillable = ['question', 'answer', 'rank', 'status'];
 
-    public function scopePublished($q)
+    public function scopePublished(Builder $q): Builder
     {
-        $q->where('status', 'Published');
+        return $q->where('status', CmsStatus::PUBLISHED->value);
     }
 
-    public function scopeOrdered($q)
+    public function scopeOrdered(Builder $q): Builder
     {
-        $q->orderBy('rank', 'asc')->orderBy('id', 'asc');
+        return $q->orderBy('rank', 'asc')->orderBy('id', 'asc');
     }
 }

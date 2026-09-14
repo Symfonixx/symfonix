@@ -23,6 +23,8 @@ class JournalEntry extends Model
         'reference_id',
         'description',
         'transaction_date',
+        'tax_rate_id',
+        'tax_amount',
     ];
 
     protected function casts(): array
@@ -31,6 +33,7 @@ class JournalEntry extends Model
             'amount' => 'decimal:2',
             'exchange_rate' => 'decimal:8',
             'base_amount' => 'decimal:2',
+            'tax_amount' => 'decimal:2',
             'transaction_date' => 'date',
         ];
     }

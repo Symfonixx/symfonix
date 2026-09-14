@@ -17,6 +17,7 @@ use Modules\Project\Actions\Project\CreateProjectAction;
 use Modules\Project\Actions\Project\DeleteProjectAction;
 use Modules\Project\Actions\Project\ListProjectsAction;
 use Modules\Project\Actions\Project\UpdateProjectAction;
+use Modules\Project\Actions\Project\UpdateProjectStatusAction;
 use Modules\Project\DTOs\Project\ProjectData;
 use Modules\Project\Http\Requests\FinishProjectEmployeeRequest;
 use Modules\Project\Http\Requests\ProjectIndexRequest;
@@ -24,11 +25,16 @@ use Modules\Project\Http\Requests\StoreProjectEmployeeRequest;
 use Modules\Project\Http\Requests\StoreProjectExpenseRequest;
 use Modules\Project\Http\Requests\StoreProjectRequest;
 use Modules\Project\Http\Requests\UpdateProjectRequest;
+use Modules\Project\Http\Requests\UpdateProjectStatusRequest;
 use Modules\Project\Models\Project;
 use Modules\Project\Models\ProjectEmployee;
 use Modules\Project\Repositories\ProjectStatus\ProjectStatusRepository;
 use Modules\Project\Services\Project\ProjectCostingService;
 use Modules\Project\Services\Project\ProjectService;
+use Modules\Services\Models\Service;
+use Modules\Tax\Models\TaxRate;
+use Modules\Tax\Services\TaxCalculationService;
+use Modules\Tax\Services\TaxRate\TaxRateService;
 use Modules\User\Models\Employee;
 
 class ProjectController extends Controller
@@ -39,11 +45,13 @@ class ProjectController extends Controller
         private readonly UpdateProjectAction $updateProjectAction,
         private readonly DeleteProjectAction $deleteProjectAction,
         private readonly BulkDeleteProjectsAction $bulkDeleteProjectsAction,
+        private readonly UpdateProjectStatusAction $updateProjectStatusAction,
         private readonly ProjectStatusRepository $statusRepository,
         private readonly ProjectService $projectService,
         private readonly ProjectCostingService $projectCostingService,
         private readonly FinanceService $financeService,
         private readonly InvoiceService $invoiceService,
+        private readonly TaxRateService $taxRateService,
     ) {
         $this->authorizeResource(Project::class, 'project');
         $this->setActive('projects');
@@ -79,8 +87,6 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        $this->financeService->updateProjectPaymentStatus($project->id);
-        $project->refresh();
         $project->load([
             'company',
             'status',
@@ -97,7 +103,23 @@ class ProjectController extends Controller
             'profitAndLoss' => $this->projectCostingService->getProjectProfitAndLoss($project),
             'employees' => Employee::query()->assignable()->get(['id', 'name', 'email']),
             'expenseCategories' => ExpenseCategory::query()->orderBy('name')->get(['id', 'name']),
+            'taxRates' => $this->taxRateService->activeOptions(),
+            'statuses' => $this->statusRepository->allOrdered(),
         ]);
+    }
+
+    public function updateStatus(UpdateProjectStatusRequest $request, Project $project): RedirectResponse
+    {
+        $this->authorize('update', $project);
+
+        $this->updateProjectStatusAction->execute(
+            $project,
+            (int) $request->validated('project_status_id')
+        );
+
+        session()->flushMessage(true, __('project::project.messages.status_updated'));
+
+        return back();
     }
 
     public function edit(Project $project)
@@ -166,11 +188,19 @@ class ProjectController extends Controller
 
         $data = $request->validated();
 
+        $taxRate = ! empty($data['tax_rate_id'])
+            ? TaxRate::query()->active()->find((int) $data['tax_rate_id'])
+            : ($project->tax_rate_id ? TaxRate::query()->active()->find($project->tax_rate_id) : null);
+
+        $amounts = app(TaxCalculationService::class)->calculateLine(1, (float) $data['amount'], $taxRate);
+
         $this->financeService->logTransaction([
             'flow' => 'expense',
-            'amount' => $data['amount'],
+            'amount' => $amounts['amount'],
             'currency' => $data['currency'],
             'expense_category_id' => $data['expense_category_id'],
+            'tax_rate_id' => $taxRate?->id,
+            'tax_amount' => $amounts['tax_amount'],
             'description' => $data['description'] ?: __('project::project.messages.expense_description', [
                 'title' => $project->title,
             ]),
@@ -222,11 +252,12 @@ class ProjectController extends Controller
             'companies' => $this->companies(),
             'statuses' => $this->statusRepository->allOrdered(),
             'deals' => $this->deals($project),
-            'services' => \Modules\Services\Models\Service::query()
+            'services' => Service::query()
                 ->select(['id', 'title'])
                 ->orderBy('title')
                 ->get(),
             'defaultStatusId' => $this->statusRepository->allOrdered()->first()?->id,
+            'taxRates' => app(TaxRateService::class)->activeOptions(),
         ];
     }
 

@@ -9,7 +9,7 @@ class UpdateExpenseCategoryRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Finance Management') ?? false;
+        return $this->user()?->can('finance.expense_categories.edit') ?? false;
     }
 
     public function rules(): array

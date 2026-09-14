@@ -10,7 +10,7 @@ class UpdateJobApplicationStatusRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Hr Management') ?? false;
+        return $this->user()?->can('hr.job_applications.edit') ?? false;
     }
 
     public function rules(): array

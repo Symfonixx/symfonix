@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Services\Http\Controllers\Admin\ServiceCategoryController;
 use Modules\Services\Http\Controllers\Admin\ServiceController;
 
-Route::middleware(['can:Services Management'])->group(function () {
+Route::group([], function () {
     Route::prefix('services')->name('services.')->group(function () {
         Route::get('/', [ServiceController::class, 'index'])->name('index');
         Route::get('create', [ServiceController::class, 'create'])->name('create');

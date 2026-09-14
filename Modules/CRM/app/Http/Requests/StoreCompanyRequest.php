@@ -2,10 +2,11 @@
 
 namespace Modules\CRM\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use App\Models\User;
 use Modules\CRM\Models\Company;
+use Modules\User\Support\PermissionCatalog;
 
 class StoreCompanyRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class StoreCompanyRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 
     public function messages(): array

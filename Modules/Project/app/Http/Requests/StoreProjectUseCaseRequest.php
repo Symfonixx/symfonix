@@ -3,13 +3,12 @@
 namespace Modules\Project\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreProjectUseCaseRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('Project Management') ?? false;
+        return $this->user()?->can('project.use_cases.create') ?? false;
     }
 
     public function rules(): array

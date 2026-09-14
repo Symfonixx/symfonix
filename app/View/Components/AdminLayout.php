@@ -2,22 +2,25 @@
 
 namespace App\View\Components;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Component;
+use Modules\Cms\Enums\CmsStatus;
 use Modules\CRM\Models\ContactForm;
 use Modules\CRM\Models\CrmActivity;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\Lead;
 use Modules\CRM\Models\Quote;
 use Modules\Finance\Models\Invoice;
+use Modules\Support\Enums\TicketStatus;
 use Modules\Support\Models\Ticket;
 use Modules\Testimonial\Models\Testimonial;
 
 class AdminLayout extends Component
 {
-    protected \Illuminate\Contracts\Auth\Authenticatable|null|\App\Models\User $user;
+    protected \Illuminate\Contracts\Auth\Authenticatable|null|User $user;
 
     /**
      * Create a new component instance.
@@ -55,7 +58,7 @@ class AdminLayout extends Component
                 ->get();
         }
 
-        if ($this->user?->can('CRM Management')) {
+        if ($this->user?->can('crm.inquiries.view')) {
             $recentMessages = ContactForm::query()
                 ->latest()
                 ->limit(5)
@@ -66,34 +69,40 @@ class AdminLayout extends Component
                 ->count();
 
             $navCounts['pending_inquiries'] = $unreadMessageCount;
+        }
+
+        if ($this->user?->can('sales.deals.view')) {
             $navCounts['open_deals'] = Deal::query()->visibleTo()->where('status', Deal::STATUS_OPEN)->count();
+        }
+
+        if ($this->user?->can('crm.leads.view')) {
             $navCounts['new_leads'] = Lead::query()->where('status', Lead::STATUS_NEW)->count();
-            if (Schema::hasTable('crm_activities')) {
-                $navCounts['pending_tasks'] = CrmActivity::query()
-                    ->where('type', CrmActivity::TYPE_TASK)
-                    ->whereNull('completed_at')
-                    ->count();
-            }
-            if (Schema::hasTable('quotes')) {
-                $navCounts['pending_quotes'] = Quote::query()->where('status', Quote::STATUS_SENT)->count();
-            }
         }
 
-        if ($this->user?->can('Support Management')) {
+        if ($this->user?->can('crm.activities.view') && $this->tableExists('crm_activities')) {
+            $navCounts['pending_tasks'] = CrmActivity::query()
+                ->where('type', CrmActivity::TYPE_TASK)
+                ->whereNull('completed_at')
+                ->count();
+        }
+
+        if ($this->user?->can('sales.quotes.view') && $this->tableExists('quotes')) {
+            $navCounts['pending_quotes'] = Quote::query()->where('status', Quote::STATUS_SENT)->count();
+        }
+
+        if ($this->user?->can('support.tickets.view')) {
             $navCounts['open_tickets'] = Ticket::query()
-                ->whereIn('status', [Ticket::STATUS_OPEN, Ticket::STATUS_IN_PROGRESS])
+                ->whereIn('status', TicketStatus::openValues())
                 ->count();
         }
 
-        if ($this->user?->can('Finance Management') && class_exists(Invoice::class)) {
-            $navCounts['open_invoices'] = Invoice::query()
-                ->whereIn('status', [Invoice::STATUS_SENT, Invoice::STATUS_OVERDUE])
-                ->count();
+        if ($this->user?->can('finance.invoices.view')) {
+            $navCounts['open_invoices'] = Invoice::query()->open()->count();
         }
 
-        if ($this->user?->can('Testimonials Management')) {
+        if ($this->user?->can('cms.testimonials.view')) {
             $pendingTestimonialCount = Testimonial::query()
-                ->where('status', 'Archived')
+                ->where('status', CmsStatus::ARCHIVED->value)
                 ->count();
         }
 
@@ -106,5 +115,12 @@ class AdminLayout extends Component
             'pendingTestimonialCount' => $pendingTestimonialCount,
             'navCounts' => $navCounts,
         ]);
+    }
+
+    private function tableExists(string $table): bool
+    {
+        static $cache = [];
+
+        return $cache[$table] ??= Schema::hasTable($table);
     }
 }

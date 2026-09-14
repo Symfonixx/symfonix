@@ -44,9 +44,11 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}" class="btn btn-light btn-sm">
-                    <i class="bi bi-person-plus me-1"></i>{{ __('crm::contact.actions.add') }}
-                </a>
+                <x-can perform="crm.contacts.create">
+                    <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}" class="btn btn-light btn-sm">
+                        <i class="bi bi-person-plus me-1"></i>{{ __('crm::contact.actions.add') }}
+                    </a>
+                </x-can>
             </div>
         </div>
     </div>
@@ -101,10 +103,12 @@
             <div class="card-header align-items-center">
                 <h3 class="card-title">{{ __('crm::contact.menu.contacts') }}</h3>
                 <div class="card-toolbar">
-                    <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}"
-                       class="btn btn-sm btn-primary">
-                        <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
-                    </a>
+                    <x-can perform="crm.contacts.create">
+                        <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}"
+                           class="btn btn-sm btn-primary">
+                            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
+                        </a>
+                    </x-can>
                 </div>
             </div>
             <div class="card-body p-0">
@@ -144,10 +148,12 @@
             <div class="card-header align-items-center">
                 <h3 class="card-title">{{ __('crm::contact.menu.contacts') }}</h3>
                 <div class="card-toolbar">
-                    <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}"
-                       class="btn btn-sm btn-primary">
-                        <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
-                    </a>
+                    <x-can perform="crm.contacts.create">
+                        <a href="{{ route('admin.contacts.create', ['company_id' => $company->id]) }}"
+                           class="btn btn-sm btn-primary">
+                            <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
+                        </a>
+                    </x-can>
                 </div>
             </div>
             <div class="card-body text-center text-muted py-10">{{ __('N/A') }}</div>
@@ -158,10 +164,12 @@
         <div class="card-header align-items-center">
             <h3 class="card-title">{{ __('crm::lead.menu.leads') }}</h3>
             <div class="card-toolbar">
-                <a href="{{ route('admin.leads.create', ['company_id' => $company->id]) }}"
-                   class="btn btn-sm btn-primary">
-                    <i class="bi bi-plus-lg me-1"></i>{{ __('crm::lead.actions.add') }}
-                </a>
+                <x-can perform="crm.leads.create">
+                    <a href="{{ route('admin.leads.create', ['company_id' => $company->id]) }}"
+                       class="btn btn-sm btn-primary">
+                        <i class="bi bi-plus-lg me-1"></i>{{ __('crm::lead.actions.add') }}
+                    </a>
+                </x-can>
             </div>
         </div>
         <div class="card-body p-0">
@@ -218,10 +226,12 @@
         <div class="card-header align-items-center">
             <h3 class="card-title">{{ __('crm::deal.menu.deals') }}</h3>
             <div class="card-toolbar">
-                <a href="{{ route('admin.deals.create', ['company_id' => $company->id]) }}"
-                   class="btn btn-sm btn-primary">
-                    <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
-                </a>
+                <x-can perform="sales.deals.create">
+                    <a href="{{ route('admin.deals.create', ['company_id' => $company->id]) }}"
+                       class="btn btn-sm btn-primary">
+                        <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
+                    </a>
+                </x-can>
             </div>
         </div>
         <div class="card-body p-0">
@@ -317,10 +327,12 @@
         <div class="card-header align-items-center">
             <h3 class="card-title">{{ __('crm::subscription.sections.company_subscriptions') }}</h3>
             <div class="card-toolbar">
-                <a href="{{ route('admin.subscriptions.create', ['company_id' => $company->id]) }}"
-                   class="btn btn-sm btn-primary">
-                    <i class="bi bi-plus-lg me-1"></i>{{ __('crm::subscription.actions.add_for_company') }}
-                </a>
+                <x-can perform="sales.subscriptions.create">
+                    <a href="{{ route('admin.subscriptions.create', ['company_id' => $company->id]) }}"
+                       class="btn btn-sm btn-primary">
+                        <i class="bi bi-plus-lg me-1"></i>{{ __('crm::subscription.actions.add_for_company') }}
+                    </a>
+                </x-can>
             </div>
         </div>
         <div class="card-body p-0">

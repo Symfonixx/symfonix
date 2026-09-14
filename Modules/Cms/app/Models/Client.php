@@ -2,7 +2,9 @@
 
 namespace Modules\Cms\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Cms\Enums\CmsStatus;
 use Spatie\Translatable\HasTranslations;
 
 class Client extends Model
@@ -21,14 +23,14 @@ class Client extends Model
         'status',
     ];
 
-    public function scopePublished($query)
+    public function scopePublished(Builder $query): Builder
     {
-        $query->where('status', 'Published');
+        return $query->where('status', CmsStatus::PUBLISHED->value);
     }
 
-    public function scopeOrdered($query)
+    public function scopeOrdered(Builder $query): Builder
     {
-        $query->orderBy('rank', 'asc')->orderBy('id', 'asc');
+        return $query->orderBy('rank', 'asc')->orderBy('id', 'asc');
     }
 
     public function getLogoLinkAttribute(): string

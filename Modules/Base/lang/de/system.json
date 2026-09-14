@@ -7,7 +7,8 @@
         "company": "Unternehmen",
         "finance": "Finanzen",
         "notifications": "Benachrichtigungen",
-        "backup": "Sicherung"
+        "backup": "Sicherung",
+        "fingerprint": "Fingerabdruck"
     },
     "company_details": {
         "title": "Firmendetails",
@@ -69,5 +70,32 @@
         "status_on": "Automatische Backups sind aktiviert",
         "status_off": "Automatische Backups sind deaktiviert",
         "never_run": "Noch nicht ausgeführt"
+    },
+    "fingerprint": {
+        "title": "Fingerabdruckgerät",
+        "description": "Verbindung mit einem ZKTeco-Gerät über TCP/IP. employee_id wird auf user_id am Gerät abgebildet.",
+        "status_title": "Integration",
+        "enabled_on": "Aktiviert",
+        "enabled_off": "Deaktiviert",
+        "connection_title": "Gerät",
+        "connection_ready": "Host konfiguriert",
+        "connection_missing": "Host nicht gesetzt",
+        "last_sync": "Letzte Anwesenheitssynchronisation",
+        "never_synced": "Nie synchronisiert",
+        "enabled": "Fingerabdruckgerät aktivieren",
+        "enabled_label": "Fingerabdruck-Integration verwenden",
+        "enabled_hint": "Wenn deaktiviert, sind HR-Sync-Aktionen blockiert.",
+        "host": "Geräte-IP / Host",
+        "host_hint": "LAN-IP-Adresse des ZKTeco-Terminals.",
+        "port": "Port",
+        "port_hint": "Standard-ZKTeco-TCP-Port ist 4370.",
+        "comm_key": "Kommunikationsschlüssel",
+        "comm_key_hint": "Numerisches Gerätepasswort (0 wenn nicht gesetzt).",
+        "timeout": "Verbindungs-Timeout (Sekunden)",
+        "timeout_hint": "Socket-Timeout für Geräteoperationen (3–60 Sekunden).",
+        "name_encoding": "Namenscodierung",
+        "name_encoding_hint": "Gerätecodepage für Mitarbeiternamen (UTF-8, Windows-1256 für Arabisch).",
+        "test_connection": "Verbindung testen",
+        "manage_sync": "HR-Sync öffnen"
     }
 }

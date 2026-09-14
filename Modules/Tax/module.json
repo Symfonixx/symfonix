@@ -1,0 +1,11 @@
+{
+    "name": "Tax",
+    "alias": "tax",
+    "description": "Tax rate configuration, calculation engine, ledger, and filing reports",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Tax\\Providers\\TaxServiceProvider"
+    ],
+    "files": []
+}
