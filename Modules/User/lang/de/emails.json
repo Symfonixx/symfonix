@@ -1,0 +1,28 @@
+{
+    "hire": {
+        "confirm": ":name als Mitarbeiter einstellen? Eine Willkommens-E-Mail wird an :email gesendet."
+    },
+    "team": {
+        "confirm": ":name zum Team auf der Website hinzufügen?"
+    },
+    "hired": {
+        "subject": "Willkommen bei :company",
+        "heading": "Sie wurden eingestellt",
+        "greeting": "Hallo :name,",
+        "intro": "Herzlichen Glückwunsch! Sie wurden bei :company eingestellt.",
+        "position": "Ihre Position: :position",
+        "closing": "Wir freuen uns auf die Zusammenarbeit mit Ihnen.",
+        "thanks": "Vielen Dank"
+    },
+    "admin": {
+        "subject": "Ihr :company-Administratorkonto ist bereit",
+        "heading": "Administratorzugang erteilt",
+        "greeting": "Hallo :name,",
+        "intro": "Für Sie wurde ein Administratorkonto bei :company erstellt. Melden Sie sich mit den folgenden Zugangsdaten an.",
+        "email_label": "E-Mail",
+        "password_label": "Passwort",
+        "login": "Im Admin-Bereich anmelden",
+        "security": "Bitte ändern Sie Ihr Passwort nach der Anmeldung.",
+        "thanks": "Vielen Dank"
+    }
+}

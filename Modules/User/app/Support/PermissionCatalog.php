@@ -158,7 +158,7 @@ final class PermissionCatalog
                         'actions' => ['view', 'create', 'edit', 'delete'],
                         'routes' => [
                             'view' => ['admin.teams.index'],
-                            'create' => ['admin.teams.create', 'admin.teams.store'],
+                            'create' => ['admin.teams.create', 'admin.teams.store', 'admin.employees.add-to-team'],
                             'edit' => ['admin.teams.edit', 'admin.teams.update'],
                             'delete' => ['admin.teams.destroy', 'admin.teams.deleteMulti'],
                         ],
@@ -613,7 +613,7 @@ final class PermissionCatalog
                         'actions' => ['view', 'create', 'edit', 'delete'],
                         'routes' => [
                             'view' => ['admin.employees.index', 'admin.employees.show'],
-                            'create' => ['admin.employees.store'],
+                            'create' => ['admin.employees.store', 'admin.job-applications.hire'],
                             'edit' => ['admin.employees.update'],
                             'delete' => ['admin.employees.destroy'],
                         ],
@@ -638,7 +638,7 @@ final class PermissionCatalog
                         'actions' => ['view', 'create', 'edit', 'delete'],
                         'routes' => [
                             'view' => ['admin.admins.index', 'admin.admins.show'],
-                            'create' => ['admin.admins.store'],
+                            'create' => ['admin.admins.store', 'admin.employees.convert-to-admin'],
                             'edit' => ['admin.admins.update'],
                             'delete' => ['admin.admins.destroy'],
                         ],

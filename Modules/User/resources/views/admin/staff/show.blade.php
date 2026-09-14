@@ -21,13 +21,46 @@
         <a class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{ $employee->id }}">
             <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
         </a>
-        <div class="modal fade" tabindex="-1" id="edit_modal{{ $employee->id }}">
-            @include('user::admin.staff._edit_model', ['employee' => $employee])
-        </div>
+        @if(! $employee->isAdminAccount())
+            <x-can perform="hr.admins.create">
+                <button type="button" class="btn btn-sm fw-bold btn-light-warning" data-bs-toggle="modal" data-bs-target="#convert_admin_modal">
+                    <i class="bi bi-shield-lock me-1"></i>{{ __('Convert to Admin') }}
+                </button>
+            </x-can>
+        @endif
+        @if($employee->isOnWebsiteTeam())
+            @can('cms.team.edit')
+                <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.teams.edit', $employee->team) }}">
+                    <i class="bi bi-pencil-square me-1"></i>{{ __('Edit Our Team') }}
+                </a>
+            @endcan
+        @else
+            <x-can perform="cms.team.create">
+                <form method="POST"
+                      action="{{ route('admin.employees.add-to-team', $employee) }}"
+                      class="d-inline"
+                      data-confirm="{{ __('user::emails.team.confirm', ['name' => $employee->name]) }}">
+                    @csrf
+                    <button type="submit" class="btn btn-sm fw-bold btn-success">
+                        <i class="bi bi-people me-1"></i>{{ __('Add to Our Team') }}
+                    </button>
+                </form>
+            </x-can>
+        @endif
     </div>
 @endsection
 
 <x-admin-layout>
+    <div class="modal fade" tabindex="-1" id="edit_modal{{ $employee->id }}">
+        @include('user::admin.staff._edit_model', ['employee' => $employee])
+    </div>
+    @if(! $employee->isAdminAccount())
+        <x-can perform="hr.admins.create">
+            <div class="modal fade" tabindex="-1" id="convert_admin_modal">
+                @include('user::admin.staff._convert_to_admin_modal', ['convertEmployee' => $employee, 'groups' => $groups])
+            </div>
+        </x-can>
+    @endif
     <div class="row g-5 mb-5">
         <div class="col-xl-4">
             <div class="card card-flush h-100">
@@ -36,16 +69,30 @@
                         <img src="{{ $employee->avatar }}" alt="{{ $employee->name }}"/>
                     </div>
                     <h2 class="fs-2 fw-bold mb-1">{{ $employee->name }}</h2>
+                    @if($employee->position)
+                        <div class="text-gray-600 fw-semibold mb-2">{{ $employee->position }}</div>
+                    @endif
                     <a href="mailto:{{ $employee->email }}" class="text-muted text-hover-primary d-block mb-3">{{ $employee->email }}</a>
                     @if($employee->mobile)
                         <a href="tel:{{ $employee->mobile }}" class="text-muted text-hover-primary d-block mb-3">{{ $employee->mobile }}</a>
                     @endif
-                    <div class="d-flex justify-content-center gap-3">
+                    <div class="d-flex justify-content-center gap-3 mb-4">
                         <span class="badge badge-light-{{ $employee->status === 'active' ? 'success' : 'secondary' }}">{{ ucfirst($employee->status) }}</span>
                         <span class="badge badge-light-{{ $employee->isFingerprintEnrolled() ? 'success' : 'warning' }}">
                             {{ $employee->isFingerprintEnrolled() ? __('user::fingerprint.status.enrolled') : __('user::fingerprint.status.pending') }}
                         </span>
+                        @if($employee->isAdminAccount())
+                            <span class="badge badge-light-primary">{{ __('Admin') }}</span>
+                        @endif
+                        @if($employee->isOnWebsiteTeam())
+                            <span class="badge badge-light-success">{{ __('Our Team') }}</span>
+                        @endif
                     </div>
+                    @if($employee->resumeUrl())
+                        <a href="{{ $employee->resumeUrl() }}" target="_blank" class="btn btn-sm btn-light-success">
+                            <i class="bi bi-file-earmark-arrow-down me-1"></i>{{ __('Download Resume') }}
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -208,6 +255,48 @@
 @push('scripts')
 <script>
 (function () {
+    var convertModal = document.getElementById('convert_admin_modal');
+    if (convertModal) {
+        var form = convertModal.querySelector('.js-convert-admin-form');
+        if (form) {
+            var selectAll = form.querySelector('.js-permission-select-all');
+            var boxes = form.querySelectorAll('.js-permission-box');
+            var sections = form.querySelectorAll('.js-permission-section');
+            var syncSections = function () {
+                sections.forEach(function (section) {
+                    var key = section.getAttribute('data-section');
+                    var related = form.querySelectorAll('.js-permission-box[data-section="' + key + '"]');
+                    section.checked = related.length > 0 && Array.from(related).every(function (box) { return box.checked; });
+                });
+                if (selectAll) {
+                    selectAll.checked = boxes.length > 0 && Array.from(boxes).every(function (box) { return box.checked; });
+                }
+            };
+            if (selectAll) {
+                selectAll.addEventListener('change', function (event) {
+                    boxes.forEach(function (box) { box.checked = event.target.checked; });
+                    sections.forEach(function (section) { section.checked = event.target.checked; });
+                });
+            }
+            sections.forEach(function (section) {
+                section.addEventListener('change', function (event) {
+                    var key = section.getAttribute('data-section');
+                    form.querySelectorAll('.js-permission-box[data-section="' + key + '"]').forEach(function (box) {
+                        box.checked = event.target.checked;
+                    });
+                    syncSections();
+                });
+            });
+            boxes.forEach(function (box) { box.addEventListener('change', syncSections); });
+            syncSections();
+        }
+        @if($errors->any() && old('form_context') === 'convert_to_admin')
+        if (typeof bootstrap !== 'undefined') {
+            new bootstrap.Modal(convertModal).show();
+        }
+        @endif
+    }
+
     var attendanceTrend = @json($charts['attendance_trend']);
     var salaryTrend = @json($charts['salary_trend']);
     var punchTypes = @json($charts['punch_types']);

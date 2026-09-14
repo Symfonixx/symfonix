@@ -19,6 +19,18 @@ return new class extends Migration
                 });
             }
 
+            Schema::table('invoice_lines', function (Blueprint $table) {
+                if (! Schema::hasColumn('invoice_lines', 'tax_rate_id')) {
+                    $table->unsignedBigInteger('tax_rate_id')->nullable()->after('unit_price');
+                }
+                if (! Schema::hasColumn('invoice_lines', 'tax_percent')) {
+                    $table->decimal('tax_percent', 8, 4)->default(0)->after('tax_rate_id');
+                }
+                if (! Schema::hasColumn('invoice_lines', 'tax_amount')) {
+                    $table->decimal('tax_amount', 15, 2)->default(0)->after('tax_percent');
+                }
+            });
+
             return;
         }
 
@@ -30,6 +42,9 @@ return new class extends Migration
             $table->string('description');
             $table->unsignedInteger('quantity')->default(1);
             $table->decimal('unit_price', 15, 2);
+            $table->unsignedBigInteger('tax_rate_id')->nullable();
+            $table->decimal('tax_percent', 8, 4)->default(0);
+            $table->decimal('tax_amount', 15, 2)->default(0);
             $table->decimal('amount', 15, 2);
             $table->unsignedSmallInteger('sort_order')->default(0);
             $table->timestamps();

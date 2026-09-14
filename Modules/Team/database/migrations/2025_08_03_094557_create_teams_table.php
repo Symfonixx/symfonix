@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('resume')->nullable();
             $table->text('key_skills')->nullable();
             $table->enum('status', ['Published', 'Archived'])->default('Published');
+            $table->foreignId('employee_id')->nullable()->unique()->constrained('employees')->nullOnDelete();
             $table->timestamps();
         });
     }

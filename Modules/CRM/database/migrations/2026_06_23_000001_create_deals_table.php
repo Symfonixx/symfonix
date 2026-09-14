@@ -45,6 +45,11 @@ return new class extends Migration
             $table->timestamp('closed_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['status', 'won_at'], 'deals_status_won_at_index');
+            $table->index(['status', 'lost_at'], 'deals_status_lost_at_index');
+            $table->index(['status', 'assigned_to'], 'deals_status_assigned_to_index');
+            $table->index(['status', 'pipeline_stage_id'], 'deals_status_pipeline_stage_id_index');
         });
 
         if (Schema::hasTable('leads') && Schema::hasColumn('leads', 'deal_id')) {

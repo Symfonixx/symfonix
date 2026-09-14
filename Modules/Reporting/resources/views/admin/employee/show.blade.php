@@ -42,13 +42,17 @@
         <div class="col-lg-6">
             <div class="card card-flush h-100">
                 <div class="card-header"><h3 class="card-title">{{ __('reporting::report.sections.attendance_trend') }}</h3></div>
-                <div class="card-body"><canvas id="chart-employee-attendance" height="260"></canvas></div>
+                <div class="card-body">
+                    @include('reporting::admin._chart_canvas', ['id' => 'chart-employee-attendance', 'height' => 260])
+                </div>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="card card-flush h-100">
                 <div class="card-header"><h3 class="card-title">{{ __('reporting::report.sections.salary_trend') }}</h3></div>
-                <div class="card-body"><canvas id="chart-employee-salary" height="260"></canvas></div>
+                <div class="card-body">
+                    @include('reporting::admin._chart_canvas', ['id' => 'chart-employee-salary', 'height' => 260])
+                </div>
             </div>
         </div>
     </div>
@@ -57,13 +61,17 @@
         <div class="col-lg-6">
             <div class="card card-flush h-100">
                 <div class="card-header"><h3 class="card-title">{{ __('reporting::report.sections.punch_types') }}</h3></div>
-                <div class="card-body"><canvas id="chart-employee-punch-types" height="260"></canvas></div>
+                <div class="card-body">
+                    @include('reporting::admin._chart_canvas', ['id' => 'chart-employee-punch-types', 'height' => 260])
+                </div>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="card card-flush h-100">
                 <div class="card-header"><h3 class="card-title">{{ __('reporting::report.sections.project_status') }}</h3></div>
-                <div class="card-body"><canvas id="chart-employee-project-status" height="260"></canvas></div>
+                <div class="card-body">
+                    @include('reporting::admin._chart_canvas', ['id' => 'chart-employee-project-status', 'height' => 260])
+                </div>
             </div>
         </div>
     </div>
@@ -172,101 +180,95 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        @include('reporting::admin._chart_js')
+        <script>
+        (function () {
+            var colors = @json($report['chart_colors']);
+            var attendanceTrend = @json($report['charts']['attendance_trend']);
+            var salaryTrend = @json($report['charts']['salary_trend']);
+            var punchTypes = @json($report['charts']['punch_types']);
+            var projectStatus = @json($report['charts']['project_status_breakdown']);
+            var noDataText = @json(__('reporting::report.no_data'));
+            var showMessage = function (canvas, message, danger) {
+                if (!canvas || !canvas.parentNode) {
+                    return;
+                }
+                canvas.parentNode.innerHTML = '<div class="' + (danger ? 'text-danger' : 'text-muted') + ' text-center py-10">' + message + '</div>';
+            };
+
+            if (typeof Chart === 'undefined') {
+                var missing = document.querySelectorAll('canvas[id^="chart-"]');
+                for (var i = 0; i < missing.length; i++) {
+                    showMessage(missing[i], 'Unable to load chart library', true);
+                }
+                return;
+            }
+
+            var attendanceCanvas = document.getElementById('chart-employee-attendance');
+            var salaryCanvas = document.getElementById('chart-employee-salary');
+            var punchCanvas = document.getElementById('chart-employee-punch-types');
+            var projectCanvas = document.getElementById('chart-employee-project-status');
+
+            if (attendanceCanvas && attendanceTrend.length) {
+                new Chart(attendanceCanvas, {
+                    type: 'line',
+                    data: {
+                        labels: attendanceTrend.map(function (row) { return row.label; }),
+                        datasets: [
+                            { label: '{{ __("Check-ins") }}', data: attendanceTrend.map(function (row) { return row.check_ins; }), borderColor: colors[1], tension: 0.25 },
+                            { label: '{{ __("Check-outs") }}', data: attendanceTrend.map(function (row) { return row.check_outs; }), borderColor: colors[4], tension: 0.25 },
+                        ],
+                    },
+                    options: { scales: { y: { beginAtZero: true } } },
+                });
+            } else {
+                showMessage(attendanceCanvas, noDataText, false);
+            }
+
+            if (salaryCanvas && salaryTrend.length) {
+                new Chart(salaryCanvas, {
+                    type: 'bar',
+                    data: {
+                        labels: salaryTrend.map(function (row) { return row.label; }),
+                        datasets: [
+                            { label: '{{ __("Paid") }}', data: salaryTrend.map(function (row) { return row.paid; }), backgroundColor: colors[1] },
+                            { label: '{{ __("Pending") }}', data: salaryTrend.map(function (row) { return row.pending; }), backgroundColor: colors[4] },
+                        ],
+                    },
+                    options: { scales: { y: { beginAtZero: true } } },
+                });
+            } else {
+                showMessage(salaryCanvas, noDataText, false);
+            }
+
+            if (punchCanvas && punchTypes.length) {
+                new Chart(punchCanvas, {
+                    type: 'doughnut',
+                    data: {
+                        labels: punchTypes.map(function (row) { return row.type; }),
+                        datasets: [{ data: punchTypes.map(function (row) { return row.count; }), backgroundColor: colors }],
+                    },
+                    options: { plugins: { legend: { position: 'bottom' } } },
+                });
+            } else {
+                showMessage(punchCanvas, noDataText, false);
+            }
+
+            if (projectCanvas && projectStatus.length) {
+                new Chart(projectCanvas, {
+                    type: 'pie',
+                    data: {
+                        labels: projectStatus.map(function (row) { return row.status; }),
+                        datasets: [{ data: projectStatus.map(function (row) { return row.count; }), backgroundColor: colors }],
+                    },
+                    options: { plugins: { legend: { position: 'bottom' } } },
+                });
+            } else {
+                showMessage(projectCanvas, noDataText, false);
+            }
+        })();
+        </script>
+    @endpush
 </x-admin-layout>
-
-@push('scripts')
-<script>
-(function () {
-    var colors = @json($report['chart_colors']);
-    var attendanceTrend = @json($report['charts']['attendance_trend']);
-    var salaryTrend = @json($report['charts']['salary_trend']);
-    var punchTypes = @json($report['charts']['punch_types']);
-    var projectStatus = @json($report['charts']['project_status_breakdown']);
-    var chartJsPromise = null;
-
-    var ensureChartJs = function () {
-        if (typeof Chart !== 'undefined') {
-            return Promise.resolve();
-        }
-        if (!chartJsPromise) {
-            chartJsPromise = new Promise(function (resolve, reject) {
-                var sources = [
-                    'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js',
-                    'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js',
-                    'https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js'
-                ];
-                var tryLoad = function (index) {
-                    if (index >= sources.length) {
-                        reject(new Error('Chart.js failed to load'));
-                        return;
-                    }
-                    var script = document.createElement('script');
-                    script.src = sources[index];
-                    script.async = true;
-                    script.onload = function () { resolve(); };
-                    script.onerror = function () { tryLoad(index + 1); };
-                    document.head.appendChild(script);
-                };
-                tryLoad(0);
-            });
-        }
-        return chartJsPromise;
-    };
-
-    var draw = function () {
-        if (attendanceTrend.length && document.getElementById('chart-employee-attendance')) {
-            new Chart(document.getElementById('chart-employee-attendance'), {
-                type: 'line',
-                data: {
-                    labels: attendanceTrend.map(function (row) { return row.label; }),
-                    datasets: [
-                        { label: '{{ __("Check-ins") }}', data: attendanceTrend.map(function (row) { return row.check_ins; }), borderColor: colors[1], tension: 0.25 },
-                        { label: '{{ __("Check-outs") }}', data: attendanceTrend.map(function (row) { return row.check_outs; }), borderColor: colors[4], tension: 0.25 },
-                    ],
-                },
-                options: { responsive: true, scales: { y: { beginAtZero: true } } },
-            });
-        }
-
-        if (salaryTrend.length && document.getElementById('chart-employee-salary')) {
-            new Chart(document.getElementById('chart-employee-salary'), {
-                type: 'bar',
-                data: {
-                    labels: salaryTrend.map(function (row) { return row.label; }),
-                    datasets: [
-                        { label: '{{ __("Paid") }}', data: salaryTrend.map(function (row) { return row.paid; }), backgroundColor: colors[1] },
-                        { label: '{{ __("Pending") }}', data: salaryTrend.map(function (row) { return row.pending; }), backgroundColor: colors[4] },
-                    ],
-                },
-                options: { responsive: true, scales: { y: { beginAtZero: true } } },
-            });
-        }
-
-        if (punchTypes.length && document.getElementById('chart-employee-punch-types')) {
-            new Chart(document.getElementById('chart-employee-punch-types'), {
-                type: 'doughnut',
-                data: {
-                    labels: punchTypes.map(function (row) { return row.type; }),
-                    datasets: [{ data: punchTypes.map(function (row) { return row.count; }), backgroundColor: colors }],
-                },
-                options: { responsive: true, plugins: { legend: { position: 'bottom' } } },
-            });
-        }
-
-        if (projectStatus.length && document.getElementById('chart-employee-project-status')) {
-            new Chart(document.getElementById('chart-employee-project-status'), {
-                type: 'pie',
-                data: {
-                    labels: projectStatus.map(function (row) { return row.status; }),
-                    datasets: [{ data: projectStatus.map(function (row) { return row.count; }), backgroundColor: colors }],
-                },
-                options: { responsive: true, plugins: { legend: { position: 'bottom' } } },
-            });
-        }
-    };
-
-    ensureChartJs().then(draw).catch(function () {});
-})();
-</script>
-@endpush
 

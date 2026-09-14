@@ -44,6 +44,7 @@ return new class extends Migration
             $table->index(['company_id', 'status']);
             $table->index('due_at');
             $table->index('project_id');
+            $table->index(['status', 'paid_at'], 'invoices_status_paid_at_index');
         });
     }
 

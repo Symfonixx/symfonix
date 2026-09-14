@@ -5,6 +5,8 @@ namespace Modules\User\Services\Fingerprint;
 use Illuminate\Support\Facades\Log;
 use Modules\Base\Models\Settings;
 use Modules\Base\Support\FingerprintConfig;
+use Modules\User\Enums\PunchState;
+use Modules\User\Enums\VerifyMode as AttendanceVerifyMode;
 use Modules\User\Models\AttendanceLog;
 use Modules\User\Models\Employee;
 use ZkTeco\Enums\VerifyMode;
@@ -45,7 +47,8 @@ class FingerprintAttendanceSyncService
                     [
                         'employee_id' => $employee->id,
                         'recorded_at' => $record->recordedAt,
-                        'punch_state' => $record->punchState->value,
+                        'punch_state' => PunchState::tryFrom($record->punchState->value)?->value
+                            ?? PunchState::UNDEFINED->value,
                     ],
                     [
                         'device_user_id' => $record->userId,
@@ -95,11 +98,11 @@ class FingerprintAttendanceSyncService
     private function verifyModeCode(VerifyMode $mode): int
     {
         return match ($mode) {
-            VerifyMode::Fingerprint => 1,
-            VerifyMode::Password => 3,
-            VerifyMode::Card => 4,
-            VerifyMode::Face => 15,
-            VerifyMode::Other => 0,
+            VerifyMode::Fingerprint => AttendanceVerifyMode::FINGERPRINT->value,
+            VerifyMode::Password => AttendanceVerifyMode::PASSWORD->value,
+            VerifyMode::Card => AttendanceVerifyMode::CARD->value,
+            VerifyMode::Face => AttendanceVerifyMode::FACE->value,
+            VerifyMode::Other => AttendanceVerifyMode::OTHER->value,
         };
     }
 }

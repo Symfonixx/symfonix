@@ -1,6 +1,6 @@
-# Symfonix
+# Symfonix Business Suite
 
-Symfonix is a modular Laravel business platform for agencies and service companies. It combines a multilingual public website, admin panel, CRM, project delivery, finance, tax, HR, support, reporting, and product catalog in one codebase.
+Symfonix Business Suite is a modular Laravel business platform for agencies and service companies. It combines a multilingual public website, admin panel, CRM, project delivery, finance, tax, HR, support, reporting, and product catalog in one codebase.
 
 Built on **Laravel 13** with **nwidart/laravel-modules**, **Spatie Permission**, **Inertia + Vue 3**, **Livewire**, and the **Metronic** admin theme.
 

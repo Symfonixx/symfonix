@@ -6,9 +6,28 @@
         ['label' => __('Job Applications'), 'url' => route('admin.job-applications.index')],
         ['label' => $jobApplication->candidate->full_name],
     ]"/>
-    <a href="{{ route('admin.job-applications.index') }}" class="btn btn-sm btn-light">
-        <i class="bi bi-arrow-left me-1"></i>{{ __('Back to List') }}
-    </a>
+    <div class="d-flex align-items-center gap-2 gap-lg-3">
+        <a href="{{ route('admin.job-applications.index') }}" class="btn btn-sm btn-light">
+            <i class="bi bi-arrow-left me-1"></i>{{ __('Back to List') }}
+        </a>
+        @if($jobApplication->isHired() && $jobApplication->employee_id)
+            <a href="{{ route('admin.employees.show', $jobApplication->employee_id) }}" class="btn btn-sm btn-light-primary">
+                <i class="bi bi-person-check me-1"></i>{{ __('View Employee') }}
+            </a>
+        @else
+            <x-can perform="hr.employees.create">
+                <form method="POST"
+                      action="{{ route('admin.job-applications.hire', $jobApplication) }}"
+                      class="d-inline"
+                      data-confirm="{{ __('user::emails.hire.confirm', ['name' => $jobApplication->candidate->full_name, 'email' => $jobApplication->candidate->email]) }}">
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-success">
+                        <i class="bi bi-person-plus me-1"></i>{{ __('Hire Employee') }}
+                    </button>
+                </form>
+            </x-can>
+        @endif
+    </div>
 @endsection
 
 <x-admin-layout>
@@ -73,6 +92,12 @@
                     <h3 class="card-title">{{ __('Hiring Decision') }}</h3>
                 </div>
                 <div class="card-body">
+                    @error('mobile')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <div class="mb-6">
                         <label for="status" class="form-label">{{ __('Hiring Status') }}</label>
                         <select id="status" name="status" class="form-select @error('status') is-invalid @enderror">

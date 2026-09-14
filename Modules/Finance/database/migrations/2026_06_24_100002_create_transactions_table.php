@@ -26,6 +26,17 @@ return new class extends Migration
                 });
             }
 
+            if (! Schema::hasColumn('journal_entries', 'tax_rate_id')) {
+                Schema::table('journal_entries', function (Blueprint $table) {
+                    $table->unsignedBigInteger('tax_rate_id')->nullable()->after('description');
+                });
+            }
+            if (! Schema::hasColumn('journal_entries', 'tax_amount')) {
+                Schema::table('journal_entries', function (Blueprint $table) {
+                    $table->decimal('tax_amount', 15, 2)->default(0)->after('tax_rate_id');
+                });
+            }
+
             if (! Schema::hasTable('journal_lines')) {
                 Schema::create('journal_lines', function (Blueprint $table) {
                     $table->id();
@@ -59,6 +70,8 @@ return new class extends Migration
                 ->comment('Amount converted to system base currency at posting time');
             $table->nullableMorphs('reference');
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('tax_rate_id')->nullable();
+            $table->decimal('tax_amount', 15, 2)->default(0);
             $table->date('transaction_date');
             $table->timestamps();
 

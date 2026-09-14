@@ -8,6 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('whatsapp_message_logs')) {
+            return;
+        }
+
         Schema::create('whatsapp_message_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('whatsapp_campaign_id')->constrained()->cascadeOnDelete();

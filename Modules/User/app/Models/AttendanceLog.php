@@ -4,8 +4,8 @@ namespace Modules\User\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use ZkTeco\Enums\PunchState;
-use ZkTeco\Enums\VerifyMode;
+use Modules\User\Enums\PunchState;
+use Modules\User\Enums\VerifyMode;
 
 class AttendanceLog extends Model
 {
@@ -37,17 +37,7 @@ class AttendanceLog extends Model
 
     public function punchStateLabel(): string
     {
-        $state = PunchState::tryFrom((int) $this->punch_state);
-
-        return match ($state) {
-            PunchState::CheckIn => 'check_in',
-            PunchState::CheckOut => 'check_out',
-            PunchState::BreakOut => 'break_out',
-            PunchState::BreakIn => 'break_in',
-            PunchState::OvertimeIn => 'overtime_in',
-            PunchState::OvertimeOut => 'overtime_out',
-            default => 'undefined',
-        };
+        return PunchState::tryFrom((int) $this->punch_state)?->label() ?? 'undefined';
     }
 
     public function verifyModeLabel(): ?string
@@ -56,13 +46,6 @@ class AttendanceLog extends Model
             return null;
         }
 
-        return match ((int) $this->verify_mode) {
-            1 => VerifyMode::Fingerprint->name,
-            3 => VerifyMode::Password->name,
-            4 => VerifyMode::Card->name,
-            15 => VerifyMode::Face->name,
-            0 => VerifyMode::Other->name,
-            default => 'Unknown',
-        };
+        return VerifyMode::tryFrom((int) $this->verify_mode)?->name ?? 'Unknown';
     }
 }

@@ -4,7 +4,9 @@ namespace Modules\Team\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Cms\Enums\CmsStatus;
+use Modules\User\Models\Employee;
 use Spatie\Translatable\HasTranslations;
 
 class Team extends Model
@@ -16,12 +18,27 @@ class Team extends Model
     protected $appends = ['avatar_link', 'resume_link'];
 
     protected $fillable = [
-        'name', 'position', 'linked_in', 'facebook', 'github', 'behance', 'resume', 'key_skills', 'avatar', 'status',
+        'name',
+        'position',
+        'linked_in',
+        'facebook',
+        'github',
+        'behance',
+        'resume',
+        'key_skills',
+        'avatar',
+        'status',
+        'employee_id',
     ];
 
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('status', CmsStatus::PUBLISHED->value);
+    }
+
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class);
     }
 
     public function getAvatarLinkAttribute(): string

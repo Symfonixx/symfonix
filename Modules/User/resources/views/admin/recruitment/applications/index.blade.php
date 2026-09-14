@@ -67,6 +67,23 @@
                     <a href="{{ route('admin.job-applications.show', $application) }}" class="btn btn-sm btn-light-primary" title="{{ __('View') }}">
                         <i class="bi bi-eye"></i>
                     </a>
+                    @if($application->isHired() && $application->employee_id)
+                        <a href="{{ route('admin.employees.show', $application->employee_id) }}" class="btn btn-sm btn-light-success" title="{{ __('View Employee') }}">
+                            <i class="bi bi-person-check"></i>
+                        </a>
+                    @else
+                        <x-can perform="hr.employees.create">
+                            <form method="POST"
+                                  action="{{ route('admin.job-applications.hire', $application) }}"
+                                  class="d-inline"
+                                  data-confirm="{{ __('user::emails.hire.confirm', ['name' => $application->candidate->full_name, 'email' => $application->candidate->email]) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-success" title="{{ __('Hire Employee') }}">
+                                    <i class="bi bi-person-plus"></i>
+                                </button>
+                            </form>
+                        </x-can>
+                    @endif
                 </td>
             </tr>
         @empty

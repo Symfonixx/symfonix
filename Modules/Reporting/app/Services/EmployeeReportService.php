@@ -5,9 +5,9 @@ namespace Modules\Reporting\Services;
 use Carbon\Carbon;
 use Modules\Finance\Models\Salary;
 use Modules\Project\Models\ProjectEmployee;
+use Modules\User\Enums\PunchState;
 use Modules\User\Models\AttendanceLog;
 use Modules\User\Models\Employee;
-use ZkTeco\Enums\PunchState;
 
 class EmployeeReportService extends BaseReportService
 {
@@ -164,8 +164,8 @@ class EmployeeReportService extends BaseReportService
 
         $trendRows = (clone $base)
             ->selectRaw('DATE(recorded_at) as day')
-            ->selectRaw('SUM(CASE WHEN punch_state = ? THEN 1 ELSE 0 END) as check_ins', [PunchState::CheckIn->value])
-            ->selectRaw('SUM(CASE WHEN punch_state = ? THEN 1 ELSE 0 END) as check_outs', [PunchState::CheckOut->value])
+            ->selectRaw('SUM(CASE WHEN punch_state = ? THEN 1 ELSE 0 END) as check_ins', [PunchState::CHECK_IN->value])
+            ->selectRaw('SUM(CASE WHEN punch_state = ? THEN 1 ELSE 0 END) as check_outs', [PunchState::CHECK_OUT->value])
             ->groupBy('day')
             ->orderBy('day')
             ->get();
@@ -187,7 +187,7 @@ class EmployeeReportService extends BaseReportService
                 $state = PunchState::tryFrom((int) $row->punch_state);
 
                 return [
-                    'type' => $state?->name ?? 'Other',
+                    'type' => $state?->label() ?? 'other',
                     'count' => (int) $row->count,
                 ];
             })->values()->all(),

@@ -9,6 +9,12 @@ return new class extends Migration
     public function up(): void
     {
         if (Schema::hasTable('products')) {
+            if (! Schema::hasColumn('products', 'tax_rate_id')) {
+                Schema::table('products', function (Blueprint $table) {
+                    $table->unsignedBigInteger('tax_rate_id')->nullable()->after('currency');
+                });
+            }
+
             return;
         }
 
@@ -27,6 +33,7 @@ return new class extends Migration
             $table->json('seo_keywords')->nullable();
             $table->decimal('price', 15, 2);
             $table->string('currency', 3)->default('USD');
+            $table->unsignedBigInteger('tax_rate_id')->nullable();
             $table->enum('billing_type', ['one_time', 'monthly', 'quarterly', 'yearly'])->default('one_time');
             $table->enum('status', ['active', 'archived'])->default('active')->index();
             $table->boolean('is_featured')->default(false);

@@ -3,21 +3,30 @@
 namespace Modules\User\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Modules\Finance\Models\Salary;
 use Modules\Project\Models\ProjectEmployee;
 use Modules\User\app\Data\EmployeeData;
 use Modules\User\app\Repositories\Employee\EmployeeRepository;
+use Modules\User\Enums\PunchState;
+use Modules\User\Http\Requests\AddEmployeeToTeamRequest;
+use Modules\User\Http\Requests\ConvertEmployeeToAdminRequest;
 use Modules\User\Http\Requests\StoreEmployeeRequest;
 use Modules\User\Http\Requests\UpdateEmployeeRequest;
 use Modules\User\Models\AttendanceLog;
 use Modules\User\Models\Employee;
-use ZkTeco\Enums\PunchState;
+use Modules\User\Services\EmployeeNotificationService;
+use Modules\User\Services\EmployeeProvisioningService;
+use Modules\User\Support\PermissionCatalog;
 
 class StaffController extends Controller
 {
-    public function __construct(protected EmployeeRepository $employeeRepository)
-    {
+    public function __construct(
+        protected EmployeeRepository $employeeRepository,
+        protected EmployeeProvisioningService $employeeProvisioningService,
+        protected EmployeeNotificationService $employeeNotificationService,
+    ) {
         $this->setActive('hr');
         $this->setActive('employees');
     }
@@ -25,22 +34,23 @@ class StaffController extends Controller
     public function index()
     {
         $model = $this->employeeRepository->all();
+        $groups = PermissionCatalog::groups();
 
-        return view('user::.admin.staff.index', compact('model'));
+        return view('user::.admin.staff.index', compact('model', 'groups'));
     }
 
     public function store(StoreEmployeeRequest $request)
     {
-        $employeeData = EmployeeData::validateAndCreate($request->validated());
-        $this->employeeRepository->store($employeeData);
+        $employeeData = EmployeeData::validateAndCreate($request->safe()->except('resume'));
+        $this->employeeRepository->store($employeeData, $request->file('resume'));
 
         return redirect()->route('admin.employees.index');
     }
 
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        $employeeData = EmployeeData::validateAndCreate($request->validated());
-        $this->employeeRepository->update($employeeData, $employee);
+        $employeeData = EmployeeData::validateAndCreate($request->safe()->except('resume'));
+        $this->employeeRepository->update($employeeData, $employee, $request->file('resume'));
 
         return redirect()->route('admin.employees.index');
     }
@@ -53,8 +63,8 @@ class StaffController extends Controller
         $attendanceTrendRows = (clone $attendanceBase)
             ->whereDate('recorded_at', '>=', now()->subDays(29)->toDateString())
             ->selectRaw('DATE(recorded_at) as day')
-            ->selectRaw('SUM(CASE WHEN punch_state = ? THEN 1 ELSE 0 END) as check_ins', [PunchState::CheckIn->value])
-            ->selectRaw('SUM(CASE WHEN punch_state = ? THEN 1 ELSE 0 END) as check_outs', [PunchState::CheckOut->value])
+            ->selectRaw('SUM(CASE WHEN punch_state = ? THEN 1 ELSE 0 END) as check_ins', [PunchState::CHECK_IN->value])
+            ->selectRaw('SUM(CASE WHEN punch_state = ? THEN 1 ELSE 0 END) as check_outs', [PunchState::CHECK_OUT->value])
             ->groupBy('day')
             ->orderBy('day')
             ->get();
@@ -136,14 +146,42 @@ class StaffController extends Controller
                 $state = PunchState::tryFrom((int) $row->punch_state);
 
                 return [
-                    'type' => $state?->name ?? 'Other',
+                    'type' => $state?->label() ?? 'other',
                     'count' => (int) $row->count,
                 ];
             })->values(),
             'project_status' => $projectStatusRows,
         ];
 
-        return view('user::admin.staff.show', compact('employee', 'assignments', 'recentLogs', 'stats', 'charts'));
+        $groups = PermissionCatalog::groups();
+        $employee->loadMissing(['user', 'team']);
+
+        return view('user::admin.staff.show', compact('employee', 'assignments', 'recentLogs', 'stats', 'charts', 'groups'));
+    }
+
+    public function convertToAdmin(ConvertEmployeeToAdminRequest $request, Employee $employee): RedirectResponse
+    {
+        $password = $request->validated('password');
+
+        $this->employeeProvisioningService->convertToAdmin(
+            $employee,
+            $password,
+            $request->validated('permissions') ?? [],
+        );
+        $this->employeeNotificationService->sendAdminAccess($employee, $password);
+
+        session()->flushMessage(true, __('Employee can now log in to the admin panel.'));
+
+        return redirect()->route('admin.employees.show', $employee);
+    }
+
+    public function addToTeam(AddEmployeeToTeamRequest $request, Employee $employee): RedirectResponse
+    {
+        $this->employeeProvisioningService->addToWebsiteTeam($employee);
+
+        session()->flushMessage(true, __('Employee was added to Our Team on the website.'));
+
+        return redirect()->route('admin.employees.show', $employee);
     }
 
     public function destroy(Employee $employee)

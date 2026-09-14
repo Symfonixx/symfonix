@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('candidate_id')->constrained()->cascadeOnDelete();
             $table->foreignId('job_position_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('employee_id')->nullable()->constrained('employees')->nullOnDelete();
             $table->enum('status', ['applied', 'screening', 'interview', 'offered', 'hired', 'rejected'])
                 ->default('applied')
                 ->index();

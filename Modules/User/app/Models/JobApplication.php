@@ -12,10 +12,15 @@ class JobApplication extends Model
     use HasFactory;
 
     public const STATUS_APPLIED = 'applied';
+
     public const STATUS_SCREENING = 'screening';
+
     public const STATUS_INTERVIEW = 'interview';
+
     public const STATUS_OFFERED = 'offered';
+
     public const STATUS_HIRED = 'hired';
+
     public const STATUS_REJECTED = 'rejected';
 
     public const STATUSES = [
@@ -30,6 +35,7 @@ class JobApplication extends Model
     protected $fillable = [
         'candidate_id',
         'job_position_id',
+        'employee_id',
         'status',
         'submitted_at',
     ];
@@ -54,5 +60,15 @@ class JobApplication extends Model
     public function position(): BelongsTo
     {
         return $this->belongsTo(JobPosition::class, 'job_position_id');
+    }
+
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class);
+    }
+
+    public function isHired(): bool
+    {
+        return $this->status === self::STATUS_HIRED || $this->employee_id !== null;
     }
 }

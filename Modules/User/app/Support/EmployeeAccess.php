@@ -15,7 +15,10 @@ class EmployeeAccess
         }
 
         return Employee::query()
-            ->where('email', $user->email)
+            ->where(function (Builder $query) use ($user) {
+                $query->where('user_id', $user->id)
+                    ->orWhere('email', $user->email);
+            })
             ->value('id');
     }
 

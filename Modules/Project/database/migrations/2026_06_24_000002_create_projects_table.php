@@ -22,6 +22,9 @@ return new class extends Migration
                         ->after('currency')
                         ->comment('Units of system base currency per 1 unit of project currency when budget was set');
                 }
+                if (! Schema::hasColumn('projects', 'tax_rate_id')) {
+                    $table->unsignedBigInteger('tax_rate_id')->nullable()->after('currency');
+                }
             });
 
             return;
@@ -36,6 +39,7 @@ return new class extends Migration
             $table->foreignId('deal_id')->nullable()->unique()->constrained('deals')->nullOnDelete();
             $table->decimal('budget', 15, 2)->nullable();
             $table->string('currency', 3)->default('USD');
+            $table->unsignedBigInteger('tax_rate_id')->nullable();
             $table->decimal('budget_exchange_rate', 18, 8)
                 ->default(1)
                 ->comment('Units of system base currency per 1 unit of project currency when budget was set');
@@ -44,6 +48,9 @@ return new class extends Migration
             $table->date('due_date')->nullable();
             $table->json('attachments')->nullable();
             $table->timestamps();
+
+            $table->index('payment_status', 'projects_payment_status_index');
+            $table->index('due_date', 'projects_due_date_index');
         });
     }
 

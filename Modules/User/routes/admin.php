@@ -38,6 +38,10 @@ Route::group([], function () {
     Route::resource('admins', AdminController::class)->except('create', 'edit');
 
     Route::resource('employees', StaffController::class)->except('create', 'edit');
+    Route::post('employees/{employee}/convert-to-admin', [StaffController::class, 'convertToAdmin'])
+        ->name('employees.convert-to-admin');
+    Route::post('employees/{employee}/add-to-team', [StaffController::class, 'addToTeam'])
+        ->name('employees.add-to-team');
 
     Route::prefix('fingerprint')->name('fingerprint.')
         ->group(function () {
@@ -54,6 +58,8 @@ Route::group([], function () {
 
     Route::resource('job-positions', JobPositionController::class)->except('show');
     Route::resource('job-applications', JobApplicationController::class)->only(['index', 'show', 'update']);
+    Route::post('job-applications/{job_application}/hire', [JobApplicationController::class, 'hire'])
+        ->name('job-applications.hire');
 });
 
 Route::group([], function () {

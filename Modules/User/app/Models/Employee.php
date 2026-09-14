@@ -2,8 +2,11 @@
 
 namespace Modules\User\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,10 +14,14 @@ use Modules\CRM\Models\CrmSalesTarget;
 use Modules\Finance\Models\Salary;
 use Modules\Project\Models\Project;
 use Modules\Project\Models\ProjectEmployee;
+use Modules\Team\Models\Team;
+use Modules\User\Database\Factories\EmployeeFactory;
 use Modules\User\Enums\EmployeeStatus;
 
 class Employee extends Model
 {
+    use HasFactory;
+
     public const STATUS_ACTIVE = EmployeeStatus::ACTIVE->value;
 
     public const STATUS_INACTIVE = EmployeeStatus::INACTIVE->value;
@@ -23,8 +30,11 @@ class Employee extends Model
         'name',
         'email',
         'mobile',
+        'position',
+        'resume',
         'img',
         'status',
+        'user_id',
         'fingerprint_device_uid',
         'fingerprint_enrolled_at',
     ];
@@ -50,9 +60,65 @@ class Employee extends Model
         $query->active()->orderBy('name');
     }
 
+    protected static function newFactory(): EmployeeFactory
+    {
+        return EmployeeFactory::new();
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function jobApplications(): HasMany
+    {
+        return $this->hasMany(JobApplication::class);
+    }
+
+    public function team(): HasOne
+    {
+        return $this->hasOne(Team::class);
+    }
+
+    public function isOnWebsiteTeam(): bool
+    {
+        if ($this->relationLoaded('team')) {
+            return $this->team !== null;
+        }
+
+        return $this->team()->exists();
+    }
+
     public function crmSalesTarget(): HasOne
     {
         return $this->hasOne(CrmSalesTarget::class);
+    }
+
+    public function isAdminAccount(): bool
+    {
+        return $this->user_id !== null;
+    }
+
+    public function adminAccount(): ?User
+    {
+        if ($this->relationLoaded('user')) {
+            return $this->user;
+        }
+
+        if ($this->user_id) {
+            return $this->user;
+        }
+
+        return null;
+    }
+
+    public function resumeUrl(): ?string
+    {
+        if (empty($this->resume)) {
+            return null;
+        }
+
+        return asset('storage/'.$this->resume);
     }
 
     public function leaveRequests(): HasMany

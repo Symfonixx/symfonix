@@ -8,6 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('leads')) {
+            Schema::table('leads', function (Blueprint $table) {
+                if (! Schema::hasColumn('leads', 'custom_fields')) {
+                    $table->json('custom_fields')->nullable()->after('meta');
+                }
+            });
+
+            return;
+        }
+
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
@@ -32,6 +42,7 @@ return new class extends Migration
             $table->text('problem_statement')->nullable();
             $table->json('chat_transcript')->nullable();
             $table->json('meta')->nullable();
+            $table->json('custom_fields')->nullable();
             $table->json('attachments')->nullable();
             $table->boolean('blocked')->default(false);
             $table->string('botman_user_id')->nullable();
@@ -39,6 +50,9 @@ return new class extends Migration
             $table->string('locale')->nullable();
             $table->string('ip_address')->nullable();
             $table->timestamps();
+
+            $table->index(['assigned_to', 'status'], 'leads_assigned_to_status_index');
+            $table->index('blocked', 'leads_blocked_index');
         });
     }
 

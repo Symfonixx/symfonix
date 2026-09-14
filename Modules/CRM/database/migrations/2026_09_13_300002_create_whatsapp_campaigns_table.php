@@ -8,6 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (Schema::hasTable('whatsapp_campaigns')) {
+            return;
+        }
+
         Schema::create('whatsapp_campaigns', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
@@ -18,6 +22,8 @@ return new class extends Migration
             $table->string('status', 20)->default('pending');
             $table->json('recipient_sources')->nullable();
             $table->timestamps();
+
+            $table->index(['status', 'created_at'], 'whatsapp_campaigns_status_created_at_index');
         });
     }
 

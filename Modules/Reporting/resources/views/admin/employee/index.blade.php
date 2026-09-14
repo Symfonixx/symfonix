@@ -21,13 +21,17 @@
         <div class="col-lg-6">
             <div class="card card-flush h-100">
                 <div class="card-header"><h3 class="card-title">{{ __('reporting::report.sections.attendance_trend') }}</h3></div>
-                <div class="card-body"><canvas id="chart-attendance-trend" height="280"></canvas></div>
+                <div class="card-body">
+                    @include('reporting::admin._chart_canvas', ['id' => 'chart-attendance-trend', 'height' => 280])
+                </div>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="card card-flush h-100">
                 <div class="card-header"><h3 class="card-title">{{ __('reporting::report.sections.punch_types') }}</h3></div>
-                <div class="card-body"><canvas id="chart-punch-types" height="280"></canvas></div>
+                <div class="card-body">
+                    @include('reporting::admin._chart_canvas', ['id' => 'chart-punch-types', 'height' => 280])
+                </div>
             </div>
         </div>
     </div>
@@ -76,106 +80,68 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        @include('reporting::admin._chart_js')
+        <script>
+        (function () {
+            var colors = @json($report['chart_colors']);
+            var attendanceTrend = @json($report['charts']['attendance_trend']);
+            var punchTypes = @json($report['charts']['punch_types']);
+            var renderFailure = function (canvas, message) {
+                if (canvas && canvas.parentNode) {
+                    canvas.parentNode.innerHTML = '<div class="text-danger text-center py-10">' + message + '</div>';
+                }
+            };
+
+            if (typeof Chart === 'undefined') {
+                var missing = document.querySelectorAll('canvas[id^="chart-"]');
+                for (var i = 0; i < missing.length; i++) {
+                    renderFailure(missing[i], 'Unable to load chart library');
+                }
+                return;
+            }
+
+            var trendCanvas = document.getElementById('chart-attendance-trend');
+            var punchCanvas = document.getElementById('chart-punch-types');
+
+            if (trendCanvas && Array.isArray(attendanceTrend) && attendanceTrend.length) {
+                try {
+                    new Chart(trendCanvas, {
+                        type: 'line',
+                        data: {
+                            labels: attendanceTrend.map(function (r) { return r.label; }),
+                            datasets: [
+                                { label: '{{ __("Check-ins") }}', data: attendanceTrend.map(function (r) { return r.check_ins; }), borderColor: colors[1], tension: 0.3 },
+                                { label: '{{ __("Check-outs") }}', data: attendanceTrend.map(function (r) { return r.check_outs; }), borderColor: colors[4], tension: 0.3 },
+                            ],
+                        },
+                        options: { scales: { y: { beginAtZero: true } } },
+                    });
+                } catch (error) {
+                    renderFailure(trendCanvas, 'Attendance chart error: ' + (error && error.message ? error.message : 'unknown'));
+                }
+            } else {
+                renderFailure(trendCanvas, @json(__('reporting::report.no_data')));
+            }
+
+            if (punchCanvas && Array.isArray(punchTypes) && punchTypes.length) {
+                try {
+                    new Chart(punchCanvas, {
+                        type: 'doughnut',
+                        data: {
+                            labels: punchTypes.map(function (r) { return r.type; }),
+                            datasets: [{ data: punchTypes.map(function (r) { return r.count; }), backgroundColor: colors }],
+                        },
+                        options: { plugins: { legend: { position: 'bottom' } } },
+                    });
+                } catch (error) {
+                    renderFailure(punchCanvas, 'Punch chart error: ' + (error && error.message ? error.message : 'unknown'));
+                }
+            } else {
+                renderFailure(punchCanvas, @json(__('reporting::report.no_data')));
+            }
+        })();
+        </script>
+    @endpush
 </x-admin-layout>
-
-@push('scripts')
-<script>
-(function () {
-    var colors = @json($report['chart_colors']);
-    var attendanceTrend = @json($report['charts']['attendance_trend']);
-    var punchTypes = @json($report['charts']['punch_types']);
-    var chartJsPromise = null;
-
-    var ensureChartJs = function () {
-        if (typeof Chart !== 'undefined') {
-            return Promise.resolve();
-        }
-
-        if (!chartJsPromise) {
-            chartJsPromise = new Promise(function (resolve, reject) {
-                var sources = [
-                    'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js',
-                    'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js',
-                    'https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js'
-                ];
-                var tryLoad = function (index) {
-                    if (index >= sources.length) {
-                        reject(new Error('Chart.js failed to load'));
-                        return;
-                    }
-
-                    var script = document.createElement('script');
-                    script.src = sources[index];
-                    script.async = true;
-                    script.onload = function () { resolve(); };
-                    script.onerror = function () { tryLoad(index + 1); };
-                    document.head.appendChild(script);
-                };
-
-                tryLoad(0);
-            });
-        }
-
-        return chartJsPromise;
-    };
-
-    var renderFailure = function (canvas, message) {
-        if (canvas && canvas.parentNode) {
-            canvas.parentNode.innerHTML = '<div class="text-danger text-center py-10">' + message + '</div>';
-        }
-    };
-
-    var renderCharts = function () {
-        var trendCanvas = document.getElementById('chart-attendance-trend');
-        var punchCanvas = document.getElementById('chart-punch-types');
-
-        if (trendCanvas && Array.isArray(attendanceTrend) && attendanceTrend.length) {
-            try {
-                new Chart(trendCanvas, {
-                    type: 'line',
-                    data: {
-                        labels: attendanceTrend.map(function (r) { return r.label; }),
-                        datasets: [
-                            { label: '{{ __("Check-ins") }}', data: attendanceTrend.map(function (r) { return r.check_ins; }), borderColor: colors[1], tension: 0.3 },
-                            { label: '{{ __("Check-outs") }}', data: attendanceTrend.map(function (r) { return r.check_outs; }), borderColor: colors[4], tension: 0.3 },
-                        ],
-                    },
-                    options: { responsive: true, scales: { y: { beginAtZero: true } } },
-                });
-            } catch (error) {
-                renderFailure(trendCanvas, 'Attendance chart error: ' + (error && error.message ? error.message : 'unknown'));
-            }
-        } else {
-            renderFailure(trendCanvas, @json(__('reporting::report.no_data')));
-        }
-
-        if (punchCanvas && Array.isArray(punchTypes) && punchTypes.length) {
-            try {
-                new Chart(punchCanvas, {
-                    type: 'doughnut',
-                    data: {
-                        labels: punchTypes.map(function (r) { return r.type; }),
-                        datasets: [{ data: punchTypes.map(function (r) { return r.count; }), backgroundColor: colors }],
-                    },
-                    options: { responsive: true, plugins: { legend: { position: 'bottom' } } },
-                });
-            } catch (error) {
-                renderFailure(punchCanvas, 'Punch chart error: ' + (error && error.message ? error.message : 'unknown'));
-            }
-        } else {
-            renderFailure(punchCanvas, @json(__('reporting::report.no_data')));
-        }
-    };
-
-    ensureChartJs().then(renderCharts).catch(function () {
-        var chartHolders = document.querySelectorAll('canvas[id^="chart-"]');
-        for (var i = 0; i < chartHolders.length; i++) {
-            if (chartHolders[i] && chartHolders[i].parentNode) {
-                chartHolders[i].parentNode.innerHTML = '<div class="text-danger text-center py-10">Unable to load chart library</div>';
-            }
-        }
-    });
-})();
-</script>
-@endpush
 

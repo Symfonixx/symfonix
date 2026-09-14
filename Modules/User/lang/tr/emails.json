@@ -1,0 +1,28 @@
+{
+    "hire": {
+        "confirm": ":name adlı kişiyi çalışan olarak işe almak istiyor musunuz? :email adresine bir hoş geldin e-postası gönderilecek."
+    },
+    "team": {
+        "confirm": ":name adlı kişiyi sitedeki ekibimize eklemek istiyor musunuz?"
+    },
+    "hired": {
+        "subject": ":company ailesine hoş geldiniz",
+        "heading": "İşe alındınız",
+        "greeting": "Merhaba :name,",
+        "intro": "Tebrikler! :company bünyesinde işe alındınız.",
+        "position": "Pozisyonunuz: :position",
+        "closing": "Sizinle çalışmayı dört gözle bekliyoruz.",
+        "thanks": "Teşekkürler"
+    },
+    "admin": {
+        "subject": ":company yönetici hesabınız hazır",
+        "heading": "Yönetici erişimi verildi",
+        "greeting": "Merhaba :name,",
+        "intro": ":company için bir yönetici hesabı oluşturuldu. Giriş yapmak için aşağıdaki bilgileri kullanın.",
+        "email_label": "E-posta",
+        "password_label": "Parola",
+        "login": "Yönetim paneline giriş yap",
+        "security": "Lütfen giriş yaptıktan sonra parolanızı değiştirin.",
+        "thanks": "Teşekkürler"
+    }
+}

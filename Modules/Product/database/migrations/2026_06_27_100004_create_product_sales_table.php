@@ -18,6 +18,8 @@ return new class extends Migration
                 $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
                 $table->unsignedInteger('quantity')->default(1);
                 $table->decimal('unit_price', 15, 2);
+                $table->unsignedBigInteger('tax_rate_id')->nullable();
+                $table->decimal('tax_amount', 15, 2)->default(0);
                 $table->decimal('total_amount', 15, 2);
                 $table->string('currency', 3)->default('USD');
                 $table->text('notes')->nullable();
@@ -41,6 +43,15 @@ return new class extends Migration
                     ->nullOnDelete();
             });
         }
+
+        Schema::table('product_sales', function (Blueprint $table) {
+            if (! Schema::hasColumn('product_sales', 'tax_rate_id')) {
+                $table->unsignedBigInteger('tax_rate_id')->nullable()->after('unit_price');
+            }
+            if (! Schema::hasColumn('product_sales', 'tax_amount')) {
+                $table->decimal('tax_amount', 15, 2)->default(0)->after('tax_rate_id');
+            }
+        });
     }
 
     public function down(): void

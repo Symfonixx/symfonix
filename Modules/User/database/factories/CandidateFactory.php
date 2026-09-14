@@ -14,7 +14,7 @@ class CandidateFactory extends Factory
         return [
             'full_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'phone' => fake()->phoneNumber(),
+            'phone' => fake()->unique()->numerify('01#########'),
             'expected_salary' => fake()->numberBetween(35000, 140000),
             'motivation' => fake()->sentence(14),
             'resume_path' => 'resumes/sample-'.fake()->uuid().'.pdf',

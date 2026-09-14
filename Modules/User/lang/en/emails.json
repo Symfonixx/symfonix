@@ -1,0 +1,28 @@
+{
+    "hire": {
+        "confirm": "Hire :name as an employee? A welcome email will be sent to :email."
+    },
+    "team": {
+        "confirm": "Add :name to Our Team on the website?"
+    },
+    "hired": {
+        "subject": "Welcome to :company",
+        "heading": "You have been hired",
+        "greeting": "Hello :name,",
+        "intro": "Congratulations! You have been hired at :company.",
+        "position": "Your position: :position",
+        "closing": "We look forward to working with you.",
+        "thanks": "Thanks"
+    },
+    "admin": {
+        "subject": "Your :company admin account is ready",
+        "heading": "Admin access granted",
+        "greeting": "Hello :name,",
+        "intro": "An administrator account has been created for you at :company. Use the credentials below to sign in.",
+        "email_label": "Email",
+        "password_label": "Password",
+        "login": "Log in to the admin panel",
+        "security": "Please change your password after signing in.",
+        "thanks": "Thanks"
+    }
+}

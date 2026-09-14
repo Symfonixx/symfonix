@@ -4,15 +4,20 @@ namespace Modules\User\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Modules\User\Http\Requests\HireJobApplicationRequest;
 use Modules\User\Http\Requests\JobApplicationIndexRequest;
 use Modules\User\Http\Requests\UpdateJobApplicationStatusRequest;
 use Modules\User\Models\JobApplication;
 use Modules\User\Models\JobPosition;
+use Modules\User\Services\EmployeeNotificationService;
+use Modules\User\Services\EmployeeProvisioningService;
 
 class JobApplicationController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(
+        protected EmployeeProvisioningService $employeeProvisioningService,
+        protected EmployeeNotificationService $employeeNotificationService,
+    ) {
         $this->setActive('hr');
         $this->setActive('job_applications');
     }
@@ -61,5 +66,15 @@ class JobApplicationController extends Controller
         session()->flushMessage(true);
 
         return back();
+    }
+
+    public function hire(HireJobApplicationRequest $request, JobApplication $jobApplication): RedirectResponse
+    {
+        $employee = $this->employeeProvisioningService->hireFromApplication($jobApplication);
+        $this->employeeNotificationService->sendHired($employee);
+
+        session()->flushMessage(true, __('Candidate hired as an employee.'));
+
+        return redirect()->route('admin.employees.show', $employee);
     }
 }
