@@ -3,6 +3,7 @@
 namespace Modules\User\Providers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Laravel\Fortify\Fortify;
@@ -58,7 +59,7 @@ class AuthServiceProvider extends ServiceProvider
             return Inertia::render('User::Auth/ForgotPassword', ['meta' => $meta]);
         });
 
-        Fortify::resetPasswordView(function () {
+        Fortify::resetPasswordView(function (Request $request) {
             $siteName = Seo::get('website_name', config('app.name'));
             $meta = (new Meta)
                 ->title(__('Reset Password').' | '.$siteName)
@@ -69,7 +70,11 @@ class AuthServiceProvider extends ServiceProvider
                 ->toArray();
             $meta['robots'] = 'noindex, nofollow';
 
-            return Inertia::render('User::Auth/ResetPassword', ['meta' => $meta]);
+            return Inertia::render('User::Auth/ResetPassword', [
+                'meta' => $meta,
+                'email' => $request->input('email', $request->query('email', '')),
+                'token' => $request->route('token'),
+            ]);
         });
 
         Fortify::confirmPasswordView(function () {

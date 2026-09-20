@@ -45,7 +45,7 @@
                     @error('base_salary') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary w-100">
+                    <button type="submit" class="btn btn-success w-100" data-action="create">
                         <i class="bi bi-plus-lg me-1"></i>{{ __('finance::salary.actions.add') }}
                     </button>
                 </div>
@@ -83,7 +83,7 @@
                                 </span>
                             </td>
                             <td>{{ $salary->paid_at?->format('Y-m-d') ?? '—' }}</td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <div class="d-flex justify-content-end align-items-center gap-2 flex-wrap">
                                     @if($salary->status === 'pending')
                                         <form method="POST" action="{{ route('admin.finance.salaries.payout', $salary) }}"
@@ -93,7 +93,7 @@
                                             <input type="date" name="paid_at" value="{{ now()->toDateString() }}"
                                                    class="form-control form-control-solid form-control-sm w-auto"
                                                    title="{{ __('finance::salary.fields.paid_at') }}" required>
-                                            <button type="submit" class="btn btn-sm btn-light-primary">
+                                            <button type="submit" class="btn btn-sm btn-light-danger" data-action="delete">
                                                 <i class="bi bi-cash-coin me-1"></i>{{ __('finance::salary.actions.record_payout') }}
                                             </button>
                                         </form>
@@ -102,7 +102,7 @@
                                           data-confirm="{{ __('finance::salary.messages.confirm_delete') }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                                             <i class="bi bi-trash fs-5"></i>
                                         </button>
                                     </form>

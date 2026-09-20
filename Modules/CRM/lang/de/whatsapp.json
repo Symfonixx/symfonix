@@ -56,11 +56,15 @@
         "is_active": "Aktiv",
         "variables": "Variablen",
         "variable": "Variable",
+        "header_variable": "Kopfzeile :placeholder",
+        "body_variable": "Text :placeholder",
+        "url_variable": "URL :button :placeholder",
         "leads": "Leads",
         "contacts": "Kontakte",
         "deals": "Deals",
         "contact_forms": "Anfragen",
         "all_leads": "Alle Leads mit Telefonnummer",
+        "lead_tags": "Lead-Tags",
         "all_contacts": "Alle Kontakte mit Telefonnummer",
         "all_deals": "Alle Deals mit Telefonnummer",
         "all_contact_forms": "Alle Anfragen mit Mobilnummer",
@@ -115,7 +119,8 @@
         "select_template": "Genehmigte Vorlage wählen",
         "body": "Hallo {{1}}, wir haben ein Angebot: {{2}}",
         "footer": "STOP zum Abbestellen",
-        "header_content": "Text oder Medien-URL",
+        "header_content": "Willkommen {{1}}",
+        "button_url": "https://example.com/{{1}}",
         "meta_template_id": "Optionale Meta-Vorlagen-ID",
         "select_leads": "Leads wählen",
         "select_contacts": "Kontakte wählen",
@@ -127,8 +132,10 @@
     "hints": {
         "template_name": "Nur Kleinbuchstaben, Zahlen und Unterstriche.",
         "body_variables": "Verwenden Sie {{1}}, {{2}} usw. für dynamische Variablen.",
-        "header_content": "Für Text-Kopfzeilen Text eingeben. Für Medien eine öffentliche URL.",
+        "header_content": "Für Text-Kopfzeilen Text eingeben. {{1}} ist optional. Für Medien eine öffentliche URL.",
+        "button_url": "Für URL-Schaltflächen eine statische URL oder eine dynamische URL mit {{1}} am Ende. Für Telefon die Nummer.",
         "all_leads": "Sendet an alle nicht blockierten Leads mit Telefonnummer.",
+        "lead_tags": "Wählen Sie ein oder mehrere Tags, z. B. Kalt und Warm. Leads mit mehreren gewählten Tags erhalten die Nachricht nur einmal.",
         "all_contacts": "Sendet an alle Kontakte mit Telefonnummer.",
         "all_deals": "Verwendet Lead- oder Firmen-Telefonnummer des Deals.",
         "custom_phones": "Internationales Format verwenden (z.B. +49123456789).",
@@ -154,6 +161,7 @@
         "select_recipients": "Mindestens eine Empfängergruppe oder Telefonnummern wählen.",
         "no_recipients": "Keine gültigen Telefonnummern gefunden.",
         "template_not_sendable": "Vorlage ist nicht genehmigt oder aktiv.",
-        "parameter_required": "Parameter {{num}} ist erforderlich."
+        "parameter_required": "Parameter {{num}} ist erforderlich.",
+        "parameter_required_named": ":label ist erforderlich."
     }
 }

@@ -9,12 +9,12 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('product::category.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.products.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.products.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('product::category.actions.back_to_products') }}
         </a>
         <x-can perform="product.categories.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.product-categories.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.product-categories.create') }}" data-action="create">
                 {{ __('product::category.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -45,9 +45,9 @@
                             <td><code>{{ $category->slug }}</code></td>
                             <td>{{ $category->description ? \Illuminate\Support\Str::limit($category->description, 80) : '—' }}</td>
                             <td>{{ $category->products_count }}</td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <a href="{{ route('admin.product-categories.edit', $category) }}"
-                                   class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                   class="btn btn-icon btn-bg-light btn-active-color-warning btn-sm me-1" data-action="edit">
                                     <i class="ki-duotone ki-message-edit fs-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
@@ -56,7 +56,7 @@
                                 <form class="d-inline" method="POST" action="{{ route('admin.product-categories.destroy', $category) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

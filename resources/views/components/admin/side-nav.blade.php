@@ -11,172 +11,66 @@
         'open_invoices' => 0,
     ], $navCounts);
 
-    $overviewHere = isset($active['dashboard']) || isset($active['crm_dashboard']);
+    $cmsHere = isset($active['cms']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['faqs']) || isset($active['clients']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']);
+    $servicesHere = isset($active['services']) || isset($active['service_categories']);
+    $productsHere = isset($active['products']) || isset($active['product_categories']);
+    $projectsHere = isset($active['projects']) || isset($active['project_statuses']) || isset($active['project_use_cases']);
     $relationshipsHere = isset($active['leads']) || isset($active['contacts']) || isset($active['companies']) || isset($active['customers']);
     $salesHere = isset($active['deals']) || isset($active['pipeline']) || isset($active['quotes']) || isset($active['subscriptions']) || isset($active['marketing']) || isset($active['sales_forecasts']) || isset($active['finance_invoices']);
-    $serviceHere = isset($active['tickets']) || isset($active['ticket_categories']) || isset($active['crm_calendar']) || isset($active['contact_forms']);
+    $supportHere = isset($active['tickets']) || isset($active['ticket_categories']) || isset($active['contact_forms']);
+    $hrHere = isset($active['hr']) || isset($active['roles']) || isset($active['admins']) || isset($active['employees']) || isset($active['fingerprint']) || isset($active['leaves']) || isset($active['job_positions']) || isset($active['job_applications']);
+    $financeHere = isset($active['finance_dashboard']) || isset($active['finance_daily_log']) || isset($active['finance_expense_categories']) || isset($active['finance_salaries']) || isset($active['finance_commissions']) || isset($active['finance_product_sales']) || isset($active['finance_accounts_receivable']) || isset($active['tax_rates']) || isset($active['tax_ledger']) || isset($active['tax_reports']);
     $crmSettingsHere = isset($active['crm_settings']) || isset($active['crm_sales_targets']) || isset($active['crm_lead_tags']) || isset($active['crm_custom_fields']);
     $websiteSettingsHere = isset($active['websiteConfigurations']) || isset($active['systemConfigurations']) || isset($active['integrations']) || isset($active['seo']);
     $supportExtrasHere = isset($active['subscribers']) || isset($active['search_keywords']) || isset($active['visitors']);
     $systemHere = $crmSettingsHere || $websiteSettingsHere || $supportExtrasHere || isset($active['backups']) || isset($active['logs']) || isset($active['settings']);
     $reportingHere = isset($active['reporting_finance']) || isset($active['reporting_sales']) || isset($active['reporting_marketing']) || isset($active['reporting_operations']) || isset($active['reporting_employee']);
+    $salesBadge = $navCounts['open_deals'] + $navCounts['pending_quotes'] + $navCounts['open_invoices'];
+    $supportBadge = $navCounts['open_tickets'] + $navCounts['pending_inquiries'];
+    $crmNavVisible = auth()->user()?->canany(array_merge(permission_section_keys('crm'), permission_section_keys('sales')));
+    $websiteNavVisible = auth()->user()?->canany(array_merge(permission_section_keys('cms'), permission_section_keys('services'), permission_section_keys('product')));
 @endphp
 
-<div class="menu-section-label">{{ __('Overview') }}</div>
-<div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ $overviewHere ? 'here show' : '' }}">
-    <span class="menu-link">
-        <span class="menu-icon"><i class="bi bi-grid-1x2-fill text-primary"></i></span>
-        <span class="menu-title">{{ __('Overview') }}</span>
-        <span class="menu-arrow"></span>
-    </span>
-    <div class="menu-sub menu-sub-accordion {{ $overviewHere ? 'show' : '' }}">
-        <div class="menu-item">
-            <a class="menu-link {{ isset($active['dashboard']) ? 'active' : '' }}"
-               href="{{ route('admin.dashboard.index') }}">
-                <span class="menu-icon menu-icon-sm"><i class="bi bi-speedometer2 text-primary"></i></span>
-                <span class="menu-title">{{ __('Dashboard') }}</span>
+{{-- Home: one click, no extra accordion --}}
+<div class="menu-section-label">{{ __('Home') }}</div>
+<div class="menu-item {{ isset($active['dashboard']) ? 'here' : '' }}">
+    <a class="menu-link {{ isset($active['dashboard']) ? 'active' : '' }}"
+       href="{{ route('admin.dashboard.index') }}">
+        <span class="menu-icon"><i class="bi bi-speedometer2 text-primary"></i></span>
+        <span class="menu-title">{{ __('Dashboard') }}</span>
+    </a>
+</div>
+@canTab('overview.crm_analytics')
+    <div class="menu-item {{ isset($active['crm_dashboard']) ? 'here' : '' }}">
+        <a class="menu-link {{ isset($active['crm_dashboard']) ? 'active' : '' }}"
+           href="{{ route('admin.crm.dashboard') }}">
+            <span class="menu-icon"><i class="bi bi-graph-up-arrow text-info"></i></span>
+            <span class="menu-title">{{ __('CRM Analytics') }}</span>
+        </a>
+    </div>
+@endcanTab
+
+{{-- Daily commercial work: people, pipeline, then cash --}}
+@if($crmNavVisible)
+    <div class="menu-section-label">{{ __('CRM') }}</div>
+@endif
+@canSection('crm')
+    @canTab('crm.activities')
+        <div class="menu-item {{ isset($active['crm_calendar']) ? 'here' : '' }}">
+            <a class="menu-link {{ isset($active['crm_calendar']) ? 'active' : '' }}"
+               href="{{ route('admin.crm.calendar') }}">
+                <span class="menu-icon"><i class="bi bi-calendar-check text-success"></i></span>
+                <span class="menu-title">{{ __('Activities') }}</span>
+                <x-admin.nav-badge :count="$navCounts['pending_tasks']" color="success"/>
             </a>
         </div>
-        @canTab('overview.crm_analytics')
-            <div class="menu-item">
-                <a class="menu-link {{ isset($active['crm_dashboard']) ? 'active' : '' }}"
-                   href="{{ route('admin.crm.dashboard') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-graph-up-arrow text-info"></i></span>
-                    <span class="menu-title">{{ __('CRM Analytics') }}</span>
-                </a>
-            </div>
-        @endcanTab
-    </div>
-</div>
-
-@canSection('cms')
-    <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['cms']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['faqs']) || isset($active['clients']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']) ? 'here show' : '' }}">
-        <span class="menu-link">
-            <span class="menu-icon"><i class="bi bi-layers-fill text-primary"></i></span>
-            <span class="menu-title">{{ __('CMS') }}</span>
-            @if($pendingTestimonialCount > 0)
-                <x-admin.nav-badge :count="$pendingTestimonialCount" color="danger"/>
-            @endif
-            <span class="menu-arrow"></span>
-        </span>
-        <div class="menu-sub menu-sub-accordion {{ isset($active['faqs']) || isset($active['clients']) || isset($active['pages']) || isset($active['blogs_categories']) || isset($active['blogs']) || isset($active['slides']) || isset($active['filemanager']) || isset($active['testimonials']) || isset($active['teams']) ? 'show' : '' }}">
-            @canTab('cms.pages')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['pages']) ? 'active' : '' }}"
-                       href="{{ route('admin.pages.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-file-earmark text-primary"></i></span>
-                        <span class="menu-title">{{ __('Pages') }}</span>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('cms.blog_categories')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['blogs_categories']) ? 'active' : '' }}"
-                       href="{{ route('admin.blogs_categories.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-folder2 text-info"></i></span>
-                        <span class="menu-title">{{ __('Blog Categories') }}</span>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('cms.blogs')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['blogs']) ? 'active' : '' }}"
-                       href="{{ route('admin.blogs.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-pencil-square text-success"></i></span>
-                        <span class="menu-title">{{ __('Blogs') }}</span>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('cms.faqs')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['faqs']) ? 'active' : '' }}"
-                       href="{{ route('admin.faqs.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-question-circle text-warning"></i></span>
-                        <span class="menu-title">{{ __('FAQs') }}</span>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('cms.clients')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['clients']) ? 'active' : '' }}"
-                       href="{{ route('admin.clients.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-award text-primary"></i></span>
-                        <span class="menu-title">{{ __('Our Clients') }}</span>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('cms.file_manager')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['filemanager']) ? 'active' : '' }}"
-                       href="{{ route('admin.filemanager.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-folder-symlink text-info"></i></span>
-                        <span class="menu-title">{{ __('File Manager') }}</span>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('cms.testimonials')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['testimonials']) ? 'active' : '' }}"
-                       href="{{ route('admin.testimonials.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-chat-quote text-warning"></i></span>
-                        <span class="menu-title">{{ __('Testimonials') }}</span>
-                        <x-admin.nav-badge :count="$pendingTestimonialCount" color="danger"/>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('cms.team')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['teams']) ? 'active' : '' }}"
-                       href="{{ route('admin.teams.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-person-bounding-box text-success"></i></span>
-                        <span class="menu-title">{{ __('Our Team') }}</span>
-                    </a>
-                </div>
-            @endcanTab
-        </div>
-    </div>
-@endcanSection
-
-@canSection('services')
-    <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['services']) || isset($active['service_categories']) ? 'here show' : '' }}">
-        <span class="menu-link">
-            <span class="menu-icon"><i class="bi bi-grid-3x3-gap-fill text-success"></i></span>
-            <span class="menu-title">{{ __('Services') }}</span>
-            <span class="menu-arrow"></span>
-        </span>
-        <div class="menu-sub menu-sub-accordion {{ isset($active['services']) || isset($active['service_categories']) ? 'show' : '' }}">
-            @canTab('services.catalog')
-            <div class="menu-item">
-                <a class="menu-link {{ isset($active['services']) && !isset($active['service_categories']) ? 'active' : '' }}"
-                   href="{{ route('admin.services.index') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-grid text-success"></i></span>
-                    <span class="menu-title">{{ __('Services') }}</span>
-                </a>
-            </div>
-            @endcanTab
-            @canTab('services.categories')
-            <div class="menu-item">
-                <a class="menu-link {{ isset($active['service_categories']) ? 'active' : '' }}"
-                   href="{{ route('admin.service_categories.index') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-collection text-info"></i></span>
-                    <span class="menu-title">{{ __('Service Categories') }}</span>
-                </a>
-            </div>
-            @endcanTab
-        </div>
-    </div>
-@endcanSection
-
-
-@canSection('crm')
-    <div class="menu-section-label">{{ __('Relationship Management') }}</div>
+    @endcanTab
     <div data-kt-menu-trigger="click"
          class="menu-item menu-accordion {{ $relationshipsHere ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-people-fill text-info"></i></span>
-            <span class="menu-title">{{ __('Relationship Management') }}</span>
+            <span class="menu-title">{{ __('People') }}</span>
+            <x-admin.nav-badge :count="$navCounts['new_leads']" color="info"/>
             <span class="menu-arrow"></span>
         </span>
         <div class="menu-sub menu-sub-accordion {{ $relationshipsHere ? 'show' : '' }}">
@@ -222,14 +116,11 @@
 @endcanSection
 
 @canSection('sales')
-    <div class="menu-section-label">{{ __('Sales & Deals') }}</div>
     <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ $salesHere ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-kanban-fill text-success"></i></span>
-            <span class="menu-title">{{ __('Sales & Deals') }}</span>
-            @if(($navCounts['open_deals'] + $navCounts['pending_quotes'] + $navCounts['open_invoices']) > 0)
-                <x-admin.nav-badge :count="$navCounts['open_deals'] + $navCounts['pending_quotes'] + $navCounts['open_invoices']" color="warning"/>
-            @endif
+            <span class="menu-title">{{ __('Sales') }}</span>
+            <x-admin.nav-badge :count="$salesBadge" color="warning"/>
             <span class="menu-arrow"></span>
         </span>
         <div class="menu-sub menu-sub-accordion {{ $salesHere ? 'show' : '' }}">
@@ -303,19 +194,60 @@
     </div>
 @endcanSection
 
-@if(auth()->user()?->canany(array_merge(permission_section_keys('project'), permission_section_keys('product'))))
-    <div class="menu-section-label">{{ __('Operations') }}</div>
-@endif
+{{-- Time-sensitive inbox work sits next to CRM --}}
+@canSection('support')
+    <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ $supportHere ? 'here show' : '' }}">
+        <span class="menu-link">
+            <span class="menu-icon"><i class="bi bi-headset text-warning"></i></span>
+            <span class="menu-title">{{ __('Support') }}</span>
+            <x-admin.nav-badge :count="$supportBadge" color="danger"/>
+            <span class="menu-arrow"></span>
+        </span>
+        <div class="menu-sub menu-sub-accordion {{ $supportHere ? 'show' : '' }}">
+            @canTab('crm.inquiries')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['contact_forms']) ? 'active' : '' }}"
+                       href="{{ route('admin.contact_forms.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-inbox text-danger"></i></span>
+                        <span class="menu-title">{{ __('crm::contact_form.menu.inquiries') }}</span>
+                        <x-admin.nav-badge :count="$navCounts['pending_inquiries']" color="danger"/>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('support.tickets')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['tickets']) ? 'active' : '' }}"
+                       href="{{ route('admin.tickets.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-ticket-detailed text-warning"></i></span>
+                        <span class="menu-title">{{ __('support::ticket.menu.tickets') }}</span>
+                        <x-admin.nav-badge :count="$navCounts['open_tickets']" color="warning"/>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('support.ticket_categories')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['ticket_categories']) ? 'active' : '' }}"
+                       href="{{ route('admin.ticket_categories.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-tags text-secondary"></i></span>
+                        <span class="menu-title">{{ __('support::ticket.menu.categories') }}</span>
+                    </a>
+                </div>
+            @endcanTab
+        </div>
+    </div>
+@endcanSection
 
+{{-- Delivery work after the sales funnel --}}
 @canSection('project')
+    <div class="menu-section-label">{{ __('Delivery') }}</div>
     <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['projects']) || isset($active['project_statuses']) || isset($active['project_use_cases']) ? 'here show' : '' }}">
+         class="menu-item menu-accordion {{ $projectsHere ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-kanban text-primary"></i></span>
             <span class="menu-title">{{ __('project::project.menu.projects') }}</span>
             <span class="menu-arrow"></span>
         </span>
-        <div class="menu-sub menu-sub-accordion {{ isset($active['projects']) || isset($active['project_statuses']) || isset($active['project_use_cases']) ? 'show' : '' }}">
+        <div class="menu-sub menu-sub-accordion {{ $projectsHere ? 'show' : '' }}">
             @canTab('project.projects')
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['projects']) && !isset($active['project_statuses']) && !isset($active['project_use_cases']) ? 'active' : '' }}"
@@ -347,47 +279,15 @@
     </div>
 @endcanSection
 
-@canSection('product')
-    <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['products']) || isset($active['product_categories']) ? 'here show' : '' }}">
-        <span class="menu-link">
-            <span class="menu-icon"><i class="bi bi-box-seam-fill text-warning"></i></span>
-            <span class="menu-title">{{ __('product::product.menu.products') }}</span>
-            <span class="menu-arrow"></span>
-        </span>
-        <div class="menu-sub menu-sub-accordion {{ isset($active['products']) || isset($active['product_categories']) ? 'show' : '' }}">
-            @canTab('product.catalog')
-            <div class="menu-item">
-                <a class="menu-link {{ isset($active['products']) && !isset($active['product_categories']) ? 'active' : '' }}"
-                   href="{{ route('admin.products.index') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-box-seam text-warning"></i></span>
-                    <span class="menu-title">{{ __('product::product.menu.catalog') }}</span>
-                </a>
-            </div>
-            @endcanTab
-            @canTab('product.categories')
-            <div class="menu-item">
-                <a class="menu-link {{ isset($active['product_categories']) ? 'active' : '' }}"
-                   href="{{ route('admin.product-categories.index') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-grid text-primary"></i></span>
-                    <span class="menu-title">{{ __('product::category.menu') }}</span>
-                </a>
-            </div>
-            @endcanTab
-        </div>
-    </div>
-@endcanSection
-
 @if(auth()->user()?->canany(array_merge(permission_section_keys('finance'), permission_section_keys('tax'))))
-    <div class="menu-section-label">{{ __('Finance') }}</div>
     <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['finance_dashboard']) || isset($active['finance_daily_log']) || isset($active['finance_expense_categories']) || isset($active['finance_salaries']) || isset($active['finance_commissions']) || isset($active['finance_product_sales']) || isset($active['finance_accounts_receivable']) || isset($active['tax_rates']) || isset($active['tax_ledger']) || isset($active['tax_reports']) ? 'here show' : '' }}">
+         class="menu-item menu-accordion {{ $financeHere ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-cash-stack text-success"></i></span>
             <span class="menu-title">{{ __('finance::finance.menu.finance') }}</span>
             <span class="menu-arrow"></span>
         </span>
-        <div class="menu-sub menu-sub-accordion {{ isset($active['finance_dashboard']) || isset($active['finance_daily_log']) || isset($active['finance_expense_categories']) || isset($active['finance_salaries']) || isset($active['finance_commissions']) || isset($active['finance_product_sales']) || isset($active['finance_accounts_receivable']) || isset($active['tax_rates']) || isset($active['tax_ledger']) || isset($active['tax_reports']) ? 'show' : '' }}">
+        <div class="menu-sub menu-sub-accordion {{ $financeHere ? 'show' : '' }}">
             @canTab('finance.dashboard')
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['finance_dashboard']) ? 'active' : '' }}"
@@ -482,18 +382,15 @@
     </div>
 @endif
 
-
-
 @canSection('hr')
-    <div class="menu-section-label">{{ __('Team Management') }}</div>
     <div data-kt-menu-trigger="click"
-         class="menu-item menu-accordion {{ isset($active['hr']) ? 'here show' : '' }}">
+         class="menu-item menu-accordion {{ $hrHere ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-people text-info"></i></span>
             <span class="menu-title">{{ __('HR') }}</span>
             <span class="menu-arrow"></span>
         </span>
-        <div class="menu-sub menu-sub-accordion {{ isset($active['roles']) || isset($active['admins']) || isset($active['employees']) || isset($active['fingerprint']) || isset($active['leaves']) || isset($active['job_positions']) || isset($active['job_applications']) ? 'show' : '' }}">
+        <div class="menu-sub menu-sub-accordion {{ $hrHere ? 'show' : '' }}">
             @canTab('hr.employees')
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['employees']) ? 'active' : '' }}"
@@ -503,12 +400,39 @@
                 </a>
             </div>
             @endcanTab
+            @canTab('hr.leaves')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['leaves']) ? 'active' : '' }}"
+                   href="{{ route('admin.leaves.index') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-calendar2-week text-success"></i></span>
+                    <span class="menu-title">{{ __('Leave Management') }}</span>
+                </a>
+            </div>
+            @endcanTab
             @canTab('hr.fingerprint')
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['fingerprint']) ? 'active' : '' }}"
                    href="{{ route('admin.fingerprint.index') }}">
                     <span class="menu-icon menu-icon-sm"><i class="bi bi-fingerprint text-info"></i></span>
                     <span class="menu-title">{{ __('user::fingerprint.title') }}</span>
+                </a>
+            </div>
+            @endcanTab
+            @canTab('hr.job_applications')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['job_applications']) ? 'active' : '' }}"
+                   href="{{ route('admin.job-applications.index') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-file-earmark-person text-danger"></i></span>
+                    <span class="menu-title">{{ __('Job Applications') }}</span>
+                </a>
+            </div>
+            @endcanTab
+            @canTab('hr.job_positions')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['job_positions']) ? 'active' : '' }}"
+                   href="{{ route('admin.job-positions.index') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-briefcase text-primary"></i></span>
+                    <span class="menu-title">{{ __('Job Positions') }}</span>
                 </a>
             </div>
             @endcanTab
@@ -530,30 +454,126 @@
                 </a>
             </div>
             @endcanTab
-            @canTab('hr.leaves')
+        </div>
+    </div>
+@endcanSection
+
+{{-- Public site and catalog after operational work --}}
+@if($websiteNavVisible)
+    <div class="menu-section-label">{{ __('Website') }}</div>
+@endif
+
+@canSection('cms')
+    <div data-kt-menu-trigger="click"
+         class="menu-item menu-accordion {{ $cmsHere ? 'here show' : '' }}">
+        <span class="menu-link">
+            <span class="menu-icon"><i class="bi bi-layers-fill text-primary"></i></span>
+            <span class="menu-title">{{ __('CMS') }}</span>
+            <x-admin.nav-badge :count="$pendingTestimonialCount" color="danger"/>
+            <span class="menu-arrow"></span>
+        </span>
+        <div class="menu-sub menu-sub-accordion {{ $cmsHere ? 'show' : '' }}">
+            @canTab('cms.pages')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['pages']) ? 'active' : '' }}"
+                       href="{{ route('admin.pages.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-file-earmark text-primary"></i></span>
+                        <span class="menu-title">{{ __('Pages') }}</span>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('cms.blogs')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['blogs']) ? 'active' : '' }}"
+                       href="{{ route('admin.blogs.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-pencil-square text-success"></i></span>
+                        <span class="menu-title">{{ __('Blogs') }}</span>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('cms.blog_categories')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['blogs_categories']) ? 'active' : '' }}"
+                       href="{{ route('admin.blogs_categories.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-folder2 text-info"></i></span>
+                        <span class="menu-title">{{ __('Blog Categories') }}</span>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('cms.testimonials')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['testimonials']) ? 'active' : '' }}"
+                       href="{{ route('admin.testimonials.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-chat-quote text-warning"></i></span>
+                        <span class="menu-title">{{ __('Testimonials') }}</span>
+                        <x-admin.nav-badge :count="$pendingTestimonialCount" color="danger"/>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('cms.faqs')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['faqs']) ? 'active' : '' }}"
+                       href="{{ route('admin.faqs.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-question-circle text-warning"></i></span>
+                        <span class="menu-title">{{ __('FAQs') }}</span>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('cms.clients')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['clients']) ? 'active' : '' }}"
+                       href="{{ route('admin.clients.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-award text-primary"></i></span>
+                        <span class="menu-title">{{ __('Our Clients') }}</span>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('cms.team')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['teams']) ? 'active' : '' }}"
+                       href="{{ route('admin.teams.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-person-bounding-box text-success"></i></span>
+                        <span class="menu-title">{{ __('Our Team') }}</span>
+                    </a>
+                </div>
+            @endcanTab
+            @canTab('cms.file_manager')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['filemanager']) ? 'active' : '' }}"
+                       href="{{ route('admin.filemanager.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-folder-symlink text-info"></i></span>
+                        <span class="menu-title">{{ __('File Manager') }}</span>
+                    </a>
+                </div>
+            @endcanTab
+        </div>
+    </div>
+@endcanSection
+
+@canSection('services')
+    <div data-kt-menu-trigger="click"
+         class="menu-item menu-accordion {{ $servicesHere ? 'here show' : '' }}">
+        <span class="menu-link">
+            <span class="menu-icon"><i class="bi bi-grid-3x3-gap-fill text-success"></i></span>
+            <span class="menu-title">{{ __('Services') }}</span>
+            <span class="menu-arrow"></span>
+        </span>
+        <div class="menu-sub menu-sub-accordion {{ $servicesHere ? 'show' : '' }}">
+            @canTab('services.catalog')
             <div class="menu-item">
-                <a class="menu-link {{ isset($active['leaves']) ? 'active' : '' }}"
-                   href="{{ route('admin.leaves.index') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-calendar2-week text-success"></i></span>
-                    <span class="menu-title">{{ __('Leave Management') }}</span>
+                <a class="menu-link {{ isset($active['services']) && !isset($active['service_categories']) ? 'active' : '' }}"
+                   href="{{ route('admin.services.index') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-grid text-success"></i></span>
+                    <span class="menu-title">{{ __('Services') }}</span>
                 </a>
             </div>
             @endcanTab
-            @canTab('hr.job_positions')
+            @canTab('services.categories')
             <div class="menu-item">
-                <a class="menu-link {{ isset($active['job_positions']) ? 'active' : '' }}"
-                   href="{{ route('admin.job-positions.index') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-briefcase text-primary"></i></span>
-                    <span class="menu-title">{{ __('Job Positions') }}</span>
-                </a>
-            </div>
-            @endcanTab
-            @canTab('hr.job_applications')
-            <div class="menu-item">
-                <a class="menu-link {{ isset($active['job_applications']) ? 'active' : '' }}"
-                   href="{{ route('admin.job-applications.index') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-file-earmark-person text-danger"></i></span>
-                    <span class="menu-title">{{ __('Job Applications') }}</span>
+                <a class="menu-link {{ isset($active['service_categories']) ? 'active' : '' }}"
+                   href="{{ route('admin.service_categories.index') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-collection text-info"></i></span>
+                    <span class="menu-title">{{ __('Service Categories') }}</span>
                 </a>
             </div>
             @endcanTab
@@ -561,63 +581,38 @@
     </div>
 @endcanSection
 
-@canSection('support')
-    <div class="menu-section-label">{{ __('Customer Service & Support') }}</div>
-    <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ $serviceHere ? 'here show' : '' }}">
+@canSection('product')
+    <div data-kt-menu-trigger="click"
+         class="menu-item menu-accordion {{ $productsHere ? 'here show' : '' }}">
         <span class="menu-link">
-            <span class="menu-icon"><i class="bi bi-headset text-warning"></i></span>
-            <span class="menu-title">{{ __('Customer Service & Support') }}</span>
-            @if(($navCounts['open_tickets'] + $navCounts['pending_tasks'] + $navCounts['pending_inquiries']) > 0)
-                <x-admin.nav-badge :count="$navCounts['open_tickets'] + $navCounts['pending_tasks'] + $navCounts['pending_inquiries']" color="danger"/>
-            @endif
+            <span class="menu-icon"><i class="bi bi-box-seam-fill text-warning"></i></span>
+            <span class="menu-title">{{ __('product::product.menu.products') }}</span>
             <span class="menu-arrow"></span>
         </span>
-        <div class="menu-sub menu-sub-accordion {{ $serviceHere ? 'show' : '' }}">
-            @canTab('support.tickets')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['tickets']) ? 'active' : '' }}"
-                       href="{{ route('admin.tickets.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-ticket-detailed text-warning"></i></span>
-                        <span class="menu-title">{{ __('support::ticket.menu.tickets') }}</span>
-                        <x-admin.nav-badge :count="$navCounts['open_tickets']" color="warning"/>
-                    </a>
-                </div>
+        <div class="menu-sub menu-sub-accordion {{ $productsHere ? 'show' : '' }}">
+            @canTab('product.catalog')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['products']) && !isset($active['product_categories']) ? 'active' : '' }}"
+                   href="{{ route('admin.products.index') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-box-seam text-warning"></i></span>
+                    <span class="menu-title">{{ __('product::product.menu.catalog') }}</span>
+                </a>
+            </div>
             @endcanTab
-            @canTab('support.ticket_categories')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['ticket_categories']) ? 'active' : '' }}"
-                       href="{{ route('admin.ticket_categories.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-tags text-secondary"></i></span>
-                        <span class="menu-title">{{ __('support::ticket.menu.categories') }}</span>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('crm.activities')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['crm_calendar']) ? 'active' : '' }}"
-                       href="{{ route('admin.crm.calendar') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-calendar-check text-success"></i></span>
-                        <span class="menu-title">{{ __('Activities') }}</span>
-                        <x-admin.nav-badge :count="$navCounts['pending_tasks']" color="success"/>
-                    </a>
-                </div>
-            @endcanTab
-            @canTab('crm.inquiries')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['contact_forms']) ? 'active' : '' }}"
-                       href="{{ route('admin.contact_forms.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-inbox text-danger"></i></span>
-                        <span class="menu-title">{{ __('crm::contact_form.menu.inquiries') }}</span>
-                        <x-admin.nav-badge :count="$navCounts['pending_inquiries']" color="danger"/>
-                    </a>
-                </div>
+            @canTab('product.categories')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['product_categories']) ? 'active' : '' }}"
+                   href="{{ route('admin.product-categories.index') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-grid text-primary"></i></span>
+                    <span class="menu-title">{{ __('product::category.menu') }}</span>
+                </a>
+            </div>
             @endcanTab
         </div>
     </div>
 @endcanSection
 
 @canSection('reporting')
-    <div class="menu-section-label">{{ __('reporting::report.menu.reports') }}</div>
     <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ $reportingHere ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-file-earmark-bar-graph text-primary"></i></span>
@@ -625,15 +620,6 @@
             <span class="menu-arrow"></span>
         </span>
         <div class="menu-sub menu-sub-accordion {{ $reportingHere ? 'show' : '' }}">
-            @canTab('reporting.finance')
-            <div class="menu-item">
-                <a class="menu-link {{ isset($active['reporting_finance']) ? 'active' : '' }}"
-                   href="{{ route('admin.reporting.finance') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-currency-dollar text-success"></i></span>
-                    <span class="menu-title">{{ __('reporting::report.menu.finance') }}</span>
-                </a>
-            </div>
-            @endcanTab
             @canTab('reporting.sales')
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['reporting_sales']) ? 'active' : '' }}"
@@ -643,12 +629,12 @@
                 </a>
             </div>
             @endcanTab
-            @canTab('reporting.marketing')
+            @canTab('reporting.finance')
             <div class="menu-item">
-                <a class="menu-link {{ isset($active['reporting_marketing']) ? 'active' : '' }}"
-                   href="{{ route('admin.reporting.marketing') }}">
-                    <span class="menu-icon menu-icon-sm"><i class="bi bi-megaphone text-warning"></i></span>
-                    <span class="menu-title">{{ __('reporting::report.menu.marketing') }}</span>
+                <a class="menu-link {{ isset($active['reporting_finance']) ? 'active' : '' }}"
+                   href="{{ route('admin.reporting.finance') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-currency-dollar text-success"></i></span>
+                    <span class="menu-title">{{ __('reporting::report.menu.finance') }}</span>
                 </a>
             </div>
             @endcanTab
@@ -658,6 +644,15 @@
                    href="{{ route('admin.reporting.operations') }}">
                     <span class="menu-icon menu-icon-sm"><i class="bi bi-gear-wide-connected text-danger"></i></span>
                     <span class="menu-title">{{ __('reporting::report.menu.operations') }}</span>
+                </a>
+            </div>
+            @endcanTab
+            @canTab('reporting.marketing')
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['reporting_marketing']) ? 'active' : '' }}"
+                   href="{{ route('admin.reporting.marketing') }}">
+                    <span class="menu-icon menu-icon-sm"><i class="bi bi-megaphone text-warning"></i></span>
+                    <span class="menu-title">{{ __('reporting::report.menu.marketing') }}</span>
                 </a>
             </div>
             @endcanTab
@@ -675,60 +670,19 @@
 @endcanSection
 
 @canSection('settings')
-    <div class="menu-section-label">{{ __('System & Settings') }}</div>
     <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ $systemHere ? 'here show' : '' }}">
         <span class="menu-link">
             <span class="menu-icon"><i class="bi bi-gear-fill text-secondary"></i></span>
-            <span class="menu-title">{{ __('System & Settings') }}</span>
+            <span class="menu-title">{{ __('Settings') }}</span>
             <span class="menu-arrow"></span>
         </span>
         <div class="menu-sub menu-sub-accordion {{ $systemHere ? 'show' : '' }}">
-            @if(auth()->user()?->canany(permission_keys(['crm.sales_targets', 'crm.lead_tags', 'crm.custom_fields'])))
-                <div data-kt-menu-trigger="click"
-                     class="menu-item menu-accordion {{ $crmSettingsHere ? 'here show' : '' }}">
-                    <span class="menu-link">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-sliders text-primary"></i></span>
-                        <span class="menu-title">{{ __('crm::settings.menu') }}</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <div class="menu-sub menu-sub-accordion {{ $crmSettingsHere ? 'show' : '' }}">
-                        @canTab('crm.sales_targets')
-                        <div class="menu-item">
-                            <a class="menu-link {{ isset($active['crm_sales_targets']) ? 'active' : '' }}"
-                               href="{{ route('admin.crm.sales-targets.index') }}">
-                                <span class="menu-icon menu-icon-sm"><i class="bi bi-bullseye text-warning"></i></span>
-                                <span class="menu-title">{{ __('crm::sales_target.menu') }}</span>
-                            </a>
-                        </div>
-                        @endcanTab
-                        @canTab('crm.lead_tags')
-                        <div class="menu-item">
-                            <a class="menu-link {{ isset($active['crm_lead_tags']) ? 'active' : '' }}"
-                               href="{{ route('admin.crm.lead-tags.index') }}">
-                                <span class="menu-icon menu-icon-sm"><i class="bi bi-bookmark-star text-info"></i></span>
-                                <span class="menu-title">{{ __('crm::lead_tag.menu') }}</span>
-                            </a>
-                        </div>
-                        @endcanTab
-                        @canTab('crm.custom_fields')
-                        <div class="menu-item">
-                            <a class="menu-link {{ isset($active['crm_custom_fields']) ? 'active' : '' }}"
-                               href="{{ route('admin.crm.custom-fields.index') }}">
-                                <span class="menu-icon menu-icon-sm"><i class="bi bi-ui-radios text-primary"></i></span>
-                                <span class="menu-title">{{ __('crm::custom_field.menu') }}</span>
-                            </a>
-                        </div>
-                        @endcanTab
-                    </div>
-                </div>
-            @endif
-
             @if(auth()->user()?->canany(permission_keys(['settings.website', 'settings.system', 'settings.integrations', 'settings.seo'])))
                 <div data-kt-menu-trigger="click"
                      class="menu-item menu-accordion {{ $websiteSettingsHere || isset($active['settings']) ? 'here show' : '' }}">
                     <span class="menu-link">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-gear text-secondary"></i></span>
-                        <span class="menu-title">{{ __('Settings') }}</span>
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-sliders text-secondary"></i></span>
+                        <span class="menu-title">{{ __('Configuration') }}</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion {{ $websiteSettingsHere ? 'show' : '' }}">
@@ -771,15 +725,46 @@
                     </div>
                 </div>
             @endif
-            @canTab('settings.backups')
-                <div class="menu-item">
-                    <a class="menu-link {{ isset($active['backups']) ? 'active' : '' }}"
-                       href="{{ route('admin.backups.index') }}">
-                        <span class="menu-icon menu-icon-sm"><i class="bi bi-database-down text-primary"></i></span>
-                        <span class="menu-title">{{ __('base::backup.title') }}</span>
-                    </a>
+
+            @if(auth()->user()?->canany(permission_keys(['crm.sales_targets', 'crm.lead_tags', 'crm.custom_fields'])))
+                <div data-kt-menu-trigger="click"
+                     class="menu-item menu-accordion {{ $crmSettingsHere ? 'here show' : '' }}">
+                    <span class="menu-link">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-sliders text-primary"></i></span>
+                        <span class="menu-title">{{ __('crm::settings.menu') }}</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion {{ $crmSettingsHere ? 'show' : '' }}">
+                        @canTab('crm.sales_targets')
+                        <div class="menu-item">
+                            <a class="menu-link {{ isset($active['crm_sales_targets']) ? 'active' : '' }}"
+                               href="{{ route('admin.crm.sales-targets.index') }}">
+                                <span class="menu-icon menu-icon-sm"><i class="bi bi-bullseye text-warning"></i></span>
+                                <span class="menu-title">{{ __('crm::sales_target.menu') }}</span>
+                            </a>
+                        </div>
+                        @endcanTab
+                        @canTab('crm.lead_tags')
+                        <div class="menu-item">
+                            <a class="menu-link {{ isset($active['crm_lead_tags']) ? 'active' : '' }}"
+                               href="{{ route('admin.crm.lead-tags.index') }}">
+                                <span class="menu-icon menu-icon-sm"><i class="bi bi-bookmark-star text-info"></i></span>
+                                <span class="menu-title">{{ __('crm::lead_tag.menu') }}</span>
+                            </a>
+                        </div>
+                        @endcanTab
+                        @canTab('crm.custom_fields')
+                        <div class="menu-item">
+                            <a class="menu-link {{ isset($active['crm_custom_fields']) ? 'active' : '' }}"
+                               href="{{ route('admin.crm.custom-fields.index') }}">
+                                <span class="menu-icon menu-icon-sm"><i class="bi bi-ui-radios text-primary"></i></span>
+                                <span class="menu-title">{{ __('crm::custom_field.menu') }}</span>
+                            </a>
+                        </div>
+                        @endcanTab
+                    </div>
                 </div>
-            @endcanTab
+            @endif
 
             @canTab('support.visitors')
                 <div class="menu-item">
@@ -808,7 +793,15 @@
                     </a>
                 </div>
             @endcanTab
-
+            @canTab('settings.backups')
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['backups']) ? 'active' : '' }}"
+                       href="{{ route('admin.backups.index') }}">
+                        <span class="menu-icon menu-icon-sm"><i class="bi bi-database-down text-primary"></i></span>
+                        <span class="menu-title">{{ __('base::backup.title') }}</span>
+                    </a>
+                </div>
+            @endcanTab
             @canTab('system.logs')
                 <div class="menu-item">
                     <a class="menu-link {{ isset($active['logs']) ? 'active' : '' }}"

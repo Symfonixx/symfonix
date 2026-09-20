@@ -72,7 +72,7 @@
                         {{ $t(__('finance::invoice.pdf.due_date')) }}: {{ $invoice->due_at?->format('Y-m-d') }}
                     </div>
                 </td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     @if($companyBranding['logo_path'])
                         <img src="{{ $companyBranding['logo_path'] }}" class="issuer-logo" alt="{{ $companyBranding['name'] }}">
                     @else
@@ -97,7 +97,7 @@
                         @if($companyBranding['address']){{ $companyBranding['address'] }}@endif
                     </div>
                 </td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <div class="title">{{ __('finance::invoice.pdf.title') }} {{ $invoice->invoice_number }}</div>
                     <div class="meta">
                         {{ __('finance::invoice.pdf.issue_date') }}: {{ $invoice->issued_at?->format('Y-m-d') }}

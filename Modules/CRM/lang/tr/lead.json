@@ -62,7 +62,24 @@
         "manage_tags": "Etiketleri yönet",
         "edit_tags": "Etiketleri düzenle",
         "manage_custom_fields": "Özel alanları yönet",
-        "edit_custom_fields": "Özel alanları düzenle"
+        "edit_custom_fields": "Özel alanları düzenle",
+        "create_follow_up_ai": "AI ile takip oluştur"
+    },
+    "follow_up": {
+        "button": "AI ile takip oluştur",
+        "tooltip": "Bu potansiyel müşterinin verilerinden ve ilgili proje aktivitesinden bir takip taslağı oluştur",
+        "modal_title": "AI ile takip oluştur",
+        "hint": "AI bu potansiyel müşterinin detaylarını, zaman çizelgesini ve ilgili proje aktivitesini kullanır. Oluşturmadan önce taslağı kontrol edin.",
+        "prompt_label": "AI’nin odaklanmasını istediğiniz bir şey var mı? (isteğe bağlı)",
+        "prompt_placeholder": "ör. web sitesi teklifi için ara, veya dünkü toplantıdan sonra takip et.",
+        "generate": "Takip oluştur",
+        "generating": "Potansiyel müşteri ve proje aktivitesinden takip yazılıyor...",
+        "preview_title": "Önerilen takip",
+        "fill_form": "Forma ekle",
+        "create": "Takibi kaydet",
+        "applied": "Takip aktivite formuna eklendi. Gözden geçirip kaydedin.",
+        "created": "Takip oluşturuldu.",
+        "default_title": ":name ile takip"
     },
     "filters": {
         "status": "Duruma göre filtrele",

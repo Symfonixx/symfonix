@@ -21,6 +21,9 @@
             title='Content'
             description='Main blog content and SEO fields.'
         >
+            <x-slot:actions>
+                <x-ai::generate-form-button type="cms_blog" />
+            </x-slot:actions>
             <div class="row mb-6">
                 <div class="col-lg-4">
                     <label class="settings-field-label" for="category_id">
@@ -111,9 +114,12 @@
     <div class="col-xl-4">
         <div class="seo-preview-panel">
             @include('cms::admin.shared._image-aside', [
-                'currentImage' => $blogData?->image_link ?? null,
+                'currentImage' => $blogData?->image ? $blogData->image_link : null,
                 'dimensions' => '500 × 500 px',
                 'required' => !$blogData,
+                'target' => $blogData ? 'cms_blog' : null,
+                'id' => $blogData?->id,
+                'field' => 'image',
             ])
 
             @include('cms::admin.shared._publish-aside', ['item' => $blogData])

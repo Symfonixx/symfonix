@@ -1,0 +1,11 @@
+{
+    "name": "AI",
+    "alias": "ai",
+    "description": "Ask Symfonix AI admin assistant, public BotMan chatbot, Gemini image editing, and OpenAI/Gemini content generation.",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AI\\Providers\\AIServiceProvider"
+    ],
+    "files": []
+}

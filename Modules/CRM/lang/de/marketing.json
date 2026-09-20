@@ -5,15 +5,25 @@
     "pages": {
         "index_title": "Marketing",
         "create_title": "E-Mail senden",
-        "show_title": "Kampagnendetails"
+        "show_title": "Kampagnendetails",
+        "groups_title": "Kampagnen",
+        "group_create_title": "Kampagne erstellen",
+        "group_edit_title": "Kampagne bearbeiten",
+        "group_show_title": "Kampagne"
     },
     "actions": {
         "compose": "E-Mail verfassen",
         "send": "E-Mail senden",
         "back_to_list": "Zurück zum Marketing",
-        "view": "Sicht"
+        "view": "Ansehen",
+        "create_campaign": "Kampagne erstellen",
+        "edit_campaign": "Kampagne bearbeiten",
+        "delete_campaign": "Kampagne löschen",
+        "send_email": "E-Mail senden",
+        "send_whatsapp": "WhatsApp senden"
     },
     "tabs": {
+        "campaigns": "Kampagnen",
         "emails": "E-Mails",
         "whatsapp": "WhatsApp-Nachrichten"
     },
@@ -22,13 +32,17 @@
         "whatsapp": "WhatsApp"
     },
     "fields": {
-        "subject": "Thema",
+        "subject": "Betreff",
         "body": "Nachricht",
         "recipients": "Empfänger",
         "subscribers": "Abonnenten",
         "contacts": "Kontakte",
         "contact_forms": "Anfragen",
         "custom_emails": "Benutzerdefinierte E-Mails",
+        "leads": "Leads",
+        "all_leads": "Alle Leads mit E-Mail",
+        "select_leads": "Leads auswählen",
+        "lead_tags": "Lead-Tags",
         "all_subscribers": "Alle aktiven Abonnenten",
         "all_contacts": "Alle Kontakte mit E-Mail",
         "all_contact_forms": "Alle Anfragen per E-Mail",
@@ -36,13 +50,18 @@
         "select_contacts": "Wählen Sie Kontakte aus",
         "select_contact_forms": "Wählen Sie Anfragen aus",
         "sent_by": "Gesendet von",
-        "sent_at": "Gesendet an",
+        "sent_at": "Gesendet am",
         "recipients_count": "Empfänger",
         "send_as_marketing": "Als Marketing-E-Mail senden",
         "marketing_audience": "Senden an",
         "all_audiences": "Alle",
         "status": "Status",
-        "channel": "Kanal"
+        "channel": "Kanal",
+        "campaign": "Kampagne",
+        "title": "Titel",
+        "goal": "Ziel",
+        "email_sends": "E-Mails",
+        "whatsapp_sends": "WhatsApp"
     },
     "status": {
         "pending": "Ausstehend",
@@ -52,7 +71,7 @@
     "sections": {
         "compose": "E-Mail verfassen",
         "compose_hint": "Schreiben Sie Ihre Nachricht und wählen Sie aus, wer sie erhalten soll.",
-        "recipients": "Wählen Sie Empfänger",
+        "recipients": "Empfänger wählen",
         "recipients_hint": "Wählen Sie eine oder mehrere Gruppen aus. E-Mails werden automatisch dedupliziert.",
         "history": "Gesendete Kampagnen",
         "send_as_marketing": "Marketing-E-Mail"
@@ -63,20 +82,26 @@
         "custom_emails": "Geben Sie eine E-Mail ein und drücken Sie die Eingabetaste, um sie hinzuzufügen",
         "select_subscribers": "Wählen Sie Abonnenten aus",
         "select_contacts": "Wählen Sie Kontakte aus",
-        "select_contact_forms": "Wählen Sie Anfragen"
+        "select_contact_forms": "Wählen Sie Anfragen",
+        "select_leads": "Leads wählen",
+        "title": "z. B. Frühlingsangebot Website",
+        "goal": "z. B. Erstgespräche für unser neues Website-Paket buchen",
+        "select_campaign": "Kampagne auswählen"
     },
     "hints": {
         "all_subscribers": "Wird an jeden nicht blockierten Newsletter-Abonnenten versendet.",
         "all_contacts": "Wird an jeden CRM-Kontakt gesendet, der über eine E-Mail-Adresse verfügt.",
         "all_contact_forms": "Sendet an jede nicht blockierte Anfrage, die eine E-Mail-Adresse hat.",
+        "all_leads": "Sendet an jeden nicht blockierten Lead mit E-Mail-Adresse.",
+        "lead_tags": "Wählen Sie ein oder mehrere Tags, um alle Leads damit zu erreichen, z. B. Kalt und Warm. Leads mit mehreren gewählten Tags erhalten die Nachricht nur einmal.",
         "custom_emails": "Fügen Sie alle weiteren E-Mail-Adressen hinzu, die oben nicht aufgeführt sind. Geben Sie eine E-Mail ein und drücken Sie die Eingabetaste.",
         "send_warning": "E-Mails werden in die Warteschlange gestellt und im Hintergrund versendet. Diese Aktion kann nicht rückgängig gemacht werden.",
         "send_as_marketing": "Erstellen Sie aus diesen Inhalten eine Marketingkampagne und stellen Sie sie nach dem Speichern in die Warteschlange.",
         "all_audiences": "Abonnenten, Kontakte und Anfragen mit gültigen E-Mail-Adressen."
     },
     "messages": {
-        "sent": "E-Mail erfolgreich an :count-Empfänger gesendet.",
-        "queued": "E-Mail für :count-Empfänger erfolgreich in die Warteschlange gestellt.",
+        "sent": "E-Mail erfolgreich an :count Empfänger gesendet.",
+        "queued": "E-Mail für :count Empfänger erfolgreich in die Warteschlange gestellt.",
         "send_failed": "Die E-Mail konnte nicht gesendet werden. Bitte überprüfen Sie Ihre E-Mail-Konfiguration und versuchen Sie es erneut.",
         "empty": "Es wurden noch keine Kampagnen gesendet."
     },
@@ -87,15 +112,58 @@
         "subject_required": "Der Betreff muss Text enthalten.",
         "subject_too_long": "Der Betreff darf nicht länger als 255 Zeichen sein.",
         "body_required": "Die Nachricht muss Text enthalten.",
-        "permission_required": "Sie sind nicht berechtigt, Marketing-E-Mails zu versenden."
+        "permission_required": "Sie sind nicht berechtigt, Marketing-E-Mails zu versenden.",
+        "group_required": "Wählen Sie eine vorhandene Kampagne oder geben Sie Titel und Ziel für eine neue ein.",
+        "group_title_required": "Der Kampagnentitel ist erforderlich.",
+        "group_goal_required": "Das Kampagnenziel ist erforderlich."
+    },
+    "groups": {
+        "create_new": "Neue Kampagne erstellen",
+        "hint": "Ordnen Sie diese E-Mail oder WhatsApp-Nachricht einer Kampagne mit Titel und Ziel zu.",
+        "goal_hint": "Beschreiben Sie, was diese Kampagne erreichen soll. Die KI nutzt das für die E-Mail.",
+        "form_hint": "Geben Sie der Kampagne einen Titel und ein Ziel, dann senden Sie E-Mail oder WhatsApp.",
+        "empty": "Noch keine Kampagnen. Erstellen Sie eine, um E-Mails und WhatsApp zu gruppieren.",
+        "created": "Kampagne erstellt.",
+        "updated": "Kampagne aktualisiert.",
+        "deleted": "Kampagne gelöscht.",
+        "in_use": "Diese Kampagne kann nicht gelöscht werden, weil bereits E-Mails oder WhatsApp-Nachrichten vorhanden sind.",
+        "delete_confirm": "Diese Kampagne löschen?",
+        "complete": "Bereit",
+        "incomplete": "Fehlende Angaben"
+    },
+    "missing": {
+        "heading": "Dieser Kampagne fehlt:",
+        "title": "Ein Kampagnentitel",
+        "goal": "Ein Kampagnenziel",
+        "sends": "Mindestens eine E-Mail oder WhatsApp-Nachricht",
+        "email": "Es wurde noch keine E-Mail gesendet",
+        "whatsapp": "Es wurde noch keine WhatsApp-Nachricht gesendet"
+    },
+    "ai": {
+        "button": "E-Mail mit KI erzeugen",
+        "tooltip": "Betreff und Nachricht aus dem Kampagnenziel schreiben",
+        "banner_title": "E-Mail aus dieser Kampagne erzeugen",
+        "banner_hint": "Nutzt Titel und Ziel der Kampagne für Betreff und Nachricht.",
+        "modal_title": "Marketing-E-Mail erzeugen",
+        "prompt_label": "Was soll die E-Mail sonst noch erwähnen?",
+        "prompt_placeholder": "Optional. z. B. Frühlingsrabatt und Freitagsfrist erwähnen.",
+        "generate": "Erzeugen und einfügen",
+        "generating": "Betreff und Nachricht werden geschrieben...",
+        "applied": "Betreff und Nachricht wurden eingefügt. Prüfen Sie sie vor dem Senden.",
+        "overwrite": "Dadurch werden der aktuelle Betreff und die Nachricht ersetzt. Fortfahren?",
+        "group_required": "Wählen oder erstellen Sie zuerst eine Kampagne mit Titel und Ziel.",
+        "goal_required": "Fügen Sie ein Kampagnenziel hinzu, damit die KI weiß, was sie schreiben soll."
     },
     "sources": {
         "all_subscribers": "Alle Abonnenten",
-        "subscribers": ":count-Abonnent(en)",
+        "subscribers": ":count Abonnent(en)",
         "all_contacts": "Alle Kontakte",
         "contacts": ":count Kontakt(e)",
         "all_contact_forms": "Alle Anfragen",
         "contact_forms": ":count Anfrage(n)",
-        "custom_emails": "Benutzerdefinierte E-Mails"
+        "custom_emails": "Benutzerdefinierte E-Mails",
+        "all_leads": "Alle Leads",
+        "leads": ":count Lead(s)",
+        "lead_tags": "Tags: :tags"
     }
 }

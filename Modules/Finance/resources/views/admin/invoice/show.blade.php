@@ -16,21 +16,22 @@
         };
     @endphp
     <x-admin.breadcrumb :pageTitle="$invoice->invoice_number" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex gap-2">
-        <a href="{{ route('admin.finance.invoices.index') }}" class="btn btn-sm btn-light-primary">
+    <div class="d-flex gap-2 sx-actions">
+        <a href="{{ route('admin.finance.invoices.index') }}" class="btn btn-sm btn-light" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('Back to List') }}
         </a>
-        <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}" class="btn btn-sm btn-light-primary">
+        <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}" class="btn btn-sm btn-light-info" data-action="export">
             <i class="bi bi-file-pdf me-1"></i>{{ __('finance::invoice.actions.download_pdf') }}
         </a>
         @if($invoice->status === 'draft')
-            <form method="POST" action="{{ route('admin.finance.invoices.sent', $invoice) }}">
+            <form method="POST" action="{{ route('admin.finance.invoices.sent', $invoice) }}" data-action="approve">
                 @csrf
                 <button type="submit" class="btn btn-sm btn-primary">{{ __('finance::invoice.actions.mark_sent') }}</button>
             </form>
         @endif
         @if(in_array($invoice->status, ['sent', 'overdue']))
             <form method="POST" action="{{ route('admin.finance.invoices.paid', $invoice) }}"
+                  data-action="approve"
                   data-confirm="{{ __('Are you sure?') }}">
                 @csrf
                 <button type="submit" class="btn btn-sm btn-success">
@@ -40,14 +41,16 @@
         @endif
         @if(!in_array($invoice->status, ['paid', 'void']))
             <form method="POST" action="{{ route('admin.finance.invoices.void', $invoice) }}"
+                  data-action="warning"
                   data-confirm="{{ __('Are you sure?') }}">
                 @csrf
-                <button type="submit" class="btn btn-sm btn-light-danger">
+                <button type="submit" class="btn btn-sm btn-light-warning">
                     {{ __('finance::invoice.actions.void') }}
                 </button>
             </form>
         @endif
         <form method="POST" action="{{ route('admin.finance.invoices.destroy', $invoice) }}"
+              data-action="delete"
               data-confirm="{{ __('finance::invoice.messages.confirm_delete') }}">
             @csrf
             @method('DELETE')

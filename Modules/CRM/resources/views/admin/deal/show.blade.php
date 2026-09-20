@@ -9,14 +9,14 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::deal.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.deals.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.deals.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::deal.actions.back_to_list') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.deals.index', ['view' => 'kanban']) }}">
+        <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.deals.index', ['view' => 'kanban']) }}" data-action="view">
             <i class="bi bi-kanban me-1"></i>{{ __('crm::deal.menu.pipeline') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.deals.edit', $deal->id) }}">
+        <a class="btn btn-sm fw-bold btn-warning" href="{{ route('admin.deals.edit', $deal->id) }}" data-action="edit">
             <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
         </a>
     </div>
@@ -202,7 +202,7 @@
                     @if($deal->company_id && $deal->services->isNotEmpty())
                         <form method="POST" action="{{ route('admin.quotes.from-deal', $deal) }}">
                             @csrf
-                            <button type="submit" class="btn btn-sm btn-light-primary">
+                            <button type="submit" class="btn btn-sm btn-success" data-action="create">
                                 <i class="bi bi-file-earmark-text me-1"></i>{{ __('crm::quote.actions.from_deal') }}
                             </button>
                         </form>
@@ -235,8 +235,8 @@
                                         </td>
                                         <td>{{ __('crm::quote.status.'.$quote->status) }}</td>
                                         <td>{{ number_format($quote->total, 2) }} {{ $quote->currency }}</td>
-                                        <td class="text-end">
-                                            <a href="{{ route('admin.quotes.pdf', $quote) }}" class="btn btn-sm btn-light">
+                                        <td class="text-end sx-actions">
+                                            <a href="{{ route('admin.quotes.pdf', $quote) }}" class="btn btn-sm btn-light-info" data-action="export">
                                                 <i class="bi bi-file-pdf"></i>
                                             </a>
                                         </td>

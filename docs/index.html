@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Symfonix Business Suite documentation — the all-in-one modular business management platform for CRM, HR, Finance, Tax, Reporting, CMS, and integrated business operations.">
+  <meta name="description" content="Symfonix Business Suite documentation — the all-in-one modular business management platform for CRM, HR, Finance, Tax, Reporting, CMS, AI (Ask Symfonix), and integrated business operations.">
   <title>Symfonix Business Suite — Documentation</title>
   <link rel="alternate" hreflang="en" href="./index.html">
   <link rel="alternate" hreflang="ar" href="./ar/index.html">
@@ -33,6 +33,7 @@
         <a href="#introduction">Introduction</a>
         <a href="#architecture">Architecture</a>
         <a href="#modules">Modules</a>
+        <a href="#ai">AI</a>
         <a href="#getting-started">Getting Started</a>
       </nav>
 
@@ -91,12 +92,15 @@
             <ul class="sidebar-nav">
               <li><a href="#modules">Core Modules Overview</a></li>
               <li><a href="#crm">CRM &amp; Pipelines</a></li>
+              <li><a href="#lifecycle">Sales &amp; delivery lifecycle</a></li>
+              <li><a href="#project">Projects &amp; case studies</a></li>
               <li><a href="#hr">Human Resources</a></li>
               <li><a href="#finance">Finance</a></li>
               <li><a href="#currency-setup">Multi-currency Setup</a></li>
               <li><a href="#tax">Tax</a></li>
               <li><a href="#reporting">Reporting</a></li>
               <li><a href="#cms">Content Management</a></li>
+              <li><a href="#ai">AI (Ask Symfonix)</a></li>
               <li><a href="#integrations">APIs &amp; Integrations</a></li>
             </ul>
           </div>
@@ -126,7 +130,7 @@
           <span class="hero-badge">Enterprise Platform · v1.0</span>
           <h1 id="hero-title">One platform. Every business function.</h1>
           <p class="hero-lead">
-            Symfonix Business Suite is an all-in-one modular business management platform that unifies CRM, HR, Finance, Tax, Reporting, CMS, and core operational workflows into a single, high-performance ecosystem — eliminating the integration friction of fragmented SaaS tools.
+            Symfonix Business Suite is an all-in-one modular business management platform that unifies CRM, HR, Finance, Tax, Reporting, CMS, AI (Ask Symfonix, content generation, image editing, and the public chatbot), and core operational workflows into a single, high-performance ecosystem — eliminating the integration friction of fragmented SaaS tools.
           </p>
           <div class="hero-actions">
             <a href="#getting-started" class="btn btn-primary">Get started</a>
@@ -135,7 +139,7 @@
           </div>
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-value">15</div>
+              <div class="stat-value">16</div>
               <div class="stat-label">Business modules</div>
             </div>
             <div class="stat-item">
@@ -165,7 +169,7 @@
           </p>
 
           <p>
-            Built on a modern Laravel foundation with a modular architecture (<code>nwidart/laravel-modules</code>), Symfonix Business Suite targets agencies, service companies, distributors, and mid-market B2B enterprises that need a unified operational backbone without sacrificing the flexibility to enable only the modules they require.
+            Built on a modern Laravel foundation with a modular architecture (<code>nwidart/laravel-modules</code>), Symfonix Business Suite targets agencies, service companies, distributors, and mid-market B2B enterprises that need a unified operational backbone — including optional OpenAI/Gemini assistants — without sacrificing the flexibility to enable only the modules they require.
           </p>
 
           <div class="card-grid">
@@ -177,7 +181,7 @@
             <article class="card">
               <div class="card-icon" aria-hidden="true">🧩</div>
               <h3>Modular by Design</h3>
-              <p>Activate CRM, HR, Finance, Tax, Reporting, CMS, and other business modules independently. Each module is decoupled yet deeply integrated at the data layer.</p>
+              <p>Activate CRM, HR, Finance, Tax, Reporting, CMS, AI, and other business modules independently. Each module is decoupled yet deeply integrated at the data layer.</p>
             </article>
             <article class="card">
               <div class="card-icon" aria-hidden="true">⚡</div>
@@ -277,6 +281,7 @@
               <span class="arch-chip">Tax</span>
               <span class="arch-chip">Reporting</span>
               <span class="arch-chip">CMS</span>
+              <span class="arch-chip">AI</span>
               <span class="arch-chip">Project</span>
               <span class="arch-chip">Product</span>
               <span class="arch-chip">Support</span>
@@ -307,7 +312,7 @@
         <section class="doc-section" id="core-engine">
           <h3>The Core Engine</h3>
           <p>
-            The <strong>Core</strong> and <strong>Base</strong> modules form the system engine. Core provides the installation command (<code>php artisan app:install</code>), shared helpers, and bootstrap logic. Base handles global settings, countries, branches, SEO, backups, the file manager, <code>/humans.txt</code>, and the <strong>APIs &amp; Integrations</strong> screen (SMTP and WhatsApp Cloud API). System Configurations also cover finance FX credentials and ZKTeco fingerprint device settings.
+            The <strong>Core</strong> and <strong>Base</strong> modules form the system engine. Core provides the installation command (<code>php artisan app:install</code>), shared helpers, and bootstrap logic. Base handles global settings, countries, branches, SEO, backups, the file manager, <code>/humans.txt</code>, and the <strong>APIs &amp; Integrations</strong> screen (SMTP, WhatsApp Cloud API, OpenAI, Gemini, and the Ask Symfonix provider). System Configurations also cover finance FX credentials and ZKTeco fingerprint device settings. The <strong>AI</strong> module is loaded like any other business module: it registers admin routes, Blade components, conversation migrations, and tool registries without coupling CRM or Finance to a specific LLM vendor.
           </p>
           <p>Key responsibilities of the core engine include:</p>
           <ol>
@@ -380,7 +385,7 @@
         <section class="doc-section" id="modules">
           <h2>Core Modules &amp; Interfaces</h2>
           <p class="section-intro">
-            Symfonix Business Suite ships with a comprehensive set of business modules. Each module exposes a dedicated admin interface, API routes where applicable, and integrates with the shared permission and notification systems.
+            Symfonix Business Suite ships with a comprehensive set of business modules. Each module exposes a dedicated admin interface, API routes where applicable, and integrates with the shared permission and notification systems. The AI module is optional at runtime: without API keys the rest of the suite continues to work.
           </p>
 
           <div class="table-wrap">
@@ -394,9 +399,24 @@
               </thead>
               <tbody>
                 <tr>
+                  <td><strong>Core</strong></td>
+                  <td>Platform bootstrap</td>
+                  <td><code>app:install</code>, shared helpers, module lifecycle</td>
+                </tr>
+                <tr>
+                  <td><strong>Base</strong></td>
+                  <td>System settings</td>
+                  <td>Countries, branches, SEO, backups, SMTP, WhatsApp, OpenAI/Gemini credentials</td>
+                </tr>
+                <tr>
+                  <td><strong>AI</strong></td>
+                  <td>Assistants &amp; generation</td>
+                  <td>Ask Symfonix, public chatbot, form/quote/follow-up generation, Gemini image create/edit</td>
+                </tr>
+                <tr>
                   <td><strong>CRM</strong></td>
                   <td>Sales &amp; relationships</td>
-                  <td>Leads, deals, companies, quotes, pipeline, subscriptions, activities, email/WhatsApp marketing, forecasts, dashboard</td>
+                  <td>Leads, deals, companies, quotes, pipeline, subscriptions, activities, email/WhatsApp marketing, forecasts, dashboard, AI quote and follow-up drafts</td>
                 </tr>
                 <tr>
                   <td><strong>User</strong></td>
@@ -421,22 +441,32 @@
                 <tr>
                   <td><strong>Cms</strong></td>
                   <td>Content</td>
-                  <td>Pages, blog posts, FAQs, client logos, translatable content</td>
+                  <td>Pages, blog posts, FAQs, client logos, translatable content, AI form fill and image edit</td>
+                </tr>
+                <tr>
+                  <td><strong>Services</strong></td>
+                  <td>Public offerings</td>
+                  <td>Service categories and pages; catalog consumed by the public chatbot</td>
                 </tr>
                 <tr>
                   <td><strong>Product</strong></td>
                   <td>Catalog</td>
-                  <td>Product categories, catalog items, sales integration</td>
+                  <td>Product categories, catalog items, sales integration, AI product-page copy and images</td>
                 </tr>
                 <tr>
                   <td><strong>Project</strong></td>
                   <td>Delivery</td>
-                  <td>Projects, statuses, use cases, client delivery tracking</td>
+                  <td>Projects, statuses, use cases, client delivery tracking, AI case-study copy</td>
                 </tr>
                 <tr>
                   <td><strong>Support</strong></td>
                   <td>Customer care</td>
-                  <td>Tickets, contact subscribers, complaints</td>
+                  <td>Tickets, contact subscribers, complaints, visitor stats for Ask Symfonix</td>
+                </tr>
+                <tr>
+                  <td><strong>Team / Testimonial / SearchEngine</strong></td>
+                  <td>Public site extras</td>
+                  <td>Team profiles, testimonials, search-keyword tracking</td>
                 </tr>
               </tbody>
             </table>
@@ -459,9 +489,9 @@
             <ul>
               <li><strong>Lead Management</strong> — capture, qualify, and convert inbound leads with custom fields, tags, and source attribution.</li>
               <li><strong>Deal Pipeline</strong> — Kanban-style pipeline with configurable stages (default: Lead → Qualified → Proposal → Negotiation → Closed Won/Lost). Drag-and-drop stage transitions with activity logging. Assignees see their own deals unless they have <code>sales.deals.view_all</code>.</li>
-              <li><strong>Quotes / Proposals</strong> — line-item quotes with tax and discount, PDF download, create-from-deal, and a public customer link to accept or reject.</li>
+              <li><strong>Quotes / Proposals</strong> — line-item quotes with tax and discount, PDF download, create-from-deal, a public customer link to accept or reject, and optional <strong>Generate with AI</strong> that drafts fields and catalog lines from the linked company and deal for staff review before save.</li>
               <li><strong>Company Records</strong> — B2B account management with linked contacts, deals, projects, quotes, and subscription history.</li>
-              <li><strong>Activities &amp; Tasks</strong> — schedule calls, meetings, and follow-ups tied to leads, deals, or companies.</li>
+              <li><strong>Activities &amp; Tasks</strong> — schedule calls, meetings, and follow-ups tied to leads, deals, or companies. On a lead record, <strong>Create follow-up with AI</strong> drafts type, title, body, and schedule from lead context; the user still saves the activity.</li>
               <li><strong>Subscriptions</strong> — manage recurring service contracts with renewal tracking and Finance integration for invoicing.</li>
               <li><strong>Email marketing</strong> — queued campaigns to subscribers, contacts, inquiries, or custom addresses, with automatic email deduplication.</li>
               <li><strong>WhatsApp marketing</strong> — Meta Cloud API template campaigns to leads, contacts, deals, inquiries, or custom numbers. Messages are queued; delivery is logged per recipient.</li>
@@ -472,13 +502,142 @@
 
             <h4>Pipeline Workflow</h4>
             <p>
-              Deals progress through pipeline stages defined in <code>CRM/database/seeders</code>. Stage transitions trigger events that other modules can listen to — for example, moving a deal to "Closed Won" can automatically create a Project record and generate a Finance transaction.
+              Deals progress through pipeline stages defined in <code>CRM/database/seeders</code>. Stage transitions trigger events that other modules can listen to — for example, moving a deal to Closed Won automatically creates a Project (if the company is set) and posts a Finance income journal. See <a href="#lifecycle">Sales &amp; delivery lifecycle</a> for the full inquiry → lead → deal → project path.
             </p>
 
             <div class="callout callout--tip">
               <span class="callout-icon" aria-hidden="true">💡</span>
               <div class="callout-content">
                 <p>CRM access is granular. Typical keys include <code>crm.leads.*</code>, <code>sales.deals.view_all</code>, <code>sales.quotes.*</code>, <code>marketing.whatsapp.send</code>, and <code>sales.forecasts.view</code>. Legacy names such as <code>CRM Management</code> are remapped on install.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="lifecycle">
+          <h2>Sales &amp; delivery lifecycle</h2>
+          <p class="section-intro">
+            The commercial path is <strong>inquiry → lead → deal → (quote) → closed won → project</strong>. Case studies and subscriptions sit beside that path; winning a deal does not publish a case study, and a quote does not create an invoice by itself.
+          </p>
+
+          <div class="lifecycle-flow" role="img" aria-label="Inquiry to lead to deal to project">
+            <span class="arch-chip">Inquiry</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Lead</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Company + Contact</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Deal</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Quote</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Closed Won</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Project</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Case study</span>
+          </div>
+          <p class="lifecycle-note">The public chatbot can skip the inquiry record and create a lead directly. Case studies are authored in admin after delivery; they are not auto-created.</p>
+
+          <h4>How records are created</h4>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Step</th><th>Record</th><th>What happens</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1. Inquiry</td>
+                  <td>Contact form</td>
+                  <td>Public <code>/contact-us</code> stores name, email, message, and IP. Staff can also enter an inquiry in admin. This does <strong>not</strong> create a lead automatically.</td>
+                </tr>
+                <tr>
+                  <td>2. Lead (chat)</td>
+                  <td>Lead</td>
+                  <td>The public chatbot may create a lead with <code>source = website</code> after a full name and valid email (company, phone, budget, and problem optional).</td>
+                </tr>
+                <tr>
+                  <td>3. Inquiry → Lead</td>
+                  <td>Lead</td>
+                  <td>On the inquiry list, <strong>Convert to Lead</strong> copies the form into a lead (and can attach services). <strong>Convert to Contact</strong> creates a CRM contact only.</td>
+                </tr>
+                <tr>
+                  <td>4. Lead → Deal</td>
+                  <td>Company, contact, deal</td>
+                  <td>On the lead, <strong>Convert</strong> provisions a company (from company name) and primary contact, then a deal on the default pipeline stage, copying budget and services.</td>
+                </tr>
+                <tr>
+                  <td>Alt. Lead → Customer</td>
+                  <td>Company + contact</td>
+                  <td><strong>Convert to customer</strong> when you need an account without opening a deal. Requires a company name.</td>
+                </tr>
+                <tr>
+                  <td>5. Pipeline</td>
+                  <td>Deal</td>
+                  <td>Move stages from the Kanban board or deal page. Seeded stages:</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Order</th><th>Stage</th><th>Probability</th><th>Outcome</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Lead</td><td>10%</td><td>Default stage for new deals</td></tr>
+                <tr><td>2</td><td>Qualified</td><td>25%</td><td>Open</td></tr>
+                <tr><td>3</td><td>Proposal</td><td>50%</td><td>Open — often when a quote is sent</td></tr>
+                <tr><td>4</td><td>Negotiation</td><td>75%</td><td>Open</td></tr>
+                <tr><td>5</td><td>Closed Won</td><td>100%</td><td>Deal <code>won</code>; auto project + income journal</td></tr>
+                <tr><td>6</td><td>Closed Lost</td><td>0%</td><td>Deal <code>lost</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Quotes, invoices, and Closed Won</h4>
+          <ul>
+            <li><strong>Create Quote</strong> on a deal copies service lines into a <code>draft</code> quote. <strong>Mark sent</strong> enables the public accept/reject link. The customer must be signed in as a user on that company (or an admin with quote view).</li>
+            <li><strong>Accept</strong> marks the quote accepted, moves the deal to Closed Won, and creates or links a project (budget = quote total). <strong>Reject</strong> only changes the quote; the deal stays where it is.</li>
+            <li><strong>Closed Won</strong> (from stage move or quote accept) creates a <strong>project</strong> in <strong>Planning</strong> if the deal has a company, and posts deal income plus a pending sales commission. Creating a deal already set to Closed Won in the convert modal does <em>not</em> fire that event — move the stage after create if you need the automation.</li>
+            <li><strong>Invoice</strong> is manual: <strong>Create Invoice from Deal</strong> on a won deal. There is no create-from-quote.</li>
+            <li><strong>Subscriptions</strong> belong to a company, not a deal. Creating one bills the first period; renewals run via <code>php artisan finance:process-subscription-renewals</code>.</li>
+            <li><strong>Activities</strong> (note, call, meeting, task, email) attach to leads, deals, companies, and contacts. On a lead, AI can draft a follow-up; staff still save it. Email and WhatsApp campaigns can target inquiries, leads, contacts, or deals but do not move pipeline stages.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="project">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Delivery</span>
+              <span class="tag tag--neutral">Case studies</span>
+            </div>
+            <h3>Projects &amp; case studies</h3>
+            <p>
+              A <strong>project</strong> is the delivery record created when a deal is won. A <strong>use case</strong> (case study) is a public marketing page. They can be linked, but the platform never publishes a case study just because a project finished.
+            </p>
+
+            <h4>Projects</h4>
+            <ul>
+              <li>Auto-created from Closed Won (or quote accept), copying title, description, budget, services, start date, and expected close as due date.</li>
+              <li>Seeded statuses: <strong>Planning → Development → QA → Completed → On Hold</strong>. New projects start in Planning.</li>
+              <li>Tied to the company, deal, and optional finance payment status after the won-deal journal posts.</li>
+              <li>Completed projects can receive a client-portal <strong>testimonial</strong> (Testimonial module) — separate from case studies.</li>
+            </ul>
+
+            <h4>Use cases / case studies</h4>
+            <ul>
+              <li>Admin: <strong>Project → Use Cases</strong>. Optionally choose <strong>Linked Project</strong>. Fields include title, client name, summary, challenge, solution, results, HTML body, technologies, category, image, slug, featured flag, and publish status.</li>
+              <li>Public site: <code>/use-cases</code> and <code>/use-cases/{slug}</code>. Featured published cases also appear on the homepage.</li>
+              <li><strong>Create with AI</strong> fills the form in the admin locale (English kebab-case slug). <strong>Edit with AI</strong> can create or restyle the image, optionally matching the brand logo.</li>
+              <li>Permission keys: <code>project.use_cases.view</code>, <code>create</code>, <code>edit</code>, <code>delete</code>.</li>
+            </ul>
+
+            <div class="callout callout--tip">
+              <span class="callout-icon" aria-hidden="true">💡</span>
+              <div class="callout-content">
+                <p>Typical end-to-end example: website inquiry → convert to lead → convert to deal → send quote → customer accepts → project in Planning → deliver through QA/Completed → author a published case study on <code>/use-cases</code> linked to that project.</p>
               </div>
             </div>
           </div>
@@ -641,8 +800,8 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
 
             <h4>Key Interfaces</h4>
             <ul>
-              <li><strong>Pages</strong> — create and manage static pages (About, Services, Contact) with slug-based routing and translatable content fields.</li>
-              <li><strong>Blog</strong> — publish articles with categories, read-time estimation, featured images, and SEO metadata.</li>
+              <li><strong>Pages</strong> — create and manage static pages (About, Services, Contact) with slug-based routing, translatable content fields, and optional AI form fill plus image create/edit.</li>
+              <li><strong>Blog</strong> — publish articles with categories, read-time estimation, featured images, SEO metadata, and the same AI copy/image helpers as pages.</li>
               <li><strong>FAQs</strong> — structured frequently-asked-questions management for support and marketing pages.</li>
               <li><strong>Our Clients</strong> — logo/showcase entries for the public site.</li>
               <li><strong>SEO Settings</strong> — global and per-page SEO configuration managed through the Base module's SEO interface, including meta titles, descriptions, and Open Graph tags.</li>
@@ -653,6 +812,105 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
             <p>
               Content is translatable across English, Arabic, Turkish, and German via <code>mcamara/laravel-localization</code> and Spatie Translatable. RTL layout support is built into the public site theme for Arabic locales.
             </p>
+          </div>
+        </section>
+
+        <!-- AI -->
+        <section class="doc-section" id="ai">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">AI</span>
+              <span class="tag tag--neutral">OpenAI + Gemini</span>
+            </div>
+            <h3>AI — Ask Symfonix, generation, and the public chatbot</h3>
+            <p>
+              The <strong>AI</strong> module (<code>Modules/AI</code>) adds assistants and generation on top of live Symfonix data. It is optional: CRM, Finance, CMS, and the rest of the admin work without API keys. When OpenAI and/or Gemini are saved under <strong>APIs &amp; Integrations → AI Integrations</strong>, four capabilities turn on. Database values override <code>.env</code>.
+            </p>
+            <p>
+              Providers are split on purpose. Ask Symfonix and the public chatbot share a router (<code>auto</code> tries OpenAI, then Gemini). TinyMCE and structured form generation prefer OpenAI and fall back to Gemini’s analysis model. Image create/edit uses only the Gemini image model. Changing the Ask Symfonix provider does not change image or editor settings.
+            </p>
+
+            <h4>Ask Symfonix (admin assistant)</h4>
+            <p>
+              Ask Symfonix is a read-only business assistant in the admin header (and as suggestion chips on the dashboard). Staff need <code>ai.assistant.view</code>. Conversations are stored per user in <code>ai_conversations</code> / <code>ai_messages</code>. Users can start a new chat, browse history, copy answers, or regenerate the last reply.
+            </p>
+            <p>
+              The model is instructed to answer only from tool results — never invent numbers, names, amounts, or statuses — and to match the user’s language. It cannot create, update, delete, email, or send WhatsApp; if asked, it refuses and may offer a draft instead. Each tool is registered only if the signed-in user already has the matching Spatie permission, so a sales role cannot pull payroll they cannot see in the UI.
+            </p>
+            <p>Example questions the suggestion chips send:</p>
+            <ul>
+              <li>What is happening in the business today?</li>
+              <li>Who has the most overdue CRM tasks? Which projects are overdue?</li>
+              <li>How much sales this month? What is the year-over-year revenue growth rate?</li>
+              <li>Who are the best customers by revenue? Which leads should we follow up today?</li>
+              <li>How many overdue invoices are there? Website visitors this month? Best-selling services? Employee headcount, attendance, and utilization?</li>
+            </ul>
+            <p>
+              Tools include business snapshot, today focus, lead/customer/project/invoice/payment/expense/employee/ticket stats, overdue work, visitors, best-selling services, record search, and a follow-up message draft. Answers that use application data include a short source line (for example “Based on 12 open invoices”).
+            </p>
+
+            <h4>Content generation, quotes, and follow-ups</h4>
+            <ul>
+              <li><strong>TinyMCE “Create with AI”</strong> — generate or rewrite editor HTML from a prompt (optional existing HTML as context).</li>
+              <li><strong>Form fill</strong> — structured JSON for blog posts, pages, services, products, and project use cases: titles, English kebab-case slugs, SEO fields, and HTML body. Copy follows the admin locale.</li>
+              <li><strong>Generate quote</strong> — on quote create, given a company and deal, draft fields and line items from published services/products (or the deal’s own lines). Staff review before save. Requires <code>sales.quotes.create</code>.</li>
+              <li><strong>Lead follow-up</strong> — on the lead show page, draft an activity (type, title, body, scheduled time) from lead context. Requires <code>crm.activities.create</code>. Nothing is stored until the user saves.</li>
+            </ul>
+
+            <h4>Image create and edit</h4>
+            <p>
+              Gemini can edit an existing image or create one from a prompt (max 500 characters). Optional brand-logo matching sends the site logo from <strong>Settings → Branding</strong>. Allowed targets are registered in <code>Modules/AI/config/config.php</code>:
+            </p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Target</th><th>Fields</th><th>Permission</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>product</code></td><td><code>main_image</code>, <code>seo_meta_img</code></td><td><code>product.catalog.edit</code></td></tr>
+                  <tr><td><code>cms_page</code></td><td><code>image</code></td><td><code>cms.pages.edit</code></td></tr>
+                  <tr><td><code>cms_blog</code></td><td><code>image</code></td><td><code>cms.blogs.edit</code></td></tr>
+                  <tr><td><code>use_case</code></td><td><code>image</code></td><td><code>project.use_cases.edit</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>On create/edit forms without a saved record, the image can be staged in the browser only. On saved records the result is written to the public disk after the user confirms apply.</p>
+
+            <h4>Public website chatbot</h4>
+            <p>
+              The BotMan widget on the public site uses the same OpenAI/Gemini keys as Ask Symfonix, but a <strong>public-safe</strong> tool set: list or get published services, company profile, capture a website lead (full name + valid email; company, phone, budget, and problem optional), and suggest 2–4 quick-reply buttons. It must not invent prices, timelines, or unpublished offerings, and it never exposes CRM, finance, or HR data.
+            </p>
+            <p>
+              Requests are rate-limited per IP (default 20 attempts / 60 seconds via <code>AI_CHATBOT_RATE_LIMIT</code> and <code>AI_CHATBOT_RATE_DECAY</code>). If AI is disabled (<code>AI_CHATBOT_ENABLED=false</code>) or unconfigured, the widget still answers from the published service catalog and can fall back to structured lead capture.
+            </p>
+
+            <h4>Configuration and cost controls</h4>
+            <p>Prefer the admin screen; environment variables are fallbacks:</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Setting</th><th>Default</th><th>Purpose</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>OPENAI_API_KEY</code> / <code>OPENAI_MODEL</code></td><td>empty / <code>gpt-4o-mini</code></td><td>Ask Symfonix (if selected or auto) and content generation</td></tr>
+                  <tr><td><code>GEMINI_API_KEY</code></td><td>empty</td><td>Ask Symfonix fallback, analysis, images</td></tr>
+                  <tr><td><code>GEMINI_IMAGE_MODEL</code></td><td><code>gemini-2.5-flash-image</code></td><td>Image create/edit</td></tr>
+                  <tr><td><code>GEMINI_ANALYSIS_MODEL</code></td><td><code>gemini-2.5-flash</code></td><td>Text fallback for chat and generation</td></tr>
+                  <tr><td><code>AI_ASSISTANT_PROVIDER</code></td><td><code>auto</code></td><td><code>auto</code>, <code>openai</code>, or <code>gemini</code> — Ask Symfonix / chatbot only</td></tr>
+                  <tr><td><code>AI_CHATBOT_ENABLED</code></td><td><code>true</code></td><td>Enable the public AI chatbot</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              History, tool rounds, list sizes, and token limits live in <code>Modules/AI/config/config.php</code> (for example 16 history messages and 3 tool rounds for Ask Symfonix). Tool payloads are truncated so large records cannot flood the model context.
+            </p>
+
+            <div class="callout callout--info">
+              <span class="callout-icon" aria-hidden="true">ℹ️</span>
+              <div class="callout-content">
+                <p><strong>Security.</strong> Grant <code>ai.assistant.view</code> only to staff who should query live operational data. Tools still respect per-module permissions. The public chatbot cannot call admin tools. Never commit API keys; blank secret fields in Integrations keep the stored value.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -678,6 +936,21 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
                   <td>Needs an access token and phone number ID. Templates must be approved in Meta before sending. Default Graph version is <code>v21.0</code>.</td>
                 </tr>
                 <tr>
+                  <td>OpenAI</td>
+                  <td><strong>APIs &amp; Integrations → AI Integrations</strong></td>
+                  <td>Powers Ask Symfonix (when selected or <code>auto</code>) and TinyMCE/form/quote/follow-up generation. Default model <code>gpt-4o-mini</code>.</td>
+                </tr>
+                <tr>
+                  <td>Google Gemini</td>
+                  <td><strong>APIs &amp; Integrations → AI Integrations</strong></td>
+                  <td>Ask Symfonix fallback, analysis model for generation, and image create/edit (<code>gemini-2.5-flash-image</code> by default).</td>
+                </tr>
+                <tr>
+                  <td>Ask Symfonix provider</td>
+                  <td><strong>APIs &amp; Integrations → AI Integrations</strong></td>
+                  <td><code>auto</code> (OpenAI then Gemini), <code>openai</code>, or <code>gemini</code>. Does not change image or editor provider rules. See <a href="#ai">AI</a>.</td>
+                </tr>
+                <tr>
                   <td>Fixer exchange rates</td>
                   <td><strong>System Configurations → Finance</strong></td>
                   <td>See <a href="#currency-setup">Multi-currency Setup</a>.</td>
@@ -696,6 +969,14 @@ WHATSAPP_PHONE_NUMBER_ID=
 WHATSAPP_BUSINESS_ACCOUNT_ID=
 WHATSAPP_API_VERSION=v21.0
 WHATSAPP_WEBHOOK_VERIFY_TOKEN=
+
+GEMINI_API_KEY=
+GEMINI_IMAGE_MODEL=gemini-2.5-flash-image
+GEMINI_ANALYSIS_MODEL=gemini-2.5-flash
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-4o-mini
+AI_ASSISTANT_PROVIDER=auto
+AI_CHATBOT_ENABLED=true
 
 FINGERPRINT_ENABLED=false
 FINGERPRINT_HOST=
@@ -752,6 +1033,11 @@ FINGERPRINT_NAME_ENCODING=UTF-8</code></pre>
                   <td>6+</td>
                   <td>Optional — recommended for production cache and queues</td>
                 </tr>
+                <tr>
+                  <td>OpenAI / Gemini API keys</td>
+                  <td>—</td>
+                  <td>Optional — required only to enable Ask Symfonix, generation, image editing, and the public AI chatbot</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -780,6 +1066,11 @@ FINANCE_DEFAULT_CURRENCY=USD
 FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
 FIXER_API_KEY=
 FIXER_BASE_URL=https://data.fixer.io/api
+
+GEMINI_API_KEY=
+OPENAI_API_KEY=
+AI_ASSISTANT_PROVIDER=auto
+AI_CHATBOT_ENABLED=true
 
 DOCS_ENABLED=true</code></pre>
             </li>
@@ -814,7 +1105,7 @@ npm install && npm run build</code></pre>
           <div class="callout callout--tip">
             <span class="callout-icon" aria-hidden="true">💡</span>
             <div class="callout-content">
-              <p>The install command generates <code>APP_KEY</code>, runs all module migrations, seeds countries and baseline currency rates, synchronizes permissions, seeds HR/Sales/Finance/Project/Operations role scenarios, seeds default CRM pipeline stages, and assigns the Admin role with full permissions.</p>
+              <p>The install command generates <code>APP_KEY</code>, runs all module migrations (including AI conversation tables), seeds countries and baseline currency rates, synchronizes permissions (including <code>ai.assistant.view</code>), seeds HR/Sales/Finance/Project/Operations role scenarios, seeds default CRM pipeline stages, and assigns the Admin role with full permissions.</p>
             </div>
           </div>
         </section>
@@ -901,6 +1192,7 @@ php artisan queue:work</code></pre>
               </thead>
               <tbody>
                 <tr><td>Overview</td><td><code>overview.dashboard.view</code>, <code>overview.crm_analytics.edit</code></td><td>Admin home and CRM dashboard layout</td></tr>
+                <tr><td>AI</td><td><code>ai.assistant.view</code></td><td>Ask Symfonix drawer, history, and messages. Content/image/quote/follow-up reuse create/edit keys</td></tr>
                 <tr><td>CMS</td><td><code>cms.pages.*</code>, <code>cms.blogs.*</code>, <code>cms.clients.*</code></td><td>Pages, blog, FAQs, client logos, file manager</td></tr>
                 <tr><td>CRM</td><td><code>crm.leads.*</code>, <code>crm.companies.*</code>, <code>crm.activities.*</code></td><td>Leads, contacts, companies, inquiries, tags</td></tr>
                 <tr><td>Sales</td><td><code>sales.deals.view_all</code>, <code>sales.quotes.*</code>, <code>sales.forecasts.view</code></td><td>Pipeline, deals, quotes, subscriptions</td></tr>
@@ -908,19 +1200,20 @@ php artisan queue:work</code></pre>
                 <tr><td>Finance</td><td><code>finance.invoices.*</code>, <code>finance.ar.view</code></td><td>Invoices, AR, salaries, commissions, expenses</td></tr>
                 <tr><td>Tax</td><td><code>tax.rates.*</code>, <code>tax.ledger.view</code>, <code>tax.filing.export</code></td><td>Rates, ledger, filing report</td></tr>
                 <tr><td>Reporting</td><td><code>reporting.finance.view</code>, <code>reporting.sales.export</code></td><td>Department reports and exports</td></tr>
+                <tr><td>Project</td><td><code>project.projects.*</code>, <code>project.use_cases.*</code></td><td>Projects and public case studies</td></tr>
                 <tr><td>HR</td><td><code>hr.employees.*</code>, <code>hr.fingerprint.manage</code>, <code>hr.roles.*</code></td><td>Staff, roles, leave, fingerprint sync</td></tr>
                 <tr><td>Settings</td><td><code>settings.system.*</code>, <code>settings.integrations.*</code></td><td>System config, APIs, SEO, backups</td></tr>
               </tbody>
             </table>
           </div>
 
-          <p>The default <strong>Admin</strong> role receives every catalog key. Install also seeds HR Manager, Sales Manager, Finance Manager, Project Manager, and Operations Manager. Extra actions include <code>send</code>, <code>export</code>, <code>approve</code>, <code>view_all</code>, <code>manage</code>, <code>reply</code>, and <code>restore</code>.</p>
+          <p>The default <strong>Admin</strong> role receives every catalog key. Install also seeds HR Manager, Sales Manager, Finance Manager, Project Manager, and Operations Manager. Extra actions include <code>send</code>, <code>export</code>, <code>approve</code>, <code>view_all</code>, <code>manage</code>, <code>reply</code>, and <code>restore</code>. Ask Symfonix tools call <code>canany()</code> on the same keys as the screens they summarize.</p>
         </section>
 
         <section class="doc-section" id="testing">
           <h3>Testing</h3>
           <p>
-            Backend tests live under <code>tests/Unit</code> and <code>tests/Feature</code> (finance/tax, WhatsApp marketing, sales forecasts, fingerprint, RBAC). Browser coverage is Playwright under <code>tests/e2e</code>. See <code>tests/README.md</code>.
+            Backend tests live under <code>tests/Unit</code> and <code>tests/Feature</code> (finance/tax, WhatsApp marketing, sales forecasts, fingerprint, RBAC, AI assistant/chatbot where covered). Browser coverage is Playwright under <code>tests/e2e</code>. See <code>tests/README.md</code>.
           </p>
           <span class="code-label">Terminal</span>
           <pre><code>php artisan test
@@ -968,7 +1261,7 @@ php artisan view:cache</code></pre>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>Production checklist:</strong> Ensure <code>APP_DEBUG=false</code>, restrict <code>/admin</code> access if needed, enable two-factor authentication, never commit <code>.env</code>, configure a valid Fixer key, and monitor the last successful rate fetch under <strong>System Configurations → Finance</strong>. Stored rates have no automatic staleness rejection. Set WhatsApp credentials under <strong>APIs &amp; Integrations</strong> before sending campaigns. Set <code>DOCS_ENABLED=false</code> if you do not want to expose <code>/docs</code>.</p>
+              <p><strong>Production checklist:</strong> Ensure <code>APP_DEBUG=false</code>, restrict <code>/admin</code> access if needed, enable two-factor authentication, never commit <code>.env</code>, configure a valid Fixer key, and monitor the last successful rate fetch under <strong>System Configurations → Finance</strong>. Stored rates have no automatic staleness rejection. Set WhatsApp credentials under <strong>APIs &amp; Integrations</strong> before sending campaigns. Set OpenAI and/or Gemini under <strong>AI Integrations</strong> if you use Ask Symfonix, generation, image editing, or the public chatbot, and limit <code>ai.assistant.view</code> to staff who should query live data. Set <code>DOCS_ENABLED=false</code> if you do not want to expose <code>/docs</code>.</p>
             </div>
           </div>
         </section>

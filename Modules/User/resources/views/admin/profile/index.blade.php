@@ -175,7 +175,7 @@
                               data-confirm="{{ __('Are you sure you want to disable two-factor authentication?') }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">{{ __('Disable Two-Factor Authentication') }}</button>
+                            <button type="submit" class="btn btn-danger" data-action="delete">{{ __('Disable Two-Factor Authentication') }}</button>
                         </form>
                     @elseif($twoFactorPending)
                         <div class="mb-5">
@@ -203,7 +203,7 @@
                               data-confirm="{{ __('Are you sure you want to disable two-factor authentication?') }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-light-danger">{{ __('Disable Two-Factor Authentication') }}</button>
+                            <button type="submit" class="btn btn-light-danger" data-action="delete">{{ __('Disable Two-Factor Authentication') }}</button>
                         </form>
                     @else
                         <form method="POST" action="{{ route('two-factor.enable') }}">

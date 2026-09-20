@@ -10,7 +10,7 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Roles')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         @can('hr.roles.delete')
         <a class="btn btn-sm btn-danger fw-bold" href="{{route('admin.roles.delete_role' , $role->id)}}">
             {{__('Delete Role')}}
@@ -521,7 +521,7 @@
                                           data-kt-view-roles-table-select="selected_count"></span>{{__('Selected')}}
                             </div>
                             <button type="button" class="btn btn-danger"
-                                    id="delete_selected">{{__('Delete Selected')}}</button>
+                                    id="delete_selected" data-action="delete">{{__('Delete Selected')}}</button>
                         </div>
                         <!--end::Group actions-->
                     </div>
@@ -644,7 +644,7 @@
                     </div>
                     <!--end::Card body-->
                     <div class="card-footer d-flex justify-content-end py-6 px-9">
-                        <button class="btn btn-light btn-active-light-primary me-2">{{__('Discard')}}</button>
+                        <button class="btn btn-light btn-active-light-primary me-2" data-action="back">{{__('Discard')}}</button>
                         <button class="btn btn-primary px-6" type="submit">{{__('Save Changes')}}</button>
                     </div>
                 </form>

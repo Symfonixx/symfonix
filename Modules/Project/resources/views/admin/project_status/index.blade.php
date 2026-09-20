@@ -9,12 +9,12 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('project::status.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.projects.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.projects.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('project::status.actions.back_to_projects') }}
         </a>
         <x-can perform="project.statuses.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.project-statuses.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.project-statuses.create') }}" data-action="create">
                 {{ __('project::status.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -46,7 +46,7 @@
                             </td>
                             <td><code>{{ $status->color_code }}</code></td>
                             <td>{{ $status->projects_count }}</td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <a href="{{ route('admin.project-statuses.edit', $status->id) }}"
                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="ki-duotone ki-message-edit fs-1">
@@ -58,7 +58,7 @@
                                       action="{{ route('admin.project-statuses.destroy', $status->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

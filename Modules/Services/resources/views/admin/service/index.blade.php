@@ -8,9 +8,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Services')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="services.catalog.create">
-            <a class="btn btn-sm fw-bold  btn-primary" href="{{route('admin.services.create')}}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{route('admin.services.create')}}" data-action="create">
                 {{__('Add New Service')}} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>

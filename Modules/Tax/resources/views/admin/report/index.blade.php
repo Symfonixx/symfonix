@@ -10,8 +10,8 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('tax::report.pages.filing_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2">
-        <a class="btn btn-sm fw-bold btn-light-primary"
-           href="{{ route('admin.tax.reports.filing.export', $filters) }}">
+        <a class="btn btn-sm fw-bold btn-light-info"
+           href="{{ route('admin.tax.reports.filing.export', $filters) }}" data-action="export">
             <i class="bi bi-download me-1"></i>{{ __('tax::report.actions.export_csv') }}
         </a>
     </div>

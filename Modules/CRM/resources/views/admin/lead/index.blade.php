@@ -8,9 +8,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::lead.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="crm.leads.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.leads.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.leads.create') }}" data-action="create">
                 <i class="bi bi-plus-lg me-1"></i>{{ __('crm::lead.actions.add') }}
             </a>
         </x-can>
@@ -77,7 +77,7 @@
                     </select>
                 </div>
                 <div class="col-md-4 col-xl-2 d-flex gap-2">
-                    <button type="submit" class="btn btn-primary btn-sm flex-grow-1">
+                    <button type="submit" class="btn btn-light-primary btn-sm flex-grow-1" data-action="filter">
                         <i class="bi bi-funnel me-1"></i>{{ __('Filter') }}
                     </button>
                     <a href="{{ route('admin.leads.index') }}" class="btn btn-light btn-sm">
@@ -181,10 +181,10 @@
                 </td>
                 <td>{{ $lead->assignee?->name ?: __('N/A') }}</td>
                 <td>{{ $lead->created_at?->diffForHumans() }}</td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <div class="dropdown">
-                        <button class="btn btn-sm btn-light btn-active-light-primary" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-sm btn-light-info btn-active-light-primary" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-action="view">
                             {{ __('crm::lead.actions.actions') }} <i class="bi bi-chevron-down ms-1"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">

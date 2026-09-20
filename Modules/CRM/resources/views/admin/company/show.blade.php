@@ -9,11 +9,11 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::company.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.companies.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.companies.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::company.actions.back_to_list') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.companies.edit', $company) }}">
+        <a class="btn btn-sm fw-bold btn-warning" href="{{ route('admin.companies.edit', $company) }}" data-action="edit">
             <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
         </a>
     </div>
@@ -130,9 +130,9 @@
                                 <td>{{ $contact->email ?: __('N/A') }}</td>
                                 <td>{{ $contact->phone ?: __('N/A') }}</td>
                                 <td>{{ $contact->job_title ?: __('N/A') }}</td>
-                                <td class="text-end">
+                                <td class="text-end sx-actions">
                                     <a href="{{ route('admin.contacts.show', $contact) }}"
-                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm">
+                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm" data-action="view">
                                         <i class="bi bi-eye fs-5"></i>
                                     </a>
                                 </td>
@@ -205,9 +205,9 @@
                                     ])
                                 </td>
                                 <td>{{ $lead->email ?: __('N/A') }}</td>
-                                <td class="text-end">
+                                <td class="text-end sx-actions">
                                     <a href="{{ route('admin.leads.show', $lead) }}"
-                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm">
+                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm" data-action="view">
                                         <i class="bi bi-eye fs-5"></i>
                                     </a>
                                 </td>
@@ -269,9 +269,9 @@
                                 </td>
                                 <td>{{ $deal->value ? number_format($deal->value, 2).' '.$deal->currency : __('N/A') }}</td>
                                 <td>{{ __('crm::deal.status.'.$deal->status) }}</td>
-                                <td class="text-end">
+                                <td class="text-end sx-actions">
                                     <a href="{{ route('admin.deals.show', $deal) }}"
-                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm">
+                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm" data-action="view">
                                         <i class="bi bi-eye fs-5"></i>
                                     </a>
                                 </td>
@@ -291,7 +291,7 @@
             <div class="card-header align-items-center">
                 <h3 class="card-title">{{ __('crm::contact_form.menu.inquiries') }}</h3>
                 <div class="card-toolbar">
-                    <a href="{{ route('admin.contact_forms.index') }}" class="btn btn-sm btn-light-primary">
+                    <a href="{{ route('admin.contact_forms.index') }}" class="btn btn-sm btn-light" data-action="back">
                         <i class="bi bi-arrow-left me-1"></i>{{ __('crm::contact_form.actions.back_to_list') }}
                     </a>
                 </div>
@@ -370,9 +370,9 @@
                                     </span>
                                 </td>
                                 <td>{{ $subscription->renewal_at?->format('Y-m-d') ?: __('N/A') }}</td>
-                                <td class="text-end">
+                                <td class="text-end sx-actions">
                                     <a href="{{ route('admin.subscriptions.show', $subscription) }}"
-                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm">
+                                       class="btn btn-icon btn-bg-light btn-active-color-info btn-sm" data-action="view">
                                         <i class="bi bi-eye fs-5"></i>
                                     </a>
                                 </td>

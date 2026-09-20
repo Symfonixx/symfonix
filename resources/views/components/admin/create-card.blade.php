@@ -25,11 +25,11 @@
             <span class="text-muted fs-7">
                 <i class="bi bi-info-circle me-1"></i>{{ __('Changes are applied after saving.') }}
             </span>
-            <div class="d-flex gap-2">
-                <a href="{{ $discardUrl }}" class="btn btn-light btn-active-light-primary">
+            <div class="d-flex gap-2 sx-actions">
+                <a href="{{ $discardUrl }}" class="btn btn-light btn-active-light-primary" data-action="back">
                     <i class="bi bi-x-lg me-1"></i>{{ __('Discard') }}
                 </a>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" data-action="save">
                     <i class="bi bi-check2-circle me-1"></i>{{ __('Save Changes') }}
                 </button>
             </div>

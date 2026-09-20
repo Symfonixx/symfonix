@@ -1,0 +1,30 @@
+{
+    "pages": {
+        "index_title": "دفتر الضريبة"
+    },
+    "fields": {
+        "date": "التاريخ",
+        "direction": "الاتجاه",
+        "tax_rate": "معدل الضريبة",
+        "amount": "المبلغ",
+        "company": "الشركة",
+        "project": "المشروع",
+        "subscription": "الاشتراك",
+        "description": "الوصف"
+    },
+    "directions": {
+        "output": "ضريبة المخرجات (المحصلة)",
+        "input": "ضريبة المدخلات (المدفوعة)"
+    },
+    "filters": {
+        "from": "من",
+        "to": "إلى",
+        "direction": "الاتجاه",
+        "all": "كل الاتجاهات"
+    },
+    "descriptions": {
+        "invoice": "ضريبة مخرجات على الفاتورة :number",
+        "invoice_line": "ضريبة مخرجات على الفاتورة :number — :line",
+        "expense": "ضريبة مدخلات على المصروف"
+    }
+}

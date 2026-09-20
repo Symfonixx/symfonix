@@ -9,7 +9,7 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Edit Team Member')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
     </div>
 @endsection
 @section('js')

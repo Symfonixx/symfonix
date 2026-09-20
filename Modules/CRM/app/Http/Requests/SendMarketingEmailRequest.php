@@ -7,6 +7,8 @@ use Illuminate\Validation\Validator;
 
 class SendMarketingEmailRequest extends FormRequest
 {
+    use ValidatesMarketingGroup;
+
     public function authorize(): bool
     {
         return $this->user()?->can('marketing.email.send') ?? false;
@@ -17,6 +19,12 @@ class SendMarketingEmailRequest extends FormRequest
         return [
             'subject' => ['required', 'string', 'max:2000'],
             'body' => ['required', 'string', 'max:50000'],
+            ...$this->marketingGroupRules(),
+            'all_leads' => ['sometimes', 'boolean'],
+            'lead_ids' => ['sometimes', 'array'],
+            'lead_ids.*' => ['integer', 'exists:leads,id'],
+            'lead_tag_ids' => ['sometimes', 'array'],
+            'lead_tag_ids.*' => ['integer', 'exists:lead_tags,id'],
             'all_subscribers' => ['sometimes', 'boolean'],
             'subscriber_ids' => ['sometimes', 'array'],
             'subscriber_ids.*' => ['integer', 'exists:subscribers,id'],
@@ -37,7 +45,10 @@ class SendMarketingEmailRequest extends FormRequest
                 return;
             }
 
-            $hasRecipients = $this->boolean('all_subscribers')
+            $hasRecipients = $this->boolean('all_leads')
+                || filled($this->input('lead_ids'))
+                || filled($this->input('lead_tag_ids'))
+                || $this->boolean('all_subscribers')
                 || filled($this->input('subscriber_ids'))
                 || $this->boolean('all_contacts')
                 || filled($this->input('contact_ids'))
@@ -48,6 +59,8 @@ class SendMarketingEmailRequest extends FormRequest
             if (! $hasRecipients) {
                 $validator->errors()->add('recipients', __('crm::marketing.validation.select_recipients'));
             }
+
+            $this->validateMarketingGroup($validator);
 
             $plainSubject = trim(strip_tags((string) $this->input('subject', '')));
 
@@ -67,7 +80,9 @@ class SendMarketingEmailRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
+        $this->prepareMarketingGroup();
         $this->merge([
+            'all_leads' => $this->boolean('all_leads'),
             'all_subscribers' => $this->boolean('all_subscribers'),
             'all_contacts' => $this->boolean('all_contacts'),
             'all_contact_forms' => $this->boolean('all_contact_forms'),

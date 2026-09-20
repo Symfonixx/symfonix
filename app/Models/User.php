@@ -129,7 +129,7 @@ class User extends Authenticatable
     {
         $path = asset('images/avatar.png');
 
-        if (! is_null($this->attributes['img'])) {
+        if (! empty($this->attributes['img'])) {
             $path = asset('storage/'.$this->attributes['img']);
         }
 

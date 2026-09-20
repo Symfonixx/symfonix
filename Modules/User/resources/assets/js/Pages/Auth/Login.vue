@@ -42,14 +42,14 @@
                         <h2>{{ trans("Login") }}</h2>
                     </div>
 
-                    <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
-                        {{ flash.success }}
-                    </div>
-                    <div v-if="flash.error" class="flash-message flash-message--error" role="alert">
-                        {{ flash.error }}
-                    </div>
-
                     <form id="login-one__form" name="Login-one_form" action="#" method="post" @submit.prevent="form.post(route('login'))">
+                        <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
+                            {{ formatError(flash.success) }}
+                        </div>
+                        <div v-if="flash.error" class="flash-message flash-message--error" role="alert">
+                            {{ formatError(flash.error) }}
+                        </div>
+
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="form-group">
@@ -68,16 +68,17 @@
                             </div>
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="formPassword"
-                                            v-model="form.password"
-                                            type="password"
-                                            name="form_password"
-                                            :placeholder="trans('Password')"
-                                            :disabled="form.processing"
-                                            required="">
-                                    </div>
+                                    <PasswordInput
+                                        id="formPassword"
+                                        v-model="form.password"
+                                        name="form_password"
+                                        :placeholder="trans('Password')"
+                                        :disabled="form.processing"
+                                        autocomplete="current-password"
+                                        :show-label="trans('Show password')"
+                                        :hide-label="trans('Hide password')"
+                                        required
+                                    />
                                     <div v-if="errors.password" class="text-danger mt-1 small">{{ formatError(errors.password) }}</div>
                                 </div>
                             </div>
@@ -131,11 +132,12 @@
 import {computed} from 'vue';
 import {usePage, Link, useForm, Head} from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/App.vue';
+import PasswordInput from '@/Components/PasswordInput.vue';
 
 
 export default {
     components: {
-        AppLayout, Link, Head
+        AppLayout, Link, Head, PasswordInput
     },
     props: {
         errors: Object
@@ -166,6 +168,11 @@ export default {
                 'auth.failed': trans('These credentials do not match our records.'),
                 'auth.password': trans('The provided password is incorrect.'),
                 'auth.throttle': trans('Too many login attempts. Please try again in :seconds seconds.'),
+                'passwords.reset': trans('Your password has been reset.'),
+                'passwords.sent': trans('We have emailed your password reset link.'),
+                'passwords.throttled': trans('Please wait before retrying.'),
+                'passwords.token': trans('This password reset token is invalid.'),
+                'passwords.user': trans("We can't find a user with that email address."),
             };
 
             return authErrors[error] || trans(error) || error;

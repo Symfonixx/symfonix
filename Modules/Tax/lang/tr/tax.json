@@ -1,0 +1,9 @@
+{
+    "menu": {
+        "tax": "Vergi Yönetimi",
+        "tax_rates": "Vergi Oranları",
+        "ledger": "Vergi Defteri",
+        "reports": "Vergi Raporları",
+        "filing_report": "Beyanname Raporu"
+    }
+}

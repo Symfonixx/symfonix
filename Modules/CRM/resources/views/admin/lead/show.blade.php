@@ -9,11 +9,11 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::lead.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.leads.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.leads.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::lead.actions.back_to_list') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.leads.edit', $lead) }}">
+        <a class="btn btn-sm fw-bold btn-warning" href="{{ route('admin.leads.edit', $lead) }}" data-action="edit">
             <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit') }}
         </a>
     </div>
@@ -56,7 +56,8 @@
                             <i class="bi bi-telephone me-1"></i>{{ $lead->phone }}
                         </a>
                     @endif
-                    <a class="btn btn-primary btn-sm" href="{{ route('admin.leads.edit', $lead) }}">
+                    <x-ai::create-follow-up-button :lead="$lead" />
+                    <a class="btn btn-light-warning btn-sm" href="{{ route('admin.leads.edit', $lead) }}" data-action="edit">
                         <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit') }}
                     </a>
                 </div>
@@ -128,7 +129,7 @@
             <div class="mb-10">
                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
                     <h4 class="fw-bold mb-0">{{ __('crm::lead.fields.tags') }}</h4>
-                    <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-sm btn-light-primary">
+                    <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-sm btn-light-warning" data-action="edit">
                         <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit_tags') }}
                     </a>
                 </div>
@@ -147,7 +148,7 @@
                 <div class="mb-10">
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
                         <h4 class="fw-bold mb-0">{{ __('crm::lead.sections.custom_fields') }}</h4>
-                        <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-sm btn-light-primary">
+                        <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-sm btn-light-warning" data-action="edit">
                             <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit_custom_fields') }}
                         </a>
                     </div>
@@ -233,49 +234,50 @@
                 </div>
             @endif
 
-            <div class="d-flex gap-2 flex-wrap">
-                <a href="{{ route('admin.leads.index') }}" class="btn btn-light">
+            <div class="d-flex gap-2 flex-wrap sx-actions">
+                <a href="{{ route('admin.leads.index') }}" class="btn btn-light" data-action="back">
                     <i class="bi bi-arrow-left me-1"></i>{{ __('crm::lead.actions.back_to_list') }}
                 </a>
                 @if($lead->deal_id)
-                    <a href="{{ route('admin.deals.show', $lead->deal_id) }}" class="btn btn-success">
+                    <a href="{{ route('admin.deals.show', $lead->deal_id) }}" class="btn btn-light-info" data-action="view">
                         <i class="bi bi-briefcase me-1"></i>{{ __('crm::lead.conversion.view_deal') }}
                     </a>
-                @elseif(auth()->user()?->can('crm.leads.edit'))
+                @endif
+                <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-warning" data-action="edit">
+                    <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit') }}
+                </a>
+                @if(! $lead->deal_id && auth()->user()?->can('crm.leads.edit'))
                     @if($lead->company_name || $lead->company_id)
-                        <form method="POST" action="{{ route('admin.leads.convertCustomer', $lead) }}" class="d-inline">
+                        <form method="POST" action="{{ route('admin.leads.convertCustomer', $lead) }}" class="d-inline" data-action="convert">
                             @csrf
-                            <button type="submit" class="btn btn-warning">
+                            <button type="submit" class="btn btn-success">
                                 <i class="bi bi-person-check me-1"></i>{{ __('crm::lead.conversion.convert_customer') }}
                             </button>
                         </form>
                     @endif
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#convertLeadModal">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#convertLeadModal" data-action="convert">
                         <i class="bi bi-arrow-right-circle me-1"></i>{{ __('crm::lead.conversion.convert') }}
                     </button>
                 @endif
-                <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-primary">
-                    <i class="bi bi-pencil me-1"></i>{{ __('crm::lead.actions.edit') }}
-                </a>
                 @if($lead->blocked)
-                    <form method="POST" action="{{ route('admin.leads.unblock', $lead) }}">
+                    <form method="POST" action="{{ route('admin.leads.unblock', $lead) }}" data-action="warning">
                         @csrf
                         <button type="submit" class="btn btn-light-warning">
                             <i class="bi bi-unlock"></i> {{ __('crm::lead.actions.unblock') }}
                         </button>
                     </form>
                 @else
-                    <form method="POST" action="{{ route('admin.leads.block', $lead) }}">
+                    <form method="POST" action="{{ route('admin.leads.block', $lead) }}" data-action="warning">
                         @csrf
-                        <button type="submit" class="btn btn-danger">
+                        <button type="submit" class="btn btn-light-warning">
                             <i class="bi bi-lock"></i> {{ __('crm::lead.actions.block') }}
                         </button>
                     </form>
                 @endif
-                <form method="POST" action="{{ route('admin.leads.destroy', $lead) }}">
+                <form method="POST" action="{{ route('admin.leads.destroy', $lead) }}" data-action="delete">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-light-danger">
+                    <button type="submit" class="btn btn-danger">
                         <i class="bi bi-trash"></i> {{ __('Delete') }}
                     </button>
                 </form>
@@ -291,7 +293,7 @@
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title">{{ __('crm::lead.conversion.modal_title') }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" data-action="back"></button>
                         </div>
                         <div class="modal-body">
                             <p class="text-muted mb-5">{{ __('crm::lead.conversion.modal_hint') }}</p>
@@ -324,7 +326,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Cancel') }}</button>
                             <button type="submit" class="btn btn-success">{{ __('crm::lead.conversion.confirm') }}</button>
                         </div>
                     </form>

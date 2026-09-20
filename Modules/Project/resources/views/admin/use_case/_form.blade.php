@@ -1,5 +1,7 @@
 @php($useCaseData = $useCase ?? null)
 
+<x-ai::generate-form-button type="use_case" :banner="true" />
+
 <div class="row mb-8">
     <div class="col-xl-3">
         <div class="fs-6 fw-bold mt-2 mb-3">{{ __('project::use_case.fields.image') }}
@@ -16,6 +18,17 @@
                 <i class="bi bi-pencil-fill fs-7"></i>
                 <input type="file" name="image" accept=".png,.jpg,.jpeg,.webp" @if(!$useCaseData) required @endif/>
             </label>
+            <x-ai::edit-with-ai-button
+                :target="$useCaseData ? 'use_case' : null"
+                :id="$useCaseData?->id"
+                field="image"
+                :image-url="$useCaseData?->image ? $useCaseData->image_link : null"
+            />
+            <x-ai::create-with-ai-button
+                :target="$useCaseData ? 'use_case' : null"
+                :id="$useCaseData?->id"
+                field="image"
+            />
         </div>
         <div class="form-text">Recommended 800×600px or larger</div>
         @error('image')
@@ -29,7 +42,7 @@
         <label class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1"></i>{{ __('project::use_case.fields.title') }} <span class="text-danger">*</span></label>
     </div>
     <div class="col-xl-9 fv-row">
-        <input type="text" class="form-control form-control-solid @error('title') is-invalid @enderror"
+        <input id="title" type="text" class="form-control form-control-solid @error('title') is-invalid @enderror"
                name="title" value="{{ old('title', $useCaseData?->title) }}" required/>
         @error('title')<span class="invalid-feedback d-block"><strong>{{ $message }}</strong></span>@enderror
     </div>
@@ -197,3 +210,17 @@
 </div>
 
 <x-admin.auto-translate-checkbox :default="! $useCaseData" class="mb-0"/>
+
+@include('base::shared._tinymce')
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var techInput = document.querySelector('#kt_tagify_tech');
+        if (techInput && typeof Tagify !== 'undefined' && !techInput._tagify) {
+            new Tagify(techInput);
+        }
+    });
+</script>
+@endpush
+

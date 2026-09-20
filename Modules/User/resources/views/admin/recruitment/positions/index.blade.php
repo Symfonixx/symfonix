@@ -6,7 +6,7 @@
         ['label' => __('Job Positions')],
     ]"/>
     <x-can perform="hr.job_positions.create">
-        <a href="{{ route('admin.job-positions.create') }}" class="btn btn-sm fw-bold btn-primary">
+        <a href="{{ route('admin.job-positions.create') }}" class="btn btn-sm fw-bold btn-success" data-action="create">
             {{ __('Add Job Position') }} <i class="bi bi-plus-lg mx-1"></i>
         </a>
     </x-can>
@@ -38,7 +38,7 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-light-primary w-100">{{ __('Filter') }}</button>
+                    <button class="btn btn-light-primary w-100" data-action="filter">{{ __('Filter') }}</button>
                 </div>
             </form>
         </div>
@@ -67,12 +67,12 @@
                 <td>{{ $position->posted_at->format('Y-m-d') }}</td>
                 <td>{{ $position->applications_count }}</td>
                 <td><span class="badge badge-light-{{ $position->status === 'active' ? 'success' : 'secondary' }}">{{ __(ucfirst($position->status)) }}</span></td>
-                <td class="text-end">
-                    <a href="{{ route('admin.job-positions.edit', $position) }}" class="btn btn-sm btn-light-primary"><i class="bi bi-pencil"></i></a>
+                <td class="text-end sx-actions">
+                    <a href="{{ route('admin.job-positions.edit', $position) }}" class="btn btn-sm btn-light-warning" data-action="edit"><i class="bi bi-pencil"></i></a>
                     <form action="{{ route('admin.job-positions.destroy', $position) }}" method="POST" class="d-inline" onsubmit="return confirm('{{ __('Are you sure you want to delete it') }}')">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-sm btn-light-danger" type="submit"><i class="bi bi-trash"></i></button>
+                        <button class="btn btn-sm btn-light-danger" type="submit" data-action="delete"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>

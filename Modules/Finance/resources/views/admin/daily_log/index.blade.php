@@ -9,7 +9,7 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('finance::finance.menu.daily_log')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.finance.dashboard') }}">
             <i class="bi bi-graph-up me-1"></i>{{ __('finance::finance.menu.dashboard') }}
         </a>

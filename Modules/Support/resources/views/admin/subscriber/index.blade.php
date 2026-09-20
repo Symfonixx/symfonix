@@ -8,8 +8,8 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Newsletter Subscribers')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{ route('admin.subscribers.export') }}" class="btn btn-sm btn-primary">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a href="{{ route('admin.subscribers.export') }}" class="btn btn-sm btn-light-info" data-action="export">
             <i class="bi bi-file-earmark-excel"></i> {{ __('Export to Excel') }}
         </a>
         <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#importModal">
@@ -85,13 +85,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="importModalLabel">{{ __('Import Subscribers from Excel') }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                 </div>
                 <form action="{{ route('admin.subscribers.import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <a href="{{ route('admin.subscribers.importSample') }}" class="btn btn-sm btn-light-primary">
+                            <a href="{{ route('admin.subscribers.importSample') }}" class="btn btn-sm btn-light-info" data-action="export">
                                 <i class="bi bi-download"></i> {{ __('Download Sample File') }}
                             </a>
                         </div>
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Cancel') }}</button>
                         <button type="submit" class="btn btn-primary">{{ __('Import') }}</button>
                     </div>
                 </form>

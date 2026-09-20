@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Symfonix Business Suite dokümantasyonu — CRM, İK, Finans, Vergi, Raporlama ve CMS modüllerini tek bir yüksek performanslı iş platformunda birleştiren bütünleşik sistem.">
+  <meta name="description" content="Symfonix Business Suite dokümantasyonu — CRM, İK, Finans, Vergi, Raporlama, CMS ve yapay zeka (Ask Symfonix) modüllerini tek bir yüksek performanslı iş platformunda birleştiren bütünleşik sistem.">
   <title>Symfonix Business Suite — Dokümantasyon</title>
   <link rel="alternate" hreflang="en" href="../index.html">
   <link rel="alternate" hreflang="ar" href="../ar/index.html">
@@ -31,6 +31,7 @@
         <a href="#introduction">Giriş</a>
         <a href="#architecture">Mimari</a>
         <a href="#modules">Modüller</a>
+        <a href="#ai">Yapay zeka</a>
         <a href="#getting-started">Başlangıç</a>
       </nav>
 
@@ -86,12 +87,15 @@
             <ul class="sidebar-nav">
               <li><a href="#modules">Temel Modüller</a></li>
               <li><a href="#crm">CRM ve Pipeline</a></li>
+              <li><a href="#lifecycle">Satış ve teslimat yaşam döngüsü</a></li>
+              <li><a href="#project">Projeler ve vaka çalışmaları</a></li>
               <li><a href="#hr">İnsan Kaynakları</a></li>
               <li><a href="#finance">Finans</a></li>
               <li><a href="#currency-setup">Çoklu Para Birimi</a></li>
               <li><a href="#tax">Vergi</a></li>
               <li><a href="#reporting">Raporlar</a></li>
               <li><a href="#cms">İçerik Yönetimi</a></li>
+              <li><a href="#ai">Yapay zeka (Ask Symfonix)</a></li>
               <li><a href="#integrations">API ve Entegrasyonlar</a></li>
             </ul>
           </div>
@@ -118,7 +122,7 @@
           <span class="hero-badge">Kurumsal Platform · v1.0</span>
           <h1 id="hero-title">Tüm iş fonksiyonları için tek platform.</h1>
           <p class="hero-lead">
-            Symfonix Business Suite; CRM, İK, Finans, Vergi, Raporlama, CMS ve temel operasyonel süreçleri tek bir yüksek performanslı, modüler iş yönetim platformunda birleştirerek parçalı SaaS yapılarından doğan entegrasyon yükünü ortadan kaldırır.
+            Symfonix Business Suite; CRM, İK, Finans, Vergi, Raporlama, CMS, yapay zeka (Ask Symfonix, içerik üretimi, görsel düzenleme ve genel sohbet botu) ve temel operasyonel süreçleri tek bir yüksek performanslı, modüler iş yönetim platformunda birleştirerek parçalı SaaS yapılarından doğan entegrasyon yükünü ortadan kaldırır.
           </p>
           <div class="hero-actions">
             <a href="#getting-started" class="btn btn-primary">Hemen başla</a>
@@ -127,7 +131,7 @@
           </div>
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-value">15</div>
+              <div class="stat-value">16</div>
               <div class="stat-label">İş modülü</div>
             </div>
             <div class="stat-item">
@@ -259,6 +263,7 @@
               <span class="arch-chip">Tax</span>
               <span class="arch-chip">Reporting</span>
               <span class="arch-chip">CMS</span>
+              <span class="arch-chip">AI</span>
               <span class="arch-chip">Project</span>
               <span class="arch-chip">Product</span>
               <span class="arch-chip">Support</span>
@@ -289,7 +294,7 @@
         <section class="doc-section" id="core-engine">
           <h3>Çekirdek Motor</h3>
           <p>
-            <strong>Core</strong> ve <strong>Base</strong> modülleri platformun omurgasını oluşturur. Core kurulum komutlarını ve ortak servisleri sunarken, Base genel ayarları, ülkeleri, şubeleri, SEO, yedekleme, <code>/humans.txt</code> ve <strong>API ve Entegrasyonlar</strong> (SMTP, WhatsApp Cloud API) ekranını yönetir. Sistem Yapılandırmaları ayrıca Fixer ve ZKTeco parmak izi ayarlarını içerir.
+            <strong>Core</strong> ve <strong>Base</strong> modülleri platformun omurgasını oluşturur. Core kurulum komutlarını ve ortak servisleri sunarken, Base genel ayarları, ülkeleri, şubeleri, SEO, yedekleme, <code>/humans.txt</code> ve <strong>API ve Entegrasyonlar</strong> (SMTP, WhatsApp Cloud API, OpenAI, Gemini ve Ask Symfonix sağlayıcısı) ekranını yönetir. Sistem Yapılandırmaları ayrıca Fixer ve ZKTeco parmak izi ayarlarını içerir. <strong>AI</strong> modülü diğer iş modülleri gibi yüklenir.
           </p>
           <ol>
             <li><strong>Modül yaşam döngüsü</strong> — etkinleştirme, devre dışı bırakma ve migration işlemleri.</li>
@@ -353,12 +358,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>CRM</strong></td><td>Satış ve ilişkiler</td><td>Lead, deal, şirket, teklif, pipeline, abonelik, e-posta/WhatsApp pazarlama, tahminler, pano</td></tr>
+                <tr><td><strong>Core</strong></td><td>Platform önyükleme</td><td><code>app:install</code>, ortak yardımcılar, modül yaşam döngüsü</td></tr>
+                <tr><td><strong>Base</strong></td><td>Sistem ayarları</td><td>Ülkeler, şubeler, SEO, yedekleme, SMTP, WhatsApp, OpenAI/Gemini kimlik bilgileri</td></tr>
+                <tr><td><strong>AI</strong></td><td>Asistan ve üretim</td><td>Ask Symfonix, genel sohbet botu, form/teklif/takip üretimi, Gemini görsel oluşturma/düzenleme</td></tr>
+                <tr><td><strong>CRM</strong></td><td>Satış ve ilişkiler</td><td>Lead, deal, şirket, teklif, pipeline, abonelik, e-posta/WhatsApp pazarlama, tahminler, pano, yapay zeka teklif ve takip taslakları</td></tr>
                 <tr><td><strong>User</strong></td><td>İK ve erişim</td><td>Kullanıcılar, çalışanlar, roller, izinler, parmak izi yoklama, müşteri portalı</td></tr>
                 <tr><td><strong>Finance</strong></td><td>Muhasebe</td><td>Çoklu para birimli defter, faturalar, alacaklar, maaşlar, komisyonlar, giderler</td></tr>
                 <tr><td><strong>Tax</strong></td><td>Uyumluluk</td><td>Vergi oranları, çıktı/girdi vergi defteri, beyan raporları</td></tr>
                 <tr><td><strong>Reporting</strong></td><td>Analitik</td><td>Finans, satış, pazarlama, operasyon ve çalışan raporları (CSV/PDF)</td></tr>
-                <tr><td><strong>Cms</strong></td><td>İçerik</td><td>Sayfalar, blog, SSS, müşteri logoları, çok dilli içerik</td></tr>
+                <tr><td><strong>Cms</strong></td><td>İçerik</td><td>Sayfalar, blog, SSS, müşteri logoları, çok dilli içerik, yapay zeka form ve görsel düzenleme</td></tr>
                 <tr><td><strong>Product</strong></td><td>Katalog</td><td>Ürün kategorileri, katalog öğeleri, satış entegrasyonu</td></tr>
                 <tr><td><strong>Project</strong></td><td>Teslimat</td><td>Projeler, durumlar, use case kayıtları</td></tr>
                 <tr><td><strong>Support</strong></td><td>Destek</td><td>Ticket, aboneler ve şikayet yönetimi</td></tr>
@@ -378,13 +386,67 @@
             <ul>
               <li><strong>Lead yönetimi</strong>, özel alanlar, etiketler ve kaynak takibi</li>
               <li><strong>Kanban pipeline</strong> ve <code>sales.deals.view_all</code> ile tüm fırsatları görme</li>
-              <li><strong>Teklifler</strong> — kalem, vergi/iskonto, PDF ve müşterinin kabul/ret ettiği genel bağlantı</li>
+              <li><strong>Teklifler</strong> — kalem, vergi/iskonto, PDF, müşterinin kabul/ret ettiği genel bağlantı ve şirket+deal’dan isteğe bağlı yapay zeka taslağı</li>
               <li><strong>Şirket kayıtları</strong> ile kontak, deal, proje ve abonelik ilişkileri</li>
-              <li><strong>Aktivite ve görevler</strong> ile satış koordinasyonu</li>
+              <li><strong>Aktivite ve görevler</strong> ile satış koordinasyonu; lead kaydında yapay zeka ile takip taslağı</li>
               <li><strong>Abonelikler</strong> ile tekrar eden hizmet sözleşmeleri</li>
               <li><strong>E-posta ve WhatsApp pazarlama</strong> — kuyruklu kampanyalar, şablonlar ve teslimat günlüğü</li>
               <li><strong>Satış tahminleri</strong> — aşama kazanma olasılığına göre ağırlıklı ciro</li>
               <li><strong>Özelleştirilebilir CRM panosu</strong></li>
+            </ul>
+            <p>Aşama geçişleri diğer modüllerin dinlediği olayları tetikler (ör. Closed Won bir proje ve finans kaydı oluşturur). Tam yol için <a href="#lifecycle">satış ve teslimat yaşam döngüsü</a>.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="lifecycle">
+          <h2>Satış ve teslimat yaşam döngüsü</h2>
+          <p class="section-intro">
+            Ticari yol <strong>talep → lead → deal → (teklif) → kazanıldı → proje</strong>. Vaka çalışmaları ve abonelikler bu yolun yanındadır; deal kazanmak vaka çalışması yayınlamaz, teklif fatura oluşturmaz.
+          </p>
+          <div class="lifecycle-flow" role="img" aria-label="Talep, lead, deal, proje">
+            <span class="arch-chip">Talep</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Lead</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Şirket + kontak</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Deal</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Teklif</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Kazanıldı</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Proje</span>
+            <span class="lifecycle-arrow" aria-hidden="true">→</span>
+            <span class="arch-chip">Vaka çalışması</span>
+          </div>
+          <p class="lifecycle-note">Sohbet botu talep kaydı olmadan doğrudan lead oluşturabilir. Vaka çalışmaları teslimattan sonra elle yazılır.</p>
+          <ul>
+            <li><strong>Talep</strong> — <code>/contact-us</code> bir iletişim formu kaydeder; lead otomatik oluşmaz. Listede <strong>Leade dönüştür</strong> veya yalnızca <strong>Kontakta dönüştür</strong>.</li>
+            <li><strong>Sohbet lead’i</strong> — ad + geçerli e-posta sonrası <code>source = website</code>.</li>
+            <li><strong>Deal’e dönüştür</strong> — şirket ve birincil kontak bulunur/oluşturulur, varsayılan aşamada (Lead) deal açılır; bütçe ve hizmetler kopyalanır.</li>
+            <li><strong>Müşteriye dönüştür</strong> — deal olmadan hesap.</li>
+            <li><strong>Pipeline</strong>: Lead %10 → Qualified %25 → Proposal %50 → Negotiation %75 → Closed Won %100 / Closed Lost %0.</li>
+            <li><strong>Closed Won</strong> — <strong>Planning</strong> durumunda proje + gelir kaydı ve bekleyen komisyon. Dönüştürme modalında doğrudan Won seçmek olayı tetiklemez; sonra aşamayı hareket ettirin.</li>
+            <li><strong>Teklif</strong> deal’dan kopyalanır (<code>draft</code> → gönderildi). Müşteri kabulü deal’i kazanır ve projeyi bağlar. Red yalnızca teklifi değiştirir. <strong>Fatura</strong> kazanılmış deal’dan elle oluşturulur.</li>
+            <li><strong>Abonelikler</strong> şirkete bağlıdır, deal’e değil.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="project">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Teslimat</span>
+              <span class="tag tag--neutral">Vaka çalışmaları</span>
+            </div>
+            <h3>Projeler ve vaka çalışmaları</h3>
+            <p>
+              <strong>Proje</strong> kazanılmış deal’dan oluşan teslimat kaydıdır. <strong>Use case</strong> (vaka çalışması) kamuya açık bir pazarlama sayfasıdır. Bağlanabilirler; proje bitince vaka otomatik yayınlanmaz.
+            </p>
+            <ul>
+              <li>Durumlar: Planning → Development → QA → Completed → On Hold. Yeni proje Planning ile başlar.</li>
+              <li>Vaka çalışmaları <strong>Proje → Use Cases</strong>, isteğe bağlı bağlı proje. Genel site: <code>/use-cases</code>. Yapay zeka form ve görseli doldurabilir. İzin: <code>project.use_cases.*</code>.</li>
+              <li>Tamamlanan projeler portal <strong>testimonial</strong> alabilir — vaka çalışmasından ayrıdır.</li>
             </ul>
           </div>
         </section>
@@ -492,12 +554,60 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
             <h3>İçerik Yönetimi</h3>
             <p>CMS modülü kamuya açık web sitesini ve içerik yönetim deneyimini besler; sayfalar, blog yazıları, SSS ve müşteri logolarını yönetir.</p>
             <ul>
-              <li><strong>Statik sayfalar</strong> ve slug bazlı yönlendirme</li>
-              <li><strong>Blog yönetimi</strong> ve SEO metadataları</li>
+              <li><strong>Statik sayfalar</strong> ve slug bazlı yönlendirme; isteğe bağlı yapay zeka form doldurma ve görsel düzenleme</li>
+              <li><strong>Blog yönetimi</strong>, SEO metadataları ve aynı yapay zeka yardımcıları</li>
               <li><strong>SSS yönetimi</strong> ve bilgi tabanı yapıları</li>
               <li><strong>Müşteri logoları</strong></li>
               <li><strong>Yerelleştirme</strong> ile İngilizce, Arapça, Türkçe ve Almanca içerik desteği</li>
             </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="ai">
+          <div class="module-block">
+            <div class="module-meta">
+              <span class="tag tag--primary">Yapay zeka</span>
+              <span class="tag tag--neutral">OpenAI + Gemini</span>
+            </div>
+            <h3>Yapay zeka — Ask Symfonix, içerik üretimi ve genel sohbet botu</h3>
+            <p>
+              <strong>AI</strong> modülü (<code>Modules/AI</code>) canlı Symfonix verisi üzerinde asistanlar ve üretim ekler. İsteğe bağlıdır: API anahtarı olmadan CRM, Finans ve CMS çalışmaya devam eder. OpenAI ve/veya Gemini <strong>API ve Entegrasyonlar → Yapay zeka entegrasyonları</strong> altında kaydedildiğinde dört yetenek açılır. Veritabanı değerleri <code>.env</code> üzerine yazılır.
+            </p>
+            <p>
+              Sağlayıcılar bilinçli olarak ayrılmıştır. Ask Symfonix ve genel sohbet botu aynı yönlendiriciyi paylaşır (<code>auto</code> önce OpenAI, sonra Gemini). TinyMCE ve yapılandırılmış form üretimi OpenAI’yi tercih eder, Gemini analiz modeline düşer. Görsel oluşturma/düzenleme yalnızca Gemini görsel modelini kullanır.
+            </p>
+            <h4>Ask Symfonix</h4>
+            <p>
+              Yönetim başlığındaki (ve panodaki öneri çiplerindeki) salt okunur iş asistanıdır. <code>ai.assistant.view</code> gerekir. Sohbetler kullanıcı başına <code>ai_conversations</code> / <code>ai_messages</code> içinde saklanır. Model yalnızca araç sonuçlarından yanıt verir; sayı, ad veya durum uydurmaz; kullanıcının diline uyar. Kayıt oluşturmaz, e-posta veya WhatsApp göndermez. Her araç, oturum açmış kullanıcının ilgili Spatie iznine sahip olması halinde görünür.
+            </p>
+            <ul>
+              <li>Bugün işte neler oluyor? En çok geciken CRM görevleri kimin? Hangi projeler gecikti?</li>
+              <li>Bu ay satış? Geçen yıla göre gelir büyüme oranı?</li>
+              <li>Ciroya göre en iyi müşteriler? Bugün hangi lead’ler takip edilmeli?</li>
+              <li>Geciken faturalar, site ziyaretçileri, en çok satan hizmetler, çalışan raporu?</li>
+            </ul>
+            <p>Araçlar: iş özeti, günün odağı, lead/müşteri/proje/fatura/ödeme/gider/çalışan/ticket istatistikleri, geciken iş, ziyaretçiler, en çok satan hizmetler, kayıt arama ve takip taslağı.</p>
+            <h4>İçerik, teklif ve takipler</h4>
+            <ul>
+              <li><strong>TinyMCE «Yapay zeka ile oluştur»</strong> — editör HTML’ini bir istemden üretmek veya yeniden yazmak.</li>
+              <li><strong>Form doldurma</strong> — blog, sayfa, hizmet, ürün ve use case için yapılandırılmış JSON (başlıklar, İngilizce kebab-case slug, SEO, HTML gövde). Metin yönetim dilini izler.</li>
+              <li><strong>Teklif üret</strong> — şirket + deal’dan yayınlanmış hizmet/ürün (veya deal kalemleri) ile taslak. <code>sales.quotes.create</code> gerekir; kayıttan önce incelenir.</li>
+              <li><strong>Lead takibi</strong> — aktivite taslağı (tür, başlık, gövde, zaman). <code>crm.activities.create</code> gerekir.</li>
+            </ul>
+            <h4>Görseller ve genel sohbet botu</h4>
+            <p>
+              Gemini mevcut bir görseli düzenleyebilir veya istemden (en fazla 500 karakter) yeni görsel üretebilir. İsteğe bağlı marka logosu <strong>Ayarlar → Marka</strong> kaynaklıdır. İzinli hedefler: ürün, CMS sayfası, blog, use case — her yazma ilgili düzenleme iznini gerektirir.
+            </p>
+            <p>
+              Kamuya açık BotMan widget’ı aynı anahtarları kullanır ama <strong>kamuya güvenli</strong> araç seti: yayınlanmış hizmetleri listele/oku, şirket profili, web lead kaydı (ad + geçerli e-posta) ve 2–4 hızlı yanıt. CRM, finans veya İK verisi sızdırmaz. IP başına hız sınırı (varsayılan 20 / 60 sn). Yapay zeka kapalıysa (<code>AI_CHATBOT_ENABLED=false</code>) katalog yanıtı devam eder.
+            </p>
+            <p>Ortam: <code>OPENAI_API_KEY</code>, <code>OPENAI_MODEL</code>, <code>GEMINI_API_KEY</code>, <code>GEMINI_IMAGE_MODEL</code>, <code>GEMINI_ANALYSIS_MODEL</code>, <code>AI_ASSISTANT_PROVIDER=auto</code>, <code>AI_CHATBOT_ENABLED=true</code>.</p>
+            <div class="callout callout--info">
+              <span class="callout-icon" aria-hidden="true">ℹ️</span>
+              <div class="callout-content">
+                <p><strong>Güvenlik.</strong> <code>ai.assistant.view</code> yalnızca canlı operasyon verisini sorgulaması gereken personele verin. Araçlar yine modül izinlerine uyar. Genel sohbet botu yönetim araçlarını çağırmaz.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -507,6 +617,7 @@ php artisan finance:fetch-exchange-rates --base=EUR --sync</code></pre>
           <ul>
             <li><strong>SMTP</strong> — APIs &amp; Integrations → E-posta (pazarlama ve bildirimler kuyruk işçisi gerektirir).</li>
             <li><strong>WhatsApp Cloud API</strong> — erişim jetonu ve Phone Number ID; Meta’da onaylı şablonlar. Varsayılan Graph sürümü <code>v21.0</code>.</li>
+            <li><strong>OpenAI, Gemini ve Ask Symfonix</strong> — API ve Entegrasyonlar → Yapay zeka entegrasyonları. Ayrıntılar için <a href="#ai">yapay zeka</a>.</li>
             <li><strong>Fixer</strong> — Sistem Yapılandırmaları → Finans.</li>
             <li><strong>ZKTeco parmak izi</strong> — Sistem Yapılandırmaları → Fingerprint (TCP <code>4370</code>).</li>
           </ul>
@@ -555,6 +666,11 @@ FINANCE_SUPPORTED_CURRENCIES=USD,EUR,GBP,TRY
 FIXER_API_KEY=
 FIXER_BASE_URL=https://data.fixer.io/api
 
+GEMINI_API_KEY=
+OPENAI_API_KEY=
+AI_ASSISTANT_PROVIDER=auto
+AI_CHATBOT_ENABLED=true
+
 DOCS_ENABLED=true</code></pre>
             </li>
             <li>
@@ -589,7 +705,7 @@ php artisan module:migrate Finance</code></pre>
 
         <section class="doc-section" id="permissions">
           <h3>Yetkiler ve Roller</h3>
-          <p>Platform, rol ve izin yönetimi için <code>Spatie Laravel Permission</code> kullanır. İzinler kurulumda <code>group.tab.action</code> kataloğundan oluşturulur (eski adlar mevcut rollere eşlenir) ve yönetim panelinden rollere atanır. Örnekler: <code>sales.quotes.create</code>, <code>marketing.whatsapp.send</code>, <code>tax.rates.view</code>, <code>reporting.finance.export</code>, <code>hr.fingerprint.manage</code>. Kurulum Admin ile birlikte İK, Satış, Finans, Proje ve Operasyon yöneticisi senaryo rollerini ekler.</p>
+          <p>Platform, rol ve izin yönetimi için <code>Spatie Laravel Permission</code> kullanır. İzinler kurulumda <code>group.tab.action</code> kataloğundan oluşturulur (eski adlar mevcut rollere eşlenir) ve yönetim panelinden rollere atanır. Örnekler: <code>ai.assistant.view</code>, <code>sales.quotes.create</code>, <code>marketing.whatsapp.send</code>, <code>tax.rates.view</code>, <code>reporting.finance.export</code>, <code>hr.fingerprint.manage</code>. İçerik, görsel, teklif ve takip üretimi ilgili oluşturma/düzenleme anahtarlarını yeniden kullanır. Kurulum Admin ile birlikte İK, Satış, Finans, Proje ve Operasyon yöneticisi senaryo rollerini ekler.</p>
         </section>
 
         <section class="doc-section" id="testing">
@@ -631,7 +747,7 @@ php artisan view:cache</code></pre>
           <div class="callout callout--warning">
             <span class="callout-icon" aria-hidden="true">⚠️</span>
             <div class="callout-content">
-              <p><strong>Prodüksiyon kontrolü:</strong> <code>APP_DEBUG=false</code> olmalı, iki faktörlü doğrulama etkinleştirilmeli ve <code>.env</code> sürüm kontrolüne eklenmemelidir. Geçerli bir Fixer anahtarı yapılandırın ve kayıtlı kurlar eskidiğinde otomatik reddedilmediği için <strong>Sistem Yapılandırmaları → Finans</strong> ekranındaki son başarılı güncellemeyi izleyin. WhatsApp kimlik bilgilerini <strong>API ve Entegrasyonlar</strong> altında ayarlayın. <code>/docs</code> açık olmasın istiyorsanız <code>DOCS_ENABLED=false</code> kullanın.</p>
+              <p><strong>Prodüksiyon kontrolü:</strong> <code>APP_DEBUG=false</code> olmalı, iki faktörlü doğrulama etkinleştirilmeli ve <code>.env</code> sürüm kontrolüne eklenmemelidir. Geçerli bir Fixer anahtarı yapılandırın ve kayıtlı kurlar eskidiğinde otomatik reddedilmediği için <strong>Sistem Yapılandırmaları → Finans</strong> ekranındaki son başarılı güncellemeyi izleyin. WhatsApp kimlik bilgilerini <strong>API ve Entegrasyonlar</strong> altında ayarlayın. Ask Symfonix, üretim, görseller veya genel sohbet botu kullanıyorsanız OpenAI ve/veya Gemini’yi <strong>Yapay zeka entegrasyonları</strong> altında ayarlayın ve <code>ai.assistant.view</code> iznini canlı veriyi sorgulaması gereken personelle sınırlayın. <code>/docs</code> açık olmasın istiyorsanız <code>DOCS_ENABLED=false</code> kullanın.</p>
             </div>
           </div>
         </section>

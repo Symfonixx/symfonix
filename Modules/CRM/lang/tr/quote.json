@@ -66,6 +66,24 @@
         "reject": "Teklifi Reddet",
         "back_to_list": "Tekliflere Dön"
     },
+    "ai": {
+        "button": "Yapay zekâ ile oluştur",
+        "tooltip": "Seçilen şirket ve anlaşmadan sözleşme niteliğinde teklif taslağı oluşturur",
+        "banner_title": "Teklifi yapay zekâ ile oluştur",
+        "banner_hint": "Seçilen şirket ve anlaşmayı kullanarak kalemleri ve ticari şartları sizinle müşteri arasındaki sözleşme olarak taslaklar.",
+        "modal_title": "Yapay zekâ ile teklif oluştur",
+        "context_label": "Seçilen",
+        "prompt_label": "Ek talimatlar (isteğe bağlı)",
+        "prompt_placeholder": "örn. ödemeyi iki milestona böl, 14 gün geçerlilik, keşif workshop’u ekle.",
+        "generate": "Oluştur ve formu doldur",
+        "generating": "Sözleşme şartları ve kalemler hazırlanıyor...",
+        "applied": "Teklif şirket ve anlaşmadan dolduruldu. Kaydetmeden önce gözden geçirin.",
+        "overwrite_confirm": "Mevcut şartlar, notlar ve kalemler değiştirilecek. Devam edilsin mi?",
+        "company_required": "Önce bir şirket seçin.",
+        "deal_required": "Önce bir anlaşma seçin.",
+        "no_catalog": "Teklif oluşturmadan önce en az bir hizmet veya ürün ekleyin ya da anlaşmaya hizmet bağlayın.",
+        "no_lines": "Yapay zekâ kalemleri katalogla eşleştiremedi. Anlaşmaya hizmet bağlayın veya tekrar deneyin."
+    },
     "messages": {
         "created": "Teklif başarıyla oluşturuldu.",
         "updated": "Teklif başarıyla güncellendi.",

@@ -66,24 +66,24 @@
                     </span>
                 </td>
                 <td>{{$testimonial->created_at->diffForHumans() }}</td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <div class="d-flex align-items-center justify-content-end gap-2">
                         @if($testimonial->status !== 'Published')
                             <form action="{{ route('admin.testimonials.approve', $testimonial) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-sm btn-success" title="{{ __('Approve for Website') }}">
+                                <button type="submit" class="btn btn-sm btn-success" title="{{ __('Approve for Website') }}" data-action="approve">
                                     <i class="bi bi-check-lg"></i>
                                 </button>
                             </form>
                         @else
                             <form action="{{ route('admin.testimonials.unpublish', $testimonial) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-sm btn-warning" title="{{ __('Remove from Website') }}">
+                                <button type="submit" class="btn btn-sm btn-light-info" title="{{ __('Remove from Website') }}" data-action="view">
                                     <i class="bi bi-eye-slash"></i>
                                 </button>
                             </form>
                         @endif
-                        <button type="button" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#testimonialModal{{ $testimonial->id }}">
+                        <button type="button" class="btn btn-sm btn-light-info" data-bs-toggle="modal" data-bs-target="#testimonialModal{{ $testimonial->id }}">
                             <i class="bi bi-eye"></i> {{ __('View Details') }}
                         </button>
                         <a href="{{route('admin.testimonials.edit' , $testimonial->id)}}"
@@ -102,7 +102,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="testimonialModalLabel{{ $testimonial->id }}">{{ __('Testimonial Details') }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row mb-3">
@@ -150,7 +150,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Close') }}</button>
                         </div>
                     </div>
                 </div>

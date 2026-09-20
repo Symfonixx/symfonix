@@ -1,0 +1,91 @@
+{
+    "title": "Ask Symfonix AI",
+    "subtitle": "Your AI business assistant",
+    "open": "Ask Symfonix AI",
+    "open_short": "Ask AI",
+    "close": "Close",
+    "placeholder": "Ask about sales, leads, invoices…",
+    "send": "Send",
+    "copy": "Copy",
+    "copied": "Copied",
+    "regenerate": "Regenerate",
+    "new_chat": "New chat",
+    "clear": "Delete conversation",
+    "history": "Chat history",
+    "history_empty": "No previous chats yet",
+    "greeting": "Hi, :name",
+    "empty_title": "How can I help today?",
+    "empty_hint": "Ask about the business data you can already see in Symfonix.",
+    "you": "You",
+    "assistant": "Symfonix AI",
+    "ready": "Ready",
+    "offline": "Not configured",
+    "typing": "Thinking…",
+    "composer_hint": "Enter to send · Shift+Enter for a new line",
+    "sources": "Sources",
+    "based_on": "Based on application data",
+    "not_configured": "Ask Symfonix AI is not configured yet. Add an OpenAI or Gemini API key in Integrations.",
+    "uncategorized": "Uncategorized",
+    "unassigned": "Unassigned",
+    "dashboard": {
+        "title": "Ask Symfonix AI",
+        "subtitle": "Ask a question or pick a prompt to open your AI assistant."
+    },
+    "suggestions": {
+        "today": {
+            "label": "What's happening today?",
+            "prompt": "What's happening in my business today?"
+        },
+        "overdue_tasks": {
+            "label": "Most overdue tasks",
+            "prompt": "Who has the most overdue tasks?"
+        },
+        "overdue_projects": {
+            "label": "Overdue projects",
+            "prompt": "Which projects are overdue?"
+        },
+        "revenue": {
+            "label": "Sales this month",
+            "prompt": "How much sales did we make this month?"
+        },
+        "growth": {
+            "label": "Revenue growth rate",
+            "prompt": "What is our revenue growth rate compared with last year?"
+        },
+        "customers": {
+            "label": "Top customers",
+            "prompt": "Who are the best customers by revenue?"
+        },
+        "leads": {
+            "label": "Leads to follow today",
+            "prompt": "Which leads should we follow up with today?"
+        },
+        "invoices": {
+            "label": "Overdue invoices",
+            "prompt": "How many overdue invoices are there?"
+        },
+        "visitors": {
+            "label": "Website visitors",
+            "prompt": "How many website visitors did we get this month, and which pages are most visited?"
+        },
+        "services": {
+            "label": "Best-selling services",
+            "prompt": "Which services are selling best this month?"
+        },
+        "employees": {
+            "label": "Employee report",
+            "prompt": "Give me an employee report: headcount, attendance, and utilization this month."
+        }
+    },
+    "errors": {
+        "connect": "I couldn't connect to the AI service right now. Please try again.",
+        "not_configured": "Ask Symfonix AI is not configured yet. Ask an administrator to add an AI API key.",
+        "rate_limit": "The AI service is busy right now. Please try again in a moment.",
+        "empty": "I didn't get a usable answer. Please try rephrasing your question.",
+        "incomplete": "I couldn't finish analyzing that. Please try a more specific question.",
+        "permission": "You don't have permission to access that information.",
+        "not_found": "I couldn't find a matching record.",
+        "unknown_tool": "That request isn't available.",
+        "generic": "Something went wrong. Please try again."
+    }
+}

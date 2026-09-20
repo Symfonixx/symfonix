@@ -1,5 +1,6 @@
 {
     "Core": true,
+    "AI": true,
     "User": true,
     "Base": true,
     "Cms": true,

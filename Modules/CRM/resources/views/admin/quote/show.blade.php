@@ -15,37 +15,39 @@
         };
     @endphp
     <x-admin.breadcrumb :pageTitle="$quote->quote_number" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex gap-2 flex-wrap">
-        <a href="{{ route('admin.quotes.index') }}" class="btn btn-sm btn-light-primary">
+    <div class="d-flex gap-2 flex-wrap sx-actions">
+        <a href="{{ route('admin.quotes.index') }}" class="btn btn-sm btn-light" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::quote.actions.back_to_list') }}
         </a>
-        <a href="{{ route('admin.quotes.pdf', $quote) }}" class="btn btn-sm btn-light-primary">
+        <a href="{{ route('admin.quotes.pdf', $quote) }}" class="btn btn-sm btn-light-info" data-action="export">
             <i class="bi bi-file-pdf me-1"></i>{{ __('crm::quote.actions.download_pdf') }}
         </a>
         @if(in_array($quote->status, ['draft', 'sent'], true))
-            <a href="{{ route('admin.quotes.edit', $quote) }}" class="btn btn-sm btn-light">
+            <a href="{{ route('admin.quotes.edit', $quote) }}" class="btn btn-sm btn-light-warning" data-action="edit">
                 <i class="bi bi-pencil me-1"></i>{{ __('crm::quote.actions.edit') }}
             </a>
         @endif
         @if($quote->status === 'draft')
-            <form method="POST" action="{{ route('admin.quotes.sent', $quote) }}">
+            <form method="POST" action="{{ route('admin.quotes.sent', $quote) }}" data-action="warning">
                 @csrf
-                <button type="submit" class="btn btn-sm btn-primary">
+                <button type="submit" class="btn btn-sm btn-light-warning">
                     <i class="bi bi-send me-1"></i>{{ __('crm::quote.actions.mark_sent') }}
                 </button>
             </form>
         @endif
         @if(!in_array($quote->status, ['accepted', 'void'], true))
             <form method="POST" action="{{ route('admin.quotes.void', $quote) }}"
+                  data-action="warning"
                   data-confirm="{{ __('crm::quote.messages.confirm_void') }}">
                 @csrf
-                <button type="submit" class="btn btn-sm btn-light-danger">
+                <button type="submit" class="btn btn-sm btn-light-warning">
                     <i class="bi bi-slash-circle me-1"></i>{{ __('crm::quote.actions.void') }}
                 </button>
             </form>
         @endif
         @if($quote->status !== 'accepted')
             <form method="POST" action="{{ route('admin.quotes.destroy', $quote) }}"
+                  data-action="delete"
                   data-confirm="{{ __('crm::quote.messages.confirm_delete') }}">
                 @csrf
                 @method('DELETE')

@@ -16,14 +16,14 @@
         };
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::subscription.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.subscriptions.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.subscriptions.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::subscription.actions.back_to_list') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.companies.show', $subscription->company_id) }}">
+        <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.companies.show', $subscription->company_id) }}">
             <i class="bi bi-building me-1"></i>{{ $subscription->company?->name }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.subscriptions.edit', $subscription->id) }}">
+        <a class="btn btn-sm fw-bold btn-warning" href="{{ route('admin.subscriptions.edit', $subscription->id) }}">
             <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
         </a>
     </div>
@@ -163,10 +163,10 @@
                             </td>
                             <td>{{ $invoice->issued_at?->format('Y-m-d') }}</td>
                             <td>{{ $invoice->due_at?->format('Y-m-d') ?: '—' }}</td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}"
-                                   class="btn btn-sm btn-light-primary"
-                                   title="{{ __('finance::invoice.actions.download_pdf') }}">
+                                   class="btn btn-sm btn-light-info"
+                                   title="{{ __('finance::invoice.actions.download_pdf') }}" data-action="export">
                                     <i class="bi bi-file-pdf me-1"></i>{{ __('finance::invoice.actions.download_pdf') }}
                                 </a>
                             </td>

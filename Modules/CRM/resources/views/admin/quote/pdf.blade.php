@@ -76,7 +76,7 @@
                         @endif
                     </div>
                 </td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     @if($companyBranding['logo_path'])
                         <img src="{{ $companyBranding['logo_path'] }}" class="issuer-logo" alt="{{ $companyBranding['name'] }}">
                     @else
@@ -101,7 +101,7 @@
                         @if($companyBranding['address']){{ $companyBranding['address'] }}@endif
                     </div>
                 </td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <div class="title">{{ __('crm::quote.pdf.title') }} {{ $quote->quote_number }}</div>
                     <div class="meta">
                         {{ __('crm::quote.pdf.issue_date') }}: {{ $quote->issued_at?->format('Y-m-d') }}

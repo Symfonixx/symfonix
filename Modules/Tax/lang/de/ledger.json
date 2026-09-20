@@ -1,0 +1,30 @@
+{
+    "pages": {
+        "index_title": "Steuerbuch"
+    },
+    "fields": {
+        "date": "Datum",
+        "direction": "Richtung",
+        "tax_rate": "Steuersatz",
+        "amount": "Betrag",
+        "company": "Unternehmen",
+        "project": "Projekt",
+        "subscription": "Abonnement",
+        "description": "Beschreibung"
+    },
+    "directions": {
+        "output": "Ausgangsteuer (eingenommen)",
+        "input": "Vorsteuer (gezahlt)"
+    },
+    "filters": {
+        "from": "Von",
+        "to": "Bis",
+        "direction": "Richtung",
+        "all": "Alle Richtungen"
+    },
+    "descriptions": {
+        "invoice": "Ausgangsteuer auf Rechnung :number",
+        "invoice_line": "Ausgangsteuer auf Rechnung :number — :line",
+        "expense": "Vorsteuer auf Ausgabe"
+    }
+}

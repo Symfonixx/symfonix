@@ -56,11 +56,15 @@
         "is_active": "Aktif",
         "variables": "Değişkenler",
         "variable": "Değişken",
+        "header_variable": "Başlık :placeholder",
+        "body_variable": "Metin :placeholder",
+        "url_variable": "URL :button :placeholder",
         "leads": "Potansiyel Müşteriler",
         "contacts": "Kişiler",
         "deals": "Anlaşmalar",
         "contact_forms": "Talepler",
         "all_leads": "Telefonu olan tüm potansiyel müşteriler",
+        "lead_tags": "Potansiyel müşteri etiketleri",
         "all_contacts": "Telefonu olan tüm kişiler",
         "all_deals": "Telefonu olan tüm anlaşmalar",
         "all_contact_forms": "Cep telefonu olan tüm talepler",
@@ -115,7 +119,8 @@
         "select_template": "Onaylı şablon seç",
         "body": "Merhaba {{1}}, özel teklifimiz: {{2}}",
         "footer": "Abonelikten çıkmak için STOP yazın",
-        "header_content": "Metin veya medya URL'si",
+        "header_content": "Hoş geldiniz {{1}}",
+        "button_url": "https://example.com/{{1}}",
         "meta_template_id": "İsteğe bağlı Meta şablon ID",
         "select_leads": "Potansiyel müşteri seç",
         "select_contacts": "Kişi seç",
@@ -127,8 +132,10 @@
     "hints": {
         "template_name": "Yalnızca küçük harf, rakam ve alt çizgi.",
         "body_variables": "Dinamik değişkenler için {{1}}, {{2}} kullanın.",
-        "header_content": "Metin başlıkları için metin girin. Medya için genel URL.",
+        "header_content": "Metin başlıkları için metin girin. İsteğe bağlı {{1}} kullanabilirsiniz. Medya için genel URL.",
+        "button_url": "URL düğmeleri için sabit bağlantı veya {{1}} ile biten dinamik URL girin. Telefon düğmeleri için numarayı girin.",
         "all_leads": "Telefonu olan engellenmemiş tüm potansiyel müşterilere gönderir.",
+        "lead_tags": "Soğuk ve ılık gibi etiketlerden birini veya birkaçını işaretleyin. Birden fazla seçili etiketi olan kişilere yalnızca bir kez gönderilir.",
         "all_contacts": "Telefonu olan tüm kişilere gönderir.",
         "all_deals": "Anlaşmanın bağlı potansiyel müşteri veya şirket telefonunu kullanır.",
         "custom_phones": "Uluslararası format kullanın (örn. +905551234567).",
@@ -154,6 +161,7 @@
         "select_recipients": "En az bir alıcı grubu veya telefon numarası seçin.",
         "no_recipients": "Geçerli telefon numarası bulunamadı.",
         "template_not_sendable": "Seçilen şablon onaylı veya aktif değil.",
-        "parameter_required": "{{num}} parametresi zorunludur."
+        "parameter_required": "{{num}} parametresi zorunludur.",
+        "parameter_required_named": ":label zorunludur."
     }
 }

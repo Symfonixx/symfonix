@@ -1,0 +1,91 @@
+{
+    "title": "Ask Symfonix AI",
+    "subtitle": "Ihr KI-Geschäftsassistent",
+    "open": "Ask Symfonix AI",
+    "open_short": "Ask AI",
+    "close": "Schließen",
+    "placeholder": "Fragen zu Umsatz, Leads, Rechnungen…",
+    "send": "Senden",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "regenerate": "Neu erzeugen",
+    "new_chat": "Neuer Chat",
+    "clear": "Unterhaltung löschen",
+    "history": "Chatverlauf",
+    "history_empty": "Noch keine früheren Chats",
+    "greeting": "Hallo, :name",
+    "empty_title": "Womit kann ich heute helfen?",
+    "empty_hint": "Fragen Sie zu den Geschäftsdaten, die Sie in Symfonix bereits sehen dürfen.",
+    "you": "Sie",
+    "assistant": "Symfonix AI",
+    "ready": "Bereit",
+    "offline": "Nicht konfiguriert",
+    "typing": "Denkt nach…",
+    "composer_hint": "Enter zum Senden · Umschalt+Enter für eine neue Zeile",
+    "sources": "Quellen",
+    "based_on": "Basierend auf Anwendungsdaten",
+    "not_configured": "Ask Symfonix AI ist noch nicht konfiguriert. Hinterlegen Sie einen OpenAI- oder Gemini-API-Schlüssel unter Integrationen.",
+    "uncategorized": "Ohne Kategorie",
+    "unassigned": "Nicht zugewiesen",
+    "dashboard": {
+        "title": "Ask Symfonix AI",
+        "subtitle": "Stellen Sie eine Frage oder wählen Sie eine Vorgabe, um den KI-Assistenten zu öffnen."
+    },
+    "suggestions": {
+        "today": {
+            "label": "Was passiert heute?",
+            "prompt": "Was passiert heute in meinem Geschäft?"
+        },
+        "overdue_tasks": {
+            "label": "Meiste überfällige Aufgaben",
+            "prompt": "Wer hat die meisten überfälligen Aufgaben?"
+        },
+        "overdue_projects": {
+            "label": "Überfällige Projekte",
+            "prompt": "Welche Projekte sind überfällig?"
+        },
+        "revenue": {
+            "label": "Umsatz diesen Monat",
+            "prompt": "Wie viel Umsatz haben wir diesen Monat erzielt?"
+        },
+        "growth": {
+            "label": "Umsatzwachstum",
+            "prompt": "Wie hoch ist unsere Umsatzwachstumsrate im Vergleich zum Vorjahr?"
+        },
+        "customers": {
+            "label": "Beste Kunden",
+            "prompt": "Wer sind die umsatzstärksten Kunden?"
+        },
+        "leads": {
+            "label": "Leads heute nachfassen",
+            "prompt": "Welche Leads sollten wir heute nachfassen?"
+        },
+        "invoices": {
+            "label": "Überfällige Rechnungen",
+            "prompt": "Wie viele Rechnungen sind überfällig?"
+        },
+        "visitors": {
+            "label": "Website-Besucher",
+            "prompt": "Wie viele Website-Besucher hatten wir diesen Monat, und welche Seiten sind am beliebtesten?"
+        },
+        "services": {
+            "label": "Meistverkaufte Leistungen",
+            "prompt": "Welche Leistungen verkaufen sich diesen Monat am besten?"
+        },
+        "employees": {
+            "label": "Mitarbeiterbericht",
+            "prompt": "Gib mir einen Mitarbeiterbericht: Kopfzahl, Anwesenheit und Auslastung diesen Monat."
+        }
+    },
+    "errors": {
+        "connect": "Die KI-Verbindung ist gerade nicht möglich. Bitte erneut versuchen.",
+        "not_configured": "Ask Symfonix AI ist noch nicht konfiguriert. Bitten Sie einen Administrator um einen API-Schlüssel.",
+        "rate_limit": "Der KI-Dienst ist gerade ausgelastet. Bitte gleich noch einmal versuchen.",
+        "empty": "Keine brauchbare Antwort. Bitte die Frage umformulieren.",
+        "incomplete": "Die Analyse konnte nicht abgeschlossen werden. Bitte spezifischer fragen.",
+        "permission": "Sie haben keine Berechtigung für diese Informationen.",
+        "not_found": "Kein passender Datensatz gefunden.",
+        "unknown_tool": "Diese Anfrage ist nicht verfügbar.",
+        "generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+    }
+}

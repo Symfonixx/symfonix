@@ -244,10 +244,9 @@
                                 />
                                 <button
                                     type="button"
-                                    class="btn btn-light"
+                                    class="btn btn-light-info"
                                     id="toggle-fixer-key"
-                                    title="{{ __('Show / hide') }}"
-                                >
+                                    title="{{ __('Show / hide') }}" data-action="view">
                                     <i class="bi bi-eye"></i>
                                 </button>
                             </div>
@@ -418,8 +417,7 @@
                             <button
                                 type="submit"
                                 formaction="{{ route('admin.system-configurations.test-fingerprint') }}"
-                                class="btn btn-light-primary"
-                            >
+                                class="btn btn-light-warning" data-action="edit">
                                 <i class="bi bi-plug me-1"></i>
                                 {{ __('base::system.fingerprint.test_connection') }}
                             </button>

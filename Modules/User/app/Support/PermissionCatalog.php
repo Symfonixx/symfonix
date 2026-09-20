@@ -63,6 +63,22 @@ final class PermissionCatalog
                             'edit' => ['admin.crm.dashboard.layout'],
                         ],
                     ],
+                    [
+                        'key' => 'ai.assistant',
+                        'label' => 'Ask Symfonix AI',
+                        'actions' => ['view'],
+                        'routes' => [
+                            'view' => [
+                                'admin.ai.assistant.bootstrap',
+                                'admin.ai.assistant.conversations.index',
+                                'admin.ai.assistant.conversations.store',
+                                'admin.ai.assistant.conversations.show',
+                                'admin.ai.assistant.conversations.destroy',
+                                'admin.ai.assistant.conversations.messages',
+                                'admin.ai.assistant.conversations.regenerate',
+                            ],
+                        ],
+                    ],
                 ],
             ],
             [
@@ -283,7 +299,7 @@ final class PermissionCatalog
                         'actions' => ['view', 'create', 'edit', 'delete'],
                         'routes' => [
                             'view' => ['admin.quotes.index', 'admin.quotes.show', 'admin.quotes.pdf'],
-                            'create' => ['admin.quotes.create', 'admin.quotes.store', 'admin.quotes.from-deal'],
+                            'create' => ['admin.quotes.create', 'admin.quotes.store', 'admin.quotes.from-deal', 'admin.ai.content.generate-quote'],
                             'edit' => ['admin.quotes.edit', 'admin.quotes.update', 'admin.quotes.sent', 'admin.quotes.void'],
                             'delete' => ['admin.quotes.destroy'],
                         ],
@@ -318,8 +334,21 @@ final class PermissionCatalog
                         'legacy' => ['CRM Management'],
                         'actions' => ['view', 'send'],
                         'routes' => [
-                            'view' => ['admin.crm.marketing.index', 'admin.crm.marketing.show'],
-                            'send' => ['admin.crm.marketing.create', 'admin.crm.marketing.store'],
+                            'view' => [
+                                'admin.crm.marketing.index',
+                                'admin.crm.marketing.show',
+                                'admin.crm.marketing.groups.show',
+                            ],
+                            'send' => [
+                                'admin.crm.marketing.create',
+                                'admin.crm.marketing.store',
+                                'admin.crm.marketing.groups.create',
+                                'admin.crm.marketing.groups.store',
+                                'admin.crm.marketing.groups.edit',
+                                'admin.crm.marketing.groups.update',
+                                'admin.crm.marketing.groups.destroy',
+                                'admin.ai.content.generate-marketing-email',
+                            ],
                         ],
                     ],
                     [
@@ -328,11 +357,20 @@ final class PermissionCatalog
                         'legacy' => ['CRM Management'],
                         'actions' => ['view', 'send'],
                         'routes' => [
-                            'view' => ['admin.crm.marketing.index', 'admin.crm.marketing.whatsapp.show'],
+                            'view' => [
+                                'admin.crm.marketing.index',
+                                'admin.crm.marketing.whatsapp.show',
+                                'admin.crm.marketing.groups.show',
+                            ],
                             'send' => [
                                 'admin.crm.marketing.whatsapp.create',
                                 'admin.crm.marketing.whatsapp.store',
                                 'admin.crm.marketing.whatsapp.templates.variables',
+                                'admin.crm.marketing.groups.create',
+                                'admin.crm.marketing.groups.store',
+                                'admin.crm.marketing.groups.edit',
+                                'admin.crm.marketing.groups.update',
+                                'admin.crm.marketing.groups.destroy',
                             ],
                         ],
                     ],
@@ -727,7 +765,7 @@ final class PermissionCatalog
                         'actions' => ['view', 'create', 'delete'],
                         'routes' => [
                             'view' => ['admin.crm.calendar', 'admin.crm.calendar.events'],
-                            'create' => ['admin.activities.store'],
+                            'create' => ['admin.activities.store', 'admin.ai.leads.follow-up'],
                             'delete' => ['admin.activities.destroy'],
                         ],
                     ],
@@ -1055,6 +1093,10 @@ final class PermissionCatalog
 
         if ($routeName === 'admin.crm.marketing.index' && $request->query('channel') === 'whatsapp') {
             return 'marketing.whatsapp.view';
+        }
+
+        if ($routeName === 'admin.crm.marketing.index' && $request->query('channel') === 'email') {
+            return 'marketing.email.view';
         }
 
         if ($routeName === 'admin.crm.marketing.index') {

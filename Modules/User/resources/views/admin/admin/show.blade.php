@@ -9,11 +9,11 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="$admin->name" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.admins.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.admins.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('Back to List') }}
         </a>
-        <a class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{ $admin->id }}">
+        <a class="btn btn-sm fw-bold btn-warning" data-bs-toggle="modal" data-bs-target="#edit_modal{{ $admin->id }}" data-action="edit">
             <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
         </a>
         <div class="modal fade" tabindex="-1" id="edit_modal{{ $admin->id }}">

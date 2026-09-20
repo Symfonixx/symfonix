@@ -1,0 +1,91 @@
+{
+    "title": "Ask Symfonix AI",
+    "subtitle": "Yapay zeka iş asistanınız",
+    "open": "Ask Symfonix AI",
+    "open_short": "Ask AI",
+    "close": "Kapat",
+    "placeholder": "Satış, müşteri veya fatura sorun…",
+    "send": "Gönder",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı",
+    "regenerate": "Yeniden oluştur",
+    "new_chat": "Yeni sohbet",
+    "clear": "Sohbeti sil",
+    "history": "Sohbet geçmişi",
+    "history_empty": "Henüz önceki sohbet yok",
+    "greeting": "Merhaba, :name",
+    "empty_title": "Bugün nasıl yardımcı olabilirim?",
+    "empty_hint": "Symfonix’te zaten görebileceğiniz iş verileri hakkında sorun.",
+    "you": "Siz",
+    "assistant": "Symfonix AI",
+    "ready": "Hazır",
+    "offline": "Yapılandırılmadı",
+    "typing": "Düşünüyor…",
+    "composer_hint": "Göndermek için Enter · Yeni satır için Shift+Enter",
+    "sources": "Kaynaklar",
+    "based_on": "Uygulama verilerine göre",
+    "not_configured": "Ask Symfonix AI henüz yapılandırılmadı. Entegrasyonlar bölümünden OpenAI veya Gemini API anahtarı ekleyin.",
+    "uncategorized": "Kategorisiz",
+    "unassigned": "Atanmamış",
+    "dashboard": {
+        "title": "Ask Symfonix AI",
+        "subtitle": "Soru sorun veya bir öneri seçerek yapay zeka asistanını açın."
+    },
+    "suggestions": {
+        "today": {
+            "label": "Bugün neler oluyor?",
+            "prompt": "İşletmemde bugün neler oluyor?"
+        },
+        "overdue_tasks": {
+            "label": "En çok geciken görevler",
+            "prompt": "Kimin en çok gecikmiş görevi var?"
+        },
+        "overdue_projects": {
+            "label": "Geciken projeler",
+            "prompt": "Hangi projeler gecikti?"
+        },
+        "revenue": {
+            "label": "Bu ayın satışları",
+            "prompt": "Bu ay ne kadar satış yaptık?"
+        },
+        "growth": {
+            "label": "Büyüme oranı",
+            "prompt": "Geçen yıla göre gelir büyüme oranımız nedir?"
+        },
+        "customers": {
+            "label": "En iyi müşteriler",
+            "prompt": "Gelire göre en iyi müşteriler kimler?"
+        },
+        "leads": {
+            "label": "Bugün takip edilecekler",
+            "prompt": "Bugün hangi potansiyel müşterileri takip etmeliyiz?"
+        },
+        "invoices": {
+            "label": "Geciken faturalar",
+            "prompt": "Kaç fatura gecikti?"
+        },
+        "visitors": {
+            "label": "Site ziyaretçileri",
+            "prompt": "Bu ay kaç site ziyaretçimiz oldu ve en çok hangi sayfalar ziyaret edildi?"
+        },
+        "services": {
+            "label": "En çok satan hizmetler",
+            "prompt": "Bu ay hangi hizmetler en çok satıyor?"
+        },
+        "employees": {
+            "label": "Çalışan raporu",
+            "prompt": "Çalışan raporu ver: kadro, devam ve bu ayki kullanım oranı."
+        }
+    },
+    "errors": {
+        "connect": "Yapay zeka hizmetine şu anda bağlanılamadı. Lütfen tekrar deneyin.",
+        "not_configured": "Ask Symfonix AI henüz yapılandırılmadı. Bir yöneticiden API anahtarı eklemesini isteyin.",
+        "rate_limit": "Yapay zeka hizmeti şu anda meşgul. Biraz sonra tekrar deneyin.",
+        "empty": "Kullanılabilir bir yanıt alınamadı. Lütfen soruyu yeniden yazın.",
+        "incomplete": "Analiz tamamlanamadı. Lütfen daha spesifik bir soru sorun.",
+        "permission": "Bu bilgiye erişim izniniz yok.",
+        "not_found": "Eşleşen bir kayıt bulunamadı.",
+        "unknown_tool": "Bu istek kullanılamıyor.",
+        "generic": "Bir sorun oluştu. Lütfen tekrar deneyin."
+    }
+}

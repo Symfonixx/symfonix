@@ -75,7 +75,24 @@
         "manage_tags": "Tags verwalten",
         "edit_tags": "Tags bearbeiten",
         "manage_custom_fields": "Benutzerdefinierte Felder verwalten",
-        "edit_custom_fields": "Benutzerdefinierte Felder bearbeiten"
+        "edit_custom_fields": "Benutzerdefinierte Felder bearbeiten",
+        "create_follow_up_ai": "Follow-up mit KI erstellen"
+    },
+    "follow_up": {
+        "button": "Follow-up mit KI erstellen",
+        "tooltip": "Follow-up aus Lead-Daten und zugehöriger Projektaktivität erstellen",
+        "modal_title": "Follow-up mit KI erstellen",
+        "hint": "Die KI nutzt die Lead-Daten, die Timeline und zugehörige Projektaktivität. Prüfen Sie den Entwurf vor dem Speichern.",
+        "prompt_label": "Soll die KI sich auf etwas konzentrieren? (optional)",
+        "prompt_placeholder": "z. B. Anruf zum Website-Angebot oder Follow-up nach dem gestrigen Meeting.",
+        "generate": "Follow-up erzeugen",
+        "generating": "Follow-up wird aus Lead-Daten und Projektaktivität geschrieben...",
+        "preview_title": "Vorgeschlagenes Follow-up",
+        "fill_form": "In Formular einfügen",
+        "create": "Follow-up erstellen",
+        "applied": "Follow-up wurde in das Aktivitätsformular übernommen. Bitte prüfen und speichern.",
+        "created": "Follow-up wurde erstellt.",
+        "default_title": "Follow-up mit :name"
     },
     "filters": {
         "status": "Nach Status filtern",

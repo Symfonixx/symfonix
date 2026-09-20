@@ -50,6 +50,28 @@
                     </div>
                 </div>
             </div>
+            <div class="sys-status-card {{ $geminiConfigured ? 'is-ok' : 'is-warn' }}">
+                <div class="sys-status-icon">
+                    <i class="bi {{ $geminiConfigured ? 'bi-stars' : 'bi-exclamation-triangle' }}"></i>
+                </div>
+                <div>
+                    <div class="sys-status-label">{{ __('base::integrations.status.gemini') }}</div>
+                    <div class="sys-status-value">
+                        {{ $geminiConfigured ? __('base::integrations.status.configured') : __('base::integrations.status.missing') }}
+                    </div>
+                </div>
+            </div>
+            <div class="sys-status-card {{ $openaiConfigured ? 'is-ok' : 'is-warn' }}">
+                <div class="sys-status-icon">
+                    <i class="bi {{ $openaiConfigured ? 'bi-robot' : 'bi-exclamation-triangle' }}"></i>
+                </div>
+                <div>
+                    <div class="sys-status-label">{{ __('base::integrations.status.openai') }}</div>
+                    <div class="sys-status-value">
+                        {{ $openaiConfigured ? __('base::integrations.status.configured') : __('base::integrations.status.missing') }}
+                    </div>
+                </div>
+            </div>
             <div class="sys-status-card is-info">
                 <div class="sys-status-icon">
                     <i class="bi bi-gear"></i>
@@ -74,6 +96,11 @@
             <li class="nav-item">
                 <a class="nav-link text-nowrap" data-bs-toggle="tab" href="#tab-int-whatsapp">
                     <i class="bi bi-whatsapp me-2"></i>{{ __('base::integrations.tabs.whatsapp') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-nowrap" data-bs-toggle="tab" href="#tab-int-gemini">
+                    <i class="bi bi-stars me-2"></i>{{ __('base::integrations.tabs.gemini') }}
                 </a>
             </li>
         </ul>
@@ -274,6 +301,155 @@
                                     <i class="bi bi-eye"></i>
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </x-admin.settings-section>
+            </div>
+
+            {{-- AI Integrations (Gemini) --}}
+            <div class="tab-pane fade" id="tab-int-gemini">
+                <x-admin.settings-section
+                    icon="bi-stars"
+                    :title="__('base::integrations.gemini.title')"
+                    :description="__('base::integrations.gemini.description')"
+                >
+                    <div class="row mb-6 settings-field">
+                        <div class="col-lg-4">
+                            <label class="settings-field-label" for="field-gemini-api-key">
+                                <i class="bi bi-key text-primary me-1"></i>
+                                {{ __('base::integrations.gemini.api_key') }}
+                                @if($geminiConfigured)
+                                    <span class="badge badge-light-success ms-2">{{ __('base::integrations.status.configured') }}</span>
+                                @endif
+                            </label>
+                            <div class="settings-field-hint">{{ __('base::integrations.gemini.api_key_hint') }}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="input-group input-group-solid">
+                                <input
+                                    type="password"
+                                    id="field-gemini-api-key"
+                                    name="data[gemini_api_key]"
+                                    class="form-control form-control-solid"
+                                    value=""
+                                    placeholder="{{ $geminiConfigured ? '••••••••••••••••' : '' }}"
+                                    autocomplete="off"
+                                />
+                                <button type="button" class="btn btn-light toggle-secret" data-target="field-gemini-api-key" title="{{ __('Show / hide') }}">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <x-admin.settings-field
+                        :label="__('base::integrations.gemini.image_model')"
+                        name="data[gemini_image_model]"
+                        :value="$geminiResolved['gemini_image_model']"
+                        :placeholder="\Modules\Base\Support\GeminiConfig::DEFAULT_IMAGE_MODEL"
+                        icon="bi-image"
+                        :hint="__('base::integrations.gemini.image_model_hint')"
+                    />
+                    <x-admin.settings-field
+                        :label="__('base::integrations.gemini.analysis_model')"
+                        name="data[gemini_analysis_model]"
+                        :value="$geminiResolved['gemini_analysis_model']"
+                        :placeholder="\Modules\Base\Support\GeminiConfig::DEFAULT_ANALYSIS_MODEL"
+                        icon="bi-cpu"
+                        :hint="__('base::integrations.gemini.analysis_model_hint')"
+                    />
+                </x-admin.settings-section>
+
+                @php
+                    $openaiEffectiveModel = old(
+                        'data.openai_model',
+                        $openaiResolved['openai_model'] ?: \Modules\Base\Support\OpenAIConfig::DEFAULT_MODEL
+                    );
+                @endphp
+                <x-admin.settings-section
+                    icon="bi-robot"
+                    :title="__('base::integrations.openai.title')"
+                    :description="__('base::integrations.openai.description')"
+                >
+                    <div class="row mb-6 settings-field">
+                        <div class="col-lg-4">
+                            <label class="settings-field-label" for="field-openai-api-key">
+                                <i class="bi bi-key text-primary me-1"></i>
+                                {{ __('base::integrations.openai.api_key') }}
+                                @if($openaiConfigured)
+                                    <span class="badge badge-light-success ms-2">{{ __('base::integrations.status.configured') }}</span>
+                                @endif
+                            </label>
+                            <div class="settings-field-hint">{{ __('base::integrations.openai.api_key_hint') }}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="input-group input-group-solid">
+                                <input
+                                    type="password"
+                                    id="field-openai-api-key"
+                                    name="data[openai_api_key]"
+                                    class="form-control form-control-solid"
+                                    value=""
+                                    placeholder="{{ $openaiConfigured ? '••••••••••••••••' : '' }}"
+                                    autocomplete="off"
+                                />
+                                <button type="button" class="btn btn-light toggle-secret" data-target="field-openai-api-key" title="{{ __('Show / hide') }}">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2 settings-field">
+                        <div class="col-lg-4">
+                            <label class="settings-field-label" for="field-openai-model">
+                                <i class="bi bi-cpu text-primary me-1"></i>
+                                {{ __('base::integrations.openai.model') }}
+                            </label>
+                            <div class="settings-field-hint">{{ __('base::integrations.openai.model_hint') }}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <select id="field-openai-model" name="data[openai_model]" class="form-select form-select-solid">
+                                @foreach(\Modules\Base\Support\OpenAIConfig::AVAILABLE_MODELS as $modelOption)
+                                    <option value="{{ $modelOption }}" @selected($openaiEffectiveModel === $modelOption)>
+                                        {{ $modelOption }}
+                                    </option>
+                                @endforeach
+                                @if($openaiEffectiveModel !== '' && ! in_array($openaiEffectiveModel, \Modules\Base\Support\OpenAIConfig::AVAILABLE_MODELS, true))
+                                    <option value="{{ $openaiEffectiveModel }}" selected>{{ $openaiEffectiveModel }}</option>
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                </x-admin.settings-section>
+
+                @php
+                    $assistantProvider = old(
+                        'data.ai_assistant_provider',
+                        $assistantResolved['ai_assistant_provider'] ?? \Modules\Base\Support\AskSymfonixConfig::DEFAULT_PROVIDER
+                    );
+                @endphp
+                <x-admin.settings-section
+                    icon="bi-stars"
+                    :title="__('base::integrations.assistant.title')"
+                    :description="__('base::integrations.assistant.description')"
+                >
+                    <div class="row mb-2 settings-field">
+                        <div class="col-lg-4">
+                            <label class="settings-field-label" for="field-ai-assistant-provider">
+                                <i class="bi bi-diagram-3 text-primary me-1"></i>
+                                {{ __('base::integrations.assistant.provider') }}
+                            </label>
+                            <div class="settings-field-hint">{{ __('base::integrations.assistant.provider_hint') }}</div>
+                        </div>
+                        <div class="col-lg-8">
+                            <select id="field-ai-assistant-provider" name="data[ai_assistant_provider]" class="form-select form-select-solid">
+                                @foreach(\Modules\Base\Support\AskSymfonixConfig::AVAILABLE_PROVIDERS as $providerOption)
+                                    <option value="{{ $providerOption }}" @selected($assistantProvider === $providerOption)>
+                                        {{ __('base::integrations.assistant.providers.'.$providerOption) }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </x-admin.settings-section>

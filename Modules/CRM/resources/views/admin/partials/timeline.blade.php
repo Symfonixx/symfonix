@@ -14,13 +14,18 @@
     </div>
     <div class="card-body">
         @can('crm.activities.create')
-            <form method="POST" action="{{ route('admin.activities.store') }}" class="mb-8 border border-dashed rounded p-5">
+            <form method="POST" action="{{ route('admin.activities.store') }}" class="js-crm-activity-form mb-8 border border-dashed rounded p-5">
                 @csrf
                 <input type="hidden" name="subject_type" value="{{ $subjectType }}"/>
                 <input type="hidden" name="subject_id" value="{{ $subject->getKey() }}"/>
-                <h5 class="fw-bold mb-4">
-                    <i class="bi bi-plus-circle me-1 text-primary"></i>{{ __('crm::timeline.add_activity') }}
-                </h5>
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-plus-circle me-1 text-primary"></i>{{ __('crm::timeline.add_activity') }}
+                    </h5>
+                    @if(($subjectType ?? '') === 'lead')
+                        <x-ai::create-follow-up-button :lead="$subject" />
+                    @endif
+                </div>
                 <div class="row g-4">
                     <div class="col-md-3">
                         <label class="form-label required">{{ __('crm::timeline.fields.type') }}</label>
@@ -46,7 +51,7 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" class="btn btn-success btn-sm" data-action="create">
                         <i class="bi bi-plus-lg me-1"></i>{{ __('crm::timeline.add_activity') }}
                     </button>
                 </div>
@@ -106,8 +111,8 @@
                                 <form method="POST" action="{{ route('admin.activities.destroy', $item) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-sm btn-light-danger"
-                                            title="{{ __('crm::timeline.delete_activity') }}">
+                                    <button type="submit" class="btn btn-icon btn-sm btn-light-danger btn-active-color-danger"
+                                            title="{{ __('crm::timeline.delete_activity') }}" data-action="delete">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </form>

@@ -8,9 +8,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Leave Management')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="hr.leaves.create">
-            <a class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#create_modal">
+            <a class="btn btn-sm fw-bold btn-success" data-bs-toggle="modal" data-bs-target="#create_modal" data-action="create">
                 {{__('Add Leave Request')}} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -103,7 +103,7 @@
                 <td>{{ $leaveRequest->created_at }}</td>
 
                 <td>
-                    <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{$leaveRequest->id}}">
+                    <a class="btn btn-sm btn-light-warning" data-bs-toggle="modal" data-bs-target="#edit_modal{{$leaveRequest->id}}">
                         <i class="bi bi-pencil"></i>
                     </a>
                     <div class="modal fade" tabindex="-1" id="edit_modal{{$leaveRequest->id}}">

@@ -107,22 +107,22 @@
         </div>
         <div class="card-body pt-0 d-grid gap-3">
             @if($canUpdateProject)
-                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#assignEmployeeModal">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#assignEmployeeModal" data-action="create">
                     <i class="bi bi-person-plus me-2"></i>{{ __('project::project.actions.assign_employee') }}
                 </button>
             @endif
             @if($canLogExpense)
-                <button type="button" class="btn btn-light-danger" data-bs-toggle="modal" data-bs-target="#logExpenseModal">
+                <button type="button" class="btn btn-light-danger" data-bs-toggle="modal" data-bs-target="#logExpenseModal" data-action="delete">
                     <i class="bi bi-cash-stack me-2"></i>{{ __('project::project.actions.log_expense') }}
                 </button>
             @endif
             @if($canManageFinance && isset($collectionSummary) && $collectionSummary['remaining'] > 0)
-                <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#addInvoiceModal">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addInvoiceModal" data-action="create">
                     <i class="bi bi-receipt me-2"></i>{{ __('project::project.actions.add_invoice') }}
                 </button>
             @endif
             @if($canUpdateProject)
-                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-light">
+                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-light-warning" data-action="edit">
                     <i class="bi bi-pencil me-2"></i>{{ __('Edit') }}
                 </a>
             @endif

@@ -8,6 +8,7 @@
         <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
             <thead>
             <tr class="text-start text-muted fw-bold fs-7 gs-0">
+                <th>{{ __('crm::marketing.fields.campaign') }}</th>
                 <th>{{ __('crm::whatsapp.fields.template_name') }}</th>
                 <th>{{ __('crm::marketing.fields.channel') }}</th>
                 <th>{{ __('crm::marketing.fields.status') }}</th>
@@ -24,6 +25,15 @@
                     $statusBadge = $campaign::statusBadgeClass($status);
                 @endphp
                 <tr>
+                    <td>
+                        @if($campaign->group)
+                            <a href="{{ route('admin.crm.marketing.groups.show', $campaign->group) }}" class="fw-bold text-gray-800">
+                                {{ $campaign->group->title }}
+                            </a>
+                        @else
+                            —
+                        @endif
+                    </td>
                     <td>{{ $campaign->template?->displayName() ?? '—' }}</td>
                     <td><span class="badge badge-light-success"><i class="bi bi-whatsapp me-1"></i>{{ __('crm::marketing.channels.whatsapp') }}</span></td>
                     <td>
@@ -36,9 +46,9 @@
                     </td>
                     <td>{{ $campaign->user?->name ?? '—' }}</td>
                     <td>{{ $campaign->created_at?->format('Y-m-d H:i') }}</td>
-                    <td class="text-end">
+                    <td class="text-end sx-actions">
                         <a href="{{ route('admin.crm.marketing.whatsapp.show', $campaign) }}"
-                           class="btn btn-sm btn-light btn-active-light-primary">
+                           class="btn btn-sm btn-light-info btn-active-light-primary" data-action="view">
                             {{ __('crm::marketing.actions.view') }}
                         </a>
                     </td>

@@ -694,9 +694,23 @@ Developed By: Hadi Hilal
         const inputEl = document.getElementById('symfonixbot-input');
         const sendBtn = document.getElementById('symfonixbot-send');
         const hintEl = document.getElementById('symfonixbot-launcher-hint');
+        const introText = @json(__('chat.lead.widget_intro'));
+        let greeted = false;
 
         if (!launcher || !container) {
             return;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text == null ? '' : String(text);
+            return div.innerHTML;
+        }
+
+        function formatBotText(text) {
+            return escapeHtml(text)
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
         }
 
         function toggleChat(open) {
@@ -704,6 +718,10 @@ Developed By: Hadi Hilal
             container.classList.toggle('symfonixbot-hidden', !shouldOpen);
             if (shouldOpen && hintEl) {
                 hintEl.classList.add('symfonixbot-hidden');
+            }
+            if (shouldOpen && !greeted) {
+                greeted = true;
+                appendMessage('bot', introText);
             }
             if (shouldOpen) {
                 inputEl.focus();
@@ -715,7 +733,7 @@ Developed By: Hadi Hilal
             wrapMsg.className = 'symfonixbot-message ' + (from === 'user' ? 'symfonixbot-message-user' : '');
             const bubble = document.createElement('div');
             bubble.className = 'symfonixbot-bubble ' + (from === 'user' ? 'symfonixbot-bubble-user' : 'symfonixbot-bubble-bot');
-            bubble.innerHTML = html;
+            bubble.innerHTML = from === 'bot' ? formatBotText(html) : escapeHtml(html);
             wrapMsg.appendChild(bubble);
             messagesEl.appendChild(wrapMsg);
             messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -736,6 +754,33 @@ Developed By: Hadi Hilal
             });
             messagesEl.appendChild(row);
             messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function parseBotmanPayload(raw) {
+            const trimmed = String(raw || '').trim();
+            try {
+                return JSON.parse(trimmed);
+            } catch (e) {
+                const start = trimmed.indexOf('{');
+                if (start === -1) {
+                    throw e;
+                }
+
+                let depth = 0;
+                for (let i = start; i < trimmed.length; i++) {
+                    const ch = trimmed[i];
+                    if (ch === '{') {
+                        depth++;
+                    } else if (ch === '}') {
+                        depth--;
+                        if (depth === 0) {
+                            return JSON.parse(trimmed.slice(start, i + 1));
+                        }
+                    }
+                }
+
+                throw e;
+            }
         }
 
         async function sendMessage(text, options = {}) {
@@ -780,26 +825,11 @@ Developed By: Hadi Hilal
 
                 let data;
                 try {
-                    data = JSON.parse(raw);
+                    data = parseBotmanPayload(raw);
                 } catch (e) {
-                    const linkIdx = raw.indexOf('<link');
-                    const scriptIdx = raw.indexOf('<script');
-                    let cutIdx = -1;
-                    if (linkIdx > 0 && scriptIdx > 0) {
-                        cutIdx = Math.min(linkIdx, scriptIdx);
-                    } else if (linkIdx > 0) {
-                        cutIdx = linkIdx;
-                    } else if (scriptIdx > 0) {
-                        cutIdx = scriptIdx;
-                    }
-
-                    if (cutIdx > 0) {
-                        const jsonPart = raw.substring(0, cutIdx);
-                        data = JSON.parse(jsonPart);
-                    } else {
-                        console.error('Symfonix Bot raw response (no JSON)', raw);
-                        return;
-                    }
+                    console.error('Symfonix Bot raw response (no JSON)', raw);
+                    appendMessage('bot', '{{ __('chat.lead.error') }}');
+                    return;
                 }
 
                 const replies = (data && data.messages) || [];

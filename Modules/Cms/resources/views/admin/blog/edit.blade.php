@@ -13,8 +13,8 @@
         :breadcrumbItems="$breadcrumbItems"
         pageDescription='Update blog content, publishing options, and SEO preview.'
     />
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.blogs.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.blogs.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('Back to list') }}
         </a>
     </div>

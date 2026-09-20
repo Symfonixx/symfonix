@@ -21,6 +21,9 @@
             title='Page Content'
             description='Main page content and SEO fields.'
         >
+            <x-slot:actions>
+                <x-ai::generate-form-button type="cms_page" />
+            </x-slot:actions>
             <div class="row mb-6">
                 <div class="col-lg-4">
                     <label class="settings-field-label" for="gslug">
@@ -92,9 +95,12 @@
     <div class="col-xl-4">
         <div class="seo-preview-panel">
             @include('cms::admin.shared._image-aside', [
-                'currentImage' => $pageData?->image_link ?? null,
+                'currentImage' => $pageData?->image ? $pageData->image_link : null,
                 'dimensions' => '1200 × 600 px',
                 'required' => !$pageData,
+                'target' => $pageData ? 'cms_page' : null,
+                'id' => $pageData?->id,
+                'field' => 'image',
             ])
 
             @include('cms::admin.shared._publish-aside', [

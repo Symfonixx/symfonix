@@ -4,11 +4,14 @@
     "form_description": "Buraya kaydedilen değerler .env değerlerini geçersiz kılar. Boş alanlar .env yedeğini kullanır. Boş bırakılan gizli alanlar mevcut değeri korur.",
     "tabs": {
         "email": "E-posta",
-        "whatsapp": "WhatsApp"
+        "whatsapp": "WhatsApp",
+        "gemini": "AI Integrations"
     },
     "status": {
         "email": "E-posta API",
         "whatsapp": "WhatsApp API",
+        "gemini": "Gemini AI",
+        "openai": "OpenAI",
         "system": "Sistem ayarları",
         "system_link": "Sistem Yapılandırmalarını aç",
         "configured": "Yapılandırıldı",
@@ -41,5 +44,34 @@
         "webhook_verify_token": "Webhook Doğrulama Jetonu",
         "webhook_verify_token_hint": "İsteğe bağlı. Meta webhook doğrulaması için. Mevcut değeri korumak için boş bırakın.",
         "env_hint": ".env yer tutucusunu kullanmak için boş bırakın."
+    },
+    "gemini": {
+        "title": "Gemini AI Image Editing",
+        "description": "Google Gemini credentials used to power AI image create/edit. Generated images can match your brand by sending the site logo from Settings > Branding.",
+        "api_key": "Gemini API Key",
+        "api_key_hint": "Used to authenticate requests to the Gemini API. Leave blank to keep the current key.",
+        "image_model": "Image Model",
+        "image_model_hint": "Model used for AI image creation and editing (e.g. gemini-2.5-flash-image).",
+        "analysis_model": "Analysis Model",
+        "analysis_model_hint": "Model used for text/image analysis (e.g. gemini-2.5-flash)."
+    },
+    "openai": {
+        "title": "OpenAI İçerik Üretimi",
+        "description": "Yönetim panelindeki TinyMCE içinde yer alan \"AI Asistanı\" içerik üreticisini çalıştırmak için kullanılan OpenAI kimlik bilgileri.",
+        "api_key": "OpenAI API Anahtarı",
+        "api_key_hint": "OpenAI API isteklerini doğrulamak için kullanılır. Mevcut anahtarı korumak için boş bırakın.",
+        "model": "Varsayılan Model",
+        "model_hint": "Editör içeriği üretmek için kullanılan model (örn. gpt-4o veya gpt-4o-mini)."
+    },
+    "assistant": {
+        "title": "Ask Symfonix AI",
+        "description": "İş verileri sorularını yanıtlayan yapay zeka sağlayıcısını seçin. Otomatik önce OpenAI, gerekirse Gemini kullanır.",
+        "provider": "Asistan sağlayıcısı",
+        "provider_hint": "Yalnızca Ask Symfonix AI için geçerlidir. İçerik üretimi ve görsel düzenleme kendi ayarlarını korur.",
+        "providers": {
+            "auto": "Otomatik (önce OpenAI, sonra Gemini)",
+            "openai": "OpenAI",
+            "gemini": "Gemini"
+        }
     }
 }

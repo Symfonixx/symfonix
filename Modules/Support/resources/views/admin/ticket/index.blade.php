@@ -42,7 +42,7 @@
                            placeholder="{{ __('support::ticket.search.placeholder') }}">
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary w-100">{{ __('Filter') }}</button>
+                    <button type="submit" class="btn btn-light-primary w-100" data-action="filter">{{ __('Filter') }}</button>
                 </div>
             </form>
         </div>
@@ -88,8 +88,8 @@
                     </span>
                 </td>
                 <td>{{ $ticket->created_at }}</td>
-                <td class="text-end">
-                    <a href="{{ route('admin.tickets.show', $ticket) }}" class="btn btn-sm btn-light-primary">
+                <td class="text-end sx-actions">
+                    <a href="{{ route('admin.tickets.show', $ticket) }}" class="btn btn-sm btn-light-info" data-action="view">
                         {{ __('View') }}
                     </a>
                 </td>

@@ -9,9 +9,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::lead_tag.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="crm.lead_tags.create">
-            <a href="{{ route('admin.crm.lead-tags.create') }}" class="btn btn-sm fw-bold btn-primary">
+            <a href="{{ route('admin.crm.lead-tags.create') }}" class="btn btn-sm fw-bold btn-success" data-action="create">
                 {{ __('crm::lead_tag.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -44,8 +44,8 @@
                         {{ $tag->is_active ? __('Active') : __('Inactive') }}
                     </span>
                 </td>
-                <td class="text-end">
-                    <a href="{{ route('admin.crm.lead-tags.edit', $tag) }}" class="btn btn-sm btn-light-primary">
+                <td class="text-end sx-actions">
+                    <a href="{{ route('admin.crm.lead-tags.edit', $tag) }}" class="btn btn-sm btn-light-warning" data-action="edit">
                         {{ __('Edit') }}
                     </a>
                 </td>

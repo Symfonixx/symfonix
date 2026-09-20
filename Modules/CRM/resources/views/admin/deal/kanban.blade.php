@@ -9,12 +9,12 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::deal.pages.kanban_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.deals.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.deals.index') }}" data-action="view">
             <i class="bi bi-list-ul me-1"></i>{{ __('crm::deal.actions.list_view') }}
         </a>
         <x-can perform="sales.deals.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.deals.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.deals.create') }}" data-action="create">
                 <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
             </a>
         </x-can>
@@ -135,7 +135,7 @@
                             </div>
                         @endforelse
                         <x-can perform="sales.deals.create">
-                            <a href="{{ route('admin.deals.create') }}" class="btn btn-sm btn-light-{{ $stage->color }}">
+                            <a href="{{ route('admin.deals.create') }}" class="btn btn-sm btn-success-{{ $stage->color }}" data-action="create">
                                 <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
                             </a>
                         </x-can>

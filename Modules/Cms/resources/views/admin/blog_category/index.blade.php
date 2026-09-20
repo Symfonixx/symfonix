@@ -12,8 +12,8 @@
         :breadcrumbItems="$breadcrumbItems"
         pageDescription='Organize blog posts into categories for easier browsing.'
     />
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <button class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <button class="btn btn-sm fw-bold btn-success" data-bs-toggle="modal" data-bs-target="#createCategoryModal" data-action="create">
             {{__('Add New Blog Category')}} <i class="bi bi-plus-lg mx-1"></i>
         </button>
     </div>

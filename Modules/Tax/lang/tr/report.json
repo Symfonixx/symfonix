@@ -1,0 +1,26 @@
+{
+    "pages": {
+        "filing_title": "Vergi Beyanname Raporu"
+    },
+    "fields": {
+        "from": "Başlangıç Tarihi",
+        "to": "Bitiş Tarihi",
+        "tax_rate": "Vergi Oranı",
+        "company": "Şirket",
+        "output_tax": "Tahsil Edilen Çıktı Vergisi",
+        "input_tax": "Ödenen Girdi Vergisi",
+        "net_tax_payable": "Net Vergi Borcu",
+        "all_rates": "Tüm Oranlar",
+        "all_companies": "Tüm Şirketler"
+    },
+    "actions": {
+        "generate": "Rapor Oluştur",
+        "export_csv": "CSV Dışa Aktar"
+    },
+    "sections": {
+        "summary": "Özet",
+        "by_rate": "Vergi Oranına Göre Dağılım",
+        "entries": "Defter Kayıtları"
+    },
+    "unassigned_rate": "Atanmamış Oran"
+}

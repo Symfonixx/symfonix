@@ -42,7 +42,7 @@
                         <span class="me-2" data-kt-comp-table-toolbar="selected_count"></span>{{ __('Selected') }}
                     </div>
                     <button type="button" class="btn btn-danger"
-                            data-kt-comp-table-toolbar="delete_selected">
+                            data-kt-comp-table-toolbar="delete_selected" data-action="delete">
                         <i class="bi bi-trash me-1"></i>{{ __('Delete Selected') }}
                     </button>
                 </div>

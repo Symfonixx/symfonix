@@ -56,6 +56,9 @@
         "is_active": "Active",
         "variables": "Variables",
         "variable": "Variable",
+        "header_variable": "Header :placeholder",
+        "body_variable": "Body :placeholder",
+        "url_variable": "URL :button :placeholder",
         "leads": "Leads",
         "contacts": "Contacts",
         "deals": "Deals",
@@ -65,6 +68,7 @@
         "all_deals": "All deals with phone numbers",
         "all_contact_forms": "All inquiries with mobile numbers",
         "select_leads": "Select leads",
+        "lead_tags": "Lead tags",
         "select_contacts": "Select contacts",
         "select_deals": "Select deals",
         "select_contact_forms": "Select inquiries",
@@ -115,7 +119,8 @@
         "select_template": "Choose an approved template",
         "body": "Hello {{1}}, we have a special offer: {{2}}",
         "footer": "Reply STOP to unsubscribe",
-        "header_content": "Text or media URL",
+        "header_content": "Welcome {{1}}",
+        "button_url": "https://example.com/{{1}}",
         "meta_template_id": "Optional Meta template ID",
         "select_leads": "Choose leads",
         "select_contacts": "Choose contacts",
@@ -127,8 +132,10 @@
     "hints": {
         "template_name": "Lowercase letters, numbers, and underscores only. Must match your Meta template name.",
         "body_variables": "Use {{1}}, {{2}}, etc. for dynamic variables. These will generate form inputs when composing.",
-        "header_content": "For text headers, enter the text. For media headers, enter the public URL.",
+        "header_content": "For text headers, enter the text. You can include {{1}} as an optional variable. For media headers, enter a public URL.",
+        "button_url": "For URL buttons, enter a static link or a dynamic URL ending in {{1}}. For phone buttons, enter the number.",
         "all_leads": "Sends to every non-blocked lead with a phone number.",
+        "lead_tags": "Check one or more tags to include every lead with those tags, such as Cold and Warm. Leads in more than one selected tag are only sent once.",
         "all_contacts": "Sends to every contact with a phone or secondary phone.",
         "all_deals": "Uses the linked lead or company phone for each deal.",
         "custom_phones": "Add phone numbers in international format (e.g. +1234567890).",
@@ -154,6 +161,7 @@
         "select_recipients": "Select at least one recipient group or add custom phone numbers.",
         "no_recipients": "No valid phone numbers were found for the selected recipients.",
         "template_not_sendable": "The selected template is not approved or active.",
-        "parameter_required": "Parameter {{num}} is required."
+        "parameter_required": "Parameter {{num}} is required.",
+        "parameter_required_named": ":label is required."
     }
 }

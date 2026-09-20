@@ -1,0 +1,38 @@
+{
+    "button": {
+        "label": "Edit with AI",
+        "tooltip": "Edit this image with AI",
+        "create_label": "Create with AI",
+        "create_tooltip": "Generate a new image with AI"
+    },
+    "modal": {
+        "title": "Edit Image with AI",
+        "create_title": "Create Image with AI",
+        "prompt_label": "Describe the edit you want",
+        "prompt_placeholder": "e.g. Change background to dusk, remove the person on the left...",
+        "create_prompt_label": "Describe the image you want to create",
+        "create_prompt_placeholder": "e.g. A modern minimalist logo with blue and white colors, on a transparent background...",
+        "generate": "Generate",
+        "generating": "Generating...",
+        "result_title": "Preview",
+        "replace": "Replace Original",
+        "save_as_new": "Save as New Version",
+        "use_this_image": "Use This Image",
+        "use_brand": "Match our brand",
+        "use_brand_hint": "Sends the site logo from Settings so Gemini follows your colors and identity.",
+        "no_brand_logo": "Add a site logo under Settings \u203a Branding to make generated images match your brand.",
+        "discard": "Discard",
+        "close": "Close"
+    },
+    "messages": {
+        "not_configured": "Gemini API key is not configured. Add it under Settings > Integrations > AI Integrations.",
+        "no_image_returned": "Gemini did not return an edited image. Try adjusting your prompt.",
+        "request_failed": "The AI image edit request failed. Please try again.",
+        "invalid_target": "This image field is not enabled for AI editing.",
+        "source_image_missing": "The original image could not be found on disk.",
+        "invalid_or_expired": "This AI edit result has expired. Please generate again.",
+        "applied": "Image updated successfully.",
+        "staged": "Image staged. Remember to save the form to keep it.",
+        "staged_hint": "This image has not been saved yet. Clicking \"Use This Image\" will stage the edited version in place of your selected file \u2014 save the form to keep it."
+    }
+}

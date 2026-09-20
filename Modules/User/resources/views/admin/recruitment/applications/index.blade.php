@@ -33,7 +33,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-2"><button class="btn btn-light-primary w-100">{{ __('Filter') }}</button></div>
+                <div class="col-md-2"><button class="btn btn-light-primary w-100" data-action="filter">{{ __('Filter') }}</button></div>
             </form>
         </div>
     </div>
@@ -63,8 +63,8 @@
                 <td>{{ $application->candidate->expected_salary ? number_format((float) $application->candidate->expected_salary, 2) : __('N/A') }}</td>
                 <td>{{ $application->submitted_at->format('Y-m-d H:i') }}</td>
                 <td><span class="badge badge-light-primary">{{ __(ucfirst($application->status)) }}</span></td>
-                <td class="text-end">
-                    <a href="{{ route('admin.job-applications.show', $application) }}" class="btn btn-sm btn-light-primary" title="{{ __('View') }}">
+                <td class="text-end sx-actions">
+                    <a href="{{ route('admin.job-applications.show', $application) }}" class="btn btn-sm btn-light-info" title="{{ __('View') }}" data-action="view">
                         <i class="bi bi-eye"></i>
                     </a>
                     @if($application->isHired() && $application->employee_id)
@@ -78,7 +78,7 @@
                                   class="d-inline"
                                   data-confirm="{{ __('user::emails.hire.confirm', ['name' => $application->candidate->full_name, 'email' => $application->candidate->email]) }}">
                                 @csrf
-                                <button type="submit" class="btn btn-sm btn-success" title="{{ __('Hire Employee') }}">
+                                <button type="submit" class="btn btn-sm btn-success" title="{{ __('Hire Employee') }}" data-action="approve">
                                     <i class="bi bi-person-plus"></i>
                                 </button>
                             </form>

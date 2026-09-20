@@ -9,36 +9,38 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="$employee->name" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.employees.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.employees.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('Back to List') }}
         </a>
         @if(\Illuminate\Support\Facades\Route::has('admin.reporting.employee.show'))
-            <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.reporting.employee.show', ['employee' => $employee->id]) }}">
+            <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.reporting.employee.show', ['employee' => $employee->id]) }}" data-action="view">
                 <i class="bi bi-graph-up-arrow me-1"></i>{{ __('Open Employee Report') }}
             </a>
         @endif
-        <a class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{ $employee->id }}">
+        <a class="btn btn-sm fw-bold btn-warning" data-bs-toggle="modal" data-bs-target="#edit_modal{{ $employee->id }}" data-action="edit">
             <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
         </a>
+        @if($employee->isOnWebsiteTeam())
+            @can('cms.team.edit')
+                <a class="btn btn-sm fw-bold btn-warning" href="{{ route('admin.teams.edit', $employee->team) }}" data-action="edit">
+                    <i class="bi bi-pencil-square me-1"></i>{{ __('Edit Our Team') }}
+                </a>
+            @endcan
+        @endif
         @if(! $employee->isAdminAccount())
             <x-can perform="hr.admins.create">
-                <button type="button" class="btn btn-sm fw-bold btn-light-warning" data-bs-toggle="modal" data-bs-target="#convert_admin_modal">
+                <button type="button" class="btn btn-sm fw-bold btn-success" data-bs-toggle="modal" data-bs-target="#convert_admin_modal" data-action="convert">
                     <i class="bi bi-shield-lock me-1"></i>{{ __('Convert to Admin') }}
                 </button>
             </x-can>
         @endif
-        @if($employee->isOnWebsiteTeam())
-            @can('cms.team.edit')
-                <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.teams.edit', $employee->team) }}">
-                    <i class="bi bi-pencil-square me-1"></i>{{ __('Edit Our Team') }}
-                </a>
-            @endcan
-        @else
+        @if(! $employee->isOnWebsiteTeam())
             <x-can perform="cms.team.create">
                 <form method="POST"
                       action="{{ route('admin.employees.add-to-team', $employee) }}"
                       class="d-inline"
+                      data-action="create"
                       data-confirm="{{ __('user::emails.team.confirm', ['name' => $employee->name]) }}">
                     @csrf
                     <button type="submit" class="btn btn-sm fw-bold btn-success">

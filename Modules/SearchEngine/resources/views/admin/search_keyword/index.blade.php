@@ -8,8 +8,8 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Search Keywords')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{ route('admin.search_keywords.export') }}" class="btn btn-sm btn-primary">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a href="{{ route('admin.search_keywords.export') }}" class="btn btn-sm btn-light-info" data-action="export">
             <i class="bi bi-file-earmark-excel"></i> {{ __('Export to Excel') }}
         </a>
     </div>

@@ -10,7 +10,7 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::quote.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <x-can perform="sales.quotes.create">
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.quotes.create') }}">
+        <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.quotes.create') }}" data-action="create">
             <i class="bi bi-plus-lg me-1"></i>{{ __('crm::quote.actions.create') }}
         </a>
     </x-can>
@@ -49,7 +49,7 @@
                            placeholder="{{ __('crm::quote.fields.quote_number') }}">
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary w-100">
+                    <button type="submit" class="btn btn-light-primary w-100" data-action="filter">
                         <i class="bi bi-funnel me-1"></i>{{ __('Filter') }}
                     </button>
                 </div>
@@ -102,15 +102,15 @@
                                 </span>
                             </td>
                             <td>{{ $quote->expires_at?->format('Y-m-d') ?? '—' }}</td>
-                            <td class="text-end">
-                                <a href="{{ route('admin.quotes.show', $quote) }}" class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1">
+                            <td class="text-end sx-actions">
+                                <a href="{{ route('admin.quotes.show', $quote) }}" class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1 btn-light-info" data-action="view">
                                     <i class="bi bi-eye fs-5"></i>
                                 </a>
-                                <a href="{{ route('admin.quotes.pdf', $quote) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <a href="{{ route('admin.quotes.pdf', $quote) }}" class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1 btn-light-info" data-action="export">
                                     <i class="bi bi-file-pdf fs-5"></i>
                                 </a>
                                 @if(in_array($quote->status, ['draft', 'sent'], true))
-                                    <a href="{{ route('admin.quotes.edit', $quote) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                    <a href="{{ route('admin.quotes.edit', $quote) }}" class="btn btn-icon btn-bg-light btn-active-color-warning btn-sm" data-action="edit">
                                         <i class="bi bi-pencil fs-5"></i>
                                     </a>
                                 @endif

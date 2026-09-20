@@ -8,9 +8,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Admins')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="hr.admins.create">
-            <a class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#create_modal">
+            <a class="btn btn-sm fw-bold btn-success" data-bs-toggle="modal" data-bs-target="#create_modal" data-action="create">
                 {{__('Add New Admin')}} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -80,10 +80,10 @@
                 </td>
                 <td>{{$admin->created_at}}</td>
                 <td>
-                    <a href="{{ route('admin.admins.show', $admin) }}" class="btn btn-sm btn-light-info me-1">
+                    <a href="{{ route('admin.admins.show', $admin) }}" class="btn btn-sm btn-light-info me-1" data-action="view">
                         <i class="bi bi-eye"></i>
                     </a>
-                    <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{$admin->id}}">
+                    <a class="btn btn-sm btn-light-warning" data-bs-toggle="modal" data-bs-target="#edit_modal{{$admin->id}}">
                         <i class="bi bi-pencil"></i>
                     </a>
                     <div class="modal fade" tabindex="-1" id="edit_modal{{$admin->id}}">

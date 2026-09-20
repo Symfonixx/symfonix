@@ -66,6 +66,24 @@
         "reject": "Reject Quote",
         "back_to_list": "Back to Quotes"
     },
+    "ai": {
+        "button": "Generate from AI",
+        "tooltip": "Draft a contract-style quote from the selected company and deal",
+        "banner_title": "Generate quote from AI",
+        "banner_hint": "Uses the selected company and deal to draft line items and commercial terms that form the contract between your company and the customer.",
+        "modal_title": "Generate quote from AI",
+        "context_label": "Selected",
+        "prompt_label": "Extra instructions (optional)",
+        "prompt_placeholder": "e.g. Split payment into two milestones, 14-day validity, include a discovery workshop.",
+        "generate": "Generate & fill quote",
+        "generating": "Drafting contract terms and line items...",
+        "applied": "The quote was filled from the company and deal. Review it before saving.",
+        "overwrite_confirm": "This will replace the current terms, notes, and line items. Continue?",
+        "company_required": "Select a company first.",
+        "deal_required": "Select a deal first.",
+        "no_catalog": "Add at least one service or product, or attach services to the deal, before generating a quote.",
+        "no_lines": "The AI could not match line items to your catalog. Attach services to the deal or try again."
+    },
     "messages": {
         "created": "Quote created successfully.",
         "updated": "Quote updated successfully.",

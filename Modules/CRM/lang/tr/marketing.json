@@ -5,15 +5,25 @@
     "pages": {
         "index_title": "Pazarlama",
         "create_title": "E-posta Gönder",
-        "show_title": "Kampanya Detayları"
+        "show_title": "Kampanya Detayları",
+        "groups_title": "Kampanyalar",
+        "group_create_title": "Kampanya Oluştur",
+        "group_edit_title": "Kampanyayı Düzenle",
+        "group_show_title": "Kampanya"
     },
     "actions": {
         "compose": "E-posta Oluştur",
         "send": "E-postayı Gönder",
         "back_to_list": "Pazarlamaya Dön",
-        "view": "Görüntüle"
+        "view": "Görüntüle",
+        "create_campaign": "Kampanya Oluştur",
+        "edit_campaign": "Kampanyayı Düzenle",
+        "delete_campaign": "Kampanyayı Sil",
+        "send_email": "E-posta Gönder",
+        "send_whatsapp": "WhatsApp Gönder"
     },
     "tabs": {
+        "campaigns": "Kampanyalar",
         "emails": "E-postalar",
         "whatsapp": "WhatsApp Mesajları"
     },
@@ -29,6 +39,10 @@
         "contacts": "Kişiler",
         "contact_forms": "Talepler",
         "custom_emails": "Özel E-postalar",
+        "leads": "Potansiyel müşteriler",
+        "all_leads": "E-postası olan tüm potansiyel müşteriler",
+        "select_leads": "Potansiyel müşteri seç",
+        "lead_tags": "Potansiyel müşteri etiketleri",
         "all_subscribers": "Tüm aktif aboneler",
         "all_contacts": "E-postası olan tüm kişiler",
         "all_contact_forms": "E-postası olan tüm talepler",
@@ -42,7 +56,12 @@
         "marketing_audience": "Gönderilecek kişiler",
         "all_audiences": "Herkes",
         "status": "Durum",
-        "channel": "Kanal"
+        "channel": "Kanal",
+        "campaign": "Kampanya",
+        "title": "Başlık",
+        "goal": "Hedef",
+        "email_sends": "E-postalar",
+        "whatsapp_sends": "WhatsApp"
     },
     "status": {
         "pending": "Beklemede",
@@ -63,12 +82,18 @@
         "custom_emails": "E-posta yazın ve eklemek için Enter'a basın",
         "select_subscribers": "Aboneleri seçin",
         "select_contacts": "Kişileri seçin",
-        "select_contact_forms": "Talepleri seçin"
+        "select_contact_forms": "Talepleri seçin",
+        "select_leads": "Potansiyel müşteri seçin",
+        "title": "ör. Bahar web sitesi teklifi",
+        "goal": "ör. Yeni web sitesi paketimiz için keşif görüşmeleri ayırmak",
+        "select_campaign": "Kampanya seçin"
     },
     "hints": {
         "all_subscribers": "Engellenmemiş tüm bülten abonelerine gönderir.",
         "all_contacts": "E-posta adresi olan tüm CRM kişilerine gönderir.",
         "all_contact_forms": "Engellenmemiş ve e-postası olan tüm taleplere gönderir.",
+        "all_leads": "Engellenmemiş ve e-postası olan tüm potansiyel müşterilere gönderir.",
+        "lead_tags": "Soğuk ve ılık gibi etiketlerden birini veya birkaçını işaretleyin. Birden fazla seçili etiketi olan kişilere yalnızca bir kez gönderilir.",
         "custom_emails": "Yukarıda listelenmeyen ek e-posta adresleri ekleyin. E-posta yazıp Enter'a basın.",
         "send_warning": "E-postalar arka planda kuyruğa alınarak gönderilir. Bu işlem geri alınamaz.",
         "send_as_marketing": "Bu içerikten bir pazarlama kampanyası oluşturun ve kaydettikten sonra kuyruğa alın.",
@@ -87,7 +112,47 @@
         "subject_required": "Konu metin içermelidir.",
         "subject_too_long": "Konu 255 karakterden uzun olamaz.",
         "body_required": "Mesaj metin içermelidir.",
-        "permission_required": "Pazarlama e-postası gönderme yetkiniz yok."
+        "permission_required": "Pazarlama e-postası gönderme yetkiniz yok.",
+        "group_required": "Mevcut bir kampanya seçin veya yeni bir kampanya için başlık ve hedef girin.",
+        "group_title_required": "Kampanya başlığı gerekli.",
+        "group_goal_required": "Kampanya hedefi gerekli."
+    },
+    "groups": {
+        "create_new": "Yeni kampanya oluştur",
+        "hint": "Bu e-posta veya WhatsApp gönderimini başlığı ve hedefi olan bir kampanyanın altına alın.",
+        "goal_hint": "Bu kampanyanın neyi başarması gerektiğini yazın. Yapay zeka e-postayı buna göre yazar.",
+        "form_hint": "Kampanyaya bir başlık ve hedef verin, ardından e-posta veya WhatsApp gönderin.",
+        "empty": "Henüz kampanya yok. E-posta ve WhatsApp gönderimlerini gruplamak için bir tane oluşturun.",
+        "created": "Kampanya oluşturuldu.",
+        "updated": "Kampanya güncellendi.",
+        "deleted": "Kampanya silindi.",
+        "in_use": "Bu kampanya silinemez çünkü e-posta veya WhatsApp gönderimleri var.",
+        "delete_confirm": "Bu kampanya silinsin mi?",
+        "complete": "Hazır",
+        "incomplete": "Eksik öğeler"
+    },
+    "missing": {
+        "heading": "Bu kampanyada eksik:",
+        "title": "Kampanya başlığı",
+        "goal": "Kampanya hedefi",
+        "sends": "En az bir e-posta veya WhatsApp gönderimi",
+        "email": "Henüz e-posta gönderilmedi",
+        "whatsapp": "Henüz WhatsApp mesajı gönderilmedi"
+    },
+    "ai": {
+        "button": "E-postayı yapay zeka ile oluştur",
+        "tooltip": "Konuyu ve mesajı kampanya hedefine göre yaz",
+        "banner_title": "Bu kampanyadan e-posta oluştur",
+        "banner_hint": "Konu ve mesajı kampanya başlığı ve hedefinden taslaklar.",
+        "modal_title": "Pazarlama e-postası oluştur",
+        "prompt_label": "E-postada başka ne geçmeli?",
+        "prompt_placeholder": "İsteğe bağlı. ör. Bahar indirimini ve Cuma son tarihini belirt.",
+        "generate": "Oluştur ve forma doldur",
+        "generating": "Konu ve mesaj yazılıyor...",
+        "applied": "Konu ve mesaj dolduruldu. Göndermeden önce gözden geçirin.",
+        "overwrite": "Bu, mevcut konu ve mesajın üzerine yazacak. Devam edilsin mi?",
+        "group_required": "Önce başlığı ve hedefi olan bir kampanya seçin veya oluşturun.",
+        "goal_required": "Yapay zekanın ne yazacağını bilmesi için bir kampanya hedefi ekleyin."
     },
     "sources": {
         "all_subscribers": "Tüm aboneler",
@@ -96,6 +161,9 @@
         "contacts": ":count kişi",
         "all_contact_forms": "Tüm talepler",
         "contact_forms": ":count talep",
-        "custom_emails": "Özel e-postalar"
+        "custom_emails": "Özel e-postalar",
+        "all_leads": "Tüm potansiyel müşteriler",
+        "leads": ":count potansiyel müşteri",
+        "lead_tags": "Etiketler: :tags"
     }
 }

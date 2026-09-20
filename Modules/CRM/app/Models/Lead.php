@@ -139,6 +139,27 @@ class Lead extends Model
             ->withTimestamps();
     }
 
+    /**
+     * @param  list<int|string>  $tagIds
+     * @return list<int>
+     */
+    public static function idsForMarketingTags(array $tagIds, string $field): array
+    {
+        $tagIds = array_values(array_unique(array_filter(array_map('intval', $tagIds))));
+
+        if ($tagIds === [] || ! in_array($field, ['email', 'phone'], true)) {
+            return [];
+        }
+
+        return static::query()
+            ->where('blocked', false)
+            ->whereNotNull($field)
+            ->whereHas('tags', fn (Builder $query) => $query->whereIn('lead_tags.id', $tagIds))
+            ->pluck('id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
+    }
+
     /** Service ids from the pivot, falling back to the legacy single column. */
     public function serviceIds(): array
     {

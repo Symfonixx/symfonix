@@ -2,6 +2,9 @@
     'currentImage' => null,
     'dimensions' => '500 × 500 px',
     'required' => true,
+    'target' => null,
+    'id' => null,
+    'field' => 'image',
 ])
 
 @php
@@ -33,6 +36,17 @@
                   data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="{{ __('Remove') }}">
                 <i class="bi bi-trash fs-7"></i>
             </span>
+            <x-ai::edit-with-ai-button
+                :target="$target"
+                :id="$id"
+                :field="$field"
+                :image-url="$currentImage"
+            />
+            <x-ai::create-with-ai-button
+                :target="$target"
+                :id="$id"
+                :field="$field"
+            />
         </div>
         <div class="form-text mt-3">
             <span class="badge badge-light-primary fs-8">{{ $dimensions }}</span>

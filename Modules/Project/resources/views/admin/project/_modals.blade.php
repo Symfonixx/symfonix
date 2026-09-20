@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="modal-footer flex-center">
-                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal" data-action="back">{{ __('Cancel') }}</button>
                         <button type="submit" class="btn btn-primary">
                             <i class="bi bi-person-plus me-1"></i>{{ __('project::project.actions.assign_employee') }}
                         </button>
@@ -85,8 +85,8 @@
                                        min="{{ $assignment->started_at?->format('Y-m-d') }}" required>
                             </div>
                             <div class="modal-footer flex-center">
-                                <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                                <button type="submit" class="btn btn-warning">
+                                <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal" data-action="back">{{ __('Cancel') }}</button>
+                                <button type="submit" class="btn btn-light-warning" data-action="edit">
                                     {{ __('project::project.actions.finish_work') }}
                                 </button>
                             </div>
@@ -167,8 +167,8 @@
                         </div>
                     </div>
                     <div class="modal-footer flex-center">
-                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button type="submit" class="btn btn-danger">
+                        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal" data-action="back">{{ __('Cancel') }}</button>
+                        <button type="submit" class="btn btn-danger" data-action="delete">
                             <i class="bi bi-cash-stack me-1"></i>{{ __('project::project.actions.log_expense') }}
                         </button>
                     </div>
@@ -281,20 +281,20 @@
                                         </div>
                                         <div class="col-md-1">
                                             @if($index > 0)
-                                                <button type="button" class="btn btn-light-danger w-100 remove-line">&times;</button>
+                                                <button type="button" class="btn btn-light-danger w-100 remove-line" data-action="delete">&times;</button>
                                             @endif
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
                             <div class="text-end text-muted fs-7 mb-3" id="project-invoice-totals"></div>
-                            <button type="button" class="btn btn-light-primary btn-sm" id="project-add-line">
+                            <button type="button" class="btn btn-success btn-sm" id="project-add-line" data-action="create">
                                 <i class="bi bi-plus-lg me-1"></i>{{ __('finance::invoice.actions.add_line') }}
                             </button>
                         </div>
                         <div class="modal-footer flex-center">
-                            <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal" data-action="back">{{ __('Cancel') }}</button>
+                            <button type="submit" class="btn btn-success" data-action="create">
                                 <i class="bi bi-receipt me-1"></i>{{ __('project::project.actions.add_invoice') }}
                             </button>
                         </div>
@@ -385,7 +385,7 @@
                         <select name="lines[${lineIndex}][tax_rate_id]" class="form-select form-select-solid line-tax-rate">${buildTaxOptions(defaultTaxRateId)}</select>
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-light-danger w-100 remove-line">&times;</button>
+                        <button type="button" class="btn btn-light-danger w-100 remove-line" data-action="delete">&times;</button>
                     </div>`;
                 container.appendChild(row);
                 lineIndex++;

@@ -8,9 +8,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Service Categories')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="services.categories.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.service_categories.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.service_categories.create') }}" data-action="create">
                 {{__('Add New Service Category')}} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -51,7 +51,7 @@
                 <td>{{$category->slug}}</td>
                 <td>{{$category->services_count}}</td>
                 <td>{{$category->created_at->diffForHumans() }}</td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <a href="{{ route('admin.service_categories.edit', $category->id) }}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="ki-duotone ki-message-edit fs-1">

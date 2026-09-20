@@ -9,8 +9,8 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::marketing.pages.create_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.crm.marketing.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.crm.marketing.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::marketing.actions.back_to_list') }}
         </a>
     </div>

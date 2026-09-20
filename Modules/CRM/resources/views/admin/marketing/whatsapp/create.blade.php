@@ -9,8 +9,8 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::whatsapp.pages.create_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.crm.marketing.index', ['channel' => 'whatsapp']) }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.crm.marketing.index', ['channel' => 'whatsapp']) }}">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::marketing.actions.back_to_list') }}
         </a>
     </div>
@@ -76,13 +76,45 @@
                     }) || ['lead_ids','contact_ids','deal_ids','contact_form_ids'].some(function (name) {
                         var el = step.querySelector('[name="'+name+'[]"]');
                         return el && el.selectedOptions && el.selectedOptions.length > 0;
-                    }) || (document.getElementById('custom_phones') && document.getElementById('custom_phones').value.trim() !== '');
+                    }) || step.querySelectorAll('[name="lead_tag_ids[]"]:checked').length > 0
+                    || (document.getElementById('custom_phones') && document.getElementById('custom_phones').value.trim() !== '');
                     if (!hasRecipient) {
                         alert(@json(__('crm::whatsapp.validation.select_recipients')));
                         valid = false;
                     }
                 }
                 return valid;
+            }
+
+            function escapeHtml(value) {
+                return String(value)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            function parameterName(variable) {
+                if (variable.component === 'header') {
+                    return 'template_parameters[header][' + variable.index + ']';
+                }
+                if (variable.component === 'buttons') {
+                    return 'template_parameters[buttons][' + variable.button_index + '][' + variable.index + ']';
+                }
+                return 'template_parameters[body][' + variable.index + ']';
+            }
+
+            function oldParameterValue(variable, oldVal) {
+                if (!oldVal) return '';
+                if (variable.component === 'header') {
+                    return (oldVal.header && oldVal.header[variable.index]) || '';
+                }
+                if (variable.component === 'buttons') {
+                    return (oldVal.buttons
+                        && oldVal.buttons[variable.button_index]
+                        && oldVal.buttons[variable.button_index][variable.index]) || '';
+                }
+                return (oldVal.body && oldVal.body[variable.index]) || oldVal[variable.index] || '';
             }
 
             function loadTemplateVariables(templateId) {
@@ -95,42 +127,65 @@
                     .then(function (r) { return r.json(); })
                     .then(function (data) {
                         paramsContainer.innerHTML = '';
+                        wizard.dataset.templateBody = data.body || '';
+                        wizard.dataset.templateHeader = data.header_content || '';
+                        wizard.dataset.templateFooter = data.footer || '';
+                        wizard.dataset.templateButtons = JSON.stringify(data.buttons || []);
                         if (!data.variables || data.variables.length === 0) {
                             paramsContainer.innerHTML = '<p class="text-muted">' + @json(__('crm::whatsapp.hints.no_variables')) + '</p>';
                             return;
                         }
-                        data.variables.forEach(function (v) {
-                            var oldVal = @json(old('template_parameters', []));
-                            var val = oldVal[v.index] || '';
+                        var oldVal = @json(old('template_parameters', []));
+                        data.variables.forEach(function (variable) {
+                            var val = oldParameterValue(variable, oldVal);
                             var row = document.createElement('div');
                             row.className = 'row mb-6';
                             row.innerHTML = '<div class="col-xl-3"><label class="fs-6 fw-bold mt-2 mb-3 required">' +
-                                @json(__('crm::whatsapp.fields.variable')) + ' ' + v.placeholder + '</label></div>' +
-                                '<div class="col-xl-9 fv-row"><input type="text" name="template_parameters[' + v.index + ']" ' +
+                                escapeHtml(variable.label || variable.placeholder) + '</label></div>' +
+                                '<div class="col-xl-9 fv-row"><input type="text" name="' + parameterName(variable) + '" ' +
                                 'class="form-control form-control-solid template-param-input" required ' +
-                                'data-index="' + v.index + '" value="' + val.replace(/"/g, '&quot;') + '" ' +
-                                'placeholder="' + @json(__('crm::whatsapp.placeholders.variable_value')) + ' ' + v.index + '"></div>';
+                                'data-component="' + escapeHtml(variable.component) + '" ' +
+                                'data-index="' + escapeHtml(variable.index) + '" ' +
+                                'data-button-index="' + escapeHtml(variable.button_index ?? '') + '" ' +
+                                'value="' + escapeHtml(val) + '" ' +
+                                'placeholder="' + escapeHtml(variable.label || variable.placeholder) + '"></div>';
                             paramsContainer.appendChild(row);
                         });
-                        wizard.dataset.templateBody = data.body;
-                        wizard.dataset.templateHeader = data.header_content || '';
-                        wizard.dataset.templateFooter = data.footer || '';
                     });
             }
 
-            function updatePreview() {
-                var body = wizard.dataset.templateBody || '';
-                var header = wizard.dataset.templateHeader || '';
-                var footer = wizard.dataset.templateFooter || '';
-                var preview = '';
-                if (header) preview += header + '\n\n';
+            function applyComponentParams(text, component, buttonIndex) {
                 document.querySelectorAll('.template-param-input').forEach(function (input) {
-                    var idx = input.dataset.index;
-                    body = body.split('{{' + idx + '}}').join(input.value || '{{' + idx + '}}');
-                    if (header) header = header.split('{{' + idx + '}}').join(input.value || '{{' + idx + '}}');
+                    if (input.dataset.component !== component) return;
+                    if (component === 'buttons' && String(input.dataset.buttonIndex) !== String(buttonIndex)) return;
+                    var token = '{' + '{' + input.dataset.index + '}' + '}';
+                    text = text.split(token).join(input.value || token);
                 });
-                preview = (header ? header + '\n\n' : '') + body;
+                return text;
+            }
+
+            function updatePreview() {
+                var body = applyComponentParams(wizard.dataset.templateBody || '', 'body');
+                var header = applyComponentParams(wizard.dataset.templateHeader || '', 'header');
+                var footer = wizard.dataset.templateFooter || '';
+                var preview = header ? header + '\n\n' + body : body;
                 if (footer) preview += '\n\n' + footer;
+                try {
+                    var buttons = JSON.parse(wizard.dataset.templateButtons || '[]');
+                    var buttonLines = [];
+                    buttons.forEach(function (button, buttonIndex) {
+                        if (!button) return;
+                        var label = button.text || button.label || '';
+                        var line = label ? '[' + label + ']' : '';
+                        if ((button.type || '').toUpperCase() === 'URL' && button.url) {
+                            line = (line + ' ' + applyComponentParams(button.url, 'buttons', buttonIndex)).trim();
+                        }
+                        if (line) buttonLines.push(line);
+                    });
+                    if (buttonLines.length) {
+                        preview += '\n\n---\n' + buttonLines.join('\n');
+                    }
+                } catch (e) {}
                 previewContainer.textContent = preview;
             }
 
@@ -197,6 +252,22 @@
 
             <form method="POST" action="{{ route('admin.crm.marketing.whatsapp.store') }}" id="whatsapp-campaign-form">
                 @csrf
+
+                @if ($errors->any())
+                    <div class="alert alert-danger d-flex align-items-start p-5 mb-10">
+                        <i class="bi bi-exclamation-triangle-fill fs-2hx text-danger me-4 mt-1"></i>
+                        <div>
+                            <h5 class="mb-2">{{ __('crm::marketing.validation.fix_errors') }}</h5>
+                            <ul class="mb-0 ps-4">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+
+                @include('crm::admin.marketing._group_fields')
 
                 <div class="wizard-step">
                     @include('crm::admin.marketing.whatsapp._recipients_form')

@@ -9,7 +9,7 @@
         <div>
             <p class="mb-2">{{ __('crm::whatsapp.messages.no_templates') }}</p>
             <x-can perform="marketing.whatsapp_templates.create">
-                <a href="{{ route('admin.crm.marketing.whatsapp-templates.create') }}" class="btn btn-sm btn-primary">
+                <a href="{{ route('admin.crm.marketing.whatsapp-templates.create') }}" class="btn btn-sm btn-success" data-action="create">
                     {{ __('crm::whatsapp.actions.create_template') }}
                 </a>
             </x-can>

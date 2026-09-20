@@ -1,15 +1,15 @@
 ### Project Overview
-Symfonix is a modular Laravel 13 business management platform for agencies, combining a multilingual public CMS, CRM (quotes, WhatsApp/email marketing, forecasts), project management, multi-currency finance, tax, reporting, client portal, HR (including fingerprint attendance), and support ticketing.
+Symfonix is a modular Laravel 13 business management platform for agencies, combining a multilingual public CMS, CRM (quotes, WhatsApp/email marketing, forecasts), project management, multi-currency finance, tax, reporting, client portal, HR (including fingerprint attendance), support ticketing, and AI (Ask Symfonix, content generation, image editing, public chatbot).
 
 ### Tech Stack
 - **Backend:** PHP 8.3+, Laravel 13, `nwidart/laravel-modules`
 - **Frontend:** Blade, Inertia.js + Vue 3, Livewire 4, Tailwind CSS, Bootstrap 5 (Metronic theme), Vite
 - **Database & State:** MySQL 8+ / MariaDB, Redis, Spatie Permission, Spatie Laravel Data, Spatie Translatable
-- **Auth & Packages:** Fortify (2FA), DomPDF, BotMan, Telescope, Pulse, Localization (`mcamara`), WhatsApp Cloud API, ZKTeco fingerprint
+- **Auth & Packages:** Fortify (2FA), DomPDF, BotMan, Telescope, Pulse, Localization (`mcamara`), WhatsApp Cloud API, ZKTeco fingerprint, OpenAI/Gemini (Ask Symfonix)
 
 ### Directory Map
 - `app/` — Global HTTP middleware, base console commands, framework bootstrap
-- `Modules/` — Modular domains (`CRM`, `Finance`, `Tax`, `Reporting`, `Project`, `User`, `Base`, `Cms`, `Product`, `Support`, `Team`, `Testimonial`, `SearchEngine`)
+- `Modules/` — Modular domains (`AI`, `CRM`, `Finance`, `Tax`, `Reporting`, `Project`, `User`, `Base`, `Cms`, `Product`, `Support`, `Team`, `Testimonial`, `SearchEngine`)
   - `Modules/<Module>/app/Http/Controllers/` — Admin & API route controllers
   - `Modules/<Module>/app/Models/` — Eloquent models with relations & scopes
   - `Modules/<Module>/app/Repositories/` — Data access & query abstraction

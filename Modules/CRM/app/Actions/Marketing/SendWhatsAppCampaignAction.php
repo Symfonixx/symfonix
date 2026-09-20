@@ -3,12 +3,14 @@
 namespace Modules\CRM\Actions\Marketing;
 
 use Modules\CRM\Models\WhatsAppCampaign;
+use Modules\CRM\Services\Marketing\MarketingGroupService;
 use Modules\CRM\Services\Marketing\WhatsAppCampaignService;
 
 class SendWhatsAppCampaignAction
 {
     public function __construct(
         private readonly WhatsAppCampaignService $campaignService,
+        private readonly MarketingGroupService $marketingGroupService,
     ) {}
 
     /**
@@ -21,6 +23,7 @@ class SendWhatsAppCampaignAction
             $data['template_parameters'] ?? [],
             $data,
             $userId,
+            $this->marketingGroupService->optionalIdFromPayload($data, $userId),
         );
     }
 }

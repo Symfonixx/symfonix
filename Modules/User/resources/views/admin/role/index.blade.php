@@ -8,7 +8,7 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Roles')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3"></div>
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions"></div>
 @endsection
 @section('js')
     <script>

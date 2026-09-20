@@ -8,9 +8,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::contact.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="crm.contacts.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.contacts.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.contacts.create') }}" data-action="create">
                 <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
             </a>
         </x-can>
@@ -70,17 +70,17 @@
                 </td>
                 <td>{{ $contact->job_title ?: __('N/A') }}</td>
                 <td>{{ $contact->created_at->diffForHumans() }}</td>
-                <td class="text-end">
-                    <a href="{{ route('admin.contacts.show', $contact) }}" class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1">
+                <td class="text-end sx-actions">
+                    <a href="{{ route('admin.contacts.show', $contact) }}" class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1" data-action="view">
                         <i class="bi bi-eye fs-5"></i>
                     </a>
-                    <a href="{{ route('admin.contacts.edit', $contact) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                    <a href="{{ route('admin.contacts.edit', $contact) }}" class="btn btn-icon btn-bg-light btn-active-color-warning btn-sm me-1" data-action="edit">
                         <i class="bi bi-pencil fs-5"></i>
                     </a>
                     <form class="d-inline" method="POST" action="{{ route('admin.contacts.destroy', $contact) }}" data-confirm-delete>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                             <i class="bi bi-trash fs-5"></i>
                         </button>
                     </form>

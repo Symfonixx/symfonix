@@ -185,13 +185,13 @@
                        placeholder="{{ __('crm::deal.fields.unit_price') }}"/>
             </div>
             <div class="col-md-2 d-flex align-items-center">
-                <button type="button" class="btn btn-sm btn-light-danger remove-deal-service">{{ __('crm::deal.actions.remove_service') }}</button>
+                <button type="button" class="btn btn-sm btn-light-danger remove-deal-service" data-action="delete">{{ __('crm::deal.actions.remove_service') }}</button>
             </div>
         </div>
     @endforeach
 </div>
 
-<button type="button" id="add-deal-service" class="btn btn-sm btn-light-primary mb-8">
+<button type="button" id="add-deal-service" class="btn btn-sm btn-success mb-8" data-action="create">
     <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add_service') }}
 </button>
 

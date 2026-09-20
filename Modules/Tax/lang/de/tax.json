@@ -1,0 +1,9 @@
+{
+    "menu": {
+        "tax": "Steuerverwaltung",
+        "tax_rates": "Steuersätze",
+        "ledger": "Steuerbuch",
+        "reports": "Steuerberichte",
+        "filing_report": "Steuererklärung"
+    }
+}

@@ -8,7 +8,7 @@
                     @csrf
                     <div class="modal-header border-0 pb-0">
                         <h3 class="modal-title fw-bold" id="createCategoryModalLabel">{{ __('Add New Blog Category') }}</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                     </div>
                     <div class="modal-body pt-5">
                         <div class="mb-6">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="modal-footer border-0 pt-0">
                         <button type="button" class="btn btn-light btn-active-light-primary"
-                                data-bs-dismiss="modal">{{ __('Discard') }}</button>
+                                data-bs-dismiss="modal" data-action="back">{{ __('Discard') }}</button>
                         <button type="submit" class="btn btn-primary">
                             {{ __('Save Changes') }} <i class="bi bi-check2-circle ms-1"></i>
                         </button>

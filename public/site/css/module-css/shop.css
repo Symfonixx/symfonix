@@ -3109,6 +3109,40 @@ Product Description
     display: block;
 }
 
+.password-input-box__toggle {
+    position: absolute;
+    top: 50%;
+    inset-inline-end: 20px;
+    z-index: 2;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    background: transparent;
+    color: var(--techguru-gray);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 200ms ease;
+}
+
+.password-input-box__toggle:hover:not(:disabled) {
+    color: var(--techguru-white);
+}
+
+.password-input-box__toggle:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sign-up-one__form form .password-input-box input[type="password"],
+.sign-up-one__form form .password-input-box input[type="text"],
+.login-one__form form .password-input-box input[type="password"],
+.login-one__form form .password-input-box input[type="text"] {
+    padding-inline-end: 55px;
+}
+
 .sign-up-one__form form input[type="text"],
 .sign-up-one__form form input[type="email"],
 .sign-up-one__form form input[type="password"]

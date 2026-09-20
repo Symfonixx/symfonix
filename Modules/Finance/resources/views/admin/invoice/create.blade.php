@@ -70,13 +70,13 @@
                             </div>
                             <div class="col-md-2">
                                 @if($index > 0)
-                                    <button type="button" class="btn btn-light-danger w-100 remove-line">&times;</button>
+                                    <button type="button" class="btn btn-light-danger w-100 remove-line" data-action="delete">&times;</button>
                                 @endif
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <button type="button" class="btn btn-light-primary btn-sm mb-8" id="add-line">
+                <button type="button" class="btn btn-success btn-sm mb-8" id="add-line" data-action="create">
                     <i class="bi bi-plus-lg me-1"></i>{{ __('finance::invoice.actions.add_line') }}
                 </button>
 
@@ -108,7 +108,7 @@
                             <input type="number" step="0.01" min="0" name="lines[${lineIndex}][unit_price]" class="form-control form-control-solid" required>
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-light-danger w-100 remove-line">&times;</button>
+                            <button type="button" class="btn btn-light-danger w-100 remove-line" data-action="delete">&times;</button>
                         </div>`;
                     container.appendChild(row);
                     lineIndex++;

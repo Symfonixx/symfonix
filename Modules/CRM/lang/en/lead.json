@@ -75,7 +75,24 @@
         "manage_tags": "Manage tags",
         "edit_tags": "Edit tags",
         "manage_custom_fields": "Manage custom fields",
-        "edit_custom_fields": "Edit custom fields"
+        "edit_custom_fields": "Edit custom fields",
+        "create_follow_up_ai": "Create Follow-up with AI"
+    },
+    "follow_up": {
+        "button": "Create Follow-up with AI",
+        "tooltip": "Draft a follow-up from this lead and related project activity",
+        "modal_title": "Create follow-up with AI",
+        "hint": "The AI uses this lead’s details, timeline, and related project activity. Review the draft before creating it.",
+        "prompt_label": "Anything the AI should focus on? (optional)",
+        "prompt_placeholder": "e.g. Call about the website quote, or follow up after yesterday’s meeting.",
+        "generate": "Generate follow-up",
+        "generating": "Writing a follow-up from this lead and project activity...",
+        "preview_title": "Suggested follow-up",
+        "fill_form": "Insert into form",
+        "create": "Create follow-up",
+        "applied": "Follow-up drafted into the activity form. Review it, then save.",
+        "created": "Follow-up was created.",
+        "default_title": "Follow up with :name"
     },
     "filters": {
         "status": "Filter by status",

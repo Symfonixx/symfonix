@@ -8,9 +8,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::company.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="crm.companies.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.companies.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.companies.create') }}" data-action="create">
                 <i class="bi bi-plus-lg me-1"></i>{{ __('crm::company.actions.add') }}
             </a>
         </x-can>
@@ -41,7 +41,7 @@
                     </select>
                 </div>
                 <div class="col-md-4 d-flex gap-2">
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" class="btn btn-light-primary btn-sm" data-action="filter">
                         <i class="bi bi-funnel me-1"></i>{{ __('Filter') }}
                     </button>
                     <a href="{{ route('admin.companies.index') }}" class="btn btn-light btn-sm">
@@ -109,7 +109,7 @@
                     </span>
                 </td>
                 <td>{{ $company->created_at->diffForHumans() }}</td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <a href="{{ route('admin.companies.show', $company->id) }}"
                        class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1">
                         <i class="bi bi-eye fs-5"></i>
@@ -121,7 +121,7 @@
                     <form class="d-inline" method="POST" action="{{ route('admin.companies.destroy', $company->id) }}" data-confirm-delete>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                             <i class="bi bi-trash fs-5"></i>
                         </button>
                     </form>

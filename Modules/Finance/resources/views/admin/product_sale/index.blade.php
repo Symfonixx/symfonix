@@ -75,7 +75,7 @@
                     <div class="text-muted fs-7" id="sale-total-preview"></div>
                 </div>
                 <div class="col-md-1">
-                    <button type="submit" class="btn btn-primary w-100">
+                    <button type="submit" class="btn btn-success w-100" data-action="create">
                         <i class="bi bi-plus-lg"></i>
                     </button>
                 </div>
@@ -180,12 +180,12 @@
                                     —
                                 @endif
                             </td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <form class="d-inline" method="POST" action="{{ route('admin.finance.product-sales.destroy', $sale) }}"
                                       data-confirm="{{ __('finance::product_sale.messages.confirm_delete') }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

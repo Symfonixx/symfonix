@@ -20,10 +20,10 @@ class WhatsAppCampaignService
     ) {}
 
     /**
-     * @param  array<int|string, string>  $parameters
+     * @param  array<int|string, mixed>  $parameters
      * @param  array<string, mixed>  $recipientData
      */
-    public function send(int $templateId, array $parameters, array $recipientData, int $userId): WhatsAppCampaign
+    public function send(int $templateId, array $parameters, array $recipientData, int $userId, ?int $groupId = null): WhatsAppCampaign
     {
         if (! WhatsAppConfig::isConfigured()) {
             throw new \InvalidArgumentException(__('crm::whatsapp.messages.not_configured'));
@@ -41,11 +41,12 @@ class WhatsAppCampaignService
             throw new \InvalidArgumentException(__('crm::whatsapp.validation.no_recipients'));
         }
 
-        $normalizedParameters = $this->normalizeParameters($parameters, $template);
+        $normalizedParameters = $this->templateService->normalizeParameters($parameters, $template);
         $renderedPreview = $this->templateService->renderPreview($template, $normalizedParameters);
 
         $campaign = WhatsAppCampaign::query()->create([
             'user_id' => $userId,
+            'marketing_group_id' => $groupId,
             'whatsapp_template_id' => $template->id,
             'template_parameters' => $normalizedParameters,
             'rendered_preview' => $renderedPreview,
@@ -92,19 +93,29 @@ class WhatsAppCampaignService
                         'id' => $lead->id,
                     ]);
                 });
-        } elseif (! empty($recipientData['lead_ids'])) {
-            Lead::query()
-                ->where('blocked', false)
-                ->whereIn('id', $recipientData['lead_ids'])
-                ->whereNotNull('phone')
-                ->select(['id', 'phone'])
-                ->each(function (Lead $lead) use ($recipients) {
-                    $recipients->push([
-                        'phone' => $this->normalizePhone($lead->phone),
-                        'type' => 'lead',
-                        'id' => $lead->id,
-                    ]);
-                });
+        } else {
+            $leadIds = array_values(array_unique(array_filter(array_map(
+                'intval',
+                array_merge(
+                    $recipientData['lead_ids'] ?? [],
+                    Lead::idsForMarketingTags($recipientData['lead_tag_ids'] ?? [], 'phone'),
+                ),
+            ))));
+
+            if ($leadIds !== []) {
+                Lead::query()
+                    ->where('blocked', false)
+                    ->whereIn('id', $leadIds)
+                    ->whereNotNull('phone')
+                    ->select(['id', 'phone'])
+                    ->each(function (Lead $lead) use ($recipients) {
+                        $recipients->push([
+                            'phone' => $this->normalizePhone($lead->phone),
+                            'type' => 'lead',
+                            'id' => $lead->id,
+                        ]);
+                    });
+            }
         }
 
         if (! empty($recipientData['all_contacts'])) {
@@ -273,22 +284,6 @@ class WhatsAppCampaignService
     }
 
     /**
-     * @param  array<int|string, string>  $parameters
-     * @return array<int, string>
-     */
-    private function normalizeParameters(array $parameters, WhatsAppTemplate $template): array
-    {
-        $variables = $this->templateService->parseBodyVariables($template->body);
-        $normalized = [];
-
-        foreach ($variables as $index) {
-            $normalized[$index] = trim((string) ($parameters[$index] ?? $parameters[(string) $index] ?? ''));
-        }
-
-        return $normalized;
-    }
-
-    /**
      * @param  array<string, mixed>  $recipientData
      * @return array<string, mixed>
      */
@@ -297,6 +292,7 @@ class WhatsAppCampaignService
         return [
             'all_leads' => (bool) ($recipientData['all_leads'] ?? false),
             'lead_ids' => array_values($recipientData['lead_ids'] ?? []),
+            'lead_tag_ids' => array_values($recipientData['lead_tag_ids'] ?? []),
             'all_contacts' => (bool) ($recipientData['all_contacts'] ?? false),
             'contact_ids' => array_values($recipientData['contact_ids'] ?? []),
             'all_deals' => (bool) ($recipientData['all_deals'] ?? false),

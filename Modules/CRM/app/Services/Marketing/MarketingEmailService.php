@@ -3,12 +3,13 @@
 namespace Modules\CRM\Services\Marketing;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Modules\CRM\Jobs\SendMarketingCampaignJob;
 use Modules\CRM\Models\Contact;
 use Modules\CRM\Models\ContactForm;
+use Modules\CRM\Models\Lead;
 use Modules\CRM\Models\MarketingCampaign;
 use Modules\Support\Models\Subscriber;
-use Illuminate\Support\Str;
 
 class MarketingEmailService
 {
@@ -23,7 +24,7 @@ class MarketingEmailService
      *     custom_emails?: string|null,
      * }  $recipientData
      */
-    public function send(string $subject, string $body, array $recipientData, int $userId): MarketingCampaign
+    public function send(string $subject, string $body, array $recipientData, int $userId, ?int $groupId = null): MarketingCampaign
     {
         $recipients = $this->resolveRecipients($recipientData);
 
@@ -33,6 +34,7 @@ class MarketingEmailService
 
         $campaign = MarketingCampaign::query()->create([
             'user_id' => $userId,
+            'marketing_group_id' => $groupId,
             'subject' => $subject,
             'body' => $body,
             'recipients_count' => $recipients->count(),
@@ -63,6 +65,33 @@ class MarketingEmailService
     public function resolveRecipients(array $recipientData): Collection
     {
         $emails = collect();
+
+        if (! empty($recipientData['all_leads'])) {
+            $emails = $emails->merge(
+                Lead::query()
+                    ->where('blocked', false)
+                    ->whereNotNull('email')
+                    ->pluck('email')
+            );
+        } else {
+            $leadIds = array_values(array_unique(array_filter(array_map(
+                'intval',
+                array_merge(
+                    $recipientData['lead_ids'] ?? [],
+                    Lead::idsForMarketingTags($recipientData['lead_tag_ids'] ?? [], 'email'),
+                ),
+            ))));
+
+            if ($leadIds !== []) {
+                $emails = $emails->merge(
+                    Lead::query()
+                        ->where('blocked', false)
+                        ->whereIn('id', $leadIds)
+                        ->whereNotNull('email')
+                        ->pluck('email')
+                );
+            }
+        }
 
         if (! empty($recipientData['all_subscribers'])) {
             $emails = $emails->merge(
@@ -176,6 +205,9 @@ class MarketingEmailService
     private function buildRecipientSources(array $recipientData): array
     {
         return [
+            'all_leads' => (bool) ($recipientData['all_leads'] ?? false),
+            'lead_ids' => array_values($recipientData['lead_ids'] ?? []),
+            'lead_tag_ids' => array_values($recipientData['lead_tag_ids'] ?? []),
             'all_subscribers' => (bool) ($recipientData['all_subscribers'] ?? false),
             'subscriber_ids' => array_values($recipientData['subscriber_ids'] ?? []),
             'all_contacts' => (bool) ($recipientData['all_contacts'] ?? false),

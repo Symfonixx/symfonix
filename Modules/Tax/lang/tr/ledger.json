@@ -1,0 +1,30 @@
+{
+    "pages": {
+        "index_title": "Vergi Defteri"
+    },
+    "fields": {
+        "date": "Tarih",
+        "direction": "Yön",
+        "tax_rate": "Vergi Oranı",
+        "amount": "Tutar",
+        "company": "Şirket",
+        "project": "Proje",
+        "subscription": "Abonelik",
+        "description": "Açıklama"
+    },
+    "directions": {
+        "output": "Çıktı Vergisi (Tahsil Edilen)",
+        "input": "Girdi Vergisi (Ödenen)"
+    },
+    "filters": {
+        "from": "Başlangıç",
+        "to": "Bitiş",
+        "direction": "Yön",
+        "all": "Tüm Yönler"
+    },
+    "descriptions": {
+        "invoice": ":number faturasında çıktı vergisi",
+        "invoice_line": ":number faturasında çıktı vergisi — :line",
+        "expense": "Gider üzerinde girdi vergisi"
+    }
+}

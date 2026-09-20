@@ -12,10 +12,10 @@
         :breadcrumbItems="$breadcrumbItems"
         :pageDescription="__('base::backup.page_description')"
     />
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <form method="POST" action="{{ route('admin.backups.store') }}">
             @csrf
-            <button type="submit" class="btn btn-sm btn-primary">
+            <button type="submit" class="btn btn-sm btn-success" data-action="create">
                 <i class="bi bi-plus-circle me-1"></i>{{ __('base::backup.create_manual') }}
             </button>
         </form>
@@ -143,7 +143,7 @@
                             </td>
                             <td>{{ number_format($backup['size'] / 1024, 1) }} KB</td>
                             <td>{{ \Illuminate\Support\Carbon::createFromTimestamp($backup['created_at'])->format('Y-m-d H:i') }}</td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <form method="POST"
                                       action="{{ route('admin.backups.restore', $backup['filename']) }}"
                                       class="d-inline"
@@ -154,8 +154,8 @@
                                     </button>
                                 </form>
                                 <a href="{{ route('admin.backups.download', $backup['filename']) }}"
-                                   class="btn btn-sm btn-light-primary me-2"
-                                   title="{{ __('Download') }}">
+                                   class="btn btn-sm btn-light-info me-2"
+                                   title="{{ __('Download') }}" data-action="export">
                                     <i class="bi bi-download"></i>
                                 </a>
                                 <form method="POST"
@@ -164,7 +164,7 @@
                                       onsubmit="return confirm(@js(__('base::backup.confirm_delete')))">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-light-danger">
+                                    <button type="submit" class="btn btn-sm btn-light-danger" data-action="delete">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </form>

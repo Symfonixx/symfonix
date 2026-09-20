@@ -12,15 +12,6 @@
     <x-admin.breadcrumb :pageTitle="__('project::use_case.pages.edit_title')" :breadcrumbItems="$breadcrumbItems"/>
 @endsection
 
-@section('js')
-    @include('base::shared._tinymce')
-    <script>
-        $(document).ready(function () {
-            new Tagify(document.querySelector('#kt_tagify_tech'));
-        });
-    </script>
-@endsection
-
 <x-admin-layout>
     <x-admin.create-card :title="__('project::use_case.pages.edit_title')" :formUrl="route('admin.project-use-cases.update', $useCase->id)" :cancelUrl="route('admin.project-use-cases.index')">
         @method('PUT')

@@ -6,7 +6,7 @@
         </div>
         @can('finance.invoices.create')
             @if(isset($collectionSummary) && $collectionSummary['remaining'] > 0)
-                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addInvoiceModal">
+                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addInvoiceModal" data-action="create">
                     <i class="bi bi-receipt me-1"></i>{{ __('project::project.actions.add_invoice') }}
                 </button>
             @endif
@@ -50,10 +50,10 @@
                     </td>
                     <td>{{ $invoice->issued_at?->format('Y-m-d') }}</td>
                     <td>{{ $invoice->due_at?->format('Y-m-d') ?: '—' }}</td>
-                    <td class="text-end">
+                    <td class="text-end sx-actions">
                         <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}"
-                           class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                           title="PDF">
+                           class="btn btn-icon btn-bg-light btn-active-color-info btn-sm btn-light-info"
+                           title="PDF" data-action="export">
                             <i class="bi bi-file-pdf"></i>
                         </a>
                     </td>
@@ -79,7 +79,7 @@
             <h4 class="fw-bold text-gray-900 mb-1">{{ __('project::project.sections.expenses') }}</h4>
         </div>
         @can('project.projects.edit')
-            <button type="button" class="btn btn-sm btn-light-danger" data-bs-toggle="modal" data-bs-target="#logExpenseModal">
+            <button type="button" class="btn btn-sm btn-light-danger" data-bs-toggle="modal" data-bs-target="#logExpenseModal" data-action="delete">
                 <i class="bi bi-cash-stack me-1"></i>{{ __('project::project.actions.log_expense') }}
             </button>
         @endcan

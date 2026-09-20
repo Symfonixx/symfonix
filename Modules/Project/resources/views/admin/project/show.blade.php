@@ -27,12 +27,12 @@
         $currency = $profitAndLoss['currency'] ?? ($collectionSummary['currency'] ?? '');
     @endphp
     <x-admin.breadcrumb :pageTitle="$project->title" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.projects.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.projects.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('project::project.actions.back_to_list') }}
         </a>
         @can('update', $project)
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.projects.edit', $project) }}">
+            <a class="btn btn-sm fw-bold btn-warning" href="{{ route('admin.projects.edit', $project) }}" data-action="edit">
                 <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
             </a>
         @endcan

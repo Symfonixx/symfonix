@@ -65,7 +65,7 @@
                 </td>
                 <td>
                     <div class="d-flex align-items-center gap-2">
-                        <button type="button" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#visitorModal{{ $visitor->id }}">
+                        <button type="button" class="btn btn-sm btn-light-info" data-bs-toggle="modal" data-bs-target="#visitorModal{{ $visitor->id }}">
                             <i class="bi bi-eye"></i> {{ __('View Details') }}
                         </button>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="visitorModalLabel{{ $visitor->id }}">{{ __('Visitor Details') }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row mb-3">
@@ -135,7 +135,7 @@
                             @endif
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Close') }}</button>
                         </div>
                     </div>
                 </div>

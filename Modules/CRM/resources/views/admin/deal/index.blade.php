@@ -8,12 +8,12 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::deal.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.deals.index', ['view' => 'kanban']) }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.deals.index', ['view' => 'kanban']) }}" data-action="view">
             <i class="bi bi-kanban me-1"></i>{{ __('crm::deal.actions.kanban_view') }}
         </a>
         <x-can perform="sales.deals.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.deals.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.deals.create') }}" data-action="create">
                 <i class="bi bi-plus-lg me-1"></i>{{ __('crm::deal.actions.add') }}
             </a>
         </x-can>
@@ -119,7 +119,7 @@
                     </span>
                 </td>
                 <td>{{ $deal->created_at->diffForHumans() }}</td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <a href="{{ route('admin.deals.show', $deal->id) }}"
                        class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1">
                         <i class="bi bi-eye fs-5"></i>
@@ -131,7 +131,7 @@
                     <form class="d-inline" method="POST" action="{{ route('admin.deals.destroy', $deal->id) }}" data-confirm-delete>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                             <i class="bi bi-trash fs-5"></i>
                         </button>
                     </form>

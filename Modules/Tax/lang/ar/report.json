@@ -1,0 +1,26 @@
+{
+    "pages": {
+        "filing_title": "تقرير الإقرار الضريبي"
+    },
+    "fields": {
+        "from": "من تاريخ",
+        "to": "إلى تاريخ",
+        "tax_rate": "معدل الضريبة",
+        "company": "الشركة",
+        "output_tax": "ضريبة المخرجات المحصلة",
+        "input_tax": "ضريبة المدخلات المدفوعة",
+        "net_tax_payable": "صافي الضريبة المستحقة",
+        "all_rates": "كل المعدلات",
+        "all_companies": "كل الشركات"
+    },
+    "actions": {
+        "generate": "إنشاء التقرير",
+        "export_csv": "تصدير CSV"
+    },
+    "sections": {
+        "summary": "الملخص",
+        "by_rate": "التفصيل حسب معدل الضريبة",
+        "entries": "قيود الدفتر"
+    },
+    "unassigned_rate": "معدل غير معيّن"
+}

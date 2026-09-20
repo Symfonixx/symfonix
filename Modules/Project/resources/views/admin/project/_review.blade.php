@@ -38,12 +38,12 @@
                     @else
                         <form action="{{ route('admin.testimonials.unpublish', $review) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-sm btn-warning">
+                            <button type="submit" class="btn btn-sm btn-light-info" data-action="view">
                                 <i class="bi bi-eye-slash me-1"></i>{{ __('project::project.actions.unpublish_review') }}
                             </button>
                         </form>
                     @endif
-                    <a href="{{ route('admin.testimonials.edit', $review) }}" class="btn btn-sm btn-light-primary">
+                    <a href="{{ route('admin.testimonials.edit', $review) }}" class="btn btn-sm btn-light-warning" data-action="edit">
                         <i class="bi bi-pencil me-1"></i>{{ __('Edit') }}
                     </a>
                 @endcan

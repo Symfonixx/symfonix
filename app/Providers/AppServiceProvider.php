@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Modules\Base\Support\AdminEmail;
+use Modules\Base\Support\AskSymfonixConfig;
 use Modules\Base\Support\FingerprintConfig;
+use Modules\Base\Support\GeminiConfig;
 use Modules\Base\Support\MailConfig;
+use Modules\Base\Support\OpenAIConfig;
 use Modules\Base\Support\WhatsAppConfig;
 
 class AppServiceProvider extends ServiceProvider
@@ -76,6 +79,9 @@ class AppServiceProvider extends ServiceProvider
             MailConfig::mergeIntoConfig();
             WhatsAppConfig::mergeIntoConfig();
             FingerprintConfig::mergeIntoConfig();
+            GeminiConfig::mergeIntoConfig();
+            OpenAIConfig::mergeIntoConfig();
+            AskSymfonixConfig::mergeIntoConfig();
         } catch (\Throwable) {
             //
         }

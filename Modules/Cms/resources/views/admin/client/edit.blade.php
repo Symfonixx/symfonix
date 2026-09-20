@@ -13,8 +13,8 @@
         :breadcrumbItems="$breadcrumbItems"
         pageDescription="Update the logo, company name, URL, and publish status."
     />
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.clients.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.clients.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('Back to list') }}
         </a>
     </div>

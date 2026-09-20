@@ -17,6 +17,10 @@
     <p class="text-muted mb-0">{{ __('crm::marketing.sections.compose_hint') }}</p>
 </div>
 
+@include('crm::admin.marketing._group_fields')
+
+<x-ai::generate-marketing-email-button />
+
 <div class="row mb-8">
     <div class="col-xl-3">
         <label for="subject" class="fs-6 fw-bold mt-2 mb-3 required">{{ __('crm::marketing.fields.subject') }}</label>
@@ -55,6 +59,41 @@
 @error('recipients')
 <div class="alert alert-danger mb-8">{{ $message }}</div>
 @enderror
+
+<div class="card card-bordered mb-8">
+    <div class="card-header min-h-50px">
+        <h5 class="card-title mb-0">{{ __('crm::marketing.fields.leads') }}</h5>
+    </div>
+    <div class="card-body">
+        <div class="form-check form-check-custom form-check-solid mb-5">
+            <input class="form-check-input" type="checkbox" name="all_leads" value="1" id="all_leads"
+                   @checked(old('all_leads'))/>
+            <label class="form-check-label" for="all_leads">
+                <span class="fw-semibold">{{ __('crm::marketing.fields.all_leads') }}</span>
+                <span class="d-block text-muted fs-7">{{ __('crm::marketing.hints.all_leads') }}</span>
+            </label>
+        </div>
+        @include('crm::admin.marketing._lead_tag_picker')
+        <div class="fv-row mt-6">
+            <label for="lead_ids" class="form-label fw-semibold">{{ __('crm::marketing.fields.select_leads') }}</label>
+            <select id="lead_ids" name="lead_ids[]"
+                    class="form-select form-select-solid @error('lead_ids') is-invalid @enderror"
+                    multiple
+                    data-control="select2"
+                    data-placeholder="{{ __('crm::marketing.placeholders.select_leads') }}"
+                    data-close-on-select="false">
+                @foreach(($leads ?? collect()) as $lead)
+                    <option value="{{ $lead->id }}" @selected(collect(old('lead_ids', []))->contains($lead->id))>
+                        {{ $lead->name }} &lt;{{ $lead->email }}&gt;
+                    </option>
+                @endforeach
+            </select>
+            @error('lead_ids')
+            <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
+            @enderror
+        </div>
+    </div>
+</div>
 
 <div class="card card-bordered mb-8">
     <div class="card-header min-h-50px">

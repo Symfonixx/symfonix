@@ -8,12 +8,12 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Employees')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{ route('admin.fingerprint.index') }}" class="btn btn-sm fw-bold btn-light-info">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a href="{{ route('admin.fingerprint.index') }}" class="btn btn-sm fw-bold btn-light-info" data-action="view">
             <i class="bi bi-fingerprint me-1"></i>{{ __('user::fingerprint.title') }}
         </a>
         <x-can perform="hr.employees.create">
-            <a class="btn btn-sm fw-bold  btn-primary" data-bs-toggle="modal" data-bs-target="#create_modal">
+            <a class="btn btn-sm fw-bold btn-success" data-bs-toggle="modal" data-bs-target="#create_modal" data-action="create">
                 {{__('Add New Employee')}} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -198,7 +198,7 @@
                 <td>{{$employee->created_at}}</td>
 
                 <td>
-                    <a class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal{{$employee->id}}">
+                    <a class="btn btn-sm btn-light-warning" data-bs-toggle="modal" data-bs-target="#edit_modal{{$employee->id}}">
                         <i class="bi bi-pencil"></i>
                     </a>
                     <div class="modal fade" tabindex="-1" id="edit_modal{{$employee->id}}">
@@ -207,7 +207,7 @@
                     @if(! $employee->isAdminAccount())
                         <x-can perform="hr.admins.create">
                             <button type="button"
-                                    class="btn btn-sm btn-light-warning"
+                                    class="btn btn-sm btn-success"
                                     data-bs-toggle="modal"
                                     data-bs-target="#convert_admin_modal"
                                     data-convert-action="{{ route('admin.employees.convert-to-admin', $employee) }}"
@@ -222,6 +222,7 @@
                             <form method="POST"
                                   action="{{ route('admin.employees.add-to-team', $employee) }}"
                                   class="d-inline"
+                                  data-action="create"
                                   data-confirm="{{ __('user::emails.team.confirm', ['name' => $employee->name]) }}">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-success" title="{{ __('Add to Our Team') }}">

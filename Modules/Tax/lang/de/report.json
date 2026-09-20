@@ -1,0 +1,26 @@
+{
+    "pages": {
+        "filing_title": "Steuererklärungsbericht"
+    },
+    "fields": {
+        "from": "Von Datum",
+        "to": "Bis Datum",
+        "tax_rate": "Steuersatz",
+        "company": "Unternehmen",
+        "output_tax": "Eingenommene Ausgangsteuer",
+        "input_tax": "Gezahlte Vorsteuer",
+        "net_tax_payable": "Netto-Steuerschuld",
+        "all_rates": "Alle Sätze",
+        "all_companies": "Alle Unternehmen"
+    },
+    "actions": {
+        "generate": "Bericht erstellen",
+        "export_csv": "CSV exportieren"
+    },
+    "sections": {
+        "summary": "Zusammenfassung",
+        "by_rate": "Aufschlüsselung nach Steuersatz",
+        "entries": "Buchungseinträge"
+    },
+    "unassigned_rate": "Nicht zugeordneter Satz"
+}

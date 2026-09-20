@@ -1,0 +1,42 @@
+{
+    "button": {
+        "label": "AI",
+        "tooltip": "AI Assistant"
+    },
+    "modal": {
+        "title": "AI Content Assistant",
+        "prompt_label": "What should the AI write?",
+        "prompt_placeholder": "e.g. Write a 3-paragraph introduction about cloud computing, or summarize the selected text.",
+        "insert_mode": "Action",
+        "insert_at_cursor": "Insert at Cursor",
+        "replace_selected": "Replace Selected Content",
+        "generate": "Generate",
+        "generating": "Generating...",
+        "result_title": "Preview",
+        "insert": "Insert into editor",
+        "close": "Close"
+    },
+    "form": {
+        "button": "Generate with AI",
+        "tooltip": "Fill title, slug, keywords, and content from a topic",
+        "banner_title": "Generate all content with AI",
+        "banner_hint": "Fills title, slug, short description, keywords, SEO fields, and the main content editor.",
+        "product_banner_hint": "Fills the website name, catalog teaser, product page content, and SEO title/description/keywords.",
+        "product_applied": "Website content was filled. Review it, then save. Publish on Website is turned on.",
+        "modal_title": "Generate form content",
+        "prompt_label": "What should this be about?",
+        "prompt_placeholder": "e.g. A blog post about our web design process for startups, or a landing page for SEO services.",
+        "generate": "Generate & fill form",
+        "generating": "Generating title, slug, keywords, and content...",
+        "applied": "The form was filled. Review and edit before saving.",
+        "overwrite_confirm": "This will replace the current title, description, keywords, and content. Continue?"
+    },
+    "messages": {
+        "not_configured": "No AI content provider is configured. Add an OpenAI or Gemini API key under Settings > Integrations > AI Integrations.",
+        "empty_prompt": "Please describe what you'd like the AI to write.",
+        "empty_result": "The AI did not return any content. Try adjusting your prompt.",
+        "request_failed": "The AI content generation request failed. Please try again.",
+        "not_available": "The AI content generator is not available right now.",
+        "invalid_form": "This form type is not supported for AI generation."
+    }
+}

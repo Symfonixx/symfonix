@@ -1,17 +1,3 @@
-@if ($errors->any())
-    <div class="alert alert-danger d-flex align-items-start p-5 mb-10">
-        <i class="bi bi-exclamation-triangle-fill fs-2hx text-danger me-4 mt-1"></i>
-        <div>
-            <h5 class="mb-2">{{ __('crm::marketing.validation.fix_errors') }}</h5>
-            <ul class="mb-0 ps-4">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-@endif
-
 <div class="mb-10">
     <h4 class="fw-bold mb-2">{{ __('crm::whatsapp.sections.recipients') }}</h4>
     <p class="text-muted mb-0">{{ __('crm::whatsapp.sections.recipients_hint') }}</p>
@@ -33,7 +19,8 @@
                 <span class="d-block text-muted fs-7">{{ __('crm::whatsapp.hints.all_leads') }}</span>
             </label>
         </div>
-        <div class="fv-row">
+        @include('crm::admin.marketing._lead_tag_picker')
+        <div class="fv-row mt-6">
             <label for="lead_ids" class="form-label fw-semibold">{{ __('crm::whatsapp.fields.select_leads') }}</label>
             <select id="lead_ids" name="lead_ids[]"
                     class="form-select form-select-solid @error('lead_ids') is-invalid @enderror"

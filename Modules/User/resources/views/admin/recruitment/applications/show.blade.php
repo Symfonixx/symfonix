@@ -6,8 +6,8 @@
         ['label' => __('Job Applications'), 'url' => route('admin.job-applications.index')],
         ['label' => $jobApplication->candidate->full_name],
     ]"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{ route('admin.job-applications.index') }}" class="btn btn-sm btn-light">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a href="{{ route('admin.job-applications.index') }}" class="btn btn-sm btn-light" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('Back to List') }}
         </a>
         @if($jobApplication->isHired() && $jobApplication->employee_id)
@@ -21,7 +21,7 @@
                       class="d-inline"
                       data-confirm="{{ __('user::emails.hire.confirm', ['name' => $jobApplication->candidate->full_name, 'email' => $jobApplication->candidate->email]) }}">
                     @csrf
-                    <button type="submit" class="btn btn-sm btn-success">
+                    <button type="submit" class="btn btn-sm btn-success" data-action="approve">
                         <i class="bi bi-person-plus me-1"></i>{{ __('Hire Employee') }}
                     </button>
                 </form>

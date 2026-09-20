@@ -9,16 +9,18 @@ use Modules\CRM\Models\WhatsAppTemplate;
 
 class WhatsAppApiService
 {
+    public function __construct(
+        private readonly WhatsAppTemplateService $templateService,
+    ) {}
+
     /**
-     * @param  array<int, string>  $bodyParameters
-     * @param  array<int, string>  $headerParameters
+     * @param  array<int|string, mixed>  $parameters
      * @return array{success: bool, message_id: ?string, error: ?string}
      */
     public function sendTemplateMessage(
         string $phone,
         WhatsAppTemplate $template,
-        array $bodyParameters = [],
-        array $headerParameters = [],
+        array $parameters = [],
     ): array {
         if (! WhatsAppConfig::isConfigured()) {
             return [
@@ -28,7 +30,7 @@ class WhatsAppApiService
             ];
         }
 
-        $payload = $this->buildTemplatePayload($phone, $template, $bodyParameters, $headerParameters);
+        $payload = $this->buildTemplatePayload($phone, $template, $parameters);
 
         try {
             $response = Http::withToken((string) config('services.whatsapp.api_token'))
@@ -65,47 +67,57 @@ class WhatsAppApiService
     }
 
     /**
-     * @param  array<int, string>  $bodyParameters
-     * @param  array<int, string>  $headerParameters
-     * @return array<string, mixed>
+     * @param  array<int|string, mixed>  $parameters
+     * @return array<int, array<string, mixed>>
      */
-    private function buildTemplatePayload(
-        string $phone,
-        WhatsAppTemplate $template,
-        array $bodyParameters,
-        array $headerParameters,
-    ): array {
+    public function buildComponents(WhatsAppTemplate $template, array $parameters): array
+    {
+        $normalized = $this->templateService->normalizeParameters($parameters, $template);
         $components = [];
 
-        if ($template->header_type !== WhatsAppTemplate::HEADER_NONE && filled($template->header_content)) {
-            $headerComponent = ['type' => 'header'];
-
-            if ($template->header_type === WhatsAppTemplate::HEADER_TEXT) {
-                $headerComponent['parameters'] = [
-                    ['type' => 'text', 'text' => $headerParameters[1] ?? $template->header_content],
-                ];
-            } else {
-                $headerComponent['parameters'] = [
-                    [
-                        'type' => $template->header_type,
-                        $template->header_type => ['link' => $template->header_content],
-                    ],
-                ];
-            }
-
+        $headerComponent = $this->headerComponent($template, $normalized['header']);
+        if ($headerComponent !== null) {
             $components[] = $headerComponent;
         }
 
-        if (! empty($bodyParameters)) {
+        if (! empty($normalized['body'])) {
             $components[] = [
                 'type' => 'body',
-                'parameters' => collect($bodyParameters)
-                    ->values()
+                'parameters' => collect($normalized['body'])
                     ->map(fn (string $value) => ['type' => 'text', 'text' => $value])
+                    ->values()
                     ->all(),
             ];
         }
 
+        foreach ($normalized['buttons'] as $buttonIndex => $buttonParameters) {
+            if ($buttonParameters === []) {
+                continue;
+            }
+
+            $components[] = [
+                'type' => 'button',
+                'sub_type' => 'url',
+                'index' => (string) $buttonIndex,
+                'parameters' => collect($buttonParameters)
+                    ->map(fn (string $value) => ['type' => 'text', 'text' => $value])
+                    ->values()
+                    ->all(),
+            ];
+        }
+
+        return $components;
+    }
+
+    /**
+     * @param  array<int|string, mixed>  $parameters
+     * @return array<string, mixed>
+     */
+    public function buildTemplatePayload(
+        string $phone,
+        WhatsAppTemplate $template,
+        array $parameters,
+    ): array {
         return [
             'messaging_product' => 'whatsapp',
             'to' => $phone,
@@ -113,7 +125,46 @@ class WhatsAppApiService
             'template' => [
                 'name' => $template->name,
                 'language' => ['code' => $template->language],
-                'components' => $components,
+                'components' => $this->buildComponents($template, $parameters),
+            ],
+        ];
+    }
+
+    /**
+     * @param  array<int, string>  $headerParameters
+     * @return array<string, mixed>|null
+     */
+    private function headerComponent(WhatsAppTemplate $template, array $headerParameters): ?array
+    {
+        if ($template->header_type === WhatsAppTemplate::HEADER_NONE) {
+            return null;
+        }
+
+        if ($template->header_type === WhatsAppTemplate::HEADER_TEXT) {
+            if ($headerParameters === []) {
+                return null;
+            }
+
+            return [
+                'type' => 'header',
+                'parameters' => collect($headerParameters)
+                    ->map(fn (string $value) => ['type' => 'text', 'text' => $value])
+                    ->values()
+                    ->all(),
+            ];
+        }
+
+        if (! filled($template->header_content)) {
+            return null;
+        }
+
+        return [
+            'type' => 'header',
+            'parameters' => [
+                [
+                    'type' => $template->header_type,
+                    $template->header_type => ['link' => $template->header_content],
+                ],
             ],
         ];
     }

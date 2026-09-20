@@ -5,15 +5,25 @@
     "pages": {
         "index_title": "Marketing",
         "create_title": "Send Email",
-        "show_title": "Campaign Details"
+        "show_title": "Campaign Details",
+        "groups_title": "Campaigns",
+        "group_create_title": "Create Campaign",
+        "group_edit_title": "Edit Campaign",
+        "group_show_title": "Campaign"
     },
     "actions": {
         "compose": "Compose Email",
         "send": "Send Email",
         "back_to_list": "Back to Marketing",
-        "view": "View"
+        "view": "View",
+        "create_campaign": "Create Campaign",
+        "edit_campaign": "Edit Campaign",
+        "delete_campaign": "Delete Campaign",
+        "send_email": "Send Email",
+        "send_whatsapp": "Send WhatsApp"
     },
     "tabs": {
+        "campaigns": "Campaigns",
         "emails": "Emails",
         "whatsapp": "WhatsApp Messages"
     },
@@ -29,6 +39,10 @@
         "contacts": "Contacts",
         "contact_forms": "Inquiries",
         "custom_emails": "Custom Emails",
+        "leads": "Leads",
+        "all_leads": "All leads with email",
+        "select_leads": "Select leads",
+        "lead_tags": "Lead tags",
         "all_subscribers": "All active subscribers",
         "all_contacts": "All contacts with email",
         "all_contact_forms": "All inquiries with email",
@@ -42,7 +56,12 @@
         "marketing_audience": "Send to",
         "all_audiences": "Everyone",
         "status": "Status",
-        "channel": "Channel"
+        "channel": "Channel",
+        "campaign": "Campaign",
+        "title": "Title",
+        "goal": "Goal",
+        "email_sends": "Emails",
+        "whatsapp_sends": "WhatsApp"
     },
     "status": {
         "pending": "Pending",
@@ -63,12 +82,18 @@
         "custom_emails": "Type an email and press Enter to add",
         "select_subscribers": "Choose subscribers",
         "select_contacts": "Choose contacts",
-        "select_contact_forms": "Choose inquiries"
+        "select_contact_forms": "Choose inquiries",
+        "select_leads": "Choose leads",
+        "title": "e.g. Spring website offer",
+        "goal": "e.g. Book discovery calls for our new website package",
+        "select_campaign": "Select a campaign"
     },
     "hints": {
         "all_subscribers": "Sends to every non-blocked newsletter subscriber.",
         "all_contacts": "Sends to every CRM contact that has an email address.",
         "all_contact_forms": "Sends to every non-blocked inquiry that has an email address.",
+        "all_leads": "Sends to every non-blocked lead that has an email address.",
+        "lead_tags": "Check one or more tags to include every lead with those tags, such as Cold and Warm. Leads in more than one selected tag are only sent once.",
         "custom_emails": "Add any additional email addresses not listed above. Type an email and press Enter.",
         "send_warning": "Emails are queued and sent in the background. This action cannot be undone.",
         "send_as_marketing": "Create a marketing campaign from this content and queue it after saving.",
@@ -87,7 +112,47 @@
         "subject_required": "The subject must contain text.",
         "subject_too_long": "The subject may not be greater than 255 characters.",
         "body_required": "The message must contain text.",
-        "permission_required": "You do not have permission to send marketing emails."
+        "permission_required": "You do not have permission to send marketing emails.",
+        "group_required": "Select an existing campaign or enter a title and goal for a new one.",
+        "group_title_required": "The campaign title is required.",
+        "group_goal_required": "The campaign goal is required."
+    },
+    "groups": {
+        "create_new": "Create a new campaign",
+        "hint": "Group this email or WhatsApp send under a campaign with a title and a goal.",
+        "goal_hint": "Describe what this campaign should achieve. AI uses this to write the email.",
+        "form_hint": "Give the campaign a title and a goal, then send email or WhatsApp from it.",
+        "empty": "No campaigns yet. Create one to group email and WhatsApp sends.",
+        "created": "Campaign created.",
+        "updated": "Campaign updated.",
+        "deleted": "Campaign deleted.",
+        "in_use": "This campaign cannot be deleted because it already has email or WhatsApp sends.",
+        "delete_confirm": "Delete this campaign?",
+        "complete": "Ready",
+        "incomplete": "Missing items"
+    },
+    "missing": {
+        "heading": "This campaign is missing:",
+        "title": "A campaign title",
+        "goal": "A campaign goal",
+        "sends": "At least one email or WhatsApp send",
+        "email": "No email has been sent yet",
+        "whatsapp": "No WhatsApp message has been sent yet"
+    },
+    "ai": {
+        "button": "Generate email with AI",
+        "tooltip": "Write the subject and message from the campaign goal",
+        "banner_title": "Generate email from this campaign",
+        "banner_hint": "Uses the campaign title and goal to draft the subject and message.",
+        "modal_title": "Generate marketing email",
+        "prompt_label": "Anything else the email should mention?",
+        "prompt_placeholder": "Optional. e.g. Mention the spring discount and a Friday deadline.",
+        "generate": "Generate & fill email",
+        "generating": "Writing the subject and message...",
+        "applied": "The subject and message were filled. Review them before sending.",
+        "overwrite": "This will replace the current subject and message. Continue?",
+        "group_required": "Select or create a campaign with a title and goal first.",
+        "goal_required": "Add a campaign goal so the AI knows what to write."
     },
     "sources": {
         "all_subscribers": "All subscribers",
@@ -96,6 +161,9 @@
         "contacts": ":count contact(s)",
         "all_contact_forms": "All inquiries",
         "contact_forms": ":count inquiry(ies)",
-        "custom_emails": "Custom emails"
+        "custom_emails": "Custom emails",
+        "all_leads": "All leads",
+        "leads": ":count lead(s)",
+        "lead_tags": "Tags: :tags"
     }
 }

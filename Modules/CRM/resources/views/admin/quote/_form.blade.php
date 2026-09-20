@@ -4,6 +4,10 @@
     $selectedDealId = (int) old('deal_id', $quote->deal_id ?? $selectedDeal?->id ?? request('deal_id'));
 @endphp
 
+@unless(isset($quote))
+    <x-ai::generate-quote-button />
+@endunless
+
 <div class="row g-5 mb-8">
     <div class="col-md-6">
         <label class="form-label required">{{ __('crm::quote.fields.company') }}</label>
@@ -121,14 +125,14 @@
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
                     @if($index > 0)
-                        <button type="button" class="btn btn-light-danger w-100 remove-quote-line">{{ __('crm::quote.actions.remove_line') }}</button>
+                        <button type="button" class="btn btn-light-danger w-100 remove-quote-line" data-action="delete">{{ __('crm::quote.actions.remove_line') }}</button>
                     @endif
                 </div>
             </div>
         </div>
     @endforeach
 </div>
-<button type="button" class="btn btn-light-primary btn-sm mb-8" id="add-quote-line">
+<button type="button" class="btn btn-success btn-sm mb-8" id="add-quote-line" data-action="create">
     <i class="bi bi-plus-lg me-1"></i>{{ __('crm::quote.actions.add_line') }}
 </button>
 
@@ -235,20 +239,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
     container.querySelectorAll('.quote-line-row').forEach(toggleLineType);
 
-    container.addEventListener('change', function (e) {
-        if (e.target.classList.contains('quote-item-type')) {
-            toggleLineType(e.target.closest('.quote-line-row'));
+    function setSelectValue(select, value) {
+        if (!select) return;
+        const next = value == null || value === '' ? '' : String(value);
+        select.value = next;
+        if (window.jQuery && $(select).data('select2')) {
+            $(select).val(next).trigger('change');
+        } else {
+            select.dispatchEvent(new Event('change', { bubbles: true }));
         }
-        if (e.target.classList.contains('quote-product-select')) {
-            const price = e.target.selectedOptions[0]?.dataset?.price;
-            const row = e.target.closest('.quote-line-row');
-            if (price && row) {
-                row.querySelector('.quote-unit-price').value = price;
-            }
-        }
-    });
+    }
 
-    document.getElementById('add-quote-line')?.addEventListener('click', function () {
+    function fillQuoteLineRow(row, line, index) {
+        row.querySelectorAll('input, select').forEach(function (el) {
+            if (el.name) {
+                el.name = el.name.replace(/lines\[\d+\]/, `lines[${index}]`);
+            }
+        });
+
+        const typeSelect = row.querySelector('.quote-item-type');
+        if (typeSelect) {
+            typeSelect.value = line.item_type === 'product' ? 'product' : 'service';
+        }
+        toggleLineType(row);
+
+        setSelectValue(row.querySelector('.quote-service-select'), line.item_type === 'product' ? '' : (line.service_id || ''));
+        setSelectValue(row.querySelector('.quote-product-select'), line.item_type === 'product' ? (line.product_id || '') : '');
+
+        const quantity = row.querySelector('[name*="[quantity]"]');
+        const unitPrice = row.querySelector('[name*="[unit_price]"]');
+        const discount = row.querySelector('[name*="[discount_percent]"]');
+        const tax = row.querySelector('[name*="[tax_percent]"]');
+        const description = row.querySelector('[name*="[description]"]');
+
+        if (quantity) quantity.value = line.quantity ?? 1;
+        if (unitPrice) unitPrice.value = line.unit_price ?? '';
+        if (discount) discount.value = line.discount_percent ?? 0;
+        if (tax) tax.value = line.tax_percent ?? 0;
+        if (description) description.value = line.description ?? '';
+    }
+
+    function cloneQuoteLineRow() {
         const template = container.querySelector('.quote-line-row').cloneNode(true);
         template.querySelectorAll('input, select').forEach(function (el) {
             if (el.name) {
@@ -270,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
         template.querySelectorAll('.select2-container').forEach(n => n.remove());
         const removeBtnWrap = template.querySelector('.d-flex.align-items-end');
         if (removeBtnWrap) {
-            removeBtnWrap.innerHTML = `<button type="button" class="btn btn-light-danger w-100 remove-quote-line">{{ __('crm::quote.actions.remove_line') }}</button>`;
+            removeBtnWrap.innerHTML = `<button type="button" class="btn btn-light-danger w-100 remove-quote-line" data-action="delete">{{ __('crm::quote.actions.remove_line') }}</button>`;
         }
         container.appendChild(template);
         toggleLineType(template);
@@ -278,6 +309,66 @@ document.addEventListener('DOMContentLoaded', function () {
             $(template).find('[data-control="select2"]').select2({ width: '100%' });
         }
         lineIndex++;
+        return template;
+    }
+
+    window.SymfonixQuoteForm = {
+        applyAiQuote: function (fields) {
+            const form = container.closest('form');
+            if (!form || !fields) return;
+
+            if (typeof fields.terms === 'string') {
+                const terms = form.querySelector('[name="terms"]');
+                if (terms) terms.value = fields.terms;
+            }
+            if (typeof fields.notes === 'string') {
+                const notes = form.querySelector('[name="notes"]');
+                if (notes) notes.value = fields.notes;
+            }
+            if (fields.currency && currencySelect) {
+                currencySelect.value = fields.currency;
+            }
+            if (fields.issued_at) {
+                const issued = form.querySelector('[name="issued_at"]');
+                if (issued) issued.value = fields.issued_at;
+            }
+            if (fields.expires_at) {
+                const expires = form.querySelector('[name="expires_at"]');
+                if (expires) expires.value = fields.expires_at;
+            }
+
+            const lines = Array.isArray(fields.lines) ? fields.lines : [];
+            if (!lines.length) return;
+
+            const extraRows = Array.from(container.querySelectorAll('.quote-line-row')).slice(1);
+            extraRows.forEach((row) => row.remove());
+
+            lines.forEach(function (line, index) {
+                const row = index === 0
+                    ? container.querySelector('.quote-line-row')
+                    : cloneQuoteLineRow();
+                fillQuoteLineRow(row, line, index);
+            });
+
+            lineIndex = container.querySelectorAll('.quote-line-row').length;
+        }
+    };
+
+    container.addEventListener('change', function (e) {
+        if (e.target.classList.contains('quote-item-type')) {
+            toggleLineType(e.target.closest('.quote-line-row'));
+        }
+        if (e.target.classList.contains('quote-product-select')) {
+            const price = e.target.selectedOptions[0]?.dataset?.price;
+            const row = e.target.closest('.quote-line-row');
+            if (price && row) {
+                row.querySelector('.quote-unit-price').value = price;
+            }
+        }
+    });
+
+    document.getElementById('add-quote-line')?.addEventListener('click', function () {
+        cloneQuoteLineRow();
     });
 
     container.addEventListener('click', function (e) {

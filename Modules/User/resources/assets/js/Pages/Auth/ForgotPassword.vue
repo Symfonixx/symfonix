@@ -43,14 +43,14 @@
                         <h2>{{ trans("Reset Your Password") }}</h2>
                     </div>
 
-                    <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
-                        {{ flash.success }}
-                    </div>
-                    <div v-if="flash.error" class="flash-message flash-message--error" role="alert">
-                        {{ flash.error }}
-                    </div>
+                    <form id="forgot-password__form" @submit.prevent="submit">
+                        <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
+                            {{ formatError(flash.success) }}
+                        </div>
+                        <div v-if="flash.error" class="flash-message flash-message--error" role="alert">
+                            {{ formatError(flash.error) }}
+                        </div>
 
-                    <form id="forgot-password__form" @submit.prevent="form.post(route('password.email'))">
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="form-group">
@@ -62,12 +62,12 @@
                                             name="email"
                                             autocomplete="email"
                                             :placeholder="trans('Email')"
-                                            :class="{ 'error': errors.email }"
+                                            :class="{ 'error': fieldErrors.email }"
                                             :disabled="form.processing"
                                             required
                                         >
                                     </div>
-                                    <div v-if="errors.email" class="text-danger mt-1 small">{{ errors.email }}</div>
+                                    <div v-if="fieldErrors.email" class="text-danger mt-1 small">{{ formatError(fieldErrors.email) }}</div>
                                 </div>
                             </div>
 
@@ -133,6 +133,39 @@ export default {
             }
         };
 
+        const formatError = (error) => {
+            if (!error) {
+                return '';
+            }
+
+            if (Array.isArray(error)) {
+                return error.map(formatError).filter(Boolean).join(' ');
+            }
+
+            const authErrors = {
+                'passwords.reset': trans('Your password has been reset.'),
+                'passwords.sent': trans('We have emailed your password reset link.'),
+                'passwords.throttled': trans('Please wait before retrying.'),
+                'passwords.token': trans('This password reset token is invalid.'),
+                'passwords.user': trans("We can't find a user with that email address."),
+            };
+
+            return authErrors[error] || trans(error) || error;
+        };
+
+        const form = useForm({
+            email: '',
+        });
+
+        const fieldErrors = computed(() => ({
+            ...(page.props.errors || {}),
+            ...(form.errors || {}),
+        }));
+
+        const submit = () => {
+            form.post(route('password.email'));
+        };
+
         const metaTitle = computed(() => `${trans("Forgot Password")} | ${seo.value.website_name || ''}`.trim())
         const metaDescription = computed(() => {
             return meta.value.description || trans('Request a password reset link to regain access to your account.')
@@ -146,15 +179,14 @@ export default {
         const metaCanonical = computed(() => meta.value.canonical || '')
         const metaRobots = computed(() => meta.value.robots || 'noindex, nofollow')
 
-        const form = useForm({
-            email: '',
-        });
-
         return {
             form,
             seo,
             locale,
             trans,
+            formatError,
+            fieldErrors,
+            submit,
             asset_path,
             flash,
             metaTitle,

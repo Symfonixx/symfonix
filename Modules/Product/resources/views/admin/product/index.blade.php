@@ -8,12 +8,12 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('product::product.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.product-categories.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.product-categories.index') }}" data-action="view">
             <i class="bi bi-tags me-1"></i>{{ __('product::category.actions.manage_categories') }}
         </a>
         <x-can perform="product.catalog.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.products.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.products.create') }}" data-action="create">
                 {{ __('product::product.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -61,7 +61,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3 col-md-4 d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">{{ __('product::product.actions.apply_filters') }}</button>
+                    <button type="submit" class="btn btn-light-primary" data-action="filter">{{ __('product::product.actions.apply_filters') }}</button>
                     <a href="{{ route('admin.products.index') }}" class="btn btn-light">{{ __('product::product.actions.clear_filters') }}</a>
                 </div>
             </form>
@@ -117,15 +117,15 @@
                                     </div>
                                 </form>
                             </td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <a href="{{ route('admin.products.edit', $product) }}"
-                                   class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                   class="btn btn-icon btn-bg-light btn-active-color-warning btn-sm me-1" data-action="edit">
                                     <i class="ki-duotone ki-message-edit fs-1"><span class="path1"></span><span class="path2"></span></i>
                                 </a>
                                 <form class="d-inline" method="POST" action="{{ route('admin.products.destroy', $product) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

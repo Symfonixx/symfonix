@@ -4,11 +4,14 @@
     "form_description": "القيم المحفوظة هنا تتجاوز ملف .env. اترك الحقل فارغاً لاستخدام قيمة .env. الحقول السرية الفارغة تحتفظ بالقيمة الحالية.",
     "tabs": {
         "email": "البريد الإلكتروني",
-        "whatsapp": "واتساب"
+        "whatsapp": "واتساب",
+        "gemini": "AI Integrations"
     },
     "status": {
         "email": "واجهة البريد",
         "whatsapp": "واجهة واتساب",
+        "gemini": "Gemini AI",
+        "openai": "OpenAI",
         "system": "إعدادات النظام",
         "system_link": "فتح إعدادات النظام",
         "configured": "مُعدّ",
@@ -41,5 +44,34 @@
         "webhook_verify_token": "رمز التحقق من Webhook",
         "webhook_verify_token_hint": "اختياري. للتحقق من استدعاءات Meta. اتركه فارغاً للاحتفاظ بالقيمة الحالية.",
         "env_hint": "اتركه فارغاً لاستخدام قيمة .env الظاهرة كعنصر نائب."
+    },
+    "gemini": {
+        "title": "Gemini AI Image Editing",
+        "description": "Google Gemini credentials used to power AI image create/edit. Generated images can match your brand by sending the site logo from Settings > Branding.",
+        "api_key": "Gemini API Key",
+        "api_key_hint": "Used to authenticate requests to the Gemini API. Leave blank to keep the current key.",
+        "image_model": "Image Model",
+        "image_model_hint": "Model used for AI image creation and editing (e.g. gemini-2.5-flash-image).",
+        "analysis_model": "Analysis Model",
+        "analysis_model_hint": "Model used for text/image analysis (e.g. gemini-2.5-flash)."
+    },
+    "openai": {
+        "title": "توليد المحتوى عبر OpenAI",
+        "description": "بيانات اعتماد OpenAI المستخدمة لتشغيل \"مساعد الذكاء الاصطناعي\" داخل محرر TinyMCE عبر لوحة الإدارة.",
+        "api_key": "مفتاح OpenAI API",
+        "api_key_hint": "يُستخدم للمصادقة مع واجهة OpenAI. اتركه فارغاً للاحتفاظ بالمفتاح الحالي.",
+        "model": "النموذج الافتراضي",
+        "model_hint": "النموذج المستخدم لتوليد محتوى المحرر (مثل gpt-4o أو gpt-4o-mini)."
+    },
+    "assistant": {
+        "title": "اسأل Symfonix AI",
+        "description": "اختر مزوّد الذكاء الاصطناعي الذي يجيب عن أسئلة بيانات العمل. الوضع التلقائي يستخدم OpenAI أولاً ثم Gemini عند الحاجة.",
+        "provider": "مزوّد المساعد",
+        "provider_hint": "ينطبق فقط على اسأل Symfonix AI. توليد المحتوى وتحرير الصور يحتفظان بإعداداتهما الخاصة.",
+        "providers": {
+            "auto": "تلقائي (OpenAI ثم Gemini)",
+            "openai": "OpenAI",
+            "gemini": "Gemini"
+        }
     }
 }

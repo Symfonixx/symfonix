@@ -76,7 +76,31 @@ class WhatsAppTemplate extends Model
 
     public function bodyVariableCount(): int
     {
-        preg_match_all('/\{\{(\d+)\}\}/', $this->body, $matches);
+        return $this->uniqueVariableCount((string) $this->body);
+    }
+
+    public function variableCount(): int
+    {
+        $count = $this->bodyVariableCount();
+
+        if ($this->header_type === self::HEADER_TEXT) {
+            $count += $this->uniqueVariableCount((string) $this->header_content);
+        }
+
+        foreach ($this->buttons ?? [] as $button) {
+            if (! is_array($button) || strtoupper((string) ($button['type'] ?? '')) !== 'URL') {
+                continue;
+            }
+
+            $count += $this->uniqueVariableCount((string) ($button['url'] ?? ''));
+        }
+
+        return $count;
+    }
+
+    private function uniqueVariableCount(string $text): int
+    {
+        preg_match_all('/\{\{(\d+)\}\}/', $text, $matches);
 
         return count(array_unique($matches[1] ?? []));
     }

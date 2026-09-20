@@ -26,6 +26,7 @@
         "inertiajs/inertia-laravel": "^2.0",
         "intervention/image-laravel": "^4.1",
         "khaled.alshamaa/ar-php": "^7.0",
+        "laravel/ai": "^0.11.2",
         "laravel/fortify": "^1.24",
         "laravel/framework": "^13.0",
         "laravel/pulse": "^1.4",

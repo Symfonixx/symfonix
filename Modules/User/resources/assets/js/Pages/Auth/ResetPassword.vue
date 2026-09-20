@@ -42,15 +42,16 @@
                         <h2>{{ trans("Set New Password") }}</h2>
                     </div>
 
-                    <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
-                        {{ flash.success }}
-                    </div>
-                    <div v-if="flash.error" class="flash-message flash-message--error" role="alert">
-                        {{ flash.error }}
-                    </div>
+                    <form id="reset-password__form" @submit.prevent="submit">
+                        <input v-model="form.token" name="token" type="hidden">
 
-                    <form id="reset-password__form" @submit.prevent="form.post(route('password.update'))">
-                        <input :value="form.token" name="token" type="hidden">
+                        <div v-if="flash.success" class="flash-message flash-message--success" role="alert">
+                            {{ formatError(flash.success) }}
+                        </div>
+                        <div v-if="bannerError" class="flash-message flash-message--error" role="alert">
+                            {{ formatError(bannerError) }}
+                        </div>
+
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="form-group">
@@ -62,50 +63,46 @@
                                             name="email"
                                             autocomplete="email"
                                             :placeholder="trans('Email')"
-                                            :class="{ 'error': errors.email }"
+                                            :class="{ 'error': fieldErrors.email }"
                                             :disabled="form.processing"
                                             required
                                         >
                                     </div>
-                                    <div v-if="errors.email" class="text-danger mt-1 small">{{ errors.email }}</div>
+                                    <div v-if="fieldErrors.email" class="text-danger mt-1 small">{{ formatError(fieldErrors.email) }}</div>
                                 </div>
                             </div>
 
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="password"
-                                            v-model="form.password"
-                                            type="password"
-                                            name="password"
-                                            autocomplete="new-password"
-                                            :placeholder="trans('Password')"
-                                            :class="{ 'error': errors.password }"
-                                            :disabled="form.processing"
-                                            required
-                                        >
-                                    </div>
-                                    <div v-if="errors.password" class="text-danger mt-1 small">{{ errors.password }}</div>
+                                    <PasswordInput
+                                        id="password"
+                                        v-model="form.password"
+                                        name="password"
+                                        :placeholder="trans('Password')"
+                                        :disabled="form.processing"
+                                        autocomplete="new-password"
+                                        :show-label="trans('Show password')"
+                                        :hide-label="trans('Hide password')"
+                                        required
+                                    />
+                                    <div v-if="fieldErrors.password" class="text-danger mt-1 small">{{ formatError(fieldErrors.password) }}</div>
                                 </div>
                             </div>
 
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="password_confirmation"
-                                            v-model="form.password_confirmation"
-                                            type="password"
-                                            name="password_confirmation"
-                                            autocomplete="new-password"
-                                            :placeholder="trans('Confirm Password')"
-                                            :class="{ 'error': errors.password_confirmation }"
-                                            :disabled="form.processing"
-                                            required
-                                        >
-                                    </div>
-                                    <div v-if="errors.password_confirmation" class="text-danger mt-1 small">{{ errors.password_confirmation }}</div>
+                                    <PasswordInput
+                                        id="password_confirmation"
+                                        v-model="form.password_confirmation"
+                                        name="password_confirmation"
+                                        :placeholder="trans('Confirm Password')"
+                                        :disabled="form.processing"
+                                        autocomplete="new-password"
+                                        :show-label="trans('Show password')"
+                                        :hide-label="trans('Hide password')"
+                                        required
+                                    />
+                                    <div v-if="fieldErrors.password_confirmation" class="text-danger mt-1 small">{{ formatError(fieldErrors.password_confirmation) }}</div>
                                 </div>
                             </div>
 
@@ -145,18 +142,39 @@
 import {computed} from 'vue';
 import {usePage, Link, useForm, Head} from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/App.vue';
+import PasswordInput from '@/Components/PasswordInput.vue';
+
+const readQueryParam = (name) => {
+    if (typeof window === 'undefined') {
+        return '';
+    }
+
+    return new URLSearchParams(window.location.search).get(name) || '';
+};
+
+const readTokenFromPath = () => {
+    if (typeof window === 'undefined') {
+        return '';
+    }
+
+    const match = window.location.pathname.match(/\/reset-password\/(.+)$/);
+
+    return match ? decodeURIComponent(match[1]) : '';
+};
 
 export default {
     components: {
-        AppLayout, Link, Head
+        AppLayout, Link, Head, PasswordInput
     },
     props: {
-        errors: Object
+        errors: Object,
+        email: { type: String, default: '' },
+        token: { type: String, default: '' },
     },
-    setup() {
+    setup(props) {
         const page = usePage();
 
-           const locale = computed(() => page.props.locale)
+        const locale = computed(() => page.props.locale)
         const seo = computed(() => page.props.seo)
         const settings = computed(() => page.props.settings || {})
         const asset_path = computed(() => page.props.asset_path || '')
@@ -169,6 +187,47 @@ export default {
                 return key;
             }
         };
+
+        const formatError = (error) => {
+            if (!error) {
+                return '';
+            }
+
+            if (Array.isArray(error)) {
+                return error.map(formatError).filter(Boolean).join(' ');
+            }
+
+            const authErrors = {
+                'passwords.reset': trans('Your password has been reset.'),
+                'passwords.sent': trans('We have emailed your password reset link.'),
+                'passwords.throttled': trans('Please wait before retrying.'),
+                'passwords.token': trans('This password reset token is invalid.'),
+                'passwords.user': trans("We can't find a user with that email address."),
+            };
+
+            return authErrors[error] || trans(error) || error;
+        };
+
+        const form = useForm({
+            email: props.email || readQueryParam('email'),
+            password: '',
+            password_confirmation: '',
+            token: props.token || readQueryParam('token') || readTokenFromPath(),
+        });
+
+        const fieldErrors = computed(() => ({
+            ...(page.props.errors || {}),
+            ...(form.errors || {}),
+        }));
+
+        const bannerError = computed(() => {
+            return flash.value.error || fieldErrors.value.token || '';
+        });
+
+        const submit = () => {
+            form.post(route('password.update'));
+        };
+
         const metaTitle = computed(() => `${trans("Reset Password")} | ${seo.value.website_name || ''}`.trim())
         const metaDescription = computed(() => {
             return meta.value.description || trans('Set a new password to secure your account.')
@@ -181,19 +240,16 @@ export default {
         })
         const metaCanonical = computed(() => meta.value.canonical || '')
         const metaRobots = computed(() => meta.value.robots || 'noindex, nofollow')
-        const params = new URLSearchParams(window.location.search);
-        const form = useForm({
-            email: '',
-            password: '',
-            password_confirmation: '',
-            token: params.get('token') || ''
-        });
 
         return {
             form,
             seo,
             locale,
             trans,
+            formatError,
+            fieldErrors,
+            bannerError,
+            submit,
             asset_path,
             flash,
             metaTitle,

@@ -8,13 +8,13 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::contact_form.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="crm.inquiries.create">
-            <a href="{{ route('admin.contact_forms.create') }}" class="btn btn-sm fw-bold btn-primary">
+            <a href="{{ route('admin.contact_forms.create') }}" class="btn btn-sm fw-bold btn-success" data-action="create">
                 {{ __('crm::contact_form.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
-        <a href="{{ route('admin.contact_forms.export') }}" class="btn btn-sm btn-light-primary">
+        <a href="{{ route('admin.contact_forms.export') }}" class="btn btn-sm btn-light-info" data-action="export">
             <i class="bi bi-file-earmark-excel"></i> {{ __('Export to Excel') }}
         </a>
     </div>
@@ -111,9 +111,9 @@
                 <td>
                     {{$contact->created_at}}
                 </td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <div class="d-flex align-items-center justify-content-end gap-2 flex-wrap">
-                        <button type="button" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#contactModal{{ $contact->id }}">
+                        <button type="button" class="btn btn-sm btn-light-info" data-bs-toggle="modal" data-bs-target="#contactModal{{ $contact->id }}">
                             <i class="bi bi-eye"></i>
                         </button>
                         @if(! $contact->lead_id)
@@ -127,12 +127,12 @@
                         @if(! $contact->contact_id)
                             <form method="POST" action="{{ route('admin.contact_forms.convertContact', $contact) }}" class="d-inline">
                                 @csrf
-                                <button type="submit" class="btn btn-sm btn-light-warning" title="{{ __('crm::contact_form.actions.convert_to_contact') }}">
+                                <button type="submit" class="btn btn-sm btn-light-warning" title="{{ __('crm::contact_form.actions.convert_to_contact') }}" data-action="edit">
                                     <i class="bi bi-person-plus"></i>
                                 </button>
                             </form>
                         @endif
-                        <a href="{{ route('admin.contact_forms.edit', $contact) }}" class="btn btn-sm btn-light-info" title="{{ __('crm::contact_form.actions.edit') }}">
+                        <a href="{{ route('admin.contact_forms.edit', $contact) }}" class="btn btn-sm btn-light-warning" title="{{ __('crm::contact_form.actions.edit') }}" data-action="edit">
                             <i class="bi bi-pencil"></i>
                         </a>
                     </div>
@@ -145,7 +145,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="contactModalLabel{{ $contact->id }}">{{ __('crm::contact_form.actions.view_details') }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row mb-3">
@@ -230,7 +230,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Close') }}</button>
                             @if(! $contact->lead_id)
                                 <form method="POST" action="{{ route('admin.contact_forms.convertLead', $contact) }}" class="d-inline">
                                     @csrf
@@ -242,12 +242,12 @@
                             @if(! $contact->contact_id)
                                 <form method="POST" action="{{ route('admin.contact_forms.convertContact', $contact) }}" class="d-inline">
                                     @csrf
-                                    <button type="submit" class="btn btn-warning">
+                                    <button type="submit" class="btn btn-light-warning" data-action="edit">
                                         <i class="bi bi-person-plus me-1"></i>{{ __('crm::contact_form.actions.convert_to_contact') }}
                                     </button>
                                 </form>
                             @endif
-                            <a href="{{ route('admin.contact_forms.edit', $contact) }}" class="btn btn-primary">
+                            <a href="{{ route('admin.contact_forms.edit', $contact) }}" class="btn btn-light-warning" data-action="edit">
                                 <i class="bi bi-pencil me-1"></i>{{ __('crm::contact_form.actions.edit') }}
                             </a>
                         </div>

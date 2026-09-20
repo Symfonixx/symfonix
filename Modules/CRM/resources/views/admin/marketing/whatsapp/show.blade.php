@@ -9,10 +9,30 @@
         ];
         $sources = $campaign->recipient_sources ?? [];
         $sourceLabels = [];
+
+        if (! empty($sources['all_leads'])) {
+            $sourceLabels[] = __('crm::marketing.sources.all_leads');
+        } else {
+            if (! empty($sources['lead_tag_ids'])) {
+                $tagNames = \Modules\CRM\Models\LeadTag::query()
+                    ->whereIn('id', $sources['lead_tag_ids'])
+                    ->get()
+                    ->map(fn ($tag) => $tag->display_name)
+                    ->filter()
+                    ->implode(', ');
+                $sourceLabels[] = __('crm::marketing.sources.lead_tags', [
+                    'tags' => $tagNames !== '' ? $tagNames : (string) count($sources['lead_tag_ids']),
+                ]);
+            }
+
+            if (! empty($sources['lead_ids'])) {
+                $sourceLabels[] = __('crm::marketing.sources.leads', ['count' => count($sources['lead_ids'])]);
+            }
+        }
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::whatsapp.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.crm.marketing.index', ['channel' => 'whatsapp']) }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.crm.marketing.index', ['channel' => 'whatsapp']) }}">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::marketing.actions.back_to_list') }}
         </a>
     </div>
@@ -32,6 +52,11 @@
                 @endphp
                 <span class="text-muted fs-7">
                     <span class="badge badge-light-success me-1">{{ __('crm::marketing.channels.whatsapp') }}</span>
+                    @if($campaign->group)
+                        <a href="{{ route('admin.crm.marketing.groups.show', $campaign->group) }}" class="badge badge-light-info me-1">
+                            {{ $campaign->group->title }}
+                        </a>
+                    @endif
                     <span class="badge {{ $statusBadge }} me-1">{{ __('crm::whatsapp.status.'.$status) }}</span>
                     {{ __('crm::marketing.fields.sent_by') }}: {{ $campaign->user?->name ?? '—' }}
                     · {{ $campaign->created_at?->format('Y-m-d H:i') }}
@@ -44,12 +69,21 @@
                 <pre class="mb-0 fs-6 text-gray-800" style="white-space:pre-wrap;font-family:inherit;">{{ $campaign->rendered_preview }}</pre>
             </div>
 
-            @if(!empty($campaign->template_parameters))
+            @if(! empty($sourceLabels))
+                <div class="mb-8">
+                    <span class="text-muted fw-semibold me-2">{{ __('crm::marketing.fields.recipients') }}:</span>
+                    @foreach($sourceLabels as $label)
+                        <span class="badge badge-light-primary me-1">{{ $label }}</span>
+                    @endforeach
+                </div>
+            @endif
+
+            @if(!empty($parameterItems))
                 <div class="mb-8">
                     <h5 class="fw-bold mb-3">{{ __('crm::whatsapp.sections.parameters') }}</h5>
                     <div class="d-flex flex-wrap gap-2">
-                        @foreach($campaign->template_parameters as $index => $value)
-                            <span class="badge badge-light-info">{{ '{{'.$index.'}}' }} = {{ $value }}</span>
+                        @foreach($parameterItems as $item)
+                            <span class="badge badge-light-info">{{ $item['label'] }} = {{ $item['value'] }}</span>
                         @endforeach
                     </div>
                 </div>

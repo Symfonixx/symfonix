@@ -313,7 +313,7 @@
     ]
   },
   "Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue": {
-    "file": "assets/ForgotPassword-C1HmnR9M.js",
+    "file": "assets/ForgotPassword-By8r6XHB.js",
     "name": "ForgotPassword",
     "src": "Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue",
     "isDynamicEntry": true,
@@ -324,52 +324,55 @@
       "_vendor-ui-XNB9EfQd.js"
     ],
     "css": [
-      "assets/ForgotPassword-D6BZSTmq.css"
+      "assets/ForgotPassword-DZ1xDv3p.css"
     ]
   },
   "Modules/User/resources/assets/js/Pages/Auth/Login.vue": {
-    "file": "assets/Login-CKMsM73D.js",
+    "file": "assets/Login-Dxvw5N3F.js",
     "name": "Login",
     "src": "Modules/User/resources/assets/js/Pages/Auth/Login.vue",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-vue-EJP4ocE0.js",
       "_App-BaG-8JYg.js",
+      "_PasswordInput-DKnb1WYg.js",
       "__plugin-vue_export-helper-DlAUqK2U.js",
       "_vendor-ui-XNB9EfQd.js"
     ],
     "css": [
-      "assets/Login-Crts202k.css"
+      "assets/Login-B9q7xNhx.css"
     ]
   },
   "Modules/User/resources/assets/js/Pages/Auth/Register.vue": {
-    "file": "assets/Register-CavjWFnf.js",
+    "file": "assets/Register-BPrPEw30.js",
     "name": "Register",
     "src": "Modules/User/resources/assets/js/Pages/Auth/Register.vue",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-vue-EJP4ocE0.js",
       "_App-BaG-8JYg.js",
+      "_PasswordInput-DKnb1WYg.js",
       "__plugin-vue_export-helper-DlAUqK2U.js",
       "_vendor-ui-XNB9EfQd.js"
     ],
     "css": [
-      "assets/Register-DlStR30p.css"
+      "assets/Register-DUCU1QB8.css"
     ]
   },
   "Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue": {
-    "file": "assets/ResetPassword-CqJNsGy9.js",
+    "file": "assets/ResetPassword-BHLaRW6M.js",
     "name": "ResetPassword",
     "src": "Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue",
     "isDynamicEntry": true,
     "imports": [
       "_vendor-vue-EJP4ocE0.js",
       "_App-BaG-8JYg.js",
+      "_PasswordInput-DKnb1WYg.js",
       "__plugin-vue_export-helper-DlAUqK2U.js",
       "_vendor-ui-XNB9EfQd.js"
     ],
     "css": [
-      "assets/ResetPassword-d3hmdSlV.css"
+      "assets/ResetPassword-Bo2iCUcF.css"
     ]
   },
   "Modules/User/resources/assets/js/Pages/Auth/TwoFactorChallenge.vue": {
@@ -501,6 +504,13 @@
   "_HomeBlogCard-CkyrTc2X.js": {
     "file": "assets/HomeBlogCard-CkyrTc2X.js",
     "name": "HomeBlogCard",
+    "imports": [
+      "_vendor-vue-EJP4ocE0.js"
+    ]
+  },
+  "_PasswordInput-DKnb1WYg.js": {
+    "file": "assets/PasswordInput-DKnb1WYg.js",
+    "name": "PasswordInput",
     "imports": [
       "_vendor-vue-EJP4ocE0.js"
     ]
@@ -670,7 +680,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-BWNswIlp.js",
+    "file": "assets/app-Dw3_af-C.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

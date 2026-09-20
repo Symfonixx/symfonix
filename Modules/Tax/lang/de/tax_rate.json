@@ -1,0 +1,35 @@
+{
+    "pages": {
+        "index_title": "Steuersätze",
+        "create_title": "Steuersatz erstellen",
+        "edit_title": "Steuersatz bearbeiten"
+    },
+    "fields": {
+        "name": "Name",
+        "percentage": "Prozentsatz",
+        "type": "Typ",
+        "region_code": "Regionscode",
+        "status": "Status",
+        "is_default": "Standardsteuersatz",
+        "ledger_entries_count": "Buchungseinträge",
+        "none": "Keine Steuer"
+    },
+    "types": {
+        "inclusive": "Inklusiv",
+        "exclusive": "Exklusiv"
+    },
+    "statuses": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+    },
+    "actions": {
+        "add": "Steuersatz hinzufügen"
+    },
+    "hints": {
+        "region_code": "ISO-Regions- oder Ländercode (z. B. US, EU, SA). Leer lassen für einen globalen Satz.",
+        "is_default": "Wird automatisch für Abonnements und Rechnungen verwendet, wenn kein Satz ausgewählt ist."
+    },
+    "errors": {
+        "in_use": "Dieser Steuersatz kann nicht gelöscht werden, da Buchungseinträge vorhanden sind."
+    }
+}

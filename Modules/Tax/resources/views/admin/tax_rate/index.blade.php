@@ -9,9 +9,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('tax::tax_rate.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="tax.rates.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.tax.rates.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.tax.rates.create') }}" data-action="create">
                 {{ __('tax::tax_rate.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -56,7 +56,7 @@
                                     —
                                 @endif
                             </td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <a href="{{ route('admin.tax.rates.edit', $taxRate->id) }}"
                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <i class="ki-duotone ki-message-edit fs-1"><span class="path1"></span><span class="path2"></span></i>
@@ -64,7 +64,7 @@
                                 <form class="d-inline" method="POST" action="{{ route('admin.tax.rates.destroy', $taxRate->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

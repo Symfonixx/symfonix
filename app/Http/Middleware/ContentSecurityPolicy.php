@@ -11,7 +11,7 @@ class ContentSecurityPolicy
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -52,7 +52,7 @@ class ContentSecurityPolicy
         // Allow Vite dev server in development
         if (config('app.debug') && config('app.env') !== 'production') {
             $scriptSrc[] = "'unsafe-eval'"; // Required for Vite HMR
-            $scriptSrc[] = $request->getSchemeAndHttpHost() . ':5173'; // Vite dev server
+            $scriptSrc[] = $request->getSchemeAndHttpHost().':5173'; // Vite dev server
         }
 
         // Allow CDN sources for admin/vendor views if needed
@@ -111,17 +111,18 @@ class ContentSecurityPolicy
         $directives['img-src'] = implode(' ', $imgSrc);
 
         // Connect sources (for AJAX, WebSocket, etc.)
-        $connectSrc = ["'self'"];
+        $connectSrc = ["'self'", 'blob:'];
         if (config('app.debug') && config('app.env') !== 'production') {
-            $connectSrc[] = $request->getSchemeAndHttpHost() . ':5173'; // Vite dev server
+            $connectSrc[] = $request->getSchemeAndHttpHost().':5173'; // Vite dev server
         }
         if ($this->requiresCdnSources($request)) {
             $connectSrc[] = 'https://cdn.tiny.cloud';
+            $connectSrc[] = 'https://sp.tinymce.com';
         }
         $directives['connect-src'] = implode(' ', $connectSrc);
 
         // Frame sources (for iframes)
-        $directives['frame-src'] = "'self'";
+        $directives['frame-src'] = "'self' blob:";
 
         // Base URI
         $directives['base-uri'] = "'self'";
@@ -140,7 +141,7 @@ class ContentSecurityPolicy
             if ($value === '') {
                 $cspString[] = $directive;
             } else {
-                $cspString[] = $directive . ' ' . $value;
+                $cspString[] = $directive.' '.$value;
             }
         }
 

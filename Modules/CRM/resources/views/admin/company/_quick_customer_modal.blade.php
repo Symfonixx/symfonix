@@ -7,7 +7,7 @@
                 <input type="hidden" name="return_url" value="{{ url()->current() }}">
                 <div class="modal-header">
                     <h5 class="modal-title">{{ __('crm::company.actions.add_customer') }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" data-action="back"></button>
                 </div>
                 <div class="modal-body">
                     @if ($errors->hasAny(['name', 'email', 'mobile', 'password']) && old('type') === 'customer')
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Cancel') }}</button>
                     <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                 </div>
             </form>

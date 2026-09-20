@@ -49,7 +49,7 @@
                                     {{ __('finance::commission.status.'.$commission->status) }}
                                 </span>
                             </td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 @if($commission->status === 'pending')
                                     <form method="POST" action="{{ route('admin.finance.commissions.payout', $commission) }}"
                                           class="d-inline" data-confirm="{{ __('Are you sure?') }}">

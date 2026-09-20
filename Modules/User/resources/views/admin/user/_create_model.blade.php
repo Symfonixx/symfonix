@@ -79,7 +79,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-light"
-                        data-bs-dismiss="modal">{{__('Discard')}}</button>
+                        data-bs-dismiss="modal" data-action="back">{{__('Discard')}}</button>
                 <button type="submit" class="btn btn-primary">{{__('Save Changes')}} <i class="bi bi-check2-circle"></i></button>
             </div>
         </form>

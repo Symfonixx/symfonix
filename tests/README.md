@@ -15,6 +15,16 @@ This suite is organized by module and test type:
 
 ## Backend test execution
 
+PHPUnit uses a dedicated MySQL database (`symfonix_testing`) on the `testing` connection. It does not migrate or wipe `DB_DATABASE` from `.env`.
+
+Create the testing database once with the same host, port, and user as `.env`:
+
+```sql
+CREATE DATABASE IF NOT EXISTS symfonix_testing CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+Then run:
+
 ```bash
 php artisan test
 ```

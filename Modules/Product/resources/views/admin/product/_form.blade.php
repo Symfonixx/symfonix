@@ -1,5 +1,11 @@
 @php($productData = $product ?? null)
 
+<x-ai::generate-form-button
+    type="product"
+    :banner="true"
+    :hint="__('ai::content_generation.form.product_banner_hint')"
+/>
+
 @if ($errors->any())
     <div class="alert alert-danger d-flex align-items-start p-5 mb-10">
         <i class="bi bi-exclamation-triangle-fill fs-2hx text-danger me-4 mt-1"></i>
@@ -141,10 +147,13 @@
         <label class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.is_published') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <div class="form-check form-switch form-check-custom form-check-solid">
-            <input class="form-check-input" type="checkbox" name="is_published" value="1"
-                   id="is_published" @checked(old('is_published', $productData?->is_published))/>
-            <label class="form-check-label" for="is_published">{{ __('product::product.fields.is_published_help') }}</label>
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div class="form-check form-switch form-check-custom form-check-solid">
+                <input class="form-check-input" type="checkbox" name="is_published" value="1"
+                       id="is_published" @checked(old('is_published', $productData?->is_published))/>
+                <label class="form-check-label" for="is_published">{{ __('product::product.fields.is_published_help') }}</label>
+            </div>
+            <x-ai::generate-form-button type="product" />
         </div>
     </div>
 </div>
@@ -171,6 +180,17 @@
                         <i class="bi bi-pencil-fill fs-7"></i>
                         <input type="file" name="main_image" accept=".png,.jpg,.jpeg,.webp"/>
                     </label>
+                    <x-ai::edit-with-ai-button
+                        :target="$productData ? 'product' : null"
+                        :id="$productData?->id"
+                        field="main_image"
+                        :image-url="$productData?->main_image ? $productData->main_image_link : null"
+                    />
+                    <x-ai::create-with-ai-button
+                        :target="$productData ? 'product' : null"
+                        :id="$productData?->id"
+                        field="main_image"
+                    />
                 </div>
                 @error('main_image')
                 <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
@@ -181,10 +201,11 @@
 </div>
 
 <div class="card mb-8">
-    <div class="card-header border-0 pt-6">
-        <h3 class="card-title fw-bold fs-5">
+    <div class="card-header border-0 pt-6 d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <h3 class="card-title fw-bold fs-5 mb-0">
             <i class="bi bi-file-earmark-richtext text-primary me-2"></i>{{ __('product::product.sections.content') }}
         </h3>
+        <x-ai::generate-form-button type="product" />
     </div>
     <div class="card-body pt-0">
         <div class="row mb-8">
@@ -225,11 +246,12 @@
 </div>
 
 <div class="card mb-0">
-    <div class="card-header border-0 pt-6 cursor-pointer" data-bs-toggle="collapse" data-bs-target="#product-seo-collapse" aria-expanded="false">
-        <h3 class="card-title fw-bold fs-5 mb-0">
+    <div class="card-header border-0 pt-6 d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <h3 class="card-title fw-bold fs-5 mb-0 cursor-pointer" data-bs-toggle="collapse" data-bs-target="#product-seo-collapse" aria-expanded="false">
             <i class="bi bi-search text-primary me-2"></i>{{ __('product::product.sections.seo') }}
             <i class="bi bi-chevron-down ms-2 fs-7"></i>
         </h3>
+        <x-ai::generate-form-button type="product" />
     </div>
     <div id="product-seo-collapse" class="collapse">
         <div class="card-body pt-0">
@@ -297,6 +319,17 @@
                             <i class="bi bi-pencil-fill fs-7"></i>
                             <input type="file" name="seo_meta_img" accept=".png,.jpg,.jpeg,.webp"/>
                         </label>
+                        <x-ai::edit-with-ai-button
+                            :target="$productData ? 'product' : null"
+                            :id="$productData?->id"
+                            field="seo_meta_img"
+                            :image-url="$productData?->seo_meta_img ? asset('storage/'.$productData->seo_meta_img) : null"
+                        />
+                        <x-ai::create-with-ai-button
+                            :target="$productData ? 'product' : null"
+                            :id="$productData?->id"
+                            field="seo_meta_img"
+                        />
                     </div>
                     @error('seo_meta_img')
                     <span class="invalid-feedback d-block" role="alert"><strong>{{ $message }}</strong></span>
@@ -312,6 +345,8 @@
 @if (! $productData)
     @include('crm::admin.shared._send_as_marketing')
 @endif
+
+@include('base::shared._tinymce', ['selector' => '#product-description-editor', 'height' => 550])
 
 @push('scripts')
 <script>

@@ -4,11 +4,14 @@
     "form_description": "Values saved here override .env. Leave a field empty to keep using the .env fallback. Secret fields left blank keep the current value.",
     "tabs": {
         "email": "Email",
-        "whatsapp": "WhatsApp"
+        "whatsapp": "WhatsApp",
+        "gemini": "AI Integrations"
     },
     "status": {
         "email": "Email API",
         "whatsapp": "WhatsApp API",
+        "gemini": "Gemini AI",
+        "openai": "OpenAI",
         "system": "System settings",
         "system_link": "Open System Configurations",
         "configured": "Configured",
@@ -41,5 +44,34 @@
         "webhook_verify_token": "Webhook Verify Token",
         "webhook_verify_token_hint": "Optional. Used to verify Meta webhook callbacks. Leave blank to keep the current value.",
         "env_hint": "Leave blank to use the .env value shown as placeholder."
+    },
+    "gemini": {
+        "title": "Gemini AI Image Editing",
+        "description": "Google Gemini credentials used to power AI image create/edit. Generated images can match your brand by sending the site logo from Settings > Branding.",
+        "api_key": "Gemini API Key",
+        "api_key_hint": "Used to authenticate requests to the Gemini API. Leave blank to keep the current key.",
+        "image_model": "Image Model",
+        "image_model_hint": "Model used for AI image creation and editing (e.g. gemini-2.5-flash-image).",
+        "analysis_model": "Analysis Model",
+        "analysis_model_hint": "Model used for text/image analysis (e.g. gemini-2.5-flash)."
+    },
+    "openai": {
+        "title": "OpenAI Content Generation",
+        "description": "OpenAI credentials used to power the in-editor \"AI Assistant\" content generator inside TinyMCE across the admin panel.",
+        "api_key": "OpenAI API Key",
+        "api_key_hint": "Used to authenticate requests to the OpenAI API. Leave blank to keep the current key.",
+        "model": "Default Model",
+        "model_hint": "Model used to generate editor content (e.g. gpt-4o or gpt-4o-mini)."
+    },
+    "assistant": {
+        "title": "Ask Symfonix AI",
+        "description": "Choose which AI provider answers natural-language questions about business data. Auto uses OpenAI first, then Gemini if OpenAI is unavailable.",
+        "provider": "Assistant provider",
+        "provider_hint": "Applies only to Ask Symfonix AI. Content generation and image editing keep their own provider settings.",
+        "providers": {
+            "auto": "Auto (OpenAI, then Gemini)",
+            "openai": "OpenAI",
+            "gemini": "Gemini"
+        }
     }
 }

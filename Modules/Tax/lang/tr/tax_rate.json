@@ -1,0 +1,35 @@
+{
+    "pages": {
+        "index_title": "Vergi Oranları",
+        "create_title": "Vergi Oranı Oluştur",
+        "edit_title": "Vergi Oranını Düzenle"
+    },
+    "fields": {
+        "name": "Ad",
+        "percentage": "Yüzde",
+        "type": "Tür",
+        "region_code": "Bölge Kodu",
+        "status": "Durum",
+        "is_default": "Varsayılan Oran",
+        "ledger_entries_count": "Defter Kayıtları",
+        "none": "Vergi yok"
+    },
+    "types": {
+        "inclusive": "Dahil",
+        "exclusive": "Hariç"
+    },
+    "statuses": {
+        "active": "Aktif",
+        "inactive": "Pasif"
+    },
+    "actions": {
+        "add": "Vergi Oranı Ekle"
+    },
+    "hints": {
+        "region_code": "ISO bölge veya ülke kodu (ör. US, EU, SA). Genel oran için boş bırakın.",
+        "is_default": "Oran seçilmediğinde abonelikler ve faturalar için otomatik kullanılır."
+    },
+    "errors": {
+        "in_use": "Defter kayıtları olduğu için bu vergi oranı silinemez."
+    }
+}

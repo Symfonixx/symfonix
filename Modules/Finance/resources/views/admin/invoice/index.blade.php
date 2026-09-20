@@ -10,7 +10,7 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('finance::invoice.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <x-can perform="finance.invoices.create">
-        <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.finance.invoices.create') }}">
+        <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.finance.invoices.create') }}" data-action="create">
             {{ __('finance::invoice.actions.create') }} <i class="bi bi-plus-lg ms-1"></i>
         </a>
     </x-can>
@@ -43,7 +43,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">{{ __('Filter') }}</button>
+                    <button type="submit" class="btn btn-light-primary" data-action="filter">{{ __('Filter') }}</button>
                 </div>
             </form>
         </div>
@@ -88,15 +88,15 @@
                                 </span>
                             </td>
                             <td>{{ $invoice->due_at?->format('Y-m-d') }}</td>
-                            <td class="text-end">
-                                <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}" class="btn btn-sm btn-light">
+                            <td class="text-end sx-actions">
+                                <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}" class="btn btn-sm btn-light-info" data-action="export">
                                     <i class="bi bi-file-pdf"></i>
                                 </a>
                                 <form class="d-inline" method="POST" action="{{ route('admin.finance.invoices.destroy', $invoice) }}"
                                       data-confirm="{{ __('finance::invoice.messages.confirm_delete') }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

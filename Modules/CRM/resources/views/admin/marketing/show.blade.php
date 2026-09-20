@@ -12,6 +12,26 @@
         $sourceLabels = [];
         $customEmails = collect();
 
+        if (! empty($sources['all_leads'])) {
+            $sourceLabels[] = __('crm::marketing.sources.all_leads');
+        } else {
+            if (! empty($sources['lead_tag_ids'])) {
+                $tagNames = \Modules\CRM\Models\LeadTag::query()
+                    ->whereIn('id', $sources['lead_tag_ids'])
+                    ->get()
+                    ->map(fn ($tag) => $tag->display_name)
+                    ->filter()
+                    ->implode(', ');
+                $sourceLabels[] = __('crm::marketing.sources.lead_tags', [
+                    'tags' => $tagNames !== '' ? $tagNames : (string) count($sources['lead_tag_ids']),
+                ]);
+            }
+
+            if (! empty($sources['lead_ids'])) {
+                $sourceLabels[] = __('crm::marketing.sources.leads', ['count' => count($sources['lead_ids'])]);
+            }
+        }
+
         if (! empty($sources['all_subscribers'])) {
             $sourceLabels[] = __('crm::marketing.sources.all_subscribers');
         } elseif (! empty($sources['subscriber_ids'])) {
@@ -39,8 +59,8 @@
         }
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::marketing.pages.show_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.crm.marketing.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.crm.marketing.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::marketing.actions.back_to_list') }}
         </a>
     </div>
@@ -57,6 +77,11 @@
                 @endphp
                 <span class="text-muted fs-7">
                     <span class="badge {{ $statusBadge }} me-1">{{ __('crm::marketing.status.'.$status) }}</span>
+                    @if($campaign->group)
+                        <a href="{{ route('admin.crm.marketing.groups.show', $campaign->group) }}" class="badge badge-light-info me-1">
+                            {{ $campaign->group->title }}
+                        </a>
+                    @endif
                     {{ __('crm::marketing.fields.sent_by') }}: {{ $campaign->user?->name ?? '—' }}
                     · {{ $campaign->created_at?->format('Y-m-d H:i') }}
                     · {{ __('crm::marketing.fields.recipients_count') }}: {{ $campaign->recipients_count }}

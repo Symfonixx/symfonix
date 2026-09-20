@@ -305,7 +305,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('crm::calendar.modal.close') }}</button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('crm::calendar.modal.close') }}</button>
                     <a href="#" class="btn btn-primary" data-crm-cal="open" target="_self">{{ __('crm::calendar.modal.open') }}</a>
                 </div>
             </div>

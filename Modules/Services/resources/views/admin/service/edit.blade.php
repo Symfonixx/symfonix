@@ -9,7 +9,7 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="$service->title" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
     </div>
 @endsection
 @section('js')
@@ -25,6 +25,7 @@
 <x-admin-layout>
     <x-admin.create-card title="Edit Service" :formUrl="route('admin.services.update' , $service->id)">
         @method('PUT')
+        <x-ai::generate-form-button type="service" :banner="true" />
 
         <div class="row mb-8">
             <div class="col-xl-3">

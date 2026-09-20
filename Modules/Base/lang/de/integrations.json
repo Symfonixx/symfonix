@@ -4,11 +4,14 @@
     "form_description": "Gespeicherte Werte überschreiben .env. Leere Felder nutzen den .env-Fallback. Leere Geheimfelder behalten den aktuellen Wert.",
     "tabs": {
         "email": "E-Mail",
-        "whatsapp": "WhatsApp"
+        "whatsapp": "WhatsApp",
+        "gemini": "AI Integrations"
     },
     "status": {
         "email": "E-Mail-API",
         "whatsapp": "WhatsApp-API",
+        "gemini": "Gemini AI",
+        "openai": "OpenAI",
         "system": "Systemeinstellungen",
         "system_link": "Systemkonfigurationen öffnen",
         "configured": "Konfiguriert",
@@ -41,5 +44,34 @@
         "webhook_verify_token": "Webhook-Verify-Token",
         "webhook_verify_token_hint": "Optional. Zur Verifizierung von Meta-Webhooks. Leer lassen, um den aktuellen Wert zu behalten.",
         "env_hint": "Leer lassen, um den als Platzhalter angezeigten .env-Wert zu verwenden."
+    },
+    "gemini": {
+        "title": "Gemini AI Image Editing",
+        "description": "Google Gemini credentials used to power AI image create/edit. Generated images can match your brand by sending the site logo from Settings > Branding.",
+        "api_key": "Gemini API Key",
+        "api_key_hint": "Used to authenticate requests to the Gemini API. Leave blank to keep the current key.",
+        "image_model": "Image Model",
+        "image_model_hint": "Model used for AI image creation and editing (e.g. gemini-2.5-flash-image).",
+        "analysis_model": "Analysis Model",
+        "analysis_model_hint": "Model used for text/image analysis (e.g. gemini-2.5-flash)."
+    },
+    "openai": {
+        "title": "OpenAI-Inhaltsgenerierung",
+        "description": "OpenAI-Anmeldedaten für den \"KI-Assistenten\" zur Inhaltserstellung im TinyMCE-Editor im gesamten Admin-Panel.",
+        "api_key": "OpenAI API-Schlüssel",
+        "api_key_hint": "Zur Authentifizierung von OpenAI-API-Anfragen. Leer lassen, um den aktuellen Schlüssel zu behalten.",
+        "model": "Standardmodell",
+        "model_hint": "Modell zur Generierung von Editor-Inhalten (z. B. gpt-4o oder gpt-4o-mini)."
+    },
+    "assistant": {
+        "title": "Ask Symfonix AI",
+        "description": "Wählen Sie den KI-Anbieter für geschäftliche Fragen. Automatisch nutzt zuerst OpenAI, danach Gemini.",
+        "provider": "Assistenten-Anbieter",
+        "provider_hint": "Gilt nur für Ask Symfonix AI. Inhaltserzeugung und Bildbearbeitung behalten eigene Einstellungen.",
+        "providers": {
+            "auto": "Automatisch (OpenAI, dann Gemini)",
+            "openai": "OpenAI",
+            "gemini": "Gemini"
+        }
     }
 }

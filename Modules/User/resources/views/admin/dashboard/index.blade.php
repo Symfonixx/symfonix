@@ -66,6 +66,38 @@
         </div>
     </div>
 
+    @can('ai.assistant.view')
+        @php
+            $askSuggestions = app(\Modules\AI\Services\Assistant\SuggestionService::class)->forUser(auth()->user());
+        @endphp
+        <div class="card card-body p-6 p-lg-8 mb-8 ask-symfonix-card">
+            <div class="d-flex flex-wrap align-items-start justify-content-between gap-4 mb-5">
+                <div class="ask-symfonix-card-brand">
+                    <div class="ask-symfonix-orb" aria-hidden="true">
+                        <i class="bi bi-stars"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold fs-4 text-gray-900 mb-1">{{ __('ai::assistant.dashboard.title') }}</div>
+                        <div class="text-muted fs-7">{{ __('ai::assistant.dashboard.subtitle') }}</div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-sm btn-primary rounded-pill px-4" data-bs-toggle="offcanvas" data-bs-target="#ask-symfonix-drawer">
+                    <i class="bi bi-stars me-1"></i>{{ __('ai::assistant.open_short') }}
+                </button>
+            </div>
+            <div class="ask-symfonix-chips">
+                @foreach($askSuggestions as $suggestion)
+                    <button type="button" class="ask-symfonix-chip" data-ask-prompt="{{ $suggestion['prompt'] }}">
+                        @if(!empty($suggestion['icon']))
+                            <i class="bi {{ $suggestion['icon'] }}"></i>
+                        @endif
+                        {{ $suggestion['label'] }}
+                    </button>
+                @endforeach
+            </div>
+        </div>
+    @endcan
+
     {{-- Key metrics --}}
     <div class="row g-5 g-xl-8 mb-8">
         <div class="col-sm-6 col-xl-3">
@@ -206,12 +238,12 @@
 
     <div class="row g-5 g-xl-8 mb-8">
         {{-- Top visited pages --}}
-        <div class="col-xl-6">
+        <div class="col-xl-6 min-w-0">
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
                     <h3 class="card-title fw-bold fs-4">{{ __('Top Visited Pages') }}</h3>
                     @can('support.visitors.view')
-                        <div class="card-toolbar">
+                        <div class="card-toolbar flex-shrink-0">
                             <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
                                 {{ __('View All') }}
                             </a>
@@ -236,12 +268,12 @@
                                 <tbody>
                                 @foreach($topVisitedPages as $topVisitedPage)
                                     <tr>
-                                        <td>
+                                        <td class="top-pages-url">
                                             <a href="{{ $topVisitedPage->url }}" target="_blank" title="{{ $topVisitedPage->url }}">
                                                 {{ $topVisitedPage->url }}
                                             </a>
                                         </td>
-                                        <td class="text-end">
+                                        <td class="text-end top-pages-visits">
                                             <span class="badge badge-light-primary visit-count">{{ number_format($topVisitedPage->total) }}</span>
                                         </td>
                                     </tr>
@@ -255,12 +287,12 @@
         </div>
 
         {{-- Top referrer links --}}
-        <div class="col-xl-6">
+        <div class="col-xl-6 min-w-0">
             <div class="card h-100">
                 <div class="card-header border-0 pt-6">
                     <h3 class="card-title fw-bold fs-4">{{ __('user::dashboard.top_referrers') }}</h3>
                     @can('support.visitors.view')
-                        <div class="card-toolbar">
+                        <div class="card-toolbar flex-shrink-0">
                             <a href="{{ route('admin.visitors.index') }}" class="btn btn-sm btn-light-primary fw-semibold">
                                 {{ __('View All') }}
                             </a>
@@ -285,12 +317,12 @@
                                 <tbody>
                                 @foreach($topReferrers as $referrer)
                                     <tr>
-                                        <td>
+                                        <td class="top-pages-url">
                                             <a href="{{ $referrer->referrer }}" target="_blank" rel="noopener noreferrer" title="{{ $referrer->referrer }}">
                                                 {{ $referrer->referrer }}
                                             </a>
                                         </td>
-                                        <td class="text-end">
+                                        <td class="text-end top-pages-visits">
                                             <span class="badge badge-light-info visit-count">{{ number_format($referrer->total) }}</span>
                                         </td>
                                     </tr>
@@ -559,13 +591,13 @@
                                                     </span>
                                                 </td>
                                                 <td>{{ $invoice->created_at->diffForHumans() }}</td>
-                                                <td class="text-end">
+                                                <td class="text-end sx-actions">
                                                     <a href="{{ route('admin.finance.invoices.pdf', $invoice) }}"
-                                                       class="btn btn-sm btn-light-primary me-1"
-                                                       title="{{ __('finance::invoice.actions.download_pdf') }}">
+                                                       class="btn btn-sm btn-light-info me-1"
+                                                       title="{{ __('finance::invoice.actions.download_pdf') }}" data-action="export">
                                                         <i class="bi bi-file-pdf"></i>
                                                     </a>
-                                                    <a href="{{ route('admin.finance.invoices.show', $invoice) }}" class="btn btn-sm btn-light-primary">
+                                                    <a href="{{ route('admin.finance.invoices.show', $invoice) }}" class="btn btn-sm btn-light-info" data-action="view">
                                                         {{ __('View') }}
                                                     </a>
                                                 </td>
@@ -658,8 +690,8 @@
                                                     </span>
                                                 </td>
                                                 <td>{{ $project->created_at->diffForHumans() }}</td>
-                                                <td class="text-end">
-                                                    <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-sm btn-light-primary">
+                                                <td class="text-end sx-actions">
+                                                    <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-sm btn-light-info" data-action="view">
                                                         {{ __('View') }}
                                                     </a>
                                                 </td>
@@ -745,7 +777,7 @@
                                                 <td>{{ $sale->company?->name ?? __('N/A') }}</td>
                                                 <td>{{ number_format($sale->total_amount, 2) }} {{ $sale->currency }}</td>
                                                 <td>{{ $sale->sold_at?->diffForHumans() ?? $sale->created_at->diffForHumans() }}</td>
-                                                <td class="text-end">
+                                                <td class="text-end sx-actions">
                                                     <a href="{{ route('admin.finance.product-sales.index') }}" class="btn btn-sm btn-light-primary">
                                                         {{ __('View') }}
                                                     </a>
@@ -853,8 +885,8 @@
                                                     </span>
                                                 </td>
                                                 <td>{{ $ticket->created_at->diffForHumans() }}</td>
-                                                <td class="text-end">
-                                                    <a href="{{ route('admin.tickets.show', $ticket) }}" class="btn btn-sm btn-light-primary">
+                                                <td class="text-end sx-actions">
+                                                    <a href="{{ route('admin.tickets.show', $ticket) }}" class="btn btn-sm btn-light-info" data-action="view">
                                                         {{ __('View') }}
                                                     </a>
                                                 </td>
@@ -1002,67 +1034,67 @@
             <div class="quick-actions-fab__title">{{ __('Quick Actions') }}</div>
             <div class="quick-actions-fab__list">
                 @can('cms.blogs.create')
-                    <a href="{{ route('admin.blogs.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.blogs.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-pencil-square"></i></span>
                         {{ __('New Blog Post') }}
                     </a>
                 @endcan
                 @can('cms.pages.create')
-                    <a href="{{ route('admin.pages.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.pages.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-info text-info"><i class="bi bi-file-earmark-plus"></i></span>
                         {{ __('New Page') }}
                     </a>
                 @endcan
                 @can('overview.crm_analytics.view')
-                    <a href="{{ route('admin.crm.dashboard') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.crm.dashboard') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-info text-info"><i class="bi bi-graph-up-arrow"></i></span>
                         {{ __('crm::dashboard.menu') }}
                     </a>
                 @endcan
                 @can('sales.deals.create')
-                    <a href="{{ route('admin.deals.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.deals.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-success text-success"><i class="bi bi-briefcase"></i></span>
                         {{ __('crm::deal.actions.add') }}
                     </a>
                 @endcan
                 @can('crm.companies.create')
-                    <a href="{{ route('admin.companies.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.companies.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-building"></i></span>
                         {{ __('crm::company.actions.add') }}
                     </a>
                 @endcan
                 @can('crm.leads.create')
-                    <a href="{{ route('admin.leads.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.leads.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-danger text-danger"><i class="bi bi-person-plus"></i></span>
                         {{ __('crm::lead.actions.add') }}
                     </a>
                 @endcan
                 @can('finance.invoices.create')
-                    <a href="{{ route('admin.finance.invoices.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.finance.invoices.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-success text-success"><i class="bi bi-receipt"></i></span>
                         {{ __('finance::invoice.actions.create') }}
                     </a>
                 @endcan
                 @can('project.projects.create')
-                    <a href="{{ route('admin.projects.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.projects.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-primary text-primary"><i class="bi bi-briefcase"></i></span>
                         {{ __('project::project.actions.add') }}
                     </a>
                 @endcan
                 @can('product.catalog.create')
-                    <a href="{{ route('admin.products.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.products.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-box-seam"></i></span>
                         {{ __('product::product.actions.add') }}
                     </a>
                 @endcan
                 @can('support.tickets.view')
-                    <a href="{{ route('admin.tickets.index') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.tickets.index') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-warning text-warning"><i class="bi bi-ticket-detailed"></i></span>
                         {{ __('support::ticket.menu.tickets') }}
                     </a>
                 @endcan
                 @can('services.catalog.create')
-                    <a href="{{ route('admin.services.create') }}" class="quick-action-btn">
+                    <a href="{{ route('admin.services.create') }}" class="quick-action-btn btn-success" data-action="create">
                         <span class="qa-icon bg-light-success text-success"><i class="bi bi-grid"></i></span>
                         {{ __('New Service') }}
                     </a>

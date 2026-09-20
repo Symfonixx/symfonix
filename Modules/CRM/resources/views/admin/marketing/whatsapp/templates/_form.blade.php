@@ -160,7 +160,9 @@
                         <label class="form-label fw-semibold">{{ __('crm::whatsapp.fields.button_url') }}</label>
                         <input type="text" name="buttons[{{ $i }}][url]"
                                class="form-control form-control-solid"
-                               value="{{ $button['url'] ?? '' }}"/>
+                               value="{{ $button['url'] ?? '' }}"
+                               placeholder="{{ __('crm::whatsapp.placeholders.button_url') }}"/>
+                        <div class="form-text">{{ __('crm::whatsapp.hints.button_url') }}</div>
                     </div>
                 </div>
             </div>

@@ -13,8 +13,10 @@ use Modules\CRM\Models\Contact;
 use Modules\CRM\Models\ContactForm;
 use Modules\CRM\Models\Deal;
 use Modules\CRM\Models\Lead;
+use Modules\CRM\Models\LeadTag;
 use Modules\CRM\Models\WhatsAppCampaign;
 use Modules\CRM\Models\WhatsAppTemplate;
+use Modules\CRM\Services\Marketing\MarketingGroupService;
 use Modules\CRM\Services\Marketing\WhatsAppTemplateService;
 
 class WhatsAppMarketingController extends Controller
@@ -22,6 +24,7 @@ class WhatsAppMarketingController extends Controller
     public function __construct(
         private readonly SendWhatsAppCampaignAction $sendWhatsAppCampaignAction,
         private readonly WhatsAppTemplateService $templateService,
+        private readonly MarketingGroupService $marketingGroupService,
     ) {
         $this->setActive('crm');
         $this->setActive('marketing');
@@ -55,20 +58,29 @@ class WhatsAppMarketingController extends Controller
             return back()->withInput();
         }
 
-        return redirect()->route('admin.crm.marketing.index', ['channel' => 'whatsapp']);
+        return redirect()->route(
+            $campaign->marketing_group_id
+                ? 'admin.crm.marketing.groups.show'
+                : 'admin.crm.marketing.index',
+            $campaign->marketing_group_id
+                ? $campaign->marketing_group_id
+                : ['channel' => 'whatsapp'],
+        );
     }
 
     public function show(WhatsAppCampaign $campaign): View
     {
-        $campaign->loadMissing(['user:id,name', 'template', 'messageLogs']);
+        $campaign->loadMissing(['user:id,name', 'template', 'messageLogs', 'group:id,title,goal']);
 
-        return view('crm::admin.marketing.whatsapp.show', compact('campaign'));
+        $parameterItems = $campaign->template
+            ? $this->templateService->describeParameters($campaign->template_parameters ?? [], $campaign->template)
+            : [];
+
+        return view('crm::admin.marketing.whatsapp.show', compact('campaign', 'parameterItems'));
     }
 
     public function templateVariables(WhatsAppTemplate $template): JsonResponse
     {
-        $variables = $this->templateService->parseBodyVariables($template->body);
-
         return response()->json([
             'id' => $template->id,
             'name' => $template->name,
@@ -78,10 +90,7 @@ class WhatsAppMarketingController extends Controller
             'header_content' => $template->header_content,
             'footer' => $template->footer,
             'buttons' => $template->buttons ?? [],
-            'variables' => collect($variables)->map(fn (int $num) => [
-                'index' => $num,
-                'placeholder' => '{{'.$num.'}}',
-            ])->values(),
+            'variables' => $this->templateService->collectVariables($template),
         ]);
     }
 
@@ -92,7 +101,10 @@ class WhatsAppMarketingController extends Controller
     {
         return [
             'whatsappConfigured' => WhatsAppConfig::isConfigured(),
+            'marketingGroups' => $this->marketingGroupService->formOptions(),
+            'selectedGroupId' => old('marketing_group_id', request('group')),
             'templates' => $this->templateService->listSendable(),
+            'leadTags' => LeadTag::optionsForMarketing('whatsapp'),
             'leads' => Lead::query()
                 ->where('blocked', false)
                 ->whereNotNull('phone')

@@ -66,6 +66,24 @@
         "reject": "Angebot ablehnen",
         "back_to_list": "Zurück zu Angeboten"
     },
+    "ai": {
+        "button": "Mit KI erzeugen",
+        "tooltip": "Vertragsangebot aus dem gewählten Unternehmen und Deal erstellen",
+        "banner_title": "Angebot mit KI erzeugen",
+        "banner_hint": "Nutzt das gewählte Unternehmen und den Deal, um Positionen und kaufmännische Bedingungen als Vertrag zwischen Ihnen und dem Kunden zu entwerfen.",
+        "modal_title": "Angebot mit KI erzeugen",
+        "context_label": "Ausgewählt",
+        "prompt_label": "Zusätzliche Hinweise (optional)",
+        "prompt_placeholder": "z. B. Zahlung in zwei Meilensteinen, 14 Tage Gültigkeit, Discovery-Workshop einbeziehen.",
+        "generate": "Erzeugen und Formular füllen",
+        "generating": "Vertragsbedingungen und Positionen werden erstellt...",
+        "applied": "Das Angebot wurde aus Unternehmen und Deal gefüllt. Bitte vor dem Speichern prüfen.",
+        "overwrite_confirm": "Damit werden aktuelle Bedingungen, Notizen und Positionen ersetzt. Fortfahren?",
+        "company_required": "Bitte zuerst ein Unternehmen wählen.",
+        "deal_required": "Bitte zuerst einen Deal wählen.",
+        "no_catalog": "Fügen Sie mindestens eine Leistung oder ein Produkt hinzu oder verknüpfen Sie Leistungen mit dem Deal.",
+        "no_lines": "Die KI konnte keine Katalogpositionen zuordnen. Verknüpfen Sie Leistungen mit dem Deal oder versuchen Sie es erneut."
+    },
     "messages": {
         "created": "Angebot erfolgreich erstellt.",
         "updated": "Angebot erfolgreich aktualisiert.",

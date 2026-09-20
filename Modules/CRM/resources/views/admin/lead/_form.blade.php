@@ -264,7 +264,7 @@
                         <div class="fs-6 text-gray-700">{{ __('crm::lead.hints.no_tags') }}</div>
                     </div>
                     @can('crm.lead_tags.create')
-                        <a href="{{ route('admin.crm.lead-tags.create') }}" class="btn btn-sm btn-warning">
+                        <a href="{{ route('admin.crm.lead-tags.create') }}" class="btn btn-sm btn-success" data-action="create">
                             {{ __('crm::lead.actions.manage_tags') }}
                         </a>
                     @endcan

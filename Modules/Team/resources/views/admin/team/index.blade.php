@@ -8,9 +8,9 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Teams')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <x-can perform="cms.team.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{route('admin.teams.create')}}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{route('admin.teams.create')}}" data-action="create">
                 {{__('Add New Team Member')}} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>

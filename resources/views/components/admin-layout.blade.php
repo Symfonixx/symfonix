@@ -18,7 +18,7 @@ Author: Hadi Hilal
     <meta charset="utf-8"/>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta name="robots" content="noindex">
-<meta name="referrer" content="same-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <link rel="icon" type="image/png" href="{{asset('images/favicon/favicon-96x96.png')}}" sizes="96x96"/>
     <link rel="icon" type="image/svg+xml" href="{{asset('images/favicon/favicon.svg')}}"/>
@@ -58,7 +58,7 @@ Author: Hadi Hilal
         <link href="{{asset('admin/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
     @endif
 
-    <link href="{{ asset('admin/css/custom-admin.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('admin/css/custom-admin.css') }}?v={{ filemtime(public_path('admin/css/custom-admin.css')) }}" rel="stylesheet" type="text/css"/>
 
     @yield('css')
     @livewireStyles
@@ -131,9 +131,9 @@ Author: Hadi Hilal
                             class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
                             id="kt_app_header_menu" data-kt-menu="true">
                             <div class="sx-header-chips my-3 my-lg-0">
-                                @can('overview.crm_analytics.view')
-                                    <a href="{{ route('admin.crm.dashboard') }}" class="sx-header-chip">
-                                        <i class="bi bi-graph-up text-info"></i>{{ __('CRM Analytics') }}
+                                @can('sales.pipeline.view')
+                                    <a href="{{ route('admin.deals.index', ['view' => 'kanban']) }}" class="sx-header-chip sx-header-chip--primary">
+                                        <i class="bi bi-kanban"></i>{{ __('crm::deal.menu.pipeline') }}
                                     </a>
                                 @endcan
                                 @can('crm.leads.create')
@@ -146,14 +146,14 @@ Author: Hadi Hilal
                                         <i class="bi bi-briefcase text-success"></i>{{ __('crm::deal.actions.add') }}
                                     </a>
                                 @endcan
-                                @can('sales.pipeline.view')
-                                    <a href="{{ route('admin.deals.index', ['view' => 'kanban']) }}" class="sx-header-chip">
-                                        <i class="bi bi-kanban text-warning"></i>{{ __('crm::deal.menu.pipeline') }}
-                                    </a>
-                                @endcan
                                 @can('crm.activities.view')
                                     <a href="{{ route('admin.crm.calendar') }}" class="sx-header-chip">
-                                        <i class="bi bi-calendar-check text-danger"></i>{{ __('Activities') }}
+                                        <i class="bi bi-calendar-check text-success"></i>{{ __('Activities') }}
+                                    </a>
+                                @endcan
+                                @can('overview.crm_analytics.view')
+                                    <a href="{{ route('admin.crm.dashboard') }}" class="sx-header-chip">
+                                        <i class="bi bi-graph-up text-info"></i>{{ __('CRM Analytics') }}
                                     </a>
                                 @endcan
                             </div>
@@ -163,6 +163,80 @@ Author: Hadi Hilal
                     <!--end::Menu wrapper-->
                     <!--begin::Navbar-->
                     <div class="app-navbar flex-shrink-0">
+                        @can('ai.assistant.view')
+                            <div class="app-navbar-item ms-1 ms-md-3">
+                                <button type="button"
+                                        class="btn btn-sm btn-primary sx-header-ask"
+                                        data-bs-toggle="offcanvas"
+                                        data-bs-target="#ask-symfonix-drawer"
+                                        aria-label="{{ __('ai::assistant.open') }}"
+                                        title="{{ __('ai::assistant.open') }}">
+                                    <i class="bi bi-stars"></i>
+                                    <span class="d-none d-xl-inline">{{ __('ai::assistant.open') }}</span>
+                                    <span class="d-none d-sm-inline d-xl-none">{{ __('ai::assistant.open_short') }}</span>
+                                </button>
+                            </div>
+                        @endcan
+                        <!--begin::Messages-->
+                        @can('crm.inquiries.view')
+                            <div class="app-navbar-item ms-1 ms-md-3">
+                                <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary sx-header-btn position-relative"
+                                     data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                                     data-kt-menu-attach="parent"
+                                     {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}>
+                                    <i class="bi bi-inbox fs-3"></i>
+                                    @if($unreadMessageCount > 0)
+                                        <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
+                                    @endif
+                                </div>
+                                <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px"
+                                     data-kt-menu="true">
+                                    <div class="d-flex flex-column bgi-no-repeat sx-dropdown-head">
+                                        <h3 class="text-white fw-semibold px-9 py-6 mb-0">
+                                            <i class="bi bi-inbox me-2"></i>{{ __('Messages') }}
+                                            @if($unreadMessageCount > 0)
+                                                <span class="fs-8 opacity-75 ps-3">{{ $unreadMessageCount }} {{ __('new') }}</span>
+                                            @endif
+                                        </h3>
+                                    </div>
+                                    @if($recentMessages->isNotEmpty())
+                                        <div class="scroll-y mh-325px my-5 px-8">
+                                            @foreach($recentMessages as $message)
+                                                <div class="d-flex flex-stack py-4">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="symbol symbol-35px me-4">
+                                                            <span class="symbol-label bg-light-primary text-primary fw-semibold">
+                                                                {{ strtoupper(substr($message->name, 0, 1)) }}
+                                                            </span>
+                                                        </div>
+                                                        <div class="mb-0 me-2">
+                                                            <a href="{{ route('admin.contact_forms.index') }}"
+                                                               class="fs-6 text-gray-800 text-hover-primary fw-bold">{{ $message->name }}</a>
+                                                            <div class="text-gray-500 fs-7">{{ Str::limit($message->subject, 40) }}</div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="badge badge-light fs-8">{{ $message->created_at->diffForHumans() }}</span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <div class="px-5 py-8 text-center text-muted">
+                                            <i class="bi bi-inbox fs-2x text-gray-400 mb-4 d-block"></i>
+                                            <div class="fw-semibold fs-6">{{ __('No messages yet') }}</div>
+                                        </div>
+                                    @endif
+                                    <div class="py-3 text-center border-top">
+                                        <a href="{{ route('admin.contact_forms.index') }}"
+                                           class="btn btn-color-gray-600 btn-active-color-primary">
+                                            {{ __('View All Messages') }}
+                                            <i class="bi bi-arrow-{{ app()->getLocale() === 'ar' ? 'left' : 'right' }} ms-1"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endcan
+                        <!--end::Messages-->
+
                         <!--begin::Notifications-->
                         <div class="app-navbar-item ms-1 ms-md-3">
                             <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary sx-header-btn position-relative"
@@ -226,65 +300,68 @@ Author: Hadi Hilal
                         </div>
                         <!--end::Notifications-->
 
-                        <!--begin::Messages-->
-                        @can('crm.inquiries.view')
+                        <!--begin::Display currency-->
+                        @isset($currencyContext)
+                            @php
+                                $currencySymbols = [
+                                    'USD' => '$',
+                                    'EUR' => '€',
+                                    'GBP' => '£',
+                                    'TRY' => '₺',
+                                ];
+                                $displayCurrency = $currencyContext['display'];
+                            @endphp
                             <div class="app-navbar-item ms-1 ms-md-3">
-                                <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary sx-header-btn position-relative"
-                                     data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                     data-kt-menu-attach="parent"
-                                     {{ app()->getLocale() === "ar" ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}>
-                                    <i class="bi bi-inbox fs-3"></i>
-                                    @if($unreadMessageCount > 0)
-                                        <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
-                                    @endif
-                                </div>
-                                <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px"
-                                     data-kt-menu="true">
-                                    <div class="d-flex flex-column bgi-no-repeat sx-dropdown-head">
-                                        <h3 class="text-white fw-semibold px-9 py-6 mb-0">
-                                            <i class="bi bi-inbox me-2"></i>{{ __('Messages') }}
-                                            @if($unreadMessageCount > 0)
-                                                <span class="fs-8 opacity-75 ps-3">{{ $unreadMessageCount }} {{ __('new') }}</span>
-                                            @endif
-                                        </h3>
-                                    </div>
-                                    @if($recentMessages->isNotEmpty())
-                                        <div class="scroll-y mh-325px my-5 px-8">
-                                            @foreach($recentMessages as $message)
-                                                <div class="d-flex flex-stack py-4">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-35px me-4">
-                                                            <span class="symbol-label bg-light-primary text-primary fw-semibold">
-                                                                {{ strtoupper(substr($message->name, 0, 1)) }}
-                                                            </span>
-                                                        </div>
-                                                        <div class="mb-0 me-2">
-                                                            <a href="{{ route('admin.contact_forms.index') }}"
-                                                               class="fs-6 text-gray-800 text-hover-primary fw-bold">{{ $message->name }}</a>
-                                                            <div class="text-gray-500 fs-7">{{ Str::limit($message->subject, 40) }}</div>
-                                                        </div>
-                                                    </div>
-                                                    <span class="badge badge-light fs-8">{{ $message->created_at->diffForHumans() }}</span>
-                                                </div>
-                                            @endforeach
+                                <form method="POST" action="{{ route('admin.display-currency.update') }}" class="sx-currency-form">
+                                    @csrf
+                                    <button
+                                        type="button"
+                                        class="sx-currency-trigger"
+                                        data-kt-menu-trigger="click"
+                                        data-kt-menu-attach="parent"
+                                        {{ app()->getLocale() === 'ar' ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}
+                                        data-kt-menu-offset="0, 8"
+                                        title="{{ __('Display Currency') }}"
+                                        aria-label="{{ __('Display Currency') }}"
+                                        aria-haspopup="true"
+                                    >
+                                        <span class="sx-currency-symbol" aria-hidden="true">{{ $currencySymbols[$displayCurrency] ?? $displayCurrency }}</span>
+                                        <span class="sx-currency-code">{{ $displayCurrency }}</span>
+                                        <i class="bi bi-chevron-down sx-currency-caret"></i>
+                                    </button>
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-3 fs-6 w-225px sx-currency-menu"
+                                         data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <div class="menu-content text-muted fw-semibold fs-8 text-uppercase pb-2">
+                                                {{ __('Display Currency') }}
+                                            </div>
                                         </div>
-                                    @else
-                                        <div class="px-5 py-8 text-center text-muted">
-                                            <i class="bi bi-inbox fs-2x text-gray-400 mb-4 d-block"></i>
-                                            <div class="fw-semibold fs-6">{{ __('No messages yet') }}</div>
-                                        </div>
-                                    @endif
-                                    <div class="py-3 text-center border-top">
-                                        <a href="{{ route('admin.contact_forms.index') }}"
-                                           class="btn btn-color-gray-600 btn-active-color-primary">
-                                            {{ __('View All Messages') }}
-                                            <i class="bi bi-arrow-{{ app()->getLocale() === 'ar' ? 'left' : 'right' }} ms-1"></i>
-                                        </a>
+                                        @foreach($currencyContext['supported'] as $code)
+                                            @php $isActiveCurrency = $displayCurrency === $code; @endphp
+                                            <div class="menu-item px-3">
+                                                <button
+                                                    type="submit"
+                                                    name="currency"
+                                                    value="{{ $code }}"
+                                                    class="menu-link px-3 py-2 sx-currency-option{{ $isActiveCurrency ? ' active' : '' }}"
+                                                    @if($isActiveCurrency) aria-current="true" @endif
+                                                >
+                                                    <span class="sx-currency-option-symbol">{{ $currencySymbols[$code] ?? $code }}</span>
+                                                    <span class="sx-currency-option-copy">
+                                                        <span class="sx-currency-option-name">{{ __('base::system.currency.names.'.$code) }}</span>
+                                                        <span class="sx-currency-option-code">{{ $code }}</span>
+                                                    </span>
+                                                    @if($isActiveCurrency)
+                                                        <i class="bi bi-check2 sx-currency-option-check"></i>
+                                                    @endif
+                                                </button>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                        @endcan
-                        <!--end::Messages-->
+                        @endisset
+                        <!--end::Display currency-->
 
                         <!--begin::User menu-->
                         <div class="app-navbar-item ms-1 ms-md-4" id="kt_header_user_menu_toggle">
@@ -497,68 +574,6 @@ Author: Hadi Hilal
                             <!--end::Menu wrapper-->
                         </div>
                         <!--end::User menu-->
-                        <!--begin::Display currency-->
-                        @isset($currencyContext)
-                            @php
-                                $currencySymbols = [
-                                    'USD' => '$',
-                                    'EUR' => '€',
-                                    'GBP' => '£',
-                                    'TRY' => '₺',
-                                ];
-                                $displayCurrency = $currencyContext['display'];
-                            @endphp
-                            <div class="app-navbar-item ms-1 ms-md-3">
-                                <form method="POST" action="{{ route('admin.display-currency.update') }}" class="sx-currency-form">
-                                    @csrf
-                                    <button
-                                        type="button"
-                                        class="sx-currency-trigger"
-                                        data-kt-menu-trigger="click"
-                                        data-kt-menu-attach="parent"
-                                        {{ app()->getLocale() === 'ar' ? 'data-kt-menu-placement="bottom-start"' : 'data-kt-menu-placement="bottom-end"' }}
-                                        data-kt-menu-offset="0, 8"
-                                        title="{{ __('Display Currency') }}"
-                                        aria-label="{{ __('Display Currency') }}"
-                                        aria-haspopup="true"
-                                    >
-                                        <span class="sx-currency-symbol" aria-hidden="true">{{ $currencySymbols[$displayCurrency] ?? $displayCurrency }}</span>
-                                        <span class="sx-currency-code">{{ $displayCurrency }}</span>
-                                        <i class="bi bi-chevron-down sx-currency-caret"></i>
-                                    </button>
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-3 fs-6 w-225px sx-currency-menu"
-                                         data-kt-menu="true">
-                                        <div class="menu-item px-3">
-                                            <div class="menu-content text-muted fw-semibold fs-8 text-uppercase pb-2">
-                                                {{ __('Display Currency') }}
-                                            </div>
-                                        </div>
-                                        @foreach($currencyContext['supported'] as $code)
-                                            @php $isActiveCurrency = $displayCurrency === $code; @endphp
-                                            <div class="menu-item px-3">
-                                                <button
-                                                    type="submit"
-                                                    name="currency"
-                                                    value="{{ $code }}"
-                                                    class="menu-link px-3 py-2 sx-currency-option{{ $isActiveCurrency ? ' active' : '' }}"
-                                                    @if($isActiveCurrency) aria-current="true" @endif
-                                                >
-                                                    <span class="sx-currency-option-symbol">{{ $currencySymbols[$code] ?? $code }}</span>
-                                                    <span class="sx-currency-option-copy">
-                                                        <span class="sx-currency-option-name">{{ __('base::system.currency.names.'.$code) }}</span>
-                                                        <span class="sx-currency-option-code">{{ $code }}</span>
-                                                    </span>
-                                                    @if($isActiveCurrency)
-                                                        <i class="bi bi-check2 sx-currency-option-check"></i>
-                                                    @endif
-                                                </button>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </form>
-                            </div>
-                        @endisset
-                        <!--end::Display currency-->
                         <!--begin::Header menu toggle-->
                         <div class="app-navbar-item d-lg-none ms-2 me-n2" title="Show header menu">
                             <div class="btn btn-flex btn-icon btn-active-color-primary w-30px h-30px"
@@ -694,6 +709,9 @@ Author: Hadi Hilal
 
     <!--end::Page-->
     @yield('modal')
+    @can('ai.assistant.view')
+        <x-ai::ask-symfonix />
+    @endcan
 </div>
 <!--end::Root-->
 
@@ -761,6 +779,23 @@ Author: Hadi Hilal
                     const sub = el.querySelector('.menu-sub-accordion');
                     if (sub) sub.classList.add('show');
                 }
+            });
+
+            items.forEach(function (el, index) {
+                if (!el.classList.contains('menu-section-label')) return;
+                if (!query) {
+                    el.classList.remove('menu-search-hidden');
+                    return;
+                }
+                let hasVisible = false;
+                for (let i = index + 1; i < items.length; i++) {
+                    if (items[i].classList.contains('menu-section-label')) break;
+                    if (!items[i].classList.contains('menu-search-hidden')) {
+                        hasVisible = true;
+                        break;
+                    }
+                }
+                el.classList.toggle('menu-search-hidden', !hasVisible);
             });
         });
 

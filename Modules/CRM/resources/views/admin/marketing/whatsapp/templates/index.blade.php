@@ -9,12 +9,12 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::whatsapp.pages.templates_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.crm.marketing.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light" href="{{ route('admin.crm.marketing.index') }}" data-action="back">
             <i class="bi bi-arrow-left me-1"></i>{{ __('crm::marketing.actions.back_to_list') }}
         </a>
         <x-can perform="marketing.whatsapp_templates.create">
-            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.crm.marketing.whatsapp-templates.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.crm.marketing.whatsapp-templates.create') }}" data-action="create">
                 {{ __('crm::whatsapp.actions.add_template') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -43,7 +43,7 @@
                     <tbody class="text-gray-600 fw-semibold">
                     @forelse($templates as $template)
                         @php
-                            $varCount = $template->bodyVariableCount();
+                            $varCount = $template->variableCount();
                             $statusBadge = match ($template->status) {
                                 'approved' => 'badge-light-success',
                                 'rejected' => 'badge-light-danger',
@@ -69,15 +69,15 @@
                                 @endif
                             </td>
                             <td><span class="badge badge-light-info">{{ $varCount }}</span></td>
-                            <td class="text-end">
+                            <td class="text-end sx-actions">
                                 <a href="{{ route('admin.crm.marketing.whatsapp-templates.edit', $template) }}"
-                                   class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                   class="btn btn-icon btn-bg-light btn-active-color-warning btn-sm me-1" data-action="edit">
                                     <i class="ki-duotone ki-message-edit fs-1"><span class="path1"></span><span class="path2"></span></i>
                                 </a>
                                 <form class="d-inline" method="POST" action="{{ route('admin.crm.marketing.whatsapp-templates.destroy', $template) }}">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
-                                            onclick="return confirm(@json(__('crm::whatsapp.messages.confirm_delete')))">
+                                            onclick="return confirm(@json(__('crm::whatsapp.messages.confirm_delete')))" data-action="delete">
                                         <i class="bi bi-trash fs-5"></i>
                                     </button>
                                 </form>

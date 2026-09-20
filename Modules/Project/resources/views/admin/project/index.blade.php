@@ -9,12 +9,12 @@
         $hasFilters = filled($filters['company_id'] ?? null) || filled($filters['project_status_id'] ?? null);
     @endphp
     <x-admin.breadcrumb :pageTitle="__('project::project.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.project-statuses.index') }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.project-statuses.index') }}" data-action="view">
             <i class="bi bi-palette me-1"></i>{{ __('project::project.actions.manage_statuses') }}
         </a>
         <x-can perform="project.projects.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.projects.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.projects.create') }}" data-action="create">
                 {{ __('project::project.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -50,7 +50,7 @@
                     </select>
                 </div>
                 <div class="col-md-4 d-flex gap-2">
-                    <button type="submit" class="btn btn-sm btn-primary">
+                    <button type="submit" class="btn btn-sm btn-light-primary" data-action="filter">
                         <i class="bi bi-funnel me-1"></i>{{ __('project::project.actions.apply_filters') }}
                     </button>
                     @if($hasFilters)
@@ -149,7 +149,7 @@
                         {{ $project->created_at->diffForHumans() }}
                     </span>
                 </td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <a href="{{ route('admin.projects.show', $project->id) }}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                        title="{{ __('View') }}">
@@ -167,7 +167,7 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
-                                title="{{ __('Delete') }}">
+                                title="{{ __('Delete') }}" data-action="delete">
                             <i class="bi bi-trash fs-5"></i>
                         </button>
                     </form>

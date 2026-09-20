@@ -32,7 +32,7 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">{{ __('Filter') }}</button>
+                    <button type="submit" class="btn btn-light-primary" data-action="filter">{{ __('Filter') }}</button>
                 </div>
             </form>
         </div>

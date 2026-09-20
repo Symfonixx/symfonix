@@ -10,8 +10,8 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::quote.pages.edit_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('admin.quotes.show', $quote) }}">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('admin.quotes.show', $quote) }}" data-action="view">
             <i class="bi bi-eye me-1"></i>{{ __('crm::quote.pages.show_title') }}
         </a>
     </div>

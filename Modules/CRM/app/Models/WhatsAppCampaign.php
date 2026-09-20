@@ -25,6 +25,7 @@ class WhatsAppCampaign extends Model
 
     protected $fillable = [
         'user_id',
+        'marketing_group_id',
         'whatsapp_template_id',
         'template_parameters',
         'rendered_preview',
@@ -46,6 +47,11 @@ class WhatsAppCampaign extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(MarketingGroup::class, 'marketing_group_id');
+    }
+
     public function template(): BelongsTo
     {
         return $this->belongsTo(WhatsAppTemplate::class, 'whatsapp_template_id');
@@ -53,7 +59,7 @@ class WhatsAppCampaign extends Model
 
     public function messageLogs(): HasMany
     {
-        return $this->hasMany(WhatsAppMessageLog::class);
+        return $this->hasMany(WhatsAppMessageLog::class, 'whatsapp_campaign_id');
     }
 
     public function markAsSending(): void

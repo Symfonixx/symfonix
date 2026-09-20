@@ -6,7 +6,7 @@
         </p>
     </div>
     @can('update', $project)
-        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#assignEmployeeModal">
+        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#assignEmployeeModal" data-action="create">
             <i class="bi bi-person-plus me-1"></i>{{ __('project::project.actions.assign_employee') }}
         </button>
     @endcan
@@ -54,12 +54,12 @@
                         <span class="badge badge-light-secondary">{{ __('project::project.assignment_status.finished') }}</span>
                     @endif
                 </td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     @can('update', $project)
                         <div class="d-inline-flex align-items-center gap-1">
                             @if($row['is_active'])
                                 <button type="button"
-                                        class="btn btn-sm btn-light-warning"
+                                        class="btn btn-sm btn-light-danger"
                                         data-bs-toggle="modal"
                                         data-bs-target="#finishAssignmentModal{{ $assignment->id }}">
                                     {{ __('project::project.actions.finish_work') }}
@@ -69,7 +69,7 @@
                                   data-confirm="{{ __('project::project.messages.confirm_remove_employee') }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-icon btn-sm btn-light-danger" title="{{ __('Delete') }}">
+                                <button type="submit" class="btn btn-icon btn-sm btn-light-danger btn-active-color-danger" title="{{ __('Delete') }}" data-action="delete">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </form>

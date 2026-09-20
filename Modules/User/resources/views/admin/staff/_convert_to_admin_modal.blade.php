@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Discard') }}</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Discard') }}</button>
                 <button type="submit" class="btn btn-primary">
                     {{ __('Create Admin Login') }} <i class="bi bi-shield-lock ms-1"></i>
                 </button>

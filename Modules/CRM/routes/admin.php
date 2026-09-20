@@ -12,6 +12,7 @@ use Modules\CRM\Http\Controllers\Admin\LeadController;
 use Modules\CRM\Http\Controllers\Admin\LeadCustomFieldController;
 use Modules\CRM\Http\Controllers\Admin\LeadTagController;
 use Modules\CRM\Http\Controllers\Admin\MarketingController;
+use Modules\CRM\Http\Controllers\Admin\MarketingGroupController;
 use Modules\CRM\Http\Controllers\Admin\QuoteController;
 use Modules\CRM\Http\Controllers\Admin\SalesForecastController;
 use Modules\CRM\Http\Controllers\Admin\SalesTargetController;
@@ -46,6 +47,13 @@ Route::group([], function () {
     Route::get('crm/marketing', [MarketingController::class, 'index'])->name('crm.marketing.index');
     Route::get('crm/marketing/create', [MarketingController::class, 'create'])->name('crm.marketing.create');
     Route::post('crm/marketing', [MarketingController::class, 'store'])->name('crm.marketing.store');
+
+    Route::get('crm/marketing/groups/create', [MarketingGroupController::class, 'create'])->name('crm.marketing.groups.create');
+    Route::post('crm/marketing/groups', [MarketingGroupController::class, 'store'])->name('crm.marketing.groups.store');
+    Route::get('crm/marketing/groups/{group}', [MarketingGroupController::class, 'show'])->name('crm.marketing.groups.show');
+    Route::get('crm/marketing/groups/{group}/edit', [MarketingGroupController::class, 'edit'])->name('crm.marketing.groups.edit');
+    Route::put('crm/marketing/groups/{group}', [MarketingGroupController::class, 'update'])->name('crm.marketing.groups.update');
+    Route::delete('crm/marketing/groups/{group}', [MarketingGroupController::class, 'destroy'])->name('crm.marketing.groups.destroy');
 
     Route::get('crm/marketing/whatsapp/create', [WhatsAppMarketingController::class, 'create'])->name('crm.marketing.whatsapp.create');
     Route::post('crm/marketing/whatsapp', [WhatsAppMarketingController::class, 'store'])->name('crm.marketing.whatsapp.store');

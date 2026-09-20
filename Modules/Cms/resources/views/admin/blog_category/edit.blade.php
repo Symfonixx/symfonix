@@ -11,7 +11,7 @@
                 @method('PUT')
                 <div class="modal-header">
                     <h5 class="modal-title" id="editCategoryModalLabel{{$blogs_category->id}}">{{ __('Edit Category') }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                 </div>
                 <div class="modal-body">
                     @foreach($langs as $lang)
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Close') }}</button>
                     <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                 </div>
             </form>

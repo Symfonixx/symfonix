@@ -101,32 +101,34 @@
 
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="formPassword"
-                                            v-model="form.password"
-                                            type="password"
-                                            name="form_password"
-                                            :placeholder="trans('Password')"
-                                            :disabled="form.processing"
-                                            required="">
-                                    </div>
+                                    <PasswordInput
+                                        id="formPassword"
+                                        v-model="form.password"
+                                        name="form_password"
+                                        :placeholder="trans('Password')"
+                                        :disabled="form.processing"
+                                        autocomplete="new-password"
+                                        :show-label="trans('Show password')"
+                                        :hide-label="trans('Hide password')"
+                                        required
+                                    />
                                     <div v-if="errors.password" class="text-danger mt-1 small">{{ errors.password }}</div>
                                 </div>
                             </div>
 
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <div class="input-box">
-                                        <input
-                                            id="formPasswordConfirm"
-                                            v-model="form.password_confirmation"
-                                            type="password"
-                                            name="password_confirmation"
-                                            :placeholder="trans('Confirm Password')"
-                                            :disabled="form.processing"
-                                            required="">
-                                    </div>
+                                    <PasswordInput
+                                        id="formPasswordConfirm"
+                                        v-model="form.password_confirmation"
+                                        name="password_confirmation"
+                                        :placeholder="trans('Confirm Password')"
+                                        :disabled="form.processing"
+                                        autocomplete="new-password"
+                                        :show-label="trans('Show password')"
+                                        :hide-label="trans('Hide password')"
+                                        required
+                                    />
                                     <div v-if="errors.password_confirmation" class="text-danger mt-1 small">{{ errors.password_confirmation }}</div>
                                 </div>
                             </div>
@@ -169,10 +171,11 @@
 import {computed} from 'vue';
 import {usePage, Link, useForm, Head} from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/App.vue';
+import PasswordInput from '@/Components/PasswordInput.vue';
 
 export default {
     components: {
-        AppLayout, Link, Head
+        AppLayout, Link, Head, PasswordInput
     },
     props: {
         errors: Object

@@ -20,6 +20,7 @@ class MarketingCampaign extends Model
 
     protected $fillable = [
         'user_id',
+        'marketing_group_id',
         'subject',
         'body',
         'recipients_count',
@@ -37,6 +38,11 @@ class MarketingCampaign extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(MarketingGroup::class, 'marketing_group_id');
     }
 
     public function markAsFinished(): void

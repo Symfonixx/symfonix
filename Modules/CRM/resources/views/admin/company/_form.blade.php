@@ -35,7 +35,7 @@
             @endforeach
         </select>
         <div class="form-text">{{ __('crm::company.hints.customer') }}</div>
-        <button type="button" class="btn btn-sm btn-light-primary mt-3" data-bs-toggle="modal" data-bs-target="#quickCustomerModal">
+        <button type="button" class="btn btn-sm btn-success mt-3" data-bs-toggle="modal" data-bs-target="#quickCustomerModal" data-action="create">
             <i class="bi bi-person-plus me-1"></i>{{ __('crm::company.actions.add_customer') }}
         </button>
         @error('user_id')

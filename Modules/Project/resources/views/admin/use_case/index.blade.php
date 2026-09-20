@@ -9,12 +9,12 @@
         ];
     @endphp
     <x-admin.breadcrumb :pageTitle="__('project::use_case.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a class="btn btn-sm fw-bold btn-light-primary" href="{{ route('use-cases.index') }}" target="_blank">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <a class="btn btn-sm fw-bold btn-light-info" href="{{ route('use-cases.index') }}" target="_blank" data-action="view">
             <i class="bi bi-box-arrow-up-right me-1"></i>{{ __('project::use_case.actions.view_on_site') }}
         </a>
         <x-can perform="project.use_cases.create">
-            <a class="btn btn-sm fw-bold btn-primary" href="{{ route('admin.project-use-cases.create') }}">
+            <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.project-use-cases.create') }}" data-action="create">
                 {{ __('project::use_case.actions.add') }} <i class="bi bi-plus-lg mx-1"></i>
             </a>
         </x-can>
@@ -67,7 +67,7 @@
                 </td>
                 <td>{{ number_format($useCase->visits) }}</td>
                 <td>{{ $useCase->created_at->diffForHumans() }}</td>
-                <td class="text-end">
+                <td class="text-end sx-actions">
                     <a href="{{ route('use-cases.show', $useCase->slug) }}" target="_blank"
                        class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1">
                         <i class="bi bi-box-arrow-up-right fs-5"></i>
@@ -82,7 +82,7 @@
                     <form class="d-inline" method="POST" action="{{ route('admin.project-use-cases.destroy', $useCase->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                        <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm" data-action="delete">
                             <i class="bi bi-trash fs-5"></i>
                         </button>
                     </form>

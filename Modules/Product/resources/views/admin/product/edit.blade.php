@@ -11,10 +11,6 @@
     <x-admin.breadcrumb :pageTitle="__('product::product.pages.edit_title')" :breadcrumbItems="$breadcrumbItems"/>
 @endsection
 
-@section('js')
-    @include('base::shared._tinymce', ['selector' => '#product-description-editor', 'height' => 550])
-@endsection
-
 <x-admin-layout>
     <x-admin.create-card :title="__('product::product.pages.edit_title')" :formUrl="route('admin.products.update', $product)" :cancelUrl="route('admin.products.index')">
         @method('PUT')

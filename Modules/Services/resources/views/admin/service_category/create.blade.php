@@ -9,7 +9,7 @@
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="createServiceCategoryModalLabel">{{ __('Add New Service Category') }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                     </div>
                     <div class="modal-body">
 
@@ -70,9 +70,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
-                                data-bs-dismiss="modal">{{ __('Close') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                        <button type="button" class="btn btn-light"
+                                data-bs-dismiss="modal" data-action="back">{{ __('Close') }}</button>
+                        <button type="submit" class="btn btn-success" data-action="create">{{ __('Save') }}</button>
                     </div>
                 </form>
             </div>
@@ -90,7 +90,7 @@
             ];
         @endphp
         <x-admin.breadcrumb :pageTitle="__('Add New Service Category')" :breadcrumbItems="$breadcrumbItems"/>
-        <div class="d-flex align-items-center gap-2 gap-lg-3"></div>
+        <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions"></div>
     @endsection
 
     <x-admin-layout>

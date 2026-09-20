@@ -4,11 +4,13 @@ namespace Modules\CRM\Actions\Marketing;
 
 use Modules\CRM\Models\MarketingCampaign;
 use Modules\CRM\Services\Marketing\MarketingEmailService;
+use Modules\CRM\Services\Marketing\MarketingGroupService;
 
 class SendMarketingEmailAction
 {
     public function __construct(
         private readonly MarketingEmailService $marketingEmailService,
+        private readonly MarketingGroupService $marketingGroupService,
     ) {}
 
     /**
@@ -31,6 +33,7 @@ class SendMarketingEmailAction
             $data['body'],
             $data,
             $userId,
+            $this->marketingGroupService->optionalIdFromPayload($data, $userId),
         );
     }
 }

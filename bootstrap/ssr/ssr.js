@@ -3,7 +3,7 @@ import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrInterpolate, ssrR
 import { usePage, Link, useForm, router, Head, createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
-const _sfc_main$R = {
+const _sfc_main$S = {
   __name: "HomeBlogCard",
   __ssrInlineRender: true,
   props: {
@@ -349,11 +349,11 @@ const _sfc_main$R = {
     };
   }
 };
-const _sfc_setup$R = _sfc_main$R.setup;
-_sfc_main$R.setup = (props, ctx) => {
+const _sfc_setup$S = _sfc_main$S.setup;
+_sfc_main$S.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/HomeBlogCard.vue");
-  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
+  return _sfc_setup$S ? _sfc_setup$S(props, ctx) : void 0;
 };
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -362,7 +362,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$Q = {
+const _sfc_main$R = {
   __name: "ServiceCardThree",
   __ssrInlineRender: true,
   props: {
@@ -512,14 +512,14 @@ const _sfc_main$Q = {
     };
   }
 };
-const _sfc_setup$Q = _sfc_main$Q.setup;
-_sfc_main$Q.setup = (props, ctx) => {
+const _sfc_setup$R = _sfc_main$R.setup;
+_sfc_main$R.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Services/ServiceCardThree.vue");
-  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
+  return _sfc_setup$R ? _sfc_setup$R(props, ctx) : void 0;
 };
-const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__scopeId", "data-v-037ec78e"]]);
-const _sfc_main$P = {
+const ServiceCardThree = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["__scopeId", "data-v-037ec78e"]]);
+const _sfc_main$Q = {
   __name: "ClientsSection",
   __ssrInlineRender: true,
   props: {
@@ -658,13 +658,13 @@ const _sfc_main$P = {
     };
   }
 };
-const _sfc_setup$P = _sfc_main$P.setup;
-_sfc_main$P.setup = (props, ctx) => {
+const _sfc_setup$Q = _sfc_main$Q.setup;
+_sfc_main$Q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ClientsSection.vue");
-  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
+  return _sfc_setup$Q ? _sfc_setup$Q(props, ctx) : void 0;
 };
-const _sfc_main$O = {
+const _sfc_main$P = {
   __name: "MainMenuList",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1067,14 +1067,14 @@ const _sfc_main$O = {
     };
   }
 };
-const _sfc_setup$O = _sfc_main$O.setup;
-_sfc_main$O.setup = (props, ctx) => {
+const _sfc_setup$P = _sfc_main$P.setup;
+_sfc_main$P.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuList.vue");
-  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
+  return _sfc_setup$P ? _sfc_setup$P(props, ctx) : void 0;
 };
-const MainMenuList = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-5241990c"]]);
-const _sfc_main$N = {
+const MainMenuList = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["__scopeId", "data-v-5241990c"]]);
+const _sfc_main$O = {
   __name: "MainMenuNav",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1164,14 +1164,14 @@ const _sfc_main$N = {
     };
   }
 };
-const _sfc_setup$N = _sfc_main$N.setup;
-_sfc_main$N.setup = (props, ctx) => {
+const _sfc_setup$O = _sfc_main$O.setup;
+_sfc_main$O.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/MainMenuNav.vue");
-  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
+  return _sfc_setup$O ? _sfc_setup$O(props, ctx) : void 0;
 };
-const MainMenuNav = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-9e81ffc4"]]);
-const _sfc_main$M = {
+const MainMenuNav = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-9e81ffc4"]]);
+const _sfc_main$N = {
   __name: "App",
   __ssrInlineRender: true,
   setup(__props) {
@@ -1856,13 +1856,13 @@ const _sfc_main$M = {
     };
   }
 };
-const _sfc_setup$M = _sfc_main$M.setup;
-_sfc_main$M.setup = (props, ctx) => {
+const _sfc_setup$N = _sfc_main$N.setup;
+_sfc_main$N.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Layouts/App.vue");
-  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
+  return _sfc_setup$N ? _sfc_setup$N(props, ctx) : void 0;
 };
-const _sfc_main$L = {
+const _sfc_main$M = {
   __name: "UseCaseCard",
   __ssrInlineRender: true,
   props: {
@@ -2000,14 +2000,14 @@ const _sfc_main$L = {
     };
   }
 };
-const _sfc_setup$L = _sfc_main$L.setup;
-_sfc_main$L.setup = (props, ctx) => {
+const _sfc_setup$M = _sfc_main$M.setup;
+_sfc_main$M.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/UseCaseCard.vue");
-  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
+  return _sfc_setup$M ? _sfc_setup$M(props, ctx) : void 0;
 };
-const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-0c9c4e06"]]);
-const _sfc_main$K = {
+const UseCaseCard = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__scopeId", "data-v-0c9c4e06"]]);
+const _sfc_main$L = {
   __name: "ProductCard",
   __ssrInlineRender: true,
   props: {
@@ -2139,21 +2139,21 @@ const _sfc_main$K = {
     };
   }
 };
-const _sfc_setup$K = _sfc_main$K.setup;
-_sfc_main$K.setup = (props, ctx) => {
+const _sfc_setup$L = _sfc_main$L.setup;
+_sfc_main$L.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ProductCard.vue");
-  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
+  return _sfc_setup$L ? _sfc_setup$L(props, ctx) : void 0;
 };
-const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-80e9306c"]]);
+const ProductCard = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-80e9306c"]]);
 const __default__$g = {
   components: {
-    AppLayout: _sfc_main$M,
+    AppLayout: _sfc_main$N,
     UseCaseCard,
     ProductCard
   }
 };
-const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
+const _sfc_main$K = /* @__PURE__ */ Object.assign(__default__$g, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -2596,7 +2596,7 @@ const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="banner-one" data-v-b0eebbec${_scopeId}><div class="banner-one__bg" aria-hidden="true" data-v-b0eebbec${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/banner-bg.webp")} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" class="banner-one__bg-img" data-v-b0eebbec${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
@@ -2807,7 +2807,7 @@ const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
               _push2(`</div>`);
               if (featuredPost.value) {
                 _push2(`<div class="blog-two__left-content-box d-none d-md-block" data-v-b0eebbec${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$R, {
+                _push2(ssrRenderComponent(_sfc_main$S, {
                   post: featuredPost.value,
                   variant: "featured",
                   locale: locale.value,
@@ -2820,7 +2820,7 @@ const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
               }
               _push2(`</div></div><div class="col-xl-6" data-v-b0eebbec${_scopeId}><div class="blog-two__right" data-v-b0eebbec${_scopeId}><!--[-->`);
               ssrRenderList(sidePosts.value, (post, idx) => {
-                _push2(ssrRenderComponent(_sfc_main$R, {
+                _push2(ssrRenderComponent(_sfc_main$S, {
                   key: post.id || idx,
                   post,
                   variant: "compact",
@@ -2894,7 +2894,7 @@ const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
               _push2(`<!---->`);
             }
             _push2(`</form><div class="result" data-v-b0eebbec${_scopeId}></div></div></div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$P, { clients: clients.value }, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$Q, { clients: clients.value }, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "banner-one" }, [
@@ -3669,7 +3669,7 @@ const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
                           key: 0,
                           class: "blog-two__left-content-box d-none d-md-block"
                         }, [
-                          createVNode(_sfc_main$R, {
+                          createVNode(_sfc_main$S, {
                             post: featuredPost.value,
                             variant: "featured",
                             locale: locale.value,
@@ -3682,7 +3682,7 @@ const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
                     createVNode("div", { class: "col-xl-6" }, [
                       createVNode("div", { class: "blog-two__right" }, [
                         (openBlock(true), createBlock(Fragment, null, renderList(sidePosts.value, (post, idx) => {
-                          return openBlock(), createBlock(_sfc_main$R, {
+                          return openBlock(), createBlock(_sfc_main$S, {
                             key: post.id || idx,
                             post,
                             variant: "compact",
@@ -3941,7 +3941,7 @@ const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$P, { clients: clients.value }, null, 8, ["clients"])
+              createVNode(_sfc_main$Q, { clients: clients.value }, null, 8, ["clients"])
             ];
           }
         }),
@@ -3951,23 +3951,23 @@ const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$g, {
     };
   }
 });
-const _sfc_setup$J = _sfc_main$J.setup;
-_sfc_main$J.setup = (props, ctx) => {
+const _sfc_setup$K = _sfc_main$K.setup;
+_sfc_main$K.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Base/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
+  return _sfc_setup$K ? _sfc_setup$K(props, ctx) : void 0;
 };
-const Index$1 = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-b0eebbec"]]);
+const Index$1 = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-b0eebbec"]]);
 const __vite_glob_0_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Index$1
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$f = {
   components: {
-    AppLayout: _sfc_main$M
+    AppLayout: _sfc_main$N
   }
 };
-const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$f, {
+const _sfc_main$J = /* @__PURE__ */ Object.assign(__default__$f, {
   __name: "Index",
   __ssrInlineRender: true,
   setup(__props) {
@@ -4138,7 +4138,7 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$f, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/contact-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -4464,17 +4464,17 @@ const _sfc_main$I = /* @__PURE__ */ Object.assign(__default__$f, {
     };
   }
 });
-const _sfc_setup$I = _sfc_main$I.setup;
-_sfc_main$I.setup = (props, ctx) => {
+const _sfc_setup$J = _sfc_main$J.setup;
+_sfc_main$J.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/CRM/resources/assets/js/Pages/Index.vue");
-  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
+  return _sfc_setup$J ? _sfc_setup$J(props, ctx) : void 0;
 };
 const __vite_glob_0_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$I
+  default: _sfc_main$J
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$H = {
+const _sfc_main$I = {
   __name: "QuoteShow",
   __ssrInlineRender: true,
   props: {
@@ -4573,7 +4573,7 @@ const _sfc_main$H = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a2, _b2, _c2, _d2, _e, _f;
           if (_push2) {
@@ -4970,23 +4970,23 @@ const _sfc_main$H = {
     };
   }
 };
-const _sfc_setup$H = _sfc_main$H.setup;
-_sfc_main$H.setup = (props, ctx) => {
+const _sfc_setup$I = _sfc_main$I.setup;
+_sfc_main$I.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/CRM/resources/assets/js/Pages/QuoteShow.vue");
-  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
+  return _sfc_setup$I ? _sfc_setup$I(props, ctx) : void 0;
 };
-const QuoteShow = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__scopeId", "data-v-920e9e46"]]);
+const QuoteShow = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-920e9e46"]]);
 const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: QuoteShow
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$e = {
   components: {
-    AppLayout: _sfc_main$M
+    AppLayout: _sfc_main$N
   }
 };
-const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
+const _sfc_main$H = /* @__PURE__ */ Object.assign(__default__$e, {
   __name: "AboutUs",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5202,7 +5202,7 @@ const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/about-us-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("About Us"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -5301,7 +5301,7 @@ const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(ssrRenderComponent(_sfc_main$P, { clients: clients.value }, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$Q, { clients: clients.value }, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -5806,7 +5806,7 @@ const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              createVNode(_sfc_main$P, { clients: clients.value }, null, 8, ["clients"])
+              createVNode(_sfc_main$Q, { clients: clients.value }, null, 8, ["clients"])
             ];
           }
         }),
@@ -5816,17 +5816,17 @@ const _sfc_main$G = /* @__PURE__ */ Object.assign(__default__$e, {
     };
   }
 });
-const _sfc_setup$G = _sfc_main$G.setup;
-_sfc_main$G.setup = (props, ctx) => {
+const _sfc_setup$H = _sfc_main$H.setup;
+_sfc_main$H.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/AboutUs.vue");
-  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
+  return _sfc_setup$H ? _sfc_setup$H(props, ctx) : void 0;
 };
 const __vite_glob_0_3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$G
+  default: _sfc_main$H
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$F = {
+const _sfc_main$G = {
   __name: "CtaTwo",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5859,20 +5859,20 @@ const _sfc_main$F = {
     };
   }
 };
-const _sfc_setup$F = _sfc_main$F.setup;
-_sfc_main$F.setup = (props, ctx) => {
+const _sfc_setup$G = _sfc_main$G.setup;
+_sfc_main$G.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/CtaTwo.vue");
-  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
+  return _sfc_setup$G ? _sfc_setup$G(props, ctx) : void 0;
 };
 const __default__$d = {
   components: {
-    AppLayout: _sfc_main$M,
-    HomeBlogCard: _sfc_main$R,
-    CtaTwo: _sfc_main$F
+    AppLayout: _sfc_main$N,
+    HomeBlogCard: _sfc_main$S,
+    CtaTwo: _sfc_main$G
   }
 };
-const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
+const _sfc_main$F = /* @__PURE__ */ Object.assign(__default__$d, {
   __name: "BlogIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -5996,7 +5996,7 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/blogs-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Blogs"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6020,7 +6020,7 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(`<!--[-->`);
               ssrRenderList(blogs.value.data, (blog) => {
                 _push2(`<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$R, {
+                _push2(ssrRenderComponent(_sfc_main$S, {
                   post: blog,
                   variant: "featured",
                   locale: locale.value,
@@ -6110,7 +6110,7 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -6165,7 +6165,7 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
                         class: "col-xl-4 col-lg-6 col-md-6 wow fadeInUp",
                         "data-wow-delay": "100ms"
                       }, [
-                        createVNode(_sfc_main$R, {
+                        createVNode(_sfc_main$S, {
                           post: blog,
                           variant: "featured",
                           locale: locale.value,
@@ -6241,7 +6241,7 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -6251,24 +6251,24 @@ const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$d, {
     };
   }
 });
-const _sfc_setup$E = _sfc_main$E.setup;
-_sfc_main$E.setup = (props, ctx) => {
+const _sfc_setup$F = _sfc_main$F.setup;
+_sfc_main$F.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogIndex.vue");
-  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
+  return _sfc_setup$F ? _sfc_setup$F(props, ctx) : void 0;
 };
 const __vite_glob_0_4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$E
+  default: _sfc_main$F
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$c = {
   components: {
-    AppLayout: _sfc_main$M,
-    HomeBlogCard: _sfc_main$R,
-    CtaTwo: _sfc_main$F
+    AppLayout: _sfc_main$N,
+    HomeBlogCard: _sfc_main$S,
+    CtaTwo: _sfc_main$G
   }
 };
-const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
+const _sfc_main$E = /* @__PURE__ */ Object.assign(__default__$c, {
   __name: "BlogShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -6334,7 +6334,7 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -6528,7 +6528,7 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<div class="container"${_scopeId}><div class="related-blogs mt-20 mt-xs-10"${_scopeId}><h4 class="mb-5"${_scopeId}>${ssrInterpolate(trans("Related Blogs"))}:</h4><div class="row"${_scopeId}><!--[-->`);
               ssrRenderList(relatedBlogs.value, (relatedBlog) => {
                 _push2(`<div class="col-md-4 mb-30"${_scopeId}>`);
-                _push2(ssrRenderComponent(_sfc_main$R, {
+                _push2(ssrRenderComponent(_sfc_main$S, {
                   post: relatedBlog,
                   variant: "featured",
                   locale: locale.value,
@@ -6542,7 +6542,7 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<!---->`);
             }
             _push2(`</section>`);
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -6847,7 +6847,7 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
                           key: relatedBlog.id,
                           class: "col-md-4 mb-30"
                         }, [
-                          createVNode(_sfc_main$R, {
+                          createVNode(_sfc_main$S, {
                             post: relatedBlog,
                             variant: "featured",
                             locale: locale.value,
@@ -6860,7 +6860,7 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
                   ])
                 ])) : createCommentVNode("", true)
               ]),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -6870,23 +6870,23 @@ const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$c, {
     };
   }
 });
-const _sfc_setup$D = _sfc_main$D.setup;
-_sfc_main$D.setup = (props, ctx) => {
+const _sfc_setup$E = _sfc_main$E.setup;
+_sfc_main$E.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/BlogShow.vue");
-  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
+  return _sfc_setup$E ? _sfc_setup$E(props, ctx) : void 0;
 };
 const __vite_glob_0_5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$D
+  default: _sfc_main$E
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$b = {
   components: {
-    AppLayout: _sfc_main$M,
-    CtaTwo: _sfc_main$F
+    AppLayout: _sfc_main$N,
+    CtaTwo: _sfc_main$G
   }
 };
-const _sfc_main$C = /* @__PURE__ */ Object.assign(__default__$b, {
+const _sfc_main$D = /* @__PURE__ */ Object.assign(__default__$b, {
   __name: "Faq",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7123,7 +7123,7 @@ const _sfc_main$C = /* @__PURE__ */ Object.assign(__default__$b, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-f57d8941${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}" data-v-f57d8941${_scopeId}></div><div class="container" data-v-f57d8941${_scopeId}><div class="page-header__inner" data-v-f57d8941${_scopeId}><h1 data-v-f57d8941${_scopeId}>${trans("FAQs") ?? ""}</h1><div class="thm-breadcrumb__box" data-v-f57d8941${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f57d8941${_scopeId}><li data-v-f57d8941${_scopeId}>`);
@@ -7157,7 +7157,7 @@ const _sfc_main$C = /* @__PURE__ */ Object.assign(__default__$b, {
               _push2(`<div class="text-center py-5" data-v-f57d8941${_scopeId}><p data-v-f57d8941${_scopeId}>${ssrInterpolate(trans("No FAQs found."))}</p></div>`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -7251,7 +7251,7 @@ const _sfc_main$C = /* @__PURE__ */ Object.assign(__default__$b, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -7261,23 +7261,23 @@ const _sfc_main$C = /* @__PURE__ */ Object.assign(__default__$b, {
     };
   }
 });
-const _sfc_setup$C = _sfc_main$C.setup;
-_sfc_main$C.setup = (props, ctx) => {
+const _sfc_setup$D = _sfc_main$D.setup;
+_sfc_main$D.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Faq.vue");
-  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
+  return _sfc_setup$D ? _sfc_setup$D(props, ctx) : void 0;
 };
-const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-f57d8941"]]);
+const Faq = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__scopeId", "data-v-f57d8941"]]);
 const __vite_glob_0_6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Faq
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$a = {
   components: {
-    AppLayout: _sfc_main$M
+    AppLayout: _sfc_main$N
   }
 };
-const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$a, {
+const _sfc_main$C = /* @__PURE__ */ Object.assign(__default__$a, {
   __name: "PageShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7311,7 +7311,7 @@ const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$a, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${banner.value})` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(custom_page.value.title[locale.value])}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -7394,22 +7394,22 @@ const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$a, {
     };
   }
 });
-const _sfc_setup$B = _sfc_main$B.setup;
-_sfc_main$B.setup = (props, ctx) => {
+const _sfc_setup$C = _sfc_main$C.setup;
+_sfc_main$C.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PageShow.vue");
-  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
+  return _sfc_setup$C ? _sfc_setup$C(props, ctx) : void 0;
 };
 const __vite_glob_0_7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$B
+  default: _sfc_main$C
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$9 = {
   components: {
-    AppLayout: _sfc_main$M
+    AppLayout: _sfc_main$N
   }
 };
-const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$9, {
+const _sfc_main$B = /* @__PURE__ */ Object.assign(__default__$9, {
   __name: "PrivacyPolicy",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7531,7 +7531,7 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$9, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f;
           if (_push2) {
@@ -7718,23 +7718,23 @@ const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$9, {
     };
   }
 });
-const _sfc_setup$A = _sfc_main$A.setup;
-_sfc_main$A.setup = (props, ctx) => {
+const _sfc_setup$B = _sfc_main$B.setup;
+_sfc_main$B.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/PrivacyPolicy.vue");
-  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
+  return _sfc_setup$B ? _sfc_setup$B(props, ctx) : void 0;
 };
-const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-e574eeb2"]]);
+const PrivacyPolicy = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-e574eeb2"]]);
 const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: PrivacyPolicy
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$8 = {
   components: {
-    AppLayout: _sfc_main$M
+    AppLayout: _sfc_main$N
   }
 };
-const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$8, {
+const _sfc_main$A = /* @__PURE__ */ Object.assign(__default__$8, {
   __name: "Team",
   __ssrInlineRender: true,
   setup(__props) {
@@ -7879,7 +7879,7 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$8, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Our Members"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -8063,22 +8063,22 @@ const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$8, {
     };
   }
 });
-const _sfc_setup$z = _sfc_main$z.setup;
-_sfc_main$z.setup = (props, ctx) => {
+const _sfc_setup$A = _sfc_main$A.setup;
+_sfc_main$A.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Team.vue");
-  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
+  return _sfc_setup$A ? _sfc_setup$A(props, ctx) : void 0;
 };
 const __vite_glob_0_9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$z
+  default: _sfc_main$A
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$7 = {
   components: {
-    AppLayout: _sfc_main$M
+    AppLayout: _sfc_main$N
   }
 };
-const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$7, {
+const _sfc_main$z = /* @__PURE__ */ Object.assign(__default__$7, {
   __name: "Testimonials",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8216,7 +8216,7 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$7, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header"${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/contact-header-bg.jpg)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="page-header__inner"${_scopeId}><h1${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</h1><div class="thm-breadcrumb__box"${_scopeId}><ul class="thm-breadcrumb list-unstyled"${_scopeId}><li${_scopeId}>`);
@@ -8350,24 +8350,24 @@ const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$7, {
     };
   }
 });
-const _sfc_setup$y = _sfc_main$y.setup;
-_sfc_main$y.setup = (props, ctx) => {
+const _sfc_setup$z = _sfc_main$z.setup;
+_sfc_main$z.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Cms/resources/assets/js/Pages/Testimonials.vue");
-  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
+  return _sfc_setup$z ? _sfc_setup$z(props, ctx) : void 0;
 };
 const __vite_glob_0_10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$y
+  default: _sfc_main$z
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$6 = {
   components: {
-    AppLayout: _sfc_main$M,
-    CtaTwo: _sfc_main$F,
+    AppLayout: _sfc_main$N,
+    CtaTwo: _sfc_main$G,
     ProductCard
   }
 };
-const _sfc_main$x = /* @__PURE__ */ Object.assign(__default__$6, {
+const _sfc_main$y = /* @__PURE__ */ Object.assign(__default__$6, {
   __name: "ProductIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -8495,7 +8495,7 @@ const _sfc_main$x = /* @__PURE__ */ Object.assign(__default__$6, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-ad6cf210${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-ad6cf210${_scopeId}></div><div class="container" data-v-ad6cf210${_scopeId}><div class="page-header__inner" data-v-ad6cf210${_scopeId}><h1 data-v-ad6cf210${_scopeId}>${ssrInterpolate(trans("Products"))}</h1><div class="thm-breadcrumb__box" data-v-ad6cf210${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-ad6cf210${_scopeId}><li data-v-ad6cf210${_scopeId}>`);
@@ -8618,7 +8618,7 @@ const _sfc_main$x = /* @__PURE__ */ Object.assign(__default__$6, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -8773,7 +8773,7 @@ const _sfc_main$x = /* @__PURE__ */ Object.assign(__default__$6, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -8783,18 +8783,18 @@ const _sfc_main$x = /* @__PURE__ */ Object.assign(__default__$6, {
     };
   }
 });
-const _sfc_setup$x = _sfc_main$x.setup;
-_sfc_main$x.setup = (props, ctx) => {
+const _sfc_setup$y = _sfc_main$y.setup;
+_sfc_main$y.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductIndex.vue");
-  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
+  return _sfc_setup$y ? _sfc_setup$y(props, ctx) : void 0;
 };
-const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-ad6cf210"]]);
+const ProductIndex = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-ad6cf210"]]);
 const __vite_glob_0_11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductIndex
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$w = {
+const _sfc_main$x = {
   __name: "ContactRequestModal",
   __ssrInlineRender: true,
   props: {
@@ -8927,22 +8927,22 @@ const _sfc_main$w = {
     };
   }
 };
-const _sfc_setup$w = _sfc_main$w.setup;
-_sfc_main$w.setup = (props, ctx) => {
+const _sfc_setup$x = _sfc_main$x.setup;
+_sfc_main$x.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/ContactRequestModal.vue");
-  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
+  return _sfc_setup$x ? _sfc_setup$x(props, ctx) : void 0;
 };
-const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-b7a5a2ac"]]);
+const ContactRequestModal = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-b7a5a2ac"]]);
 const __default__$5 = {
   components: {
-    AppLayout: _sfc_main$M,
-    CtaTwo: _sfc_main$F,
+    AppLayout: _sfc_main$N,
+    CtaTwo: _sfc_main$G,
     ContactRequestModal,
     ProductCard
   }
 };
-const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$5, {
+const _sfc_main$w = /* @__PURE__ */ Object.assign(__default__$5, {
   __name: "ProductShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -9088,7 +9088,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$5, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-d44a9bac${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-d44a9bac${_scopeId}></div><div class="container" data-v-d44a9bac${_scopeId}><div class="page-header__inner" data-v-d44a9bac${_scopeId}><h2 data-v-d44a9bac${_scopeId}>${ssrInterpolate(product.value.name)}</h2><div class="thm-breadcrumb__box" data-v-d44a9bac${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d44a9bac${_scopeId}><li data-v-d44a9bac${_scopeId}>`);
@@ -9238,7 +9238,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$5, {
               "default-message": demoMessage.value,
               "submit-label": trans("Send Request")
             }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -9506,7 +9506,7 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$5, {
                 "default-message": demoMessage.value,
                 "submit-label": trans("Send Request")
               }, null, 8, ["title", "description", "default-subject", "default-message", "submit-label"]),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -9516,13 +9516,13 @@ const _sfc_main$v = /* @__PURE__ */ Object.assign(__default__$5, {
     };
   }
 });
-const _sfc_setup$v = _sfc_main$v.setup;
-_sfc_main$v.setup = (props, ctx) => {
+const _sfc_setup$w = _sfc_main$w.setup;
+_sfc_main$w.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Product/resources/assets/js/Pages/ProductShow.vue");
-  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
+  return _sfc_setup$w ? _sfc_setup$w(props, ctx) : void 0;
 };
-const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-d44a9bac"]]);
+const ProductShow = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-d44a9bac"]]);
 const __vite_glob_0_12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ProductShow
@@ -9550,7 +9550,7 @@ function usePortalTranslations() {
   const ticketPriorityLabel = (priority) => t3(`ticket_priority.${priority}`);
   return { t: t3, paymentStatusLabel, invoiceStatusLabel, ticketStatusLabel, ticketPriorityLabel };
 }
-const _sfc_main$u = {
+const _sfc_main$v = {
   __name: "PortalNav",
   __ssrInlineRender: true,
   props: {
@@ -9733,13 +9733,13 @@ const _sfc_main$u = {
     };
   }
 };
-const _sfc_setup$u = _sfc_main$u.setup;
-_sfc_main$u.setup = (props, ctx) => {
+const _sfc_setup$v = _sfc_main$v.setup;
+_sfc_main$v.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portal/PortalNav.vue");
-  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
+  return _sfc_setup$v ? _sfc_setup$v(props, ctx) : void 0;
 };
-const _sfc_main$t = {
+const _sfc_main$u = {
   __name: "PortalShell",
   __ssrInlineRender: true,
   props: {
@@ -9833,7 +9833,7 @@ const _sfc_main$t = {
         _: 1
       }, _parent));
       _push(`<div class="${ssrRenderClass([{ "portal-app--nav-open": navOpen.value }, "portal-app"])}"><div class="${ssrRenderClass([{ "portal-app__overlay--visible": navOpen.value }, "portal-app__overlay"])}"></div>`);
-      _push(ssrRenderComponent(_sfc_main$u, {
+      _push(ssrRenderComponent(_sfc_main$v, {
         active: __props.active,
         open: navOpen.value,
         onClose: ($event) => navOpen.value = false
@@ -9909,13 +9909,13 @@ const _sfc_main$t = {
     };
   }
 };
-const _sfc_setup$t = _sfc_main$t.setup;
-_sfc_main$t.setup = (props, ctx) => {
+const _sfc_setup$u = _sfc_main$u.setup;
+_sfc_main$u.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portal/PortalShell.vue");
-  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
+  return _sfc_setup$u ? _sfc_setup$u(props, ctx) : void 0;
 };
-const _sfc_main$s = {
+const _sfc_main$t = {
   __name: "Index",
   __ssrInlineRender: true,
   props: {
@@ -9937,7 +9937,7 @@ const _sfc_main$s = {
     });
     const formatMoney = (amount, currency) => `${Number(amount).toFixed(2)} ${currency || ""}`.trim();
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: unref(t3)("projects.title"),
         subtitle: unref(t3)("projects.subtitle"),
         active: "projects",
@@ -10090,17 +10090,17 @@ const _sfc_main$s = {
     };
   }
 };
-const _sfc_setup$s = _sfc_main$s.setup;
-_sfc_main$s.setup = (props, ctx) => {
+const _sfc_setup$t = _sfc_main$t.setup;
+_sfc_main$t.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/Portal/Projects/Index.vue");
-  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
+  return _sfc_setup$t ? _sfc_setup$t(props, ctx) : void 0;
 };
 const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$s
+  default: _sfc_main$t
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$r = {
+const _sfc_main$s = {
   __name: "Show",
   __ssrInlineRender: true,
   props: {
@@ -10170,7 +10170,7 @@ const _sfc_main$r = {
     };
     return (_ctx, _push, _parent, _attrs) => {
       var _a;
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: __props.project.title,
         subtitle: (_a = __props.project.company) == null ? void 0 : _a.name,
         active: "projects",
@@ -10492,24 +10492,24 @@ const _sfc_main$r = {
     };
   }
 };
-const _sfc_setup$r = _sfc_main$r.setup;
-_sfc_main$r.setup = (props, ctx) => {
+const _sfc_setup$s = _sfc_main$s.setup;
+_sfc_main$s.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/Portal/Projects/Show.vue");
-  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
+  return _sfc_setup$s ? _sfc_setup$s(props, ctx) : void 0;
 };
 const __vite_glob_0_14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$r
+  default: _sfc_main$s
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$4 = {
   components: {
-    AppLayout: _sfc_main$M,
-    CtaTwo: _sfc_main$F,
+    AppLayout: _sfc_main$N,
+    CtaTwo: _sfc_main$G,
     UseCaseCard
   }
 };
-const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$4, {
+const _sfc_main$r = /* @__PURE__ */ Object.assign(__default__$4, {
   __name: "UseCaseIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -10633,7 +10633,7 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$4, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-0fe03073${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-0fe03073${_scopeId}></div><div class="container" data-v-0fe03073${_scopeId}><div class="page-header__inner" data-v-0fe03073${_scopeId}><h1 data-v-0fe03073${_scopeId}>${ssrInterpolate(trans("Case Studies"))}</h1><div class="thm-breadcrumb__box" data-v-0fe03073${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-0fe03073${_scopeId}><li data-v-0fe03073${_scopeId}>`);
@@ -10744,7 +10744,7 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$4, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -10875,7 +10875,7 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$4, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -10885,25 +10885,25 @@ const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$4, {
     };
   }
 });
-const _sfc_setup$q = _sfc_main$q.setup;
-_sfc_main$q.setup = (props, ctx) => {
+const _sfc_setup$r = _sfc_main$r.setup;
+_sfc_main$r.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseIndex.vue");
-  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
+  return _sfc_setup$r ? _sfc_setup$r(props, ctx) : void 0;
 };
-const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-0fe03073"]]);
+const UseCaseIndex = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-0fe03073"]]);
 const __vite_glob_0_15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseIndex
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$3 = {
   components: {
-    AppLayout: _sfc_main$M,
-    CtaTwo: _sfc_main$F,
+    AppLayout: _sfc_main$N,
+    CtaTwo: _sfc_main$G,
     UseCaseCard
   }
 };
-const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$3, {
+const _sfc_main$q = /* @__PURE__ */ Object.assign(__default__$3, {
   __name: "UseCaseShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -11038,7 +11038,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$3, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-d996bdeb${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-d996bdeb${_scopeId}></div><div class="container" data-v-d996bdeb${_scopeId}><div class="page-header__inner" data-v-d996bdeb${_scopeId}><h2 data-v-d996bdeb${_scopeId}>${ssrInterpolate(useCase.value.title)}</h2><div class="thm-breadcrumb__box" data-v-d996bdeb${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d996bdeb${_scopeId}><li data-v-d996bdeb${_scopeId}>`);
@@ -11197,7 +11197,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$3, {
               _push2(`<!---->`);
             }
             _push2(`</div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -11500,7 +11500,7 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$3, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -11510,24 +11510,24 @@ const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$3, {
     };
   }
 });
-const _sfc_setup$p = _sfc_main$p.setup;
-_sfc_main$p.setup = (props, ctx) => {
+const _sfc_setup$q = _sfc_main$q.setup;
+_sfc_main$q.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Project/resources/assets/js/Pages/UseCaseShow.vue");
-  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
+  return _sfc_setup$q ? _sfc_setup$q(props, ctx) : void 0;
 };
-const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-d996bdeb"]]);
+const UseCaseShow = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-d996bdeb"]]);
 const __vite_glob_0_16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: UseCaseShow
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$2 = {
   components: {
-    AppLayout: _sfc_main$M,
-    CtaTwo: _sfc_main$F
+    AppLayout: _sfc_main$N,
+    CtaTwo: _sfc_main$G
   }
 };
-const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
+const _sfc_main$p = /* @__PURE__ */ Object.assign(__default__$2, {
   __name: "ServiceIndex",
   __ssrInlineRender: true,
   setup(__props) {
@@ -11730,7 +11730,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<div class="page-header" data-v-aa581980${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-aa581980${_scopeId}></div><div class="container" data-v-aa581980${_scopeId}><div class="page-header__inner" data-v-aa581980${_scopeId}><h1 data-v-aa581980${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h1><div class="thm-breadcrumb__box" data-v-aa581980${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-aa581980${_scopeId}><li data-v-aa581980${_scopeId}>`);
@@ -11891,7 +11891,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
               _push2(`</li>`);
             });
             _push2(`<!--]--></ul></div></div></div></div></div></div></section>`);
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -12071,7 +12071,7 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
                   ])
                 ])
               ]),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -12081,24 +12081,24 @@ const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$2, {
     };
   }
 });
-const _sfc_setup$o = _sfc_main$o.setup;
-_sfc_main$o.setup = (props, ctx) => {
+const _sfc_setup$p = _sfc_main$p.setup;
+_sfc_main$p.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceIndex.vue");
-  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
+  return _sfc_setup$p ? _sfc_setup$p(props, ctx) : void 0;
 };
-const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-aa581980"]]);
+const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-aa581980"]]);
 const __vite_glob_0_17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__$1 = {
   components: {
-    AppLayout: _sfc_main$M,
-    CtaTwo: _sfc_main$F
+    AppLayout: _sfc_main$N,
+    CtaTwo: _sfc_main$G
   }
 };
-const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
+const _sfc_main$o = /* @__PURE__ */ Object.assign(__default__$1, {
   __name: "ServiceShow",
   __ssrInlineRender: true,
   setup(__props) {
@@ -12272,7 +12272,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d;
           if (_push2) {
@@ -12406,7 +12406,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(ssrRenderComponent(_sfc_main$F, null, null, _parent2, _scopeId));
+            _push2(ssrRenderComponent(_sfc_main$G, null, null, _parent2, _scopeId));
           } else {
             return [
               createVNode("div", { class: "page-header" }, [
@@ -12665,7 +12665,7 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
                   ])
                 ])
               ])) : createCommentVNode("", true),
-              createVNode(_sfc_main$F)
+              createVNode(_sfc_main$G)
             ];
           }
         }),
@@ -12675,17 +12675,17 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$1, {
     };
   }
 });
-const _sfc_setup$n = _sfc_main$n.setup;
-_sfc_main$n.setup = (props, ctx) => {
+const _sfc_setup$o = _sfc_main$o.setup;
+_sfc_main$o.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceShow.vue");
-  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
+  return _sfc_setup$o ? _sfc_setup$o(props, ctx) : void 0;
 };
 const __vite_glob_0_18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$n
+  default: _sfc_main$o
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$m = {
+const _sfc_main$n = {
   __name: "PortalSelect",
   __ssrInlineRender: true,
   props: {
@@ -12752,14 +12752,14 @@ const _sfc_main$m = {
     };
   }
 };
-const _sfc_setup$m = _sfc_main$m.setup;
-_sfc_main$m.setup = (props, ctx) => {
+const _sfc_setup$n = _sfc_main$n.setup;
+_sfc_main$n.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/Portal/PortalSelect.vue");
-  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
+  return _sfc_setup$n ? _sfc_setup$n(props, ctx) : void 0;
 };
-const PortalSelect = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-2ede9016"]]);
-const _sfc_main$l = {
+const PortalSelect = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-2ede9016"]]);
+const _sfc_main$m = {
   __name: "Create",
   __ssrInlineRender: true,
   props: {
@@ -12804,7 +12804,7 @@ const _sfc_main$l = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: unref(t3)("tickets.create_title"),
         subtitle: unref(t3)("tickets.create_subtitle"),
         active: "tickets",
@@ -12994,17 +12994,17 @@ const _sfc_main$l = {
     };
   }
 };
-const _sfc_setup$l = _sfc_main$l.setup;
-_sfc_main$l.setup = (props, ctx) => {
+const _sfc_setup$m = _sfc_main$m.setup;
+_sfc_main$m.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Create.vue");
-  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
+  return _sfc_setup$m ? _sfc_setup$m(props, ctx) : void 0;
 };
 const __vite_glob_0_19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$l
+  default: _sfc_main$m
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$k = {
+const _sfc_main$l = {
   __name: "Index",
   __ssrInlineRender: true,
   props: {
@@ -13070,7 +13070,7 @@ const _sfc_main$k = {
       return new Date(value).toLocaleString(locale.value);
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: unref(t3)("tickets.title"),
         subtitle: unref(t3)("tickets.subtitle"),
         active: "tickets",
@@ -13302,17 +13302,17 @@ const _sfc_main$k = {
     };
   }
 };
-const _sfc_setup$k = _sfc_main$k.setup;
-_sfc_main$k.setup = (props, ctx) => {
+const _sfc_setup$l = _sfc_main$l.setup;
+_sfc_main$l.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Index.vue");
-  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
+  return _sfc_setup$l ? _sfc_setup$l(props, ctx) : void 0;
 };
 const __vite_glob_0_20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$k
+  default: _sfc_main$l
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$j = {
+const _sfc_main$k = {
   __name: "Show",
   __ssrInlineRender: true,
   props: {
@@ -13364,7 +13364,7 @@ const _sfc_main$j = {
       return new Date(value).toLocaleString(locale.value);
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: __props.ticket.subject,
         subtitle: __props.ticket.ticket_number,
         active: "tickets",
@@ -13605,19 +13605,19 @@ const _sfc_main$j = {
     };
   }
 };
-const _sfc_setup$j = _sfc_main$j.setup;
-_sfc_main$j.setup = (props, ctx) => {
+const _sfc_setup$k = _sfc_main$k.setup;
+_sfc_main$k.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Support/resources/assets/js/Pages/Portal/Tickets/Show.vue");
-  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
+  return _sfc_setup$k ? _sfc_setup$k(props, ctx) : void 0;
 };
 const __vite_glob_0_21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: _sfc_main$j
+  default: _sfc_main$k
 }, Symbol.toStringTag, { value: "Module" }));
-const _sfc_main$i = {
+const _sfc_main$j = {
   components: {
-    AppLayout: _sfc_main$M,
+    AppLayout: _sfc_main$N,
     Link,
     Head
   },
@@ -13640,6 +13640,32 @@ const _sfc_main$i = {
         return key;
       }
     };
+    const formatError = (error) => {
+      if (!error) {
+        return "";
+      }
+      if (Array.isArray(error)) {
+        return error.map(formatError).filter(Boolean).join(" ");
+      }
+      const authErrors = {
+        "passwords.reset": trans("Your password has been reset."),
+        "passwords.sent": trans("We have emailed your password reset link."),
+        "passwords.throttled": trans("Please wait before retrying."),
+        "passwords.token": trans("This password reset token is invalid."),
+        "passwords.user": trans("We can't find a user with that email address.")
+      };
+      return authErrors[error] || trans(error) || error;
+    };
+    const form = useForm({
+      email: ""
+    });
+    const fieldErrors = computed(() => ({
+      ...page.props.errors || {},
+      ...form.errors || {}
+    }));
+    const submit = () => {
+      form.post(route("password.email"));
+    };
     const metaTitle = computed(() => `${trans("Forgot Password")} | ${seo.value.website_name || ""}`.trim());
     const metaDescription = computed(() => {
       return meta.value.description || trans("Request a password reset link to regain access to your account.");
@@ -13653,14 +13679,14 @@ const _sfc_main$i = {
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
-    const form = useForm({
-      email: ""
-    });
     return {
       form,
       seo,
       locale,
       trans,
+      formatError,
+      fieldErrors,
+      submit,
       asset_path,
       flash,
       metaTitle,
@@ -13680,26 +13706,26 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-5b68d6b8${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-5b68d6b8${_scopeId}><title data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-5b68d6b8${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-5b68d6b8${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-5b68d6b8${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-b259df27${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-b259df27${_scopeId}><title data-v-b259df27${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-b259df27${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-b259df27${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-b259df27${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-5b68d6b8${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-b259df27${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-5b68d6b8${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-5b68d6b8${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-b259df27${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-b259df27${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-5b68d6b8${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-b259df27${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-5b68d6b8${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-b259df27${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website" data-v-5b68d6b8${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-5b68d6b8${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-5b68d6b8${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-5b68d6b8${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-b259df27${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-b259df27${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-b259df27${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-b259df27${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-5b68d6b8${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-b259df27${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
@@ -13778,30 +13804,30 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header" data-v-5b68d6b8${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-5b68d6b8${_scopeId}></div><div class="container" data-v-5b68d6b8${_scopeId}><div class="page-header__inner" data-v-5b68d6b8${_scopeId}><h2 data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</h2><div class="thm-breadcrumb__box" data-v-5b68d6b8${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-5b68d6b8${_scopeId}><li data-v-5b68d6b8${_scopeId}><a href="/" data-v-5b68d6b8${_scopeId}><i class="fas fa-home" data-v-5b68d6b8${_scopeId}></i> ${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-5b68d6b8${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-5b68d6b8${_scopeId}></span></li><li data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-5b68d6b8${_scopeId}><div class="container" data-v-5b68d6b8${_scopeId}><div class="login-one__form" data-v-5b68d6b8${_scopeId}><div class="inner-title text-center" data-v-5b68d6b8${_scopeId}><h2 data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Reset Your Password"))}</h2></div>`);
+        _push2(`<section class="page-header" data-v-b259df27${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-b259df27${_scopeId}></div><div class="container" data-v-b259df27${_scopeId}><div class="page-header__inner" data-v-b259df27${_scopeId}><h2 data-v-b259df27${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</h2><div class="thm-breadcrumb__box" data-v-b259df27${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-b259df27${_scopeId}><li data-v-b259df27${_scopeId}><a href="/" data-v-b259df27${_scopeId}><i class="fas fa-home" data-v-b259df27${_scopeId}></i> ${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-b259df27${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-b259df27${_scopeId}></span></li><li data-v-b259df27${_scopeId}>${ssrInterpolate($setup.trans("Forgot Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-b259df27${_scopeId}><div class="container" data-v-b259df27${_scopeId}><div class="login-one__form" data-v-b259df27${_scopeId}><div class="inner-title text-center" data-v-b259df27${_scopeId}><h2 data-v-b259df27${_scopeId}>${ssrInterpolate($setup.trans("Reset Your Password"))}</h2></div><form id="forgot-password__form" data-v-b259df27${_scopeId}>`);
         if ($setup.flash.success) {
-          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
+          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-b259df27${_scopeId}>${ssrInterpolate($setup.formatError($setup.flash.success))}</div>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.flash.error) {
-          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
+          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-b259df27${_scopeId}>${ssrInterpolate($setup.formatError($setup.flash.error))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<form id="forgot-password__form" data-v-5b68d6b8${_scopeId}><div class="row" data-v-5b68d6b8${_scopeId}><div class="col-xl-12" data-v-5b68d6b8${_scopeId}><div class="form-group" data-v-5b68d6b8${_scopeId}><div class="input-box" data-v-5b68d6b8${_scopeId}><input id="email"${ssrRenderAttr("value", $setup.form.email)} type="email" name="email" autocomplete="email"${ssrRenderAttr("placeholder", $setup.trans("Email"))} class="${ssrRenderClass({ "error": $props.errors.email })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-5b68d6b8${_scopeId}></div>`);
-        if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small" data-v-5b68d6b8${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+        _push2(`<div class="row" data-v-b259df27${_scopeId}><div class="col-xl-12" data-v-b259df27${_scopeId}><div class="form-group" data-v-b259df27${_scopeId}><div class="input-box" data-v-b259df27${_scopeId}><input id="email"${ssrRenderAttr("value", $setup.form.email)} type="email" name="email" autocomplete="email"${ssrRenderAttr("placeholder", $setup.trans("Email"))} class="${ssrRenderClass({ "error": $setup.fieldErrors.email })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-b259df27${_scopeId}></div>`);
+        if ($setup.fieldErrors.email) {
+          _push2(`<div class="text-danger mt-1 small" data-v-b259df27${_scopeId}>${ssrInterpolate($setup.formatError($setup.fieldErrors.email))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-5b68d6b8${_scopeId}><div class="form-group" data-v-5b68d6b8${_scopeId}><button type="submit"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-5b68d6b8${_scopeId}>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-b259df27${_scopeId}><div class="form-group" data-v-b259df27${_scopeId}><button type="submit"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-b259df27${_scopeId}>`);
         if ($setup.form.processing) {
-          _push2(`<span data-v-5b68d6b8${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-5b68d6b8${_scopeId}></i>${ssrInterpolate($setup.trans("Sending..."))}</span>`);
+          _push2(`<span data-v-b259df27${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-b259df27${_scopeId}></i>${ssrInterpolate($setup.trans("Sending..."))}</span>`);
         } else {
-          _push2(`<span data-v-5b68d6b8${_scopeId}>${ssrInterpolate($setup.trans("Send Email Verification"))}<span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-5b68d6b8${_scopeId}></span></span>`);
+          _push2(`<span data-v-b259df27${_scopeId}>${ssrInterpolate($setup.trans("Send Email Verification"))}<span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-b259df27${_scopeId}></span></span>`);
         }
-        _push2(`</button></div></div><div class="create-account text-center" data-v-5b68d6b8${_scopeId}><p data-v-5b68d6b8${_scopeId}>`);
+        _push2(`</button></div></div><div class="create-account text-center" data-v-b259df27${_scopeId}><p data-v-b259df27${_scopeId}>`);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
@@ -13852,20 +13878,20 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                 createVNode("div", { class: "inner-title text-center" }, [
                   createVNode("h2", null, toDisplayString($setup.trans("Reset Your Password")), 1)
                 ]),
-                $setup.flash.success ? (openBlock(), createBlock("div", {
-                  key: 0,
-                  class: "flash-message flash-message--success",
-                  role: "alert"
-                }, toDisplayString($setup.flash.success), 1)) : createCommentVNode("", true),
-                $setup.flash.error ? (openBlock(), createBlock("div", {
-                  key: 1,
-                  class: "flash-message flash-message--error",
-                  role: "alert"
-                }, toDisplayString($setup.flash.error), 1)) : createCommentVNode("", true),
                 createVNode("form", {
                   id: "forgot-password__form",
-                  onSubmit: withModifiers(($event) => $setup.form.post(_ctx.route("password.email")), ["prevent"])
+                  onSubmit: withModifiers($setup.submit, ["prevent"])
                 }, [
+                  $setup.flash.success ? (openBlock(), createBlock("div", {
+                    key: 0,
+                    class: "flash-message flash-message--success",
+                    role: "alert"
+                  }, toDisplayString($setup.formatError($setup.flash.success)), 1)) : createCommentVNode("", true),
+                  $setup.flash.error ? (openBlock(), createBlock("div", {
+                    key: 1,
+                    class: "flash-message flash-message--error",
+                    role: "alert"
+                  }, toDisplayString($setup.formatError($setup.flash.error)), 1)) : createCommentVNode("", true),
                   createVNode("div", { class: "row" }, [
                     createVNode("div", { class: "col-xl-12" }, [
                       createVNode("div", { class: "form-group" }, [
@@ -13877,17 +13903,17 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                             name: "email",
                             autocomplete: "email",
                             placeholder: $setup.trans("Email"),
-                            class: { "error": $props.errors.email },
+                            class: { "error": $setup.fieldErrors.email },
                             disabled: $setup.form.processing,
                             required: ""
                           }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
                             [vModelText, $setup.form.email]
                           ])
                         ]),
-                        $props.errors.email ? (openBlock(), createBlock("div", {
+                        $setup.fieldErrors.email ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
-                        }, toDisplayString($props.errors.email), 1)) : createCommentVNode("", true)
+                        }, toDisplayString($setup.formatError($setup.fieldErrors.email)), 1)) : createCommentVNode("", true)
                       ])
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
@@ -13933,22 +13959,51 @@ function _sfc_ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   }, _parent));
   _push(`<!--]-->`);
 }
-const _sfc_setup$i = _sfc_main$i.setup;
-_sfc_main$i.setup = (props, ctx) => {
+const _sfc_setup$j = _sfc_main$j.setup;
+_sfc_main$j.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/ForgotPassword.vue");
-  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+  return _sfc_setup$j ? _sfc_setup$j(props, ctx) : void 0;
 };
-const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["ssrRender", _sfc_ssrRender$4], ["__scopeId", "data-v-5b68d6b8"]]);
+const ForgotPassword = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["ssrRender", _sfc_ssrRender$4], ["__scopeId", "data-v-b259df27"]]);
 const __vite_glob_0_22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ForgotPassword
 }, Symbol.toStringTag, { value: "Module" }));
+const _sfc_main$i = {
+  __name: "PasswordInput",
+  __ssrInlineRender: true,
+  props: {
+    modelValue: { type: String, default: "" },
+    id: { type: String, default: "" },
+    name: { type: String, default: "" },
+    placeholder: { type: String, default: "" },
+    disabled: { type: Boolean, default: false },
+    required: { type: Boolean, default: false },
+    autocomplete: { type: String, default: "" },
+    showLabel: { type: String, default: "Show password" },
+    hideLabel: { type: String, default: "Hide password" }
+  },
+  emits: ["update:modelValue"],
+  setup(__props, { emit: __emit }) {
+    const showPassword = ref(false);
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "input-box password-input-box" }, _attrs))}><input${ssrRenderAttr("id", __props.id)}${ssrRenderAttr("value", __props.modelValue)}${ssrRenderAttr("type", showPassword.value ? "text" : "password")}${ssrRenderAttr("name", __props.name)}${ssrRenderAttr("placeholder", __props.placeholder)}${ssrIncludeBooleanAttr(__props.disabled) ? " disabled" : ""}${ssrIncludeBooleanAttr(__props.required) ? " required" : ""}${ssrRenderAttr("autocomplete", __props.autocomplete)}><button type="button" class="password-input-box__toggle"${ssrRenderAttr("aria-label", showPassword.value ? __props.hideLabel : __props.showLabel)}${ssrRenderAttr("aria-pressed", showPassword.value)}${ssrIncludeBooleanAttr(__props.disabled) ? " disabled" : ""}><i class="${ssrRenderClass(showPassword.value ? "fas fa-eye-slash" : "fas fa-eye")}"></i></button></div>`);
+    };
+  }
+};
+const _sfc_setup$i = _sfc_main$i.setup;
+_sfc_main$i.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Components/PasswordInput.vue");
+  return _sfc_setup$i ? _sfc_setup$i(props, ctx) : void 0;
+};
 const _sfc_main$h = {
   components: {
-    AppLayout: _sfc_main$M,
+    AppLayout: _sfc_main$N,
     Link,
-    Head
+    Head,
+    PasswordInput: _sfc_main$i
   },
   props: {
     errors: Object
@@ -13976,7 +14031,12 @@ const _sfc_main$h = {
       const authErrors = {
         "auth.failed": trans("These credentials do not match our records."),
         "auth.password": trans("The provided password is incorrect."),
-        "auth.throttle": trans("Too many login attempts. Please try again in :seconds seconds.")
+        "auth.throttle": trans("Too many login attempts. Please try again in :seconds seconds."),
+        "passwords.reset": trans("Your password has been reset."),
+        "passwords.sent": trans("We have emailed your password reset link."),
+        "passwords.throttled": trans("Please wait before retrying."),
+        "passwords.token": trans("This password reset token is invalid."),
+        "passwords.user": trans("We can't find a user with that email address.")
       };
       return authErrors[error] || trans(error) || error;
     };
@@ -14018,31 +14078,32 @@ const _sfc_main$h = {
 function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Head = resolveComponent("Head");
   const _component_app_layout = resolveComponent("app-layout");
+  const _component_PasswordInput = resolveComponent("PasswordInput");
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-cc55ccad${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-cc55ccad${_scopeId}><title data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-cc55ccad${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-cc55ccad${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-cc55ccad${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-55f4b8c1${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-55f4b8c1${_scopeId}><title data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-55f4b8c1${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-55f4b8c1${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-55f4b8c1${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-cc55ccad${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-55f4b8c1${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-cc55ccad${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-cc55ccad${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-55f4b8c1${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-55f4b8c1${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-cc55ccad${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-55f4b8c1${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-cc55ccad${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-55f4b8c1${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website" data-v-cc55ccad${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-cc55ccad${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-cc55ccad${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-cc55ccad${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-55f4b8c1${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-55f4b8c1${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-55f4b8c1${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-55f4b8c1${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-cc55ccad${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-55f4b8c1${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
@@ -14121,36 +14182,48 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header" data-v-cc55ccad${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-cc55ccad${_scopeId}></div><div class="container" data-v-cc55ccad${_scopeId}><div class="page-header__inner" data-v-cc55ccad${_scopeId}><h2 data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2><div class="thm-breadcrumb__box" data-v-cc55ccad${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-cc55ccad${_scopeId}><li data-v-cc55ccad${_scopeId}><a href="/" data-v-cc55ccad${_scopeId}><i class="fas fa-home" data-v-cc55ccad${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-cc55ccad${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-cc55ccad${_scopeId}></span></li><li data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</li></ul></div></div></div></section><section class="login-one" data-v-cc55ccad${_scopeId}><div class="container" data-v-cc55ccad${_scopeId}><div class="login-one__form" data-v-cc55ccad${_scopeId}><div class="inner-title text-center" data-v-cc55ccad${_scopeId}><h2 data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2></div>`);
+        _push2(`<section class="page-header" data-v-55f4b8c1${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-55f4b8c1${_scopeId}></div><div class="container" data-v-55f4b8c1${_scopeId}><div class="page-header__inner" data-v-55f4b8c1${_scopeId}><h2 data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2><div class="thm-breadcrumb__box" data-v-55f4b8c1${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-55f4b8c1${_scopeId}><li data-v-55f4b8c1${_scopeId}><a href="/" data-v-55f4b8c1${_scopeId}><i class="fas fa-home" data-v-55f4b8c1${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-55f4b8c1${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-55f4b8c1${_scopeId}></span></li><li data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</li></ul></div></div></div></section><section class="login-one" data-v-55f4b8c1${_scopeId}><div class="container" data-v-55f4b8c1${_scopeId}><div class="login-one__form" data-v-55f4b8c1${_scopeId}><div class="inner-title text-center" data-v-55f4b8c1${_scopeId}><h2 data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.trans("Login"))}</h2></div><form id="login-one__form" name="Login-one_form" action="#" method="post" data-v-55f4b8c1${_scopeId}>`);
         if ($setup.flash.success) {
-          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
+          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.formatError($setup.flash.success))}</div>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.flash.error) {
-          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
+          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.formatError($setup.flash.error))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<form id="login-one__form" name="Login-one_form" action="#" method="post" data-v-cc55ccad${_scopeId}><div class="row" data-v-cc55ccad${_scopeId}><div class="col-xl-12" data-v-cc55ccad${_scopeId}><div class="form-group" data-v-cc55ccad${_scopeId}><div class="input-box" data-v-cc55ccad${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-cc55ccad${_scopeId}></div>`);
+        _push2(`<div class="row" data-v-55f4b8c1${_scopeId}><div class="col-xl-12" data-v-55f4b8c1${_scopeId}><div class="form-group" data-v-55f4b8c1${_scopeId}><div class="input-box" data-v-55f4b8c1${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-55f4b8c1${_scopeId}></div>`);
         if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small" data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.formatError($props.errors.email))}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.formatError($props.errors.email))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-cc55ccad${_scopeId}><div class="form-group" data-v-cc55ccad${_scopeId}><div class="input-box" data-v-cc55ccad${_scopeId}><input id="formPassword"${ssrRenderAttr("value", $setup.form.password)} type="password" name="form_password"${ssrRenderAttr("placeholder", $setup.trans("Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-cc55ccad${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-55f4b8c1${_scopeId}><div class="form-group" data-v-55f4b8c1${_scopeId}>`);
+        _push2(ssrRenderComponent(_component_PasswordInput, {
+          id: "formPassword",
+          modelValue: $setup.form.password,
+          "onUpdate:modelValue": ($event) => $setup.form.password = $event,
+          name: "form_password",
+          placeholder: $setup.trans("Password"),
+          disabled: $setup.form.processing,
+          autocomplete: "current-password",
+          "show-label": $setup.trans("Show password"),
+          "hide-label": $setup.trans("Hide password"),
+          required: ""
+        }, null, _parent2, _scopeId));
         if ($props.errors.password) {
-          _push2(`<div class="text-danger mt-1 small" data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.formatError($props.errors.password))}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.formatError($props.errors.password))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-cc55ccad${_scopeId}><div class="form-group" data-v-cc55ccad${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-cc55ccad${_scopeId}>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-55f4b8c1${_scopeId}><div class="form-group" data-v-55f4b8c1${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-55f4b8c1${_scopeId}>`);
         if ($setup.form.processing) {
-          _push2(`<span data-v-cc55ccad${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-cc55ccad${_scopeId}></i>${ssrInterpolate($setup.trans("Signing In..."))}</span>`);
+          _push2(`<span data-v-55f4b8c1${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-55f4b8c1${_scopeId}></i>${ssrInterpolate($setup.trans("Signing In..."))}</span>`);
         } else {
-          _push2(`<span data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("Login"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-cc55ccad${_scopeId}></span></span>`);
+          _push2(`<span data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.trans("Login"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-55f4b8c1${_scopeId}></span></span>`);
         }
-        _push2(`</button></div></div><div class="remember-forget" data-v-cc55ccad${_scopeId}><div class="checked-box1" data-v-cc55ccad${_scopeId}><input id="saveinfo"${ssrIncludeBooleanAttr(Array.isArray($setup.form.remember) ? ssrLooseContain($setup.form.remember, null) : $setup.form.remember) ? " checked" : ""} type="checkbox" name="saveMyInfo" checked="" data-v-cc55ccad${_scopeId}><label for="saveinfo" data-v-cc55ccad${_scopeId}><span data-v-cc55ccad${_scopeId}></span> ${ssrInterpolate($setup.trans("Remember Me"))}</label></div><div class="forget" data-v-cc55ccad${_scopeId}>`);
+        _push2(`</button></div></div><div class="remember-forget" data-v-55f4b8c1${_scopeId}><div class="checked-box1" data-v-55f4b8c1${_scopeId}><input id="saveinfo"${ssrIncludeBooleanAttr(Array.isArray($setup.form.remember) ? ssrLooseContain($setup.form.remember, null) : $setup.form.remember) ? " checked" : ""} type="checkbox" name="saveMyInfo" checked="" data-v-55f4b8c1${_scopeId}><label for="saveinfo" data-v-55f4b8c1${_scopeId}><span data-v-55f4b8c1${_scopeId}></span> ${ssrInterpolate($setup.trans("Remember Me"))}</label></div><div class="forget" data-v-55f4b8c1${_scopeId}>`);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("password.request")
         }, {
@@ -14165,7 +14238,7 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
           }),
           _: 1
         }, _parent2, _scopeId));
-        _push2(`</div></div><div class="create-account text-center" data-v-cc55ccad${_scopeId}><p data-v-cc55ccad${_scopeId}>${ssrInterpolate($setup.trans("I Don't Have Account!"))} `);
+        _push2(`</div></div><div class="create-account text-center" data-v-55f4b8c1${_scopeId}><p data-v-55f4b8c1${_scopeId}>${ssrInterpolate($setup.trans("I Don't Have Account!"))} `);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("register")
         }, {
@@ -14216,16 +14289,6 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                 createVNode("div", { class: "inner-title text-center" }, [
                   createVNode("h2", null, toDisplayString($setup.trans("Login")), 1)
                 ]),
-                $setup.flash.success ? (openBlock(), createBlock("div", {
-                  key: 0,
-                  class: "flash-message flash-message--success",
-                  role: "alert"
-                }, toDisplayString($setup.flash.success), 1)) : createCommentVNode("", true),
-                $setup.flash.error ? (openBlock(), createBlock("div", {
-                  key: 1,
-                  class: "flash-message flash-message--error",
-                  role: "alert"
-                }, toDisplayString($setup.flash.error), 1)) : createCommentVNode("", true),
                 createVNode("form", {
                   id: "login-one__form",
                   name: "Login-one_form",
@@ -14233,6 +14296,16 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                   method: "post",
                   onSubmit: withModifiers(($event) => $setup.form.post(_ctx.route("login")), ["prevent"])
                 }, [
+                  $setup.flash.success ? (openBlock(), createBlock("div", {
+                    key: 0,
+                    class: "flash-message flash-message--success",
+                    role: "alert"
+                  }, toDisplayString($setup.formatError($setup.flash.success)), 1)) : createCommentVNode("", true),
+                  $setup.flash.error ? (openBlock(), createBlock("div", {
+                    key: 1,
+                    class: "flash-message flash-message--error",
+                    role: "alert"
+                  }, toDisplayString($setup.formatError($setup.flash.error)), 1)) : createCommentVNode("", true),
                   createVNode("div", { class: "row" }, [
                     createVNode("div", { class: "col-xl-12" }, [
                       createVNode("div", { class: "form-group" }, [
@@ -14257,19 +14330,18 @@ function _sfc_ssrRender$3(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
                       createVNode("div", { class: "form-group" }, [
-                        createVNode("div", { class: "input-box" }, [
-                          withDirectives(createVNode("input", {
-                            id: "formPassword",
-                            "onUpdate:modelValue": ($event) => $setup.form.password = $event,
-                            type: "password",
-                            name: "form_password",
-                            placeholder: $setup.trans("Password"),
-                            disabled: $setup.form.processing,
-                            required: ""
-                          }, null, 8, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                            [vModelText, $setup.form.password]
-                          ])
-                        ]),
+                        createVNode(_component_PasswordInput, {
+                          id: "formPassword",
+                          modelValue: $setup.form.password,
+                          "onUpdate:modelValue": ($event) => $setup.form.password = $event,
+                          name: "form_password",
+                          placeholder: $setup.trans("Password"),
+                          disabled: $setup.form.processing,
+                          autocomplete: "current-password",
+                          "show-label": $setup.trans("Show password"),
+                          "hide-label": $setup.trans("Hide password"),
+                          required: ""
+                        }, null, 8, ["modelValue", "onUpdate:modelValue", "placeholder", "disabled", "show-label", "hide-label"]),
                         $props.errors.password ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
@@ -14354,16 +14426,17 @@ _sfc_main$h.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Login.vue");
   return _sfc_setup$h ? _sfc_setup$h(props, ctx) : void 0;
 };
-const Login = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-cc55ccad"]]);
+const Login = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["ssrRender", _sfc_ssrRender$3], ["__scopeId", "data-v-55f4b8c1"]]);
 const __vite_glob_0_23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Login
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$g = {
   components: {
-    AppLayout: _sfc_main$M,
+    AppLayout: _sfc_main$N,
     Link,
-    Head
+    Head,
+    PasswordInput: _sfc_main$i
   },
   props: {
     errors: Object
@@ -14423,31 +14496,32 @@ const _sfc_main$g = {
 function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Head = resolveComponent("Head");
   const _component_app_layout = resolveComponent("app-layout");
+  const _component_PasswordInput = resolveComponent("PasswordInput");
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-166d8071${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-166d8071${_scopeId}><title data-v-166d8071${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-166d8071${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-166d8071${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-166d8071${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-c6aa8873${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-c6aa8873${_scopeId}><title data-v-c6aa8873${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-c6aa8873${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-c6aa8873${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-c6aa8873${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-166d8071${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-c6aa8873${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-166d8071${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-166d8071${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-c6aa8873${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-c6aa8873${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-166d8071${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-c6aa8873${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-166d8071${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-c6aa8873${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website" data-v-166d8071${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-166d8071${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-166d8071${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-166d8071${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-c6aa8873${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-c6aa8873${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-c6aa8873${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-c6aa8873${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-166d8071${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-c6aa8873${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
@@ -14526,54 +14600,78 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header" data-v-166d8071${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-166d8071${_scopeId}></div><div class="container" data-v-166d8071${_scopeId}><div class="page-header__inner" data-v-166d8071${_scopeId}><h2 data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2><div class="thm-breadcrumb__box" data-v-166d8071${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-166d8071${_scopeId}><li data-v-166d8071${_scopeId}><a href="/" data-v-166d8071${_scopeId}><i class="fas fa-home" data-v-166d8071${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-166d8071${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-166d8071${_scopeId}></span></li><li data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</li></ul></div></div></div></section><section class="sign-up-one" data-v-166d8071${_scopeId}><div class="container" data-v-166d8071${_scopeId}><div class="sign-up-one__form" data-v-166d8071${_scopeId}><div class="inner-title text-center" data-v-166d8071${_scopeId}><h2 data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2></div>`);
+        _push2(`<section class="page-header" data-v-c6aa8873${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-c6aa8873${_scopeId}></div><div class="container" data-v-c6aa8873${_scopeId}><div class="page-header__inner" data-v-c6aa8873${_scopeId}><h2 data-v-c6aa8873${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2><div class="thm-breadcrumb__box" data-v-c6aa8873${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-c6aa8873${_scopeId}><li data-v-c6aa8873${_scopeId}><a href="/" data-v-c6aa8873${_scopeId}><i class="fas fa-home" data-v-c6aa8873${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-c6aa8873${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-c6aa8873${_scopeId}></span></li><li data-v-c6aa8873${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</li></ul></div></div></div></section><section class="sign-up-one" data-v-c6aa8873${_scopeId}><div class="container" data-v-c6aa8873${_scopeId}><div class="sign-up-one__form" data-v-c6aa8873${_scopeId}><div class="inner-title text-center" data-v-c6aa8873${_scopeId}><h2 data-v-c6aa8873${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2></div>`);
         if ($setup.flash.success) {
-          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-166d8071${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
+          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-c6aa8873${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.flash.error) {
-          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-166d8071${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
+          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-c6aa8873${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" data-v-166d8071${_scopeId}><div class="row" data-v-166d8071${_scopeId}><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formName"${ssrRenderAttr("value", $setup.form.name)} type="text" name="form_name"${ssrRenderAttr("placeholder", $setup.trans("Name"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
+        _push2(`<form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" data-v-c6aa8873${_scopeId}><div class="row" data-v-c6aa8873${_scopeId}><div class="col-xl-12" data-v-c6aa8873${_scopeId}><div class="form-group" data-v-c6aa8873${_scopeId}><div class="input-box" data-v-c6aa8873${_scopeId}><input id="formName"${ssrRenderAttr("value", $setup.form.name)} type="text" name="form_name"${ssrRenderAttr("placeholder", $setup.trans("Name"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-c6aa8873${_scopeId}></div>`);
         if ($props.errors.name) {
-          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.name)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-c6aa8873${_scopeId}>${ssrInterpolate($props.errors.name)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-c6aa8873${_scopeId}><div class="form-group" data-v-c6aa8873${_scopeId}><div class="input-box" data-v-c6aa8873${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-c6aa8873${_scopeId}></div>`);
         if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-c6aa8873${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formPhone"${ssrRenderAttr("value", $setup.form.mobile)} type="text" name="form_phone"${ssrRenderAttr("placeholder", $setup.trans("Phone"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-c6aa8873${_scopeId}><div class="form-group" data-v-c6aa8873${_scopeId}><div class="input-box" data-v-c6aa8873${_scopeId}><input id="formPhone"${ssrRenderAttr("value", $setup.form.mobile)} type="text" name="form_phone"${ssrRenderAttr("placeholder", $setup.trans("Phone"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-c6aa8873${_scopeId}></div>`);
         if ($props.errors.mobile) {
-          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.mobile)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-c6aa8873${_scopeId}>${ssrInterpolate($props.errors.mobile)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formPassword"${ssrRenderAttr("value", $setup.form.password)} type="password" name="form_password"${ssrRenderAttr("placeholder", $setup.trans("Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-c6aa8873${_scopeId}><div class="form-group" data-v-c6aa8873${_scopeId}>`);
+        _push2(ssrRenderComponent(_component_PasswordInput, {
+          id: "formPassword",
+          modelValue: $setup.form.password,
+          "onUpdate:modelValue": ($event) => $setup.form.password = $event,
+          name: "form_password",
+          placeholder: $setup.trans("Password"),
+          disabled: $setup.form.processing,
+          autocomplete: "new-password",
+          "show-label": $setup.trans("Show password"),
+          "hide-label": $setup.trans("Hide password"),
+          required: ""
+        }, null, _parent2, _scopeId));
         if ($props.errors.password) {
-          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-c6aa8873${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><div class="input-box" data-v-166d8071${_scopeId}><input id="formPasswordConfirm"${ssrRenderAttr("value", $setup.form.password_confirmation)} type="password" name="password_confirmation"${ssrRenderAttr("placeholder", $setup.trans("Confirm Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-166d8071${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-c6aa8873${_scopeId}><div class="form-group" data-v-c6aa8873${_scopeId}>`);
+        _push2(ssrRenderComponent(_component_PasswordInput, {
+          id: "formPasswordConfirm",
+          modelValue: $setup.form.password_confirmation,
+          "onUpdate:modelValue": ($event) => $setup.form.password_confirmation = $event,
+          name: "password_confirmation",
+          placeholder: $setup.trans("Confirm Password"),
+          disabled: $setup.form.processing,
+          autocomplete: "new-password",
+          "show-label": $setup.trans("Show password"),
+          "hide-label": $setup.trans("Hide password"),
+          required: ""
+        }, null, _parent2, _scopeId));
         if ($props.errors.password_confirmation) {
-          _push2(`<div class="text-danger mt-1 small" data-v-166d8071${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-c6aa8873${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-166d8071${_scopeId}><div class="form-group" data-v-166d8071${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-166d8071${_scopeId}>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-c6aa8873${_scopeId}><div class="form-group" data-v-c6aa8873${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-c6aa8873${_scopeId}>`);
         if ($setup.form.processing) {
-          _push2(`<span data-v-166d8071${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-166d8071${_scopeId}></i>${ssrInterpolate($setup.trans("Registering..."))}</span>`);
+          _push2(`<span data-v-c6aa8873${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-c6aa8873${_scopeId}></i>${ssrInterpolate($setup.trans("Registering..."))}</span>`);
         } else {
-          _push2(`<span data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Register"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-166d8071${_scopeId}></span></span>`);
+          _push2(`<span data-v-c6aa8873${_scopeId}>${ssrInterpolate($setup.trans("Register"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-c6aa8873${_scopeId}></span></span>`);
         }
-        _push2(`</button></div></div></div><div class="create-account text-center" data-v-166d8071${_scopeId}><p data-v-166d8071${_scopeId}>${ssrInterpolate($setup.trans("Already Have An Account?"))} `);
+        _push2(`</button></div></div></div><div class="create-account text-center" data-v-c6aa8873${_scopeId}><p data-v-c6aa8873${_scopeId}>${ssrInterpolate($setup.trans("Already Have An Account?"))} `);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
@@ -14707,19 +14805,18 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
                       createVNode("div", { class: "form-group" }, [
-                        createVNode("div", { class: "input-box" }, [
-                          withDirectives(createVNode("input", {
-                            id: "formPassword",
-                            "onUpdate:modelValue": ($event) => $setup.form.password = $event,
-                            type: "password",
-                            name: "form_password",
-                            placeholder: $setup.trans("Password"),
-                            disabled: $setup.form.processing,
-                            required: ""
-                          }, null, 8, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                            [vModelText, $setup.form.password]
-                          ])
-                        ]),
+                        createVNode(_component_PasswordInput, {
+                          id: "formPassword",
+                          modelValue: $setup.form.password,
+                          "onUpdate:modelValue": ($event) => $setup.form.password = $event,
+                          name: "form_password",
+                          placeholder: $setup.trans("Password"),
+                          disabled: $setup.form.processing,
+                          autocomplete: "new-password",
+                          "show-label": $setup.trans("Show password"),
+                          "hide-label": $setup.trans("Hide password"),
+                          required: ""
+                        }, null, 8, ["modelValue", "onUpdate:modelValue", "placeholder", "disabled", "show-label", "hide-label"]),
                         $props.errors.password ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
@@ -14728,19 +14825,18 @@ function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
                       createVNode("div", { class: "form-group" }, [
-                        createVNode("div", { class: "input-box" }, [
-                          withDirectives(createVNode("input", {
-                            id: "formPasswordConfirm",
-                            "onUpdate:modelValue": ($event) => $setup.form.password_confirmation = $event,
-                            type: "password",
-                            name: "password_confirmation",
-                            placeholder: $setup.trans("Confirm Password"),
-                            disabled: $setup.form.processing,
-                            required: ""
-                          }, null, 8, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                            [vModelText, $setup.form.password_confirmation]
-                          ])
-                        ]),
+                        createVNode(_component_PasswordInput, {
+                          id: "formPasswordConfirm",
+                          modelValue: $setup.form.password_confirmation,
+                          "onUpdate:modelValue": ($event) => $setup.form.password_confirmation = $event,
+                          name: "password_confirmation",
+                          placeholder: $setup.trans("Confirm Password"),
+                          disabled: $setup.form.processing,
+                          autocomplete: "new-password",
+                          "show-label": $setup.trans("Show password"),
+                          "hide-label": $setup.trans("Hide password"),
+                          required: ""
+                        }, null, 8, ["modelValue", "onUpdate:modelValue", "placeholder", "disabled", "show-label", "hide-label"]),
                         $props.errors.password_confirmation ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
@@ -14798,21 +14894,37 @@ _sfc_main$g.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Register.vue");
   return _sfc_setup$g ? _sfc_setup$g(props, ctx) : void 0;
 };
-const Register = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-166d8071"]]);
+const Register = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-c6aa8873"]]);
 const __vite_glob_0_24 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Register
 }, Symbol.toStringTag, { value: "Module" }));
+const readQueryParam = (name) => {
+  if (typeof window === "undefined") {
+    return "";
+  }
+  return new URLSearchParams(window.location.search).get(name) || "";
+};
+const readTokenFromPath = () => {
+  if (typeof window === "undefined") {
+    return "";
+  }
+  const match = window.location.pathname.match(/\/reset-password\/(.+)$/);
+  return match ? decodeURIComponent(match[1]) : "";
+};
 const _sfc_main$f = {
   components: {
-    AppLayout: _sfc_main$M,
+    AppLayout: _sfc_main$N,
     Link,
-    Head
+    Head,
+    PasswordInput: _sfc_main$i
   },
   props: {
-    errors: Object
+    errors: Object,
+    email: { type: String, default: "" },
+    token: { type: String, default: "" }
   },
-  setup() {
+  setup(props) {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
@@ -14828,6 +14940,38 @@ const _sfc_main$f = {
         return key;
       }
     };
+    const formatError = (error) => {
+      if (!error) {
+        return "";
+      }
+      if (Array.isArray(error)) {
+        return error.map(formatError).filter(Boolean).join(" ");
+      }
+      const authErrors = {
+        "passwords.reset": trans("Your password has been reset."),
+        "passwords.sent": trans("We have emailed your password reset link."),
+        "passwords.throttled": trans("Please wait before retrying."),
+        "passwords.token": trans("This password reset token is invalid."),
+        "passwords.user": trans("We can't find a user with that email address.")
+      };
+      return authErrors[error] || trans(error) || error;
+    };
+    const form = useForm({
+      email: props.email || readQueryParam("email"),
+      password: "",
+      password_confirmation: "",
+      token: props.token || readQueryParam("token") || readTokenFromPath()
+    });
+    const fieldErrors = computed(() => ({
+      ...page.props.errors || {},
+      ...form.errors || {}
+    }));
+    const bannerError = computed(() => {
+      return flash.value.error || fieldErrors.value.token || "";
+    });
+    const submit = () => {
+      form.post(route("password.update"));
+    };
     const metaTitle = computed(() => `${trans("Reset Password")} | ${seo.value.website_name || ""}`.trim());
     const metaDescription = computed(() => {
       return meta.value.description || trans("Set a new password to secure your account.");
@@ -14841,18 +14985,15 @@ const _sfc_main$f = {
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
-    const params = new URLSearchParams(window.location.search);
-    const form = useForm({
-      email: "",
-      password: "",
-      password_confirmation: "",
-      token: params.get("token") || ""
-    });
     return {
       form,
       seo,
       locale,
       trans,
+      formatError,
+      fieldErrors,
+      bannerError,
+      submit,
       asset_path,
       flash,
       metaTitle,
@@ -14867,31 +15008,32 @@ const _sfc_main$f = {
 function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Head = resolveComponent("Head");
   const _component_app_layout = resolveComponent("app-layout");
+  const _component_PasswordInput = resolveComponent("PasswordInput");
   const _component_Link = resolveComponent("Link");
   _push(`<!--[-->`);
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-f5323f04${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-f5323f04${_scopeId}><title data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-f5323f04${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-f5323f04${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-f5323f04${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-3b21534a${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-3b21534a${_scopeId}><title data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-3b21534a${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-3b21534a${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-3b21534a${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-f5323f04${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-3b21534a${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-f5323f04${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-f5323f04${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-3b21534a${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-3b21534a${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-f5323f04${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-3b21534a${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-f5323f04${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-3b21534a${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website" data-v-f5323f04${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f5323f04${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-f5323f04${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-f5323f04${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-3b21534a${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-3b21534a${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-3b21534a${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-3b21534a${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-f5323f04${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-3b21534a${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
@@ -14970,42 +15112,66 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_2, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header" data-v-f5323f04${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-f5323f04${_scopeId}></div><div class="container" data-v-f5323f04${_scopeId}><div class="page-header__inner" data-v-f5323f04${_scopeId}><h2 data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</h2><div class="thm-breadcrumb__box" data-v-f5323f04${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-f5323f04${_scopeId}><li data-v-f5323f04${_scopeId}><a href="/" data-v-f5323f04${_scopeId}><i class="fas fa-home" data-v-f5323f04${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-f5323f04${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-f5323f04${_scopeId}></span></li><li data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-f5323f04${_scopeId}><div class="container" data-v-f5323f04${_scopeId}><div class="login-one__form" data-v-f5323f04${_scopeId}><div class="inner-title text-center" data-v-f5323f04${_scopeId}><h2 data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Set New Password"))}</h2></div>`);
+        _push2(`<section class="page-header" data-v-3b21534a${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-3b21534a${_scopeId}></div><div class="container" data-v-3b21534a${_scopeId}><div class="page-header__inner" data-v-3b21534a${_scopeId}><h2 data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</h2><div class="thm-breadcrumb__box" data-v-3b21534a${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-3b21534a${_scopeId}><li data-v-3b21534a${_scopeId}><a href="/" data-v-3b21534a${_scopeId}><i class="fas fa-home" data-v-3b21534a${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-3b21534a${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-3b21534a${_scopeId}></span></li><li data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}</li></ul></div></div></div></section><section class="login-one" data-v-3b21534a${_scopeId}><div class="container" data-v-3b21534a${_scopeId}><div class="login-one__form" data-v-3b21534a${_scopeId}><div class="inner-title text-center" data-v-3b21534a${_scopeId}><h2 data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.trans("Set New Password"))}</h2></div><form id="reset-password__form" data-v-3b21534a${_scopeId}><input${ssrRenderAttr("value", $setup.form.token)} name="token" type="hidden" data-v-3b21534a${_scopeId}>`);
         if ($setup.flash.success) {
-          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.flash.success)}</div>`);
+          _push2(`<div class="flash-message flash-message--success" role="alert" data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.formatError($setup.flash.success))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        if ($setup.flash.error) {
-          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.flash.error)}</div>`);
+        if ($setup.bannerError) {
+          _push2(`<div class="flash-message flash-message--error" role="alert" data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.formatError($setup.bannerError))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<form id="reset-password__form" data-v-f5323f04${_scopeId}><input${ssrRenderAttr("value", $setup.form.token)} name="token" type="hidden" data-v-f5323f04${_scopeId}><div class="row" data-v-f5323f04${_scopeId}><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="form-group" data-v-f5323f04${_scopeId}><div class="input-box" data-v-f5323f04${_scopeId}><input id="email"${ssrRenderAttr("value", $setup.form.email)} type="email" name="email" autocomplete="email"${ssrRenderAttr("placeholder", $setup.trans("Email"))} class="${ssrRenderClass({ "error": $props.errors.email })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-f5323f04${_scopeId}></div>`);
-        if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small" data-v-f5323f04${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+        _push2(`<div class="row" data-v-3b21534a${_scopeId}><div class="col-xl-12" data-v-3b21534a${_scopeId}><div class="form-group" data-v-3b21534a${_scopeId}><div class="input-box" data-v-3b21534a${_scopeId}><input id="email"${ssrRenderAttr("value", $setup.form.email)} type="email" name="email" autocomplete="email"${ssrRenderAttr("placeholder", $setup.trans("Email"))} class="${ssrRenderClass({ "error": $setup.fieldErrors.email })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-3b21534a${_scopeId}></div>`);
+        if ($setup.fieldErrors.email) {
+          _push2(`<div class="text-danger mt-1 small" data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.formatError($setup.fieldErrors.email))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="form-group" data-v-f5323f04${_scopeId}><div class="input-box" data-v-f5323f04${_scopeId}><input id="password"${ssrRenderAttr("value", $setup.form.password)} type="password" name="password" autocomplete="new-password"${ssrRenderAttr("placeholder", $setup.trans("Password"))} class="${ssrRenderClass({ "error": $props.errors.password })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-f5323f04${_scopeId}></div>`);
-        if ($props.errors.password) {
-          _push2(`<div class="text-danger mt-1 small" data-v-f5323f04${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-3b21534a${_scopeId}><div class="form-group" data-v-3b21534a${_scopeId}>`);
+        _push2(ssrRenderComponent(_component_PasswordInput, {
+          id: "password",
+          modelValue: $setup.form.password,
+          "onUpdate:modelValue": ($event) => $setup.form.password = $event,
+          name: "password",
+          placeholder: $setup.trans("Password"),
+          disabled: $setup.form.processing,
+          autocomplete: "new-password",
+          "show-label": $setup.trans("Show password"),
+          "hide-label": $setup.trans("Hide password"),
+          required: ""
+        }, null, _parent2, _scopeId));
+        if ($setup.fieldErrors.password) {
+          _push2(`<div class="text-danger mt-1 small" data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.formatError($setup.fieldErrors.password))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="form-group" data-v-f5323f04${_scopeId}><div class="input-box" data-v-f5323f04${_scopeId}><input id="password_confirmation"${ssrRenderAttr("value", $setup.form.password_confirmation)} type="password" name="password_confirmation" autocomplete="new-password"${ssrRenderAttr("placeholder", $setup.trans("Confirm Password"))} class="${ssrRenderClass({ "error": $props.errors.password_confirmation })}"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required data-v-f5323f04${_scopeId}></div>`);
-        if ($props.errors.password_confirmation) {
-          _push2(`<div class="text-danger mt-1 small" data-v-f5323f04${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-3b21534a${_scopeId}><div class="form-group" data-v-3b21534a${_scopeId}>`);
+        _push2(ssrRenderComponent(_component_PasswordInput, {
+          id: "password_confirmation",
+          modelValue: $setup.form.password_confirmation,
+          "onUpdate:modelValue": ($event) => $setup.form.password_confirmation = $event,
+          name: "password_confirmation",
+          placeholder: $setup.trans("Confirm Password"),
+          disabled: $setup.form.processing,
+          autocomplete: "new-password",
+          "show-label": $setup.trans("Show password"),
+          "hide-label": $setup.trans("Hide password"),
+          required: ""
+        }, null, _parent2, _scopeId));
+        if ($setup.fieldErrors.password_confirmation) {
+          _push2(`<div class="text-danger mt-1 small" data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.formatError($setup.fieldErrors.password_confirmation))}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="form-group" data-v-f5323f04${_scopeId}><button type="submit"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-f5323f04${_scopeId}>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-3b21534a${_scopeId}><div class="form-group" data-v-3b21534a${_scopeId}><button type="submit"${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-3b21534a${_scopeId}>`);
         if ($setup.form.processing) {
-          _push2(`<span data-v-f5323f04${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-f5323f04${_scopeId}></i>${ssrInterpolate($setup.trans("Resetting..."))}</span>`);
+          _push2(`<span data-v-3b21534a${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-3b21534a${_scopeId}></i>${ssrInterpolate($setup.trans("Resetting..."))}</span>`);
         } else {
-          _push2(`<span data-v-f5323f04${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}<span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-f5323f04${_scopeId}></span></span>`);
+          _push2(`<span data-v-3b21534a${_scopeId}>${ssrInterpolate($setup.trans("Reset Password"))}<span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-3b21534a${_scopeId}></span></span>`);
         }
-        _push2(`</button></div></div><div class="col-xl-12" data-v-f5323f04${_scopeId}><div class="create-account text-center" data-v-f5323f04${_scopeId}><p data-v-f5323f04${_scopeId}>`);
+        _push2(`</button></div></div><div class="col-xl-12" data-v-3b21534a${_scopeId}><div class="create-account text-center" data-v-3b21534a${_scopeId}><p data-v-3b21534a${_scopeId}>`);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
@@ -15056,25 +15222,27 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                 createVNode("div", { class: "inner-title text-center" }, [
                   createVNode("h2", null, toDisplayString($setup.trans("Set New Password")), 1)
                 ]),
-                $setup.flash.success ? (openBlock(), createBlock("div", {
-                  key: 0,
-                  class: "flash-message flash-message--success",
-                  role: "alert"
-                }, toDisplayString($setup.flash.success), 1)) : createCommentVNode("", true),
-                $setup.flash.error ? (openBlock(), createBlock("div", {
-                  key: 1,
-                  class: "flash-message flash-message--error",
-                  role: "alert"
-                }, toDisplayString($setup.flash.error), 1)) : createCommentVNode("", true),
                 createVNode("form", {
                   id: "reset-password__form",
-                  onSubmit: withModifiers(($event) => $setup.form.post(_ctx.route("password.update")), ["prevent"])
+                  onSubmit: withModifiers($setup.submit, ["prevent"])
                 }, [
-                  createVNode("input", {
-                    value: $setup.form.token,
+                  withDirectives(createVNode("input", {
+                    "onUpdate:modelValue": ($event) => $setup.form.token = $event,
                     name: "token",
                     type: "hidden"
-                  }, null, 8, ["value"]),
+                  }, null, 8, ["onUpdate:modelValue"]), [
+                    [vModelText, $setup.form.token]
+                  ]),
+                  $setup.flash.success ? (openBlock(), createBlock("div", {
+                    key: 0,
+                    class: "flash-message flash-message--success",
+                    role: "alert"
+                  }, toDisplayString($setup.formatError($setup.flash.success)), 1)) : createCommentVNode("", true),
+                  $setup.bannerError ? (openBlock(), createBlock("div", {
+                    key: 1,
+                    class: "flash-message flash-message--error",
+                    role: "alert"
+                  }, toDisplayString($setup.formatError($setup.bannerError)), 1)) : createCommentVNode("", true),
                   createVNode("div", { class: "row" }, [
                     createVNode("div", { class: "col-xl-12" }, [
                       createVNode("div", { class: "form-group" }, [
@@ -15086,63 +15254,57 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
                             name: "email",
                             autocomplete: "email",
                             placeholder: $setup.trans("Email"),
-                            class: { "error": $props.errors.email },
+                            class: { "error": $setup.fieldErrors.email },
                             disabled: $setup.form.processing,
                             required: ""
                           }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
                             [vModelText, $setup.form.email]
                           ])
                         ]),
-                        $props.errors.email ? (openBlock(), createBlock("div", {
+                        $setup.fieldErrors.email ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
-                        }, toDisplayString($props.errors.email), 1)) : createCommentVNode("", true)
+                        }, toDisplayString($setup.formatError($setup.fieldErrors.email)), 1)) : createCommentVNode("", true)
                       ])
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
                       createVNode("div", { class: "form-group" }, [
-                        createVNode("div", { class: "input-box" }, [
-                          withDirectives(createVNode("input", {
-                            id: "password",
-                            "onUpdate:modelValue": ($event) => $setup.form.password = $event,
-                            type: "password",
-                            name: "password",
-                            autocomplete: "new-password",
-                            placeholder: $setup.trans("Password"),
-                            class: { "error": $props.errors.password },
-                            disabled: $setup.form.processing,
-                            required: ""
-                          }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                            [vModelText, $setup.form.password]
-                          ])
-                        ]),
-                        $props.errors.password ? (openBlock(), createBlock("div", {
+                        createVNode(_component_PasswordInput, {
+                          id: "password",
+                          modelValue: $setup.form.password,
+                          "onUpdate:modelValue": ($event) => $setup.form.password = $event,
+                          name: "password",
+                          placeholder: $setup.trans("Password"),
+                          disabled: $setup.form.processing,
+                          autocomplete: "new-password",
+                          "show-label": $setup.trans("Show password"),
+                          "hide-label": $setup.trans("Hide password"),
+                          required: ""
+                        }, null, 8, ["modelValue", "onUpdate:modelValue", "placeholder", "disabled", "show-label", "hide-label"]),
+                        $setup.fieldErrors.password ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
-                        }, toDisplayString($props.errors.password), 1)) : createCommentVNode("", true)
+                        }, toDisplayString($setup.formatError($setup.fieldErrors.password)), 1)) : createCommentVNode("", true)
                       ])
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
                       createVNode("div", { class: "form-group" }, [
-                        createVNode("div", { class: "input-box" }, [
-                          withDirectives(createVNode("input", {
-                            id: "password_confirmation",
-                            "onUpdate:modelValue": ($event) => $setup.form.password_confirmation = $event,
-                            type: "password",
-                            name: "password_confirmation",
-                            autocomplete: "new-password",
-                            placeholder: $setup.trans("Confirm Password"),
-                            class: { "error": $props.errors.password_confirmation },
-                            disabled: $setup.form.processing,
-                            required: ""
-                          }, null, 10, ["onUpdate:modelValue", "placeholder", "disabled"]), [
-                            [vModelText, $setup.form.password_confirmation]
-                          ])
-                        ]),
-                        $props.errors.password_confirmation ? (openBlock(), createBlock("div", {
+                        createVNode(_component_PasswordInput, {
+                          id: "password_confirmation",
+                          modelValue: $setup.form.password_confirmation,
+                          "onUpdate:modelValue": ($event) => $setup.form.password_confirmation = $event,
+                          name: "password_confirmation",
+                          placeholder: $setup.trans("Confirm Password"),
+                          disabled: $setup.form.processing,
+                          autocomplete: "new-password",
+                          "show-label": $setup.trans("Show password"),
+                          "hide-label": $setup.trans("Hide password"),
+                          required: ""
+                        }, null, 8, ["modelValue", "onUpdate:modelValue", "placeholder", "disabled", "show-label", "hide-label"]),
+                        $setup.fieldErrors.password_confirmation ? (openBlock(), createBlock("div", {
                           key: 0,
                           class: "text-danger mt-1 small"
-                        }, toDisplayString($props.errors.password_confirmation), 1)) : createCommentVNode("", true)
+                        }, toDisplayString($setup.formatError($setup.fieldErrors.password_confirmation)), 1)) : createCommentVNode("", true)
                       ])
                     ]),
                     createVNode("div", { class: "col-xl-12" }, [
@@ -15196,14 +15358,14 @@ _sfc_main$f.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/ResetPassword.vue");
   return _sfc_setup$f ? _sfc_setup$f(props, ctx) : void 0;
 };
-const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-f5323f04"]]);
+const ResetPassword = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-3b21534a"]]);
 const __vite_glob_0_25 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ResetPassword
 }, Symbol.toStringTag, { value: "Module" }));
 const _sfc_main$e = {
   components: {
-    AppLayout: _sfc_main$M,
+    AppLayout: _sfc_main$N,
     Head
   },
   setup() {
@@ -15484,7 +15646,7 @@ const _sfc_main$d = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-d7e10297${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-d7e10297${_scopeId}></div><div class="container" data-v-d7e10297${_scopeId}><div class="page-header__inner" data-v-d7e10297${_scopeId}><h1 data-v-d7e10297${_scopeId}>${ssrInterpolate(trans("Careers"))}</h1><div class="thm-breadcrumb__box" data-v-d7e10297${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d7e10297${_scopeId}><li data-v-d7e10297${_scopeId}>`);
@@ -15683,7 +15845,7 @@ const _sfc_main$c = {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           if (_push2) {
             _push2(`<section class="page-header" data-v-e00ffd2b${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/our-team-bg.jpg)` })}" data-v-e00ffd2b${_scopeId}></div><div class="container" data-v-e00ffd2b${_scopeId}><div class="page-header__inner" data-v-e00ffd2b${_scopeId}><h1 data-v-e00ffd2b${_scopeId}>${ssrInterpolate(__props.position.title)}</h1><div class="thm-breadcrumb__box" data-v-e00ffd2b${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-e00ffd2b${_scopeId}><li data-v-e00ffd2b${_scopeId}>`);
@@ -16004,7 +16166,7 @@ const _sfc_main$b = {
       });
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: unref(t3)("profile.confirm_password_title"),
         subtitle: unref(t3)("profile.confirm_password_description"),
         active: "profile",
@@ -16134,7 +16296,7 @@ const _sfc_main$a = {
     const markAllRead = () => router.post(route("portal.notifications.read-all"));
     const openNotification = (notification) => router.post(route("portal.notifications.read", notification.id));
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: unref(t3)("menu.my_dashboard"),
         subtitle: welcomeSubtitle.value,
         active: "dashboard",
@@ -16524,7 +16686,7 @@ const _sfc_main$9 = {
       loadQrCode();
     }
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: unref(t3)("profile.title"),
         subtitle: unref(t3)("profile.subtitle"),
         active: "profile",
@@ -16963,7 +17125,7 @@ const _sfc_main$8 = {
       return "portal-badge--invoice";
     };
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: unref(t3)("subscriptions.title"),
         subtitle: unref(t3)("subscriptions.subtitle"),
         active: "subscriptions",
@@ -17192,7 +17354,7 @@ const _sfc_main$7 = {
     };
     return (_ctx, _push, _parent, _attrs) => {
       var _a;
-      _push(ssrRenderComponent(_sfc_main$t, mergeProps({
+      _push(ssrRenderComponent(_sfc_main$u, mergeProps({
         title: __props.subscription.name,
         subtitle: (_a = __props.subscription.company) == null ? void 0 : _a.name,
         active: "subscriptions",
@@ -17404,7 +17566,7 @@ const __vite_glob_0_33 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
 }, Symbol.toStringTag, { value: "Module" }));
 const __default__ = {
   components: {
-    AppLayout: _sfc_main$M
+    AppLayout: _sfc_main$N
   }
 };
 const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__, {
@@ -17555,7 +17717,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__, {
         }),
         _: 1
       }, _parent));
-      _push(ssrRenderComponent(_sfc_main$M, null, {
+      _push(ssrRenderComponent(_sfc_main$N, null, {
         default: withCtx((_2, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
           if (_push2) {

@@ -13,7 +13,7 @@
         :breadcrumbItems="$breadcrumbItems"
         :pageDescription="__('user::fingerprint.page_description')"
     />
-    <div class="d-flex align-items-center gap-2 gap-lg-3">
+    <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
         <button type="button" class="btn btn-sm btn-light-primary" id="btn-test-connection" @disabled(! $stats['is_configured'])>
             <i class="bi bi-plug me-1"></i>{{ __('user::fingerprint.actions.test_connection') }}
         </button>
