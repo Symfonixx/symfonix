@@ -144,12 +144,12 @@
 
                     deleteBtn.addEventListener("click", () => {
                         Swal.fire({
-                            text: @json(__('This action cannot be undone.')),
+                            text: @json(__('This action cannot be undone')),
                             icon: "warning",
                             showCancelButton: true,
                             buttonsStyling: false,
-                            confirmButtonText: @json(__('Yes Delete!')),
-                            cancelButtonText: @json(__('No Cancel')),
+                            confirmButtonText: @json(__('Yes, Delete!')),
+                            cancelButtonText: @json(__('No, Cancel')),
                             customClass: {
                                 confirmButton: "btn fw-bold btn-danger",
                                 cancelButton: "btn fw-bold btn-active-light-primary"

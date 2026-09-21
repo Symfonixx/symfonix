@@ -1,0 +1,28 @@
+{
+    "greeting": "Hello :name,",
+    "subject": "New :entity created",
+    "subject_with_title": "New :entity created: :title",
+    "line": "A new :entity was created.",
+    "line_with_title": "A new :entity was created: :title.",
+    "view": "View :entity",
+    "entities": {
+        "project": "Project",
+        "lead": "Lead",
+        "invoice": "Invoice",
+        "task": "Task",
+        "client": "Client",
+        "ticket": "Ticket",
+        "deal": "Deal",
+        "quote": "Quote",
+        "contact": "Contact",
+        "inquiry": "Inquiry",
+        "subscription": "Subscription",
+        "employee": "Employee",
+        "customer": "Customer",
+        "job_application": "Job application",
+        "leave": "Leave request",
+        "salary": "Salary",
+        "product_sale": "Product sale",
+        "record": "Record"
+    }
+}

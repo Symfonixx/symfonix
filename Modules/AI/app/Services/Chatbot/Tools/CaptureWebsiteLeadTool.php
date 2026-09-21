@@ -2,12 +2,9 @@
 
 namespace Modules\AI\Services\Chatbot\Tools;
 
-use App\Notifications\NewLeadNotification;
-use Illuminate\Support\Facades\Notification;
 use Modules\AI\Contracts\PublicChatTool;
 use Modules\AI\Support\PublicChatContext;
 use Modules\AI\Support\ToolResult;
-use Modules\Base\Support\AdminEmail;
 use Modules\CRM\Models\Lead;
 use Modules\Services\Models\Service;
 
@@ -122,7 +119,6 @@ class CaptureWebsiteLeadTool implements PublicChatTool
         $this->syncService($lead, $service?->id);
         $context->leadId = $lead->id;
         $context->serviceId = $service?->id;
-        $this->notifyAdmins($lead);
 
         return ToolResult::success([
             'captured' => true,
@@ -159,17 +155,6 @@ class CaptureWebsiteLeadTool implements PublicChatTool
     {
         if ($serviceId) {
             $lead->services()->sync([$serviceId]);
-        }
-    }
-
-    private function notifyAdmins(Lead $lead): void
-    {
-        try {
-            foreach (AdminEmail::addresses() as $email) {
-                Notification::route('mail', $email)->notify(new NewLeadNotification($lead));
-            }
-        } catch (\Throwable $exception) {
-            report($exception);
         }
     }
 }

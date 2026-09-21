@@ -1,0 +1,28 @@
+{
+    "greeting": "Merhaba :name,",
+    "subject": "Yeni :entity oluşturuldu",
+    "subject_with_title": "Yeni :entity oluşturuldu: :title",
+    "line": "Yeni bir :entity oluşturuldu.",
+    "line_with_title": "Yeni bir :entity oluşturuldu: :title.",
+    "view": ":entity görüntüle",
+    "entities": {
+        "project": "Proje",
+        "lead": "Müşteri adayı",
+        "invoice": "Fatura",
+        "task": "Görev",
+        "client": "Müşteri",
+        "ticket": "Destek talebi",
+        "deal": "Anlaşma",
+        "quote": "Teklif",
+        "contact": "Kişi",
+        "inquiry": "Talep",
+        "subscription": "Abonelik",
+        "employee": "Çalışan",
+        "customer": "Müşteri",
+        "job_application": "İş başvurusu",
+        "leave": "İzin talebi",
+        "salary": "Maaş",
+        "product_sale": "Ürün satışı",
+        "record": "Kayıt"
+    }
+}
