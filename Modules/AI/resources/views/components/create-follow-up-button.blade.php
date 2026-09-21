@@ -71,8 +71,8 @@
                     var locale = @json(app()->getLocale());
                     var typeLabels = @json(collect(\Modules\CRM\Models\CrmActivity::TYPES)->mapWithKeys(fn ($type) => [$type => __('crm::timeline.activity_types.'.$type)])->all());
                     var i18n = {
-                        genericError: @json(__('ai::content_generation.messages.request_failed')),
-                        notAvailable: @json(__('ai::content_generation.messages.not_available')),
+                        genericError: @json(__('The AI content generation request failed. Please try again.')),
+                        notAvailable: @json(__('The AI content generator is not available right now.')),
                         applied: @json(__('crm::lead.follow_up.applied')),
                         created: @json(__('crm::lead.follow_up.created')),
                         scheduled: @json(__('crm::timeline.fields.scheduled_at')),

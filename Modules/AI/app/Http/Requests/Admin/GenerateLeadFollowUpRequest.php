@@ -25,4 +25,16 @@ class GenerateLeadFollowUpRequest extends FormRequest
             'locale' => ['nullable', 'string', 'max:12'],
         ];
     }
+
+    public function prompt(): ?string
+    {
+        $prompt = $this->validated('prompt');
+
+        return is_string($prompt) && $prompt !== '' ? $prompt : null;
+    }
+
+    public function locale(): string
+    {
+        return (string) ($this->validated('locale') ?: app()->getLocale());
+    }
 }

@@ -9,6 +9,7 @@ use Modules\Cms\Data\FaqData;
 use Modules\Cms\Enums\CmsStatus;
 use Modules\Cms\Models\Faq;
 use Modules\Cms\Repositories\Faq\FaqRepository;
+use Modules\Cms\Support\RankConstraint;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
 
 class FaqController extends Controller
@@ -33,61 +34,42 @@ class FaqController extends Controller
 
     public function create()
     {
-        $maxRank = Faq::max('rank') ?? 0;
-        $minRank = max($maxRank, 1);
+        $minRank = RankConstraint::minRank(Faq::class);
 
         return view('cms::admin.faq.create', compact('minRank'));
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $maxRank = Faq::max('rank') ?? 0;
-        $minRank = max($maxRank, 1);
+        $minRank = RankConstraint::minRank(Faq::class);
         $rank = (int) $request->input('rank', $minRank);
 
-        if ($rank < $minRank) {
-            return back()->withErrors(['rank' => __('Rank must be at least :min', ['min' => $minRank])])->withInput();
+        if ($redirect = RankConstraint::rejectIfBelow($rank, $minRank)) {
+            return $redirect;
         }
 
-        $data = FaqData::validate([
-            'question' => $request->input('question'),
-            'answer' => $request->input('answer'),
-            'rank' => $rank,
-            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
-        ]);
-        $data['auto_translate'] = $request->boolean('auto_translate');
-        $this->faqRepository->store($data);
+        $this->faqRepository->store($this->payload($request, $rank));
 
         return redirect()->route('admin.faqs.index');
     }
 
     public function edit(Faq $faq)
     {
-        $maxRank = Faq::where('id', '!=', $faq->id)->max('rank') ?? 0;
-        $minRank = max($maxRank, 1);
+        $minRank = RankConstraint::minRank(Faq::class, $faq->id);
 
         return view('cms::admin.faq.edit', compact('faq', 'minRank'));
     }
 
     public function update(Request $request, Faq $faq): RedirectResponse
     {
-        $maxRank = Faq::where('id', '!=', $faq->id)->max('rank') ?? 0;
-        $minRank = max($maxRank, 1);
+        $minRank = RankConstraint::minRank(Faq::class, $faq->id);
         $rank = (int) $request->input('rank', $faq->rank);
 
-        // Allow current rank or higher
-        if ($rank < min($faq->rank, $minRank)) {
-            return back()->withErrors(['rank' => __('Rank must be at least :min', ['min' => min($faq->rank, $minRank)])])->withInput();
+        if ($redirect = RankConstraint::rejectIfBelow($rank, min((int) $faq->rank, $minRank))) {
+            return $redirect;
         }
 
-        $data = FaqData::validate([
-            'question' => $request->input('question'),
-            'answer' => $request->input('answer'),
-            'rank' => $rank,
-            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
-        ]);
-        $data['auto_translate'] = $request->boolean('auto_translate');
-        $this->faqRepository->update($data, $faq);
+        $this->faqRepository->update($this->payload($request, $rank), $faq);
 
         return redirect()->route('admin.faqs.index');
     }
@@ -97,5 +79,21 @@ class FaqController extends Controller
         $this->faqRepository->deleteMulti($request->input('ids'));
 
         return back();
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function payload(Request $request, int $rank): array
+    {
+        $data = FaqData::validate([
+            'question' => $request->input('question'),
+            'answer' => $request->input('answer'),
+            'rank' => $rank,
+            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
+        ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
+
+        return $data;
     }
 }

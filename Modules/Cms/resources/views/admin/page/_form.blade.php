@@ -22,7 +22,7 @@
             description='Main page content and SEO fields.'
         >
             <x-slot:actions>
-                <x-ai::generate-form-button type="cms_page" />
+                <x-ai::generate-form-button type="cms_page" :optimize="(bool) $pageData" />
             </x-slot:actions>
             <div class="row mb-6">
                 <div class="col-lg-4">

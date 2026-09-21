@@ -3,7 +3,10 @@
 <x-ai::generate-form-button
     type="product"
     :banner="true"
-    :hint="__('ai::content_generation.form.product_banner_hint')"
+    :optimize="(bool) $productData"
+    :hint="$productData
+        ? __('Optimizes the website name, catalog teaser, product page content, and SEO fields. Facts stay the same.')
+        : __('Fills the website name, catalog teaser, product page content, and SEO title/description/keywords.')"
 />
 
 @if ($errors->any())
@@ -147,13 +150,10 @@
         <label class="fs-6 fw-bold mt-2 mb-3">{{ __('product::product.fields.is_published') }}</label>
     </div>
     <div class="col-xl-9 fv-row">
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-            <div class="form-check form-switch form-check-custom form-check-solid">
-                <input class="form-check-input" type="checkbox" name="is_published" value="1"
-                       id="is_published" @checked(old('is_published', $productData?->is_published))/>
-                <label class="form-check-label" for="is_published">{{ __('product::product.fields.is_published_help') }}</label>
-            </div>
-            <x-ai::generate-form-button type="product" />
+        <div class="form-check form-switch form-check-custom form-check-solid">
+            <input class="form-check-input" type="checkbox" name="is_published" value="1"
+                   id="is_published" @checked(old('is_published', $productData?->is_published))/>
+            <label class="form-check-label" for="is_published">{{ __('product::product.fields.is_published_help') }}</label>
         </div>
     </div>
 </div>
@@ -201,11 +201,10 @@
 </div>
 
 <div class="card mb-8">
-    <div class="card-header border-0 pt-6 d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <div class="card-header border-0 pt-6">
         <h3 class="card-title fw-bold fs-5 mb-0">
             <i class="bi bi-file-earmark-richtext text-primary me-2"></i>{{ __('product::product.sections.content') }}
         </h3>
-        <x-ai::generate-form-button type="product" />
     </div>
     <div class="card-body pt-0">
         <div class="row mb-8">
@@ -246,12 +245,11 @@
 </div>
 
 <div class="card mb-0">
-    <div class="card-header border-0 pt-6 d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <div class="card-header border-0 pt-6">
         <h3 class="card-title fw-bold fs-5 mb-0 cursor-pointer" data-bs-toggle="collapse" data-bs-target="#product-seo-collapse" aria-expanded="false">
             <i class="bi bi-search text-primary me-2"></i>{{ __('product::product.sections.seo') }}
             <i class="bi bi-chevron-down ms-2 fs-7"></i>
         </h3>
-        <x-ai::generate-form-button type="product" />
     </div>
     <div id="product-seo-collapse" class="collapse">
         <div class="card-body pt-0">

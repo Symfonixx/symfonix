@@ -1,0 +1,54 @@
+{
+    "button": {
+        "label": "KI",
+        "tooltip": "KI-Assistent"
+    },
+    "modal": {
+        "title": "KI-Inhaltsassistent",
+        "prompt_label": "Was soll die KI schreiben?",
+        "prompt_placeholder": "z. B. Schreibe eine dreiteilige Einleitung über Cloud Computing oder fasse den markierten Text zusammen.",
+        "insert_mode": "Aktion",
+        "insert_at_cursor": "An Cursorposition einfügen",
+        "replace_selected": "Markierten Inhalt ersetzen",
+        "generate": "Erzeugen",
+        "generating": "Wird erzeugt...",
+        "result_title": "Vorschau",
+        "insert": "In den Editor einfügen",
+        "close": "Schließen"
+    },
+    "form": {
+        "button": "Mit KI erstellen",
+        "tooltip": "Titel, Slug, Keywords und Inhalt aus einem Thema ausfüllen",
+        "banner_title": "Alle Inhalte mit KI erstellen",
+        "banner_hint": "Füllt Titel, Slug, Kurzbeschreibung, Keywords, SEO-Felder und den Haupteditor.",
+        "product_banner_hint": "Füllt den Website-Namen, den Katalogtext, den Produktseiteninhalt und SEO-Titel/Beschreibung/Keywords.",
+        "product_applied": "Website-Inhalt wurde ausgefüllt. Prüfen und speichern. „Auf der Website veröffentlichen“ ist aktiviert.",
+        "modal_title": "Formularinhalt erzeugen",
+        "prompt_label": "Worum soll es gehen?",
+        "prompt_placeholder": "z. B. Ein Blogbeitrag über unseren Webdesign-Prozess für Startups oder eine Landingpage für SEO-Services.",
+        "generate": "Erzeugen und Formular füllen",
+        "generating": "Titel, Slug, Keywords und Inhalt werden erzeugt...",
+        "applied": "Das Formular wurde ausgefüllt. Vor dem Speichern prüfen und bearbeiten.",
+        "overwrite_confirm": "Dadurch werden der aktuelle Titel, die Beschreibung, Keywords und der Inhalt ersetzt. Fortfahren?",
+        "optimize_button": "Mit KI optimieren",
+        "optimize_tooltip": "Aktuellen Titel, Beschreibung, Keywords und Inhalt für klareres SEO und bessere Lesbarkeit umschreiben",
+        "optimize_banner_title": "Alle Inhalte mit KI optimieren",
+        "optimize_banner_hint": "Schreibt den aktuellen Titel, die Beschreibung, Keywords und den Inhalt um. Fakten bleiben gleich.",
+        "optimize_product_banner_hint": "Optimiert den Website-Namen, den Katalogtext, den Produktseiteninhalt und die SEO-Felder. Fakten bleiben gleich.",
+        "optimize_modal_title": "Formularinhalt optimieren",
+        "optimize_prompt_label": "Zusätzliche Anweisungen (optional)",
+        "optimize_prompt_placeholder": "z. B. Kürzer formulieren, stärkeres SEO, Fakten beibehalten.",
+        "optimize_generate": "Optimieren und Formular füllen",
+        "optimize_generating": "Alle Felder werden optimiert...",
+        "optimize_applied": "Der aktuelle Inhalt wurde optimiert. Vor dem Speichern prüfen und bearbeiten."
+    },
+    "messages": {
+        "not_configured": "Kein KI-Inhaltsanbieter ist konfiguriert. Hinterlegen Sie einen OpenAI- oder Gemini-API-Schlüssel unter Einstellungen > Integrationen > KI-Integrationen.",
+        "empty_prompt": "Bitte beschreiben Sie, was die KI schreiben soll.",
+        "empty_content": "Es gibt noch keinen Inhalt zum Optimieren. Fügen Sie zuerst Text hinzu oder erzeugen Sie stattdessen neuen Inhalt.",
+        "empty_result": "Die KI hat keinen Inhalt zurückgegeben. Passen Sie die Anweisung an.",
+        "request_failed": "Die KI-Inhaltsanfrage ist fehlgeschlagen. Bitte erneut versuchen.",
+        "not_available": "Der KI-Inhaltsgenerator ist derzeit nicht verfügbar.",
+        "invalid_form": "Dieser Formulartyp wird für die KI-Erzeugung nicht unterstützt."
+    }
+}

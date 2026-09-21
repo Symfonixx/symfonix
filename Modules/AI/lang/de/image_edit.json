@@ -1,0 +1,38 @@
+{
+    "button": {
+        "label": "Mit KI bearbeiten",
+        "tooltip": "Dieses Bild mit KI bearbeiten",
+        "create_label": "Mit KI erstellen",
+        "create_tooltip": "Ein neues Bild mit KI erzeugen"
+    },
+    "modal": {
+        "title": "Bild mit KI bearbeiten",
+        "create_title": "Bild mit KI erstellen",
+        "prompt_label": "Beschreiben Sie die gewünschte Bearbeitung",
+        "prompt_placeholder": "z. B. Hintergrund auf Abenddämmerung ändern, die Person links entfernen...",
+        "create_prompt_label": "Beschreiben Sie das gewünschte Bild",
+        "create_prompt_placeholder": "z. B. Ein modernes, minimalistisches Logo in Blau und Weiß auf transparentem Hintergrund...",
+        "generate": "Erzeugen",
+        "generating": "Wird erzeugt...",
+        "result_title": "Vorschau",
+        "replace": "Original ersetzen",
+        "save_as_new": "Als neue Version speichern",
+        "use_this_image": "Dieses Bild verwenden",
+        "use_brand": "Zu unserer Marke passend",
+        "use_brand_hint": "Sendet das Website-Logo aus den Einstellungen, damit Gemini Farben und Identität übernimmt.",
+        "no_brand_logo": "Fügen Sie unter Einstellungen › Branding ein Website-Logo hinzu, damit erzeugte Bilder zu Ihrer Marke passen.",
+        "discard": "Verwerfen",
+        "close": "Schließen"
+    },
+    "messages": {
+        "not_configured": "Der Gemini-API-Schlüssel ist nicht konfiguriert. Hinterlegen Sie ihn unter Einstellungen > Integrationen > KI-Integrationen.",
+        "no_image_returned": "Gemini hat kein bearbeitetes Bild zurückgegeben. Passen Sie die Anweisung an.",
+        "request_failed": "Die KI-Bildbearbeitung ist fehlgeschlagen. Bitte erneut versuchen.",
+        "invalid_target": "Dieses Bildfeld ist für die KI-Bearbeitung nicht aktiviert.",
+        "source_image_missing": "Das Originalbild konnte auf der Festplatte nicht gefunden werden.",
+        "invalid_or_expired": "Dieses KI-Ergebnis ist abgelaufen. Bitte erneut erzeugen.",
+        "applied": "Bild erfolgreich aktualisiert.",
+        "staged": "Bild vorgemerkt. Speichern Sie das Formular, um es zu behalten.",
+        "staged_hint": "Dieses Bild ist noch nicht gespeichert. „Dieses Bild verwenden“ setzt die bearbeitete Version anstelle der ausgewählten Datei — speichern Sie das Formular, um sie zu behalten."
+    }
+}

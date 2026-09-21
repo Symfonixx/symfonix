@@ -20,93 +20,54 @@ class ContentGenerationService
      */
     public function generate(string $prompt, ?string $context = null): array
     {
-        $openAiConfigured = $this->openAITextService->isConfigured();
-        $geminiConfigured = $this->geminiTextService->isConfigured();
-
-        if (! $openAiConfigured && ! $geminiConfigured) {
-            return $this->withProvider(
-                [
-                    'success' => false,
-                    'html' => null,
-                    'error' => __('ai::content_generation.messages.not_configured'),
-                ],
-                null,
-            );
-        }
-
-        if ($openAiConfigured) {
-            $result = $this->openAITextService->generate($prompt, $context);
-
-            if ($result['success']) {
-                return $this->withProvider($result, 'openai');
-            }
-
-            Log::warning('OpenAI content generation failed, falling back to Gemini', [
-                'error' => $result['error'],
-            ]);
-
-            if (! $geminiConfigured) {
-                return $this->withProvider($result, 'openai');
-            }
-        }
-
-        $result = $this->geminiTextService->generate($prompt, $context);
-
-        return $this->withProvider($result, 'gemini');
+        return $this->attemptProviders(
+            fn (object $provider): array => $provider->generate($prompt, $context),
+        );
     }
 
     /**
      * Generate structured values for an admin content form.
      *
-     * @param  array<string, string>|null  $existing
+     * @param  array<string, mixed>|null  $existing
      * @return array{success: bool, fields: ?array<string, string>, error: ?string, provider: ?string}
      */
-    public function generateForm(string $formType, string $prompt, ?string $locale = null, ?array $existing = null): array
-    {
+    public function generateForm(
+        string $formType,
+        string $prompt,
+        ?string $locale = null,
+        ?array $existing = null,
+        string $mode = FormContentSchema::MODE_CREATE,
+    ): array {
         if (FormContentSchema::get($formType) === null) {
-            return [
-                'success' => false,
-                'fields' => null,
-                'error' => __('ai::content_generation.messages.invalid_form'),
-                'provider' => null,
-            ];
+            return $this->formFailure(__('ai::content_generation.messages.invalid_form'));
         }
 
-        $result = $this->generateStructuredContent(
-            FormContentSchema::systemPrompt($formType, $locale ?: app()->getLocale()),
-            FormContentSchema::userMessage($prompt, $existing),
+        $mode = FormContentSchema::normalizeMode($mode);
+        $existing = FormContentSchema::filledExisting($existing);
+
+        if ($mode === FormContentSchema::MODE_OPTIMIZE && $existing === []) {
+            return $this->formFailure(__('ai::content_generation.messages.empty_content'));
+        }
+
+        $result = $this->generateJson(
+            FormContentSchema::systemPrompt($formType, $locale ?: app()->getLocale(), $mode),
+            FormContentSchema::userMessage($prompt, $existing, $mode),
         );
 
-        if (! $result['success'] || ! is_string($result['content'])) {
-            return [
-                'success' => false,
-                'fields' => null,
-                'error' => $result['error'] ?? __('ai::content_generation.messages.request_failed'),
-                'provider' => $result['provider'],
-            ];
+        if (! $result['success']) {
+            return $this->formFailure(
+                $result['error'] ?? __('ai::content_generation.messages.request_failed'),
+                $result['provider'],
+            );
         }
 
-        $decoded = FormContentSchema::decode($result['content']);
+        $fields = FormContentSchema::normalize($formType, $result['data'] ?? []);
 
-        if ($decoded === null) {
-            return [
-                'success' => false,
-                'fields' => null,
-                'error' => __('ai::content_generation.messages.empty_result'),
-                'provider' => $result['provider'],
-            ];
-        }
-
-        $fields = FormContentSchema::normalize($formType, $decoded);
-        $hasContent = collect($fields)->contains(fn (string $value): bool => $value !== '');
-
-        if (! $hasContent) {
-            return [
-                'success' => false,
-                'fields' => null,
-                'error' => __('ai::content_generation.messages.empty_result'),
-                'provider' => $result['provider'],
-            ];
+        if (! FormContentSchema::hasContent($fields)) {
+            return $this->formFailure(
+                __('ai::content_generation.messages.empty_result'),
+                $result['provider'],
+            );
         }
 
         return [
@@ -122,14 +83,71 @@ class ContentGenerationService
      *
      * @return array{success: bool, content: ?string, error: ?string, provider: ?string}
      */
-    public function generateStructuredContent(string $systemPrompt, string $userMessage): array
+    private function generateStructuredContent(string $systemPrompt, string $userMessage): array
     {
+        return $this->attemptProviders(
+            fn (object $provider): array => $provider->generateStructured($systemPrompt, $userMessage),
+            static fn (array $result): bool => ($result['success'] ?? false) && is_string($result['content'] ?? null),
+        );
+    }
+
+    /**
+     * Decode a JSON object from the first available provider.
+     *
+     * @return array{success: bool, data: ?array<string, mixed>, error: ?string, provider: ?string}
+     */
+    public function generateJson(string $systemPrompt, string $userMessage): array
+    {
+        $result = $this->generateStructuredContent($systemPrompt, $userMessage);
+
+        if (! $result['success'] || ! is_string($result['content'] ?? null)) {
+            return [
+                'success' => false,
+                'data' => null,
+                'error' => $result['error'] ?? __('ai::content_generation.messages.request_failed'),
+                'provider' => $result['provider'] ?? null,
+            ];
+        }
+
+        $decoded = FormContentSchema::decode($result['content']);
+
+        if ($decoded === null) {
+            Log::warning('AI structured JSON could not be decoded', [
+                'provider' => $result['provider'] ?? null,
+                'snippet' => mb_substr($result['content'], 0, 500),
+            ]);
+
+            return [
+                'success' => false,
+                'data' => null,
+                'error' => __('ai::content_generation.messages.empty_result'),
+                'provider' => $result['provider'],
+            ];
+        }
+
+        return [
+            'success' => true,
+            'data' => $decoded,
+            'error' => null,
+            'provider' => $result['provider'],
+        ];
+    }
+
+    /**
+     * @param  callable(OpenAITextService|GeminiTextService): array<string, mixed>  $callback
+     * @param  (callable(array<string, mixed>): bool)|null  $isSuccess
+     * @return array<string, mixed>
+     */
+    private function attemptProviders(callable $callback, ?callable $isSuccess = null): array
+    {
+        $isSuccess ??= static fn (array $result): bool => (bool) ($result['success'] ?? false);
         $openAiConfigured = $this->openAITextService->isConfigured();
         $geminiConfigured = $this->geminiTextService->isConfigured();
 
         if (! $openAiConfigured && ! $geminiConfigured) {
             return [
                 'success' => false,
+                'html' => null,
                 'content' => null,
                 'error' => __('ai::content_generation.messages.not_configured'),
                 'provider' => null,
@@ -137,54 +155,54 @@ class ContentGenerationService
         }
 
         $provider = null;
-        $raw = null;
-        $error = __('ai::content_generation.messages.request_failed');
+        $lastResult = null;
 
         if ($openAiConfigured) {
-            $result = $this->openAITextService->generateStructured($systemPrompt, $userMessage);
             $provider = 'openai';
+            $lastResult = $callback($this->openAITextService);
 
-            if ($result['success'] && is_string($result['content'])) {
-                $raw = $result['content'];
-            } else {
-                $error = $result['error'] ?? $error;
-                Log::warning('OpenAI structured generation failed, falling back to Gemini', [
-                    'error' => $error,
-                ]);
+            if ($isSuccess($lastResult)) {
+                return $this->withProvider($lastResult, $provider);
             }
+
+            Log::warning('OpenAI content generation failed, falling back to Gemini', [
+                'error' => $lastResult['error'] ?? null,
+            ]);
         }
 
-        if ($raw === null && $geminiConfigured) {
-            $result = $this->geminiTextService->generateStructured($systemPrompt, $userMessage);
+        if ($geminiConfigured) {
             $provider = 'gemini';
+            $lastResult = $callback($this->geminiTextService);
 
-            if ($result['success'] && is_string($result['content'])) {
-                $raw = $result['content'];
-            } else {
-                $error = $result['error'] ?? $error;
+            if ($isSuccess($lastResult)) {
+                return $this->withProvider($lastResult, $provider);
             }
         }
 
-        if ($raw === null) {
-            return [
-                'success' => false,
-                'content' => null,
-                'error' => $error,
-                'provider' => $provider,
-            ];
-        }
+        return $this->withProvider($lastResult ?? [
+            'success' => false,
+            'html' => null,
+            'content' => null,
+            'error' => __('ai::content_generation.messages.request_failed'),
+        ], $provider);
+    }
 
+    /**
+     * @return array{success: bool, fields: null, error: string, provider: ?string}
+     */
+    private function formFailure(string $error, ?string $provider = null): array
+    {
         return [
-            'success' => true,
-            'content' => $raw,
-            'error' => null,
+            'success' => false,
+            'fields' => null,
+            'error' => $error,
             'provider' => $provider,
         ];
     }
 
     /**
-     * @param  array{success: bool, html: ?string, error: ?string}  $result
-     * @return array{success: bool, html: ?string, error: ?string, provider: ?string}
+     * @param  array<string, mixed>  $result
+     * @return array<string, mixed>
      */
     private function withProvider(array $result, ?string $provider): array
     {

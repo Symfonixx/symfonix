@@ -3,6 +3,7 @@
 namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Modules\User\Support\PermissionCatalog;
 
 class StoreUserRequest extends FormRequest
 {
@@ -29,7 +30,7 @@ class StoreUserRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return $this->user()?->can('sales.customers.create') ?? false;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 
     protected function prepareForValidation(): void

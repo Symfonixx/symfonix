@@ -3,8 +3,9 @@
 namespace Modules\Cms\Data;
 
 use Illuminate\Http\UploadedFile;
-use Modules\Cms\Enums\ServiceStatus;
+use Modules\Cms\Enums\CmsStatus;
 use Spatie\LaravelData\Attributes\Validation\BooleanType;
+use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Attributes\Validation\File;
 use Spatie\LaravelData\Attributes\Validation\Nullable;
 use Spatie\LaravelData\Attributes\Validation\Required;
@@ -34,12 +35,12 @@ class BlogData extends Data
         public ?UploadedFile $image,
 
         #[Nullable]
-        public ServiceStatus $status,
+        public CmsStatus $status,
 
         #[Nullable, BooleanType]
         public ?bool $featured,
 
-        #[Required]
+        #[Required, Exists('blog_categories', 'id')]
         public int $category_id,
     ) {}
 }

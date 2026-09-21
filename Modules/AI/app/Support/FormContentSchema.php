@@ -6,12 +6,50 @@ use Illuminate\Support\Str;
 
 class FormContentSchema
 {
+    public const MODE_CREATE = 'create';
+
+    public const MODE_OPTIMIZE = 'optimize';
+
+    private const HTML_FRAGMENT = ' as a semantic HTML fragment using <p>, <h2>, <h3>, <ul>, <li>, <strong>, and <em>. No markdown, no code fences, no <html> or <body>.';
+
+    private const JSON_FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+
     /**
      * @return list<string>
      */
     public static function types(): array
     {
         return array_keys(self::definitions());
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function modes(): array
+    {
+        return [self::MODE_CREATE, self::MODE_OPTIMIZE];
+    }
+
+    public static function normalizeMode(?string $mode): string
+    {
+        return $mode === self::MODE_OPTIMIZE ? self::MODE_OPTIMIZE : self::MODE_CREATE;
+    }
+
+    /**
+     * Catalog permissions that may generate or optimize this form type.
+     *
+     * @return list<string>
+     */
+    public static function permissions(string $type): array
+    {
+        return match ($type) {
+            'cms_blog' => ['cms.blogs.create', 'cms.blogs.edit'],
+            'cms_page' => ['cms.pages.create', 'cms.pages.edit'],
+            'service' => ['services.catalog.create', 'services.catalog.edit'],
+            'product' => ['product.catalog.create', 'product.catalog.edit'],
+            'use_case' => ['project.use_cases.create', 'project.use_cases.edit'],
+            default => [],
+        };
     }
 
     /**
@@ -48,39 +86,26 @@ class FormContentSchema
                 'max' => 255,
                 'guide' => '5-10 relevant SEO keywords, comma-separated.',
             ],
-            'content' => [
-                'type' => 'html',
-                'guide' => 'Full body as a semantic HTML fragment using <p>, <h2>, <h3>, <ul>, <li>, <strong>, and <em>. No markdown, no code fences, no <html> or <body>.',
-            ],
         ];
 
         return [
             'cms_blog' => [
                 'label' => 'blog post',
-                'fields' => array_replace($cmsFields, [
-                    'content' => [
-                        'type' => 'html',
-                        'guide' => 'A complete blog article (4-8 sections) as a semantic HTML fragment using <p>, <h2>, <h3>, <ul>, <li>, <strong>, and <em>. No markdown, no code fences, no <html> or <body>.',
-                    ],
-                ]),
+                'fields' => $cmsFields + [
+                    'content' => self::htmlField('A complete blog article (4-8 sections)'),
+                ],
             ],
             'cms_page' => [
                 'label' => 'website page',
-                'fields' => array_replace($cmsFields, [
-                    'content' => [
-                        'type' => 'html',
-                        'guide' => 'A complete landing/about-style page (3-6 sections) as a semantic HTML fragment using <p>, <h2>, <h3>, <ul>, <li>, <strong>, and <em>. No markdown, no code fences, no <html> or <body>.',
-                    ],
-                ]),
+                'fields' => $cmsFields + [
+                    'content' => self::htmlField('A complete landing/about-style page (3-6 sections)'),
+                ],
             ],
             'service' => [
                 'label' => 'service offering',
-                'fields' => array_replace($cmsFields, [
-                    'content' => [
-                        'type' => 'html',
-                        'guide' => 'A service page covering benefits, process, and who it is for, as a semantic HTML fragment using <p>, <h2>, <h3>, <ul>, <li>, <strong>, and <em>. No markdown, no code fences, no <html> or <body>.',
-                    ],
-                ]),
+                'fields' => $cmsFields + [
+                    'content' => self::htmlField('A service page covering benefits, process, and who it is for'),
+                ],
             ],
             'product' => [
                 'label' => 'public website product page',
@@ -95,10 +120,10 @@ class FormContentSchema
                         'max' => 500,
                         'guide' => 'Website teaser shown on the catalog card, 1-3 sentences, max 500 characters.',
                     ],
-                    'description' => [
-                        'type' => 'html',
-                        'guide' => 'Full public product-page description as a semantic HTML fragment using <p>, <h2>, <h3>, <ul>, <li>, <strong>, and <em>. Cover benefits, features, and who it is for. No markdown, no code fences, no <html> or <body>.',
-                    ],
+                    'description' => self::htmlField(
+                        'Full public product-page description',
+                        'Cover benefits, features, and who it is for.',
+                    ),
                     'seo_title' => [
                         'type' => 'text',
                         'max' => 70,
@@ -154,10 +179,7 @@ class FormContentSchema
                         'max' => 800,
                         'guide' => 'Outcomes. Do not invent metrics that contradict the company profile.',
                     ],
-                    'content' => [
-                        'type' => 'html',
-                        'guide' => 'Longer case-study body as a semantic HTML fragment using <p>, <h2>, <h3>, <ul>, <li>, <strong>, and <em>. No markdown, no code fences, no <html> or <body>.',
-                    ],
+                    'content' => self::htmlField('Longer case-study body'),
                     'technologies' => [
                         'type' => 'keywords',
                         'max' => 255,
@@ -173,7 +195,7 @@ class FormContentSchema
         ];
     }
 
-    public static function systemPrompt(string $type, string $locale): string
+    public static function systemPrompt(string $type, string $locale, string $mode = self::MODE_CREATE): string
     {
         $definition = self::get($type);
 
@@ -181,58 +203,103 @@ class FormContentSchema
             return '';
         }
 
-        $guides = [];
-        foreach ($definition['fields'] as $key => $field) {
-            $guides[$key] = $field['guide'];
-        }
+        $guides = json_encode(self::fieldGuides($definition), JSON_PRETTY_PRINT | self::JSON_FLAGS);
+        $label = $definition['label'];
+        $mode = self::normalizeMode($mode);
 
-        $prompt = 'You generate complete admin-form content as a single JSON object. '
-            .'Write the human-readable copy in locale "'.$locale.'". '
-            .'The slug (if requested) must always be English lowercase hyphenated text. '
-            .'The form is a '.$definition['label'].'. '
-            .'Return ONLY valid JSON with exactly these keys and purposes:'."\n"
-            .json_encode($guides, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)."\n"
-            .'Match the company voice and positioning from the company profile below. '
-            .'Do not invent awards, clients, or claims that contradict that profile. '
-            .'Do not wrap the JSON in markdown fences.';
+        $prompt = $mode === self::MODE_OPTIMIZE
+            ? 'You optimize existing admin-form content as a single JSON object. '
+                .'Rewrite every field so it is clearer, more professional, better structured, and more SEO-friendly. '
+                .'Keep the original meaning, facts, names, numbers, and claims. '
+                .'Do not invent new clients, awards, metrics, features, or results. '
+                .'Keep the same language/locale "'.$locale.'". '
+                .'Keep the slug unchanged unless it is clearly invalid. '
+                .'The form is a '.$label.'. '
+                .'Return ONLY valid JSON with exactly these keys and purposes:'."\n"
+                .$guides."\n"
+                .'Match the company voice and positioning from the company profile below. '
+                .'Do not wrap the JSON in markdown fences.'
+            : 'You generate complete admin-form content as a single JSON object. '
+                .'Write the human-readable copy in locale "'.$locale.'". '
+                .'The slug (if requested) must always be English lowercase hyphenated text. '
+                .'The form is a '.$label.'. '
+                .'Return ONLY valid JSON with exactly these keys and purposes:'."\n"
+                .$guides."\n"
+                .'Match the company voice and positioning from the company profile below. '
+                .'Do not invent awards, clients, or claims that contradict that profile. '
+                .'Do not wrap the JSON in markdown fences.';
 
-        $profile = CompanyContentProfile::promptBlock();
-
-        if ($profile !== '') {
-            $prompt .= "\n\n".$profile;
-        }
-
-        return $prompt;
+        return CompanyContentProfile::appendTo($prompt);
     }
 
     /**
-     * @param  array<string, string>|null  $existing
+     * @param  array<string, mixed>|null  $existing
      */
-    public static function userMessage(string $prompt, ?array $existing = null): string
+    public static function userMessage(string $prompt, ?array $existing = null, string $mode = self::MODE_CREATE): string
     {
-        $message = 'Topic / brief:'."\n".$prompt;
+        $filtered = self::filledExisting($existing);
+        $mode = self::normalizeMode($mode);
 
-        if ($existing === []) {
-            $existing = null;
-        }
+        if ($mode === self::MODE_OPTIMIZE) {
+            $message = 'Optimize this existing form content. Improve SEO, readability, structure, and conversion without changing the facts.';
 
-        if (is_array($existing)) {
-            $filtered = [];
-            foreach ($existing as $key => $value) {
-                if (! is_string($key) || ! is_string($value) || trim($value) === '') {
-                    continue;
-                }
-
-                $filtered[$key] = trim($value);
+            if (trim($prompt) !== '') {
+                $message .= "\n\nExtra instructions:\n".$prompt;
             }
 
             if ($filtered !== []) {
-                $message .= "\n\nExisting form values to respect or improve:\n"
-                    .json_encode($filtered, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                $message .= "\n\nCurrent field values:\n"
+                    .json_encode($filtered, self::JSON_FLAGS);
             }
+
+            return $message;
+        }
+
+        $message = 'Topic / brief:'."\n".$prompt;
+
+        if ($filtered !== []) {
+            $message .= "\n\nExisting form values to respect or improve:\n"
+                .json_encode($filtered, self::JSON_FLAGS);
         }
 
         return $message;
+    }
+
+    /**
+     * @param  array<array-key, mixed>|null  $existing
+     * @return array<string, string>
+     */
+    public static function filledExisting(?array $existing): array
+    {
+        if (! is_array($existing)) {
+            return [];
+        }
+
+        $filtered = [];
+
+        foreach ($existing as $key => $value) {
+            if (! is_string($key) || ! is_string($value) || trim($value) === '') {
+                continue;
+            }
+
+            $filtered[$key] = trim($value);
+        }
+
+        return $filtered;
+    }
+
+    /**
+     * @param  array<string, string>  $fields
+     */
+    public static function hasContent(array $fields): bool
+    {
+        foreach ($fields as $value) {
+            if ($value !== '') {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -240,24 +307,66 @@ class FormContentSchema
      */
     public static function decode(string $content): ?array
     {
-        $content = trim($content);
-        $content = preg_replace('/^```(?:json)?\s*/i', '', $content) ?? $content;
-        $content = preg_replace('/```\s*$/', '', $content) ?? $content;
-        $content = trim($content);
+        $content = self::stripFences($content, 'json');
 
         $decoded = json_decode($content, true);
         if (is_array($decoded)) {
-            return $decoded;
+            return self::unwrapDecoded($decoded);
         }
 
         if (preg_match('/\{.*\}/s', $content, $matches) === 1) {
             $decoded = json_decode($matches[0], true);
             if (is_array($decoded)) {
-                return $decoded;
+                return self::unwrapDecoded($decoded);
             }
         }
 
         return null;
+    }
+
+    /**
+     * @param  array<array-key, mixed>  $decoded
+     * @return array<array-key, mixed>
+     */
+    private static function unwrapDecoded(array $decoded): array
+    {
+        if ($decoded !== [] && array_is_list($decoded)) {
+            $first = $decoded[0] ?? null;
+            if (is_array($first) && $first !== [] && ! array_is_list($first)) {
+                $decoded = $first;
+            }
+        }
+
+        if (self::looksLikeFormFields($decoded)) {
+            return $decoded;
+        }
+
+        foreach (['fields', 'data', 'result'] as $wrapper) {
+            $nested = $decoded[$wrapper] ?? null;
+            if (is_array($nested) && self::looksLikeFormFields($nested)) {
+                return $nested;
+            }
+        }
+
+        return $decoded;
+    }
+
+    /**
+     * @param  array<array-key, mixed>  $decoded
+     */
+    private static function looksLikeFormFields(array $decoded): bool
+    {
+        if ($decoded === [] || array_is_list($decoded)) {
+            return false;
+        }
+
+        foreach (['title', 'name', 'slug', 'description', 'short_description', 'content', 'keywords', 'seo_title'] as $key) {
+            if (array_key_exists($key, $decoded)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -279,6 +388,38 @@ class FormContentSchema
         }
 
         return $fields;
+    }
+
+    /**
+     * @param  array{label: string, fields: array<string, array{type: string, max?: int, guide: string}>}  $definition
+     * @return array<string, string>
+     */
+    private static function fieldGuides(array $definition): array
+    {
+        $guides = [];
+
+        foreach ($definition['fields'] as $key => $field) {
+            $guides[$key] = $field['guide'];
+        }
+
+        return $guides;
+    }
+
+    /**
+     * @return array{type: string, guide: string}
+     */
+    private static function htmlField(string $purpose, string $extra = ''): array
+    {
+        $guide = $purpose.self::HTML_FRAGMENT;
+
+        if ($extra !== '') {
+            $guide .= ' '.$extra;
+        }
+
+        return [
+            'type' => 'html',
+            'guide' => $guide,
+        ];
     }
 
     /**
@@ -308,7 +449,7 @@ class FormContentSchema
         $type = $meta['type'];
 
         if ($type === 'html') {
-            $value = self::normalizeHtml($value);
+            $value = self::stripFences($value, 'html|json');
         }
 
         if ($type === 'slug') {
@@ -330,10 +471,10 @@ class FormContentSchema
         return $value;
     }
 
-    private static function normalizeHtml(string $content): string
+    public static function stripFences(string $content, string $languages = 'html|json'): string
     {
         $content = trim($content);
-        $content = preg_replace('/^```(?:html|json)?\s*/i', '', $content) ?? $content;
+        $content = preg_replace('/^```(?:'.$languages.')?\s*/i', '', $content) ?? $content;
         $content = preg_replace('/```\s*$/', '', $content) ?? $content;
 
         return trim($content);

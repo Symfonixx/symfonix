@@ -21,12 +21,19 @@ return new class extends Migration
                 DB::statement('ALTER TABLE marketing_campaigns MODIFY subject TEXT NOT NULL');
             }
 
+            if (! Schema::hasColumn('marketing_campaigns', 'marketing_group_id')) {
+                Schema::table('marketing_campaigns', function (Blueprint $table) {
+                    $table->unsignedBigInteger('marketing_group_id')->nullable()->after('user_id');
+                });
+            }
+
             return;
         }
 
         Schema::create('marketing_campaigns', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('marketing_group_id')->nullable();
             $table->text('subject');
             $table->text('body');
             $table->unsignedInteger('recipients_count')->default(0);

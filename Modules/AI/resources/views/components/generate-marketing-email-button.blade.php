@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('ai::content_generation.modal.close') }}</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Close') }}</button>
                             <button type="button" id="ai-marketing-email-generate-btn" class="btn btn-info" data-action="ai">
                                 <i class="bi bi-stars me-1"></i>{{ __('crm::marketing.ai.generate') }}
                             </button>
@@ -53,8 +53,8 @@
                     var routeUrl = @json(route('admin.ai.content.generate-marketing-email'));
                     var locale = @json(app()->getLocale());
                     var i18n = {
-                        genericError: @json(__('ai::content_generation.messages.request_failed')),
-                        notAvailable: @json(__('ai::content_generation.messages.not_available')),
+                        genericError: @json(__('The AI content generation request failed. Please try again.')),
+                        notAvailable: @json(__('The AI content generator is not available right now.')),
                         applied: @json(__('crm::marketing.ai.applied')),
                         overwrite: @json(__('crm::marketing.ai.overwrite')),
                         groupRequired: @json(__('crm::marketing.ai.group_required')),

@@ -1,0 +1,54 @@
+{
+    "button": {
+        "label": "AI",
+        "tooltip": "Yapay zeka asistanı"
+    },
+    "modal": {
+        "title": "Yapay zeka içerik asistanı",
+        "prompt_label": "Yapay zeka ne yazsın?",
+        "prompt_placeholder": "ör. Bulut bilişim hakkında 3 paragraflık bir giriş yaz veya seçili metni özetle.",
+        "insert_mode": "İşlem",
+        "insert_at_cursor": "İmleç konumuna ekle",
+        "replace_selected": "Seçili içeriği değiştir",
+        "generate": "Oluştur",
+        "generating": "Oluşturuluyor...",
+        "result_title": "Önizleme",
+        "insert": "Editöre ekle",
+        "close": "Kapat"
+    },
+    "form": {
+        "button": "Yapay zeka ile oluştur",
+        "tooltip": "Bir konudan başlık, slug, anahtar kelimeler ve içeriği doldur",
+        "banner_title": "Tüm içeriği yapay zeka ile oluştur",
+        "banner_hint": "Başlık, slug, kısa açıklama, anahtar kelimeler, SEO alanları ve ana editörü doldurur.",
+        "product_banner_hint": "Web sitesi adını, katalog özetini, ürün sayfası içeriğini ve SEO başlığı/açıklaması/anahtar kelimelerini doldurur.",
+        "product_applied": "Web sitesi içeriği dolduruldu. Gözden geçirip kaydedin. Web Sitesinde Yayınla açık.",
+        "modal_title": "Form içeriği oluştur",
+        "prompt_label": "Bu ne hakkında olmalı?",
+        "prompt_placeholder": "ör. Girişimler için web tasarım sürecimiz hakkında bir blog yazısı veya SEO hizmetleri için bir açılış sayfası.",
+        "generate": "Oluştur ve formu doldur",
+        "generating": "Başlık, slug, anahtar kelimeler ve içerik oluşturuluyor...",
+        "applied": "Form dolduruldu. Kaydetmeden önce gözden geçirin ve düzenleyin.",
+        "overwrite_confirm": "Bu, mevcut başlık, açıklama, anahtar kelimeler ve içeriğin yerini alacak. Devam edilsin mi?",
+        "optimize_button": "Yapay zeka ile optimize et",
+        "optimize_tooltip": "Mevcut başlık, açıklama, anahtar kelimeler ve içeriği daha net SEO ve okunabilirlik için yeniden yaz",
+        "optimize_banner_title": "Tüm içeriği yapay zeka ile optimize et",
+        "optimize_banner_hint": "Mevcut başlık, açıklama, anahtar kelimeler ve içeriği yeniden yazar. Gerçekler aynı kalır.",
+        "optimize_product_banner_hint": "Web sitesi adını, katalog özetini, ürün sayfası içeriğini ve SEO alanlarını optimize eder. Gerçekler aynı kalır.",
+        "optimize_modal_title": "Form içeriğini optimize et",
+        "optimize_prompt_label": "Ek talimatlar (isteğe bağlı)",
+        "optimize_prompt_placeholder": "ör. Daha kısa olsun, SEO’yu güçlendir, gerçekleri koru.",
+        "optimize_generate": "Optimize et ve formu doldur",
+        "optimize_generating": "Tüm alanlar optimize ediliyor...",
+        "optimize_applied": "Mevcut içerik optimize edildi. Kaydetmeden önce gözden geçirin ve düzenleyin."
+    },
+    "messages": {
+        "not_configured": "Yapay zeka içerik sağlayıcısı yapılandırılmamış. Ayarlar > Entegrasyonlar > Yapay Zeka Entegrasyonları altına bir OpenAI veya Gemini API anahtarı ekleyin.",
+        "empty_prompt": "Lütfen yapay zekanın ne yazmasını istediğinizi açıklayın.",
+        "empty_content": "Optimize edilecek mevcut içerik yok. Önce metin ekleyin veya yeni içerik oluşturun.",
+        "empty_result": "Yapay zeka içerik döndürmedi. İsteğinizi ayarlamayı deneyin.",
+        "request_failed": "Yapay zeka içerik isteği başarısız oldu. Lütfen tekrar deneyin.",
+        "not_available": "Yapay zeka içerik üreticisi şu anda kullanılamıyor.",
+        "invalid_form": "Bu form türü yapay zeka üretimi için desteklenmiyor."
+    }
+}

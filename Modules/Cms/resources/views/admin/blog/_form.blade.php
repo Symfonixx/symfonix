@@ -22,7 +22,7 @@
             description='Main blog content and SEO fields.'
         >
             <x-slot:actions>
-                <x-ai::generate-form-button type="cms_blog" />
+                <x-ai::generate-form-button type="cms_blog" :optimize="(bool) $blogData" />
             </x-slot:actions>
             <div class="row mb-6">
                 <div class="col-lg-4">

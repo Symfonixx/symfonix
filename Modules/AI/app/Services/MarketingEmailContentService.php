@@ -2,7 +2,6 @@
 
 namespace Modules\AI\Services;
 
-use Modules\AI\Support\FormContentSchema;
 use Modules\AI\Support\MarketingEmailContentSchema;
 use Modules\CRM\Models\MarketingGroup;
 
@@ -28,12 +27,12 @@ class MarketingEmailContentService
             ];
         }
 
-        $result = $this->contentGenerationService->generateStructuredContent(
+        $result = $this->contentGenerationService->generateJson(
             MarketingEmailContentSchema::systemPrompt($locale ?: app()->getLocale()),
             MarketingEmailContentSchema::userMessage($campaign, $instruction),
         );
 
-        if (! $result['success'] || ! is_string($result['content'])) {
+        if (! $result['success']) {
             return [
                 'success' => false,
                 'fields' => null,
@@ -42,18 +41,7 @@ class MarketingEmailContentService
             ];
         }
 
-        $decoded = FormContentSchema::decode($result['content']);
-
-        if ($decoded === null) {
-            return [
-                'success' => false,
-                'fields' => null,
-                'error' => __('ai::content_generation.messages.empty_result'),
-                'provider' => $result['provider'],
-            ];
-        }
-
-        $fields = MarketingEmailContentSchema::normalize($decoded);
+        $fields = MarketingEmailContentSchema::normalize($result['data'] ?? []);
 
         if ($fields['subject'] === '' && trim(strip_tags($fields['body'])) === '') {
             return [

@@ -26,13 +26,7 @@ class MarketingEmailContentSchema
             .'The email must serve the campaign goal. Stay consistent with the company profile. '
             .'Do not wrap the JSON in markdown fences.';
 
-        $profile = CompanyContentProfile::promptBlock();
-
-        if ($profile !== '') {
-            $prompt .= "\n\n".$profile;
-        }
-
-        return $prompt;
+        return CompanyContentProfile::appendTo($prompt);
     }
 
     /**

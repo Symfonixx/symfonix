@@ -43,4 +43,26 @@ class GenerateQuoteRequest extends FormRequest
             'deal_id.exists' => __('crm::quote.validation.deal_exists'),
         ];
     }
+
+    public function companyId(): int
+    {
+        return (int) $this->validated('company_id');
+    }
+
+    public function dealId(): int
+    {
+        return (int) $this->validated('deal_id');
+    }
+
+    public function prompt(): ?string
+    {
+        $prompt = $this->validated('prompt');
+
+        return is_string($prompt) && $prompt !== '' ? $prompt : null;
+    }
+
+    public function locale(): string
+    {
+        return (string) ($this->validated('locale') ?: app()->getLocale());
+    }
 }

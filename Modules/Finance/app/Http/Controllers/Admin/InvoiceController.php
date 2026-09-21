@@ -4,10 +4,11 @@ namespace Modules\Finance\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\Base\Support\CompanyBranding;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Deal;
-use Modules\Base\Support\CompanyBranding;
 use Modules\Finance\Http\Requests\StoreInvoiceRequest;
 use Modules\Finance\Models\Invoice;
 use Modules\Finance\Services\InvoiceService;
@@ -22,9 +23,9 @@ class InvoiceController extends Controller
         $this->setActive('finance_invoices');
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $filters = request()->only(['status', 'company_id']);
+        $filters = $request->only(['status', 'company_id']);
         $invoices = $this->invoiceService->paginate($filters);
         $companies = Company::query()->orderBy('name')->get(['id', 'name']);
 

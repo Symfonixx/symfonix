@@ -3,7 +3,6 @@
 namespace Modules\AI\Services;
 
 use App\Models\User;
-use Modules\AI\Support\FormContentSchema;
 use Modules\AI\Support\LeadFollowUpContext;
 use Modules\AI\Support\LeadFollowUpSchema;
 use Modules\CRM\Models\Lead;
@@ -20,12 +19,12 @@ class LeadFollowUpService
      */
     public function generate(Lead $lead, User $user, ?string $instruction = null, ?string $locale = null): array
     {
-        $result = $this->contentGenerationService->generateStructuredContent(
+        $result = $this->contentGenerationService->generateJson(
             LeadFollowUpSchema::systemPrompt($locale ?: app()->getLocale()),
             LeadFollowUpSchema::userMessage($this->context->build($lead, $user), $instruction),
         );
 
-        if (! $result['success'] || ! is_string($result['content'])) {
+        if (! $result['success']) {
             return [
                 'success' => false,
                 'fields' => null,
@@ -34,18 +33,7 @@ class LeadFollowUpService
             ];
         }
 
-        $decoded = FormContentSchema::decode($result['content']);
-
-        if ($decoded === null) {
-            return [
-                'success' => false,
-                'fields' => null,
-                'error' => __('ai::content_generation.messages.empty_result'),
-                'provider' => $result['provider'],
-            ];
-        }
-
-        $fields = LeadFollowUpSchema::normalize($decoded);
+        $fields = LeadFollowUpSchema::normalize($result['data'] ?? []);
 
         if ($fields['title'] === '' && $fields['body'] === '') {
             return [

@@ -3,9 +3,12 @@
 namespace Modules\CRM\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Modules\Base\Support\CompanyBranding;
 use Modules\CRM\Http\Requests\StoreQuoteRequest;
 use Modules\CRM\Http\Requests\UpdateQuoteRequest;
 use Modules\CRM\Models\Company;
@@ -39,7 +42,6 @@ class QuoteController extends Controller
 
     public function create(Request $request): View
     {
-        $companies = Company::query()->orderBy('name')->get(['id', 'name']);
         $deals = Deal::query()
             ->with('company:id,name')
             ->when($request->integer('company_id'), fn ($q, $id) => $q->where('company_id', $id))
@@ -66,12 +68,8 @@ class QuoteController extends Controller
         }
 
         return view('crm::admin.quote.create', [
-            'companies' => $companies,
+            ...$this->formOptions(),
             'deals' => $deals,
-            'services' => Service::query()->orderBy('id')->get(),
-            'products' => Product::query()->orderBy('id')->get(),
-            'currencies' => $this->currencyService->supportedCurrencies(),
-            'defaultCurrency' => $this->currencyService->defaultCurrency(),
             'selectedDeal' => $selectedDeal,
             'prefillLines' => $prefillLines,
         ]);
@@ -90,7 +88,7 @@ class QuoteController extends Controller
     {
         $quote = $this->quoteService->refreshExpiry($quote);
         $quote->load(['company', 'deal', 'project', 'lines.service', 'lines.product']);
-        $companyBranding = \Modules\Base\Support\CompanyBranding::forInvoice();
+        $companyBranding = CompanyBranding::forInvoice();
 
         return view('crm::admin.quote.show', compact('quote', 'companyBranding'));
     }
@@ -104,7 +102,6 @@ class QuoteController extends Controller
         }
 
         $quote->load('lines');
-        $companies = Company::query()->orderBy('name')->get(['id', 'name']);
         $deals = Deal::query()->latest()->get(['id', 'title', 'company_id', 'currency', 'value']);
 
         $prefillLines = $quote->lines->map(fn ($line) => [
@@ -119,13 +116,9 @@ class QuoteController extends Controller
         ])->values()->all();
 
         return view('crm::admin.quote.edit', [
+            ...$this->formOptions($quote->currency),
             'quote' => $quote,
-            'companies' => $companies,
             'deals' => $deals,
-            'services' => Service::query()->orderBy('id')->get(),
-            'products' => Product::query()->orderBy('id')->get(),
-            'currencies' => $this->currencyService->supportedCurrencies(),
-            'defaultCurrency' => $quote->currency,
             'prefillLines' => $prefillLines,
         ]);
     }
@@ -187,7 +180,7 @@ class QuoteController extends Controller
 
         try {
             $quote = $this->quoteService->createFromDeal($deal);
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             $message = collect($e->errors())->flatten()->first()
                 ?: __('crm::quote.messages.deal_quote_failed');
             session()->flushMessage(false, $message);
@@ -198,5 +191,25 @@ class QuoteController extends Controller
         session()->flushMessage(true, __('crm::quote.messages.created'));
 
         return redirect()->route('admin.quotes.show', $quote);
+    }
+
+    /**
+     * @return array{
+     *     companies: Collection<int, Company>,
+     *     services: Collection<int, Service>,
+     *     products: Collection<int, Product>,
+     *     currencies: list<string>,
+     *     defaultCurrency: string
+     * }
+     */
+    private function formOptions(?string $defaultCurrency = null): array
+    {
+        return [
+            'companies' => Company::query()->orderBy('name')->get(['id', 'name']),
+            'services' => Service::query()->orderBy('id')->get(),
+            'products' => Product::query()->orderBy('id')->get(),
+            'currencies' => $this->currencyService->supportedCurrencies(),
+            'defaultCurrency' => $defaultCurrency ?? $this->currencyService->defaultCurrency(),
+        ];
     }
 }

@@ -492,6 +492,31 @@ class FinanceService
         ];
     }
 
+    /**
+     * @param  array{employee_id: int, base_salary: float|string, period: string, status?: string, paid_at?: string|null}  $data
+     */
+    public function createSalary(array $data): Salary
+    {
+        $status = $data['status'] ?? Salary::STATUS_PENDING;
+
+        $salary = Salary::query()->create([
+            'employee_id' => $data['employee_id'],
+            'base_salary' => $data['base_salary'],
+            'period' => $data['period'],
+            'status' => Salary::STATUS_PENDING,
+            'paid_at' => null,
+        ]);
+
+        if ($status === Salary::STATUS_PAID) {
+            $this->recordSalaryPayout(
+                $salary->load('employee'),
+                $data['paid_at'] ?? now()->toDateString(),
+            );
+        }
+
+        return $salary->fresh() ?? $salary;
+    }
+
     public function recordSalaryPayout(Salary $salary, ?string $paidAt = null): void
     {
         if ($salary->status === Salary::STATUS_PAID) {

@@ -96,10 +96,7 @@ class GeminiImageService
                 ? "Edit the attached photo while staying consistent with {$name}'s brand."
                 : "The first attached image is the photo to edit. The second attached image is the official brand logo for {$name} (identity reference only). Keep the result on-brand: match colors, style, and visual identity. Do not replace the subject with the logo unless the user asked to include the logo.");
 
-        $profile = CompanyContentProfile::promptBlock();
-        $block = $profile !== '' ? $profile."\n\n" : '';
-
-        return $instructions."\n\n".$block."User request:\n".$prompt;
+        return CompanyContentProfile::appendTo($instructions)."\n\nUser request:\n".$prompt;
     }
 
     /**

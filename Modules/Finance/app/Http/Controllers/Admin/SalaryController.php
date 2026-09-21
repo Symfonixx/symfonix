@@ -36,7 +36,7 @@ class SalaryController extends Controller
 
     public function store(StoreSalaryRequest $request): RedirectResponse
     {
-        Salary::query()->create($request->validated());
+        $this->financeService->createSalary($request->validated());
 
         session()->flushMessage(true, __('finance::salary.messages.created'));
 

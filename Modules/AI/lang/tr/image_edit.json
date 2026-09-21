@@ -1,0 +1,38 @@
+{
+    "button": {
+        "label": "Yapay zeka ile düzenle",
+        "tooltip": "Bu görseli yapay zeka ile düzenle",
+        "create_label": "Yapay zeka ile oluştur",
+        "create_tooltip": "Yapay zeka ile yeni bir görsel oluştur"
+    },
+    "modal": {
+        "title": "Görseli yapay zeka ile düzenle",
+        "create_title": "Yapay zeka ile görsel oluştur",
+        "prompt_label": "İstediğiniz düzenlemeyi açıklayın",
+        "prompt_placeholder": "ör. Arka planı alacakaranlığa çevir, soldaki kişiyi kaldır...",
+        "create_prompt_label": "Oluşturmak istediğiniz görseli açıklayın",
+        "create_prompt_placeholder": "ör. Şeffaf arka plan üzerinde mavi ve beyaz renklerde modern, sade bir logo...",
+        "generate": "Oluştur",
+        "generating": "Oluşturuluyor...",
+        "result_title": "Önizleme",
+        "replace": "Orijinali değiştir",
+        "save_as_new": "Yeni sürüm olarak kaydet",
+        "use_this_image": "Bu görseli kullan",
+        "use_brand": "Markamıza uyum sağla",
+        "use_brand_hint": "Gemini’nin renklerinizi ve kimliğinizi izlemesi için Ayarlar’daki site logosunu gönderir.",
+        "no_brand_logo": "Oluşturulan görsellerin markanıza uyması için Ayarlar › Marka altına bir site logosu ekleyin.",
+        "discard": "Vazgeç",
+        "close": "Kapat"
+    },
+    "messages": {
+        "not_configured": "Gemini API anahtarı yapılandırılmamış. Ayarlar > Entegrasyonlar > Yapay Zeka Entegrasyonları altına ekleyin.",
+        "no_image_returned": "Gemini düzenlenmiş bir görsel döndürmedi. İsteğinizi ayarlamayı deneyin.",
+        "request_failed": "Yapay zeka görsel düzenleme isteği başarısız oldu. Lütfen tekrar deneyin.",
+        "invalid_target": "Bu görsel alanı yapay zeka düzenlemesi için etkin değil.",
+        "source_image_missing": "Orijinal görsel diskte bulunamadı.",
+        "invalid_or_expired": "Bu yapay zeka sonucu süresi doldu. Lütfen yeniden oluşturun.",
+        "applied": "Görsel başarıyla güncellendi.",
+        "staged": "Görsel hazırlandı. Tutmak için formu kaydetmeyi unutmayın.",
+        "staged_hint": "Bu görsel henüz kaydedilmedi. \"Bu görseli kullan\" düzenlenen sürümü seçili dosyanın yerine koyar — tutmak için formu kaydedin."
+    }
+}

@@ -57,22 +57,7 @@ class PageController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $data = PageData::validate([
-            'title' => $request->input('title'),
-            'slug' => $request->input('slug'),
-            'description' => $request->input('description'),
-            'content' => $request->input('content'),
-            'keywords' => $request->input('keywords'),
-            'image' => $request->file('img'),
-            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
-            'featured' => $request->boolean('featured'),
-            'add_to_nav' => $request->boolean('add_to_nav'),
-            'add_to_footer' => $request->boolean('add_to_footer'),
-            'add_to_top_bar' => $request->boolean('add_to_top_bar'),
-        ]);
-        $data['auto_translate'] = $request->boolean('auto_translate');
-
-        $this->pageRepository->store($data);
+        $this->pageRepository->store($this->payload($request));
 
         return redirect()->route('admin.pages.index');
     }
@@ -91,22 +76,7 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page): RedirectResponse
     {
-        // Convert request data to PageData DTO
-        $data = PageData::validate([
-            'title' => $request->input('title'),
-            'slug' => $page->slug,
-            'description' => $request->input('description'),
-            'content' => $request->input('content'),
-            'keywords' => $request->input('keywords'),
-            'image' => $request->file('img'),
-            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
-            'featured' => $request->boolean('featured'),
-            'add_to_nav' => $request->boolean('add_to_nav'),
-            'add_to_footer' => $request->boolean('add_to_footer'),
-            'add_to_top_bar' => $request->boolean('add_to_top_bar'),
-        ]);
-        $data['auto_translate'] = $request->boolean('auto_translate');
-        $this->pageRepository->update($data, $page);
+        $this->pageRepository->update($this->payload($request, $page->slug), $page);
 
         return redirect()->route('admin.pages.index');
     }
@@ -119,5 +89,28 @@ class PageController extends Controller
         $this->pageRepository->deleteMulti($request->input('ids'));
 
         return back();
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function payload(Request $request, ?string $slug = null): array
+    {
+        $data = PageData::validate([
+            'title' => $request->input('title'),
+            'slug' => $slug ?? $request->input('slug'),
+            'description' => $request->input('description'),
+            'content' => $request->input('content'),
+            'keywords' => $request->input('keywords'),
+            'image' => $request->file('img'),
+            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
+            'featured' => $request->boolean('featured'),
+            'add_to_nav' => $request->boolean('add_to_nav'),
+            'add_to_footer' => $request->boolean('add_to_footer'),
+            'add_to_top_bar' => $request->boolean('add_to_top_bar'),
+        ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
+
+        return $data;
     }
 }

@@ -58,6 +58,7 @@ class OpenAITextService implements AiChatProvider
 
         if ($json) {
             $payload['response_format'] = ['type' => 'json_object'];
+            $payload['max_tokens'] = 8192;
         }
 
         try {

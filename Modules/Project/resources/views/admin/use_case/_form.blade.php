@@ -1,6 +1,6 @@
 @php($useCaseData = $useCase ?? null)
 
-<x-ai::generate-form-button type="use_case" :banner="true" />
+<x-ai::generate-form-button type="use_case" :banner="true" :optimize="(bool) $useCaseData" />
 
 <div class="row mb-8">
     <div class="col-xl-3">

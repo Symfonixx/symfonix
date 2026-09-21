@@ -39,6 +39,17 @@ class CompanyContentProfile
             .implode("\n", $lines);
     }
 
+    public static function appendTo(string $prompt): string
+    {
+        $profile = self::promptBlock();
+
+        if ($profile === '') {
+            return $prompt;
+        }
+
+        return $prompt."\n\n".$profile;
+    }
+
     /**
      * @return array<string, string>
      */

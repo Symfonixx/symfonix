@@ -14,7 +14,7 @@
         data-ai-field="{{ $field }}"
         data-ai-image="{{ $imageUrl }}"
         data-bs-toggle="tooltip"
-        title="{{ $label ?? __('ai::image_edit.button.tooltip') }}" data-action="ai">
+        title="{{ $label ?? __('Edit this image with AI') }}" data-action="ai">
     <i class="bi bi-stars fs-7 text-primary"></i>
 </button>
 
@@ -25,14 +25,14 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">
-                            <i class="bi bi-stars text-primary me-2"></i>{{ __('ai::image_edit.modal.title') }}
+                            <i class="bi bi-stars text-primary me-2"></i>{{ __('Edit Image with AI') }}
                         </h5>
                         <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                     </div>
                     <div class="modal-body">
                         <div id="ai-edit-alert" class="alert alert-danger d-none mb-4" role="alert"></div>
                         <div id="ai-edit-staged-hint" class="alert alert-info d-none mb-4" role="alert">
-                            {{ __('ai::image_edit.messages.staged_hint') }}
+                            {{ __('This image has not been saved yet. Clicking "Use This Image" will stage the edited version in place of your selected file — save the form to keep it.') }}
                         </div>
 
                         <div class="row g-4">
@@ -43,11 +43,11 @@
                                 </div>
                             </div>
                             <div class="col-md-6 text-center">
-                                <div class="text-muted fs-8 mb-2 text-uppercase">{{ __('ai::image_edit.modal.result_title') }}</div>
+                                <div class="text-muted fs-8 mb-2 text-uppercase">{{ __('Preview') }}</div>
                                 <div class="border rounded d-flex align-items-center justify-content-center position-relative" style="min-height:150px; max-height:260px; overflow:hidden;">
                                     <img id="ai-edit-result-img" src="" alt="" class="img-fluid d-none" style="max-height:260px; object-fit:contain;"/>
                                     <div id="ai-edit-loading" class="d-none text-muted fs-7">
-                                        <span class="spinner-border spinner-border-sm text-primary me-2"></span>{{ __('ai::image_edit.modal.generating') }}
+                                        <span class="spinner-border spinner-border-sm text-primary me-2"></span>{{ __('Generating...') }}
                                     </div>
                                     <span id="ai-edit-result-placeholder" class="text-muted fs-8">&mdash;</span>
                                 </div>
@@ -57,24 +57,24 @@
                         @include('ai::components._brand-match', ['prefix' => 'ai-edit'])
 
                         <div class="mt-6">
-                            <label class="form-label fw-semibold" for="ai-edit-prompt">{{ __('ai::image_edit.modal.prompt_label') }}</label>
-                            <textarea id="ai-edit-prompt" class="form-control form-control-solid" rows="3" placeholder="{{ __('ai::image_edit.modal.prompt_placeholder') }}"></textarea>
+                            <label class="form-label fw-semibold" for="ai-edit-prompt">{{ __('Describe the edit you want') }}</label>
+                            <textarea id="ai-edit-prompt" class="form-control form-control-solid" rows="3" placeholder="{{ __('e.g. Change background to dusk, remove the person on the left...') }}"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('ai::image_edit.modal.close') }}</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Close') }}</button>
                         <div class="d-flex gap-2">
                             <button type="button" id="ai-edit-generate-btn" class="btn btn-info" data-action="ai">
-                                <i class="bi bi-stars me-1"></i>{{ __('ai::image_edit.modal.generate') }}
+                                <i class="bi bi-stars me-1"></i>{{ __('Generate') }}
                             </button>
                             <button type="button" id="ai-edit-use-btn" class="btn btn-info d-none" data-action="ai">
-                                {{ __('ai::image_edit.modal.use_this_image') }}
+                                {{ __('Use This Image') }}
                             </button>
                             <button type="button" id="ai-edit-save-new-btn" class="btn btn-info d-none" data-action="ai">
-                                {{ __('ai::image_edit.modal.save_as_new') }}
+                                {{ __('Save as New Version') }}
                             </button>
                             <button type="button" id="ai-edit-replace-btn" class="btn btn-info d-none" data-action="ai">
-                                {{ __('ai::image_edit.modal.replace') }}
+                                {{ __('Replace Original') }}
                             </button>
                         </div>
                     </div>
@@ -91,8 +91,8 @@
                 var aiEditMessages = {
                     genericError: @json(__('An Error Occurred!')),
                     promptRequired: @json(__('This field is required.')),
-                    applied: @json(__('ai::image_edit.messages.applied')),
-                    staged: @json(__('ai::image_edit.messages.staged')),
+                    applied: @json(__('Image updated successfully.')),
+                    staged: @json(__('Image staged. Remember to save the form to keep it.')),
                 };
 
                 var $modal = null;

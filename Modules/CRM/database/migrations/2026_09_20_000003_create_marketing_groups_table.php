@@ -18,41 +18,61 @@ return new class extends Migration
             });
         }
 
-        if (Schema::hasTable('marketing_campaigns') && ! Schema::hasColumn('marketing_campaigns', 'marketing_group_id')) {
-            Schema::table('marketing_campaigns', function (Blueprint $table) {
-                $table->foreignId('marketing_group_id')
-                    ->nullable()
-                    ->after('user_id')
-                    ->constrained('marketing_groups')
-                    ->nullOnDelete();
-            });
-        }
-
-        if (Schema::hasTable('whatsapp_campaigns') && ! Schema::hasColumn('whatsapp_campaigns', 'marketing_group_id')) {
-            Schema::table('whatsapp_campaigns', function (Blueprint $table) {
-                $table->foreignId('marketing_group_id')
-                    ->nullable()
-                    ->after('user_id')
-                    ->constrained('marketing_groups')
-                    ->nullOnDelete();
-            });
-        }
+        $this->ensureCampaignGroupColumn('marketing_campaigns');
+        $this->ensureCampaignGroupColumn('whatsapp_campaigns');
     }
 
     public function down(): void
     {
-        if (Schema::hasTable('marketing_campaigns') && Schema::hasColumn('marketing_campaigns', 'marketing_group_id')) {
-            Schema::table('marketing_campaigns', function (Blueprint $table) {
-                $table->dropConstrainedForeignId('marketing_group_id');
-            });
-        }
-
-        if (Schema::hasTable('whatsapp_campaigns') && Schema::hasColumn('whatsapp_campaigns', 'marketing_group_id')) {
-            Schema::table('whatsapp_campaigns', function (Blueprint $table) {
-                $table->dropConstrainedForeignId('marketing_group_id');
-            });
-        }
+        $this->dropCampaignGroupColumn('marketing_campaigns');
+        $this->dropCampaignGroupColumn('whatsapp_campaigns');
 
         Schema::dropIfExists('marketing_groups');
+    }
+
+    private function ensureCampaignGroupColumn(string $table): void
+    {
+        if (! Schema::hasTable($table) || ! Schema::hasTable('marketing_groups')) {
+            return;
+        }
+
+        if (! Schema::hasColumn($table, 'marketing_group_id')) {
+            Schema::table($table, function (Blueprint $blueprint) {
+                $blueprint->unsignedBigInteger('marketing_group_id')->nullable()->after('user_id');
+            });
+        }
+
+        if ($this->hasForeignKey($table, 'marketing_group_id')) {
+            return;
+        }
+
+        Schema::table($table, function (Blueprint $blueprint) {
+            $blueprint->foreign('marketing_group_id')
+                ->references('id')
+                ->on('marketing_groups')
+                ->nullOnDelete();
+        });
+    }
+
+    private function dropCampaignGroupColumn(string $table): void
+    {
+        if (! Schema::hasTable($table) || ! Schema::hasColumn($table, 'marketing_group_id')) {
+            return;
+        }
+
+        Schema::table($table, function (Blueprint $blueprint) {
+            $blueprint->dropConstrainedForeignId('marketing_group_id');
+        });
+    }
+
+    private function hasForeignKey(string $table, string $column): bool
+    {
+        foreach (Schema::getForeignKeys($table) as $foreignKey) {
+            if (in_array($column, $foreignKey['columns'], true)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 };

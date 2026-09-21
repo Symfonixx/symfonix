@@ -12,7 +12,7 @@
         data-ai-id="{{ $id }}"
         data-ai-field="{{ $field }}"
         data-bs-toggle="tooltip"
-        title="{{ $label ?? __('ai::image_edit.button.create_tooltip') }}" data-action="ai">
+        title="{{ $label ?? __('Generate a new image with AI') }}" data-action="ai">
     <i class="bi bi-magic fs-7 text-primary"></i>
 </button>
 
@@ -23,48 +23,48 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">
-                            <i class="bi bi-magic text-primary me-2"></i>{{ __('ai::image_edit.modal.create_title') }}
+                            <i class="bi bi-magic text-primary me-2"></i>{{ __('Create Image with AI') }}
                         </h5>
                         <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                     </div>
                     <div class="modal-body">
                         <div id="ai-create-alert" class="alert alert-danger d-none mb-4" role="alert"></div>
                         <div id="ai-create-staged-hint" class="alert alert-info d-none mb-4" role="alert">
-                            {{ __('ai::image_edit.messages.staged_hint') }}
+                            {{ __('This image has not been saved yet. Clicking "Use This Image" will stage the edited version in place of your selected file — save the form to keep it.') }}
                         </div>
 
                         @include('ai::components._brand-match', ['prefix' => 'ai-create'])
 
                         <div class="mb-6">
-                            <label class="form-label fw-semibold" for="ai-create-prompt">{{ __('ai::image_edit.modal.create_prompt_label') }}</label>
-                            <textarea id="ai-create-prompt" class="form-control form-control-solid" rows="3" placeholder="{{ __('ai::image_edit.modal.create_prompt_placeholder') }}"></textarea>
+                            <label class="form-label fw-semibold" for="ai-create-prompt">{{ __('Describe the image you want to create') }}</label>
+                            <textarea id="ai-create-prompt" class="form-control form-control-solid" rows="3" placeholder="{{ __('e.g. A modern minimalist logo with blue and white colors, on a transparent background...') }}"></textarea>
                         </div>
 
                         <div class="text-center">
-                            <div class="text-muted fs-8 mb-2 text-uppercase">{{ __('ai::image_edit.modal.result_title') }}</div>
+                            <div class="text-muted fs-8 mb-2 text-uppercase">{{ __('Preview') }}</div>
                             <div class="border rounded d-flex align-items-center justify-content-center position-relative mx-auto" style="min-height:200px; max-height:320px; overflow:hidden;">
                                 <img id="ai-create-result-img" src="" alt="" class="img-fluid d-none" style="max-height:320px; object-fit:contain;"/>
                                 <div id="ai-create-loading" class="d-none text-muted fs-7">
-                                    <span class="spinner-border spinner-border-sm text-primary me-2"></span>{{ __('ai::image_edit.modal.generating') }}
+                                    <span class="spinner-border spinner-border-sm text-primary me-2"></span>{{ __('Generating...') }}
                                 </div>
                                 <span id="ai-create-result-placeholder" class="text-muted fs-8">&mdash;</span>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('ai::image_edit.modal.close') }}</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Close') }}</button>
                         <div class="d-flex gap-2">
                             <button type="button" id="ai-create-generate-btn" class="btn btn-info" data-action="ai">
-                                <i class="bi bi-magic me-1"></i>{{ __('ai::image_edit.modal.generate') }}
+                                <i class="bi bi-magic me-1"></i>{{ __('Generate') }}
                             </button>
                             <button type="button" id="ai-create-use-btn" class="btn btn-info d-none" data-action="ai">
-                                {{ __('ai::image_edit.modal.use_this_image') }}
+                                {{ __('Use This Image') }}
                             </button>
                             <button type="button" id="ai-create-save-new-btn" class="btn btn-info d-none" data-action="ai">
-                                {{ __('ai::image_edit.modal.save_as_new') }}
+                                {{ __('Save as New Version') }}
                             </button>
                             <button type="button" id="ai-create-replace-btn" class="btn btn-info d-none" data-action="ai">
-                                {{ __('ai::image_edit.modal.replace') }}
+                                {{ __('Replace Original') }}
                             </button>
                         </div>
                     </div>
@@ -81,8 +81,8 @@
                 var aiCreateMessages = {
                     genericError: @json(__('An Error Occurred!')),
                     promptRequired: @json(__('This field is required.')),
-                    applied: @json(__('ai::image_edit.messages.applied')),
-                    staged: @json(__('ai::image_edit.messages.staged')),
+                    applied: @json(__('Image updated successfully.')),
+                    staged: @json(__('Image staged. Remember to save the form to keep it.')),
                 };
 
                 var $modal = null;

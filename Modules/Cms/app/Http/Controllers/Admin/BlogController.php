@@ -46,19 +46,7 @@ class BlogController extends Controller
     {
         $this->contentMarketingEmailSender->validate($request);
 
-        $data = BlogData::validate([
-            'title' => $request->input('title'),
-            'slug' => $request->input('slug'),
-            'description' => $request->input('description'),
-            'content' => $request->input('content'),
-            'keywords' => $request->input('keywords'),
-            'image' => $request->file('img'),
-            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
-            'featured' => $request->boolean('featured'),
-            'category_id' => $request->input('category_id'),
-        ]);
-        $data['auto_translate'] = $request->boolean('auto_translate');
-        $this->blogRepository->store($data);
+        $this->blogRepository->store($this->payload($request));
 
         if ($this->contentMarketingEmailSender->shouldSend($request)) {
             try {
@@ -93,19 +81,7 @@ class BlogController extends Controller
 
     public function update(Request $request, Blog $blog): RedirectResponse
     {
-        $data = BlogData::validate([
-            'title' => $request->input('title'),
-            'slug' => $blog->slug,
-            'description' => $request->input('description'),
-            'content' => $request->input('content'),
-            'keywords' => $request->input('keywords'),
-            'image' => $request->file('img'),
-            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
-            'featured' => $request->boolean('featured'),
-            'category_id' => $request->input('category_id'),
-        ]);
-        $data['auto_translate'] = $request->boolean('auto_translate');
-        $this->blogRepository->update($data, $blog);
+        $this->blogRepository->update($this->payload($request, $blog->slug), $blog);
 
         return redirect()->route('admin.blogs.index');
     }
@@ -115,5 +91,26 @@ class BlogController extends Controller
         $this->blogRepository->deleteMulti($request->input('ids'));
 
         return back();
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function payload(Request $request, ?string $slug = null): array
+    {
+        $data = BlogData::validate([
+            'title' => $request->input('title'),
+            'slug' => $slug ?? $request->input('slug'),
+            'description' => $request->input('description'),
+            'content' => $request->input('content'),
+            'keywords' => $request->input('keywords'),
+            'image' => $request->file('img'),
+            'status' => $request->has('publish') ? CmsStatus::PUBLISHED : CmsStatus::ARCHIVED,
+            'featured' => $request->boolean('featured'),
+            'category_id' => $request->input('category_id'),
+        ]);
+        $data['auto_translate'] = $request->boolean('auto_translate');
+
+        return $data;
     }
 }

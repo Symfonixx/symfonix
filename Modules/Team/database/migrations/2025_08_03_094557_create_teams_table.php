@@ -11,6 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasTable('teams')) {
+            if (! Schema::hasColumn('teams', 'employee_id')) {
+                Schema::table('teams', function (Blueprint $table) {
+                    $table->foreignId('employee_id')
+                        ->nullable()
+                        ->unique()
+                        ->constrained('employees')
+                        ->nullOnDelete();
+                });
+            }
+
+            return;
+        }
+
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('avatar');

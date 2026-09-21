@@ -4,7 +4,7 @@ namespace Modules\Cms\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Modules\Cms\Http\Requests\SaveBlogCategoryRequest;
 use Modules\Cms\Models\BlogCategory;
 use Modules\Cms\Repositories\BlogCategory\BlogCategoryRepository;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
@@ -32,14 +32,9 @@ class BlogCategoryController extends Controller
         return view('cms::admin.blog_category.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(SaveBlogCategoryRequest $request): RedirectResponse
     {
-        $data = [
-            'name' => $request->input('name'),
-            'slug' => $request->input('slug'),
-            'auto_translate' => $request->boolean('auto_translate'),
-        ];
-        $this->categoryRepository->store($data);
+        $this->categoryRepository->store($this->payload($request));
 
         return redirect()->route('admin.blogs_categories.index');
     }
@@ -49,14 +44,9 @@ class BlogCategoryController extends Controller
         return view('cms::admin.blog_category.edit', compact('blogs_category'));
     }
 
-    public function update(Request $request, BlogCategory $blogs_category): RedirectResponse
+    public function update(SaveBlogCategoryRequest $request, BlogCategory $blogs_category): RedirectResponse
     {
-        $data = [
-            'name' => $request->input('name'),
-            'slug' => $blogs_category->slug,
-            'auto_translate' => $request->boolean('auto_translate'),
-        ];
-        $this->categoryRepository->update($data, $blogs_category);
+        $this->categoryRepository->update($this->payload($request, $blogs_category->slug), $blogs_category);
 
         return redirect()->route('admin.blogs_categories.index');
     }
@@ -66,5 +56,17 @@ class BlogCategoryController extends Controller
         $this->categoryRepository->deleteMulti($request->input('ids'));
 
         return back();
+    }
+
+    /**
+     * @return array{name: string, slug: string, auto_translate: bool}
+     */
+    private function payload(SaveBlogCategoryRequest $request, ?string $slug = null): array
+    {
+        return [
+            'name' => $request->validated('name'),
+            'slug' => $slug ?? $request->validated('slug'),
+            'auto_translate' => $request->boolean('auto_translate'),
+        ];
     }
 }

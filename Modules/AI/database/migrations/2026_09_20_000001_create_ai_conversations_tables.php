@@ -8,25 +8,29 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('ai_conversations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('title')->nullable();
-            $table->timestamps();
+        if (! Schema::hasTable('ai_conversations')) {
+            Schema::create('ai_conversations', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+                $table->string('title')->nullable();
+                $table->timestamps();
 
-            $table->index(['user_id', 'updated_at']);
-        });
+                $table->index(['user_id', 'updated_at']);
+            });
+        }
 
-        Schema::create('ai_messages', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('conversation_id')->constrained('ai_conversations')->cascadeOnDelete();
-            $table->string('role', 32);
-            $table->longText('content')->nullable();
-            $table->json('metadata')->nullable();
-            $table->timestamps();
+        if (! Schema::hasTable('ai_messages')) {
+            Schema::create('ai_messages', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('conversation_id')->constrained('ai_conversations')->cascadeOnDelete();
+                $table->string('role', 32);
+                $table->longText('content')->nullable();
+                $table->json('metadata')->nullable();
+                $table->timestamps();
 
-            $table->index(['conversation_id', 'created_at']);
-        });
+                $table->index(['conversation_id', 'created_at']);
+            });
+        }
     }
 
     public function down(): void

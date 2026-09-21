@@ -36,7 +36,7 @@ class StaffController extends Controller
         $model = $this->employeeRepository->all();
         $groups = PermissionCatalog::groups();
 
-        return view('user::.admin.staff.index', compact('model', 'groups'));
+        return view('user::admin.staff.index', compact('model', 'groups'));
     }
 
     public function store(StoreEmployeeRequest $request)

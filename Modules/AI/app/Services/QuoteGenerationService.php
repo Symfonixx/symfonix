@@ -3,7 +3,6 @@
 namespace Modules\AI\Services;
 
 use Modules\AI\Support\CompanyContentProfile;
-use Modules\AI\Support\FormContentSchema;
 use Modules\AI\Support\QuoteGenerationSchema;
 use Modules\Base\Support\CompanyBranding;
 use Modules\CRM\Models\Company;
@@ -49,12 +48,12 @@ class QuoteGenerationService
         }
 
         $context = $this->context($company, $deal, $catalog, $fallbackLines, $locale);
-        $generated = $this->contentGenerationService->generateStructuredContent(
+        $generated = $this->contentGenerationService->generateJson(
             QuoteGenerationSchema::systemPrompt($locale, $context),
             QuoteGenerationSchema::userMessage($context, $prompt),
         );
 
-        if (! $generated['success'] || ! is_string($generated['content'])) {
+        if (! $generated['success']) {
             return [
                 'success' => false,
                 'fields' => null,
@@ -63,18 +62,8 @@ class QuoteGenerationService
             ];
         }
 
-        $decoded = FormContentSchema::decode($generated['content']);
-        if ($decoded === null) {
-            return [
-                'success' => false,
-                'fields' => null,
-                'error' => __('ai::content_generation.messages.empty_result'),
-                'provider' => $generated['provider'],
-            ];
-        }
-
         $fields = QuoteGenerationSchema::normalize(
-            $decoded,
+            $generated['data'] ?? [],
             $catalog,
             $fallbackLines,
             (string) ($deal->currency ?: 'USD'),

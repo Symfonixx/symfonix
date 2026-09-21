@@ -47,10 +47,14 @@ class GeminiTextService implements AiChatProvider
 
         $generationConfig = [
             'temperature' => 0.7,
+            'thinkingConfig' => [
+                'thinkingBudget' => 0,
+            ],
         ];
 
         if ($json) {
             $generationConfig['responseMimeType'] = 'application/json';
+            $generationConfig['maxOutputTokens'] = 8192;
         }
 
         $payload = [
@@ -76,9 +80,16 @@ class GeminiTextService implements AiChatProvider
                 ->post($this->endpoint(), $payload)
                 ->throw();
 
-            $content = $this->extractText($response->json());
+            $jsonResponse = $response->json();
+            $content = $this->extractText(is_array($jsonResponse) ? $jsonResponse : null);
 
             if ($content === null) {
+                Log::warning('Gemini content generation returned no text', [
+                    'finish_reason' => is_array($jsonResponse)
+                        ? ($jsonResponse['candidates'][0]['finishReason'] ?? null)
+                        : null,
+                ]);
+
                 return $this->structuredFailure(__('ai::content_generation.messages.empty_result'));
             }
 
@@ -344,6 +355,10 @@ class GeminiTextService implements AiChatProvider
         $chunks = [];
 
         foreach ($parts as $part) {
+            if (! is_array($part) || ! empty($part['thought'])) {
+                continue;
+            }
+
             if (isset($part['text']) && is_string($part['text']) && trim($part['text']) !== '') {
                 $chunks[] = $part['text'];
             }
@@ -406,20 +421,14 @@ class GeminiTextService implements AiChatProvider
      */
     private function extractText(?array $responseJson): ?string
     {
-        $parts = $responseJson['candidates'][0]['content']['parts'] ?? [];
-        $chunks = [];
-
-        foreach ($parts as $part) {
-            if (isset($part['text']) && is_string($part['text']) && trim($part['text']) !== '') {
-                $chunks[] = $part['text'];
-            }
-        }
-
-        if ($chunks === []) {
+        if ($responseJson === null) {
             return null;
         }
 
-        return implode("\n", $chunks);
+        $candidate = $responseJson['candidates'][0] ?? [];
+        $parts = is_array($candidate) ? ($candidate['content']['parts'] ?? []) : [];
+
+        return $this->extractTextFromParts(is_array($parts) ? $parts : []);
     }
 
     private function endpoint(): string

@@ -37,7 +37,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">
-                            <i class="bi bi-stars text-primary me-2"></i>{{ __('ai::content_generation.modal.title') }}
+                            <i class="bi bi-stars text-primary me-2"></i>{{ __('AI Content Assistant') }}
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -45,35 +45,35 @@
                         <div id="ai-content-alert" class="alert alert-danger d-none mb-4" role="alert"></div>
 
                         <div class="mb-4">
-                            <label class="form-label fw-semibold" for="ai-content-prompt">{{ __('ai::content_generation.modal.prompt_label') }}</label>
-                            <textarea id="ai-content-prompt" class="form-control form-control-solid" rows="4" placeholder="{{ __('ai::content_generation.modal.prompt_placeholder') }}"></textarea>
+                            <label class="form-label fw-semibold" for="ai-content-prompt">{{ __('What should the AI write?') }}</label>
+                            <textarea id="ai-content-prompt" class="form-control form-control-solid" rows="4" placeholder="{{ __('e.g. Write a 3-paragraph introduction about cloud computing, or summarize the selected text.') }}"></textarea>
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label fw-semibold" for="ai-content-mode">{{ __('ai::content_generation.modal.insert_mode') }}</label>
+                            <label class="form-label fw-semibold" for="ai-content-mode">{{ __('Action') }}</label>
                             <select id="ai-content-mode" class="form-select form-select-solid">
-                                <option value="insert">{{ __('ai::content_generation.modal.insert_at_cursor') }}</option>
-                                <option value="replace">{{ __('ai::content_generation.modal.replace_selected') }}</option>
+                                <option value="insert">{{ __('Insert at Cursor') }}</option>
+                                <option value="replace">{{ __('Replace Selected Content') }}</option>
                             </select>
                         </div>
 
                         <div id="ai-content-loading" class="d-none text-muted fs-7 mb-4">
-                            <span class="spinner-border spinner-border-sm text-primary me-2"></span>{{ __('ai::content_generation.modal.generating') }}
+                            <span class="spinner-border spinner-border-sm text-primary me-2"></span>{{ __('Generating...') }}
                         </div>
 
                         <div id="ai-content-preview-wrap" class="d-none">
-                            <div class="text-muted fs-8 mb-2 text-uppercase">{{ __('ai::content_generation.modal.result_title') }}</div>
+                            <div class="text-muted fs-8 mb-2 text-uppercase">{{ __('Preview') }}</div>
                             <div id="ai-content-preview" class="border rounded p-4 bg-light" style="min-height:120px; max-height:280px; overflow:auto;"></div>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('ai::content_generation.modal.close') }}</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
                         <div class="d-flex gap-2">
                             <button type="button" id="ai-content-generate-btn" class="btn btn-primary">
-                                <i class="bi bi-stars me-1"></i>{{ __('ai::content_generation.modal.generate') }}
+                                <i class="bi bi-stars me-1"></i>{{ __('Generate') }}
                             </button>
                             <button type="button" id="ai-content-insert-btn" class="btn btn-success d-none">
-                                {{ __('ai::content_generation.modal.insert') }}
+                                {{ __('Insert into editor') }}
                             </button>
                         </div>
                     </div>
@@ -85,11 +85,11 @@
             window.SymfonixAIAssistant = (function () {
                 var routeUrl = @json($aiGenerateUrl);
                 var i18n = {
-                    buttonLabel: @json(__('ai::content_generation.button.label')),
-                    buttonTooltip: @json(__('ai::content_generation.button.tooltip')),
-                    emptyPrompt: @json(__('ai::content_generation.messages.empty_prompt')),
-                    genericError: @json(__('ai::content_generation.messages.request_failed')),
-                    notAvailable: @json(__('ai::content_generation.messages.not_available')),
+                    buttonLabel: @json(__('AI')),
+                    buttonTooltip: @json(__('AI Assistant')),
+                    emptyPrompt: @json(__("Please describe what you'd like the AI to write.")),
+                    genericError: @json(__('The AI content generation request failed. Please try again.')),
+                    notAvailable: @json(__('The AI content generator is not available right now.')),
                 };
                 var editor = null;
                 var editorId = null;

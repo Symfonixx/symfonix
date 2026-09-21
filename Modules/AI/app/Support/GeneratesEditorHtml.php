@@ -14,13 +14,7 @@ trait GeneratesEditorHtml
             .'Do not wrap the response in <html>, <head>, or <body> tags. '
             .'Do not use markdown syntax or code fences. Return only the HTML fragment, nothing else.';
 
-        $profile = CompanyContentProfile::promptBlock();
-
-        if ($profile !== '') {
-            $prompt .= "\n\n".$profile;
-        }
-
-        return $prompt;
+        return CompanyContentProfile::appendTo($prompt);
     }
 
     protected function userMessage(string $prompt, ?string $context): string
@@ -34,11 +28,7 @@ trait GeneratesEditorHtml
 
     protected function normalizeHtml(string $content): string
     {
-        $content = trim($content);
-        $content = preg_replace('/^```(?:html)?\s*/i', '', $content) ?? $content;
-        $content = preg_replace('/```\s*$/', '', $content) ?? $content;
-
-        return trim($content);
+        return FormContentSchema::stripFences($content, 'html');
     }
 
     /**

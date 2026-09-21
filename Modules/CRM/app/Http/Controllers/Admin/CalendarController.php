@@ -5,8 +5,8 @@ namespace Modules\CRM\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\CRM\Http\Requests\CalendarEventsRequest;
 use Modules\CRM\Services\Calendar\CalendarService;
 
 class CalendarController extends Controller
@@ -23,19 +23,12 @@ class CalendarController extends Controller
         return view('crm::admin.calendar.index');
     }
 
-    public function events(Request $request): JsonResponse
+    public function events(CalendarEventsRequest $request): JsonResponse
     {
-        $request->validate([
-            'start' => ['required', 'date'],
-            'end' => ['required', 'date', 'after_or_equal:start'],
-            'types' => ['sometimes', 'array'],
-            'types.*' => ['string', 'in:activities,leads,deals,quotes,subscriptions,projects'],
-        ]);
-
-        $start = Carbon::parse($request->input('start'))->startOfDay();
-        $end = Carbon::parse($request->input('end'))->endOfDay();
+        $start = Carbon::parse($request->validated('start'))->startOfDay();
+        $end = Carbon::parse($request->validated('end'))->endOfDay();
         $types = $request->has('types')
-            ? array_values($request->input('types', []))
+            ? array_values($request->validated('types') ?? [])
             : null;
 
         return response()->json(

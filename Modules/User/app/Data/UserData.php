@@ -23,7 +23,7 @@ class UserData extends Data
         public string $mobile,
 
         #[Nullable, StringType, Min(6), Max(100)]
-        public ?string $password,  // Make password nullable
+        public ?string $password,
 
         #[StringType]
         public string $type,

@@ -2,28 +2,47 @@
     'type',
     'banner' => false,
     'hint' => null,
+    'optimize' => false,
 ])
+
+@php
+    $mode = $optimize ? 'optimize' : 'create';
+    $buttonLabel = $optimize
+        ? __('ai::content_generation.form.optimize_button')
+        : __('ai::content_generation.form.button');
+    $buttonTooltip = $optimize
+        ? __('ai::content_generation.form.optimize_tooltip')
+        : __('ai::content_generation.form.tooltip');
+    $bannerTitle = $optimize
+        ? __('ai::content_generation.form.optimize_banner_title')
+        : __('ai::content_generation.form.banner_title');
+    $bannerHint = $hint ?? ($optimize
+        ? __('ai::content_generation.form.optimize_banner_hint')
+        : __('ai::content_generation.form.banner_hint'));
+@endphp
 
 @if (\Illuminate\Support\Facades\Route::has('admin.ai.content.generate-form'))
     @if ($banner)
         <div class="alert alert-light-primary d-flex flex-wrap align-items-center justify-content-between gap-3 mb-8">
             <div>
-                <div class="fw-bold">{{ __('ai::content_generation.form.banner_title') }}</div>
-                <div class="text-muted fs-7">{{ $hint ?? __('ai::content_generation.form.banner_hint') }}</div>
+                <div class="fw-bold">{{ $bannerTitle }}</div>
+                <div class="text-muted fs-7">{{ $bannerHint }}</div>
             </div>
             <button type="button"
                     class="btn btn-sm btn-info ai-generate-form-trigger"
                     data-ai-form-type="{{ $type }}"
-                    title="{{ __('ai::content_generation.form.tooltip') }}" data-action="ai">
-                <i class="bi bi-stars me-1"></i>{{ __('ai::content_generation.form.button') }}
+                    data-ai-mode="{{ $mode }}"
+                    title="{{ $buttonTooltip }}" data-action="ai">
+                <i class="bi bi-stars me-1"></i>{{ $buttonLabel }}
             </button>
         </div>
     @else
         <button type="button"
                 class="btn btn-sm btn-info ai-generate-form-trigger"
                 data-ai-form-type="{{ $type }}"
-                title="{{ __('ai::content_generation.form.tooltip') }}" data-action="ai">
-            <i class="bi bi-stars me-1"></i>{{ __('ai::content_generation.form.button') }}
+                data-ai-mode="{{ $mode }}"
+                title="{{ $buttonTooltip }}" data-action="ai">
+            <i class="bi bi-stars me-1"></i>{{ $buttonLabel }}
         </button>
     @endif
 
@@ -38,24 +57,24 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">
-                                <i class="bi bi-stars text-primary me-2"></i>{{ __('ai::content_generation.form.modal_title') }}
+                                <i class="bi bi-stars text-primary me-2"></i><span id="ai-form-modal-title">{{ __('ai::content_generation.form.modal_title') }}</span>
                             </h5>
                             <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
                         </div>
                         <div class="modal-body">
                             <div id="ai-form-alert" class="alert alert-danger d-none mb-4" role="alert"></div>
                             <div class="mb-0">
-                                <label class="form-label fw-semibold" for="ai-form-prompt">{{ __('ai::content_generation.form.prompt_label') }}</label>
+                                <label class="form-label fw-semibold" for="ai-form-prompt" id="ai-form-prompt-label">{{ __('ai::content_generation.form.prompt_label') }}</label>
                                 <textarea id="ai-form-prompt" class="form-control form-control-solid" rows="4" placeholder="{{ __('ai::content_generation.form.prompt_placeholder') }}"></textarea>
                             </div>
                             <div id="ai-form-loading" class="d-none text-muted fs-7 mt-4">
-                                <span class="spinner-border spinner-border-sm text-primary me-2"></span>{{ __('ai::content_generation.form.generating') }}
+                                <span class="spinner-border spinner-border-sm text-primary me-2"></span><span id="ai-form-loading-text">{{ __('ai::content_generation.form.generating') }}</span>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('ai::content_generation.modal.close') }}</button>
                             <button type="button" id="ai-form-generate-btn" class="btn btn-info" data-action="ai">
-                                <i class="bi bi-stars me-1"></i>{{ __('ai::content_generation.form.generate') }}
+                                <i class="bi bi-stars me-1"></i><span id="ai-form-generate-label">{{ __('ai::content_generation.form.generate') }}</span>
                             </button>
                         </div>
                     </div>
@@ -68,34 +87,40 @@
                     var locale = @json(app()->getLocale());
                     var i18n = {
                         emptyPrompt: @json(__('ai::content_generation.messages.empty_prompt')),
+                        emptyContent: @json(__('ai::content_generation.messages.empty_content')),
                         genericError: @json(__('ai::content_generation.messages.request_failed')),
                         notAvailable: @json(__('ai::content_generation.messages.not_available')),
                         applied: @json(__('ai::content_generation.form.applied')),
                         productApplied: @json(__('ai::content_generation.form.product_applied')),
                         overwrite: @json(__('ai::content_generation.form.overwrite_confirm')),
+                        create: {
+                            title: @json(__('ai::content_generation.form.modal_title')),
+                            promptLabel: @json(__('ai::content_generation.form.prompt_label')),
+                            placeholder: @json(__('ai::content_generation.form.prompt_placeholder')),
+                            generate: @json(__('ai::content_generation.form.generate')),
+                            generating: @json(__('ai::content_generation.form.generating')),
+                            applied: @json(__('ai::content_generation.form.applied')),
+                        },
+                        optimize: {
+                            title: @json(__('ai::content_generation.form.optimize_modal_title')),
+                            promptLabel: @json(__('ai::content_generation.form.optimize_prompt_label')),
+                            placeholder: @json(__('ai::content_generation.form.optimize_prompt_placeholder')),
+                            generate: @json(__('ai::content_generation.form.optimize_generate')),
+                            generating: @json(__('ai::content_generation.form.optimize_generating')),
+                            applied: @json(__('ai::content_generation.form.optimize_applied')),
+                        },
+                    };
+                    var cmsFields = {
+                        title: { name: 'title' },
+                        slug: { type: 'slug' },
+                        description: { name: 'description' },
+                        keywords: { type: 'tagify', selector: '#kt_tagify_1' },
+                        content: { type: 'tinymce', selector: '#tinymce' }
                     };
                     var fieldMaps = {
-                        cms_blog: {
-                            title: { name: 'title' },
-                            slug: { type: 'slug' },
-                            description: { name: 'description' },
-                            keywords: { type: 'tagify', selector: '#kt_tagify_1' },
-                            content: { type: 'tinymce', selector: '#tinymce' }
-                        },
-                        cms_page: {
-                            title: { name: 'title' },
-                            slug: { type: 'slug' },
-                            description: { name: 'description' },
-                            keywords: { type: 'tagify', selector: '#kt_tagify_1' },
-                            content: { type: 'tinymce', selector: '#tinymce' }
-                        },
-                        service: {
-                            title: { name: 'title' },
-                            slug: { type: 'slug' },
-                            description: { name: 'description' },
-                            keywords: { type: 'tagify', selector: '#kt_tagify_1' },
-                            content: { type: 'tinymce', selector: '#tinymce' }
-                        },
+                        cms_blog: cmsFields,
+                        cms_page: cmsFields,
+                        service: cmsFields,
                         product: {
                             name: { name: 'name' },
                             short_description: { name: 'short_description' },
@@ -120,6 +145,7 @@
                     var modal = null;
                     var activeForm = null;
                     var activeType = null;
+                    var activeMode = 'create';
 
                     function csrfToken() {
                         var meta = document.querySelector('meta[name="csrf-token"]');
@@ -175,7 +201,20 @@
                         alertEl.classList.add('d-none');
                     }
 
-                    function fieldValue(form, spec) {
+                    function setBusy(busy) {
+                        var loading = document.getElementById('ai-form-loading');
+                        var button = document.getElementById('ai-form-generate-btn');
+
+                        if (loading) {
+                            loading.classList.toggle('d-none', !busy);
+                        }
+
+                        if (button) {
+                            button.disabled = !!busy;
+                        }
+                    }
+
+                    function fieldValue(form, spec, asHtml) {
                         if (!spec) {
                             return '';
                         }
@@ -206,12 +245,15 @@
                             return String(tagInput.value || '').trim();
                         }
 
-                        if (spec.type === 'tinymce' && spec.selector && typeof tinymce !== 'undefined') {
+                        if (spec.type === 'tinymce' && spec.selector) {
                             var editorId = spec.selector.replace(/^#/, '');
-                            var editor = tinymce.get(editorId);
+                            var editor = (typeof tinymce !== 'undefined') ? tinymce.get(editorId) : null;
                             if (editor) {
-                                return String(editor.getContent({ format: 'text' }) || '').trim();
+                                return String(editor.getContent({ format: asHtml ? 'html' : 'text' }) || '').trim();
                             }
+
+                            var textarea = document.querySelector(spec.selector);
+                            return textarea && textarea.value ? String(textarea.value).trim() : '';
                         }
 
                         return '';
@@ -228,18 +270,19 @@
                         });
                     }
 
-                    function collectExisting(form, type) {
+                    function collectExisting(form, type, forOptimize) {
                         var map = fieldMaps[type] || {};
                         var existing = {};
 
                         Object.keys(map).forEach(function (key) {
-                            if (map[key].type === 'tinymce') {
+                            var spec = map[key];
+                            if (spec.type === 'tinymce' && !forOptimize) {
                                 return;
                             }
 
-                            var value = fieldValue(form, map[key]);
+                            var value = fieldValue(form, spec, spec.type === 'tinymce');
                             if (value) {
-                                existing[key] = value.substring(0, 500);
+                                existing[key] = value.substring(0, spec.type === 'tinymce' ? 40000 : (forOptimize ? 4000 : 500));
                             }
                         });
 
@@ -249,6 +292,21 @@
                         }
 
                         return existing;
+                    }
+
+                    function applyModeUi(mode) {
+                        var copy = i18n[mode] || i18n.create;
+                        var titleEl = document.getElementById('ai-form-modal-title');
+                        var labelEl = document.getElementById('ai-form-prompt-label');
+                        var promptEl = document.getElementById('ai-form-prompt');
+                        var generateLabel = document.getElementById('ai-form-generate-label');
+                        var loadingText = document.getElementById('ai-form-loading-text');
+
+                        if (titleEl) titleEl.textContent = copy.title;
+                        if (labelEl) labelEl.textContent = copy.promptLabel;
+                        if (promptEl) promptEl.setAttribute('placeholder', copy.placeholder);
+                        if (generateLabel) generateLabel.textContent = copy.generate;
+                        if (loadingText) loadingText.textContent = copy.generating;
                     }
 
                     function dispatchInput(el) {
@@ -349,7 +407,9 @@
                             var value = fields[key];
 
                             if (spec.type === 'slug') {
-                                fillSlug(form, value);
+                                if (activeMode !== 'optimize') {
+                                    fillSlug(form, value);
+                                }
                                 return;
                             }
 
@@ -368,7 +428,7 @@
                             }
                         });
 
-                        if (type === 'product') {
+                        if (type === 'product' && activeMode !== 'optimize') {
                             var published = form.querySelector('#is_published');
                             if (published) {
                                 published.checked = true;
@@ -385,6 +445,7 @@
                     function open(trigger) {
                         activeForm = trigger.closest('form');
                         activeType = trigger.getAttribute('data-ai-form-type');
+                        activeMode = trigger.getAttribute('data-ai-mode') === 'optimize' ? 'optimize' : 'create';
 
                         var instance = getModal();
                         if (!instance) {
@@ -392,14 +453,17 @@
                         }
 
                         hideError();
-                        document.getElementById('ai-form-loading').classList.add('d-none');
-                        document.getElementById('ai-form-generate-btn').disabled = false;
+                        applyModeUi(activeMode);
+                        setBusy(false);
 
                         var prompt = document.getElementById('ai-form-prompt');
-                        if (prompt && activeForm && activeType) {
-                            var existingTitle = fieldValue(activeForm, (fieldMaps[activeType] || {}).title || (fieldMaps[activeType] || {}).name);
-                            if (!prompt.value && existingTitle) {
-                                prompt.value = existingTitle;
+                        if (prompt) {
+                            prompt.value = '';
+                            if (activeMode === 'create' && activeForm && activeType) {
+                                var existingTitle = fieldValue(activeForm, (fieldMaps[activeType] || {}).title || (fieldMaps[activeType] || {}).name);
+                                if (existingTitle) {
+                                    prompt.value = existingTitle;
+                                }
                             }
                         }
 
@@ -422,8 +486,9 @@
                         }
 
                         var prompt = (document.getElementById('ai-form-prompt').value || '').trim();
+                        var isOptimize = activeMode === 'optimize';
 
-                        if (!prompt) {
+                        if (!isOptimize && !prompt) {
                             showError(i18n.emptyPrompt);
                             return;
                         }
@@ -433,13 +498,22 @@
                             return;
                         }
 
-                        if (formHasContent(activeForm, activeType) && !window.confirm(i18n.overwrite)) {
+                        var existing = collectExisting(activeForm, activeType, isOptimize);
+                        var hasExisting = Object.keys(existing).some(function (key) {
+                            return key !== 'category' && existing[key];
+                        });
+
+                        if (isOptimize && !hasExisting) {
+                            showError(i18n.emptyContent);
+                            return;
+                        }
+
+                        if (!isOptimize && formHasContent(activeForm, activeType) && !window.confirm(i18n.overwrite)) {
                             return;
                         }
 
                         hideError();
-                        document.getElementById('ai-form-loading').classList.remove('d-none');
-                        document.getElementById('ai-form-generate-btn').disabled = true;
+                        setBusy(true);
 
                         fetch(routeUrl, {
                             method: 'POST',
@@ -453,8 +527,9 @@
                             body: JSON.stringify({
                                 prompt: prompt,
                                 form_type: activeType,
+                                mode: activeMode,
                                 locale: locale,
-                                existing: collectExisting(activeForm, activeType),
+                                existing: existing,
                             }),
                         })
                             .then(function (response) {
@@ -465,8 +540,7 @@
                                 });
                             })
                             .then(function (result) {
-                                document.getElementById('ai-form-loading').classList.add('d-none');
-                                document.getElementById('ai-form-generate-btn').disabled = false;
+                                setBusy(false);
 
                                 var json = result && result.json;
                                 if (!result || !result.ok || !json || !json.success || !json.fields) {
@@ -479,12 +553,14 @@
                                 getModal().hide();
 
                                 if (window.toastr && typeof window.toastr.success === 'function') {
-                                    window.toastr.success(activeType === 'product' ? i18n.productApplied : i18n.applied);
+                                    var appliedMessage = activeMode === 'optimize'
+                                        ? i18n.optimize.applied
+                                        : (activeType === 'product' ? i18n.productApplied : i18n.applied);
+                                    window.toastr.success(appliedMessage);
                                 }
                             })
                             .catch(function () {
-                                document.getElementById('ai-form-loading').classList.add('d-none');
-                                document.getElementById('ai-form-generate-btn').disabled = false;
+                                setBusy(false);
                                 showError(i18n.genericError);
                             });
                     });

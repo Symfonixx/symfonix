@@ -25,7 +25,7 @@
 <x-admin-layout>
     <x-admin.create-card title="Edit Service" :formUrl="route('admin.services.update' , $service->id)">
         @method('PUT')
-        <x-ai::generate-form-button type="service" :banner="true" />
+        <x-ai::generate-form-button type="service" :banner="true" :optimize="true" />
 
         <div class="row mb-8">
             <div class="col-xl-3">

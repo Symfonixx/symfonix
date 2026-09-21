@@ -31,13 +31,7 @@ class QuoteGenerationSchema
             ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)."\n"
             .'Match the provider voice from the company profile. Do not wrap the JSON in markdown fences.';
 
-        $profile = CompanyContentProfile::promptBlock();
-
-        if ($profile !== '') {
-            $prompt .= "\n\n".$profile;
-        }
-
-        return $prompt;
+        return CompanyContentProfile::appendTo($prompt);
     }
 
     /**

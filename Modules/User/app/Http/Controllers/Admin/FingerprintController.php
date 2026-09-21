@@ -4,8 +4,8 @@ namespace Modules\User\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Modules\Base\Support\FingerprintConfig;
+use Modules\User\Http\Requests\EnrollFingerprintRequest;
 use Modules\User\Models\AttendanceLog;
 use Modules\User\Models\Employee;
 use Modules\User\Services\Fingerprint\FingerprintAttendanceSyncService;
@@ -46,18 +46,11 @@ class FingerprintController extends Controller
         return response()->json($this->connectionService->testConnection());
     }
 
-    public function enroll(Employee $employee, Request $request): JsonResponse
+    public function enroll(Employee $employee, EnrollFingerprintRequest $request): JsonResponse
     {
         $fingerIndex = $request->filled('finger_index')
-            ? (int) $request->input('finger_index')
+            ? $request->integer('finger_index')
             : null;
-
-        if ($fingerIndex !== null && ($fingerIndex < 0 || $fingerIndex > 9)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Finger index must be between 0 and 9.',
-            ], 422);
-        }
 
         return response()->json($this->enrollmentService->enroll($employee, $fingerIndex));
     }

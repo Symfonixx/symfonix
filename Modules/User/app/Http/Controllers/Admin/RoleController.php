@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Modules\User\Http\Requests\RemoveUserFromRoleRequest;
 use Modules\User\Http\Requests\RoleRequest;
 use Modules\User\Http\Requests\RoleUsersRequest;
 use Modules\User\Repositories\Role\RoleRepository;
@@ -80,13 +80,12 @@ class RoleController extends Controller
         return back();
     }
 
-    public function removeUserFromRole(Request $request): JsonResponse
+    public function removeUserFromRole(RemoveUserFromRoleRequest $request): JsonResponse
     {
-        $request->validate([
-            'role_id' => 'required',
-            'user_id' => 'required',
-        ]);
-        $this->roleRepository->removeUserFromRole($request->input('role_id'), $request->input('user_id'));
+        $this->roleRepository->removeUserFromRole(
+            $request->integer('role_id'),
+            $request->integer('user_id'),
+        );
 
         return response()->json(['success' => __('The Operation Done Successfully')]);
     }

@@ -4,13 +4,13 @@ namespace Modules\CRM\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Mail\NewContactFormSubmitted;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Modules\Base\Models\Seo;
+use Modules\Base\Support\AdminEmail;
 use Modules\Base\Support\Meta;
 use Modules\Base\Support\Schema;
-use Modules\Base\Support\AdminEmail;
+use Modules\CRM\Http\Requests\StorePublicContactRequest;
 use Modules\CRM\Models\ContactForm;
 
 class ContactUsController extends Controller
@@ -44,23 +44,10 @@ class ContactUsController extends Controller
         ], $meta);
     }
 
-    public function store(Request $request)
+    public function store(StorePublicContactRequest $request)
     {
         try {
-            $validated = $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|email|max:255',
-                'mobile' => 'required|string|max:255',
-                'subject' => 'required|string|max:255',
-                'message' => 'required|string|min:10',
-            ], [
-                'name.required' => __('The name field is required.'),
-                'email.required' => __('The email field is required.'),
-                'email.email' => __('Please enter a valid email address.'),
-                'mobile.required' => __('The phone field is required.'),
-                'subject.required' => __('The subject field is required.'),
-                'message.required' => __('The message field is required.'),
-            ]);
+            $validated = $request->validated();
 
             $contact = ContactForm::create([
                 'name' => $validated['name'],
@@ -76,11 +63,8 @@ class ContactUsController extends Controller
             session()->flushMessage(true, __('Thank you for contacting us! We will get back to you soon.'));
 
             return back();
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            session()->flushMessage(false);
-
-            return back()->withErrors($e->errors())->withInput();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
+            report($e);
             session()->flushMessage(false, __('An error occurred. Please try again later.'));
 
             return back()->withErrors(['message' => __('An error occurred. Please try again later.')])->withInput();

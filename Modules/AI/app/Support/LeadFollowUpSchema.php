@@ -33,13 +33,7 @@ class LeadFollowUpSchema
             .'Do not invent clients, project progress, or promises that are not in the context. '
             .'Do not claim a message was already sent. Do not wrap the JSON in markdown fences.';
 
-        $profile = CompanyContentProfile::promptBlock();
-
-        if ($profile !== '') {
-            $prompt .= "\n\n".$profile;
-        }
-
-        return $prompt;
+        return CompanyContentProfile::appendTo($prompt);
     }
 
     /**

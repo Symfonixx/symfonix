@@ -3,6 +3,7 @@
 namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Modules\User\Support\PermissionCatalog;
 
 class RoleUsersRequest extends FormRequest
 {
@@ -12,8 +13,9 @@ class RoleUsersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'role_id' => 'required',
-            'user_ids' => 'required|array',
+            'role_id' => ['required', 'integer', 'exists:roles,id'],
+            'user_ids' => ['required', 'array', 'min:1'],
+            'user_ids.*' => ['integer', 'exists:users,id'],
         ];
     }
 
@@ -22,6 +24,6 @@ class RoleUsersRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->can('hr.roles.edit') ?? false;
+        return PermissionCatalog::userMay($this->user(), $this->route()?->getName(), $this);
     }
 }
