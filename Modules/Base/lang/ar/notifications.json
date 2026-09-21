@@ -1,0 +1,28 @@
+{
+    "greeting": "مرحباً :name،",
+    "subject": "تم إنشاء :entity جديد",
+    "subject_with_title": "تم إنشاء :entity جديد: :title",
+    "line": "تم إنشاء :entity جديد.",
+    "line_with_title": "تم إنشاء :entity جديد: :title.",
+    "view": "عرض :entity",
+    "entities": {
+        "project": "مشروع",
+        "lead": "عميل محتمل",
+        "invoice": "فاتورة",
+        "task": "مهمة",
+        "client": "عميل",
+        "ticket": "تذكرة",
+        "deal": "صفقة",
+        "quote": "عرض سعر",
+        "contact": "جهة اتصال",
+        "inquiry": "استفسار",
+        "subscription": "اشتراك",
+        "employee": "موظف",
+        "customer": "عميل",
+        "job_application": "طلب وظيفة",
+        "leave": "طلب إجازة",
+        "salary": "راتب",
+        "product_sale": "بيع منتج",
+        "record": "سجل"
+    }
+}

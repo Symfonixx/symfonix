@@ -1,0 +1,28 @@
+{
+    "greeting": "Hallo :name,",
+    "subject": "Neues :entity erstellt",
+    "subject_with_title": "Neues :entity erstellt: :title",
+    "line": "Ein neues :entity wurde erstellt.",
+    "line_with_title": "Ein neues :entity wurde erstellt: :title.",
+    "view": ":entity ansehen",
+    "entities": {
+        "project": "Projekt",
+        "lead": "Lead",
+        "invoice": "Rechnung",
+        "task": "Aufgabe",
+        "client": "Kunde",
+        "ticket": "Ticket",
+        "deal": "Deal",
+        "quote": "Angebot",
+        "contact": "Kontakt",
+        "inquiry": "Anfrage",
+        "subscription": "Abonnement",
+        "employee": "Mitarbeiter",
+        "customer": "Kunde",
+        "job_application": "Bewerbung",
+        "leave": "Urlaubsantrag",
+        "salary": "Gehalt",
+        "product_sale": "Produktverkauf",
+        "record": "Datensatz"
+    }
+}

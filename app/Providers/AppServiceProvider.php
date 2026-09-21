@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Observers\EntityCreatedObserver;
 use App\Translation\JsonFileLoader;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
@@ -37,8 +38,18 @@ class AppServiceProvider extends ServiceProvider
         $this->forceHttpsInProduction();
         $this->mergeAdminEmailConfig();
         $this->mergeIntegrationConfigs();
+        $this->registerEntityCreatedObservers();
 
         Gate::define('viewPulse', fn ($user) => $user->can('system.monitoring.view'));
+    }
+
+    private function registerEntityCreatedObservers(): void
+    {
+        foreach (array_keys(config('notifications.events', [])) as $modelClass) {
+            if (is_string($modelClass) && class_exists($modelClass)) {
+                $modelClass::observe(EntityCreatedObserver::class);
+            }
+        }
     }
 
     private function forceHttpsInProduction(): void

@@ -2,15 +2,12 @@
 
 namespace App\Conversations;
 
-use Modules\CRM\Models\Lead;
-use App\Notifications\NewLeadNotification;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use BotMan\BotMan\Messages\Outgoing\Question;
 use Cloudstudio\Ollama\Facades\Ollama;
-use Illuminate\Support\Facades\Notification;
-use Modules\Base\Support\AdminEmail;
+use Modules\CRM\Models\Lead;
 use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
 
@@ -326,21 +323,7 @@ class ProjectInquiryConversation extends Conversation
             $lead->services()->sync([$this->selectedServiceId]);
         }
 
-        $this->notifyAdmin($lead);
         $this->reply(__('chat.lead.thank_you'));
-    }
-
-    protected function notifyAdmin(Lead $lead): void
-    {
-        $emails = $this->getAdminEmails();
-        foreach ($emails as $email) {
-            Notification::route('mail', $email)->notify(new NewLeadNotification($lead));
-        }
-
-    }
-    protected function getAdminEmails(): array
-    {
-        return AdminEmail::addresses();
     }
 
     protected function analyzeIntent(string $message): array

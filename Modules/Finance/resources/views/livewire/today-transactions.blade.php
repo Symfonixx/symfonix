@@ -88,8 +88,8 @@
                                                         icon: 'warning',
                                                         showCancelButton: true,
                                                         buttonsStyling: false,
-                                                        confirmButtonText: @js(__('Yes Delete!')),
-                                                        cancelButtonText: @js(__('No Cancel')),
+                                                        confirmButtonText: @js(__('Yes, Delete!')),
+                                                        cancelButtonText: @js(__('No, Cancel')),
                                                         customClass: {
                                                             confirmButton: 'btn fw-bold btn-danger',
                                                             cancelButton: 'btn fw-bold btn-active-light-primary'
