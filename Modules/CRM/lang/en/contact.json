@@ -64,7 +64,11 @@
         "customer": "Link this contact to an existing customer account, if one exists."
     },
     "validation": {
-        "fix_errors": "Please fix the following errors and try again.",
+        "form_errors": "Please fix the following errors and try again.",
+        "name_required": "Each row must include a name.",
+        "email": "One or more rows have an invalid email address.",
+        "customer_email": "One or more rows have an invalid customer email address.",
+        "source": "One or more rows have an invalid source value.",
         "email_unique": "A contact with this email address already exists.",
         "phone_unique": "A contact with this phone number already exists.",
         "phone": "The phone number may only contain digits and the characters + - ( ) and spaces."

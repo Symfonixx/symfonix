@@ -58,7 +58,14 @@
         "is_primary": "Şirket için ana iletişim kişisi olarak işaretleyin."
     },
     "validation": {
-        "fix_errors": "Lütfen aşağıdaki hataları düzeltip tekrar deneyin."
+        "form_errors": "Lütfen aşağıdaki hataları düzeltip tekrar deneyin.",
+        "name_required": "Her satırda bir ad olmalıdır.",
+        "email": "Bir veya daha fazla satırda geçersiz e-posta adresi var.",
+        "customer_email": "Bir veya daha fazla satırda geçersiz müşteri e-postası var.",
+        "source": "Bir veya daha fazla satırda geçersiz kaynak değeri var.",
+        "email_unique": "Bu e-posta adresine sahip bir kişi zaten var.",
+        "phone_unique": "Bu telefon numarasına sahip bir kişi zaten var.",
+        "phone": "Telefon numarası yalnızca rakamlar ile + - ( ) ve boşluk karakterlerini içerebilir."
     },
     "fallback_name": "Bilinmeyen Kişi"
 }

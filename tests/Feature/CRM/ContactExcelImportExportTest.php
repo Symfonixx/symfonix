@@ -94,6 +94,37 @@ class ContactExcelImportExportTest extends TestCase
         ]);
     }
 
+    public function test_import_allows_rows_with_blank_email(): void
+    {
+        $user = $this->createAdminWithPermissions(['crm.contacts.create', 'crm.contacts.view']);
+
+        $this->actingAs($user)
+            ->from(route('admin.contacts.index'))
+            ->post(route('admin.contacts.import'), [
+                'file' => $this->excelUpload([
+                    [
+                        'No Email Contact',
+                        '',
+                        '+1 555 000 4444',
+                        '',
+                        'manual',
+                        'Analyst',
+                        '',
+                        'No',
+                        '',
+                        '',
+                    ],
+                ]),
+            ])
+            ->assertRedirect(route('admin.contacts.index'));
+
+        $this->assertDatabaseHas('contacts', [
+            'name' => 'No Email Contact',
+            'email' => null,
+            'phone' => '+1 555 000 4444',
+        ]);
+    }
+
     public function test_import_updates_existing_contact_by_email(): void
     {
         $user = $this->createAdminWithPermissions(['crm.contacts.create', 'crm.contacts.view']);

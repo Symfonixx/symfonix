@@ -64,7 +64,11 @@
         "customer": "Verknüpfen Sie diesen Kontakt mit einem bestehenden Kundenkonto, falls vorhanden."
     },
     "validation": {
-        "fix_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut.",
+        "form_errors": "Bitte beheben Sie die folgenden Fehler und versuchen Sie es erneut.",
+        "name_required": "Jede Zeile muss einen Namen enthalten.",
+        "email": "Eine oder mehrere Zeilen haben eine ungültige E-Mail-Adresse.",
+        "customer_email": "Eine oder mehrere Zeilen haben eine ungültige Kunden-E-Mail-Adresse.",
+        "source": "Eine oder mehrere Zeilen haben einen ungültigen Quellenwert.",
         "email_unique": "Ein Kontakt mit dieser E-Mail-Adresse existiert bereits.",
         "phone_unique": "Ein Kontakt mit dieser Telefonnummer existiert bereits.",
         "phone": "Die Telefonnummer darf nur Ziffern und die Zeichen + - ( ) und Leerzeichen enthalten."

@@ -78,6 +78,18 @@ class ContactImport implements SkipsEmptyRows, ToModel, WithHeadingRow, WithVali
         ];
     }
 
+    public function customValidationMessages(): array
+    {
+        return [
+            'name.required' => __('crm::contact.validation.name_required'),
+            'email.email' => __('crm::contact.validation.email'),
+            'customer_email.email' => __('crm::contact.validation.customer_email'),
+            'phone.regex' => __('crm::contact.validation.phone'),
+            'phone2.regex' => __('crm::contact.validation.phone'),
+            'source.in' => __('crm::contact.validation.source'),
+        ];
+    }
+
     /**
      * @param  array<string, mixed>  $data
      * @return array<string, mixed>
@@ -85,10 +97,21 @@ class ContactImport implements SkipsEmptyRows, ToModel, WithHeadingRow, WithVali
     public function prepareForValidation(array $data, int $index): array
     {
         foreach (['name', 'email', 'phone', 'phone2', 'source', 'job_title', 'notes', 'company', 'customer_email', 'is_primary'] as $field) {
-            if (array_key_exists($field, $data) && $data[$field] !== null && ! is_string($data[$field])) {
+            if (! array_key_exists($field, $data) || $data[$field] === null) {
+                continue;
+            }
+
+            if (! is_string($data[$field])) {
                 $data[$field] = is_bool($data[$field])
                     ? ($data[$field] ? '1' : '0')
                     : (string) $data[$field];
+            }
+
+            $data[$field] = trim($data[$field]);
+
+            // Excel empty cells arrive as "" (not null); nullable rules need null.
+            if ($data[$field] === '') {
+                $data[$field] = null;
             }
         }
 
