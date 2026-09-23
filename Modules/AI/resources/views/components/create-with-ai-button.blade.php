@@ -106,6 +106,30 @@
                     return 'png';
                 }
 
+                // Decode data: URIs in-page. fetch(data:) is blocked by CSP
+                // connect-src (no data: scheme), which made "Use This Image" fail.
+                function dataUriToFile(dataUri, filenamePrefix) {
+                    var comma = dataUri.indexOf(',');
+                    if (comma === -1) {
+                        throw new Error('Invalid data URI');
+                    }
+
+                    var header = dataUri.slice(0, comma);
+                    var data = dataUri.slice(comma + 1);
+                    var mimeMatch = header.match(/data:([^;]+)/);
+                    var mime = (mimeMatch && mimeMatch[1]) || 'image/png';
+                    var binary = atob(data);
+                    var bytes = new Uint8Array(binary.length);
+
+                    for (var i = 0; i < binary.length; i++) {
+                        bytes[i] = binary.charCodeAt(i);
+                    }
+
+                    var filename = filenamePrefix + '-' + Date.now() + '.' + extensionForMime(mime);
+
+                    return new File([bytes], filename, { type: mime });
+                }
+
                 function resetModal() {
                     $('#ai-create-alert, #ai-create-staged-hint').addClass('d-none').text('');
                     $('#ai-create-prompt').val('');
@@ -276,36 +300,32 @@
                 // same <input type="file"> so it uploads with the form.
                 $(document).on('click', '#ai-create-use-btn', function () {
                     if (!currentResultDataUri || !currentFileInput) {
+                        showError(aiCreateMessages.genericError);
                         return;
                     }
 
                     var $btn = $(this);
                     $btn.prop('disabled', true);
 
-                    fetch(currentResultDataUri)
-                        .then(function (res) { return res.blob(); })
-                        .then(function (blob) {
-                            var filename = 'ai-create-' + Date.now() + '.' + extensionForMime(blob.type);
-                            var file = new File([blob], filename, { type: blob.type });
+                    try {
+                        var file = dataUriToFile(currentResultDataUri, 'ai-create');
+                        var dataTransfer = new DataTransfer();
+                        dataTransfer.items.add(file);
+                        currentFileInput.files = dataTransfer.files;
+                        currentFileInput.dispatchEvent(new Event('change', { bubbles: true }));
 
-                            var dataTransfer = new DataTransfer();
-                            dataTransfer.items.add(file);
-                            currentFileInput.files = dataTransfer.files;
-                            currentFileInput.dispatchEvent(new Event('change', { bubbles: true }));
+                        updateTriggerPreview(currentResultDataUri);
 
-                            updateTriggerPreview(currentResultDataUri);
+                        if (typeof toastr !== 'undefined') {
+                            toastr.success(aiCreateMessages.staged);
+                        }
 
-                            if (typeof toastr !== 'undefined') {
-                                toastr.success(aiCreateMessages.staged);
-                            }
-
-                            $btn.prop('disabled', false);
-                            getModal().hide();
-                        })
-                        .catch(function () {
-                            $btn.prop('disabled', false);
-                            showError(aiCreateMessages.genericError);
-                        });
+                        $btn.prop('disabled', false);
+                        getModal().hide();
+                    } catch (e) {
+                        $btn.prop('disabled', false);
+                        showError(aiCreateMessages.genericError);
+                    }
                 });
             })(jQuery);
         </script>

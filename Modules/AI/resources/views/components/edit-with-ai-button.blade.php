@@ -118,6 +118,30 @@
                     return 'png';
                 }
 
+                // Decode data: URIs in-page. fetch(data:) is blocked by CSP
+                // connect-src (no data: scheme), which made "Use This Image" fail.
+                function dataUriToFile(dataUri, filenamePrefix) {
+                    var comma = dataUri.indexOf(',');
+                    if (comma === -1) {
+                        throw new Error('Invalid data URI');
+                    }
+
+                    var header = dataUri.slice(0, comma);
+                    var data = dataUri.slice(comma + 1);
+                    var mimeMatch = header.match(/data:([^;]+)/);
+                    var mime = (mimeMatch && mimeMatch[1]) || 'image/png';
+                    var binary = atob(data);
+                    var bytes = new Uint8Array(binary.length);
+
+                    for (var i = 0; i < binary.length; i++) {
+                        bytes[i] = binary.charCodeAt(i);
+                    }
+
+                    var filename = filenamePrefix + '-' + Date.now() + '.' + extensionForMime(mime);
+
+                    return new File([bytes], filename, { type: mime });
+                }
+
                 function resetModal() {
                     $('#ai-edit-alert, #ai-edit-staged-hint').addClass('d-none').text('');
                     $('#ai-edit-prompt').val('');
@@ -334,36 +358,32 @@
                 // it uploads with the rest of the form on Save.
                 $(document).on('click', '#ai-edit-use-btn', function () {
                     if (!currentResultDataUri || !currentFileInput) {
+                        showError(aiEditMessages.genericError);
                         return;
                     }
 
                     var $btn = $(this);
                     $btn.prop('disabled', true);
 
-                    fetch(currentResultDataUri)
-                        .then(function (res) { return res.blob(); })
-                        .then(function (blob) {
-                            var filename = 'ai-edit-' + Date.now() + '.' + extensionForMime(blob.type);
-                            var file = new File([blob], filename, { type: blob.type });
+                    try {
+                        var file = dataUriToFile(currentResultDataUri, 'ai-edit');
+                        var dataTransfer = new DataTransfer();
+                        dataTransfer.items.add(file);
+                        currentFileInput.files = dataTransfer.files;
+                        currentFileInput.dispatchEvent(new Event('change', { bubbles: true }));
 
-                            var dataTransfer = new DataTransfer();
-                            dataTransfer.items.add(file);
-                            currentFileInput.files = dataTransfer.files;
-                            currentFileInput.dispatchEvent(new Event('change', { bubbles: true }));
+                        updateTriggerPreview(currentResultDataUri);
 
-                            updateTriggerPreview(currentResultDataUri);
+                        if (typeof toastr !== 'undefined') {
+                            toastr.success(aiEditMessages.staged);
+                        }
 
-                            if (typeof toastr !== 'undefined') {
-                                toastr.success(aiEditMessages.staged);
-                            }
-
-                            $btn.prop('disabled', false);
-                            getModal().hide();
-                        })
-                        .catch(function () {
-                            $btn.prop('disabled', false);
-                            showError(aiEditMessages.genericError);
-                        });
+                        $btn.prop('disabled', false);
+                        getModal().hide();
+                    } catch (e) {
+                        $btn.prop('disabled', false);
+                        showError(aiEditMessages.genericError);
+                    }
                 });
             })(jQuery);
         </script>
