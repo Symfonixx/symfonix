@@ -10,6 +10,7 @@ use Modules\CRM\Jobs\SendMarketingCampaignJob;
 use Modules\CRM\Models\Lead;
 use Modules\CRM\Models\LeadTag;
 use Modules\CRM\Models\MarketingCampaign;
+use Modules\CRM\Models\MarketingEmailLog;
 use Modules\CRM\Models\MarketingGroup;
 use Modules\CRM\Services\Marketing\WhatsAppCampaignService;
 use Tests\Concerns\InteractsWithAdminPermissions;
@@ -79,7 +80,10 @@ class MarketingLeadTagRecipientsTest extends TestCase
             [$cold->id, $warm->id],
             array_map('intval', $campaign->recipient_sources['lead_tag_ids'] ?? []),
         );
-        Queue::assertPushed(SendMarketingCampaignJob::class);
+        $this->assertSame(3, MarketingEmailLog::query()->where('marketing_campaign_id', $campaign->id)->count());
+        Queue::assertPushed(SendMarketingCampaignJob::class, function (SendMarketingCampaignJob $job) use ($campaign) {
+            return $job->campaignId === $campaign->id;
+        });
     }
 
     public function test_whatsapp_resolve_includes_leads_from_checked_tags_once(): void

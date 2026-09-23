@@ -9,7 +9,15 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('crm::contact.pages.index_title')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3 sx-actions">
+        <x-can perform="crm.contacts.export">
+            <a href="{{ route('admin.contacts.export') }}" class="btn btn-sm btn-light-info" data-action="export">
+                <i class="bi bi-file-earmark-excel"></i> {{ __('crm::contact.actions.export') }}
+            </a>
+        </x-can>
         <x-can perform="crm.contacts.create">
+            <button type="button" class="btn btn-sm btn-light-success" data-bs-toggle="modal" data-bs-target="#importModal">
+                <i class="bi bi-upload"></i> {{ __('crm::contact.actions.import') }}
+            </button>
             <a class="btn btn-sm fw-bold btn-success" href="{{ route('admin.contacts.create') }}" data-action="create">
                 <i class="bi bi-plus-lg me-1"></i>{{ __('crm::contact.actions.add') }}
             </a>
@@ -89,4 +97,49 @@
         @endforeach
         </tbody>
     </x-admin.table>
+
+    <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="importModalLabel">{{ __('crm::contact.import.title') }}</h5>
+                    <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close" data-action="back"></button>
+                </div>
+                <form action="{{ route('admin.contacts.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <a href="{{ route('admin.contacts.importSample') }}" class="btn btn-sm btn-light-info" data-action="export">
+                                <i class="bi bi-download"></i> {{ __('crm::contact.import.download_sample') }}
+                            </a>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">{{ __('crm::contact.import.select_file') }}</label>
+                            <input type="file" class="form-control" id="file" name="file" accept=".xlsx,.xls,.csv" required>
+                            <div class="form-text">{{ __('crm::contact.import.accepted_formats') }}</div>
+                        </div>
+                        <div class="alert alert-info">
+                            <strong>{{ __('crm::contact.import.format_title') }}</strong><br>
+                            <strong>{{ __('crm::contact.import.required') }}</strong> {{ __('crm::contact.fields.name') }}<br>
+                            <strong>{{ __('crm::contact.import.optional') }}</strong>
+                            {{ __('crm::contact.fields.email') }},
+                            {{ __('crm::contact.fields.phone') }},
+                            {{ __('crm::contact.fields.phone2') }},
+                            {{ __('crm::contact.fields.source') }},
+                            {{ __('crm::contact.fields.job_title') }},
+                            {{ __('crm::contact.fields.notes') }},
+                            {{ __('crm::contact.fields.is_primary') }},
+                            {{ __('crm::contact.fields.company') }},
+                            {{ __('crm::contact.fields.customer') }} Email<br>
+                            <small>{{ __('crm::contact.import.upsert_note') }}</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal" data-action="back">{{ __('Cancel') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('crm::contact.actions.import') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </x-admin-layout>

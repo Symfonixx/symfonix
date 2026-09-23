@@ -9,10 +9,16 @@ use Modules\CRM\Models\Contact;
 use Modules\CRM\Models\ContactForm;
 use Modules\CRM\Models\Lead;
 use Modules\CRM\Models\MarketingCampaign;
+use Modules\CRM\Models\MarketingEmailLog;
 use Modules\Support\Models\Subscriber;
 
 class MarketingEmailService
 {
+    /**
+     * How many recipient log rows to insert per query.
+     */
+    private const LOG_INSERT_CHUNK_SIZE = 500;
+
     /**
      * @param  array{
      *     all_subscribers?: bool,
@@ -42,13 +48,34 @@ class MarketingEmailService
             'recipient_sources' => $this->buildRecipientSources($recipientData),
         ]);
 
+        $this->persistRecipientLogs($campaign, $recipients);
+
         SendMarketingCampaignJob::dispatch(
             $campaign->id,
-            $recipients->all(),
             app()->getLocale(),
         );
 
         return $campaign;
+    }
+
+    /**
+     * @param  Collection<int, string>  $recipients
+     */
+    private function persistRecipientLogs(MarketingCampaign $campaign, Collection $recipients): void
+    {
+        $now = now();
+
+        $recipients->chunk(self::LOG_INSERT_CHUNK_SIZE)->each(function (Collection $chunk) use ($campaign, $now): void {
+            MarketingEmailLog::query()->insert(
+                $chunk->map(fn (string $email) => [
+                    'marketing_campaign_id' => $campaign->id,
+                    'email' => $email,
+                    'status' => MarketingEmailLog::STATUS_PENDING,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ])->all()
+            );
+        });
     }
 
     /**

@@ -25,7 +25,21 @@
     },
     "actions": {
         "add": "إضافة جهة اتصال",
-        "back_to_list": "العودة إلى جهات الاتصال"
+        "back_to_list": "العودة إلى جهات الاتصال",
+        "export": "تصدير إلى Excel",
+        "import": "استيراد من Excel"
+    },
+    "import": {
+        "title": "استيراد جهات الاتصال من Excel",
+        "download_sample": "تحميل ملف نموذجي",
+        "select_file": "اختر ملف Excel",
+        "accepted_formats": "الصيغ المقبولة: .xlsx, .xls, .csv (الحد الأقصى: 10MB)",
+        "format_title": "تنسيق Excel:",
+        "required": "مطلوب:",
+        "optional": "اختياري:",
+        "upsert_note": "إذا كان البريد أو الهاتف موجودًا مسبقًا، سيتم تحديث جهة الاتصال بدلًا من إنشاء تكرار.",
+        "success": "تم استيراد جهات الاتصال بنجاح.",
+        "error": "خطأ في استيراد جهات الاتصال: :message"
     },
     "search": {
         "placeholder": "البحث في جهات الاتصال"

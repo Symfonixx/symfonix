@@ -5,6 +5,7 @@ namespace Modules\CRM\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\CRM\Concerns\HasCampaignStatus;
 use Modules\CRM\Enums\MarketingCampaignStatus;
 
@@ -13,6 +14,8 @@ class MarketingCampaign extends Model
     use HasCampaignStatus;
 
     public const STATUS_PENDING = MarketingCampaignStatus::PENDING->value;
+
+    public const STATUS_SENDING = MarketingCampaignStatus::SENDING->value;
 
     public const STATUS_FINISHED = MarketingCampaignStatus::FINISHED->value;
 
@@ -43,6 +46,16 @@ class MarketingCampaign extends Model
     public function group(): BelongsTo
     {
         return $this->belongsTo(MarketingGroup::class, 'marketing_group_id');
+    }
+
+    public function emailLogs(): HasMany
+    {
+        return $this->hasMany(MarketingEmailLog::class, 'marketing_campaign_id');
+    }
+
+    public function markAsSending(): void
+    {
+        $this->update(['status' => self::STATUS_SENDING]);
     }
 
     public function markAsFinished(): void

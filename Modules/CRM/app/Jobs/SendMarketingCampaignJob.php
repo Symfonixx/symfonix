@@ -2,14 +2,15 @@
 
 namespace Modules\CRM\Jobs;
 
+use Illuminate\Bus\Batch;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
-use Modules\CRM\Mail\MarketingEmail;
+use Illuminate\Support\Facades\Bus;
 use Modules\CRM\Models\MarketingCampaign;
+use Modules\CRM\Models\MarketingEmailLog;
 use Throwable;
 
 class SendMarketingCampaignJob implements ShouldQueue
@@ -20,12 +21,8 @@ class SendMarketingCampaignJob implements ShouldQueue
 
     public int $timeout = 300;
 
-    /**
-     * @param  array<int, string>  $recipients
-     */
     public function __construct(
         public int $campaignId,
-        public array $recipients,
         public string $locale = 'en',
     ) {}
 
@@ -33,15 +30,39 @@ class SendMarketingCampaignJob implements ShouldQueue
     {
         $campaign = MarketingCampaign::query()->findOrFail($this->campaignId);
 
-        foreach ($this->recipients as $email) {
-            Mail::to($email)->queue(new MarketingEmail(
-                $campaign->subject,
-                $campaign->body,
-                $this->locale,
-            ));
+        $pendingLogIds = MarketingEmailLog::query()
+            ->where('marketing_campaign_id', $campaign->id)
+            ->where('status', MarketingEmailLog::STATUS_PENDING)
+            ->orderBy('id')
+            ->pluck('id');
+
+        if ($pendingLogIds->isEmpty()) {
+            $campaign->markAsFinished();
+
+            return;
         }
 
-        $campaign->markAsFinished();
+        $campaign->markAsSending();
+
+        $jobs = $pendingLogIds
+            ->chunk(SendMarketingEmailChunkJob::CHUNK_SIZE)
+            ->map(fn ($chunk) => new SendMarketingEmailChunkJob(
+                $this->campaignId,
+                $chunk->values()->all(),
+                $this->locale,
+            ))
+            ->values()
+            ->all();
+
+        $campaignId = $this->campaignId;
+
+        Bus::batch($jobs)
+            ->name("marketing-email-{$campaignId}")
+            ->allowFailures()
+            ->finally(function (Batch $batch) use ($campaignId) {
+                self::finalizeCampaign($campaignId);
+            })
+            ->dispatch();
     }
 
     public function failed(Throwable $exception): void
@@ -51,5 +72,32 @@ class SendMarketingCampaignJob implements ShouldQueue
         MarketingCampaign::query()
             ->whereKey($this->campaignId)
             ->update(['status' => MarketingCampaign::STATUS_FAILED]);
+    }
+
+    public static function finalizeCampaign(int $campaignId): void
+    {
+        $campaign = MarketingCampaign::query()->find($campaignId);
+
+        if (! $campaign) {
+            return;
+        }
+
+        $queuedCount = MarketingEmailLog::query()
+            ->where('marketing_campaign_id', $campaignId)
+            ->where('status', MarketingEmailLog::STATUS_QUEUED)
+            ->count();
+
+        $failedCount = MarketingEmailLog::query()
+            ->where('marketing_campaign_id', $campaignId)
+            ->where('status', MarketingEmailLog::STATUS_FAILED)
+            ->count();
+
+        if ($queuedCount === 0 && $failedCount > 0) {
+            $campaign->markAsFailed();
+
+            return;
+        }
+
+        $campaign->markAsFinished();
     }
 }

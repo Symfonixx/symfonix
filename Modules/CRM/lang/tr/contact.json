@@ -20,7 +20,21 @@
     },
     "actions": {
         "add": "Kişi Ekle",
-        "back_to_list": "Kişilere Dön"
+        "back_to_list": "Kişilere Dön",
+        "export": "Excel'e Aktar",
+        "import": "Excel'den İçe Aktar"
+    },
+    "import": {
+        "title": "Excel'den Kişi İçe Aktar",
+        "download_sample": "Örnek Dosyayı İndir",
+        "select_file": "Excel Dosyası Seç",
+        "accepted_formats": "Kabul edilen biçimler: .xlsx, .xls, .csv (Maks: 10MB)",
+        "format_title": "Excel Biçimi:",
+        "required": "Zorunlu:",
+        "optional": "İsteğe bağlı:",
+        "upsert_note": "E-posta veya telefon zaten varsa, yinelenen oluşturmak yerine kişi güncellenir.",
+        "success": "Kişiler başarıyla içe aktarıldı.",
+        "error": "Kişiler içe aktarılırken hata: :message"
     },
     "search": {
         "placeholder": "Kişilerde ara"

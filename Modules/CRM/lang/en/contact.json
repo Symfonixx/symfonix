@@ -25,7 +25,21 @@
     },
     "actions": {
         "add": "Add Contact",
-        "back_to_list": "Back to Contacts"
+        "back_to_list": "Back to Contacts",
+        "export": "Export to Excel",
+        "import": "Import from Excel"
+    },
+    "import": {
+        "title": "Import Contacts from Excel",
+        "download_sample": "Download Sample File",
+        "select_file": "Select Excel File",
+        "accepted_formats": "Accepted formats: .xlsx, .xls, .csv (Max: 10MB)",
+        "format_title": "Excel Format:",
+        "required": "Required:",
+        "optional": "Optional:",
+        "upsert_note": "If email or phone already exists, the contact will be updated instead of creating a duplicate.",
+        "success": "Contacts imported successfully.",
+        "error": "Error importing contacts: :message"
     },
     "search": {
         "placeholder": "Search in Contacts"

@@ -5,6 +5,9 @@ namespace Modules\CRM\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Validators\ValidationException;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
 use Modules\CRM\Actions\Contact\BulkDeleteContactsAction;
 use Modules\CRM\Actions\Contact\CreateContactAction;
@@ -12,9 +15,12 @@ use Modules\CRM\Actions\Contact\DeleteContactAction;
 use Modules\CRM\Actions\Contact\ListContactsAction;
 use Modules\CRM\Actions\Contact\UpdateContactAction;
 use Modules\CRM\DTOs\Contact\ContactData;
+use Modules\CRM\Exports\ContactExport;
+use Modules\CRM\Exports\ContactImportSampleExport;
 use Modules\CRM\Http\Requests\ContactIndexRequest;
 use Modules\CRM\Http\Requests\StoreContactRequest;
 use Modules\CRM\Http\Requests\UpdateContactRequest;
+use Modules\CRM\Imports\ContactImport;
 use Modules\CRM\Models\Company;
 use Modules\CRM\Models\Contact;
 
@@ -88,6 +94,38 @@ class ContactController extends Controller
         $this->bulkDeleteContactsAction->execute($request->input('ids', []));
 
         return back();
+    }
+
+    public function export()
+    {
+        return Excel::download(new ContactExport, 'contacts_'.date('Y-m-d_His').'.xlsx');
+    }
+
+    public function downloadSample()
+    {
+        return Excel::download(new ContactImportSampleExport, 'contacts_import_sample.xlsx');
+    }
+
+    public function import(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'file' => ['required', 'file', 'extensions:xlsx,xls,csv', 'max:10240'],
+        ]);
+
+        try {
+            Excel::import(app(ContactImport::class), $request->file('file'));
+            session()->flushMessage(true, __('crm::contact.import.success'));
+        } catch (ValidationException $e) {
+            $messages = collect($e->failures())
+                ->flatMap(fn ($failure) => $failure->errors())
+                ->unique()
+                ->implode(' ');
+            session()->flushMessage(false, __('crm::contact.import.error', ['message' => $messages]));
+        } catch (\Exception $e) {
+            session()->flushMessage(false, __('crm::contact.import.error', ['message' => $e->getMessage()]));
+        }
+
+        return redirect()->back();
     }
 
     private function formData(): array

@@ -19,7 +19,7 @@ return [
     'assistant' => [
         'provider' => env('AI_ASSISTANT_PROVIDER', 'auto'),
         'max_history_messages' => (int) env('AI_ASSISTANT_MAX_HISTORY', 16),
-        'max_tool_rounds' => (int) env('AI_ASSISTANT_MAX_TOOL_ROUNDS', 3),
+        'max_tool_rounds' => (int) env('AI_ASSISTANT_MAX_TOOL_ROUNDS', 5),
         'max_list_items' => (int) env('AI_ASSISTANT_MAX_LIST_ITEMS', 12),
         'max_record_chars' => (int) env('AI_ASSISTANT_MAX_RECORD_CHARS', 1200),
         'temperature' => (float) env('AI_ASSISTANT_TEMPERATURE', 0.3),

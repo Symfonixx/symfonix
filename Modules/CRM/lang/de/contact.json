@@ -25,7 +25,21 @@
     },
     "actions": {
         "add": "Kontakt hinzufügen",
-        "back_to_list": "Zurück zu Kontakte"
+        "back_to_list": "Zurück zu Kontakte",
+        "export": "Nach Excel exportieren",
+        "import": "Aus Excel importieren"
+    },
+    "import": {
+        "title": "Kontakte aus Excel importieren",
+        "download_sample": "Beispieldatei herunterladen",
+        "select_file": "Excel-Datei auswählen",
+        "accepted_formats": "Akzeptierte Formate: .xlsx, .xls, .csv (Max.: 10MB)",
+        "format_title": "Excel-Format:",
+        "required": "Erforderlich:",
+        "optional": "Optional:",
+        "upsert_note": "Wenn E-Mail oder Telefon bereits existiert, wird der Kontakt aktualisiert statt dupliziert.",
+        "success": "Kontakte erfolgreich importiert.",
+        "error": "Fehler beim Importieren von Kontakten: :message"
     },
     "search": {
         "placeholder": "Suchen Sie in den Kontakten"

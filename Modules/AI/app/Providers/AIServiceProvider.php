@@ -12,6 +12,7 @@ use Modules\AI\Services\Assistant\Tools\GetCustomerDetailsTool;
 use Modules\AI\Services\Assistant\Tools\GetCustomerStatsTool;
 use Modules\AI\Services\Assistant\Tools\GetEmployeeReportTool;
 use Modules\AI\Services\Assistant\Tools\GetEmployeeStatsTool;
+use Modules\AI\Services\Assistant\Tools\GetEntityRecordTool;
 use Modules\AI\Services\Assistant\Tools\GetExpenseStatsTool;
 use Modules\AI\Services\Assistant\Tools\GetInvoiceStatsTool;
 use Modules\AI\Services\Assistant\Tools\GetLeadDetailsTool;
@@ -24,6 +25,8 @@ use Modules\AI\Services\Assistant\Tools\GetTicketStatsTool;
 use Modules\AI\Services\Assistant\Tools\GetTodayFocusTool;
 use Modules\AI\Services\Assistant\Tools\GetTopCustomersTool;
 use Modules\AI\Services\Assistant\Tools\GetVisitorStatsTool;
+use Modules\AI\Services\Assistant\Tools\ListQueryableEntitiesTool;
+use Modules\AI\Services\Assistant\Tools\QueryEntityTool;
 use Modules\AI\Services\Assistant\Tools\SearchRecordsTool;
 use Modules\AI\Services\Chatbot\PublicChatToolRegistry;
 use Modules\AI\Services\Chatbot\Tools\CaptureWebsiteLeadTool;
@@ -133,6 +136,9 @@ class AIServiceProvider extends ServiceProvider
                 $app->make(GetVisitorStatsTool::class),
                 $app->make(GetBestSellingServicesTool::class),
                 $app->make(SearchRecordsTool::class),
+                $app->make(ListQueryableEntitiesTool::class),
+                $app->make(QueryEntityTool::class),
+                $app->make(GetEntityRecordTool::class),
                 $app->make(DraftFollowUpMessageTool::class),
                 $app->make(GetBusinessSnapshotTool::class),
                 $app->make(GetTodayFocusTool::class),

@@ -9,7 +9,7 @@ trait HasCampaignStatus
         return match ($status) {
             self::STATUS_FINISHED => 'badge-light-success',
             self::STATUS_FAILED => 'badge-light-danger',
-            'sending' => 'badge-light-info', // WhatsAppCampaign::STATUS_SENDING
+            self::STATUS_SENDING, 'sending' => 'badge-light-info',
             default => 'badge-light-warning',
         };
     }

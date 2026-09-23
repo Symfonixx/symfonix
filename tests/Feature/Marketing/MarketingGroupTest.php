@@ -8,6 +8,7 @@ use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
 use Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect;
 use Modules\CRM\Jobs\SendMarketingCampaignJob;
 use Modules\CRM\Models\MarketingCampaign;
+use Modules\CRM\Models\MarketingEmailLog;
 use Modules\CRM\Models\MarketingGroup;
 use Tests\Concerns\InteractsWithAdminPermissions;
 use Tests\TestCase;
@@ -87,8 +88,16 @@ class MarketingGroupTest extends TestCase
 
         $this->assertNotNull($campaign);
         $this->assertSame($group->id, $campaign->marketing_group_id);
+        $this->assertSame(1, MarketingEmailLog::query()->where('marketing_campaign_id', $campaign->id)->count());
+        $this->assertDatabaseHas('marketing_email_logs', [
+            'marketing_campaign_id' => $campaign->id,
+            'email' => 'prospect@example.com',
+            'status' => MarketingEmailLog::STATUS_PENDING,
+        ]);
         $response->assertRedirect(route('admin.crm.marketing.groups.show', $group));
-        Queue::assertPushed(SendMarketingCampaignJob::class);
+        Queue::assertPushed(SendMarketingCampaignJob::class, function (SendMarketingCampaignJob $job) use ($campaign) {
+            return $job->campaignId === $campaign->id;
+        });
 
         $group->loadCount(['emailCampaigns', 'whatsappCampaigns']);
         $this->assertFalse($group->isIncomplete());

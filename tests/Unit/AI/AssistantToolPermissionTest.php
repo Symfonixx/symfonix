@@ -217,6 +217,9 @@ class AssistantToolPermissionTest extends TestCase
         $this->assertContains('get_best_selling_services', $names);
         $this->assertContains('get_employee_report', $names);
         $this->assertContains('get_top_customers', $names);
+        $this->assertContains('list_queryable_entities', $names);
+        $this->assertContains('query_entity', $names);
+        $this->assertContains('get_entity_record', $names);
     }
 
     public function test_top_customers_tool_ranks_paid_invoice_revenue(): void

@@ -4,12 +4,11 @@ namespace Modules\CRM\Enums;
 
 use Modules\Core\Traits\HasEnumValues;
 
-enum MarketingCampaignStatus: string
+enum MarketingEmailStatus: string
 {
     use HasEnumValues;
 
     case PENDING = 'pending';
-    case SENDING = 'sending';
-    case FINISHED = 'finished';
+    case QUEUED = 'queued';
     case FAILED = 'failed';
 }

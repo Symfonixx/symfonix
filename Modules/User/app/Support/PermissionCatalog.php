@@ -231,12 +231,18 @@ final class PermissionCatalog
                         'key' => 'crm.contacts',
                         'label' => 'Contacts',
                         'legacy' => ['CRM Management'],
-                        'actions' => ['view', 'create', 'edit', 'delete'],
+                        'actions' => ['view', 'create', 'edit', 'delete', 'export'],
                         'routes' => [
                             'view' => ['admin.contacts.index', 'admin.contacts.show'],
-                            'create' => ['admin.contacts.create', 'admin.contacts.store'],
+                            'create' => [
+                                'admin.contacts.create',
+                                'admin.contacts.store',
+                                'admin.contacts.import',
+                                'admin.contacts.importSample',
+                            ],
                             'edit' => ['admin.contacts.edit', 'admin.contacts.update'],
                             'delete' => ['admin.contacts.destroy', 'admin.contacts.deleteMulti'],
+                            'export' => ['admin.contacts.export'],
                         ],
                     ],
                     [

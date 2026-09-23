@@ -73,6 +73,9 @@ Route::group([], function () {
     Route::resource('companies', CompanyController::class);
 
     Route::delete('contacts/deleteMulti', [ContactController::class, 'deleteMulti'])->name('contacts.deleteMulti');
+    Route::get('contacts/export', [ContactController::class, 'export'])->name('contacts.export');
+    Route::get('contacts/import-sample', [ContactController::class, 'downloadSample'])->name('contacts.importSample');
+    Route::post('contacts/import', [ContactController::class, 'import'])->name('contacts.import');
     Route::resource('contacts', ContactController::class);
 
     Route::delete('deals/deleteMulti', [DealController::class, 'deleteMulti'])->name('deals.deleteMulti');
